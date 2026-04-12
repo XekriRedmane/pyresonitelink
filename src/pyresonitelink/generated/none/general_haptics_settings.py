@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class GeneralHapticsSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.GeneralHapticsSettings.
+    """See Haptic Feedback in Settings.
+
+    See Haptic Feedback in Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GeneralHapticsSettings"
@@ -30,7 +32,7 @@ class GeneralHapticsSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def enable_controller_vibration(self) -> primitives.Bool | None:
-        """The EnableControllerVibration field value."""
+        """Enables or disables controller vibration as a whole."""
         member = self.get_member("EnableControllerVibration")
         if member is None:
             return None
@@ -49,7 +51,7 @@ class GeneralHapticsSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def enable_haptics(self) -> primitives.Bool | None:
-        """The EnableHaptics field value."""
+        """Enables or disables haptic feedback from avatars and items in the world or other haptic devices."""
         member = self.get_member("EnableHaptics")
         if member is None:
             return None

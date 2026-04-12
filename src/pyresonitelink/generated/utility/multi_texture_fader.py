@@ -15,9 +15,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MultiTextureFader<>.
+    """The MultiTextureFader component can be used with the PBSLerpMetallic or PBSLerpSpecular to lerp multiple textures rather than just one.
 
     Category: Utility
+
+    Can be attached to a slot and given a list of materials. Using a
+    PBSLerpMetallic or PBSLerpSpecular with this component can lerp the list
+    of ``Textures`` using ``Position``. The lerp of the material can be
+    driven via the ``Lerp`` on this component.
 
     Parameterize with a value type::
 
@@ -50,7 +55,7 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def first_texture(self) -> str | None:
-        """Target ID of the FirstTexture reference (targets AssetRef[A])."""
+        """Usually set to the Texture set 0 of a lerping material."""
         member = self.get_member("FirstTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -71,7 +76,7 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def second_texture(self) -> str | None:
-        """Target ID of the SecondTexture reference (targets AssetRef[A])."""
+        """Usually set to the Texture set 1 of a lerping material. The type of texture set like albedo or emission this one is driving should be the same as ``FirstTexture``."""
         member = self.get_member("SecondTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +97,7 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def lerp(self) -> str | None:
-        """Target ID of the Lerp reference (targets IField[primitives.Float])."""
+        """The lerp field of the material. Can be left blank if using multiple of this component on the same material."""
         member = self.get_member("Lerp")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -113,7 +118,7 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def position(self) -> primitives.Float | None:
-        """The Position field value."""
+        """The position in the list of ``Textures`` to fade between. If this is a decimal, the ``FirstTexture`` and ``SecondTexture`` will be set to textures in ``Textures`` that are at the positon of floor and ceiling of this value."""
         member = self.get_member("Position")
         if member is None:
             return None
@@ -132,7 +137,7 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def textures(self) -> members.SyncList | None:
-        """The Textures member."""
+        """A list of textures to lerp between and set ``FirstTexture`` and ``SecondTexture`` to using ``Position`` to determine the texture from this list."""
         member = self.get_member("Textures")
         if isinstance(member, members.SyncList):
             return member
@@ -140,6 +145,6 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @textures.setter
     def textures(self, value: members.SyncList) -> None:
-        """Set the Textures member."""
+        """Set Textures. A list of textures to lerp between and set ``FirstTexture`` and ``SecondTexture`` to using ``Position`` to determine the texture from this list."""
         self.set_member("Textures", value)
 

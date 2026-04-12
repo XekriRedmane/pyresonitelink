@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicVariableStatus(GenericComponent[T], IDynamicVariable[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicVariableStatus<>.
+    """Dynamic Variable Status is a component that allows for reading if a certain dynamic variable with a type and name exists and/or is linked to a space. Which space this component reads from is determined by the slot this component is attached to. How a slot finds a dynamic variable space is further explained on the Dynamic Variables page.
 
     Category: Data/Dynamic
 
@@ -42,7 +42,7 @@ class DynamicVariableStatus(GenericComponent[T], IDynamicVariable[T], IComponent
 
     @property
     def variable_name(self) -> primitives.String | None:
-        """The VariableName field value."""
+        """The Variable name to check the status for with the Dynamic Variables System."""
         member = self.get_member("VariableName")
         if member is None:
             return None
@@ -61,7 +61,7 @@ class DynamicVariableStatus(GenericComponent[T], IDynamicVariable[T], IComponent
 
     @property
     def is_linked_to_space(self) -> primitives.Bool | None:
-        """The IsLinkedToSpace field value."""
+        """Checks if the variable with the ``VariableName`` and with this component's sub type (the "" of this component) is linked to the found variable space. How a slot finds a dynamic variable space is further explained on the Dynamic Variables page."""
         member = self.get_member("IsLinkedToSpace")
         if member is None:
             return None
@@ -80,7 +80,7 @@ class DynamicVariableStatus(GenericComponent[T], IDynamicVariable[T], IComponent
 
     @property
     def variable_exists(self) -> primitives.Bool | None:
-        """The VariableExists field value."""
+        """Checks if the variable with the ``VariableName`` and with this component's sub type (the "" of this component) exists in the found variable space. How a slot finds a dynamic variable space is further explained on the Dynamic Variables page."""
         member = self.get_member("VariableExists")
         if member is None:
             return None

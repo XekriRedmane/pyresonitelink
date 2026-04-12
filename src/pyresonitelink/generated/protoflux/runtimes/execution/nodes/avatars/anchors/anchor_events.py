@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AnchorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.Anchors.AnchorEvents.
+    """Anchor events is a protoflux node that gives changes in an anchor as events without having to use a Fire On Change. It will also tell you the user that fired those events.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Anchors
     """
@@ -61,7 +61,7 @@ class AnchorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, 
 
     @property
     def on_anchored(self) -> str | None:
-        """Target ID of the OnAnchored reference (targets ISyncNodeOperation)."""
+        """Fires when a user is anchored to Anchor (AvatarAnchor)."""
         member = self.get_member("OnAnchored")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +82,7 @@ class AnchorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, 
 
     @property
     def on_released(self) -> str | None:
-        """Target ID of the OnReleased reference (targets ISyncNodeOperation)."""
+        """Fires when a user is unanchored from Anchor (AvatarAnchor)."""
         member = self.get_member("OnReleased")
         if isinstance(member, members.Reference):
             return member.targetId

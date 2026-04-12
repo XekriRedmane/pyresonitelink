@@ -9,9 +9,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColliderUserTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ColliderUserTracker.
+    """The ColliderUserTracker keeps track of users who enter and leave a collider. It must be used on a Slot that also has an attached Collider whose type is set to "Trigger", unless ``TriggersOnly`` is set to false.
+
+As this component works using colliders, it cannot detect users in No-Clip.
 
     Category: Physics/Utility
+
+    Attach this component to a slot, and add a Collider to the slot. The
+    component will then start functioning as long as the Collider is a
+    trigger or as long as ``TriggersOnly`` is set to false.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColliderUserTracker"
@@ -38,7 +44,7 @@ class ColliderUserTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def triggers_only(self) -> primitives.Bool | None:
-        """The TriggersOnly field value."""
+        """Whether to only allow use of Triggers or not."""
         member = self.get_member("TriggersOnly")
         if member is None:
             return None
@@ -57,7 +63,7 @@ class ColliderUserTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_local_user_inside(self) -> primitives.Bool | None:
-        """The IsLocalUserInside field value."""
+        """Becomes set for the local user if the local user is within the collider of the object that this component is attached to."""
         member = self.get_member("IsLocalUserInside")
         if member is None:
             return None
@@ -76,7 +82,7 @@ class ColliderUserTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_any_user_inside(self) -> primitives.Bool | None:
-        """The IsAnyUserInside field value."""
+        """Becomes set for all users if any user is within the collider of the object that this component is attached to."""
         member = self.get_member("IsAnyUserInside")
         if member is None:
             return None
@@ -95,7 +101,7 @@ class ColliderUserTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def number_of_users_inside(self) -> primitives.Int | None:
-        """The NumberOfUsersInside field value."""
+        """Tracks the number of users inside the collider of the object that this component is attached to."""
         member = self.get_member("NumberOfUsersInside")
         if member is None:
             return None

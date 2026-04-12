@@ -9,7 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VibrationDeviceRelay(GeneratedComponent, IVibrationDeviceComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VibrationDeviceRelay.
+    """The VibrationDeviceRelay component recieves haptics events and relays them to other vibration recievers.
+
+    Attach to a slot like the hands or other slots that can recieve haptics,
+    then specify a target or component that the vibrations should be relayed
+    to.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VibrationDeviceRelay"
@@ -30,7 +34,7 @@ class VibrationDeviceRelay(GeneratedComponent, IVibrationDeviceComponent, IWorld
 
     @property
     def target_component(self) -> str | None:
-        """Target ID of the TargetComponent reference (targets IVibrationDeviceComponent)."""
+        """The component to relay the vibration event to."""
         member = self.get_member("TargetComponent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -51,7 +55,7 @@ class VibrationDeviceRelay(GeneratedComponent, IVibrationDeviceComponent, IWorld
 
     @property
     def dynamic_lookup_target(self) -> str | None:
-        """Target ID of the DynamicLookupTarget reference (targets Slot)."""
+        """The slot to look for components in to send the vibration event to."""
         member = self.get_member("DynamicLookupTarget")
         if isinstance(member, members.Reference):
             return member.targetId

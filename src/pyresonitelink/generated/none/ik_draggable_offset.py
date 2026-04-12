@@ -15,7 +15,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FinalIK.IKDraggableOffset.
+    """The IKDraggableOffset component is generated as part of newly imported humanoid avatars. It allows users to grab (meaning it's an IGrabbable) and move parts of a model to test how it moves before making it an avatar.
+
+    This should not be used by the player, and is generated with newly
+    imported humanoid avatars.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FinalIK.IKDraggableOffset"
@@ -57,7 +60,7 @@ class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def solver(self) -> str | None:
-        """Target ID of the Solver reference (targets IKSolver)."""
+        """The IK solver that this is currently controlling. See IKSolver for what this could be."""
         member = self.get_member("Solver")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -78,7 +81,7 @@ class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def position_target(self) -> str | None:
-        """Target ID of the PositionTarget reference (targets Sync[primitives.Float3])."""
+        """The position field to influence when grabbing."""
         member = self.get_member("PositionTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -99,7 +102,7 @@ class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def rotation_target(self) -> str | None:
-        """Target ID of the RotationTarget reference (targets Sync[primitives.FloatQ])."""
+        """The rotation field to influence when grabbing."""
         member = self.get_member("RotationTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -120,7 +123,7 @@ class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def weight(self) -> str | None:
-        """Target ID of the Weight reference (targets Sync[primitives.Float])."""
+        """The weight field to influence when grabbing."""
         member = self.get_member("Weight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -141,7 +144,7 @@ class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def grabber(self) -> str | None:
-        """Target ID of the _grabber reference (targets Grabber)."""
+        """The grabber component currently grabbing this."""
         member = self.get_member("_grabber")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -162,7 +165,7 @@ class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def grabbing_user(self) -> str | None:
-        """Target ID of the _grabbingUser reference (targets User)."""
+        """The user currently grabbing this."""
         member = self.get_member("_grabbingUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -183,7 +186,7 @@ class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def hold_slot(self) -> str | None:
-        """Target ID of the _holdSlot reference (targets Slot)."""
+        """The slot currently holding this component's slot for grabbing."""
         member = self.get_member("_holdSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -204,7 +207,7 @@ class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def pos_offset(self) -> primitives.Float3 | None:
-        """The _posOffset field value."""
+        """The position offset this component is applying to ``Solver``."""
         member = self.get_member("_posOffset")
         if member is None:
             return None
@@ -223,7 +226,7 @@ class IKDraggableOffset(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def rot_offset(self) -> primitives.FloatQ | None:
-        """The _rotOffset field value."""
+        """The rotation offset this component is applying to ``Solver``."""
         member = self.get_member("_rotOffset")
         if member is None:
             return None

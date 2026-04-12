@@ -1,0 +1,18 @@
+{
+  "description": "Avatar Audio Configuration is a component that allows for overriding Avatar Audio Output Manager voice configs in worlds using user injection.",
+  "category": "Users:Common Avatar System:Audio",
+  "fields": {
+    "Normal": "The settings to override ``NormalConfig`` on an Avatar Audio Output Manager with.",
+    "Shout": "The settings to override ``ShoutConfig`` on an Avatar Audio Output Manager with.",
+    "Broadcast": "The settings to override ``BroadcastConfig`` on an Avatar Audio Output Manager with."
+  },
+  "methods": {},
+  "usage": "attach this component as part of the hierarchy of a slot that is put into ``AutoInject`` on a Common Avatar Builder Component on the world root. When the component is injected, it will auto fill itself into the ``_audioConfiguration`` of the user's Avatar Audio Output Manager and allow for overriding the user's audio config.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* For how world injected modules work (which said injected slot can contain this component) see Common Avatar Builder Component\n* For the component this overrides for user voices, see Avatar Audio Output Manager."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarAudioConfiguration&action=raw"
+}

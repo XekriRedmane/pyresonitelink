@@ -10,9 +10,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GravityForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.GravityForce.
+    """The GravityForce component acts as a global force for particles that makes them fall either up or down along the Up axis.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.GravityForce"
@@ -30,7 +35,7 @@ class GravityForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
 
     @property
     def gravity(self) -> primitives.Float | None:
-        """The Gravity field value."""
+        """The force to apply. Negative values are down and positive values are up."""
         member = self.get_member("Gravity")
         if member is None:
             return None
@@ -49,7 +54,7 @@ class GravityForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
 
     @property
     def override_force_space(self) -> members.SyncObject | None:
-        """The OverrideForceSpace member."""
+        """The space to calculate gravity force in. Is converted into the particle system's space."""
         member = self.get_member("OverrideForceSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -57,6 +62,6 @@ class GravityForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
 
     @override_force_space.setter
     def override_force_space(self, value: members.SyncObject) -> None:
-        """Set the OverrideForceSpace member."""
+        """Set OverrideForceSpace. The space to calculate gravity force in. Is converted into the particle system's space."""
         self.set_member("OverrideForceSpace", value)
 

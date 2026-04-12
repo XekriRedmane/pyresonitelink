@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TransformStreamDriver.
+    """The TransformStreamDriver is used to convert a stream of position rotation and scale values into drives which can drive slot transforms. It is used internally by the user positioning system.
 
     Category: Users
     """
@@ -70,7 +70,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def position_stream(self) -> str | None:
-        """Target ID of the PositionStream reference (targets ValueStream[primitives.Float3])."""
+        """The source of float3 values used to position the slot."""
         member = self.get_member("PositionStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +91,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def rotation_stream(self) -> str | None:
-        """Target ID of the RotationStream reference (targets ValueStream[primitives.FloatQ])."""
+        """The source of floatQ values used to rotate the slot."""
         member = self.get_member("RotationStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +112,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def scale_stream(self) -> str | None:
-        """Target ID of the ScaleStream reference (targets ValueStream[primitives.Float3])."""
+        """The source of float3 values used to scale the slot."""
         member = self.get_member("ScaleStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -133,7 +133,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def root_space_stream(self) -> str | None:
-        """Target ID of the RootSpaceStream reference (targets ReferenceStream[Slot])."""
+        """The slot being used for the root space."""
         member = self.get_member("RootSpaceStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -154,7 +154,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def position(self) -> str | None:
-        """Target ID of the Position reference (targets IField[primitives.Float3])."""
+        """The field to drive with the streamed in position values."""
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -175,7 +175,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the Rotation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive with the streamed in rotation values."""
         member = self.get_member("Rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -196,7 +196,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def scale(self) -> str | None:
-        """Target ID of the Scale reference (targets IField[primitives.Float3])."""
+        """The field to drive with the streamed in scale values."""
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -217,7 +217,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def allow_offsets(self) -> primitives.Bool | None:
-        """The AllowOffsets field value."""
+        """Whether to allow offsets to the affected slot/object."""
         member = self.get_member("AllowOffsets")
         if member is None:
             return None
@@ -236,7 +236,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def reset_streams_on_destroy(self) -> primitives.Bool | None:
-        """The ResetStreamsOnDestroy field value."""
+        """Whether to reset the incoming streams upon destroying this slot."""
         member = self.get_member("ResetStreamsOnDestroy")
         if member is None:
             return None
@@ -255,7 +255,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def position_offset(self) -> primitives.Float3 | None:
-        """The PositionOffset field value."""
+        """Offset to the resulting position value this is driving."""
         member = self.get_member("PositionOffset")
         if member is None:
             return None
@@ -274,7 +274,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def rotation_offset(self) -> primitives.FloatQ | None:
-        """The RotationOffset field value."""
+        """Offset to the resulting rotation value this is driving."""
         member = self.get_member("RotationOffset")
         if member is None:
             return None
@@ -293,7 +293,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def scale_offset(self) -> primitives.Float3 | None:
-        """The ScaleOffset field value."""
+        """Offset to the resulting scale value this is driving."""
         member = self.get_member("ScaleOffset")
         if member is None:
             return None
@@ -312,7 +312,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def run_before_physics(self) -> primitives.Bool | None:
-        """The RunBeforePhysics field value."""
+        """Whether or not to run before physics. can fix some issues where users fly off of a platform being driven by this component."""
         member = self.get_member("RunBeforePhysics")
         if member is None:
             return None

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ViewReferenceController(GeneratedComponent, IInputUpdateReceiver, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ViewReferenceController.
+    """The ViewReferenceController component is a view controller type component mainly used in desktop mode.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ViewReferenceController"
@@ -47,7 +47,7 @@ class ViewReferenceController(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def position_stream(self) -> str | None:
-        """Target ID of the PositionStream reference (targets ValueStream[primitives.Float3])."""
+        """The source for position values for this component."""
         member = self.get_member("PositionStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class ViewReferenceController(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def rotation_stream(self) -> str | None:
-        """Target ID of the RotationStream reference (targets ValueStream[primitives.FloatQ])."""
+        """The source for rotation values for this component."""
         member = self.get_member("RotationStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class ViewReferenceController(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def object_slot(self) -> str | None:
-        """Target ID of the ObjectSlot reference (targets AvatarObjectSlot)."""
+        """The slot this is controlling."""
         member = self.get_member("ObjectSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +110,7 @@ class ViewReferenceController(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def should_voice_be_active(self) -> primitives.Bool | None:
-        """The ShouldVoiceBeActive field value."""
+        """The field to drive with whether the user's voice should be transmitting."""
         member = self.get_member("ShouldVoiceBeActive")
         if member is None:
             return None
@@ -129,7 +129,7 @@ class ViewReferenceController(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def object_slot_scale(self) -> str | None:
-        """Target ID of the _objectSlotScale reference (targets IField[primitives.Float3])."""
+        """The field to drive with the object scale value."""
         member = self.get_member("_objectSlotScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -150,7 +150,7 @@ class ViewReferenceController(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def object_slot_active(self) -> str | None:
-        """Target ID of the _objectSlotActive reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether the object slot should be active."""
         member = self.get_member("_objectSlotActive")
         if isinstance(member, members.Reference):
             return member.targetId

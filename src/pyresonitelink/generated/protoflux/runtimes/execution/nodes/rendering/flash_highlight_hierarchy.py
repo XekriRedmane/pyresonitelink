@@ -17,7 +17,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Flash Highlight Hierarchy node takes in the target slot hierarchy, what to exclude, if this flash should track the position, how long the flash should be, and what color it should be. Then this node will make that hierarchy flash, also providing the slot of the flash itself.
+    """The ``Flash Highlight Hierarchy`` node takes in the target slot hierarchy, what to exclude, if this flash should track the position, how long the flash should be, and what color it should be. Then this node will make that hierarchy flash, also providing the slot of the flash itself.
+
+This could be disastrous if you are not careful!|danger}}
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Rendering
     """
@@ -58,7 +60,7 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues the code from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +81,7 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def hierarchy_root(self) -> str | None:
-        """Target ID of the HierarchyRoot reference (targets INodeObjectOutput[Slot])."""
+        """The target hierarchy to flash"""
         member = self.get_member("HierarchyRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -100,7 +102,7 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def exclude_colliders(self) -> str | None:
-        """Target ID of the ExcludeColliders reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should exclude any colliders for this flash."""
         member = self.get_member("ExcludeColliders")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -121,7 +123,7 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def exclude_meshes(self) -> str | None:
-        """Target ID of the ExcludeMeshes reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should exclude meshes for this flash."""
         member = self.get_member("ExcludeMeshes")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -142,7 +144,7 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def exclude_disabled(self) -> str | None:
-        """Target ID of the ExcludeDisabled reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should exclude any slots that are not active."""
         member = self.get_member("ExcludeDisabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -163,7 +165,7 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def track_position(self) -> str | None:
-        """Target ID of the TrackPosition reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should this flash be tracking the provided hierarchy."""
         member = self.get_member("TrackPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -184,7 +186,7 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Float])."""
+        """How long this flash should last for."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -205,7 +207,7 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def color(self) -> str | None:
-        """Target ID of the Color reference (targets INodeValueOutput[primitives.ColorX])."""
+        """The flash color."""
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -226,7 +228,7 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def flash_root(self) -> members.EmptyElement | None:
-        """The FlashRoot member."""
+        """The slot that is the flash itself."""
         member = self.get_member("FlashRoot")
         if isinstance(member, members.EmptyElement):
             return member
@@ -234,6 +236,6 @@ class FlashHighlightHierarchy(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @flash_root.setter
     def flash_root(self, value: members.EmptyElement) -> None:
-        """Set the FlashRoot member."""
+        """Set FlashRoot. The slot that is the flash itself."""
         self.set_member("FlashRoot", value)
 

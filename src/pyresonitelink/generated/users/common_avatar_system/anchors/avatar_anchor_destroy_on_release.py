@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarAnchorDestroyOnRelease(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorDestroyOnRelease.
+    """When a user is released from an anchor on the same slot as this component, ``DestroyRoot`` is destroyed.
 
     Category: Users/Common Avatar System/Anchors
     """
@@ -29,7 +29,7 @@ class AvatarAnchorDestroyOnRelease(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def destroy_root(self) -> str | None:
-        """Target ID of the DestroyRoot reference (targets Slot)."""
+        """The slot to destroy when a user is released from an anchor on the same slot as this component."""
         member = self.get_member("DestroyRoot")
         if isinstance(member, members.Reference):
             return member.targetId

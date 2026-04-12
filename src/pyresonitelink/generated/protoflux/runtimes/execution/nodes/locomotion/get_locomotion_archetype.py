@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetLocomotionArchetype(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Get Locomotion Archetype node takes in an ILocomotionModule and returns the Nullable`1LocomotionArchetype that was provided from a user's locomotion module (found in the locomotion modules component category).
+    """The Get Locomotion Archetype node takes in an ILocomotionModule and returns the Nullable`1&lt;LocomotionArchetype&gt; that was provided from a user's locomotion module (found in the locomotion modules component category).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Locomotion
     """
@@ -33,7 +33,7 @@ class GetLocomotionArchetype(GeneratedComponent, INodeObjectOutput, IExecutionNo
 
     @property
     def module(self) -> str | None:
-        """Target ID of the Module reference (targets INodeObjectOutput[ILocomotionModule])."""
+        """The user's locomotion module."""
         member = self.get_member("Module")
         if isinstance(member, members.Reference):
             return member.targetId

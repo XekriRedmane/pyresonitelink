@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueConstant(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Constant outputs the default value of a Type and is used as a base for classes that output constant values like e or Pi.
+    """due to wiki limitations, this node does not currently have an HTML rendering of the node.
+
+Constant outputs the default value of a Type and is used as a base for classes that output constant values like e or Pi.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

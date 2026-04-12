@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SquarePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SquarePointGenerator.
+    """A generator for points arranged in a rectangle with a given length and width.
 
     Category: Transform/Point Generators
+
+    Used in a Common Spawn Area to define in what kind of spawn area shape
+    users should initially spawn into.
+
+    **Related Components**: * CommonSpawnArea
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SquarePointGenerator"
@@ -32,7 +37,7 @@ class SquarePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventRecei
 
     @property
     def size(self) -> primitives.Float2 | None:
-        """The Size field value."""
+        """A flat rectangle size for generating points in"""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class SquarePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventRecei
 
     @property
     def shell(self) -> primitives.Bool | None:
-        """The Shell field value."""
+        """Whether to spawn users on only the perimeter or not."""
         member = self.get_member("Shell")
         if member is None:
             return None

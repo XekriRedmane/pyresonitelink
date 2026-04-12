@@ -4,22 +4,24 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.chirality import Chirality
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.FacetAnchorsSettings.
+    """The FacetAnchorsSettings component is used to control the Settings for facet anchors.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FacetAnchorsSettings"
 
-    def __init__(self, use_facet_anchors: primitives.Bool | None = None, animation_speed: primitives.Float | None = None, show_container_background: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, use_facet_anchors: primitives.Bool | None = None, facet_anchor_toggle: Chirality | str | None = None, animation_speed: primitives.Float | None = None, show_container_background: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             use_facet_anchors: Initial value for UseFacetAnchors.
+            facet_anchor_toggle: Initial value for FacetAnchorToggle.
             animation_speed: Initial value for AnimationSpeed.
             show_container_background: Initial value for ShowContainerBackground.
             component: Existing Component to wrap.
@@ -27,6 +29,8 @@ class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
         super().__init__(component)
         if use_facet_anchors is not None:
             self.use_facet_anchors = use_facet_anchors
+        if facet_anchor_toggle is not None:
+            self.facet_anchor_toggle = facet_anchor_toggle
         if animation_speed is not None:
             self.animation_speed = animation_speed
         if show_container_background is not None:
@@ -34,7 +38,7 @@ class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_facet_anchors(self) -> primitives.Bool | None:
-        """The UseFacetAnchors field value."""
+        """Whether to allow the use of facet anchors"""
         member = self.get_member("UseFacetAnchors")
         if member is None:
             return None
@@ -52,21 +56,28 @@ class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def facet_anchor_toggle(self) -> members.FieldEnum | None:
-        """The FacetAnchorToggle member."""
+    def facet_anchor_toggle(self) -> Chirality | None:
+        """which controller to replace the dash open function with the opening facet anchors function."""
         member = self.get_member("FacetAnchorToggle")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Chirality(member.value)
         return None
 
     @facet_anchor_toggle.setter
-    def facet_anchor_toggle(self, value: members.FieldEnum) -> None:
-        """Set the FacetAnchorToggle member."""
-        self.set_member("FacetAnchorToggle", value)
+    def facet_anchor_toggle(self, value: Chirality | str) -> None:
+        """Set FacetAnchorToggle. which controller to replace the dash open function with the opening facet anchors function."""
+        member = self.get_member("FacetAnchorToggle")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "FacetAnchorToggle",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def animation_speed(self) -> primitives.Float | None:
-        """The AnimationSpeed field value."""
+        """How fast facet anchors open and close."""
         member = self.get_member("AnimationSpeed")
         if member is None:
             return None
@@ -85,7 +96,7 @@ class FacetAnchorsSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def show_container_background(self) -> primitives.Bool | None:
-        """The ShowContainerBackground field value."""
+        """Whether to show the background visual of facet anchors."""
         member = self.get_member("ShowContainerBackground")
         if member is None:
             return None

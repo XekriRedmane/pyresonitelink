@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.RectSlotDriver.
+    """The RectSlotDriver component, when attached to a UIX element slot, will automatically drive that slot's position and will provide a field ``_position`` for the user to use as a reference.
+
+}}
 
     Category: UIX/Utility
+
+    Mostly will be used for reference of a position of a UIX element.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.RectSlotDriver"
@@ -30,7 +34,7 @@ class RectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def position(self) -> str | None:
-        """Target ID of the _position reference (targets IField[primitives.Float3])."""
+        """Internal - Sets the position of the slot for driving the value."""
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             return member.targetId

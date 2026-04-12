@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUserInEditMode(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Is User In Edit Mode node returns if a user has the special permission of Edit Mode.
+    """The ``Is User In Edit Mode`` node returns if a user has the special permission of Edit Mode.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """
@@ -34,7 +34,7 @@ class IsUserInEditMode(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

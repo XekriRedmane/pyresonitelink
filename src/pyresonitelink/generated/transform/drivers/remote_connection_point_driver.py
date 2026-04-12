@@ -12,9 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RemoteConnectionPointDriver.
+    """}}
+RemoteConnectionPointDriver allows driving local position, vector, orientation and size from a target Slot. It can be used with TubeWireMesh and StripeWireMesh to drive the other point from another slot.
 
     Category: Transform/Drivers
+
+    * It's not a complete physical rope simulator or anything, but it lets
+    you connect two endpoints using the different wire mesh types. * Hyper
+    convenience components that make tube meshes squishy like neurons
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RemoteConnectionPointDriver"
@@ -56,7 +61,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def filter_threshold(self) -> primitives.Float | None:
-        """The FilterThreshold field value."""
+        """The threshold before recalculating the target values."""
         member = self.get_member("FilterThreshold")
         if member is None:
             return None
@@ -75,7 +80,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def target_point(self) -> str | None:
-        """Target ID of the TargetPoint reference (targets Slot)."""
+        """The slot to target."""
         member = self.get_member("TargetPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -96,7 +101,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def target_vector(self) -> primitives.Float3 | None:
-        """The TargetVector field value."""
+        """The target vector as a local transform under ``TargetPoint``"""
         member = self.get_member("TargetVector")
         if member is None:
             return None
@@ -115,7 +120,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def target_size(self) -> primitives.Float | None:
-        """The TargetSize field value."""
+        """The target scale as a local transform offset under ``TargetPoint``"""
         member = self.get_member("TargetSize")
         if member is None:
             return None
@@ -134,7 +139,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def target_orientation(self) -> primitives.FloatQ | None:
-        """The TargetOrientation field value."""
+        """The target rotation as a local transform offset under ``TargetPoint``"""
         member = self.get_member("TargetOrientation")
         if member is None:
             return None
@@ -153,7 +158,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def local_point(self) -> str | None:
-        """Target ID of the LocalPoint reference (targets IField[primitives.Float3])."""
+        """The field to drive with the position of ``TargetPoint`` with an offset of ``TargetVector`` converted to this slot's local space."""
         member = self.get_member("LocalPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -174,7 +179,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def local_vector(self) -> str | None:
-        """Target ID of the LocalVector reference (targets IField[primitives.Float3])."""
+        """The field to drive with a vector of ``TargetVector`` in the transform space of ``TargetPoint`` converted to this slot's local space."""
         member = self.get_member("LocalVector")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -195,7 +200,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def local_orientation(self) -> str | None:
-        """Target ID of the LocalOrientation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive with the rotation of ``TargetPoint`` with an offset of ``TargetVector`` converted to this slot's local space."""
         member = self.get_member("LocalOrientation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -216,7 +221,7 @@ class RemoteConnectionPointDriver(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def local_size(self) -> str | None:
-        """Target ID of the LocalSize reference (targets IField[primitives.Float])."""
+        """The field to drive with the scale of ``TargetPoint`` with an offset of ``TargetSize`` converted to this slot's local space."""
         member = self.get_member("LocalSize")
         if isinstance(member, members.Reference):
             return member.targetId

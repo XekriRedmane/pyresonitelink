@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CopyGlobalScale(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CopyGlobalScale.
+    """The CopyGlobalScale component is used to ensure that one object has the exact same global scale as another object.
 
     Category: Transform/Drivers
     """
@@ -38,7 +38,7 @@ class CopyGlobalScale(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets Slot)."""
+        """The object that serves as scale reference."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class CopyGlobalScale(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def non_uniform(self) -> primitives.Bool | None:
-        """The NonUniform field value."""
+        """If true, non-uniform scale is preserved, otherwise the X scale of the source serves as X, Y and Z of the target."""
         member = self.get_member("NonUniform")
         if member is None:
             return None
@@ -78,7 +78,7 @@ class CopyGlobalScale(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scale_drive(self) -> str | None:
-        """Target ID of the _scaleDrive reference (targets IField[primitives.Float3])."""
+        """The field that is driven to match the global scale of the source. This automatically gets populated with the scale field of the slot that this component is added to."""
         member = self.get_member("_scaleDrive")
         if isinstance(member, members.Reference):
             return member.targetId

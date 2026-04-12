@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UniformSizeConstantInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.UniformSizeConstantInitializer.
+    """The UniformSizeConstantInitalizer component makes particles in a particle system have a starting size of ``Value`` on all 3 axies.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.UniformSizeConstantInitializer"
@@ -29,7 +34,7 @@ class UniformSizeConstantInitializer(GeneratedComponent, IParticleSystemModule, 
 
     @property
     def value(self) -> primitives.Float | None:
-        """The Value field value."""
+        """The size that particles will start with on all 3 axies."""
         member = self.get_member("Value")
         if member is None:
             return None

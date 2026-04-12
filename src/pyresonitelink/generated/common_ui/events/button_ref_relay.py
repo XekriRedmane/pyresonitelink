@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonRefRelay(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.ButtonRefRelay<>.
+    """The ButtonRefRelay component sends a signal to a button event handler (usually something internal like a Method Proxy).
+
+}}
 
     Category: Common UI/Events
+
+    This can send a signal internally.
 
     Parameterize with a value type::
 
@@ -42,7 +46,7 @@ class ButtonRefRelay(GenericComponent[T], IButtonPressReceiver, IWorldEventRecei
 
     @property
     def double_press_delay(self) -> primitives.Float | None:
-        """The DoublePressDelay field value."""
+        """how long it takes before it is to late to count as a double press."""
         member = self.get_member("DoublePressDelay")
         if member is None:
             return None
@@ -61,7 +65,7 @@ class ButtonRefRelay(GenericComponent[T], IButtonPressReceiver, IWorldEventRecei
 
     @property
     def release_press_interval(self) -> primitives.Float | None:
-        """The ReleasePressInterval field value."""
+        """The amount of time it takes to release the button."""
         member = self.get_member("ReleasePressInterval")
         if member is None:
             return None
@@ -80,7 +84,7 @@ class ButtonRefRelay(GenericComponent[T], IButtonPressReceiver, IWorldEventRecei
 
     @property
     def argument(self) -> str | None:
-        """Target ID of the Argument reference (targets T)."""
+        """The reference argument."""
         member = self.get_member("Argument")
         if isinstance(member, members.Reference):
             return member.targetId

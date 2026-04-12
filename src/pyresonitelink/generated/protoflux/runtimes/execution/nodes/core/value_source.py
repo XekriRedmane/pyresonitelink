@@ -16,7 +16,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueSource(GenericComponent[T], IVariable, ISource, INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """thumb|right|alt=Six source nodes of type string, string, bool, float3, floatQ, and int all outputting to display nodes.|Source nodes for the base fields of an empty slot being outputted to display nodes.
+    """HTML Visual unavailable due to wiki limitations
+
+thumb|right|alt=Six source nodes of type string, string, bool, float3, floatQ, and int all outputting to display nodes.|Source nodes for the base fields of an empty slot being outputted to display nodes.
+
+The Source node allows one to access the value of the primitive or object that an IValue contains. This node almost never should be created directly through the node menu, lest one knows exactly what they are doing. Source nodes are created by dragging out a field from an inspector, opening the Context menu, then pressing ``Source``.
+
+To access the underlying value that any arbitrary IValue contains, one can spawn out a bare version of this node from the ProtoFlux menu, attach a GlobalReference> to the slot of the node, drag the component header into the ``Source`` field of the Source node, and finally input the IValue into the Reference field of the GlobalReference. This can allow for a more efficient way to conditionally change values if said values are in different fields.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

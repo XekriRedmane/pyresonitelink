@@ -10,9 +10,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorOverLifetimeTexture(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ColorOverLifetimeTexture.
+    """The ColorOverLifetimeTexture component samples a texture during life time along the X axis to get the color that a Particle should be.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ColorOverLifetimeTexture"
@@ -30,7 +35,7 @@ class ColorOverLifetimeTexture(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[Texture2D])."""
+        """The texture to sample along the X axis based on Lifetime normalized to get a color for particles."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId

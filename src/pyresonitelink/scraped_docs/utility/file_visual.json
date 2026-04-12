@@ -1,0 +1,16 @@
+{
+  "description": "The FileVisual component is used to handle the creation and interfacing with a file object, which is spawned into the world from inventory or using the \"Raw\" option when Importing.",
+  "category": "Utility",
+  "fields": {
+    "MetadataSource": "The component that handles importing and storing the file data this component is representing the visual of.",
+    "TypeLabel": "The label that determines the file type/extension (aka the \"png\" part of \"hello.png\")",
+    "NameLabel": "The name of the file before the extension (aka the \"hello\" part of \"hello.png\")",
+    "FillMaterial": "The material being used for the file icon in the center.",
+    "OutlineMaterial": "The material being used to outline the file icon.",
+    "TypeMaterial": "The material being used to color the file type. this can be orange for models, and the color varies based on file type."
+  },
+  "methods": {},
+  "usage": "Is used by the game to generate and handle the visuals of raw files. Is usually not directly utilized by the player.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FileVisual&action=raw"
+}

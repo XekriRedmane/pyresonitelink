@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextEditorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Text Editor Events node takes in a global TextEditor reference and will listen for events from that global reference. This node fires events that relate to the TextEditor, and can be useful when you want certain things to happen when things get edited or submitted by the user.
+    """The ``Text Editor Events`` node takes in a global TextEditor reference and will listen for events from that global reference. This node fires events that relate to the TextEditor, and can be useful when you want certain things to happen when things get edited or submitted by the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/UI
     """
@@ -67,7 +67,7 @@ class TextEditorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @property
     def editing_started(self) -> str | None:
-        """Target ID of the EditingStarted reference (targets ISyncNodeOperation)."""
+        """Fires when the editing has started (After the editor is focused)."""
         member = self.get_member("EditingStarted")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -88,7 +88,7 @@ class TextEditorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @property
     def editing_changed(self) -> str | None:
-        """Target ID of the EditingChanged reference (targets ISyncNodeOperation)."""
+        """Fires after every change during the editing."""
         member = self.get_member("EditingChanged")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +109,7 @@ class TextEditorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @property
     def editing_finished(self) -> str | None:
-        """Target ID of the EditingFinished reference (targets ISyncNodeOperation)."""
+        """Fires when the editing finishes (before the editor loses focus)."""
         member = self.get_member("EditingFinished")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -130,7 +130,7 @@ class TextEditorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @property
     def submit_pressed(self) -> str | None:
-        """Target ID of the SubmitPressed reference (targets ISyncNodeOperation)."""
+        """Fires When the user submits the changes for the editor (called before ``EditingFinished`` gets fired)."""
         member = self.get_member("SubmitPressed")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserInspectorItem(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserInspectorItem.
+    """The UserInspectorItem component is used to display user items of the User Inspector.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserInspectorItem"
@@ -43,7 +43,7 @@ class UserInspectorItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user(self) -> str | None:
-        """Target ID of the _user reference (targets User)."""
+        """The user this item points to."""
         member = self.get_member("_user")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class UserInspectorItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_name_text(self) -> str | None:
-        """Target ID of the _userNameText reference (targets Text)."""
+        """The text field to display the user's name."""
         member = self.get_member("_userNameText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class UserInspectorItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def expander(self) -> str | None:
-        """Target ID of the _expander reference (targets Expander)."""
+        """The component used to expand items under the user like stream groups."""
         member = self.get_member("_expander")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +106,7 @@ class UserInspectorItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def expander_indicator(self) -> str | None:
-        """Target ID of the _expanderIndicator reference (targets TextExpandIndicator)."""
+        """The indicator component used to show the expand/collapse arrow."""
         member = self.get_member("_expanderIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -127,7 +127,7 @@ class UserInspectorItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def child_container(self) -> str | None:
-        """Target ID of the _childContainer reference (targets Slot)."""
+        """The slot to display child items of this user item."""
         member = self.get_member("_childContainer")
         if isinstance(member, members.Reference):
             return member.targetId

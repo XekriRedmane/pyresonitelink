@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SmoothTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SmoothTransform.
+    """Smooth transform is a component that is used to create a "lag behind" or "trailing" effect on slots or objects that follow another object. The slot this controls will try to return to it's rest position, iteratively getting closer and closer until in eventuality reaching it's target location at rest.
 
     Category: Transform/Drivers
     """
@@ -52,7 +52,7 @@ class SmoothTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def interpolation_space(self) -> members.SyncObject | None:
-        """The InterpolationSpace member."""
+        """The coordinate space that should be used to check the delta of the transforms in. If set to user space and parented under the user's hand, this slot will only lag behind (or smooth) when the user moves their hand, but not when they walk around. This can also be set to a slot for similar effects without a user."""
         member = self.get_member("InterpolationSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -60,12 +60,12 @@ class SmoothTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @interpolation_space.setter
     def interpolation_space(self, value: members.SyncObject) -> None:
-        """Set the InterpolationSpace member."""
+        """Set InterpolationSpace. The coordinate space that should be used to check the delta of the transforms in. If set to user space and parented under the user's hand, this slot will only lag behind (or smooth) when the user moves their hand, but not when they walk around. This can also be set to a slot for similar effects without a user."""
         self.set_member("InterpolationSpace", value)
 
     @property
     def target_position(self) -> primitives.Float3 | None:
-        """The TargetPosition field value."""
+        """The local transform position that this slot is trying to get to."""
         member = self.get_member("TargetPosition")
         if member is None:
             return None
@@ -84,7 +84,7 @@ class SmoothTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_rotation(self) -> primitives.FloatQ | None:
-        """The TargetRotation field value."""
+        """the local transform rotation that this slot is trying to get to."""
         member = self.get_member("TargetRotation")
         if member is None:
             return None
@@ -103,7 +103,7 @@ class SmoothTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_scale(self) -> primitives.Float3 | None:
-        """The TargetScale field value."""
+        """The local transform scale that this slot is trying to get to."""
         member = self.get_member("TargetScale")
         if member is None:
             return None
@@ -122,7 +122,7 @@ class SmoothTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def position(self) -> str | None:
-        """Target ID of the Position reference (targets IField[primitives.Float3])."""
+        """The position field to drive with the smoothed value (auto filled with the position field of the slot this is on."""
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -143,7 +143,7 @@ class SmoothTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the Rotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field to drive with the smoothed value (auto filled with the rotation field of the slot this is on."""
         member = self.get_member("Rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -164,7 +164,7 @@ class SmoothTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scale(self) -> str | None:
-        """Target ID of the Scale reference (targets IField[primitives.Float3])."""
+        """The scale field to drive with the smoothed value (auto filled with the scale field of the slot this is on."""
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -185,7 +185,7 @@ class SmoothTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def smooth_speed(self) -> primitives.Float | None:
-        """The SmoothSpeed field value."""
+        """How fast or slow this slot is at catching up to it's target location. Not a set number of seconds since this component iteratively smooths."""
         member = self.get_member("SmoothSpeed")
         if member is None:
             return None
@@ -204,7 +204,7 @@ class SmoothTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def update_index(self) -> primitives.Int | None:
-        """The _updateIndex field value."""
+        """Whether to do this smooth transform before or after other smooth transforms in the same slot hiearchy."""
         member = self.get_member("_updateIndex")
         if member is None:
             return None

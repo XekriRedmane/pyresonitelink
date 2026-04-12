@@ -1,0 +1,16 @@
+{
+  "description": "For detailed information on how this functions for mix and match body parts. Please also see Equipping Multiple Avatars.\n\nAvatarGroup is a component commonly found on the root of an avatar. It mostly controls where the avatar should be parented back to when dequipped, and is set by a user's Avatar Manager.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "OriginalParent": "The slot that this avatar was parented under before being equipped."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "This component is currently not entirely functioning. see Issue 3076"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarGroup&action=raw"
+}

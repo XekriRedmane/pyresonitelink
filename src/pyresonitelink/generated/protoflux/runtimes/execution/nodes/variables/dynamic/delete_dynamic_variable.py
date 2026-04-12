@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DeleteDynamicVariable(GenericComponent[T], IMappableNode, ISyncNodeOperation, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Delete Dynamic Variable node takes in a slot hierarchy and a string literal for the path. This will check for the dynamic variable space, and then the variable within, if one is found, the variable will be removed. For more information, see Dynamic Variables.
+    """The ``Delete Dynamic Variable`` node takes in a slot hierarchy and a string literal for the path. This will check for the dynamic variable space, and then the variable within, if one is found, the variable will be removed. For more information, see Dynamic Variables.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Variables/Dynamic
 
@@ -52,7 +52,7 @@ class DeleteDynamicVariable(GenericComponent[T], IMappableNode, ISyncNodeOperati
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[Slot])."""
+        """This slot hierarchy to search through."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +73,7 @@ class DeleteDynamicVariable(GenericComponent[T], IMappableNode, ISyncNodeOperati
 
     @property
     def path(self) -> str | None:
-        """Target ID of the Path reference (targets INodeObjectOutput[primitives.String])."""
+        """The path to find the dynamic variable."""
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -94,7 +94,7 @@ class DeleteDynamicVariable(GenericComponent[T], IMappableNode, ISyncNodeOperati
 
     @property
     def on_not_found(self) -> str | None:
-        """Target ID of the OnNotFound reference (targets INodeOperation)."""
+        """Fires when the path is incorrect or there is nothing to find in the given slot hierarchy."""
         member = self.get_member("OnNotFound")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -115,7 +115,7 @@ class DeleteDynamicVariable(GenericComponent[T], IMappableNode, ISyncNodeOperati
 
     @property
     def on_deleted(self) -> str | None:
-        """Target ID of the OnDeleted reference (targets INodeOperation)."""
+        """Fires when a dynamic variable was found and deleted."""
         member = self.get_member("OnDeleted")
         if isinstance(member, members.Reference):
             return member.targetId

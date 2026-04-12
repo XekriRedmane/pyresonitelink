@@ -40,7 +40,9 @@ class Stopwatch(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @property
     def time(self) -> members.EmptyElement | None:
-        """The Time member."""
+        """The time in seconds stored by the stopwatch. This value increments when in the running state and freezes when in the stopped state. If ``Reset`` is pulsed, this output is set to ``0``, but continues the same behavior of the state the watch is in.
+
+Sometimes, it may be desirable to obtain a TimeSpan type from this value. To do so, use a TimeSpan From Seconds node."""
         member = self.get_member("Time")
         if isinstance(member, members.EmptyElement):
             return member
@@ -48,12 +50,14 @@ class Stopwatch(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @time.setter
     def time(self, value: members.EmptyElement) -> None:
-        """Set the Time member."""
+        """Set Time. The time in seconds stored by the stopwatch. This value increments when in the running state and freezes when in the stopped state. If ``Reset`` is pulsed, this output is set to ``0``, but continues the same behavior of the state the watch is in.
+
+Sometimes, it may be desirable to obtain a TimeSpan type from this value. To do so, use a TimeSpan From Seconds node."""
         self.set_member("Time", value)
 
     @property
     def is_running(self) -> members.EmptyElement | None:
-        """The IsRunning member."""
+        """``True`` if the stopwatch is in a running state, ``False`` otherwise."""
         member = self.get_member("IsRunning")
         if isinstance(member, members.EmptyElement):
             return member
@@ -61,12 +65,12 @@ class Stopwatch(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @is_running.setter
     def is_running(self, value: members.EmptyElement) -> None:
-        """Set the IsRunning member."""
+        """Set IsRunning. ``True`` if the stopwatch is in a running state, ``False`` otherwise."""
         self.set_member("IsRunning", value)
 
     @property
     def start(self) -> members.EmptyElement | None:
-        """The Start member."""
+        """Starts the stopwatch, putting it in the running state."""
         member = self.get_member("Start")
         if isinstance(member, members.EmptyElement):
             return member
@@ -74,12 +78,12 @@ class Stopwatch(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @start.setter
     def start(self, value: members.EmptyElement) -> None:
-        """Set the Start member."""
+        """Set Start. Starts the stopwatch, putting it in the running state."""
         self.set_member("Start", value)
 
     @property
     def stop(self) -> members.EmptyElement | None:
-        """The Stop member."""
+        """Stops the stopwatch, putting it in the stopped state."""
         member = self.get_member("Stop")
         if isinstance(member, members.EmptyElement):
             return member
@@ -87,12 +91,12 @@ class Stopwatch(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @stop.setter
     def stop(self, value: members.EmptyElement) -> None:
-        """Set the Stop member."""
+        """Set Stop. Stops the stopwatch, putting it in the stopped state."""
         self.set_member("Stop", value)
 
     @property
     def reset(self) -> members.EmptyElement | None:
-        """The Reset member."""
+        """Resets the stopwatch time. Does not affect the state of the stopwatch."""
         member = self.get_member("Reset")
         if isinstance(member, members.EmptyElement):
             return member
@@ -100,7 +104,7 @@ class Stopwatch(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @reset.setter
     def reset(self, value: members.EmptyElement) -> None:
-        """Set the Reset member."""
+        """Set Reset. Resets the stopwatch time. Does not affect the state of the stopwatch."""
         self.set_member("Reset", value)
 
     @property
@@ -147,7 +151,7 @@ class Stopwatch(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @property
     def on_reset(self) -> str | None:
-        """Target ID of the OnReset reference (targets INodeOperation)."""
+        """Sends an impulse when ``Reset`` is impulsed. Is not affected by the state of the stopwatch."""
         member = self.get_member("OnReset")
         if isinstance(member, members.Reference):
             return member.targetId

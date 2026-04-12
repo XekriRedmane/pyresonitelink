@@ -15,7 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CompareStrings(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Comapre Strings is a ProtoFlux node that allows you to tell the difference between two different strings as a whole number. The comparison used is based on Comparing Strings Microsoft 4.6.2
+    """Comapre Strings is a ProtoFlux node that allows you to tell the difference between two different strings as a whole number.
+The comparison used is based on Comparing Strings Microsoft 4.6.2
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """
@@ -41,7 +42,7 @@ class CompareStrings(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to compare from."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +63,7 @@ class CompareStrings(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to compare to."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +84,7 @@ class CompareStrings(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def comparison_type(self) -> str | None:
-        """Target ID of the ComparisonType reference (targets INodeValueOutput[StringComparison])."""
+        """The string comparison to use."""
         member = self.get_member("ComparisonType")
         if isinstance(member, members.Reference):
             return member.targetId

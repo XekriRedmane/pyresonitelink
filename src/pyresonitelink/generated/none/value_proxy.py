@@ -9,7 +9,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueProxy(GenericComponent[T], ILastValueProxy[T], IWorldEventReceiver):
-    """Wrapper for [ProtoFlux.Nodes.FrooxEngine]ProtoFlux.Runtimes.Execution.Nodes.Actions.ValueProxy<>.
+    """The ValueProxy component is used to make a grabbed item this is on act as the value this contains. This is also generated when a value in an Scene Inspector is grabbed in the form of a block of text showing the value.
+
+    Attach to a slot with an IGrabbable to make the grabbable act as the
+    value T itself.
 
     Parameterize with a value type::
 

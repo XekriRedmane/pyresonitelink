@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalUserSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Local User Slot node gets the local user slot, which is the root of the user.
+    """The ``Local User Slot`` node gets the local user slot, which is the root of the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users
     """

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.mode import Mode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -16,14 +17,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GlueTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GlueTool.
+    """See Glue Tool.
 
     Category: Tools
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GlueTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, indicator_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, glue_mode: Mode | str | None = None, indicator_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,6 +34,7 @@ class GlueTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIte
             equip_name: Initial value for EquipName.
             override_active_tool: Initial value for _overrideActiveTool.
             grip_poses_generated: Initial value for _gripPosesGenerated.
+            glue_mode: Initial value for GlueMode.
             indicator_color: Initial value for _indicatorColor.
             component: Existing Component to wrap.
         """
@@ -49,6 +51,8 @@ class GlueTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIte
             self.override_active_tool = override_active_tool
         if grip_poses_generated is not None:
             self.grip_poses_generated = grip_poses_generated
+        if glue_mode is not None:
+            self.glue_mode = glue_mode
         if indicator_color is not None:
             self.indicator_color = indicator_color
 
@@ -184,21 +188,28 @@ class GlueTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIte
             )
 
     @property
-    def glue_mode(self) -> members.FieldEnum | None:
-        """The GlueMode member."""
+    def glue_mode(self) -> Mode | None:
+        """The mode that newly created Glue spheres should be set to."""
         member = self.get_member("GlueMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Mode(member.value)
         return None
 
     @glue_mode.setter
-    def glue_mode(self, value: members.FieldEnum) -> None:
-        """Set the GlueMode member."""
-        self.set_member("GlueMode", value)
+    def glue_mode(self, value: Mode | str) -> None:
+        """Set GlueMode. The mode that newly created Glue spheres should be set to."""
+        member = self.get_member("GlueMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "GlueMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def indicator_color(self) -> str | None:
-        """Target ID of the _indicatorColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive with the current indicator color."""
         member = self.get_member("_indicatorColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -219,7 +230,7 @@ class GlueTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIte
 
     @property
     def active_glues(self) -> members.SyncList | None:
-        """The _activeGlues member."""
+        """List of glue AOE fields to glue when hitting secondary."""
         member = self.get_member("_activeGlues")
         if isinstance(member, members.SyncList):
             return member
@@ -227,6 +238,6 @@ class GlueTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIte
 
     @active_glues.setter
     def active_glues(self, value: members.SyncList) -> None:
-        """Set the _activeGlues member."""
+        """Set _activeGlues. List of glue AOE fields to glue when hitting secondary."""
         self.set_member("_activeGlues", value)
 

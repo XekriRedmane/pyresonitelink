@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldActiveUserCount(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The World Active User Count node returns the amount of active users. Active users are users that are focused into this world currently.
+    """The ``World Active User Count`` node returns the amount of active users. Active users are users that are focused into this world currently.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

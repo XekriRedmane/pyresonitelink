@@ -9,7 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RotationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RotationGizmo.
+    """The RotationGizmo component is used by dev tools to allow rotation of slots.
+
+See Dev tool.
+
+    See Dev tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RotationGizmo"
@@ -33,7 +37,7 @@ class RotationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def x_gizmo(self) -> str | None:
-        """Target ID of the _xGizmo reference (targets AxisRotationGizmo)."""
+        """The rotation gizmo for the x axis."""
         member = self.get_member("_xGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -54,7 +58,7 @@ class RotationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def y_gizmo(self) -> str | None:
-        """Target ID of the _yGizmo reference (targets AxisRotationGizmo)."""
+        """The rotation gizmo for the y axis."""
         member = self.get_member("_yGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -75,7 +79,7 @@ class RotationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def z_gizmo(self) -> str | None:
-        """Target ID of the _zGizmo reference (targets AxisRotationGizmo)."""
+        """The rotation gizmo for the z axis."""
         member = self.get_member("_zGizmo")
         if isinstance(member, members.Reference):
             return member.targetId

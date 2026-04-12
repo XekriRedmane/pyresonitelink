@@ -10,9 +10,36 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.LayoutElement.
+    """LayoutElement is a component used within UIX, instructing components in slots above it in its hierarchy about how large it would like to be in a variety of dimensions and configurations within the UIX Layout flow. It is often used in combination with various other Layout components such as HorizontalLayout or VerticalLayout. By configuring its various properties, you can achieve a wide variety of effects and layouts.
+
+Many of these values may have unclear meaning, even with the table below. Please see the behavior section for more information.
+}}
 
     Category: UIX/Layout
+
+    LayoutElement is used to inform UIX Layout Components in the layout
+    containers and slots above it within the hierarchy about what size it
+    should be. This information is then used within the UIX Layout process
+    with any other UIX Elements to determine an overall Layout. For Width
+    and Height there are 3 Properties which are used as a sort of
+    negotiation with the UIX layout to determine the final size of an
+    element. Other processes are involved but when it comes to just the
+    layout element, the negotiation uses the following method: # Ensure that
+    the element is at least MinWidth/MinHeight in terms of units. If a
+    layout element does not fit inside a parent container/RectTransform it
+    will cause Overflow if these Minimums are too large. # If there's enough
+    space, give this element its PreferredWidth/PreferredHeight space in
+    units. If there is not enough space for the "Preferred" value it will
+    use a number that is between the "Min" value and the "Preferred" value.
+    # After both 1 and 2, if there is space available and the "Flexible"
+    parameter is set it will give this element a weighted value of space by
+    comparing the Flexible values of all other elements in the layout. If a
+    parameter should not be used, its value should be set to `-1`. You can
+    also manually specify that it should be 0 by checking the
+    "UseZeroMetrics" checkbox. The priority parameter determines this
+    layout's priority when compared with other elements within the same
+    hierarchy. The highest priority wins. You usually do not need to touch
+    this.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.LayoutElement"
@@ -54,7 +81,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
 
     @property
     def min_width(self) -> primitives.Float | None:
-        """The MinWidth field value."""
+        """The minimum width for this LayoutElement."""
         member = self.get_member("MinWidth")
         if member is None:
             return None
@@ -73,7 +100,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
 
     @property
     def preferred_width(self) -> primitives.Float | None:
-        """The PreferredWidth field value."""
+        """The preferred width for this LayoutElement."""
         member = self.get_member("PreferredWidth")
         if member is None:
             return None
@@ -92,7 +119,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
 
     @property
     def flexible_width(self) -> primitives.Float | None:
-        """The FlexibleWidth field value."""
+        """If there is any space left over after layouting, the width is used as a weight to decide what width should given to this LayoutElement."""
         member = self.get_member("FlexibleWidth")
         if member is None:
             return None
@@ -111,7 +138,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
 
     @property
     def min_height(self) -> primitives.Float | None:
-        """The MinHeight field value."""
+        """The minimum height for this LayoutElement."""
         member = self.get_member("MinHeight")
         if member is None:
             return None
@@ -130,7 +157,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
 
     @property
     def preferred_height(self) -> primitives.Float | None:
-        """The PreferredHeight field value."""
+        """The preferred height for this LayoutElement."""
         member = self.get_member("PreferredHeight")
         if member is None:
             return None
@@ -149,7 +176,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
 
     @property
     def flexible_height(self) -> primitives.Float | None:
-        """The FlexibleHeight field value."""
+        """If there is any space left over after layouting, the height is used as a weight to decide what height should be given to this LayoutElement."""
         member = self.get_member("FlexibleHeight")
         if member is None:
             return None
@@ -168,7 +195,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
 
     @property
     def area(self) -> primitives.Float | None:
-        """The Area field value."""
+        """Currently unused."""
         member = self.get_member("Area")
         if member is None:
             return None
@@ -187,7 +214,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
 
     @property
     def priority(self) -> primitives.Int | None:
-        """The Priority field value."""
+        """The priority for this LayoutElement."""
         member = self.get_member("Priority")
         if member is None:
             return None
@@ -206,7 +233,7 @@ class LayoutElement(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWo
 
     @property
     def use_zero_metrics(self) -> primitives.Bool | None:
-        """The UseZeroMetrics field value."""
+        """If checked, it allows "0" to be used in the other properties within this component."""
         member = self.get_member("UseZeroMetrics")
         if member is None:
             return None

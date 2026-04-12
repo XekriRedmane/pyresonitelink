@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AsCharacterController(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The As Character Controller node is used to get the character controller reference using the ICollider from a Slot that associated with that collider, not necessarily what it collides with.
+    """The ``As Character Controller`` node is used to get the character controller reference using the ICollider from a Slot that associated with that collider, not necessarily what it collides with.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """
@@ -33,7 +33,7 @@ class AsCharacterController(GeneratedComponent, INodeObjectOutput, IExecutionNod
 
     @property
     def collider(self) -> str | None:
-        """Target ID of the Collider reference (targets INodeObjectOutput[ICollider])."""
+        """The specific collider reference from a slot."""
         member = self.get_member("Collider")
         if isinstance(member, members.Reference):
             return member.targetId

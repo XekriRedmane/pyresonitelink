@@ -1,0 +1,12 @@
+{
+  "description": "The AvatarAnchorLocomotionRelease Component is used so a user can get out of an anchor with their controller when they get into an anchor.",
+  "category": "Users:Common Avatar System:Anchors",
+  "fields": {
+    "ReleaseOnBinaryAction": "Whether to allow the user to jump out of the anchor",
+    "ReleaseStrengthThreshold": "The amount of pressing strength on the jump button needed to get out if not null."
+  },
+  "methods": {},
+  "usage": "Has to be used on the same slot as an AvatarAnchor or it doesn't do anything.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarAnchorLocomotionRelease&action=raw"
+}

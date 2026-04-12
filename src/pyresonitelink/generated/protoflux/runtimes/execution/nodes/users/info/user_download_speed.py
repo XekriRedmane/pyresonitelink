@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserDownloadSpeed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Download Speed node returns a user's download speed.
+    """The ``User Download Speed`` node returns a user's download speed.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """
@@ -34,7 +34,7 @@ class UserDownloadSpeed(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

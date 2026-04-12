@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,22 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ArrowMesh.
+    """Arrow Mesh is a procedural Asset mesh that generates a cylinder with a cone on the end. Like a 3d arrow. The Arrow Mesh allows for vertex color customization, as well as defining a shape and a direction, aka a Vector.
+}}
 
     Category: Assets/Procedural Meshes
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ArrowMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, vector: primitives.Float3 | None = None, sides: primitives.Int | None = None, body_radius: primitives.Float | None = None, head_radius: primitives.Float | None = None, head_length: primitives.Float | None = None, minimal_body_length: primitives.Float | None = None, sphere_on_zero: primitives.Bool | None = None, body_uv_scale: primitives.Float2 | None = None, body_uv_offset: primitives.Float2 | None = None, head_uv_scale: primitives.Float2 | None = None, head_uv_offset: primitives.Float2 | None = None, base_color: primitives.ColorX | None = None, top_color: primitives.ColorX | None = None, head_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, vector: primitives.Float3 | None = None, sides: primitives.Int | None = None, body_radius: primitives.Float | None = None, head_radius: primitives.Float | None = None, head_length: primitives.Float | None = None, minimal_body_length: primitives.Float | None = None, sphere_on_zero: primitives.Bool | None = None, body_uv_scale: primitives.Float2 | None = None, body_uv_offset: primitives.Float2 | None = None, head_uv_scale: primitives.Float2 | None = None, head_uv_offset: primitives.Float2 | None = None, base_color: primitives.ColorX | None = None, top_color: primitives.ColorX | None = None, head_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             vector: Initial value for Vector.
             sides: Initial value for Sides.
             body_radius: Initial value for BodyRadius.
@@ -49,6 +52,8 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if vector is not None:
             self.vector = vector
         if sides is not None:
@@ -136,21 +141,28 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def vector(self) -> primitives.Float3 | None:
-        """The Vector field value."""
+        """the direction in local space of the mesh render rendering this arrow that the arrow should point towards. Also defines the length. For more information on Local Space, see Coordinate Spaces"""
         member = self.get_member("Vector")
         if member is None:
             return None
@@ -169,7 +181,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def sides(self) -> primitives.Int | None:
-        """The Sides field value."""
+        """how many sides the cone and cylinder of this arrow should have."""
         member = self.get_member("Sides")
         if member is None:
             return None
@@ -188,7 +200,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def body_radius(self) -> primitives.Float | None:
-        """The BodyRadius field value."""
+        """Determines the thickness of the base under the arrow."""
         member = self.get_member("BodyRadius")
         if member is None:
             return None
@@ -207,7 +219,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def head_radius(self) -> primitives.Float | None:
-        """The HeadRadius field value."""
+        """Determines the radius of the arrows head's base."""
         member = self.get_member("HeadRadius")
         if member is None:
             return None
@@ -226,7 +238,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def head_length(self) -> primitives.Float | None:
-        """The HeadLength field value."""
+        """Determines the length of the arrow's head."""
         member = self.get_member("HeadLength")
         if member is None:
             return None
@@ -245,7 +257,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def minimal_body_length(self) -> primitives.Float | None:
-        """The MinimalBodyLength field value."""
+        """Determines the arrow's length at minimum. In case the provided ``Vector``'s magnitude is less than this number."""
         member = self.get_member("MinimalBodyLength")
         if member is None:
             return None
@@ -264,7 +276,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def sphere_on_zero(self) -> primitives.Bool | None:
-        """The SphereOnZero field value."""
+        """whether the arrow should render as a sphere instead when the ``Vector`` is (0,0,0)"""
         member = self.get_member("SphereOnZero")
         if member is None:
             return None
@@ -283,7 +295,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def body_uv_scale(self) -> primitives.Float2 | None:
-        """The BodyUVScale field value."""
+        """the scale multipler of the uvs on the cylinder body. Uvs of the cylinder is the same as a procedural cylinder."""
         member = self.get_member("BodyUVScale")
         if member is None:
             return None
@@ -302,7 +314,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def body_uv_offset(self) -> primitives.Float2 | None:
-        """The BodyUVOffset field value."""
+        """the shifted offset of the uvs for the cylinder body in 2d space"""
         member = self.get_member("BodyUVOffset")
         if member is None:
             return None
@@ -321,7 +333,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def head_uv_scale(self) -> primitives.Float2 | None:
-        """The HeadUVScale field value."""
+        """the scale multiplier of the uvs on the cone head. Uv of the cone is the same as a procedural cone."""
         member = self.get_member("HeadUVScale")
         if member is None:
             return None
@@ -340,7 +352,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def head_uv_offset(self) -> primitives.Float2 | None:
-        """The HeadUVOffset field value."""
+        """the shifted offset of the uvs for the cone head in 2d space"""
         member = self.get_member("HeadUVOffset")
         if member is None:
             return None
@@ -359,7 +371,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def base_color(self) -> primitives.ColorX | None:
-        """The BaseColor field value."""
+        """Color of the vertices of the bottom edge of the arrow."""
         member = self.get_member("BaseColor")
         if member is None:
             return None
@@ -378,7 +390,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def top_color(self) -> primitives.ColorX | None:
-        """The TopColor field value."""
+        """Color of the vertices of the top edge of the arrow."""
         member = self.get_member("TopColor")
         if member is None:
             return None
@@ -397,7 +409,7 @@ class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def head_color(self) -> primitives.ColorX | None:
-        """The HeadColor field value."""
+        """Color of the vertices of the head of the arrow."""
         member = self.get_member("HeadColor")
         if member is None:
             return None

@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonRelay(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.ButtonRelay.
+    """The ButtonRelay component sends a signal (and optionally with a Value Type) to a button event handler (usually something internal like a Sync Delegate).
 
     Category: Common UI/Events
+
+    This can send a signal internally.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ButtonRelay"
@@ -32,7 +34,7 @@ class ButtonRelay(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver)
 
     @property
     def double_press_delay(self) -> primitives.Float | None:
-        """The DoublePressDelay field value."""
+        """how long it takes before it is to late to count as a double press."""
         member = self.get_member("DoublePressDelay")
         if member is None:
             return None
@@ -51,7 +53,7 @@ class ButtonRelay(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver)
 
     @property
     def release_press_interval(self) -> primitives.Float | None:
-        """The ReleasePressInterval field value."""
+        """The amount of time it takes to release the button."""
         member = self.get_member("ReleasePressInterval")
         if member is None:
             return None

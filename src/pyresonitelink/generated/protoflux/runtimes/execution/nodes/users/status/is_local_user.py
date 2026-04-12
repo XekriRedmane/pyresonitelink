@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsLocalUser(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Is Local User node returns if the user is the local user.
+    """The ``Is Local User`` node returns if the user is the local user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """
@@ -34,7 +34,7 @@ class IsLocalUser(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -1,0 +1,11 @@
+{
+  "description": "The AvatarMouthTrackingInfo is used to override the assigning behavior from a AvatarMouthDataSourceAssigner on the avatar when it assigns a target. or when a AvatarExpressionDriver on the avatar assigns it's own mouth data source.",
+  "category": "Users:Common Avatar System:Face",
+  "fields": {
+    "MouthDataSource": "The data source to override the assigning behavior of a Component:AvatarMouthDataSourceAssigner on the avatar with. or to override what a Component:AvatarExpressionDriver on the avatar assigns it's own mouth data source with."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarMouthTrackingInfo&action=raw"
+}

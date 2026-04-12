@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class MessagingPrivacySettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.MessagingPrivacySettings.
+    """See Settings.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MessagingPrivacySettings"
@@ -27,7 +29,7 @@ class MessagingPrivacySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def do_not_send_read_status(self) -> primitives.Bool | None:
-        """The DoNotSendReadStatus field value."""
+        """Doesn't tell the cloud whether or not the user has read a message when enabled. Can prevent users from knowing you are online from the act of you reading a message even when appearing as offline."""
         member = self.get_member("DoNotSendReadStatus")
         if member is None:
             return None

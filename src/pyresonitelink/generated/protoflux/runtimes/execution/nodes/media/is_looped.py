@@ -34,7 +34,7 @@ class IsLooped(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeObjectOutput[IPlayable])."""
+        """The clip to check if it is set to automatic looping"""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VolumeExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VolumeExportable.
+    """The VolumeExportable component is used to export 3D textures (or 2D images that a layered on top of each other) as a ``.cube`` file format.
 
     Category: Assets/Export
     """
@@ -30,7 +30,7 @@ class VolumeExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @property
     def volume(self) -> str | None:
-        """Target ID of the Volume reference (targets IAssetProvider[Texture3D])."""
+        """The 3D Texture to be exported."""
         member = self.get_member("Volume")
         if isinstance(member, members.Reference):
             return member.targetId

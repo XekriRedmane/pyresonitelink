@@ -1,0 +1,11 @@
+{
+  "description": "The WorldConfigurationPermissions component is used to handle the Permissions of roles to change world configuration values like max user count and world name.",
+  "category": "Uncategorized",
+  "fields": {
+    "AllowChanges": "Whether changes are allowed for the selected roles."
+  },
+  "methods": {},
+  "usage": "click on the desired roles to affect with the ``AllowChanges`` value in the bottom of the component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldConfigurationPermissions&action=raw"
+}

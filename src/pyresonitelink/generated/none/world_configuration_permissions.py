@@ -10,7 +10,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldConfigurationPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldConfigurationPermissions.
+    """The WorldConfigurationPermissions component is used to handle the Permissions of roles to change world configuration values like max user count and world name.
+
+    click on the desired roles to affect with the ``AllowChanges`` value in
+    the bottom of the component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldConfigurationPermissions"
@@ -28,7 +31,7 @@ class WorldConfigurationPermissions(GeneratedComponent, IWorkerPermissions, ICus
 
     @property
     def allow_changes(self) -> primitives.Bool | None:
-        """The AllowChanges field value."""
+        """Whether changes are allowed for the selected roles."""
         member = self.get_member("AllowChanges")
         if member is None:
             return None

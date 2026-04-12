@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.particle_follower_distribution import ParticleFollowerDistribution
+from pyresonitelink.generated._enums.angle_multiplier import AngleMultiplier
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.light import Light
@@ -12,23 +14,30 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParticleLightsModule(GeneratedComponent, IParticleSystemModule, IParticleRenderer, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ParticleLightsModule.
+    """The ParticleLightsModule makes a particle system create lights every so often for emitted particles that follow the particle they're assigned to.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleLightsModule"
 
-    def __init__(self, template_light: str | Light | None = None, lights_ratio: primitives.Float | None = None, max_lights: primitives.Int | None = None, multiply_color_by_particle: primitives.Bool | None = None, multiply_intensity_by_alpha: primitives.Bool | None = None, multiply_range_by_size: primitives.Bool | None = None, range_multiplier: primitives.Float | None = None, intensity_multiplier: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, template_light: str | Light | None = None, lights_ratio: primitives.Float | None = None, distribution: ParticleFollowerDistribution | str | None = None, max_lights: primitives.Int | None = None, multiply_color_by_particle: primitives.Bool | None = None, multiply_intensity_by_alpha: primitives.Bool | None = None, multiply_range_by_size: primitives.Bool | None = None, angle_multiplier: AngleMultiplier | str | None = None, range_multiplier: primitives.Float | None = None, intensity_multiplier: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             template_light: Initial value for TemplateLight.
             lights_ratio: Initial value for LightsRatio.
+            distribution: Initial value for Distribution.
             max_lights: Initial value for MaxLights.
             multiply_color_by_particle: Initial value for MultiplyColorByParticle.
             multiply_intensity_by_alpha: Initial value for MultiplyIntensityByAlpha.
             multiply_range_by_size: Initial value for MultiplyRangeBySize.
+            angle_multiplier: Initial value for AngleMultiplier.
             range_multiplier: Initial value for RangeMultiplier.
             intensity_multiplier: Initial value for IntensityMultiplier.
             component: Existing Component to wrap.
@@ -38,6 +47,8 @@ class ParticleLightsModule(GeneratedComponent, IParticleSystemModule, IParticleR
             self.template_light = template_light
         if lights_ratio is not None:
             self.lights_ratio = lights_ratio
+        if distribution is not None:
+            self.distribution = distribution
         if max_lights is not None:
             self.max_lights = max_lights
         if multiply_color_by_particle is not None:
@@ -46,6 +57,8 @@ class ParticleLightsModule(GeneratedComponent, IParticleSystemModule, IParticleR
             self.multiply_intensity_by_alpha = multiply_intensity_by_alpha
         if multiply_range_by_size is not None:
             self.multiply_range_by_size = multiply_range_by_size
+        if angle_multiplier is not None:
+            self.angle_multiplier = angle_multiplier
         if range_multiplier is not None:
             self.range_multiplier = range_multiplier
         if intensity_multiplier is not None:
@@ -53,7 +66,7 @@ class ParticleLightsModule(GeneratedComponent, IParticleSystemModule, IParticleR
 
     @property
     def template_light(self) -> str | None:
-        """Target ID of the TemplateLight reference (targets Light)."""
+        """The light to use as a template."""
         member = self.get_member("TemplateLight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -74,7 +87,7 @@ class ParticleLightsModule(GeneratedComponent, IParticleSystemModule, IParticleR
 
     @property
     def lights_ratio(self) -> primitives.Float | None:
-        """The LightsRatio field value."""
+        """How many lights as a percentage there should be from a 0 to 1 range."""
         member = self.get_member("LightsRatio")
         if member is None:
             return None
@@ -92,21 +105,28 @@ class ParticleLightsModule(GeneratedComponent, IParticleSystemModule, IParticleR
             )
 
     @property
-    def distribution(self) -> members.FieldEnum | None:
-        """The Distribution member."""
+    def distribution(self) -> ParticleFollowerDistribution | None:
+        """How to distribute the lights among the particles being emitted."""
         member = self.get_member("Distribution")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ParticleFollowerDistribution(member.value)
         return None
 
     @distribution.setter
-    def distribution(self, value: members.FieldEnum) -> None:
-        """Set the Distribution member."""
-        self.set_member("Distribution", value)
+    def distribution(self, value: ParticleFollowerDistribution | str) -> None:
+        """Set Distribution. How to distribute the lights among the particles being emitted."""
+        member = self.get_member("Distribution")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Distribution",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def max_lights(self) -> primitives.Int | None:
-        """The MaxLights field value."""
+        """The maximum number of lights that the particle system can have."""
         member = self.get_member("MaxLights")
         if member is None:
             return None
@@ -125,7 +145,7 @@ class ParticleLightsModule(GeneratedComponent, IParticleSystemModule, IParticleR
 
     @property
     def multiply_color_by_particle(self) -> primitives.Bool | None:
-        """The MultiplyColorByParticle field value."""
+        """Whether to multiply the color of the lights by the color of the particle it is attached to."""
         member = self.get_member("MultiplyColorByParticle")
         if member is None:
             return None
@@ -144,7 +164,7 @@ class ParticleLightsModule(GeneratedComponent, IParticleSystemModule, IParticleR
 
     @property
     def multiply_intensity_by_alpha(self) -> primitives.Bool | None:
-        """The MultiplyIntensityByAlpha field value."""
+        """Whether to multiply the intensity of the lights by the alpha channel of the color of the particle it is attached to."""
         member = self.get_member("MultiplyIntensityByAlpha")
         if member is None:
             return None
@@ -163,7 +183,7 @@ class ParticleLightsModule(GeneratedComponent, IParticleSystemModule, IParticleR
 
     @property
     def multiply_range_by_size(self) -> primitives.Bool | None:
-        """The MultiplyRangeBySize field value."""
+        """Whether to multiply the range of the light based on the size of the particle it is attached to."""
         member = self.get_member("MultiplyRangeBySize")
         if member is None:
             return None
@@ -181,21 +201,28 @@ class ParticleLightsModule(GeneratedComponent, IParticleSystemModule, IParticleR
             )
 
     @property
-    def angle_multiplier(self) -> members.FieldEnum | None:
-        """The AngleMultiplier member."""
+    def angle_multiplier(self) -> AngleMultiplier | None:
+        """How to influence the angle of the light based on the angle of the particle it is following."""
         member = self.get_member("AngleMultiplier")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AngleMultiplier(member.value)
         return None
 
     @angle_multiplier.setter
-    def angle_multiplier(self, value: members.FieldEnum) -> None:
-        """Set the AngleMultiplier member."""
-        self.set_member("AngleMultiplier", value)
+    def angle_multiplier(self, value: AngleMultiplier | str) -> None:
+        """Set AngleMultiplier. How to influence the angle of the light based on the angle of the particle it is following."""
+        member = self.get_member("AngleMultiplier")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AngleMultiplier",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def range_multiplier(self) -> primitives.Float | None:
-        """The RangeMultiplier field value."""
+        """How much to amplify the range of the light."""
         member = self.get_member("RangeMultiplier")
         if member is None:
             return None
@@ -214,7 +241,7 @@ class ParticleLightsModule(GeneratedComponent, IParticleSystemModule, IParticleR
 
     @property
     def intensity_multiplier(self) -> primitives.Float | None:
-        """The IntensityMultiplier field value."""
+        """How much to amplify the intensity of the light."""
         member = self.get_member("IntensityMultiplier")
         if member is None:
             return None

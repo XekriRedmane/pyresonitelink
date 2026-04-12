@@ -11,9 +11,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LerpingMultiClipPlayer(GeneratedComponent, IWorldAudioDataSource, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LerpingMultiClipPlayer.
+    """The LerpingMultiClipPlayer component is an IAudioSource type that transitions between different audio clips (tracks) by lerping the volume and speed from one audio to the other using ``Lerp``.
+
+When an audio is lerped to, the audio will continue to loop till ``Lerp`` is moved to another clips range.
+
+If ``Lerp`` is not within a clip range, this component will provide silent audio.
 
     Category: Audio
+
+    Can be used to make looping noises that play over a video at different
+    positions in the playtime.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LerpingMultiClipPlayer"
@@ -31,7 +38,7 @@ class LerpingMultiClipPlayer(GeneratedComponent, IWorldAudioDataSource, ICompone
 
     @property
     def lerp(self) -> primitives.Float | None:
-        """The Lerp field value."""
+        """The reference value to use to lerp between different tracks with different values. This does not have to be 0-1, and can be any value."""
         member = self.get_member("Lerp")
         if member is None:
             return None
@@ -50,7 +57,7 @@ class LerpingMultiClipPlayer(GeneratedComponent, IWorldAudioDataSource, ICompone
 
     @property
     def tracks(self) -> members.SyncList | None:
-        """The Tracks member."""
+        """A list of track's to lerp between using ``Lerp``."""
         member = self.get_member("Tracks")
         if isinstance(member, members.SyncList):
             return member
@@ -58,6 +65,6 @@ class LerpingMultiClipPlayer(GeneratedComponent, IWorldAudioDataSource, ICompone
 
     @tracks.setter
     def tracks(self, value: members.SyncList) -> None:
-        """Set the Tracks member."""
+        """Set Tracks. A list of track's to lerp between using ``Lerp``."""
         self.set_member("Tracks", value)
 

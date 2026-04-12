@@ -11,9 +11,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextExportable.
+    """The TextExportable component allows the user to take a Slot and export it as a text file on their device.
+
+To export using this component, look at the file browser export section.
 
     Category: Assets/Export
+
+    This can be used to export anything that is text based, or anything you
+    can fill the ``TextSource`` with such as log information or anything
+    else that you wish to export out.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextExportable"
@@ -37,7 +43,7 @@ class TextExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @property
     def text_source(self) -> str | None:
-        """Target ID of the TextSource reference (targets IValue[primitives.String])."""
+        """Anything that is a string, such as textfields, contents, etc."""
         member = self.get_member("TextSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +64,7 @@ class TextExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @property
     def extension(self) -> primitives.String | None:
-        """The Extension field value."""
+        """The file type, defaults to ``.txt``."""
         member = self.get_member("Extension")
         if member is None:
             return None
@@ -77,7 +83,7 @@ class TextExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @property
     def description(self) -> primitives.String | None:
-        """The Description field value."""
+        """The description of what this text export is. Will be shown during the export process."""
         member = self.get_member("Description")
         if member is None:
             return None

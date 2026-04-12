@@ -1,0 +1,17 @@
+{
+  "description": "To know what this controls, see Facet Anchors.",
+  "category": "With Nested Types",
+  "fields": {
+    "Open": "Whether the facet anchors are open or closed.",
+    "UseFacetAnchors": "Whether to allow the use of facet anchors.",
+    "Toggle": "What controller toggles facet anchors when opening dash.",
+    "AnimSpeed": "How fast the facet anchors should open or close.",
+    "Dash": "The dash that is in the world this component is managing facet anchors for.",
+    "ProfileName": "The name of the profile to use when loading the facet anchors.",
+    "Anchors": "A list of facet anchors and their data."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserspaceFacetAnchorsManager&action=raw"
+}

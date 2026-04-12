@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ControllerDiagramFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ControllerDiagramFacetPreset.
+    """The ControllerDiagramFacetPreset component loads the Controller Diagram facet and controls the texture URI of ``_texture``
 
     Category: Radiant UI/Facets
     """
@@ -29,7 +29,7 @@ class ControllerDiagramFacetPreset(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the _texture reference (targets StaticTexture2D)."""
+        """The texture to change the URI to the user's controller scheme (VR controller of their type or desktop controls)"""
         member = self.get_member("_texture")
         if isinstance(member, members.Reference):
             return member.targetId

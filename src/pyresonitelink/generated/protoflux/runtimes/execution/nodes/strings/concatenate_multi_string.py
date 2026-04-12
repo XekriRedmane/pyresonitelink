@@ -20,7 +20,7 @@ class ConcatenateMultiString(GeneratedComponent, INodeObjectOutput, IExecutionNo
 
     @property
     def inputs(self) -> members.SyncList | None:
-        """The Inputs member."""
+        """List of string inputs to combine"""
         member = self.get_member("Inputs")
         if isinstance(member, members.SyncList):
             return member
@@ -28,6 +28,6 @@ class ConcatenateMultiString(GeneratedComponent, INodeObjectOutput, IExecutionNo
 
     @inputs.setter
     def inputs(self, value: members.SyncList) -> None:
-        """Set the Inputs member."""
+        """Set Inputs. List of string inputs to combine"""
         self.set_member("Inputs", value)
 

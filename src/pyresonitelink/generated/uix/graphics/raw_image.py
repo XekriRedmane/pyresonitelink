@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.rect_orientation import RectOrientation
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,14 +14,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.RawImage.
+    """The RawImage component takes in a ITexture2D and takes in parameters to alter this texture image.
+
+}}
 
     Category: UIX/Graphics
+
+    This component acts more like a holder for a texture image to be used by
+    other components.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.RawImage"
 
-    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, material: str | IAssetProvider[Material] | None = None, tint: primitives.ColorX | None = None, uv_rect: primitives.Rect | None = None, preserve_aspect: primitives.Bool | None = None, interaction_target: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, material: str | IAssetProvider[Material] | None = None, tint: primitives.ColorX | None = None, uv_rect: primitives.Rect | None = None, orientation: RectOrientation | str | None = None, preserve_aspect: primitives.Bool | None = None, interaction_target: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +34,7 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             material: Initial value for Material.
             tint: Initial value for Tint.
             uv_rect: Initial value for UVRect.
+            orientation: Initial value for Orientation.
             preserve_aspect: Initial value for PreserveAspect.
             interaction_target: Initial value for InteractionTarget.
             component: Existing Component to wrap.
@@ -41,6 +48,8 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             self.tint = tint
         if uv_rect is not None:
             self.uv_rect = uv_rect
+        if orientation is not None:
+            self.orientation = orientation
         if preserve_aspect is not None:
             self.preserve_aspect = preserve_aspect
         if interaction_target is not None:
@@ -48,7 +57,7 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[ITexture2D])."""
+        """The texture image itself."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -69,7 +78,7 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to use as the texture from."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -90,7 +99,7 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def tint(self) -> primitives.ColorX | None:
-        """The Tint field value."""
+        """The tint color for this raw image."""
         member = self.get_member("Tint")
         if member is None:
             return None
@@ -109,7 +118,7 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def uv_rect(self) -> primitives.Rect | None:
-        """The UVRect field value."""
+        """Shifts the UV of the raw image."""
         member = self.get_member("UVRect")
         if member is None:
             return None
@@ -127,21 +136,28 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             )
 
     @property
-    def orientation(self) -> members.FieldEnum | None:
-        """The Orientation member."""
+    def orientation(self) -> RectOrientation | None:
+        """Rotates the raw image and respects aspect ratio."""
         member = self.get_member("Orientation")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return RectOrientation(member.value)
         return None
 
     @orientation.setter
-    def orientation(self, value: members.FieldEnum) -> None:
-        """Set the Orientation member."""
-        self.set_member("Orientation", value)
+    def orientation(self, value: RectOrientation | str) -> None:
+        """Set Orientation. Rotates the raw image and respects aspect ratio."""
+        member = self.get_member("Orientation")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Orientation",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def preserve_aspect(self) -> primitives.Bool | None:
-        """The PreserveAspect field value."""
+        """If this raw graphic should preserve its aspect ratio."""
         member = self.get_member("PreserveAspect")
         if member is None:
             return None
@@ -160,7 +176,7 @@ class RawImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def interaction_target(self) -> primitives.Bool | None:
-        """The InteractionTarget field value."""
+        """Makes this image as the interaction target for this UIX."""
         member = self.get_member("InteractionTarget")
         if member is None:
             return None

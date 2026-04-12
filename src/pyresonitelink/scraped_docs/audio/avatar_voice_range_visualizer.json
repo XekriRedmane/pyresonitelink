@@ -1,0 +1,19 @@
+{
+  "description": "The AvatarVoiceRangeVisualizer component is used to generate and maintain the whisper bubble that appears when a user enables their whisper bubble mode.",
+  "category": "Users:Common Avatar System:Audio",
+  "fields": {
+    "VolumeSource": "A float representing audio change. Usually the ``Volume`` field from a Component:VolumeMeter",
+    "AudioOutput": "An audio output to read info from to make the bubble size",
+    "WhisperColorMin": "The color the bubble should glow at when the user is not speaking during whisper mode.",
+    "WhisperColorMax": "The color the bubble should glow at when the user is speaking at max volume during whisper mode.",
+    "WhisperColorRecordingMessage": "The color the bubble should be when the user is recording a message.",
+    "VisualRoot": "The root slot of the visual generated for this component to function",
+    "_activeUser": "The user controlling and updating this component's logic.",
+    "_visualSize": "The field to use when driving the size of this visual to match the range of the user's whisper mode. Uses ``AudioOutput``'s range for the source of the data.",
+    "_visualColor": "The field to drive to a color in an inclusive range of ``WhisperColorMin`` and ``WhisperColorMax`` depending on volume output."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarVoiceRangeVisualizer&action=raw"
+}

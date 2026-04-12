@@ -11,9 +11,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Checkbox(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.Checkbox.
+    """The Checkbox component is a UIX element used with a Button component to provide a toggling state whenever the button is pressed.
+
+}}
 
     Category: UIX/Interaction
+
+    Checkboxes are great for settings and options in your designs.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Checkbox"
@@ -37,7 +41,7 @@ class Checkbox(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
 
     @property
     def state(self) -> primitives.Bool | None:
-        """The State field value."""
+        """The current state of thie check box."""
         member = self.get_member("State")
         if member is None:
             return None
@@ -56,7 +60,7 @@ class Checkbox(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
 
     @property
     def target_state(self) -> str | None:
-        """Target ID of the TargetState reference (targets IField[primitives.Bool])."""
+        """The Bool field to drive with the state of the checkbox."""
         member = self.get_member("TargetState")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +81,7 @@ class Checkbox(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
 
     @property
     def check_visual(self) -> str | None:
-        """Target ID of the CheckVisual reference (targets IField[primitives.Bool])."""
+        """The Bool field controlling visibility of the visual to display when the checkbox is in the checked state."""
         member = self.get_member("CheckVisual")
         if isinstance(member, members.Reference):
             return member.targetId

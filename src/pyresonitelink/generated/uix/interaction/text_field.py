@@ -12,9 +12,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextField(GeneratedComponent, IButtonPressReceiver, IUIGrabbable, IUIGrabReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.TextField.
+    """The TextField component is used in conjunction with a TextEditor, Text, and Button component to provide an editable text field. The Text component stores the text, the TextEditor is the editor for the text, and the Button allows the text editor to appear when then text field is selected.
+
+You must drag a reference to the Text component into the Text property of the TextEditor in order for the editor to know what text it is editing.
+
+}}
 
     Category: UIX/Interaction
+
+    This component is useful for forms, user input, and other text based
+    projects.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.TextField"
@@ -35,7 +42,7 @@ class TextField(GeneratedComponent, IButtonPressReceiver, IUIGrabbable, IUIGrabR
 
     @property
     def editor(self) -> str | None:
-        """Target ID of the Editor reference (targets TextEditor)."""
+        """A reference to the text editor component."""
         member = self.get_member("Editor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +63,7 @@ class TextField(GeneratedComponent, IButtonPressReceiver, IUIGrabbable, IUIGrabR
 
     @property
     def text(self) -> str | None:
-        """Target ID of the __text reference (targets Text)."""
+        """Internal - The text for this field."""
         member = self.get_member("__text")
         if isinstance(member, members.Reference):
             return member.targetId

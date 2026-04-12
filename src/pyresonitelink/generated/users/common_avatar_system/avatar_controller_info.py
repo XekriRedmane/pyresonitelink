@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.chirality import Chirality
+from pyresonitelink.generated._enums.type import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -11,30 +13,36 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarControllerInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarControllerInfo.
+    """Reads the controller FrooxEngine class type and it's model identifier for a User for a hand Side.
 
     Category: Users/Common Avatar System
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarControllerInfo"
 
-    def __init__(self, target_user: str | User | None = None, controller_device_model: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_user: str | User | None = None, controller_side: Chirality | str | None = None, controller_type: Type | str | None = None, controller_device_model: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             target_user: Initial value for TargetUser.
+            controller_side: Initial value for ControllerSide.
+            controller_type: Initial value for ControllerType.
             controller_device_model: Initial value for ControllerDeviceModel.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if target_user is not None:
             self.target_user = target_user
+        if controller_side is not None:
+            self.controller_side = controller_side
+        if controller_type is not None:
+            self.controller_type = controller_type
         if controller_device_model is not None:
             self.controller_device_model = controller_device_model
 
     @property
     def target_user(self) -> str | None:
-        """Target ID of the TargetUser reference (targets User)."""
+        """The user this component is reading controller info from"""
         member = self.get_member("TargetUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -54,34 +62,48 @@ class AvatarControllerInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def controller_side(self) -> members.FieldEnum | None:
-        """The ControllerSide member."""
+    def controller_side(self) -> Chirality | None:
+        """The side (left or right) controller this component is reading info from."""
         member = self.get_member("ControllerSide")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Chirality(member.value)
         return None
 
     @controller_side.setter
-    def controller_side(self, value: members.FieldEnum) -> None:
-        """Set the ControllerSide member."""
-        self.set_member("ControllerSide", value)
+    def controller_side(self, value: Chirality | str) -> None:
+        """Set ControllerSide. The side (left or right) controller this component is reading info from."""
+        member = self.get_member("ControllerSide")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ControllerSide",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def controller_type(self) -> members.FieldEnum | None:
-        """The ControllerType member."""
+    def controller_type(self) -> Type | None:
+        """The type of the controller ``TargetUser`` is using on their ``ControllerSide`` hand."""
         member = self.get_member("ControllerType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @controller_type.setter
-    def controller_type(self, value: members.FieldEnum) -> None:
-        """Set the ControllerType member."""
-        self.set_member("ControllerType", value)
+    def controller_type(self, value: Type | str) -> None:
+        """Set ControllerType. The type of the controller ``TargetUser`` is using on their ``ControllerSide`` hand."""
+        member = self.get_member("ControllerType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ControllerType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def controller_device_model(self) -> primitives.String | None:
-        """The ControllerDeviceModel field value."""
+        """The device model of the controller ``TargetUser`` is using on their ``ControllerSide`` hand."""
         member = self.get_member("ControllerDeviceModel")
         if member is None:
             return None

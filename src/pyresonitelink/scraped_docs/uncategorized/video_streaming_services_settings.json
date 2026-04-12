@@ -1,0 +1,11 @@
+{
+  "description": "The VideoStreamingServicesSettings component handles settings for streaming service content downloading like allowing usage of browser cookies to get around the issue of \"login to confirm you're not a bot\" issue.",
+  "category": "Uncategorized",
+  "fields": {
+    "UseCookiesFromBrowser": "allows usage of browser cookies to get around the issue of \"login to confirm you're not a bot\" issue."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VideoStreamingServicesSettings&action=raw"
+}

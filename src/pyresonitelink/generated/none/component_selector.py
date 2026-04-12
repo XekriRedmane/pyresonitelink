@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.type import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -12,17 +13,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ComponentSelector.
+    """The Component Selector is better understood on its page, Complex Types in Components.
+
+    See Complex Types in Components.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ComponentSelector"
 
-    def __init__(self, ui_root: str | Slot | None = None, root_path: primitives.String | None = None, custom_generic_type_label: str | IField[primitives.String] | None = None, custom_generic_type_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, ui_root: str | Slot | None = None, root_path: primitives.String | None = None, generic_type: Type | str | None = None, custom_generic_type_label: str | IField[primitives.String] | None = None, custom_generic_type_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             ui_root: Initial value for _uiRoot.
             root_path: Initial value for _rootPath.
+            generic_type: Initial value for _genericType.
             custom_generic_type_label: Initial value for _customGenericTypeLabel.
             custom_generic_type_color: Initial value for _customGenericTypeColor.
             component: Existing Component to wrap.
@@ -32,6 +36,8 @@ class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventRece
             self.ui_root = ui_root
         if root_path is not None:
             self.root_path = root_path
+        if generic_type is not None:
+            self.generic_type = generic_type
         if custom_generic_type_label is not None:
             self.custom_generic_type_label = custom_generic_type_label
         if custom_generic_type_color is not None:
@@ -39,7 +45,7 @@ class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventRece
 
     @property
     def ui_root(self) -> str | None:
-        """Target ID of the _uiRoot reference (targets Slot)."""
+        """The root slot of the UI."""
         member = self.get_member("_uiRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +66,7 @@ class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventRece
 
     @property
     def root_path(self) -> primitives.String | None:
-        """The _rootPath field value."""
+        """The path that this is navigated to in the component attacher."""
         member = self.get_member("_rootPath")
         if member is None:
             return None
@@ -78,21 +84,28 @@ class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventRece
             )
 
     @property
-    def generic_type(self) -> members.FieldEnum | None:
-        """The _genericType member."""
+    def generic_type(self) -> Type | None:
+        """The generic type we are trying to make a generic fill for."""
         member = self.get_member("_genericType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @generic_type.setter
-    def generic_type(self, value: members.FieldEnum) -> None:
-        """Set the _genericType member."""
-        self.set_member("_genericType", value)
+    def generic_type(self, value: Type | str) -> None:
+        """Set _genericType. The generic type we are trying to make a generic fill for."""
+        member = self.get_member("_genericType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_genericType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def custom_generic_type_label(self) -> str | None:
-        """Target ID of the _customGenericTypeLabel reference (targets IField[primitives.String])."""
+        """The label for the generic type we are attaching."""
         member = self.get_member("_customGenericTypeLabel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -113,7 +126,7 @@ class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventRece
 
     @property
     def custom_generic_type_color(self) -> str | None:
-        """Target ID of the _customGenericTypeColor reference (targets IField[primitives.ColorX])."""
+        """The color for the generic type we are attaching."""
         member = self.get_member("_customGenericTypeColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -134,7 +147,7 @@ class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventRece
 
     @property
     def custom_generic_arguments(self) -> members.SyncList | None:
-        """The _customGenericArguments member."""
+        """The generic arguments being used for the current Component being attached. See Complex Types in Components."""
         member = self.get_member("_customGenericArguments")
         if isinstance(member, members.SyncList):
             return member
@@ -142,6 +155,6 @@ class ComponentSelector(GeneratedComponent, IDeveloperInterface, IWorldEventRece
 
     @custom_generic_arguments.setter
     def custom_generic_arguments(self, value: members.SyncList) -> None:
-        """Set the _customGenericArguments member."""
+        """Set _customGenericArguments. The generic arguments being used for the current Component being attached. See Complex Types in Components."""
         self.set_member("_customGenericArguments", value)
 

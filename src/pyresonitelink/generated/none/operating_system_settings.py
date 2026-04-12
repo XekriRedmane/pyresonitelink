@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class OperatingSystemSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.OperatingSystemSettings.
+    """The Operating System Settings component
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OperatingSystemSettings"

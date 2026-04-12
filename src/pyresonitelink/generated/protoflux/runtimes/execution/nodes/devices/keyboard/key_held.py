@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class KeyHeld(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Key Held node returns the local user's keyboard key being held down.
+    """The ``Key Held`` node returns the local user's keyboard key being held down.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Keyboard
     """
@@ -33,7 +33,7 @@ class KeyHeld(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICust
 
     @property
     def key(self) -> str | None:
-        """Target ID of the Key reference (targets INodeValueOutput[Key])."""
+        """The key to check."""
         member = self.get_member("Key")
         if isinstance(member, members.Reference):
             return member.targetId

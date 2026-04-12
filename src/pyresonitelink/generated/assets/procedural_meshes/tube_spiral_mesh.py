@@ -4,6 +4,9 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.ends import Ends
+from pyresonitelink.generated._enums.shading import Shading
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +15,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TubeSpiralMesh.
+    """The TubeSpiralMesh component is a procedural Mesh that looks like a corkscrew often seen on the end of a wine bottle opener.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot and put into a MeshRenderer with a material to see what
+    it looks like.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TubeSpiralMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, steps: primitives.Int | None = None, maximum_distance_between_rings: primitives.Float | None = None, radius_independent_step_scaling: primitives.Bool | None = None, coil_count: primitives.Float | None = None, scale_coil_count_by_length: primitives.Bool | None = None, coil_phase: primitives.Float | None = None, start_point: primitives.Float3 | None = None, start_tangent: primitives.Float3 | None = None, end_point: primitives.Float3 | None = None, end_tangent: primitives.Float3 | None = None, start_spiral_radius: primitives.Float | None = None, end_spiral_radius: primitives.Float | None = None, start_spiral_orientation: primitives.FloatQ | None = None, end_spiral_orientation: primitives.FloatQ | None = None, start_tube_radius: primitives.Float | None = None, end_tube_radius: primitives.Float | None = None, tube_points: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, steps: primitives.Int | None = None, maximum_distance_between_rings: primitives.Float | None = None, radius_independent_step_scaling: primitives.Bool | None = None, coil_count: primitives.Float | None = None, scale_coil_count_by_length: primitives.Bool | None = None, coil_phase: primitives.Float | None = None, start_point: primitives.Float3 | None = None, start_tangent: primitives.Float3 | None = None, end_point: primitives.Float3 | None = None, end_tangent: primitives.Float3 | None = None, start_spiral_radius: primitives.Float | None = None, end_spiral_radius: primitives.Float | None = None, start_spiral_orientation: primitives.FloatQ | None = None, end_spiral_orientation: primitives.FloatQ | None = None, ends: Ends | str | None = None, shading: Shading | str | None = None, start_tube_radius: primitives.Float | None = None, end_tube_radius: primitives.Float | None = None, tube_points: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             steps: Initial value for Steps.
             maximum_distance_between_rings: Initial value for MaximumDistanceBetweenRings.
             radius_independent_step_scaling: Initial value for RadiusIndependentStepScaling.
@@ -40,6 +47,8 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             end_spiral_radius: Initial value for EndSpiralRadius.
             start_spiral_orientation: Initial value for StartSpiralOrientation.
             end_spiral_orientation: Initial value for EndSpiralOrientation.
+            ends: Initial value for Ends.
+            shading: Initial value for Shading.
             start_tube_radius: Initial value for StartTubeRadius.
             end_tube_radius: Initial value for EndTubeRadius.
             tube_points: Initial value for TubePoints.
@@ -52,6 +61,8 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if steps is not None:
             self.steps = steps
         if maximum_distance_between_rings is not None:
@@ -80,6 +91,10 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.start_spiral_orientation = start_spiral_orientation
         if end_spiral_orientation is not None:
             self.end_spiral_orientation = end_spiral_orientation
+        if ends is not None:
+            self.ends = ends
+        if shading is not None:
+            self.shading = shading
         if start_tube_radius is not None:
             self.start_tube_radius = start_tube_radius
         if end_tube_radius is not None:
@@ -145,21 +160,28 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def steps(self) -> primitives.Int | None:
-        """The Steps field value."""
+        """How many length wise subdivisions the tube mesh has."""
         member = self.get_member("Steps")
         if member is None:
             return None
@@ -178,7 +200,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def maximum_distance_between_rings(self) -> primitives.Float | None:
-        """The MaximumDistanceBetweenRings field value."""
+        """The distance allowed between each segment before the amount of steps are reduced."""
         member = self.get_member("MaximumDistanceBetweenRings")
         if member is None:
             return None
@@ -216,7 +238,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def coil_count(self) -> primitives.Float | None:
-        """The CoilCount field value."""
+        """How many winds around the center the coil should have."""
         member = self.get_member("CoilCount")
         if member is None:
             return None
@@ -235,7 +257,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def scale_coil_count_by_length(self) -> primitives.Bool | None:
-        """The ScaleCoilCountByLength field value."""
+        """Whether the distance between coils stays consistent as the length grows by adding more coils."""
         member = self.get_member("ScaleCoilCountByLength")
         if member is None:
             return None
@@ -254,7 +276,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def coil_phase(self) -> primitives.Float | None:
-        """The CoilPhase field value."""
+        """How much to offset the coil starting angle."""
         member = self.get_member("CoilPhase")
         if member is None:
             return None
@@ -273,7 +295,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def start_point(self) -> primitives.Float3 | None:
-        """The StartPoint field value."""
+        """The center point position of what the Spiral is spiraling around at the beginning."""
         member = self.get_member("StartPoint")
         if member is None:
             return None
@@ -292,7 +314,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def start_tangent(self) -> primitives.Float3 | None:
-        """The StartTangent field value."""
+        """The bend towards bias position of the Spiral at the beginning. Makes the Spiral sheer or warp towards this point at the beginning."""
         member = self.get_member("StartTangent")
         if member is None:
             return None
@@ -311,7 +333,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def end_point(self) -> primitives.Float3 | None:
-        """The EndPoint field value."""
+        """The center point position of what the Spiral is spiraling around at the end."""
         member = self.get_member("EndPoint")
         if member is None:
             return None
@@ -330,7 +352,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def end_tangent(self) -> primitives.Float3 | None:
-        """The EndTangent field value."""
+        """The bend towards bias position of the Spiral at the end. Makes the Spiral sheer or warp towards this point at the end. lerps from beginning."""
         member = self.get_member("EndTangent")
         if member is None:
             return None
@@ -349,7 +371,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def start_spiral_radius(self) -> primitives.Float | None:
-        """The StartSpiralRadius field value."""
+        """The distance from the center to the Spiral tube center at the beginning."""
         member = self.get_member("StartSpiralRadius")
         if member is None:
             return None
@@ -368,7 +390,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def end_spiral_radius(self) -> primitives.Float | None:
-        """The EndSpiralRadius field value."""
+        """The distance from the center to the Spiral tube center at the end."""
         member = self.get_member("EndSpiralRadius")
         if member is None:
             return None
@@ -387,7 +409,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def start_spiral_orientation(self) -> primitives.FloatQ | None:
-        """The StartSpiralOrientation field value."""
+        """The rotation of each segment ring at the start."""
         member = self.get_member("StartSpiralOrientation")
         if member is None:
             return None
@@ -406,7 +428,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def end_spiral_orientation(self) -> primitives.FloatQ | None:
-        """The EndSpiralOrientation field value."""
+        """The rotation of each segment ring at the end. Lerps from start."""
         member = self.get_member("EndSpiralOrientation")
         if member is None:
             return None
@@ -424,34 +446,48 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def ends(self) -> members.FieldEnum | None:
-        """The Ends member."""
+    def ends(self) -> Ends | None:
+        """How the ends should be sealed if at all on the corkscrew."""
         member = self.get_member("Ends")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Ends(member.value)
         return None
 
     @ends.setter
-    def ends(self, value: members.FieldEnum) -> None:
-        """Set the Ends member."""
-        self.set_member("Ends", value)
+    def ends(self, value: Ends | str) -> None:
+        """Set Ends. How the ends should be sealed if at all on the corkscrew."""
+        member = self.get_member("Ends")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Ends",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def shading(self) -> members.FieldEnum | None:
-        """The Shading member."""
+    def shading(self) -> Shading | None:
+        """The Shading of the screw geometry."""
         member = self.get_member("Shading")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Shading(member.value)
         return None
 
     @shading.setter
-    def shading(self, value: members.FieldEnum) -> None:
-        """Set the Shading member."""
-        self.set_member("Shading", value)
+    def shading(self, value: Shading | str) -> None:
+        """Set Shading. The Shading of the screw geometry."""
+        member = self.get_member("Shading")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Shading",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def start_tube_radius(self) -> primitives.Float | None:
-        """The StartTubeRadius field value."""
+        """The radius of each segment at the start."""
         member = self.get_member("StartTubeRadius")
         if member is None:
             return None
@@ -470,7 +506,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def end_tube_radius(self) -> primitives.Float | None:
-        """The EndTubeRadius field value."""
+        """The radius of each segment at the end. Lerps from start."""
         member = self.get_member("EndTubeRadius")
         if member is None:
             return None
@@ -489,7 +525,7 @@ class TubeSpiralMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def tube_points(self) -> primitives.Int | None:
-        """The TubePoints field value."""
+        """How many sides the tube has circumference wise on each segment."""
         member = self.get_member("TubePoints")
         if member is None:
             return None

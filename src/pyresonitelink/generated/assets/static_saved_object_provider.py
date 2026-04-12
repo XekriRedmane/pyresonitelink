@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StaticSavedObjectProvider(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StaticSavedObjectProvider.
+    """Not currently usable.
 
     Category: Assets
     """
@@ -33,7 +33,7 @@ class StaticSavedObjectProvider(GeneratedComponent, IStaticAssetProvider, ICusto
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """Enter the Uri (e.g. resrec:///) link of the saved object"""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -52,7 +52,7 @@ class StaticSavedObjectProvider(GeneratedComponent, IStaticAssetProvider, ICusto
 
     @property
     def pre_gather(self) -> primitives.Bool | None:
-        """The PreGather field value."""
+        """Whether to pregather the object's assets or not."""
         member = self.get_member("PreGather")
         if member is None:
             return None

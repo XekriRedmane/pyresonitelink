@@ -11,7 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ItemTextureThumbnailSource(GeneratedComponent, IItemThumbnailSource, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ItemTextureThumbnailSource.
+    """The ItemTextureThumbnailSource component can be used to customize the inventory preview of an item, setting it to a texture.
+
+    To work, the component needs to be attached to the object's root slot
+    and have an image in its ``Texture``. The ``Ensure single thumbnail
+    source`` button can be used to remove all other instances of the
+    component in the item's hierarchy.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ItemTextureThumbnailSource"
@@ -29,7 +34,7 @@ class ItemTextureThumbnailSource(GeneratedComponent, IItemThumbnailSource, ICust
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[Texture2D])."""
+        """The texture that should be used as the item's inventory preview. If null, the component will be ignored."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -50,7 +55,7 @@ class ItemTextureThumbnailSource(GeneratedComponent, IItemThumbnailSource, ICust
 
     @property
     def crop(self) -> members.FieldEnum | None:
-        """The Crop member."""
+        """The rectangle that defines what section of the image to use. (Or null to use the entire image)"""
         member = self.get_member("Crop")
         if isinstance(member, members.FieldEnum):
             return member
@@ -58,6 +63,6 @@ class ItemTextureThumbnailSource(GeneratedComponent, IItemThumbnailSource, ICust
 
     @crop.setter
     def crop(self, value: members.FieldEnum) -> None:
-        """Set the Crop member."""
+        """Set Crop. The rectangle that defines what section of the image to use. (Or null to use the entire image)"""
         self.set_member("Crop", value)
 

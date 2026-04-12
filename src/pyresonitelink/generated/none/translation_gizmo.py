@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TranslationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TranslationGizmo.
+    """Handles the translation of slots on the X, Y, Z directions or a combination thereof.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TranslationGizmo"
@@ -47,7 +47,7 @@ class TranslationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def xyz_gizmo(self) -> str | None:
-        """Target ID of the _xyzGizmo reference (targets VolumeTranslationGizmo)."""
+        """The gizmo that allows translations on xyz at the same time."""
         member = self.get_member("_xyzGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class TranslationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def xy_gizmo(self) -> str | None:
-        """Target ID of the _xyGizmo reference (targets PlaneTranslationGizmo)."""
+        """The gizmo that allows translations on xy at the same time."""
         member = self.get_member("_xyGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class TranslationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def xz_gizmo(self) -> str | None:
-        """Target ID of the _xzGizmo reference (targets PlaneTranslationGizmo)."""
+        """The gizmo that allows translations on xz at the same time."""
         member = self.get_member("_xzGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +110,7 @@ class TranslationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def yz_gizmo(self) -> str | None:
-        """Target ID of the _yzGizmo reference (targets PlaneTranslationGizmo)."""
+        """The gizmo that allows translations on yz at the same time."""
         member = self.get_member("_yzGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -131,7 +131,7 @@ class TranslationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def x_gizmo(self) -> str | None:
-        """Target ID of the _xGizmo reference (targets AxisTranslationGizmo)."""
+        """The gizmo that allows translation on x."""
         member = self.get_member("_xGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -152,7 +152,7 @@ class TranslationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def y_gizmo(self) -> str | None:
-        """Target ID of the _yGizmo reference (targets AxisTranslationGizmo)."""
+        """The gizmo that allows translation on y."""
         member = self.get_member("_yGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -173,7 +173,7 @@ class TranslationGizmo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def z_gizmo(self) -> str | None:
-        """Target ID of the _zGizmo reference (targets AxisTranslationGizmo)."""
+        """The gizmo that allows translation on z."""
         member = self.get_member("_zGizmo")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.spherical_harmonics_l2 import SphericalHarmonicsL2
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.reflection_probe import ReflectionProbe
@@ -12,18 +13,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReflectionProbeSH2.
+    """The Reflection Probe SH2 component is used to turn what a ReflectionProbe sees into a spherical harmonic for use in ambient lighting like a AmbientLightSH2 component.
 
     Category: Rendering
+
+    Can be used to drive a AmbientLightSH2 component via a value copy or by
+    drag and dropping this component's ``AmbientLight`` into that
+    component's value
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReflectionProbeSH2"
 
-    def __init__(self, probe: str | ReflectionProbe | None = None, order0_scale: primitives.Float | None = None, order1_scale: primitives.Float | None = None, order2_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, probe: str | ReflectionProbe | None = None, ambient_light: SphericalHarmonicsL2 | str | None = None, order0_scale: primitives.Float | None = None, order1_scale: primitives.Float | None = None, order2_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             probe: Initial value for Probe.
+            ambient_light: Initial value for AmbientLight.
             order0_scale: Initial value for Order0Scale.
             order1_scale: Initial value for Order1Scale.
             order2_scale: Initial value for Order2Scale.
@@ -32,6 +38,8 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
         super().__init__(component)
         if probe is not None:
             self.probe = probe
+        if ambient_light is not None:
+            self.ambient_light = ambient_light
         if order0_scale is not None:
             self.order0_scale = order0_scale
         if order1_scale is not None:
@@ -41,7 +49,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def probe(self) -> str | None:
-        """Target ID of the Probe reference (targets ReflectionProbe)."""
+        """The probe to get color data from."""
         member = self.get_member("Probe")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,21 +69,28 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
             )
 
     @property
-    def ambient_light(self) -> members.FieldEnum | None:
-        """The AmbientLight member."""
+    def ambient_light(self) -> SphericalHarmonicsL2 | None:
+        """``Probe``'s sampled data as SH2 color data for ambient lighting usage."""
         member = self.get_member("AmbientLight")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SphericalHarmonicsL2(member.value)
         return None
 
     @ambient_light.setter
-    def ambient_light(self, value: members.FieldEnum) -> None:
-        """Set the AmbientLight member."""
-        self.set_member("AmbientLight", value)
+    def ambient_light(self, value: SphericalHarmonicsL2 | str) -> None:
+        """Set AmbientLight. ``Probe``'s sampled data as SH2 color data for ambient lighting usage."""
+        member = self.get_member("AmbientLight")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AmbientLight",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def order0_scale(self) -> primitives.Float | None:
-        """The Order0Scale field value."""
+        """The scale factor for Order 0 for the spherical harmonics."""
         member = self.get_member("Order0Scale")
         if member is None:
             return None
@@ -94,7 +109,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def order1_scale(self) -> primitives.Float | None:
-        """The Order1Scale field value."""
+        """The scale factor for Order 1 for the spherical harmonics."""
         member = self.get_member("Order1Scale")
         if member is None:
             return None
@@ -113,7 +128,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def order2_scale(self) -> primitives.Float | None:
-        """The Order2Scale field value."""
+        """The scale factor for Order 2 for the spherical harmonics."""
         member = self.get_member("Order2Scale")
         if member is None:
             return None

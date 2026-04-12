@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AxisPanner.
+    """The AxisPanner component is used to move an object along a single axis linearly. This component can affect position and scale.
 
     Category: Transform/Drivers
     """
@@ -56,7 +56,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def time_base(self) -> str | None:
-        """Target ID of the TimeBase reference (targets IValue[primitives.Double])."""
+        """Reference to the timebase or "clock" that the component will use for moving an object. Possible components that can be used as an input include AuthorityTimeBase."""
         member = self.get_member("TimeBase")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +77,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def speed(self) -> primitives.Float | None:
-        """The Speed field value."""
+        """The speed at which the object will move."""
         member = self.get_member("Speed")
         if member is None:
             return None
@@ -96,7 +96,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def range_(self) -> primitives.Float | None:
-        """The Range field value."""
+        """How far the object will move."""
         member = self.get_member("Range")
         if member is None:
             return None
@@ -115,7 +115,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """Where the object starts its move."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -134,7 +134,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def axis(self) -> primitives.Float3 | None:
-        """The Axis field value."""
+        """The direction that the object will move in."""
         member = self.get_member("Axis")
         if member is None:
             return None
@@ -153,7 +153,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def reference_scale(self) -> primitives.Float3 | None:
-        """The ReferenceScale field value."""
+        """Sets the maximum scale that the object will become at the halfway point. Starting at 0 the object will grow to this size and then back to 0."""
         member = self.get_member("ReferenceScale")
         if member is None:
             return None
@@ -172,7 +172,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def full_scale_range_ratio(self) -> primitives.Float | None:
-        """The FullScaleRangeRatio field value."""
+        """Changes the duration that the object scale will remain at the ReferenceScale size."""
         member = self.get_member("FullScaleRangeRatio")
         if member is None:
             return None
@@ -191,7 +191,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def position(self) -> str | None:
-        """Target ID of the _position reference (targets IField[primitives.Float3])."""
+        """Reference to the position that is being driven. By default, set the to object that this component is first attached to."""
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -212,7 +212,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scale(self) -> str | None:
-        """Target ID of the _scale reference (targets IField[primitives.Float3])."""
+        """Reference to the scale that is being driven. By default, set to null."""
         member = self.get_member("_scale")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GripPoseReferenceEditor.
+    """The GripPoseReferenceEditor component handles the UI Edit Mode behavior of adjusting Raw Data Tools in the user's hand. See UI Edit Mode for more information.
+
+    Not used directly by the user. Please see UI Edit Mode.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GripPoseReferenceEditor"
@@ -52,7 +54,7 @@ class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def reference_root(self) -> str | None:
-        """Target ID of the ReferenceRoot reference (targets Slot)."""
+        """The root slot of the tool tip holder."""
         member = self.get_member("ReferenceRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +75,7 @@ class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def item(self) -> str | None:
-        """Target ID of the Item reference (targets Slot)."""
+        """The root slot of the tooltip being adjusted."""
         member = self.get_member("Item")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -94,7 +96,7 @@ class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def slider(self) -> str | None:
-        """Target ID of the Slider reference (targets Slider)."""
+        """The slider to use to adjust the tool tip during grabbing."""
         member = self.get_member("Slider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -115,7 +117,7 @@ class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def pose_reference(self) -> str | None:
-        """Target ID of the PoseReference reference (targets GripPoseReference)."""
+        """The grip pose reference to be modifying."""
         member = self.get_member("PoseReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -136,7 +138,7 @@ class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def hide_visual_on_end(self) -> primitives.Bool | None:
-        """The HideVisualOnEnd field value."""
+        """Hide the visual when it's not being grabbed."""
         member = self.get_member("HideVisualOnEnd")
         if member is None:
             return None
@@ -155,7 +157,7 @@ class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def root_position(self) -> primitives.Float3 | None:
-        """The RootPosition field value."""
+        """The root position of the gripping pose reference."""
         member = self.get_member("RootPosition")
         if member is None:
             return None
@@ -174,7 +176,7 @@ class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def root_rotation(self) -> primitives.FloatQ | None:
-        """The RootRotation field value."""
+        """The root rotation of the gripping pose reference."""
         member = self.get_member("RootRotation")
         if member is None:
             return None
@@ -193,7 +195,7 @@ class GripPoseReferenceEditor(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def root_scale(self) -> primitives.Float3 | None:
-        """The RootScale field value."""
+        """The root scale of the gripping pose reference."""
         member = self.get_member("RootScale")
         if member is None:
             return None

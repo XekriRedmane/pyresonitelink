@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldSaved(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The World Saved node is an event that fires when the world has saved.
+    """The ``World Saved`` node is an event that fires when the world has saved.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World
     """
@@ -34,7 +34,7 @@ class WorldSaved(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, I
 
     @property
     def on_saved(self) -> str | None:
-        """Target ID of the OnSaved reference (targets ISyncNodeOperation)."""
+        """Fires when the world has saved."""
         member = self.get_member("OnSaved")
         if isinstance(member, members.Reference):
             return member.targetId

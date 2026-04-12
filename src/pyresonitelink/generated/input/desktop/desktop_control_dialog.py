@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DesktopControlDialog.
+    """The DesktopControlDialog is used to change the settings for what desktop to control and how to control it.
 
     Category: Input/Desktop
     """
@@ -46,7 +46,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def interaction_relay(self) -> str | None:
-        """Target ID of the InteractionRelay reference (targets DesktopInteractionRelay)."""
+        """The relay allowing desktop interaction."""
         member = self.get_member("InteractionRelay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +67,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """The display to show in a multi monitor settup."""
         member = self.get_member("Index")
         if member is None:
             return None
@@ -86,7 +86,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def follow_cursor(self) -> primitives.Bool | None:
-        """The FollowCursor field value."""
+        """whether the desktop cursor should follow the Resonite dash cursor when not clicking."""
         member = self.get_member("FollowCursor")
         if member is None:
             return None
@@ -105,7 +105,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def brightness(self) -> primitives.Float | None:
-        """The Brightness field value."""
+        """how bright the desktop display should be in the dash."""
         member = self.get_member("Brightness")
         if member is None:
             return None
@@ -124,7 +124,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def opacity(self) -> primitives.Float | None:
-        """The Opacity field value."""
+        """how transparent the desktop display should be in the dash."""
         member = self.get_member("Opacity")
         if member is None:
             return None
@@ -143,7 +143,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def legacy_input_mode(self) -> primitives.Bool | None:
-        """The LegacyInputMode field value."""
+        """Whether to use the legacy input system for desktop interaction."""
         member = self.get_member("LegacyInputMode")
         if member is None:
             return None

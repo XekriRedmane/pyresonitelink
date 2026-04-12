@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.blend_mode import BlendMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -15,14 +16,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PBS_Metallic(GeneratedComponent, IPBS_Metallic, ICommonMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PBS_Metallic.
+    """PBS Metallic is a physically-based material that uses a Metallic-Smoothness (MS) map to store data about the metallicity and smoothness of an object. It is based on the Unity 5 Standard PBR Setup.
+
+For information about the maps and their properties read on!
 
     Category: Assets/Materials
+
+    **Further Reading**: You may be interested in the following other pages:
+* PBS Specular - Documentation on Resonite's PBS Specular Material. This is often paired or compared to PBS Metallic.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_Metallic"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, detail_texture_scale: primitives.Float2 | None = None, detail_texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, height_map: str | IAssetProvider[ITexture2D] | None = None, height_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, detail_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, detail_normal_map: str | IAssetProvider[ITexture2D] | None = None, detail_normal_scale: primitives.Float | None = None, alpha_cutoff: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, detail_texture_scale: primitives.Float2 | None = None, detail_texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, height_map: str | IAssetProvider[ITexture2D] | None = None, height_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, detail_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, detail_normal_map: str | IAssetProvider[ITexture2D] | None = None, detail_normal_scale: primitives.Float | None = None, blend_mode: BlendMode | str | None = None, alpha_cutoff: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,6 +50,7 @@ class PBS_Metallic(GeneratedComponent, IPBS_Metallic, ICommonMaterial, ICustomIn
             detail_albedo_texture: Initial value for DetailAlbedoTexture.
             detail_normal_map: Initial value for DetailNormalMap.
             detail_normal_scale: Initial value for DetailNormalScale.
+            blend_mode: Initial value for BlendMode.
             alpha_cutoff: Initial value for AlphaCutoff.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
@@ -90,6 +97,8 @@ class PBS_Metallic(GeneratedComponent, IPBS_Metallic, ICommonMaterial, ICustomIn
             self.detail_normal_map = detail_normal_map
         if detail_normal_scale is not None:
             self.detail_normal_scale = detail_normal_scale
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
         if alpha_cutoff is not None:
             self.alpha_cutoff = alpha_cutoff
         if offset_factor is not None:
@@ -464,17 +473,24 @@ class PBS_Metallic(GeneratedComponent, IPBS_Metallic, ICommonMaterial, ICustomIn
             )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def alpha_cutoff(self) -> primitives.Float | None:

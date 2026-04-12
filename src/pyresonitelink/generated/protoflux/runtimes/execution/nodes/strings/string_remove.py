@@ -40,7 +40,7 @@ class StringRemove(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to remove a segment from."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +61,7 @@ class StringRemove(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def start_index(self) -> str | None:
-        """Target ID of the StartIndex reference (targets INodeValueOutput[primitives.Int])."""
+        """The starting point of removal from Str (String)."""
         member = self.get_member("StartIndex")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +82,7 @@ class StringRemove(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def length(self) -> str | None:
-        """Target ID of the Length reference (targets INodeValueOutput[primitives.Int])."""
+        """How long of a segment to remove from Str (String)."""
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -16,9 +16,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyRadio.
+    """The LegacyRadio component was used in old UI mainly in export and import dialogues. This component should not be used in new content and replaced whenever possible.
 
     Category: UI/Physical
+
+    Just dont.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyRadio"
@@ -147,7 +149,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of this option sphere."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -166,7 +168,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The color of the option."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -185,7 +187,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
 
     @property
     def selected(self) -> primitives.Bool | None:
-        """The Selected field value."""
+        """Whether this option is selected."""
         member = self.get_member("Selected")
         if member is None:
             return None
@@ -204,7 +206,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
 
     @property
     def collider_radius(self) -> str | None:
-        """Target ID of the _colliderRadius reference (targets IField[primitives.Float])."""
+        """The field to drive for the radius of the collider so it matches the visual."""
         member = self.get_member("_colliderRadius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -225,7 +227,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
 
     @property
     def icosphere(self) -> str | None:
-        """Target ID of the _icosphere reference (targets IcoSphereMesh)."""
+        """The ico sphere mesh used to make the option click able visual."""
         member = self.get_member("_icosphere")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -246,7 +248,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets PBS_RimMetallic)."""
+        """The material used for this component's visual."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -267,7 +269,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
 
     @property
     def group(self) -> str | None:
-        """Target ID of the _group reference (targets LegacyRadioGroup)."""
+        """The manager for this component as a part of a group of radio options."""
         member = self.get_member("_group")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -288,7 +290,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
 
     @property
     def order_number(self) -> primitives.Int | None:
-        """The _orderNumber field value."""
+        """Which option in the list this is."""
         member = self.get_member("_orderNumber")
         if member is None:
             return None

@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.RealtimeNetworkingSettings.
+    """See Settings.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RealtimeNetworkingSettings"
@@ -36,7 +38,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def disable_lan(self) -> primitives.Bool | None:
-        """The DisableLAN field value."""
+        """Whether or not to disable LAN"""
         member = self.get_member("DisableLAN")
         if member is None:
             return None
@@ -55,7 +57,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def prefer_steam_networking(self) -> primitives.Bool | None:
-        """The PreferSteamNetworking field value."""
+        """Prefer steam networking servers/sockets"""
         member = self.get_member("PreferSteamNetworking")
         if member is None:
             return None
@@ -74,7 +76,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def prefer_tcp(self) -> primitives.Bool | None:
-        """The PreferTCP field value."""
+        """Prefer tcp over NAT punching"""
         member = self.get_member("PreferTCP")
         if member is None:
             return None
@@ -93,7 +95,7 @@ class RealtimeNetworkingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def lnl_window_size(self) -> primitives.Int | None:
-        """The LNL_WindowSize field value."""
+        """The size of the LNL data stream."""
         member = self.get_member("LNL_WindowSize")
         if member is None:
             return None

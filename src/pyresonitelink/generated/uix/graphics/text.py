@@ -19,16 +19,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Text(GeneratedComponent, ILayoutElement, IText, IUIComputeComponent, IWorldEventReceiver):
-    """Text can be used to explain something, to be descriptive, to notify, and many other things text can be used for.
+    """The Text component displays text inside of a UIX element. It also supports text formatting.
+
+}}
 
     Category: UIX/Graphics
 
     Text can be used to explain something, to be descriptive, to notify, and
     many other things text can be used for. When being effective with text,
     basic graphic design principles apply even to something simple as text.
-
-    **Related Components**: Text
-Text
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Text"

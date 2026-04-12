@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSpanMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The TimeSpan Milliseconds node takes in a TimeSpan and returns with only the amount of millisecondsin that TimeSpan. Anything other than the milliseconds will be ignored.
+    """The ``TimeSpan Milliseconds`` node takes in a TimeSpan and returns with only the amount of millisecondsin that TimeSpan. Anything other than the milliseconds will be ignored.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/Timespan
     """
@@ -32,7 +32,7 @@ class TimeSpanMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def time_span(self) -> str | None:
-        """Target ID of the TimeSpan reference (targets INodeValueOutput[str])."""
+        """The TimeSpan we are getting info from."""
         member = self.get_member("TimeSpan")
         if isinstance(member, members.Reference):
             return member.targetId

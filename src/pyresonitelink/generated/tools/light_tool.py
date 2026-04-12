@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.mode import Mode
+from pyresonitelink.generated._enums.shadow_type import ShadowType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -17,14 +19,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LightTool.
+    """The LightTool component can be best learned through its page, the Light Tool for non power users.
 
     Category: Tools
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LightTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, color: primitives.ColorX | None = None, intensity: primitives.Float | None = None, shadow_strength: primitives.Float | None = None, range_: primitives.Float | None = None, spot_angle: primitives.Float | None = None, point_light_visual: str | Slot | None = None, spotlight_visual: str | Slot | None = None, directional_light_visual: str | Slot | None = None, show_gizmo: primitives.Bool | None = None, point_light_item: str | Item | None = None, spot_light_item: str | Item | None = None, directional_light_item: str | Item | None = None, shadows_item: str | Item | None = None, color_picker: str | ColorDialogInterface | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, light_mode: Mode | str | None = None, color: primitives.ColorX | None = None, intensity: primitives.Float | None = None, shadow_type: ShadowType | str | None = None, shadow_strength: primitives.Float | None = None, range_: primitives.Float | None = None, spot_angle: primitives.Float | None = None, point_light_visual: str | Slot | None = None, spotlight_visual: str | Slot | None = None, directional_light_visual: str | Slot | None = None, show_gizmo: primitives.Bool | None = None, point_light_item: str | Item | None = None, spot_light_item: str | Item | None = None, directional_light_item: str | Item | None = None, shadows_item: str | Item | None = None, color_picker: str | ColorDialogInterface | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,8 +36,10 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             equip_name: Initial value for EquipName.
             override_active_tool: Initial value for _overrideActiveTool.
             grip_poses_generated: Initial value for _gripPosesGenerated.
+            light_mode: Initial value for LightMode.
             color: Initial value for Color.
             intensity: Initial value for Intensity.
+            shadow_type: Initial value for ShadowType.
             shadow_strength: Initial value for ShadowStrength.
             range_: Initial value for Range.
             spot_angle: Initial value for SpotAngle.
@@ -63,10 +67,14 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             self.override_active_tool = override_active_tool
         if grip_poses_generated is not None:
             self.grip_poses_generated = grip_poses_generated
+        if light_mode is not None:
+            self.light_mode = light_mode
         if color is not None:
             self.color = color
         if intensity is not None:
             self.intensity = intensity
+        if shadow_type is not None:
+            self.shadow_type = shadow_type
         if shadow_strength is not None:
             self.shadow_strength = shadow_strength
         if range_ is not None:
@@ -224,21 +232,28 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def light_mode(self) -> members.FieldEnum | None:
-        """The LightMode member."""
+    def light_mode(self) -> Mode | None:
+        """See Mode."""
         member = self.get_member("LightMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Mode(member.value)
         return None
 
     @light_mode.setter
-    def light_mode(self, value: members.FieldEnum) -> None:
-        """Set the LightMode member."""
-        self.set_member("LightMode", value)
+    def light_mode(self, value: Mode | str) -> None:
+        """Set LightMode. See Mode."""
+        member = self.get_member("LightMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "LightMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The color to make new lights."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -257,7 +272,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def intensity(self) -> primitives.Float | None:
-        """The Intensity field value."""
+        """The intensity to make new lights."""
         member = self.get_member("Intensity")
         if member is None:
             return None
@@ -275,21 +290,28 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def shadow_type(self) -> members.FieldEnum | None:
-        """The ShadowType member."""
+    def shadow_type(self) -> ShadowType | None:
+        """The shadow type to make new lights."""
         member = self.get_member("ShadowType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ShadowType(member.value)
         return None
 
     @shadow_type.setter
-    def shadow_type(self, value: members.FieldEnum) -> None:
-        """Set the ShadowType member."""
-        self.set_member("ShadowType", value)
+    def shadow_type(self, value: ShadowType | str) -> None:
+        """Set ShadowType. The shadow type to make new lights."""
+        member = self.get_member("ShadowType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ShadowType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def shadow_strength(self) -> primitives.Float | None:
-        """The ShadowStrength field value."""
+        """The strength for the shadows new lights should have."""
         member = self.get_member("ShadowStrength")
         if member is None:
             return None
@@ -308,7 +330,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def range_(self) -> primitives.Float | None:
-        """The Range field value."""
+        """The range of new lights."""
         member = self.get_member("Range")
         if member is None:
             return None
@@ -327,7 +349,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def spot_angle(self) -> primitives.Float | None:
-        """The SpotAngle field value."""
+        """The spot angle of new lights."""
         member = self.get_member("SpotAngle")
         if member is None:
             return None
@@ -346,7 +368,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def point_light_visual(self) -> str | None:
-        """Target ID of the PointLightVisual reference (targets Slot)."""
+        """The current point light visual root."""
         member = self.get_member("PointLightVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -367,7 +389,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def spotlight_visual(self) -> str | None:
-        """Target ID of the SpotlightVisual reference (targets Slot)."""
+        """The current spot light visual root."""
         member = self.get_member("SpotlightVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -388,7 +410,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def directional_light_visual(self) -> str | None:
-        """Target ID of the DirectionalLightVisual reference (targets Slot)."""
+        """The current directional light visual root."""
         member = self.get_member("DirectionalLightVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -409,7 +431,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def color_indicators(self) -> members.SyncList | None:
-        """The ColorIndicators member."""
+        """A list of color fields to drive with the indication color."""
         member = self.get_member("ColorIndicators")
         if isinstance(member, members.SyncList):
             return member
@@ -417,12 +439,12 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @color_indicators.setter
     def color_indicators(self, value: members.SyncList) -> None:
-        """Set the ColorIndicators member."""
+        """Set ColorIndicators. A list of color fields to drive with the indication color."""
         self.set_member("ColorIndicators", value)
 
     @property
     def show_gizmo(self) -> primitives.Bool | None:
-        """The ShowGizmo field value."""
+        """Whether to show the Gizmo of new lights."""
         member = self.get_member("ShowGizmo")
         if member is None:
             return None
@@ -441,7 +463,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def point_light_item(self) -> str | None:
-        """Target ID of the _pointLightItem reference (targets Item)."""
+        """Legacy don't use."""
         member = self.get_member("_pointLightItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -462,7 +484,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def spot_light_item(self) -> str | None:
-        """Target ID of the _spotLightItem reference (targets Item)."""
+        """Legacy don't use."""
         member = self.get_member("_spotLightItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -483,7 +505,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def directional_light_item(self) -> str | None:
-        """Target ID of the _directionalLightItem reference (targets Item)."""
+        """Legacy don't use."""
         member = self.get_member("_directionalLightItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -504,7 +526,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def shadows_item(self) -> str | None:
-        """Target ID of the _shadowsItem reference (targets Item)."""
+        """Legacy don't use."""
         member = self.get_member("_shadowsItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -525,7 +547,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def color_picker(self) -> str | None:
-        """Target ID of the _colorPicker reference (targets ColorDialogInterface)."""
+        """The current color picker being used to pick the color for ``Color``."""
         member = self.get_member("_colorPicker")
         if isinstance(member, members.Reference):
             return member.targetId

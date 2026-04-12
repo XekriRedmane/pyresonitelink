@@ -43,7 +43,7 @@ class SetSlotActiveSelf(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse after * (Call) is called and Instance (Slot)'s active field was set to Active (bool)."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class SetSlotActiveSelf(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """Slot to set the property for."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class SetSlotActiveSelf(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def active(self) -> str | None:
-        """Target ID of the Active reference (targets INodeValueOutput[primitives.Bool])."""
+        """The value to set Instance (Slot)'s active field to when * (Call) is called."""
         member = self.get_member("Active")
         if isinstance(member, members.Reference):
             return member.targetId

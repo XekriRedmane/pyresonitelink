@@ -10,9 +10,22 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueDriver<>.
+    """The ValueDriver&lt;T&gt; component continuously copies the value of the source IValue to the target field every update. The source and target types must be value types.
 
     Category: Relations
+
+    This component ensures that the value in the ``DriveTarget`` is equal to
+    the value in the ``ValueSource`` field. To do this, it drives the
+    ``DriveTarget`` field to give it exclusive access to the value, then it
+    starts writing the value from the ``ValueSource`` field to the target
+    field every update. This is distinct from ValueCopy, as it allows
+    sourcing from IValue elements instead of just IField elements. It also
+    does not have any ``WriteBack`` meachanism of any kind. Generally,
+    ValueCopy should be used whenever possible, as it only updates the
+    target field whenever the source field changes instead of every update.
+
+    **See also**: * ValueCopy
+* ValueMultiDriver to form this relation to multiple target fields.
 
     Parameterize with a value type::
 
@@ -39,7 +52,7 @@ class ValueDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def value_source(self) -> str | None:
-        """Target ID of the ValueSource reference (targets IValue[T])."""
+        """The value field to get a value from."""
         member = self.get_member("ValueSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +73,7 @@ class ValueDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def drive_target(self) -> str | None:
-        """Target ID of the DriveTarget reference (targets IField[T])."""
+        """The value field to set to the value of ``ValueSource``."""
         member = self.get_member("DriveTarget")
         if isinstance(member, members.Reference):
             return member.targetId

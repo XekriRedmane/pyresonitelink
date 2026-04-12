@@ -49,7 +49,7 @@ class SwitchLocomotionModule(GeneratedComponent, ISyncNodeOperation, IExecutionN
 
     @property
     def target_user(self) -> str | None:
-        """Target ID of the TargetUser reference (targets INodeObjectOutput[User])."""
+        """The user to switch the locomotion they are using to walk when this node is triggered."""
         member = self.get_member("TargetUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +70,9 @@ class SwitchLocomotionModule(GeneratedComponent, ISyncNodeOperation, IExecutionN
 
     @property
     def module_name(self) -> str | None:
-        """Target ID of the ModuleName reference (targets INodeObjectOutput[primitives.String])."""
+        """the name of the locomotion slot that the user should switch to.
+
+Ex: "Walk/Run (with climbing)", "Fly", "Noclip", "Teleport", (etc.)"""
         member = self.get_member("ModuleName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +93,7 @@ class SwitchLocomotionModule(GeneratedComponent, ISyncNodeOperation, IExecutionN
 
     @property
     def exact_match(self) -> str | None:
-        """Target ID of the ExactMatch reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether to switch the lomotion if it is a partial match (false) or switch only if the name exactly matches (true)."""
         member = self.get_member("ExactMatch")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +114,7 @@ class SwitchLocomotionModule(GeneratedComponent, ISyncNodeOperation, IExecutionN
 
     @property
     def on_switched(self) -> str | None:
-        """Target ID of the OnSwitched reference (targets INodeOperation)."""
+        """Sends an impulse after * (Call) was called and a locomotion was successfully found and switched to."""
         member = self.get_member("OnSwitched")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -133,7 +135,7 @@ class SwitchLocomotionModule(GeneratedComponent, ISyncNodeOperation, IExecutionN
 
     @property
     def on_not_found(self) -> str | None:
-        """Target ID of the OnNotFound reference (targets INodeOperation)."""
+        """Sends an impulse after * (Call) was called and the specified locomotion was not found."""
         member = self.get_member("OnNotFound")
         if isinstance(member, members.Reference):
             return member.targetId

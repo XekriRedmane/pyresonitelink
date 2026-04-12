@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LinearAngleMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LinearAngleMapper.
+    """The LinearAngleMapper component is used to map a float range to a rotation range using lerp.
 
     Category: Transform/Drivers
     """
@@ -53,7 +53,7 @@ class LinearAngleMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IValue[primitives.Float])."""
+        """The source value field to get the source mapped value from."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -74,7 +74,7 @@ class LinearAngleMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.FloatQ])."""
+        """The rotation to drive with the mapped rotation value."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -95,7 +95,7 @@ class LinearAngleMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source_min(self) -> primitives.Float | None:
-        """The SourceMin field value."""
+        """The minimum value for ``Source`` for mapping."""
         member = self.get_member("SourceMin")
         if member is None:
             return None
@@ -114,7 +114,7 @@ class LinearAngleMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source_max(self) -> primitives.Float | None:
-        """The SourceMax field value."""
+        """The maximum value for ``Source`` for mapping."""
         member = self.get_member("SourceMax")
         if member is None:
             return None
@@ -133,7 +133,7 @@ class LinearAngleMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_min(self) -> primitives.Float3 | None:
-        """The TargetMin field value."""
+        """The minumum rotation value when ``Source`` is at ``SourceMin``'s value."""
         member = self.get_member("TargetMin")
         if member is None:
             return None
@@ -152,7 +152,7 @@ class LinearAngleMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_max(self) -> primitives.Float3 | None:
-        """The TargetMax field value."""
+        """The maximum rotation value when ``Source`` is at ``SourceMax``'s value."""
         member = self.get_member("TargetMax")
         if member is None:
             return None
@@ -171,7 +171,7 @@ class LinearAngleMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def allow_reverse_mapping(self) -> primitives.Bool | None:
-        """The AllowReverseMapping field value."""
+        """Whether changes to ``Target`` map in the reverse direction and get applied to target. See write backs."""
         member = self.get_member("AllowReverseMapping")
         if member is None:
             return None
@@ -190,7 +190,7 @@ class LinearAngleMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def clamp(self) -> primitives.Bool | None:
-        """The Clamp field value."""
+        """Whether to allow extrapolation of the lerped data or to keep it within the values specified."""
         member = self.get_member("Clamp")
         if member is None:
             return None

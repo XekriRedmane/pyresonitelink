@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomPointInCube(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Random Point In Cube node returns a random float3 value of a point within the bounds of a unit cube centered at [0; 0; 0].
+    """The Random Point In Cube node returns a random float3 value of a point within the bounds of a unit cube centered at ``[0; 0; 0]``.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Random/Point
     """

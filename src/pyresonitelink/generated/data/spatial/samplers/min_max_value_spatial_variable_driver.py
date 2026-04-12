@@ -11,9 +11,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MinMaxValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MinMaxValueSpatialVariableDriver<>.
+    """The Min Max Value Spatial Variable Driver`1 component drives fields with the min and max possible values of the spatial variables it is currently sampling. If there's no spatial variables, Min/Max will be the Max/Min possible values for that datatype
 
     Category: Data/Spatial/Samplers
+
+    Attach to a slot and provide a field to drive and a variable name. the
+    slot this component is on acts as the position for sampling variable
+    values.
 
     Parameterize with a value type::
 
@@ -43,7 +47,7 @@ class MinMaxValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEv
 
     @property
     def min_drive(self) -> str | None:
-        """Target ID of the MinDrive reference (targets IField[T])."""
+        """The field to drive with the minimum possible value that could be sampled from all the spatial variables that this sampler is sampling from."""
         member = self.get_member("MinDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +68,7 @@ class MinMaxValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEv
 
     @property
     def max_drive(self) -> str | None:
-        """Target ID of the MaxDrive reference (targets IField[T])."""
+        """The field to drive with the maximum possible value that could be sampled from all the spatial variables that this sampler is sampling from."""
         member = self.get_member("MaxDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +89,7 @@ class MinMaxValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEv
 
     @property
     def variable_name(self) -> primitives.String | None:
-        """The VariableName field value."""
+        """The variable name to sample for from the point this component's slot is at."""
         member = self.get_member("VariableName")
         if member is None:
             return None

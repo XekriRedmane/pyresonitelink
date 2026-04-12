@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectTransformLerp(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.RectTransformLerp.
+    """The RectTransformLerp component takes the RectTransform that's on the same slot and lerps the size & scale of the RectTransform.
+
+}}
 
     Category: UIX/Utility
     """
@@ -34,7 +36,7 @@ class RectTransformLerp(GeneratedComponent, IUIComputeComponent, IWorldEventRece
 
     @property
     def lerp(self) -> primitives.Float | None:
-        """The Lerp field value."""
+        """The amount to lerp by."""
         member = self.get_member("Lerp")
         if member is None:
             return None
@@ -53,7 +55,7 @@ class RectTransformLerp(GeneratedComponent, IUIComputeComponent, IWorldEventRece
 
     @property
     def source_rect(self) -> str | None:
-        """Target ID of the SourceRect reference (targets RectTransform)."""
+        """The RectTransform to lerp."""
         member = self.get_member("SourceRect")
         if isinstance(member, members.Reference):
             return member.targetId

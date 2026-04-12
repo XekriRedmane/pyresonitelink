@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DesktopDisplayLayout(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DesktopDisplayLayout.
+    """The DesktopDisplayLayout component displays a list of display selection buttons for a user's monitor settup. It is used in the dash menu and only works in userspace.
 
     Category: Input/Desktop
+
+    **DisplayItemHandler**: A Sync delegate of type Delegate&lt;Display display, Slot itemRoot&gt;
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DesktopDisplayLayout"
@@ -29,7 +31,7 @@ class DesktopDisplayLayout(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user(self) -> members.SyncObject | None:
-        """The User member."""
+        """The user to get displays for."""
         member = self.get_member("User")
         if isinstance(member, members.SyncObject):
             return member
@@ -37,12 +39,12 @@ class DesktopDisplayLayout(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @user.setter
     def user(self, value: members.SyncObject) -> None:
-        """Set the User member."""
+        """Set User. The user to get displays for."""
         self.set_member("User", value)
 
     @property
     def display_template(self) -> str | None:
-        """Target ID of the DisplayTemplate reference (targets Slot)."""
+        """the template to use when generating display selection buttons."""
         member = self.get_member("DisplayTemplate")
         if isinstance(member, members.Reference):
             return member.targetId

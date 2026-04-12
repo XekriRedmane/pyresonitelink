@@ -9,7 +9,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueFieldProxy(GenericComponent[T], IValueSource[T], IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueFieldProxy<>.
+    """The Value Field Proxy component is used to make a field accessible via grabbing when paired with a grabbable. See #Usage for more info.
+
+    Used to make a grabbable object able to put a value into a field. This
+    can be done by clicking with or letting go of the object while holding
+    it and pointing at a collider that can recieve it. Examples of recievers
+    include inspector fields, text fields, and number fields. These objects
+    achieve this by using a ValueReceiver.
 
     Parameterize with a value type::
 
@@ -33,7 +39,7 @@ class ValueFieldProxy(GenericComponent[T], IValueSource[T], IWorldEventReceiver)
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IField[T])."""
+        """The field to relay into the grabbable behavior this component has when paired with a grabbable."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId

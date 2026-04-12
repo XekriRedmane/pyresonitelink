@@ -6,7 +6,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FontDataManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FontDataManager.
+    """The FontDataManager component handles the mapping of Font data and parameters to font based materials during rendering.
+
+    Not used by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FontDataManager"

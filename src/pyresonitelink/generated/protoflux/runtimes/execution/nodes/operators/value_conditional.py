@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueConditional(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Conditional node changes its output depending on the input Condition.
+    """The Conditional node changes its output depending on the input ``Condition``.
+
+If you want to mask different parts of a value, use the Mask node instead.|suggestion}}
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 
@@ -45,7 +47,7 @@ class ValueConditional(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     @property
     def on_true(self) -> str | None:
-        """Target ID of the OnTrue reference (targets INodeValueOutput[T])."""
+        """The value to output when the Condition is true."""
         member = self.get_member("OnTrue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +68,7 @@ class ValueConditional(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     @property
     def on_false(self) -> str | None:
-        """Target ID of the OnFalse reference (targets INodeValueOutput[T])."""
+        """The value to output when the Condition is false."""
         member = self.get_member("OnFalse")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +89,7 @@ class ValueConditional(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     @property
     def condition(self) -> str | None:
-        """Target ID of the Condition reference (targets INodeValueOutput[primitives.Bool])."""
+        """A boolean to decide which input value to output."""
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InviteRequestItem(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InviteRequestItem.
+    """The Invite Request Item component is used to handle the visual and behavior of invite requests received in chats from other users.
+
+    Not used directly by the user, but is used in the contacts screen.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InviteRequestItem"
@@ -38,7 +40,7 @@ class InviteRequestItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def contact_dialog(self) -> str | None:
-        """Target ID of the ContactDialog reference (targets ContactsDialog)."""
+        """The dialog component that this is under."""
         member = self.get_member("ContactDialog")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +61,7 @@ class InviteRequestItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def header_text(self) -> str | None:
-        """Target ID of the HeaderText reference (targets Text)."""
+        """The text field that makes up the header for this request in the chat."""
         member = self.get_member("HeaderText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -80,7 +82,7 @@ class InviteRequestItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def invite_button(self) -> str | None:
-        """Target ID of the InviteButton reference (targets Button)."""
+        """The button to invite the user or forward the invite to the next in command."""
         member = self.get_member("InviteButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -101,7 +103,7 @@ class InviteRequestItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def add_contact_button(self) -> str | None:
-        """Target ID of the AddContactButton reference (targets Button)."""
+        """The button to add the user who is asking for an invite as a contact."""
         member = self.get_member("AddContactButton")
         if isinstance(member, members.Reference):
             return member.targetId

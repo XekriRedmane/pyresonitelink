@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectFromPositionSize(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Rect From Position Size node takes in 2 specific float2 values, a position of the rect's X and Y position, and the size of the rect with the literal Width and Height, then returns a rect value. In contrast to the Rect From Min Max node where it adds the position and size to get a rect's bounding data.
+    """The Rect From Position Size node takes in 2 specific float2 values, a position of the rect's ``X`` and ``Y`` position, and the size of the rect with the literal ``Width`` and ``Height``, then returns a rect value. In contrast to the Rect From Min Max node where it adds the position and size to get a rect's bounding data.
+
+If you want to make a rect using specific and separated inputs, use the Rect From XYWH node instead.|suggestion}}
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Rects
     """
@@ -36,7 +38,7 @@ class RectFromPositionSize(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def position(self) -> str | None:
-        """Target ID of the Position reference (targets INodeValueOutput[primitives.Float2])."""
+        """The ``X`` and ``Y`` position for this rect."""
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +59,7 @@ class RectFromPositionSize(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def size(self) -> str | None:
-        """Target ID of the Size reference (targets INodeValueOutput[primitives.Float2])."""
+        """The literal ``Width`` and ``Height`` size for this rect."""
         member = self.get_member("Size")
         if isinstance(member, members.Reference):
             return member.targetId

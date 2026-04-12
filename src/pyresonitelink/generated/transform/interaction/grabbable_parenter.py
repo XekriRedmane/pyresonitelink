@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabbableParenter(GeneratedComponent, IGrabbableReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabbableParenter.
+    """Grabbable Parenter is a component that when paired with a collider that is not set to a Trigger or StaticTrigger type, it will receive objects that are released within it's collider. This is a volume based alternative to Grabbable Receiver Surface.
 
     Category: Transform/Interaction
+
+    **Behavior**: Unlike Grabbable Receiver Surface, Grabbable objects parented to this Slot will be reparented to it when dropped outside of its collider. This can be prevented with the GrabbableReparentBlock component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabbableParenter"
@@ -29,7 +31,7 @@ class GrabbableParenter(GeneratedComponent, IGrabbableReceiver, IWorldEventRecei
 
     @property
     def parent_under(self) -> str | None:
-        """Target ID of the ParentUnder reference (targets Slot)."""
+        """The slot to parent objects under instead of the slot this component is on."""
         member = self.get_member("ParentUnder")
         if isinstance(member, members.Reference):
             return member.targetId

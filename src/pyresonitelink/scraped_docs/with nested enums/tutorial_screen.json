@@ -1,0 +1,30 @@
+{
+  "description": "The TutorialScreen component controls a screen prompting the user to go through the tutorial in their dash.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Icon": "The icon for this dialogue screen.",
+    "ActiveColor": "The color when this screen is selected and active.",
+    "Label": "The label of this dash screen.",
+    "ScreenEnabled": "Whether this dash screen is enabled or not.",
+    "BaseResolution": "The resolution this screen renders at.",
+    "_screenRoot": "The root slot of this screen's visual elements.",
+    "_screenCanvas": "The canvas Component used to render this dash screen.",
+    "_modalOverlayManager": "This is the Overlay manager that handles editing mode on this screen.",
+    "_button": "This is the button to switch to viewing this screen.",
+    "_iconTexture": "This is the texture Component showing the icon for the tab of this screen.",
+    "_swapRegion": "This is the swap region used to show the screen and slide it away/in when it is switched from/to.",
+    "_currentScreen": "The current screen this tutorial screen dialog is showing.",
+    "_heightField": "The field used to enter in and store the user's height setting.",
+    "_nextEnabled": "Whether the next button is enabled or not so the user can continue."
+  },
+  "methods": {
+    "OnNext": "Handles when the next screen button is enabled.",
+    "OnCreateAccount": "Handles when the user asks to create an account.",
+    "OnLoginAccount": "Handles when the user logs into an account.",
+    "OnSkipAccount": "Handles when the user skips setting up an account.",
+    "OnStartTutorial": "Handles when the user asks to start the tutorial world."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TutorialScreen&action=raw"
+}

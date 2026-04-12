@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CollisionListenerComponent(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CollisionListenerComponent.
+    """This component listens to collider events and sends a collider event. See Collider Events for how these work.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CollisionListenerComponent"
@@ -27,7 +27,7 @@ class CollisionListenerComponent(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def triggers_only(self) -> primitives.Bool | None:
-        """The TriggersOnly field value."""
+        """Whether to listen to events caused by triggers only."""
         member = self.get_member("TriggersOnly")
         if member is None:
             return None

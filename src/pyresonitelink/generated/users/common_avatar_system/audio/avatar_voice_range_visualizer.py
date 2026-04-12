@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarVoiceRangeVisualizer.
+    """The AvatarVoiceRangeVisualizer component is used to generate and maintain the whisper bubble that appears when a user enables their whisper bubble mode.
 
     Category: Users/Common Avatar System/Audio
     """
@@ -58,7 +58,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def volume_source(self) -> str | None:
-        """Target ID of the VolumeSource reference (targets IField[primitives.Float])."""
+        """A float representing audio change. Usually the ``Volume`` field from a Component:VolumeMeter"""
         member = self.get_member("VolumeSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def audio_output(self) -> str | None:
-        """Target ID of the AudioOutput reference (targets AudioOutput)."""
+        """An audio output to read info from to make the bubble size"""
         member = self.get_member("AudioOutput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -100,7 +100,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def whisper_color_min(self) -> primitives.ColorX | None:
-        """The WhisperColorMin field value."""
+        """The color the bubble should glow at when the user is not speaking during whisper mode."""
         member = self.get_member("WhisperColorMin")
         if member is None:
             return None
@@ -119,7 +119,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def whisper_color_max(self) -> primitives.ColorX | None:
-        """The WhisperColorMax field value."""
+        """The color the bubble should glow at when the user is speaking at max volume during whisper mode."""
         member = self.get_member("WhisperColorMax")
         if member is None:
             return None
@@ -138,7 +138,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def whisper_color_recording_message(self) -> primitives.ColorX | None:
-        """The WhisperColorRecordingMessage field value."""
+        """The color the bubble should be when the user is recording a message."""
         member = self.get_member("WhisperColorRecordingMessage")
         if member is None:
             return None
@@ -157,7 +157,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def visual_root(self) -> str | None:
-        """Target ID of the VisualRoot reference (targets Slot)."""
+        """The root slot of the visual generated for this component to function"""
         member = self.get_member("VisualRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -178,7 +178,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def active_user(self) -> str | None:
-        """Target ID of the _activeUser reference (targets User)."""
+        """The user controlling and updating this component's logic."""
         member = self.get_member("_activeUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -199,7 +199,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def visual_size(self) -> str | None:
-        """Target ID of the _visualSize reference (targets IField[primitives.Float3])."""
+        """The field to use when driving the size of this visual to match the range of the user's whisper mode. Uses ``AudioOutput``'s range for the source of the data."""
         member = self.get_member("_visualSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -220,7 +220,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def visual_color(self) -> str | None:
-        """Target ID of the _visualColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive to a color in an inclusive range of ``WhisperColorMin`` and ``WhisperColorMax`` depending on volume output."""
         member = self.get_member("_visualColor")
         if isinstance(member, members.Reference):
             return member.targetId

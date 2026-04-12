@@ -12,9 +12,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IButtonHoverReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonDynamicImpulseTrigger.
+    """The ButtonDynamicImpulseTrigger component sends Dynamic Impulses to flux node receivers. This acts like a combination of Button Events & Dynamic Impulse Trigger ProtoFlux nodes, but as a component instead.
+
+}}
 
     Category: Common UI/Button Interactions
+
+    Useful for sending dynamic pulses cleanly instead of using flux.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonDynamicImpulseTrigger"
@@ -53,7 +57,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The slot hierarchy to send this impulse through. If this is null, it will pulse through root instead."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -74,7 +78,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
 
     @property
     def exclude_disabled(self) -> primitives.Bool | None:
-        """The ExcludeDisabled field value."""
+        """If true, this pulse will ignore disabled slots."""
         member = self.get_member("ExcludeDisabled")
         if member is None:
             return None
@@ -93,7 +97,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
 
     @property
     def pressed_tag(self) -> primitives.String | None:
-        """The PressedTag field value."""
+        """When the button is pressed, send a pulse for receivers looking for this tag."""
         member = self.get_member("PressedTag")
         if member is None:
             return None
@@ -112,7 +116,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
 
     @property
     def pressing_tag(self) -> primitives.String | None:
-        """The PressingTag field value."""
+        """When the button is pressing, send a pulse for receivers looking for this tag."""
         member = self.get_member("PressingTag")
         if member is None:
             return None
@@ -131,7 +135,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
 
     @property
     def released_tag(self) -> primitives.String | None:
-        """The ReleasedTag field value."""
+        """When the button is released, send a pulse for receivers looking for this tag."""
         member = self.get_member("ReleasedTag")
         if member is None:
             return None
@@ -150,7 +154,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
 
     @property
     def hover_enter_tag(self) -> primitives.String | None:
-        """The HoverEnterTag field value."""
+        """When the button just began to hover, send a pulse for receivers looking for this tag."""
         member = self.get_member("HoverEnterTag")
         if member is None:
             return None
@@ -169,7 +173,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
 
     @property
     def hover_stay_tag(self) -> primitives.String | None:
-        """The HoverStayTag field value."""
+        """When the button is hovering, send a pulse for receivers looking for this tag."""
         member = self.get_member("HoverStayTag")
         if member is None:
             return None
@@ -188,7 +192,7 @@ class ButtonDynamicImpulseTrigger(GeneratedComponent, IButtonPressReceiver, IBut
 
     @property
     def hover_leave_tag(self) -> primitives.String | None:
-        """The HoverLeaveTag field value."""
+        """When the button has stopped hovering, send a pulse for receivers looking for this tag."""
         member = self.get_member("HoverLeaveTag")
         if member is None:
             return None

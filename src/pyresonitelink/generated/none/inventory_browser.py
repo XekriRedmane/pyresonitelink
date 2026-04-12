@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.special_item_type import SpecialItemType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.browser_item import BrowserItem
@@ -17,12 +18,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InventoryBrowser.
+    """The InventoryBrowser Component is the component that handles the Inventory screen.
+
+    Not used directly by the user.
+
+    **SpecialItemType**: Every one of these map to their corrosponding favorite item. To see what components map to these enums when saved to inventory, refer to the favorites page.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InventoryBrowser"
 
-    def __init__(self, selected_item: str | BrowserItem | None = None, previous_selected_item: str | BrowserItem | None = None, allow_select: primitives.Bool | None = None, item_size: primitives.Float | None = None, selected_text: str | Text | None = None, path_root: str | Slot | None = None, buttons_root: str | Slot | None = None, folder_grid: str | GridLayout | None = None, item_grid: str | GridLayout | None = None, tab_sprite: str | SpriteProvider | None = None, loading_indicator: str | Slot | None = None, swapper: str | SlideSwapRegion | None = None, auto_reinitialize: primitives.Bool | None = None, current_path: primitives.String | None = None, current_owner_id: primitives.String | None = None, add_new_button: str | Button | None = None, delete_button: str | Button | None = None, inventories_button: str | Button | None = None, share_button: str | Button | None = None, unshare_button: str | Button | None = None, copy_link: str | Button | None = None, add_current_avatar: str | Button | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, selected_item: str | BrowserItem | None = None, previous_selected_item: str | BrowserItem | None = None, allow_select: primitives.Bool | None = None, item_size: primitives.Float | None = None, selected_text: str | Text | None = None, path_root: str | Slot | None = None, buttons_root: str | Slot | None = None, folder_grid: str | GridLayout | None = None, item_grid: str | GridLayout | None = None, tab_sprite: str | SpriteProvider | None = None, loading_indicator: str | Slot | None = None, swapper: str | SlideSwapRegion | None = None, auto_reinitialize: primitives.Bool | None = None, current_path: primitives.String | None = None, current_owner_id: primitives.String | None = None, add_new_button: str | Button | None = None, delete_button: str | Button | None = None, inventories_button: str | Button | None = None, share_button: str | Button | None = None, unshare_button: str | Button | None = None, copy_link: str | Button | None = None, add_current_avatar: str | Button | None = None, last_special_item_type: SpecialItemType | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -48,6 +53,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
             unshare_button: Initial value for _unshareButton.
             copy_link: Initial value for _copyLink.
             add_current_avatar: Initial value for _addCurrentAvatar.
+            last_special_item_type: Initial value for _lastSpecialItemType.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -95,10 +101,12 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.copy_link = copy_link
         if add_current_avatar is not None:
             self.add_current_avatar = add_current_avatar
+        if last_special_item_type is not None:
+            self.last_special_item_type = last_special_item_type
 
     @property
     def selected_item(self) -> str | None:
-        """Target ID of the SelectedItem reference (targets BrowserItem)."""
+        """The currently selected item being highlighted."""
         member = self.get_member("SelectedItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -119,7 +127,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def previous_selected_item(self) -> str | None:
-        """Target ID of the _previousSelectedItem reference (targets BrowserItem)."""
+        """The item previously highlighted."""
         member = self.get_member("_previousSelectedItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -140,7 +148,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def allow_select(self) -> primitives.Bool | None:
-        """The AllowSelect field value."""
+        """Whether this file browser allows selecting item elements."""
         member = self.get_member("AllowSelect")
         if member is None:
             return None
@@ -159,7 +167,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def item_size(self) -> primitives.Float | None:
-        """The ItemSize field value."""
+        """How big the items are on the view."""
         member = self.get_member("ItemSize")
         if member is None:
             return None
@@ -178,7 +186,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def selected_text(self) -> str | None:
-        """Target ID of the _selectedText reference (targets Text)."""
+        """The text to fill with the name of the selected item."""
         member = self.get_member("_selectedText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -199,7 +207,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def path_root(self) -> str | None:
-        """Target ID of the _pathRoot reference (targets Slot)."""
+        """The root of the area being used to display the current path."""
         member = self.get_member("_pathRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -220,7 +228,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def buttons_root(self) -> str | None:
-        """Target ID of the _buttonsRoot reference (targets Slot)."""
+        """The root of the area being used to show the different button actions."""
         member = self.get_member("_buttonsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -241,7 +249,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def folder_grid(self) -> str | None:
-        """Target ID of the _folderGrid reference (targets GridLayout)."""
+        """The grid layout Component being used to align the folders in the directory."""
         member = self.get_member("_folderGrid")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -262,7 +270,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def item_grid(self) -> str | None:
-        """Target ID of the _itemGrid reference (targets GridLayout)."""
+        """The grid layout Component being used to align the files in the directory."""
         member = self.get_member("_itemGrid")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -283,7 +291,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def tab_sprite(self) -> str | None:
-        """Target ID of the _tabSprite reference (targets SpriteProvider)."""
+        """The sprite being used to show the tab sprite."""
         member = self.get_member("_tabSprite")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -304,7 +312,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def loading_indicator(self) -> str | None:
-        """Target ID of the _loadingIndicator reference (targets Slot)."""
+        """The slot that stores the loading indicator for a newly opened directory."""
         member = self.get_member("_loadingIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -325,7 +333,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def swapper(self) -> str | None:
-        """Target ID of the _swapper reference (targets SlideSwapRegion)."""
+        """The component to handle the slide animation when opening a different directory."""
         member = self.get_member("_swapper")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -346,7 +354,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user(self) -> members.SyncObject | None:
-        """The _user member."""
+        """The user this belongs to."""
         member = self.get_member("_user")
         if isinstance(member, members.SyncObject):
             return member
@@ -354,12 +362,12 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @user.setter
     def user(self, value: members.SyncObject) -> None:
-        """Set the _user member."""
+        """Set _user. The user this belongs to."""
         self.set_member("_user", value)
 
     @property
     def auto_reinitialize(self) -> primitives.Bool | None:
-        """The _autoReinitialize field value."""
+        """Whether to fix issues by auto reinitializing."""
         member = self.get_member("_autoReinitialize")
         if member is None:
             return None
@@ -378,7 +386,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_path(self) -> primitives.String | None:
-        """The _currentPath field value."""
+        """The current inventory path this is navigated to."""
         member = self.get_member("_currentPath")
         if member is None:
             return None
@@ -397,7 +405,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_owner_id(self) -> primitives.String | None:
-        """The _currentOwnerId field value."""
+        """The owner of this inventory screen."""
         member = self.get_member("_currentOwnerId")
         if member is None:
             return None
@@ -416,7 +424,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def add_new_button(self) -> str | None:
-        """Target ID of the _addNewButton reference (targets Button)."""
+        """The button for adding new directories."""
         member = self.get_member("_addNewButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -437,7 +445,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def delete_button(self) -> str | None:
-        """Target ID of the _deleteButton reference (targets Button)."""
+        """The button for deleting items and directories."""
         member = self.get_member("_deleteButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -458,7 +466,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def inventories_button(self) -> str | None:
-        """Target ID of the _inventoriesButton reference (targets Button)."""
+        """The button to go to the main inventories screen in order to go to the personal inventory or group shared inventories."""
         member = self.get_member("_inventoriesButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -479,7 +487,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def share_button(self) -> str | None:
-        """Target ID of the _shareButton reference (targets Button)."""
+        """The button to share folders to the public."""
         member = self.get_member("_shareButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -500,7 +508,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def unshare_button(self) -> str | None:
-        """Target ID of the _unshareButton reference (targets Button)."""
+        """The button to unshare folders to the public."""
         member = self.get_member("_unshareButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -521,7 +529,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def copy_link(self) -> str | None:
-        """Target ID of the _copyLink reference (targets Button)."""
+        """The button to copy the link for an item or folder."""
         member = self.get_member("_copyLink")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -542,7 +550,7 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def add_current_avatar(self) -> str | None:
-        """Target ID of the _addCurrentAvatar reference (targets Button)."""
+        """The button to favorite the currently selected avatar"""
         member = self.get_member("_addCurrentAvatar")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -562,15 +570,22 @@ class InventoryBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def last_special_item_type(self) -> members.FieldEnum | None:
-        """The _lastSpecialItemType member."""
+    def last_special_item_type(self) -> SpecialItemType | None:
+        """The last special item type that was selected in this inventory."""
         member = self.get_member("_lastSpecialItemType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SpecialItemType(member.value)
         return None
 
     @last_special_item_type.setter
-    def last_special_item_type(self, value: members.FieldEnum) -> None:
-        """Set the _lastSpecialItemType member."""
-        self.set_member("_lastSpecialItemType", value)
+    def last_special_item_type(self, value: SpecialItemType | str) -> None:
+        """Set _lastSpecialItemType. The last special item type that was selected in this inventory."""
+        member = self.get_member("_lastSpecialItemType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_lastSpecialItemType",
+                members.FieldEnum(value=str(value)),
+            )
 

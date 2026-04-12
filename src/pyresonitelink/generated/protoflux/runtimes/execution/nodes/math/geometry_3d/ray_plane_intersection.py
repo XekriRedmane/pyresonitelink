@@ -42,7 +42,7 @@ class RayPlaneIntersection(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def ray_origin(self) -> str | None:
-        """Target ID of the RayOrigin reference (targets INodeValueOutput[primitives.Float3])."""
+        """The starting point of this ray."""
         member = self.get_member("RayOrigin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class RayPlaneIntersection(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def ray_direction(self) -> str | None:
-        """Target ID of the RayDirection reference (targets INodeValueOutput[primitives.Float3])."""
+        """The direction this ray will aim at."""
         member = self.get_member("RayDirection")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class RayPlaneIntersection(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def plane_point(self) -> str | None:
-        """Target ID of the PlanePoint reference (targets INodeValueOutput[primitives.Float3])."""
+        """The plane position."""
         member = self.get_member("PlanePoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +105,7 @@ class RayPlaneIntersection(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def plane_normal(self) -> str | None:
-        """Target ID of the PlaneNormal reference (targets INodeValueOutput[primitives.Float3])."""
+        """The plane normal."""
         member = self.get_member("PlaneNormal")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,9 +10,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PositionSimulatorModule(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.PositionSimulatorModule.
+    """The PositionSimulatorModule component is the most essential particle simulator module. Without it, particles will not move, and won't have velocity.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.PositionSimulatorModule"
@@ -36,7 +41,7 @@ class PositionSimulatorModule(GeneratedComponent, IParticleSystemModule, IWorldE
 
     @property
     def collisions(self) -> primitives.Bool | None:
-        """The Collisions field value."""
+        """Whether particles should have collisions."""
         member = self.get_member("Collisions")
         if member is None:
             return None
@@ -55,7 +60,7 @@ class PositionSimulatorModule(GeneratedComponent, IParticleSystemModule, IWorldE
 
     @property
     def collision_lifetime_loss_ratio(self) -> primitives.Float | None:
-        """The CollisionLifetimeLossRatio field value."""
+        """How much lifetime percentage from 01 should particles loose when hitting a surface?"""
         member = self.get_member("CollisionLifetimeLossRatio")
         if member is None:
             return None
@@ -74,7 +79,7 @@ class PositionSimulatorModule(GeneratedComponent, IParticleSystemModule, IWorldE
 
     @property
     def collision_bounce_ratio(self) -> primitives.Float | None:
-        """The CollisionBounceRatio field value."""
+        """How much velocity should particles retain as a percentage from 01 when bouncing off of a surface?"""
         member = self.get_member("CollisionBounceRatio")
         if member is None:
             return None

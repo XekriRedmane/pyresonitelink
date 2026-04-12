@@ -45,7 +45,7 @@ class ClosestPointOnConeSurface(GeneratedComponent, IExecutionNode, INode, ICust
 
     @property
     def cone_center(self) -> str | None:
-        """Target ID of the ConeCenter reference (targets INodeValueOutput[primitives.Float3])."""
+        """The center of the cone (located at the center of the base of the cone)."""
         member = self.get_member("ConeCenter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +66,7 @@ class ClosestPointOnConeSurface(GeneratedComponent, IExecutionNode, INode, ICust
 
     @property
     def cone_orientation(self) -> str | None:
-        """Target ID of the ConeOrientation reference (targets INodeValueOutput[primitives.FloatQ])."""
+        """The rotation of the cone."""
         member = self.get_member("ConeOrientation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +87,7 @@ class ClosestPointOnConeSurface(GeneratedComponent, IExecutionNode, INode, ICust
 
     @property
     def cone_height(self) -> str | None:
-        """Target ID of the ConeHeight reference (targets INodeValueOutput[primitives.Float])."""
+        """The height of the cone."""
         member = self.get_member("ConeHeight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +108,7 @@ class ClosestPointOnConeSurface(GeneratedComponent, IExecutionNode, INode, ICust
 
     @property
     def cone_base_radius(self) -> str | None:
-        """Target ID of the ConeBaseRadius reference (targets INodeValueOutput[primitives.Float])."""
+        """The size of the cone base's circle radius."""
         member = self.get_member("ConeBaseRadius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -129,7 +129,7 @@ class ClosestPointOnConeSurface(GeneratedComponent, IExecutionNode, INode, ICust
 
     @property
     def point(self) -> str | None:
-        """Target ID of the Point reference (targets INodeValueOutput[primitives.Float3])."""
+        """The point we are checking."""
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -150,7 +150,7 @@ class ClosestPointOnConeSurface(GeneratedComponent, IExecutionNode, INode, ICust
 
     @property
     def closest_point(self) -> members.EmptyElement | None:
-        """The ClosestPoint member."""
+        """Returns the point in the cone's surface compared with the point given."""
         member = self.get_member("ClosestPoint")
         if isinstance(member, members.EmptyElement):
             return member
@@ -158,12 +158,12 @@ class ClosestPointOnConeSurface(GeneratedComponent, IExecutionNode, INode, ICust
 
     @closest_point.setter
     def closest_point(self, value: members.EmptyElement) -> None:
-        """Set the ClosestPoint member."""
+        """Set ClosestPoint. Returns the point in the cone's surface compared with the point given."""
         self.set_member("ClosestPoint", value)
 
     @property
     def is_point_inside(self) -> members.EmptyElement | None:
-        """The IsPointInside member."""
+        """Returns if the point is within this cone."""
         member = self.get_member("IsPointInside")
         if isinstance(member, members.EmptyElement):
             return member
@@ -171,6 +171,6 @@ class ClosestPointOnConeSurface(GeneratedComponent, IExecutionNode, INode, ICust
 
     @is_point_inside.setter
     def is_point_inside(self, value: members.EmptyElement) -> None:
-        """Set the IsPointInside member."""
+        """Set IsPointInside. Returns if the point is within this cone."""
         self.set_member("IsPointInside", value)
 

@@ -21,7 +21,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserspaceRadiantDash.
+    """The UserspaceRadiantDash is better described on the dedicated page, Dash Menu.
+
+    See Dash Menu.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserspaceRadiantDash"
@@ -87,7 +89,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def block_open_close(self) -> primitives.Bool | None:
-        """The BlockOpenClose field value."""
+        """Whether to block opening and closing of the dash"""
         member = self.get_member("BlockOpenClose")
         if member is None:
             return None
@@ -106,7 +108,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def freeform(self) -> primitives.Bool | None:
-        """The Freeform field value."""
+        """Whether the dash can be grabbed around in freeform style."""
         member = self.get_member("Freeform")
         if member is None:
             return None
@@ -125,7 +127,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def dash(self) -> str | None:
-        """Target ID of the _dash reference (targets RadiantDash)."""
+        """The radiant dash component that handles all the dash like behaviors/"""
         member = self.get_member("_dash")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -146,7 +148,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def dash_visual_root(self) -> str | None:
-        """Target ID of the _dashVisualRoot reference (targets Slot)."""
+        """The root slot for the visuals of the radiant dash."""
         member = self.get_member("_dashVisualRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -167,7 +169,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def positioner(self) -> str | None:
-        """Target ID of the _positioner reference (targets UserInterfacePositioner)."""
+        """Handles positioning the dash in front of the user while it is in user space."""
         member = self.get_member("_positioner")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -188,7 +190,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def modal_overlay(self) -> str | None:
-        """Target ID of the _modalOverlay reference (targets ModalOverlayManager)."""
+        """Handles managing the different overlays on different screens like the home tab."""
         member = self.get_member("_modalOverlay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -209,7 +211,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def legacy_inventory_panel(self) -> str | None:
-        """Target ID of the _legacyInventoryPanel reference (targets LegacyCanvasPanel)."""
+        """Legacy. not used in newer versions. From a time before time when UIX didn't exist."""
         member = self.get_member("_legacyInventoryPanel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -230,7 +232,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def legacy_inventory(self) -> str | None:
-        """Target ID of the _legacyInventory reference (targets InventoryBrowser)."""
+        """Legacy. not used in newer versions. From a time before time when UIX didn't exist."""
         member = self.get_member("_legacyInventory")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -251,7 +253,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slider(self) -> str | None:
-        """Target ID of the _slider reference (targets Slider)."""
+        """The slider used to move the dash around via grabbing it."""
         member = self.get_member("_slider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -272,7 +274,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def lookat(self) -> str | None:
-        """Target ID of the _lookat reference (targets LookAt)."""
+        """The lookat component that handles keeping the dash facing the user."""
         member = self.get_member("_lookat")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -293,7 +295,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ui_edit_mode_toggle(self) -> str | None:
-        """Target ID of the _uiEditModeToggle reference (targets Slot)."""
+        """The slot that appears when the user has the ability to turn off UI edit mode after turning it on."""
         member = self.get_member("_uiEditModeToggle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -314,7 +316,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def always_on_facet_root(self) -> str | None:
-        """Target ID of the _alwaysOnFacetRoot reference (targets Slot)."""
+        """This slot stores elements of the dash that were made on a facet that are marked as always on. Things that end up here will have a Always On Facet Module Component so they always stay enabled even when the dash closes."""
         member = self.get_member("_alwaysOnFacetRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -335,7 +337,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screens_workspace(self) -> str | None:
-        """Target ID of the _screensWorkspace reference (targets Workspace)."""
+        """The workspace for screens that should be saved when the user's dash gets saved. helps preserve dash customization between machines."""
         member = self.get_member("_screensWorkspace")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -356,7 +358,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_workspace(self) -> str | None:
-        """Target ID of the _topWorkspace reference (targets Workspace)."""
+        """The workspace for top area elements that should be saved when the user's dash gets saved. helps preserve dash customization between machines."""
         member = self.get_member("_topWorkspace")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -377,7 +379,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def notifications(self) -> str | None:
-        """Target ID of the _notifications reference (targets NotificationPanel)."""
+        """The component that handles notifications for the game for the current session and people coming online."""
         member = self.get_member("_notifications")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -398,7 +400,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def notifications_root(self) -> str | None:
-        """Target ID of the _notificationsRoot reference (targets Slot)."""
+        """The slot that contains the entirety of the notifications stack and logic."""
         member = self.get_member("_notificationsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -419,7 +421,7 @@ class UserspaceRadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def notifications_holder(self) -> str | None:
-        """Target ID of the _notificationsHolder reference (targets Slot)."""
+        """The slot at which notification elements should appear like users joining and role changing."""
         member = self.get_member("_notificationsHolder")
         if isinstance(member, members.Reference):
             return member.targetId

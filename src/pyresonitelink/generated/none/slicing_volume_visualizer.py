@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SlicingVolumeVisualizer.
+    """The SlicingVolumeVisualizer component is used to visualize the slicer imported with new volumes imported into the game.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlicingVolumeVisualizer"
@@ -57,7 +57,7 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets VolumeUnlitMaterial)."""
+        """The material to be slicing."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -78,7 +78,7 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def auto_scale(self) -> primitives.Bool | None:
-        """The AutoScale field value."""
+        """Whether to auto scale the visual to fit the object it is slicing."""
         member = self.get_member("AutoScale")
         if member is None:
             return None
@@ -97,7 +97,7 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def renderer(self) -> str | None:
-        """Target ID of the _renderer reference (targets MeshRenderer)."""
+        """The renderer component which this is slicing a mesh for."""
         member = self.get_member("_renderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -118,7 +118,7 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the _mesh reference (targets BoxMesh)."""
+        """The mesh this visual is slicing."""
         member = self.get_member("_mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -139,7 +139,7 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def collider(self) -> str | None:
-        """Target ID of the _collider reference (targets BoxCollider)."""
+        """The box collider that is used to interact with the slicer this is attached to."""
         member = self.get_member("_collider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -160,7 +160,7 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def scale(self) -> str | None:
-        """Target ID of the _scale reference (targets IField[primitives.Float3])."""
+        """The scale field of the slicer visual element."""
         member = self.get_member("_scale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -181,7 +181,7 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def slicers(self) -> members.SyncList | None:
-        """The Slicers member."""
+        """A list of slicers that are slicing the object."""
         member = self.get_member("Slicers")
         if isinstance(member, members.SyncList):
             return member
@@ -189,12 +189,12 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
 
     @slicers.setter
     def slicers(self, value: members.SyncList) -> None:
-        """Set the Slicers member."""
+        """Set Slicers. A list of slicers that are slicing the object."""
         self.set_member("Slicers", value)
 
     @property
     def slice_planes(self) -> str | None:
-        """Target ID of the _slicePlanes reference (targets SyncList[SlicePlane])."""
+        """A list of slice planes that are slicing the object."""
         member = self.get_member("_slicePlanes")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -215,7 +215,7 @@ class SlicingVolumeVisualizer(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def highlights(self) -> str | None:
-        """Target ID of the _highlights reference (targets SyncList[Highlight])."""
+        """a list of highlight components for slicing the object."""
         member = self.get_member("_highlights")
         if isinstance(member, members.Reference):
             return member.targetId

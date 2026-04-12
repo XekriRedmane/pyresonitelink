@@ -9,9 +9,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicVariableSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicVariableSpace.
+    """The DynamicVariableSpace component is used to separate dynamic variables into namespaces. Since dynamic variables are, by default, created on the slot of the nearest parent DynamicVariableSpace, this component provides control over where the root of that space is, as well as part of the path name to be referenced when using a consumer of dynamic variables, such as DynamicValueVariableDriver`1. For more info see Dynamic Variables.
 
     Category: Data/Dynamic
+
+    **Introduction**: The DynamicVariableSpace component is used to separate dynamic variables into namespaces.
+Since dynamic variables are, by default, created on the slot of the nearest parent DynamicVariableSpace, this component provides control over where the root of that space is, as well as part of the path name to be referenced when using a consumer of dynamic variables, such as DynamicValueVariableDriver`1. For more info see Dynamic Variables.
+
+    **Behavior**: == Examples ==
+By default worlds have a DynamicVariableSpace named "World" and users have a DynamicVariableSpace named "User"
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicVariableSpace"
@@ -32,7 +38,7 @@ class DynamicVariableSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def space_name(self) -> primitives.String | None:
-        """The SpaceName field value."""
+        """The name of the space."""
         member = self.get_member("SpaceName")
         if member is None:
             return None
@@ -51,7 +57,7 @@ class DynamicVariableSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def only_direct_binding(self) -> primitives.Bool | None:
-        """The OnlyDirectBinding field value."""
+        """When enabled, variables won't be bound to this space unless they specify it by name: /."""
         member = self.get_member("OnlyDirectBinding")
         if member is None:
             return None

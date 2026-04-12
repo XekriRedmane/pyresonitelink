@@ -34,7 +34,7 @@ class IsGrabbableGrabbed(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def grabbable(self) -> str | None:
-        """Target ID of the Grabbable reference (targets INodeObjectOutput[IGrabbable])."""
+        """The grabbable to check is being grabbed."""
         member = self.get_member("Grabbable")
         if isinstance(member, members.Reference):
             return member.targetId

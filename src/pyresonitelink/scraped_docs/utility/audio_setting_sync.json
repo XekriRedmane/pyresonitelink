@@ -1,0 +1,21 @@
+{
+  "description": "The AudioSettingSync component only works in dash space. This handles the settings of the game when it's values are changed.\n\nsee Settings#Volume",
+  "category": "Utility",
+  "fields": {
+    "DefaultAudioInputDeviceIndex": "The audio device that should be the default",
+    "OverrideAudioOutputIndex": "The audio device to use as an override for the default",
+    "MasterVolume": "Controls the volume of everything in Resonite",
+    "WhisperVoiceVolume": "Controls the volume of sounds outside of your whisper sphere when using whisper mode.",
+    "NoiseGateThreshold": "Noise gate prevents background noises from being transmitted to other users. This setting indicates the maximum volume at which sounds will be filtered out. If too much noise is making it in, increase this setting, if your voice is not getting through, lower it.",
+    "NoiseGateAttack": "This indicates how fast the noise gate responds to an incoming sound that is louder than the threshold volume. Larger values will result in a slower volume fade in, while smaller ones will make the volume ramp up quicker.",
+    "NoiseGateHold": "This controls how long it takes for the noise gate to begin to close after the microphone input volume falls below the threshold volume.",
+    "NoiseGateRelease": "This setting controls how fast the noise gate closes after the incoming audio has quieted again.",
+    "NormalizationThreshold": "Using this setting you can control the threshold when the incoming audio will become amplified. If your normal speech is too quiet and it's not getting amplified, lower this setting. If random quiet noises are being amplified, increase it.",
+    "VoiceNormalization": "Whether to normalize a user's voice or not.",
+    "NoiseSupression": "This feature processes the incoming audio to filter out various undesirable noises. This can clean up audio from noisy microphones considerably, producing a cleaner voice. We strongly recommend keeping this setting on. However, it can also filter out certain noises that do not get identified as speech."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioSettingSync&action=raw"
+}

@@ -16,6 +16,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class OnLoaded(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """On Loaded is a Protoflux node that triggers for its allocating user whenever the node is loaded for the first time (not when it's duplicated). This happens on world loads and object loads.
 
+TODO: Does this node fire when the entire node group this is connected to is loaded? or all of them? or just this one node?
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """
 
@@ -34,7 +36,7 @@ class OnLoaded(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IEx
 
     @property
     def trigger(self) -> str | None:
-        """Target ID of the Trigger reference (targets ISyncNodeOperation)."""
+        """Sends an Impulse when the node is loaded. This Impulse is owned by the allocating user."""
         member = self.get_member("Trigger")
         if isinstance(member, members.Reference):
             return member.targetId

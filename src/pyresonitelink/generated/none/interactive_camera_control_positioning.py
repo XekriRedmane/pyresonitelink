@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractiveCameraControlPositioning(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraControlPositioning.
+    """See Camera.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraControlPositioning"
@@ -35,7 +37,7 @@ class InteractiveCameraControlPositioning(GeneratedComponent, IComponent, IWorld
 
     @property
     def canvas(self) -> str | None:
-        """Target ID of the _canvas reference (targets Canvas)."""
+        """The canvas being used to show settings."""
         member = self.get_member("_canvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +58,7 @@ class InteractiveCameraControlPositioning(GeneratedComponent, IComponent, IWorld
 
     @property
     def panel(self) -> str | None:
-        """Target ID of the _panel reference (targets LegacyPanel)."""
+        """The legacy panel being used as a base to interact with the settings."""
         member = self.get_member("_panel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +79,7 @@ class InteractiveCameraControlPositioning(GeneratedComponent, IComponent, IWorld
 
     @property
     def control(self) -> str | None:
-        """Target ID of the _control reference (targets InteractiveCameraControl)."""
+        """see Interactive Camera Control."""
         member = self.get_member("_control")
         if isinstance(member, members.Reference):
             return member.targetId

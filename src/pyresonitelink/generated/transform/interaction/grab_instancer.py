@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabInstancer.
+    """The GrabInstancer component spawns a new copy of ``Template`` and attaches it to the user's hand whenever the slot it is attached to is grabbed.
 
     Category: Transform/Interaction
+
+    Attach to a slot and provide a value for ``Template`` at minimum.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabInstancer"
@@ -52,7 +54,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def template(self) -> str | None:
-        """Target ID of the Template reference (targets Slot)."""
+        """The slot that gets duplicated and grabbed when the GrabInstancer is grabbed. (Like a figurine)"""
         member = self.get_member("Template")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +75,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def container_template(self) -> str | None:
-        """Target ID of the ContainerTemplate reference (targets Slot)."""
+        """The slot to duplicate and act as a container for the grabbed object (Like a box for a figurine)"""
         member = self.get_member("ContainerTemplate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -94,7 +96,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def container_template_instance_root(self) -> str | None:
-        """Target ID of the ContainerTemplateInstanceRoot reference (targets Slot)."""
+        """The override on where to place the duplicated grabbed object (Where to put the figurine in the box hiearchy)."""
         member = self.get_member("ContainerTemplateInstanceRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -115,7 +117,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def activate_root(self) -> primitives.Bool | None:
-        """The ActivateRoot field value."""
+        """Whether or not the GrabInstancer should activate the newly duplicated slot."""
         member = self.get_member("ActivateRoot")
         if member is None:
             return None
@@ -134,7 +136,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def enable_grabbable(self) -> primitives.Bool | None:
-        """The EnableGrabbable field value."""
+        """Whether or not the GrabInstancer should activate any Grabbable component on the newly duplicated slot."""
         member = self.get_member("EnableGrabbable")
         if member is None:
             return None
@@ -153,7 +155,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def set_instance_persistent(self) -> primitives.Bool | None:
-        """The SetInstancePersistent field value."""
+        """Whether to set the duplicated object's persistence field, and what to set it to."""
         member = self.get_member("SetInstancePersistent")
         if member is None:
             return None
@@ -172,7 +174,7 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def excluded_parts(self) -> members.SyncList | None:
-        """The ExcludedParts member."""
+        """slots will be skipped while duplicating"""
         member = self.get_member("ExcludedParts")
         if isinstance(member, members.SyncList):
             return member
@@ -180,12 +182,12 @@ class GrabInstancer(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @excluded_parts.setter
     def excluded_parts(self, value: members.SyncList) -> None:
-        """Set the ExcludedParts member."""
+        """Set ExcludedParts. slots will be skipped while duplicating"""
         self.set_member("ExcludedParts", value)
 
     @property
     def physical(self) -> primitives.Bool | None:
-        """The Physical field value."""
+        """If true, the GrabInstancer only reacts to physical grab."""
         member = self.get_member("Physical")
         if member is None:
             return None

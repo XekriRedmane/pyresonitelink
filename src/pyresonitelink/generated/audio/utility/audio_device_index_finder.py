@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioDeviceIndexFinder(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioDeviceIndexFinder.
+    """The AudioDeviceIndexFinder component only works in user space, and is used to find an audio device by name.
 
     Category: Audio/Utility
     """
@@ -38,7 +38,7 @@ class AudioDeviceIndexFinder(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def device_index(self) -> primitives.Int | None:
-        """The DeviceIndex field value."""
+        """The device index if found"""
         member = self.get_member("DeviceIndex")
         if member is None:
             return None
@@ -57,7 +57,7 @@ class AudioDeviceIndexFinder(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def device_name(self) -> primitives.String | None:
-        """The DeviceName field value."""
+        """the name to use when looking for a device"""
         member = self.get_member("DeviceName")
         if member is None:
             return None
@@ -76,7 +76,7 @@ class AudioDeviceIndexFinder(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def case_sensitive(self) -> primitives.Bool | None:
-        """The CaseSensitive field value."""
+        """Whether the matching with ``DeviceName`` is case sensitive"""
         member = self.get_member("CaseSensitive")
         if member is None:
             return None
@@ -95,7 +95,7 @@ class AudioDeviceIndexFinder(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def allow_partial_match(self) -> primitives.Bool | None:
-        """The AllowPartialMatch field value."""
+        """Whether the matching with ``DeviceName`` allows a partial match."""
         member = self.get_member("AllowPartialMatch")
         if member is None:
             return None

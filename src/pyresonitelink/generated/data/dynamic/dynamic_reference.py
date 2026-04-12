@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicReference(GenericComponent[T], IDynamicVariable[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicReference<>.
+    """The DynamicReference component allows marking of any SyncRef`1 (Reference holder) as part of the Dynamic Variables System. The value inside of the specified SyncRef can change and will be changed by the Dynamic Variables System. The variable name and the type of variable will determine how this will link to and be changed by the Dynamic Variables System. For more info on how Dynamic Variables work please check the Dynamic Variables page.
 
     Category: Data/Dynamic
 
@@ -63,7 +63,7 @@ class DynamicReference(GenericComponent[T], IDynamicVariable[T], IComponent, IWo
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets SyncRef[T])."""
+        """The field to become synced with and be the definition of the reference dynamic variable."""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId

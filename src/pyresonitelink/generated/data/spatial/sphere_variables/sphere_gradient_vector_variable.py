@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.spatial_variable_blend_distance_mode import SpatialVariableBlendDistanceMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ispatial_variable import ISpatialVariable
@@ -11,14 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SphereGradientVectorVariable(GeneratedComponent, ISpatialVariable, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SphereGradientVectorVariable.
+    """The Sphere Gradient Vector Variable component
 
     Category: Data/Spatial/Sphere Variables
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SphereGradientVectorVariable"
 
-    def __init__(self, variable_name: primitives.String | None = None, priority: primitives.Int | None = None, radius: primitives.Float | None = None, blend_distance: primitives.Float | None = None, edge_magnitude: primitives.Float | None = None, center_magnitude: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, priority: primitives.Int | None = None, radius: primitives.Float | None = None, blend_distance: primitives.Float | None = None, blend_distance_mode: SpatialVariableBlendDistanceMode | str | None = None, edge_magnitude: primitives.Float | None = None, center_magnitude: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -26,6 +27,7 @@ class SphereGradientVectorVariable(GeneratedComponent, ISpatialVariable, ICompon
             priority: Initial value for Priority.
             radius: Initial value for Radius.
             blend_distance: Initial value for BlendDistance.
+            blend_distance_mode: Initial value for BlendDistanceMode.
             edge_magnitude: Initial value for EdgeMagnitude.
             center_magnitude: Initial value for CenterMagnitude.
             component: Existing Component to wrap.
@@ -39,6 +41,8 @@ class SphereGradientVectorVariable(GeneratedComponent, ISpatialVariable, ICompon
             self.radius = radius
         if blend_distance is not None:
             self.blend_distance = blend_distance
+        if blend_distance_mode is not None:
+            self.blend_distance_mode = blend_distance_mode
         if edge_magnitude is not None:
             self.edge_magnitude = edge_magnitude
         if center_magnitude is not None:
@@ -121,17 +125,24 @@ class SphereGradientVectorVariable(GeneratedComponent, ISpatialVariable, ICompon
             )
 
     @property
-    def blend_distance_mode(self) -> members.FieldEnum | None:
-        """The BlendDistanceMode member."""
+    def blend_distance_mode(self) -> SpatialVariableBlendDistanceMode | None:
+        """The BlendDistanceMode enum value."""
         member = self.get_member("BlendDistanceMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SpatialVariableBlendDistanceMode(member.value)
         return None
 
     @blend_distance_mode.setter
-    def blend_distance_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendDistanceMode member."""
-        self.set_member("BlendDistanceMode", value)
+    def blend_distance_mode(self, value: SpatialVariableBlendDistanceMode | str) -> None:
+        """Set the BlendDistanceMode enum value."""
+        member = self.get_member("BlendDistanceMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendDistanceMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def edge_magnitude(self) -> primitives.Float | None:

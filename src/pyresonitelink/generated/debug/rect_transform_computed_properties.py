@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectTransformComputedProperties(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.RectTransformComputedProperties.
+    """The RectTransformComputedProperties component is used to get the real size of a UIX element that is contained in a slot that has a RectTransform. It takes in the RectTransform reference, and then returns a ``LocalComputerRect``, which is the local bounds of the element, and returns the ``BoundingRect``, which is the bounding rect itself (which can be larger than the local elements from within). Most of the time, both values would be the same, except for some situations.
+
+}}
 
     Category: Debug
+
+    This is used to get the size of the bounds of whatever is inside the
+    RectTransform.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.RectTransformComputedProperties"
@@ -37,7 +42,7 @@ class RectTransformComputedProperties(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def rect(self) -> str | None:
-        """Target ID of the Rect reference (targets RectTransform)."""
+        """The rect transform component to reference from"""
         member = self.get_member("Rect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +63,7 @@ class RectTransformComputedProperties(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def local_compute_rect(self) -> primitives.Rect | None:
-        """The LocalComputeRect field value."""
+        """The local bounds of the element"""
         member = self.get_member("LocalComputeRect")
         if member is None:
             return None
@@ -77,7 +82,7 @@ class RectTransformComputedProperties(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def bounding_rect(self) -> primitives.Rect | None:
-        """The BoundingRect field value."""
+        """The bounding rect itself"""
         member = self.get_member("BoundingRect")
         if member is None:
             return None

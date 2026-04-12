@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioSettingSync.
+    """The AudioSettingSync component only works in dash space. This handles the settings of the game when it's values are changed.
+
+see Settings#Volume
 
     Category: Utility
     """
@@ -59,7 +61,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def default_audio_input_device_index(self) -> primitives.Int | None:
-        """The DefaultAudioInputDeviceIndex field value."""
+        """The audio device that should be the default"""
         member = self.get_member("DefaultAudioInputDeviceIndex")
         if member is None:
             return None
@@ -97,7 +99,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def master_volume(self) -> primitives.Float | None:
-        """The MasterVolume field value."""
+        """Controls the volume of everything in Resonite"""
         member = self.get_member("MasterVolume")
         if member is None:
             return None
@@ -116,7 +118,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def whisper_voice_volume(self) -> primitives.Float | None:
-        """The WhisperVoiceVolume field value."""
+        """Controls the volume of sounds outside of your whisper sphere when using whisper mode."""
         member = self.get_member("WhisperVoiceVolume")
         if member is None:
             return None
@@ -135,7 +137,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def noise_gate_threshold(self) -> primitives.Float | None:
-        """The NoiseGateThreshold field value."""
+        """Noise gate prevents background noises from being transmitted to other users. This setting indicates the maximum volume at which sounds will be filtered out. If too much noise is making it in, increase this setting, if your voice is not getting through, lower it."""
         member = self.get_member("NoiseGateThreshold")
         if member is None:
             return None
@@ -154,7 +156,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def noise_gate_attack(self) -> primitives.Float | None:
-        """The NoiseGateAttack field value."""
+        """This indicates how fast the noise gate responds to an incoming sound that is louder than the threshold volume. Larger values will result in a slower volume fade in, while smaller ones will make the volume ramp up quicker."""
         member = self.get_member("NoiseGateAttack")
         if member is None:
             return None
@@ -173,7 +175,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def noise_gate_hold(self) -> primitives.Float | None:
-        """The NoiseGateHold field value."""
+        """This controls how long it takes for the noise gate to begin to close after the microphone input volume falls below the threshold volume."""
         member = self.get_member("NoiseGateHold")
         if member is None:
             return None
@@ -192,7 +194,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def noise_gate_release(self) -> primitives.Float | None:
-        """The NoiseGateRelease field value."""
+        """This setting controls how fast the noise gate closes after the incoming audio has quieted again."""
         member = self.get_member("NoiseGateRelease")
         if member is None:
             return None
@@ -211,7 +213,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def normalization_threshold(self) -> primitives.Float | None:
-        """The NormalizationThreshold field value."""
+        """Using this setting you can control the threshold when the incoming audio will become amplified. If your normal speech is too quiet and it's not getting amplified, lower this setting. If random quiet noises are being amplified, increase it."""
         member = self.get_member("NormalizationThreshold")
         if member is None:
             return None
@@ -230,7 +232,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def voice_normalization(self) -> primitives.Bool | None:
-        """The VoiceNormalization field value."""
+        """Whether to normalize a user's voice or not."""
         member = self.get_member("VoiceNormalization")
         if member is None:
             return None
@@ -249,7 +251,7 @@ class AudioSettingSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def noise_supression(self) -> primitives.Bool | None:
-        """The NoiseSupression field value."""
+        """This feature processes the incoming audio to filter out various undesirable noises. This can clean up audio from noisy microphones considerably, producing a cleaner voice. We strongly recommend keeping this setting on. However, it can also filter out certain noises that do not get identified as speech."""
         member = self.get_member("NoiseSupression")
         if member is None:
             return None

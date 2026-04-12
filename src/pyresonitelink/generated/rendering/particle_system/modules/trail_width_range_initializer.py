@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TrailWidthRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.TrailWidthRangeInitializer.
+    """The TrailWidthRangeInitializer component makes trails in a particle system start with a random width within a range when born.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.TrailWidthRangeInitializer"
@@ -32,7 +37,7 @@ class TrailWidthRangeInitializer(GeneratedComponent, IParticleSystemModule, IWor
 
     @property
     def min_value(self) -> primitives.Float | None:
-        """The MinValue field value."""
+        """The minimum width a trail can have."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class TrailWidthRangeInitializer(GeneratedComponent, IParticleSystemModule, IWor
 
     @property
     def max_value(self) -> primitives.Float | None:
-        """The MaxValue field value."""
+        """The maximum width a trail can have."""
         member = self.get_member("MaxValue")
         if member is None:
             return None

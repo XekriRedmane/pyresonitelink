@@ -13,7 +13,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DelegateEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DelegateEditor.
+    """The DelegateEditor component is used in the Inspector window of Components where there is a field a sync delegate can be dropped into.
+
+    This isn't usually used by the user, and falls into the category of
+    Components used in Ref Hacking.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DelegateEditor"
@@ -37,7 +40,7 @@ class DelegateEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorldEv
 
     @property
     def target_delegate(self) -> str | None:
-        """Target ID of the _targetDelegate reference (targets ISyncDelegate)."""
+        """The Sync delegate to show."""
         member = self.get_member("_targetDelegate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +61,7 @@ class DelegateEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorldEv
 
     @property
     def text_drive(self) -> str | None:
-        """Target ID of the _textDrive reference (targets IField[primitives.String])."""
+        """The text field to drive with the name of the Sync delegate method."""
         member = self.get_member("_textDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +82,7 @@ class DelegateEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorldEv
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets Button)."""
+        """The button to interface with the Sync delegate."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId

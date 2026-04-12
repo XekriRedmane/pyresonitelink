@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RelayTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RelayTouchSource.
+    """The RelayTouchSource component is used to handle the interactions of tip touch sources on the user.
+
+    Not usually used by the user. However, a TipTouchSource component is.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RelayTouchSource"
@@ -35,7 +37,7 @@ class RelayTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_update_user(self) -> str | None:
-        """Target ID of the AutoUpdateUser reference (targets User)."""
+        """The user handling updates for thus component"""
         member = self.get_member("AutoUpdateUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +58,7 @@ class RelayTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def out_of_sight_angle(self) -> primitives.Float | None:
-        """The OutOfSightAngle field value."""
+        """Buttons outside this angle from the user's center view are considered out of sight."""
         member = self.get_member("OutOfSightAngle")
         if member is None:
             return None
@@ -75,7 +77,7 @@ class RelayTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_touch_penetration_distance(self) -> primitives.Float | None:
-        """The MaxTouchPenetrationDistance field value."""
+        """The max distance of penetration into an item like a physical button before it's not considered pressed anymore."""
         member = self.get_member("MaxTouchPenetrationDistance")
         if member is None:
             return None

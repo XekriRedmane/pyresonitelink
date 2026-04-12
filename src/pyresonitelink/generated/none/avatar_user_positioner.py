@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.user_node import UserNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -11,15 +12,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarUserPositioner(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarUserPositioner.
+    """The AvatarUserPositioner component is used to position a user to the avatar upon equipping the avatar.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarUserPositioner"
 
-    def __init__(self, position_reference: str | Slot | None = None, rotation_reference: str | Slot | None = None, preserve_up: primitives.Bool | None = None, on_manual_equip_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, position_node: UserNode | str | None = None, rotation_node: UserNode | str | None = None, position_reference: str | Slot | None = None, rotation_reference: str | Slot | None = None, preserve_up: primitives.Bool | None = None, on_manual_equip_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            position_node: Initial value for PositionNode.
+            rotation_node: Initial value for RotationNode.
             position_reference: Initial value for PositionReference.
             rotation_reference: Initial value for RotationReference.
             preserve_up: Initial value for PreserveUp.
@@ -27,6 +30,10 @@ class AvatarUserPositioner(GeneratedComponent, IAvatarObjectComponent, IWorldEve
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if position_node is not None:
+            self.position_node = position_node
+        if rotation_node is not None:
+            self.rotation_node = rotation_node
         if position_reference is not None:
             self.position_reference = position_reference
         if rotation_reference is not None:
@@ -37,34 +44,48 @@ class AvatarUserPositioner(GeneratedComponent, IAvatarObjectComponent, IWorldEve
             self.on_manual_equip_only = on_manual_equip_only
 
     @property
-    def position_node(self) -> members.FieldEnum | None:
-        """The PositionNode member."""
+    def position_node(self) -> UserNode | None:
+        """What node to use to match the position of the user."""
         member = self.get_member("PositionNode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return UserNode(member.value)
         return None
 
     @position_node.setter
-    def position_node(self, value: members.FieldEnum) -> None:
-        """Set the PositionNode member."""
-        self.set_member("PositionNode", value)
+    def position_node(self, value: UserNode | str) -> None:
+        """Set PositionNode. What node to use to match the position of the user."""
+        member = self.get_member("PositionNode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "PositionNode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def rotation_node(self) -> members.FieldEnum | None:
-        """The RotationNode member."""
+    def rotation_node(self) -> UserNode | None:
+        """What node to use to match the rotation of the user."""
         member = self.get_member("RotationNode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return UserNode(member.value)
         return None
 
     @rotation_node.setter
-    def rotation_node(self, value: members.FieldEnum) -> None:
-        """Set the RotationNode member."""
-        self.set_member("RotationNode", value)
+    def rotation_node(self, value: UserNode | str) -> None:
+        """Set RotationNode. What node to use to match the rotation of the user."""
+        member = self.get_member("RotationNode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "RotationNode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def position_reference(self) -> str | None:
-        """Target ID of the PositionReference reference (targets Slot)."""
+        """The slot to position the user to instead of the slot this component is on when they equip the user."""
         member = self.get_member("PositionReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +106,7 @@ class AvatarUserPositioner(GeneratedComponent, IAvatarObjectComponent, IWorldEve
 
     @property
     def rotation_reference(self) -> str | None:
-        """Target ID of the RotationReference reference (targets Slot)."""
+        """The slot to rotate the user to instead of the slot this component is on when they equip the user."""
         member = self.get_member("RotationReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +127,7 @@ class AvatarUserPositioner(GeneratedComponent, IAvatarObjectComponent, IWorldEve
 
     @property
     def preserve_up(self) -> primitives.Bool | None:
-        """The PreserveUp field value."""
+        """Whether to upright the user when they equip the avatar, or set them to the rotation this avatar is in when equipping."""
         member = self.get_member("PreserveUp")
         if member is None:
             return None
@@ -125,7 +146,7 @@ class AvatarUserPositioner(GeneratedComponent, IAvatarObjectComponent, IWorldEve
 
     @property
     def on_manual_equip_only(self) -> primitives.Bool | None:
-        """The OnManualEquipOnly field value."""
+        """Whether to trigger this positioner only when the user clicks on the avatar to equip it rather than also triggering when the avatar is equipped through flux."""
         member = self.get_member("OnManualEquipOnly")
         if member is None:
             return None

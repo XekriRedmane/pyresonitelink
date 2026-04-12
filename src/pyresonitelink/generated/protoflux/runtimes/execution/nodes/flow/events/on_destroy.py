@@ -16,7 +16,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnDestroy(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The On Destroy node sends an impulse out of Trigger whenever the node is destroyed. This can sometimes not fire code the way you want, since the code after the node may have already been destroyed. It is better practice to use On Destroying.
+    """The On Destroy node sends an impulse out of Trigger whenever the node is destroyed.
+This can sometimes not fire code the way you want, since the code after the node may have already been destroyed. It is better practice to use On Destroying.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """
@@ -39,7 +40,7 @@ class OnDestroy(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @property
     def trigger(self) -> str | None:
-        """Target ID of the Trigger reference (targets ISyncNodeOperation)."""
+        """Sends an Impulse when the node is destroyed."""
         member = self.get_member("Trigger")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +61,7 @@ class OnDestroy(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @property
     def only_host(self) -> str | None:
-        """Target ID of the OnlyHost reference (targets INodeValueOutput[primitives.Bool])."""
+        """Checks the event on the host rather than on everyone."""
         member = self.get_member("OnlyHost")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Bell(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Bell node is a character literal constant for the "Bell" character (Unicode: U+0007).
+    """The ``Bell`` node is a character literal constant for the "Bell" character (Unicode: U+0007).
+
+The Bell character was used to make a sound or flash the screen to get the attention of operators that were using older computer systems. This is no longer relevant in something like Resonite, but is provided for completeness.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
     """

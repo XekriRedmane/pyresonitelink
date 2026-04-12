@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.mode import Mode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -11,19 +12,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BooleanSwitcher(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BooleanSwitcher.
+    """The BooleanSwitcher component can be used to enable and disable a list of Slots depending on an index in the list.
+It does so by driving the Active field of the slots.
 
     Category: Transform/Drivers
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BooleanSwitcher"
 
-    def __init__(self, auto_add_children: primitives.Bool | None = None, active_index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, auto_add_children: primitives.Bool | None = None, active_index: primitives.Int | None = None, activation_mode: Mode | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             auto_add_children: Initial value for AutoAddChildren.
             active_index: Initial value for ActiveIndex.
+            activation_mode: Initial value for ActivationMode.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -31,10 +34,12 @@ class BooleanSwitcher(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             self.auto_add_children = auto_add_children
         if active_index is not None:
             self.active_index = active_index
+        if activation_mode is not None:
+            self.activation_mode = activation_mode
 
     @property
     def auto_add_children(self) -> primitives.Bool | None:
-        """The AutoAddChildren field value."""
+        """If true, the Targets list will be automatically populated with the child slots of the slot that this component is on."""
         member = self.get_member("AutoAddChildren")
         if member is None:
             return None
@@ -53,7 +58,7 @@ class BooleanSwitcher(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def auto_add_ignore_tags(self) -> members.SyncList | None:
-        """The AutoAddIgnoreTags member."""
+        """Don't auto add a child slot to the list if it has a tag that is in this list."""
         member = self.get_member("AutoAddIgnoreTags")
         if isinstance(member, members.SyncList):
             return member
@@ -61,12 +66,12 @@ class BooleanSwitcher(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @auto_add_ignore_tags.setter
     def auto_add_ignore_tags(self, value: members.SyncList) -> None:
-        """Set the AutoAddIgnoreTags member."""
+        """Set AutoAddIgnoreTags. Don't auto add a child slot to the list if it has a tag that is in this list."""
         self.set_member("AutoAddIgnoreTags", value)
 
     @property
     def targets(self) -> members.SyncList | None:
-        """The Targets member."""
+        """The list of slots of which one will be enabled."""
         member = self.get_member("Targets")
         if isinstance(member, members.SyncList):
             return member
@@ -74,12 +79,12 @@ class BooleanSwitcher(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @targets.setter
     def targets(self, value: members.SyncList) -> None:
-        """Set the Targets member."""
+        """Set Targets. The list of slots of which one will be enabled."""
         self.set_member("Targets", value)
 
     @property
     def active_index(self) -> primitives.Int | None:
-        """The ActiveIndex field value."""
+        """The index of the currently active slot."""
         member = self.get_member("ActiveIndex")
         if member is None:
             return None
@@ -97,15 +102,22 @@ class BooleanSwitcher(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
             )
 
     @property
-    def activation_mode(self) -> members.FieldEnum | None:
-        """The ActivationMode member."""
+    def activation_mode(self) -> Mode | None:
+        """Allows for enabling items in ``Target`` based on ``ActiveIndex`` number."""
         member = self.get_member("ActivationMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Mode(member.value)
         return None
 
     @activation_mode.setter
-    def activation_mode(self, value: members.FieldEnum) -> None:
-        """Set the ActivationMode member."""
-        self.set_member("ActivationMode", value)
+    def activation_mode(self, value: Mode | str) -> None:
+        """Set ActivationMode. Allows for enabling items in ``Target`` based on ``ActiveIndex`` number."""
+        member = self.get_member("ActivationMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ActivationMode",
+                members.FieldEnum(value=str(value)),
+            )
 

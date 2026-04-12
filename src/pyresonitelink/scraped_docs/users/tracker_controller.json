@@ -1,0 +1,12 @@
+{
+  "description": "The TrackerController component is an internally used component that triggers a pair of sync Delegates when a device is added to the user's list of tracked devices with position and rotation.",
+  "category": "Users",
+  "fields": {
+    "PositionStreamConfigurator": "The Sync delegate to call with the created tracked device's position stream and \"2\" as a number when a device is added.",
+    "RotationStreamConfigurator": "The Sync delegate to call with the created tracked device's rotation stream and \"2\" as a number when a device is added."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TrackerController&action=raw"
+}

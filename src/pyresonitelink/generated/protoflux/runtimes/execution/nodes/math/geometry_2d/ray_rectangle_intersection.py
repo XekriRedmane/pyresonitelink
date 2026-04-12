@@ -39,7 +39,7 @@ class RayRectangleIntersection(GeneratedComponent, IExecutionNode, INode, ICusto
 
     @property
     def origin(self) -> str | None:
-        """Target ID of the Origin reference (targets INodeValueOutput[primitives.Float2])."""
+        """Origin of the ray."""
         member = self.get_member("Origin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class RayRectangleIntersection(GeneratedComponent, IExecutionNode, INode, ICusto
 
     @property
     def direction(self) -> str | None:
-        """Target ID of the Direction reference (targets INodeValueOutput[primitives.Float2])."""
+        """Direction of the ray."""
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +81,7 @@ class RayRectangleIntersection(GeneratedComponent, IExecutionNode, INode, ICusto
 
     @property
     def rectangle(self) -> str | None:
-        """Target ID of the Rectangle reference (targets INodeValueOutput[primitives.Rect])."""
+        """Rectangle to detect intersections with."""
         member = self.get_member("Rectangle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -102,7 +102,7 @@ class RayRectangleIntersection(GeneratedComponent, IExecutionNode, INode, ICusto
 
     @property
     def intersection(self) -> members.EmptyElement | None:
-        """The Intersection member."""
+        """The first point at which the defined ray intersects with the bounds of ``Rectangle``. If the ray does not intersect, the value will be ``[0; 0]``."""
         member = self.get_member("Intersection")
         if isinstance(member, members.EmptyElement):
             return member
@@ -110,12 +110,12 @@ class RayRectangleIntersection(GeneratedComponent, IExecutionNode, INode, ICusto
 
     @intersection.setter
     def intersection(self, value: members.EmptyElement) -> None:
-        """Set the Intersection member."""
+        """Set Intersection. The first point at which the defined ray intersects with the bounds of ``Rectangle``. If the ray does not intersect, the value will be ``[0; 0]``."""
         self.set_member("Intersection", value)
 
     @property
     def intersects(self) -> members.EmptyElement | None:
-        """The Intersects member."""
+        """``True`` if the ray intersects with ``Rectangle``, ``False`` otherwise."""
         member = self.get_member("Intersects")
         if isinstance(member, members.EmptyElement):
             return member
@@ -123,6 +123,6 @@ class RayRectangleIntersection(GeneratedComponent, IExecutionNode, INode, ICusto
 
     @intersects.setter
     def intersects(self, value: members.EmptyElement) -> None:
-        """Set the Intersects member."""
+        """Set Intersects. ``True`` if the ray intersects with ``Rectangle``, ``False`` otherwise."""
         self.set_member("Intersects", value)
 

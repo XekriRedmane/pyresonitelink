@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.OnGripEnd.
+    """The On Grip End node takes in a global reference of a LocomotionGrip, and fires an event when the grip has been released, as well as information of the locomotion module and the body node that was gripping.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics/Events
     """
@@ -58,7 +58,7 @@ class OnGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def on_event(self) -> str | None:
-        """Target ID of the OnEvent reference (targets ISyncNodeOperation)."""
+        """Fires when the grip is released by the user."""
         member = self.get_member("OnEvent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class OnGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def module(self) -> members.EmptyElement | None:
-        """The Module member."""
+        """Returns the module that was gripping."""
         member = self.get_member("Module")
         if isinstance(member, members.EmptyElement):
             return member
@@ -87,12 +87,12 @@ class OnGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @module.setter
     def module(self, value: members.EmptyElement) -> None:
-        """Set the Module member."""
+        """Set Module. Returns the module that was gripping."""
         self.set_member("Module", value)
 
     @property
     def gripping_body_node(self) -> members.EmptyElement | None:
-        """The GrippingBodyNode member."""
+        """Returns the body node that was gripping."""
         member = self.get_member("GrippingBodyNode")
         if isinstance(member, members.EmptyElement):
             return member
@@ -100,6 +100,6 @@ class OnGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @gripping_body_node.setter
     def gripping_body_node(self, value: members.EmptyElement) -> None:
-        """Set the GrippingBodyNode member."""
+        """Set GrippingBodyNode. Returns the body node that was gripping."""
         self.set_member("GrippingBodyNode", value)
 

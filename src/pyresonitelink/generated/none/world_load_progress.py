@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldLoadProgress(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldLoadProgress.
+    """The WorldLoadProgress component is the component that controls the WorldLoadingProgressInterface behavior.
+
+    Not used by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldLoadProgress"
@@ -31,7 +33,7 @@ class WorldLoadProgress(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def visual(self) -> str | None:
-        """Target ID of the _visual reference (targets Slot)."""
+        """The root slot for the progress indicator and visual."""
         member = self.get_member("_visual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +54,7 @@ class WorldLoadProgress(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def progress_indicator(self) -> str | None:
-        """Target ID of the ProgressIndicator reference (targets WorldLoadingProgressInterface)."""
+        """The loading indicator for this component."""
         member = self.get_member("ProgressIndicator")
         if isinstance(member, members.Reference):
             return member.targetId

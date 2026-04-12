@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.filtering import Filtering
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
@@ -11,14 +12,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StaticFont.
+    """This component is auto generated when importing new font files.
 
     Category: Assets
+
+    This component is auto generated when importing new font files. Simply
+    find a font file (.TTF or similar) and drop it into the Resonite game
+    window or import through the file browser in the dash. The game will
+    then generate this component on a font object, with the ``URL`` field
+    filled with a valid font resource.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticFont"
 
-    def __init__(self, url: str | None = None, padding: primitives.Int | None = None, pixel_range: primitives.Int | None = None, glyph_em_size: primitives.Int | None = None, mip_maps: primitives.Bool | None = None, lod_bias: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, padding: primitives.Int | None = None, pixel_range: primitives.Int | None = None, glyph_em_size: primitives.Int | None = None, mip_maps: primitives.Bool | None = None, mip_map_filtering: Filtering | str | None = None, lod_bias: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,6 +34,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
             pixel_range: Initial value for PixelRange.
             glyph_em_size: Initial value for GlyphEmSize.
             mip_maps: Initial value for MipMaps.
+            mip_map_filtering: Initial value for MipMapFiltering.
             lod_bias: Initial value for LODBias.
             component: Existing Component to wrap.
         """
@@ -41,12 +49,14 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
             self.glyph_em_size = glyph_em_size
         if mip_maps is not None:
             self.mip_maps = mip_maps
+        if mip_map_filtering is not None:
+            self.mip_map_filtering = mip_map_filtering
         if lod_bias is not None:
             self.lod_bias = lod_bias
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The location of where to load the font from."""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -65,7 +75,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
 
     @property
     def padding(self) -> primitives.Int | None:
-        """The Padding field value."""
+        """How many pixels of padding should be used between letters in the font."""
         member = self.get_member("Padding")
         if member is None:
             return None
@@ -84,7 +94,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
 
     @property
     def pixel_range(self) -> primitives.Int | None:
-        """The PixelRange field value."""
+        """Sets the distance field range in output pixels."""
         member = self.get_member("PixelRange")
         if member is None:
             return None
@@ -103,7 +113,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
 
     @property
     def glyph_em_size(self) -> primitives.Int | None:
-        """The GlyphEmSize field value."""
+        """Sets the size of the glyphs in the atlas in pixels per em."""
         member = self.get_member("GlyphEmSize")
         if member is None:
             return None
@@ -122,7 +132,7 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
 
     @property
     def mip_maps(self) -> primitives.Bool | None:
-        """The MipMaps field value."""
+        """Whether to display lower res versions of the font when it is further away to save on performance."""
         member = self.get_member("MipMaps")
         if member is None:
             return None
@@ -140,21 +150,28 @@ class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def mip_map_filtering(self) -> members.FieldEnum | None:
-        """The MipMapFiltering member."""
+    def mip_map_filtering(self) -> Filtering | None:
+        """How to filter transitions between mipmaps when it is viewed at incremental distances further away."""
         member = self.get_member("MipMapFiltering")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Filtering(member.value)
         return None
 
     @mip_map_filtering.setter
-    def mip_map_filtering(self, value: members.FieldEnum) -> None:
-        """Set the MipMapFiltering member."""
-        self.set_member("MipMapFiltering", value)
+    def mip_map_filtering(self, value: Filtering | str) -> None:
+        """Set MipMapFiltering. How to filter transitions between mipmaps when it is viewed at incremental distances further away."""
+        member = self.get_member("MipMapFiltering")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MipMapFiltering",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def lod_bias(self) -> primitives.Float | None:
-        """The LODBias field value."""
+        """Whether to see lower res versions at smaller distances to save performance."""
         member = self.get_member("LODBias")
         if member is None:
             return None

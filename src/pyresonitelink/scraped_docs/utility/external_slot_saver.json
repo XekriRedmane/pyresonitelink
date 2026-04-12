@@ -1,0 +1,16 @@
+{
+  "description": "The ExternalSlotSaver will ensure that the ``TargetSlot`` is saved as a child of the slot this component is on if the slot isn't already in the hierarchy.",
+  "category": "Utility",
+  "fields": {
+    "TargetSlot": "The slot to target when saving.",
+    "SaveActiveSelfOverride": "When not null, save this rather than ``TargetSlot``'s current active self value.",
+    "SaveLocalPositionOverride": "When not null, save this rather than ``TargetSlot``'s current position value.",
+    "SaveLocalRotationOverride": "When not null, save this rather than ``TargetSlot``'s current rotation value.",
+    "SaveLocalScaleOverride": "When not null, save this rather than ``TargetSlot``'s current scale value.",
+    "IgnoreWhenNonPersistentSelf": "Whether to not save the external slot if we are non persistent ourselves."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ExternalSlotSaver&action=raw"
+}

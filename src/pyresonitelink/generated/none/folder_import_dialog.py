@@ -9,7 +9,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FolderImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FolderImportDialog.
+    """The FolderImportDialog component is used to make and handle the importing of a folder with the specified path. Generates a UIX upon attach.
+
+    Used to Import folders. Use the version created via the normal Import
+    process instead.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FolderImportDialog"
@@ -27,7 +30,7 @@ class FolderImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def path(self) -> primitives.String | None:
-        """The Path field value."""
+        """The folder path to Import the contents of."""
         member = self.get_member("Path")
         if member is None:
             return None

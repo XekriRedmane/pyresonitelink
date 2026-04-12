@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarPoseSmoothLerp(GeneratedComponent, IAvatarPoseFilter, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseSmoothLerp.
+    """The AvatarPoseSmoothLerp component changes the smoothing speed of the position and rotation of a BodyNode.
 
     Category: Users/Common Avatar System/Pose Filters
+
+    For use with a AvatarAnchor or a tooltip to smooth the hand movement.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseSmoothLerp"
@@ -35,7 +37,7 @@ class AvatarPoseSmoothLerp(GeneratedComponent, IAvatarPoseFilter, IWorldEventRec
 
     @property
     def position_smooth_speed(self) -> primitives.Float | None:
-        """The PositionSmoothSpeed field value."""
+        """how fast the body node should move. Lower values mean slower speed."""
         member = self.get_member("PositionSmoothSpeed")
         if member is None:
             return None
@@ -54,7 +56,7 @@ class AvatarPoseSmoothLerp(GeneratedComponent, IAvatarPoseFilter, IWorldEventRec
 
     @property
     def rotation_smooth_speed(self) -> primitives.Float | None:
-        """The RotationSmoothSpeed field value."""
+        """how fast the body node should rotate. Lower values mean slower speed."""
         member = self.get_member("RotationSmoothSpeed")
         if member is None:
             return None
@@ -73,7 +75,7 @@ class AvatarPoseSmoothLerp(GeneratedComponent, IAvatarPoseFilter, IWorldEventRec
 
     @property
     def smooth_simulated_poses(self) -> primitives.Bool | None:
-        """The SmoothSimulatedPoses field value."""
+        """Whether this filter should smooth limbs affected by the procedural animation system."""
         member = self.get_member("SmoothSimulatedPoses")
         if member is None:
             return None

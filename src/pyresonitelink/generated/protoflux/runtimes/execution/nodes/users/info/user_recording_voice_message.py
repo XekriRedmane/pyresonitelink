@@ -34,7 +34,7 @@ class UserRecordingVoiceMessage(GeneratedComponent, INodeValueOutput, IExecution
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user to check."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

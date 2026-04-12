@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Laser(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Laser.
+    """The Laser component creates a simple red laser when attached that raycasts the enviroment.
+
+When added to a slot the Laser component creates a MeshRenderer, a SegmentMesh, a RayDriver, and a red PBS RimMetallic.
 
     Category: Utility
     """
@@ -37,7 +39,7 @@ class Laser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets PBS_RimMetallic)."""
+        """The material to use for the laser."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +60,7 @@ class Laser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ray_driver(self) -> str | None:
-        """Target ID of the _rayDriver reference (targets RayDriver)."""
+        """The ray driver driving the generated segment mesh."""
         member = self.get_member("_rayDriver")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +81,7 @@ class Laser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mesh_renderer(self) -> str | None:
-        """Target ID of the _meshRenderer reference (targets MeshRenderer)."""
+        """The mesh renderer rendering the segment mesh for this laser pointer type component."""
         member = self.get_member("_meshRenderer")
         if isinstance(member, members.Reference):
             return member.targetId

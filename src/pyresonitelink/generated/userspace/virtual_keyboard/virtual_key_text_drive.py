@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VirtualKeyTextDrive(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VirtualKeyTextDrive.
+    """This component takes a VirtualKey component and uses it's settings to drive a textfield's content to match what that key would type when pressed.
 
     Category: Userspace/Virtual Keyboard
     """
@@ -34,7 +34,7 @@ class VirtualKeyTextDrive(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def key(self) -> str | None:
-        """Target ID of the Key reference (targets VirtualKey)."""
+        """The virtual key to source the text from (so if the virtual key is set to "d" it will drive the target of ``Text`` to "d"."""
         member = self.get_member("Key")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +55,7 @@ class VirtualKeyTextDrive(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IField[primitives.String])."""
+        """The text field to drive"""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId

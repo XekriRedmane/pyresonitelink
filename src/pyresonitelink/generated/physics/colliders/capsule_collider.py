@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.collider_type import ColliderType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ihighlightable import IHighlightable
@@ -12,18 +13,21 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class CapsuleCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.CapsuleCollider.
+    """The CapsuleCollider component creates a simple capsule collision shape from the defined height and radius.
+
+The CapsuleCollider is used in Locomotion Modules to represent the player's width and height.
 
     Category: Physics/Colliders
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CapsuleCollider"
 
-    def __init__(self, offset: primitives.Float3 | None = None, mass: primitives.Float | None = None, character_collider: primitives.Bool | None = None, ignore_raycasts: primitives.Bool | None = None, height: primitives.Float | None = None, radius: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, offset: primitives.Float3 | None = None, type_: ColliderType | str | None = None, mass: primitives.Float | None = None, character_collider: primitives.Bool | None = None, ignore_raycasts: primitives.Bool | None = None, height: primitives.Float | None = None, radius: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             offset: Initial value for Offset.
+            type_: Initial value for Type.
             mass: Initial value for Mass.
             character_collider: Initial value for CharacterCollider.
             ignore_raycasts: Initial value for IgnoreRaycasts.
@@ -34,6 +38,8 @@ class CapsuleCollider(GeneratedComponent, IHighlightable, ISweepableCollider, IC
         super().__init__(component)
         if offset is not None:
             self.offset = offset
+        if type_ is not None:
+            self.type_ = type_
         if mass is not None:
             self.mass = mass
         if character_collider is not None:
@@ -65,17 +71,24 @@ class CapsuleCollider(GeneratedComponent, IHighlightable, ISweepableCollider, IC
             )
 
     @property
-    def type_(self) -> members.FieldEnum | None:
-        """The Type member."""
+    def type_(self) -> ColliderType | None:
+        """The Type enum value."""
         member = self.get_member("Type")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColliderType(member.value)
         return None
 
     @type_.setter
-    def type_(self, value: members.FieldEnum) -> None:
-        """Set the Type member."""
-        self.set_member("Type", value)
+    def type_(self, value: ColliderType | str) -> None:
+        """Set the Type enum value."""
+        member = self.get_member("Type")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Type",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def mass(self) -> primitives.Float | None:
@@ -136,7 +149,7 @@ class CapsuleCollider(GeneratedComponent, IHighlightable, ISweepableCollider, IC
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """The height of the capsule. Does not include the added height from the rounded ends"""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -155,7 +168,7 @@ class CapsuleCollider(GeneratedComponent, IHighlightable, ISweepableCollider, IC
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """the radius of the body of the capsule and it's rounded ends."""
         member = self.get_member("Radius")
         if member is None:
             return None

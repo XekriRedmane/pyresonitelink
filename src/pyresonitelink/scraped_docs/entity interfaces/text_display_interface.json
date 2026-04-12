@@ -1,0 +1,17 @@
+{
+  "description": "The TextDisplayInterface component is used to specify what the user's favorite display of clipboard contents should be when pasting text not into a text field and the text is not a link.",
+  "category": "Utility:Entity Interfaces",
+  "fields": {
+    "ItemName": "The name of this favoritable item.",
+    "SpawningUser": "The user that spawned this favoritable item.",
+    "SpawningUserID": "The field containing the ID of the user that spawned this favoritable item.",
+    "IsInstance": "Whether this item was spawned by the player (false) or was spawned by the game as part of the favorites system (true).",
+    "Heading": "The field to fill with what the header text is upon spawn.",
+    "Text": "The field to fill with what the text the user pasted was upon spawn.",
+    "RTF": "The field to fill with whether the text should be interpreted as Rich Text Format. This is usually the RTF field on a text rendering Component for the UI."
+  },
+  "methods": {},
+  "usage": "Spawn the default resonite one from resonite essentials and edit it, or attach a new one and create a UI for it yourself. Once done, save to your inventory and set as your text display to make it your active one.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextDisplayInterface&action=raw"
+}

@@ -7,9 +7,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueField(GenericComponent[T], IValueSource[T], IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueField<>.
+    """The ValueField component contains a single field of a specific datatype that is selected when the component is attached.
 
     Category: Data
+
+    The ValueField component can be used to store a single value on a slot
+    that can be edited from the inspector, or with other components and
+    ProtoFlux. However, in cases where you want to be able to dynamically
+    reference the value instead of directly referencing it, you may be
+    better off using a dynamic variable, and in use cases where you want to
+    easily reference and edit a value within a ProtoFlux script while still
+    exposing that value to the data model, you may want to use the Data
+    Model Store node.
 
     Parameterize with a value type::
 

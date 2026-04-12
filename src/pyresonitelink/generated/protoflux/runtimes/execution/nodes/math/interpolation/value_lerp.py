@@ -15,6 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ValueLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Value Lerp node takes in a starting point and an ending point along with a lerp value of which it lerps linearly towards, then returns the value over time.
 
+This is clamped, meaning that you are stuck with being in between the ``From`` and ``To`` values.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Interpolation
 
     Parameterize with a value type::
@@ -45,7 +47,7 @@ class ValueLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INo
 
     @property
     def from_(self) -> str | None:
-        """Target ID of the From reference (targets INodeValueOutput[T])."""
+        """The starting point of this lerp."""
         member = self.get_member("From")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +68,7 @@ class ValueLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INo
 
     @property
     def to(self) -> str | None:
-        """Target ID of the To reference (targets INodeValueOutput[T])."""
+        """The ending point of this lerp."""
         member = self.get_member("To")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +89,7 @@ class ValueLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INo
 
     @property
     def lerp(self) -> str | None:
-        """Target ID of the Lerp reference (targets INodeValueOutput[primitives.Float])."""
+        """The lerp value between the start and end points."""
         member = self.get_member("Lerp")
         if isinstance(member, members.Reference):
             return member.targetId

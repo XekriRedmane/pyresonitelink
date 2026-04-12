@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueRepeat(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Value Repeat node takes in the number value and the expected length range, then returns a value of the expected placement of that number. This is similar to the Value Mod node.
+    """The ``Value Repeat`` node takes in the number value and the expected length range, then returns a value of the expected placement of that number. This is similar to the Value Mod node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math
 
@@ -41,7 +41,7 @@ class ValueRepeat(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], I
 
     @property
     def n(self) -> str | None:
-        """Target ID of the N reference (targets INodeValueOutput[T])."""
+        """The number value we are checking."""
         member = self.get_member("N")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class ValueRepeat(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], I
 
     @property
     def length(self) -> str | None:
-        """Target ID of the Length reference (targets INodeValueOutput[T])."""
+        """The expected range for our number to be in. If the number we gave rolls over, it will wrap around this length."""
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.impulse_type import ImpulseType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.proto_flux_node import ProtoFluxNode
@@ -12,12 +13,12 @@ from pyresonitelink.generated._types.isync_ref import ISyncRef
 
 
 class ProtoFluxImpulseProxy(GeneratedComponent):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxImpulseProxy.
+    """The ProtoFluxImpulseProxy component interacts with the ProtoFlux tool and ProtoFlux in general to act as the relay for attaching impulses to ProtoFlux nodes.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxImpulseProxy"
 
-    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: primitives.String | None = None, is_dynamic: primitives.Bool | None = None, index: primitives.Int | None = None, connect_point: str | Slot | None = None, wire: str | ProtoFluxWireManager | None = None, node_impulse: str | ISyncRef | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: primitives.String | None = None, is_dynamic: primitives.Bool | None = None, index: primitives.Int | None = None, connect_point: str | Slot | None = None, wire: str | ProtoFluxWireManager | None = None, node_impulse: str | ISyncRef | None = None, impulse_type: ImpulseType | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +29,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
             connect_point: Initial value for ConnectPoint.
             wire: Initial value for Wire.
             node_impulse: Initial value for NodeImpulse.
+            impulse_type: Initial value for ImpulseType.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -45,10 +47,12 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
             self.wire = wire
         if node_impulse is not None:
             self.node_impulse = node_impulse
+        if impulse_type is not None:
+            self.impulse_type = impulse_type
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets ProtoFluxNode)."""
+        """The node this is proxying an impulse for"""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -69,7 +73,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
 
     @property
     def element_name(self) -> primitives.String | None:
-        """The ElementName field value."""
+        """The name of the element that this is attaching an impulse to."""
         member = self.get_member("ElementName")
         if member is None:
             return None
@@ -88,7 +92,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
 
     @property
     def is_dynamic(self) -> primitives.Bool | None:
-        """The IsDynamic field value."""
+        """Whether the impulse is dynamic"""
         member = self.get_member("IsDynamic")
         if member is None:
             return None
@@ -107,7 +111,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """The index of the property to make an impulse for."""
         member = self.get_member("Index")
         if member is None:
             return None
@@ -126,7 +130,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
 
     @property
     def connect_point(self) -> str | None:
-        """Target ID of the ConnectPoint reference (targets Slot)."""
+        """the slot to attach the wire end being connected."""
         member = self.get_member("ConnectPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -147,7 +151,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
 
     @property
     def wire(self) -> str | None:
-        """Target ID of the Wire reference (targets ProtoFluxWireManager)."""
+        """The wire being attached to this impulse proxy"""
         member = self.get_member("Wire")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -168,7 +172,7 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
 
     @property
     def node_impulse(self) -> str | None:
-        """Target ID of the NodeImpulse reference (targets ISyncRef)."""
+        """The impulse value field to target."""
         member = self.get_member("NodeImpulse")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -188,15 +192,22 @@ class ProtoFluxImpulseProxy(GeneratedComponent):
             )
 
     @property
-    def impulse_type(self) -> members.FieldEnum | None:
-        """The ImpulseType member."""
+    def impulse_type(self) -> ImpulseType | None:
+        """the type of impulse this is for."""
         member = self.get_member("ImpulseType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ImpulseType(member.value)
         return None
 
     @impulse_type.setter
-    def impulse_type(self, value: members.FieldEnum) -> None:
-        """Set the ImpulseType member."""
-        self.set_member("ImpulseType", value)
+    def impulse_type(self, value: ImpulseType | str) -> None:
+        """Set ImpulseType. the type of impulse this is for."""
+        member = self.get_member("ImpulseType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ImpulseType",
+                members.FieldEnum(value=str(value)),
+            )
 

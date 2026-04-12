@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsCharacterController(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Is Character Controller node takes in a reference to an ICollider and returns if that ICollider is labeled as a character controller type and the character controller has a simulating user in the same Slot.
+    """The ``Is Character Controller`` node takes in a reference to an ICollider and returns if that ICollider is labeled as a character controller type and the character controller has a simulating user in the same Slot.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """
@@ -34,7 +34,7 @@ class IsCharacterController(GeneratedComponent, INodeValueOutput, IExecutionNode
 
     @property
     def collider(self) -> str | None:
-        """Target ID of the Collider reference (targets INodeObjectOutput[ICollider])."""
+        """The Collider we want to check if it is a character controller."""
         member = self.get_member("Collider")
         if isinstance(member, members.Reference):
             return member.targetId

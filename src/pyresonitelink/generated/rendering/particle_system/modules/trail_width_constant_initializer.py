@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TrailWidthConstantInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.TrailWidthConstantInitializer.
+    """The TrailWidthConstantInitializer component makes all trails have the same width when born in a particle system.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.TrailWidthConstantInitializer"
@@ -29,7 +34,7 @@ class TrailWidthConstantInitializer(GeneratedComponent, IParticleSystemModule, I
 
     @property
     def value(self) -> primitives.Float | None:
-        """The Value field value."""
+        """The trail width all trails should start with."""
         member = self.get_member("Value")
         if member is None:
             return None

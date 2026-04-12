@@ -44,7 +44,7 @@ class ValueConstantLerp(GenericComponent[T], INodeValueOutput[T], IExecutionUpda
 
     @property
     def input_(self) -> str | None:
-        """Target ID of the Input reference (targets INodeValueOutput[T])."""
+        """The value we want to lerp towards."""
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +65,7 @@ class ValueConstantLerp(GenericComponent[T], INodeValueOutput[T], IExecutionUpda
 
     @property
     def speed(self) -> str | None:
-        """Target ID of the Speed reference (targets INodeValueOutput[primitives.Float])."""
+        """How fast the lerp should be. The output value will change by this amount per second."""
         member = self.get_member("Speed")
         if isinstance(member, members.Reference):
             return member.targetId

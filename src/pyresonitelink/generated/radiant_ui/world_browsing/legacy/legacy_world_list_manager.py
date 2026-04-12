@@ -3,6 +3,10 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.type import Type
+from pyresonitelink.generated._enums.owner_type import OwnerType
+from pyresonitelink.generated._enums.empty_session_filter import EmptySessionFilter
+from pyresonitelink.generated._enums.session_access_level import SessionAccessLevel
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.legacy_world_item import LegacyWorldItem
@@ -11,18 +15,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyWorldListManager.
+    """The LegacyWorldListManager component is used in the old dash to manage the world list before the WorldsDataFeed component was implemented.
 
     Category: Radiant UI/World Browsing/Legacy
+
+    This is a Legacy component. Don't use.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyWorldListManager"
 
-    def __init__(self, world_item_template: str | LegacyWorldItem | None = None, show_opened_worlds: primitives.Bool | None = None, show_sessions: primitives.Bool | None = None, show_published_worlds: primitives.Bool | None = None, show_locally_saved_worlds: primitives.Bool | None = None, merge_sessions_by_world_id: primitives.Bool | None = None, idle_sort_delay: primitives.Float | None = None, interacting_sort_delay: primitives.Float | None = None, search_term: primitives.String | None = None, submitted_to: primitives.String | None = None, only_featured: primitives.Bool | None = None, own_worlds: primitives.Bool | None = None, by_owner: primitives.String | None = None, min_date: str | None = None, max_date: str | None = None, max_items: primitives.Int | None = None, skip_items: primitives.Int | None = None, incompatible_sessions: primitives.Bool | None = None, only_headless_hosts: primitives.Bool | None = None, minimum_total_users: primitives.Int | None = None, minimum_total_contacts: primitives.Int | None = None, min_uptime: primitives.Double | None = None, max_uptime: primitives.Double | None = None, parent_session_id: primitives.String | None = None, visited: primitives.Bool | None = None, is_searching: primitives.Bool | None = None, has_more_results: primitives.Bool | None = None, total_results: primitives.Int | None = None, filtered_results: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, world_item_template: str | LegacyWorldItem | None = None, world_item_type: Type | str | None = None, show_opened_worlds: primitives.Bool | None = None, show_sessions: primitives.Bool | None = None, show_published_worlds: primitives.Bool | None = None, show_locally_saved_worlds: primitives.Bool | None = None, merge_sessions_by_world_id: primitives.Bool | None = None, idle_sort_delay: primitives.Float | None = None, interacting_sort_delay: primitives.Float | None = None, search_term: primitives.String | None = None, submitted_to: primitives.String | None = None, only_featured: primitives.Bool | None = None, own_worlds: primitives.Bool | None = None, by_owner: primitives.String | None = None, owner_type: OwnerType | str | None = None, min_date: str | None = None, max_date: str | None = None, max_items: primitives.Int | None = None, skip_items: primitives.Int | None = None, empty_sessions: EmptySessionFilter | str | None = None, incompatible_sessions: primitives.Bool | None = None, only_headless_hosts: primitives.Bool | None = None, minimum_total_users: primitives.Int | None = None, minimum_total_contacts: primitives.Int | None = None, min_session_access_level: SessionAccessLevel | str | None = None, max_session_access_level: SessionAccessLevel | str | None = None, min_uptime: primitives.Double | None = None, max_uptime: primitives.Double | None = None, parent_session_id: primitives.String | None = None, visited: primitives.Bool | None = None, is_searching: primitives.Bool | None = None, has_more_results: primitives.Bool | None = None, total_results: primitives.Int | None = None, filtered_results: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             world_item_template: Initial value for WorldItemTemplate.
+            world_item_type: Initial value for WorldItemType.
             show_opened_worlds: Initial value for ShowOpenedWorlds.
             show_sessions: Initial value for ShowSessions.
             show_published_worlds: Initial value for ShowPublishedWorlds.
@@ -35,14 +42,18 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             only_featured: Initial value for OnlyFeatured.
             own_worlds: Initial value for OwnWorlds.
             by_owner: Initial value for ByOwner.
+            owner_type: Initial value for OwnerType.
             min_date: Initial value for MinDate.
             max_date: Initial value for MaxDate.
             max_items: Initial value for MaxItems.
             skip_items: Initial value for SkipItems.
+            empty_sessions: Initial value for EmptySessions.
             incompatible_sessions: Initial value for IncompatibleSessions.
             only_headless_hosts: Initial value for OnlyHeadlessHosts.
             minimum_total_users: Initial value for MinimumTotalUsers.
             minimum_total_contacts: Initial value for MinimumTotalContacts.
+            min_session_access_level: Initial value for MinSessionAccessLevel.
+            max_session_access_level: Initial value for MaxSessionAccessLevel.
             min_uptime: Initial value for MinUptime.
             max_uptime: Initial value for MaxUptime.
             parent_session_id: Initial value for ParentSessionId.
@@ -56,6 +67,8 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         super().__init__(component)
         if world_item_template is not None:
             self.world_item_template = world_item_template
+        if world_item_type is not None:
+            self.world_item_type = world_item_type
         if show_opened_worlds is not None:
             self.show_opened_worlds = show_opened_worlds
         if show_sessions is not None:
@@ -80,6 +93,8 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             self.own_worlds = own_worlds
         if by_owner is not None:
             self.by_owner = by_owner
+        if owner_type is not None:
+            self.owner_type = owner_type
         if min_date is not None:
             self.min_date = min_date
         if max_date is not None:
@@ -88,6 +103,8 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             self.max_items = max_items
         if skip_items is not None:
             self.skip_items = skip_items
+        if empty_sessions is not None:
+            self.empty_sessions = empty_sessions
         if incompatible_sessions is not None:
             self.incompatible_sessions = incompatible_sessions
         if only_headless_hosts is not None:
@@ -96,6 +113,10 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             self.minimum_total_users = minimum_total_users
         if minimum_total_contacts is not None:
             self.minimum_total_contacts = minimum_total_contacts
+        if min_session_access_level is not None:
+            self.min_session_access_level = min_session_access_level
+        if max_session_access_level is not None:
+            self.max_session_access_level = max_session_access_level
         if min_uptime is not None:
             self.min_uptime = min_uptime
         if max_uptime is not None:
@@ -115,7 +136,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def updating_user(self) -> members.SyncObject | None:
-        """The UpdatingUser member."""
+        """The user handling this component's update logic."""
         member = self.get_member("UpdatingUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -123,12 +144,12 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @updating_user.setter
     def updating_user(self, value: members.SyncObject) -> None:
-        """Set the UpdatingUser member."""
+        """Set UpdatingUser. The user handling this component's update logic."""
         self.set_member("UpdatingUser", value)
 
     @property
     def world_item_template(self) -> str | None:
-        """Target ID of the WorldItemTemplate reference (targets LegacyWorldItem)."""
+        """The item Component to use as a template when making the world list."""
         member = self.get_member("WorldItemTemplate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -148,21 +169,28 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def world_item_type(self) -> members.FieldEnum | None:
-        """The WorldItemType member."""
+    def world_item_type(self) -> Type | None:
+        """The C# Type of the world items. Auto filled."""
         member = self.get_member("WorldItemType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @world_item_type.setter
-    def world_item_type(self, value: members.FieldEnum) -> None:
-        """Set the WorldItemType member."""
-        self.set_member("WorldItemType", value)
+    def world_item_type(self, value: Type | str) -> None:
+        """Set WorldItemType. The C# Type of the world items. Auto filled."""
+        member = self.get_member("WorldItemType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WorldItemType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def show_opened_worlds(self) -> primitives.Bool | None:
-        """The ShowOpenedWorlds field value."""
+        """Show world's that are currently open."""
         member = self.get_member("ShowOpenedWorlds")
         if member is None:
             return None
@@ -181,7 +209,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def show_sessions(self) -> primitives.Bool | None:
-        """The ShowSessions field value."""
+        """Show sessions currently open."""
         member = self.get_member("ShowSessions")
         if member is None:
             return None
@@ -200,7 +228,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def show_published_worlds(self) -> primitives.Bool | None:
-        """The ShowPublishedWorlds field value."""
+        """Show worlds that are currently published."""
         member = self.get_member("ShowPublishedWorlds")
         if member is None:
             return None
@@ -219,7 +247,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def show_locally_saved_worlds(self) -> primitives.Bool | None:
-        """The ShowLocallySavedWorlds field value."""
+        """Show locally saved worlds."""
         member = self.get_member("ShowLocallySavedWorlds")
         if member is None:
             return None
@@ -238,7 +266,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def merge_sessions_by_world_id(self) -> primitives.Bool | None:
-        """The MergeSessionsByWorldId field value."""
+        """group sessions by world they were opened from."""
         member = self.get_member("MergeSessionsByWorldId")
         if member is None:
             return None
@@ -257,7 +285,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def idle_sort_delay(self) -> primitives.Float | None:
-        """The IdleSortDelay field value."""
+        """How long to wait before sorting session list while idle."""
         member = self.get_member("IdleSortDelay")
         if member is None:
             return None
@@ -276,7 +304,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def interacting_sort_delay(self) -> primitives.Float | None:
-        """The InteractingSortDelay field value."""
+        """How long to wait before sorting session list while still interacting."""
         member = self.get_member("InteractingSortDelay")
         if member is None:
             return None
@@ -295,7 +323,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def search_term(self) -> primitives.String | None:
-        """The SearchTerm field value."""
+        """The current search term for worlds."""
         member = self.get_member("SearchTerm")
         if member is None:
             return None
@@ -314,7 +342,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def submitted_to(self) -> primitives.String | None:
-        """The SubmittedTo field value."""
+        """The universe owner ID to search for worlds under (Usually G-Resonite)"""
         member = self.get_member("SubmittedTo")
         if member is None:
             return None
@@ -333,7 +361,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def only_featured(self) -> primitives.Bool | None:
-        """The OnlyFeatured field value."""
+        """Show only featured worlds."""
         member = self.get_member("OnlyFeatured")
         if member is None:
             return None
@@ -352,7 +380,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def own_worlds(self) -> primitives.Bool | None:
-        """The OwnWorlds field value."""
+        """Show worlds made by ``UpdatingUser``."""
         member = self.get_member("OwnWorlds")
         if member is None:
             return None
@@ -371,7 +399,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def by_owner(self) -> primitives.String | None:
-        """The ByOwner field value."""
+        """Show the worlds made by this user ID."""
         member = self.get_member("ByOwner")
         if member is None:
             return None
@@ -389,21 +417,28 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def owner_type(self) -> members.FieldEnum | None:
-        """The OwnerType member."""
+    def owner_type(self) -> OwnerType | None:
+        """The kind of entity that can own the world."""
         member = self.get_member("OwnerType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return OwnerType(member.value)
         return None
 
     @owner_type.setter
-    def owner_type(self, value: members.FieldEnum) -> None:
-        """Set the OwnerType member."""
-        self.set_member("OwnerType", value)
+    def owner_type(self, value: OwnerType | str) -> None:
+        """Set OwnerType. The kind of entity that can own the world."""
+        member = self.get_member("OwnerType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OwnerType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def min_date(self) -> str | None:
-        """The MinDate field value."""
+        """The minimum date for a world to show up in the results."""
         member = self.get_member("MinDate")
         if member is None:
             return None
@@ -422,7 +457,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def max_date(self) -> str | None:
-        """The MaxDate field value."""
+        """The maximum date allowed for a world to show up in the results."""
         member = self.get_member("MaxDate")
         if member is None:
             return None
@@ -441,7 +476,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def max_items(self) -> primitives.Int | None:
-        """The MaxItems field value."""
+        """The maximum amount of items to show."""
         member = self.get_member("MaxItems")
         if member is None:
             return None
@@ -460,7 +495,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def skip_items(self) -> primitives.Int | None:
-        """The SkipItems field value."""
+        """how many starter items to skip."""
         member = self.get_member("SkipItems")
         if member is None:
             return None
@@ -478,21 +513,28 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def empty_sessions(self) -> members.FieldEnum | None:
-        """The EmptySessions member."""
+    def empty_sessions(self) -> EmptySessionFilter | None:
+        """How to apply filters to empty sessions."""
         member = self.get_member("EmptySessions")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return EmptySessionFilter(member.value)
         return None
 
     @empty_sessions.setter
-    def empty_sessions(self, value: members.FieldEnum) -> None:
-        """Set the EmptySessions member."""
-        self.set_member("EmptySessions", value)
+    def empty_sessions(self, value: EmptySessionFilter | str) -> None:
+        """Set EmptySessions. How to apply filters to empty sessions."""
+        member = self.get_member("EmptySessions")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "EmptySessions",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def incompatible_sessions(self) -> primitives.Bool | None:
-        """The IncompatibleSessions field value."""
+        """Whether to show incompatible sessions due to game version number/plugins."""
         member = self.get_member("IncompatibleSessions")
         if member is None:
             return None
@@ -511,7 +553,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def only_headless_hosts(self) -> primitives.Bool | None:
-        """The OnlyHeadlessHosts field value."""
+        """Whether to only Show headless worlds."""
         member = self.get_member("OnlyHeadlessHosts")
         if member is None:
             return None
@@ -530,7 +572,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def minimum_total_users(self) -> primitives.Int | None:
-        """The MinimumTotalUsers field value."""
+        """The minimum amount of users in order for it to show up in the list."""
         member = self.get_member("MinimumTotalUsers")
         if member is None:
             return None
@@ -549,7 +591,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def minimum_total_contacts(self) -> primitives.Int | None:
-        """The MinimumTotalContacts field value."""
+        """The maximum amount of users allowed for it to show up in the list."""
         member = self.get_member("MinimumTotalContacts")
         if member is None:
             return None
@@ -567,34 +609,48 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def min_session_access_level(self) -> members.FieldEnum | None:
-        """The MinSessionAccessLevel member."""
+    def min_session_access_level(self) -> SessionAccessLevel | None:
+        """The minimum session access level allowed for an item to show up in the list."""
         member = self.get_member("MinSessionAccessLevel")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SessionAccessLevel(member.value)
         return None
 
     @min_session_access_level.setter
-    def min_session_access_level(self, value: members.FieldEnum) -> None:
-        """Set the MinSessionAccessLevel member."""
-        self.set_member("MinSessionAccessLevel", value)
+    def min_session_access_level(self, value: SessionAccessLevel | str) -> None:
+        """Set MinSessionAccessLevel. The minimum session access level allowed for an item to show up in the list."""
+        member = self.get_member("MinSessionAccessLevel")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MinSessionAccessLevel",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def max_session_access_level(self) -> members.FieldEnum | None:
-        """The MaxSessionAccessLevel member."""
+    def max_session_access_level(self) -> SessionAccessLevel | None:
+        """The maximum session access level allowed for an item to show up in the list."""
         member = self.get_member("MaxSessionAccessLevel")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SessionAccessLevel(member.value)
         return None
 
     @max_session_access_level.setter
-    def max_session_access_level(self, value: members.FieldEnum) -> None:
-        """Set the MaxSessionAccessLevel member."""
-        self.set_member("MaxSessionAccessLevel", value)
+    def max_session_access_level(self, value: SessionAccessLevel | str) -> None:
+        """Set MaxSessionAccessLevel. The maximum session access level allowed for an item to show up in the list."""
+        member = self.get_member("MaxSessionAccessLevel")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MaxSessionAccessLevel",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def min_uptime(self) -> primitives.Double | None:
-        """The MinUptime field value."""
+        """The minimum session access time allowed for an item to show up in the list."""
         member = self.get_member("MinUptime")
         if member is None:
             return None
@@ -613,7 +669,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def max_uptime(self) -> primitives.Double | None:
-        """The MaxUptime field value."""
+        """The maximum session access time allowed for an item in the list."""
         member = self.get_member("MaxUptime")
         if member is None:
             return None
@@ -632,7 +688,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def parent_session_id(self) -> primitives.String | None:
-        """The ParentSessionId field value."""
+        """The ID of the session for the user login."""
         member = self.get_member("ParentSessionId")
         if member is None:
             return None
@@ -651,7 +707,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def visited(self) -> primitives.Bool | None:
-        """The Visited field value."""
+        """Whether worlds should be shown if they are either visited or not visited."""
         member = self.get_member("Visited")
         if member is None:
             return None
@@ -670,7 +726,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def sort_properties(self) -> members.SyncList | None:
-        """The SortProperties member."""
+        """A list of sorting rules for the list of displayed items."""
         member = self.get_member("SortProperties")
         if isinstance(member, members.SyncList):
             return member
@@ -678,12 +734,12 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @sort_properties.setter
     def sort_properties(self, value: members.SyncList) -> None:
-        """Set the SortProperties member."""
+        """Set SortProperties. A list of sorting rules for the list of displayed items."""
         self.set_member("SortProperties", value)
 
     @property
     def is_searching(self) -> primitives.Bool | None:
-        """The IsSearching field value."""
+        """Whether the component is currently doing a search."""
         member = self.get_member("IsSearching")
         if member is None:
             return None
@@ -702,7 +758,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def has_more_results(self) -> primitives.Bool | None:
-        """The HasMoreResults field value."""
+        """Whether there is more results on other pages."""
         member = self.get_member("HasMoreResults")
         if member is None:
             return None
@@ -721,7 +777,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def total_results(self) -> primitives.Int | None:
-        """The TotalResults field value."""
+        """The total results before filtering."""
         member = self.get_member("TotalResults")
         if member is None:
             return None
@@ -740,7 +796,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def filtered_results(self) -> primitives.Int | None:
-        """The FilteredResults field value."""
+        """How many results appeared after filtering."""
         member = self.get_member("FilteredResults")
         if member is None:
             return None

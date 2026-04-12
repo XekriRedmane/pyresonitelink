@@ -19,6 +19,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class FormatQuantity(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Format Quantity node takes in value as a quantity type, the unit in which the quantity should be displayed as a string, as well as wether to use the unit's long name instead of the short form. It returns a formatted string containing the quantity value in the specified unit.
 
+To create this node, you need to specify a valid quantity type for its generic parameter. Examples: ``Mass``, ``Time``, and ``Voltage``.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Quantity
 
     Parameterize with a value type::
@@ -52,7 +54,7 @@ class FormatQuantity(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[U])."""
+        """The quantity value."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +75,7 @@ class FormatQuantity(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T
 
     @property
     def format_unit(self) -> str | None:
-        """Target ID of the FormatUnit reference (targets INodeObjectOutput[primitives.String])."""
+        """The unit in which the quantity should be displayed."""
         member = self.get_member("FormatUnit")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -94,7 +96,7 @@ class FormatQuantity(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T
 
     @property
     def format_number(self) -> str | None:
-        """Target ID of the FormatNumber reference (targets INodeObjectOutput[primitives.String])."""
+        """A format string for the number of the quantity."""
         member = self.get_member("FormatNumber")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -115,7 +117,7 @@ class FormatQuantity(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T
 
     @property
     def use_long_names(self) -> str | None:
-        """Target ID of the UseLongNames reference (targets INodeValueOutput[primitives.Bool])."""
+        """Wether to use the unit's long name instead of the short form."""
         member = self.get_member("UseLongNames")
         if isinstance(member, members.Reference):
             return member.targetId

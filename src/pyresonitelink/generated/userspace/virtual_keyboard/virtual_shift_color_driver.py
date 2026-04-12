@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VirtualShiftColorDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VirtualShiftColorDriver.
+    """The VirtualShiftColorDriver component is used to change a color field whenever a keyboard specified has its Shift key state changed.
 
     Category: Userspace/Virtual Keyboard
+
+    Provide values for all the fields in this component in order for it to
+    start working.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VirtualShiftColorDriver"
@@ -44,7 +47,7 @@ class VirtualShiftColorDriver(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def keyboard(self) -> str | None:
-        """Target ID of the Keyboard reference (targets VirtualKeyboard)."""
+        """The keyboard to monitor the shirt state for."""
         member = self.get_member("Keyboard")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +68,7 @@ class VirtualShiftColorDriver(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def color_target(self) -> str | None:
-        """Target ID of the ColorTarget reference (targets IField[primitives.ColorX])."""
+        """The field to set the color of depending on keyboard state."""
         member = self.get_member("ColorTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +89,7 @@ class VirtualShiftColorDriver(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def normal_color(self) -> primitives.ColorX | None:
-        """The NormalColor field value."""
+        """The color to set the field in ``ColorTarget`` to when ``Keyboard`` is in default state."""
         member = self.get_member("NormalColor")
         if member is None:
             return None
@@ -105,7 +108,7 @@ class VirtualShiftColorDriver(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def shift_color(self) -> primitives.ColorX | None:
-        """The ShiftColor field value."""
+        """The color to set the field in ``ColorTarget`` to when ``Keyboard``'s Shift key is toggled on like capslock."""
         member = self.get_member("ShiftColor")
         if member is None:
             return None
@@ -124,7 +127,7 @@ class VirtualShiftColorDriver(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def hold_color(self) -> primitives.ColorX | None:
-        """The HoldColor field value."""
+        """The color to set the field in ``ColorTarget`` to when ``Keyboard``'s Shift key is being held down."""
         member = self.get_member("HoldColor")
         if member is None:
             return None

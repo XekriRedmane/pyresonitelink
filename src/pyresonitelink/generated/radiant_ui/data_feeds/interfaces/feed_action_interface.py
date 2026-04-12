@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedActionInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedActionInterface.
+    """The FeedActionInterface component is used as a template type item in data feed mappers in the Data Feeds system.
 
     Category: Radiant UI/Data Feeds/Interfaces
     """
@@ -363,7 +363,7 @@ class FeedActionInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def action(self) -> str | None:
-        """Target ID of the Action reference (targets SyncDelegate[Action])."""
+        """The field to fill with the Action Sync delegate when this is set up as a template via a data feed."""
         member = self.get_member("Action")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -384,7 +384,7 @@ class FeedActionInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def highlight(self) -> str | None:
-        """Target ID of the Highlight reference (targets IField[primitives.Bool])."""
+        """The bool to toggle when this item is highlighted."""
         member = self.get_member("Highlight")
         if isinstance(member, members.Reference):
             return member.targetId

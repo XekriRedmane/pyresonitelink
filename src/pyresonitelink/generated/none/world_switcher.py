@@ -14,7 +14,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldSwitcher.
+    """The WorldSwitcher component is legacy content for switching worlds via rotating the wrist.
+
+    Can be brought up through the legacy world switcher option in the legacy
+    settings options.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldSwitcher"
@@ -50,7 +53,7 @@ class WorldSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def show(self) -> primitives.Bool | None:
-        """The Show field value."""
+        """Whether the switcher should be shown."""
         member = self.get_member("Show")
         if member is None:
             return None
@@ -69,7 +72,7 @@ class WorldSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ignore_touches_from(self) -> str | None:
-        """Target ID of the IgnoreTouchesFrom reference (targets Slot)."""
+        """A slot to ignore touch events from. like the hand it is on."""
         member = self.get_member("IgnoreTouchesFrom")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -90,7 +93,7 @@ class WorldSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def repulsion_tree(self) -> str | None:
-        """Target ID of the _repulsionTree reference (targets RepulsionTreeSimulator)."""
+        """The repulsion tree used to arrange the orbs in the menu."""
         member = self.get_member("_repulsionTree")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -111,7 +114,7 @@ class WorldSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def lines_mesh(self) -> str | None:
-        """Target ID of the _linesMesh reference (targets MultiSegmentMesh)."""
+        """A multi segment mesh used to create the selection and indication visuals."""
         member = self.get_member("_linesMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -132,7 +135,7 @@ class WorldSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slider(self) -> str | None:
-        """Target ID of the _slider reference (targets Slider)."""
+        """The slider used as part of the selection menu."""
         member = self.get_member("_slider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -153,7 +156,7 @@ class WorldSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def center_orb(self) -> str | None:
-        """Target ID of the _centerOrb reference (targets Slot)."""
+        """The center orb that moves the rest of the orbs to places around it."""
         member = self.get_member("_centerOrb")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -174,7 +177,7 @@ class WorldSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def visual_root(self) -> str | None:
-        """Target ID of the _visualRoot reference (targets Slot)."""
+        """The root slot for all the visuals of the switcher."""
         member = self.get_member("_visualRoot")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CharacterParenter.
+    """Character Parenters are a component that allow for parenting or aligning the gravity of a user when they hit a collider.
 
     Category: Locomotion/Interaction
+
+    **Behavior**: Disabling the collider the CharacterParenter is connected to might be preferred compared to disabling the slot or the CharacterParenter's enabled state itself, as disabling the collider will throw a ContactEnd event to the CharacterPareneter and correctly de-parent the user's inside. 
+
+Disabling the CharacterParenter itself while users are inside the ParentSpace will mean the component can't de-parent users correctly and might not be wanted behavior.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterParenter"
@@ -39,7 +43,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def triggers_only(self) -> primitives.Bool | None:
-        """The TriggersOnly field value."""
+        """Whether to only allow trigger colliders that are part of this component's slot hierarchy to activate parenting."""
         member = self.get_member("TriggersOnly")
         if member is None:
             return None
@@ -58,7 +62,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def nest_into_space(self) -> primitives.Bool | None:
-        """The NestIntoSpace field value."""
+        """Parent the user into the slot ``ParentSpace`` or not."""
         member = self.get_member("NestIntoSpace")
         if member is None:
             return None
@@ -77,7 +81,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def must_be_on_ground(self) -> primitives.Bool | None:
-        """The MustBeOnGround field value."""
+        """The user must be on the ground according to the character controller before they will be aligned/parented."""
         member = self.get_member("MustBeOnGround")
         if member is None:
             return None
@@ -96,7 +100,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def filters(self) -> members.SyncList | None:
-        """The Filters member."""
+        """What directions a user must be aligned to relative to the slot this component is on for them to get parented."""
         member = self.get_member("Filters")
         if isinstance(member, members.SyncList):
             return member
@@ -104,12 +108,12 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @filters.setter
     def filters(self, value: members.SyncList) -> None:
-        """Set the Filters member."""
+        """Set Filters. What directions a user must be aligned to relative to the slot this component is on for them to get parented."""
         self.set_member("Filters", value)
 
     @property
     def ignore_parent_user(self) -> primitives.Bool | None:
-        """The IgnoreParentUser field value."""
+        """Ignore the active user of this component when attempting to parent a user."""
         member = self.get_member("IgnoreParentUser")
         if member is None:
             return None
@@ -128,7 +132,7 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def parent_space(self) -> members.SyncObject | None:
-        """The ParentSpace member."""
+        """The coordinate space that calculations should be done in."""
         member = self.get_member("ParentSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -136,6 +140,6 @@ class CharacterParenter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @parent_space.setter
     def parent_space(self, value: members.SyncObject) -> None:
-        """Set the ParentSpace member."""
+        """Set ParentSpace. The coordinate space that calculations should be done in."""
         self.set_member("ParentSpace", value)
 

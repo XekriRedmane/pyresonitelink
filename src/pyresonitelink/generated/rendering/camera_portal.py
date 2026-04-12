@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.mode import Mode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.mesh_renderer import MeshRenderer
@@ -15,14 +16,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CameraPortal.
+    """Camera Portal, Also known as: Mirror, Portal, Gateway, Non Euclidean, and Bigger on the inside thing. This component allows for making a flat surface appear to have something on the other side.
 
     Category: Rendering
+
+    **Behavior**: This component does not allow for recursion (So you cannot put two mirrors in front and behind and expect them to reflect each other, or portal each other).
+
+Currently, this component does not support culling of objects via object layers, and captures everything the local user currently can render via their POV. there is no way of changing this at the current moment.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CameraPortal"
 
-    def __init__(self, renderer: str | MeshRenderer | None = None, reflection_texture: str | IAssetProvider[RenderTexture] | None = None, plane_offset: primitives.Float | None = None, plane_normal: primitives.Float3 | None = None, portal_target: str | Slot | None = None, clear_color: primitives.ColorX | None = None, disable_per_pixel_lights: primitives.Bool | None = None, disable_shadows: primitives.Bool | None = None, override_far_clip: primitives.Float | None = None, override_near_clip: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, renderer: str | MeshRenderer | None = None, reflection_texture: str | IAssetProvider[RenderTexture] | None = None, plane_offset: primitives.Float | None = None, plane_normal: primitives.Float3 | None = None, render_mode: Mode | str | None = None, portal_target: str | Slot | None = None, clear_color: primitives.ColorX | None = None, disable_per_pixel_lights: primitives.Bool | None = None, disable_shadows: primitives.Bool | None = None, override_far_clip: primitives.Float | None = None, override_near_clip: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,6 +35,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
             reflection_texture: Initial value for ReflectionTexture.
             plane_offset: Initial value for PlaneOffset.
             plane_normal: Initial value for PlaneNormal.
+            render_mode: Initial value for RenderMode.
             portal_target: Initial value for PortalTarget.
             clear_color: Initial value for ClearColor.
             disable_per_pixel_lights: Initial value for DisablePerPixelLights.
@@ -47,6 +53,8 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
             self.plane_offset = plane_offset
         if plane_normal is not None:
             self.plane_normal = plane_normal
+        if render_mode is not None:
+            self.render_mode = render_mode
         if portal_target is not None:
             self.portal_target = portal_target
         if clear_color is not None:
@@ -62,7 +70,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
 
     @property
     def renderer(self) -> str | None:
-        """Target ID of the Renderer reference (targets MeshRenderer)."""
+        """The renderer that the geometry is being used for the effect. This really only works best with flat surfaces, so use a quad in the target mesh renderer."""
         member = self.get_member("Renderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +91,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
 
     @property
     def reflection_texture(self) -> str | None:
-        """Target ID of the ReflectionTexture reference (targets IAssetProvider[RenderTexture])."""
+        """The render texture that this component should render what it wants to display to. This texture only works with a Reflection Material that goes on the ``Render``'s mesh."""
         member = self.get_member("ReflectionTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -104,7 +112,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
 
     @property
     def plane_offset(self) -> primitives.Float | None:
-        """The PlaneOffset field value."""
+        """How far away from the surface the mirror or portal should render from. This doesn't need to be touched for a mirror, and causes some weird effects."""
         member = self.get_member("PlaneOffset")
         if member is None:
             return None
@@ -123,7 +131,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
 
     @property
     def plane_normal(self) -> primitives.Float3 | None:
-        """The PlaneNormal field value."""
+        """Rotates what the mirror is rendering. this can can cause some very strange effects for Mirrors and Portals, and is best understood by playing with it."""
         member = self.get_member("PlaneNormal")
         if member is None:
             return None
@@ -141,21 +149,28 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
             )
 
     @property
-    def render_mode(self) -> members.FieldEnum | None:
-        """The RenderMode member."""
+    def render_mode(self) -> Mode | None:
+        """Whether this CameraPortal should act as a Mirror (Silver mirror) or as a Portal (Gateway, Non Euclidean, Tardis, ETC)"""
         member = self.get_member("RenderMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Mode(member.value)
         return None
 
     @render_mode.setter
-    def render_mode(self, value: members.FieldEnum) -> None:
-        """Set the RenderMode member."""
-        self.set_member("RenderMode", value)
+    def render_mode(self, value: Mode | str) -> None:
+        """Set RenderMode. Whether this CameraPortal should act as a Mirror (Silver mirror) or as a Portal (Gateway, Non Euclidean, Tardis, ETC)"""
+        member = self.get_member("RenderMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "RenderMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def portal_target(self) -> str | None:
-        """Target ID of the PortalTarget reference (targets Slot)."""
+        """The slot that should be used as a position to render from. When using Mirror ``RenderMode``, keep this as the same slot as ``Renderer``. When using Portal ``RenderMode``, set the slot as the thing you're trying to make a gateway to visually (for a tardis, this would be the interior entrance somewhere else in the world)"""
         member = self.get_member("PortalTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -176,7 +191,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
 
     @property
     def override_clear(self) -> members.FieldEnum | None:
-        """The OverrideClear member."""
+        """The type of color to clear when rendering. Functionally identical to the OverrideClear on a Camera"""
         member = self.get_member("OverrideClear")
         if isinstance(member, members.FieldEnum):
             return member
@@ -184,12 +199,12 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
 
     @override_clear.setter
     def override_clear(self, value: members.FieldEnum) -> None:
-        """Set the OverrideClear member."""
+        """Set OverrideClear. The type of color to clear when rendering. Functionally identical to the OverrideClear on a Camera"""
         self.set_member("OverrideClear", value)
 
     @property
     def clear_color(self) -> primitives.ColorX | None:
-        """The ClearColor field value."""
+        """If using "Color" for ``OverrideClear`` use this color."""
         member = self.get_member("ClearColor")
         if member is None:
             return None
@@ -208,7 +223,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
 
     @property
     def disable_per_pixel_lights(self) -> primitives.Bool | None:
-        """The DisablePerPixelLights field value."""
+        """Disables lighting from points or spots in the projected image, which helps performance."""
         member = self.get_member("DisablePerPixelLights")
         if member is None:
             return None
@@ -227,7 +242,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
 
     @property
     def disable_shadows(self) -> primitives.Bool | None:
-        """The DisableShadows field value."""
+        """Disable lights casting shadows in the projected image, which helps performance."""
         member = self.get_member("DisableShadows")
         if member is None:
             return None
@@ -246,7 +261,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
 
     @property
     def override_far_clip(self) -> primitives.Float | None:
-        """The OverrideFarClip field value."""
+        """Override the default farclip from 4096 to this value when enabled."""
         member = self.get_member("OverrideFarClip")
         if member is None:
             return None
@@ -265,7 +280,7 @@ class CameraPortal(GeneratedComponent, ICustomInspector, IComponent, IWorldEvent
 
     @property
     def override_near_clip(self) -> primitives.Float | None:
-        """The OverrideNearClip field value."""
+        """Override the default nearclip from ~0 to this value when enabled."""
         member = self.get_member("OverrideNearClip")
         if member is None:
             return None

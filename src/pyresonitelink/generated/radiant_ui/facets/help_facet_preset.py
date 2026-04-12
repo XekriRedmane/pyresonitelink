@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HelpFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HelpFacetPreset.
+    """The Help Facet Preset component generates the UI for the entire help tab in the dash when attached.
 
     Category: Radiant UI/Facets
     """
@@ -29,7 +29,7 @@ class HelpFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def fully_loaded(self) -> primitives.Bool | None:
-        """The _fullyLoaded field value."""
+        """Whether or not the facet has been fully generated and doesn't need to load again."""
         member = self.get_member("_fullyLoaded")
         if member is None:
             return None

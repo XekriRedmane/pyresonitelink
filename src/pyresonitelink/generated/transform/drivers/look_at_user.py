@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.user_node import UserNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -12,14 +13,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LookAtUser.
+    """The LookAtUser component drives the rotation specified by ``_rotationDrive`` to point towards the user specified in ``TargetUser``, or the Local User if ``TargetAtLocalUser`` is checked.
 
     Category: Transform/Drivers
+
+    Attach to a slot, and then specify fields. Sometimes the fields like
+    rotation offset and around axis may not adjust orientation as desired.
+    In most cases, simply adding a slot beside the object that should look
+    at another object (EX a piston that is already oriented to look at its
+    target at rest) and then parenting it will achieve the desired effect.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LookAtUser"
 
-    def __init__(self, target_user: str | User | None = None, target_at_local_user: primitives.Bool | None = None, source_position_offset: primitives.Float3 | None = None, invert: primitives.Bool | None = None, rotation_offset: primitives.FloatQ | None = None, around_axis: primitives.Bool | None = None, axis: primitives.Float3 | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_user: str | User | None = None, target_at_local_user: primitives.Bool | None = None, source_position_offset: primitives.Float3 | None = None, invert: primitives.Bool | None = None, rotation_offset: primitives.FloatQ | None = None, position_source: UserNode | str | None = None, around_axis: primitives.Bool | None = None, axis: primitives.Float3 | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +35,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             source_position_offset: Initial value for SourcePositionOffset.
             invert: Initial value for Invert.
             rotation_offset: Initial value for RotationOffset.
+            position_source: Initial value for PositionSource.
             around_axis: Initial value for AroundAxis.
             axis: Initial value for Axis.
             rotation_drive: Initial value for _rotationDrive.
@@ -44,6 +52,8 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.invert = invert
         if rotation_offset is not None:
             self.rotation_offset = rotation_offset
+        if position_source is not None:
+            self.position_source = position_source
         if around_axis is not None:
             self.around_axis = around_axis
         if axis is not None:
@@ -53,7 +63,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_user(self) -> str | None:
-        """Target ID of the TargetUser reference (targets User)."""
+        """The user to look at, unless TargetAtLocalUser is checked."""
         member = self.get_member("TargetUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -74,7 +84,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_at_local_user(self) -> primitives.Bool | None:
-        """The TargetAtLocalUser field value."""
+        """Targets the Local User in each client."""
         member = self.get_member("TargetAtLocalUser")
         if member is None:
             return None
@@ -93,7 +103,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source_position_offset(self) -> primitives.Float3 | None:
-        """The SourcePositionOffset field value."""
+        """Offset from which to calculate the look vector."""
         member = self.get_member("SourcePositionOffset")
         if member is None:
             return None
@@ -112,7 +122,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def invert(self) -> primitives.Bool | None:
-        """The Invert field value."""
+        """The rotated item faces away from the user, instead of towards."""
         member = self.get_member("Invert")
         if member is None:
             return None
@@ -131,7 +141,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation_offset(self) -> primitives.FloatQ | None:
-        """The RotationOffset field value."""
+        """The degree to which the item is rotated away from the look vector."""
         member = self.get_member("RotationOffset")
         if member is None:
             return None
@@ -149,21 +159,28 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def position_source(self) -> members.FieldEnum | None:
-        """The PositionSource member."""
+    def position_source(self) -> UserNode | None:
+        """The UserNode to calculate the look vector from"""
         member = self.get_member("PositionSource")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return UserNode(member.value)
         return None
 
     @position_source.setter
-    def position_source(self, value: members.FieldEnum) -> None:
-        """Set the PositionSource member."""
-        self.set_member("PositionSource", value)
+    def position_source(self, value: UserNode | str) -> None:
+        """Set PositionSource. The UserNode to calculate the look vector from"""
+        member = self.get_member("PositionSource")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "PositionSource",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def around_axis(self) -> primitives.Bool | None:
-        """The AroundAxis field value."""
+        """The rotation is around an arbitrary axis defined in ``Axis``."""
         member = self.get_member("AroundAxis")
         if member is None:
             return None
@@ -182,7 +199,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def axis(self) -> primitives.Float3 | None:
-        """The Axis field value."""
+        """A unit vector specifying the arbitrary axis to rotate around"""
         member = self.get_member("Axis")
         if member is None:
             return None
@@ -201,7 +218,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation_drive(self) -> str | None:
-        """Target ID of the _rotationDrive reference (targets IField[primitives.FloatQ])."""
+        """Automatically Assigned - The FloatQ to be driven by this component."""
         member = self.get_member("_rotationDrive")
         if isinstance(member, members.Reference):
             return member.targetId

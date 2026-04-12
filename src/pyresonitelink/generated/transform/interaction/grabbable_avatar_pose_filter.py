@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabbableAvatarPoseFilter(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabbableAvatarPoseFilter.
+    """The GrabbableAvatarPoseFilter Component is used to apply pose filters to the user's hand body node that grabbed the IGrabbable on the same Slot this component is on.
 
     Category: Transform/Interaction
+
+    This component assigns a Pose Filter to the hand you have grabbed an
+    object on. This can be used on anything with a IGrabbable component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabbableAvatarPoseFilter"
@@ -34,7 +37,7 @@ class GrabbableAvatarPoseFilter(GeneratedComponent, IGrabEventReceiver, IWorldEv
 
     @property
     def filter(self) -> str | None:
-        """Target ID of the Filter reference (targets IAvatarPoseFilter)."""
+        """The filter to apply when a user grabs the Type:IGrabbable this component is on."""
         member = self.get_member("Filter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +58,7 @@ class GrabbableAvatarPoseFilter(GeneratedComponent, IGrabEventReceiver, IWorldEv
 
     @property
     def priority(self) -> primitives.Int | None:
-        """The Priority field value."""
+        """Whether this pose filter should be applied before other pose filters currently affecting the user."""
         member = self.get_member("Priority")
         if member is None:
             return None

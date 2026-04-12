@@ -4,6 +4,8 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.spherical_harmonics_l4 import SphericalHarmonicsL4
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,25 +14,28 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IcoSphereMeshSH4(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.IcoSphereMeshSH4.
+    """The Ico Sphere Mesh SH4 component creates Ico Sphere data using Sphercal harmonics.
 
     Category: Assets/Procedural Meshes
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.IcoSphereMeshSH4"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: primitives.Float | None = None, subdivisions: primitives.Int | None = None, flat_shading: primitives.Bool | None = None, flat_face_extrude: primitives.Float | None = None, flat_face_scale: primitives.Float | None = None, negative_radius_inverts_color: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, radius: primitives.Float | None = None, subdivisions: primitives.Int | None = None, flat_shading: primitives.Bool | None = None, flat_face_extrude: primitives.Float | None = None, flat_face_scale: primitives.Float | None = None, colors: SphericalHarmonicsL4 | str | None = None, radius_multiplier: SphericalHarmonicsL4 | str | None = None, negative_radius_inverts_color: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             radius: Initial value for Radius.
             subdivisions: Initial value for Subdivisions.
             flat_shading: Initial value for FlatShading.
             flat_face_extrude: Initial value for FlatFaceExtrude.
             flat_face_scale: Initial value for FlatFaceScale.
+            colors: Initial value for Colors.
+            radius_multiplier: Initial value for RadiusMultiplier.
             negative_radius_inverts_color: Initial value for NegativeRadiusInvertsColor.
             component: Existing Component to wrap.
         """
@@ -41,6 +46,8 @@ class IcoSphereMeshSH4(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if radius is not None:
             self.radius = radius
         if subdivisions is not None:
@@ -51,6 +58,10 @@ class IcoSphereMeshSH4(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             self.flat_face_extrude = flat_face_extrude
         if flat_face_scale is not None:
             self.flat_face_scale = flat_face_scale
+        if colors is not None:
+            self.colors = colors
+        if radius_multiplier is not None:
+            self.radius_multiplier = radius_multiplier
         if negative_radius_inverts_color is not None:
             self.negative_radius_inverts_color = negative_radius_inverts_color
 
@@ -112,21 +123,28 @@ class IcoSphereMeshSH4(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the ico sphere visual."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -145,7 +163,7 @@ class IcoSphereMeshSH4(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def subdivisions(self) -> primitives.Int | None:
-        """The Subdivisions field value."""
+        """How detailed the mesh is."""
         member = self.get_member("Subdivisions")
         if member is None:
             return None
@@ -164,7 +182,7 @@ class IcoSphereMeshSH4(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def flat_shading(self) -> primitives.Bool | None:
-        """The FlatShading field value."""
+        """Whether the mesh should be flat shaded."""
         member = self.get_member("FlatShading")
         if member is None:
             return None
@@ -183,7 +201,7 @@ class IcoSphereMeshSH4(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def flat_face_extrude(self) -> primitives.Float | None:
-        """The FlatFaceExtrude field value."""
+        """How much to puff up the mesh."""
         member = self.get_member("FlatFaceExtrude")
         if member is None:
             return None
@@ -202,7 +220,7 @@ class IcoSphereMeshSH4(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def flat_face_scale(self) -> primitives.Float | None:
-        """The FlatFaceScale field value."""
+        """How much to scale up the faces of the mesh."""
         member = self.get_member("FlatFaceScale")
         if member is None:
             return None
@@ -220,34 +238,48 @@ class IcoSphereMeshSH4(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def colors(self) -> members.FieldEnum | None:
-        """The Colors member."""
+    def colors(self) -> SphericalHarmonicsL4 | None:
+        """The spherical harmonic colors to use."""
         member = self.get_member("Colors")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SphericalHarmonicsL4(member.value)
         return None
 
     @colors.setter
-    def colors(self, value: members.FieldEnum) -> None:
-        """Set the Colors member."""
-        self.set_member("Colors", value)
+    def colors(self, value: SphericalHarmonicsL4 | str) -> None:
+        """Set Colors. The spherical harmonic colors to use."""
+        member = self.get_member("Colors")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Colors",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def radius_multiplier(self) -> members.FieldEnum | None:
-        """The RadiusMultiplier member."""
+    def radius_multiplier(self) -> SphericalHarmonicsL4 | None:
+        """The spherical harmonics to use to influence the mesh radius at different spots."""
         member = self.get_member("RadiusMultiplier")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SphericalHarmonicsL4(member.value)
         return None
 
     @radius_multiplier.setter
-    def radius_multiplier(self, value: members.FieldEnum) -> None:
-        """Set the RadiusMultiplier member."""
-        self.set_member("RadiusMultiplier", value)
+    def radius_multiplier(self, value: SphericalHarmonicsL4 | str) -> None:
+        """Set RadiusMultiplier. The spherical harmonics to use to influence the mesh radius at different spots."""
+        member = self.get_member("RadiusMultiplier")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "RadiusMultiplier",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def negative_radius_inverts_color(self) -> primitives.Bool | None:
-        """The NegativeRadiusInvertsColor field value."""
+        """Whether negative colors invert the mesh geometry."""
         member = self.get_member("NegativeRadiusInvertsColor")
         if member is None:
             return None

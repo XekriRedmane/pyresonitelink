@@ -15,6 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class IsSurrogate(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Is Surrogate node takes in a char and returns whether that character is a surrogate.
 
+Surrogates are special values in UTF-16 that, in pairs, allows representing characters outside the Basic Multilingual Plane.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """
 
@@ -33,7 +35,7 @@ class IsSurrogate(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def character(self) -> str | None:
-        """Target ID of the Character reference (targets INodeValueOutput[primitives.Char])."""
+        """The character to check."""
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             return member.targetId

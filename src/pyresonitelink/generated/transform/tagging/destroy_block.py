@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DestroyBlock(GeneratedComponent, IDestroyBlock, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DestroyBlock.
+    """The Destroy Block component blocks destroying a Slot tagged by this component via the Context Menu. Does not block destroying via Scene Inspector or ProtoFlux.
 
     Category: Transform/Tagging
     """

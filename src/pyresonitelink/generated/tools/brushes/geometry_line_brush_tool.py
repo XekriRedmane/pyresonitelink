@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.template_handling import TemplateHandling
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -22,14 +24,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GeometryLineBrushTool.
+    """The GeometryLineBrushTool component is further explained on the 
+Geometry Line Brush page.
 
     Category: Tools/Brushes
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GeometryLineBrushTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, fixed_minimum_point_distance: primitives.Float | None = None, position_smoothing: primitives.Float | None = None, rotation_smoothing: primitives.Float | None = None, pressure_smoothing: primitives.Float | None = None, max_stroke_length: primitives.Float | None = None, stroke_fade_in_length: primitives.Float | None = None, stroke_fade_out_length: primitives.Float | None = None, stroke_group_finish_wait_time: primitives.Float | None = None, activation_threshold: primitives.Float | None = None, deactivation_threshold_ratio: primitives.Float | None = None, menu_size_change: primitives.Float | None = None, snap_tip: primitives.Bool | None = None, snap_line: primitives.Bool | None = None, make_strokes_grabbable: primitives.Bool | None = None, position_strokes_to_tip: primitives.Bool | None = None, orient_strokes_to_tip: primitives.Bool | None = None, scale_strokes_to_user: primitives.Bool | None = None, pick_materials: primitives.Bool | None = None, pick_colors: primitives.Bool | None = None, current_material: str | IAssetProvider[Material] | None = None, particle_system: str | ParticleSystem | None = None, mesh_emitter_template: str | MeshEmitter | None = None, emission_rate_per_unit_length: primitives.Float | None = None, color_picker: str | ColorDialogInterface | None = None, picked_color: primitives.ColorX | None = None, last_used_material: str | IAssetProvider[Material] | None = None, last_created_material: str | IAssetProvider[Material] | None = None, pressure: primitives.Float | None = None, position: primitives.Float3 | None = None, rotation: primitives.FloatQ | None = None, last_point_delta: primitives.Float3 | None = None, velocity: primitives.Float3 | None = None, raw_delta: primitives.Float3 | None = None, raw_velocity: primitives.Float3 | None = None, raw_stroke_length: primitives.Float | None = None, stroke_length: primitives.Float | None = None, normalized_stroke_length: primitives.Float | None = None, stroke_fade_multiplier: primitives.Float | None = None, stroke_group_index: primitives.Int | None = None, stroke_group_active: primitives.Bool | None = None, tip_anchor: str | Slot | None = None, use_relative_minimum_point_distance: primitives.Bool | None = None, relative_minimum_point_distance_ratio: primitives.Float | None = None, pressure_affects_size: primitives.Bool | None = None, preview_mesh: str | MultiLineMesh | None = None, preview_mesh_offset: str | IField[primitives.Float3] | None = None, size_knob: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, fixed_minimum_point_distance: primitives.Float | None = None, position_smoothing: primitives.Float | None = None, rotation_smoothing: primitives.Float | None = None, pressure_smoothing: primitives.Float | None = None, max_stroke_length: primitives.Float | None = None, stroke_fade_in_length: primitives.Float | None = None, stroke_fade_out_length: primitives.Float | None = None, stroke_group_finish_wait_time: primitives.Float | None = None, activation_threshold: primitives.Float | None = None, deactivation_threshold_ratio: primitives.Float | None = None, menu_size_change: primitives.Float | None = None, snap_tip: primitives.Bool | None = None, snap_line: primitives.Bool | None = None, make_strokes_grabbable: primitives.Bool | None = None, position_strokes_to_tip: primitives.Bool | None = None, orient_strokes_to_tip: primitives.Bool | None = None, scale_strokes_to_user: primitives.Bool | None = None, pick_materials: primitives.Bool | None = None, pick_colors: primitives.Bool | None = None, current_material: str | IAssetProvider[Material] | None = None, particle_system: str | ParticleSystem | None = None, mesh_emitter_template: str | MeshEmitter | None = None, particle_template_handling: TemplateHandling | str | None = None, emission_rate_per_unit_length: primitives.Float | None = None, color_picker: str | ColorDialogInterface | None = None, picked_color: primitives.ColorX | None = None, last_used_material: str | IAssetProvider[Material] | None = None, last_created_material: str | IAssetProvider[Material] | None = None, pressure: primitives.Float | None = None, position: primitives.Float3 | None = None, rotation: primitives.FloatQ | None = None, last_point_delta: primitives.Float3 | None = None, velocity: primitives.Float3 | None = None, raw_delta: primitives.Float3 | None = None, raw_velocity: primitives.Float3 | None = None, raw_stroke_length: primitives.Float | None = None, stroke_length: primitives.Float | None = None, normalized_stroke_length: primitives.Float | None = None, stroke_fade_multiplier: primitives.Float | None = None, stroke_group_index: primitives.Int | None = None, stroke_group_active: primitives.Bool | None = None, tip_anchor: str | Slot | None = None, profile: ColorProfile | str | None = None, use_relative_minimum_point_distance: primitives.Bool | None = None, relative_minimum_point_distance_ratio: primitives.Float | None = None, pressure_affects_size: primitives.Bool | None = None, preview_mesh: str | MultiLineMesh | None = None, preview_mesh_offset: str | IField[primitives.Float3] | None = None, size_knob: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -61,6 +64,7 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
             current_material: Initial value for CurrentMaterial.
             particle_system: Initial value for ParticleSystem.
             mesh_emitter_template: Initial value for MeshEmitterTemplate.
+            particle_template_handling: Initial value for ParticleTemplateHandling.
             emission_rate_per_unit_length: Initial value for EmissionRatePerUnitLength.
             color_picker: Initial value for _colorPicker.
             picked_color: Initial value for _pickedColor.
@@ -80,6 +84,7 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
             stroke_group_index: Initial value for StrokeGroupIndex.
             stroke_group_active: Initial value for StrokeGroupActive.
             tip_anchor: Initial value for TipAnchor.
+            profile: Initial value for Profile.
             use_relative_minimum_point_distance: Initial value for UseRelativeMinimumPointDistance.
             relative_minimum_point_distance_ratio: Initial value for RelativeMinimumPointDistanceRatio.
             pressure_affects_size: Initial value for PressureAffectsSize.
@@ -145,6 +150,8 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
             self.particle_system = particle_system
         if mesh_emitter_template is not None:
             self.mesh_emitter_template = mesh_emitter_template
+        if particle_template_handling is not None:
+            self.particle_template_handling = particle_template_handling
         if emission_rate_per_unit_length is not None:
             self.emission_rate_per_unit_length = emission_rate_per_unit_length
         if color_picker is not None:
@@ -183,6 +190,8 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
             self.stroke_group_active = stroke_group_active
         if tip_anchor is not None:
             self.tip_anchor = tip_anchor
+        if profile is not None:
+            self.profile = profile
         if use_relative_minimum_point_distance is not None:
             self.use_relative_minimum_point_distance = use_relative_minimum_point_distance
         if relative_minimum_point_distance_ratio is not None:
@@ -778,17 +787,24 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
             )
 
     @property
-    def particle_template_handling(self) -> members.FieldEnum | None:
-        """The ParticleTemplateHandling member."""
+    def particle_template_handling(self) -> TemplateHandling | None:
+        """The ParticleTemplateHandling enum value."""
         member = self.get_member("ParticleTemplateHandling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TemplateHandling(member.value)
         return None
 
     @particle_template_handling.setter
-    def particle_template_handling(self, value: members.FieldEnum) -> None:
-        """Set the ParticleTemplateHandling member."""
-        self.set_member("ParticleTemplateHandling", value)
+    def particle_template_handling(self, value: TemplateHandling | str) -> None:
+        """Set the ParticleTemplateHandling enum value."""
+        member = self.get_member("ParticleTemplateHandling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ParticleTemplateHandling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def emission_rate_per_unit_length(self) -> primitives.Float | None:
@@ -1174,7 +1190,7 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
 
     @property
     def line_styles(self) -> members.SyncList | None:
-        """The LineStyles member."""
+        """A list of line styles this tool can possibly draw."""
         member = self.get_member("LineStyles")
         if isinstance(member, members.SyncList):
             return member
@@ -1182,25 +1198,32 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
 
     @line_styles.setter
     def line_styles(self, value: members.SyncList) -> None:
-        """Set the LineStyles member."""
+        """Set LineStyles. A list of line styles this tool can possibly draw."""
         self.set_member("LineStyles", value)
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """the color profile of lines drawn by this tool."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set Profile. the color profile of lines drawn by this tool."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def use_relative_minimum_point_distance(self) -> primitives.Bool | None:
-        """The UseRelativeMinimumPointDistance field value."""
+        """disable the size of the previous line size affecting minimum point distance."""
         member = self.get_member("UseRelativeMinimumPointDistance")
         if member is None:
             return None
@@ -1219,7 +1242,7 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
 
     @property
     def relative_minimum_point_distance_ratio(self) -> primitives.Float | None:
-        """The RelativeMinimumPointDistanceRatio field value."""
+        """how much size affects the minimum distance allowed between points. Affects how if a segment is bigger, that the next point has a bigger minimum place distance from that point."""
         member = self.get_member("RelativeMinimumPointDistanceRatio")
         if member is None:
             return None
@@ -1238,7 +1261,7 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
 
     @property
     def pressure_affects_size(self) -> primitives.Bool | None:
-        """The PressureAffectsSize field value."""
+        """Whether tool pressure affects line size."""
         member = self.get_member("PressureAffectsSize")
         if member is None:
             return None
@@ -1257,7 +1280,7 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
 
     @property
     def material_previews(self) -> members.SyncList | None:
-        """The MaterialPreviews member."""
+        """A list of renderers showing previews of materials."""
         member = self.get_member("MaterialPreviews")
         if isinstance(member, members.SyncList):
             return member
@@ -1265,7 +1288,7 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
 
     @material_previews.setter
     def material_previews(self, value: members.SyncList) -> None:
-        """Set the MaterialPreviews member."""
+        """Set MaterialPreviews. A list of renderers showing previews of materials."""
         self.set_member("MaterialPreviews", value)
 
     @property
@@ -1312,7 +1335,7 @@ class GeometryLineBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITo
 
     @property
     def size_knob(self) -> str | None:
-        """Target ID of the _sizeKnob reference (targets Slot)."""
+        """The slot being used as a size selector knob for this brush."""
         member = self.get_member("_sizeKnob")
         if isinstance(member, members.Reference):
             return member.targetId

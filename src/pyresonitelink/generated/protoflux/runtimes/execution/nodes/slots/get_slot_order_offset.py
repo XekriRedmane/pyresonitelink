@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetSlotOrderOffset(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Gives the Slot Order Offset field of a slot as an int instead of a long.
+    """Gives the ``Slot Order Offset`` field of a slot as an int instead of a long.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots
     """
@@ -34,7 +34,7 @@ class GetSlotOrderOffset(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot for read the slot order offset for."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId

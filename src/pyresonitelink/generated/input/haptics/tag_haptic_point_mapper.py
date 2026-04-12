@@ -10,9 +10,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TagHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TagHapticPointMapper.
+    """The TagHapticPointMapper allows for defining custom mapping on avatars. 
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics
+
+    By frooxius: * Full body avatars are automatically instrumented with
+    this component * You can define list of Slots with associated HapticTag
+    on this component, which determine where will haptic points be mapped to
+    * You can specify that haptic devices (e.g. GigglePuck) can be mapped to
+    a specific tag in the settings
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TagHapticPointMapper"
@@ -33,7 +41,7 @@ class TagHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def priority(self) -> primitives.Int | None:
-        """The Priority field value."""
+        """The priority of this Mapper over other mappers."""
         member = self.get_member("Priority")
         if member is None:
             return None
@@ -52,7 +60,7 @@ class TagHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def show_debug_visuals(self) -> primitives.Bool | None:
-        """The ShowDebugVisuals field value."""
+        """Whether to show the haptic points for this haptic mapper."""
         member = self.get_member("ShowDebugVisuals")
         if member is None:
             return None
@@ -71,7 +79,7 @@ class TagHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def haptic_points(self) -> members.SyncList | None:
-        """The HapticPoints member."""
+        """A list of haptic points with tags and where they go."""
         member = self.get_member("HapticPoints")
         if isinstance(member, members.SyncList):
             return member
@@ -79,6 +87,6 @@ class TagHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @haptic_points.setter
     def haptic_points(self, value: members.SyncList) -> None:
-        """Set the HapticPoints member."""
+        """Set HapticPoints. A list of haptic points with tags and where they go."""
         self.set_member("HapticPoints", value)
 

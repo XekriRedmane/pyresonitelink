@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEventReceiver):
-    """Put the component onto a slot, and position the slot.
+    """The Camera component represents a Unity Camera which is centered on the slot and facing in the forward direction.
 
     Category: Rendering
 
@@ -25,9 +25,6 @@ class Camera(GeneratedComponent, IUVToRayConverter, ICustomInspector, IWorldEven
     node.
 
     **See also**: * CameraPortal, which is often used as a mirror.
-
-Camera
-Camera
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Camera"

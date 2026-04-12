@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.curve_preset import CurvePreset
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -11,14 +12,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ScaleTransition.
+    """The ScaleTransition component makes a slot scale from one scale state to another, disabling when fully reaching its disabled scale point. The component's scale transition state is controlled via ``ShowField``.
 
     Category: Transform/Drivers
+
+    Attach to a slot and provide values to the proper fields. When
+    ``ShowField`` is toggled, the scale and enabled fields of the component
+    will do a little animation.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaleTransition"
 
-    def __init__(self, show_field: primitives.Bool | None = None, transition_time_field: primitives.Float | None = None, show_scale_field: primitives.Float3 | None = None, hidden_scale_field: primitives.Float3 | None = None, scale_drive: str | IField[primitives.Float3] | None = None, enabled_drive: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, show_field: primitives.Bool | None = None, transition_time_field: primitives.Float | None = None, show_scale_field: primitives.Float3 | None = None, hidden_scale_field: primitives.Float3 | None = None, curve_field: CurvePreset | str | None = None, scale_drive: str | IField[primitives.Float3] | None = None, enabled_drive: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -26,6 +31,7 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
             transition_time_field: Initial value for TransitionTimeField.
             show_scale_field: Initial value for ShowScaleField.
             hidden_scale_field: Initial value for HiddenScaleField.
+            curve_field: Initial value for CurveField.
             scale_drive: Initial value for _scaleDrive.
             enabled_drive: Initial value for _enabledDrive.
             component: Existing Component to wrap.
@@ -39,6 +45,8 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.show_scale_field = show_scale_field
         if hidden_scale_field is not None:
             self.hidden_scale_field = hidden_scale_field
+        if curve_field is not None:
+            self.curve_field = curve_field
         if scale_drive is not None:
             self.scale_drive = scale_drive
         if enabled_drive is not None:
@@ -46,7 +54,7 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def show_field(self) -> primitives.Bool | None:
-        """The ShowField field value."""
+        """Whether to be transitioning to hidden (false) or shown (true)"""
         member = self.get_member("ShowField")
         if member is None:
             return None
@@ -65,7 +73,7 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def transition_time_field(self) -> primitives.Float | None:
-        """The TransitionTimeField field value."""
+        """How long the transition to shown or hidden should take."""
         member = self.get_member("TransitionTimeField")
         if member is None:
             return None
@@ -84,7 +92,7 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def show_scale_field(self) -> primitives.Float3 | None:
-        """The ShowScaleField field value."""
+        """What scale the object should transition to from ``HiddenScaleField`` when ``ShowField`` is true."""
         member = self.get_member("ShowScaleField")
         if member is None:
             return None
@@ -103,7 +111,7 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hidden_scale_field(self) -> primitives.Float3 | None:
-        """The HiddenScaleField field value."""
+        """What scale the object should transition to from ``ShowScaleField`` when ``ShowField`` is false."""
         member = self.get_member("HiddenScaleField")
         if member is None:
             return None
@@ -121,21 +129,28 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def curve_field(self) -> members.FieldEnum | None:
-        """The CurveField member."""
+    def curve_field(self) -> CurvePreset | None:
+        """How the object should transition scale over time."""
         member = self.get_member("CurveField")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CurvePreset(member.value)
         return None
 
     @curve_field.setter
-    def curve_field(self, value: members.FieldEnum) -> None:
-        """Set the CurveField member."""
-        self.set_member("CurveField", value)
+    def curve_field(self, value: CurvePreset | str) -> None:
+        """Set CurveField. How the object should transition scale over time."""
+        member = self.get_member("CurveField")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "CurveField",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def scale_drive(self) -> str | None:
-        """Target ID of the _scaleDrive reference (targets IField[primitives.Float3])."""
+        """The field to drive to make this slot scale up and down. Usually the slot's scale field."""
         member = self.get_member("_scaleDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -156,7 +171,7 @@ class ScaleTransition(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def enabled_drive(self) -> str | None:
-        """Target ID of the _enabledDrive reference (targets IField[primitives.Bool])."""
+        """The field to drive to false when the object is done scaling to hidden and drive to true when transitioning away from hidden."""
         member = self.get_member("_enabledDrive")
         if isinstance(member, members.Reference):
             return member.targetId

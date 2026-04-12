@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.culling import Culling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.rect_transform import RectTransform
@@ -22,14 +23,25 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserInteractionModifier, IInteractionTarget, IContextMenuActionReceiver, ISecondaryActionReceiver, IAxisActionReceiver, IUIInterface, IRenderable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.Canvas.
+    """The Canvas component is the starting point for anything based on UIX. It provides the bounds of the UI and controls how users can interact with it.
+
+- DefaultCulling: Especially for rendering the back side of the canvas.|warning}}
+
+}}
 
     Category: UIX
+
+    This component is needed for UIX, without it, your other components that
+    relay on UIX, canvas, elements, and rects will not work as expected.
+    Using a canvas not only organizes your other components, it renders them
+    and makes them usable and interactable.
+
+    **See also**: * When a child slot is created when under a Slot that has a canvas component, the new child slot will automatically create a RectTransform component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Canvas"
 
-    def __init__(self, size: primitives.Float2 | None = None, edit_mode_only: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_existing_touch: primitives.Bool | None = None, high_priority_integration: primitives.Bool | None = None, ignore_touches_from_behind: primitives.Bool | None = None, block_all_interactions: primitives.Bool | None = None, laser_pass_through: primitives.Bool | None = None, pixel_scale: primitives.Float | None = None, unit_scale: primitives.Float | None = None, root_rect: str | RectTransform | None = None, collider: str | BoxCollider | None = None, collider_size: str | IField[primitives.Float3] | None = None, collider_offset: str | IField[primitives.Float3] | None = None, starting_offset: primitives.Int | None = None, starting_mask_depth: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, size: primitives.Float2 | None = None, edit_mode_only: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_existing_touch: primitives.Bool | None = None, high_priority_integration: primitives.Bool | None = None, ignore_touches_from_behind: primitives.Bool | None = None, block_all_interactions: primitives.Bool | None = None, laser_pass_through: primitives.Bool | None = None, pixel_scale: primitives.Float | None = None, unit_scale: primitives.Float | None = None, root_rect: str | RectTransform | None = None, collider: str | BoxCollider | None = None, default_culling: Culling | str | None = None, collider_size: str | IField[primitives.Float3] | None = None, collider_offset: str | IField[primitives.Float3] | None = None, starting_offset: primitives.Int | None = None, starting_mask_depth: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -46,6 +58,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             unit_scale: Initial value for UnitScale.
             root_rect: Initial value for _rootRect.
             collider: Initial value for Collider.
+            default_culling: Initial value for DefaultCulling.
             collider_size: Initial value for _colliderSize.
             collider_offset: Initial value for _colliderOffset.
             starting_offset: Initial value for StartingOffset.
@@ -79,6 +92,8 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             self.root_rect = root_rect
         if collider is not None:
             self.collider = collider
+        if default_culling is not None:
+            self.default_culling = default_culling
         if collider_size is not None:
             self.collider_size = collider_size
         if collider_offset is not None:
@@ -90,7 +105,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def size(self) -> primitives.Float2 | None:
-        """The Size field value."""
+        """The dimensions of the canvas. At normal scale, this is equivalent to meters"""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -109,7 +124,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def edit_mode_only(self) -> primitives.Bool | None:
-        """The EditModeOnly field value."""
+        """This makes this component only editable in Edit Mode"""
         member = self.get_member("EditModeOnly")
         if member is None:
             return None
@@ -166,7 +181,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def accept_existing_touch(self) -> primitives.Bool | None:
-        """The AcceptExistingTouch field value."""
+        """If this canvas is already being touched (physically or remotely), accept the input"""
         member = self.get_member("AcceptExistingTouch")
         if member is None:
             return None
@@ -204,7 +219,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def ignore_touches_from_behind(self) -> primitives.Bool | None:
-        """The IgnoreTouchesFromBehind field value."""
+        """Makes the canvas ignore all touches from behind"""
         member = self.get_member("IgnoreTouchesFromBehind")
         if member is None:
             return None
@@ -223,7 +238,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def block_all_interactions(self) -> primitives.Bool | None:
-        """The BlockAllInteractions field value."""
+        """Prevents any interaction if enabled"""
         member = self.get_member("BlockAllInteractions")
         if member is None:
             return None
@@ -242,7 +257,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def laser_pass_through(self) -> primitives.Bool | None:
-        """The LaserPassThrough field value."""
+        """Allows the laser to go through the canvas"""
         member = self.get_member("LaserPassThrough")
         if member is None:
             return None
@@ -261,7 +276,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def pixel_scale(self) -> primitives.Float | None:
-        """The PixelScale field value."""
+        """Sets the pixel scale for this canvas and its contents"""
         member = self.get_member("PixelScale")
         if member is None:
             return None
@@ -280,7 +295,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def unit_scale(self) -> primitives.Float | None:
-        """The UnitScale field value."""
+        """Scales the contents of this canvas, higher number makes the contents smaller"""
         member = self.get_member("UnitScale")
         if member is None:
             return None
@@ -299,7 +314,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def root_rect(self) -> str | None:
-        """Target ID of the _rootRect reference (targets RectTransform)."""
+        """Internal - The root rect of this canvas"""
         member = self.get_member("_rootRect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -320,7 +335,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def collider(self) -> str | None:
-        """Target ID of the Collider reference (targets BoxCollider)."""
+        """The collider that receives touches from this canvas"""
         member = self.get_member("Collider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -340,21 +355,28 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
             )
 
     @property
-    def default_culling(self) -> members.FieldEnum | None:
-        """The DefaultCulling member."""
+    def default_culling(self) -> Culling | None:
+        """Culling for this canvas"""
         member = self.get_member("DefaultCulling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Culling(member.value)
         return None
 
     @default_culling.setter
-    def default_culling(self, value: members.FieldEnum) -> None:
-        """Set the DefaultCulling member."""
-        self.set_member("DefaultCulling", value)
+    def default_culling(self, value: Culling | str) -> None:
+        """Set DefaultCulling. Culling for this canvas"""
+        member = self.get_member("DefaultCulling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DefaultCulling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def collider_size(self) -> str | None:
-        """Target ID of the _colliderSize reference (targets IField[primitives.Float3])."""
+        """Internal - Takes in a box collider and uses it for the canvas"""
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -375,7 +397,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def collider_offset(self) -> str | None:
-        """Target ID of the _colliderOffset reference (targets IField[primitives.Float3])."""
+        """Internal - Offsets this box collider for this canvas"""
         member = self.get_member("_colliderOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -396,7 +418,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def starting_offset(self) -> primitives.Int | None:
-        """The StartingOffset field value."""
+        """The visibility order of rendering this canvas (lower number gets drawn over higher numbers)"""
         member = self.get_member("StartingOffset")
         if member is None:
             return None
@@ -415,7 +437,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
 
     @property
     def starting_mask_depth(self) -> primitives.Int | None:
-        """The StartingMaskDepth field value."""
+        """Masking layer for the canvas"""
         member = self.get_member("StartingMaskDepth")
         if member is None:
             return None

@@ -12,6 +12,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class EarsRotation(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Ears Rotation node returns the local user's audio output (hearing audio) rotation.
 
+The Camera has the ability to override this rotation by using the ``Audio from camera viewpoint`` setting, and if true, will return this new rotation value, otherwise it will use the user's head proxy's rotation.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Local Output
     """
 

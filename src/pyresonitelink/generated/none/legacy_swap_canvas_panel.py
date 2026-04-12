@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacySwapCanvasPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacySwapCanvasPanel.
+    """The LegacySwapCanvasPanel was used to swap between different panels using some buttons.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacySwapCanvasPanel"
@@ -39,7 +39,7 @@ class LegacySwapCanvasPanel(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def canvas(self) -> str | None:
-        """Target ID of the _canvas reference (targets Canvas)."""
+        """The canvas that contains the entire swap visual."""
         member = self.get_member("_canvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class LegacySwapCanvasPanel(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def panel(self) -> str | None:
-        """Target ID of the _panel reference (targets LegacyPanel)."""
+        """The panel that contains the entire swap panel."""
         member = self.get_member("_panel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +81,7 @@ class LegacySwapCanvasPanel(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def current_panel(self) -> str | None:
-        """Target ID of the _currentPanel reference (targets RectTransform)."""
+        """The current panel visual this is switched to."""
         member = self.get_member("_currentPanel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -102,7 +102,7 @@ class LegacySwapCanvasPanel(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def container(self) -> str | None:
-        """Target ID of the _container reference (targets Slot)."""
+        """The slot that contains the visuals for the swap panel."""
         member = self.get_member("_container")
         if isinstance(member, members.Reference):
             return member.targetId

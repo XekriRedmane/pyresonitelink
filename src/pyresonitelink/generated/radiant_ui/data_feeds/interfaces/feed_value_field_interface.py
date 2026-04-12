@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedValueFieldInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedValueFieldInterface<>.
+    """The FeedValueFieldInterface component is used as a template type item in data feed mappers in the Data Feeds system. This component allows for making a UI Template for changing a value.
 
     Category: Radiant UI/Data Feeds/Interfaces
 
@@ -367,7 +367,7 @@ class FeedValueFieldInterface(GenericComponent[T], IComponent, IWorldEventReceiv
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[T])."""
+        """The field that represents the data that should be read from and written to the source data feed."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -388,7 +388,7 @@ class FeedValueFieldInterface(GenericComponent[T], IComponent, IWorldEventReceiv
 
     @property
     def formatting(self) -> str | None:
-        """Target ID of the Formatting reference (targets IField[primitives.String])."""
+        """The field to fill with data on how to format the value for displaying it."""
         member = self.get_member("Formatting")
         if isinstance(member, members.Reference):
             return member.targetId

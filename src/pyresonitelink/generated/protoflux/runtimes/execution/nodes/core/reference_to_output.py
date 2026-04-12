@@ -15,6 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ReferenceToOutput(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Reference To Output node takes a Global ProtoFlux reference and returns the IVariable that can be used for an Indirect Write.
 
+This node is automatically created when attaching an applicable node output (Data Model Store, Store, Local, or Source) into an input that requires an IVariable. To create this node from the node menu, one must use the assembly type names for IVariable and ExecutionContent. An example valid type for this node is ``ProtoFlux.Runtimes.Execution.IVariable``.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 
     Parameterize with a value type::

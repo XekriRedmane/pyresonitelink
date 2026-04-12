@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueAdd(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Add node takes in 2 inputs and returns the calculated result. The second input (B) will add to the first input (A).
+    """The Add node takes in 2 inputs and returns the calculated result. The second input (``B``) will add to the first input (``A``).
+
+If you need to increment a value from an impulse, use the Increment node instead.|suggestion}}
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 
@@ -41,7 +43,7 @@ class ValueAdd(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[T])."""
+        """The value we have."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +64,7 @@ class ValueAdd(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[T])."""
+        """The value we want to add."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId

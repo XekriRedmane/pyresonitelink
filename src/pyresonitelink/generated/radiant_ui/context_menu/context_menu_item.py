@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ContextMenuItem.
+    """A component that is used internally within context menus. If you want to create a custom context menu, you should look at ContextMenuItemSource.
 
     Category: Radiant UI/Context Menu
     """
@@ -64,7 +64,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     @property
     def highlight(self) -> primitives.Bool | None:
-        """The Highlight field value."""
+        """Set and unset whether the item is being hovered over and should be highlighted."""
         member = self.get_member("Highlight")
         if member is None:
             return None
@@ -83,7 +83,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     @property
     def icon(self) -> str | None:
-        """Target ID of the Icon reference (targets Image)."""
+        """The icon of this item."""
         member = self.get_member("Icon")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -104,7 +104,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     @property
     def sprite(self) -> str | None:
-        """Target ID of the Sprite reference (targets IAssetProvider[Sprite])."""
+        """The sprite of this item."""
         member = self.get_member("Sprite")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -125,7 +125,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     @property
     def label(self) -> str | None:
-        """Target ID of the Label reference (targets IField[primitives.String])."""
+        """The label element of this item."""
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -146,7 +146,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The color of this item."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -165,7 +165,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     @property
     def menu(self) -> str | None:
-        """Target ID of the _menu reference (targets ContextMenu)."""
+        """This item's origin context menu."""
         member = self.get_member("_menu")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -186,7 +186,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     @property
     def highlighted(self) -> primitives.Bool | None:
-        """The _highlighted field value."""
+        """The item is being hovered over."""
         member = self.get_member("_highlighted")
         if member is None:
             return None
@@ -205,7 +205,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     @property
     def arc(self) -> str | None:
-        """Target ID of the _arc reference (targets IField[primitives.Float])."""
+        """The arc that makes up this item."""
         member = self.get_member("_arc")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -226,7 +226,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     @property
     def outer_radius(self) -> str | None:
-        """Target ID of the _outerRadius reference (targets IField[primitives.Float])."""
+        """The field that specifies the outer radius of this item."""
         member = self.get_member("_outerRadius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -247,7 +247,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets Button)."""
+        """The button that makes up this item."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId

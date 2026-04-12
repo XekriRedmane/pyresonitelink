@@ -1,0 +1,18 @@
+{
+  "description": "Avatar User Root Override Assigner is a component that allows for changing the user's viewpoint, the user's first person standing location, or the user's ears location. This component works if parented under a user, for that user.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "Override": "The slot to relocate the user's eyes or ears to.",
+    "Node": "Whether to make the user's eyes, Standing position, or ears located at ``Slot`` without changing any slot transforms.",
+    "_equippingSlot": "an Avatar Object Slot to use for handling this node."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Needs to be parented under a user to work, and applies to the parent user. The component requires a slot, and an AvatarObjectSlot. The Avatar Object slot does not need an existing one, so best practice is to add a new Avatar Object Slot to the same Slot as this component, then put it into the ``_equippingSlot`` field. Also, adding the slot this component is on to ``Override`` allows for a self contained settup in one slot that fully works when parented to a user."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarUserRootOverrideAssigner&action=raw"
+}

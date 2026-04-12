@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueNoiseClip.
+    """The ValueNoiseClip component takes completely random noise and turns it into audio data. The best way to describe the noise would be like TV static.
 
     Category: Assets/Procedural Audio Clips
+
+    Attach to a slot and provide a ``Frequency`` and ``Amplitude``, then
+    insert into a AudioClipPlayer to hear it.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ValueNoiseClip"
@@ -56,7 +59,7 @@ class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def duration(self) -> primitives.Float | None:
-        """The Duration field value."""
+        """How long the clip is."""
         member = self.get_member("Duration")
         if member is None:
             return None
@@ -75,7 +78,7 @@ class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def seed(self) -> primitives.Int | None:
-        """The Seed field value."""
+        """The seed for the random audio noise."""
         member = self.get_member("Seed")
         if member is None:
             return None
@@ -93,7 +96,7 @@ class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     async def bake_clip(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the BakeClip sync method.
+        """Turns the audio into a StaticAudioClip.
 
         Returns:
             The raw JSON response dict.

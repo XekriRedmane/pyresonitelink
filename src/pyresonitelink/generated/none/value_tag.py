@@ -7,7 +7,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueTag(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueTag<>.
+    """The ValueTag component is a simplified version of the ValueField component. The value can be read and written.
 
     Parameterize with a value type::
 

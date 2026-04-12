@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AdjustHDRInverseGamma22(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AdjustHDRInverseGamma22.
+    """Drives a target field by applying a fixed inverse 2.2 HDR gamma from to an input value.
+
+    **Behavior**: This node performs the same calculation as the Apply HDR Inverse Gamma ColorX ProtoFlux node, with a gamma value of 2.2.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AdjustHDRInverseGamma22"
@@ -32,7 +34,7 @@ class AdjustHDRInverseGamma22(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.ColorX])."""
+        """The target field to drive the value of."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -53,7 +55,7 @@ class AdjustHDRInverseGamma22(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def value(self) -> primitives.ColorX | None:
-        """The Value field value."""
+        """The value to apply the gamma calculation to."""
         member = self.get_member("Value")
         if member is None:
             return None

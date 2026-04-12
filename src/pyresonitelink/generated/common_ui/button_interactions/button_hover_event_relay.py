@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonHoverEventRelay(GeneratedComponent, IButtonHoverReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonHoverEventRelay.
+    """The ButtonHoverEventRelay component takes in a slot target, and if any IButton hover event happens with this component on a slot, will also send a signal to that target slot, and the components on that target slot will trigger with hover events (if applicable).
 
     Category: Common UI/Button Interactions
+
+    Useful for sending multiple signals from one hover event.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonHoverEventRelay"
@@ -29,7 +31,7 @@ class ButtonHoverEventRelay(GeneratedComponent, IButtonHoverReceiver, IWorldEven
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The slot to send the signal to."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

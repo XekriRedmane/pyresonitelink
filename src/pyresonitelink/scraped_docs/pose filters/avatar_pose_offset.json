@@ -1,0 +1,12 @@
+{
+  "description": "The Avatar Pose Offset Component is used to offset a user's limb while they use a tool tip or sit in an anchor.",
+  "category": "Users:Common Avatar System:Pose Filters",
+  "fields": {
+    "PositionOffset": "How much position to offset a body node by after previous pose constraints have been applied.",
+    "RotationOffset": "How much rotation to offset a body node by after previous pose constraints have been applied."
+  },
+  "methods": {},
+  "usage": "this can be applied in a certain order relative to other constraints in AvatarAnchor or in use with a tooltip. Because of this, the Component can be used to either make a user's hand(s) or feet positioned as an offset to where they originally are tracked or to apply an offset after another Pose component has restricted movement.\n\nThis component's rotation can be driven in combination with using a AvatarPoseBoxConstraint to freeze the user's body node. this is done by driving ``RotationOffset`` to counteract the rotation of the user's hand, effectively offsetting it back to zero and stopping movement.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarPoseOffset&action=raw"
+}

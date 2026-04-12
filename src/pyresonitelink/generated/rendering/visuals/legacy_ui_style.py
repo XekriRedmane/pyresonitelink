@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyUIStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyUIStyle.
+    """The LegacyUIStyle component is used in older content to specify what colors a UI should be depending on where it is. This should not be used in new content, and should be removed/replaced whenever possible.
 
     Category: Rendering/Visuals
     """
@@ -35,7 +35,7 @@ class LegacyUIStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The normal color."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -54,7 +54,7 @@ class LegacyUIStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_parented_color(self) -> primitives.ColorX | None:
-        """The UserParentedColor field value."""
+        """The color a UI should have when parented under the user."""
         member = self.get_member("UserParentedColor")
         if member is None:
             return None
@@ -73,7 +73,7 @@ class LegacyUIStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def private_color(self) -> primitives.ColorX | None:
-        """The PrivateColor field value."""
+        """The color a UI should have when it's in userspace."""
         member = self.get_member("PrivateColor")
         if member is None:
             return None

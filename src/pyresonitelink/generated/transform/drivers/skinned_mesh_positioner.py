@@ -14,9 +14,28 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SkinnedMeshPositioner.
+    """The SkinnedMeshPositioner component drives a slot's transform so it stays locked to a specific triangle on a SkinnedMeshRenderer.
+
+Normally you can attach things by parenting them to bones, which works okay. But for parts of the skinned mesh that are weighted to multiple bones and/or are affected by blendshapes, this will cause the object to "drift/slide" relative to the mesh. This component fixes that by computing the transform from the actual skinned mesh transform!"Skinned Mesh Positioner - attach objects to a fixed point on triangle!" - Frooxius on YouTube
 
     Category: Transform/Drivers
+
+    To use this component, you should position a slot so that it is placed
+    where you would like it to be anchored on the SkinnedMeshRenderer,
+    attach this component to that slot, fill in the Skin field with a
+    reference to the SkinnedMeshRenderer and select the Compute Parameters
+    button in the Inspector. Once pressed, Resonite will fill in the
+    TriangleIndex field with the index of the nearest triangle on the
+    SkinnedMeshRenderer to that slot, fill in the BarycentricCoordinate,
+    LocalPosition, LocalRotation & LocalScale fields with the values to keep
+    the slot positioned where it was, relative to the selected triangle, and
+    set the PositionDrive, RotationDrive & ScaleDrive fields to references
+    to the respective slot fields.
+
+    **Demo**: Overview and basic usage by Frooxius
+cOuCitJ-ajI
+
+    **See also**: * SkinnedMeshRenderer
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SkinnedMeshPositioner"
@@ -58,7 +77,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
 
     @property
     def skin(self) -> str | None:
-        """Target ID of the Skin reference (targets SkinnedMeshRenderer)."""
+        """The skinned mesh renderer to attach this object to"""
         member = self.get_member("Skin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +98,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
 
     @property
     def triangle_index(self) -> primitives.Int | None:
-        """The TriangleIndex field value."""
+        """The index of the triangle in the mesh to attach this object to"""
         member = self.get_member("TriangleIndex")
         if member is None:
             return None
@@ -98,7 +117,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
 
     @property
     def barycentric_coordinate(self) -> primitives.Float3 | None:
-        """The BarycentricCoordinate field value."""
+        """How close the attachment point should be to each vertex of the triangle (barycentric coordinate system)."""
         member = self.get_member("BarycentricCoordinate")
         if member is None:
             return None
@@ -117,7 +136,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
 
     @property
     def local_position(self) -> primitives.Float3 | None:
-        """The LocalPosition field value."""
+        """An offset to apply to the position of the object"""
         member = self.get_member("LocalPosition")
         if member is None:
             return None
@@ -136,7 +155,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
 
     @property
     def local_rotation(self) -> primitives.FloatQ | None:
-        """The LocalRotation field value."""
+        """An offset to apply to the rotation of the object"""
         member = self.get_member("LocalRotation")
         if member is None:
             return None
@@ -155,7 +174,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
 
     @property
     def local_scale(self) -> primitives.Float3 | None:
-        """The LocalScale field value."""
+        """A multiplier to apply to the scale of the object"""
         member = self.get_member("LocalScale")
         if member is None:
             return None
@@ -174,7 +193,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
 
     @property
     def position_drive(self) -> str | None:
-        """Target ID of the PositionDrive reference (targets IField[primitives.Float3])."""
+        """The position field of the slot to be driven with the position of the triangle in the SkinnedMeshRenderer"""
         member = self.get_member("PositionDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -195,7 +214,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
 
     @property
     def rotation_drive(self) -> str | None:
-        """Target ID of the RotationDrive reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of the slot to be driven with the rotation of the triangle in the SkinnedMeshRenderer"""
         member = self.get_member("RotationDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -216,7 +235,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
 
     @property
     def scale_drive(self) -> str | None:
-        """Target ID of the ScaleDrive reference (targets IField[primitives.Float3])."""
+        """The scale field of the slot to be driven with the scale of the SkinnedMeshRenderer"""
         member = self.get_member("ScaleDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -236,7 +255,7 @@ class SkinnedMeshPositioner(GeneratedComponent, ICustomInspector, IComponent, IW
             )
 
     async def compute_parameters(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ComputeParameters sync method.
+        """Calculates parameters to position the slot at its current position, rotation & scale, relative to the nearest triangle on the specified SkinnedMeshRenderer
 
         Returns:
             The raw JSON response dict.

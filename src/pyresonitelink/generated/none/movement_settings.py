@@ -4,21 +4,26 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.sideways_movement_mode import SidewaysMovementMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class MovementSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.MovementSettings.
+    """See Settings.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MovementSettings"
 
-    def __init__(self, use_head_direction_for_movement: primitives.Bool | None = None, use_smooth_turn: primitives.Bool | None = None, smooth_turn_exclusive_mode: primitives.Bool | None = None, smooth_turn_speed: primitives.Float | None = None, snap_turn_angle: primitives.Float | None = None, no_clip_speed: primitives.Float | None = None, movement_deadzone: primitives.Float | None = None, turning_deadzone: primitives.Float | None = None, movement_exponent: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, left_sideways_mode: SidewaysMovementMode | str | None = None, right_sideways_mode: SidewaysMovementMode | str | None = None, use_head_direction_for_movement: primitives.Bool | None = None, use_smooth_turn: primitives.Bool | None = None, smooth_turn_exclusive_mode: primitives.Bool | None = None, smooth_turn_speed: primitives.Float | None = None, snap_turn_angle: primitives.Float | None = None, no_clip_speed: primitives.Float | None = None, movement_deadzone: primitives.Float | None = None, turning_deadzone: primitives.Float | None = None, movement_exponent: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            left_sideways_mode: Initial value for LeftSidewaysMode.
+            right_sideways_mode: Initial value for RightSidewaysMode.
             use_head_direction_for_movement: Initial value for UseHeadDirectionForMovement.
             use_smooth_turn: Initial value for UseSmoothTurn.
             smooth_turn_exclusive_mode: Initial value for SmoothTurnExclusiveMode.
@@ -31,6 +36,10 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if left_sideways_mode is not None:
+            self.left_sideways_mode = left_sideways_mode
+        if right_sideways_mode is not None:
+            self.right_sideways_mode = right_sideways_mode
         if use_head_direction_for_movement is not None:
             self.use_head_direction_for_movement = use_head_direction_for_movement
         if use_smooth_turn is not None:
@@ -51,34 +60,48 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
             self.movement_exponent = movement_exponent
 
     @property
-    def left_sideways_mode(self) -> members.FieldEnum | None:
-        """The LeftSidewaysMode member."""
+    def left_sideways_mode(self) -> SidewaysMovementMode | None:
+        """How the left controller should be used to move the user."""
         member = self.get_member("LeftSidewaysMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SidewaysMovementMode(member.value)
         return None
 
     @left_sideways_mode.setter
-    def left_sideways_mode(self, value: members.FieldEnum) -> None:
-        """Set the LeftSidewaysMode member."""
-        self.set_member("LeftSidewaysMode", value)
+    def left_sideways_mode(self, value: SidewaysMovementMode | str) -> None:
+        """Set LeftSidewaysMode. How the left controller should be used to move the user."""
+        member = self.get_member("LeftSidewaysMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "LeftSidewaysMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def right_sideways_mode(self) -> members.FieldEnum | None:
-        """The RightSidewaysMode member."""
+    def right_sideways_mode(self) -> SidewaysMovementMode | None:
+        """How the right controller should be used to move the user."""
         member = self.get_member("RightSidewaysMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SidewaysMovementMode(member.value)
         return None
 
     @right_sideways_mode.setter
-    def right_sideways_mode(self, value: members.FieldEnum) -> None:
-        """Set the RightSidewaysMode member."""
-        self.set_member("RightSidewaysMode", value)
+    def right_sideways_mode(self, value: SidewaysMovementMode | str) -> None:
+        """Set RightSidewaysMode. How the right controller should be used to move the user."""
+        member = self.get_member("RightSidewaysMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "RightSidewaysMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def use_head_direction_for_movement(self) -> primitives.Bool | None:
-        """The UseHeadDirectionForMovement field value."""
+        """Should head direction or controller direction in VR for movement direction."""
         member = self.get_member("UseHeadDirectionForMovement")
         if member is None:
             return None
@@ -97,7 +120,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_smooth_turn(self) -> primitives.Bool | None:
-        """The UseSmoothTurn field value."""
+        """Whether smooth turning using joystick should be used."""
         member = self.get_member("UseSmoothTurn")
         if member is None:
             return None
@@ -116,7 +139,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def smooth_turn_exclusive_mode(self) -> primitives.Bool | None:
-        """The SmoothTurnExclusiveMode field value."""
+        """Whether to use only smooth turning in all cases."""
         member = self.get_member("SmoothTurnExclusiveMode")
         if member is None:
             return None
@@ -135,7 +158,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def smooth_turn_speed(self) -> primitives.Float | None:
-        """The SmoothTurnSpeed field value."""
+        """The smooth turn speed sensitivity."""
         member = self.get_member("SmoothTurnSpeed")
         if member is None:
             return None
@@ -154,7 +177,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def snap_turn_angle(self) -> primitives.Float | None:
-        """The SnapTurnAngle field value."""
+        """How many degrees to change by when using snap turn mode."""
         member = self.get_member("SnapTurnAngle")
         if member is None:
             return None
@@ -173,7 +196,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def no_clip_speed(self) -> primitives.Float | None:
-        """The NoClipSpeed field value."""
+        """How fast the user's noclip speed should be."""
         member = self.get_member("NoClipSpeed")
         if member is None:
             return None
@@ -192,7 +215,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def movement_deadzone(self) -> primitives.Float | None:
-        """The MovementDeadzone field value."""
+        """Any 0 to 1 value less than this is ignored for movement. (this is 0 to 1 range)"""
         member = self.get_member("MovementDeadzone")
         if member is None:
             return None
@@ -211,7 +234,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def turning_deadzone(self) -> primitives.Float | None:
-        """The TurningDeadzone field value."""
+        """Any 0 to 1 value less than this is ignored for turning.(this is 0 to 1 range)"""
         member = self.get_member("TurningDeadzone")
         if member is None:
             return None
@@ -230,7 +253,7 @@ class MovementSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def movement_exponent(self) -> primitives.Float | None:
-        """The MovementExponent field value."""
+        """Pushes values from a 0 to 1 linear value to a quick ramp up effect still within a 0 to 1 range for movement speed input on the joysticks."""
         member = self.get_member("MovementExponent")
         if member is None:
             return None

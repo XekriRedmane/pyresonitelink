@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.screen import Screen
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -18,12 +19,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TutorialScreen.
+    """The TutorialScreen component controls a screen prompting the user to go through the tutorial in their dash.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TutorialScreen"
 
-    def __init__(self, icon: str | None = None, active_color: primitives.ColorX | None = None, label: primitives.String | None = None, screen_enabled: primitives.Bool | None = None, base_resolution: primitives.Float2 | None = None, screen_root: str | Slot | None = None, screen_canvas: str | Canvas | None = None, modal_overlay_manager: str | ModalOverlayManager | None = None, button: str | RadiantDashButton | None = None, icon_texture: str | IAssetProvider[Texture2D] | None = None, swap_region: str | SlideSwapRegion | None = None, height_field: str | QuantityTextEditorParser | None = None, next_enabled: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, icon: str | None = None, active_color: primitives.ColorX | None = None, label: primitives.String | None = None, screen_enabled: primitives.Bool | None = None, base_resolution: primitives.Float2 | None = None, screen_root: str | Slot | None = None, screen_canvas: str | Canvas | None = None, modal_overlay_manager: str | ModalOverlayManager | None = None, button: str | RadiantDashButton | None = None, icon_texture: str | IAssetProvider[Texture2D] | None = None, swap_region: str | SlideSwapRegion | None = None, current_screen: Screen | str | None = None, height_field: str | QuantityTextEditorParser | None = None, next_enabled: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,6 +39,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
             button: Initial value for _button.
             icon_texture: Initial value for _iconTexture.
             swap_region: Initial value for _swapRegion.
+            current_screen: Initial value for _currentScreen.
             height_field: Initial value for _heightField.
             next_enabled: Initial value for _nextEnabled.
             component: Existing Component to wrap.
@@ -65,6 +67,8 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.icon_texture = icon_texture
         if swap_region is not None:
             self.swap_region = swap_region
+        if current_screen is not None:
+            self.current_screen = current_screen
         if height_field is not None:
             self.height_field = height_field
         if next_enabled is not None:
@@ -72,7 +76,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def icon(self) -> str | None:
-        """The Icon field value."""
+        """The icon for this dialogue screen."""
         member = self.get_member("Icon")
         if member is None:
             return None
@@ -91,7 +95,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def active_color(self) -> primitives.ColorX | None:
-        """The ActiveColor field value."""
+        """The color when this screen is selected and active."""
         member = self.get_member("ActiveColor")
         if member is None:
             return None
@@ -110,7 +114,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label(self) -> primitives.String | None:
-        """The Label field value."""
+        """The label of this dash screen."""
         member = self.get_member("Label")
         if member is None:
             return None
@@ -129,7 +133,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_enabled(self) -> primitives.Bool | None:
-        """The ScreenEnabled field value."""
+        """Whether this dash screen is enabled or not."""
         member = self.get_member("ScreenEnabled")
         if member is None:
             return None
@@ -148,7 +152,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_resolution(self) -> primitives.Float2 | None:
-        """The BaseResolution field value."""
+        """The resolution this screen renders at."""
         member = self.get_member("BaseResolution")
         if member is None:
             return None
@@ -167,7 +171,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_root(self) -> str | None:
-        """Target ID of the _screenRoot reference (targets Slot)."""
+        """The root slot of this screen's visual elements."""
         member = self.get_member("_screenRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -188,7 +192,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_canvas(self) -> str | None:
-        """Target ID of the _screenCanvas reference (targets Canvas)."""
+        """The canvas Component used to render this dash screen."""
         member = self.get_member("_screenCanvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -209,7 +213,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def modal_overlay_manager(self) -> str | None:
-        """Target ID of the _modalOverlayManager reference (targets ModalOverlayManager)."""
+        """This is the Overlay manager that handles editing mode on this screen."""
         member = self.get_member("_modalOverlayManager")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -230,7 +234,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets RadiantDashButton)."""
+        """This is the button to switch to viewing this screen."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -251,7 +255,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def icon_texture(self) -> str | None:
-        """Target ID of the _iconTexture reference (targets IAssetProvider[Texture2D])."""
+        """This is the texture Component showing the icon for the tab of this screen."""
         member = self.get_member("_iconTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -272,7 +276,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def swap_region(self) -> str | None:
-        """Target ID of the _swapRegion reference (targets SlideSwapRegion)."""
+        """This is the swap region used to show the screen and slide it away/in when it is switched from/to."""
         member = self.get_member("_swapRegion")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -292,21 +296,28 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def current_screen(self) -> members.FieldEnum | None:
-        """The _currentScreen member."""
+    def current_screen(self) -> Screen | None:
+        """The current screen this tutorial screen dialog is showing."""
         member = self.get_member("_currentScreen")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Screen(member.value)
         return None
 
     @current_screen.setter
-    def current_screen(self, value: members.FieldEnum) -> None:
-        """Set the _currentScreen member."""
-        self.set_member("_currentScreen", value)
+    def current_screen(self, value: Screen | str) -> None:
+        """Set _currentScreen. The current screen this tutorial screen dialog is showing."""
+        member = self.get_member("_currentScreen")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_currentScreen",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def height_field(self) -> str | None:
-        """Target ID of the _heightField reference (targets QuantityTextEditorParser)."""
+        """The field used to enter in and store the user's height setting."""
         member = self.get_member("_heightField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -327,7 +338,7 @@ class TutorialScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def next_enabled(self) -> primitives.Bool | None:
-        """The _nextEnabled field value."""
+        """Whether the next button is enabled or not so the user can continue."""
         member = self.get_member("_nextEnabled")
         if member is None:
             return None

@@ -15,6 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ColorAlphaBlend(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Color Alpha Blend does an alpha blend of its two input colors. The source is blended "onto" the destination, and the higher the source alpha, the more of the "source" color and less of the "destination" color comes through.
 
+Alpha values are summed and clamped to a maximum of 1.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """
 
@@ -36,7 +38,7 @@ class ColorAlphaBlend(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeValueOutput[primitives.Color])."""
+        """The color that is blended "onto" the destination."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +59,7 @@ class ColorAlphaBlend(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def destination(self) -> str | None:
-        """Target ID of the Destination reference (targets INodeValueOutput[primitives.Color])."""
+        """The destination color that the source is blended "onto"."""
         member = self.get_member("Destination")
         if isinstance(member, members.Reference):
             return member.targetId

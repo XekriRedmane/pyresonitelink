@@ -1,0 +1,13 @@
+{
+  "description": "The WorldCloseAction component is used to handle the leaving of a world after the user confirms leaving. This component only works on user space.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Action": "The kind of action this Button Events recieving Component is doing to a world.",
+    "WaitingConfirm": "Whether the game is waiting on confirmation via double click, which is 2 clicks within a 2 second time frame.",
+    "OnClosed": "What Action Sync delegate to call when the world finishes closing."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldCloseAction&action=raw"
+}

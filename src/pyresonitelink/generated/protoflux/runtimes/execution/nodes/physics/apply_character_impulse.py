@@ -17,7 +17,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ApplyCharacterImpulse(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Applies a impulse to a character controller, impulses are similar but different from the force node from a physics perspective.
+    """Applies a impulse to a character controller, impulses are similar but different from the force node from a physics perspective. 
+
+Impulse is the change in momentum of an object, or otherwise an "normalized" version of force.
+
+In this case, the impulse node takes Force and applies it across dT, making it framerate independent.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """
@@ -46,7 +50,7 @@ class ApplyCharacterImpulse(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues execution from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +71,7 @@ class ApplyCharacterImpulse(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def impulse(self) -> str | None:
-        """Target ID of the Impulse reference (targets INodeValueOutput[primitives.Float3])."""
+        """The direction to send the slot holding the character controller component."""
         member = self.get_member("Impulse")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -88,7 +92,7 @@ class ApplyCharacterImpulse(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def character(self) -> str | None:
-        """Target ID of the Character reference (targets INodeObjectOutput[CharacterController])."""
+        """The reference itself to be sent in a direction."""
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             return member.targetId

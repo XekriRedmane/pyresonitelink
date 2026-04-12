@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterColliderSetterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CharacterColliderSetterTool.
+    """See Character Collider Setter Tool.
 
     Category: Tools
     """
@@ -187,7 +187,7 @@ class CharacterColliderSetterTool(GeneratedComponent, ITool, IMaterialApplyPolic
 
     @property
     def apply_to_object_root(self) -> primitives.Bool | None:
-        """The ApplyToObjectRoot field value."""
+        """whether this should apply to all colliders under a found object root from the hit collider rather than just the hit collider."""
         member = self.get_member("ApplyToObjectRoot")
         if member is None:
             return None
@@ -206,7 +206,7 @@ class CharacterColliderSetterTool(GeneratedComponent, ITool, IMaterialApplyPolic
 
     @property
     def mark_grippable(self) -> primitives.Bool | None:
-        """The MarkGrippable field value."""
+        """whether to mark it as being able to be climbed."""
         member = self.get_member("MarkGrippable")
         if member is None:
             return None

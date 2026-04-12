@@ -1,0 +1,12 @@
+{
+  "description": "The Tube Spiral Mesh Mono Adapter component takes the incoming value from ``Value``, and if it's less than .001 or null it drive ``Target`` to .001, else what ``Value`` contains.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The value to drive with ``Value`` converted.",
+    "Value": "The value to convert."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TubeSpiralMeshMonoAdapter&action=raw"
+}

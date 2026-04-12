@@ -13,7 +13,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.QuaternionMemberEditor.
+    """The QuaternionMemberEditor component is a low-level component for use in editing FloatQ elements as XYZ Euler angles in degrees. It is used, for example, in the ProtoFlux input node for FloatQ values.
+
+    This component's behavior is very similar to PrimitiveMemberEditor, but
+    a layer of abstraction exists between the FloatQ field in ``_target``
+    and the text field being driven for each member. This abstraction layer
+    converts to and from Euler angles and quaterion values, which is then
+    used for building a UI to edit quaternions as Euler angles.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.QuaternionMemberEditor"
@@ -70,7 +76,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def continuous(self) -> primitives.Bool | None:
-        """The Continuous field value."""
+        """Whether changes update a value instantly."""
         member = self.get_member("Continuous")
         if member is None:
             return None
@@ -89,7 +95,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def path(self) -> primitives.String | None:
-        """The _path field value."""
+        """see Ref Hacking. essentially accesses a member underneath another one. for example, "x" will access the x element of a Float3, Float2, Float4, or FloatQ."""
         member = self.get_member("_path")
         if member is None:
             return None
@@ -108,7 +114,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField)."""
+        """Target field, which should be a FloatQ."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -129,7 +135,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def vertical(self) -> primitives.Bool | None:
-        """The Vertical field value."""
+        """Whether the target UI is a vertical layout, as opposed to a horizontal layout."""
         member = self.get_member("Vertical")
         if member is None:
             return None
@@ -148,7 +154,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def x_editor(self) -> str | None:
-        """Target ID of the _xEditor reference (targets TextEditor)."""
+        """TextEditor for the X field."""
         member = self.get_member("_xEditor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -169,7 +175,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def y_editor(self) -> str | None:
-        """Target ID of the _yEditor reference (targets TextEditor)."""
+        """TextEditor for the Y field."""
         member = self.get_member("_yEditor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -190,7 +196,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def z_editor(self) -> str | None:
-        """Target ID of the _zEditor reference (targets TextEditor)."""
+        """TextEditor for the Z field."""
         member = self.get_member("_zEditor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -211,7 +217,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def x_drive(self) -> str | None:
-        """Target ID of the _xDrive reference (targets IField[primitives.String])."""
+        """Field to be driven by the X angle. Should be the ``Content`` field on the Text component that ``_xEditor`` is pointing to."""
         member = self.get_member("_xDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -232,7 +238,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def y_drive(self) -> str | None:
-        """Target ID of the _yDrive reference (targets IField[primitives.String])."""
+        """Field to be driven by the Y angle."""
         member = self.get_member("_yDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -253,7 +259,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def z_drive(self) -> str | None:
-        """Target ID of the _zDrive reference (targets IField[primitives.String])."""
+        """Field to be driven by the Z angle."""
         member = self.get_member("_zDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -274,7 +280,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def x_button(self) -> str | None:
-        """Target ID of the _xButton reference (targets Button)."""
+        """Button whose sync delegates are attached to the ``_xEditor``"""
         member = self.get_member("_xButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -295,7 +301,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def y_button(self) -> str | None:
-        """Target ID of the _yButton reference (targets Button)."""
+        """Button whose sync delegates are attached to the ``_yEditor``"""
         member = self.get_member("_yButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -316,7 +322,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def z_button(self) -> str | None:
-        """Target ID of the _zButton reference (targets Button)."""
+        """Button whose sync delegates are attached to the ``_zEditor``"""
         member = self.get_member("_zButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -337,7 +343,7 @@ class QuaternionMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def editing_value(self) -> primitives.Double3 | None:
-        """The _editingValue field value."""
+        """The value that the user is currently entering at it's current editing state. updates continuously."""
         member = self.get_member("_editingValue")
         if member is None:
             return None

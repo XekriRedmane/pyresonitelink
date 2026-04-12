@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.layout_horizontal_alignment import LayoutHorizontalAlignment
+from pyresonitelink.generated._enums.layout_vertical_alignment import LayoutVerticalAlignment
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ilayout_element import ILayoutElement
@@ -11,14 +13,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.GridLayout.
+    """The GridLayout component aligns the UIX elements from left to right, top to bottom. This component also comes with controllable parameters that a user can use to adjust the way the grid layout is represented on the Canvas or element slot.
+
+}}
 
     Category: UIX/Layout
+
+    This is used to make a nice grid layout of a user's content. The user
+    has a lot of control when it comes to making this kind of layout,
+    especially when it comes to the amount of content cells, expanding and
+    scaling those cells, and alignments.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.GridLayout"
 
-    def __init__(self, padding_top: primitives.Float | None = None, padding_right: primitives.Float | None = None, padding_bottom: primitives.Float | None = None, padding_left: primitives.Float | None = None, cell_size: primitives.Float2 | None = None, spacing: primitives.Float2 | None = None, expand_width_to_fit: primitives.Bool | None = None, preserve_aspect_on_expand: primitives.Bool | None = None, align_last_row_individually: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, padding_top: primitives.Float | None = None, padding_right: primitives.Float | None = None, padding_bottom: primitives.Float | None = None, padding_left: primitives.Float | None = None, cell_size: primitives.Float2 | None = None, spacing: primitives.Float2 | None = None, horizontal_align: LayoutHorizontalAlignment | str | None = None, vertical_align: LayoutVerticalAlignment | str | None = None, expand_width_to_fit: primitives.Bool | None = None, preserve_aspect_on_expand: primitives.Bool | None = None, align_last_row_individually: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +37,8 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
             padding_left: Initial value for PaddingLeft.
             cell_size: Initial value for CellSize.
             spacing: Initial value for Spacing.
+            horizontal_align: Initial value for HorizontalAlign.
+            vertical_align: Initial value for VerticalAlign.
             expand_width_to_fit: Initial value for ExpandWidthToFit.
             preserve_aspect_on_expand: Initial value for PreserveAspectOnExpand.
             align_last_row_individually: Initial value for AlignLastRowIndividually.
@@ -46,6 +57,10 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
             self.cell_size = cell_size
         if spacing is not None:
             self.spacing = spacing
+        if horizontal_align is not None:
+            self.horizontal_align = horizontal_align
+        if vertical_align is not None:
+            self.vertical_align = vertical_align
         if expand_width_to_fit is not None:
             self.expand_width_to_fit = expand_width_to_fit
         if preserve_aspect_on_expand is not None:
@@ -55,7 +70,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
 
     @property
     def padding_top(self) -> primitives.Float | None:
-        """The PaddingTop field value."""
+        """Makes padding on the top of this grid, separating it from the top."""
         member = self.get_member("PaddingTop")
         if member is None:
             return None
@@ -74,7 +89,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
 
     @property
     def padding_right(self) -> primitives.Float | None:
-        """The PaddingRight field value."""
+        """Makes padding on the right of this grid, separating it from the right."""
         member = self.get_member("PaddingRight")
         if member is None:
             return None
@@ -93,7 +108,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
 
     @property
     def padding_bottom(self) -> primitives.Float | None:
-        """The PaddingBottom field value."""
+        """Makes padding on the bottom of this grid, separating it from the bottom."""
         member = self.get_member("PaddingBottom")
         if member is None:
             return None
@@ -112,7 +127,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
 
     @property
     def padding_left(self) -> primitives.Float | None:
-        """The PaddingLeft field value."""
+        """Makes padding on the left of this grid, separating it from the left."""
         member = self.get_member("PaddingLeft")
         if member is None:
             return None
@@ -131,7 +146,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
 
     @property
     def cell_size(self) -> primitives.Float2 | None:
-        """The CellSize field value."""
+        """The size of each content cell."""
         member = self.get_member("CellSize")
         if member is None:
             return None
@@ -150,7 +165,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
 
     @property
     def spacing(self) -> primitives.Float2 | None:
-        """The Spacing field value."""
+        """Makes padding between the content cells of this grid, separating it evenly."""
         member = self.get_member("Spacing")
         if member is None:
             return None
@@ -168,34 +183,48 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
             )
 
     @property
-    def horizontal_align(self) -> members.FieldEnum | None:
-        """The HorizontalAlign member."""
+    def horizontal_align(self) -> LayoutHorizontalAlignment | None:
+        """how this grid should be aligned horizontally."""
         member = self.get_member("HorizontalAlign")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return LayoutHorizontalAlignment(member.value)
         return None
 
     @horizontal_align.setter
-    def horizontal_align(self, value: members.FieldEnum) -> None:
-        """Set the HorizontalAlign member."""
-        self.set_member("HorizontalAlign", value)
+    def horizontal_align(self, value: LayoutHorizontalAlignment | str) -> None:
+        """Set HorizontalAlign. how this grid should be aligned horizontally."""
+        member = self.get_member("HorizontalAlign")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "HorizontalAlign",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def vertical_align(self) -> members.FieldEnum | None:
-        """The VerticalAlign member."""
+    def vertical_align(self) -> LayoutVerticalAlignment | None:
+        """how this grid should be aligned vertically."""
         member = self.get_member("VerticalAlign")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return LayoutVerticalAlignment(member.value)
         return None
 
     @vertical_align.setter
-    def vertical_align(self, value: members.FieldEnum) -> None:
-        """Set the VerticalAlign member."""
-        self.set_member("VerticalAlign", value)
+    def vertical_align(self, value: LayoutVerticalAlignment | str) -> None:
+        """Set VerticalAlign. how this grid should be aligned vertically."""
+        member = self.get_member("VerticalAlign")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "VerticalAlign",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def expand_width_to_fit(self) -> primitives.Bool | None:
-        """The ExpandWidthToFit field value."""
+        """Extends this grid to fit the entire UIX element that it is on."""
         member = self.get_member("ExpandWidthToFit")
         if member is None:
             return None
@@ -214,7 +243,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
 
     @property
     def preserve_aspect_on_expand(self) -> primitives.Bool | None:
-        """The PreserveAspectOnExpand field value."""
+        """Preserves the aspect ratio when expanded to fit."""
         member = self.get_member("PreserveAspectOnExpand")
         if member is None:
             return None
@@ -233,7 +262,7 @@ class GridLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorld
 
     @property
     def align_last_row_individually(self) -> primitives.Bool | None:
-        """The AlignLastRowIndividually field value."""
+        """Alighns the last row for this grid seprately."""
         member = self.get_member("AlignLastRowIndividually")
         if member is None:
             return None

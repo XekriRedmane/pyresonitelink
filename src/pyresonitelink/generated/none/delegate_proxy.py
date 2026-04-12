@@ -7,7 +7,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DelegateProxy(GenericComponent[T], IDelegateProxy, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DelegateProxy<>.
+    """The DelegateProxy is the Sync delegate version of a proxy used to store information about a world element in a user's hand before dropping it into a field. It's similar to grabbing a field name or a value.
+
+    Used in delegate grabbing, is not used by the user directly.
 
     Parameterize with a value type::
 

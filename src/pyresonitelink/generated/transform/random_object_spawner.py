@@ -9,16 +9,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomObjectSpawner(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RandomObjectSpawner.
+    """The RandomObjectSpawner component selects a slot from the ``Templates`` list, and spawns it either at this component's parent (in the case of ``Spawn()``), or at the point specified in an argument (in the case of ``SpawnAtPoint()``)
 
     Category: Transform
+
+    **Behavior**: When triggered by any event source that accepts an Action (for ``Spawn()``), or Action (for ``SpawnAtPoint()``, this component will spawn a random slot from ``Templates``
+
+Prior to Build 2020.11.8.605, this component would duplicate a random slot from ``Templates`` in-place, without changing its location.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RandomObjectSpawner"
 
     @property
     def templates(self) -> members.SyncList | None:
-        """The Templates member."""
+        """List of slots to be selected from, when a Trigger is invoked"""
         member = self.get_member("Templates")
         if isinstance(member, members.SyncList):
             return member
@@ -26,12 +30,12 @@ class RandomObjectSpawner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @templates.setter
     def templates(self, value: members.SyncList) -> None:
-        """Set the Templates member."""
+        """Set Templates. List of slots to be selected from, when a Trigger is invoked"""
         self.set_member("Templates", value)
 
     @property
     def spawn_space(self) -> members.SyncObject | None:
-        """The SpawnSpace member."""
+        """The coordinate space in which the template item will be spawned."""
         member = self.get_member("SpawnSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -39,11 +43,11 @@ class RandomObjectSpawner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @spawn_space.setter
     def spawn_space(self, value: members.SyncObject) -> None:
-        """Set the SpawnSpace member."""
+        """Set SpawnSpace. The coordinate space in which the template item will be spawned."""
         self.set_member("SpawnSpace", value)
 
     async def spawn(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Spawn sync method.
+        """Spawns a slot randomly selected from ``Templates``, located at the origin of this component's parent slot.
 
         Returns:
             The raw JSON response dict.
@@ -53,7 +57,7 @@ class RandomObjectSpawner(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def spawn_at_point(self, resolink: protocols.ResoniteLinkClient, point: primitives.Float3, debug: bool = False) -> dict:
-        """Call the SpawnAtPoint sync method.
+        """Spawns a slot randomly selected from ``Templates``, located at the provided point.
 
         Args:
             resolink: Connected ResoniteLink client.

@@ -18,9 +18,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyTextField.
+    """The LegacyTextField component was used to edit text in old content migrated from other platforms. This component should not be used in new content, and should be replaced whenever possible.
 
     Category: UI/Physical
+
+    Just dont.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyTextField"
@@ -187,7 +189,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The color of the UI elements."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -206,7 +208,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def width(self) -> primitives.Float | None:
-        """The Width field value."""
+        """The width of the UI."""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -225,7 +227,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """The height of the UI."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -244,7 +246,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """The thickness of the UI."""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -263,7 +265,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def slant(self) -> primitives.Float | None:
-        """The Slant field value."""
+        """How beveled the UI elements should be."""
         member = self.get_member("Slant")
         if member is None:
             return None
@@ -282,7 +284,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def text_slot(self) -> str | None:
-        """Target ID of the _textSlot reference (targets Slot)."""
+        """The slot of the text visual of this UI element."""
         member = self.get_member("_textSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -303,7 +305,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def text_renderer(self) -> str | None:
-        """Target ID of the _textRenderer reference (targets TextRenderer)."""
+        """The text renderer of this UI element."""
         member = self.get_member("_textRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -324,7 +326,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def text_editor(self) -> str | None:
-        """Target ID of the _textEditor reference (targets TextEditor)."""
+        """The text editor that allows direct editing of the value this UI element controls."""
         member = self.get_member("_textEditor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -345,7 +347,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets PBS_RimMetallic)."""
+        """The material of this UI."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -366,7 +368,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the _mesh reference (targets BevelStripeMesh)."""
+        """The mesh of this UI."""
         member = self.get_member("_mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -387,7 +389,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def text_bounds(self) -> str | None:
-        """Target ID of the _textBounds reference (targets IField[primitives.Float2])."""
+        """The field to drive with the bounds of the text to keep the UI around it."""
         member = self.get_member("_textBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -408,7 +410,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def collider_size(self) -> str | None:
-        """Target ID of the _colliderSize reference (targets IField[primitives.Float3])."""
+        """The field to drive with what the size of this UI's collider should be."""
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -429,7 +431,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def mesh_left(self) -> str | None:
-        """Target ID of the _meshLeft reference (targets BevelStripeMesh)."""
+        """The mesh of the left button."""
         member = self.get_member("_meshLeft")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -450,7 +452,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def mesh_right(self) -> str | None:
-        """Target ID of the _meshRight reference (targets BevelStripeMesh)."""
+        """The mesh of the right button."""
         member = self.get_member("_meshRight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -471,7 +473,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def text_left_bounds(self) -> str | None:
-        """Target ID of the _textLeftBounds reference (targets IField[primitives.Float2])."""
+        """The field to drive with the bounds of the text on the left button so the UI stays wrapped around it."""
         member = self.get_member("_textLeftBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -492,7 +494,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def text_right_bounds(self) -> str | None:
-        """Target ID of the _textRightBounds reference (targets IField[primitives.Float2])."""
+        """The field to drive with the bounds of the text on the right button so the UI stays wrapped around it."""
         member = self.get_member("_textRightBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -513,7 +515,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def left_text_renderer(self) -> str | None:
-        """Target ID of the _leftTextRenderer reference (targets TextRenderer)."""
+        """The text renderer of the left button."""
         member = self.get_member("_leftTextRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -534,7 +536,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def right_text_renderer(self) -> str | None:
-        """Target ID of the _rightTextRenderer reference (targets TextRenderer)."""
+        """The text renderer of the right button."""
         member = self.get_member("_rightTextRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -555,7 +557,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def collider_left_size(self) -> str | None:
-        """Target ID of the _colliderLeftSize reference (targets IField[primitives.Float3])."""
+        """The field to drive with what the size of the left collider should be."""
         member = self.get_member("_colliderLeftSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -576,7 +578,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def collider_right_size(self) -> str | None:
-        """Target ID of the _colliderRightSize reference (targets IField[primitives.Float3])."""
+        """The field to drive with what the size of the right collider should be."""
         member = self.get_member("_colliderRightSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -597,7 +599,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def left_offset(self) -> str | None:
-        """Target ID of the _leftOffset reference (targets IField[primitives.Float3])."""
+        """The field to drive with what the offset of the left collider should be."""
         member = self.get_member("_leftOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -618,7 +620,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def right_offset(self) -> str | None:
-        """Target ID of the _rightOffset reference (targets IField[primitives.Float3])."""
+        """The field to drive with what the offset of the right collider should be."""
         member = self.get_member("_rightOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -639,7 +641,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def left_text_position(self) -> str | None:
-        """Target ID of the _leftTextPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive wiyh what the position of the text on the left button should be."""
         member = self.get_member("_leftTextPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -660,7 +662,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def right_text_position(self) -> str | None:
-        """Target ID of the _rightTextPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive wiyh what the position of the text on the right button should be."""
         member = self.get_member("_rightTextPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -700,7 +702,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def hint_text_renderer(self) -> str | None:
-        """Target ID of the _hintTextRenderer reference (targets TextRenderer)."""
+        """the text renderer of the edit text hint"""
         member = self.get_member("_hintTextRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -721,7 +723,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def hint_text_bounds(self) -> str | None:
-        """Target ID of the _hintTextBounds reference (targets IField[primitives.Float2])."""
+        """the field to drive with the bounds of the hint text for keeping a UI wrapped around it."""
         member = self.get_member("_hintTextBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -742,7 +744,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
 
     @property
     def hint_text_enabled(self) -> str | None:
-        """Target ID of the _hintTextEnabled reference (targets IField[primitives.Bool])."""
+        """Whether the hint text should be enabled or not."""
         member = self.get_member("_hintTextEnabled")
         if isinstance(member, members.Reference):
             return member.targetId

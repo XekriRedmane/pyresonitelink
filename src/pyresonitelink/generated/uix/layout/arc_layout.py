@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.direction import Direction
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ilayout_element import ILayoutElement
@@ -11,14 +12,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.ArcLayout.
+    """The ArcLayout is a component primarily used in a user's context menu. It requires a set of slots under the slot the component is attached to, and each slot needs an OutlinedArc Component and an ArcSegmentLayout Component.
 
     Category: UIX/Layout
+
+    **Related Components**: * ArcSegmentLayout
+* OutlinedArc
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ArcLayout"
 
-    def __init__(self, arc: primitives.Float | None = None, offset: primitives.Float | None = None, separation: primitives.Float | None = None, center_at_separation: primitives.Bool | None = None, proportional_size: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, arc: primitives.Float | None = None, offset: primitives.Float | None = None, separation: primitives.Float | None = None, center_at_separation: primitives.Bool | None = None, proportional_size: primitives.Bool | None = None, item_direction: Direction | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,6 +31,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
             separation: Initial value for Separation.
             center_at_separation: Initial value for CenterAtSeparation.
             proportional_size: Initial value for ProportionalSize.
+            item_direction: Initial value for ItemDirection.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -40,10 +45,12 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
             self.center_at_separation = center_at_separation
         if proportional_size is not None:
             self.proportional_size = proportional_size
+        if item_direction is not None:
+            self.item_direction = item_direction
 
     @property
     def arc(self) -> primitives.Float | None:
-        """The Arc field value."""
+        """The amount of the circle in degrees to cover with the arc elements."""
         member = self.get_member("Arc")
         if member is None:
             return None
@@ -62,7 +69,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
 
     @property
     def offset(self) -> primitives.Float | None:
-        """The Offset field value."""
+        """the amount to rotate the arc elements around the center in degrees from the default position."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -81,7 +88,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
 
     @property
     def separation(self) -> primitives.Float | None:
-        """The Separation field value."""
+        """how much to separate the elements from each other."""
         member = self.get_member("Separation")
         if member is None:
             return None
@@ -100,7 +107,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
 
     @property
     def center_at_separation(self) -> primitives.Bool | None:
-        """The CenterAtSeparation field value."""
+        """Centers the separation point of this layout."""
         member = self.get_member("CenterAtSeparation")
         if member is None:
             return None
@@ -119,7 +126,7 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
 
     @property
     def proportional_size(self) -> primitives.Bool | None:
-        """The ProportionalSize field value."""
+        """Keep all segments of the arc proportional in size."""
         member = self.get_member("ProportionalSize")
         if member is None:
             return None
@@ -137,15 +144,22 @@ class ArcLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldE
             )
 
     @property
-    def item_direction(self) -> members.FieldEnum | None:
-        """The ItemDirection member."""
+    def item_direction(self) -> Direction | None:
+        """How to arrange the elements in order from the initial position."""
         member = self.get_member("ItemDirection")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Direction(member.value)
         return None
 
     @item_direction.setter
-    def item_direction(self, value: members.FieldEnum) -> None:
-        """Set the ItemDirection member."""
-        self.set_member("ItemDirection", value)
+    def item_direction(self, value: Direction | str) -> None:
+        """Set ItemDirection. How to arrange the elements in order from the initial position."""
+        member = self.get_member("ItemDirection")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ItemDirection",
+                members.FieldEnum(value=str(value)),
+            )
 

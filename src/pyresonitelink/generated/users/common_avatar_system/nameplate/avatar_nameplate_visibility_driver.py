@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarNameplateVisibilityDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AvatarNameplateVisibilityDriver.
+    """AvatarNameplateVisibilityDriver is used to drive the visibility of nameplates during certain scenarios.
 
     Category: Users/Common Avatar System/Nameplate
+
+    **Behavior**: This disables the target of ``Visible`` when nameplates are hidden locally through the nameplate visibility facet on the Home tab of the Dash Menu. This also drives the visibility of nameplates for other reasons, like when visibility of default nameplates is needed locally. It also hides the target nameplate during certain render contexts, like when a user is taking a picture with hide nameplates during pictures setting turned on.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AvatarNameplateVisibilityDriver"
@@ -34,7 +36,7 @@ class AvatarNameplateVisibilityDriver(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def always_show_to_contacts(self) -> primitives.Bool | None:
-        """The AlwaysShowToContacts field value."""
+        """Show to contacts regardless of whether it should be hidden or not."""
         member = self.get_member("AlwaysShowToContacts")
         if member is None:
             return None
@@ -53,7 +55,7 @@ class AvatarNameplateVisibilityDriver(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def visible(self) -> str | None:
-        """Target ID of the Visible reference (targets IField[primitives.Bool])."""
+        """The boolean to drive for nameplate visiblity (like the active of the nameplate slot)"""
         member = self.get_member("Visible")
         if isinstance(member, members.Reference):
             return member.targetId

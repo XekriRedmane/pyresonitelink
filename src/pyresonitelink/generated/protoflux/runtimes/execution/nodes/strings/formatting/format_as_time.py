@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Format As Time node takes in the amount of time in seconds and converts it into a string, This string will be formatted with colon separators for each segment of time (Hours, minutes, seconds) automatically. If you want to have more percision to the milliseconds, increase the number of decimal places.
+    """The ``Format As Time`` node takes in the amount of time in seconds and converts it into a string, This string will be formatted with colon separators for each segment of time (Hours, minutes, seconds) automatically. If you want to have more percision to the milliseconds, increase the number of decimal places.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Formatting
     """
@@ -41,7 +41,7 @@ class FormatAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def time(self) -> str | None:
-        """Target ID of the Time reference (targets INodeValueOutput[primitives.Float])."""
+        """The amount of time (in seconds)."""
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class FormatAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def decimal_places(self) -> str | None:
-        """Target ID of the DecimalPlaces reference (targets INodeValueOutput[primitives.Int])."""
+        """The amount of decimal places for the milliseconds."""
         member = self.get_member("DecimalPlaces")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,9 @@ class FormatAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def format_provider(self) -> str | None:
-        """Target ID of the FormatProvider reference (targets INodeObjectOutput[IFormatProvider])."""
+        """An object that supplies culture-specific formatting information.
+
+Nodes that output this type can be found in Strings/Localization"""
         member = self.get_member("FormatProvider")
         if isinstance(member, members.Reference):
             return member.targetId

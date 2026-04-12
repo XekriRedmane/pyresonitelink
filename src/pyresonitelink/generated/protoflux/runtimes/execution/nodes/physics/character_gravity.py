@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterGravity(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """You can use the actual gravity output of this node to control how gravity works for certain character controllers that need to have different values effect them in different ways (using both the user's transform scale and the component's gravity scale).
+    """The ``Character Gravity`` node returns a referenced character controller gravity. The gravity output is used when you want the character controller's current gravity it is aiming for when simulating. The actual gravity is what the character controller is simulating now, and can be varied when using it dependiong on the settings on the character controller (specifically the gravity scale field).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
 
@@ -42,7 +42,7 @@ class CharacterGravity(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @property
     def character(self) -> str | None:
-        """Target ID of the Character reference (targets INodeObjectOutput[CharacterController])."""
+        """The character controller reference."""
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class CharacterGravity(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @property
     def gravity(self) -> members.EmptyElement | None:
-        """The Gravity member."""
+        """The current gravity from this character controller that it "should" try to simulate."""
         member = self.get_member("Gravity")
         if isinstance(member, members.EmptyElement):
             return member
@@ -71,7 +71,7 @@ class CharacterGravity(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @gravity.setter
     def gravity(self, value: members.EmptyElement) -> None:
-        """Set the Gravity member."""
+        """Set Gravity. The current gravity from this character controller that it "should" try to simulate."""
         self.set_member("Gravity", value)
 
     @property

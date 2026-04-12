@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RingMesh.
+    """A ring mesh is a component that generates a ring of quads that has an ``InnerRadius``, ``OuterRadius``, and resolution which is the ``Segments`` field.
 
     Category: Assets/Procedural Meshes
+
+    **Related Components**: * BevelRingMesh
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RingMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, rotation: primitives.FloatQ | None = None, segments: primitives.Int | None = None, arc: primitives.Float | None = None, inner_radius: primitives.Float | None = None, outer_radius: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, rotation: primitives.FloatQ | None = None, segments: primitives.Int | None = None, arc: primitives.Float | None = None, inner_radius: primitives.Float | None = None, outer_radius: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             rotation: Initial value for Rotation.
             segments: Initial value for Segments.
             arc: Initial value for Arc.
@@ -41,6 +45,8 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if rotation is not None:
             self.rotation = rotation
         if segments is not None:
@@ -112,21 +118,28 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def rotation(self) -> primitives.FloatQ | None:
-        """The Rotation field value."""
+        """Rotate the entire mesh by this."""
         member = self.get_member("Rotation")
         if member is None:
             return None
@@ -145,7 +158,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def segments(self) -> primitives.Int | None:
-        """The Segments field value."""
+        """how sub divisions length wise this ring mesh has (smoothness of the arc)"""
         member = self.get_member("Segments")
         if member is None:
             return None
@@ -164,7 +177,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def arc(self) -> primitives.Float | None:
-        """The Arc field value."""
+        """how much of a circle from 0360 this mesh should take up."""
         member = self.get_member("Arc")
         if member is None:
             return None
@@ -183,7 +196,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def inner_radius(self) -> primitives.Float | None:
-        """The InnerRadius field value."""
+        """The radius of the inner circle of this ring mesh."""
         member = self.get_member("InnerRadius")
         if member is None:
             return None
@@ -202,7 +215,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def outer_radius(self) -> primitives.Float | None:
-        """The OuterRadius field value."""
+        """The radius of the outer circle of this ring mesh."""
         member = self.get_member("OuterRadius")
         if member is None:
             return None
@@ -221,7 +234,7 @@ class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def uv_scale(self) -> primitives.Float2 | None:
-        """The UVScale field value."""
+        """The scale of material details and colors on the mesh."""
         member = self.get_member("UVScale")
         if member is None:
             return None

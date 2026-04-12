@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomPointInCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Random Point In Cone node returns a random point within the bounds of a cone with the given Height and BaseRadius centered at [0; 0; 0].
+    """The Random Point In Cone node returns a random point within the bounds of a cone with the given ``Height`` and ``BaseRadius`` centered at ``[0; 0; 0]``.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Random/Point
     """
@@ -36,7 +36,7 @@ class RandomPointInCone(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def height(self) -> str | None:
-        """Target ID of the Height reference (targets INodeValueOutput[primitives.Float])."""
+        """The height of the cone."""
         member = self.get_member("Height")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class RandomPointInCone(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def base_radius(self) -> str | None:
-        """Target ID of the BaseRadius reference (targets INodeValueOutput[primitives.Float])."""
+        """The radius of the circle base of the cone."""
         member = self.get_member("BaseRadius")
         if isinstance(member, members.Reference):
             return member.targetId

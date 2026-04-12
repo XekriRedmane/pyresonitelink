@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyFeatureSettings.
+    """The LegacyFeatureSettings component is best described on it's page, Settings.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyFeatureSettings"
@@ -39,7 +41,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_legacy_grip_equip(self) -> primitives.Bool | None:
-        """The UseLegacyGripEquip field value."""
+        """Toggles the ability to quick equip tools."""
         member = self.get_member("UseLegacyGripEquip")
         if member is None:
             return None
@@ -58,7 +60,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_legacy_world_switcher(self) -> primitives.Bool | None:
-        """The UseLegacyWorldSwitcher field value."""
+        """Toggles the old way of switching between sessions."""
         member = self.get_member("UseLegacyWorldSwitcher")
         if member is None:
             return None
@@ -77,7 +79,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_legacy_inventory_session_shortcuts(self) -> primitives.Bool | None:
-        """The UseLegacyInventorySessionShortcuts field value."""
+        """Toggles the Legacy Inventory window. (Use left grip + dash menu button in VR, or use Ctrl + i in Desktop)."""
         member = self.get_member("UseLegacyInventorySessionShortcuts")
         if member is None:
             return None
@@ -96,7 +98,7 @@ class LegacyFeatureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def suppress_feet_simulation(self) -> primitives.Bool | None:
-        """The SuppressFeetSimulation field value."""
+        """This is to make certain features like posers that hijack feet proxies work, without having to modify them."""
         member = self.get_member("SuppressFeetSimulation")
         if member is None:
             return None

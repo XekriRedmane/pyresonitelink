@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FootstepEventRelay(GeneratedComponent, IFootstepEventReceiver, IFootstepEventRelay, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FootstepEventRelay.
+    """The FootstepEventRelay component can be put on a user's feet or an object with a collider to receive footstep events. The events are then sent to another slot or any number of FootstepEvents ProtoFlux nodes.
 
     Category: Locomotion/Footsteps
+
+    Used to receive and relay footstep events.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FootstepEventRelay"
@@ -30,7 +32,7 @@ class FootstepEventRelay(GeneratedComponent, IFootstepEventReceiver, IFootstepEv
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The slot to relay footstep events to."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -11,9 +11,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LODGroup(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LODGroup.
+    """A LOD (Level Of Detail) Group allows you to define behaviors to load alternate meshes for objects based on their relative size on a user's screen. This is commonly used to replace complex and finely detailed meshes with simplified versions based on a user's distance from the object.
 
     Category: Rendering
+
+    **Behavior**: This also influences the images seen of renderers viewed in mirrors. meaning that a renderer specified by this component can look different in the mirror vs if it's right beside you, at the exact same moment.
+
+This component relies heavily on the behavior of Unity when it's forced to the unity side via Connectors in FrooxEngine.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LODGroup"
@@ -34,7 +38,7 @@ class LODGroup(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRece
 
     @property
     def lods(self) -> members.SyncList | None:
-        """The LODs member."""
+        """A list of different LOD stages with renderers that should appear for each stage."""
         member = self.get_member("LODs")
         if isinstance(member, members.SyncList):
             return member
@@ -42,12 +46,12 @@ class LODGroup(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRece
 
     @lods.setter
     def lods(self, value: members.SyncList) -> None:
-        """Set the LODs member."""
+        """Set LODs. A list of different LOD stages with renderers that should appear for each stage."""
         self.set_member("LODs", value)
 
     @property
     def cross_fade(self) -> primitives.Bool | None:
-        """The CrossFade field value."""
+        """Cross fade on the Unity LOD component."""
         member = self.get_member("CrossFade")
         if member is None:
             return None
@@ -66,7 +70,7 @@ class LODGroup(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRece
 
     @property
     def animate_cross_fading(self) -> primitives.Bool | None:
-        """The AnimateCrossFading field value."""
+        """Animate Cross fade on the Unity LOD component."""
         member = self.get_member("AnimateCrossFading")
         if member is None:
             return None

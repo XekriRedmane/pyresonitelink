@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Undo.SetReference<>.
+    """The Set Reference component is internally used by the Undo System for setting and reverting a Reference.
+
+    Not used directly by the user.
 
     Parameterize with a value type::
 
@@ -47,7 +49,7 @@ class SetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncRef[T])."""
+        """The field that was changed."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +70,7 @@ class SetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def target_before(self) -> str | None:
-        """Target ID of the TargetBefore reference (targets T)."""
+        """The reference value before the change."""
         member = self.get_member("TargetBefore")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +91,7 @@ class SetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def target_after(self) -> str | None:
-        """Target ID of the TargetAfter reference (targets T)."""
+        """The reference value after the change."""
         member = self.get_member("TargetAfter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +112,7 @@ class SetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def performed(self) -> primitives.Bool | None:
-        """The _performed field value."""
+        """Whether the undo step was done or undone."""
         member = self.get_member("_performed")
         if member is None:
             return None
@@ -129,7 +131,7 @@ class SetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def description(self) -> primitives.String | None:
-        """The _description field value."""
+        """The description of the change that was made and what to for the context menu label text when undoing/redoing."""
         member = self.get_member("_description")
         if member is None:
             return None

@@ -1,0 +1,26 @@
+{
+  "description": "The PlatformInfo component is used where data about the platform that FrooxEngine is running under (In this case, Resonite) for the purpose of providing info to users like social links and language like Abbreviations and ways to refer to the platform.",
+  "category": "Utility",
+  "fields": {
+    "PlatformName": "The name of the platform.",
+    "ShortNamePrefix": "The short name of the platform, used in record strings.",
+    "Abbreviation": "The abreviation of the platform, useful for referring to it in casual conversation.",
+    "Domain": "The website of the plaform.",
+    "Email": "The platform's email address.",
+    "DiscordInviteUrl": "The URL to get to the platform's Discord.",
+    "PoliciesPage": "The TOS of the platform.",
+    "PatreonUrl": "The Patreon URL of the platform.",
+    "GitHubProfile": "The Github profile of the platform.",
+    "GitHubIssuesRepository": "The Github issues page of the platform.",
+    "AuthScheme": "The authorization scheme of the platform.",
+    "AppScheme": "The app scheme of the platform.",
+    "DBScheme": "The data base scheme of the platform. used in asset urls.",
+    "SessionScheme": "The session scheme of the platform. used in session links.",
+    "RecordScheme": "The record scheme of the platform. used in item link urls.",
+    "UserSessionScheme": "The user session scheme of the platform."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PlatformInfo&action=raw"
+}

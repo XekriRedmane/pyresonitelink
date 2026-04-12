@@ -1,0 +1,13 @@
+{
+  "description": "The AvatarSlotEquippedToggle component drives one or two booleans to a state depending on if an AvatarObjectSlot is equipped or not.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "ObjectSlot": "The Avatar Object Slot to monitor for equipping status.",
+    "EquippedDrive": "Drives the target bool to true when ``ObjectSlot`` is equipped. Otherwise false.",
+    "DequippedDrive": "Drives the target bool to false when ``ObjectSlot`` is equipped. Otherwise true."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarSlotEquippedToggle&action=raw"
+}

@@ -12,6 +12,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class EarsOverriden(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Ears Overriden node returns if the local user's audio output (hearing audio) is being overridden by something.
 
+The Camera has the ability to override the user's audio output by using the ``Audio from camera viewpoint`` setting, and if true, will return that this is overriding the ears from the local user's head proxy.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Local Output
     """
 

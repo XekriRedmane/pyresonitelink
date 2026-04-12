@@ -1,6 +1,7 @@
 """Generated component: AvatarHandDataAssigner."""
 
 from pyresonitelink.data import members
+from pyresonitelink.generated._enums.chirality import Chirality
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_ref import SyncRef
@@ -13,20 +14,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarHandDataAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarHandDataAssigner.
+    """The AvatarHandDataAssigner component is usually located on avatar hands, and is used to assign key objects that make a hand work like tip touch sources and the avatar object controlling it.
 
     Category: Users/Common Avatar System/Fingers
+
+    This component needs to be under an avatar in order to work, and is used
+    to manage avatar hands.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarHandDataAssigner"
 
-    def __init__(self, target_reference: str | SyncRef[IFingerPoseSourceComponent] | None = None, touch_source: str | TipTouchSource | None = None, vibration_relay: str | VibrationDeviceRelay | None = None, equipping_slot: str | AvatarObjectSlot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_reference: str | SyncRef[IFingerPoseSourceComponent] | None = None, touch_source: str | TipTouchSource | None = None, vibration_relay: str | VibrationDeviceRelay | None = None, chirality: Chirality | str | None = None, equipping_slot: str | AvatarObjectSlot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             target_reference: Initial value for TargetReference.
             touch_source: Initial value for TouchSource.
             vibration_relay: Initial value for VibrationRelay.
+            chirality: Initial value for Chirality.
             equipping_slot: Initial value for _equippingSlot.
             component: Existing Component to wrap.
         """
@@ -37,12 +42,14 @@ class AvatarHandDataAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldE
             self.touch_source = touch_source
         if vibration_relay is not None:
             self.vibration_relay = vibration_relay
+        if chirality is not None:
+            self.chirality = chirality
         if equipping_slot is not None:
             self.equipping_slot = equipping_slot
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets SyncRef[IFingerPoseSourceComponent])."""
+        """A field to assign a finger pose source to when the avatar above this component is equipped. Usually the ``PoseSource`` on a Component:HandPoser is specified here."""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +70,7 @@ class AvatarHandDataAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldE
 
     @property
     def touch_source(self) -> str | None:
-        """Target ID of the TouchSource reference (targets TipTouchSource)."""
+        """A tip touch source component to put data into when the avatar above this component is equipped."""
         member = self.get_member("TouchSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +91,7 @@ class AvatarHandDataAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldE
 
     @property
     def vibration_relay(self) -> str | None:
-        """Target ID of the VibrationRelay reference (targets VibrationDeviceRelay)."""
+        """A vibration device relay component to put data into when the avatar above this component is equipped."""
         member = self.get_member("VibrationRelay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -104,21 +111,28 @@ class AvatarHandDataAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldE
             )
 
     @property
-    def chirality(self) -> members.FieldEnum | None:
-        """The Chirality member."""
+    def chirality(self) -> Chirality | None:
+        """Whether this component should assign data from the left or right hand data sets."""
         member = self.get_member("Chirality")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Chirality(member.value)
         return None
 
     @chirality.setter
-    def chirality(self, value: members.FieldEnum) -> None:
-        """Set the Chirality member."""
-        self.set_member("Chirality", value)
+    def chirality(self, value: Chirality | str) -> None:
+        """Set Chirality. Whether this component should assign data from the left or right hand data sets."""
+        member = self.get_member("Chirality")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Chirality",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def equipping_slot(self) -> str | None:
-        """Target ID of the _equippingSlot reference (targets AvatarObjectSlot)."""
+        """This field is auto filled with the avatar object slot that is controlling the tip touch source and other components specified by this component."""
         member = self.get_member("_equippingSlot")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyLabel.
+    """The LegacyLabel component is a leftover Component from content migrated from other platforms. It should not be used, and should be replaced whenever possible.
+
+    Not to be used by the user, legacy content.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyLabel"
@@ -49,7 +51,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text_renderer(self) -> str | None:
-        """Target ID of the TextRenderer reference (targets TextRenderer)."""
+        """The text renderer for the label visual."""
         member = self.get_member("TextRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +72,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_color(self) -> primitives.ColorX | None:
-        """The BaseColor field value."""
+        """The base color of the label visual."""
         member = self.get_member("BaseColor")
         if member is None:
             return None
@@ -89,7 +91,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_color_element(self) -> str | None:
-        """Target ID of the BaseColorElement reference (targets ILegacyUIElement)."""
+        """The UI element for the base color."""
         member = self.get_member("BaseColorElement")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +112,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def brightness(self) -> primitives.Float | None:
-        """The Brightness field value."""
+        """The brightness of the label visual."""
         member = self.get_member("Brightness")
         if member is None:
             return None
@@ -129,7 +131,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def lerp_ratio(self) -> primitives.Float | None:
-        """The LerpRatio field value."""
+        """A value from 01 to lerp ``BaseColor`` and ``LerpColor`` with."""
         member = self.get_member("LerpRatio")
         if member is None:
             return None
@@ -148,7 +150,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def lerp_color(self) -> primitives.ColorX | None:
-        """The LerpColor field value."""
+        """The color to lerp to."""
         member = self.get_member("LerpColor")
         if member is None:
             return None
@@ -167,7 +169,7 @@ class LegacyLabel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text_color(self) -> str | None:
-        """Target ID of the _textColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive with a color between ``BaseColor`` and ``LerpColor`` using ``LerpRatio`` as the specifier for the in between color."""
         member = self.get_member("_textColor")
         if isinstance(member, members.Reference):
             return member.targetId

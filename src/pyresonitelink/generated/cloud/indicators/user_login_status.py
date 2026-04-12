@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserLoginStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserLoginStatus.
+    """The UserLoginStatus component gets the current login status of the local user.
 
     Category: Cloud/Indicators
+
+    Attach to a Component to instantly get info on the local user's login
+    status.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserLoginStatus"
@@ -35,7 +38,7 @@ class UserLoginStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_logged_in(self) -> primitives.Bool | None:
-        """The IsLoggedIn field value."""
+        """Whether the local user is logged in."""
         member = self.get_member("IsLoggedIn")
         if member is None:
             return None
@@ -54,7 +57,7 @@ class UserLoginStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def logged_user_id(self) -> primitives.String | None:
-        """The LoggedUserId field value."""
+        """The userID of the local user if they are logged in."""
         member = self.get_member("LoggedUserId")
         if member is None:
             return None
@@ -73,7 +76,7 @@ class UserLoginStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def logged_username(self) -> primitives.String | None:
-        """The LoggedUsername field value."""
+        """The username of the local user if they are logged in."""
         member = self.get_member("LoggedUsername")
         if member is None:
             return None

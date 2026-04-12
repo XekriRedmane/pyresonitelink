@@ -1,0 +1,12 @@
+{
+  "description": "The UserAudioStream component writes Audio from a user Audio device to a specified stream. The audio device used is set internally and such methods are not accessible to the user.",
+  "category": "Users",
+  "fields": {
+    "Stream": "The stream to write audio to.",
+    "UseFilteredData": "Whether to filter the audio data being written to ``Stream`` from the user."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserAudioStream&action=raw"
+}

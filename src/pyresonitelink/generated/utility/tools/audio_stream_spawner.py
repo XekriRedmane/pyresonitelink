@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioStreamSpawner.
+    """The AudioStreamSpawner component is used as part of the dash to spawn a selected audio stream.
 
     Category: Utility/Tools
     """
@@ -36,7 +36,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def bitrate_kbps(self) -> primitives.Float | None:
-        """The BitrateKbps field value."""
+        """The bitrate the audio stream should be"""
         member = self.get_member("BitrateKbps")
         if member is None:
             return None
@@ -55,7 +55,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def device_id(self) -> primitives.String | None:
-        """The DeviceID field value."""
+        """the device name of the stream we are spawning"""
         member = self.get_member("DeviceID")
         if member is None:
             return None
@@ -74,7 +74,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def bitrate_string(self) -> primitives.String | None:
-        """The _bitrateString field value."""
+        """The bitrate as a string."""
         member = self.get_member("_bitrateString")
         if member is None:
             return None
@@ -92,7 +92,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             )
 
     async def on_start_streaming(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the OnStartStreaming sync method.
+        """Triggered by a button in order to spawn the stream in the world.
 
         Args:
             resolink: Connected ResoniteLink client.

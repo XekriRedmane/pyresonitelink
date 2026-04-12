@@ -34,7 +34,7 @@ class NormalizedPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeObjectOutput[IPlayable])."""
+        """The clip to check the current position on."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId

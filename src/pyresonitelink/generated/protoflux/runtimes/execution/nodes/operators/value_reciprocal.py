@@ -38,7 +38,7 @@ class ValueReciprocal(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T
 
     @property
     def n(self) -> str | None:
-        """Target ID of the N reference (targets INodeValueOutput[T])."""
+        """The value that will be the divisor of the division."""
         member = self.get_member("N")
         if isinstance(member, members.Reference):
             return member.targetId

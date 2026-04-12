@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.billboard_alignment import BillboardAlignment
+from pyresonitelink.generated._enums.motion_vector_mode import MotionVectorMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -14,19 +16,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BillboardRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BillboardRenderBufferRenderer.
+    """The BillboardRenderBufferRenderer component is used as a debug component to determine the states of Photon Dust buffers during the simulation process.
 
     Category: Rendering
+
+    Used in debugging Photon Dust
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BillboardRenderBufferRenderer"
 
-    def __init__(self, buffer: str | IAssetProvider[PointRenderBuffer] | None = None, material: str | IAssetProvider[Material] | None = None, min_billboard_screen_size: primitives.Float | None = None, max_billboard_screen_size: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, buffer: str | IAssetProvider[PointRenderBuffer] | None = None, material: str | IAssetProvider[Material] | None = None, alignment: BillboardAlignment | str | None = None, motion_vector_mode: MotionVectorMode | str | None = None, min_billboard_screen_size: primitives.Float | None = None, max_billboard_screen_size: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             buffer: Initial value for Buffer.
             material: Initial value for Material.
+            alignment: Initial value for Alignment.
+            motion_vector_mode: Initial value for MotionVectorMode.
             min_billboard_screen_size: Initial value for MinBillboardScreenSize.
             max_billboard_screen_size: Initial value for MaxBillboardScreenSize.
             component: Existing Component to wrap.
@@ -36,6 +42,10 @@ class BillboardRenderBufferRenderer(GeneratedComponent, ICustomInspector, ICompo
             self.buffer = buffer
         if material is not None:
             self.material = material
+        if alignment is not None:
+            self.alignment = alignment
+        if motion_vector_mode is not None:
+            self.motion_vector_mode = motion_vector_mode
         if min_billboard_screen_size is not None:
             self.min_billboard_screen_size = min_billboard_screen_size
         if max_billboard_screen_size is not None:
@@ -43,7 +53,7 @@ class BillboardRenderBufferRenderer(GeneratedComponent, ICustomInspector, ICompo
 
     @property
     def buffer(self) -> str | None:
-        """Target ID of the Buffer reference (targets IAssetProvider[PointRenderBuffer])."""
+        """The renderer to render point buffers."""
         member = self.get_member("Buffer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +74,7 @@ class BillboardRenderBufferRenderer(GeneratedComponent, ICustomInspector, ICompo
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to render this with."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,34 +94,48 @@ class BillboardRenderBufferRenderer(GeneratedComponent, ICustomInspector, ICompo
             )
 
     @property
-    def alignment(self) -> members.FieldEnum | None:
-        """The Alignment member."""
+    def alignment(self) -> BillboardAlignment | None:
+        """How to align the particles."""
         member = self.get_member("Alignment")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BillboardAlignment(member.value)
         return None
 
     @alignment.setter
-    def alignment(self, value: members.FieldEnum) -> None:
-        """Set the Alignment member."""
-        self.set_member("Alignment", value)
+    def alignment(self, value: BillboardAlignment | str) -> None:
+        """Set Alignment. How to align the particles."""
+        member = self.get_member("Alignment")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Alignment",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def motion_vector_mode(self) -> members.FieldEnum | None:
-        """The MotionVectorMode member."""
+    def motion_vector_mode(self) -> MotionVectorMode | None:
+        """How to render the object motion vectors."""
         member = self.get_member("MotionVectorMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MotionVectorMode(member.value)
         return None
 
     @motion_vector_mode.setter
-    def motion_vector_mode(self, value: members.FieldEnum) -> None:
-        """Set the MotionVectorMode member."""
-        self.set_member("MotionVectorMode", value)
+    def motion_vector_mode(self, value: MotionVectorMode | str) -> None:
+        """Set MotionVectorMode. How to render the object motion vectors."""
+        member = self.get_member("MotionVectorMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MotionVectorMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def min_billboard_screen_size(self) -> primitives.Float | None:
-        """The MinBillboardScreenSize field value."""
+        """The minimum size of particles rendered."""
         member = self.get_member("MinBillboardScreenSize")
         if member is None:
             return None
@@ -130,7 +154,7 @@ class BillboardRenderBufferRenderer(GeneratedComponent, ICustomInspector, ICompo
 
     @property
     def max_billboard_screen_size(self) -> primitives.Float | None:
-        """The MaxBillboardScreenSize field value."""
+        """The maximum size of particles rendered."""
         member = self.get_member("MaxBillboardScreenSize")
         if member is None:
             return None

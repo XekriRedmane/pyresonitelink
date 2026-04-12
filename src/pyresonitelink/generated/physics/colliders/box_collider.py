@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.collider_type import ColliderType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ihighlightable import IHighlightable
@@ -12,18 +13,22 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.BoxCollider.
+    """Representing a simple box, this collider is the second most performant collider in the game, beaten by Sphere Colliders
 
     Category: Physics/Colliders
+
+    This is useful for floors and walls, and can also be set to NoCollide
+    and used as a way to mark an area for a custom culling system.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxCollider"
 
-    def __init__(self, offset: primitives.Float3 | None = None, mass: primitives.Float | None = None, character_collider: primitives.Bool | None = None, ignore_raycasts: primitives.Bool | None = None, size: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, offset: primitives.Float3 | None = None, type_: ColliderType | str | None = None, mass: primitives.Float | None = None, character_collider: primitives.Bool | None = None, ignore_raycasts: primitives.Bool | None = None, size: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             offset: Initial value for Offset.
+            type_: Initial value for Type.
             mass: Initial value for Mass.
             character_collider: Initial value for CharacterCollider.
             ignore_raycasts: Initial value for IgnoreRaycasts.
@@ -33,6 +38,8 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
         super().__init__(component)
         if offset is not None:
             self.offset = offset
+        if type_ is not None:
+            self.type_ = type_
         if mass is not None:
             self.mass = mass
         if character_collider is not None:
@@ -62,17 +69,24 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
             )
 
     @property
-    def type_(self) -> members.FieldEnum | None:
-        """The Type member."""
+    def type_(self) -> ColliderType | None:
+        """The Type enum value."""
         member = self.get_member("Type")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColliderType(member.value)
         return None
 
     @type_.setter
-    def type_(self, value: members.FieldEnum) -> None:
-        """Set the Type member."""
-        self.set_member("Type", value)
+    def type_(self, value: ColliderType | str) -> None:
+        """Set the Type enum value."""
+        member = self.get_member("Type")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Type",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def mass(self) -> primitives.Float | None:
@@ -133,7 +147,7 @@ class BoxCollider(GeneratedComponent, IHighlightable, ISweepableCollider, ICusto
 
     @property
     def size(self) -> primitives.Float3 | None:
-        """The Size field value."""
+        """How big locally this collider is in the x, y, and z directions."""
         member = self.get_member("Size")
         if member is None:
             return None

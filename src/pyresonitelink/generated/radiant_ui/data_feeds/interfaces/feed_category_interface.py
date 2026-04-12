@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedCategoryInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedCategoryInterface.
+    """The FeedCategoryInterface component is used as a template type item in data feed mappers in the Data Feeds system.
 
     Category: Radiant UI/Data Feeds/Interfaces
     """
@@ -359,7 +359,7 @@ class FeedCategoryInterface(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def path(self) -> str | None:
-        """Target ID of the Path reference (targets SyncFieldList[primitives.String])."""
+        """A list of strings specifying this categories specific sub path."""
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
             return member.targetId

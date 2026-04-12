@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TwoFactorCodeDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TwoFactorCodeDialog.
+    """The TwoFactorCodeDialog component is used to accept and process a 2FA code from a user when logging into Resonite.
+
+    Not to be used by the user directly.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TwoFactorCodeDialog"
@@ -27,7 +29,7 @@ class TwoFactorCodeDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def code(self) -> str | None:
-        """Target ID of the _code reference (targets TextField)."""
+        """The text field used to enter the 2FA code."""
         member = self.get_member("_code")
         if isinstance(member, members.Reference):
             return member.targetId

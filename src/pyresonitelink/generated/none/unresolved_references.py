@@ -7,14 +7,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UnresolvedReferences(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UnresolvedReferences.
+    """The UnresolvedReferences component is internal to FrooxEngine and is found usually on a world root. It is used to store references that are unresolved by the load controller of the game for that world.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UnresolvedReferences"
 
     @property
     def references(self) -> members.SyncList | None:
-        """The References member."""
+        """A list of references to keep a storage for."""
         member = self.get_member("References")
         if isinstance(member, members.SyncList):
             return member
@@ -22,6 +22,6 @@ class UnresolvedReferences(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @references.setter
     def references(self, value: members.SyncList) -> None:
-        """Set the References member."""
+        """Set References. A list of references to keep a storage for."""
         self.set_member("References", value)
 

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GaussianSplatAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GaussianSplatAssetMetadata.
+    """The Gaussian Splat Asset Metadata component gives statistics on Gaussian Splats seen in inspectors for components that generate or provide such data.
 
     Category: Assets/Utility
     """
@@ -44,7 +44,7 @@ class GaussianSplatAssetMetadata(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def splat(self) -> str | None:
-        """Target ID of the Splat reference (targets IAssetProvider[GaussianSplat])."""
+        """The splat to get data on."""
         member = self.get_member("Splat")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +65,7 @@ class GaussianSplatAssetMetadata(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def splat_count(self) -> primitives.Int | None:
-        """The SplatCount field value."""
+        """The number of splats in the Gaussian splat."""
         member = self.get_member("SplatCount")
         if member is None:
             return None
@@ -84,7 +84,7 @@ class GaussianSplatAssetMetadata(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def memory_bytes(self) -> primitives.Long | None:
-        """The MemoryBytes field value."""
+        """The amount of memory in bytes the Gaussian splat takes up."""
         member = self.get_member("MemoryBytes")
         if member is None:
             return None
@@ -103,7 +103,7 @@ class GaussianSplatAssetMetadata(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def formatted_memory_bytes(self) -> primitives.String | None:
-        """The FormattedMemoryBytes field value."""
+        """The amount of memory in bytes the Gaussian splat takes up when formatted."""
         member = self.get_member("FormattedMemoryBytes")
         if member is None:
             return None
@@ -122,7 +122,7 @@ class GaussianSplatAssetMetadata(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def actual_loaded_variant(self) -> primitives.String | None:
-        """The ActualLoadedVariant field value."""
+        """The variant of the Gaussian splat that is loaded from the cloud."""
         member = self.get_member("ActualLoadedVariant")
         if member is None:
             return None

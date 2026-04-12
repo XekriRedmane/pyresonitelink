@@ -1,0 +1,12 @@
+{
+  "description": "The LocomotionAnimationBodyCollider component is required for any colliders to be considered for self-collision for the hands.",
+  "category": "Users:Common Avatar System:Animation",
+  "fields": {
+    "IgnoreForLeftHand": "Whether this collider is ignored by the player's left hand during locomotion.",
+    "IgnoreForRightHand": "Whether this collider is ignored by the player's right hand during locomotion."
+  },
+  "methods": {},
+  "usage": "Attach to a slot on an avatar with a collider. That collider will now be a collider the hands will hit and go around while the user is walking in desktop.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocomotionAnimationBodyCollider&action=raw"
+}

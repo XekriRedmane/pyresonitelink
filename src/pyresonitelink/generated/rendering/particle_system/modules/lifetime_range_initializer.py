@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LifetimeRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.LifetimeRangeInitializer.
+    """The LifetimeRangeInitializer component makes particles in a particle system start with a random lifetime/duration within a range.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LifetimeRangeInitializer"
@@ -32,7 +37,7 @@ class LifetimeRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def min_value(self) -> primitives.Float | None:
-        """The MinValue field value."""
+        """The minimum lifetime a particle can start with."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class LifetimeRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def max_value(self) -> primitives.Float | None:
-        """The MaxValue field value."""
+        """The maximum lifetime a particle can start with."""
         member = self.get_member("MaxValue")
         if member is None:
             return None

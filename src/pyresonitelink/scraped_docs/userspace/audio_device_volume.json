@@ -1,0 +1,15 @@
+{
+  "description": "The AudioDeviceVolume component only functions in dash space. If ``AudioDeviceIndex`` is negative, then it uses the user's set default audio device. This component is used to manage the volume of an input device like a microphone for one example. This is a settings component.",
+  "category": "Userspace",
+  "fields": {
+    "AudioDeviceIndex": "The audio input device by OS audio manager index to modify the volume for.",
+    "Volume": "The volume the input device should have.",
+    "NormalizedVolume": "The component uses this value to boost the output noise to a higher volume when it is too quiet or reduce the volume when it is too loud.",
+    "Smoothing": "How fast to reduce or increase the volume when it gets too loud or quiet",
+    "Power": "The amount to boost the volume overall before normalization."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioDeviceVolume&action=raw"
+}

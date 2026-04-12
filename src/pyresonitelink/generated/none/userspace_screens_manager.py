@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserspaceScreensManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserspaceScreensManager.
+    """The UserspaceScreensManager component is used in the user space and handles login status and unread notifications.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserspaceScreensManager"
@@ -31,7 +31,7 @@ class UserspaceScreensManager(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def login_status(self) -> str | None:
-        """Target ID of the _loginStatus reference (targets UserLoginStatus)."""
+        """The current login status of the user."""
         member = self.get_member("_loginStatus")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +52,7 @@ class UserspaceScreensManager(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def unread_indicator(self) -> str | None:
-        """Target ID of the _unreadIndicator reference (targets Text)."""
+        """How many unread notifications the user has, which is driven to the specified text element."""
         member = self.get_member("_unreadIndicator")
         if isinstance(member, members.Reference):
             return member.targetId

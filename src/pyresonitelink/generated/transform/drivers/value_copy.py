@@ -11,9 +11,32 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueCopy<>.
+    """The ValueCopy component is used to ensure that a value from one field is the same as another field via a one-way relation or a two-way relation with writeback. The source and target types must be value types.
 
     Category: Transform/Drivers
+
+    thumb|You can create a ValueCopy component quickly by dragging one
+    drivable field to another using your laser. This context menu will let
+    you choose what type of ValueCopy to create. This component ensures that
+    the value in the ``Target`` field is equal to the value in the
+    ``Source`` field. To do this, it drives the ``Target`` field to give it
+    exclusive access to the value, then whenever the value in the ``Source``
+    field updates, it will write the new value to the ``Target`` field. When
+    ``WriteBack`` is enabled, the target field will have the ability to be
+    changed. Changes made to the target field will then be written back to
+    the source field. Using a ValueCopy from a field to itself will
+    essentially make the field read-only. If WriteBack is enabled, it
+    presents an interesting combination of the locality of drives and
+    writing of values: It will make the value of the field local to each
+    individual user. This may be used as a version of ValueUserOverride that
+    doesn't do any kind of network writes, but it should be noted that users
+    joining the session will first receive the value from the host user
+    before it gets changed. As such, it should only be used when the value
+    doesn't quite matter specifically or gets updated frequently.
+
+    **See also**: * ReferenceCopy for the same behavior but with reference types.
+* ValueMultiDriver for forming this relation to multiple target fields.
+* ValueDriver for continuously updating a field from an IValue source rather than a field.
 
     Parameterize with a value type::
 
@@ -43,7 +66,7 @@ class ValueCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IField[T])."""
+        """The source to copy the value from."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +87,7 @@ class ValueCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[T])."""
+        """The target to copy the value to."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +108,7 @@ class ValueCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """Allow Target to write back to Source. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None

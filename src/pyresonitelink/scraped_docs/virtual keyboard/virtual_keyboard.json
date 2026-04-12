@@ -1,0 +1,14 @@
+{
+  "description": "The Virtual Keyboard is a component that groups many Keys, Modifier Keys, and Multi Keys together.",
+  "category": "Userspace:Virtual Keyboard",
+  "fields": {
+    "ShiftActive": "Whether the Virtual Shift key is toggled to pressed.",
+    "HoldShift": "Whether the Virtual Shift key is held.",
+    "TextPreviewActive": "drives the visibility of the preview text display.",
+    "TextPreview": "The text preview object that shows what the user is typing."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VirtualKeyboard&action=raw"
+}

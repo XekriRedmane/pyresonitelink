@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomEventGenerator(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RandomEventGenerator.
+    """Random event generator is a component that is used to generate random events and point events given a minimum and maximum delay between events.
 
     Category: Utility
+
+    **Behavior**: Generates random events and sends them to the lists of ``Events`` and ``PointEvents``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RandomEventGenerator"
@@ -37,7 +39,7 @@ class RandomEventGenerator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_interval(self) -> primitives.Float | None:
-        """The MinInterval field value."""
+        """The minimum time in seconds before another event is generated"""
         member = self.get_member("MinInterval")
         if member is None:
             return None
@@ -56,7 +58,7 @@ class RandomEventGenerator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_interval(self) -> primitives.Float | None:
-        """The MaxInterval field value."""
+        """The maximum time in seconds before another event is generated"""
         member = self.get_member("MaxInterval")
         if member is None:
             return None
@@ -75,7 +77,7 @@ class RandomEventGenerator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def random_point_generator(self) -> str | None:
-        """Target ID of the RandomPointGenerator reference (targets IPointGenerator)."""
+        """a point generator component that is used as the limiter on where random point events can be located."""
         member = self.get_member("RandomPointGenerator")
         if isinstance(member, members.Reference):
             return member.targetId

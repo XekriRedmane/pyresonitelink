@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RotationRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.RotationRangeInitializer.
+    """The RotationRangeInitializer component gives particles a random starting rotation within a range along it's orientation axis.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.RotationRangeInitializer"
@@ -32,7 +37,7 @@ class RotationRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def min_value(self) -> primitives.Float | None:
-        """The MinValue field value."""
+        """The minimum Rotation that a Particle will start with along it's orientation axis."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class RotationRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def max_value(self) -> primitives.Float | None:
-        """The MaxValue field value."""
+        """The maximum rotation that a Particle will start with along it's orientation axis."""
         member = self.get_member("MaxValue")
         if member is None:
             return None

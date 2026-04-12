@@ -9,9 +9,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractionBlock(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.InteractionBlock.
+    """The InteractionBlock component is used to block UIX interaction events from the user. It requires an Image on the same Slot this component is on for this to work.
+
+}}
 
     Category: UIX/Interaction
+
+    Any time you want to stop any UIX element from interacting (like having
+    a popup menu to be on top of your main UIX), you can use this component
+    to make the main UIX elements not respond to the user, making them focus
+    on the newly spawned UIX.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.InteractionBlock"
@@ -32,7 +39,7 @@ class InteractionBlock(GeneratedComponent, IUIInteractable, IWorldEventReceiver)
 
     @property
     def touch_exit_lock(self) -> primitives.Bool | None:
-        """The TouchExitLock field value."""
+        """Blocks interactions when an interaction ends."""
         member = self.get_member("TouchExitLock")
         if member is None:
             return None
@@ -51,7 +58,7 @@ class InteractionBlock(GeneratedComponent, IUIInteractable, IWorldEventReceiver)
 
     @property
     def touch_enter_lock(self) -> primitives.Bool | None:
-        """The TouchEnterLock field value."""
+        """Blocks interactions when an interaction starts."""
         member = self.get_member("TouchEnterLock")
         if member is None:
             return None

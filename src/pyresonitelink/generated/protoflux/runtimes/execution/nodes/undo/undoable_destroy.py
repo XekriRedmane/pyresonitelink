@@ -19,6 +19,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class UndoableDestroy(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Undoable Destroy node will create an undo step in the Context Menu of the user who the impulse came from. The destruction of the slot provided in Target (Slot) will be undo-able by the user.
 
+when this node is paired with an Undo Batch, it's description if has one, will be ignored, and will be part of the Undo Batch's undo step instead.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """
 
@@ -64,7 +66,7 @@ class UndoableDestroy(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[Slot])."""
+        """The Slot to undo destruction for this undo step."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +87,7 @@ class UndoableDestroy(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def preserve_assets(self) -> str | None:
-        """Target ID of the PreserveAssets reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether to keep the assets store able in an Asset Provider associated with this slot or discard them. Discarding them may lead to missing textures or assets."""
         member = self.get_member("PreserveAssets")
         if isinstance(member, members.Reference):
             return member.targetId

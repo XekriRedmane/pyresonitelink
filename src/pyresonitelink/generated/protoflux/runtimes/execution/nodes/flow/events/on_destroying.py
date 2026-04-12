@@ -34,7 +34,7 @@ class OnDestroying(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode,
 
     @property
     def trigger(self) -> str | None:
-        """Target ID of the Trigger reference (targets ISyncNodeOperation)."""
+        """Sends an Impulse when the node is marked for destruction which may include all the rest of the code, but nothing is destroyed yet."""
         member = self.get_member("Trigger")
         if isinstance(member, members.Reference):
             return member.targetId

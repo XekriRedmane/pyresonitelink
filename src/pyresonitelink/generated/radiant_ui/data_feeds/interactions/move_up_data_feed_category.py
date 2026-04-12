@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MoveUpDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MoveUpDataFeedCategory.
+    """The MoveUpDataFeedCategory is a component that receives Button Events and goes to the previous parent path in a Data Feed view.
 
     Category: Radiant UI/Data Feeds/Interactions
+
+    Used to go up one in the category view.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MoveUpDataFeedCategory"
@@ -29,7 +31,7 @@ class MoveUpDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEve
 
     @property
     def view(self) -> str | None:
-        """Target ID of the View reference (targets IDataFeedView)."""
+        """The view to go up in category for."""
         member = self.get_member("View")
         if isinstance(member, members.Reference):
             return member.targetId

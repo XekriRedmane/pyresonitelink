@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DuplicatorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DuplicatorTool.
+    """Duplicates objects grabbed with the tool when pressing primary, as if it was done with the Context menu
 
     Category: Tools
     """

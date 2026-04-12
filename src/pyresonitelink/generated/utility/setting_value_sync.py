@@ -14,9 +14,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SettingValueSync(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SettingValueSync<,>.
+    """The SettingValueSync component allows for reading (And sometimes writing) a setting from a particular ``SyncingUser`` for the purpose of changing an item/world's appearance or behavior depending on that settings value.
 
     Category: Utility
+
+    Attach to a slot and provide a setting path (``SettingName``) and a
+    ``SyncingUser`` to read from in order to read values. For subsettings
+    like audio devices or trackers a name provided to ``SubsettingGetter``
+    of a SubsettingGetter and a key to use in ``SubsettingKey`` is needed.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SettingValueSync<,>"
@@ -43,7 +48,7 @@ class SettingValueSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def syncing_user(self) -> members.SyncObject | None:
-        """The SyncingUser member."""
+        """The user to get the setting from."""
         member = self.get_member("SyncingUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -51,12 +56,12 @@ class SettingValueSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @syncing_user.setter
     def syncing_user(self, value: members.SyncObject) -> None:
-        """Set the SyncingUser member."""
+        """Set SyncingUser. The user to get the setting from."""
         self.set_member("SyncingUser", value)
 
     @property
     def setting_name(self) -> primitives.String | None:
-        """The SettingName field value."""
+        """The setting or setting group to get a value for. This is a path separated by "."."""
         member = self.get_member("SettingName")
         if member is None:
             return None
@@ -75,7 +80,7 @@ class SettingValueSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_field(self) -> str | None:
-        """Target ID of the TargetField reference (targets IField[T])."""
+        """The field to put the setting value into, can also write back to the setting if the world is unsafe or the setting allows for the world to write it."""
         member = self.get_member("TargetField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -96,7 +101,7 @@ class SettingValueSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def subsetting_getter(self) -> primitives.String | None:
-        """The SubsettingGetter field value."""
+        """The subsetting method name to use to get a subsetting."""
         member = self.get_member("SubsettingGetter")
         if member is None:
             return None
@@ -115,7 +120,7 @@ class SettingValueSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def subsetting_key(self) -> primitives.String | None:
-        """The SubsettingKey field value."""
+        """The key to pass to the subsetting getter method found under the name specified by ``SubsettingGetter`` in order to get a subsetting."""
         member = self.get_member("SubsettingKey")
         if member is None:
             return None

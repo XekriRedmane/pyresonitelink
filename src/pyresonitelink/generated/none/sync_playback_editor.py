@@ -13,7 +13,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SyncPlaybackEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SyncPlaybackEditor.
+    """The SyncPlaybackEditor component is used to interact with and modify the playback of a Sync playback like a video, animation, or a sound player.
+
+    Used commonly in inspectors and video players to allow interaction with
+    playback fields directly.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SyncPlaybackEditor"
@@ -43,7 +46,7 @@ class SyncPlaybackEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def playback(self) -> str | None:
-        """Target ID of the _playback reference (targets SyncPlayback)."""
+        """The playback to edit and influence with this component."""
         member = self.get_member("_playback")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +67,7 @@ class SyncPlaybackEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slider_value(self) -> str | None:
-        """Target ID of the _sliderValue reference (targets IField[primitives.Float])."""
+        """The field to drive with the current playback of ``_playback``"""
         member = self.get_member("_sliderValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +88,7 @@ class SyncPlaybackEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def loop_toggle_sprite(self) -> str | None:
-        """Target ID of the _loopToggleSprite reference (targets IField[str])."""
+        """The sprite URI field of the toggle loop button. Used to switch between a loop and a play once icon URI."""
         member = self.get_member("_loopToggleSprite")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +109,7 @@ class SyncPlaybackEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def speed_field(self) -> str | None:
-        """Target ID of the _speedField reference (targets FloatTextEditorParser)."""
+        """The field used to change the speed of the playback of ``_playback``"""
         member = self.get_member("_speedField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -127,7 +130,7 @@ class SyncPlaybackEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slider(self) -> str | None:
-        """Target ID of the _slider reference (targets Slider[primitives.Float])."""
+        """The slider used to change the play head/position of ``_playback``."""
         member = self.get_member("_slider")
         if isinstance(member, members.Reference):
             return member.targetId

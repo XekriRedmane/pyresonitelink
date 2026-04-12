@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsChildOf(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Is Child Of node determines if the Instance slot is a descendant of the Other slot. This check is recursive.
+    """The Is Child Of node determines if the ``Instance`` slot is a descendant of the ``Other`` slot. This check is recursive.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots
     """
@@ -41,7 +41,7 @@ class IsChildOf(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot to test."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class IsChildOf(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
 
     @property
     def other(self) -> str | None:
-        """Target ID of the Other reference (targets INodeObjectOutput[Slot])."""
+        """The potential parent slot of ``Instance``."""
         member = self.get_member("Other")
         if isinstance(member, members.Reference):
             return member.targetId

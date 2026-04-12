@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NewWorldFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.NewWorldFacetPreset.
+    """The NewWorldFacetPreset component loads the New World facet when it's not ``_fullyLoaded``. It does this by loading the facet from the cloud, and using that loaded data to make the preset
 
     Category: Radiant UI/Facets
+
+    used in the main dash. no need to be used by the user unless they are
+    missing the New World facet.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NewWorldFacetPreset"
@@ -29,7 +32,7 @@ class NewWorldFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def fully_loaded(self) -> primitives.Bool | None:
-        """The _fullyLoaded field value."""
+        """Whether this facet has been fully loaded and ready to use"""
         member = self.get_member("_fullyLoaded")
         if member is None:
             return None

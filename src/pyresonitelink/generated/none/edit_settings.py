@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class EditSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.EditSettings.
+    """The Edit Settings component is used to control Development tooling in world.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.EditSettings"
@@ -30,7 +30,7 @@ class EditSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def confirm_component_destroy(self) -> primitives.Bool | None:
-        """The ConfirmComponentDestroy field value."""
+        """Whether the user gets a confirm dialog when destroying a component."""
         member = self.get_member("ConfirmComponentDestroy")
         if member is None:
             return None
@@ -49,7 +49,7 @@ class EditSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def confirm_slot_destroy(self) -> primitives.Bool | None:
-        """The ConfirmSlotDestroy field value."""
+        """Whether the user gets a confirm dialog when destroying a slot."""
         member = self.get_member("ConfirmSlotDestroy")
         if member is None:
             return None

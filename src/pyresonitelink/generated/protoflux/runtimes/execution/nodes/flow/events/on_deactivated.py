@@ -39,7 +39,7 @@ class OnDeactivated(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def trigger(self) -> str | None:
-        """Target ID of the Trigger reference (targets ISyncNodeOperation)."""
+        """Sends an Impulse when the node's hierarchy is disabled."""
         member = self.get_member("Trigger")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class OnDeactivated(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def only_host(self) -> str | None:
-        """Target ID of the OnlyHost reference (targets INodeValueOutput[primitives.Bool])."""
+        """Checks the event on the host rather than on everyone."""
         member = self.get_member("OnlyHost")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,9 +9,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Expander(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.Expander.
+    """The Expander component is an intractable UIX element that expands a section called the ``SectionRoot`` under itself. The ``SectionRoot``'s active state will toggle when that expander is triggered, expanding it under the Slot the expander is on. This can be seen on the Scene Inspector.
+
+}}
 
     Category: UIX/Interaction
+
+    This component is combined with the Button component to trigger this
+    expander component. This component is also combined with the
+    TextExpandIndicator component to drive the text and show the user that
+    this expander has expanded, collapsed, or is empty.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Expander"
@@ -29,7 +36,7 @@ class Expander(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
 
     @property
     def section_root(self) -> str | None:
-        """Target ID of the SectionRoot reference (targets Slot)."""
+        """The slot to expend with, by activating the slot that is referenced when toggled."""
         member = self.get_member("SectionRoot")
         if isinstance(member, members.Reference):
             return member.targetId

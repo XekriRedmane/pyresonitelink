@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CylinderMesh.
+    """The CylinderMesh component is used to provide a mesh to render. The mesh that it provides is a procedural 3D cylinder with a number of sides and a radius.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot, and assign to a Mesh Renderer to see what it looks
+    like. Don't forget to use a Material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CylinderMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, height: primitives.Float | None = None, radius: primitives.Float | None = None, sides: primitives.Int | None = None, caps: primitives.Bool | None = None, flat_shading: primitives.Bool | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, height: primitives.Float | None = None, radius: primitives.Float | None = None, sides: primitives.Int | None = None, caps: primitives.Bool | None = None, flat_shading: primitives.Bool | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             height: Initial value for Height.
             radius: Initial value for Radius.
             sides: Initial value for Sides.
@@ -41,6 +46,8 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if height is not None:
             self.height = height
         if radius is not None:
@@ -112,21 +119,28 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """The height of the cylinder in meters in local space."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -145,7 +159,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the cylinder in meters in local space."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -164,7 +178,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def sides(self) -> primitives.Int | None:
-        """The Sides field value."""
+        """How many sides the cylinder should have around it's midsection."""
         member = self.get_member("Sides")
         if member is None:
             return None
@@ -183,7 +197,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def caps(self) -> primitives.Bool | None:
-        """The Caps field value."""
+        """Whether the cylinder should be a tube or not."""
         member = self.get_member("Caps")
         if member is None:
             return None
@@ -202,7 +216,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def flat_shading(self) -> primitives.Bool | None:
-        """The FlatShading field value."""
+        """Disable smooth shading."""
         member = self.get_member("FlatShading")
         if member is None:
             return None
@@ -221,7 +235,7 @@ class CylinderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def uv_scale(self) -> primitives.Float2 | None:
-        """The UVScale field value."""
+        """The inverse of the size the material should appear on the surface as."""
         member = self.get_member("UVScale")
         if member is None:
             return None

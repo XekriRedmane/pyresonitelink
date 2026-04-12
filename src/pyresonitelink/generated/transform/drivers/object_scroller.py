@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectScroller(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ObjectScroller.
+    """The ObjectScroller component acts as a way to scroll a list of items with sizes by offsetting them within a region they should appear within. Objects outside of the region get disabled until the ``Offset`` allows them to appear within it again.
 
     Category: Transform/Drivers
+
+    Attach to a slot and add/setup ``Items`` entries to begin use.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ObjectScroller"
@@ -33,7 +35,7 @@ class ObjectScroller(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def items(self) -> members.SyncList | None:
-        """The Items member."""
+        """A list of items to move and activate/deactivate if they are within/outside of the ``RegionSize``"""
         member = self.get_member("Items")
         if isinstance(member, members.SyncList):
             return member
@@ -41,12 +43,12 @@ class ObjectScroller(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @items.setter
     def items(self, value: members.SyncList) -> None:
-        """Set the Items member."""
+        """Set Items. A list of items to move and activate/deactivate if they are within/outside of the ``RegionSize``"""
         self.set_member("Items", value)
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """How much to offset the positions of ``Items`` in order to scroll them."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -65,7 +67,7 @@ class ObjectScroller(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def region_size(self) -> primitives.Float3 | None:
-        """The RegionSize field value."""
+        """The size area objects have to be touching from their current position and size after ``Offset`` is applied in order to stay visible."""
         member = self.get_member("RegionSize")
         if member is None:
             return None

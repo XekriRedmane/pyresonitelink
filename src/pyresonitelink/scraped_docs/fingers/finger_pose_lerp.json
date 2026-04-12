@@ -1,0 +1,13 @@
+{
+  "description": "The FingerPoseLerp component allows for a linear blending between two different Finger pose sources. The resulting data becomes the pose source data of this component. This component in itself is a IFingerPoseSourceComponent.\n\nFor more information on finger pose sources, please see Finger Posing System.",
+  "category": "Users:Common Avatar System:Fingers",
+  "fields": {
+    "A": "The pose to start at when interpolating.",
+    "B": "The pose to end at when interpolating.",
+    "Lerp": "The value to use 01 when interpolating from ``A````B``"
+  },
+  "methods": {},
+  "usage": "Can be used as a way of blending two different Finger pose data sources and then be used as a new finger pose data source that is the blend of the original two sources in other components.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FingerPoseLerp&action=raw"
+}

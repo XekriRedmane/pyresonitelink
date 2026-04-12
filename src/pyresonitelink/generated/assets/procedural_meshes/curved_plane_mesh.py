@@ -4,6 +4,8 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.curvature_aspect_ratio_compensation import CurvatureAspectRatioCompensation
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,23 +14,28 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CurvedPlaneMesh.
+    """Generates a plane mesh that is curved vertically. A picture in this page of it can be seen.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot and insert into a MeshRenderer to see the geometry.
+    don't forget to use a Material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CurvedPlaneMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, size: primitives.Float2 | None = None, curvature: primitives.Float | None = None, tilt_angle: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, segments: primitives.Int | None = None, flat_shading: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, size: primitives.Float2 | None = None, curvature: primitives.Float | None = None, tilt_angle: primitives.Float | None = None, aspect_ratio_compensation: CurvatureAspectRatioCompensation | str | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, segments: primitives.Int | None = None, flat_shading: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             size: Initial value for Size.
             curvature: Initial value for Curvature.
             tilt_angle: Initial value for TiltAngle.
+            aspect_ratio_compensation: Initial value for AspectRatioCompensation.
             uv_scale: Initial value for UVScale.
             uv_offset: Initial value for UVOffset.
             segments: Initial value for Segments.
@@ -42,12 +49,16 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if size is not None:
             self.size = size
         if curvature is not None:
             self.curvature = curvature
         if tilt_angle is not None:
             self.tilt_angle = tilt_angle
+        if aspect_ratio_compensation is not None:
+            self.aspect_ratio_compensation = aspect_ratio_compensation
         if uv_scale is not None:
             self.uv_scale = uv_scale
         if uv_offset is not None:
@@ -115,21 +126,28 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def size(self) -> primitives.Float2 | None:
-        """The Size field value."""
+        """How big the curve plane mesh is, mostly a ratio"""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -148,7 +166,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def curvature(self) -> primitives.Float | None:
-        """The Curvature field value."""
+        """How much to bend the curve plane mesh by"""
         member = self.get_member("Curvature")
         if member is None:
             return None
@@ -167,7 +185,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def tilt_angle(self) -> primitives.Float | None:
-        """The TiltAngle field value."""
+        """How much to "rotate" the curve plane mesh length wise."""
         member = self.get_member("TiltAngle")
         if member is None:
             return None
@@ -185,21 +203,28 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def aspect_ratio_compensation(self) -> members.FieldEnum | None:
-        """The AspectRatioCompensation member."""
+    def aspect_ratio_compensation(self) -> CurvatureAspectRatioCompensation | None:
+        """How to compensate for stretching due to curving the plane mesh backwards."""
         member = self.get_member("AspectRatioCompensation")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CurvatureAspectRatioCompensation(member.value)
         return None
 
     @aspect_ratio_compensation.setter
-    def aspect_ratio_compensation(self, value: members.FieldEnum) -> None:
-        """Set the AspectRatioCompensation member."""
-        self.set_member("AspectRatioCompensation", value)
+    def aspect_ratio_compensation(self, value: CurvatureAspectRatioCompensation | str) -> None:
+        """Set AspectRatioCompensation. How to compensate for stretching due to curving the plane mesh backwards."""
+        member = self.get_member("AspectRatioCompensation")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AspectRatioCompensation",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def uv_scale(self) -> primitives.Float2 | None:
-        """The UVScale field value."""
+        """The inverse of the size the material should appear on the surface as."""
         member = self.get_member("UVScale")
         if member is None:
             return None
@@ -218,7 +243,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def uv_offset(self) -> primitives.Float2 | None:
-        """The UVOffset field value."""
+        """Shift the visual detail of the material around."""
         member = self.get_member("UVOffset")
         if member is None:
             return None
@@ -237,7 +262,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def segments(self) -> primitives.Int | None:
-        """The Segments field value."""
+        """How many bends/angles the plane should have in it's curve"""
         member = self.get_member("Segments")
         if member is None:
             return None
@@ -256,7 +281,7 @@ class CurvedPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def flat_shading(self) -> primitives.Bool | None:
-        """The FlatShading field value."""
+        """Turn off smooth shading"""
         member = self.get_member("FlatShading")
         if member is None:
             return None

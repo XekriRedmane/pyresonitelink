@@ -13,9 +13,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GradientSkyMaterial(GeneratedComponent, ISkyboxMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GradientSkyMaterial.
+    """The GradientSkyMaterial component is used in Skybox to make a gradient type sky for use in worlds.
 
     Category: Assets/Materials/Skybox
+
+    Attach to a slot and insert into a Skybox component and use the
+    SetCurrentSky() Sync Method to use this component. Don't forget to add
+    some ``_gradients`` to the list.
+
+    **Gradient**: Gradient is a nested type used in the ``_gradients`` list.
+
+    **Related Components**: * Skybox
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GradientSkyMaterial"

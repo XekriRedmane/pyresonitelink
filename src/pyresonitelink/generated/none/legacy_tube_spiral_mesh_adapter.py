@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyTubeSpiralMeshAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyTubeSpiralMeshAdapter.
+    """The Legacy Tube Spiral Mesh Adapter component is used to convert legacy content for tube spiral meshes into current content.
+
+    Used in legacy content. do not use in new content.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyTubeSpiralMeshAdapter"
@@ -38,7 +40,7 @@ class LegacyTubeSpiralMeshAdapter(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def upward_trend(self) -> primitives.Float | None:
-        """The UpwardTrend field value."""
+        """The original float value for UpwardTrend."""
         member = self.get_member("UpwardTrend")
         if member is None:
             return None
@@ -57,7 +59,7 @@ class LegacyTubeSpiralMeshAdapter(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def length(self) -> primitives.Float | None:
-        """The Length field value."""
+        """The original value for Length."""
         member = self.get_member("Length")
         if member is None:
             return None
@@ -76,7 +78,7 @@ class LegacyTubeSpiralMeshAdapter(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def end_point(self) -> str | None:
-        """Target ID of the EndPoint reference (targets IField[primitives.Float3])."""
+        """The value field for the EndPoint of the Component:TubeSpiralMesh."""
         member = self.get_member("EndPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -97,7 +99,7 @@ class LegacyTubeSpiralMeshAdapter(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def coil_count(self) -> str | None:
-        """Target ID of the CoilCount reference (targets IField[primitives.Float])."""
+        """The value field for the CoilCount of the Component:TubeSpiralMesh."""
         member = self.get_member("CoilCount")
         if isinstance(member, members.Reference):
             return member.targetId

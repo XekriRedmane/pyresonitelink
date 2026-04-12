@@ -17,6 +17,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class BeginUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """A Begin Undo Batch is used to batch together every undo step called after it, like Create Spawn Undo Step, Create Field Undo Step, and Create Undo Reference Step to name a few from the ProtoFlux Undoable Category.
 
+The node will create an undo step in the context menu of the person who the impulse came from.
+
+This node needs to be ended with a End Undo Batch, to batch together every undo step call after this node and before the end undo batch node.
+
+The undo step descriptions between these nodes will be ignored.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """
 
@@ -59,7 +65,7 @@ class BeginUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INo
 
     @property
     def description(self) -> str | None:
-        """Target ID of the Description reference (targets INodeObjectOutput[primitives.String])."""
+        """The description for this undo batch. The description will be automatically prepended with "Undo" in bigger text in the context menu."""
         member = self.get_member("Description")
         if isinstance(member, members.Reference):
             return member.targetId

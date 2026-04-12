@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OrientAtPoint(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.OrientAtPoint.
+    """The Orient At Point component makes particles in a particle system orient at a point in a specified transform space.
 
     Category: Rendering/Particle System/Modules
+
+    used with Photon Dust systems.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.OrientAtPoint"
@@ -33,7 +35,7 @@ class OrientAtPoint(GeneratedComponent, IParticleSystemModule, IWorldEventReceiv
 
     @property
     def point_space(self) -> members.SyncObject | None:
-        """The PointSpace member."""
+        """The tranform space ``TargetPoint`` and ``Up`` are in."""
         member = self.get_member("PointSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -41,12 +43,12 @@ class OrientAtPoint(GeneratedComponent, IParticleSystemModule, IWorldEventReceiv
 
     @point_space.setter
     def point_space(self, value: members.SyncObject) -> None:
-        """Set the PointSpace member."""
+        """Set PointSpace. The tranform space ``TargetPoint`` and ``Up`` are in."""
         self.set_member("PointSpace", value)
 
     @property
     def target_point(self) -> primitives.Float3 | None:
-        """The TargetPoint field value."""
+        """The point that particles should point at."""
         member = self.get_member("TargetPoint")
         if member is None:
             return None
@@ -65,7 +67,7 @@ class OrientAtPoint(GeneratedComponent, IParticleSystemModule, IWorldEventReceiv
 
     @property
     def up(self) -> primitives.Float3 | None:
-        """The Up field value."""
+        """The direction that should be up locally for each particle."""
         member = self.get_member("Up")
         if member is None:
             return None

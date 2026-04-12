@@ -3,6 +3,10 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.trail_texture_mode import TrailTextureMode
+from pyresonitelink.generated._enums.motion_vector_mode import MotionVectorMode
+from pyresonitelink.generated._enums.particle_follower_distribution import ParticleFollowerDistribution
+from pyresonitelink.generated._enums.uniform_size_mode import UniformSizeMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,34 +17,47 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticleRenderer, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ParticleRibbonsModule.
+    """The ParticleRibbonsModule component makes it to where a particle system will have ribbons that connect particles based on distance and other factors.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleRibbonsModule"
 
-    def __init__(self, material: str | IAssetProvider[Material] | None = None, generate_lighting_data: primitives.Bool | None = None, ribbon_point_ratio: primitives.Float | None = None, max_ribbon_points: primitives.Int | None = None, interweaved_ribbon_count: primitives.Int | None = None, use_particle_color: primitives.Bool | None = None, use_particle_size: primitives.Bool | None = None, shuffle_interweaved_ribbons: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, material: str | IAssetProvider[Material] | None = None, texture_mode: TrailTextureMode | str | None = None, motion_vector_mode: MotionVectorMode | str | None = None, generate_lighting_data: primitives.Bool | None = None, ribbon_point_ratio: primitives.Float | None = None, distribution: ParticleFollowerDistribution | str | None = None, max_ribbon_points: primitives.Int | None = None, interweaved_ribbon_count: primitives.Int | None = None, use_particle_color: primitives.Bool | None = None, use_particle_size: primitives.Bool | None = None, shuffle_interweaved_ribbons: primitives.Bool | None = None, size_inheritance_mode: UniformSizeMode | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             material: Initial value for Material.
+            texture_mode: Initial value for TextureMode.
+            motion_vector_mode: Initial value for MotionVectorMode.
             generate_lighting_data: Initial value for GenerateLightingData.
             ribbon_point_ratio: Initial value for RibbonPointRatio.
+            distribution: Initial value for Distribution.
             max_ribbon_points: Initial value for MaxRibbonPoints.
             interweaved_ribbon_count: Initial value for InterweavedRibbonCount.
             use_particle_color: Initial value for UseParticleColor.
             use_particle_size: Initial value for UseParticleSize.
             shuffle_interweaved_ribbons: Initial value for ShuffleInterweavedRibbons.
+            size_inheritance_mode: Initial value for SizeInheritanceMode.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if material is not None:
             self.material = material
+        if texture_mode is not None:
+            self.texture_mode = texture_mode
+        if motion_vector_mode is not None:
+            self.motion_vector_mode = motion_vector_mode
         if generate_lighting_data is not None:
             self.generate_lighting_data = generate_lighting_data
         if ribbon_point_ratio is not None:
             self.ribbon_point_ratio = ribbon_point_ratio
+        if distribution is not None:
+            self.distribution = distribution
         if max_ribbon_points is not None:
             self.max_ribbon_points = max_ribbon_points
         if interweaved_ribbon_count is not None:
@@ -51,10 +68,12 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
             self.use_particle_size = use_particle_size
         if shuffle_interweaved_ribbons is not None:
             self.shuffle_interweaved_ribbons = shuffle_interweaved_ribbons
+        if size_inheritance_mode is not None:
+            self.size_inheritance_mode = size_inheritance_mode
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to give the ribbons"""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -74,34 +93,48 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
             )
 
     @property
-    def texture_mode(self) -> members.FieldEnum | None:
-        """The TextureMode member."""
+    def texture_mode(self) -> TrailTextureMode | None:
+        """How to handle viewing the texture specified on the ribbons."""
         member = self.get_member("TextureMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TrailTextureMode(member.value)
         return None
 
     @texture_mode.setter
-    def texture_mode(self, value: members.FieldEnum) -> None:
-        """Set the TextureMode member."""
-        self.set_member("TextureMode", value)
+    def texture_mode(self, value: TrailTextureMode | str) -> None:
+        """Set TextureMode. How to handle viewing the texture specified on the ribbons."""
+        member = self.get_member("TextureMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "TextureMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def motion_vector_mode(self) -> members.FieldEnum | None:
-        """The MotionVectorMode member."""
+    def motion_vector_mode(self) -> MotionVectorMode | None:
+        """How to handle the rendering of ribbons in regards to motion vectors."""
         member = self.get_member("MotionVectorMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MotionVectorMode(member.value)
         return None
 
     @motion_vector_mode.setter
-    def motion_vector_mode(self, value: members.FieldEnum) -> None:
-        """Set the MotionVectorMode member."""
-        self.set_member("MotionVectorMode", value)
+    def motion_vector_mode(self, value: MotionVectorMode | str) -> None:
+        """Set MotionVectorMode. How to handle the rendering of ribbons in regards to motion vectors."""
+        member = self.get_member("MotionVectorMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MotionVectorMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def generate_lighting_data(self) -> primitives.Bool | None:
-        """The GenerateLightingData field value."""
+        """Whether to generate lighting data for the ribbons."""
         member = self.get_member("GenerateLightingData")
         if member is None:
             return None
@@ -120,7 +153,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
 
     @property
     def ribbon_point_ratio(self) -> primitives.Float | None:
-        """The RibbonPointRatio field value."""
+        """How many of the particles should be ribbons."""
         member = self.get_member("RibbonPointRatio")
         if member is None:
             return None
@@ -138,21 +171,28 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
             )
 
     @property
-    def distribution(self) -> members.FieldEnum | None:
-        """The Distribution member."""
+    def distribution(self) -> ParticleFollowerDistribution | None:
+        """How to distribute the ribbon followers."""
         member = self.get_member("Distribution")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ParticleFollowerDistribution(member.value)
         return None
 
     @distribution.setter
-    def distribution(self, value: members.FieldEnum) -> None:
-        """Set the Distribution member."""
-        self.set_member("Distribution", value)
+    def distribution(self, value: ParticleFollowerDistribution | str) -> None:
+        """Set Distribution. How to distribute the ribbon followers."""
+        member = self.get_member("Distribution")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Distribution",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def max_ribbon_points(self) -> primitives.Int | None:
-        """The MaxRibbonPoints field value."""
+        """The max amount of ribbon points there should be."""
         member = self.get_member("MaxRibbonPoints")
         if member is None:
             return None
@@ -171,7 +211,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
 
     @property
     def interweaved_ribbon_count(self) -> primitives.Int | None:
-        """The InterweavedRibbonCount field value."""
+        """The amount of long particle-interconnected ribbons there can be, essentially multiple ribbons rather than one ribbon line."""
         member = self.get_member("InterweavedRibbonCount")
         if member is None:
             return None
@@ -190,7 +230,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
 
     @property
     def use_particle_color(self) -> primitives.Bool | None:
-        """The UseParticleColor field value."""
+        """Whether to use the color of particles the ribbons are following."""
         member = self.get_member("UseParticleColor")
         if member is None:
             return None
@@ -209,7 +249,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
 
     @property
     def use_particle_size(self) -> primitives.Bool | None:
-        """The UseParticleSize field value."""
+        """Whether to use the size of particles the ribbons should follow."""
         member = self.get_member("UseParticleSize")
         if member is None:
             return None
@@ -228,7 +268,7 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
 
     @property
     def shuffle_interweaved_ribbons(self) -> primitives.Bool | None:
-        """The ShuffleInterweavedRibbons field value."""
+        """Randomly moves interweaved ribbon groups to new particles when they are generated."""
         member = self.get_member("ShuffleInterweavedRibbons")
         if member is None:
             return None
@@ -246,15 +286,22 @@ class ParticleRibbonsModule(GeneratedComponent, IParticleSystemModule, IParticle
             )
 
     @property
-    def size_inheritance_mode(self) -> members.FieldEnum | None:
-        """The SizeInheritanceMode member."""
+    def size_inheritance_mode(self) -> UniformSizeMode | None:
+        """How to inherit the size of the particles the ribbons are following."""
         member = self.get_member("SizeInheritanceMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return UniformSizeMode(member.value)
         return None
 
     @size_inheritance_mode.setter
-    def size_inheritance_mode(self, value: members.FieldEnum) -> None:
-        """Set the SizeInheritanceMode member."""
-        self.set_member("SizeInheritanceMode", value)
+    def size_inheritance_mode(self, value: UniformSizeMode | str) -> None:
+        """Set SizeInheritanceMode. How to inherit the size of the particles the ribbons are following."""
+        member = self.get_member("SizeInheritanceMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SizeInheritanceMode",
+                members.FieldEnum(value=str(value)),
+            )
 

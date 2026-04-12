@@ -7,7 +7,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldUsersFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldUsersFeed.
+    """The WorldUsersFeed can be used to build systems that need a list of users currently in the session.
 
     Category: Radiant UI/Data Feeds/Feeds
     """

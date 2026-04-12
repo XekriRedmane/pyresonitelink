@@ -12,9 +12,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueReceiver(GenericComponent[T], IUIGrabReceiver, IValueReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.ValueReceiver<>.
+    """The ValueReceiver component is used in UIX elements to allow dropping a value property into a Button or interactable UIX section to change a value field to the dropped value.
 
     Category: UIX/Interaction
+
+    Attach to a UIX element to allow an interactable to have droppable
+    values into a target value field. Needs to be provided a target
+    ``Field`` in order for it to work.
 
     Parameterize with a value type::
 
@@ -44,7 +48,7 @@ class ValueReceiver(GenericComponent[T], IUIGrabReceiver, IValueReceiver, IWorld
 
     @property
     def field(self) -> str | None:
-        """Target ID of the Field reference (targets IField[T])."""
+        """The field to drop the value into."""
         member = self.get_member("Field")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +69,7 @@ class ValueReceiver(GenericComponent[T], IUIGrabReceiver, IValueReceiver, IWorld
 
     @property
     def undoable(self) -> primitives.Bool | None:
-        """The Undoable field value."""
+        """Whether dropping the value is undo able."""
         member = self.get_member("Undoable")
         if member is None:
             return None
@@ -84,7 +88,7 @@ class ValueReceiver(GenericComponent[T], IUIGrabReceiver, IValueReceiver, IWorld
 
     @property
     def try_convert_values(self) -> primitives.Bool | None:
-        """The TryConvertValues field value."""
+        """Tries to change a dropped value which is possibly a string into the proper format by parsing."""
         member = self.get_member("TryConvertValues")
         if member is None:
             return None

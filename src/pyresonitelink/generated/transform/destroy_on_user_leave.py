@@ -7,16 +7,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DestroyOnUserLeave(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DestroyOnUserLeave.
+    """The DestroyOnUserLeave component causes the parent slot to be deleted when the user specified in ``User`` leaves the world.
 
     Category: Transform
+
+    **Behavior**: == Examples ==
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DestroyOnUserLeave"
 
     @property
     def target_user(self) -> members.SyncObject | None:
-        """The TargetUser member."""
+        """The user that will cause the parent slot to be deleted upon leaving"""
         member = self.get_member("TargetUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -24,6 +26,6 @@ class DestroyOnUserLeave(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @target_user.setter
     def target_user(self, value: members.SyncObject) -> None:
-        """Set the TargetUser member."""
+        """Set TargetUser. The user that will cause the parent slot to be deleted upon leaving"""
         self.set_member("TargetUser", value)
 

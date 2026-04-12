@@ -17,6 +17,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class CharToString(GeneratedComponent, ICast, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Char to String node acts as a cast to turn a character into a string.
 
+This is very useful when working with individual characters and one needs to use string operations, such as concatenation, with said characters.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """
 
@@ -35,7 +37,7 @@ class CharToString(GeneratedComponent, ICast, INodeObjectOutput, IExecutionNode,
 
     @property
     def input_(self) -> str | None:
-        """Target ID of the Input reference (targets INodeValueOutput[primitives.Char])."""
+        """The character to turn into a string."""
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             return member.targetId

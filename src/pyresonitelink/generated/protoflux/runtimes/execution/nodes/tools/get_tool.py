@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetTool(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Get Tool node takes in a user and side of that user and returns with the tool reference.
+    """The ``Get Tool`` node takes in a user and side of that user and returns with the tool reference.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """
@@ -38,7 +38,7 @@ class GetTool(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICus
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user to check."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class GetTool(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICus
 
     @property
     def side(self) -> str | None:
-        """Target ID of the Side reference (targets INodeValueOutput[Chirality])."""
+        """The side to check on the user."""
         member = self.get_member("Side")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,9 +10,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserInterfaceEditModeSync(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserInterfaceEditModeSync.
+    """The UserInterfaceEditModeSync component allows a world to tell if a user is currently in UI Edit Mode.
 
     Category: Utility
+
+    Attach to a slot and fill in the ``TargetUser`` to check UI Edit Mode
+    for.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserInterfaceEditModeSync"
@@ -30,7 +33,7 @@ class UserInterfaceEditModeSync(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def target_user(self) -> members.SyncObject | None:
-        """The TargetUser member."""
+        """The user to check UI edit mode for."""
         member = self.get_member("TargetUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -38,12 +41,12 @@ class UserInterfaceEditModeSync(GeneratedComponent, IComponent, IWorldEventRecei
 
     @target_user.setter
     def target_user(self, value: members.SyncObject) -> None:
-        """Set the TargetUser member."""
+        """Set TargetUser. The user to check UI edit mode for."""
         self.set_member("TargetUser", value)
 
     @property
     def edit_mode_active(self) -> primitives.Bool | None:
-        """The EditModeActive field value."""
+        """Whether ``TargetUser`` is in UI edit mode."""
         member = self.get_member("EditModeActive")
         if member is None:
             return None

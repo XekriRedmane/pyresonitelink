@@ -7,9 +7,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonValueActionTrigger(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonValueActionTrigger<>.
+    """The ButtonValueActionTrigger component receives any Button Event and uses it to trigger a Sync Delegate and sends a value to it.
 
     Category: Common UI/Button Interactions
+
+    Attach to a slot with a button, or a slot targeted by a ButtonRelay or
+    related. Then, find a Sync Delegate to trigger using this component.
+    Lastly, put the sync delegate into any ``OnPressed``, ``OnPressing``,
+    and/or ``OnReleased``; then provide ``Value``
 
     Parameterize with a value type::
 

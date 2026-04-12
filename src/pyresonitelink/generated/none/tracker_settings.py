@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class TrackerSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.TrackerSettings.
+    """See Settings/Tracker Settings
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TrackerSettings"
@@ -28,7 +28,7 @@ class TrackerSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_trackers(self) -> primitives.Bool | None:
-        """The UseTrackers field value."""
+        """If all body trackers should be enabled."""
         member = self.get_member("UseTrackers")
         if member is None:
             return None
@@ -47,7 +47,7 @@ class TrackerSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def trackers(self) -> members.SyncList | None:
-        """The Trackers member."""
+        """View all names, assignments, ids, and statuses for previously used trackers."""
         member = self.get_member("Trackers")
         if isinstance(member, members.SyncList):
             return member
@@ -55,11 +55,11 @@ class TrackerSettings(GeneratedComponent, ICustomInspector):
 
     @trackers.setter
     def trackers(self, value: members.SyncList) -> None:
-        """Set the Trackers member."""
+        """Set Trackers. View all names, assignments, ids, and statuses for previously used trackers."""
         self.set_member("Trackers", value)
 
     async def get_tracker_for_subsetting(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, debug: bool = False) -> dict:
-        """Call the GetTrackerForSubsetting sync method.
+        """Gets one of the ``Trackers`` by key.
 
         Args:
             resolink: Connected ResoniteLink client.

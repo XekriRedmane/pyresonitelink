@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldAwayKickMinutes(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The World Away Kick Minutes node returns this world's "Max AFK Minutes" setting from the Session tab in the Dash, represented as a float value.
+    """The ``World Away Kick Minutes`` node returns this world's "Max AFK Minutes" setting from the Session tab in the Dash, represented as a float value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

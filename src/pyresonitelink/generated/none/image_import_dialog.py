@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.image_projection import ImageProjection
+from pyresonitelink.generated._enums.stereo_layout import StereoLayout
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -11,16 +13,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ImageImportDialog.
+    """See Image Import.
+
+    See Image Import.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ImageImportDialog"
 
-    def __init__(self, content_root: str | Slot | None = None, screenshot: primitives.Bool | None = None, point_filtering: primitives.Bool | None = None, uncompressed: primitives.Bool | None = None, alpha_bleed: primitives.Bool | None = None, lut: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, content_root: str | Slot | None = None, projection: ImageProjection | str | None = None, layout: StereoLayout | str | None = None, screenshot: primitives.Bool | None = None, point_filtering: primitives.Bool | None = None, uncompressed: primitives.Bool | None = None, alpha_bleed: primitives.Bool | None = None, lut: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             content_root: Initial value for _contentRoot.
+            projection: Initial value for _projection.
+            layout: Initial value for _layout.
             screenshot: Initial value for _screenshot.
             point_filtering: Initial value for _pointFiltering.
             uncompressed: Initial value for _uncompressed.
@@ -31,6 +37,10 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         super().__init__(component)
         if content_root is not None:
             self.content_root = content_root
+        if projection is not None:
+            self.projection = projection
+        if layout is not None:
+            self.layout = layout
         if screenshot is not None:
             self.screenshot = screenshot
         if point_filtering is not None:
@@ -64,34 +74,48 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def projection(self) -> members.FieldEnum | None:
-        """The _projection member."""
+    def projection(self) -> ImageProjection | None:
+        """What image projection to import the image as."""
         member = self.get_member("_projection")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ImageProjection(member.value)
         return None
 
     @projection.setter
-    def projection(self, value: members.FieldEnum) -> None:
-        """Set the _projection member."""
-        self.set_member("_projection", value)
+    def projection(self, value: ImageProjection | str) -> None:
+        """Set _projection. What image projection to import the image as."""
+        member = self.get_member("_projection")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_projection",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def layout(self) -> members.FieldEnum | None:
-        """The _layout member."""
+    def layout(self) -> StereoLayout | None:
+        """The image stereo layout for left and right to use."""
         member = self.get_member("_layout")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return StereoLayout(member.value)
         return None
 
     @layout.setter
-    def layout(self, value: members.FieldEnum) -> None:
-        """Set the _layout member."""
-        self.set_member("_layout", value)
+    def layout(self, value: StereoLayout | str) -> None:
+        """Set _layout. The image stereo layout for left and right to use."""
+        member = self.get_member("_layout")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_layout",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def screenshot(self) -> primitives.Bool | None:
-        """The _screenshot field value."""
+        """whether to import the image as a screenshot."""
         member = self.get_member("_screenshot")
         if member is None:
             return None
@@ -110,7 +134,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point_filtering(self) -> primitives.Bool | None:
-        """The _pointFiltering field value."""
+        """Whether to import the image as pixel art or not."""
         member = self.get_member("_pointFiltering")
         if member is None:
             return None
@@ -129,7 +153,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def uncompressed(self) -> primitives.Bool | None:
-        """The _uncompressed field value."""
+        """Whether to import the image as uncompressed or not."""
         member = self.get_member("_uncompressed")
         if member is None:
             return None
@@ -148,7 +172,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def alpha_bleed(self) -> primitives.Bool | None:
-        """The _alphaBleed field value."""
+        """Whether to import the image with alpha bleed reduction or not."""
         member = self.get_member("_alphaBleed")
         if member is None:
             return None
@@ -167,7 +191,7 @@ class ImageImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def lut(self) -> primitives.Bool | None:
-        """The _lut field value."""
+        """Whether this image is a Look Up Table."""
         member = self.get_member("_lut")
         if member is None:
             return None

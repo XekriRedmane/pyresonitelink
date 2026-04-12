@@ -1,0 +1,9 @@
+{
+  "description": "This component can be used in combination with the LocomotionAnimationBodyCollider component to control which colliders on an avatar should be avoided by the avatar's hands.",
+  "category": "Users:Common Avatar System:Animation",
+  "fields": {},
+  "methods": {},
+  "usage": "Add this component to the top of a hierarchy of any colliders on your avatar that you don't want your hands colliding with. This component can also be added to environment colliders if you want feet collisions to ignore them.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocomotionAnimationColliderBlock&action=raw"
+}

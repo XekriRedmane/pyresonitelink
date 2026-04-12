@@ -1,0 +1,14 @@
+{
+  "description": "The PlatformColorPalette component is a quick way of getting the colors of Resonite's Branding. This also provides you with both the color values in ColorX form and Hex form.",
+  "category": "With Nested Types",
+  "fields": {
+    "Neutrals": "A list of neutral color and hexes used for UI backgrounds in resonite.",
+    "Hero": "A list of color and hexes used for bright colored buttons and text like yellow for selected inspector slots or used in other cases.",
+    "Sub": "A darker color and hexes set used for buttons or UI that are darker due to being selected or used in other cases.",
+    "Dark": "A dark color and hexes set used for buttons or UI that is disabled or used in other cases."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and take any value as a source for a drive to drive a UI with Resonite's branding.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PlatformColorPalette&action=raw"
+}

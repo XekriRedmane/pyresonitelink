@@ -1,0 +1,18 @@
+{
+  "description": "The ViolentAprilFoolsExplosion component, when deleted, causes an explosion animation to be played on any mesh below it in the hierarchy.\n\nThis component was added as an April Fool's Day joke on April 1st, 2019.",
+  "category": "Utility",
+  "fields": {
+    "BloatMagnitude": "Intensity of the bloat, prior to explosion",
+    "_bloatingClip": "Automatically Assigned",
+    "_explosionClip": "Automatically Assigned"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "This component causes all MeshRenderers under it in the hierarchy to expand outwards based on the ``BloatMagnitude`` while playing the audio in ``_bloatingClip``, followed by an explosion particle effect, the playing of the audio in ``_explosionClip``, and the deletion of the slot it's attached to."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ViolentAprilFoolsExplosion&action=raw"
+}

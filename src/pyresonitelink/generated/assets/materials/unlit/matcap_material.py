@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.blend_mode import BlendMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,14 +14,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MatcapMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MatcapMaterial.
+    """The MatcapMaterial component is used to make fake reflections on a surface using a matcap texture.
 
     Category: Assets/Materials/Unlit
+
+    Attach to a slot and put into a MeshRenderer or SkinnedMeshRenderer with
+    a mesh to see what the material looks like.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MatcapMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, matcap: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, matcap: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, blend_mode: BlendMode | str | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +32,7 @@ class MatcapMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             shader: Initial value for _shader.
             matcap: Initial value for Matcap.
             normal_map: Initial value for NormalMap.
+            blend_mode: Initial value for BlendMode.
             render_queue: Initial value for RenderQueue.
             component: Existing Component to wrap.
         """
@@ -40,6 +45,8 @@ class MatcapMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.matcap = matcap
         if normal_map is not None:
             self.normal_map = normal_map
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
         if render_queue is not None:
             self.render_queue = render_queue
 
@@ -126,17 +133,24 @@ class MatcapMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def render_queue(self) -> primitives.Int | None:

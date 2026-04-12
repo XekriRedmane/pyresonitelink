@@ -34,7 +34,7 @@ class LocalUpdate(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, I
 
     @property
     def on_update(self) -> str | None:
-        """Target ID of the OnUpdate reference (targets ISyncNodeOperation)."""
+        """Pulses for each user in the session on every engine update by said user."""
         member = self.get_member("OnUpdate")
         if isinstance(member, members.Reference):
             return member.targetId

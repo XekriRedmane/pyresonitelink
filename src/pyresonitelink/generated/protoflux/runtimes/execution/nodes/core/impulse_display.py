@@ -16,6 +16,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ImpulseDisplay(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Impulse Display node displays incoming impulses to the node. The node will display:
 
+- The User that owns the impulse, with lines on the display being a different color per user
+- The world time at the time of the impulse
+- The index of the impulse.
+  - Indices are only tracked through pulse displays. This can be useful for determining which code path executes before another.
+
+An impulse display can be easily created with the ProtoFlux Tool by dragging out an impulse output and pressing secondary.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
     """
 

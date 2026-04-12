@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BevelPlaneMesh.
+    """Used in old Legacy content like old inspectors and panels.
 
     Category: Assets/Procedural Meshes/Legacy UI
+
+    Attach to a slot, and use the ``Settup Renderer`` button to view the
+    mesh.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BevelPlaneMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, width: primitives.Float | None = None, height: primitives.Float | None = None, thickness: primitives.Float | None = None, top_left_cut: primitives.Float | None = None, bottom_right_cut: primitives.Float | None = None, relief: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, width: primitives.Float | None = None, height: primitives.Float | None = None, thickness: primitives.Float | None = None, top_left_cut: primitives.Float | None = None, bottom_right_cut: primitives.Float | None = None, relief: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             width: Initial value for Width.
             height: Initial value for Height.
             thickness: Initial value for Thickness.
@@ -41,6 +46,8 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if width is not None:
             self.width = width
         if height is not None:
@@ -112,21 +119,28 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def width(self) -> primitives.Float | None:
-        """The Width field value."""
+        """the width of the plane"""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -145,7 +159,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """the height of the plane"""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -164,7 +178,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """How 3D the plane should be, making it more like a box."""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -183,7 +197,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def top_left_cut(self) -> primitives.Float | None:
-        """The TopLeftCut field value."""
+        """How much to bevel the top left corner."""
         member = self.get_member("TopLeftCut")
         if member is None:
             return None
@@ -202,7 +216,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def bottom_right_cut(self) -> primitives.Float | None:
-        """The BottomRightCut field value."""
+        """How much to bevel the bottom right corner."""
         member = self.get_member("BottomRightCut")
         if member is None:
             return None
@@ -221,7 +235,7 @@ class BevelPlaneMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def relief(self) -> primitives.Bool | None:
-        """The Relief field value."""
+        """indent the center inwards or not."""
         member = self.get_member("Relief")
         if member is None:
             return None

@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugAvatarBuilder.
+    """* Component:CommonAvatarBuilder
+
+    Obsolete.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugAvatarBuilder"
@@ -42,7 +44,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def setup_server_voice(self) -> primitives.Bool | None:
-        """The SetupServerVoice field value."""
+        """Obsolete."""
         member = self.get_member("SetupServerVoice")
         if member is None:
             return None
@@ -61,7 +63,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def setup_client_voice(self) -> primitives.Bool | None:
-        """The SetupClientVoice field value."""
+        """Obsolete."""
         member = self.get_member("SetupClientVoice")
         if member is None:
             return None
@@ -80,7 +82,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def setup_server_tools(self) -> primitives.Bool | None:
-        """The SetupServerTools field value."""
+        """Obsolete."""
         member = self.get_member("SetupServerTools")
         if member is None:
             return None
@@ -99,7 +101,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def setup_client_tools(self) -> primitives.Bool | None:
-        """The SetupClientTools field value."""
+        """Obsolete."""
         member = self.get_member("SetupClientTools")
         if member is None:
             return None
@@ -118,7 +120,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def parent_clients_to_server(self) -> primitives.Bool | None:
-        """The ParentClientsToServer field value."""
+        """Obsolete."""
         member = self.get_member("ParentClientsToServer")
         if member is None:
             return None
@@ -137,7 +139,7 @@ class DebugAvatarBuilder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def align_tracking(self) -> primitives.Bool | None:
-        """The AlignTracking field value."""
+        """Obsolete."""
         member = self.get_member("AlignTracking")
         if member is None:
             return None

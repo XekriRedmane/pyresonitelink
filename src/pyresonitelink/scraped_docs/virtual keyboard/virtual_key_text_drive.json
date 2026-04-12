@@ -1,0 +1,12 @@
+{
+  "description": "This component takes a VirtualKey component and uses it's settings to drive a textfield's content to match what that key would type when pressed.",
+  "category": "Userspace:Virtual Keyboard",
+  "fields": {
+    "Key": "The virtual key to source the text from (so if the virtual key is set to \"d\" it will drive the target of ``Text`` to \"d\".",
+    "Text": "The text field to drive"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VirtualKeyTextDrive&action=raw"
+}

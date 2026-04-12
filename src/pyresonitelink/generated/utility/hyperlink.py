@@ -11,9 +11,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Hyperlink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Hyperlink.
+    """The Hyperlink component allows you to turn an object with a collider into a clickable link that will prompt the user in Userspace to open the provided link in their default web browser.
+
+Example for connecting to the local host of the device: ``http://localhost:5000``|warning}}
 
     Category: Utility
+
+    It can be triggered or activated in the following ways: * Using a
+    collider and physically touching the object to prompt for a connection.
+    * Attaching a UIX button component along with this component on the same
+    slot, then clicking on the UIX button will prompt for a connection.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Hyperlink"
@@ -37,7 +44,7 @@ class Hyperlink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEven
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The hyperlink to open."""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -56,7 +63,7 @@ class Hyperlink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEven
 
     @property
     def open_once(self) -> primitives.Bool | None:
-        """The OpenOnce field value."""
+        """Prevents the user from clicking on the URL more than once and bringing up multiple confirmation dialouges"""
         member = self.get_member("OpenOnce")
         if member is None:
             return None
@@ -75,7 +82,7 @@ class Hyperlink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEven
 
     @property
     def reason(self) -> primitives.String | None:
-        """The Reason field value."""
+        """The reason that the hyperlink is being opened. Displayed to the user when they click it in the security dialog."""
         member = self.get_member("Reason")
         if member is None:
             return None
@@ -93,7 +100,7 @@ class Hyperlink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEven
             )
 
     async def open(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Open sync method.
+        """When called, this function will bring up the confirmation dialogue for the user that is executing the function (local user).
 
         Returns:
             The raw JSON response dict.

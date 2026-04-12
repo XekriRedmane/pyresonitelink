@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MainAndMaskTexturePropertyBlock(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MainAndMaskTexturePropertyBlock.
+    """The MainAndMaskTexturePropertyBlock component is used to modify material properties on mesh renderers and skinned mesh renderers as part of their material Property blocks. This is useful in instances where having lots of extra materials is less performant than modifying a material using a Property Block.
 
     Category: Assets/Material Property Blocks
+
+    Can be used to optimize many materials that only differ in main and mask
+    texture properties.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MainAndMaskTexturePropertyBlock"
@@ -57,7 +60,7 @@ class MainAndMaskTexturePropertyBlock(GeneratedComponent, IAssetProvider, ICusto
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[ITexture2D])."""
+        """The texture to replace the Main texture on a material with."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -78,7 +81,7 @@ class MainAndMaskTexturePropertyBlock(GeneratedComponent, IAssetProvider, ICusto
 
     @property
     def mask_texture(self) -> str | None:
-        """Target ID of the MaskTexture reference (targets IAssetProvider[ITexture2D])."""
+        """The texture to replace the Mask texture on a material with."""
         member = self.get_member("MaskTexture")
         if isinstance(member, members.Reference):
             return member.targetId

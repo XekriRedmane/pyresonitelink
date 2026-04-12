@@ -63,7 +63,7 @@ class TrajectoryPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def gravity(self) -> str | None:
-        """Target ID of the Gravity reference (targets INodeValueOutput[primitives.Float3])."""
+        """The direction and strength of gravity."""
         member = self.get_member("Gravity")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class TrajectoryPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def drag(self) -> str | None:
-        """Target ID of the Drag reference (targets INodeValueOutput[primitives.Float])."""
+        """The resistance in movement."""
         member = self.get_member("Drag")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +105,7 @@ class TrajectoryPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def time(self) -> str | None:
-        """Target ID of the Time reference (targets INodeValueOutput[primitives.Float])."""
+        """The change in time between initial and final position."""
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             return member.targetId

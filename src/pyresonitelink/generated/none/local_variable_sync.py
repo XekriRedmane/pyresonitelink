@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalVariableSync(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocalVariableSync<>.
+    """The LocalVariableSync component is used to store a value to the local dB for the user space and load it up again.
 
     Parameterize with a value type::
 
@@ -38,7 +38,7 @@ class LocalVariableSync(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def owner_user(self) -> members.SyncObject | None:
-        """The OwnerUser member."""
+        """The user that this variable is associated with in the world."""
         member = self.get_member("OwnerUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -46,12 +46,12 @@ class LocalVariableSync(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @owner_user.setter
     def owner_user(self, value: members.SyncObject) -> None:
-        """Set the OwnerUser member."""
+        """Set OwnerUser. The user that this variable is associated with in the world."""
         self.set_member("OwnerUser", value)
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[T])."""
+        """The value to Sync with the local DB variable."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -72,7 +72,7 @@ class LocalVariableSync(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def variable(self) -> primitives.String | None:
-        """The Variable field value."""
+        """The name of the local DB variable."""
         member = self.get_member("Variable")
         if member is None:
             return None

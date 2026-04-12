@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalPointRenderBufferProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocalPointRenderBufferProvider.
+    """Local Point Render Buffer Provider component as seen in the Scene Inspector
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocalPointRenderBufferProvider"

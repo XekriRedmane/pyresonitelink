@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.inode_object_output import INodeObjectOutpu
 
 
 class ObjectWrite(GenericComponent[T]):
-    """Writes takes a Variable as an input and writes Value to the field Variable.
+    """Writes take Variable (Variable) as an input, and the type that Variable wraps will determine what Value (Generic) will take as a value. The node will then write Value (Generic) to the field Variable (Variable) wraps.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions
 
@@ -46,7 +46,7 @@ class ObjectWrite(GenericComponent[T]):
 
     @property
     def on_written(self) -> str | None:
-        """Target ID of the OnWritten reference (targets INodeOperation)."""
+        """sends an impulse after * (Call) has been impulsed and the value has been written."""
         member = self.get_member("OnWritten")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +67,7 @@ class ObjectWrite(GenericComponent[T]):
 
     @property
     def on_fail(self) -> str | None:
-        """Target ID of the OnFail reference (targets INodeOperation)."""
+        """sends an impulse after * (Call) has been impulsed and the value wasn't able to be written due to a missing target or a missing Variable (Variable) value"""
         member = self.get_member("OnFail")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +109,7 @@ class ObjectWrite(GenericComponent[T]):
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeObjectOutput[T])."""
+        """Value to write to the value pointed to by Variable (Variable)"""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId

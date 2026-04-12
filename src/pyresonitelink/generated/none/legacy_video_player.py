@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.stereo_layout import StereoLayout
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -27,15 +28,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolicy, IPlayable, IItemMetadataSource, IUIInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyVideoPlayer.
+    """The Legacy Video Player component is used to construct and control legacy video players.
+
+    Used in legacy content. do not use in new content.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyVideoPlayer"
 
-    def __init__(self, size_compensation: primitives.Float2 | None = None, video_provider: str | IAssetProvider[VideoTexture] | None = None, style: str | LegacyUIStyle | None = None, indicator_texture_url: str | IField[str] | None = None, indicator_tint: str | IField[primitives.ColorX] | None = None, collider_size: str | IField[primitives.Float3] | None = None, frame_width: str | IField[primitives.Float] | None = None, frame_height: str | IField[primitives.Float] | None = None, frame_material: str | PBS_RimMetallic | None = None, display_material: str | UnlitMaterial | None = None, display_material_texture: str | AssetRef[ITexture2D] | None = None, display_size: str | IField[primitives.Float2] | None = None, main_audio_output: str | AudioOutput | None = None, timeline_slider: str | LegacySlider | None = None, timeline_position: str | IField[primitives.Float3] | None = None, timeline_width: str | IField[primitives.Float] | None = None, position_drive: str | IField[primitives.Float] | None = None, volume_slider: str | LegacySlider | None = None, volume_position: str | IField[primitives.Float3] | None = None, volume_width: str | IField[primitives.Float] | None = None, volume_drive: str | IField[primitives.Float] | None = None, buttons_width: str | IField[primitives.Float] | None = None, buttons_height: str | IField[primitives.Float] | None = None, buttons_position: str | IField[primitives.Float3] | None = None, play_button_color: str | IField[primitives.ColorX] | None = None, pause_button_color: str | IField[primitives.ColorX] | None = None, stop_button_color: str | IField[primitives.ColorX] | None = None, loop_button_color: str | IField[primitives.ColorX] | None = None, audio_3d_button_color: str | IField[primitives.ColorX] | None = None, exportable: str | VideoExportable | None = None, asset_proxy: str | AssetProxy[VideoTexture] | None = None, reference_proxy: str | ReferenceProxy | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, stereo_layout: StereoLayout | str | None = None, size_compensation: primitives.Float2 | None = None, video_provider: str | IAssetProvider[VideoTexture] | None = None, style: str | LegacyUIStyle | None = None, indicator_texture_url: str | IField[str] | None = None, indicator_tint: str | IField[primitives.ColorX] | None = None, collider_size: str | IField[primitives.Float3] | None = None, frame_width: str | IField[primitives.Float] | None = None, frame_height: str | IField[primitives.Float] | None = None, frame_material: str | PBS_RimMetallic | None = None, display_material: str | UnlitMaterial | None = None, display_material_texture: str | AssetRef[ITexture2D] | None = None, display_size: str | IField[primitives.Float2] | None = None, main_audio_output: str | AudioOutput | None = None, timeline_slider: str | LegacySlider | None = None, timeline_position: str | IField[primitives.Float3] | None = None, timeline_width: str | IField[primitives.Float] | None = None, position_drive: str | IField[primitives.Float] | None = None, volume_slider: str | LegacySlider | None = None, volume_position: str | IField[primitives.Float3] | None = None, volume_width: str | IField[primitives.Float] | None = None, volume_drive: str | IField[primitives.Float] | None = None, buttons_width: str | IField[primitives.Float] | None = None, buttons_height: str | IField[primitives.Float] | None = None, buttons_position: str | IField[primitives.Float3] | None = None, play_button_color: str | IField[primitives.ColorX] | None = None, pause_button_color: str | IField[primitives.ColorX] | None = None, stop_button_color: str | IField[primitives.ColorX] | None = None, loop_button_color: str | IField[primitives.ColorX] | None = None, audio_3d_button_color: str | IField[primitives.ColorX] | None = None, exportable: str | VideoExportable | None = None, asset_proxy: str | AssetProxy[VideoTexture] | None = None, reference_proxy: str | ReferenceProxy | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            stereo_layout: Initial value for StereoLayout.
             size_compensation: Initial value for SizeCompensation.
             video_provider: Initial value for videoProvider.
             style: Initial value for _style.
@@ -71,6 +75,8 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if stereo_layout is not None:
+            self.stereo_layout = stereo_layout
         if size_compensation is not None:
             self.size_compensation = size_compensation
         if video_provider is not None:
@@ -137,21 +143,28 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
             self.reference_proxy = reference_proxy
 
     @property
-    def stereo_layout(self) -> members.FieldEnum | None:
-        """The StereoLayout member."""
+    def stereo_layout(self) -> StereoLayout | None:
+        """The layout of the stereo audio for the video player."""
         member = self.get_member("StereoLayout")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return StereoLayout(member.value)
         return None
 
     @stereo_layout.setter
-    def stereo_layout(self, value: members.FieldEnum) -> None:
-        """Set the StereoLayout member."""
-        self.set_member("StereoLayout", value)
+    def stereo_layout(self, value: StereoLayout | str) -> None:
+        """Set StereoLayout. The layout of the stereo audio for the video player."""
+        member = self.get_member("StereoLayout")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "StereoLayout",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def size_compensation(self) -> primitives.Float2 | None:
-        """The SizeCompensation field value."""
+        """How to compensate for video size."""
         member = self.get_member("SizeCompensation")
         if member is None:
             return None
@@ -170,7 +183,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def video_provider(self) -> str | None:
-        """Target ID of the videoProvider reference (targets IAssetProvider[VideoTexture])."""
+        """The video provider component giving the audio and visual data for the video."""
         member = self.get_member("videoProvider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -191,7 +204,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def style(self) -> str | None:
-        """Target ID of the _style reference (targets LegacyUIStyle)."""
+        """The legacy ui style component being used for this video player."""
         member = self.get_member("_style")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -212,7 +225,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def indicator_texture_url(self) -> str | None:
-        """Target ID of the _indicatorTextureUrl reference (targets IField[str])."""
+        """The field to drive to control the video player's texture url"""
         member = self.get_member("_indicatorTextureUrl")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -233,7 +246,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def indicator_tint(self) -> str | None:
-        """Target ID of the _indicatorTint reference (targets IField[primitives.ColorX])."""
+        """The field to drive to control the video player's indictor's tint"""
         member = self.get_member("_indicatorTint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -254,7 +267,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def collider_size(self) -> str | None:
-        """Target ID of the _colliderSize reference (targets IField[primitives.Float3])."""
+        """The field to drive to control the video player's collider size"""
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -275,7 +288,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def frame_width(self) -> str | None:
-        """Target ID of the _frameWidth reference (targets IField[primitives.Float])."""
+        """The field to drive to control the video player's border frame width"""
         member = self.get_member("_frameWidth")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -296,7 +309,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def frame_height(self) -> str | None:
-        """Target ID of the _frameHeight reference (targets IField[primitives.Float])."""
+        """The field to drive to control the video player's border frame height"""
         member = self.get_member("_frameHeight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -317,7 +330,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def frame_material(self) -> str | None:
-        """Target ID of the _frameMaterial reference (targets PBS_RimMetallic)."""
+        """The field to drive to control the video player's frame material"""
         member = self.get_member("_frameMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -338,7 +351,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def display_material(self) -> str | None:
-        """Target ID of the _displayMaterial reference (targets UnlitMaterial)."""
+        """This stores the video player's display material."""
         member = self.get_member("_displayMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -359,7 +372,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def display_material_texture(self) -> str | None:
-        """Target ID of the _displayMaterialTexture reference (targets AssetRef[ITexture2D])."""
+        """The field to drive to control the video player's display material texture."""
         member = self.get_member("_displayMaterialTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -380,7 +393,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def display_size(self) -> str | None:
-        """Target ID of the _displaySize reference (targets IField[primitives.Float2])."""
+        """The field to drive to control the video player's display section size."""
         member = self.get_member("_displaySize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -401,7 +414,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def main_audio_output(self) -> str | None:
-        """Target ID of the _mainAudioOutput reference (targets AudioOutput)."""
+        """This stores the video player's main audio output."""
         member = self.get_member("_mainAudioOutput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -422,7 +435,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def timeline_slider(self) -> str | None:
-        """Target ID of the _timelineSlider reference (targets LegacySlider)."""
+        """This stores the video player's timeline slider."""
         member = self.get_member("_timelineSlider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -443,7 +456,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def timeline_position(self) -> str | None:
-        """Target ID of the _timelinePosition reference (targets IField[primitives.Float3])."""
+        """The field to drive to control the video player's timeline playhead position."""
         member = self.get_member("_timelinePosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -464,7 +477,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def timeline_width(self) -> str | None:
-        """Target ID of the _timelineWidth reference (targets IField[primitives.Float])."""
+        """The field to drive to control the video player's timeline ui width."""
         member = self.get_member("_timelineWidth")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -485,7 +498,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def position_drive(self) -> str | None:
-        """Target ID of the _positionDrive reference (targets IField[primitives.Float])."""
+        """The field to drive to control the video player's ui position."""
         member = self.get_member("_positionDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -506,7 +519,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def volume_slider(self) -> str | None:
-        """Target ID of the _volumeSlider reference (targets LegacySlider)."""
+        """This stores the video player's volume slider."""
         member = self.get_member("_volumeSlider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -527,7 +540,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def volume_position(self) -> str | None:
-        """Target ID of the _volumePosition reference (targets IField[primitives.Float3])."""
+        """The field to drive to control the video player's volume amount."""
         member = self.get_member("_volumePosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -548,7 +561,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def volume_width(self) -> str | None:
-        """Target ID of the _volumeWidth reference (targets IField[primitives.Float])."""
+        """The field to drive to control the video player's volume ui width."""
         member = self.get_member("_volumeWidth")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -569,7 +582,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def volume_drive(self) -> str | None:
-        """Target ID of the _volumeDrive reference (targets IField[primitives.Float])."""
+        """The field to drive to control the video player's volume for the audio output component."""
         member = self.get_member("_volumeDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -590,7 +603,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def buttons_width(self) -> str | None:
-        """Target ID of the _buttonsWidth reference (targets IField[primitives.Float])."""
+        """The field to drive to control the video player's button container widths."""
         member = self.get_member("_buttonsWidth")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -611,7 +624,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def buttons_height(self) -> str | None:
-        """Target ID of the _buttonsHeight reference (targets IField[primitives.Float])."""
+        """The field to drive to control the video player's button container height."""
         member = self.get_member("_buttonsHeight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -632,7 +645,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def buttons_position(self) -> str | None:
-        """Target ID of the _buttonsPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive to control the video player's button container position."""
         member = self.get_member("_buttonsPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -653,7 +666,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def play_button_color(self) -> str | None:
-        """Target ID of the _playButtonColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive to control the video player's play button color."""
         member = self.get_member("_playButtonColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -674,7 +687,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def pause_button_color(self) -> str | None:
-        """Target ID of the _pauseButtonColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive to control the video player's pause button color."""
         member = self.get_member("_pauseButtonColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -695,7 +708,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def stop_button_color(self) -> str | None:
-        """Target ID of the _stopButtonColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive to control the video player's stop button color."""
         member = self.get_member("_stopButtonColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -716,7 +729,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def loop_button_color(self) -> str | None:
-        """Target ID of the _loopButtonColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive to control the video player's loop button color."""
         member = self.get_member("_loopButtonColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -737,7 +750,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def audio_3d_button_color(self) -> str | None:
-        """Target ID of the _audio3DButtonColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive to control the video player's 3d audio button."""
         member = self.get_member("_audio3DButtonColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -758,7 +771,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def exportable(self) -> str | None:
-        """Target ID of the _exportable reference (targets VideoExportable)."""
+        """The component that is used to make this video player exportable."""
         member = self.get_member("_exportable")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -779,7 +792,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def asset_proxy(self) -> str | None:
-        """Target ID of the _assetProxy reference (targets AssetProxy[VideoTexture])."""
+        """The component that is used to allow this video to be dropped into asset fields for videos."""
         member = self.get_member("_assetProxy")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -800,7 +813,7 @@ class LegacyVideoPlayer(GeneratedComponent, IMaterialSource, IMaterialApplyPolic
 
     @property
     def reference_proxy(self) -> str | None:
-        """Target ID of the _referenceProxy reference (targets ReferenceProxy)."""
+        """The component that allows this video to be dropped into texture and audio fields or receivers."""
         member = self.get_member("_referenceProxy")
         if isinstance(member, members.Reference):
             return member.targetId

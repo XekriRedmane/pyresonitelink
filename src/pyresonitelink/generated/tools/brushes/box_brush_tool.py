@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.template_handling import TemplateHandling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -23,14 +24,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BoxBrushTool.
+    """The BoxBrushTool component is a tool that draws clouds of rotated, scaled, and UV mapped boxes as part of a BoxArrayMesh.
 
     Category: Tools/Brushes
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxBrushTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, fixed_minimum_point_distance: primitives.Float | None = None, position_smoothing: primitives.Float | None = None, rotation_smoothing: primitives.Float | None = None, pressure_smoothing: primitives.Float | None = None, max_stroke_length: primitives.Float | None = None, stroke_fade_in_length: primitives.Float | None = None, stroke_fade_out_length: primitives.Float | None = None, stroke_group_finish_wait_time: primitives.Float | None = None, activation_threshold: primitives.Float | None = None, deactivation_threshold_ratio: primitives.Float | None = None, menu_size_change: primitives.Float | None = None, snap_tip: primitives.Bool | None = None, snap_line: primitives.Bool | None = None, make_strokes_grabbable: primitives.Bool | None = None, position_strokes_to_tip: primitives.Bool | None = None, orient_strokes_to_tip: primitives.Bool | None = None, scale_strokes_to_user: primitives.Bool | None = None, pick_materials: primitives.Bool | None = None, pick_colors: primitives.Bool | None = None, current_material: str | IAssetProvider[Material] | None = None, particle_system: str | ParticleSystem | None = None, mesh_emitter_template: str | MeshEmitter | None = None, emission_rate_per_unit_length: primitives.Float | None = None, color_picker: str | ColorDialogInterface | None = None, picked_color: primitives.ColorX | None = None, last_used_material: str | IAssetProvider[Material] | None = None, last_created_material: str | IAssetProvider[Material] | None = None, pressure: primitives.Float | None = None, position: primitives.Float3 | None = None, rotation: primitives.FloatQ | None = None, last_point_delta: primitives.Float3 | None = None, velocity: primitives.Float3 | None = None, raw_delta: primitives.Float3 | None = None, raw_velocity: primitives.Float3 | None = None, raw_stroke_length: primitives.Float | None = None, stroke_length: primitives.Float | None = None, normalized_stroke_length: primitives.Float | None = None, stroke_fade_multiplier: primitives.Float | None = None, stroke_group_index: primitives.Int | None = None, stroke_group_active: primitives.Bool | None = None, tip_anchor: str | Slot | None = None, stroke_point_rate: primitives.Float | None = None, constant_point_rate: primitives.Float | None = None, pressure_affects_rate: primitives.Bool | None = None, pressure_affects_radius: primitives.Bool | None = None, particle_spawn_radius: primitives.Float | None = None, snap_points: primitives.Bool | None = None, pivot: primitives.Float3 | None = None, min_color: primitives.ColorX | None = None, max_color: primitives.ColorX | None = None, color_gap: primitives.Float | None = None, uniform_size: primitives.Bool | None = None, min_size: primitives.Float3 | None = None, max_size: primitives.Float3 | None = None, size_gap: primitives.Float | None = None, min_rotation: primitives.Float3 | None = None, max_rotation: primitives.Float3 | None = None, min_uv_scale: primitives.Float3 | None = None, max_uv_scale: primitives.Float3 | None = None, uv_scale_gap: primitives.Float | None = None, use_color: primitives.Bool | None = None, scale_uv_with_size: primitives.Bool | None = None, preview_renderer: str | MeshRenderer | None = None, preview_mesh: str | BoxArrayMesh | None = None, preview_mesh_offset: str | IField[primitives.Float3] | None = None, preview_mesh_rotation: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, fixed_minimum_point_distance: primitives.Float | None = None, position_smoothing: primitives.Float | None = None, rotation_smoothing: primitives.Float | None = None, pressure_smoothing: primitives.Float | None = None, max_stroke_length: primitives.Float | None = None, stroke_fade_in_length: primitives.Float | None = None, stroke_fade_out_length: primitives.Float | None = None, stroke_group_finish_wait_time: primitives.Float | None = None, activation_threshold: primitives.Float | None = None, deactivation_threshold_ratio: primitives.Float | None = None, menu_size_change: primitives.Float | None = None, snap_tip: primitives.Bool | None = None, snap_line: primitives.Bool | None = None, make_strokes_grabbable: primitives.Bool | None = None, position_strokes_to_tip: primitives.Bool | None = None, orient_strokes_to_tip: primitives.Bool | None = None, scale_strokes_to_user: primitives.Bool | None = None, pick_materials: primitives.Bool | None = None, pick_colors: primitives.Bool | None = None, current_material: str | IAssetProvider[Material] | None = None, particle_system: str | ParticleSystem | None = None, mesh_emitter_template: str | MeshEmitter | None = None, particle_template_handling: TemplateHandling | str | None = None, emission_rate_per_unit_length: primitives.Float | None = None, color_picker: str | ColorDialogInterface | None = None, picked_color: primitives.ColorX | None = None, last_used_material: str | IAssetProvider[Material] | None = None, last_created_material: str | IAssetProvider[Material] | None = None, pressure: primitives.Float | None = None, position: primitives.Float3 | None = None, rotation: primitives.FloatQ | None = None, last_point_delta: primitives.Float3 | None = None, velocity: primitives.Float3 | None = None, raw_delta: primitives.Float3 | None = None, raw_velocity: primitives.Float3 | None = None, raw_stroke_length: primitives.Float | None = None, stroke_length: primitives.Float | None = None, normalized_stroke_length: primitives.Float | None = None, stroke_fade_multiplier: primitives.Float | None = None, stroke_group_index: primitives.Int | None = None, stroke_group_active: primitives.Bool | None = None, tip_anchor: str | Slot | None = None, stroke_point_rate: primitives.Float | None = None, constant_point_rate: primitives.Float | None = None, pressure_affects_rate: primitives.Bool | None = None, pressure_affects_radius: primitives.Bool | None = None, particle_spawn_radius: primitives.Float | None = None, snap_points: primitives.Bool | None = None, pivot: primitives.Float3 | None = None, min_color: primitives.ColorX | None = None, max_color: primitives.ColorX | None = None, color_gap: primitives.Float | None = None, uniform_size: primitives.Bool | None = None, min_size: primitives.Float3 | None = None, max_size: primitives.Float3 | None = None, size_gap: primitives.Float | None = None, min_rotation: primitives.Float3 | None = None, max_rotation: primitives.Float3 | None = None, min_uv_scale: primitives.Float3 | None = None, max_uv_scale: primitives.Float3 | None = None, uv_scale_gap: primitives.Float | None = None, use_color: primitives.Bool | None = None, scale_uv_with_size: primitives.Bool | None = None, preview_renderer: str | MeshRenderer | None = None, preview_mesh: str | BoxArrayMesh | None = None, preview_mesh_offset: str | IField[primitives.Float3] | None = None, preview_mesh_rotation: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -62,6 +63,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             current_material: Initial value for CurrentMaterial.
             particle_system: Initial value for ParticleSystem.
             mesh_emitter_template: Initial value for MeshEmitterTemplate.
+            particle_template_handling: Initial value for ParticleTemplateHandling.
             emission_rate_per_unit_length: Initial value for EmissionRatePerUnitLength.
             color_picker: Initial value for _colorPicker.
             picked_color: Initial value for _pickedColor.
@@ -165,6 +167,8 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             self.particle_system = particle_system
         if mesh_emitter_template is not None:
             self.mesh_emitter_template = mesh_emitter_template
+        if particle_template_handling is not None:
+            self.particle_template_handling = particle_template_handling
         if emission_rate_per_unit_length is not None:
             self.emission_rate_per_unit_length = emission_rate_per_unit_length
         if color_picker is not None:
@@ -836,17 +840,24 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             )
 
     @property
-    def particle_template_handling(self) -> members.FieldEnum | None:
-        """The ParticleTemplateHandling member."""
+    def particle_template_handling(self) -> TemplateHandling | None:
+        """The ParticleTemplateHandling enum value."""
         member = self.get_member("ParticleTemplateHandling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TemplateHandling(member.value)
         return None
 
     @particle_template_handling.setter
-    def particle_template_handling(self, value: members.FieldEnum) -> None:
-        """Set the ParticleTemplateHandling member."""
-        self.set_member("ParticleTemplateHandling", value)
+    def particle_template_handling(self, value: TemplateHandling | str) -> None:
+        """Set the ParticleTemplateHandling enum value."""
+        member = self.get_member("ParticleTemplateHandling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ParticleTemplateHandling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def emission_rate_per_unit_length(self) -> primitives.Float | None:
@@ -1346,7 +1357,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def pivot(self) -> primitives.Float3 | None:
-        """The Pivot field value."""
+        """The offset of the rotation Pivot of each box."""
         member = self.get_member("Pivot")
         if member is None:
             return None
@@ -1365,7 +1376,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def min_color(self) -> primitives.ColorX | None:
-        """The MinColor field value."""
+        """The min color that each box can be."""
         member = self.get_member("MinColor")
         if member is None:
             return None
@@ -1384,7 +1395,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def max_color(self) -> primitives.ColorX | None:
-        """The MaxColor field value."""
+        """The max color that each box can be."""
         member = self.get_member("MaxColor")
         if member is None:
             return None
@@ -1403,7 +1414,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def color_gap(self) -> primitives.Float | None:
-        """The ColorGap field value."""
+        """the bias for the random colors for boxes."""
         member = self.get_member("ColorGap")
         if member is None:
             return None
@@ -1422,7 +1433,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def uniform_size(self) -> primitives.Bool | None:
-        """The UniformSize field value."""
+        """Whether all boxes should be the same size always."""
         member = self.get_member("UniformSize")
         if member is None:
             return None
@@ -1441,7 +1452,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def min_size(self) -> primitives.Float3 | None:
-        """The MinSize field value."""
+        """the min size a drawn box can be."""
         member = self.get_member("MinSize")
         if member is None:
             return None
@@ -1460,7 +1471,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def max_size(self) -> primitives.Float3 | None:
-        """The MaxSize field value."""
+        """the max size a drawn box can be."""
         member = self.get_member("MaxSize")
         if member is None:
             return None
@@ -1479,7 +1490,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def size_gap(self) -> primitives.Float | None:
-        """The SizeGap field value."""
+        """the bias for the random size for boxes."""
         member = self.get_member("SizeGap")
         if member is None:
             return None
@@ -1498,7 +1509,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def min_rotation(self) -> primitives.Float3 | None:
-        """The MinRotation field value."""
+        """the minimum rotation of each box."""
         member = self.get_member("MinRotation")
         if member is None:
             return None
@@ -1517,7 +1528,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def max_rotation(self) -> primitives.Float3 | None:
-        """The MaxRotation field value."""
+        """the maximum rotation of each box."""
         member = self.get_member("MaxRotation")
         if member is None:
             return None
@@ -1536,7 +1547,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def min_uv_scale(self) -> primitives.Float3 | None:
-        """The MinUVScale field value."""
+        """the minimum UV scale of each box."""
         member = self.get_member("MinUVScale")
         if member is None:
             return None
@@ -1555,7 +1566,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def max_uv_scale(self) -> primitives.Float3 | None:
-        """The MaxUVScale field value."""
+        """the maximum uv scale of each box."""
         member = self.get_member("MaxUVScale")
         if member is None:
             return None
@@ -1574,7 +1585,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def uv_scale_gap(self) -> primitives.Float | None:
-        """The UVScaleGap field value."""
+        """the bias of the uv scale of each box."""
         member = self.get_member("UVScaleGap")
         if member is None:
             return None
@@ -1593,7 +1604,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def rotation_space(self) -> members.SyncObject | None:
-        """The RotationSpace member."""
+        """The transform space that should be used when applying rotation to the boxes."""
         member = self.get_member("RotationSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -1601,12 +1612,12 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @rotation_space.setter
     def rotation_space(self, value: members.SyncObject) -> None:
-        """Set the RotationSpace member."""
+        """Set RotationSpace. The transform space that should be used when applying rotation to the boxes."""
         self.set_member("RotationSpace", value)
 
     @property
     def use_color(self) -> primitives.Bool | None:
-        """The UseColor field value."""
+        """Whether the boxes should have vertex colors."""
         member = self.get_member("UseColor")
         if member is None:
             return None
@@ -1625,7 +1636,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def scale_uv_with_size(self) -> primitives.Bool | None:
-        """The ScaleUVWithSize field value."""
+        """Whether boxes should have more UV detail the bigger they are."""
         member = self.get_member("ScaleUVWithSize")
         if member is None:
             return None

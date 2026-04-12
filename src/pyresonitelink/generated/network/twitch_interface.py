@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TwitchInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Twitch interface is a component that is used to allow resonite to communicate to and recieve twitch API events from twitch for a given Channel through a User.
+    """Twitch interface is a component that is used to allow resonite to communicate to and recieve twitch API events from twitch for a given ``Channel`` through a User.
 
     Category: Network
     """

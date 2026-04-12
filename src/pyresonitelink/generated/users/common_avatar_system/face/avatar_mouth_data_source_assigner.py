@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarMouthDataSourceAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarMouthDataSourceAssigner.
+    """Avatar Mouth Data Source Assigner is a component that is able to assign a mouth tracking source to a field that accepts it.
 
     Category: Users/Common Avatar System/Face
+
+    **Behavior**: This component is triggered when a user equips an avatar that has this component as part of the hierarchy. The user that equipped the avatar needs to have an active mouth data source on their client, such as a Vive facial tracker, or using a mod that creates a source for mouth tracking (like VRCFTReceiver)
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarMouthDataSourceAssigner"
@@ -30,7 +32,7 @@ class AvatarMouthDataSourceAssigner(GeneratedComponent, IAvatarObjectComponent, 
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets SyncRef[IMouthTrackingSourceComponent])."""
+        """A field that accepts a mouth tracking source (like ``DataSource`` on the Avatar Expression Driver Component) to assign a tracking source to."""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PivotFromVelocityMagnitude(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.PivotFromVelocityMagnitude.
+    """The Pivot From Velocity Magnitude component is used in Photon Dust to make particles rotate based on their velocity direction on a pivot.
 
     Category: Rendering/Particle System/Modules
     """

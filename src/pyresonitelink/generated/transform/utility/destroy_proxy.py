@@ -9,9 +9,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DestroyProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DestroyProxy.
+    """The DestroyProxy component is used to automatically destroy a specified DestroyTarget when this component itself or it's parent slot is destroyed.
 
     Category: Transform/Utility
+
+    The DestroyProxy component is used to automatically destroy a specified
+    ``DestroyTarget`` when this component itself or it's parent slot is
+    destroyed. Important to note: If you'd like to remove the component,
+    first unset the ``DestroyTarget`` or else the target IDestroyable object
+    will be destroyed as well.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DestroyProxy"
@@ -29,7 +35,7 @@ class DestroyProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def destroy_target(self) -> str | None:
-        """Target ID of the DestroyTarget reference (targets IDestroyable)."""
+        """The slot, component (etc) to destroy."""
         member = self.get_member("DestroyTarget")
         if isinstance(member, members.Reference):
             return member.targetId

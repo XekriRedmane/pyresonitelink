@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SphereColliderGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SphereColliderGizmo.
+    """The SphereColliderGizmo component is used to adjust the radius of a sphere collider.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SphereColliderGizmo"
@@ -31,7 +31,7 @@ class SphereColliderGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiv
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets SphereCollider)."""
+        """Sphere collider to modify"""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +52,7 @@ class SphereColliderGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiv
 
     @property
     def sphere_gizmo(self) -> str | None:
-        """Target ID of the _sphereGizmo reference (targets SphereGizmo)."""
+        """The gizmo to use to edit the sphere collider size."""
         member = self.get_member("_sphereGizmo")
         if isinstance(member, members.Reference):
             return member.targetId

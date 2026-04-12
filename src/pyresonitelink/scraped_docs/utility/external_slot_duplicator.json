@@ -1,0 +1,16 @@
+{
+  "description": "The ExternalSlotDuplicator component parents ``TargetSlot`` under itself when this component is duplicated. If this component is parented under a larger hiearchy, the slot will only be parented if it's not anywhere under this larger hiearchy or this component's hiearchy. When the slot is parented back under this component, any non null specified transform values for this component are applied to the slot.\n\nIf ``DoNotRestoreOriginalTransform`` is enabled, it will parent the slot back where it came from and restore the original local transform values after duplication.",
+  "category": "Utility",
+  "fields": {
+    "TargetSlot": "The slot to parent and write values for during duplication.",
+    "LocalPositionOverride": "The local position to apply to ``TargetSlot`` when parenting under this slot during duplication if this is not null.",
+    "LocalRotationOverride": "The local rotation to apply to ``TargetSlot`` when parenting under this component's slot during duplication if this is not null.",
+    "LocalScaleOverride": "The local scale to apply to ``TargetSlot`` when parenting under this component's slot during duplication if this is not null.",
+    "ActiveSelfOverride": "The active state to apply to ``TargetSlot``'s active field when parenting under this component's slot during duplication if this is not null.",
+    "DoNotRestoreOriginalTransform": "Whether to parent the slot back where it came from after duplication, Undoing all overrides and setting all values back to their originals."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ExternalSlotDuplicator&action=raw"
+}

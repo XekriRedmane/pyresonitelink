@@ -38,7 +38,7 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting controller information from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[Chirality])."""
+        """The controller side to get information from."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -80,7 +80,7 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @property
     def is_active(self) -> members.EmptyElement | None:
-        """The IsActive member."""
+        """Is this controller actively being used right now."""
         member = self.get_member("IsActive")
         if isinstance(member, members.EmptyElement):
             return member
@@ -88,12 +88,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @is_active.setter
     def is_active(self, value: members.EmptyElement) -> None:
-        """Set the IsActive member."""
+        """Set IsActive. Is this controller actively being used right now."""
         self.set_member("IsActive", value)
 
     @property
     def type_(self) -> members.EmptyElement | None:
-        """The Type member."""
+        """The controller type being used."""
         member = self.get_member("Type")
         if isinstance(member, members.EmptyElement):
             return member
@@ -101,12 +101,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @type_.setter
     def type_(self, value: members.EmptyElement) -> None:
-        """Set the Type member."""
+        """Set Type. The controller type being used."""
         self.set_member("Type", value)
 
     @property
     def battery_level(self) -> members.EmptyElement | None:
-        """The BatteryLevel member."""
+        """The battery level of this controller."""
         member = self.get_member("BatteryLevel")
         if isinstance(member, members.EmptyElement):
             return member
@@ -114,12 +114,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @battery_level.setter
     def battery_level(self, value: members.EmptyElement) -> None:
-        """Set the BatteryLevel member."""
+        """Set BatteryLevel. The battery level of this controller."""
         self.set_member("BatteryLevel", value)
 
     @property
     def is_battery_charging(self) -> members.EmptyElement | None:
-        """The IsBatteryCharging member."""
+        """Is this controller currently charging."""
         member = self.get_member("IsBatteryCharging")
         if isinstance(member, members.EmptyElement):
             return member
@@ -127,12 +127,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @is_battery_charging.setter
     def is_battery_charging(self, value: members.EmptyElement) -> None:
-        """Set the IsBatteryCharging member."""
+        """Set IsBatteryCharging. Is this controller currently charging."""
         self.set_member("IsBatteryCharging", value)
 
     @property
     def menu(self) -> members.EmptyElement | None:
-        """The Menu member."""
+        """Is the menu button pressed right now."""
         member = self.get_member("Menu")
         if isinstance(member, members.EmptyElement):
             return member
@@ -140,12 +140,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @menu.setter
     def menu(self, value: members.EmptyElement) -> None:
-        """Set the Menu member."""
+        """Set Menu. Is the menu button pressed right now."""
         self.set_member("Menu", value)
 
     @property
     def button_by(self) -> members.EmptyElement | None:
-        """The ButtonBY member."""
+        """Is the Button BY pressed right now."""
         member = self.get_member("ButtonBY")
         if isinstance(member, members.EmptyElement):
             return member
@@ -153,12 +153,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @button_by.setter
     def button_by(self, value: members.EmptyElement) -> None:
-        """Set the ButtonBY member."""
+        """Set ButtonBY. Is the Button BY pressed right now."""
         self.set_member("ButtonBY", value)
 
     @property
     def button_ax(self) -> members.EmptyElement | None:
-        """The ButtonAX member."""
+        """Is the Button AX pressed right now."""
         member = self.get_member("ButtonAX")
         if isinstance(member, members.EmptyElement):
             return member
@@ -166,12 +166,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @button_ax.setter
     def button_ax(self, value: members.EmptyElement) -> None:
-        """Set the ButtonAX member."""
+        """Set ButtonAX. Is the Button AX pressed right now."""
         self.set_member("ButtonAX", value)
 
     @property
     def grip_click(self) -> members.EmptyElement | None:
-        """The GripClick member."""
+        """Is the controller's grip clicked down right now."""
         member = self.get_member("GripClick")
         if isinstance(member, members.EmptyElement):
             return member
@@ -179,12 +179,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @grip_click.setter
     def grip_click(self, value: members.EmptyElement) -> None:
-        """Set the GripClick member."""
+        """Set GripClick. Is the controller's grip clicked down right now."""
         self.set_member("GripClick", value)
 
     @property
     def bumper(self) -> members.EmptyElement | None:
-        """The Bumper member."""
+        """Is the controller's bumper pressed right now."""
         member = self.get_member("Bumper")
         if isinstance(member, members.EmptyElement):
             return member
@@ -192,12 +192,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @bumper.setter
     def bumper(self, value: members.EmptyElement) -> None:
-        """Set the Bumper member."""
+        """Set Bumper. Is the controller's bumper pressed right now."""
         self.set_member("Bumper", value)
 
     @property
     def joystick(self) -> members.EmptyElement | None:
-        """The Joystick member."""
+        """The position of this controller's joystick."""
         member = self.get_member("Joystick")
         if isinstance(member, members.EmptyElement):
             return member
@@ -205,12 +205,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @joystick.setter
     def joystick(self, value: members.EmptyElement) -> None:
-        """Set the Joystick member."""
+        """Set Joystick. The position of this controller's joystick."""
         self.set_member("Joystick", value)
 
     @property
     def joystick_touch(self) -> members.EmptyElement | None:
-        """The JoystickTouch member."""
+        """Is the controller's joystick being touched right now."""
         member = self.get_member("JoystickTouch")
         if isinstance(member, members.EmptyElement):
             return member
@@ -218,12 +218,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @joystick_touch.setter
     def joystick_touch(self, value: members.EmptyElement) -> None:
-        """Set the JoystickTouch member."""
+        """Set JoystickTouch. Is the controller's joystick being touched right now."""
         self.set_member("JoystickTouch", value)
 
     @property
     def joystick_click(self) -> members.EmptyElement | None:
-        """The JoystickClick member."""
+        """Is the controller's joystick clicked down right now."""
         member = self.get_member("JoystickClick")
         if isinstance(member, members.EmptyElement):
             return member
@@ -231,12 +231,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @joystick_click.setter
     def joystick_click(self, value: members.EmptyElement) -> None:
-        """Set the JoystickClick member."""
+        """Set JoystickClick. Is the controller's joystick clicked down right now."""
         self.set_member("JoystickClick", value)
 
     @property
     def trigger(self) -> members.EmptyElement | None:
-        """The Trigger member."""
+        """The amount of how far this controller's trigger is being pressed down currently."""
         member = self.get_member("Trigger")
         if isinstance(member, members.EmptyElement):
             return member
@@ -244,12 +244,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @trigger.setter
     def trigger(self, value: members.EmptyElement) -> None:
-        """Set the Trigger member."""
+        """Set Trigger. The amount of how far this controller's trigger is being pressed down currently."""
         self.set_member("Trigger", value)
 
     @property
     def trigger_touch(self) -> members.EmptyElement | None:
-        """The TriggerTouch member."""
+        """Is the controller's trigger being touched right now."""
         member = self.get_member("TriggerTouch")
         if isinstance(member, members.EmptyElement):
             return member
@@ -257,12 +257,12 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @trigger_touch.setter
     def trigger_touch(self, value: members.EmptyElement) -> None:
-        """Set the TriggerTouch member."""
+        """Set TriggerTouch. Is the controller's trigger being touched right now."""
         self.set_member("TriggerTouch", value)
 
     @property
     def trigger_click(self) -> members.EmptyElement | None:
-        """The TriggerClick member."""
+        """Is the controller's trigger being clicked down right now."""
         member = self.get_member("TriggerClick")
         if isinstance(member, members.EmptyElement):
             return member
@@ -270,6 +270,6 @@ class CosmosController(GeneratedComponent, IExecutionNode, INode, ICustomInspect
 
     @trigger_click.setter
     def trigger_click(self, value: members.EmptyElement) -> None:
-        """Set the TriggerClick member."""
+        """Set TriggerClick. Is the controller's trigger being clicked down right now."""
         self.set_member("TriggerClick", value)
 

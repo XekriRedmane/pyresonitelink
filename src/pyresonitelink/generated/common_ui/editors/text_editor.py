@@ -12,17 +12,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextEditor(GeneratedComponent, IFocusable, IWorldEventReceiver):
-    """This component is used in many places, including: * Primitive Member Editor for directly editing TextFields (and Ref Hacking) * UIX and TextFields * Parsing floats and parsing ints
+    """The TextEditor component takes in a reference to a Text or TextRenderer, and then outputs the result into that reference along with the parameters given and by what actions it should do so.
 
     Category: Common UI/Editors
 
     This component is used in many places, including: * Primitive Member
     Editor for directly editing TextFields (and Ref Hacking) * UIX and
     TextFields * Parsing floats and parsing ints
-
-    **Related Components**: Text Editor
-Text Editor
-Text Editor
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextEditor"

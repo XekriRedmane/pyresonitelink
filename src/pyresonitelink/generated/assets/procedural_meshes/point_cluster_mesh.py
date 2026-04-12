@@ -4,6 +4,9 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.distribution_type import DistributionType
+from pyresonitelink.generated._enums.color_mode import ColorMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -15,20 +18,25 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PointClusterMesh.
+    """The PointClusterMesh component generates a randomized cluster of points in a cloud. These points can be displayed via a Mesh Renderer using a Unlit Material with at least it's ``UseBillboardGeometry`` field set to true.
 
     Category: Assets/Procedural Meshes
+
+    This is used for the colored orbs in the sky of the Resonite Cloud Home.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PointClusterMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, texture_color_source: str | IAssetProvider[ITexture] | None = None, height_scale_source: str | IAssetProvider[Texture2D] | None = None, texture_intensity_clip: primitives.Float | None = None, texture_alpha_clip: primitives.Float | None = None, max_clip_attempts: primitives.Int | None = None, heightmap_exp: primitives.Float | None = None, seed: primitives.Int | None = None, points: primitives.Int | None = None, atlas: str | AtlasInfo | None = None, scale: primitives.Float3 | None = None, range_exp: primitives.Float | None = None, jitter_range: primitives.Float3 | None = None, color0: primitives.ColorX | None = None, color1: primitives.ColorX | None = None, color_lerp_scale: primitives.Float | None = None, color_gap: primitives.Float | None = None, simplex_noise_scale: primitives.Float3 | None = None, simplex_noise_offset: primitives.Float3 | None = None, uniform_size: primitives.Bool | None = None, min_size: primitives.Float2 | None = None, max_size: primitives.Float2 | None = None, min_rotation: primitives.Float | None = None, max_rotation: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, distribution: DistributionType | str | None = None, colors: ColorMode | str | None = None, texture_color_source: str | IAssetProvider[ITexture] | None = None, height_scale_source: str | IAssetProvider[Texture2D] | None = None, texture_intensity_clip: primitives.Float | None = None, texture_alpha_clip: primitives.Float | None = None, max_clip_attempts: primitives.Int | None = None, heightmap_exp: primitives.Float | None = None, seed: primitives.Int | None = None, points: primitives.Int | None = None, atlas: str | AtlasInfo | None = None, scale: primitives.Float3 | None = None, range_exp: primitives.Float | None = None, jitter_range: primitives.Float3 | None = None, color0: primitives.ColorX | None = None, color1: primitives.ColorX | None = None, color_lerp_scale: primitives.Float | None = None, color_gap: primitives.Float | None = None, simplex_noise_scale: primitives.Float3 | None = None, simplex_noise_offset: primitives.Float3 | None = None, uniform_size: primitives.Bool | None = None, min_size: primitives.Float2 | None = None, max_size: primitives.Float2 | None = None, min_rotation: primitives.Float | None = None, max_rotation: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
+            distribution: Initial value for Distribution.
+            colors: Initial value for Colors.
             texture_color_source: Initial value for TextureColorSource.
             height_scale_source: Initial value for HeightScaleSource.
             texture_intensity_clip: Initial value for TextureIntensityClip.
@@ -61,6 +69,12 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
+        if distribution is not None:
+            self.distribution = distribution
+        if colors is not None:
+            self.colors = colors
         if texture_color_source is not None:
             self.texture_color_source = texture_color_source
         if height_scale_source is not None:
@@ -166,43 +180,64 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def distribution(self) -> members.FieldEnum | None:
-        """The Distribution member."""
+    def distribution(self) -> DistributionType | None:
+        """The Distribution enum value."""
         member = self.get_member("Distribution")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return DistributionType(member.value)
         return None
 
     @distribution.setter
-    def distribution(self, value: members.FieldEnum) -> None:
-        """Set the Distribution member."""
-        self.set_member("Distribution", value)
+    def distribution(self, value: DistributionType | str) -> None:
+        """Set the Distribution enum value."""
+        member = self.get_member("Distribution")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Distribution",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def colors(self) -> members.FieldEnum | None:
-        """The Colors member."""
+    def colors(self) -> ColorMode | None:
+        """The Colors enum value."""
         member = self.get_member("Colors")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorMode(member.value)
         return None
 
     @colors.setter
-    def colors(self, value: members.FieldEnum) -> None:
-        """Set the Colors member."""
-        self.set_member("Colors", value)
+    def colors(self, value: ColorMode | str) -> None:
+        """Set the Colors enum value."""
+        member = self.get_member("Colors")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Colors",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def texture_color_source(self) -> str | None:
@@ -324,7 +359,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def seed(self) -> primitives.Int | None:
-        """The Seed field value."""
+        """The number to use to seed the generation of random points."""
         member = self.get_member("Seed")
         if member is None:
             return None
@@ -343,7 +378,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def points(self) -> primitives.Int | None:
-        """The Points field value."""
+        """The number of points to generate."""
         member = self.get_member("Points")
         if member is None:
             return None
@@ -383,7 +418,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def scale(self) -> primitives.Float3 | None:
-        """The Scale field value."""
+        """The scale of the generated mesh."""
         member = self.get_member("Scale")
         if member is None:
             return None
@@ -421,7 +456,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def jitter_range(self) -> primitives.Float3 | None:
-        """The JitterRange field value."""
+        """The maximum value to randomly offset each point."""
         member = self.get_member("JitterRange")
         if member is None:
             return None
@@ -554,7 +589,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def uniform_size(self) -> primitives.Bool | None:
-        """The UniformSize field value."""
+        """Whether all points should always be uniformly scaled."""
         member = self.get_member("UniformSize")
         if member is None:
             return None
@@ -573,7 +608,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def min_size(self) -> primitives.Float2 | None:
-        """The MinSize field value."""
+        """The minimum size of a point."""
         member = self.get_member("MinSize")
         if member is None:
             return None
@@ -592,7 +627,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def max_size(self) -> primitives.Float2 | None:
-        """The MaxSize field value."""
+        """The maximum size of a point."""
         member = self.get_member("MaxSize")
         if member is None:
             return None
@@ -611,7 +646,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def min_rotation(self) -> primitives.Float | None:
-        """The MinRotation field value."""
+        """The minimum rotation of a point."""
         member = self.get_member("MinRotation")
         if member is None:
             return None
@@ -630,7 +665,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def max_rotation(self) -> primitives.Float | None:
-        """The MaxRotation field value."""
+        """The maximum rotation of a point."""
         member = self.get_member("MaxRotation")
         if member is None:
             return None

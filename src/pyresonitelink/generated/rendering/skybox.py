@@ -14,9 +14,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Skybox(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Skybox.
+    """Can be used to specify the current material for the skybox and set the current skybox for the current world.
 
     Category: Rendering
+
+    Attach to a slot, put a Projection360Material or a ProceduralSkyMaterial
+    in ``Material`` and hit the "Set Active Skybox" button to enable the
+    skybox.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Skybox"
@@ -37,7 +41,7 @@ class Skybox(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to use for the skybox."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -76,7 +80,7 @@ class Skybox(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
             )
 
     async def set_active(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SetActive sync method.
+        """Sets the current skybox for the world to this one.
 
         Returns:
             The raw JSON response dict.

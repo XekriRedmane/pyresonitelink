@@ -16,7 +16,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Write Text To File node allows you to write files to your device, given if there is a path and proper permissions.
+    """The ``Write Text To File`` node allows you to write files to your device, given if there is a path and proper permissions.
+
+Currently at this time, this node is experimental, and thus cannot be used normally without making the world private, setting it to unsafe mode, and then running the node. Please note that making the world in unsafe mode does not allow other users to join under any circumstances.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Experimental
     """
@@ -54,7 +56,7 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     @property
     def string(self) -> str | None:
-        """Target ID of the String reference (targets INodeObjectOutput[primitives.String])."""
+        """The contents for this file."""
         member = self.get_member("String")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -75,7 +77,7 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     @property
     def file_path(self) -> str | None:
-        """Target ID of the FilePath reference (targets INodeObjectOutput[primitives.String])."""
+        """The path where the file should be saved/written to."""
         member = self.get_member("FilePath")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -96,7 +98,7 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     @property
     def append(self) -> str | None:
-        """Target ID of the Append reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should add on to the file when writting to it."""
         member = self.get_member("Append")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -117,7 +119,7 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     @property
     def new_line(self) -> str | None:
-        """Target ID of the NewLine reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should make a new line when adding to this file."""
         member = self.get_member("NewLine")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -138,7 +140,7 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     @property
     def on_write_started(self) -> str | None:
-        """Target ID of the OnWriteStarted reference (targets INodeOperation)."""
+        """Fires when the file writing process has started."""
         member = self.get_member("OnWriteStarted")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -159,7 +161,7 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     @property
     def on_write_finished(self) -> str | None:
-        """Target ID of the OnWriteFinished reference (targets INodeOperation)."""
+        """Fires when the file is written successfully."""
         member = self.get_member("OnWriteFinished")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -180,7 +182,7 @@ class WriteTextToFile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, I
 
     @property
     def on_write_fail(self) -> str | None:
-        """Target ID of the OnWriteFail reference (targets INodeOperation)."""
+        """Fires when there is no file to write to or the user did not give/have permission to write a file there."""
         member = self.get_member("OnWriteFail")
         if isinstance(member, members.Reference):
             return member.targetId

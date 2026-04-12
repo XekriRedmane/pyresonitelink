@@ -10,7 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TorsoHapticPointMapper.
+    """The TorsoHapticPointMapper component is used to tell the game the size of an Avatar's torso and its bones in order for the game to know where to place haptic point samplers so they better match the size and positions of the body.
+
+The area makes up a 3d trapezoid with thickness, with a parallel front and back, and top and bottom, but a non parallel left and right.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics
     """
@@ -51,7 +55,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def priority(self) -> primitives.Int | None:
-        """The Priority field value."""
+        """The priority of this Mapper over other mappers."""
         member = self.get_member("Priority")
         if member is None:
             return None
@@ -70,7 +74,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def show_debug_visuals(self) -> primitives.Bool | None:
-        """The ShowDebugVisuals field value."""
+        """Whether to show the area and haptic point Debug visuals."""
         member = self.get_member("ShowDebugVisuals")
         if member is None:
             return None
@@ -89,7 +93,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def bone_chain(self) -> members.SyncList | None:
-        """The BoneChain member."""
+        """A list of bones that make up the center spine of the avatar. (Hips, Spine(s), Chest, upper chest)"""
         member = self.get_member("BoneChain")
         if isinstance(member, members.SyncList):
             return member
@@ -97,12 +101,12 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @bone_chain.setter
     def bone_chain(self, value: members.SyncList) -> None:
-        """Set the BoneChain member."""
+        """Set BoneChain. A list of bones that make up the center spine of the avatar. (Hips, Spine(s), Chest, upper chest)"""
         self.set_member("BoneChain", value)
 
     @property
     def normalized_start(self) -> primitives.Float | None:
-        """The NormalizedStart field value."""
+        """Where in the chain does the haptics mapping start?"""
         member = self.get_member("NormalizedStart")
         if member is None:
             return None
@@ -121,7 +125,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def normalized_end(self) -> primitives.Float | None:
-        """The NormalizedEnd field value."""
+        """Where in the chain does the haptics mapping end?"""
         member = self.get_member("NormalizedEnd")
         if member is None:
             return None
@@ -140,7 +144,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def lower_width(self) -> primitives.Float | None:
-        """The LowerWidth field value."""
+        """The width of the lower spine."""
         member = self.get_member("LowerWidth")
         if member is None:
             return None
@@ -159,7 +163,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def upper_width(self) -> primitives.Float | None:
-        """The UpperWidth field value."""
+        """The width of the upper spine."""
         member = self.get_member("UpperWidth")
         if member is None:
             return None
@@ -178,7 +182,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def front_offset(self) -> primitives.Float | None:
-        """The FrontOffset field value."""
+        """How far the front side is from the spine bones."""
         member = self.get_member("FrontOffset")
         if member is None:
             return None
@@ -197,7 +201,7 @@ class TorsoHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def back_offset(self) -> primitives.Float | None:
-        """The BackOffset field value."""
+        """How far the back side is from the spine bones."""
         member = self.get_member("BackOffset")
         if member is None:
             return None

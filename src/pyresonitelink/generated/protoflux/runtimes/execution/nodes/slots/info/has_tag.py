@@ -38,7 +38,7 @@ class HasTag(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICusto
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """Slot to check."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class HasTag(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICusto
 
     @property
     def tag(self) -> str | None:
-        """Target ID of the Tag reference (targets INodeObjectOutput[primitives.String])."""
+        """The String to check with."""
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):
             return member.targetId

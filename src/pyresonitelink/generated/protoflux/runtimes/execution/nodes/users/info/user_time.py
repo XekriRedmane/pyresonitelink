@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Time node returns a user's device system time.
+    """The ``User Time`` node returns a user's device system time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """
@@ -34,7 +34,7 @@ class UserTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

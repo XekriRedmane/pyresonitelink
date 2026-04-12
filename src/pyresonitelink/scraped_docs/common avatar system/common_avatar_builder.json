@@ -1,0 +1,41 @@
+{
+  "description": "Common Avatar Builder is a component that is part of every world that defines the spawning behavior and routines to do for all users when they spawn into a world. This can be used to add world settings menus, change what parts of a user get automatically set up, and so on.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "LoadCloudAvatars": "Whether to load the User's set avatar, or load the default avatar instead.",
+    "CustomAvatarTemplates": "Avatars that user's will spawn into if they don't have a cloud avatar, or optionally force them into one of these templates.",
+    "AutoInject": "A slot that will automatically be duplicated and added as a child of a user when they join the world. Certain components will use this to override user behavior when part of this slot's hierarchy, like Avatar Audio Configuration to name one.",
+    "SetupNameBadges": "Whether to set up the user's default name badge when they spawn",
+    "SetupIconBadges": "Whether to set up the user's default badges when they spawn.",
+    "SetupServerVoice": "Only used in kiosk mode.",
+    "SetupClientVoice": "Only used in kiosk mode.",
+    "SetupServerTools": "Only used in kiosk mode.",
+    "SetupClientTools": "Only used in kiosk mode.",
+    "SetupLocomotion": "Whether to give the user the default locomotion modules when they spawn.",
+    "AllowLocomotion": "Whether to allow the user to move using locomotion when they spawn.",
+    "DefaultHostSilenced": "Whether the user should be default muted to the host when they spawn.",
+    "DefaultClientSilenced": "Whether the user should be default muted on their end when they spawn.",
+    "LocomotionModules": "The slot full of locomotion modules that the user will have by default after they spawn.",
+    "ForceDefaultLocomotionModule": "The locomotion to enable for the user by default when spawning rather than the one in that user's locomotion settings set in their dash.",
+    "FindUserPreferredModule": "Whether to try to spawn the user into their preferred locomotion module they set in settings.",
+    "SetupItemShelves": "Whether to add item shelves to the user when they spawn.",
+    "ParentClientsToServer": "Parents users that join under the host user's slot (yes this is what it does)",
+    "AlignTracking": "used in Kiosk mode in dash space to show Debug tracking visuals",
+    "EmptyAvatarSlotHandler": "Uses this component to handle empty slots like head and hands on a spawning avatar.",
+    "FillEmptySlots": "Whether to fill empty AvatarObjectSlots with default head and hand objects if they are missing on their loaded avatar."
+  },
+  "methods": {
+    "SetupPositionStream": "Used internally.",
+    "SetupRotationStream": "Used internally.",
+    "LocomotionControllerInitialized": "Used internally.",
+    "UpdateLocomotionModules": "Updates the locomotion modules on every user with the ones specified with this component."
+  },
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "This component gets read and executed every time a user respawns or joins into a world."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CommonAvatarBuilder&action=raw"
+}

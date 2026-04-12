@@ -1,0 +1,15 @@
+{
+  "description": "The PerformanceMetrics component is used to show performance for a particular ``User`` at the present moment.",
+  "category": "Utility",
+  "fields": {
+    "User": "The user we are measuring performance for.",
+    "FPS": "``User``'s Frames Per second.",
+    "ImmediateFPS": "``User``'s immediate Frames Per Second.",
+    "RenderTime": "``User``'s time it takes to render the scene in seconds.",
+    "TotalEngineUpdateTime": "``User``'s time it takes to update the engine in seconds."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a user for ``User`` for it to start giving performance metrics.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PerformanceMetrics&action=raw"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "The TransformStreamDriver is used to convert a stream of position rotation and scale values into drives which can drive slot transforms. It is used internally by the user positioning system.",
+  "category": "Users",
+  "fields": {
+    "PositionStream": "The source of float3 values used to position the slot.",
+    "RotationStream": "The source of floatQ values used to rotate the slot.",
+    "ScaleStream": "The source of float3 values used to scale the slot.",
+    "RootSpaceStream": "The slot being used for the root space.",
+    "Position": "The field to drive with the streamed in position values.",
+    "Rotation": "The field to drive with the streamed in rotation values.",
+    "Scale": "The field to drive with the streamed in scale values.",
+    "AllowOffsets": "Whether to allow offsets to the affected slot/object.",
+    "ResetStreamsOnDestroy": "Whether to reset the incoming streams upon destroying this slot.",
+    "PositionOffset": "Offset to the resulting position value this is driving.",
+    "RotationOffset": "Offset to the resulting rotation value this is driving.",
+    "ScaleOffset": "Offset to the resulting scale value this is driving.",
+    "RunBeforePhysics": "Whether or not to run before physics. can fix some issues where users fly off of a platform being driven by this component."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TransformStreamDriver&action=raw"
+}

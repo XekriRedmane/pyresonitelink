@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyAudioOutputDopplerAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyAudioOutputDopplerAdapter.
+    """The Legacy Audio Output Doppler Adapter component is used to auto convert values from the old unity system for doppler values to the new Awoodio systems added as part of the optimization updates era of Resonite. This is to convert old content to new content, and shouldn't be used in new items, unless being perfectly exact to content ported via the Unity SDK is necessary.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyAudioOutputDopplerAdapter"
@@ -38,7 +38,7 @@ class LegacyAudioOutputDopplerAdapter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float])."""
+        """The target to drive with the converted value"""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class LegacyAudioOutputDopplerAdapter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def value(self) -> primitives.Float | None:
-        """The Value field value."""
+        """The value to convert to the new system from the old one."""
         member = self.get_member("Value")
         if member is None:
             return None
@@ -78,7 +78,7 @@ class LegacyAudioOutputDopplerAdapter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def spatial_blend(self) -> str | None:
-        """Target ID of the SpatialBlend reference (targets IField[primitives.Float])."""
+        """The field representing the SpatialBlend value field."""
         member = self.get_member("SpatialBlend")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -99,7 +99,7 @@ class LegacyAudioOutputDopplerAdapter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def spatialize(self) -> str | None:
-        """Target ID of the Spatialize reference (targets IField[primitives.Bool])."""
+        """The field representing the Spatialize value field."""
         member = self.get_member("Spatialize")
         if isinstance(member, members.Reference):
             return member.targetId

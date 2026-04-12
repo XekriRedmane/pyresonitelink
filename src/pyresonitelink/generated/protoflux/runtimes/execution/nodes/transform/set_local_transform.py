@@ -49,7 +49,7 @@ class SetLocalTransform(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """An impulse is fired whenever the Instance slot's transform is set after the node receives an impulse. No impulse is fired from this output if the Instance input is null."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +70,7 @@ class SetLocalTransform(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot whose local transform is set. Default is null, the node does not function without this input."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +91,7 @@ class SetLocalTransform(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def position(self) -> str | None:
-        """Target ID of the Position reference (targets INodeValueOutput[primitives.Float3])."""
+        """The local position the input Instance slot is set to. Default is [0;0;0]."""
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +112,7 @@ class SetLocalTransform(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the Rotation reference (targets INodeValueOutput[primitives.FloatQ])."""
+        """The local rotation the input Instance slot is set to. Default is [0;0;0]."""
         member = self.get_member("Rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -133,7 +133,7 @@ class SetLocalTransform(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def scale(self) -> str | None:
-        """Target ID of the Scale reference (targets INodeValueOutput[primitives.Float3])."""
+        """The local scale the input Instance slot is set to. Default is [1;1;1]."""
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
             return member.targetId

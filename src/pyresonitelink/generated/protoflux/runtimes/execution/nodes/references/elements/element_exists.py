@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ElementExists(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Element Exists node takes in a world element and returns if that element exists in the world currently. This node will not update in the way you think it does, due to the fact that destroying slots in a world does not remove them immediately, instead they are still referenced in the Assets Slot waiting to be garbage collected (and will still say true). Once that slot has been garbage collected, the reference will be removed and this node will say false.
+    """The ``Element Exists`` node takes in a world element and returns if that element exists in the world currently. This node will not update in the way you think it does, due to the fact that destroying slots in a world does not remove them immediately, instead they are still referenced in the Assets Slot waiting to be garbage collected (and will still say ``true``). Once that slot has been garbage collected, the reference will be removed and this node will say ``false``.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/References/Elements
     """
@@ -34,7 +34,7 @@ class ElementExists(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def element(self) -> str | None:
-        """Target ID of the Element reference (targets INodeObjectOutput[IWorldElement])."""
+        """The world element in question."""
         member = self.get_member("Element")
         if isinstance(member, members.Reference):
             return member.targetId

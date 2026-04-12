@@ -10,9 +10,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonClipboardCopyText(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonClipboardCopyText.
+    """The ButtonClipboardCopyText component is triggered on Button Press and copies the text content of a field into the pressing user's clipboard.
+
+}}
 
     Category: Common UI/Button Interactions/Specialized
+
+    This helps with copying text or to add the functionality for copying
+    text for projects.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonClipboardCopyText"
@@ -30,7 +35,7 @@ class ButtonClipboardCopyText(GeneratedComponent, IButtonPressReceiver, IWorldEv
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IField[primitives.String])."""
+        """Specifies where the value is copied from."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId

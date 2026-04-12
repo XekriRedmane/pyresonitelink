@@ -1,0 +1,16 @@
+{
+  "description": "The DocumentInterface component is a Favorites Type Component that is used in the default or custom document viewers.",
+  "category": "Utility:Entity Interfaces",
+  "fields": {
+    "ItemName": "The name of this interface.",
+    "SpawningUser": "The user that spawned this document viewer.",
+    "SpawningUserID": "The field that contains the user ID of the user that spawned this document viewer.",
+    "IsInstance": "Whether this was spawned by the Favorites system (true) or spawned from inventory (false)",
+    "URL": "The URL field of the document asset component this document viewer is showing.",
+    "Page": "The field that controls which page this document viewer is currently showing."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DocumentInterface&action=raw"
+}

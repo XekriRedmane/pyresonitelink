@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectOrb(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ObjectOrb.
+    """According to Frooxius this was originally made during the infancy stages of FrooxEngine to serve as an item the user would stick into an "Object Placement Tool" where users could easily place objects into the world in the form of duplicates and make it easier to create worlds. However this never came to fruition and the concept lives on as this remnant in the game code and Component set. (timestamp) https://www.youtube.com/watch?v=OfriYWXMNjk&t=28m59s
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ObjectOrb"
@@ -30,7 +30,7 @@ class ObjectOrb(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def preview_root(self) -> str | None:
-        """Target ID of the PreviewRoot reference (targets Slot)."""
+        """The slot storing the preview visual."""
         member = self.get_member("PreviewRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -51,7 +51,7 @@ class ObjectOrb(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def template_root(self) -> str | None:
-        """Target ID of the TemplateRoot reference (targets Slot)."""
+        """The slot to duplicate when placing the object."""
         member = self.get_member("TemplateRoot")
         if isinstance(member, members.Reference):
             return member.targetId

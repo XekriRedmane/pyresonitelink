@@ -9,9 +9,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ActiveUserCloudValueVariable(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ActiveUserCloudValueVariable<>.
+    """The ActiveUserCloudValueVariable component provides a field that is synced to a cloud variable, with the user it is parented under being the owner of the value. This node follows the same rules as Cloud Variables except that it caches the quickly made changes and then updates the cloud variable with the cached changes as soon as possible using the cloud.
 
     Category: Cloud/Variables
+
+    To use this component, simply add it to a slot underneath a user's
+    hierarchy and set the ``Path`` to the path of a cloud variable. (make
+    sure that the variable and component are of the same type!) The
+    component's ``Value`` field will then be filled with the value from the
+    cloud variable.
 
     Parameterize with a value type::
 
@@ -47,7 +53,7 @@ class ActiveUserCloudValueVariable(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def path(self) -> primitives.String | None:
-        """The Path field value."""
+        """The path of the variable this component will read, for the current active user"""
         member = self.get_member("Path")
         if member is None:
             return None
@@ -66,7 +72,7 @@ class ActiveUserCloudValueVariable(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def is_linked_to_cloud(self) -> primitives.Bool | None:
-        """The IsLinkedToCloud field value."""
+        """(Read Only) Indicates whether this field was successfully bound to the target variable."""
         member = self.get_member("IsLinkedToCloud")
         if member is None:
             return None
@@ -85,7 +91,7 @@ class ActiveUserCloudValueVariable(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def update_cloud_variable(self) -> primitives.Bool | None:
-        """The UpdateCloudVariable field value."""
+        """Indicates that this variable should update the value in the cloud when it is written or driven to a different value."""
         member = self.get_member("UpdateCloudVariable")
         if member is None:
             return None

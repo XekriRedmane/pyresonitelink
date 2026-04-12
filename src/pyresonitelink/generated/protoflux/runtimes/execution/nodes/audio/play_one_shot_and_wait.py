@@ -107,7 +107,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def clip(self) -> str | None:
-        """Target ID of the Clip reference (targets INodeObjectOutput[IAssetProvider[AudioClip]])."""
+        """The audio clip to play on the newly created sound object"""
         member = self.get_member("Clip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -128,7 +128,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def volume(self) -> str | None:
-        """Target ID of the Volume reference (targets INodeValueOutput[primitives.Float])."""
+        """The volume to play the audio at."""
         member = self.get_member("Volume")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -149,7 +149,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def speed(self) -> str | None:
-        """Target ID of the Speed reference (targets INodeValueOutput[primitives.Float])."""
+        """The speed to play the audio at."""
         member = self.get_member("Speed")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -170,7 +170,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def spatialize(self) -> str | None:
-        """Target ID of the Spatialize reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether the audio played will have spatialization."""
         member = self.get_member("Spatialize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -191,7 +191,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def spatial_blend(self) -> str | None:
-        """Target ID of the SpatialBlend reference (targets INodeValueOutput[primitives.Float])."""
+        """How spatialized the audio played will be."""
         member = self.get_member("SpatialBlend")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -233,7 +233,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def point(self) -> str | None:
-        """Target ID of the Point reference (targets INodeValueOutput[primitives.Float3])."""
+        """The point to play the audio if Root (Slot) is not provided."""
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -254,7 +254,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets INodeObjectOutput[Slot])."""
+        """The slot to play the audio under. The audio will not be audible if the slot is part of a disabled hierarchy. If nothing is filled in for this input, the sound will come from the node itself."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -275,7 +275,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def parent_under_root(self) -> str | None:
-        """Target ID of the ParentUnderRoot reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether to put the audio under the root of the world or not."""
         member = self.get_member("ParentUnderRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -296,7 +296,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def priority(self) -> str | None:
-        """Target ID of the Priority reference (targets INodeValueOutput[primitives.Int])."""
+        """How much priority this audio clip has, which can override others when the buffer is too full. So this audio has more priority to be played in such cases."""
         member = self.get_member("Priority")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -317,7 +317,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def doppler(self) -> str | None:
-        """Target ID of the Doppler reference (targets INodeValueOutput[primitives.Float])."""
+        """Whether the audio clip played should have Doppler. What is Doppler?"""
         member = self.get_member("Doppler")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -338,7 +338,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def min_distance(self) -> str | None:
-        """Target ID of the MinDistance reference (targets INodeValueOutput[primitives.Float])."""
+        """The distance the audio stops becoming louder when getting closer to the source."""
         member = self.get_member("MinDistance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -359,7 +359,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def max_distance(self) -> str | None:
-        """Target ID of the MaxDistance reference (targets INodeValueOutput[primitives.Float])."""
+        """The max distance the audio can be heard from until it is inaudible"""
         member = self.get_member("MaxDistance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -380,7 +380,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def rolloff(self) -> str | None:
-        """Target ID of the Rolloff reference (targets INodeValueOutput[AudioRolloffCurve])."""
+        """The AudioRolloffMode the audio created should use."""
         member = self.get_member("Rolloff")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -401,7 +401,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def distance_space(self) -> str | None:
-        """Target ID of the DistanceSpace reference (targets INodeValueOutput[AudioDistanceSpace])."""
+        """The AudioDistanceSpace the audio created should use."""
         member = self.get_member("DistanceSpace")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -422,7 +422,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def min_scale(self) -> str | None:
-        """Target ID of the MinScale reference (targets INodeValueOutput[primitives.Float])."""
+        """See Min and Max Scale section on audio output component page."""
         member = self.get_member("MinScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -443,7 +443,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def max_scale(self) -> str | None:
-        """Target ID of the MaxScale reference (targets INodeValueOutput[primitives.Float])."""
+        """See Min and Max Scale section on audio output component page."""
         member = self.get_member("MaxScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -464,7 +464,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def group(self) -> str | None:
-        """Target ID of the Group reference (targets INodeValueOutput[AudioTypeGroup])."""
+        """What AudioTypeGroup this node is in."""
         member = self.get_member("Group")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -506,7 +506,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def local_only(self) -> str | None:
-        """Target ID of the LocalOnly reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether this audio should only play locally for the user that fired the node."""
         member = self.get_member("LocalOnly")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -527,7 +527,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def audio(self) -> members.EmptyElement | None:
-        """The Audio member."""
+        """The Audio Output component created to play the audio. The Get Slot node can be used to get the created slot for the one shot. This will only have a value during the OnStartedPlaying (AsyncCall) impulse."""
         member = self.get_member("Audio")
         if isinstance(member, members.EmptyElement):
             return member
@@ -535,12 +535,12 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @audio.setter
     def audio(self, value: members.EmptyElement) -> None:
-        """Set the Audio member."""
+        """Set Audio. The Audio Output component created to play the audio. The Get Slot node can be used to get the created slot for the one shot. This will only have a value during the OnStartedPlaying (AsyncCall) impulse."""
         self.set_member("Audio", value)
 
     @property
     def on_started_playing(self) -> str | None:
-        """Target ID of the OnStartedPlaying reference (targets INodeOperation)."""
+        """When the audio clip has successfully started playing"""
         member = self.get_member("OnStartedPlaying")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -561,7 +561,7 @@ class PlayOneShotAndWait(GeneratedComponent, IMappableNode, IAsyncNodeOperation,
 
     @property
     def on_finished_playing(self) -> str | None:
-        """Target ID of the OnFinishedPlaying reference (targets INodeOperation)."""
+        """The the audio clip has finished playing"""
         member = self.get_member("OnFinishedPlaying")
         if isinstance(member, members.Reference):
             return member.targetId

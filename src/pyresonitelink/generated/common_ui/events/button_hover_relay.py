@@ -6,9 +6,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonHoverRelay(GeneratedComponent, IButtonHoverReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonHoverRelay.
+    """The ButtonHoverRelay component sends a signal to a button event handler (usually something internal like a Method Proxy).
 
     Category: Common UI/Events
+
+    This can send a signal internally.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonHoverRelay"

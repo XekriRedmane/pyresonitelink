@@ -39,7 +39,9 @@ class StartAsyncTask(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INo
 
     @property
     def task_start(self) -> str | None:
-        """Target ID of the TaskStart reference (targets INodeOperation)."""
+        """The new ExecutionContext made by the node. This impulse chain is async and will run until it encounters any sort of delay, at which it will continue execution along the ``OnStarted`` chain and follow standard sync/async flow.
+
+The context made by this node is nested, meaning that any context-specific things, such as locals, are duplicated from the context that ``*`` comes from. Any future changes to context-specific things will not be reflected in the ``OnStarted`` chain and vice versa."""
         member = self.get_member("TaskStart")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +62,7 @@ class StartAsyncTask(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INo
 
     @property
     def on_started(self) -> str | None:
-        """Target ID of the OnStarted reference (targets INodeOperation)."""
+        """Fires once ``TaskStart`` encounters any sort of delay, effectively running at the same time given the now-separate contexts."""
         member = self.get_member("OnStarted")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +83,7 @@ class StartAsyncTask(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INo
 
     @property
     def on_failed(self) -> str | None:
-        """Target ID of the OnFailed reference (targets INodeOperation)."""
+        """Fires if the task was unable to be started. This only fires if ``TaskStart`` is not connected to any node."""
         member = self.get_member("OnFailed")
         if isinstance(member, members.Reference):
             return member.targetId

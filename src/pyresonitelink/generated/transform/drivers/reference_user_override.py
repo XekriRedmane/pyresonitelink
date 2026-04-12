@@ -11,7 +11,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceUserOverride<>.
+    """This is a component that allows you to locally change a reference on a value. Changing the value locally for yourself or others so that an item or world element is different depending on who's viewing it.
+}}
 
     Category: Transform/Drivers
 
@@ -49,7 +50,7 @@ class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncRef[T])."""
+        """The value to drive locally for every user"""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +71,7 @@ class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver
 
     @property
     def default(self) -> str | None:
-        """Target ID of the Default reference (targets T)."""
+        """The content of this value will be inside of ``Target`` for every user locally unless otherwise specified by an Override inside of the ``_overrides`` bag."""
         member = self.get_member("Default")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +92,7 @@ class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver
 
     @property
     def create_override_on_write(self) -> primitives.Bool | None:
-        """The CreateOverrideOnWrite field value."""
+        """When flux or any other means tries to set the value of target from someone's machine, create an Override for them in ``_overrides`` bag."""
         member = self.get_member("CreateOverrideOnWrite")
         if member is None:
             return None
@@ -110,7 +111,7 @@ class ReferenceUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver
 
     @property
     def persistent_overrides(self) -> primitives.Bool | None:
-        """The PersistentOverrides field value."""
+        """whether to save the overrides or not when the component is part of a hierarchy being saved. This is useful to turn on when an item should have overrides"""
         member = self.get_member("PersistentOverrides")
         if member is None:
             return None

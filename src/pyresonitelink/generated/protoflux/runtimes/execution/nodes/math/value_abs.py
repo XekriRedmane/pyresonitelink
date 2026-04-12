@@ -14,6 +14,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ValueAbs(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Value Abs node takes in a value and returns a value without its sign. Although, it would be truly impossible to have no sign on a value when it needs to be represented and stored in a computer device (and also mathematically sound), so it returns as a positive number (no matter what is provided as a value).
 
+You can think of using this node as "the distance from 0".
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math
 
     Parameterize with a value type::
@@ -38,7 +40,7 @@ class ValueAbs(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     @property
     def n(self) -> str | None:
-        """Target ID of the N reference (targets INodeValueOutput[T])."""
+        """The value we want to become unsigned."""
         member = self.get_member("N")
         if isinstance(member, members.Reference):
             return member.targetId

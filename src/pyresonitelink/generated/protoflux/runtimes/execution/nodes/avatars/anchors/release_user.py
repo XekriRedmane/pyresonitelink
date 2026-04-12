@@ -41,7 +41,7 @@ class ReleaseUser(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def anchor(self) -> str | None:
-        """Target ID of the Anchor reference (targets INodeObjectOutput[IAvatarAnchor])."""
+        """The anchor to check for if a user is sitting in it."""
         member = self.get_member("Anchor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class ReleaseUser(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def on_released(self) -> str | None:
-        """Target ID of the OnReleased reference (targets INodeOperation)."""
+        """When the user in the provided anchor is released."""
         member = self.get_member("OnReleased")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class ReleaseUser(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def on_failure(self) -> str | None:
-        """Target ID of the OnFailure reference (targets INodeOperation)."""
+        """When the provided Anchor (IAvatarAnchor) doesn't have a user and the * (Call) is fired, this will send an impulse."""
         member = self.get_member("OnFailure")
         if isinstance(member, members.Reference):
             return member.targetId

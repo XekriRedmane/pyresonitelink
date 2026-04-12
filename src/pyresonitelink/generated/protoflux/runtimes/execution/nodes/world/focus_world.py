@@ -17,7 +17,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FocusWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Focus World node allows a user to focus on a world by giving it a ressession link as the Url. If the world exists (as in, already opened for the user, or available as a headless) it will work as expected. If there is no world that is open already that the ressession link is referring to, it will fail.
+    """The ``Focus World`` node allows a user to focus on a world by giving it a ressession link as the Url. If the world exists (as in, already opened for the user, or available as a headless) it will work as expected. If there is no world that is open already that the ressession link is referring to, it will fail.
+
+Headless worlds would normally have a SessionID that is consistent that you can use to make into a resession link, allowing you to open and join these worlds with ease.
+
+This node is also useful when making Exit Strategies, as you can set it up to where if the world is valid to focus, you can close the current world, and have the node continue from here to play a particle effect, a sound, and much more.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World
     """
@@ -52,7 +56,7 @@ class FocusWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def url(self) -> str | None:
-        """Target ID of the URL reference (targets INodeObjectOutput[str])."""
+        """The ressession link needed to focus a world."""
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +77,7 @@ class FocusWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def world_link(self) -> str | None:
-        """Target ID of the WorldLink reference (targets INodeObjectOutput[IWorldLink])."""
+        """The link to a world (using the WorldLink component). This can be an alternative way of focusing a world."""
         member = self.get_member("WorldLink")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -94,7 +98,7 @@ class FocusWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def close_current(self) -> str | None:
-        """Target ID of the CloseCurrent reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should this node close the current world after we focus to a different world."""
         member = self.get_member("CloseCurrent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -115,7 +119,7 @@ class FocusWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def on_not_found(self) -> str | None:
-        """Target ID of the OnNotFound reference (targets INodeOperation)."""
+        """Fires when there is no world to focus on or the world link is not valid."""
         member = self.get_member("OnNotFound")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -136,7 +140,7 @@ class FocusWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def on_focused(self) -> str | None:
-        """Target ID of the OnFocused reference (targets INodeOperation)."""
+        """Fires when we successfully focus a world (and only fires in that current world, not the world we are focusing to)."""
         member = self.get_member("OnFocused")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -11,9 +11,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarLiveIndicator(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarLiveIndicator.
+    """The AvatarLiveIndicator component is used to show or enable a slot (usually a visual) to let other users know that you are live. This activates from the streaming camera control panel, specifically the "Mirror to display" button.
+
+}}
 
     Category: Users/Common Avatar System/Nameplate
+
+    Usually this is used with the Camera, especially when streaming. This is
+    also already setup along with the Nameplate and positioned on it
+    (however, this can be customizable).
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarLiveIndicator"
@@ -34,7 +40,7 @@ class AvatarLiveIndicator(GeneratedComponent, IAvatarObjectComponent, IWorldEven
 
     @property
     def is_live(self) -> primitives.Bool | None:
-        """The IsLive field value."""
+        """Whether ``_activeUser`` is streaming or not."""
         member = self.get_member("IsLive")
         if member is None:
             return None
@@ -53,7 +59,7 @@ class AvatarLiveIndicator(GeneratedComponent, IAvatarObjectComponent, IWorldEven
 
     @property
     def active_user(self) -> str | None:
-        """Target ID of the _activeUser reference (targets User)."""
+        """The user that this component is monitoring"""
         member = self.get_member("_activeUser")
         if isinstance(member, members.Reference):
             return member.targetId

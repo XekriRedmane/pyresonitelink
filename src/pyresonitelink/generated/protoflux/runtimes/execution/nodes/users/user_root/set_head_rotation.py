@@ -43,7 +43,7 @@ class SetHeadRotation(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues flow execution from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class SetHeadRotation(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def user_root(self) -> str | None:
-        """Target ID of the UserRoot reference (targets INodeObjectOutput[UserRoot])."""
+        """The user's user root."""
         member = self.get_member("UserRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class SetHeadRotation(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the Rotation reference (targets INodeValueOutput[primitives.FloatQ])."""
+        """The rotation to set for the head."""
         member = self.get_member("Rotation")
         if isinstance(member, members.Reference):
             return member.targetId

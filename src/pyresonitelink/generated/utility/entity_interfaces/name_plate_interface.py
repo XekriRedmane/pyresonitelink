@@ -15,9 +15,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.NamePlateInterface.
+    """The NamePlateInterface component is a favoritable type component that allows a user to set their custom nameplate for avatars they spawn into
 
     Category: Utility/Entity Interfaces
+
+    Currently unimplemented.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NamePlateInterface"
@@ -62,7 +64,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[primitives.String])."""
+        """The name of this dialogue"""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +85,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
 
     @property
     def spawning_user(self) -> str | None:
-        """Target ID of the SpawningUser reference (targets UserRef)."""
+        """The user that spawned the dialouge"""
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -104,7 +106,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
+        """The field containing the User ID of the person that spawned the dialogue"""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -125,7 +127,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
 
     @property
     def is_instance(self) -> primitives.Bool | None:
-        """The IsInstance field value."""
+        """Whether this dialogue was spawned by the game (true) or spawned from inventory (false)"""
         member = self.get_member("IsInstance")
         if member is None:
             return None
@@ -144,7 +146,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
 
     @property
     def username(self) -> str | None:
-        """Target ID of the Username reference (targets IField[primitives.String])."""
+        """The field to set with the username of the user who this nameplate has been spawned onto."""
         member = self.get_member("Username")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -165,7 +167,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
 
     @property
     def user_id(self) -> str | None:
-        """Target ID of the UserID reference (targets IField[primitives.String])."""
+        """The field to set with the UserID of the user who this nameplate has been spawned onto."""
         member = self.get_member("UserID")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -186,7 +188,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
 
     @property
     def icon_url(self) -> str | None:
-        """Target ID of the IconURL reference (targets IField[str])."""
+        """The field to set with the User profile icon of the user who this nameplate has been spawned onto."""
         member = self.get_member("IconURL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -207,7 +209,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
 
     @property
     def target_user(self) -> str | None:
-        """Target ID of the TargetUser reference (targets SyncRef[User])."""
+        """The field to set with the user this nameplate has been spawned onto."""
         member = self.get_member("TargetUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -228,7 +230,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
 
     @property
     def target_user_ref(self) -> str | None:
-        """Target ID of the TargetUserRef reference (targets UserRef)."""
+        """A user reference block to store info about the user this nameplate has been spawned onto."""
         member = self.get_member("TargetUserRef")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -249,7 +251,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
 
     @property
     def voice_stream(self) -> str | None:
-        """Target ID of the VoiceStream reference (targets SyncRef[IWorldAudioDataSource])."""
+        """The field to populate with the user voice stream of the user this nameplate has been spawned onto."""
         member = self.get_member("VoiceStream")
         if isinstance(member, members.Reference):
             return member.targetId

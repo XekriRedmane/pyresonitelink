@@ -13,9 +13,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BlitToDisplay.
+    """BlitToDisplay is a component that is able to make a user's game window display a 2d texture of any kind (including render textures) and is also able to create new game windows to display images as well. 
+
+This component takes no regard for permissions at the time of writing. This component generates new windows without confirmation. New windows generated are created on new monitors or the main monitor, and are made to fit the screen. 
+
+Combining this with DisplayInfo allows for getting the size of the user's screen, which can be used to adjust the texture displayed by this component to better fit the generated window.
 
     Category: Rendering
+
+    **Behavior**: Disabling this component does not disable its effects. Setting ``TargetUser`` to null does though. New windows created by this component will close the game if closed. It is unknown if this is a bug. This component can and will blind desktop users if ``DisplayIndex`` is set to 0 and ``TargetUser`` targets a desktop user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BlitToDisplay"
@@ -45,7 +51,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def target_user(self) -> members.SyncObject | None:
-        """The TargetUser member."""
+        """The user to display the image on their screen for. Using the local user does work."""
         member = self.get_member("TargetUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -53,12 +59,12 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @target_user.setter
     def target_user(self, value: members.SyncObject) -> None:
-        """Set the TargetUser member."""
+        """Set TargetUser. The user to display the image on their screen for. Using the local user does work."""
         self.set_member("TargetUser", value)
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[ITexture])."""
+        """The texture to display to the screen. A render texture may be used here."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +85,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def display_index(self) -> primitives.Int | None:
-        """The DisplayIndex field value."""
+        """which game window to display ``Texture`` to. If the window number doesn't exist, one is created automatically. If 0 is used, the main game window will be used."""
         member = self.get_member("DisplayIndex")
         if member is None:
             return None
@@ -98,7 +104,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def background_color(self) -> primitives.ColorX | None:
-        """The BackgroundColor field value."""
+        """The color to display behind the image."""
         member = self.get_member("BackgroundColor")
         if member is None:
             return None
@@ -117,7 +123,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def flip_horizontally(self) -> primitives.Bool | None:
-        """The FlipHorizontally field value."""
+        """flip the image horizontally before displaying to the screen."""
         member = self.get_member("FlipHorizontally")
         if member is None:
             return None
@@ -136,7 +142,7 @@ class BlitToDisplay(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def flip_vertically(self) -> primitives.Bool | None:
-        """The FlipVertically field value."""
+        """flip the image vertically before displaying to the screen."""
         member = self.get_member("FlipVertically")
         if member is None:
             return None

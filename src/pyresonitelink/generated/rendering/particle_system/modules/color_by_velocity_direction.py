@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorByVelocityDirection(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ColorByVelocityDirection.
+    """The Color By Velocity Direction component changes the color of a particle depending on the dot product of it's velocity vs a specified axis.
 
     Category: Rendering/Particle System/Modules
     """
@@ -38,7 +38,7 @@ class ColorByVelocityDirection(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def reference_direction(self) -> primitives.Float3 | None:
-        """The ReferenceDirection field value."""
+        """The direction to make a dot product with the particle's velocity."""
         member = self.get_member("ReferenceDirection")
         if member is None:
             return None
@@ -57,7 +57,7 @@ class ColorByVelocityDirection(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def aligned_color(self) -> primitives.ColorX | None:
-        """The AlignedColor field value."""
+        """The color the particle should be when it has velocity that gives dot product of 1 with ``ReferenceDirection``."""
         member = self.get_member("AlignedColor")
         if member is None:
             return None
@@ -76,7 +76,7 @@ class ColorByVelocityDirection(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def orthogonal_color(self) -> primitives.ColorX | None:
-        """The OrthogonalColor field value."""
+        """The color the particle should be when it has velocity that gives dot product of 0 with ``ReferenceDirection``."""
         member = self.get_member("OrthogonalColor")
         if member is None:
             return None
@@ -95,7 +95,7 @@ class ColorByVelocityDirection(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def opposite_color(self) -> primitives.ColorX | None:
-        """The OppositeColor field value."""
+        """The color the particle should be when it has velocity that gives dot product of -1 with ``ReferenceDirection``."""
         member = self.get_member("OppositeColor")
         if member is None:
             return None

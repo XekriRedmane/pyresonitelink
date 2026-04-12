@@ -1,0 +1,29 @@
+{
+  "description": "The ValueGraphRecorder component is used to show a graph of values over time with a specified number of points worth of history. As new points are added, the graph is shifted sideways and old points are deleted.",
+  "category": "Utility",
+  "fields": {
+    "RecordingUser": "The user handling updates for this component.",
+    "SourceValue": "The field that will be sampled for values.",
+    "UpdateInterval": "The interval, in seconds, that the source field will be sampled at.",
+    "Points": "The number of samples to retain.",
+    "TargetArray": "The array to store samples in. Typically this will be the Values field in a StandaloneRectMesh&lt;LineGraphMesh&gt;",
+    "TargetArrayOffset": "The integer field to set with the offset of where in the TargetArray to start showing samples at.",
+    "MinRangeAdjustThreshold": "If a value in the graph goes beyond this value for currently shown samples, adjust the graph minimum value.",
+    "MinRangeAdjustMultiplier": "How much to increase the graph size downwards when adjusting for min value (1 is exactly to where the value edge is, 2 is add 2 times the needed value to show min on the graph.",
+    "MaxRangeAdjustThreshold": "If a value in the graph goes beyond this value for currently shown samples, adjust the graph maximum value.",
+    "MaxRangeAdjustMultiplier": "How much to increase the graph size upwards when adjusting for min value (1 is exactly to where the value edge is, 2 is add 2 times the needed value to show min on the graph.",
+    "RangeMin": "The field to drive with what the minimum range of the graph all points being shown is currently.",
+    "RangeMax": "The field to drive with what the maximum range of the graph all points being shown is currently.",
+    "Drive": "Whether to use drive fields to drive target values rather than field pointers. Makes the calculations local.",
+    "_arrayDrive": "The field to drive with the set of samples. Typically this will be the Values field in a StandaloneRectMesh&lt;LineGraphMesh&gt;",
+    "_arrayOffsetDrive": "The integer field to drive with the offset in the TargetArray to start showing samples at.",
+    "_rangeMinDrive": "The field to drive with what the minimum range of the graph all points being shown is currently.",
+    "_rangeMaxDrive": "The field to drive with what the maximum range of the graph all points being shown is currently."
+  },
+  "methods": {
+    "WriteValue": "force a write of a value to the graph rather than waiting on ``Interval``"
+  },
+  "usage": "Attach to a slot and use with a StandaloneRectMesh on a MeshRenderer with a material to view. Use either the fields or drive fields to drive aspects of the graph display for viewing the graph line.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueGraphRecorder&action=raw"
+}

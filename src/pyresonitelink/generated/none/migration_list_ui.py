@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MigrationListUI(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MigrationListUI.
+    """The MigrationListUI component is used to list previous and current migration tasks.
+
+    Used internally in the migration screen.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MigrationListUI"
@@ -32,7 +34,7 @@ class MigrationListUI(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def selected_task_id(self) -> primitives.String | None:
-        """The SelectedTaskId field value."""
+        """The task that the user has selected."""
         member = self.get_member("SelectedTaskId")
         if member is None:
             return None
@@ -51,7 +53,7 @@ class MigrationListUI(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def list_root(self) -> str | None:
-        """Target ID of the _listRoot reference (targets Slot)."""
+        """The place to list migrations."""
         member = self.get_member("_listRoot")
         if isinstance(member, members.Reference):
             return member.targetId

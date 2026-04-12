@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioOutputDeviceSettings.
+    """The AudioOutputDeviceSettings Component is used to set the priority order of output devices for the local user. It also can be used to disable priority and use the system default instead.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioOutputDeviceSettings"
@@ -34,7 +34,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_system_default(self) -> primitives.Bool | None:
-        """The UseSystemDefault field value."""
+        """Whether or not to use the user's default device on their OS or not."""
         member = self.get_member("UseSystemDefault")
         if member is None:
             return None
@@ -53,7 +53,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def device_priorities(self) -> members.SyncList | None:
-        """The DevicePriorities member."""
+        """A list of devices and their priority which is the order to use them in."""
         member = self.get_member("DevicePriorities")
         if isinstance(member, members.SyncList):
             return member
@@ -61,12 +61,12 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
 
     @device_priorities.setter
     def device_priorities(self, value: members.SyncList) -> None:
-        """Set the DevicePriorities member."""
+        """Set DevicePriorities. A list of devices and their priority which is the order to use them in."""
         self.set_member("DevicePriorities", value)
 
     @property
     def device_priorities_enabled(self) -> primitives.Bool | None:
-        """The DevicePrioritiesEnabled field value."""
+        """Whether the "Use Default Device" setting is turned on or off"""
         member = self.get_member("DevicePrioritiesEnabled")
         if member is None:
             return None
@@ -116,7 +116,7 @@ class AudioOutputDeviceSettings(GeneratedComponent, ICustomInspector):
         self.set_member("StreamingCameraPriorities", value)
 
     async def get_device(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, debug: bool = False) -> dict:
-        """Call the GetDevice sync method.
+        """This returns a setting with the name specified by the methods ``key`` input.
 
         Args:
             resolink: Connected ResoniteLink client.

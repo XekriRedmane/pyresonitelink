@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CurvePoint(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CurvePoint.
+    """Curve point is used by being put into a Bezier Curve component to define the shape of a Bezier Tube Mesh. See Bezier Tube Mesh for a full example.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CurvePoint"
@@ -30,7 +30,7 @@ class CurvePoint(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_tangent_source(self) -> str | None:
-        """Target ID of the LeftTangentSource reference (targets Slot)."""
+        """The left handle of the bezier curve point"""
         member = self.get_member("LeftTangentSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -51,7 +51,7 @@ class CurvePoint(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_tangent_source(self) -> str | None:
-        """Target ID of the RightTangentSource reference (targets Slot)."""
+        """The right handle of the bezier curve point"""
         member = self.get_member("RightTangentSource")
         if isinstance(member, members.Reference):
             return member.targetId

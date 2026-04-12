@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.collider_type import ColliderType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.isweepable_collider import ISweepableCollider
@@ -10,18 +11,19 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class TriangleCollider(GeneratedComponent, ISweepableCollider, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.TriangleCollider.
+    """Triangle collider is a component that acts as a single polygon version of a Mesh Collider
 
     Category: Physics/Colliders
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TriangleCollider"
 
-    def __init__(self, offset: primitives.Float3 | None = None, mass: primitives.Float | None = None, character_collider: primitives.Bool | None = None, ignore_raycasts: primitives.Bool | None = None, a: primitives.Float3 | None = None, b: primitives.Float3 | None = None, c: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, offset: primitives.Float3 | None = None, type_: ColliderType | str | None = None, mass: primitives.Float | None = None, character_collider: primitives.Bool | None = None, ignore_raycasts: primitives.Bool | None = None, a: primitives.Float3 | None = None, b: primitives.Float3 | None = None, c: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             offset: Initial value for Offset.
+            type_: Initial value for Type.
             mass: Initial value for Mass.
             character_collider: Initial value for CharacterCollider.
             ignore_raycasts: Initial value for IgnoreRaycasts.
@@ -33,6 +35,8 @@ class TriangleCollider(GeneratedComponent, ISweepableCollider, ICustomInspector)
         super().__init__(component)
         if offset is not None:
             self.offset = offset
+        if type_ is not None:
+            self.type_ = type_
         if mass is not None:
             self.mass = mass
         if character_collider is not None:
@@ -48,7 +52,7 @@ class TriangleCollider(GeneratedComponent, ISweepableCollider, ICustomInspector)
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """how much to add to points ``A``, ``B``, and ``C``."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -66,17 +70,24 @@ class TriangleCollider(GeneratedComponent, ISweepableCollider, ICustomInspector)
             )
 
     @property
-    def type_(self) -> members.FieldEnum | None:
-        """The Type member."""
+    def type_(self) -> ColliderType | None:
+        """The Type enum value."""
         member = self.get_member("Type")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColliderType(member.value)
         return None
 
     @type_.setter
-    def type_(self, value: members.FieldEnum) -> None:
-        """Set the Type member."""
-        self.set_member("Type", value)
+    def type_(self, value: ColliderType | str) -> None:
+        """Set the Type enum value."""
+        member = self.get_member("Type")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Type",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def mass(self) -> primitives.Float | None:
@@ -137,7 +148,7 @@ class TriangleCollider(GeneratedComponent, ISweepableCollider, ICustomInspector)
 
     @property
     def a(self) -> primitives.Float3 | None:
-        """The A field value."""
+        """The position of the first vertex of the triangle."""
         member = self.get_member("A")
         if member is None:
             return None
@@ -156,7 +167,7 @@ class TriangleCollider(GeneratedComponent, ISweepableCollider, ICustomInspector)
 
     @property
     def b(self) -> primitives.Float3 | None:
-        """The B field value."""
+        """The position of the second vertex of the triangle."""
         member = self.get_member("B")
         if member is None:
             return None
@@ -175,7 +186,7 @@ class TriangleCollider(GeneratedComponent, ISweepableCollider, ICustomInspector)
 
     @property
     def c(self) -> primitives.Float3 | None:
-        """The C field value."""
+        """The position of the third vertex of the triangle."""
         member = self.get_member("C")
         if member is None:
             return None

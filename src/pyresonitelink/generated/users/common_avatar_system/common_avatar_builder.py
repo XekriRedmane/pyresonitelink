@@ -13,9 +13,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatarBuilder.
+    """Common Avatar Builder is a component that is part of every world that defines the spawning behavior and routines to do for all users when they spawn into a world. This can be used to add world settings menus, change what parts of a user get automatically set up, and so on.
 
     Category: Users/Common Avatar System
+
+    **Behavior**: This component gets read and executed every time a user respawns or joins into a world.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatarBuilder"
@@ -90,7 +92,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def load_cloud_avatars(self) -> primitives.Bool | None:
-        """The LoadCloudAvatars field value."""
+        """Whether to load the User's set avatar, or load the default avatar instead."""
         member = self.get_member("LoadCloudAvatars")
         if member is None:
             return None
@@ -109,7 +111,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def custom_avatar_templates(self) -> members.SyncList | None:
-        """The CustomAvatarTemplates member."""
+        """Avatars that user's will spawn into if they don't have a cloud avatar, or optionally force them into one of these templates."""
         member = self.get_member("CustomAvatarTemplates")
         if isinstance(member, members.SyncList):
             return member
@@ -117,12 +119,12 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @custom_avatar_templates.setter
     def custom_avatar_templates(self, value: members.SyncList) -> None:
-        """Set the CustomAvatarTemplates member."""
+        """Set CustomAvatarTemplates. Avatars that user's will spawn into if they don't have a cloud avatar, or optionally force them into one of these templates."""
         self.set_member("CustomAvatarTemplates", value)
 
     @property
     def auto_inject(self) -> str | None:
-        """Target ID of the AutoInject reference (targets Slot)."""
+        """A slot that will automatically be duplicated and added as a child of a user when they join the world. Certain components will use this to override user behavior when part of this slot's hierarchy, like Avatar Audio Configuration to name one."""
         member = self.get_member("AutoInject")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -143,7 +145,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def setup_name_badges(self) -> primitives.Bool | None:
-        """The SetupNameBadges field value."""
+        """Whether to set up the user's default name badge when they spawn"""
         member = self.get_member("SetupNameBadges")
         if member is None:
             return None
@@ -162,7 +164,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def setup_icon_badges(self) -> primitives.Bool | None:
-        """The SetupIconBadges field value."""
+        """Whether to set up the user's default badges when they spawn."""
         member = self.get_member("SetupIconBadges")
         if member is None:
             return None
@@ -181,7 +183,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def setup_server_voice(self) -> primitives.Bool | None:
-        """The SetupServerVoice field value."""
+        """Only used in kiosk mode."""
         member = self.get_member("SetupServerVoice")
         if member is None:
             return None
@@ -200,7 +202,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def setup_client_voice(self) -> primitives.Bool | None:
-        """The SetupClientVoice field value."""
+        """Only used in kiosk mode."""
         member = self.get_member("SetupClientVoice")
         if member is None:
             return None
@@ -219,7 +221,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def setup_server_tools(self) -> primitives.Bool | None:
-        """The SetupServerTools field value."""
+        """Only used in kiosk mode."""
         member = self.get_member("SetupServerTools")
         if member is None:
             return None
@@ -238,7 +240,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def setup_client_tools(self) -> primitives.Bool | None:
-        """The SetupClientTools field value."""
+        """Only used in kiosk mode."""
         member = self.get_member("SetupClientTools")
         if member is None:
             return None
@@ -257,7 +259,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def setup_locomotion(self) -> primitives.Bool | None:
-        """The SetupLocomotion field value."""
+        """Whether to give the user the default locomotion modules when they spawn."""
         member = self.get_member("SetupLocomotion")
         if member is None:
             return None
@@ -276,7 +278,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def allow_locomotion(self) -> primitives.Bool | None:
-        """The AllowLocomotion field value."""
+        """Whether to allow the user to move using locomotion when they spawn."""
         member = self.get_member("AllowLocomotion")
         if member is None:
             return None
@@ -295,7 +297,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def default_host_silenced(self) -> primitives.Bool | None:
-        """The DefaultHostSilenced field value."""
+        """Whether the user should be default muted to the host when they spawn."""
         member = self.get_member("DefaultHostSilenced")
         if member is None:
             return None
@@ -314,7 +316,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def default_client_silenced(self) -> primitives.Bool | None:
-        """The DefaultClientSilenced field value."""
+        """Whether the user should be default muted on their end when they spawn."""
         member = self.get_member("DefaultClientSilenced")
         if member is None:
             return None
@@ -333,7 +335,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def locomotion_modules(self) -> str | None:
-        """Target ID of the LocomotionModules reference (targets Slot)."""
+        """The slot full of locomotion modules that the user will have by default after they spawn."""
         member = self.get_member("LocomotionModules")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -354,7 +356,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def force_default_locomotion_module(self) -> str | None:
-        """Target ID of the ForceDefaultLocomotionModule reference (targets ILocomotionModule)."""
+        """The locomotion to enable for the user by default when spawning rather than the one in that user's locomotion settings set in their dash."""
         member = self.get_member("ForceDefaultLocomotionModule")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -375,7 +377,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def find_user_preferred_module(self) -> primitives.Bool | None:
-        """The FindUserPreferredModule field value."""
+        """Whether to try to spawn the user into their preferred locomotion module they set in settings."""
         member = self.get_member("FindUserPreferredModule")
         if member is None:
             return None
@@ -394,7 +396,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def setup_item_shelves(self) -> primitives.Bool | None:
-        """The SetupItemShelves field value."""
+        """Whether to add item shelves to the user when they spawn."""
         member = self.get_member("SetupItemShelves")
         if member is None:
             return None
@@ -413,7 +415,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def parent_clients_to_server(self) -> primitives.Bool | None:
-        """The ParentClientsToServer field value."""
+        """Parents users that join under the host user's slot (yes this is what it does)"""
         member = self.get_member("ParentClientsToServer")
         if member is None:
             return None
@@ -432,7 +434,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def align_tracking(self) -> primitives.Bool | None:
-        """The AlignTracking field value."""
+        """used in Kiosk mode in dash space to show Debug tracking visuals"""
         member = self.get_member("AlignTracking")
         if member is None:
             return None
@@ -451,7 +453,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def empty_avatar_slot_handler(self) -> str | None:
-        """Target ID of the EmptyAvatarSlotHandler reference (targets IEmptyAvatarSlotHandler)."""
+        """Uses this component to handle empty slots like head and hands on a spawning avatar."""
         member = self.get_member("EmptyAvatarSlotHandler")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -472,7 +474,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
 
     @property
     def fill_empty_slots(self) -> primitives.Bool | None:
-        """The FillEmptySlots field value."""
+        """Whether to fill empty AvatarObjectSlots with default head and hand objects if they are missing on their loaded avatar."""
         member = self.get_member("FillEmptySlots")
         if member is None:
             return None

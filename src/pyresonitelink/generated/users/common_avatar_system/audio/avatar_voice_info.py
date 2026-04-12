@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarVoiceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarVoiceInfo.
+    """The AvatarVoiceInfo is used to override the assigning behavior from a AvatarVoiceSourceAssigner component on the avatar when it assigns a target.
 
     Category: Users/Common Avatar System/Audio
     """
@@ -29,7 +29,7 @@ class AvatarVoiceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def audio_source(self) -> str | None:
-        """Target ID of the AudioSource reference (targets IWorldAudioDataSource)."""
+        """The audio source to override the assigning behavior of a Component:AvatarVoiceSourceAssigner on the avatar with."""
         member = self.get_member("AudioSource")
         if isinstance(member, members.Reference):
             return member.targetId

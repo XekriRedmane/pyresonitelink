@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.mode import Mode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.worker import Worker
@@ -13,17 +14,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Undo.SpawnOrDestroy.
+    """The SpawnOrDestroy component is part of the Undo system, and handles spawning and destruction of objects in the Undo system.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Undo.SpawnOrDestroy"
 
-    def __init__(self, target: str | Worker | None = None, target_parent: str | Slot | None = None, preserve_assets: primitives.Bool | None = None, send_destroying_events: primitives.Bool | None = None, saved_object: str | None = None, is_component: primitives.Bool | None = None, reference_table: str | SavedReferenceTable | None = None, is_saving: primitives.Bool | None = None, description: primitives.String | None = None, performed: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | Worker | None = None, target_parent: str | Slot | None = None, mode: Mode | str | None = None, preserve_assets: primitives.Bool | None = None, send_destroying_events: primitives.Bool | None = None, saved_object: str | None = None, is_component: primitives.Bool | None = None, reference_table: str | SavedReferenceTable | None = None, is_saving: primitives.Bool | None = None, description: primitives.String | None = None, performed: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             target: Initial value for Target.
             target_parent: Initial value for TargetParent.
+            mode: Initial value for _mode.
             preserve_assets: Initial value for _preserveAssets.
             send_destroying_events: Initial value for _sendDestroyingEvents.
             saved_object: Initial value for _savedObject.
@@ -39,6 +41,8 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
             self.target = target
         if target_parent is not None:
             self.target_parent = target_parent
+        if mode is not None:
+            self.mode = mode
         if preserve_assets is not None:
             self.preserve_assets = preserve_assets
         if send_destroying_events is not None:
@@ -58,7 +62,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Worker)."""
+        """The target worker to use when executing."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +83,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def target_parent(self) -> str | None:
-        """Target ID of the TargetParent reference (targets Slot)."""
+        """The parent of this object to restore it to."""
         member = self.get_member("TargetParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -99,21 +103,28 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The _mode member."""
+    def mode(self) -> Mode | None:
+        """What mode to execute."""
         member = self.get_member("_mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Mode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the _mode member."""
-        self.set_member("_mode", value)
+    def mode(self, value: Mode | str) -> None:
+        """Set _mode. What mode to execute."""
+        member = self.get_member("_mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def preserve_assets(self) -> primitives.Bool | None:
-        """The _preserveAssets field value."""
+        """Whether the destruction should preserve assets like meshes."""
         member = self.get_member("_preserveAssets")
         if member is None:
             return None
@@ -132,7 +143,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def send_destroying_events(self) -> primitives.Bool | None:
-        """The _sendDestroyingEvents field value."""
+        """Whether to send destruction events when destroying."""
         member = self.get_member("_sendDestroyingEvents")
         if member is None:
             return None
@@ -151,7 +162,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def saved_object(self) -> str | None:
-        """The _savedObject field value."""
+        """The URI of the saved object."""
         member = self.get_member("_savedObject")
         if member is None:
             return None
@@ -170,7 +181,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def is_component(self) -> primitives.Bool | None:
-        """The _isComponent field value."""
+        """Whether this is in component form or internal to the engine."""
         member = self.get_member("_isComponent")
         if member is None:
             return None
@@ -189,7 +200,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def reference_table(self) -> str | None:
-        """Target ID of the _referenceTable reference (targets SavedReferenceTable)."""
+        """The place to store destroyed object data in order to restore the object later."""
         member = self.get_member("_referenceTable")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -210,7 +221,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def is_saving(self) -> primitives.Bool | None:
-        """The _isSaving field value."""
+        """Whether this component is saving object data."""
         member = self.get_member("_isSaving")
         if member is None:
             return None
@@ -229,7 +240,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def description(self) -> primitives.String | None:
-        """The _description field value."""
+        """The description of the object."""
         member = self.get_member("_description")
         if member is None:
             return None
@@ -248,7 +259,7 @@ class SpawnOrDestroy(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def performed(self) -> primitives.Bool | None:
-        """The _performed field value."""
+        """Whether this component is finished executing it's function."""
         member = self.get_member("_performed")
         if member is None:
             return None

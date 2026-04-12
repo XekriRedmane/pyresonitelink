@@ -47,7 +47,7 @@ class SampleValueAnimationTrack(GenericComponent[T], INodeValueOutput[T], IExecu
 
     @property
     def animation(self) -> str | None:
-        """Target ID of the Animation reference (targets INodeObjectOutput[Animation])."""
+        """The Animation Asset provided by an IAssetProvider."""
         member = self.get_member("Animation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class SampleValueAnimationTrack(GenericComponent[T], INodeValueOutput[T], IExecu
 
     @property
     def track_index(self) -> str | None:
-        """Target ID of the TrackIndex reference (targets INodeValueOutput[primitives.Int])."""
+        """The track index of the given Animation (Animation Asset) to sample from"""
         member = self.get_member("TrackIndex")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class SampleValueAnimationTrack(GenericComponent[T], INodeValueOutput[T], IExecu
 
     @property
     def time(self) -> str | None:
-        """Target ID of the Time reference (targets INodeValueOutput[primitives.Float])."""
+        """The time in seconds at which to sample the animation. If between keyframes it will sample based on the AnimJ's interpolation for those frames on the track."""
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             return member.targetId

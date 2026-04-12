@@ -38,7 +38,7 @@ class HandSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICu
 
     @property
     def user_root(self) -> str | None:
-        """Target ID of the UserRoot reference (targets INodeObjectOutput[UserRoot])."""
+        """The user's user root."""
         member = self.get_member("UserRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class HandSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICu
 
     @property
     def side(self) -> str | None:
-        """Target ID of the Side reference (targets INodeValueOutput[Chirality])."""
+        """The side to use."""
         member = self.get_member("Side")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -17,9 +17,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedValueActionInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedValueActionInterface<>.
+    """The FeedValueActionInterface component is used as a template type item in data feed mappers in the Data Feeds system. This component specifically passes a value to an action that requires a value argument to be passed.
 
     Category: Radiant UI/Data Feeds/Interfaces
+
+    The ``Action`` and ``Value`` fields can be used to fill a
+    CallbackValueArgument which can be triggered via a button.
 
     Parameterize with a value type::
 
@@ -372,7 +375,7 @@ class FeedValueActionInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def action(self) -> str | None:
-        """Target ID of the Action reference (targets SyncDelegate[Action[T]])."""
+        """The field to fill with the Action to be triggered."""
         member = self.get_member("Action")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -393,7 +396,7 @@ class FeedValueActionInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[T])."""
+        """The field to fill with the value that should be passed."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -414,7 +417,7 @@ class FeedValueActionInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def highlight(self) -> str | None:
-        """Target ID of the Highlight reference (targets IField[primitives.Bool])."""
+        """Whether this item should be highlighted or is being highlighted."""
         member = self.get_member("Highlight")
         if isinstance(member, members.Reference):
             return member.targetId

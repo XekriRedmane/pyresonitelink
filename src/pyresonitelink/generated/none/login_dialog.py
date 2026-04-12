@@ -15,12 +15,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LoginDialog.
+    """The LoginDialog component is used in internal systems and may be replaced at any time. It is used to handle the logging in for users and the UI for such interactions.
+
+    Not used directly by the user. Used in the dash.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LoginDialog"
 
-    def __init__(self, register_only: primitives.Bool | None = None, interaction_enabled: primitives.Bool | None = None, swap_region: str | SlideSwapRegion | None = None, username: str | TextField | None = None, email: str | TextField | None = None, email_repeat: str | TextField | None = None, password: str | TextField | None = None, password_repeat: str | TextField | None = None, recovery_code: str | TextField | None = None, birth_month: str | IntTextEditorParser | None = None, birth_day: str | IntTextEditorParser | None = None, birth_year: str | IntTextEditorParser | None = None, remember_login: str | Checkbox | None = None, reset_user_id: str | Checkbox | None = None, policies: str | Checkbox | None = None, register_button: str | Button | None = None, login_email: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, register_only: primitives.Bool | None = None, interaction_enabled: primitives.Bool | None = None, swap_region: str | SlideSwapRegion | None = None, username: str | TextField | None = None, email: str | TextField | None = None, email_repeat: str | TextField | None = None, password: str | TextField | None = None, password_repeat: str | TextField | None = None, recovery_code: str | TextField | None = None, promo_code: str | TextField | None = None, birth_month: str | IntTextEditorParser | None = None, birth_day: str | IntTextEditorParser | None = None, birth_year: str | IntTextEditorParser | None = None, remember_login: str | Checkbox | None = None, policies: str | Checkbox | None = None, register_button: str | Button | None = None, login_email: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,11 +35,11 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             password: Initial value for _password.
             password_repeat: Initial value for _passwordRepeat.
             recovery_code: Initial value for _recoveryCode.
+            promo_code: Initial value for _promoCode.
             birth_month: Initial value for _birthMonth.
             birth_day: Initial value for _birthDay.
             birth_year: Initial value for _birthYear.
             remember_login: Initial value for _rememberLogin.
-            reset_user_id: Initial value for _resetUserId.
             policies: Initial value for _policies.
             register_button: Initial value for _registerButton.
             login_email: Initial value for _loginEmail.
@@ -62,6 +64,8 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.password_repeat = password_repeat
         if recovery_code is not None:
             self.recovery_code = recovery_code
+        if promo_code is not None:
+            self.promo_code = promo_code
         if birth_month is not None:
             self.birth_month = birth_month
         if birth_day is not None:
@@ -70,8 +74,6 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.birth_year = birth_year
         if remember_login is not None:
             self.remember_login = remember_login
-        if reset_user_id is not None:
-            self.reset_user_id = reset_user_id
         if policies is not None:
             self.policies = policies
         if register_button is not None:
@@ -81,7 +83,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def register_only(self) -> primitives.Bool | None:
-        """The RegisterOnly field value."""
+        """Whether user should just be registered and not log in afterwards."""
         member = self.get_member("RegisterOnly")
         if member is None:
             return None
@@ -100,7 +102,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def interaction_enabled(self) -> primitives.Bool | None:
-        """The _interactionEnabled field value."""
+        """Whether interacting with this component is enabled."""
         member = self.get_member("_interactionEnabled")
         if member is None:
             return None
@@ -119,7 +121,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def swap_region(self) -> str | None:
-        """Target ID of the _swapRegion reference (targets SlideSwapRegion)."""
+        """Handles the slide animation as this dialogue changes pages."""
         member = self.get_member("_swapRegion")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -140,7 +142,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def username(self) -> str | None:
-        """Target ID of the _username reference (targets TextField)."""
+        """The field for entering the user's username."""
         member = self.get_member("_username")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -161,7 +163,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def email(self) -> str | None:
-        """Target ID of the _email reference (targets TextField)."""
+        """The field for entering the user's email address."""
         member = self.get_member("_email")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -182,7 +184,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def email_repeat(self) -> str | None:
-        """Target ID of the _emailRepeat reference (targets TextField)."""
+        """The field to confirm the user's email address."""
         member = self.get_member("_emailRepeat")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -203,7 +205,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def password(self) -> str | None:
-        """Target ID of the _password reference (targets TextField)."""
+        """The field for entering the user's password."""
         member = self.get_member("_password")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -224,7 +226,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def password_repeat(self) -> str | None:
-        """Target ID of the _passwordRepeat reference (targets TextField)."""
+        """The field for entering the user's password again for confirmation."""
         member = self.get_member("_passwordRepeat")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -245,7 +247,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def recovery_code(self) -> str | None:
-        """Target ID of the _recoveryCode reference (targets TextField)."""
+        """The field to get a recovery code from in case of account loss."""
         member = self.get_member("_recoveryCode")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -265,8 +267,29 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
+    def promo_code(self) -> str | None:
+        """Target ID of the _promoCode reference (targets TextField)."""
+        member = self.get_member("_promoCode")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @promo_code.setter
+    def promo_code(self, target: str | TextField | None) -> None:
+        """Set the _promoCode reference by target ID or TextField instance."""
+        target_id: str | None = target.id if isinstance(target, TextField) else target  # type: ignore[assignment]
+        member = self.get_member("_promoCode")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_promoCode",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.UIX.TextField'),
+            )
+
+    @property
     def birth_month(self) -> str | None:
-        """Target ID of the _birthMonth reference (targets IntTextEditorParser)."""
+        """The field to enter the user's legal birth month MM."""
         member = self.get_member("_birthMonth")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -287,7 +310,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def birth_day(self) -> str | None:
-        """Target ID of the _birthDay reference (targets IntTextEditorParser)."""
+        """The field to enter the user's legal birth day DD."""
         member = self.get_member("_birthDay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -308,7 +331,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def birth_year(self) -> str | None:
-        """Target ID of the _birthYear reference (targets IntTextEditorParser)."""
+        """The field to enter the user's legal birth year YYYY."""
         member = self.get_member("_birthYear")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -329,7 +352,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def remember_login(self) -> str | None:
-        """Target ID of the _rememberLogin reference (targets Checkbox)."""
+        """Whether to keep an encrypted token on disk using modern security protocols so the user can stay remembered for 30 days since last login, token refreshing every login."""
         member = self.get_member("_rememberLogin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -349,29 +372,8 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def reset_user_id(self) -> str | None:
-        """Target ID of the _resetUserId reference (targets Checkbox)."""
-        member = self.get_member("_resetUserId")
-        if isinstance(member, members.Reference):
-            return member.targetId
-        return None
-
-    @reset_user_id.setter
-    def reset_user_id(self, target: str | Checkbox | None) -> None:
-        """Set the _resetUserId reference by target ID or Checkbox instance."""
-        target_id: str | None = target.id if isinstance(target, Checkbox) else target  # type: ignore[assignment]
-        member = self.get_member("_resetUserId")
-        if isinstance(member, members.Reference):
-            member.targetId = target_id
-        else:
-            self.set_member(
-                "_resetUserId",
-                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.UIX.Checkbox'),
-            )
-
-    @property
     def policies(self) -> str | None:
-        """Target ID of the _policies reference (targets Checkbox)."""
+        """Whether the player accepts the EULA."""
         member = self.get_member("_policies")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -392,7 +394,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def register_button(self) -> str | None:
-        """Target ID of the _registerButton reference (targets Button)."""
+        """The button for registering."""
         member = self.get_member("_registerButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -413,7 +415,7 @@ class LoginDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def login_email(self) -> primitives.String | None:
-        """The _loginEmail field value."""
+        """The email used to log in."""
         member = self.get_member("_loginEmail")
         if member is None:
             return None

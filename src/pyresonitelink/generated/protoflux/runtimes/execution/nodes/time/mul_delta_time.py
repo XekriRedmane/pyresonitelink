@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MulDeltaTime(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Mul Delta Time node takes in a number and returns the value of a delta time that is multiplied by that number. This node makes it super easy to make speed modifiers in code instead of doing it the hard way by using a Delta Time and a Multiply node.
+    """The ``Mul Delta Time`` node takes in a number and returns the value of a delta time that is multiplied by that number. This node makes it super easy to make speed modifiers in code instead of doing it the hard way by using a Delta Time and a Multiply node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
 
@@ -38,7 +38,7 @@ class MulDeltaTime(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], 
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[T])."""
+        """The multiplicative number to adjust the delta time."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId

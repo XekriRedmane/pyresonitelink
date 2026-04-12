@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RibbonFollowerWidthRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.RibbonFollowerWidthRangeInitializer.
+    """The RibbonFollowerWidthRangeInitializer component gives ribbon followers in a particle system a random width in a range.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.RibbonFollowerWidthRangeInitializer"
@@ -32,7 +37,7 @@ class RibbonFollowerWidthRangeInitializer(GeneratedComponent, IParticleSystemMod
 
     @property
     def min_value(self) -> primitives.Float | None:
-        """The MinValue field value."""
+        """The minimum width ribbons can have."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class RibbonFollowerWidthRangeInitializer(GeneratedComponent, IParticleSystemMod
 
     @property
     def max_value(self) -> primitives.Float | None:
-        """The MaxValue field value."""
+        """The maximum width ribbons"""
         member = self.get_member("MaxValue")
         if member is None:
             return None

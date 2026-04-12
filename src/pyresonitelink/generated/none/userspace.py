@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Userspace(GeneratedComponent, IEmptyAvatarSlotHandler, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Userspace.
+    """Userspace is a component that manages some of the tasks like exiting, saving, and emergency desktop shortcuts.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Userspace"

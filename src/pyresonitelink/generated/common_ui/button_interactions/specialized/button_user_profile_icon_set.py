@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonUserProfileIconSet(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonUserProfileIconSet.
+    """The ButtonUserProfileIconSet component only works in Userspace. This is the component that handles the setting of a user profile icon in the game.
 
     Category: Common UI/Button Interactions/Specialized
+
+    Put this beside a button component on an slot or facet and press the
+    button to set your profile icon via the button.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonUserProfileIconSet"
@@ -29,7 +32,7 @@ class ButtonUserProfileIconSet(GeneratedComponent, IButtonPressReceiver, IWorldE
 
     @property
     def is_updating(self) -> primitives.Bool | None:
-        """The IsUpdating field value."""
+        """Whether or not the component is sending to the cloud your new icon url and/or asset."""
         member = self.get_member("IsUpdating")
         if member is None:
             return None

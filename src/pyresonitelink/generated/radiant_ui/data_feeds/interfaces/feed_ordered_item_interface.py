@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedOrderedItemInterface<>.
+    """The FeedOrderedItemInterface component is used as a template type item in data feed mappers in the Data Feeds system. This acts as an item in a list of items that can be reordered and moved around.
 
     Category: Radiant UI/Data Feeds/Interfaces
 
@@ -411,7 +411,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[T])."""
+        """The value field of this ordered item. Can write to the original feed valuem"""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -432,7 +432,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def formatting(self) -> str | None:
-        """Target ID of the Formatting reference (targets IField[primitives.String])."""
+        """How to format the value when it is displayed in text."""
         member = self.get_member("Formatting")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -453,7 +453,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def is_first(self) -> str | None:
-        """Target ID of the IsFirst reference (targets IField[primitives.Bool])."""
+        """The field to set to whether this item is currently first"""
         member = self.get_member("IsFirst")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -474,7 +474,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def is_last(self) -> str | None:
-        """Target ID of the IsLast reference (targets IField[primitives.Bool])."""
+        """The field to set to whether this item is currently last."""
         member = self.get_member("IsLast")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -495,7 +495,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def move_up_label(self) -> str | None:
-        """Target ID of the MoveUpLabel reference (targets IField[primitives.String])."""
+        """The field that represents this item's move up label."""
         member = self.get_member("MoveUpLabel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -516,7 +516,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def move_down_label(self) -> str | None:
-        """Target ID of the MoveDownLabel reference (targets IField[primitives.String])."""
+        """The field that represents this item's move down label."""
         member = self.get_member("MoveDownLabel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -537,7 +537,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def make_first_label(self) -> str | None:
-        """Target ID of the MakeFirstLabel reference (targets IField[primitives.String])."""
+        """The field that represents this item's make first label."""
         member = self.get_member("MakeFirstLabel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -558,7 +558,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def make_last_label(self) -> str | None:
-        """Target ID of the MakeLastLabel reference (targets IField[primitives.String])."""
+        """The field that represents this item's make last label."""
         member = self.get_member("MakeLastLabel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -579,7 +579,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def move_up(self) -> str | None:
-        """Target ID of the MoveUp reference (targets SyncDelegate[Action])."""
+        """This field is populated with the Action that can be called to move the item up."""
         member = self.get_member("MoveUp")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -600,7 +600,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def move_down(self) -> str | None:
-        """Target ID of the MoveDown reference (targets SyncDelegate[Action])."""
+        """This field is populated with the Action that can be called to move the item down."""
         member = self.get_member("MoveDown")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -621,7 +621,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def make_first(self) -> str | None:
-        """Target ID of the MakeFirst reference (targets SyncDelegate[Action])."""
+        """This field is populated with the Action that can be called to make the item first."""
         member = self.get_member("MakeFirst")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -642,7 +642,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def make_last(self) -> str | None:
-        """Target ID of the MakeLast reference (targets SyncDelegate[Action])."""
+        """This field is populated with the Action that can be called to make the item last."""
         member = self.get_member("MakeLast")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -663,7 +663,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def has_move_up(self) -> str | None:
-        """Target ID of the HasMoveUp reference (targets IField[primitives.Bool])."""
+        """The field to set to whether this item can currently be moved further up."""
         member = self.get_member("HasMoveUp")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -684,7 +684,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def has_move_down(self) -> str | None:
-        """Target ID of the HasMoveDown reference (targets IField[primitives.Bool])."""
+        """The field to set to whether this item can currently be moved down."""
         member = self.get_member("HasMoveDown")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -705,7 +705,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def has_make_first(self) -> str | None:
-        """Target ID of the HasMakeFirst reference (targets IField[primitives.Bool])."""
+        """The field to set to whether this item can currently be made first."""
         member = self.get_member("HasMakeFirst")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -726,7 +726,7 @@ class FeedOrderedItemInterface(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def has_make_last(self) -> str | None:
-        """Target ID of the HasMakeLast reference (targets IField[primitives.Bool])."""
+        """The field to set to whether this item can currently be made last."""
         member = self.get_member("HasMakeLast")
         if isinstance(member, members.Reference):
             return member.targetId

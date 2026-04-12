@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserViewReferenceActive(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User View Reference Active node returns a user's view reference. This is used with the component View Reference Controller.
+    """The ``User View Reference Active`` node returns a user's view reference. This is used with the component View Reference Controller.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """
@@ -34,7 +34,7 @@ class UserViewReferenceActive(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

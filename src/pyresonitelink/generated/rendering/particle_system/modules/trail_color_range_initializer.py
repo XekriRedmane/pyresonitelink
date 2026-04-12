@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TrailColorRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.TrailColorRangeInitializer.
+    """The TrailColorRangeInitializer component makes trails in a particle system be born or start with a random lerped color in a range when.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.TrailColorRangeInitializer"
@@ -32,7 +37,7 @@ class TrailColorRangeInitializer(GeneratedComponent, IParticleSystemModule, IWor
 
     @property
     def min_value(self) -> primitives.ColorX | None:
-        """The MinValue field value."""
+        """The minimum color a Trail can be born with."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class TrailColorRangeInitializer(GeneratedComponent, IParticleSystemModule, IWor
 
     @property
     def max_value(self) -> primitives.ColorX | None:
-        """The MaxValue field value."""
+        """The maximum color a Trail can be born with."""
         member = self.get_member("MaxValue")
         if member is None:
             return None

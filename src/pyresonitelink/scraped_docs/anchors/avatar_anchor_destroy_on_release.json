@@ -1,0 +1,11 @@
+{
+  "description": "When a user is released from an anchor on the same slot as this component, ``DestroyRoot`` is destroyed.",
+  "category": "Users:Common Avatar System:Anchors",
+  "fields": {
+    "DestroyRoot": "The slot to destroy when a user is released from an anchor on the same slot as this component."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarAnchorDestroyOnRelease&action=raw"
+}

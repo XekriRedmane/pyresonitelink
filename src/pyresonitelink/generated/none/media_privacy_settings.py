@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class MediaPrivacySettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.MediaPrivacySettings.
+    """See Settings.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MediaPrivacySettings"
@@ -33,7 +35,7 @@ class MediaPrivacySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def media_metadata_opt_out(self) -> primitives.Bool | None:
-        """The MediaMetadataOptOut field value."""
+        """Requests for the user to opt out of being in media metadata like photos or microphone recordings when they are captured in world."""
         member = self.get_member("MediaMetadataOptOut")
         if member is None:
             return None
@@ -52,7 +54,7 @@ class MediaPrivacySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def hide_in_screenshots(self) -> primitives.Bool | None:
-        """The HideInScreenshots field value."""
+        """Requests the user be not rendered in photos when they are taken in world, including world preview thumbnails."""
         member = self.get_member("HideInScreenshots")
         if member is None:
             return None
@@ -71,7 +73,7 @@ class MediaPrivacySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def strip_image_file_metadata(self) -> primitives.Bool | None:
-        """The StripImageFileMetadata field value."""
+        """Strips the metadata from images that the user themselves brings into a scene."""
         member = self.get_member("StripImageFileMetadata")
         if member is None:
             return None

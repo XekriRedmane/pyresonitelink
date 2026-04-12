@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUserPresentInWorld(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Is User Present In World node returns if the user is present in the current world. This Will include both headset users and desktop users.
+    """The ``Is User Present In World`` node returns if the user is present in the current world. This Will include both headset users and desktop users.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """
@@ -34,7 +34,7 @@ class IsUserPresentInWorld(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

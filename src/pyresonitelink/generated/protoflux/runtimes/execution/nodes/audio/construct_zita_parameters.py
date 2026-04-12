@@ -63,7 +63,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def in_delay(self) -> str | None:
-        """Target ID of the InDelay reference (targets INodeValueOutput[primitives.Float])."""
+        """The delay time before the reverb starts."""
         member = self.get_member("InDelay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def crossover(self) -> str | None:
-        """Target ID of the Crossover reference (targets INodeValueOutput[primitives.Float])."""
+        """How much the reverb "crosses over" or fades within itself."""
         member = self.get_member("Crossover")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +105,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def rt60_low(self) -> str | None:
-        """Target ID of the RT60Low reference (targets INodeValueOutput[primitives.Float])."""
+        """RT60 refers to the Reverberation Time, which is the time it takes for the sound energy in a room to decay by 60 decibels after the sound source has stopped. (Low End)"""
         member = self.get_member("RT60Low")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +126,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def rt60_mid(self) -> str | None:
-        """Target ID of the RT60Mid reference (targets INodeValueOutput[primitives.Float])."""
+        """RT60 refers to the Reverberation Time, which is the time it takes for the sound energy in a room to decay by 60 decibels after the sound source has stopped. (Mid End)"""
         member = self.get_member("RT60Mid")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -147,7 +147,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def high_frequency_damping(self) -> str | None:
-        """Target ID of the HighFrequencyDamping reference (targets INodeValueOutput[primitives.Float])."""
+        """The high frequency dampening for the reverb."""
         member = self.get_member("HighFrequencyDamping")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -168,7 +168,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def eq1_frequency(self) -> str | None:
-        """Target ID of the EQ1Frequency reference (targets INodeValueOutput[primitives.Float])."""
+        """The equalizer frequency (1) of the reverb."""
         member = self.get_member("EQ1Frequency")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -189,7 +189,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def eq1_level(self) -> str | None:
-        """Target ID of the EQ1Level reference (targets INodeValueOutput[primitives.Float])."""
+        """The equalizer volume (1) of the reverb."""
         member = self.get_member("EQ1Level")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -210,7 +210,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def eq2_frequency(self) -> str | None:
-        """Target ID of the EQ2Frequency reference (targets INodeValueOutput[primitives.Float])."""
+        """The equalizer frequency (2) of the reverb."""
         member = self.get_member("EQ2Frequency")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -231,7 +231,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def eq2_level(self) -> str | None:
-        """Target ID of the EQ2Level reference (targets INodeValueOutput[primitives.Float])."""
+        """The equalizer volume (2) of the reverb."""
         member = self.get_member("EQ2Level")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -252,7 +252,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def mix(self) -> str | None:
-        """Target ID of the Mix reference (targets INodeValueOutput[primitives.Float])."""
+        """The amount of audio to mix in the reverb."""
         member = self.get_member("Mix")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -273,7 +273,7 @@ class ConstructZitaParameters(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def level(self) -> str | None:
-        """Target ID of the Level reference (targets INodeValueOutput[primitives.Float])."""
+        """The overall level (or volume) of the reverb"""
         member = self.get_member("Level")
         if isinstance(member, members.Reference):
             return member.targetId

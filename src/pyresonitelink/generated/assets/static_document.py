@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StaticDocument(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StaticDocument.
+    """Static document is a component that is used to store the data of a text document (Usually a PDF but never text files) for usage in a document viewer favorite-d by the user.
 
     Category: Assets
     """
@@ -29,7 +29,7 @@ class StaticDocument(GeneratedComponent, IStaticAssetProvider, ICustomInspector,
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The document's (Usually PDF) content on the cloud or local machine."""
         member = self.get_member("URL")
         if member is None:
             return None

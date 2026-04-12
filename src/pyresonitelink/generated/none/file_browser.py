@@ -17,7 +17,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FileBrowser.
+    """The FileBrowser component is used to show file lists of files on the user's PC in the userspace dash menu.
+
+    Not used directly by the user.
+
+    **CreateHandler**: Handles creation of directories. Is a sync delegate type.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FileBrowser"
@@ -86,7 +90,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def selected_item(self) -> str | None:
-        """Target ID of the SelectedItem reference (targets BrowserItem)."""
+        """The currently selected item being highlighted."""
         member = self.get_member("SelectedItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +111,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def previous_selected_item(self) -> str | None:
-        """Target ID of the _previousSelectedItem reference (targets BrowserItem)."""
+        """The item previously highlighted."""
         member = self.get_member("_previousSelectedItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -128,7 +132,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def allow_select(self) -> primitives.Bool | None:
-        """The AllowSelect field value."""
+        """Whether this file browser allows selecting item elements."""
         member = self.get_member("AllowSelect")
         if member is None:
             return None
@@ -147,7 +151,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def item_size(self) -> primitives.Float | None:
-        """The ItemSize field value."""
+        """How big the items are on the view."""
         member = self.get_member("ItemSize")
         if member is None:
             return None
@@ -166,7 +170,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def selected_text(self) -> str | None:
-        """Target ID of the _selectedText reference (targets Text)."""
+        """The text to fill with the name of the selected item."""
         member = self.get_member("_selectedText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -187,7 +191,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def path_root(self) -> str | None:
-        """Target ID of the _pathRoot reference (targets Slot)."""
+        """The root of the area being used to display the current path."""
         member = self.get_member("_pathRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -208,7 +212,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def buttons_root(self) -> str | None:
-        """Target ID of the _buttonsRoot reference (targets Slot)."""
+        """The root of the area being used to show the different button actions."""
         member = self.get_member("_buttonsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -229,7 +233,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def folder_grid(self) -> str | None:
-        """Target ID of the _folderGrid reference (targets GridLayout)."""
+        """The grid layout Component being used to align the folders in the directory."""
         member = self.get_member("_folderGrid")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -250,7 +254,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def item_grid(self) -> str | None:
-        """Target ID of the _itemGrid reference (targets GridLayout)."""
+        """The grid layout Component being used to align the files in the directory."""
         member = self.get_member("_itemGrid")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -271,7 +275,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def tab_sprite(self) -> str | None:
-        """Target ID of the _tabSprite reference (targets SpriteProvider)."""
+        """The sprite being used to show the tab sprite."""
         member = self.get_member("_tabSprite")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -292,7 +296,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def loading_indicator(self) -> str | None:
-        """Target ID of the _loadingIndicator reference (targets Slot)."""
+        """The slot that stores the loading indicator for a newly opened directory."""
         member = self.get_member("_loadingIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -313,7 +317,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def swapper(self) -> str | None:
-        """Target ID of the _swapper reference (targets SlideSwapRegion)."""
+        """The component to handle the slide animation when opening a different directory."""
         member = self.get_member("_swapper")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -334,7 +338,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_path(self) -> primitives.String | None:
-        """The CurrentPath field value."""
+        """The current folder path."""
         member = self.get_member("CurrentPath")
         if member is None:
             return None
@@ -353,7 +357,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def last_path(self) -> primitives.String | None:
-        """The _lastPath field value."""
+        """The last folder path."""
         member = self.get_member("_lastPath")
         if member is None:
             return None
@@ -372,7 +376,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user(self) -> members.SyncObject | None:
-        """The _user member."""
+        """The user using this file browser."""
         member = self.get_member("_user")
         if isinstance(member, members.SyncObject):
             return member
@@ -380,12 +384,12 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @user.setter
     def user(self, value: members.SyncObject) -> None:
-        """Set the _user member."""
+        """Set _user. The user using this file browser."""
         self.set_member("_user", value)
 
     @property
     def import_button(self) -> str | None:
-        """Target ID of the _importButton reference (targets Button)."""
+        """The button to import a selected folder or file."""
         member = self.get_member("_importButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -406,7 +410,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def raw_import_button(self) -> str | None:
-        """Target ID of the _rawImportButton reference (targets Button)."""
+        """The button to import a selected file as a raw file object."""
         member = self.get_member("_rawImportButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -427,7 +431,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def create_new_button(self) -> str | None:
-        """Target ID of the _createNewButton reference (targets Button)."""
+        """The button to create a new file directory."""
         member = self.get_member("_createNewButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -448,7 +452,7 @@ class FileBrowser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def reload_button(self) -> str | None:
-        """Target ID of the _reloadButton reference (targets Button)."""
+        """The button used to refresh the folder and file list."""
         member = self.get_member("_reloadButton")
         if isinstance(member, members.Reference):
             return member.targetId

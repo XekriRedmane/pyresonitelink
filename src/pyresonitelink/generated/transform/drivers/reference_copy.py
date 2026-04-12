@@ -11,9 +11,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceCopy<>.
+    """The ReferenceCopy component is used to copy one reference to another place, driving the target with an write back option.
 
     Category: Transform/Drivers
+
+    Drives the target's reference with the source's reference. When using
+    WriteBack, changes made to the Target are local while editing it. When
+    the user is done setting it, it writes via a network sync to change the
+    Source reference. If the Source and Target are the same, the reference
+    will be completely local, and no network sync happens when changing the
+    reference. When using the ReferenceCopy to make fields local like this,
+    joining users will have the host's reference by default.
 
     Parameterize with a value type::
 
@@ -43,7 +51,7 @@ class ReferenceCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets SyncRef[T])."""
+        """The source to copy the Reference from"""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +72,7 @@ class ReferenceCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncRef[T])."""
+        """The target to drive to the value of ``Source``"""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +93,7 @@ class ReferenceCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """whether to allow changes done to ``Target`` to change ``Source``. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None

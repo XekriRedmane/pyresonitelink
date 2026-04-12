@@ -17,7 +17,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicImpulseTrigger(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Dynamic Impulse Trigger node sends a dynamic impulse to all Dynamic Impulse Receivers matching the provided Tag under the TargetHierarchy.
+    """The Dynamic Impulse Trigger node sends a dynamic impulse to all Dynamic Impulse Receivers matching the provided ``Tag`` under the ``TargetHierarchy``.
+
+This node can be used in an async flow node chain as well, though the node chain for the receiver will not be async.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """
@@ -46,7 +48,7 @@ class DynamicImpulseTrigger(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Triggered once the context of every receiver is completed."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +69,7 @@ class DynamicImpulseTrigger(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def tag(self) -> str | None:
-        """Target ID of the Tag reference (targets INodeObjectOutput[primitives.String])."""
+        """The tag of the dynamic impulse."""
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -88,7 +90,7 @@ class DynamicImpulseTrigger(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def target_hierarchy(self) -> str | None:
-        """Target ID of the TargetHierarchy reference (targets INodeObjectOutput[Slot])."""
+        """The slot under which to search for dynamic impulse receivers."""
         member = self.get_member("TargetHierarchy")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +111,7 @@ class DynamicImpulseTrigger(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def exclude_disabled(self) -> str | None:
-        """Target ID of the ExcludeDisabled reference (targets INodeValueOutput[primitives.Bool])."""
+        """If ``True``, the dynamic impulse will not search for receivers under disabled slots."""
         member = self.get_member("ExcludeDisabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -130,7 +132,7 @@ class DynamicImpulseTrigger(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def triggered_count(self) -> members.EmptyElement | None:
-        """The TriggeredCount member."""
+        """Number of receivers that were triggered. Only exists for the current context."""
         member = self.get_member("TriggeredCount")
         if isinstance(member, members.EmptyElement):
             return member
@@ -138,6 +140,6 @@ class DynamicImpulseTrigger(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @triggered_count.setter
     def triggered_count(self, value: members.EmptyElement) -> None:
-        """Set the TriggeredCount member."""
+        """Set TriggeredCount. Number of receivers that were triggered. Only exists for the current context."""
         self.set_member("TriggeredCount", value)
 

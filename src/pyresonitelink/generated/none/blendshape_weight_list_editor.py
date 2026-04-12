@@ -11,7 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BlendshapeWeightListEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BlendshapeWeightListEditor.
+    """Weight list editor is a component that is used within inspectors and shouldn't need to be interacted with by the user. Although, it can be used in very niche circumstances.
+
+    Add component to a slot and fill the fields, with the proper data
+    explained in the table above. Press the button provided to
+    ``_addNewButton`` to add a new blendshape to the targeted skinned Mesh
+    renderer.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BlendshapeWeightListEditor"
@@ -35,7 +40,7 @@ class BlendshapeWeightListEditor(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def target_list(self) -> str | None:
-        """Target ID of the _targetList reference (targets ISyncList)."""
+        """The list of blendshapes. This can be acquired through grabbing the "BlendShapes" title at the beginning of a blendshape list inside of a Skinned Mesh Renderer"""
         member = self.get_member("_targetList")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +61,7 @@ class BlendshapeWeightListEditor(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def add_new_button(self) -> str | None:
-        """Target ID of the _addNewButton reference (targets Button)."""
+        """The button that when pressed, should add a new blendshape to the end of the ``_targetList``. Whether the new blendshape does anything or not depends on if the ``Mesh`` data inside of ``_targetSkin`` has a blendshape list that reaches as far as the new item."""
         member = self.get_member("_addNewButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +82,7 @@ class BlendshapeWeightListEditor(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def target_skin(self) -> str | None:
-        """Target ID of the _targetSkin reference (targets SkinnedMeshRenderer)."""
+        """The skinned Mesh renderer to add a new blendshape item to. Has to be the same component ``_targetList`` comes from."""
         member = self.get_member("_targetSkin")
         if isinstance(member, members.Reference):
             return member.targetId

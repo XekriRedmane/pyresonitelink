@@ -10,9 +10,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PerformanceMetrics.
+    """The PerformanceMetrics component is used to show performance for a particular ``User`` at the present moment.
 
     Category: Utility
+
+    Attach to a slot and provide a user for ``User`` for it to start giving
+    performance metrics.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PerformanceMetrics"
@@ -39,7 +42,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user(self) -> members.SyncObject | None:
-        """The User member."""
+        """The user we are measuring performance for."""
         member = self.get_member("User")
         if isinstance(member, members.SyncObject):
             return member
@@ -47,12 +50,12 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @user.setter
     def user(self, value: members.SyncObject) -> None:
-        """Set the User member."""
+        """Set User. The user we are measuring performance for."""
         self.set_member("User", value)
 
     @property
     def fps(self) -> primitives.Float | None:
-        """The FPS field value."""
+        """``User``'s Frames Per second."""
         member = self.get_member("FPS")
         if member is None:
             return None
@@ -71,7 +74,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def immediate_fps(self) -> primitives.Float | None:
-        """The ImmediateFPS field value."""
+        """``User``'s immediate Frames Per Second."""
         member = self.get_member("ImmediateFPS")
         if member is None:
             return None
@@ -90,7 +93,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def render_time(self) -> primitives.Float | None:
-        """The RenderTime field value."""
+        """``User``'s time it takes to render the scene in seconds."""
         member = self.get_member("RenderTime")
         if member is None:
             return None
@@ -109,7 +112,7 @@ class PerformanceMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def total_engine_update_time(self) -> primitives.Float | None:
-        """The TotalEngineUpdateTime field value."""
+        """``User``'s time it takes to update the engine in seconds."""
         member = self.get_member("TotalEngineUpdateTime")
         if member is None:
             return None

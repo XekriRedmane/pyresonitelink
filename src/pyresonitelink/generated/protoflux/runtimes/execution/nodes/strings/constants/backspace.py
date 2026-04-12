@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Backspace(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Backspace node is a character literal constant for the "Backspace" control character (Unicode: U+0008).
+    """The ``Backspace`` node is a character literal constant for the "Backspace" control character (Unicode: U+0008).
+
+This node is about the text character. Its usage should not be confused with that of keyboard keys used for handling input.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
 

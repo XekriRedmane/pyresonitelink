@@ -12,9 +12,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPressReceiver, IButtonHoverReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonDynamicImpulseTriggerWithReference<>.
+    """The ButtonDynamicImpulseTriggerWithReference component sends Dynamic Impulses to flux node receivers with data. This acts like a combination of Button Events & Dynamic Impulse Trigger With Data ProtoFlux nodes, but as a component instead.
+
+}}
 
     Category: Common UI/Button Interactions
+
+    Useful for sending dynamic pulses cleanly instead of using flux.
 
     Parameterize with a value type::
 
@@ -41,7 +45,7 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The slot to target with impulses specified by ``PressedData``,``PressingData``,``ReleasedData``,``HoverEnterData``,``HoverStayData``,``HoverLeaveData``."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +66,7 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
 
     @property
     def exclude_disabled(self) -> primitives.Bool | None:
-        """The ExcludeDisabled field value."""
+        """Whether disabled slots and hierarchies should be affected by the dynamic impulses sent."""
         member = self.get_member("ExcludeDisabled")
         if member is None:
             return None
@@ -81,7 +85,7 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
 
     @property
     def pressed_data(self) -> members.SyncObject | None:
-        """The PressedData member."""
+        """What value and tag type dynamic impulse to send when an IButton is pressed on the same slot."""
         member = self.get_member("PressedData")
         if isinstance(member, members.SyncObject):
             return member
@@ -89,12 +93,12 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
 
     @pressed_data.setter
     def pressed_data(self, value: members.SyncObject) -> None:
-        """Set the PressedData member."""
+        """Set PressedData. What value and tag type dynamic impulse to send when an IButton is pressed on the same slot."""
         self.set_member("PressedData", value)
 
     @property
     def pressing_data(self) -> members.SyncObject | None:
-        """The PressingData member."""
+        """What value and tag type dynamic impulse to send when an IButton is being pressed on the same slot. Fires every update while the button is being pressed."""
         member = self.get_member("PressingData")
         if isinstance(member, members.SyncObject):
             return member
@@ -102,12 +106,12 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
 
     @pressing_data.setter
     def pressing_data(self, value: members.SyncObject) -> None:
-        """Set the PressingData member."""
+        """Set PressingData. What value and tag type dynamic impulse to send when an IButton is being pressed on the same slot. Fires every update while the button is being pressed."""
         self.set_member("PressingData", value)
 
     @property
     def released_data(self) -> members.SyncObject | None:
-        """The ReleasedData member."""
+        """What value and tag type dynamic impulse to send when an IButton stops being pressed on the same slot."""
         member = self.get_member("ReleasedData")
         if isinstance(member, members.SyncObject):
             return member
@@ -115,12 +119,12 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
 
     @released_data.setter
     def released_data(self, value: members.SyncObject) -> None:
-        """Set the ReleasedData member."""
+        """Set ReleasedData. What value and tag type dynamic impulse to send when an IButton stops being pressed on the same slot."""
         self.set_member("ReleasedData", value)
 
     @property
     def hover_enter_data(self) -> members.SyncObject | None:
-        """The HoverEnterData member."""
+        """What value and tag type dynamic impulse to send when an IButton starts being pointed at on the same slot."""
         member = self.get_member("HoverEnterData")
         if isinstance(member, members.SyncObject):
             return member
@@ -128,12 +132,12 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
 
     @hover_enter_data.setter
     def hover_enter_data(self, value: members.SyncObject) -> None:
-        """Set the HoverEnterData member."""
+        """Set HoverEnterData. What value and tag type dynamic impulse to send when an IButton starts being pointed at on the same slot."""
         self.set_member("HoverEnterData", value)
 
     @property
     def hover_stay_data(self) -> members.SyncObject | None:
-        """The HoverStayData member."""
+        """What value and tag type dynamic impulse to send when an IButton is currently pointed at on the same slot. Fires every update while the button is being hovered over."""
         member = self.get_member("HoverStayData")
         if isinstance(member, members.SyncObject):
             return member
@@ -141,12 +145,12 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
 
     @hover_stay_data.setter
     def hover_stay_data(self, value: members.SyncObject) -> None:
-        """Set the HoverStayData member."""
+        """Set HoverStayData. What value and tag type dynamic impulse to send when an IButton is currently pointed at on the same slot. Fires every update while the button is being hovered over."""
         self.set_member("HoverStayData", value)
 
     @property
     def hover_leave_data(self) -> members.SyncObject | None:
-        """The HoverLeaveData member."""
+        """What value and tag type dynamic impulse to send when an IButton stops being pointed at on the same slot."""
         member = self.get_member("HoverLeaveData")
         if isinstance(member, members.SyncObject):
             return member
@@ -154,6 +158,6 @@ class ButtonDynamicImpulseTriggerWithReference(GenericComponent[T], IButtonPress
 
     @hover_leave_data.setter
     def hover_leave_data(self, value: members.SyncObject) -> None:
-        """Set the HoverLeaveData member."""
+        """Set HoverLeaveData. What value and tag type dynamic impulse to send when an IButton stops being pointed at on the same slot."""
         self.set_member("HoverLeaveData", value)
 

@@ -13,9 +13,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MazeGenerator.
+    """The MazeGenerator component generates a maze (with a ton of slots) with given parameters.
+
+}}
 
     Category: Generators
+
+    Great for prototyping mazes, and can be baked.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MazeGenerator"
@@ -51,7 +55,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def seed(self) -> primitives.Int | None:
-        """The Seed field value."""
+        """The random seed for generating this maze."""
         member = self.get_member("Seed")
         if member is None:
             return None
@@ -70,7 +74,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def cells(self) -> primitives.Int2 | None:
-        """The Cells field value."""
+        """The maze square sections for this generated maze."""
         member = self.get_member("Cells")
         if member is None:
             return None
@@ -89,7 +93,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def wall_size(self) -> primitives.Float2 | None:
-        """The WallSize field value."""
+        """X: how long the walls are, Y: how tall the walls are."""
         member = self.get_member("WallSize")
         if member is None:
             return None
@@ -108,7 +112,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def point0(self) -> primitives.Int2 | None:
-        """The Point0 field value."""
+        """The start position for this maze."""
         member = self.get_member("Point0")
         if member is None:
             return None
@@ -127,7 +131,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def point1(self) -> primitives.Int2 | None:
-        """The Point1 field value."""
+        """The end position for this maze."""
         member = self.get_member("Point1")
         if member is None:
             return None
@@ -146,7 +150,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets MaterialProvider)."""
+        """The material for the walls of the maze."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -167,7 +171,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def bake(self) -> primitives.Bool | None:
-        """The Bake field value."""
+        """Bakes the generated maze."""
         member = self.get_member("Bake")
         if member is None:
             return None
@@ -185,7 +189,7 @@ class MazeGenerator(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     async def generate(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Generate sync method.
+        """Generate the maze.
 
         Returns:
             The raw JSON response dict.

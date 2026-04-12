@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SizeMultiplierByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.SizeMultiplierByVelocity.
+    """The Size Multiplier By Velocity component is used in Photon Dust systems to make particles change size on any given axies based on velocity.
 
     Category: Rendering/Particle System/Modules
+
+    Used in particle systems to change particle size by velocity.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SizeMultiplierByVelocity"
@@ -44,7 +46,7 @@ class SizeMultiplierByVelocity(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def velocity_multiplier(self) -> primitives.Float3 | None:
-        """The VelocityMultiplier field value."""
+        """The amount to multiply velocity of a particle by before using it as a multiplier."""
         member = self.get_member("VelocityMultiplier")
         if member is None:
             return None
@@ -63,7 +65,7 @@ class SizeMultiplierByVelocity(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def velocity_mask(self) -> primitives.Bool3 | None:
-        """The VelocityMask field value."""
+        """Which axies should be included in or excluded from this scaling effect."""
         member = self.get_member("VelocityMask")
         if member is None:
             return None
@@ -82,7 +84,7 @@ class SizeMultiplierByVelocity(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def multiplier_clamp_min(self) -> primitives.Float3 | None:
-        """The MultiplierClampMin field value."""
+        """the minimum value to clamp the current velocity of a particle to before it is used as a scale multiplier."""
         member = self.get_member("MultiplierClampMin")
         if member is None:
             return None
@@ -101,7 +103,7 @@ class SizeMultiplierByVelocity(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def multiplier_clamp_max(self) -> primitives.Float3 | None:
-        """The MultiplierClampMax field value."""
+        """the maximum value to clamp the current velocity of a particle to before it is used as a scale multiplier."""
         member = self.get_member("MultiplierClampMax")
         if member is None:
             return None
@@ -120,7 +122,7 @@ class SizeMultiplierByVelocity(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def result_clamp_min(self) -> primitives.Float3 | None:
-        """The ResultClampMin field value."""
+        """the minimum scale the particle is allowed to be as a final scale."""
         member = self.get_member("ResultClampMin")
         if member is None:
             return None
@@ -139,7 +141,7 @@ class SizeMultiplierByVelocity(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def result_clamp_max(self) -> primitives.Float3 | None:
-        """The ResultClampMax field value."""
+        """the maximum scale the particle is allowed to be as a final scale."""
         member = self.get_member("ResultClampMax")
         if member is None:
             return None

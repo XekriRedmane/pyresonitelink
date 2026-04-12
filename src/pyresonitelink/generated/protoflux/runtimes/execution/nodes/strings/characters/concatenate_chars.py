@@ -16,6 +16,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ConcatenateChars(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Concatenate Chars node combines two characters into a new string.
 
+This is very useful when working with individual characters and need to perform string operations on them, saving a node if one needs to concatenate two as well.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Characters
     """
 
@@ -37,7 +39,7 @@ class ConcatenateChars(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[primitives.Char])."""
+        """The first character to combine."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +60,7 @@ class ConcatenateChars(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[primitives.Char])."""
+        """The second character to combine."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId

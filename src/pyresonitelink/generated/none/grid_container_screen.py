@@ -17,7 +17,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GridContainerScreen.
+    """The GridContainerScreen component can be used to add additional tabs to the dash and is used in some custom tab facets for the Dash Menu.
+
+    Can be used as part of a facet that adds an extra screen to the dash for
+    facet placement or preset facets.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GridContainerScreen"
@@ -65,7 +68,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def icon(self) -> str | None:
-        """The Icon field value."""
+        """The icon of the dash menu tab."""
         member = self.get_member("Icon")
         if member is None:
             return None
@@ -84,7 +87,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def active_color(self) -> primitives.ColorX | None:
-        """The ActiveColor field value."""
+        """The color when this dash menu screen tab is selected."""
         member = self.get_member("ActiveColor")
         if member is None:
             return None
@@ -103,7 +106,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label(self) -> primitives.String | None:
-        """The Label field value."""
+        """The text for this dash menu Screen tab."""
         member = self.get_member("Label")
         if member is None:
             return None
@@ -122,7 +125,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_enabled(self) -> primitives.Bool | None:
-        """The ScreenEnabled field value."""
+        """Whether the screen is enabled for viewing."""
         member = self.get_member("ScreenEnabled")
         if member is None:
             return None
@@ -141,7 +144,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_resolution(self) -> primitives.Float2 | None:
-        """The BaseResolution field value."""
+        """The default resolution of the tab screen."""
         member = self.get_member("BaseResolution")
         if member is None:
             return None
@@ -160,7 +163,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_root(self) -> str | None:
-        """Target ID of the _screenRoot reference (targets Slot)."""
+        """The root slot of the screen view."""
         member = self.get_member("_screenRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -181,7 +184,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_canvas(self) -> str | None:
-        """Target ID of the _screenCanvas reference (targets Canvas)."""
+        """The canvas being used for the tab view."""
         member = self.get_member("_screenCanvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -202,7 +205,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def modal_overlay_manager(self) -> str | None:
-        """Target ID of the _modalOverlayManager reference (targets ModalOverlayManager)."""
+        """The Overlay manager being used for handling edit mode."""
         member = self.get_member("_modalOverlayManager")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -223,7 +226,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets RadiantDashButton)."""
+        """The button to select this dash menu screen tab."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -244,7 +247,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def icon_texture(self) -> str | None:
-        """Target ID of the _iconTexture reference (targets IAssetProvider[Texture2D])."""
+        """The texture being used for the icon of this dash menu tab."""
         member = self.get_member("_iconTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -265,7 +268,7 @@ class GridContainerScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def grid_container(self) -> str | None:
-        """Target ID of the _gridContainer reference (targets GridContainer)."""
+        """The component handling the alignment of grid items on this screen."""
         member = self.get_member("_gridContainer")
         if isinstance(member, members.Reference):
             return member.targetId

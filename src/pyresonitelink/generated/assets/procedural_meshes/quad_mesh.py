@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.QuadMesh.
+    """Quad mesh is a component that generates mesh data procedurally that makes a flat 2D square.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot and insert into a Mesh Renderer with a material to view
+    it.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.QuadMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, rotation: primitives.FloatQ | None = None, size: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, uv_scale: primitives.Float2 | None = None, scale_uv_with_size: primitives.Bool | None = None, dual_sided: primitives.Bool | None = None, use_vertex_colors: primitives.Bool | None = None, upper_left_color: primitives.ColorX | None = None, lower_left_color: primitives.ColorX | None = None, lower_right_color: primitives.ColorX | None = None, upper_right_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, rotation: primitives.FloatQ | None = None, size: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, uv_scale: primitives.Float2 | None = None, scale_uv_with_size: primitives.Bool | None = None, dual_sided: primitives.Bool | None = None, use_vertex_colors: primitives.Bool | None = None, upper_left_color: primitives.ColorX | None = None, lower_left_color: primitives.ColorX | None = None, lower_right_color: primitives.ColorX | None = None, upper_right_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             rotation: Initial value for Rotation.
             size: Initial value for Size.
             uv_offset: Initial value for UVOffset.
@@ -46,6 +51,8 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if rotation is not None:
             self.rotation = rotation
         if size is not None:
@@ -127,21 +134,28 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def rotation(self) -> primitives.FloatQ | None:
-        """The Rotation field value."""
+        """How to rotate the quad in local space."""
         member = self.get_member("Rotation")
         if member is None:
             return None
@@ -160,7 +174,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def size(self) -> primitives.Float2 | None:
-        """The Size field value."""
+        """The size of the quad in local space."""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -179,7 +193,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def uv_offset(self) -> primitives.Float2 | None:
-        """The UVOffset field value."""
+        """The added offset to the UVs."""
         member = self.get_member("UVOffset")
         if member is None:
             return None
@@ -198,7 +212,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def uv_scale(self) -> primitives.Float2 | None:
-        """The UVScale field value."""
+        """The scale of the UVs from the bottom left."""
         member = self.get_member("UVScale")
         if member is None:
             return None
@@ -217,7 +231,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def scale_uv_with_size(self) -> primitives.Bool | None:
-        """The ScaleUVWithSize field value."""
+        """Whether to scale uv mapping with ``Size``"""
         member = self.get_member("ScaleUVWithSize")
         if member is None:
             return None
@@ -236,7 +250,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def dual_sided(self) -> primitives.Bool | None:
-        """The DualSided field value."""
+        """Whether to make a second pair of triangles that are visible from the opposite side."""
         member = self.get_member("DualSided")
         if member is None:
             return None
@@ -255,7 +269,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def use_vertex_colors(self) -> primitives.Bool | None:
-        """The UseVertexColors field value."""
+        """Whether to use vertex colors which can be read by materials."""
         member = self.get_member("UseVertexColors")
         if member is None:
             return None
@@ -274,7 +288,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def upper_left_color(self) -> primitives.ColorX | None:
-        """The UpperLeftColor field value."""
+        """Upper left vertex color."""
         member = self.get_member("UpperLeftColor")
         if member is None:
             return None
@@ -293,7 +307,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def lower_left_color(self) -> primitives.ColorX | None:
-        """The LowerLeftColor field value."""
+        """Lower left vertex color."""
         member = self.get_member("LowerLeftColor")
         if member is None:
             return None
@@ -312,7 +326,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def lower_right_color(self) -> primitives.ColorX | None:
-        """The LowerRightColor field value."""
+        """Lower right vertex color."""
         member = self.get_member("LowerRightColor")
         if member is None:
             return None
@@ -331,7 +345,7 @@ class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def upper_right_color(self) -> primitives.ColorX | None:
-        """The UpperRightColor field value."""
+        """Upper right vertex color."""
         member = self.get_member("UpperRightColor")
         if member is None:
             return None

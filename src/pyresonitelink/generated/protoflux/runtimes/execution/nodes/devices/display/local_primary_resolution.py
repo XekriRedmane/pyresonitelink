@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalPrimaryResolution(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Local Primary Resolution node returns the user's local device's main monitor's resolution.
+    """The ``Local Primary Resolution`` node returns the user's local device's main monitor's resolution.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Display
     """

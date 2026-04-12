@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Demultiplex node takes in a value, a default value, and an index to select from a list of outputs. This node sends data through the output from the index of the list. If the value given is not valid, it will use the default value instead of the value provided.
+    """The ``Demultiplex`` node takes in a value, a default value, and an index to select from a list of outputs. This node sends data through the output from the index of the list. If the value given is not valid, it will use the default value instead of the value provided.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
 
@@ -45,7 +45,7 @@ class ValueDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIns
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[T])."""
+        """The value to send into a chosen output."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +87,7 @@ class ValueDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIns
 
     @property
     def index(self) -> str | None:
-        """Target ID of the Index reference (targets INodeValueOutput[primitives.Int])."""
+        """The index to select from a list of outputs."""
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +108,7 @@ class ValueDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIns
 
     @property
     def value_outputs(self) -> members.SyncList | None:
-        """The ValueOutputs member."""
+        """The list of outputs to send the data out from."""
         member = self.get_member("ValueOutputs")
         if isinstance(member, members.SyncList):
             return member
@@ -116,6 +116,6 @@ class ValueDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIns
 
     @value_outputs.setter
     def value_outputs(self, value: members.SyncList) -> None:
-        """Set the ValueOutputs member."""
+        """Set ValueOutputs. The list of outputs to send the data out from."""
         self.set_member("ValueOutputs", value)
 

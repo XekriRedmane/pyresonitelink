@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CrossMesh.
+    """The CrossMesh component is a 3D mesh made of 3 crossing boxes of equal thickness and length. It can be rotated, and the bars can be lengthened and thickened/thinned.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot, and assign to a Mesh Renderer to see what it looks
+    like. Don't forget to use a material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CrossMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, size: primitives.Float | None = None, bar_ratio: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, size: primitives.Float | None = None, bar_ratio: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             size: Initial value for Size.
             bar_ratio: Initial value for BarRatio.
             component: Existing Component to wrap.
@@ -37,6 +42,8 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if size is not None:
             self.size = size
         if bar_ratio is not None:
@@ -100,21 +107,28 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def size(self) -> primitives.Float | None:
-        """The Size field value."""
+        """The size of the cross from end to end in local space."""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -133,7 +147,7 @@ class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def bar_ratio(self) -> primitives.Float | None:
-        """The BarRatio field value."""
+        """This multiplied by size is how thick each bar is in local space."""
         member = self.get_member("BarRatio")
         if member is None:
             return None

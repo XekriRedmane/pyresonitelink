@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class CursorSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.CursorSettings.
+    """The CursorSettings component is used in the settings menu to allow the user to change the size of their cursor when it is under specific circumstances.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CursorSettings"
@@ -42,7 +42,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def base_cursor_size(self) -> primitives.Float | None:
-        """The BaseCursorSize field value."""
+        """The cursor size by default."""
         member = self.get_member("BaseCursorSize")
         if member is None:
             return None
@@ -61,7 +61,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def grab_multiplier(self) -> primitives.Float | None:
-        """The GrabMultiplier field value."""
+        """The amount to multiply the cursor size by when grabbing something"""
         member = self.get_member("GrabMultiplier")
         if member is None:
             return None
@@ -80,7 +80,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def interaction_multiplier(self) -> primitives.Float | None:
-        """The InteractionMultiplier field value."""
+        """The amount to multiply the cursor size by when pressing a button or interacting with something."""
         member = self.get_member("InteractionMultiplier")
         if member is None:
             return None
@@ -99,7 +99,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def text_multiplier(self) -> primitives.Float | None:
-        """The TextMultiplier field value."""
+        """How much to multiply the cursor size when highlighting an editable text field."""
         member = self.get_member("TextMultiplier")
         if member is None:
             return None
@@ -118,7 +118,7 @@ class CursorSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def slider_multiplier(self) -> primitives.Float | None:
-        """The SliderMultiplier field value."""
+        """The amount to multiply the cursor size when sliding a slider."""
         member = self.get_member("SliderMultiplier")
         if member is None:
             return None

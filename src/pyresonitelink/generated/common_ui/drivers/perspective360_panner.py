@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Perspective360Panner.
+    """The Perspective360Panner component allows for moving or panning across 360 degrees around a view, given the parameters of how this panning should work. This is mostly seen in the WorldListFacetPreset component, where each listed item has this component to allow looking around in the world preview thumbnails.
 
     Category: Common UI/Drivers
+
+    Useful as a way of looking around any 360 type of image.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Perspective360Panner"
@@ -53,7 +55,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
 
     @property
     def idle_fov(self) -> primitives.Float | None:
-        """The IdleFOV field value."""
+        """The field of view used when not looking around."""
         member = self.get_member("IdleFOV")
         if member is None:
             return None
@@ -72,7 +74,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
 
     @property
     def hover_fov(self) -> primitives.Float | None:
-        """The HoverFOV field value."""
+        """The field of view used when looking around."""
         member = self.get_member("HoverFOV")
         if member is None:
             return None
@@ -91,7 +93,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
 
     @property
     def fov_speed(self) -> primitives.Float | None:
-        """The FOVSpeed field value."""
+        """The field of view speed."""
         member = self.get_member("FOVSpeed")
         if member is None:
             return None
@@ -110,7 +112,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
 
     @property
     def horizontal_panning_acceleration(self) -> primitives.Float | None:
-        """The HorizontalPanningAcceleration field value."""
+        """How fast to pick up speed."""
         member = self.get_member("HorizontalPanningAcceleration")
         if member is None:
             return None
@@ -129,7 +131,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
 
     @property
     def horizontal_panning_speed(self) -> primitives.Float | None:
-        """The HorizontalPanningSpeed field value."""
+        """The horizontal panning speed."""
         member = self.get_member("HorizontalPanningSpeed")
         if member is None:
             return None
@@ -148,7 +150,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
 
     @property
     def vertical_panning_speed(self) -> primitives.Float | None:
-        """The VerticalPanningSpeed field value."""
+        """The vertical panning speed."""
         member = self.get_member("VerticalPanningSpeed")
         if member is None:
             return None
@@ -167,7 +169,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
 
     @property
     def vertical_range(self) -> primitives.Float | None:
-        """The VerticalRange field value."""
+        """The vertical range of this field of view."""
         member = self.get_member("VerticalRange")
         if member is None:
             return None
@@ -186,7 +188,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
 
     @property
     def angle_offset(self) -> primitives.Float2 | None:
-        """The AngleOffset field value."""
+        """The field of view angle offset."""
         member = self.get_member("AngleOffset")
         if member is None:
             return None
@@ -205,7 +207,7 @@ class Perspective360Panner(GeneratedComponent, IButtonHoverReceiver, IWorldEvent
 
     @property
     def fov(self) -> primitives.Float2 | None:
-        """The FOV field value."""
+        """The 2D field of view."""
         member = self.get_member("FOV")
         if member is None:
             return None

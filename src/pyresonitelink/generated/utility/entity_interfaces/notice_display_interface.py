@@ -12,9 +12,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.NoticeDisplayInterface.
+    """The NoticeDisplayInterface component allows the user to make custom notification dialogues or notification banners by saving this component as part of an item's root and then setting it as the user's notification interface.
+
+This is a favoriteable item. For more info, see Favorites.
 
     Category: Utility/Entity Interfaces
+
+    Attach to a slot and set up with a UI to display and use it's various
+    fields. Upon saving, favoriting, and restarting the game, notifications
+    will take on the new UI's appearance and behavior.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NoticeDisplayInterface"
@@ -53,7 +59,7 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[primitives.String])."""
+        """The name of this favoritable item."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -74,7 +80,7 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def spawning_user(self) -> str | None:
-        """Target ID of the SpawningUser reference (targets UserRef)."""
+        """The user that spawned this favoritable item."""
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -95,7 +101,7 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
+        """The field containing the ID of the user that spawned this favoritable item."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -116,7 +122,7 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def is_instance(self) -> primitives.Bool | None:
-        """The IsInstance field value."""
+        """Whether this item is an instance."""
         member = self.get_member("IsInstance")
         if member is None:
             return None
@@ -135,7 +141,7 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def heading(self) -> str | None:
-        """Target ID of the Heading reference (targets IField[primitives.String])."""
+        """The field to populate with what the notification header should be."""
         member = self.get_member("Heading")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -156,7 +162,7 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def icon(self) -> str | None:
-        """Target ID of the Icon reference (targets IField[str])."""
+        """The field to populate with what the icon url should be for the notification."""
         member = self.get_member("Icon")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -177,7 +183,7 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IField[primitives.String])."""
+        """The field to populate with the notification text."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -198,7 +204,7 @@ class NoticeDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEven
 
     @property
     def color(self) -> str | None:
-        """Target ID of the Color reference (targets IField[primitives.Color])."""
+        """The field to populate with the color that the notification should be."""
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             return member.targetId

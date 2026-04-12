@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TriangleMesh.
+    """The TriangeMesh component is used to generate mesh data which is a triangle for use with a MeshRenderer.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot and insert the component into a MeshRenderer to see
+    what the mesh looks like. Don't forget to add a Material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TriangleMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, auto_normals: primitives.Bool | None = None, auto_tangents: primitives.Bool | None = None, dual_sided: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, auto_normals: primitives.Bool | None = None, auto_tangents: primitives.Bool | None = None, dual_sided: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             auto_normals: Initial value for AutoNormals.
             auto_tangents: Initial value for AutoTangents.
             dual_sided: Initial value for DualSided.
@@ -38,6 +43,8 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if auto_normals is not None:
             self.auto_normals = auto_normals
         if auto_tangents is not None:
@@ -103,21 +110,28 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def vertex0(self) -> members.SyncObject | None:
-        """The Vertex0 member."""
+        """The first vertex point of the triangle."""
         member = self.get_member("Vertex0")
         if isinstance(member, members.SyncObject):
             return member
@@ -125,12 +139,12 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @vertex0.setter
     def vertex0(self, value: members.SyncObject) -> None:
-        """Set the Vertex0 member."""
+        """Set Vertex0. The first vertex point of the triangle."""
         self.set_member("Vertex0", value)
 
     @property
     def vertex1(self) -> members.SyncObject | None:
-        """The Vertex1 member."""
+        """The second vertex point of the triangle."""
         member = self.get_member("Vertex1")
         if isinstance(member, members.SyncObject):
             return member
@@ -138,12 +152,12 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @vertex1.setter
     def vertex1(self, value: members.SyncObject) -> None:
-        """Set the Vertex1 member."""
+        """Set Vertex1. The second vertex point of the triangle."""
         self.set_member("Vertex1", value)
 
     @property
     def vertex2(self) -> members.SyncObject | None:
-        """The Vertex2 member."""
+        """The third vertex point of the triangle."""
         member = self.get_member("Vertex2")
         if isinstance(member, members.SyncObject):
             return member
@@ -151,12 +165,12 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @vertex2.setter
     def vertex2(self, value: members.SyncObject) -> None:
-        """Set the Vertex2 member."""
+        """Set Vertex2. The third vertex point of the triangle."""
         self.set_member("Vertex2", value)
 
     @property
     def auto_normals(self) -> primitives.Bool | None:
-        """The AutoNormals field value."""
+        """whether to automatically generate the triangle normals"""
         member = self.get_member("AutoNormals")
         if member is None:
             return None
@@ -175,7 +189,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def auto_tangents(self) -> primitives.Bool | None:
-        """The AutoTangents field value."""
+        """whether to automatically generate the triangle tangents"""
         member = self.get_member("AutoTangents")
         if member is None:
             return None
@@ -194,7 +208,7 @@ class TriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def dual_sided(self) -> primitives.Bool | None:
-        """The DualSided field value."""
+        """whether to make this visible from the back."""
         member = self.get_member("DualSided")
         if member is None:
             return None

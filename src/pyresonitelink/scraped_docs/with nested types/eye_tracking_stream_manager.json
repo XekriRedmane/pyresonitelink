@@ -1,0 +1,15 @@
+{
+  "description": "The EyeTrackingStreamManager component uses streaming data from the ValueStream data type (seen in the user Inspector) to control the left and right eyes on a user's avatar.",
+  "category": "With Nested Types",
+  "fields": {
+    "User": "The focused user to get streaming data from.",
+    "ConvergenceDistance": "The eye distance data from the headset.",
+    "IsEyeTrackingActive": "Returns true if the eyes are being tracked from the headset.",
+    "LeftEyeStreams": "A set of fields for the left eye.",
+    "RightEyeStreams": "A set of fields for the right eye."
+  },
+  "methods": {},
+  "usage": "Used for Eye Tracking.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:EyeTrackingStreamManager&action=raw"
+}

@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonStringAppend(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonStringAppend.
+    """The ButtonStringAppend component can be used to add a string to the beginning or end of a string whenever an IButton is pressed.
 
     Category: Common UI/Button Interactions
+
+    To function, the component simply needs to be attached to a slot that
+    also has a button component attached to it. From then on, pressing that
+    button will activate the ButtonStringAppend, making it append its
+    ``AppendString`` to its ``TargetString``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonStringAppend"
@@ -37,7 +42,7 @@ class ButtonStringAppend(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def target_string(self) -> str | None:
-        """Target ID of the TargetString reference (targets IField[primitives.String])."""
+        """The string to which ``AppendString`` will be added."""
         member = self.get_member("TargetString")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +63,7 @@ class ButtonStringAppend(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def append_string(self) -> primitives.String | None:
-        """The AppendString field value."""
+        """The string to add to ``TargetString``."""
         member = self.get_member("AppendString")
         if member is None:
             return None
@@ -77,7 +82,7 @@ class ButtonStringAppend(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def append_in_front(self) -> primitives.Bool | None:
-        """The AppendInFront field value."""
+        """Whether or not to add ``AppendString`` to the beginning of the string. (This does not reverse ``AppendString``.)"""
         member = self.get_member("AppendInFront")
         if member is None:
             return None

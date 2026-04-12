@@ -11,7 +11,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BezierCurve(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BezierCurve.
+    """Bezier curve is used along with Bezier Tube Mesh to define the array of curve points that control the mesh's shape. See Bezier Tube Mesh for a full example.
+
+    **Related Components**: * Curve Point
+* Bezier Tube Mesh
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BezierCurve"
@@ -32,7 +35,7 @@ class BezierCurve(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def points(self) -> members.SyncList | None:
-        """The Points member."""
+        """A list of controlling Curve Points."""
         member = self.get_member("Points")
         if isinstance(member, members.SyncList):
             return member
@@ -40,12 +43,12 @@ class BezierCurve(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @points.setter
     def points(self, value: members.SyncList) -> None:
-        """Set the Points member."""
+        """Set Points. A list of controlling Curve Points."""
         self.set_member("Points", value)
 
     @property
     def coordinate_space(self) -> str | None:
-        """Target ID of the CoordinateSpace reference (targets Slot)."""
+        """The Coordinate Space in which to do curve calculations in."""
         member = self.get_member("CoordinateSpace")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +69,7 @@ class BezierCurve(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def assign_curve_data(self) -> str | None:
-        """Target ID of the AssignCurveData reference (targets SyncCurve[primitives.Float3])."""
+        """The list to fill with curve data, which is the ``Points`` field of a Bezier Tube Mesh."""
         member = self.get_member("AssignCurveData")
         if isinstance(member, members.Reference):
             return member.targetId

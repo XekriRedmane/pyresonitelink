@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ExternalSlotDuplicator.
+    """The ExternalSlotDuplicator component parents ``TargetSlot`` under itself when this component is duplicated. If this component is parented under a larger hiearchy, the slot will only be parented if it's not anywhere under this larger hiearchy or this component's hiearchy. When the slot is parented back under this component, any non null specified transform values for this component are applied to the slot.
+
+If ``DoNotRestoreOriginalTransform`` is enabled, it will parent the slot back where it came from and restore the original local transform values after duplication.
 
     Category: Utility
     """
@@ -46,7 +48,7 @@ class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def target_slot(self) -> str | None:
-        """Target ID of the TargetSlot reference (targets Slot)."""
+        """The slot to parent and write values for during duplication."""
         member = self.get_member("TargetSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +69,7 @@ class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def local_position_override(self) -> primitives.Float3 | None:
-        """The LocalPositionOverride field value."""
+        """The local position to apply to ``TargetSlot`` when parenting under this slot during duplication if this is not null."""
         member = self.get_member("LocalPositionOverride")
         if member is None:
             return None
@@ -86,7 +88,7 @@ class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def local_rotation_override(self) -> primitives.FloatQ | None:
-        """The LocalRotationOverride field value."""
+        """The local rotation to apply to ``TargetSlot`` when parenting under this component's slot during duplication if this is not null."""
         member = self.get_member("LocalRotationOverride")
         if member is None:
             return None
@@ -105,7 +107,7 @@ class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def local_scale_override(self) -> primitives.Float3 | None:
-        """The LocalScaleOverride field value."""
+        """The local scale to apply to ``TargetSlot`` when parenting under this component's slot during duplication if this is not null."""
         member = self.get_member("LocalScaleOverride")
         if member is None:
             return None
@@ -124,7 +126,7 @@ class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def active_self_override(self) -> primitives.Bool | None:
-        """The ActiveSelfOverride field value."""
+        """The active state to apply to ``TargetSlot``'s active field when parenting under this component's slot during duplication if this is not null."""
         member = self.get_member("ActiveSelfOverride")
         if member is None:
             return None
@@ -143,7 +145,7 @@ class ExternalSlotDuplicator(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def do_not_restore_original_transform(self) -> primitives.Bool | None:
-        """The DoNotRestoreOriginalTransform field value."""
+        """Whether to parent the slot back where it came from after duplication, Undoing all overrides and setting all values back to their originals."""
         member = self.get_member("DoNotRestoreOriginalTransform")
         if member is None:
             return None

@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BooleanValueDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BooleanValueDriver<>.
+    """The BooleanValueDriver component drives the Field in ``TargetField`` to the value specified in ``TrueValue`` or ``FalseValue`` based on ``State``.
 
     Category: Transform/Drivers
+
+    ``TargetField`` is the field to drive, and has the same type as
+    specified during component creation. When ``State`` is false, the field
+    pointed to by ``TargetField`` will take the value of ``FalseValue``.
+    When it is true, the field will take the value of ``TrueValue``.
 
     Parameterize with a value type::
 
@@ -46,7 +51,7 @@ class BooleanValueDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def state(self) -> primitives.Bool | None:
-        """The State field value."""
+        """The state of this component. Chooses which value to use when driving ``TargetField``"""
         member = self.get_member("State")
         if member is None:
             return None
@@ -65,7 +70,7 @@ class BooleanValueDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target_field(self) -> str | None:
-        """Target ID of the TargetField reference (targets IField[T])."""
+        """The Field to drive"""
         member = self.get_member("TargetField")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,9 +9,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MaterialApplyPolicy(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MaterialApplyPolicy.
+    """The MaterialApplyPolicy component allows for controlling whether a Material Tool is able to apply a material to the slot hierarchy tagged with this component onto its SkinnedMeshRenderer/MeshRenderer components.
 
     Category: Assets/Tagging
+
+    **<translate> Usage</translate>**: When this component is added to a Slot with a SkinnedMeshRenderer or MeshRenderer attached, it allows one to limit the effects of the Material Tool.
+
+    **<translate> Examples</translate>**: On an avatar, you can try adding this component to the root of the avatar, making sure the avatar has a ObjectRoot, and set ``CanApply`` to false. Doing this will ensure that the avatar's material cannot be changed by the Material Tool.
+
+Adding this component to the Slot of a MeshRender and setting ``CanApply`` to true can allow one to explicitly change the material in specific places on small objects.
+
+    **<translate> See Also</translate>**: * MeshRenderer
+* SkinnedMeshRenderer
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MaterialApplyPolicy"
@@ -29,7 +38,7 @@ class MaterialApplyPolicy(GeneratedComponent, IMaterialApplyPolicy, IWorldEventR
 
     @property
     def can_apply(self) -> primitives.Bool | None:
-        """The CanApply field value."""
+        """Setting this to false will prevent the Material Tool from applying materials to any SkinnedMeshRenderer/MeshRenderer components in the slot or child slots."""
         member = self.get_member("CanApply")
         if member is None:
             return None

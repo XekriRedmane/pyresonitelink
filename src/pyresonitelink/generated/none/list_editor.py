@@ -10,7 +10,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ListEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ListEditor.
+    """The ListEditor component is a internal-use component intended to be used to generate UIX for editing an ISyncList.
+
+    When ``_targetList`` receives a reference to a list, the ListEditor's
+    slot's children will be populated with items in the list. Each of these
+    child slots will have the name ``Element``. Each slot contains a
+    HorizontalLayout component and RectTransform component. This component
+    will misbehave when changing the ``_targetList`` after it already has a
+    reference, as doing so is unintended behavior. This component is much
+    less useful than its cousin, BagEditor, as it does not expose any method
+    to reference the list members from in-game. FrooxEngine uses internal
+    code to add references on child slots of the elements when building the
+    Scene Inspector UI.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ListEditor"
@@ -31,7 +42,7 @@ class ListEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_list(self) -> str | None:
-        """Target ID of the _targetList reference (targets ISyncList)."""
+        """The list to edit."""
         member = self.get_member("_targetList")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +63,7 @@ class ListEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def add_new_button(self) -> str | None:
-        """Target ID of the _addNewButton reference (targets Button)."""
+        """Button to add a new item to the list."""
         member = self.get_member("_addNewButton")
         if isinstance(member, members.Reference):
             return member.targetId

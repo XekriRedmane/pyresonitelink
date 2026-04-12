@@ -1,0 +1,16 @@
+{
+  "description": "The HyperlinkDisplayInterface component is spawned by the favorites system when a user pastes a link that is recognized as a website link rather than a specific media type. \n\nSee Favorites on favoritable items like this one.",
+  "category": "Utility:Entity Interfaces",
+  "fields": {
+    "ItemName": "The name of this favoritable item.",
+    "SpawningUser": "The user that spawned this favoritable item.",
+    "SpawningUserID": "The field containing the ID of the user that spawned this favoritable item.",
+    "IsInstance": "Whether this item is an instance.",
+    "Url": "The field to fill with the URL this hyperlink display should leas to.",
+    "UrlString": "The field to fill with the URL as a string so the hyperlink display can show what it leads to."
+  },
+  "methods": {},
+  "usage": "This component can be made part of a UI that can be modified and favorited to become the user's default hyperlink spawning UI.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HyperlinkDisplayInterface&action=raw"
+}

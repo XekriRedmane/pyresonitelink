@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserTrackingSpaceSync(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserTrackingSpaceSync.
+    """User Tracking Space Sync is a component that provides the local user's height, and whether they are currently using seated mode.
 
     Category: Utility
     """
@@ -32,7 +32,7 @@ class UserTrackingSpaceSync(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def seated_mode(self) -> primitives.Bool | None:
-        """The SeatedMode field value."""
+        """whether the local user is using seated mode."""
         member = self.get_member("SeatedMode")
         if member is None:
             return None
@@ -51,7 +51,7 @@ class UserTrackingSpaceSync(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def user_height(self) -> primitives.Float | None:
-        """The UserHeight field value."""
+        """the local user's height in meters."""
         member = self.get_member("UserHeight")
         if member is None:
             return None

@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FileVisual.
+    """The FileVisual component is used to handle the creation and interfacing with a file object, which is spawned into the world from inventory or using the "Raw" option when Importing.
 
     Category: Utility
+
+    Is used by the game to generate and handle the visuals of raw files. Is
+    usually not directly utilized by the player.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FileVisual"
@@ -46,7 +49,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def metadata_source(self) -> str | None:
-        """Target ID of the MetadataSource reference (targets FileMetadata)."""
+        """The component that handles importing and storing the file data this component is representing the visual of."""
         member = self.get_member("MetadataSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +70,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def type_label(self) -> str | None:
-        """Target ID of the TypeLabel reference (targets TextRenderer)."""
+        """The label that determines the file type/extension (aka the "png" part of "hello.png")"""
         member = self.get_member("TypeLabel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -88,7 +91,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def name_label(self) -> str | None:
-        """Target ID of the NameLabel reference (targets TextRenderer)."""
+        """The name of the file before the extension (aka the "hello" part of "hello.png")"""
         member = self.get_member("NameLabel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +112,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def fill_material(self) -> str | None:
-        """Target ID of the FillMaterial reference (targets PBS_DualSidedMetallic)."""
+        """The material being used for the file icon in the center."""
         member = self.get_member("FillMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -130,7 +133,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def outline_material(self) -> str | None:
-        """Target ID of the OutlineMaterial reference (targets PBS_DualSidedMetallic)."""
+        """The material being used to outline the file icon."""
         member = self.get_member("OutlineMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -151,7 +154,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def type_material(self) -> str | None:
-        """Target ID of the TypeMaterial reference (targets PBS_DualSidedMetallic)."""
+        """The material being used to color the file type. this can be orange for models, and the color varies based on file type."""
         member = self.get_member("TypeMaterial")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SettingManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SettingManager.
+    """The Setting Manager component is internally used by the settings system to handle settings changes.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SettingManager"
@@ -32,7 +34,7 @@ class SettingManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def owner_id(self) -> primitives.String | None:
-        """The OwnerId field value."""
+        """The owner of the settings that this manages."""
         member = self.get_member("OwnerId")
         if member is None:
             return None
@@ -51,7 +53,7 @@ class SettingManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def supressed_by(self) -> str | None:
-        """Target ID of the SupressedBy reference (targets SettingManager)."""
+        """Whether changes in this are suppressed by another setting manager."""
         member = self.get_member("SupressedBy")
         if isinstance(member, members.Reference):
             return member.targetId

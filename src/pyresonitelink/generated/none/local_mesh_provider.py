@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalMeshProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocalMeshProvider.
+    """The Local Mesh Provider is a component that provides a local mesh. This is used internally to render things like UIX and particles.
+
+    Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocalMeshProvider"

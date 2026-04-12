@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormFeed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Form Feed node is a character literal constant for the "Form Feed" character (Unicode: U+000C).
+    """The ``Form Feed`` node is a character literal constant for the "Form Feed" character (Unicode: U+000C).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
     """

@@ -14,7 +14,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ImpulseMultiplexer(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """An impulse multiplexer is a ProtoFlux node that takes a * (Call) and an Index (int) and outputs the impulse to a Impulses (Continuation) output with the provided index. This node could commonly be called a switch, switchboard, router, or an impulse array.
+    """An impulse multiplexer is a ProtoFlux node that takes a * (Call) and an Index (int) and outputs the impulse to a Impulses (Continuation) output with the provided index.
+This node could commonly be called a switch, switchboard, router, or an impulse array.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """
@@ -34,7 +35,7 @@ class ImpulseMultiplexer(GeneratedComponent, ISyncNodeOperation, IExecutionNode,
 
     @property
     def index(self) -> str | None:
-        """Target ID of the Index reference (targets INodeValueOutput[primitives.Int])."""
+        """Index of the Impulses (Continuation) output to send an impulse out of."""
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +56,7 @@ class ImpulseMultiplexer(GeneratedComponent, ISyncNodeOperation, IExecutionNode,
 
     @property
     def impulses(self) -> members.SyncList | None:
-        """The Impulses member."""
+        """Sends an impulse out of one of these with the index provided by Index (int) when * (Call) is called"""
         member = self.get_member("Impulses")
         if isinstance(member, members.SyncList):
             return member
@@ -63,6 +64,6 @@ class ImpulseMultiplexer(GeneratedComponent, ISyncNodeOperation, IExecutionNode,
 
     @impulses.setter
     def impulses(self, value: members.SyncList) -> None:
-        """Set the Impulses member."""
+        """Set Impulses. Sends an impulse out of one of these with the index provided by Index (int) when * (Call) is called"""
         self.set_member("Impulses", value)
 

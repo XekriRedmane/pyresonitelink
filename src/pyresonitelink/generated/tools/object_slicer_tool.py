@@ -15,9 +15,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ObjectSlicerTool.
+    """See Object Slicer Tool.
 
     Category: Tools
+
+    See Object Slicer Tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ObjectSlicerTool"
@@ -193,7 +195,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @property
     def apply_to_object_root(self) -> primitives.Bool | None:
-        """The ApplyToObjectRoot field value."""
+        """Whether the slicing material effect should be applied to the nearest object root."""
         member = self.get_member("ApplyToObjectRoot")
         if member is None:
             return None
@@ -212,7 +214,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @property
     def edge_color(self) -> primitives.ColorX | None:
-        """The EdgeColor field value."""
+        """what the edge color for new generated slice materials should be."""
         member = self.get_member("EdgeColor")
         if member is None:
             return None
@@ -231,7 +233,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @property
     def edge_start(self) -> primitives.Float | None:
-        """The EdgeStart field value."""
+        """The start of the range of the edge color from the slicer."""
         member = self.get_member("EdgeStart")
         if member is None:
             return None
@@ -250,7 +252,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @property
     def edge_end(self) -> primitives.Float | None:
-        """The EdgeEnd field value."""
+        """The end of the range of the edge color from the slicer."""
         member = self.get_member("EdgeEnd")
         if member is None:
             return None
@@ -269,7 +271,7 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @property
     def slicers(self) -> members.SyncList | None:
-        """The _slicers member."""
+        """The list of slicers this tool has generated and/or is controlling."""
         member = self.get_member("_slicers")
         if isinstance(member, members.SyncList):
             return member
@@ -277,12 +279,12 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @slicers.setter
     def slicers(self, value: members.SyncList) -> None:
-        """Set the _slicers member."""
+        """Set _slicers. The list of slicers this tool has generated and/or is controlling."""
         self.set_member("_slicers", value)
 
     @property
     def slice_materials(self) -> members.SyncList | None:
-        """The _sliceMaterials member."""
+        """The list of slice materials this tool has generated and/or is controlling."""
         member = self.get_member("_sliceMaterials")
         if isinstance(member, members.SyncList):
             return member
@@ -290,6 +292,6 @@ class ObjectSlicerTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @slice_materials.setter
     def slice_materials(self, value: members.SyncList) -> None:
-        """Set the _sliceMaterials member."""
+        """Set _sliceMaterials. The list of slice materials this tool has generated and/or is controlling."""
         self.set_member("_sliceMaterials", value)
 

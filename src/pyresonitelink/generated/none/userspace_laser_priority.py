@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserspaceLaserPriority(GeneratedComponent, IUserspaceLaserPriority, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserspaceLaserPriority.
+    """The UserspaceLaserPriority component is used in dash space only.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserspaceLaserPriority"

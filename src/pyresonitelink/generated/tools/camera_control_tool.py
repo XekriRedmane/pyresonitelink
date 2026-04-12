@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.camera_mode import CameraMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -16,14 +17,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CameraControlTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CameraControlTool.
+    """The CameraControlTool component makes a tool that changes the mode of a DroneCamera when it is fired at one of the colliders that is part of that component's hiearchy.
 
     Category: Tools
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CameraControlTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, material: str | FresnelMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, mode: CameraMode | str | None = None, material: str | FresnelMaterial | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,6 +34,7 @@ class CameraControlTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
             equip_name: Initial value for EquipName.
             override_active_tool: Initial value for _overrideActiveTool.
             grip_poses_generated: Initial value for _gripPosesGenerated.
+            mode: Initial value for Mode.
             material: Initial value for _material.
             component: Existing Component to wrap.
         """
@@ -49,6 +51,8 @@ class CameraControlTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
             self.override_active_tool = override_active_tool
         if grip_poses_generated is not None:
             self.grip_poses_generated = grip_poses_generated
+        if mode is not None:
+            self.mode = mode
         if material is not None:
             self.material = material
 
@@ -184,21 +188,28 @@ class CameraControlTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> CameraMode | None:
+        """The mode to switch a Component:DroneCamera to when firing at it with Primary."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CameraMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: CameraMode | str) -> None:
+        """Set Mode. The mode to switch a Component:DroneCamera to when firing at it with Primary."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets FresnelMaterial)."""
+        """The material to use and update the color of for the tool's cone visual."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId

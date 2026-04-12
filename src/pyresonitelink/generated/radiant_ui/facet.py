@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Facet.
+    """The Facet Component is the component that drives every user made facet in the game. This component specifically handles the sizes in which a facet can/can't, and prefers to be placed. It also reports the last size a facet was placed, the aspect ratio sizes it can be placed, and the Canvas that makes up the facet's contents.
+
+When being placed into a spot, this facet finds the closest one of ``PreferredSizes`` that can be used while still fitting and automatically makes it the size when dropped in that spot. This only triggers if the user is just dropping it on their dash, as opposed to drag clicking the facet in.
 
     Category: Radiant UI
     """
@@ -50,7 +52,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
 
     @property
     def min_width(self) -> primitives.Float | None:
-        """The MinWidth field value."""
+        """The minimum width this facet can be."""
         member = self.get_member("MinWidth")
         if member is None:
             return None
@@ -69,7 +71,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
 
     @property
     def max_width(self) -> primitives.Float | None:
-        """The MaxWidth field value."""
+        """The maximum width this facet can be."""
         member = self.get_member("MaxWidth")
         if member is None:
             return None
@@ -88,7 +90,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
 
     @property
     def min_height(self) -> primitives.Float | None:
-        """The MinHeight field value."""
+        """The minimum height this facet can be."""
         member = self.get_member("MinHeight")
         if member is None:
             return None
@@ -107,7 +109,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
 
     @property
     def max_height(self) -> primitives.Float | None:
-        """The MaxHeight field value."""
+        """The maximum height this facet can be."""
         member = self.get_member("MaxHeight")
         if member is None:
             return None
@@ -126,7 +128,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
 
     @property
     def last_placed_size(self) -> primitives.Float2 | None:
-        """The LastPlacedSize field value."""
+        """The last size that this Facet was placed as."""
         member = self.get_member("LastPlacedSize")
         if member is None:
             return None
@@ -145,7 +147,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
 
     @property
     def preferred_sizes(self) -> members.SyncList | None:
-        """The PreferredSizes member."""
+        """A list of sizes this canvas prefers to be placed when being dropped onto a facet holder."""
         member = self.get_member("PreferredSizes")
         if isinstance(member, members.SyncList):
             return member
@@ -153,12 +155,12 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
 
     @preferred_sizes.setter
     def preferred_sizes(self, value: members.SyncList) -> None:
-        """Set the PreferredSizes member."""
+        """Set PreferredSizes. A list of sizes this canvas prefers to be placed when being dropped onto a facet holder."""
         self.set_member("PreferredSizes", value)
 
     @property
     def allowed_aspect_ratios(self) -> members.SyncList | None:
-        """The AllowedAspectRatios member."""
+        """A list of allowed ratios between width and height this facet allows when being placed, lest the placement guide turns red and prevents placement."""
         member = self.get_member("AllowedAspectRatios")
         if isinstance(member, members.SyncList):
             return member
@@ -166,12 +168,12 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
 
     @allowed_aspect_ratios.setter
     def allowed_aspect_ratios(self, value: members.SyncList) -> None:
-        """Set the AllowedAspectRatios member."""
+        """Set AllowedAspectRatios. A list of allowed ratios between width and height this facet allows when being placed, lest the placement guide turns red and prevents placement."""
         self.set_member("AllowedAspectRatios", value)
 
     @property
     def is_standalone(self) -> primitives.Bool | None:
-        """The IsStandalone field value."""
+        """Whether this facet has not been placed in a dash or otherwise and is out in free form space."""
         member = self.get_member("IsStandalone")
         if member is None:
             return None
@@ -190,7 +192,7 @@ class Facet(GeneratedComponent, IGrabEventReceiver, IItemMetadataSource, IWorldE
 
     @property
     def canvas(self) -> str | None:
-        """Target ID of the Canvas reference (targets Canvas)."""
+        """The canvas being used for the visuals of this Facet."""
         member = self.get_member("Canvas")
         if isinstance(member, members.Reference):
             return member.targetId

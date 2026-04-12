@@ -1,0 +1,9 @@
+{
+  "description": "Avatar Creator Spawner is a component that works in either userspace or real space. This component recieves button events, which means it works when on the same slot of any button. When it recieves a button press event, this component spawns a fully set up Avatar Creator in the world.",
+  "category": "Utility:Tools",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarCreatorSpawner&action=raw"
+}

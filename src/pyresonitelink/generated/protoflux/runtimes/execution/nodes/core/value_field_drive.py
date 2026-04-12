@@ -15,14 +15,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueFieldDrive(GenericComponent[T], IDrive, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Value Field DriveT node creates a drive on a field with the value of its input. The field type must be a ProtoFlux value type.
+    """due to wiki limitations, this node does not currently have an HTML rendering of the node.
+
+The Value Field Drive&lt;T&gt; node creates a drive on a field with the value of its input. The field type must be a ProtoFlux value type.
+
+See ProtoFlux Tool Usage for how to make this node.
+
+The field that is driven is chosen on the `Proxy` sub-class of the component.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 
     **See also**: * Object Field Drive
-
-ProtoFlux:Core
-Listener nodes
 
     Parameterize with a value type::
 

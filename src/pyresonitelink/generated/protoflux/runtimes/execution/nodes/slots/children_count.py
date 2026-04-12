@@ -34,7 +34,7 @@ class ChildrenCount(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot for read children count for."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId

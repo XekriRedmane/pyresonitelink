@@ -16,6 +16,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class UserFromUsername(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """This node returns a user object from a username.
 
+This will only work for users present in the session.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users
     """
 
@@ -40,7 +42,7 @@ class UserFromUsername(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
 
     @property
     def username(self) -> str | None:
-        """Target ID of the Username reference (targets INodeObjectOutput[primitives.String])."""
+        """The username of the user you need."""
         member = self.get_member("Username")
         if isinstance(member, members.Reference):
             return member.targetId

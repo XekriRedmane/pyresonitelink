@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MultiNullCoalesce(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Multi Null Coalesce node operates similarly to the regular Null Coalesce node, but take multiple reference types of the same type as input. The output will be the first non-null value from the list of inputs.
+    """The Multi Null Coalesce node operates similarly to the regular Null Coalesce node, but take multiple reference types of the same type as input. The output will be the first non-``null`` value from the list of inputs.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 
@@ -27,7 +27,7 @@ class MultiNullCoalesce(GenericComponent[T], INodeObjectOutput[T], IExecutionNod
 
     @property
     def operands(self) -> members.SyncList | None:
-        """The Operands member."""
+        """The list of reference values to check."""
         member = self.get_member("Operands")
         if isinstance(member, members.SyncList):
             return member
@@ -35,6 +35,6 @@ class MultiNullCoalesce(GenericComponent[T], INodeObjectOutput[T], IExecutionNod
 
     @operands.setter
     def operands(self, value: members.SyncList) -> None:
-        """Set the Operands member."""
+        """Set Operands. The list of reference values to check."""
         self.set_member("Operands", value)
 

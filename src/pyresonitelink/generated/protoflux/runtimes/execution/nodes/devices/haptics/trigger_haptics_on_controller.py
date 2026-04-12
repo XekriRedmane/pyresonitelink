@@ -42,7 +42,7 @@ class TriggerHapticsOnController(GeneratedComponent, ISyncNodeOperation, IExecut
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after sending the haptic pulse."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class TriggerHapticsOnController(GeneratedComponent, ISyncNodeOperation, IExecut
 
     @property
     def side(self) -> str | None:
-        """Target ID of the Side reference (targets INodeValueOutput[Chirality])."""
+        """The side that will trigger the haptics for the controllers."""
         member = self.get_member("Side")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class TriggerHapticsOnController(GeneratedComponent, ISyncNodeOperation, IExecut
 
     @property
     def relative_intensity(self) -> str | None:
-        """Target ID of the RelativeIntensity reference (targets INodeValueOutput[primitives.Float])."""
+        """How much this will notify the user using haptics."""
         member = self.get_member("RelativeIntensity")
         if isinstance(member, members.Reference):
             return member.targetId

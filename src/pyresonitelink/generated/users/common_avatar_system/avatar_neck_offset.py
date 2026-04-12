@@ -12,9 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarNeckOffset(GeneratedComponent, IAvatarObjectComponent, INeckOffsetSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarNeckOffset.
+    """Avatar Neck Offset is a component that allows for dynamically lengthening and shortening the neck of an avatar.
 
     Category: Users/Common Avatar System
+
+    **Behavior**: The effect of this component when used updates instantly.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarNeckOffset"
@@ -38,7 +40,7 @@ class AvatarNeckOffset(GeneratedComponent, IAvatarObjectComponent, INeckOffsetSo
 
     @property
     def priority(self) -> primitives.Int | None:
-        """The Priority field value."""
+        """How much priority this component takes over other components that constrain or change Avatar Pose Nodes"""
         member = self.get_member("Priority")
         if member is None:
             return None
@@ -57,7 +59,7 @@ class AvatarNeckOffset(GeneratedComponent, IAvatarObjectComponent, INeckOffsetSo
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """How much to offset the user's neck from it's original position in local space."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -76,7 +78,7 @@ class AvatarNeckOffset(GeneratedComponent, IAvatarObjectComponent, INeckOffsetSo
 
     @property
     def active_user(self) -> str | None:
-        """Target ID of the _activeUser reference (targets User)."""
+        """Internal. Automatically updates to active user of this component that's being affected by it."""
         member = self.get_member("_activeUser")
         if isinstance(member, members.Reference):
             return member.targetId

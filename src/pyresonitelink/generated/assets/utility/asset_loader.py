@@ -12,9 +12,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AssetLoader(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AssetLoader<>.
+    """AssetLoader is a Component that is used to tell the game that an Asset is still being used. This is helpful for when an asset is referenced in a way that deletes it during asset cleanup and saving.
 
     Category: Assets/Utility
+
+    Set the ``Asset`` field to the asset that should be kept around,
+    afterwards the asset should not be cleaned up as long as it continues to
+    be referenced by the AssetLoader.
 
     Parameterize with a value type::
 
@@ -38,7 +42,7 @@ class AssetLoader(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def asset(self) -> str | None:
-        """Target ID of the Asset reference (targets IAssetProvider[A])."""
+        """The Asset to keep loaded."""
         member = self.get_member("Asset")
         if isinstance(member, members.Reference):
             return member.targetId

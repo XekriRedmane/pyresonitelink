@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class CustomizationSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.CustomizationSettings.
+    """The CustomizationSettings component adds an option to the Settings menu to enable and disable UI Edit Mode.
+
+    Not used by the user directly.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CustomizationSettings"
@@ -27,7 +29,7 @@ class CustomizationSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def user_interface_edit_mode(self) -> primitives.Bool | None:
-        """The UserInterfaceEditMode field value."""
+        """Whether UI Edit Mode is enabled or not."""
         member = self.get_member("UserInterfaceEditMode")
         if member is None:
             return None

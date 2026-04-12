@@ -18,9 +18,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VideoPlayerInterface.
+    """The VideoPlayerInterface component is a favoritable item that is used to specify the UI elements of a custom Video Player.
 
     Category: Utility/Entity Interfaces
+
+    Use either the existing Resonite video player under Resonite Essentials
+    or make a UI by attaching the component and making one from scratch.
+    Then save the item with this component to the inventory and favorite it
+    so it becomes the default player upon restarting.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VideoPlayerInterface"
@@ -101,7 +106,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[primitives.String])."""
+        """The name of this favoritable item."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -122,7 +127,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user(self) -> str | None:
-        """Target ID of the SpawningUser reference (targets UserRef)."""
+        """The user that spawned this favoritable item."""
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -143,7 +148,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
+        """The field containing the ID of the user that spawned this favoritable item."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -164,7 +169,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def is_instance(self) -> primitives.Bool | None:
-        """The IsInstance field value."""
+        """Whether this item is an instance."""
         member = self.get_member("IsInstance")
         if member is None:
             return None
@@ -183,7 +188,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def url(self) -> str | None:
-        """Target ID of the URL reference (targets IField[str])."""
+        """The field to fill with the URL of the imported video asset."""
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -204,7 +209,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stream(self) -> str | None:
-        """Target ID of the Stream reference (targets IField[primitives.Bool])."""
+        """The field to fill with whether this video player is showing stream."""
         member = self.get_member("Stream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -225,7 +230,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def video_clip(self) -> str | None:
-        """Target ID of the VideoClip reference (targets AssetRef[VideoTexture])."""
+        """The field to fill with what the video being displayed is."""
         member = self.get_member("VideoClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -246,7 +251,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def video_clip_texture(self) -> str | None:
-        """Target ID of the VideoClipTexture reference (targets AssetRef[ITexture2D])."""
+        """The field to fill (Usually a material texture field) with the showing video texture."""
         member = self.get_member("VideoClipTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -267,7 +272,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def aspect_ratio(self) -> str | None:
-        """Target ID of the AspectRatio reference (targets IField[primitives.Float])."""
+        """The field to fill with what the video's aspect ratio is."""
         member = self.get_member("AspectRatio")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -288,7 +293,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def default_video_clip(self) -> str | None:
-        """Target ID of the DefaultVideoClip reference (targets IAssetProvider[VideoTexture])."""
+        """The default video texture to use if one isn't filled in."""
         member = self.get_member("DefaultVideoClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -309,7 +314,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stereo_rendering_enabled(self) -> str | None:
-        """Target ID of the StereoRenderingEnabled reference (targets IField[primitives.Bool])."""
+        """The field to fill with whether the video is a stero video (3D)"""
         member = self.get_member("StereoRenderingEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -330,7 +335,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stereo_layout(self) -> str | None:
-        """Target ID of the StereoLayout reference (targets IField[StereoLayout])."""
+        """The field to fill with the kind of stero image layout the image has."""
         member = self.get_member("StereoLayout")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -351,7 +356,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stereo_transform_left(self) -> str | None:
-        """Target ID of the StereoTransformLeft reference (targets IField[primitives.Float4])."""
+        """The field to fill with what the rectangle area for the left eye should be."""
         member = self.get_member("StereoTransformLeft")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -372,7 +377,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stereo_transform_right(self) -> str | None:
-        """Target ID of the StereoTransformRight reference (targets IField[primitives.Float4])."""
+        """The field to fill with what the rectangle area for the right eye should be."""
         member = self.get_member("StereoTransformRight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -393,7 +398,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stereo_transform_scale_left(self) -> str | None:
-        """Target ID of the StereoTransformScaleLeft reference (targets IField[primitives.Float2])."""
+        """The field to fill with what the UV scale for the left eye should be."""
         member = self.get_member("StereoTransformScaleLeft")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -414,7 +419,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stereo_transform_offset_left(self) -> str | None:
-        """Target ID of the StereoTransformOffsetLeft reference (targets IField[primitives.Float2])."""
+        """The field to fill with what the UV offset for the left eye should be."""
         member = self.get_member("StereoTransformOffsetLeft")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -435,7 +440,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stereo_transform_scale_right(self) -> str | None:
-        """Target ID of the StereoTransformScaleRight reference (targets IField[primitives.Float2])."""
+        """The field to fill with what the UV scale for the right eye should be."""
         member = self.get_member("StereoTransformScaleRight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -456,7 +461,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stereo_transform_offset_right(self) -> str | None:
-        """Target ID of the StereoTransformOffsetRight reference (targets IField[primitives.Float2])."""
+        """The field to fill with what the UV offset for the right eye should be."""
         member = self.get_member("StereoTransformOffsetRight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -477,7 +482,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def panoramic_rendering_enabled(self) -> str | None:
-        """Target ID of the PanoramicRenderingEnabled reference (targets IField[primitives.Bool])."""
+        """The field to fill with whether the video is a 360 video"""
         member = self.get_member("PanoramicRenderingEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -498,7 +503,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def panoramic_horizontal_fov(self) -> str | None:
-        """Target ID of the PanoramicHorizontalFOV reference (targets IField[primitives.Float])."""
+        """The field to fill with the video's horizontal 360 video FOV."""
         member = self.get_member("PanoramicHorizontalFOV")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -519,7 +524,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def panoramic_vertical_fov(self) -> str | None:
-        """Target ID of the PanoramicVerticalFOV reference (targets IField[primitives.Float])."""
+        """The field to fill with the video's vertical 360 video FOV."""
         member = self.get_member("PanoramicVerticalFOV")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -540,7 +545,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def panoramic_projection(self) -> str | None:
-        """Target ID of the PanoramicProjection reference (targets IField[PanoramicProjection])."""
+        """The field to fill with what the video's panoramic texture arrangement is."""
         member = self.get_member("PanoramicProjection")
         if isinstance(member, members.Reference):
             return member.targetId

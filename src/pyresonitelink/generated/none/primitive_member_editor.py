@@ -13,7 +13,40 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PrimitiveMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PrimitiveMemberEditor.
+    """The PrimitiveMemberEditor component is a lower-level component for accessing and editing the members of a particular primitive element. Its intention is for use in Scene Inspectors, since they use a text field to drive member properties, but it can be more generally used on player-made objects as well. It is also, as indicated by a big warning on it, commonly used for Ref Hacking due to being able to read and write the ``id`` field of a RefID.
+
+    This component needs, at minimum, ``_target`` to point to an element
+    with fields, a ``_textDrive`` that points to the ``Content`` field of a
+    component implementing IText, and a ``_textEditor`` that points to a
+    TextEditor with its ``Text`` field pointing to the to the aforementioned
+    IText component. The ``_textDrive`` field acts as a drive with write
+    back, allowing one to interface with the field it points to, by way of a
+    Write node or the ``_textEditor``, to change the ``_target`` via the
+    text field. Additionally, there exists three Sync Delegates one may
+    apply to the ``_textEditor``. These sync delegates are not strictly
+    required for functionality of the component, but they do make the
+    editing experience nicer if one hooks some editable field up to the
+    TextEditor. ``EditingStarted`` breaks the ``_textDrive`` drive when
+    called, allowing for more flexible editing by not requiring the text
+    always be a parsable number. ``EditingChanged`` is only functional when
+    ``Continuous`` is used, and it writes the current text to the
+    ``_target`` every time the text is changed, hence being continuous.
+    ``EditingFinished`` restores the ``_textDrive`` to before and writes the
+    text value into ``_target``, and is required for proper functionality of
+    this component if ``EditingStarted`` is also used. The final sync
+    delegate of the component, ``OnReset``, is not needed unless one wishes
+    to add a reset button. When it is called, it will simply reset the
+    ``_target`` value to the type's default value. One may fill in the
+    ``_button`` and ``_resetButton`` fields. These fields are not too
+    terribly useful, as they don't provide much functionality themselves
+    (rather the Sync Delegates do), but they are used when internally
+    building the Inspector UI and when any part of the component is changed.
+    When any part of the component changes, including when the field it is
+    pointing to is edited, if ``_button`` is filled, all colors in the
+    ``ColorDrivers`` list will be set to the first color drive. If
+    ``_resetButton`` is filled, its slot will disable if the field that the
+    component is editing is not a string, which can be worked around by
+    driving the ``Enabled`` state of the slot to ``true``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PrimitiveMemberEditor"
@@ -52,7 +85,7 @@ class PrimitiveMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def continuous(self) -> primitives.Bool | None:
-        """The Continuous field value."""
+        """Whether to update the target field while editing the text field. If disabled, it will only update at the end of editing."""
         member = self.get_member("Continuous")
         if member is None:
             return None
@@ -71,7 +104,7 @@ class PrimitiveMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def path(self) -> primitives.String | None:
-        """The _path field value."""
+        """Member path of target element field to access/edit."""
         member = self.get_member("_path")
         if member is None:
             return None
@@ -90,7 +123,7 @@ class PrimitiveMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField)."""
+        """The primitive element to access/edit."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -111,7 +144,7 @@ class PrimitiveMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def format_(self) -> primitives.String | None:
-        """The Format field value."""
+        """The format for representing the target primitive. About the same as the Format field for the To String node, but only works on a limited set of primitives."""
         member = self.get_member("Format")
         if member is None:
             return None
@@ -130,7 +163,7 @@ class PrimitiveMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def text_editor(self) -> str | None:
-        """Target ID of the _textEditor reference (targets TextEditor)."""
+        """The TextEditor that points to any component that implements the IText type used for ``_textDrive``."""
         member = self.get_member("_textEditor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -151,7 +184,7 @@ class PrimitiveMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def text_drive(self) -> str | None:
-        """Target ID of the _textDrive reference (targets IField[primitives.String])."""
+        """Text field used as an interface to the member. Should be the ``Content`` field of a component implementing IText."""
         member = self.get_member("_textDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -172,7 +205,7 @@ class PrimitiveMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets Button)."""
+        """Button used for editing, like on a TextField."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -193,7 +226,7 @@ class PrimitiveMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def reset_button(self) -> str | None:
-        """Target ID of the _resetButton reference (targets Button)."""
+        """Button used to reset the value. Intended to only be used for strings."""
         member = self.get_member("_resetButton")
         if isinstance(member, members.Reference):
             return member.targetId

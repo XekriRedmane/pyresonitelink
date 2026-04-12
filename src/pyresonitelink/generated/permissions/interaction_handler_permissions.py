@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractionHandlerPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractionHandlerPermissions.
+    """The type in each list item corrisponds to a tool in the game.
 
     Category: Permissions
+
+    The type in each list item corrisponds to a tool in the game. For
+    example, FrooxEngine.ProtoFluxTool is a ProtoFlux Tool Type in the
+    type's name, and you can choose to allow or deny that kind of tool from
+    being used by the selected roles.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractionHandlerPermissions"
@@ -31,7 +36,7 @@ class InteractionHandlerPermissions(GeneratedComponent, IWorkerPermissions, ICus
 
     @property
     def allow_only_whitelisted_tools(self) -> primitives.Bool | None:
-        """The AllowOnlyWhitelistedTools field value."""
+        """Whether only tools which are set to ``Allow`` are are allowed to be equipped."""
         member = self.get_member("AllowOnlyWhitelistedTools")
         if member is None:
             return None
@@ -50,7 +55,7 @@ class InteractionHandlerPermissions(GeneratedComponent, IWorkerPermissions, ICus
 
     @property
     def tool_rules(self) -> members.SyncList | None:
-        """The ToolRules member."""
+        """List of ToolRules."""
         member = self.get_member("ToolRules")
         if isinstance(member, members.SyncList):
             return member
@@ -58,6 +63,6 @@ class InteractionHandlerPermissions(GeneratedComponent, IWorkerPermissions, ICus
 
     @tool_rules.setter
     def tool_rules(self, value: members.SyncList) -> None:
-        """Set the ToolRules member."""
+        """Set ToolRules. List of ToolRules."""
         self.set_member("ToolRules", value)
 

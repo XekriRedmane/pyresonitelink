@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PointAnchor(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PointAnchor.
+    """The PointAnchor component is used so that the dev tool can snap objects to it when they are being moved. Part of the dev tool's snapping functionality.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PointAnchor"
@@ -30,7 +30,7 @@ class PointAnchor(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
 
     @property
     def owner_root(self) -> str | None:
-        """Target ID of the OwnerRoot reference (targets Slot)."""
+        """The gizmo this belongs to."""
         member = self.get_member("OwnerRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -51,7 +51,7 @@ class PointAnchor(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
 
     @property
     def snap_parent(self) -> str | None:
-        """Target ID of the SnapParent reference (targets Slot)."""
+        """The thing objects should snap to when snapping to this point anchor."""
         member = self.get_member("SnapParent")
         if isinstance(member, members.Reference):
             return member.targetId

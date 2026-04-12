@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.curvature_aspect_ratio_compensation import CurvatureAspectRatioCompensation
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.radiant_dash_screen import RadiantDashScreen
@@ -23,12 +24,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RadiantDash.
+    """RadiantDash controls the opening and closing animations of the dash menu. When this component is created, it automatically creates child slots and the components it references.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadiantDash"
 
-    def __init__(self, current_screen: str | RadiantDashScreen | None = None, open: primitives.Bool | None = None, animation_speed: primitives.Float | None = None, screen_projection: primitives.Bool | None = None, curvature: primitives.Float | None = None, screen_switching_enabled: primitives.Bool | None = None, screens_container: str | Slot | None = None, camera: str | Camera | None = None, render_texture: str | RenderTextureProvider | None = None, top_container: str | Slot | None = None, top_mesh: str | CurvedPlaneMesh | None = None, screen_mesh: str | CurvedPlaneMesh | None = None, buttons_mesh: str | CurvedPlaneMesh | None = None, top_material: str | UnlitMaterial | None = None, screen_material: str | UnlitMaterial | None = None, buttons_material: str | UnlitMaterial | None = None, overlay_effect_material: str | UI_UnlitMaterial | None = None, top_border_material: str | UV_RectMaterial | None = None, screen_border_material: str | UV_RectMaterial | None = None, buttons_border_material: str | UV_RectMaterial | None = None, render_root: str | Slot | None = None, top_root: str | Slot | None = None, screen_root: str | Slot | None = None, buttons_root: str | Slot | None = None, visuals_root: str | Slot | None = None, effect_root: str | Slot | None = None, top_canvas: str | Canvas | None = None, buttons_uiroot: str | Slot | None = None, buttons_canvas: str | Canvas | None = None, style: str | ParticleStyle | None = None, particle_colors: str | ColorRangeInitializer | None = None, emitter: str | MeshEmitter | None = None, top_collider: str | MeshCollider | None = None, screen_collider: str | MeshCollider | None = None, buttons_collider: str | MeshCollider | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, current_screen: str | RadiantDashScreen | None = None, open: primitives.Bool | None = None, animation_speed: primitives.Float | None = None, screen_projection: primitives.Bool | None = None, curvature: primitives.Float | None = None, aspect_ratio_compensation: CurvatureAspectRatioCompensation | str | None = None, screen_switching_enabled: primitives.Bool | None = None, screens_container: str | Slot | None = None, camera: str | Camera | None = None, render_texture: str | RenderTextureProvider | None = None, top_container: str | Slot | None = None, top_mesh: str | CurvedPlaneMesh | None = None, screen_mesh: str | CurvedPlaneMesh | None = None, buttons_mesh: str | CurvedPlaneMesh | None = None, top_material: str | UnlitMaterial | None = None, screen_material: str | UnlitMaterial | None = None, buttons_material: str | UnlitMaterial | None = None, overlay_effect_material: str | UI_UnlitMaterial | None = None, top_border_material: str | UV_RectMaterial | None = None, screen_border_material: str | UV_RectMaterial | None = None, buttons_border_material: str | UV_RectMaterial | None = None, render_root: str | Slot | None = None, top_root: str | Slot | None = None, screen_root: str | Slot | None = None, buttons_root: str | Slot | None = None, visuals_root: str | Slot | None = None, effect_root: str | Slot | None = None, top_canvas: str | Canvas | None = None, buttons_uiroot: str | Slot | None = None, buttons_canvas: str | Canvas | None = None, style: str | ParticleStyle | None = None, particle_colors: str | ColorRangeInitializer | None = None, emitter: str | MeshEmitter | None = None, top_collider: str | MeshCollider | None = None, screen_collider: str | MeshCollider | None = None, buttons_collider: str | MeshCollider | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,6 +38,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
             animation_speed: Initial value for AnimationSpeed.
             screen_projection: Initial value for ScreenProjection.
             curvature: Initial value for Curvature.
+            aspect_ratio_compensation: Initial value for AspectRatioCompensation.
             screen_switching_enabled: Initial value for ScreenSwitchingEnabled.
             screens_container: Initial value for _screensContainer.
             camera: Initial value for _camera.
@@ -80,6 +82,8 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.screen_projection = screen_projection
         if curvature is not None:
             self.curvature = curvature
+        if aspect_ratio_compensation is not None:
+            self.aspect_ratio_compensation = aspect_ratio_compensation
         if screen_switching_enabled is not None:
             self.screen_switching_enabled = screen_switching_enabled
         if screens_container is not None:
@@ -143,7 +147,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_screen(self) -> str | None:
-        """Target ID of the CurrentScreen reference (targets RadiantDashScreen)."""
+        """The current screen this is showing."""
         member = self.get_member("CurrentScreen")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -164,7 +168,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def open(self) -> primitives.Bool | None:
-        """The Open field value."""
+        """Whether the dash is open."""
         member = self.get_member("Open")
         if member is None:
             return None
@@ -183,7 +187,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def animation_speed(self) -> primitives.Float | None:
-        """The AnimationSpeed field value."""
+        """How fast the dash should open and close. Equal to the reciprocal of the duration in seconds. (With the default value of 1.333..., opening and closing takes 0.75 seconds.)"""
         member = self.get_member("AnimationSpeed")
         if member is None:
             return None
@@ -202,7 +206,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_projection(self) -> primitives.Bool | None:
-        """The ScreenProjection field value."""
+        """Whether this should be rendering in desktop mode."""
         member = self.get_member("ScreenProjection")
         if member is None:
             return None
@@ -221,7 +225,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def curvature(self) -> primitives.Float | None:
-        """The Curvature field value."""
+        """How curved the dash is."""
         member = self.get_member("Curvature")
         if member is None:
             return None
@@ -239,21 +243,28 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def aspect_ratio_compensation(self) -> members.FieldEnum | None:
-        """The AspectRatioCompensation member."""
+    def aspect_ratio_compensation(self) -> CurvatureAspectRatioCompensation | None:
+        """How much to compensate the animation for curvature"""
         member = self.get_member("AspectRatioCompensation")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CurvatureAspectRatioCompensation(member.value)
         return None
 
     @aspect_ratio_compensation.setter
-    def aspect_ratio_compensation(self, value: members.FieldEnum) -> None:
-        """Set the AspectRatioCompensation member."""
-        self.set_member("AspectRatioCompensation", value)
+    def aspect_ratio_compensation(self, value: CurvatureAspectRatioCompensation | str) -> None:
+        """Set AspectRatioCompensation. How much to compensate the animation for curvature"""
+        member = self.get_member("AspectRatioCompensation")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AspectRatioCompensation",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def screen_switching_enabled(self) -> primitives.Bool | None:
-        """The ScreenSwitchingEnabled field value."""
+        """Whether to allow user screen switching."""
         member = self.get_member("ScreenSwitchingEnabled")
         if member is None:
             return None
@@ -272,7 +283,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screens_container(self) -> str | None:
-        """Target ID of the _screensContainer reference (targets Slot)."""
+        """The slot to store different screens."""
         member = self.get_member("_screensContainer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -293,7 +304,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def camera(self) -> str | None:
-        """Target ID of the _camera reference (targets Camera)."""
+        """The camera being used to render the screen onto the curved surface."""
         member = self.get_member("_camera")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -314,7 +325,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def render_texture(self) -> str | None:
-        """Target ID of the _renderTexture reference (targets RenderTextureProvider)."""
+        """the texture to render to the curved surface."""
         member = self.get_member("_renderTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -335,7 +346,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_container(self) -> str | None:
-        """Target ID of the _topContainer reference (targets Slot)."""
+        """The slot to store top elements."""
         member = self.get_member("_topContainer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -356,7 +367,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_mesh(self) -> str | None:
-        """Target ID of the _topMesh reference (targets CurvedPlaneMesh)."""
+        """The mesh to show the top elements."""
         member = self.get_member("_topMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -377,7 +388,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_mesh(self) -> str | None:
-        """Target ID of the _screenMesh reference (targets CurvedPlaneMesh)."""
+        """The mesh to show the screen elements."""
         member = self.get_member("_screenMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -398,7 +409,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def buttons_mesh(self) -> str | None:
-        """Target ID of the _buttonsMesh reference (targets CurvedPlaneMesh)."""
+        """The mesh to show the button elements."""
         member = self.get_member("_buttonsMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -419,7 +430,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_material(self) -> str | None:
-        """Target ID of the _topMaterial reference (targets UnlitMaterial)."""
+        """The material to use for the top element."""
         member = self.get_member("_topMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -440,7 +451,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_material(self) -> str | None:
-        """Target ID of the _screenMaterial reference (targets UnlitMaterial)."""
+        """The material to use for the screen element."""
         member = self.get_member("_screenMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -461,7 +472,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def buttons_material(self) -> str | None:
-        """Target ID of the _buttonsMaterial reference (targets UnlitMaterial)."""
+        """The material to use for the buttons element."""
         member = self.get_member("_buttonsMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -482,7 +493,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def overlay_effect_material(self) -> str | None:
-        """Target ID of the _overlayEffectMaterial reference (targets UI_UnlitMaterial)."""
+        """The material to use for an overlay effect."""
         member = self.get_member("_overlayEffectMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -503,7 +514,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_border_material(self) -> str | None:
-        """Target ID of the _topBorderMaterial reference (targets UV_RectMaterial)."""
+        """The material to use for the top border."""
         member = self.get_member("_topBorderMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -524,7 +535,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_border_material(self) -> str | None:
-        """Target ID of the _screenBorderMaterial reference (targets UV_RectMaterial)."""
+        """The material to use for the screen border."""
         member = self.get_member("_screenBorderMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -545,7 +556,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def buttons_border_material(self) -> str | None:
-        """Target ID of the _buttonsBorderMaterial reference (targets UV_RectMaterial)."""
+        """The material to use for the buttons border."""
         member = self.get_member("_buttonsBorderMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -566,7 +577,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def render_root(self) -> str | None:
-        """Target ID of the _renderRoot reference (targets Slot)."""
+        """The slot to render with the camera to create the visual for the curved screen."""
         member = self.get_member("_renderRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -587,7 +598,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_root(self) -> str | None:
-        """Target ID of the _topRoot reference (targets Slot)."""
+        """The root of the top element renderable."""
         member = self.get_member("_topRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -608,7 +619,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_root(self) -> str | None:
-        """Target ID of the _screenRoot reference (targets Slot)."""
+        """The root of the screen element renderable."""
         member = self.get_member("_screenRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -629,7 +640,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def buttons_root(self) -> str | None:
-        """Target ID of the _buttonsRoot reference (targets Slot)."""
+        """The root of the button element renderable."""
         member = self.get_member("_buttonsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -650,7 +661,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def visuals_root(self) -> str | None:
-        """Target ID of the _visualsRoot reference (targets Slot)."""
+        """The root of the visuals."""
         member = self.get_member("_visualsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -671,7 +682,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def effect_root(self) -> str | None:
-        """Target ID of the _effectRoot reference (targets Slot)."""
+        """The root of special effects."""
         member = self.get_member("_effectRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -692,7 +703,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_canvas(self) -> str | None:
-        """Target ID of the _topCanvas reference (targets Canvas)."""
+        """The UIX canvas of the top element."""
         member = self.get_member("_topCanvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -713,7 +724,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def buttons_uiroot(self) -> str | None:
-        """Target ID of the _buttonsUIroot reference (targets Slot)."""
+        """The root slot of the buttons element."""
         member = self.get_member("_buttonsUIroot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -734,7 +745,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def buttons_canvas(self) -> str | None:
-        """Target ID of the _buttonsCanvas reference (targets Canvas)."""
+        """The UIX canvas of the buttons element."""
         member = self.get_member("_buttonsCanvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -755,7 +766,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def style(self) -> str | None:
-        """Target ID of the _style reference (targets ParticleStyle)."""
+        """The style of the particle system creating the screen animation opening and closing edge."""
         member = self.get_member("_style")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -776,7 +787,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def particle_colors(self) -> str | None:
-        """Target ID of the _particleColors reference (targets ColorRangeInitializer)."""
+        """The color of the particles being spawned in when the dash is opening and closing."""
         member = self.get_member("_particleColors")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -797,7 +808,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def emitter(self) -> str | None:
-        """Target ID of the _emitter reference (targets MeshEmitter)."""
+        """The emitter for the opening and closing animation."""
         member = self.get_member("_emitter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -818,7 +829,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_collider(self) -> str | None:
-        """Target ID of the _topCollider reference (targets MeshCollider)."""
+        """The collider for the top element."""
         member = self.get_member("_topCollider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -839,7 +850,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_collider(self) -> str | None:
-        """Target ID of the _screenCollider reference (targets MeshCollider)."""
+        """The collider for the screens element."""
         member = self.get_member("_screenCollider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -860,7 +871,7 @@ class RadiantDash(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def buttons_collider(self) -> str | None:
-        """Target ID of the _buttonsCollider reference (targets MeshCollider)."""
+        """The collider for the buttons element."""
         member = self.get_member("_buttonsCollider")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,9 +9,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonValueSet(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonValueSet<>.
+    """The ButtonValueSet component takes in a Value Type and a ``TargetValue``. When an IButton is pressed while this component is on the same slot, this will send the value to the provided ``TargetValue``.
+
+}}
 
     Category: Common UI/Button Interactions
+
+    This is similar to the Write ProtoFlux node but as a component instead.
 
     Parameterize with a value type::
 
@@ -38,7 +42,7 @@ class ButtonValueSet(GenericComponent[T], IButtonPressReceiver, IWorldEventRecei
 
     @property
     def target_value(self) -> str | None:
-        """Target ID of the TargetValue reference (targets IField[T])."""
+        """The target to send the value outwards."""
         member = self.get_member("TargetValue")
         if isinstance(member, members.Reference):
             return member.targetId

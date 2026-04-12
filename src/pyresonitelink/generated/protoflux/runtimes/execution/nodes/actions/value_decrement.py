@@ -10,6 +10,8 @@ from pyresonitelink.generated._types.ivariable import IVariable
 class ValueDecrement(GenericComponent[T]):
     """Decrements take Variable (Variable Pseudo-generic) as a global, and will decrease the value that Variable (Variable Pseudo-generic) points to by 1.
 
+If you need to subtract more than 1 from your value, use the Sub node instead.|suggestion}}
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions
 
     Parameterize with a value type::
@@ -40,7 +42,7 @@ class ValueDecrement(GenericComponent[T]):
 
     @property
     def on_written(self) -> str | None:
-        """Target ID of the OnWritten reference (targets INodeOperation)."""
+        """sends an impulse after * (Call) has been impulsed and the value pointed to by Variable (Variable Pseudo-generic) has been decremented."""
         member = self.get_member("OnWritten")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +63,7 @@ class ValueDecrement(GenericComponent[T]):
 
     @property
     def on_fail(self) -> str | None:
-        """Target ID of the OnFail reference (targets INodeOperation)."""
+        """sends an impulse after * (Call) has been impulsed and the value wasn't able to be decremented due to a missing target or Variable (Variable Pseudo-generic) not pointing to a valid IValue`1."""
         member = self.get_member("OnFail")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsHostAccessAllowed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Is Host Access Allowed node takes in a Host IP address, an accessible port of that address, and the scope of what type of connection this is. When everything is accurate, this node will return if the user has the host access to a service. This relates to the settings in the Dash that a user can look through to see what services they have access to.
+    """The ``Is Host Access Allowed`` node takes in a Host IP address, an accessible port of that address, and the scope of what type of connection this is. When everything is accurate, this node will return if the user has the host access to a service. This relates to the settings in the Dash that a user can look through to see what services they have access to.
+
+If you provide a scheme (also called a protocol) inside the host string, it will be overridden by the scope every time, as the scope takes priority to determine the type of the network connection. A scheme looks like ``https://`` or ``ws://``.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network
     """
@@ -41,7 +43,7 @@ class IsHostAccessAllowed(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     @property
     def host(self) -> str | None:
-        """Target ID of the Host reference (targets INodeObjectOutput[primitives.String])."""
+        """The IP address to connect to."""
         member = self.get_member("Host")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +64,7 @@ class IsHostAccessAllowed(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     @property
     def port(self) -> str | None:
-        """Target ID of the Port reference (targets INodeValueOutput[primitives.Int])."""
+        """The Port Number used to access this IP address."""
         member = self.get_member("Port")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +85,7 @@ class IsHostAccessAllowed(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     @property
     def scope(self) -> str | None:
-        """Target ID of the Scope reference (targets INodeValueOutput[HostAccessScope])."""
+        """The access type used for this network connection."""
         member = self.get_member("Scope")
         if isinstance(member, members.Reference):
             return member.targetId

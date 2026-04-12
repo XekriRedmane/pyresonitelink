@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SnapNode(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SnapNode.
+    """The SnapNode component does nothing.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SnapNode"
@@ -32,7 +32,7 @@ class SnapNode(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def snap_radius(self) -> primitives.Float | None:
-        """The SnapRadius field value."""
+        """Radius."""
         member = self.get_member("SnapRadius")
         if member is None:
             return None
@@ -51,7 +51,7 @@ class SnapNode(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def collider_radius(self) -> str | None:
-        """Target ID of the _colliderRadius reference (targets IField[primitives.Float])."""
+        """Collider radius field to drive."""
         member = self.get_member("_colliderRadius")
         if isinstance(member, members.Reference):
             return member.targetId

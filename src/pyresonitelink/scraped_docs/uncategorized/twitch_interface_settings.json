@@ -1,0 +1,11 @@
+{
+  "description": "This component is used with the settings for the InteractiveCamera.",
+  "category": "Uncategorized",
+  "fields": {
+    "ChannelName": "The twitch channel name to use."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TwitchInterfaceSettings&action=raw"
+}

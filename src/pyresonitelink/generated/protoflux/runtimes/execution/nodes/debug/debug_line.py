@@ -18,6 +18,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class DebugLine(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Debug Line is a ProtoFlux node that creates a line going between Point0 to Point1 in global space. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.
 
+This is useful for Vector debugging.
+
+See also: Coordinate spaces
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Debug
     """
 
@@ -51,7 +55,7 @@ class DebugLine(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after * (Call) has been called and the visual was created."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -72,7 +76,7 @@ class DebugLine(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def point0(self) -> str | None:
-        """Target ID of the Point0 reference (targets INodeValueOutput[primitives.Float3])."""
+        """The first point of the line visual in global space."""
         member = self.get_member("Point0")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -93,7 +97,7 @@ class DebugLine(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def point1(self) -> str | None:
-        """Target ID of the Point1 reference (targets INodeValueOutput[primitives.Float3])."""
+        """The second point of the line visual in global space."""
         member = self.get_member("Point1")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -114,7 +118,7 @@ class DebugLine(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def color(self) -> str | None:
-        """Target ID of the Color reference (targets INodeValueOutput[primitives.ColorX])."""
+        """The color the visual should be."""
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -135,7 +139,7 @@ class DebugLine(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def radius(self) -> str | None:
-        """Target ID of the Radius reference (targets INodeValueOutput[primitives.Float])."""
+        """The distance from the center line to the outside edge in meters."""
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -156,7 +160,7 @@ class DebugLine(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Float])."""
+        """How long the visual should appear in seconds."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId

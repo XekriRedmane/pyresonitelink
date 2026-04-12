@@ -1,0 +1,11 @@
+{
+  "description": "The AvatarVoiceInfo is used to override the assigning behavior from a AvatarVoiceSourceAssigner component on the avatar when it assigns a target.",
+  "category": "Users:Common Avatar System:Audio",
+  "fields": {
+    "AudioSource": "The audio source to override the assigning behavior of a Component:AvatarVoiceSourceAssigner on the avatar with."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarVoiceInfo&action=raw"
+}

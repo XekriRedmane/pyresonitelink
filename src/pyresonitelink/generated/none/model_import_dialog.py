@@ -4,6 +4,9 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.material_type import MaterialType
+from pyresonitelink.generated._enums.alignment_axis import AlignmentAxis
+from pyresonitelink.generated._enums.texture_conversion import TextureConversion
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -12,18 +15,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ModelImportDialog.
+    """The ModelImportDialog component is better explained at Importing.
+
+    See Importing.
+
+    **MaterialType**: Called when the button is touched.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ModelImportDialog"
 
-    def __init__(self, content_root: str | Slot | None = None, scale: primitives.Float | None = None, auto_scale: primitives.Bool | None = None, prefer_specular: primitives.Bool | None = None, rig: primitives.Bool | None = None, setup_ik: primitives.Bool | None = None, debug_rig: primitives.Bool | None = None, colliders: primitives.Bool | None = None, animations: primitives.Bool | None = None, snappable: primitives.Bool | None = None, timelapse: primitives.Bool | None = None, external_textures: primitives.Bool | None = None, grabbable: primitives.Bool | None = None, scalable: primitives.Bool | None = None, import_at_origin: primitives.Bool | None = None, force_tpose: primitives.Bool | None = None, assets_on_object: primitives.Bool | None = None, as_point_cloud: primitives.Bool | None = None, import_images_by_name: primitives.Bool | None = None, calculate_normals: primitives.Bool | None = None, calculate_tangents: primitives.Bool | None = None, calculate_texture_alpha: primitives.Bool | None = None, import_vertex_colors: primitives.Bool | None = None, import_albedo_color: primitives.Bool | None = None, import_emissive: primitives.Bool | None = None, import_bones: primitives.Bool | None = None, import_lights: primitives.Bool | None = None, make_dual_sided: primitives.Bool | None = None, make_flat_shaded: primitives.Bool | None = None, deduplicate_instances: primitives.Bool | None = None, optimize_model: primitives.Bool | None = None, split_submeshes: primitives.Bool | None = None, generate_random_colors: primitives.Bool | None = None, spawn_material_orbs: primitives.Bool | None = None, max_texture_size: primitives.Int | None = None, force_point_filtering: primitives.Bool | None = None, force_no_mip_maps: primitives.Bool | None = None, force_uncompressed: primitives.Bool | None = None, force_as_point_cloud: primitives.Bool | None = None, potential_gaussian_splat: primitives.Bool | None = None, flip_y: primitives.Bool | None = None, encode_spz: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, content_root: str | Slot | None = None, scale: primitives.Float | None = None, auto_scale: primitives.Bool | None = None, material: MaterialType | str | None = None, prefer_specular: primitives.Bool | None = None, rig: primitives.Bool | None = None, setup_ik: primitives.Bool | None = None, debug_rig: primitives.Bool | None = None, colliders: primitives.Bool | None = None, animations: primitives.Bool | None = None, snappable: primitives.Bool | None = None, timelapse: primitives.Bool | None = None, external_textures: primitives.Bool | None = None, grabbable: primitives.Bool | None = None, scalable: primitives.Bool | None = None, import_at_origin: primitives.Bool | None = None, force_tpose: primitives.Bool | None = None, assets_on_object: primitives.Bool | None = None, as_point_cloud: primitives.Bool | None = None, import_images_by_name: primitives.Bool | None = None, import_image_alignment: AlignmentAxis | str | None = None, calculate_normals: primitives.Bool | None = None, calculate_tangents: primitives.Bool | None = None, calculate_texture_alpha: primitives.Bool | None = None, import_vertex_colors: primitives.Bool | None = None, import_albedo_color: primitives.Bool | None = None, import_emissive: primitives.Bool | None = None, import_bones: primitives.Bool | None = None, import_lights: primitives.Bool | None = None, make_dual_sided: primitives.Bool | None = None, make_flat_shaded: primitives.Bool | None = None, deduplicate_instances: primitives.Bool | None = None, optimize_model: primitives.Bool | None = None, split_submeshes: primitives.Bool | None = None, generate_random_colors: primitives.Bool | None = None, spawn_material_orbs: primitives.Bool | None = None, max_texture_size: primitives.Int | None = None, texture_conversion: TextureConversion | str | None = None, force_point_filtering: primitives.Bool | None = None, force_no_mip_maps: primitives.Bool | None = None, force_uncompressed: primitives.Bool | None = None, force_as_point_cloud: primitives.Bool | None = None, potential_gaussian_splat: primitives.Bool | None = None, flip_y: primitives.Bool | None = None, encode_spz: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             content_root: Initial value for _contentRoot.
             scale: Initial value for _scale.
             auto_scale: Initial value for _autoScale.
+            material: Initial value for _material.
             prefer_specular: Initial value for _preferSpecular.
             rig: Initial value for _rig.
             setup_ik: Initial value for _setupIK.
@@ -40,6 +48,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             assets_on_object: Initial value for _assetsOnObject.
             as_point_cloud: Initial value for _asPointCloud.
             import_images_by_name: Initial value for _importImagesByName.
+            import_image_alignment: Initial value for _importImageAlignment.
             calculate_normals: Initial value for _calculateNormals.
             calculate_tangents: Initial value for _calculateTangents.
             calculate_texture_alpha: Initial value for _calculateTextureAlpha.
@@ -56,6 +65,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             generate_random_colors: Initial value for _generateRandomColors.
             spawn_material_orbs: Initial value for _spawnMaterialOrbs.
             max_texture_size: Initial value for _maxTextureSize.
+            texture_conversion: Initial value for _textureConversion.
             force_point_filtering: Initial value for _forcePointFiltering.
             force_no_mip_maps: Initial value for _forceNoMipMaps.
             force_uncompressed: Initial value for _forceUncompressed.
@@ -72,6 +82,8 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.scale = scale
         if auto_scale is not None:
             self.auto_scale = auto_scale
+        if material is not None:
+            self.material = material
         if prefer_specular is not None:
             self.prefer_specular = prefer_specular
         if rig is not None:
@@ -104,6 +116,8 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.as_point_cloud = as_point_cloud
         if import_images_by_name is not None:
             self.import_images_by_name = import_images_by_name
+        if import_image_alignment is not None:
+            self.import_image_alignment = import_image_alignment
         if calculate_normals is not None:
             self.calculate_normals = calculate_normals
         if calculate_tangents is not None:
@@ -136,6 +150,8 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.spawn_material_orbs = spawn_material_orbs
         if max_texture_size is not None:
             self.max_texture_size = max_texture_size
+        if texture_conversion is not None:
+            self.texture_conversion = texture_conversion
         if force_point_filtering is not None:
             self.force_point_filtering = force_point_filtering
         if force_no_mip_maps is not None:
@@ -174,7 +190,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scale(self) -> primitives.Float | None:
-        """The _scale field value."""
+        """The scale of the model being imported."""
         member = self.get_member("_scale")
         if member is None:
             return None
@@ -193,7 +209,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_scale(self) -> primitives.Bool | None:
-        """The _autoScale field value."""
+        """Whether to use auto scale to humanoid height"""
         member = self.get_member("_autoScale")
         if member is None:
             return None
@@ -211,21 +227,28 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def material(self) -> members.FieldEnum | None:
-        """The _material member."""
+    def material(self) -> MaterialType | None:
+        """What kind of material to import the materials for the model as."""
         member = self.get_member("_material")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MaterialType(member.value)
         return None
 
     @material.setter
-    def material(self, value: members.FieldEnum) -> None:
-        """Set the _material member."""
-        self.set_member("_material", value)
+    def material(self, value: MaterialType | str) -> None:
+        """Set _material. What kind of material to import the materials for the model as."""
+        member = self.get_member("_material")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_material",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def prefer_specular(self) -> primitives.Bool | None:
-        """The _preferSpecular field value."""
+        """Whether the importer should prefer to use specular materials."""
         member = self.get_member("_preferSpecular")
         if member is None:
             return None
@@ -244,7 +267,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rig(self) -> primitives.Bool | None:
-        """The _rig field value."""
+        """Whether the model has a rig or not."""
         member = self.get_member("_rig")
         if member is None:
             return None
@@ -263,7 +286,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def setup_ik(self) -> primitives.Bool | None:
-        """The _setupIK field value."""
+        """Whether IK should be set up."""
         member = self.get_member("_setupIK")
         if member is None:
             return None
@@ -282,7 +305,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def debug_rig(self) -> primitives.Bool | None:
-        """The _debugRig field value."""
+        """Whether to debug the rig bones after import."""
         member = self.get_member("_debugRig")
         if member is None:
             return None
@@ -301,7 +324,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def colliders(self) -> primitives.Bool | None:
-        """The _colliders field value."""
+        """Whether to add auto generated colliders."""
         member = self.get_member("_colliders")
         if member is None:
             return None
@@ -320,7 +343,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def animations(self) -> primitives.Bool | None:
-        """The _animations field value."""
+        """Whether to import animations."""
         member = self.get_member("_animations")
         if member is None:
             return None
@@ -339,7 +362,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def snappable(self) -> primitives.Bool | None:
-        """The _snappable field value."""
+        """Whether to import the model as separate snappable pieces"""
         member = self.get_member("_snappable")
         if member is None:
             return None
@@ -358,7 +381,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timelapse(self) -> primitives.Bool | None:
-        """The _timelapse field value."""
+        """Whether to import animations as timelapses"""
         member = self.get_member("_timelapse")
         if member is None:
             return None
@@ -377,7 +400,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def external_textures(self) -> primitives.Bool | None:
-        """The _externalTextures field value."""
+        """Whether to look for external textures when importing"""
         member = self.get_member("_externalTextures")
         if member is None:
             return None
@@ -396,7 +419,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def grabbable(self) -> primitives.Bool | None:
-        """The _grabbable field value."""
+        """Whether to import the model as grabbable"""
         member = self.get_member("_grabbable")
         if member is None:
             return None
@@ -415,7 +438,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scalable(self) -> primitives.Bool | None:
-        """The _scalable field value."""
+        """Whether to import the model as scalable."""
         member = self.get_member("_scalable")
         if member is None:
             return None
@@ -434,7 +457,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def import_at_origin(self) -> primitives.Bool | None:
-        """The _importAtOrigin field value."""
+        """Whether to import the model centered at the world origin"""
         member = self.get_member("_importAtOrigin")
         if member is None:
             return None
@@ -453,7 +476,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def force_tpose(self) -> primitives.Bool | None:
-        """The _forceTpose field value."""
+        """Whether to enforce a t-pose on an IK model when importing"""
         member = self.get_member("_forceTpose")
         if member is None:
             return None
@@ -472,7 +495,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def assets_on_object(self) -> primitives.Bool | None:
-        """The _assetsOnObject field value."""
+        """Whether to place the asset components on the avatar itself under a list of slots, or place them under the world assets and have them be optimized automatically."""
         member = self.get_member("_assetsOnObject")
         if member is None:
             return None
@@ -491,7 +514,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def as_point_cloud(self) -> primitives.Bool | None:
-        """The _asPointCloud field value."""
+        """Whether to import as a point cloud."""
         member = self.get_member("_asPointCloud")
         if member is None:
             return None
@@ -510,7 +533,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def import_images_by_name(self) -> primitives.Bool | None:
-        """The _importImagesByName field value."""
+        """Whether to import images by name."""
         member = self.get_member("_importImagesByName")
         if member is None:
             return None
@@ -528,21 +551,28 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def import_image_alignment(self) -> members.FieldEnum | None:
-        """The _importImageAlignment member."""
+    def import_image_alignment(self) -> AlignmentAxis | None:
+        """Which axis import the image objects along."""
         member = self.get_member("_importImageAlignment")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AlignmentAxis(member.value)
         return None
 
     @import_image_alignment.setter
-    def import_image_alignment(self, value: members.FieldEnum) -> None:
-        """Set the _importImageAlignment member."""
-        self.set_member("_importImageAlignment", value)
+    def import_image_alignment(self, value: AlignmentAxis | str) -> None:
+        """Set _importImageAlignment. Which axis import the image objects along."""
+        member = self.get_member("_importImageAlignment")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_importImageAlignment",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def calculate_normals(self) -> primitives.Bool | None:
-        """The _calculateNormals field value."""
+        """Whether to calculate new normals on import."""
         member = self.get_member("_calculateNormals")
         if member is None:
             return None
@@ -561,7 +591,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def calculate_tangents(self) -> primitives.Bool | None:
-        """The _calculateTangents field value."""
+        """Whether to calculate new tangents on import."""
         member = self.get_member("_calculateTangents")
         if member is None:
             return None
@@ -580,7 +610,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def calculate_texture_alpha(self) -> primitives.Bool | None:
-        """The _calculateTextureAlpha field value."""
+        """Whether to calculate new texture alpha/transparency on import."""
         member = self.get_member("_calculateTextureAlpha")
         if member is None:
             return None
@@ -599,7 +629,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def import_vertex_colors(self) -> primitives.Bool | None:
-        """The _importVertexColors field value."""
+        """Whether to import vertex color data for the model."""
         member = self.get_member("_importVertexColors")
         if member is None:
             return None
@@ -618,7 +648,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def import_albedo_color(self) -> primitives.Bool | None:
-        """The _importAlbedoColor field value."""
+        """Whether to import material solid albedo color data on import"""
         member = self.get_member("_importAlbedoColor")
         if member is None:
             return None
@@ -637,7 +667,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def import_emissive(self) -> primitives.Bool | None:
-        """The _importEmissive field value."""
+        """Whether to import material solid emissive color data on import."""
         member = self.get_member("_importEmissive")
         if member is None:
             return None
@@ -656,7 +686,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def import_bones(self) -> primitives.Bool | None:
-        """The _importBones field value."""
+        """Whether to import model rig bones on import."""
         member = self.get_member("_importBones")
         if member is None:
             return None
@@ -675,7 +705,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def import_lights(self) -> primitives.Bool | None:
-        """The _importLights field value."""
+        """Whether to import model light objects on import."""
         member = self.get_member("_importLights")
         if member is None:
             return None
@@ -694,7 +724,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def make_dual_sided(self) -> primitives.Bool | None:
-        """The _makeDualSided field value."""
+        """Whether to import the model as dual sided geometry."""
         member = self.get_member("_makeDualSided")
         if member is None:
             return None
@@ -713,7 +743,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def make_flat_shaded(self) -> primitives.Bool | None:
-        """The _makeFlatShaded field value."""
+        """Whether to import the model geometry as flat shaded rather than smooth shaded."""
         member = self.get_member("_makeFlatShaded")
         if member is None:
             return None
@@ -732,7 +762,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def deduplicate_instances(self) -> primitives.Bool | None:
-        """The _deduplicateInstances field value."""
+        """Whether to deduplicate duplicate data on the mesh like cubes or models in the same place and size."""
         member = self.get_member("_deduplicateInstances")
         if member is None:
             return None
@@ -751,7 +781,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def optimize_model(self) -> primitives.Bool | None:
-        """The _optimizeModel field value."""
+        """Whether to do some small optimizations to the model or not."""
         member = self.get_member("_optimizeModel")
         if member is None:
             return None
@@ -770,7 +800,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def split_submeshes(self) -> primitives.Bool | None:
-        """The _splitSubmeshes field value."""
+        """Whether to split the model by material or not."""
         member = self.get_member("_splitSubmeshes")
         if member is None:
             return None
@@ -789,7 +819,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def generate_random_colors(self) -> primitives.Bool | None:
-        """The _generateRandomColors field value."""
+        """Whether to generate random colors per material for identification or not."""
         member = self.get_member("_generateRandomColors")
         if member is None:
             return None
@@ -808,7 +838,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def spawn_material_orbs(self) -> primitives.Bool | None:
-        """The _spawnMaterialOrbs field value."""
+        """Whether to spawn material orb objects per material for easy access."""
         member = self.get_member("_spawnMaterialOrbs")
         if member is None:
             return None
@@ -827,7 +857,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_texture_size(self) -> primitives.Int | None:
-        """The _maxTextureSize field value."""
+        """The max texture size to restrict textures to on the model during import."""
         member = self.get_member("_maxTextureSize")
         if member is None:
             return None
@@ -845,21 +875,28 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def texture_conversion(self) -> members.FieldEnum | None:
-        """The _textureConversion member."""
+    def texture_conversion(self) -> TextureConversion | None:
+        """What kind of texture format to convert imported textures to."""
         member = self.get_member("_textureConversion")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureConversion(member.value)
         return None
 
     @texture_conversion.setter
-    def texture_conversion(self, value: members.FieldEnum) -> None:
-        """Set the _textureConversion member."""
-        self.set_member("_textureConversion", value)
+    def texture_conversion(self, value: TextureConversion | str) -> None:
+        """Set _textureConversion. What kind of texture format to convert imported textures to."""
+        member = self.get_member("_textureConversion")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_textureConversion",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def force_point_filtering(self) -> primitives.Bool | None:
-        """The _forcePointFiltering field value."""
+        """Whether to force point filtering on textures (Pixel art)"""
         member = self.get_member("_forcePointFiltering")
         if member is None:
             return None
@@ -878,7 +915,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def force_no_mip_maps(self) -> primitives.Bool | None:
-        """The _forceNoMipMaps field value."""
+        """Whether to disable texture resolution reduction by distance optimization."""
         member = self.get_member("_forceNoMipMaps")
         if member is None:
             return None
@@ -897,7 +934,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def force_uncompressed(self) -> primitives.Bool | None:
-        """The _forceUncompressed field value."""
+        """Whether to disable compression on assets and textures or not."""
         member = self.get_member("_forceUncompressed")
         if member is None:
             return None
@@ -916,7 +953,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def force_as_point_cloud(self) -> primitives.Bool | None:
-        """The ForceAsPointCloud field value."""
+        """Whether to enforce importing the model as a point cloud or not."""
         member = self.get_member("ForceAsPointCloud")
         if member is None:
             return None
@@ -935,7 +972,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def potential_gaussian_splat(self) -> primitives.Bool | None:
-        """The PotentialGaussianSplat field value."""
+        """Whether to interpret the data as a gaussian splat."""
         member = self.get_member("PotentialGaussianSplat")
         if member is None:
             return None
@@ -954,7 +991,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def flip_y(self) -> primitives.Bool | None:
-        """The _flipY field value."""
+        """Whether to flip the gaussian splat on the Y axis."""
         member = self.get_member("_flipY")
         if member is None:
             return None
@@ -973,7 +1010,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def encode_spz(self) -> primitives.Bool | None:
-        """The _encodeSPZ field value."""
+        """Whether the gaussian splat is an SPZ format."""
         member = self.get_member("_encodeSPZ")
         if member is None:
             return None
@@ -991,7 +1028,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     async def preset_3d_model(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the Preset_3DModel sync method.
+        """Called when the 3d model preset button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1007,7 +1044,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def preset_vertex_color_model(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the Preset_VertexColorModel sync method.
+        """Called when the vertex color model preset button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1023,7 +1060,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def preset_3d_scan(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the Preset_3DScan sync method.
+        """Called when the 3d scan preset button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1039,7 +1076,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def preset_cad_model(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the Preset_CADModel sync method.
+        """Called when the CAD preset button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1055,7 +1092,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def preset_point_cloud(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the Preset_PointCloud sync method.
+        """Called when the point cloud preset button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1071,7 +1108,7 @@ class ModelImportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def preset_gaussian_splat(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the Preset_GaussianSplat sync method.
+        """Called when the gaussian splat preset button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.

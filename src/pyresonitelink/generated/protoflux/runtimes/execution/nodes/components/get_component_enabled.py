@@ -34,7 +34,7 @@ class GetComponentEnabled(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     @property
     def component_(self) -> str | None:
-        """Target ID of the Component reference (targets INodeObjectOutput[IComponent])."""
+        """The IComponent to check the enabled field for."""
         member = self.get_member("Component")
         if isinstance(member, members.Reference):
             return member.targetId

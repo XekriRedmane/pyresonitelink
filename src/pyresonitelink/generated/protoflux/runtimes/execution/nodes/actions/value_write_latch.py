@@ -50,7 +50,7 @@ class ValueWriteLatch(GenericComponent[T]):
 
     @property
     def on_set(self) -> str | None:
-        """Target ID of the OnSet reference (targets INodeOperation)."""
+        """sends an impulse after SetValue (Call) has been impulsed and the value pointed to by Variable (Variable Generic) has been set to SetValue (Generic)."""
         member = self.get_member("OnSet")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -71,7 +71,7 @@ class ValueWriteLatch(GenericComponent[T]):
 
     @property
     def on_reset(self) -> str | None:
-        """Target ID of the OnReset reference (targets INodeOperation)."""
+        """sends an impulse after ResetValue (Call) has been impulsed and the value pointed to by Variable (Variable Generic) has been set to ResetValue (Generic)."""
         member = self.get_member("OnReset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +92,7 @@ class ValueWriteLatch(GenericComponent[T]):
 
     @property
     def on_fail(self) -> str | None:
-        """Target ID of the OnFail reference (targets INodeOperation)."""
+        """sends an impulse after either ResetValue (Call) or SetValue (Call) has been impulsed and the value wasn't able to be written due to a missing Variable (Variable Generic) Value."""
         member = self.get_member("OnFail")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -113,7 +113,7 @@ class ValueWriteLatch(GenericComponent[T]):
 
     @property
     def set_(self) -> members.EmptyElement | None:
-        """The Set member."""
+        """Call this to set the value pointed to by Variable (Variable Generic) to the SetValue (Generic) input."""
         member = self.get_member("Set")
         if isinstance(member, members.EmptyElement):
             return member
@@ -121,12 +121,12 @@ class ValueWriteLatch(GenericComponent[T]):
 
     @set_.setter
     def set_(self, value: members.EmptyElement) -> None:
-        """Set the Set member."""
+        """Set Set. Call this to set the value pointed to by Variable (Variable Generic) to the SetValue (Generic) input."""
         self.set_member("Set", value)
 
     @property
     def reset(self) -> members.EmptyElement | None:
-        """The Reset member."""
+        """Call this to set the value pointed to by Variable (Variable Generic) to the ResetValue (Generic) input."""
         member = self.get_member("Reset")
         if isinstance(member, members.EmptyElement):
             return member
@@ -134,7 +134,7 @@ class ValueWriteLatch(GenericComponent[T]):
 
     @reset.setter
     def reset(self, value: members.EmptyElement) -> None:
-        """Set the Reset member."""
+        """Set Reset. Call this to set the value pointed to by Variable (Variable Generic) to the ResetValue (Generic) input."""
         self.set_member("Reset", value)
 
     @property
@@ -160,7 +160,7 @@ class ValueWriteLatch(GenericComponent[T]):
 
     @property
     def set_value(self) -> str | None:
-        """Target ID of the SetValue reference (targets INodeValueOutput[T])."""
+        """Value to write to the value pointed to by Variable (Variable Generic) upon calling Set (Call)"""
         member = self.get_member("SetValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -181,7 +181,7 @@ class ValueWriteLatch(GenericComponent[T]):
 
     @property
     def reset_value(self) -> str | None:
-        """Target ID of the ResetValue reference (targets INodeValueOutput[T])."""
+        """Value to write to the value pointed to by Variable (Variable Generic) upon calling Reset (Call)"""
         member = self.get_member("ResetValue")
         if isinstance(member, members.Reference):
             return member.targetId

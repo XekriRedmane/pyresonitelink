@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScaleObjectCreator(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ScaleObjectCreator.
+    """Scale Object Creator component as seen in the Scene Inspector
 
     Category: Transform/Scaling
     """

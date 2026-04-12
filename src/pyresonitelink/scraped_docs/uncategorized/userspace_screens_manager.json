@@ -1,0 +1,12 @@
+{
+  "description": "The UserspaceScreensManager component is used in the user space and handles login status and unread notifications.",
+  "category": "Uncategorized",
+  "fields": {
+    "_loginStatus": "The current login status of the user.",
+    "_unreadIndicator": "How many unread notifications the user has, which is driven to the specified text element."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserspaceScreensManager&action=raw"
+}

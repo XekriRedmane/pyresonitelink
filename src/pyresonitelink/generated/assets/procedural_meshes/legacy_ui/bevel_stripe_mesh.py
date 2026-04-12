@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,25 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BevelStripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BevelStripeMesh.
+    """Bevel Stripe Mesh is a component that generates Mesh data for cube with a different bevel depth on the top left edge and bottom right edge of the cube. It can also be indented in the middle on two opposite sides.
 
     Category: Assets/Procedural Meshes/Legacy UI
+
+    The geometry this generates can be viewed by inserting the component
+    into a Mesh Renderer component. Don't forget to use a material with the
+    mesh renderer.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BevelStripeMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, width: primitives.Float | None = None, height: primitives.Float | None = None, thickness: primitives.Float | None = None, slant_left: primitives.Float | None = None, slant_right: primitives.Float | None = None, relief: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, width: primitives.Float | None = None, height: primitives.Float | None = None, thickness: primitives.Float | None = None, slant_left: primitives.Float | None = None, slant_right: primitives.Float | None = None, relief: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             width: Initial value for Width.
             height: Initial value for Height.
             thickness: Initial value for Thickness.
@@ -41,6 +47,8 @@ class BevelStripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if width is not None:
             self.width = width
         if height is not None:
@@ -112,21 +120,28 @@ class BevelStripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def width(self) -> primitives.Float | None:
-        """The Width field value."""
+        """The width of the cube"""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -145,7 +160,7 @@ class BevelStripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """the height of the cube"""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -164,7 +179,7 @@ class BevelStripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """the length of the cube."""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -183,7 +198,7 @@ class BevelStripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def slant_left(self) -> primitives.Float | None:
-        """The SlantLeft field value."""
+        """the Bevel angle of the length wise edge on the top left."""
         member = self.get_member("SlantLeft")
         if member is None:
             return None
@@ -202,7 +217,7 @@ class BevelStripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def slant_right(self) -> primitives.Float | None:
-        """The SlantRight field value."""
+        """the Bevel angle of the length wise edge on the bottom right."""
         member = self.get_member("SlantRight")
         if member is None:
             return None
@@ -221,7 +236,7 @@ class BevelStripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def relief(self) -> primitives.Bool | None:
-        """The Relief field value."""
+        """Whether to indent the cube in the center."""
         member = self.get_member("Relief")
         if member is None:
             return None

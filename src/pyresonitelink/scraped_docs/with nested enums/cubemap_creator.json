@@ -1,0 +1,19 @@
+{
+  "description": "See Cubemap Creator.",
+  "category": "With Nested Enums",
+  "fields": {
+    "TopBottomRotation": "How to Rotate the top and bottom images to fit.",
+    "PosX": "What to use for the positive X side.",
+    "NegX": "What to use for the negative X side.",
+    "PosY": "What to use for the positive Y side.",
+    "NegY": "What to use for the negative Y side.",
+    "PosZ": "What to use for the top side.",
+    "NegZ": "What to use for the bottom side."
+  },
+  "methods": {
+    "OnCreate": "Tells the creator to create the cubemap."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CubemapCreator&action=raw"
+}

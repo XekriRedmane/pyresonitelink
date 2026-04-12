@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectToMinMax(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Rect To Min Max node takes in a rect value and returns 2 specific float2 values, showing the minimum size of the rect, usually just at the X and Y position, and also returning the max size of this rect, which is usually X + Width and Y + Height. In contrast to the Rect To Position Size node where it takes the literal position and size to get a rect's bounding data.
+    """The Rect To Min Max node takes in a rect value and returns 2 specific float2 values, showing the minimum size of the rect, usually just at the ``X`` and ``Y`` position, and also returning the max size of this rect, which is usually ``X`` + ``Width`` and ``Y`` + ``Height``. In contrast to the Rect To Position Size node where it takes the literal position and size to get a rect's bounding data.
+
+If you need to split a rect into specific and separated outputs, use the Rect To XYWH node instead.|suggestion}}
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Rects
     """
@@ -33,7 +35,7 @@ class RectToMinMax(GeneratedComponent, IExecutionNode, INode, ICustomInspector, 
 
     @property
     def rect(self) -> str | None:
-        """Target ID of the Rect reference (targets INodeValueOutput[primitives.Rect])."""
+        """The rect value."""
         member = self.get_member("Rect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -54,7 +56,7 @@ class RectToMinMax(GeneratedComponent, IExecutionNode, INode, ICustomInspector, 
 
     @property
     def min(self) -> members.EmptyElement | None:
-        """The Min member."""
+        """Returns the minimum size of this rect (usually returning the ``X`` and ``Y`` position of this rect)."""
         member = self.get_member("Min")
         if isinstance(member, members.EmptyElement):
             return member
@@ -62,12 +64,12 @@ class RectToMinMax(GeneratedComponent, IExecutionNode, INode, ICustomInspector, 
 
     @min.setter
     def min(self, value: members.EmptyElement) -> None:
-        """Set the Min member."""
+        """Set Min. Returns the minimum size of this rect (usually returning the ``X`` and ``Y`` position of this rect)."""
         self.set_member("Min", value)
 
     @property
     def max(self) -> members.EmptyElement | None:
-        """The Max member."""
+        """Returns the maximum size of this rect (usually returning the ``X`` + ``Width`` and ``Y`` + ``Height`` of this rect)."""
         member = self.get_member("Max")
         if isinstance(member, members.EmptyElement):
             return member
@@ -75,6 +77,6 @@ class RectToMinMax(GeneratedComponent, IExecutionNode, INode, ICustomInspector, 
 
     @max.setter
     def max(self, value: members.EmptyElement) -> None:
-        """Set the Max member."""
+        """Set Max. Returns the maximum size of this rect (usually returning the ``X`` + ``Width`` and ``Y`` + ``Height`` of this rect)."""
         self.set_member("Max", value)
 

@@ -1,0 +1,18 @@
+{
+  "description": "The NoticeDisplayInterface component allows the user to make custom notification dialogues or notification banners by saving this component as part of an item's root and then setting it as the user's notification interface.\n\nThis is a favoriteable item. For more info, see Favorites.",
+  "category": "Utility:Entity Interfaces",
+  "fields": {
+    "ItemName": "The name of this favoritable item.",
+    "SpawningUser": "The user that spawned this favoritable item.",
+    "SpawningUserID": "The field containing the ID of the user that spawned this favoritable item.",
+    "IsInstance": "Whether this item is an instance.",
+    "Heading": "The field to populate with what the notification header should be.",
+    "Icon": "The field to populate with what the icon url should be for the notification.",
+    "Text": "The field to populate with the notification text.",
+    "Color": "The field to populate with the color that the notification should be."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and set up with a UI to display and use it's various fields. Upon saving, favoriting, and restarting the game, notifications will take on the new UI's appearance and behavior.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NoticeDisplayInterface&action=raw"
+}

@@ -16,7 +16,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceSource(GenericComponent[T], IVariable, ISource, INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """See ProtoFlux Tool Usage for how to make this node.
+    """due to wiki limitations, this node does not currently have an HTML rendering of the node.
+
+See ProtoFlux Tool Usage for how to make this node.
+
+Allows you to read a value from an internal specified field.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

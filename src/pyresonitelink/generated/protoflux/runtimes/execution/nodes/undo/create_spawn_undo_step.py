@@ -18,6 +18,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class CreateSpawnUndoStep(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Create Spawn Undo Step will create an undo step in the Context Menu of the person who the impulse came from. This node will make the description of the undo step in the context menu the provided Description (String). This does the best when paired with a Duplicate Slot, since the slot is being spawned this node will allow the duplicate to be undo-able by the user.
 
+when this node is paired with an Undo Batch, it's description if has one, will be ignored, and will be part of the Undo Batch's undo step instead.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """
 
@@ -63,7 +65,7 @@ class CreateSpawnUndoStep(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[Slot])."""
+        """The Slot to undo for this undo step."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +86,7 @@ class CreateSpawnUndoStep(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def description(self) -> str | None:
-        """Target ID of the Description reference (targets INodeObjectOutput[primitives.String])."""
+        """The description for the undo step in the user's context menu. Gets overridden if this node is part of a Undo Batch."""
         member = self.get_member("Description")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class MouseSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.MouseSettings.
+    """See Settings.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MouseSettings"
@@ -42,7 +44,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def mouse_sensitivity(self) -> primitives.Float | None:
-        """The MouseSensitivity field value."""
+        """How sensitive the game head movement is to mouse movement."""
         member = self.get_member("MouseSensitivity")
         if member is None:
             return None
@@ -61,7 +63,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def scroll_wheel_grab_move_speed(self) -> primitives.Float | None:
-        """The ScrollWheelGrabMoveSpeed field value."""
+        """How far items move to and from the player while being grabbed and the scroll wheel is moved 1 unit."""
         member = self.get_member("ScrollWheelGrabMoveSpeed")
         if member is None:
             return None
@@ -80,7 +82,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def mouse_look_speed(self) -> primitives.Float | None:
-        """The MouseLookSpeed field value."""
+        """How fast the mouse moves the camera."""
         member = self.get_member("MouseLookSpeed")
         if member is None:
             return None
@@ -99,7 +101,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def mouse_pan_speed(self) -> primitives.Float | None:
-        """The MousePanSpeed field value."""
+        """How fast the mouse moves the camera sideways and up/down when focused on an inspector."""
         member = self.get_member("MousePanSpeed")
         if member is None:
             return None
@@ -118,7 +120,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def mouse_rotate_speed(self) -> primitives.Float | None:
-        """The MouseRotateSpeed field value."""
+        """How fast the mouse can be used to rotate objects."""
         member = self.get_member("MouseRotateSpeed")
         if member is None:
             return None
@@ -137,7 +139,7 @@ class MouseSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def mouse_freeform_rotate_speed(self) -> primitives.Float | None:
-        """The MouseFreeformRotateSpeed field value."""
+        """How fast the mouse can be used to free form look in 3rd person desktop mode."""
         member = self.get_member("MouseFreeformRotateSpeed")
         if member is None:
             return None

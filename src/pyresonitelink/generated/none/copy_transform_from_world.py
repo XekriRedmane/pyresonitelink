@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CopyTransformFromWorld(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CopyTransformFromWorld.
+    """The CopyTransformFromWorld component is used by the game to copy transforms from other worlds. This is mainly used by userspace to copy transforms from objects like world orbs when the user highlights them.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CopyTransformFromWorld"
@@ -33,7 +33,7 @@ class CopyTransformFromWorld(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def copy_position(self) -> primitives.Bool | None:
-        """The CopyPosition field value."""
+        """Whether to copy Position."""
         member = self.get_member("CopyPosition")
         if member is None:
             return None
@@ -52,7 +52,7 @@ class CopyTransformFromWorld(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def copy_rotation(self) -> primitives.Bool | None:
-        """The CopyRotation field value."""
+        """Whether to copy Rotation."""
         member = self.get_member("CopyRotation")
         if member is None:
             return None
@@ -71,7 +71,7 @@ class CopyTransformFromWorld(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def copy_scale(self) -> primitives.Bool | None:
-        """The CopyScale field value."""
+        """Whether to copy Scale."""
         member = self.get_member("CopyScale")
         if member is None:
             return None

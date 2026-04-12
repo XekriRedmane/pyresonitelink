@@ -1,0 +1,18 @@
+{
+  "description": "Avatar Neck Offset is a component that allows for dynamically lengthening and shortening the neck of an avatar.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "Priority": "How much priority this component takes over other components that constrain or change Avatar Pose Nodes",
+    "Offset": "How much to offset the user's neck from it's original position in local space.",
+    "_activeUser": "Internal. Automatically updates to active user of this component that's being affected by it."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "The effect of this component when used updates instantly."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarNeckOffset&action=raw"
+}

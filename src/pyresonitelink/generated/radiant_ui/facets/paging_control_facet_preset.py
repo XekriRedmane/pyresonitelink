@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PagingControlFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PagingControlFacetPreset.
+    """The PagingControlFacetPreset component makes a container that stores a PagingControl component on the dash and tells that component to build a UIX for itself inside of this container.
 
     Category: Radiant UI/Facets
     """
@@ -29,7 +29,7 @@ class PagingControlFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def paging_control(self) -> str | None:
-        """Target ID of the _pagingControl reference (targets PagingControl)."""
+        """The paging control component for this facet"""
         member = self.get_member("_pagingControl")
         if isinstance(member, members.Reference):
             return member.targetId

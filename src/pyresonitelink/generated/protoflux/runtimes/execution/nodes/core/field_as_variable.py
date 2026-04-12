@@ -16,6 +16,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class FieldAsVariable(GenericComponent[T], IVariable, INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Field As Variable node transforms an IValue of the given type into an IVariable that can then be written to with an Indirect Write node.
 
+Despite being called "Field As Variable", any IValue type will work as input. An example of an IValue that is not necessarily a Field is the AuthorityTimeBase component.
+
+This node implements IVariable itself. This means that one may drag the output of this node into a normal Write node and write to the given IValue. This is actually more performant than using an Indirect Write, as a normal write node does not check if the variable changes every time it is pulsed. However, The performance gain diminishes the more often the input IValue changes, being roughly equal if the IValue changes at every write call.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 
     Parameterize with a value type::

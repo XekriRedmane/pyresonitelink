@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PositionDeltaDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PositionDeltaDriver.
+    """The PositionDeltaDriver component drives a field with a vector drawn from ``Origin`` to ``Target`` in global space transformed (optionally normalized) into space ``VectorSpace``.
 
     Category: Transform/Drivers
+
+    Provide at least a ``Target`` slot and a value to drive for ``Vector``
+    to use this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PositionDeltaDriver"
@@ -41,7 +44,7 @@ class PositionDeltaDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def origin(self) -> str | None:
-        """Target ID of the Origin reference (targets Slot)."""
+        """The Origin starting point for the vector, defaults to root if null."""
         member = self.get_member("Origin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +65,7 @@ class PositionDeltaDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The target for the vector. Defaults to root if null."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +86,7 @@ class PositionDeltaDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def vector_space(self) -> members.SyncObject | None:
-        """The VectorSpace member."""
+        """The coordinate space to calculate the vector result in for ``Origin`` and ``Target``"""
         member = self.get_member("VectorSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -91,12 +94,12 @@ class PositionDeltaDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @vector_space.setter
     def vector_space(self, value: members.SyncObject) -> None:
-        """Set the VectorSpace member."""
+        """Set VectorSpace. The coordinate space to calculate the vector result in for ``Origin`` and ``Target``"""
         self.set_member("VectorSpace", value)
 
     @property
     def normalized(self) -> primitives.Bool | None:
-        """The Normalized field value."""
+        """Whether the vector from ``Origin`` to ``Target`` in ``VectorSpace`` should be normalized."""
         member = self.get_member("Normalized")
         if member is None:
             return None
@@ -115,7 +118,7 @@ class PositionDeltaDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def vector(self) -> str | None:
-        """Target ID of the Vector reference (targets IField[primitives.Float3])."""
+        """The field to drive with the vector from ``Origin`` to ``Target`` in the coordinate space ``VectorSpace``"""
         member = self.get_member("Vector")
         if isinstance(member, members.Reference):
             return member.targetId

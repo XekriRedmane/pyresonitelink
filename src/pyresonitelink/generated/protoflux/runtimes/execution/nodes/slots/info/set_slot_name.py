@@ -42,7 +42,7 @@ class SetSlotName(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """sends an impulse when Instance (Slot)'s name field is set to Name (String) when * (Call) is called."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class SetSlotName(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """Slot to set the property for."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class SetSlotName(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def name(self) -> str | None:
-        """Target ID of the Name reference (targets INodeObjectOutput[primitives.String])."""
+        """The value to set Instance (Slot)'s name field to when * (Call) is called."""
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             return member.targetId

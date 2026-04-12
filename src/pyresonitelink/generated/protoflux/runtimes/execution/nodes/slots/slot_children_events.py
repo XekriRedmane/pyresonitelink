@@ -66,7 +66,17 @@ class SlotChildrenEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @property
     def on_user(self) -> str | None:
-        """Target ID of the OnUser reference (targets INodeObjectOutput[User])."""
+        """The user that should monitor the given Instance (Slot) for slot events. Only if this user sees a slot change will a call be triggered from this node.
+
+When this node is used the user who fires the impulse is determined using the following steps:
+
+1: If null fire the impulse for the user who added/removed the slot. 
+
+2: If set to a user, only that user will fire the event.
+
+3: If is connected to a localuser node fire for all users.
+
+Note: unlike fire on true/false/change it does not care if it is under a users avatar, the two above steps are the only ones that exist."""
         member = self.get_member("OnUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +97,7 @@ class SlotChildrenEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @property
     def on_child_added(self) -> str | None:
-        """Target ID of the OnChildAdded reference (targets ISyncNodeOperation)."""
+        """Sends an impulse when a child is added to Instance (Slot) according to what the user provided to OnUser (User) sees on their client."""
         member = self.get_member("OnChildAdded")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +118,7 @@ class SlotChildrenEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @property
     def on_child_removed(self) -> str | None:
-        """Target ID of the OnChildRemoved reference (targets ISyncNodeOperation)."""
+        """Sends an impulse when a child is removed from Instance (Slot) according to what the user provided to OnUser (User) sees on their client."""
         member = self.get_member("OnChildRemoved")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -129,7 +139,7 @@ class SlotChildrenEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @property
     def child(self) -> members.EmptyElement | None:
-        """The Child member."""
+        """The child object that was added or removed from Instance (Slot). This will only have a value during an impulse from OnChildAdded (Call) and OnChildRemoved (Call)."""
         member = self.get_member("Child")
         if isinstance(member, members.EmptyElement):
             return member
@@ -137,6 +147,6 @@ class SlotChildrenEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @child.setter
     def child(self, value: members.EmptyElement) -> None:
-        """Set the Child member."""
+        """Set Child. The child object that was added or removed from Instance (Slot). This will only have a value during an impulse from OnChildAdded (Call) and OnChildRemoved (Call)."""
         self.set_member("Child", value)
 

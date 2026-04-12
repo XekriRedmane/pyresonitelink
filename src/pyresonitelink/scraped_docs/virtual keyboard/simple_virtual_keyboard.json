@@ -1,0 +1,9 @@
+{
+  "description": "The SimpleVirtualKeyboard component makes a simple keyboard UI that can be used.",
+  "category": "Userspace:Virtual Keyboard",
+  "fields": {},
+  "methods": {},
+  "usage": "On apply this component populates a VirtualKeyboard as well as a basic UIX layout.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SimpleVirtualKeyboard&action=raw"
+}

@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SetDataFeedCategory.
+    """The SetDataFeedCategory sets the Path field for ``View`` when it receives a button event from a button on the same slot or somewhere else.
 
     Category: Radiant UI/Data Feeds/Interactions
+
+    Attach to the same slot as an IButton and provide settings for this
+    component in order for it to start working.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SetDataFeedCategory"
@@ -34,7 +37,7 @@ class SetDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEventR
 
     @property
     def view(self) -> str | None:
-        """Target ID of the View reference (targets IDataFeedView)."""
+        """The view to change the Path for."""
         member = self.get_member("View")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +58,7 @@ class SetDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEventR
 
     @property
     def category_path(self) -> members.SyncList | None:
-        """The CategoryPath member."""
+        """What to set the path to for ``View``"""
         member = self.get_member("CategoryPath")
         if isinstance(member, members.SyncList):
             return member
@@ -63,12 +66,12 @@ class SetDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEventR
 
     @category_path.setter
     def category_path(self, value: members.SyncList) -> None:
-        """Set the CategoryPath member."""
+        """Set CategoryPath. What to set the path to for ``View``"""
         self.set_member("CategoryPath", value)
 
     @property
     def is_inside_category_path(self) -> primitives.Bool | None:
-        """The IsInsideCategoryPath field value."""
+        """Whether the View is already under ``CategoryPath``."""
         member = self.get_member("IsInsideCategoryPath")
         if member is None:
             return None

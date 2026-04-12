@@ -13,9 +13,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextureDebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextureDebugMaterial.
+    """The TextureDebugMaterial component shows a grayscale of a texture channel. Used for debugging.
 
     Category: Assets/Materials/Special
+
+    Attach to a MeshRenderer or SkinnedMeshRenderer with a mesh to view what
+    this material looks like.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextureDebugMaterial"

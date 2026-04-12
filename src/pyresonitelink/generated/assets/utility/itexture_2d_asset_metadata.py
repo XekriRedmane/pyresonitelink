@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ITexture2DAssetMetadata.
+    """This component gives the info on the size of a Texture2D.
 
     Category: Assets/Utility
     """
@@ -41,7 +41,7 @@ class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[ITexture2D])."""
+        """The texture to read data for"""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def size(self) -> primitives.Int2 | None:
-        """The Size field value."""
+        """The size of ``Texture``"""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -81,7 +81,7 @@ class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def width(self) -> primitives.Int | None:
-        """The Width field value."""
+        """width of ``Texture``"""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -100,7 +100,7 @@ class ITexture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def height(self) -> primitives.Int | None:
-        """The Height field value."""
+        """height of ``Texture``"""
         member = self.get_member("Height")
         if member is None:
             return None

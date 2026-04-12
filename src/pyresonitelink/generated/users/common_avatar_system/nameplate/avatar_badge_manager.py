@@ -12,9 +12,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarBadgeManager.
+    """The AvatarBadgeManager component initializes the user's badges under the ``Badges Root`` slot.
+
+}}
 
     Category: Users/Common Avatar System/Nameplate
+
+    This is used to help with organizing badges on a user's Nameplate,
+    including custom badges. The user badge manager does this internally to
+    help assign badges accordingly. If an avatar contains this component
+    when equipped, the user's default badges will be hidden for those who
+    have custom nameplates enabled.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarBadgeManager"
@@ -44,7 +52,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def badge_size(self) -> primitives.Float | None:
-        """The BadgeSize field value."""
+        """The size of the generated badges in local space."""
         member = self.get_member("BadgeSize")
         if member is None:
             return None
@@ -63,7 +71,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def badge_separation(self) -> primitives.Float | None:
-        """The BadgeSeparation field value."""
+        """The separation in meters between the badges in local space"""
         member = self.get_member("BadgeSeparation")
         if member is None:
             return None
@@ -82,7 +90,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def max_row_size(self) -> primitives.Int | None:
-        """The MaxRowSize field value."""
+        """The maximum amount of badges on one row before moving to the next."""
         member = self.get_member("MaxRowSize")
         if member is None:
             return None
@@ -101,7 +109,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def badges_root(self) -> str | None:
-        """Target ID of the _badgesRoot reference (targets Slot)."""
+        """The slot to put the badges under."""
         member = self.get_member("_badgesRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -122,7 +130,7 @@ class AvatarBadgeManager(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def badges_offset(self) -> str | None:
-        """Target ID of the _badgesOffset reference (targets IField[primitives.Float3])."""
+        """The position of the ``_badgesRoot`` slot, which is used to move the badges away from the user's name tag and keep them positioned properly."""
         member = self.get_member("_badgesOffset")
         if isinstance(member, members.Reference):
             return member.targetId

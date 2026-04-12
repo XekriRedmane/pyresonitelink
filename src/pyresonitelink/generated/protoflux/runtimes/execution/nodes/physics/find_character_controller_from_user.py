@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FindCharacterControllerFromUser(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Find Character Controller From User node takes in a user reference and tries to find the character controller from that user, then returning one when one is found.
+    """The ``Find Character Controller From User`` node takes in a user reference and tries to find the character controller from that user, then returning one when one is found.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """
@@ -33,7 +33,7 @@ class FindCharacterControllerFromUser(GeneratedComponent, INodeObjectOutput, IEx
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeObjectOutput[User])."""
+        """The source that we want to try to find the character controller in."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId

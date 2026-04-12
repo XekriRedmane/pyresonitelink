@@ -13,9 +13,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PagingControl.
+    """The PagingControl component allows for counting up a number of items specified, then outputs it to either a Text or TextRenderer component.
 
     Category: Common UI/General
+
+    Great for counting items, and for controlling UI that can switch pages.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PagingControl"
@@ -63,7 +65,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def items_per_page(self) -> primitives.Int | None:
-        """The ItemsPerPage field value."""
+        """The increment to count up by."""
         member = self.get_member("ItemsPerPage")
         if member is None:
             return None
@@ -82,7 +84,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def total_items(self) -> primitives.Int | None:
-        """The TotalItems field value."""
+        """The total amount of items."""
         member = self.get_member("TotalItems")
         if member is None:
             return None
@@ -101,7 +103,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def has_more_items(self) -> primitives.Bool | None:
-        """The HasMoreItems field value."""
+        """Allows to count beyond the max set of items."""
         member = self.get_member("HasMoreItems")
         if member is None:
             return None
@@ -120,7 +122,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def skip_items(self) -> primitives.Int | None:
-        """The SkipItems field value."""
+        """Skips items that are listed here."""
         member = self.get_member("SkipItems")
         if member is None:
             return None
@@ -139,7 +141,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def no_items_label(self) -> primitives.String | None:
-        """The NoItemsLabel field value."""
+        """Shows the output as this when there are no items."""
         member = self.get_member("NoItemsLabel")
         if member is None:
             return None
@@ -158,7 +160,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def paging_info_label(self) -> primitives.String | None:
-        """The PagingInfoLabel field value."""
+        """The structure of how the items will be shown to the user."""
         member = self.get_member("PagingInfoLabel")
         if member is None:
             return None
@@ -177,7 +179,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def total_pages(self) -> primitives.Int | None:
-        """The TotalPages field value."""
+        """The total amount of items."""
         member = self.get_member("TotalPages")
         if member is None:
             return None
@@ -196,7 +198,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def remaining_items(self) -> primitives.Int | None:
-        """The RemainingItems field value."""
+        """Shows how many items are remaining."""
         member = self.get_member("RemainingItems")
         if member is None:
             return None
@@ -215,7 +217,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def label(self) -> str | None:
-        """Target ID of the _label reference (targets IField[primitives.String])."""
+        """The text to output."""
         member = self.get_member("_label")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -236,7 +238,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def previous_enabled(self) -> str | None:
-        """Target ID of the _previousEnabled reference (targets IField[primitives.Bool])."""
+        """Becomes false if the minimum is currently reached."""
         member = self.get_member("_previousEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -257,7 +259,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def next_enabled(self) -> str | None:
-        """Target ID of the _nextEnabled reference (targets IField[primitives.Bool])."""
+        """Becomes false if the maximum is currently reached."""
         member = self.get_member("_nextEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -277,7 +279,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             )
 
     async def next_page(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the NextPage sync method.
+        """Switches to the next page via action.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -293,7 +295,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         )
 
     async def previous_page(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the PreviousPage sync method.
+        """Switches to the previous page via action.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -309,7 +311,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         )
 
     async def next_page_0(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the NextPage sync method.
+        """Switches to the next page via action.
 
         Returns:
             The raw JSON response dict.
@@ -319,7 +321,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
         )
 
     async def previous_page_0(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PreviousPage sync method.
+        """Switches to the previous page via action.
 
         Returns:
             The raw JSON response dict.

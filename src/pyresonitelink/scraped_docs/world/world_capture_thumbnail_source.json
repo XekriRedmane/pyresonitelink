@@ -1,0 +1,12 @@
+{
+  "description": "The WorldCaptureThumbnailSource component is used as a point in space to capture the preview of a world in the world browser minus users in the session when a world is saved.",
+  "category": "World",
+  "fields": {
+    "Overlay": "The texture to use as an overlay for capturing the thumbnail.",
+    "ExcludeUsersInCapture": "Whether to exclude users from the thumbnail."
+  },
+  "methods": {},
+  "usage": "see: World and Session Thumbnails#Customising Thumbnails",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldCaptureThumbnailSource&action=raw"
+}

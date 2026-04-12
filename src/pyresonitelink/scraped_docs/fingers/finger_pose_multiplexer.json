@@ -1,0 +1,13 @@
+{
+  "description": "The FingerPoseMultiplexer component can be used to get data from multiple finger pose sources and make that data its own finger pose source data. This component in itself is a IFingerPoseSourceComponent.\n\nFor more information on finger pose sources, please see Finger Posing System.",
+  "category": "Users:Common Avatar System:Fingers",
+  "fields": {
+    "Index": "What Component in ``Sources`` to copy data from for the finger pose data for this component.",
+    "InterpolationSpeed": "How fast the Multiplexer transitions what data this component is copying for this component's finger pose data.",
+    "Sources": "The list if Finger pose sources to copy data from for the data for this component's Finger pose data."
+  },
+  "methods": {},
+  "usage": "Add items to the list of ``Sources`` to transition between and get data from. The data gotten is copied and becomes the data of this component. Can be used in the ways outlined in Finger Posing System.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FingerPoseMultiplexer&action=raw"
+}

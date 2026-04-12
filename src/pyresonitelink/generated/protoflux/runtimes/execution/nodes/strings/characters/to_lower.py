@@ -19,9 +19,6 @@ class ToLower(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICust
 
     **See also**: * ToUpper to turn strings or characters uppercase.
 * Microsoft documentation for the ``String.ToLower() method``, which is used internally.
-
-ProtoFlux:Strings:Characters
-ProtoFlux:Strings:Formatting
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.ToLower"

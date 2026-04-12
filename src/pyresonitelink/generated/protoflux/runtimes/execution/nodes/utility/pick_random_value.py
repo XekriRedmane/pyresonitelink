@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PickRandomValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Pick Random Value node takes in a list of value of the same Type and then returns one of them at random. Since this is a data node, displaying the output value will cycle through them randomly once per frame.
+    """The ``Pick Random Value`` node takes in a list of value of the same Type and then returns one of them at random. Since this is a data node, displaying the output value will cycle through them randomly once per frame.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
 
@@ -27,7 +27,7 @@ class PickRandomValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T
 
     @property
     def operands(self) -> members.SyncList | None:
-        """The Operands member."""
+        """The list of values to randomly pick from."""
         member = self.get_member("Operands")
         if isinstance(member, members.SyncList):
             return member
@@ -35,6 +35,6 @@ class PickRandomValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T
 
     @operands.setter
     def operands(self, value: members.SyncList) -> None:
-        """Set the Operands member."""
+        """Set Operands. The list of values to randomly pick from."""
         self.set_member("Operands", value)
 

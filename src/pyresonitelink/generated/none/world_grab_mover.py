@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldGrabMover.
+    """The WorldGrabMover component is used as a visual for the grab world locomotion.
+
+    Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldGrabMover"
@@ -50,7 +52,7 @@ class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def show_lerp(self) -> primitives.Float | None:
-        """The ShowLerp field value."""
+        """The lerp value for showing the visual."""
         member = self.get_member("ShowLerp")
         if member is None:
             return None
@@ -69,7 +71,7 @@ class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def activating_user(self) -> str | None:
-        """Target ID of the _activatingUser reference (targets User)."""
+        """The user making this visual for grabbing onto the world."""
         member = self.get_member("_activatingUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -90,7 +92,7 @@ class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cross_mesh(self) -> str | None:
-        """Target ID of the _crossMesh reference (targets CrossMesh)."""
+        """The cross mesh being used for the anchor visual."""
         member = self.get_member("_crossMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -111,7 +113,7 @@ class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def visual_visible(self) -> str | None:
-        """Target ID of the _visualVisible reference (targets IField[primitives.Bool])."""
+        """Whether the visual should be visible."""
         member = self.get_member("_visualVisible")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -132,7 +134,7 @@ class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def visual_rotation(self) -> str | None:
-        """Target ID of the _visualRotation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive with the rotation for the visual."""
         member = self.get_member("_visualRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -153,7 +155,7 @@ class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets PBS_RimMetallic)."""
+        """The material that the visual is using."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -174,7 +176,7 @@ class WorldGrabMover(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def reference_position(self) -> primitives.Float3 | None:
-        """The _referencePosition field value."""
+        """the position this visual is trying to stay and anchor at."""
         member = self.get_member("_referencePosition")
         if member is None:
             return None

@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class InteractiveCameraSmoothingSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraSmoothingSettings.
+    """See Camera.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraSmoothingSettings"
@@ -33,7 +35,7 @@ class InteractiveCameraSmoothingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def position_smooth_speed(self) -> primitives.Float | None:
-        """The PositionSmoothSpeed field value."""
+        """How fast or slow the camera position movement should be smoothed."""
         member = self.get_member("PositionSmoothSpeed")
         if member is None:
             return None
@@ -52,7 +54,7 @@ class InteractiveCameraSmoothingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def angle_smooth_speed(self) -> primitives.Float | None:
-        """The AngleSmoothSpeed field value."""
+        """The smoothness of how fast this camera turns and rotates to adjust for movement, to focus towards the subject."""
         member = self.get_member("AngleSmoothSpeed")
         if member is None:
             return None
@@ -71,7 +73,7 @@ class InteractiveCameraSmoothingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def framing_smooth_speed(self) -> primitives.Float | None:
-        """The FramingSmoothSpeed field value."""
+        """This is how fast the camera will move in frame towards the subject."""
         member = self.get_member("FramingSmoothSpeed")
         if member is None:
             return None

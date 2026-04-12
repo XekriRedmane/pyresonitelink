@@ -9,16 +9,22 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DataFeedItemMapper(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DataFeedItemMapper.
+    """The DataFeedItemMapper allows you to define which data feed items map to which UI templates. It does this via the list ``Mappings``, which take classes that extend DataFeedItem and If they match a mapping in the list it Duplicates that item's template and adds it into the list.
+
+For more info on data feeds, see Data Feeds
 
     Category: Radiant UI/Data Feeds
+
+    This component is to be put into a SingleFeedView or similar so that the
+    component it is specified inside of can use this component to map
+    incoming feed items from the data feed to UI or object templates.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DataFeedItemMapper"
 
     @property
     def mappings(self) -> members.SyncList | None:
-        """The Mappings member."""
+        """A list of item Mappings to map data feed item types to Feed Templates."""
         member = self.get_member("Mappings")
         if isinstance(member, members.SyncList):
             return member
@@ -26,11 +32,11 @@ class DataFeedItemMapper(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @mappings.setter
     def mappings(self, value: members.SyncList) -> None:
-        """Set the Mappings member."""
+        """Set Mappings. A list of item Mappings to map data feed item types to Feed Templates."""
         self.set_member("Mappings", value)
 
     async def on_setup_template(self, resolink: protocols.ResoniteLinkClient, button: str, data: str, debug: bool = False) -> dict:
-        """Call the OnSetupTemplate sync method.
+        """Set up a basic settup with this component with a bunch of example UIs.
 
         Args:
             resolink: Connected ResoniteLink client.

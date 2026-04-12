@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetDateTimeKind(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Set DateTime Kind node takes in a DateTime and an enum Kind of DateTime, then returns the new DateTime value.
+    """The ``Set DateTime Kind`` node takes in a DateTime and an enum Kind of DateTime, then returns the new DateTime value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """
@@ -36,7 +36,7 @@ class SetDateTimeKind(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def date_time(self) -> str | None:
-        """Target ID of the DateTime reference (targets INodeValueOutput[str])."""
+        """The DateTime to change."""
         member = self.get_member("DateTime")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class SetDateTimeKind(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def kind(self) -> str | None:
-        """Target ID of the Kind reference (targets INodeValueOutput[DateTimeKind])."""
+        """The kind to set for this DateTime."""
         member = self.get_member("Kind")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -39,7 +39,7 @@ class LocalFireWhileTrue(GeneratedComponent, IExecutionUpdateReceiver, IMappable
 
     @property
     def on_update(self) -> str | None:
-        """Target ID of the OnUpdate reference (targets ISyncNodeOperation)."""
+        """Will send an impulse very game tick while Condition (bool) is true on the local client. Will send the impulses from the local client."""
         member = self.get_member("OnUpdate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class LocalFireWhileTrue(GeneratedComponent, IExecutionUpdateReceiver, IMappable
 
     @property
     def condition(self) -> str | None:
-        """Target ID of the Condition reference (targets INodeValueOutput[primitives.Bool])."""
+        """The value to check on the local client on if it is true."""
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):
             return member.targetId

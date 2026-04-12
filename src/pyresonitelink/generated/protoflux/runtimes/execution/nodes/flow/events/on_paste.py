@@ -16,6 +16,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class OnPaste(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """On Paste is a ProtoFlux node that sends an impulse out of Trigger whenever the node is part of a hierarchy that has been spawned via clip board pasting. This is useful for telling if an item has been spawned in via RedX or cloud spawned, or spawned in via a json file.
 
+TODO: Does this node fire when the entire node group this is connected to is loaded after paste? or all of them? or just this one node?
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """
 
@@ -34,7 +36,7 @@ class OnPaste(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExe
 
     @property
     def trigger(self) -> str | None:
-        """Target ID of the Trigger reference (targets ISyncNodeOperation)."""
+        """Sends an Impulse when the node is spawned in with an object that has been spawned via pasting from clipboard."""
         member = self.get_member("Trigger")
         if isinstance(member, members.Reference):
             return member.targetId

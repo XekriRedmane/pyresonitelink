@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceTarget(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Reference Target node takes in an SyncRef and returns with the Reference Type that was asked for.
+    """The ``Reference Target`` node takes in an SyncRef and returns with the Reference Type that was asked for.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/References
 
@@ -39,7 +39,7 @@ class ReferenceTarget(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets INodeObjectOutput[SyncRef[T]])."""
+        """The reference of something."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId

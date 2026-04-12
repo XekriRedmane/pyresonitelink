@@ -16,9 +16,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyCheckbox.
+    """The LegacyCheckbox component is used in old migrated content. This is a Legacy component and should not be used for new content. This should be replaced whenever possible.
 
     Category: UI/Physical
+
+    Just dont.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyCheckbox"
@@ -152,7 +154,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def is_checked(self) -> primitives.Bool | None:
-        """The IsChecked field value."""
+        """Whether the checkbox is checked."""
         member = self.get_member("IsChecked")
         if member is None:
             return None
@@ -190,7 +192,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def drive_field(self) -> str | None:
-        """Target ID of the DriveField reference (targets IField[primitives.Bool])."""
+        """The field to drive with this checkbooks state."""
         member = self.get_member("DriveField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -211,7 +213,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def allow_write_back(self) -> primitives.Bool | None:
-        """The AllowWriteBack field value."""
+        """Whether changes to the target value of ``DriveField`` are sent to this component's checked state instead."""
         member = self.get_member("AllowWriteBack")
         if member is None:
             return None
@@ -230,7 +232,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def size(self) -> primitives.Float | None:
-        """The Size field value."""
+        """How big the check box is."""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -249,7 +251,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def bevel_percent(self) -> primitives.Float | None:
-        """The BevelPercent field value."""
+        """How beveled the check box is."""
         member = self.get_member("BevelPercent")
         if member is None:
             return None
@@ -268,7 +270,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The color of the check box."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -287,7 +289,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def shell_mesh(self) -> str | None:
-        """Target ID of the _shellMesh reference (targets BevelBoxMesh)."""
+        """The outer shell of the check box."""
         member = self.get_member("_shellMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -308,7 +310,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def check_mesh(self) -> str | None:
-        """Target ID of the _checkMesh reference (targets BevelBoxMesh)."""
+        """The inner check box indicator of the check box."""
         member = self.get_member("_checkMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -329,7 +331,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def title_bar(self) -> str | None:
-        """Target ID of the _titleBar reference (targets LegacyHorizontalChoiceBar)."""
+        """unused."""
         member = self.get_member("_titleBar")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -350,7 +352,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def shell_size(self) -> str | None:
-        """Target ID of the _shellSize reference (targets IField[primitives.Float3])."""
+        """The field to drive for the outer shell size mesh."""
         member = self.get_member("_shellSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -371,7 +373,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def shell_bevel(self) -> str | None:
-        """Target ID of the _shellBevel reference (targets IField[primitives.Float])."""
+        """The field to drive for the outer shell bevel."""
         member = self.get_member("_shellBevel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -392,7 +394,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def check_size(self) -> str | None:
-        """Target ID of the _checkSize reference (targets IField[primitives.Float3])."""
+        """The field to drive for the check indicator size."""
         member = self.get_member("_checkSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -413,7 +415,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def check_bevel(self) -> str | None:
-        """Target ID of the _checkBevel reference (targets IField[primitives.Float])."""
+        """The field to drive for the check indicator bevel."""
         member = self.get_member("_checkBevel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -434,7 +436,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def collider_size(self) -> str | None:
-        """Target ID of the _colliderSize reference (targets IField[primitives.Float3])."""
+        """The field to drive for the collider size."""
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -455,7 +457,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def shell_material(self) -> str | None:
-        """Target ID of the _shellMaterial reference (targets PBS_RimMetallic)."""
+        """The field to drive to set the shell material."""
         member = self.get_member("_shellMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -476,7 +478,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
 
     @property
     def check_material(self) -> str | None:
-        """Target ID of the _checkMaterial reference (targets PBS_RimMetallic)."""
+        """The field to drive to set the check indicator material."""
         member = self.get_member("_checkMaterial")
         if isinstance(member, members.Reference):
             return member.targetId

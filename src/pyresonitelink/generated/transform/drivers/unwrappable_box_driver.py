@@ -11,9 +11,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UnwrappableBoxDriver.
+    """The UnwrappableBoxDriver component makes a 6 sided cube made of individual quads that unwrap themselves into a flat area like a paper box. 
+
+A box is auto generated upon attaching the component and fields are auto filled.
+
+This can be used for presents or crates.
 
     Category: Transform/Drivers
+
+    Attach to a slot and a box will automatically be generated and setup.
+    The sides can be customized to the user's liking and the ``Unwrap``
+    field adjusted or hooked into a driver.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UnwrappableBoxDriver"
@@ -100,7 +108,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def unwrap(self) -> primitives.Float | None:
-        """The Unwrap field value."""
+        """The progress of the unwrap."""
         member = self.get_member("Unwrap")
         if member is None:
             return None
@@ -119,7 +127,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side_size(self) -> primitives.Float | None:
-        """The SideSize field value."""
+        """The size of each side (a default Quad is 1)"""
         member = self.get_member("SideSize")
         if member is None:
             return None
@@ -138,7 +146,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scale_content(self) -> primitives.Bool | None:
-        """The ScaleContent field value."""
+        """Whether to scale the side slots and align them to fit as ``SideSize``'s value increases."""
         member = self.get_member("ScaleContent")
         if member is None:
             return None
@@ -157,7 +165,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side0rotation(self) -> str | None:
-        """Target ID of the _side0rotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of side 0 of the box."""
         member = self.get_member("_side0rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -178,7 +186,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side1rotation(self) -> str | None:
-        """Target ID of the _side1rotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of side 1 of the box."""
         member = self.get_member("_side1rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -199,7 +207,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side2rotation(self) -> str | None:
-        """Target ID of the _side2rotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of side 2 of the box."""
         member = self.get_member("_side2rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -220,7 +228,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side3rotation(self) -> str | None:
-        """Target ID of the _side3rotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of side 3 of the box."""
         member = self.get_member("_side3rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -241,7 +249,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_rotation(self) -> str | None:
-        """Target ID of the _topRotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of the top side of the box."""
         member = self.get_member("_topRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -262,7 +270,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side0offset(self) -> str | None:
-        """Target ID of the _side0offset reference (targets IField[primitives.Float3])."""
+        """The position field of side 0 of the box."""
         member = self.get_member("_side0offset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -283,7 +291,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side1offset(self) -> str | None:
-        """Target ID of the _side1offset reference (targets IField[primitives.Float3])."""
+        """The position field of side 1 of the box."""
         member = self.get_member("_side1offset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -304,7 +312,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side2offset(self) -> str | None:
-        """Target ID of the _side2offset reference (targets IField[primitives.Float3])."""
+        """The position field of side 2 of the box."""
         member = self.get_member("_side2offset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -325,7 +333,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side3offset(self) -> str | None:
-        """Target ID of the _side3offset reference (targets IField[primitives.Float3])."""
+        """The position field of side 3 of the box."""
         member = self.get_member("_side3offset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -346,7 +354,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_offset(self) -> str | None:
-        """Target ID of the _topOffset reference (targets IField[primitives.Float3])."""
+        """The position field of the top side of the box."""
         member = self.get_member("_topOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -367,7 +375,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side0content_offset(self) -> str | None:
-        """Target ID of the _side0contentOffset reference (targets IField[primitives.Float3])."""
+        """The position field of the content of side 0 of the box."""
         member = self.get_member("_side0contentOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -388,7 +396,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side1content_offset(self) -> str | None:
-        """Target ID of the _side1contentOffset reference (targets IField[primitives.Float3])."""
+        """The position field of the content of side 1 of the box."""
         member = self.get_member("_side1contentOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -409,7 +417,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side2content_offset(self) -> str | None:
-        """Target ID of the _side2contentOffset reference (targets IField[primitives.Float3])."""
+        """The position field of the content of side 2 of the box."""
         member = self.get_member("_side2contentOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -430,7 +438,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side3content_offset(self) -> str | None:
-        """Target ID of the _side3contentOffset reference (targets IField[primitives.Float3])."""
+        """The position field of the content of side 3 of the box."""
         member = self.get_member("_side3contentOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -451,7 +459,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_content_offset(self) -> str | None:
-        """Target ID of the _topContentOffset reference (targets IField[primitives.Float3])."""
+        """The position field of the content of the top side of the box."""
         member = self.get_member("_topContentOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -472,7 +480,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side0content_scale(self) -> str | None:
-        """Target ID of the _side0contentScale reference (targets IField[primitives.Float3])."""
+        """The scale field of the content of side 0 of the box."""
         member = self.get_member("_side0contentScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -493,7 +501,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side1content_scale(self) -> str | None:
-        """Target ID of the _side1contentScale reference (targets IField[primitives.Float3])."""
+        """The scale field of the content of side 1 of the box."""
         member = self.get_member("_side1contentScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -514,7 +522,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side2content_scale(self) -> str | None:
-        """Target ID of the _side2contentScale reference (targets IField[primitives.Float3])."""
+        """The scale field of the content of side 2 of the box."""
         member = self.get_member("_side2contentScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -535,7 +543,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def side3content_scale(self) -> str | None:
-        """Target ID of the _side3contentScale reference (targets IField[primitives.Float3])."""
+        """The scale field of the content of side 3 of the box."""
         member = self.get_member("_side3contentScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -556,7 +564,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bottom_content_scale(self) -> str | None:
-        """Target ID of the _bottomContentScale reference (targets IField[primitives.Float3])."""
+        """The scale field of the content of the bottom side of the box."""
         member = self.get_member("_bottomContentScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -577,7 +585,7 @@ class UnwrappableBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def top_content_scale(self) -> str | None:
-        """Target ID of the _topContentScale reference (targets IField[primitives.Float3])."""
+        """The scale field of the content of the top side of the box."""
         member = self.get_member("_topContentScale")
         if isinstance(member, members.Reference):
             return member.targetId

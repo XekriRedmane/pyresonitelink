@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonPressEventRelay(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonPressEventRelay.
+    """The ButtonPressEventRelay component takes in a slot target, and if any IButton press event happens with this component on a slot, will also send a signal to that target slot, and the components on that target slot will trigger with press events (if applicable).
 
     Category: Common UI/Button Interactions
+
+    Useful for sending multiple signals from one press event.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonPressEventRelay"
@@ -29,7 +31,7 @@ class ButtonPressEventRelay(GeneratedComponent, IButtonPressReceiver, IWorldEven
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The slot to send the signal to."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

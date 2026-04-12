@@ -15,6 +15,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ColorAdditiveBlend(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Color Additive Blend does an additive blend of its two input colors. The result is the sum of each component between the target and destination.
 
+This is a symmetric operation, the result is the same with target and destination swapped. Regardless, the "target" and "destination" terminology is used for consistency with other blend nodes.
+
+Alpha values are clamped to a maximum of 1.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """
 
@@ -36,7 +40,7 @@ class ColorAdditiveBlend(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeValueOutput[primitives.Color])."""
+        """The color that is blended "onto" the destination."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +61,7 @@ class ColorAdditiveBlend(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def destination(self) -> str | None:
-        """Target ID of the Destination reference (targets INodeValueOutput[primitives.Color])."""
+        """The destination color that the source is blended "onto"."""
         member = self.get_member("Destination")
         if isinstance(member, members.Reference):
             return member.targetId

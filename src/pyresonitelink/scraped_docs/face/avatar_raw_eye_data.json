@@ -1,0 +1,16 @@
+{
+  "description": "The AvatarRawEyeData component provides the eye tracking data on a particular User. This component links to a user upon being part of an Avatar that a user equips.",
+  "category": "Users:Common Avatar System:Face",
+  "fields": {
+    "LeftEye": "Data about the left eye from the user's eye tracking device",
+    "RightEye": "Data about the right eye from the user's eye tracking device",
+    "CombinedEye": "Data about combined eye Data from the user's tracking device",
+    "ConvergenceDistance": "The User's eye tracking convergence distance data",
+    "Timestamp": "The timestamp value gotten directly from the eye tracking device.",
+    "_activeUser": "The user that the component is reading eye tracking data from."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarRawEyeData&action=raw"
+}

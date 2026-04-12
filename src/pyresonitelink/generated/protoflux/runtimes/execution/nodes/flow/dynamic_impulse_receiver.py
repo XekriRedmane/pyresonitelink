@@ -60,7 +60,7 @@ class DynamicImpulseReceiver(GeneratedComponent, IProtoFluxEngineProxyNode, IMap
 
     @property
     def on_triggered(self) -> str | None:
-        """Target ID of the OnTriggered reference (targets ISyncNodeOperation)."""
+        """Sends an impulse when the node has received a dynamic impulse with the specified ``Tag``."""
         member = self.get_member("OnTriggered")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AxisDistanceHapticFilter.
+    """The AxisDistanceHapticFilter multiplicatively changes the intensity of a HapticVolume depending on the dot product from the vector of the device's position in local space to this component and ``Axis``. Essentially the smaller the angle between the device local position from 0 direction and the ``Axis`` direction the smaller the distance.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics/Filters
+
+    Attach to a slot with a valid and working HapticVolume to add to the
+    list of multiplicative haptic filters.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AxisDistanceHapticFilter"
@@ -44,7 +49,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def axis(self) -> primitives.Float3 | None:
-        """The Axis field value."""
+        """The axis to check distance from."""
         member = self.get_member("Axis")
         if member is None:
             return None
@@ -63,7 +68,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def start_distance(self) -> primitives.Float | None:
-        """The StartDistance field value."""
+        """The starting distance to map to ``StartIntensity`` for the intensity distance range."""
         member = self.get_member("StartDistance")
         if member is None:
             return None
@@ -82,7 +87,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def end_distance(self) -> primitives.Float | None:
-        """The EndDistance field value."""
+        """The ending distance to map to ``EndIntensity`` for the intensity distance range."""
         member = self.get_member("EndDistance")
         if member is None:
             return None
@@ -101,7 +106,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def start_intensity(self) -> primitives.Float | None:
-        """The StartIntensity field value."""
+        """When at ``StartDistance`` map the device intensity to this."""
         member = self.get_member("StartIntensity")
         if member is None:
             return None
@@ -120,7 +125,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def end_intensity(self) -> primitives.Float | None:
-        """The EndIntensity field value."""
+        """When at ``EndDistance`` map the device intensity to this."""
         member = self.get_member("EndIntensity")
         if member is None:
             return None
@@ -139,7 +144,7 @@ class AxisDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def power(self) -> primitives.Float | None:
-        """The Power field value."""
+        """How much to amplify the haptics effect in general."""
         member = self.get_member("Power")
         if member is None:
             return None

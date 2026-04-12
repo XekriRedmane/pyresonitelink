@@ -13,7 +13,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraUserItem.
+    """See Camera.
+
+Used to handle the items for each user for the interactive camera settings.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraUserItem"
@@ -64,7 +68,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def control(self) -> str | None:
-        """Target ID of the Control reference (targets InteractiveCameraControl)."""
+        """The root camera control settings panel."""
         member = self.get_member("Control")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +89,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def username(self) -> str | None:
-        """Target ID of the _username reference (targets Text)."""
+        """The username of the user this item refers to."""
         member = self.get_member("_username")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +110,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def voice_default(self) -> str | None:
-        """Target ID of the _voiceDefault reference (targets Button)."""
+        """Capture this user's voice as their default voice setting."""
         member = self.get_member("_voiceDefault")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -127,7 +131,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def voice_mute(self) -> str | None:
-        """Target ID of the _voiceMute reference (targets Button)."""
+        """Capture this user's voice as the mute voice setting."""
         member = self.get_member("_voiceMute")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -148,7 +152,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def voice_shout(self) -> str | None:
-        """Target ID of the _voiceShout reference (targets Button)."""
+        """Capture this user's voice as the shout voice setting."""
         member = self.get_member("_voiceShout")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -169,7 +173,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def voice_broadcast(self) -> str | None:
-        """Target ID of the _voiceBroadcast reference (targets Button)."""
+        """Capture this user's voice as the broadcast voice setting."""
         member = self.get_member("_voiceBroadcast")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -190,7 +194,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def group_auto(self) -> str | None:
-        """Target ID of the _groupAuto reference (targets Button)."""
+        """Set this user's group inclusion and exclusion modes to default."""
         member = self.get_member("_groupAuto")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -211,7 +215,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def group_exclude(self) -> str | None:
-        """Target ID of the _groupExclude reference (targets Button)."""
+        """Set this user's group inclusion to never."""
         member = self.get_member("_groupExclude")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -232,7 +236,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def group_include(self) -> str | None:
-        """Target ID of the _groupInclude reference (targets Button)."""
+        """Set this user's group inclusion to always."""
         member = self.get_member("_groupInclude")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -253,7 +257,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def camera_operator(self) -> str | None:
-        """Target ID of the _cameraOperator reference (targets Button)."""
+        """Make this user able to interact with the camera."""
         member = self.get_member("_cameraOperator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -274,7 +278,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def framing_target(self) -> str | None:
-        """Target ID of the _framingTarget reference (targets Button)."""
+        """Make this user a framing target when framing the scene."""
         member = self.get_member("_framingTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -295,7 +299,7 @@ class InteractiveCameraUserItem(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def volume_slider(self) -> str | None:
-        """Target ID of the _volumeSlider reference (targets Slider[primitives.Float])."""
+        """The user's voice volume when capturing their voice."""
         member = self.get_member("_volumeSlider")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScreenModeController(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ScreenModeController.
+    """The ScreenModeController component is used to control the interactions of the user within user space also known as the dash world.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScreenModeController"
@@ -41,7 +41,7 @@ class ScreenModeController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def dash(self) -> str | None:
-        """Target ID of the _dash reference (targets UserspaceRadiantDash)."""
+        """The dash of the dash world."""
         member = self.get_member("_dash")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class ScreenModeController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mute_sound(self) -> str | None:
-        """Target ID of the _muteSound reference (targets IAssetProvider[AudioClip])."""
+        """The audio clip to play when the user mutes themselves."""
         member = self.get_member("_muteSound")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class ScreenModeController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def unmute_sound(self) -> str | None:
-        """Target ID of the _unmuteSound reference (targets IAssetProvider[AudioClip])."""
+        """The audio clip to play when the user unmutes themselves."""
         member = self.get_member("_unmuteSound")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -104,7 +104,7 @@ class ScreenModeController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def start_talk_sound(self) -> str | None:
-        """Target ID of the _startTalkSound reference (targets IAssetProvider[AudioClip])."""
+        """The audio clip to play when the user starts to record a voice message."""
         member = self.get_member("_startTalkSound")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -125,7 +125,7 @@ class ScreenModeController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def stop_talk_sound(self) -> str | None:
-        """Target ID of the _stopTalkSound reference (targets IAssetProvider[AudioClip])."""
+        """The audio clip to play when the user stops recording a voice message."""
         member = self.get_member("_stopTalkSound")
         if isinstance(member, members.Reference):
             return member.targetId

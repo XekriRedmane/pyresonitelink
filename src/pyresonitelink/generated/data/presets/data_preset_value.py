@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DataPresetValue(GenericComponent[T], IDataPresetEntry, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DataPresetValue<>.
+    """Data Preset reference is a component that takes any value type for PresetValue. When this is triggered by a DataPreset, this sets ``TargetField`` to ``PresetValue``.
+}}
 
     Category: Data/Presets
+
+    See DataPreset for usage.
 
     Parameterize with a value type::
 
@@ -57,7 +60,7 @@ class DataPresetValue(GenericComponent[T], IDataPresetEntry, IWorldEventReceiver
 
     @property
     def target_field(self) -> str | None:
-        """Target ID of the TargetField reference (targets IField[T])."""
+        """A reference to the field of the same type as PresetValue."""
         member = self.get_member("TargetField")
         if isinstance(member, members.Reference):
             return member.targetId

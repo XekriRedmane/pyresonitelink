@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.NotificationPanel.
+    """The NotificationPanel component is used in user space to show the User their notifications.
+
+    Used internally.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NotificationPanel"
@@ -59,7 +61,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def display_duration(self) -> primitives.Float | None:
-        """The DisplayDuration field value."""
+        """How long to show notifications for."""
         member = self.get_member("DisplayDuration")
         if member is None:
             return None
@@ -78,7 +80,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def dash(self) -> str | None:
-        """Target ID of the Dash reference (targets UserspaceRadiantDash)."""
+        """The component for the dash in the same world."""
         member = self.get_member("Dash")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -99,7 +101,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def canvas(self) -> str | None:
-        """Target ID of the _canvas reference (targets Canvas)."""
+        """The canvas Component showing notifications."""
         member = self.get_member("_canvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -120,7 +122,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def notification_clip(self) -> str | None:
-        """Target ID of the _notificationClip reference (targets IAssetProvider[AudioClip])."""
+        """The audio to play on a new notification made."""
         member = self.get_member("_notificationClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -141,7 +143,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def contact_request_clip(self) -> str | None:
-        """Target ID of the _contactRequestClip reference (targets IAssetProvider[AudioClip])."""
+        """The audio to play on a new contact request being made."""
         member = self.get_member("_contactRequestClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -162,7 +164,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def invite_clip(self) -> str | None:
-        """Target ID of the _inviteClip reference (targets IAssetProvider[AudioClip])."""
+        """The audio to play on an invite clip being made."""
         member = self.get_member("_inviteClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -204,7 +206,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sociable_clip(self) -> str | None:
-        """Target ID of the _sociableClip reference (targets IAssetProvider[AudioClip])."""
+        """The audio to play when a friend goes to social status."""
         member = self.get_member("_sociableClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -225,7 +227,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_join_clip(self) -> str | None:
-        """Target ID of the _userJoinClip reference (targets IAssetProvider[AudioClip])."""
+        """The audio to play when a user joins."""
         member = self.get_member("_userJoinClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -246,7 +248,7 @@ class NotificationPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_leave_clip(self) -> str | None:
-        """Target ID of the _userLeaveClip reference (targets IAssetProvider[AudioClip])."""
+        """The audio to play when a user leaves."""
         member = self.get_member("_userLeaveClip")
         if isinstance(member, members.Reference):
             return member.targetId

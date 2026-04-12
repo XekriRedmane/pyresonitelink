@@ -42,7 +42,7 @@ class RotationAtTargetPoint(GeneratedComponent, INodeValueOutput, IExecutionNode
 
     @property
     def pivot(self) -> str | None:
-        """Target ID of the Pivot reference (targets INodeValueOutput[primitives.Float3])."""
+        """The rotational pivot for this value to calculate with."""
         member = self.get_member("Pivot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class RotationAtTargetPoint(GeneratedComponent, INodeValueOutput, IExecutionNode
 
     @property
     def point(self) -> str | None:
-        """Target ID of the Point reference (targets INodeValueOutput[primitives.Float3])."""
+        """The rotational value that it will calculate from."""
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class RotationAtTargetPoint(GeneratedComponent, INodeValueOutput, IExecutionNode
 
     @property
     def direction(self) -> str | None:
-        """Target ID of the Direction reference (targets INodeValueOutput[primitives.Float3])."""
+        """The direction to help orientate this rotational value."""
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +105,7 @@ class RotationAtTargetPoint(GeneratedComponent, INodeValueOutput, IExecutionNode
 
     @property
     def target_point(self) -> str | None:
-        """Target ID of the TargetPoint reference (targets INodeValueOutput[primitives.Float3])."""
+        """The direction this rotational value will look towards."""
         member = self.get_member("TargetPoint")
         if isinstance(member, members.Reference):
             return member.targetId

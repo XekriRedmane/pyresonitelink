@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractiveCameraUserControl(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraUserControl.
+    """See Camera.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraUserControl"
@@ -39,7 +41,7 @@ class InteractiveCameraUserControl(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def canvas(self) -> str | None:
-        """Target ID of the _canvas reference (targets Canvas)."""
+        """The canvas being used to show settings."""
         member = self.get_member("_canvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +62,7 @@ class InteractiveCameraUserControl(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def panel(self) -> str | None:
-        """Target ID of the _panel reference (targets LegacyPanel)."""
+        """The legacy panel being used as a base to interact with the settings."""
         member = self.get_member("_panel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +83,7 @@ class InteractiveCameraUserControl(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def control(self) -> str | None:
-        """Target ID of the Control reference (targets InteractiveCameraControl)."""
+        """see Interactive Camera Control."""
         member = self.get_member("Control")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -102,7 +104,7 @@ class InteractiveCameraUserControl(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def ui_root(self) -> str | None:
-        """Target ID of the _uiRoot reference (targets Slot)."""
+        """Where to store UI elements."""
         member = self.get_member("_uiRoot")
         if isinstance(member, members.Reference):
             return member.targetId

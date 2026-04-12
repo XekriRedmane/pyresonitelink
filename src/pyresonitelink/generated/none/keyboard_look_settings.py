@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class KeyboardLookSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.KeyboardLookSettings.
+    """The KeyboardLookSettings component is part of the Settings menu.
+
+    Not used by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.KeyboardLookSettings"
@@ -33,7 +35,7 @@ class KeyboardLookSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def look_enabled(self) -> primitives.Bool | None:
-        """The LookEnabled field value."""
+        """Whether keyboard look is enabled."""
         member = self.get_member("LookEnabled")
         if member is None:
             return None
@@ -52,7 +54,7 @@ class KeyboardLookSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def horizontal_speed(self) -> primitives.Float | None:
-        """The HorizontalSpeed field value."""
+        """The speed of the keyboard looking on the horizontal axis."""
         member = self.get_member("HorizontalSpeed")
         if member is None:
             return None
@@ -71,7 +73,7 @@ class KeyboardLookSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def vertical_speed(self) -> primitives.Float | None:
-        """The VerticalSpeed field value."""
+        """The speed of the keyboard looking on the vertical axis."""
         member = self.get_member("VerticalSpeed")
         if member is None:
             return None

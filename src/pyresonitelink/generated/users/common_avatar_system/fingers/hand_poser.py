@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.chirality import Chirality
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifinger_pose_source_component import IFingerPoseSourceComponent
@@ -13,18 +14,40 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HandPoser.
+    """This component modifies the rotation of the fingers of an avatar's hand based on a pose source.
+The HandPoser works with whatever data is avilable, either precise finger tracking like a LeapMotion, or course grained like a vive wand, where grip and trigger affect the main finger positions.
+
+The HandPoser is made of five duplicate finger objects, each of which contains four duplicate bone objects. Each bone object contains a Coordinate Compensation, Root, OrigionalRotation, and RotationDrive.
+The below chart is difficult to read for this reason, but read it as: the same four fields, duplicated four times (one for each bone), duplicated five times (one for each finger).
+
+Due to this pattern, the intermediate bone of the thumb should never be bound as a human thumb does not have an intermediate bone.
 
     Category: Users/Common Avatar System/Fingers
+
+    This component forcibly assigns the rotation of each bound finger to a
+    particular bone relative to the palm. As an example of this, if you only
+    assign a Distal bone, that bone will spin 270 degrees starting pointing
+    forwards, curling to point out the direction of the palm, back towards
+    the wrist, then pointing out the back of the hand. It is often easiest
+    to make changes to this component following this procedure: # Have the
+    avatar be unequipped # Clear every RotationDrive field # Assign the Root
+    field of each bone in the hand to be driven, this list will not be
+    complete and some roots will be null. # Press InitializeHand at the
+    bottom of the component (Note: This button only works once, to reset the
+    button select another slot, then select the slot with the component
+    again). # Re-Equip the avatar and see if the hands initialized
+    successfully. # If a bone did not bind correctly, repeat. == Interaction
+    with grabbable items ==
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HandPoser"
 
-    def __init__(self, pose_source: str | IFingerPoseSourceComponent | None = None, pose_metacarpals: primitives.Bool | None = None, hand_root: str | Slot | None = None, hand_forward: primitives.Float3 | None = None, hand_up: primitives.Float3 | None = None, hand_right: primitives.Float3 | None = None, debug_fingers: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, pose_source: str | IFingerPoseSourceComponent | None = None, side: Chirality | str | None = None, pose_metacarpals: primitives.Bool | None = None, hand_root: str | Slot | None = None, hand_forward: primitives.Float3 | None = None, hand_up: primitives.Float3 | None = None, hand_right: primitives.Float3 | None = None, debug_fingers: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             pose_source: Initial value for PoseSource.
+            side: Initial value for Side.
             pose_metacarpals: Initial value for PoseMetacarpals.
             hand_root: Initial value for HandRoot.
             hand_forward: Initial value for HandForward.
@@ -36,6 +59,8 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
         super().__init__(component)
         if pose_source is not None:
             self.pose_source = pose_source
+        if side is not None:
+            self.side = side
         if pose_metacarpals is not None:
             self.pose_metacarpals = pose_metacarpals
         if hand_root is not None:
@@ -51,7 +76,7 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     @property
     def pose_source(self) -> str | None:
-        """Target ID of the PoseSource reference (targets IFingerPoseSourceComponent)."""
+        """What the finger transform data is derived from."""
         member = self.get_member("PoseSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -71,21 +96,28 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
             )
 
     @property
-    def side(self) -> members.FieldEnum | None:
-        """The Side member."""
+    def side(self) -> Chirality | None:
+        """Which hand this poser is representing"""
         member = self.get_member("Side")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Chirality(member.value)
         return None
 
     @side.setter
-    def side(self, value: members.FieldEnum) -> None:
-        """Set the Side member."""
-        self.set_member("Side", value)
+    def side(self, value: Chirality | str) -> None:
+        """Set Side. Which hand this poser is representing"""
+        member = self.get_member("Side")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Side",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def pose_metacarpals(self) -> primitives.Bool | None:
-        """The PoseMetacarpals field value."""
+        """If metacarpals should be posed (this should normally be left as True)"""
         member = self.get_member("PoseMetacarpals")
         if member is None:
             return None
@@ -104,7 +136,7 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     @property
     def hand_root(self) -> str | None:
-        """Target ID of the HandRoot reference (targets Slot)."""
+        """The root of the hand (if null the slot the component is attached to is used)"""
         member = self.get_member("HandRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -125,7 +157,7 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     @property
     def hand_forward(self) -> primitives.Float3 | None:
-        """The HandForward field value."""
+        """A unit vector pointing forward from the wrist to the fingers."""
         member = self.get_member("HandForward")
         if member is None:
             return None
@@ -144,7 +176,7 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     @property
     def hand_up(self) -> primitives.Float3 | None:
-        """The HandUp field value."""
+        """A unit vector pointing from the back of the hand outwards (alternatively phrased, this is pointing into the palm)"""
         member = self.get_member("HandUp")
         if member is None:
             return None
@@ -163,7 +195,7 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     @property
     def hand_right(self) -> primitives.Float3 | None:
-        """The HandRight field value."""
+        """A unit vector pointing to the right of the hand, if the hand is facing down. This is roughly the direction of the thumb on the left hand, and the other side of the hand from the thumb on the right hand."""
         member = self.get_member("HandRight")
         if member is None:
             return None
@@ -182,7 +214,7 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     @property
     def thumb(self) -> members.SyncObject | None:
-        """The Thumb member."""
+        """The Thumb on an anthro hand."""
         member = self.get_member("Thumb")
         if isinstance(member, members.SyncObject):
             return member
@@ -190,12 +222,12 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     @thumb.setter
     def thumb(self, value: members.SyncObject) -> None:
-        """Set the Thumb member."""
+        """Set Thumb. The Thumb on an anthro hand."""
         self.set_member("Thumb", value)
 
     @property
     def index(self) -> members.SyncObject | None:
-        """The Index member."""
+        """The Index on an anthro hand."""
         member = self.get_member("Index")
         if isinstance(member, members.SyncObject):
             return member
@@ -203,12 +235,12 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     @index.setter
     def index(self, value: members.SyncObject) -> None:
-        """Set the Index member."""
+        """Set Index. The Index on an anthro hand."""
         self.set_member("Index", value)
 
     @property
     def middle(self) -> members.SyncObject | None:
-        """The Middle member."""
+        """The Middle on an anthro hand."""
         member = self.get_member("Middle")
         if isinstance(member, members.SyncObject):
             return member
@@ -216,12 +248,12 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     @middle.setter
     def middle(self, value: members.SyncObject) -> None:
-        """Set the Middle member."""
+        """Set Middle. The Middle on an anthro hand."""
         self.set_member("Middle", value)
 
     @property
     def ring(self) -> members.SyncObject | None:
-        """The Ring member."""
+        """The Ring on an anthro hand."""
         member = self.get_member("Ring")
         if isinstance(member, members.SyncObject):
             return member
@@ -229,12 +261,12 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     @ring.setter
     def ring(self, value: members.SyncObject) -> None:
-        """Set the Ring member."""
+        """Set Ring. The Ring on an anthro hand."""
         self.set_member("Ring", value)
 
     @property
     def pinky(self) -> members.SyncObject | None:
-        """The Pinky member."""
+        """The Pinky on an anthro hand."""
         member = self.get_member("Pinky")
         if isinstance(member, members.SyncObject):
             return member
@@ -242,12 +274,12 @@ class HandPoser(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRec
 
     @pinky.setter
     def pinky(self, value: members.SyncObject) -> None:
-        """Set the Pinky member."""
+        """Set Pinky. The Pinky on an anthro hand."""
         self.set_member("Pinky", value)
 
     @property
     def debug_fingers(self) -> primitives.Bool | None:
-        """The DebugFingers field value."""
+        """Whether to show visuals for debugging the fingers."""
         member = self.get_member("DebugFingers")
         if member is None:
             return None

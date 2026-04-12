@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StaticGaussianSplat.
+    """The Static Gaussian Splat component stores data for the Gaussian Splat asset itself.
 
     Category: Assets
+
+    Used in Gaussian splat rendering components such as the
+    GaussianSplatRenderer component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticGaussianSplat"
@@ -31,7 +34,7 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The location of the Gaussian Splat data."""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -49,7 +52,7 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
             )
 
     async def clip_with_bounding_box(self, resolink: protocols.ResoniteLinkClient, bounds: primitives.BoundingBox, debug: bool = False) -> dict:
-        """Call the ClipWithBoundingBox sync method.
+        """Cuts the Gaussian splat using a bounding box with rotation argument.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -64,7 +67,7 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
         )
 
     async def clip_with_bounding_box_2(self, resolink: protocols.ResoniteLinkClient, bounds: primitives.BoundingBox, bounds_orientation: primitives.FloatQ, debug: bool = False) -> dict:
-        """Call the ClipWithBoundingBox sync method.
+        """Cuts the Gaussian splat using a bounding box with rotation argument.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -80,7 +83,7 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
         )
 
     async def clip_with_sphere(self, resolink: protocols.ResoniteLinkClient, center: primitives.Float3, radius: primitives.Float, debug: bool = False) -> dict:
-        """Call the ClipWithSphere sync method.
+        """Cuts the Gaussian splat using a sphere argument.
 
         Args:
             resolink: Connected ResoniteLink client.

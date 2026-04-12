@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetAsset(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """This node when provided an IAssetProviderA will give the raw IAsset provided by the provider.
+    """This node when provided an IAssetProvider will give the raw IAsset provided by the provider.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
 
@@ -42,7 +42,7 @@ class GetAsset(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INo
 
     @property
     def provider(self) -> str | None:
-        """Target ID of the Provider reference (targets INodeObjectOutput[IAssetProvider[A]])."""
+        """The IAssetProvider to get an IAsset from."""
         member = self.get_member("Provider")
         if isinstance(member, members.Reference):
             return member.targetId

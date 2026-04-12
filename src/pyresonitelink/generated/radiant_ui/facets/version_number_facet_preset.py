@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VersionNumberFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VersionNumberFacetPreset.
+    """The VersionNumberFacetPreset component loads the Version Number facet when it's not ``_fullyLoaded``. It does this by loading the facet from the cloud, and using that loaded data to make the preset
 
     Category: Radiant UI/Facets
+
+    used in the main dash. no need to be used by the user unless they are
+    missing the Version Number facet.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VersionNumberFacetPreset"
@@ -29,7 +32,7 @@ class VersionNumberFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def fully_loaded(self) -> primitives.Bool | None:
-        """The _fullyLoaded field value."""
+        """Whether this facet has been fully loaded and ready to use"""
         member = self.get_member("_fullyLoaded")
         if member is None:
             return None

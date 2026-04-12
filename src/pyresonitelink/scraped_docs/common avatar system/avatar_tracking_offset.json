@@ -1,0 +1,12 @@
+{
+  "description": "AvatarTrackingOffset can be used to shift the position of your trackers (including headset and hands) by a certain amount for an avatar.\nTo work, the component needs to be in the avatar's hierarchy.\n\nThis component effectively works like a \"Playspace Mover\".",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "Offset": "The amount that your tracking position should be offset when in the avatar",
+    "_user": "The user to which the offset is applied. This is set automatically when equipping an avatar with this component"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarTrackingOffset&action=raw"
+}

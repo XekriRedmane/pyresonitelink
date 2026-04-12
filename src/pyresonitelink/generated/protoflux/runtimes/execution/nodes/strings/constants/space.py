@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Space(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Space node is a character literal constant for the "Space" character (Unicode: U+0020).
+    """The ``Space`` node is a character literal constant for the "Space" character (Unicode: U+0020).
+
+This node is about the text character. Its usage should not be confused with that of keyboard keys used for handling input.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
     """

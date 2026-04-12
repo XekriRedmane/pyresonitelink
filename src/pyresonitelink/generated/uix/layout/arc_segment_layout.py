@@ -13,9 +13,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.ArcSegmentLayout.
+    """The ArcSegmentLayout component is used with ArcLayout, and separates the arc layout into equal segments defined in that component. When using this component, it will be very resistant to change as it is listening on the ArcLayout for the art amount, size, and ratios.
+
+}}
 
     Category: UIX/Layout
+
+    This is used for the individual arc segment selection of the context
+    menu.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ArcSegmentLayout"
@@ -45,7 +50,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
 
     @property
     def nested(self) -> str | None:
-        """Target ID of the Nested reference (targets RectTransform)."""
+        """The rect transform to hold the segments of the arc layout."""
         member = self.get_member("Nested")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +71,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
 
     @property
     def nested_size_ratio(self) -> primitives.Float | None:
-        """The NestedSizeRatio field value."""
+        """The size ratio for this arc segment."""
         member = self.get_member("NestedSizeRatio")
         if member is None:
             return None
@@ -85,7 +90,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
 
     @property
     def label(self) -> str | None:
-        """Target ID of the Label reference (targets Text)."""
+        """The label text for the arc segment."""
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +111,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
 
     @property
     def label_size(self) -> primitives.Float2 | None:
-        """The LabelSize field value."""
+        """The label text size for the arc segment."""
         member = self.get_member("LabelSize")
         if member is None:
             return None
@@ -125,7 +130,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
 
     @property
     def label_distance(self) -> primitives.Float | None:
-        """The LabelDistance field value."""
+        """The label text distance from the arc segment."""
         member = self.get_member("LabelDistance")
         if member is None:
             return None

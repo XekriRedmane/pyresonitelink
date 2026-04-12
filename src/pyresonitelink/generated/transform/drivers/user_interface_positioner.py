@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserInterfacePositioner.
+    """The UserInterfacePositioner component causes the slot to which it is attached to track the user's position and rotation (optionally head). This is a somewhat nicer and cleaner alternative than parenting a slot directly to a user's avatar node.
 
     Category: Transform/Drivers
     """
@@ -64,7 +64,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def target_user(self) -> members.SyncObject | None:
-        """The TargetUser member."""
+        """The user to track."""
         member = self.get_member("TargetUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -72,12 +72,12 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @target_user.setter
     def target_user(self, value: members.SyncObject) -> None:
-        """Set the TargetUser member."""
+        """Set TargetUser. The user to track."""
         self.set_member("TargetUser", value)
 
     @property
     def use_head(self) -> primitives.Bool | None:
-        """The UseHead field value."""
+        """Whether to track to the user's head."""
         member = self.get_member("UseHead")
         if member is None:
             return None
@@ -96,7 +96,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def rotate_vertical_only(self) -> primitives.Bool | None:
-        """The RotateVerticalOnly field value."""
+        """Whether to act like the freeform dash or not."""
         member = self.get_member("RotateVerticalOnly")
         if member is None:
             return None
@@ -115,7 +115,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def position_speed(self) -> primitives.Float | None:
-        """The PositionSpeed field value."""
+        """The speed at which the object will track the user's position."""
         member = self.get_member("PositionSpeed")
         if member is None:
             return None
@@ -134,7 +134,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def rotation_speed(self) -> primitives.Float | None:
-        """The RotationSpeed field value."""
+        """The speed at which the object will track the user's rotation."""
         member = self.get_member("RotationSpeed")
         if member is None:
             return None
@@ -153,7 +153,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def activation_distance(self) -> primitives.Float | None:
-        """The ActivationDistance field value."""
+        """The distance from the user to the object at which the object will start tracking the user's position and rotation. Zero means "always track"."""
         member = self.get_member("ActivationDistance")
         if member is None:
             return None
@@ -172,7 +172,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def activation_angle(self) -> primitives.Float | None:
-        """The ActivationAngle field value."""
+        """The angle between the user and the object at which the object will start tracking the user's position and rotation. Zero means "always track"."""
         member = self.get_member("ActivationAngle")
         if member is None:
             return None
@@ -191,7 +191,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def deactivation_distance(self) -> primitives.Float | None:
-        """The DeactivationDistance field value."""
+        """How far away the user has to be from the component for it to to stop following."""
         member = self.get_member("DeactivationDistance")
         if member is None:
             return None
@@ -210,7 +210,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def deactivation_angle(self) -> primitives.Float | None:
-        """The DeactivationAngle field value."""
+        """How much of an angle deviation it has to be for it to stop following."""
         member = self.get_member("DeactivationAngle")
         if member is None:
             return None
@@ -229,7 +229,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def target_position(self) -> primitives.Float3 | None:
-        """The TargetPosition field value."""
+        """The target position this UI is lerping to."""
         member = self.get_member("TargetPosition")
         if member is None:
             return None
@@ -248,7 +248,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def target_rotation(self) -> primitives.FloatQ | None:
-        """The TargetRotation field value."""
+        """The target rotation this UI is lerping to."""
         member = self.get_member("TargetRotation")
         if member is None:
             return None
@@ -267,7 +267,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def position(self) -> str | None:
-        """Target ID of the _position reference (targets IField[primitives.Float3])."""
+        """The field to drive to set the position of this UI."""
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -288,7 +288,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the _rotation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive to set the rotation of this UI."""
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             return member.targetId

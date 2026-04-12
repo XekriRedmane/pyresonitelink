@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserStreamMessages(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Stream Messages node takes in a user and returns that user's streamed messaged (is this upstream, downstream, or bi-directional?).
+    """The ``User Stream Messages`` node takes in a user and returns that user's streamed messaged (is this upstream, downstream, or bi-directional?).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """
@@ -34,7 +34,7 @@ class UserStreamMessages(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user that we want info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

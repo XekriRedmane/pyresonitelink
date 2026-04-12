@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GenericModalDialogSpawner(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GenericModalDialogSpawner<>.
+    """The GenericModalDialogSpawer component works in world space. The Generic type it takes has to be a component type. This component activates when on the same slot as a button. When activated, this component attaches a new instance of T to the world, triggers ``Initializer`` with the new Component as an argument, and then positions it in front of the user.
 
     Parameterize with a value type::
 
@@ -39,7 +39,7 @@ class GenericModalDialogSpawner(GenericComponent[T], IButtonPressReceiver, IWorl
 
     @property
     def size(self) -> primitives.Float2 | None:
-        """The Size field value."""
+        """The size of the dialog."""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -58,7 +58,7 @@ class GenericModalDialogSpawner(GenericComponent[T], IButtonPressReceiver, IWorl
 
     @property
     def close_on_click(self) -> primitives.Bool | None:
-        """The CloseOnClick field value."""
+        """Whether to close the Dialog on click."""
         member = self.get_member("CloseOnClick")
         if member is None:
             return None
@@ -77,7 +77,7 @@ class GenericModalDialogSpawner(GenericComponent[T], IButtonPressReceiver, IWorl
 
     @property
     def close_on_context_menu(self) -> primitives.Bool | None:
-        """The CloseOnContextMenu field value."""
+        """Whether to close the Dialog when opening the context menu."""
         member = self.get_member("CloseOnContextMenu")
         if member is None:
             return None

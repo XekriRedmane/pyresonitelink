@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PlaybackStateDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PlaybackStateDriver.
+    """The PlaybackStateDriver is a component that drives a set of booleans to whether or not certain states are currently active or not for a particular IPlayable.
 
     Category: Media/Utility
+
+    Attach to a slot and provide ``Source`` any Bool provided to the other
+    fields will be driven to the status of that field's status check.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PlaybackStateDriver"
@@ -43,7 +46,7 @@ class PlaybackStateDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IPlayable)."""
+        """Playback source - VideoTextureProvider or Playback"""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +67,7 @@ class PlaybackStateDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_playing(self) -> str | None:
-        """Target ID of the IsPlaying reference (targets IField[primitives.Bool])."""
+        """Will drive IField to true if playing, false if not playing"""
         member = self.get_member("IsPlaying")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +88,7 @@ class PlaybackStateDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_not_playing(self) -> str | None:
-        """Target ID of the IsNotPlaying reference (targets IField[primitives.Bool])."""
+        """Will drive IField to true is not playing, false if playing"""
         member = self.get_member("IsNotPlaying")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +109,7 @@ class PlaybackStateDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_paused(self) -> str | None:
-        """Target ID of the IsPaused reference (targets IField[primitives.Bool])."""
+        """Will drive IField to true if playable is paused"""
         member = self.get_member("IsPaused")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -127,7 +130,7 @@ class PlaybackStateDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_stopped(self) -> str | None:
-        """Target ID of the IsStopped reference (targets IField[primitives.Bool])."""
+        """Will drive IField to true if playable is stopped"""
         member = self.get_member("IsStopped")
         if isinstance(member, members.Reference):
             return member.targetId

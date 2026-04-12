@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedToggleInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedToggleInterface.
+    """The FeedToggleInterface component is used as a template type item in data feed mappers in the Data Feeds system. This component specifically is used for toggle things like check boxes.
 
     Category: Radiant UI/Data Feeds/Interfaces
     """
@@ -361,7 +361,7 @@ class FeedToggleInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[primitives.Bool])."""
+        """The field to populate with and update the value from the data feed."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -382,7 +382,7 @@ class FeedToggleInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def formatting(self) -> str | None:
-        """Target ID of the Formatting reference (targets IField[primitives.String])."""
+        """The field to populate with the format string for the value."""
         member = self.get_member("Formatting")
         if isinstance(member, members.Reference):
             return member.targetId

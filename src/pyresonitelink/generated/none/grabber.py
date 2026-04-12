@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Grabber(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Grabber is a Component that is used in a User's hiearchy to allow the user to grab objects. This component is generated internally usually. Interacting with this component dynamically is done through Grabbable ProtoFlux Nodes.
+    """Grabber is a Component that is used in a User's hiearchy to allow the user to grab objects. This component is generated internally usually. Interacting with this component dynamically is done through Grabbable ProtoFlux Nodes. 
+
+Frooxius mentioned if a foot grabbing tracking device was made for wide consumer use, they would add it as a possible Grabber node. This was mentioned in a YouTube video. Citation needed!
 
     This component can be triggered to grab things by the user. However,
     this requires a TrackedHand to be attached under the user, or be part of

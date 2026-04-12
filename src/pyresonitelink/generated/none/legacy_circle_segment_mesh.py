@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,18 +13,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyCircleSegmentMesh.
+    """This is a Legacy item and should not be used.
+
+    Just don't.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyCircleSegmentMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, expand_lerp: primitives.Float | None = None, inner_circle: primitives.Bool | None = None, radius_start: primitives.Float | None = None, thickness: primitives.Float | None = None, main_segment_arc: primitives.Float | None = None, separation_angle: primitives.Float | None = None, menu_main_segment_arc: primitives.Float | None = None, circle_item_count: primitives.Int | None = None, menu_radius_start: primitives.Float | None = None, menu_thickness: primitives.Float | None = None, fill_color: primitives.ColorX | None = None, outline_color: primitives.ColorX | None = None, outline_width: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, expand_lerp: primitives.Float | None = None, inner_circle: primitives.Bool | None = None, radius_start: primitives.Float | None = None, thickness: primitives.Float | None = None, main_segment_arc: primitives.Float | None = None, separation_angle: primitives.Float | None = None, menu_main_segment_arc: primitives.Float | None = None, circle_item_count: primitives.Int | None = None, menu_radius_start: primitives.Float | None = None, menu_thickness: primitives.Float | None = None, fill_color: primitives.ColorX | None = None, outline_color: primitives.ColorX | None = None, outline_width: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             expand_lerp: Initial value for ExpandLerp.
             inner_circle: Initial value for InnerCircle.
             radius_start: Initial value for RadiusStart.
@@ -46,6 +50,8 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if expand_lerp is not None:
             self.expand_lerp = expand_lerp
         if inner_circle is not None:
@@ -131,21 +137,28 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def expand_lerp(self) -> primitives.Float | None:
-        """The ExpandLerp field value."""
+        """How much to expand the mesh outwards"""
         member = self.get_member("ExpandLerp")
         if member is None:
             return None
@@ -164,7 +177,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def inner_circle(self) -> primitives.Bool | None:
-        """The InnerCircle field value."""
+        """Whether this mesh has an inner circle."""
         member = self.get_member("InnerCircle")
         if member is None:
             return None
@@ -183,7 +196,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def radius_start(self) -> primitives.Float | None:
-        """The RadiusStart field value."""
+        """The distance from the inner side of the segments to the center."""
         member = self.get_member("RadiusStart")
         if member is None:
             return None
@@ -202,7 +215,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """How thick the segments are from the circle center."""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -221,7 +234,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def main_segment_arc(self) -> primitives.Float | None:
-        """The MainSegmentArc field value."""
+        """The main segment arc from the dead platform."""
         member = self.get_member("MainSegmentArc")
         if member is None:
             return None
@@ -240,7 +253,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def separation_angle(self) -> primitives.Float | None:
-        """The SeparationAngle field value."""
+        """How far apart the segments should be."""
         member = self.get_member("SeparationAngle")
         if member is None:
             return None
@@ -259,7 +272,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def menu_main_segment_arc(self) -> primitives.Float | None:
-        """The MenuMainSegmentArc field value."""
+        """How big the main segment should be."""
         member = self.get_member("MenuMainSegmentArc")
         if member is None:
             return None
@@ -278,7 +291,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def circle_item_count(self) -> primitives.Int | None:
-        """The CircleItemCount field value."""
+        """how many segments there are."""
         member = self.get_member("CircleItemCount")
         if member is None:
             return None
@@ -297,7 +310,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def menu_radius_start(self) -> primitives.Float | None:
-        """The MenuRadiusStart field value."""
+        """Where the menu starts on a circle in degrees."""
         member = self.get_member("MenuRadiusStart")
         if member is None:
             return None
@@ -316,7 +329,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def menu_thickness(self) -> primitives.Float | None:
-        """The MenuThickness field value."""
+        """How thick the menu items are from circle center."""
         member = self.get_member("MenuThickness")
         if member is None:
             return None
@@ -335,7 +348,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def fill_color(self) -> primitives.ColorX | None:
-        """The FillColor field value."""
+        """what color to fill the segments with."""
         member = self.get_member("FillColor")
         if member is None:
             return None
@@ -354,7 +367,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def outline_color(self) -> primitives.ColorX | None:
-        """The OutlineColor field value."""
+        """What color the outline of the segments should be."""
         member = self.get_member("OutlineColor")
         if member is None:
             return None
@@ -373,7 +386,7 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def circle_item_overrides(self) -> members.SyncList | None:
-        """The CircleItemOverrides member."""
+        """Custom list of segments to use."""
         member = self.get_member("CircleItemOverrides")
         if isinstance(member, members.SyncList):
             return member
@@ -381,12 +394,12 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @circle_item_overrides.setter
     def circle_item_overrides(self, value: members.SyncList) -> None:
-        """Set the CircleItemOverrides member."""
+        """Set CircleItemOverrides. Custom list of segments to use."""
         self.set_member("CircleItemOverrides", value)
 
     @property
     def independent_segments(self) -> members.SyncList | None:
-        """The IndependentSegments member."""
+        """Custom list of independent segments to use."""
         member = self.get_member("IndependentSegments")
         if isinstance(member, members.SyncList):
             return member
@@ -394,12 +407,12 @@ class LegacyCircleSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @independent_segments.setter
     def independent_segments(self, value: members.SyncList) -> None:
-        """Set the IndependentSegments member."""
+        """Set IndependentSegments. Custom list of independent segments to use."""
         self.set_member("IndependentSegments", value)
 
     @property
     def outline_width(self) -> primitives.Float | None:
-        """The OutlineWidth field value."""
+        """The width of the item outlines."""
         member = self.get_member("OutlineWidth")
         if member is None:
             return None

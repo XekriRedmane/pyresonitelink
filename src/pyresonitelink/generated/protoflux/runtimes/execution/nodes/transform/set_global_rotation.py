@@ -43,7 +43,7 @@ class SetGlobalRotation(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """An impulse is fired whenever the Instance slot's rotation is set after the node receives an impulse. No impulse is fired from this output if the Instance input is null."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class SetGlobalRotation(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot whose global rotation is set. Default is null, the node does not function without this input."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class SetGlobalRotation(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the Rotation reference (targets INodeValueOutput[primitives.FloatQ])."""
+        """The global rotation the input Instance slot is set to. Default is [0;0;0]."""
         member = self.get_member("Rotation")
         if isinstance(member, members.Reference):
             return member.targetId

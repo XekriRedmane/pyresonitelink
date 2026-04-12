@@ -10,9 +10,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarAnchorLocomotionRelease(GeneratedComponent, IInputUpdateReceiver, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorLocomotionRelease.
+    """The AvatarAnchorLocomotionRelease Component is used so a user can get out of an anchor with their controller when they get into an anchor.
 
     Category: Users/Common Avatar System/Anchors
+
+    Has to be used on the same slot as an AvatarAnchor or it doesn't do
+    anything.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorLocomotionRelease"
@@ -33,7 +36,7 @@ class AvatarAnchorLocomotionRelease(GeneratedComponent, IInputUpdateReceiver, IC
 
     @property
     def release_on_binary_action(self) -> primitives.Bool | None:
-        """The ReleaseOnBinaryAction field value."""
+        """Whether to allow the user to jump out of the anchor"""
         member = self.get_member("ReleaseOnBinaryAction")
         if member is None:
             return None
@@ -52,7 +55,7 @@ class AvatarAnchorLocomotionRelease(GeneratedComponent, IInputUpdateReceiver, IC
 
     @property
     def release_strength_threshold(self) -> primitives.Float | None:
-        """The ReleaseStrengthThreshold field value."""
+        """The amount of pressing strength on the jump button needed to get out if not null."""
         member = self.get_member("ReleaseStrengthThreshold")
         if member is None:
             return None

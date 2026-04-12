@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetType(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Get Type node takes in an Object, and returns the Type of that object. For example, using a float and connecting it to this node will return System.Single.
+    """The ``Get Type`` node takes in an Object, and returns the Type of that object. For example, using a float and connecting it to this node will return ``System.Single``.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
     """

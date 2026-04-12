@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HierarchyMaterialTarget(GeneratedComponent, IMaterialTarget, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HierarchyMaterialTarget.
+    """The HierarchyMaterialTarget component signals that a slot tagged with this component you are hitting with the Material Tool is an appropriate target to look for materials in.
 
     Category: Assets/Tagging
     """

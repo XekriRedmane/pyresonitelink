@@ -19,7 +19,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraOBS.
+    """See Camera.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraOBS"
@@ -85,7 +87,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def canvas(self) -> str | None:
-        """Target ID of the _canvas reference (targets Canvas)."""
+        """The canvas being used to show settings."""
         member = self.get_member("_canvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +108,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def panel(self) -> str | None:
-        """Target ID of the _panel reference (targets LegacyPanel)."""
+        """The legacy panel being used as a base to interact with the settings."""
         member = self.get_member("_panel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -127,7 +129,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_panel(self) -> str | None:
-        """Target ID of the _currentPanel reference (targets RectTransform)."""
+        """the rectangle transform of the currently viewed panel."""
         member = self.get_member("_currentPanel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -148,7 +150,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def container(self) -> str | None:
-        """Target ID of the _container reference (targets Slot)."""
+        """The slot to store UI elements."""
         member = self.get_member("_container")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -169,7 +171,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def camera_control(self) -> str | None:
-        """Target ID of the CameraControl reference (targets InteractiveCameraControl)."""
+        """see Interactive Camera Control."""
         member = self.get_member("CameraControl")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -190,7 +192,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def connect_address(self) -> str | None:
-        """Target ID of the _connectAddress reference (targets TextField)."""
+        """The field to read an OBS websocket connect address from."""
         member = self.get_member("_connectAddress")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -211,7 +213,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def connect_password(self) -> str | None:
-        """Target ID of the _connectPassword reference (targets TextField)."""
+        """The field to read an OBS websocket connect password from."""
         member = self.get_member("_connectPassword")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -232,7 +234,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def status(self) -> str | None:
-        """Target ID of the _status reference (targets Text)."""
+        """The current status of the OBS connection."""
         member = self.get_member("_status")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -253,7 +255,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def active(self) -> primitives.Bool | None:
-        """The _active field value."""
+        """Whether the connection is active"""
         member = self.get_member("_active")
         if member is None:
             return None
@@ -272,7 +274,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def stream_time(self) -> str | None:
-        """Target ID of the _streamTime reference (targets Text)."""
+        """The text to fill with how long the user has been streaming."""
         member = self.get_member("_streamTime")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -293,7 +295,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bytes_per_sec(self) -> str | None:
-        """Target ID of the _bytesPerSec reference (targets Text)."""
+        """The text to fill with how many bytes per second the user is streaming."""
         member = self.get_member("_bytesPerSec")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -314,7 +316,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def fps(self) -> str | None:
-        """Target ID of the _fps reference (targets Text)."""
+        """The text to fill with how many frames per second the user is streaming."""
         member = self.get_member("_fps")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -335,7 +337,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def dropped_frames(self) -> str | None:
-        """Target ID of the _droppedFrames reference (targets Text)."""
+        """The text to fill with how many dropped frames the user has had streaming."""
         member = self.get_member("_droppedFrames")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -356,7 +358,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def stream_button(self) -> str | None:
-        """Target ID of the _streamButton reference (targets Button)."""
+        """the button that will start the streaming process to OBS."""
         member = self.get_member("_streamButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -377,7 +379,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def record_button(self) -> str | None:
-        """Target ID of the _recordButton reference (targets Button)."""
+        """the button to start recording using OBS."""
         member = self.get_member("_recordButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -398,7 +400,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def launch_ob_sbutton(self) -> str | None:
-        """Target ID of the _launchOBSbutton reference (targets Button)."""
+        """the button to boot OBS for the user when pressed."""
         member = self.get_member("_launchOBSbutton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -419,7 +421,7 @@ class InteractiveCameraOBS(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_mirror(self) -> str | None:
-        """Target ID of the _autoMirror reference (targets Checkbox)."""
+        """The button to enable the auto mirror option."""
         member = self.get_member("_autoMirror")
         if isinstance(member, members.Reference):
             return member.targetId

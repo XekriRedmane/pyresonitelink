@@ -18,8 +18,6 @@ class ColorFromHexCode(GeneratedComponent, IExecutionNode, INode, ICustomInspect
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
 
     **Gallery**: File:Protoflux_Color_From_Hex_Code.webp|How to use Color From Hex Code to turn a string hex into a color.
-
-ProtoFlux:Colors
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorFromHexCode"
@@ -37,7 +35,7 @@ ProtoFlux:Colors
 
     @property
     def hex_code(self) -> str | None:
-        """Target ID of the HexCode reference (targets INodeObjectOutput[primitives.String])."""
+        """The hex code to turn into a color. Turns this hex code into a color. The code must be a "#" followed by 3, 4, 6 or 8 hexadecimal digits. The 4 and 8 digit forms specify an alpha component, if not given the alpha component is taken to be 1."""
         member = self.get_member("HexCode")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +56,7 @@ ProtoFlux:Colors
 
     @property
     def color(self) -> members.EmptyElement | None:
-        """The Color member."""
+        """A color made from the provided hex code. This value is not defined and may have nonsense values if parsing failed (Parsed = false)."""
         member = self.get_member("Color")
         if isinstance(member, members.EmptyElement):
             return member
@@ -66,12 +64,12 @@ ProtoFlux:Colors
 
     @color.setter
     def color(self, value: members.EmptyElement) -> None:
-        """Set the Color member."""
+        """Set Color. A color made from the provided hex code. This value is not defined and may have nonsense values if parsing failed (Parsed = false)."""
         self.set_member("Color", value)
 
     @property
     def parsed(self) -> members.EmptyElement | None:
-        """The Parsed member."""
+        """True if parsing succeeded."""
         member = self.get_member("Parsed")
         if isinstance(member, members.EmptyElement):
             return member
@@ -79,6 +77,6 @@ ProtoFlux:Colors
 
     @parsed.setter
     def parsed(self, value: members.EmptyElement) -> None:
-        """Set the Parsed member."""
+        """Set Parsed. True if parsing succeeded."""
         self.set_member("Parsed", value)
 

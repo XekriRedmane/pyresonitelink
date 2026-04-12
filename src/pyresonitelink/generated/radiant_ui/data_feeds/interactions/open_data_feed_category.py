@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OpenDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.OpenDataFeedCategory.
+    """The OpenDataFeedCategory component receives Button Events and will open the Category with the path defined by the list ``CategorySubpath``.
 
     Category: Radiant UI/Data Feeds/Interactions
+
+    Add to a slot with a button and provide a path list for this component
+    and it will start working.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OpenDataFeedCategory"
@@ -29,7 +32,7 @@ class OpenDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEvent
 
     @property
     def view(self) -> str | None:
-        """Target ID of the View reference (targets IDataFeedView)."""
+        """The view to change the directory for."""
         member = self.get_member("View")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -50,7 +53,7 @@ class OpenDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEvent
 
     @property
     def category_subpath(self) -> members.SyncList | None:
-        """The CategorySubpath member."""
+        """A list of path directories (Like a folder path split by the slashes) to define the category to go to starting from root for ``View``."""
         member = self.get_member("CategorySubpath")
         if isinstance(member, members.SyncList):
             return member
@@ -58,6 +61,6 @@ class OpenDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEvent
 
     @category_subpath.setter
     def category_subpath(self, value: members.SyncList) -> None:
-        """Set the CategorySubpath member."""
+        """Set CategorySubpath. A list of path directories (Like a folder path split by the slashes) to define the category to go to starting from root for ``View``."""
         self.set_member("CategorySubpath", value)
 

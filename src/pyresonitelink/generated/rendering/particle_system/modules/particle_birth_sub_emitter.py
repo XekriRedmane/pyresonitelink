@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParticleBirthSubEmitter(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ParticleBirthSubEmitter.
+    """The Particle Birth Sub Emitter component
 
     Category: Rendering/Particle System/Modules
     """

@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BooleanMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BooleanMemberEditor.
+    """The BooleanMemberEditor component is commonly used in Scene Inspectors to allow toggling of booleans even if they are a sub property of a type like a Bool3 Using ``_path``. This can be utilized in Ref Hacking.
+
+    Used in Scene Inspectors
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BooleanMemberEditor"
@@ -46,7 +48,7 @@ class BooleanMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def continuous(self) -> primitives.Bool | None:
-        """The Continuous field value."""
+        """Whether editing of this field instantly updates the ``_target``."""
         member = self.get_member("Continuous")
         if member is None:
             return None
@@ -65,7 +67,7 @@ class BooleanMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def path(self) -> primitives.String | None:
-        """The _path field value."""
+        """The sub path under ``_target``. This can be something like "x" to represent the first value of a Bool3 field."""
         member = self.get_member("_path")
         if member is None:
             return None
@@ -84,7 +86,7 @@ class BooleanMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField)."""
+        """The bool field or a field with a toggleable bool subfield."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +107,7 @@ class BooleanMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def check_box(self) -> str | None:
-        """Target ID of the _checkBox reference (targets Checkbox)."""
+        """The Checkbox to toggle ``_target``->``_path`` with."""
         member = self.get_member("_checkBox")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +128,7 @@ class BooleanMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def state_drive(self) -> str | None:
-        """Target ID of the _stateDrive reference (targets IField[primitives.Bool])."""
+        """The field to drive with the state of ``_target``->``_path``"""
         member = self.get_member("_stateDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -147,7 +149,7 @@ class BooleanMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets Button)."""
+        """The button to toggle ``_target``->``_path`` with."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId

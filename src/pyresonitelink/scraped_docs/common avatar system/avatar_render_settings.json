@@ -1,0 +1,17 @@
+{
+  "description": "Avatar Render Settings is a component that can be placed anywhere on an avatar for it to work. This component changes the internal camera settings for the first person view for a user wearing an avatar with this component under it by optionally changing the far and/or near clip values of the POV camera.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "NearClip": "If not null, changes the NearClip of the user's POV camera when this component is under the user's avatar hierarchy.",
+    "FarClip": "If not null, changes the FarClip of the user's POV camera when this component is under the user's avatar hierarchy."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "This component does not start working on an avatar when added, until the avatar is re-equipped. After this, changing values on the component change what the user sees live. This component can be used to extend the distance a user can see, which by default is 4096 meters multipled by user global scale."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarRenderSettings&action=raw"
+}

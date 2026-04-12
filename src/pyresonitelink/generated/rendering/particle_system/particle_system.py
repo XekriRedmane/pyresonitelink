@@ -12,9 +12,27 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParticleSystem(GeneratedComponent, ICustomInspector, IRenderable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ParticleSystem.
+    """The ParticleSystem component acts as the interface between a particle style and one or more particle emitter.
 
     Category: Rendering/Particle System
+
+    With a particle system, multiple emitters can use the same source
+    ParticleStyle. Alternatively, multiple ParticleSystems can be used with
+    the same style but different simulation spaces to avoid the need for
+    multiple style components. This is especially handy when properties of
+    the style need to be dynamically changed as it can be done from a
+    centralized location.
+
+    **See also**: * ParticleStyle
+* PointEmitter
+* CircleEmitter
+* SphereEmitter
+* CylinderEmitter
+* ConeEmitter
+* LineEmitter
+* BoxEmitter
+* SkinnedMeshEmitter
+* MeshEmitter
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleSystem"
@@ -54,7 +72,7 @@ class ParticleSystem(GeneratedComponent, ICustomInspector, IRenderable, IWorldEv
 
     @property
     def style(self) -> str | None:
-        """Target ID of the Style reference (targets ParticleStyle)."""
+        """The ParticleStyle component that this component is using."""
         member = self.get_member("Style")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -75,7 +93,7 @@ class ParticleSystem(GeneratedComponent, ICustomInspector, IRenderable, IWorldEv
 
     @property
     def simulation_space(self) -> members.SyncObject | None:
-        """The SimulationSpace member."""
+        """The coordinate space the emitted particles will do calculations and physics under. (They are not actually placed under this slot, but they visually behave as though they are)."""
         member = self.get_member("SimulationSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -83,6 +101,6 @@ class ParticleSystem(GeneratedComponent, ICustomInspector, IRenderable, IWorldEv
 
     @simulation_space.setter
     def simulation_space(self, value: members.SyncObject) -> None:
-        """Set the SimulationSpace member."""
+        """Set SimulationSpace. The coordinate space the emitted particles will do calculations and physics under. (They are not actually placed under this slot, but they visually behave as though they are)."""
         self.set_member("SimulationSpace", value)
 

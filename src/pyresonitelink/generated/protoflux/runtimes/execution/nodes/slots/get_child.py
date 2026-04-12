@@ -38,7 +38,7 @@ class GetChild(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICu
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot you want to find the child of."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId

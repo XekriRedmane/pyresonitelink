@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UniverseStatus.
+    """The UniverseStatus component provides information on the current universe.
 
     Category: Cloud/Indicators
+
+    Attach to a slot and it will start giving data on the current universe.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UniverseStatus"
@@ -38,7 +40,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def universe_id(self) -> primitives.String | None:
-        """The UniverseId field value."""
+        """The ID of the universe current Universe."""
         member = self.get_member("UniverseId")
         if member is None:
             return None
@@ -57,7 +59,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def universe_name(self) -> primitives.String | None:
-        """The UniverseName field value."""
+        """The universe's name."""
         member = self.get_member("UniverseName")
         if member is None:
             return None
@@ -76,7 +78,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def primary_group_id(self) -> primitives.String | None:
-        """The PrimaryGroupId field value."""
+        """The ID of the primary group of the universe."""
         member = self.get_member("PrimaryGroupId")
         if member is None:
             return None
@@ -95,7 +97,7 @@ class UniverseStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def in_universe(self) -> primitives.Bool | None:
-        """The InUniverse field value."""
+        """Whether we are in a universe or not."""
         member = self.get_member("InUniverse")
         if member is None:
             return None

@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AppVersion.
+    """App version is a component that updates it's fields with the live information of Resonite's version.
 
     Category: Utility
+
+    **Behavior**: The fields are "Pseudo Driven" or constantly being written to. Attempting to change a field makes it instantly change back and not send an update event.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AppVersion"
@@ -47,7 +49,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def version_number(self) -> primitives.String | None:
-        """The VersionNumber field value."""
+        """The version number of Resonite. usually formatted year.month.day.minute. The minute part of the version is the minute from midnight UTC the version was compiled."""
         member = self.get_member("VersionNumber")
         if member is None:
             return None
@@ -66,7 +68,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def version_name(self) -> primitives.String | None:
-        """The VersionName field value."""
+        """The name of the version of Resonite. Usually this is "Beta", "Alpha" or "Release" followed by ``VersionNumber``"""
         member = self.get_member("VersionName")
         if member is None:
             return None
@@ -85,7 +87,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def full_version_string(self) -> primitives.String | None:
-        """The FullVersionString field value."""
+        """Usually the same as ``VersionNumber``"""
         member = self.get_member("FullVersionString")
         if member is None:
             return None
@@ -104,7 +106,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def build_year(self) -> primitives.Int | None:
-        """The BuildYear field value."""
+        """The year Resonite was compiled."""
         member = self.get_member("BuildYear")
         if member is None:
             return None
@@ -123,7 +125,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def build_month(self) -> primitives.Int | None:
-        """The BuildMonth field value."""
+        """The month Resonite was compiled."""
         member = self.get_member("BuildMonth")
         if member is None:
             return None
@@ -142,7 +144,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def build_day(self) -> primitives.Int | None:
-        """The BuildDay field value."""
+        """The day Resonite was compiled."""
         member = self.get_member("BuildDay")
         if member is None:
             return None
@@ -161,7 +163,7 @@ class AppVersion(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def build_time_of_day(self) -> primitives.Int | None:
-        """The BuildTimeOfDay field value."""
+        """The amount of minutes since midnight UTC."""
         member = self.get_member("BuildTimeOfDay")
         if member is None:
             return None

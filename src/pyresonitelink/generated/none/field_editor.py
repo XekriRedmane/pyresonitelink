@@ -9,7 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FieldEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FieldEditor.
+    """A FieldEditor component takes an IField of any type and deconstructs it's elements into a list of editor components.
+
+    Attach to a slot under a UIX Canvas hiearchy with a RectTransform and
+    then insert an IField into ``_targetField`` to be edited for this
+    component to generate an editor for the elements of the specified
+    ``_targetField``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FieldEditor"
@@ -27,7 +32,7 @@ class FieldEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_field(self) -> str | None:
-        """Target ID of the _targetField reference (targets IField)."""
+        """The field to generate an editor list for."""
         member = self.get_member("_targetField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -48,7 +53,7 @@ class FieldEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text_editors(self) -> members.SyncList | None:
-        """The _textEditors member."""
+        """A list of text editors of the specified ``_targetField``'s components."""
         member = self.get_member("_textEditors")
         if isinstance(member, members.SyncList):
             return member
@@ -56,12 +61,12 @@ class FieldEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @text_editors.setter
     def text_editors(self, value: members.SyncList) -> None:
-        """Set the _textEditors member."""
+        """Set _textEditors. A list of text editors of the specified ``_targetField``'s components."""
         self.set_member("_textEditors", value)
 
     @property
     def text_drives(self) -> members.SyncList | None:
-        """The _textDrives member."""
+        """A list of text value fields to drive with the contents of the components of the specified ``_targetField``."""
         member = self.get_member("_textDrives")
         if isinstance(member, members.SyncList):
             return member
@@ -69,6 +74,6 @@ class FieldEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @text_drives.setter
     def text_drives(self, value: members.SyncList) -> None:
-        """Set the _textDrives member."""
+        """Set _textDrives. A list of text value fields to drive with the contents of the components of the specified ``_targetField``."""
         self.set_member("_textDrives", value)
 

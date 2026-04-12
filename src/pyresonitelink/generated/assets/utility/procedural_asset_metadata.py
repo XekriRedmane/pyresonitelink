@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProceduralAssetMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProceduralAssetMetadata<>.
+    """The ProceduralAssetMetadata component is shown in the inspector for procedural meshes and textures.Component was given this functionality in Beta 2024.1.12.1336
 
     Category: Assets/Utility
 
@@ -46,7 +46,7 @@ class ProceduralAssetMetadata(GenericComponent[T], IComponent, IWorldEventReceiv
 
     @property
     def asset(self) -> str | None:
-        """Target ID of the Asset reference (targets ProceduralAssetProvider[A])."""
+        """The procedural asset to get data on."""
         member = self.get_member("Asset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +67,7 @@ class ProceduralAssetMetadata(GenericComponent[T], IComponent, IWorldEventReceiv
 
     @property
     def update_count(self) -> primitives.Int | None:
-        """The UpdateCount field value."""
+        """How many times ``Asset`` has been updated since generation."""
         member = self.get_member("UpdateCount")
         if member is None:
             return None
@@ -86,7 +86,7 @@ class ProceduralAssetMetadata(GenericComponent[T], IComponent, IWorldEventReceiv
 
     @property
     def error(self) -> primitives.Bool | None:
-        """The Error field value."""
+        """Whether ``Asset`` ran into an error when generating."""
         member = self.get_member("Error")
         if member is None:
             return None

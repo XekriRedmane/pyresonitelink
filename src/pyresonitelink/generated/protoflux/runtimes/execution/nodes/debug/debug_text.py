@@ -19,6 +19,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class DebugText(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Debug Text is a ProtoFlux node that when called will make a text visual at a global Point (float3) and will appear for a duration in seconds. The text that appears will always face in the direction toward you the moment this node is called. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.
 
+See also: Coordinate spaces
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Debug
     """
 
@@ -52,7 +54,7 @@ class DebugText(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after * (Call) is impulsed and the visual was created successfully."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -1,0 +1,13 @@
+{
+  "description": "The AvatarPoseBoxConstraint component is a BodyPoseFilter that can be used in the construction of tool tips, anchors, grabbable items, and more. This pose filter is used to force the slot corresponding to a body node (In the case of a hand for example, it will constrict the position of the hand bone position, rather than the whole hand) to stay within a rotatable box specified.",
+  "category": "Users:Common Avatar System:Pose Filters",
+  "fields": {
+    "BoxSize": "the size of the box that a user's body node should be constrained within. (0,0,0) is valid for this field.",
+    "DefaultPoseReference": "the slot which the box will be positioned, rotated, and scaled by. If null, this is the slot this component is on.",
+    "ProcessSimulatedPoses": "Whether to affect simulated poses like from the animation system."
+  },
+  "methods": {},
+  "usage": "This is widely used in seats where the user's legs and hips are posed in a sitting position, like when sitting in a car.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarPoseBoxConstraint&action=raw"
+}

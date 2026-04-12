@@ -34,7 +34,7 @@ class LeftHandRotation(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def user_root(self) -> str | None:
-        """Target ID of the UserRoot reference (targets INodeObjectOutput[UserRoot])."""
+        """The user's user root."""
         member = self.get_member("UserRoot")
         if isinstance(member, members.Reference):
             return member.targetId

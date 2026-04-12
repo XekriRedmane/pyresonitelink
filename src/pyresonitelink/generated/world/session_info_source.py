@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.session_access_level import SessionAccessLevel
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworld_link import IWorldLink
@@ -10,14 +11,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SessionInfoSource.
+    """The SessionInfoSource component can be used to receive an assortment of useful information from an inputted SessionId.
 
     Category: World
+
+    The SessionInfoSource component can give us the name, description, tags,
+    and many other useful pieces of information about a session from an
+    inputted SessionId. The current SessionId can be obtained using the
+    WorldSessionID ProtoFlux node.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SessionInfoSource"
 
-    def __init__(self, session_id: primitives.String | None = None, is_open: primitives.Bool | None = None, last_updated: str | None = None, name: primitives.String | None = None, description: primitives.String | None = None, corresponding_record_id: primitives.String | None = None, corresponding_owner_id: primitives.String | None = None, host_user_id: primitives.String | None = None, host_username: primitives.String | None = None, sanitized_host_username: primitives.String | None = None, app_version: primitives.String | None = None, headless_host: primitives.Bool | None = None, thumbnail: primitives.String | None = None, joined_users: primitives.Int | None = None, active_users: primitives.Int | None = None, total_joined_users: primitives.Int | None = None, total_active_users: primitives.Int | None = None, maximum_users: primitives.Int | None = None, mobile_friendly: primitives.Bool | None = None, is_on_lan: primitives.Bool | None = None, away_kick_enabled: primitives.Bool | None = None, away_kick_interval: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, session_id: primitives.String | None = None, is_open: primitives.Bool | None = None, last_updated: str | None = None, name: primitives.String | None = None, description: primitives.String | None = None, corresponding_record_id: primitives.String | None = None, corresponding_owner_id: primitives.String | None = None, host_user_id: primitives.String | None = None, host_username: primitives.String | None = None, sanitized_host_username: primitives.String | None = None, app_version: primitives.String | None = None, headless_host: primitives.Bool | None = None, thumbnail: primitives.String | None = None, joined_users: primitives.Int | None = None, active_users: primitives.Int | None = None, total_joined_users: primitives.Int | None = None, total_active_users: primitives.Int | None = None, maximum_users: primitives.Int | None = None, mobile_friendly: primitives.Bool | None = None, access_level: SessionAccessLevel | str | None = None, is_on_lan: primitives.Bool | None = None, away_kick_enabled: primitives.Bool | None = None, away_kick_interval: str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,6 +46,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
             total_active_users: Initial value for TotalActiveUsers.
             maximum_users: Initial value for MaximumUsers.
             mobile_friendly: Initial value for MobileFriendly.
+            access_level: Initial value for AccessLevel.
             is_on_lan: Initial value for IsOnLAN.
             away_kick_enabled: Initial value for AwayKickEnabled.
             away_kick_interval: Initial value for AwayKickInterval.
@@ -84,6 +91,8 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
             self.maximum_users = maximum_users
         if mobile_friendly is not None:
             self.mobile_friendly = mobile_friendly
+        if access_level is not None:
+            self.access_level = access_level
         if is_on_lan is not None:
             self.is_on_lan = is_on_lan
         if away_kick_enabled is not None:
@@ -93,7 +102,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def session_id(self) -> primitives.String | None:
-        """The SessionId field value."""
+        """The session ID to get information on."""
         member = self.get_member("SessionId")
         if member is None:
             return None
@@ -112,7 +121,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def is_open(self) -> primitives.Bool | None:
-        """The IsOpen field value."""
+        """Whether the session is open."""
         member = self.get_member("IsOpen")
         if member is None:
             return None
@@ -131,7 +140,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def last_updated(self) -> str | None:
-        """The LastUpdated field value."""
+        """The last time the info on this component was updated."""
         member = self.get_member("LastUpdated")
         if member is None:
             return None
@@ -150,7 +159,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def name(self) -> primitives.String | None:
-        """The Name field value."""
+        """The name of the session"""
         member = self.get_member("Name")
         if member is None:
             return None
@@ -169,7 +178,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def description(self) -> primitives.String | None:
-        """The Description field value."""
+        """The session description."""
         member = self.get_member("Description")
         if member is None:
             return None
@@ -188,7 +197,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def tags(self) -> members.SyncList | None:
-        """The Tags member."""
+        """Tags that the session world has."""
         member = self.get_member("Tags")
         if isinstance(member, members.SyncList):
             return member
@@ -196,12 +205,12 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @tags.setter
     def tags(self, value: members.SyncList) -> None:
-        """Set the Tags member."""
+        """Set Tags. Tags that the session world has."""
         self.set_member("Tags", value)
 
     @property
     def corresponding_record_id(self) -> primitives.String | None:
-        """The CorrespondingRecordId field value."""
+        """The record ID of the world of the session"""
         member = self.get_member("CorrespondingRecordId")
         if member is None:
             return None
@@ -220,7 +229,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def corresponding_owner_id(self) -> primitives.String | None:
-        """The CorrespondingOwnerId field value."""
+        """The owner UserID of the session's world."""
         member = self.get_member("CorrespondingOwnerId")
         if member is None:
             return None
@@ -239,7 +248,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def host_user_id(self) -> primitives.String | None:
-        """The HostUserId field value."""
+        """The UserID of the session host."""
         member = self.get_member("HostUserId")
         if member is None:
             return None
@@ -258,7 +267,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def host_username(self) -> primitives.String | None:
-        """The HostUsername field value."""
+        """The username of the session host."""
         member = self.get_member("HostUsername")
         if member is None:
             return None
@@ -277,7 +286,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def sanitized_host_username(self) -> primitives.String | None:
-        """The SanitizedHostUsername field value."""
+        """The username of the session host which escapes special characters."""
         member = self.get_member("SanitizedHostUsername")
         if member is None:
             return None
@@ -296,7 +305,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def app_version(self) -> primitives.String | None:
-        """The AppVersion field value."""
+        """The App version of the client of the session being hosted."""
         member = self.get_member("AppVersion")
         if member is None:
             return None
@@ -315,7 +324,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def headless_host(self) -> primitives.Bool | None:
-        """The HeadlessHost field value."""
+        """Whether the session is being hosted by a headless client."""
         member = self.get_member("HeadlessHost")
         if member is None:
             return None
@@ -334,7 +343,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def session_urls(self) -> members.SyncList | None:
-        """The SessionURLs member."""
+        """A list of other session URLs using the same world."""
         member = self.get_member("SessionURLs")
         if isinstance(member, members.SyncList):
             return member
@@ -342,12 +351,12 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @session_urls.setter
     def session_urls(self, value: members.SyncList) -> None:
-        """Set the SessionURLs member."""
+        """Set SessionURLs. A list of other session URLs using the same world."""
         self.set_member("SessionURLs", value)
 
     @property
     def thumbnail(self) -> primitives.String | None:
-        """The Thumbnail field value."""
+        """The link for the session thumbnail in text form."""
         member = self.get_member("Thumbnail")
         if member is None:
             return None
@@ -366,7 +375,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def joined_users(self) -> primitives.Int | None:
-        """The JoinedUsers field value."""
+        """How many users are in the world."""
         member = self.get_member("JoinedUsers")
         if member is None:
             return None
@@ -385,7 +394,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def active_users(self) -> primitives.Int | None:
-        """The ActiveUsers field value."""
+        """Of the people joined, how many are active/focused?"""
         member = self.get_member("ActiveUsers")
         if member is None:
             return None
@@ -404,7 +413,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def total_joined_users(self) -> primitives.Int | None:
-        """The TotalJoinedUsers field value."""
+        """How many users have ever joined the world?"""
         member = self.get_member("TotalJoinedUsers")
         if member is None:
             return None
@@ -423,7 +432,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def total_active_users(self) -> primitives.Int | None:
-        """The TotalActiveUsers field value."""
+        """How many users are active??"""
         member = self.get_member("TotalActiveUsers")
         if member is None:
             return None
@@ -442,7 +451,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def maximum_users(self) -> primitives.Int | None:
-        """The MaximumUsers field value."""
+        """The maximum users that can be in the session."""
         member = self.get_member("MaximumUsers")
         if member is None:
             return None
@@ -461,7 +470,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def mobile_friendly(self) -> primitives.Bool | None:
-        """The MobileFriendly field value."""
+        """Whether the session is compatible with a mobile/quest build of the game."""
         member = self.get_member("MobileFriendly")
         if member is None:
             return None
@@ -479,21 +488,28 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
             )
 
     @property
-    def access_level(self) -> members.FieldEnum | None:
-        """The AccessLevel member."""
+    def access_level(self) -> SessionAccessLevel | None:
+        """The sessions level of access to users joining."""
         member = self.get_member("AccessLevel")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SessionAccessLevel(member.value)
         return None
 
     @access_level.setter
-    def access_level(self, value: members.FieldEnum) -> None:
-        """Set the AccessLevel member."""
-        self.set_member("AccessLevel", value)
+    def access_level(self, value: SessionAccessLevel | str) -> None:
+        """Set AccessLevel. The sessions level of access to users joining."""
+        member = self.get_member("AccessLevel")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AccessLevel",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def is_on_lan(self) -> primitives.Bool | None:
-        """The IsOnLAN field value."""
+        """Whether the session is set to Local Access Network."""
         member = self.get_member("IsOnLAN")
         if member is None:
             return None
@@ -512,7 +528,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def away_kick_enabled(self) -> primitives.Bool | None:
-        """The AwayKickEnabled field value."""
+        """Whether away kick is enabled or not"""
         member = self.get_member("AwayKickEnabled")
         if member is None:
             return None
@@ -531,7 +547,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def away_kick_interval(self) -> str | None:
-        """The AwayKickInterval field value."""
+        """How long till a user is kicked for being away in a session."""
         member = self.get_member("AwayKickInterval")
         if member is None:
             return None

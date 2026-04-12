@@ -41,7 +41,7 @@ class ValueMod(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[T])."""
+        """Takes in the value for division, this is your current amount to check against."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class ValueMod(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[T])."""
+        """Takes in a value for division, this is your range, or how much you can fill in with your value before it rolls over and starting from 0."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId

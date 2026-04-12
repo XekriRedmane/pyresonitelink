@@ -17,6 +17,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class SampleObjectAnimationTrack(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """This node when provided an Animation Asset sample the given track index for a Reference Type Reference at the specified time.
 
+It is currently only possible to make use of this node to read Strings from AnimJs. This can be useful to store large amounts or string data, like translations or subtitles driven via animations.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
 
     Parameterize with a value type::
@@ -47,7 +49,7 @@ class SampleObjectAnimationTrack(GenericComponent[T], INodeObjectOutput[T], IExe
 
     @property
     def animation(self) -> str | None:
-        """Target ID of the Animation reference (targets INodeObjectOutput[Animation])."""
+        """The Animation Asset provided by an IAssetProvider."""
         member = self.get_member("Animation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +70,7 @@ class SampleObjectAnimationTrack(GenericComponent[T], INodeObjectOutput[T], IExe
 
     @property
     def track_index(self) -> str | None:
-        """Target ID of the TrackIndex reference (targets INodeValueOutput[primitives.Int])."""
+        """The track index of the given Animation (Animation Asset) to sample from"""
         member = self.get_member("TrackIndex")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +91,7 @@ class SampleObjectAnimationTrack(GenericComponent[T], INodeObjectOutput[T], IExe
 
     @property
     def time(self) -> str | None:
-        """Target ID of the Time reference (targets INodeValueOutput[primitives.Float])."""
+        """The time in seconds at which to sample the animation."""
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             return member.targetId

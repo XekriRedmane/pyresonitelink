@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueNoiseHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueNoiseHapticFilter.
+    """The ValueNoiseHapticFilter component makes a random intensity value every update to a device touching a HapticVolume.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics/Filters
+
+    Attach to a slot with a valid and working HapticVolume to add to the
+    list of multiplicative haptic filters.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ValueNoiseHapticFilter"
@@ -32,7 +37,7 @@ class ValueNoiseHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def min_value(self) -> primitives.Float | None:
-        """The MinValue field value."""
+        """The minimum haptic intensity to output in a game tick."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class ValueNoiseHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def max_value(self) -> primitives.Float | None:
-        """The MaxValue field value."""
+        """The maximum haptic intensity to output in a game tick."""
         member = self.get_member("MaxValue")
         if member is None:
             return None

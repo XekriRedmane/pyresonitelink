@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.DesktopRenderSettings.
+    """The DesktopRenderSettings component is used to set Settings used in Desktop mode.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DesktopRenderSettings"
@@ -45,7 +45,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def field_of_view(self) -> primitives.Float | None:
-        """The FieldOfView field value."""
+        """The fov of the desktop client."""
         member = self.get_member("FieldOfView")
         if member is None:
             return None
@@ -64,7 +64,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def sprint_field_of_view_zoom(self) -> primitives.Bool | None:
-        """The SprintFieldOfViewZoom field value."""
+        """Whether to multiply the FOV when sprinting"""
         member = self.get_member("SprintFieldOfViewZoom")
         if member is None:
             return None
@@ -83,7 +83,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def vsync(self) -> primitives.Bool | None:
-        """The VSync field value."""
+        """Whether to use VSync"""
         member = self.get_member("VSync")
         if member is None:
             return None
@@ -102,7 +102,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def limit_framerate_when_unfocused(self) -> primitives.Bool | None:
-        """The LimitFramerateWhenUnfocused field value."""
+        """Whether to limit framerate when the game is unfocused."""
         member = self.get_member("LimitFramerateWhenUnfocused")
         if member is None:
             return None
@@ -121,7 +121,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def maximum_background_framerate(self) -> primitives.Int | None:
-        """The MaximumBackgroundFramerate field value."""
+        """How much to limit the framerate when unfocused and ``LimitFramerateWhenUnfocused`` is true."""
         member = self.get_member("MaximumBackgroundFramerate")
         if member is None:
             return None
@@ -140,7 +140,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def frame_pacing_options_enabled(self) -> primitives.Bool | None:
-        """The FramePacingOptionsEnabled field value."""
+        """Whether to pace frames due to options like ``MaximumBackgroundFramerate`` is being used."""
         member = self.get_member("FramePacingOptionsEnabled")
         if member is None:
             return None
@@ -159,7 +159,7 @@ class DesktopRenderSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def background_framerate_enabled(self) -> primitives.Bool | None:
-        """The BackgroundFramerateEnabled field value."""
+        """Whether to render new frames when in the background."""
         member = self.get_member("BackgroundFramerateEnabled")
         if member is None:
             return None

@@ -15,9 +15,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MeshVisibilityToggleTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MeshVisibilityToggleTool.
+    """See Mesh Visibility Tool.
 
     Category: Tools
+
+    See Mesh Visibility Tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshVisibilityToggleTool"
@@ -184,7 +186,7 @@ class MeshVisibilityToggleTool(GeneratedComponent, ITool, IMaterialApplyPolicy, 
 
     @property
     def apply_to_object_root(self) -> primitives.Bool | None:
-        """The ApplyToObjectRoot field value."""
+        """Whether to search for an object root in order to apply to all meshes under that root."""
         member = self.get_member("ApplyToObjectRoot")
         if member is None:
             return None
@@ -203,7 +205,7 @@ class MeshVisibilityToggleTool(GeneratedComponent, ITool, IMaterialApplyPolicy, 
 
     @property
     def set_shadow_cast_mode(self) -> members.FieldEnum | None:
-        """The SetShadowCastMode member."""
+        """Whether to set the meshes shadow mode and what to set it to."""
         member = self.get_member("SetShadowCastMode")
         if isinstance(member, members.FieldEnum):
             return member
@@ -211,6 +213,6 @@ class MeshVisibilityToggleTool(GeneratedComponent, ITool, IMaterialApplyPolicy, 
 
     @set_shadow_cast_mode.setter
     def set_shadow_cast_mode(self, value: members.FieldEnum) -> None:
-        """Set the SetShadowCastMode member."""
+        """Set SetShadowCastMode. Whether to set the meshes shadow mode and what to set it to."""
         self.set_member("SetShadowCastMode", value)
 

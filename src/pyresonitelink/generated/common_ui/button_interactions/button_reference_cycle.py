@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonReferenceCycle(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonReferenceCycle<>.
+    """The ButtonReferenceCycle component holds a list of references and takes in a ``TargetReference`` of a provided type. When an IButton is pressed while this component is on it, this will cycle through the listed references and send the data through the ``TargetReference``.
 
     Category: Common UI/Button Interactions
+
+    Useful for needing a way to cycle through references of any type.
 
     Parameterize with a value type::
 
@@ -35,7 +37,7 @@ class ButtonReferenceCycle(GenericComponent[T], IButtonPressReceiver, IWorldEven
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets SyncRef[T])."""
+        """The reference data to send outwards."""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +58,7 @@ class ButtonReferenceCycle(GenericComponent[T], IButtonPressReceiver, IWorldEven
 
     @property
     def targets(self) -> members.SyncList | None:
-        """The Targets member."""
+        """The list of references to cycle through."""
         member = self.get_member("Targets")
         if isinstance(member, members.SyncList):
             return member
@@ -64,6 +66,6 @@ class ButtonReferenceCycle(GenericComponent[T], IButtonPressReceiver, IWorldEven
 
     @targets.setter
     def targets(self, value: members.SyncList) -> None:
-        """Set the Targets member."""
+        """Set Targets. The list of references to cycle through."""
         self.set_member("Targets", value)
 

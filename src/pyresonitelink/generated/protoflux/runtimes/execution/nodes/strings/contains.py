@@ -37,7 +37,7 @@ class Contains(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to search for Substring (String) in."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class Contains(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def substring(self) -> str | None:
-        """Target ID of the Substring reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to be searching for."""
         member = self.get_member("Substring")
         if isinstance(member, members.Reference):
             return member.targetId

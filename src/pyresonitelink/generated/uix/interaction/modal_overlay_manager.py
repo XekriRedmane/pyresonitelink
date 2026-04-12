@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ModalOverlayManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ModalOverlayManager.
+    """The ModalOverlayManager component allows for the creation of ModalOverlay slots. Using the ``Template`` field to create Modal Overlays duplicates.
 
     Category: UIX/Interaction
     """
@@ -33,7 +33,7 @@ class ModalOverlayManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def template(self) -> str | None:
-        """Target ID of the Template reference (targets ModalOverlay)."""
+        """The template ModalOverlay slot."""
         member = self.get_member("Template")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -54,7 +54,7 @@ class ModalOverlayManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def spawn_root(self) -> str | None:
-        """Target ID of the SpawnRoot reference (targets Slot)."""
+        """The slot hierarchy to spawn this modal overlay on."""
         member = self.get_member("SpawnRoot")
         if isinstance(member, members.Reference):
             return member.targetId

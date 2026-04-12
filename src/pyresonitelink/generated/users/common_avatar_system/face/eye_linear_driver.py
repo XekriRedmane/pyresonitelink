@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.clamp_mode import ClampMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.eye_manager import EyeManager
@@ -11,14 +12,28 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.EyeLinearDriver.
+    """The EyeLinearDriver component is used to drive the shapekeys on eyes. It can also do eye look direction shapekeys if each eye is provided a projection plane slot.
+
+This component can also be used to drive position offsets for eyes. This can be used to make 2D texture based eyes or anime eyes work without needing to use rotation. Please see How Projection Plane Works.
 
     Category: Users/Common Avatar System/Face
+
+    Can be used to drive 2D eyeballs, the shapekeys for eyeballs, and look
+    shapekeys using Ray plane intersection calculations within the
+    component.
+
+    **How Projection Plane Works**: When any eye on this component is provided a slot for ``ProjectionPlanePoint``, the projection calculations are allowed to work. 
+
+For each eye the Calculation is able to be done on, the component shoots a simulated ray from the ``ProjectionPlanePoint`` to the eye's look target through an offseted plane. The resulting hit point is modified by some of the component's values (See above fields) and then clamped between -1 to 1. Or within a circle if using ClampMode circle. The value is then modifed by some more component fields, before the result drives ``PositionOffset``. Which can drive a texture offset or the position of an eyeball slot for 2D eyes.
+
+    **Eye Look Calculation**: Eye look calculations for an eye don't work if ``ProjectionPlanePoint`` is null for that eye.
+
+The clamped hit point from The Projection System is first multiplied with ``LookMultiply`` and raised to ``LookPower`` before it is used for calculating ``LookLeft``, ``LookRight``, ``LookUp``, and ``LookDown``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.EyeLinearDriver"
 
-    def __init__(self, eye_manager: str | EyeManager | None = None, projection_plane_size: primitives.Float2 | None = None, projection_point_distance: primitives.Float | None = None, position_offset_center: primitives.Float2 | None = None, position_offset_range: primitives.Float2 | None = None, minimum_target_point_distance: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, eye_manager: str | EyeManager | None = None, projection_plane_size: primitives.Float2 | None = None, projection_point_distance: primitives.Float | None = None, position_offset_center: primitives.Float2 | None = None, position_offset_range: primitives.Float2 | None = None, minimum_target_point_distance: primitives.Float | None = None, position_clamp_mode: ClampMode | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +43,7 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             position_offset_center: Initial value for PositionOffsetCenter.
             position_offset_range: Initial value for PositionOffsetRange.
             minimum_target_point_distance: Initial value for MinimumTargetPointDistance.
+            position_clamp_mode: Initial value for PositionClampMode.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -43,10 +59,12 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.position_offset_range = position_offset_range
         if minimum_target_point_distance is not None:
             self.minimum_target_point_distance = minimum_target_point_distance
+        if position_clamp_mode is not None:
+            self.position_clamp_mode = position_clamp_mode
 
     @property
     def eye_manager(self) -> str | None:
-        """Target ID of the EyeManager reference (targets EyeManager)."""
+        """The eye manager to get the eye data from."""
         member = self.get_member("EyeManager")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +85,7 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def projection_plane_size(self) -> primitives.Float2 | None:
-        """The ProjectionPlaneSize field value."""
+        """The scaling of the inital hit point before it is clamped. See How Projection Plane Works."""
         member = self.get_member("ProjectionPlaneSize")
         if member is None:
             return None
@@ -86,7 +104,7 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def projection_point_distance(self) -> primitives.Float | None:
-        """The ProjectionPointDistance field value."""
+        """The distance from the offseted plane to ``ProjectionPlanePoint`` on all the eyes in ``Eyes`` list. See How Projection Plane Works."""
         member = self.get_member("ProjectionPointDistance")
         if member is None:
             return None
@@ -105,7 +123,7 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def position_offset_center(self) -> primitives.Float2 | None:
-        """The PositionOffsetCenter field value."""
+        """How much to add to the inital plane projection hit point after clamping. See How Projection Plane Works."""
         member = self.get_member("PositionOffsetCenter")
         if member is None:
             return None
@@ -124,7 +142,7 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def position_offset_range(self) -> primitives.Float2 | None:
-        """The PositionOffsetRange field value."""
+        """how much to scale the inital plane projection hit after clamping. See How Projection Plane Works."""
         member = self.get_member("PositionOffsetRange")
         if member is None:
             return None
@@ -143,7 +161,7 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def minimum_target_point_distance(self) -> primitives.Float | None:
-        """The MinimumTargetPointDistance field value."""
+        """The minimum distance for every eye in ``Eyes`` a look target point from that eye's projection plane slot can be. Points closer than that are set to be further than this value during calculation. See How Projection Plane Works."""
         member = self.get_member("MinimumTargetPointDistance")
         if member is None:
             return None
@@ -161,21 +179,28 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def position_clamp_mode(self) -> members.FieldEnum | None:
-        """The PositionClampMode member."""
+    def position_clamp_mode(self) -> ClampMode | None:
+        """How to clamp projection plane projection range when doing projection calculations. See How Projection Plane Works."""
         member = self.get_member("PositionClampMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ClampMode(member.value)
         return None
 
     @position_clamp_mode.setter
-    def position_clamp_mode(self, value: members.FieldEnum) -> None:
-        """Set the PositionClampMode member."""
-        self.set_member("PositionClampMode", value)
+    def position_clamp_mode(self, value: ClampMode | str) -> None:
+        """Set PositionClampMode. How to clamp projection plane projection range when doing projection calculations. See How Projection Plane Works."""
+        member = self.get_member("PositionClampMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "PositionClampMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def left_close_subtract_limits(self) -> members.SyncList | None:
-        """The LeftCloseSubtractLimits member."""
+        """The component finds the EyeCloseLimit with the maximum influence in this list. If the EyeCloseLimit with the maximum influence in ``CombinedEyeCloseSubtractLimits`` is higher, then that is used instead. Then this subtracts the result from the Left Eye close amount (essentially prying the eye open) to get the eye closed value to use with every left eye."""
         member = self.get_member("LeftCloseSubtractLimits")
         if isinstance(member, members.SyncList):
             return member
@@ -183,12 +208,12 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @left_close_subtract_limits.setter
     def left_close_subtract_limits(self, value: members.SyncList) -> None:
-        """Set the LeftCloseSubtractLimits member."""
+        """Set LeftCloseSubtractLimits. The component finds the EyeCloseLimit with the maximum influence in this list. If the EyeCloseLimit with the maximum influence in ``CombinedEyeCloseSubtractLimits`` is higher, then that is used instead. Then this subtracts the result from the Left Eye close amount (essentially prying the eye open) to get the eye closed value to use with every left eye."""
         self.set_member("LeftCloseSubtractLimits", value)
 
     @property
     def right_close_subtract_limits(self) -> members.SyncList | None:
-        """The RightCloseSubtractLimits member."""
+        """The component finds the EyeCloseLimit with the maximum influence in this list. If the EyeCloseLimit with the maximum influence in ``CombinedEyeCloseSubtractLimits`` is higher, then that is used instead. Then this subtracts the result from the Left Eye close amount (essentially prying the eye open) to get the eye closed value to use with every right eye."""
         member = self.get_member("RightCloseSubtractLimits")
         if isinstance(member, members.SyncList):
             return member
@@ -196,12 +221,12 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @right_close_subtract_limits.setter
     def right_close_subtract_limits(self, value: members.SyncList) -> None:
-        """Set the RightCloseSubtractLimits member."""
+        """Set RightCloseSubtractLimits. The component finds the EyeCloseLimit with the maximum influence in this list. If the EyeCloseLimit with the maximum influence in ``CombinedEyeCloseSubtractLimits`` is higher, then that is used instead. Then this subtracts the result from the Left Eye close amount (essentially prying the eye open) to get the eye closed value to use with every right eye."""
         self.set_member("RightCloseSubtractLimits", value)
 
     @property
     def combined_close_subtract_limits(self) -> members.SyncList | None:
-        """The CombinedCloseSubtractLimits member."""
+        """Used with ``LeftCloseSubtractLimits`` and ``RightCloseSubtractLimits`` calculations."""
         member = self.get_member("CombinedCloseSubtractLimits")
         if isinstance(member, members.SyncList):
             return member
@@ -209,12 +234,12 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @combined_close_subtract_limits.setter
     def combined_close_subtract_limits(self, value: members.SyncList) -> None:
-        """Set the CombinedCloseSubtractLimits member."""
+        """Set CombinedCloseSubtractLimits. Used with ``LeftCloseSubtractLimits`` and ``RightCloseSubtractLimits`` calculations."""
         self.set_member("CombinedCloseSubtractLimits", value)
 
     @property
     def eyes(self) -> members.SyncList | None:
-        """The Eyes member."""
+        """The list of eyes this component is doing calculations and shapekey driving for."""
         member = self.get_member("Eyes")
         if isinstance(member, members.SyncList):
             return member
@@ -222,6 +247,6 @@ class EyeLinearDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @eyes.setter
     def eyes(self, value: members.SyncList) -> None:
-        """Set the Eyes member."""
+        """Set Eyes. The list of eyes this component is doing calculations and shapekey driving for."""
         self.set_member("Eyes", value)
 

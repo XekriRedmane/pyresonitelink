@@ -10,9 +10,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BinaryExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BinaryExportable.
+    """The BinaryExportable component takes in a Binary asset and allows the Slot to be exportable as a binary file on your device.
+
+This is more of an uncommon way to export your files, but there are a couple of uses that are useful to know.
+
+To export using this component, look at the file browser export section.
 
     Category: Assets/Export
+
+    Using this component with the StaticBinary component, allows the user to
+    export a binary file with a provided url. Keep in mind that exporting a
+    binary file is one-way currently in Resonite (especially if you are
+    thinking about local storage), this is due to the fact that Resonite
+    uses the ``.bin`` as files that it does not recognize. So importing from
+    a binary raw file is not doable.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BinaryExportable"
@@ -30,7 +41,7 @@ class BinaryExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @property
     def binary(self) -> str | None:
-        """Target ID of the Binary reference (targets IAssetProvider[Binary])."""
+        """The binary to be exported."""
         member = self.get_member("Binary")
         if isinstance(member, members.Reference):
             return member.targetId

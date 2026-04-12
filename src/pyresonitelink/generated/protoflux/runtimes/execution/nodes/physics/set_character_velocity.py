@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetCharacterVelocity(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Set Character Velocity node takes in a character controller reference and a target velocity, then sets the velocity on the Slot containing the character controller component.
+    """The ``Set Character Velocity`` node takes in a character controller reference and a target velocity, then sets the velocity on the Slot containing the character controller component.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """
@@ -43,7 +43,7 @@ class SetCharacterVelocity(GeneratedComponent, ISyncNodeOperation, IExecutionNod
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues execution from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class SetCharacterVelocity(GeneratedComponent, ISyncNodeOperation, IExecutionNod
 
     @property
     def velocity(self) -> str | None:
-        """Target ID of the Velocity reference (targets INodeValueOutput[primitives.Float3])."""
+        """The velocity to set for this character controller."""
         member = self.get_member("Velocity")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class SetCharacterVelocity(GeneratedComponent, ISyncNodeOperation, IExecutionNod
 
     @property
     def character(self) -> str | None:
-        """Target ID of the Character reference (targets INodeObjectOutput[CharacterController])."""
+        """The character controller reference."""
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             return member.targetId

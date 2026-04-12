@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.vibrate_preset import VibratePreset
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.world_link import WorldLink
@@ -11,20 +12,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TouchWorldLink(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TouchWorldLink.
+    """The TouchWorldLink component when touched allows a user to go to the world of the given link.
 
     Category: World
+
+    Attach to a slot with a static collider, and provide a ``WorldLink`` for
+    this to link to in order for it to work.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TouchWorldLink"
 
-    def __init__(self, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, world_link: str | WorldLink | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, vibrate: VibratePreset | str | None = None, world_link: str | WorldLink | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             accept_physical_touch: Initial value for AcceptPhysicalTouch.
             accept_remote_touch: Initial value for AcceptRemoteTouch.
             accept_out_of_sight_touch: Initial value for AcceptOutOfSightTouch.
+            vibrate: Initial value for Vibrate.
             world_link: Initial value for WorldLink.
             component: Existing Component to wrap.
         """
@@ -35,6 +40,8 @@ class TouchWorldLink(GeneratedComponent, ITouchable, IWorldEventReceiver):
             self.accept_remote_touch = accept_remote_touch
         if accept_out_of_sight_touch is not None:
             self.accept_out_of_sight_touch = accept_out_of_sight_touch
+        if vibrate is not None:
+            self.vibrate = vibrate
         if world_link is not None:
             self.world_link = world_link
 
@@ -96,21 +103,28 @@ class TouchWorldLink(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def vibrate(self) -> members.FieldEnum | None:
-        """The Vibrate member."""
+    def vibrate(self) -> VibratePreset | None:
+        """How to vibrate the haptics of the hand that touched this component."""
         member = self.get_member("Vibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @vibrate.setter
-    def vibrate(self, value: members.FieldEnum) -> None:
-        """Set the Vibrate member."""
-        self.set_member("Vibrate", value)
+    def vibrate(self, value: VibratePreset | str) -> None:
+        """Set Vibrate. How to vibrate the haptics of the hand that touched this component."""
+        member = self.get_member("Vibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Vibrate",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def world_link(self) -> str | None:
-        """Target ID of the WorldLink reference (targets WorldLink)."""
+        """The world link to open upon touch."""
         member = self.get_member("WorldLink")
         if isinstance(member, members.Reference):
             return member.targetId

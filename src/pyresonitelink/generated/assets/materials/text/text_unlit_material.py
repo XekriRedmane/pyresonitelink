@@ -19,7 +19,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextUnlitMaterial(GeneratedComponent, ITextMaterial, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """The TextUnlitMaterial component is a material used to render text glyphs. It does so via meshes that automatically generates UV maps that map to each character on a font map. Such as Component:Text and Component:TextRenderer.
+    """The TextUnlitMaterial component is a material used to render text glyphs. It does so via meshes that automatically generates UV maps that map to each character on a font map. Such as Text and TextRenderer.
 
     Category: Assets/Materials/Text
     """

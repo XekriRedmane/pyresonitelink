@@ -1,0 +1,22 @@
+{
+  "description": "The AvatarRawToolData component is used to read controller data associated with RawDataTools from.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "ControllerSide": "The side to read data from the user's controller for.",
+    "PressingPrimary": "Whether the user is pressing Primary",
+    "PressingSecondary": "Whether the user is pressing Secondary.",
+    "PressingGrab": "Whether the user is pressing the grab button",
+    "PrimaryStrength": "The strength the user is pressing Primary.",
+    "SecondaryAxis": "What direction the user is moving their secondary button joystick",
+    "_activeUser": "The user this is reading data and getting streams from.",
+    "_strengthStream": "The stream to get ``PrimaryStrength``'s value from",
+    "_axisStream": "The stream to get ``SecondaryAxis``'s value from.",
+    "_primaryStream": "The stream to get ``PressingPrimary``'s value from.",
+    "_secondaryStream": "The stream to get ``PressingSecondary``'s value from.",
+    "_grabStream": "The stream to get ``PressingGrab``'s value from."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarRawToolData&action=raw"
+}

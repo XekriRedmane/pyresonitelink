@@ -17,7 +17,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ApplyCharacterForce(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Apply Character Force node takes in a character controller reference and a force, then pushes the character controller in the direction.
+    """The ``Apply Character Force`` node takes in a character controller reference and a force, then pushes the character controller in the direction.
+
+Unlike Impulse where you send a force once to send the character controller in a direction, this node is made to apply a force in a direction over time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """
@@ -46,7 +48,7 @@ class ApplyCharacterForce(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues execution from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +69,7 @@ class ApplyCharacterForce(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def force(self) -> str | None:
-        """Target ID of the Force reference (targets INodeValueOutput[primitives.Float3])."""
+        """The force to push this character controller."""
         member = self.get_member("Force")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -88,7 +90,7 @@ class ApplyCharacterForce(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def character(self) -> str | None:
-        """Target ID of the Character reference (targets INodeObjectOutput[CharacterController])."""
+        """The character controller reference."""
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +111,7 @@ class ApplyCharacterForce(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def ignore_mass(self) -> str | None:
-        """Target ID of the IgnoreMass reference (targets INodeValueOutput[primitives.Bool])."""
+        """The option to ignore mass in the character controller component when being sent in a direction."""
         member = self.get_member("IgnoreMass")
         if isinstance(member, members.Reference):
             return member.targetId

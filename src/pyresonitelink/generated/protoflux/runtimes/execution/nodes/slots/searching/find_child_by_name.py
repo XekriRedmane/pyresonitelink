@@ -47,7 +47,7 @@ class FindChildByName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INo
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot to scan for children with."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class FindChildByName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INo
 
     @property
     def name(self) -> str | None:
-        """Target ID of the Name reference (targets INodeObjectOutput[primitives.String])."""
+        """The name to look for under Instance (Slot)."""
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class FindChildByName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INo
 
     @property
     def match_substring(self) -> str | None:
-        """Target ID of the MatchSubstring reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether to search for children under Instance (Slot) that their name contains Name (String) instead of the entire name being equal."""
         member = self.get_member("MatchSubstring")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +110,7 @@ class FindChildByName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INo
 
     @property
     def ignore_case(self) -> str | None:
-        """Target ID of the IgnoreCase reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether the capitalization should matter or not when searching for a child under Instance (Slot)."""
         member = self.get_member("IgnoreCase")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -131,7 +131,9 @@ class FindChildByName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INo
 
     @property
     def search_depth(self) -> str | None:
-        """Target ID of the SearchDepth reference (targets INodeValueOutput[primitives.Int])."""
+        """How far to search for a child with the provided search arguments
+
+Examples: 0 > Search immediate children. 1 > Search children of slot including those slot's children. -1 > Search infinitely far down (HEAVY)"""
         member = self.get_member("SearchDepth")
         if isinstance(member, members.Reference):
             return member.targetId

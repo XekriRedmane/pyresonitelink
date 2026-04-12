@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.body_node import BodyNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -12,18 +13,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScaledFingerSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ScaledFingerSegment.
+    """The Scaled Finger Segment component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaledFingerSegment"
 
-    def __init__(self, scale: str | IField[primitives.Float3] | None = None, offset: str | IField[primitives.Float3] | None = None, next_joint: str | Slot | None = None, width: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, scale: str | IField[primitives.Float3] | None = None, offset: str | IField[primitives.Float3] | None = None, next_joint: str | Slot | None = None, body_node: BodyNode | str | None = None, width: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             scale: Initial value for _scale.
             offset: Initial value for _offset.
             next_joint: Initial value for _nextJoint.
+            body_node: Initial value for _bodyNode.
             width: Initial value for Width.
             component: Existing Component to wrap.
         """
@@ -34,6 +36,8 @@ class ScaledFingerSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.offset = offset
         if next_joint is not None:
             self.next_joint = next_joint
+        if body_node is not None:
+            self.body_node = body_node
         if width is not None:
             self.width = width
 
@@ -101,17 +105,24 @@ class ScaledFingerSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def body_node(self) -> members.FieldEnum | None:
-        """The _bodyNode member."""
+    def body_node(self) -> BodyNode | None:
+        """The _bodyNode enum value."""
         member = self.get_member("_bodyNode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BodyNode(member.value)
         return None
 
     @body_node.setter
-    def body_node(self, value: members.FieldEnum) -> None:
-        """Set the _bodyNode member."""
-        self.set_member("_bodyNode", value)
+    def body_node(self, value: BodyNode | str) -> None:
+        """Set the _bodyNode enum value."""
+        member = self.get_member("_bodyNode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_bodyNode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def width(self) -> primitives.Float | None:

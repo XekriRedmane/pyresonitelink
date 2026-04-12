@@ -1,0 +1,11 @@
+{
+  "description": "The AvatarObjectComponentProxy component receives equipping, dequipping, and preequipping events and sends them to every IAvatarObjectComponent component under the ``Target``",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "Target": "The slot with components to send Equipping, Deequipping, and prequipping events to."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarObjectComponentProxy&action=raw"
+}

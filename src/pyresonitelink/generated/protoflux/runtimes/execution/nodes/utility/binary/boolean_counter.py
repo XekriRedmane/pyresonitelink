@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BooleanCounter(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Boolean Counter node takes in a list of booleans and counts the number of true and false values, as well as a count of all booleans in the list.
+    """The ``Boolean Counter`` node takes in a list of booleans and counts the number of true and false values, as well as a count of all booleans in the list.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/Binary
     """
@@ -19,7 +19,7 @@ class BooleanCounter(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def booleans(self) -> members.SyncList | None:
-        """The Booleans member."""
+        """The list of booleans to be counted."""
         member = self.get_member("Booleans")
         if isinstance(member, members.SyncList):
             return member
@@ -27,12 +27,12 @@ class BooleanCounter(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @booleans.setter
     def booleans(self, value: members.SyncList) -> None:
-        """Set the Booleans member."""
+        """Set Booleans. The list of booleans to be counted."""
         self.set_member("Booleans", value)
 
     @property
     def true_count(self) -> members.EmptyElement | None:
-        """The TrueCount member."""
+        """The true count of all booleans in the list."""
         member = self.get_member("TrueCount")
         if isinstance(member, members.EmptyElement):
             return member
@@ -40,12 +40,12 @@ class BooleanCounter(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @true_count.setter
     def true_count(self, value: members.EmptyElement) -> None:
-        """Set the TrueCount member."""
+        """Set TrueCount. The true count of all booleans in the list."""
         self.set_member("TrueCount", value)
 
     @property
     def false_count(self) -> members.EmptyElement | None:
-        """The FalseCount member."""
+        """The false count of all booleans in the list."""
         member = self.get_member("FalseCount")
         if isinstance(member, members.EmptyElement):
             return member
@@ -53,12 +53,12 @@ class BooleanCounter(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @false_count.setter
     def false_count(self, value: members.EmptyElement) -> None:
-        """Set the FalseCount member."""
+        """Set FalseCount. The false count of all booleans in the list."""
         self.set_member("FalseCount", value)
 
     @property
     def total_count(self) -> members.EmptyElement | None:
-        """The TotalCount member."""
+        """The total count of booleans in this list."""
         member = self.get_member("TotalCount")
         if isinstance(member, members.EmptyElement):
             return member
@@ -66,6 +66,6 @@ class BooleanCounter(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @total_count.setter
     def total_count(self, value: members.EmptyElement) -> None:
-        """Set the TotalCount member."""
+        """Set TotalCount. The total count of booleans in this list."""
         self.set_member("TotalCount", value)
 

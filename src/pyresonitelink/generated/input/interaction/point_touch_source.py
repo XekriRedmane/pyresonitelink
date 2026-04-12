@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PointTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PointTouchSource.
+    """A simpler version of TipTouchSource.
 
     Category: Input/Interaction
     """
@@ -46,7 +46,7 @@ class PointTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_update_user(self) -> str | None:
-        """Target ID of the AutoUpdateUser reference (targets User)."""
+        """which user should be updating this component's logic. Defaults to active user if not filled."""
         member = self.get_member("AutoUpdateUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +67,7 @@ class PointTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def out_of_sight_angle(self) -> primitives.Float | None:
-        """The OutOfSightAngle field value."""
+        """disables the function of this component if the updating user is looking more than this many degrees away from this component's slot."""
         member = self.get_member("OutOfSightAngle")
         if member is None:
             return None
@@ -86,7 +86,7 @@ class PointTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_touch_penetration_distance(self) -> primitives.Float | None:
-        """The MaxTouchPenetrationDistance field value."""
+        """How far it can go into the touchable's collider before its not considered as touching."""
         member = self.get_member("MaxTouchPenetrationDistance")
         if member is None:
             return None
@@ -105,7 +105,7 @@ class PointTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """The offset of where the tip touch sources touch effects start from the slot this component is on."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -124,7 +124,7 @@ class PointTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direction(self) -> primitives.Float3 | None:
-        """The Direction field value."""
+        """The direction in which to interact with touchable elements using this component."""
         member = self.get_member("Direction")
         if member is None:
             return None
@@ -143,7 +143,7 @@ class PointTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_distance(self) -> primitives.Float | None:
-        """The MaxDistance field value."""
+        """the maximum distance before hovering doesn't register"""
         member = self.get_member("MaxDistance")
         if member is None:
             return None

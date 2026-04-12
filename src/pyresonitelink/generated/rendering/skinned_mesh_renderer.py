@@ -4,6 +4,9 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.shadow_cast_mode import ShadowCastMode
+from pyresonitelink.generated._enums.motion_vector_mode import MotionVectorMode
+from pyresonitelink.generated._enums.skinned_bounds import SkinnedBounds
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -18,19 +21,29 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded, IHighlightable, IRenderable, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SkinnedMeshRenderer.
+    """The SkinnedMeshRenderer component is used for rendering animated/dynamic 3D meshes in the world, and applying materials to that mesh.
 
     Category: Rendering
+
+    While it can be used for rendering static meshes, it is not recommended
+    as there is a slight performance penalty for using SkinnedMeshRenderer,
+    even if the animation features aren't used &mdash; Please try to use
+    MeshRenderer where possible.
+
+    **See also**: * MeshRenderer
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SkinnedMeshRenderer"
 
-    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, sorting_order: primitives.Int | None = None, proxy_bounds_source: str | SkinnedMeshRenderer | None = None, explicit_local_bounds: primitives.BoundingBox | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, shadow_cast_mode: ShadowCastMode | str | None = None, motion_vector_mode: MotionVectorMode | str | None = None, sorting_order: primitives.Int | None = None, bounds_compute_method: SkinnedBounds | str | None = None, proxy_bounds_source: str | SkinnedMeshRenderer | None = None, explicit_local_bounds: primitives.BoundingBox | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             mesh: Initial value for Mesh.
+            shadow_cast_mode: Initial value for ShadowCastMode.
+            motion_vector_mode: Initial value for MotionVectorMode.
             sorting_order: Initial value for SortingOrder.
+            bounds_compute_method: Initial value for BoundsComputeMethod.
             proxy_bounds_source: Initial value for ProxyBoundsSource.
             explicit_local_bounds: Initial value for ExplicitLocalBounds.
             component: Existing Component to wrap.
@@ -38,8 +51,14 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
         super().__init__(component)
         if mesh is not None:
             self.mesh = mesh
+        if shadow_cast_mode is not None:
+            self.shadow_cast_mode = shadow_cast_mode
+        if motion_vector_mode is not None:
+            self.motion_vector_mode = motion_vector_mode
         if sorting_order is not None:
             self.sorting_order = sorting_order
+        if bounds_compute_method is not None:
+            self.bounds_compute_method = bounds_compute_method
         if proxy_bounds_source is not None:
             self.proxy_bounds_source = proxy_bounds_source
         if explicit_local_bounds is not None:
@@ -47,7 +66,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the Mesh reference (targets IAssetProvider[Mesh])."""
+        """The mesh to be rendered. Can be a StaticMesh or a Procedural Mesh"""
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +87,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
 
     @property
     def materials(self) -> members.SyncList | None:
-        """The Materials member."""
+        """A list of materials to be applied to the mesh"""
         member = self.get_member("Materials")
         if isinstance(member, members.SyncList):
             return member
@@ -76,12 +95,12 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
 
     @materials.setter
     def materials(self, value: members.SyncList) -> None:
-        """Set the Materials member."""
+        """Set Materials. A list of materials to be applied to the mesh"""
         self.set_member("Materials", value)
 
     @property
     def material_property_blocks(self) -> members.SyncList | None:
-        """The MaterialPropertyBlocks member."""
+        """A list of material property blocks to apply to the materials on this mesh. Usually used for performance reasons where using multiple similar materials would take more resources."""
         member = self.get_member("MaterialPropertyBlocks")
         if isinstance(member, members.SyncList):
             return member
@@ -89,38 +108,52 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
 
     @material_property_blocks.setter
     def material_property_blocks(self, value: members.SyncList) -> None:
-        """Set the MaterialPropertyBlocks member."""
+        """Set MaterialPropertyBlocks. A list of material property blocks to apply to the materials on this mesh. Usually used for performance reasons where using multiple similar materials would take more resources."""
         self.set_member("MaterialPropertyBlocks", value)
 
     @property
-    def shadow_cast_mode(self) -> members.FieldEnum | None:
-        """The ShadowCastMode member."""
+    def shadow_cast_mode(self) -> ShadowCastMode | None:
+        """How this object will cast shadows onto the world, or if it only draws a shadow."""
         member = self.get_member("ShadowCastMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ShadowCastMode(member.value)
         return None
 
     @shadow_cast_mode.setter
-    def shadow_cast_mode(self, value: members.FieldEnum) -> None:
-        """Set the ShadowCastMode member."""
-        self.set_member("ShadowCastMode", value)
+    def shadow_cast_mode(self, value: ShadowCastMode | str) -> None:
+        """Set ShadowCastMode. How this object will cast shadows onto the world, or if it only draws a shadow."""
+        member = self.get_member("ShadowCastMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ShadowCastMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def motion_vector_mode(self) -> members.FieldEnum | None:
-        """The MotionVectorMode member."""
+    def motion_vector_mode(self) -> MotionVectorMode | None:
+        """See Motion vector mode."""
         member = self.get_member("MotionVectorMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MotionVectorMode(member.value)
         return None
 
     @motion_vector_mode.setter
-    def motion_vector_mode(self, value: members.FieldEnum) -> None:
-        """Set the MotionVectorMode member."""
-        self.set_member("MotionVectorMode", value)
+    def motion_vector_mode(self, value: MotionVectorMode | str) -> None:
+        """Set MotionVectorMode. See Motion vector mode."""
+        member = self.get_member("MotionVectorMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MotionVectorMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def sorting_order(self) -> primitives.Int | None:
-        """The SortingOrder field value."""
+        """Whether to render this before or after other renderers with geometry in the same location."""
         member = self.get_member("SortingOrder")
         if member is None:
             return None
@@ -138,21 +171,28 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
             )
 
     @property
-    def bounds_compute_method(self) -> members.FieldEnum | None:
-        """The BoundsComputeMethod member."""
+    def bounds_compute_method(self) -> SkinnedBounds | None:
+        """How the bounds of this mesh will be calculated. Should be left as Static if possible, for performance reasons."""
         member = self.get_member("BoundsComputeMethod")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SkinnedBounds(member.value)
         return None
 
     @bounds_compute_method.setter
-    def bounds_compute_method(self, value: members.FieldEnum) -> None:
-        """Set the BoundsComputeMethod member."""
-        self.set_member("BoundsComputeMethod", value)
+    def bounds_compute_method(self, value: SkinnedBounds | str) -> None:
+        """Set BoundsComputeMethod. How the bounds of this mesh will be calculated. Should be left as Static if possible, for performance reasons."""
+        member = self.get_member("BoundsComputeMethod")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BoundsComputeMethod",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def proxy_bounds_source(self) -> str | None:
-        """Target ID of the ProxyBoundsSource reference (targets SkinnedMeshRenderer)."""
+        """A SkinnedMeshRenderer to use the ``ExplicitLocalBounds`` of rather than the ``ExplicitLocalBounds`` on this component."""
         member = self.get_member("ProxyBoundsSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -173,7 +213,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
 
     @property
     def explicit_local_bounds(self) -> primitives.BoundingBox | None:
-        """The ExplicitLocalBounds field value."""
+        """A box that within view will render the mesh, and when out of view will cull the mesh and stop rendering it. Is used when ``ProxyBoundsSource`` is null."""
         member = self.get_member("ExplicitLocalBounds")
         if member is None:
             return None
@@ -192,7 +232,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
 
     @property
     def bones(self) -> members.SyncList | None:
-        """The Bones member."""
+        """Automatically Assigned &mdash; List of bones present in this mesh"""
         member = self.get_member("Bones")
         if isinstance(member, members.SyncList):
             return member
@@ -200,12 +240,12 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
 
     @bones.setter
     def bones(self, value: members.SyncList) -> None:
-        """Set the Bones member."""
+        """Set Bones. Automatically Assigned &mdash; List of bones present in this mesh"""
         self.set_member("Bones", value)
 
     @property
     def blend_shape_weights(self) -> members.SyncList | None:
-        """The BlendShapeWeights member."""
+        """Automatically Assigned &mdash; List of blendshapes present in this mesh, and their respective weights."""
         member = self.get_member("BlendShapeWeights")
         if isinstance(member, members.SyncList):
             return member
@@ -213,11 +253,11 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
 
     @blend_shape_weights.setter
     def blend_shape_weights(self, value: members.SyncList) -> None:
-        """Set the BlendShapeWeights member."""
+        """Set BlendShapeWeights. Automatically Assigned &mdash; List of blendshapes present in this mesh, and their respective weights."""
         self.set_member("BlendShapeWeights", value)
 
     async def split_blenshape_along_axis(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, axis: str, center: primitives.Float, transition: primitives.Float, negative_suffix: primitives.String, positive_suffix: primitives.String, debug: bool = False) -> dict:
-        """Call the SplitBlenshapeAlongAxis sync method.
+        """Splits a blendshape along a given axis, and returns a task representing if the operation is done yet.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -237,7 +277,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
         )
 
     async def bake_blendshape(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, debug: bool = False) -> dict:
-        """Call the BakeBlendshape sync method.
+        """bakes a blendshape to make it part of the mesh rest state, and returns a task representing if the operation is done yet.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -252,7 +292,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
         )
 
     async def remove_blendshape(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, debug: bool = False) -> dict:
-        """Call the RemoveBlendshape sync method.
+        """removes a blendshape from the mesh, and returns a task representing if the operation is done yet.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -267,7 +307,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
         )
 
     async def split_submeshes(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SplitSubmeshes sync method.
+        """Will split this mesh into additional submeshes, each having only one material
 
         Returns:
             The raw JSON response dict.
@@ -277,7 +317,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
         )
 
     async def merge_by_material(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the MergeByMaterial sync method.
+        """Will merge all submeshes that use the same material
 
         Returns:
             The raw JSON response dict.

@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class FavoritesSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.FavoritesSettings.
+    """The FavoritesSettings component is used to handle favorite settings in the settings tab inside the Dash Menu.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FavoritesSettings"
@@ -27,7 +29,7 @@ class FavoritesSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def auto_load_cloud_home(self) -> primitives.Bool | None:
-        """The AutoLoadCloudHome field value."""
+        """Whether to automatically load the cloud home the user has set."""
         member = self.get_member("AutoLoadCloudHome")
         if member is None:
             return None

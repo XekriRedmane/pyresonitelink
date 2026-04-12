@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.culling import Culling
+from pyresonitelink.generated._enums.alpha_handling import AlphaHandling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -15,14 +17,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PBS_SliceSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PBS_SliceSpecular.
+    """A PBS Slice (Metallic & Specular) shader:
+- Supports up to 8 plane slicers, cutting a mesh
+- Supports slice fade effect along the edge (albedo & emissive)
+- Is dual-sided, rendering interior (mesh will look as a shell though)
+- Adds a GenericSlicer component, which allows to set the slicing plane visually. To create/edit the material, click "Create Slicer" in the inspector.
 
     Category: Assets/Materials/PBS
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_SliceSpecular"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, edge_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, edge_emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, detail_texture_scale: primitives.Float2 | None = None, detail_texture_offset: primitives.Float2 | None = None, detail_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, detail_normal_map: str | IAssetProvider[ITexture2D] | None = None, detail_normal_scale: primitives.Float | None = None, hide_slicers: primitives.Bool | None = None, local_space: primitives.Bool | None = None, edge_transition_start: primitives.Float | None = None, edge_transition_end: primitives.Float | None = None, use_alpha_clip: primitives.Bool | None = None, alpha_clip: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, edge_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, edge_emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, detail_texture_scale: primitives.Float2 | None = None, detail_texture_offset: primitives.Float2 | None = None, detail_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, detail_normal_map: str | IAssetProvider[ITexture2D] | None = None, detail_normal_scale: primitives.Float | None = None, culling: Culling | str | None = None, hide_slicers: primitives.Bool | None = None, local_space: primitives.Bool | None = None, edge_transition_start: primitives.Float | None = None, edge_transition_end: primitives.Float | None = None, alpha_handling: AlphaHandling | str | None = None, use_alpha_clip: primitives.Bool | None = None, alpha_clip: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -43,10 +49,12 @@ class PBS_SliceSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial, ICu
             detail_albedo_texture: Initial value for DetailAlbedoTexture.
             detail_normal_map: Initial value for DetailNormalMap.
             detail_normal_scale: Initial value for DetailNormalScale.
+            culling: Initial value for Culling.
             hide_slicers: Initial value for HideSlicers.
             local_space: Initial value for LocalSpace.
             edge_transition_start: Initial value for EdgeTransitionStart.
             edge_transition_end: Initial value for EdgeTransitionEnd.
+            alpha_handling: Initial value for AlphaHandling.
             use_alpha_clip: Initial value for _useAlphaClip.
             alpha_clip: Initial value for AlphaClip.
             offset_factor: Initial value for OffsetFactor.
@@ -93,6 +101,8 @@ class PBS_SliceSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial, ICu
             self.detail_normal_map = detail_normal_map
         if detail_normal_scale is not None:
             self.detail_normal_scale = detail_normal_scale
+        if culling is not None:
+            self.culling = culling
         if hide_slicers is not None:
             self.hide_slicers = hide_slicers
         if local_space is not None:
@@ -101,6 +111,8 @@ class PBS_SliceSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial, ICu
             self.edge_transition_start = edge_transition_start
         if edge_transition_end is not None:
             self.edge_transition_end = edge_transition_end
+        if alpha_handling is not None:
+            self.alpha_handling = alpha_handling
         if use_alpha_clip is not None:
             self.use_alpha_clip = use_alpha_clip
         if alpha_clip is not None:
@@ -456,17 +468,24 @@ class PBS_SliceSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial, ICu
             )
 
     @property
-    def culling(self) -> members.FieldEnum | None:
-        """The Culling member."""
+    def culling(self) -> Culling | None:
+        """The Culling enum value."""
         member = self.get_member("Culling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Culling(member.value)
         return None
 
     @culling.setter
-    def culling(self, value: members.FieldEnum) -> None:
-        """Set the Culling member."""
-        self.set_member("Culling", value)
+    def culling(self, value: Culling | str) -> None:
+        """Set the Culling enum value."""
+        member = self.get_member("Culling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Culling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def hide_slicers(self) -> primitives.Bool | None:
@@ -558,17 +577,24 @@ class PBS_SliceSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial, ICu
             )
 
     @property
-    def alpha_handling(self) -> members.FieldEnum | None:
-        """The AlphaHandling member."""
+    def alpha_handling(self) -> AlphaHandling | None:
+        """The AlphaHandling enum value."""
         member = self.get_member("AlphaHandling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AlphaHandling(member.value)
         return None
 
     @alpha_handling.setter
-    def alpha_handling(self, value: members.FieldEnum) -> None:
-        """Set the AlphaHandling member."""
-        self.set_member("AlphaHandling", value)
+    def alpha_handling(self, value: AlphaHandling | str) -> None:
+        """Set the AlphaHandling enum value."""
+        member = self.get_member("AlphaHandling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AlphaHandling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def use_alpha_clip(self) -> primitives.Bool | None:

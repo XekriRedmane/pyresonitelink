@@ -15,7 +15,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceDrive(GenericComponent[T], IDrive, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """See ProtoFlux Tool Usage for how to make this node.
+    """due to wiki limitations, this node does not currently have an HTML rendering of the node.
+
+See ProtoFlux Tool Usage for how to make this node.
+
+Allows you to continuously locally write an inputted reference to a variable.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

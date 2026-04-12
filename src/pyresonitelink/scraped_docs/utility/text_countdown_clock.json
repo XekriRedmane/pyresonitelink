@@ -1,0 +1,13 @@
+{
+  "description": "The TextCountdownClock component is able to make a countdown till a certain value of T (world time) since a session started. This drives a text field to do so.",
+  "category": "Utility",
+  "fields": {
+    "CountdownTime": "The world time we are counting down to (The world time is zero when a session starts)",
+    "AllowNegative": "Whether negative time can be displayed after the time for the world has been reached. Or to display 0 if false.",
+    "TextTarget": "Text String field to drive with the form of HH:MM:SS based on the value in ``CountdownTime``."
+  },
+  "methods": {},
+  "usage": "This component creates a Text String in the form of HH:MM:SS as a countdown timer based on the difference in the value of T (world time) and the value of CountdownTime.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextCountdownClock&action=raw"
+}

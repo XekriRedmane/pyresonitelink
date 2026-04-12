@@ -10,9 +10,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AuthorityTimeBase(GeneratedComponent, IValue, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AuthorityTimeBase.
+    """The AuthorityTimeBase component allows for fine-grained control over the world time with a certain speed and with respect to a given offset.
 
     Category: Utility
+
+    The output of the component is the current world time (as a Double)
+    multiplied by the ``BaseSpeed``, minus the ``_actualOffset``. The output
+    of the component is accessed by sourcing the component itself. To write
+    to the current time of the component, you write to said source. When
+    writing to the component source, ``_actualOffset`` is automatically
+    updated to reflect the correct time. When writing to ``BaseSpeed``,
+    ``_actualOffset`` is automatically updated to keep the same time.
+    Writing to ``_actualOffset`` does not affect any other fields.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AuthorityTimeBase"
@@ -36,7 +45,7 @@ class AuthorityTimeBase(GeneratedComponent, IValue, IComponent, IWorldEventRecei
 
     @property
     def base_speed(self) -> primitives.Float | None:
-        """The BaseSpeed field value."""
+        """Speed of the time base."""
         member = self.get_member("BaseSpeed")
         if member is None:
             return None
@@ -55,7 +64,7 @@ class AuthorityTimeBase(GeneratedComponent, IValue, IComponent, IWorldEventRecei
 
     @property
     def actual_speed(self) -> primitives.Float | None:
-        """The _actualSpeed field value."""
+        """Actual speed of the time base. Should not be written to or driven."""
         member = self.get_member("_actualSpeed")
         if member is None:
             return None
@@ -74,7 +83,7 @@ class AuthorityTimeBase(GeneratedComponent, IValue, IComponent, IWorldEventRecei
 
     @property
     def actual_offset(self) -> primitives.Double | None:
-        """The _actualOffset field value."""
+        """Offset of the time base from the current world time. Can be written to or driven perfectly fine."""
         member = self.get_member("_actualOffset")
         if member is None:
             return None

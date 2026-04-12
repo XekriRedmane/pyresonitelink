@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocaleMessageCount(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Locale Message Count node takes in a locale resource asset and returns the number of translatable string keys in this collection or repository.
+    """The ``Locale Message Count`` node takes in a locale resource asset and returns the number of translatable string keys in this collection or repository.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Localization
     """
@@ -34,7 +34,7 @@ class LocaleMessageCount(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def locale(self) -> str | None:
-        """Target ID of the Locale reference (targets INodeObjectOutput[LocaleResource])."""
+        """The list of translatable strings (the repository or collection of strings)."""
         member = self.get_member("Locale")
         if isinstance(member, members.Reference):
             return member.targetId

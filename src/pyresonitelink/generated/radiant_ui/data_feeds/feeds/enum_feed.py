@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EnumFeed(GenericComponent[T], IDataFeedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.EnumFeed<>.
+    """The EnumFeed component acts like a kind of data feed that provides a list of enums that can be further used by feeds with filtering and searching.
 
     Category: Radiant UI/Data Feeds/Feeds
 
@@ -42,7 +42,7 @@ class EnumFeed(GenericComponent[T], IDataFeedComponent, IComponent, IWorldEventR
 
     @property
     def display_order(self) -> primitives.Bool | None:
-        """The DisplayOrder field value."""
+        """Whether to feed the enums in order."""
         member = self.get_member("DisplayOrder")
         if member is None:
             return None
@@ -61,7 +61,7 @@ class EnumFeed(GenericComponent[T], IDataFeedComponent, IComponent, IWorldEventR
 
     @property
     def distinct(self) -> primitives.Bool | None:
-        """The Distinct field value."""
+        """Whether the enums should be distinct when gathering."""
         member = self.get_member("Distinct")
         if member is None:
             return None
@@ -80,7 +80,7 @@ class EnumFeed(GenericComponent[T], IDataFeedComponent, IComponent, IWorldEventR
 
     @property
     def include_obsolete(self) -> primitives.Bool | None:
-        """The IncludeObsolete field value."""
+        """Whether the enums should be gathered despite being tagged as obsolete."""
         member = self.get_member("IncludeObsolete")
         if member is None:
             return None

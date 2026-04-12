@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarPoseFilterInstaller(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseFilterInstaller.
+    """The AvatarPoseFilterInstaller component can be placed into slots below or on the same Slot as a Proxy on an avatar in order to auto install a pose filter on those parts upon equipping the avatar.
 
     Category: Users/Common Avatar System
+
+    Used to make an avatar with slow hands, or an avatar that has restricted
+    movement with its limbs.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseFilterInstaller"
@@ -34,7 +37,7 @@ class AvatarPoseFilterInstaller(GeneratedComponent, IAvatarObjectComponent, IWor
 
     @property
     def filter(self) -> str | None:
-        """Target ID of the Filter reference (targets IAvatarPoseFilter)."""
+        """the Pose Filter to install on an Avatar's pose node like the head, hands, arms, or feet."""
         member = self.get_member("Filter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +58,7 @@ class AvatarPoseFilterInstaller(GeneratedComponent, IAvatarObjectComponent, IWor
 
     @property
     def priority(self) -> primitives.Int | None:
-        """The Priority field value."""
+        """If this installer should run before other IAvatarObjectComponents."""
         member = self.get_member("Priority")
         if member is None:
             return None

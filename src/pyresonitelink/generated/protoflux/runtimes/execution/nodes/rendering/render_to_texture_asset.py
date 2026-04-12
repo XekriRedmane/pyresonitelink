@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Render To Texture Asset node takes in a provided Camera, resolution, file format, and quality for the texture. Then this node will attempt to render it into a texture, and returns the asset URL for the world to use.
+    """The ``Render To Texture Asset`` node takes in a provided Camera, resolution, file format, and quality for the texture. Then this node will attempt to render it into a texture, and returns the asset URL for the world to use.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Rendering
     """
@@ -55,7 +55,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def camera(self) -> str | None:
-        """Target ID of the Camera reference (targets INodeObjectOutput[Camera])."""
+        """The camera used to render the texture."""
         member = self.get_member("Camera")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -76,7 +76,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def resolution(self) -> str | None:
-        """Target ID of the Resolution reference (targets INodeValueOutput[primitives.Int2])."""
+        """The resolution for the texture."""
         member = self.get_member("Resolution")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -97,7 +97,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def format_(self) -> str | None:
-        """Target ID of the Format reference (targets INodeObjectOutput[primitives.String])."""
+        """The texture asset file format (defaults to ``webp``)."""
         member = self.get_member("Format")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -118,7 +118,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def quality(self) -> str | None:
-        """Target ID of the Quality reference (targets INodeValueOutput[primitives.Int])."""
+        """The quality of the texture asset (default to ``200``)."""
         member = self.get_member("Quality")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -139,7 +139,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def on_render_started(self) -> str | None:
-        """Target ID of the OnRenderStarted reference (targets INodeOperation)."""
+        """Fires when this rendering task has started."""
         member = self.get_member("OnRenderStarted")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -160,7 +160,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def on_rendered(self) -> str | None:
-        """Target ID of the OnRendered reference (targets INodeOperation)."""
+        """Fires when this rendering task has finished rendering."""
         member = self.get_member("OnRendered")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -181,7 +181,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def on_failed(self) -> str | None:
-        """Target ID of the OnFailed reference (targets INodeOperation)."""
+        """Fires when this rendering task has failed."""
         member = self.get_member("OnFailed")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -202,7 +202,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def rendered_asset_url(self) -> members.EmptyElement | None:
-        """The RenderedAssetURL member."""
+        """The Uri asset of the texture."""
         member = self.get_member("RenderedAssetURL")
         if isinstance(member, members.EmptyElement):
             return member
@@ -210,6 +210,6 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @rendered_asset_url.setter
     def rendered_asset_url(self, value: members.EmptyElement) -> None:
-        """Set the RenderedAssetURL member."""
+        """Set RenderedAssetURL. The Uri asset of the texture."""
         self.set_member("RenderedAssetURL", value)
 

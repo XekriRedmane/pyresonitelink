@@ -11,7 +11,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConvertibleDecimalDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ConvertibleDecimalDriver<>.
+    """The ConvertibleDecimalDriver component is used to convert a value into a Decimal using the value's convert to Decimal method.
+
+    Used to convert values from one type into another via Components rather
+    than ProtoFlux.
 
     Parameterize with a value type::
 
@@ -38,7 +41,7 @@ class ConvertibleDecimalDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IField[T])."""
+        """The value to convert."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +62,7 @@ class ConvertibleDecimalDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[Decimal])."""
+        """The field to drive with ``Source`` converted into a Decimal."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarRenderSettings(GeneratedComponent, IRenderSettingsSource, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarRenderSettings.
+    """Avatar Render Settings is a component that can be placed anywhere on an avatar for it to work. This component changes the internal camera settings for the first person view for a user wearing an avatar with this component under it by optionally changing the far and/or near clip values of the POV camera.
 
     Category: Users/Common Avatar System
+
+    **Behavior**: This component does not start working on an avatar when added, until the avatar is re-equipped. After this, changing values on the component change what the user sees live. This component can be used to extend the distance a user can see, which by default is 4096 meters multipled by user global scale.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarRenderSettings"
@@ -33,7 +35,7 @@ class AvatarRenderSettings(GeneratedComponent, IRenderSettingsSource, IAvatarObj
 
     @property
     def near_clip(self) -> primitives.Float | None:
-        """The NearClip field value."""
+        """If not null, changes the NearClip of the user's POV camera when this component is under the user's avatar hierarchy."""
         member = self.get_member("NearClip")
         if member is None:
             return None
@@ -52,7 +54,7 @@ class AvatarRenderSettings(GeneratedComponent, IRenderSettingsSource, IAvatarObj
 
     @property
     def far_clip(self) -> primitives.Float | None:
-        """The FarClip field value."""
+        """If not null, changes the FarClip of the user's POV camera when this component is under the user's avatar hierarchy."""
         member = self.get_member("FarClip")
         if member is None:
             return None

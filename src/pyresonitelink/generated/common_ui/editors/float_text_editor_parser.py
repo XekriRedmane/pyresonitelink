@@ -9,9 +9,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FloatTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FloatTextEditorParser.
+    """The FloatTextEditorParser component takes in a ``ParsedValue`` and if there is a TextEditor on the same slot, it will send the value through the text editor and into either a Text or a TextRenderer component.
 
     Category: Common UI/Editors
+
+    Place on the same Slot as a TextEditor and anything entered into the
+    text editor will be attempted to be parsed as a Float and output via the
+    ParsedValue field.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FloatTextEditorParser"
@@ -47,7 +51,7 @@ class FloatTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorld
 
     @property
     def parse_continuously(self) -> primitives.Bool | None:
-        """The ParseContinuously field value."""
+        """If true, makes the value always update and parse. If false, it only updates when submitted."""
         member = self.get_member("ParseContinuously")
         if member is None:
             return None
@@ -66,7 +70,7 @@ class FloatTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorld
 
     @property
     def update_string_from_value(self) -> primitives.Bool | None:
-        """The UpdateStringFromValue field value."""
+        """If true, will update the string value from this parsed value."""
         member = self.get_member("UpdateStringFromValue")
         if member is None:
             return None
@@ -85,7 +89,7 @@ class FloatTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorld
 
     @property
     def parsed_value(self) -> primitives.Float | None:
-        """The ParsedValue field value."""
+        """The value that was read from the text field."""
         member = self.get_member("ParsedValue")
         if member is None:
             return None
@@ -104,7 +108,7 @@ class FloatTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorld
 
     @property
     def min(self) -> primitives.Float | None:
-        """The Min field value."""
+        """The minimum value that can be read."""
         member = self.get_member("Min")
         if member is None:
             return None
@@ -123,7 +127,7 @@ class FloatTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorld
 
     @property
     def max(self) -> primitives.Float | None:
-        """The Max field value."""
+        """The maximum value that can be read."""
         member = self.get_member("Max")
         if member is None:
             return None
@@ -142,7 +146,7 @@ class FloatTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorld
 
     @property
     def decimal_places(self) -> primitives.Int | None:
-        """The DecimalPlaces field value."""
+        """The amount of decimal places that can be read."""
         member = self.get_member("DecimalPlaces")
         if member is None:
             return None
@@ -161,7 +165,7 @@ class FloatTextEditorParser(GeneratedComponent, ITextEditorEventReceiver, IWorld
 
     @property
     def string_format(self) -> primitives.String | None:
-        """The StringFormat field value."""
+        """Lets you format the string for the text output."""
         member = self.get_member("StringFormat")
         if member is None:
             return None

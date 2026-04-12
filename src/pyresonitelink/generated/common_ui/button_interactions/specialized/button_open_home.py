@@ -9,9 +9,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonOpenHome(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonOpenHome.
+    """The ButtonOpenHome component, when pressed with an IButton, takes the User to their favorite home world (usually the Resonite Cloud Home by default). There is an optional string input for a group home.
+
+}}
 
     Category: Common UI/Button Interactions/Specialized
+
+    This is an easy way to set up a way to get to your favorite home faster.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonOpenHome"
@@ -29,7 +33,7 @@ class ButtonOpenHome(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
 
     @property
     def group_owner_id(self) -> primitives.String | None:
-        """The GroupOwnerId field value."""
+        """An optional string input for a group home."""
         member = self.get_member("GroupOwnerId")
         if member is None:
             return None

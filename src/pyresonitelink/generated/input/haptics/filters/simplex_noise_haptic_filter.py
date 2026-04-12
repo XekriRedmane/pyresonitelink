@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SimplexNoiseHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SimplexNoiseHapticFilter.
+    """The SimplexNoiseHapticFilter makes the space within a collider with haptic volume act like a 3d noise kind of like moving your haptics device through clouds.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics/Filters
+
+    Attach to a slot with a HapticVolume and a collider. This component will
+    then start working.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SimplexNoiseHapticFilter"
@@ -38,7 +43,7 @@ class SimplexNoiseHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def noise_scale(self) -> primitives.Float3 | None:
-        """The NoiseScale field value."""
+        """The scale of the noise."""
         member = self.get_member("NoiseScale")
         if member is None:
             return None
@@ -57,7 +62,7 @@ class SimplexNoiseHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def noise_offset(self) -> primitives.Float3 | None:
-        """The NoiseOffset field value."""
+        """The offset of the noise from 0."""
         member = self.get_member("NoiseOffset")
         if member is None:
             return None
@@ -76,7 +81,7 @@ class SimplexNoiseHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def min_value(self) -> primitives.Float | None:
-        """The MinValue field value."""
+        """The minimum haptics power the noise can give based on the 3d noise algorithm."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -95,7 +100,7 @@ class SimplexNoiseHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def max_value(self) -> primitives.Float | None:
-        """The MaxValue field value."""
+        """The maximum haptics power the noise can give based on the 3d noise algorithm."""
         member = self.get_member("MaxValue")
         if member is None:
             return None

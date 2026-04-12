@@ -9,9 +9,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceProxySource(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceProxySource.
+    """The ReferenceProxySource component allows for the user to grab a reference off from a UIX element. This requires a Button component to work.
+
+}}
 
     Category: UIX/Interaction
+
+    This is used to carry references to other fields that are looking for
+    it. Using this component along with the ReferenceGrabReceiver and
+    ReferenceField of the type IWorldElement will allow the user to carry
+    the reference from source to receiver directly.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReferenceProxySource"
@@ -29,7 +36,7 @@ class ReferenceProxySource(GeneratedComponent, IUIGrabbable, IWorldEventReceiver
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets IWorldElement)."""
+        """The reference itself."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId

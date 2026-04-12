@@ -1,0 +1,17 @@
+{
+  "description": "The VoiceModeSync component only works in userspace. It allows for getting the status of the user's chosen voice mode options and if they can use certain modes.",
+  "category": "Utility",
+  "fields": {
+    "FocusedWorldVoiceMode": "The voice mode set for the current world.",
+    "GlobalMute": "Whether the user is muted for everyone.",
+    "FocusedWorldMaxAllowedVoiceMode": "The maximum voice mode their allowed by the role the user has in the current focused world.",
+    "BroadcastAllowed": "Whether broadcast is allowed for the user voice modes for the user in the currently focused world.",
+    "ShoutAllowed": "Whether shout is allowed for the user voice modes for the user in the currently focused world.",
+    "NormalAllowed": "Whether normal is allowed for the user voice modes for the user in the currently focused world.",
+    "WhisperAllowed": "Whether whisper is allowed for the user voice modes for the user in the currently focused world."
+  },
+  "methods": {},
+  "usage": "Attach to a slot that would exist in userspace, such as a facet. From there, the fields will update depending on the currently focused world.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VoiceModeSync&action=raw"
+}

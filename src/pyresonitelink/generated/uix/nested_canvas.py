@@ -12,9 +12,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NestedCanvas(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.NestedCanvas.
+    """The Nested Canvas component takes in a target Canvas to nest as, and then it drives the values to the ``StartingOffset``, ``StartingMaskDepth``, and sets the BoxCollider ``Offset`` and ``Size``, for consistency with the main canvas this component is under.
+
+This is essentially a component that can nest (or you can think of it as masking) another uix canvas within another canvas, this can be transformed to your liking, which makes it very useful for rotating UIX. Interactions are also communicated as well.
+
+}}
 
     Category: UIX
+
+    This component is used mainly for consistency with other canvas
+    components, no matter where in the world hierarchy. It does not need to
+    be on the same canvas or panel to work.
+
+    **Related Components**: This needs a Canvas component to work.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NestedCanvas"
@@ -38,7 +48,7 @@ class NestedCanvas(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWo
 
     @property
     def target_canvas(self) -> str | None:
-        """Target ID of the TargetCanvas reference (targets Canvas)."""
+        """The target canvas to nest as"""
         member = self.get_member("TargetCanvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +69,7 @@ class NestedCanvas(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWo
 
     @property
     def render_offset(self) -> str | None:
-        """Target ID of the _renderOffset reference (targets IField[primitives.Int])."""
+        """The render offset reference from the target canvas to be applied to the new nested canvas"""
         member = self.get_member("_renderOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -80,7 +90,7 @@ class NestedCanvas(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWo
 
     @property
     def mask_depth(self) -> str | None:
-        """Target ID of the _maskDepth reference (targets IField[primitives.Int])."""
+        """The mask depth reference from the target canvas to be applied to the new nested canvas"""
         member = self.get_member("_maskDepth")
         if isinstance(member, members.Reference):
             return member.targetId

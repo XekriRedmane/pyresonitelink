@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PlaybackPositionDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PlaybackPositionDriver.
+    """The PlaybackPositionDriver component is used to output and/or influence the playback position of an IPlayable.
 
     Category: Media/Utility
+
+    Can be used on a timeline to get the amount of time left or played in an
+    audio clip that is playing.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PlaybackPositionDriver"
@@ -41,7 +44,7 @@ class PlaybackPositionDriver(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float])."""
+        """The field to drive with the time position of ``Source`` from. If ``UseNormalizedPosition`` is true, this is 01, else it's the amount of seconds from the start."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +65,7 @@ class PlaybackPositionDriver(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IPlayable)."""
+        """The playable audio to get the time from."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +86,7 @@ class PlaybackPositionDriver(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def use_normalized_position(self) -> primitives.Bool | None:
-        """The UseNormalizedPosition field value."""
+        """Whether to output a 01 or an amount of seconds"""
         member = self.get_member("UseNormalizedPosition")
         if member is None:
             return None
@@ -102,7 +105,7 @@ class PlaybackPositionDriver(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """Whether writing to the value of the field specified by ``Target`` will set the playback position. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None

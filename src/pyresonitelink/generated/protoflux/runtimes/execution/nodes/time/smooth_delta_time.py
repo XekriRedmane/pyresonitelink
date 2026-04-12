@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SmoothDeltaTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Smooth Delta Time node returns the change of time between two world updates, specifically the time between the current update and the one before. This node also does another step and tries to account for lag or stutters, smoothly changing the amount of time to match that change.
+    """The ``Smooth Delta Time`` node returns the change of time between two world updates, specifically the time between the current update and the one before. This node also does another step and tries to account for lag or stutters, smoothly changing the amount of time to match that change.
+
+This Unity Documentation about Smooth Delta Time may be relevant in helping understand what this does. And following that, this has an excellent explanation about Time Frame Management, which in general may help with working with this node in your content.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

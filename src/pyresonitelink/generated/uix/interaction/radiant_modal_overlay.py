@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RadiantModalOverlay.
+    """The RadiantModalOverlay component is similar to the ModalOverlay, but with the dash menu. This also can be duplicated as a template in the ModalOverlayManager component.
 
     Category: UIX/Interaction
     """
@@ -102,7 +102,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def show_lerp(self) -> primitives.Float | None:
-        """The ShowLerp field value."""
+        """The lerp amount for this modal."""
         member = self.get_member("ShowLerp")
         if member is None:
             return None
@@ -121,7 +121,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def animation_time(self) -> primitives.Float | None:
-        """The AnimationTime field value."""
+        """The lerp time for this modal."""
         member = self.get_member("AnimationTime")
         if member is None:
             return None
@@ -140,7 +140,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def size_root(self) -> str | None:
-        """Target ID of the SizeRoot reference (targets RectTransform)."""
+        """The size of this modal."""
         member = self.get_member("SizeRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -161,7 +161,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def content_root(self) -> str | None:
-        """Target ID of the ContentRoot reference (targets RectTransform)."""
+        """The center root of this modal."""
         member = self.get_member("ContentRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -182,7 +182,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def close_on_context_menu_action(self) -> primitives.Bool | None:
-        """The CloseOnContextMenuAction field value."""
+        """Closes the modal when the user's context menu closes."""
         member = self.get_member("CloseOnContextMenuAction")
         if member is None:
             return None
@@ -201,7 +201,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def close_on_click(self) -> primitives.Bool | None:
-        """The CloseOnClick field value."""
+        """Closes this modal when it is clicked on."""
         member = self.get_member("CloseOnClick")
         if member is None:
             return None
@@ -220,7 +220,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def blur_spread(self) -> primitives.Float | None:
-        """The BlurSpread field value."""
+        """The blur effect amount."""
         member = self.get_member("BlurSpread")
         if member is None:
             return None
@@ -239,7 +239,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def background_color(self) -> primitives.ColorX | None:
-        """The BackgroundColor field value."""
+        """The background color of this RadiantModalOverlay."""
         member = self.get_member("BackgroundColor")
         if member is None:
             return None
@@ -258,7 +258,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def content_animation_scale_offset(self) -> primitives.Float | None:
-        """The ContentAnimationScaleOffset field value."""
+        """Offests the content animation for this RadiantModalOverlay."""
         member = self.get_member("ContentAnimationScaleOffset")
         if member is None:
             return None
@@ -277,7 +277,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def header_size(self) -> primitives.Float | None:
-        """The HeaderSize field value."""
+        """The header size of this RadiantModalOverlay."""
         member = self.get_member("HeaderSize")
         if member is None:
             return None
@@ -296,7 +296,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def padding(self) -> primitives.Float | None:
-        """The Padding field value."""
+        """The padding amount for this RadiantModalOverlay."""
         member = self.get_member("Padding")
         if member is None:
             return None
@@ -315,7 +315,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def title(self) -> str | None:
-        """Target ID of the _title reference (targets Text)."""
+        """The title of this RadiantModalOverlay."""
         member = self.get_member("_title")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -336,7 +336,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def blur(self) -> str | None:
-        """Target ID of the _blur reference (targets BlurMaterial)."""
+        """The blur of this RadiantModalOverlay."""
         member = self.get_member("_blur")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -357,7 +357,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def blur_graphic(self) -> str | None:
-        """Target ID of the _blurGraphic reference (targets RawGraphic)."""
+        """The blur graphic of this RadiantModalOverlay."""
         member = self.get_member("_blurGraphic")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -378,7 +378,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def blur_spread(self) -> str | None:
-        """Target ID of the _blurSpread reference (targets IField[primitives.Float2])."""
+        """The blur speed of this RadiantModalOverlay."""
         member = self.get_member("_blurSpread")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -399,7 +399,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def background_color(self) -> str | None:
-        """Target ID of the _backgroundColor reference (targets IField[primitives.ColorX])."""
+        """The background color of this RadiantModalOverlay."""
         member = self.get_member("_backgroundColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -420,7 +420,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def mask_rect(self) -> str | None:
-        """Target ID of the _maskRect reference (targets IField[primitives.Rect])."""
+        """The mask rect of this RadiantModalOverlay."""
         member = self.get_member("_maskRect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -441,7 +441,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def header_offset_min(self) -> str | None:
-        """Target ID of the _headerOffsetMin reference (targets IField[primitives.Float2])."""
+        """The header offset min of this RadiantModalOverlay."""
         member = self.get_member("_headerOffsetMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -462,7 +462,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def header_offset_max(self) -> str | None:
-        """Target ID of the _headerOffsetMax reference (targets IField[primitives.Float2])."""
+        """The header offset max of this RadiantModalOverlay."""
         member = self.get_member("_headerOffsetMax")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -483,7 +483,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def content_offset_min(self) -> str | None:
-        """Target ID of the _contentOffsetMin reference (targets IField[primitives.Float2])."""
+        """The content offset min of this RadiantModalOverlay."""
         member = self.get_member("_contentOffsetMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -504,7 +504,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def content_offset_max(self) -> str | None:
-        """Target ID of the _contentOffsetMax reference (targets IField[primitives.Float2])."""
+        """The content offset max of this RadiantModalOverlay."""
         member = self.get_member("_contentOffsetMax")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -525,7 +525,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def title_offset_min(self) -> str | None:
-        """Target ID of the _titleOffsetMin reference (targets IField[primitives.Float2])."""
+        """The title offset min of this RadiantModalOverlay."""
         member = self.get_member("_titleOffsetMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -546,7 +546,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def title_offset_max(self) -> str | None:
-        """Target ID of the _titleOffsetMax reference (targets IField[primitives.Float2])."""
+        """The title offset max of this RadiantModalOverlay."""
         member = self.get_member("_titleOffsetMax")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -567,7 +567,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def close_offset_min(self) -> str | None:
-        """Target ID of the _closeOffsetMin reference (targets IField[primitives.Float2])."""
+        """The close offset min of this RadiantModalOverlay."""
         member = self.get_member("_closeOffsetMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -588,7 +588,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     @property
     def close_offset_max(self) -> str | None:
-        """Target ID of the _closeOffsetMax reference (targets IField[primitives.Float2])."""
+        """The close offset max of this RadiantModalOverlay."""
         member = self.get_member("_closeOffsetMax")
         if isinstance(member, members.Reference):
             return member.targetId

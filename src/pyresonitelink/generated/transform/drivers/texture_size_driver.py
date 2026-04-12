@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.mode import Mode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,19 +14,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextureSizeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextureSizeDriver.
+    """The TextureSizeDriver component drives a field with the size of a texture in pixels.
 
     Category: Transform/Drivers
+
+    Attach to a slot and provide a ``Texture`` and a ``Target`` to get
+    started.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextureSizeDriver"
 
-    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, target: str | IField[primitives.Float2] | None = None, premultiply: primitives.Float2 | None = None, ratio: primitives.Float2 | None = None, max_size: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture: str | IAssetProvider[ITexture2D] | None = None, target: str | IField[primitives.Float2] | None = None, drive_mode: Mode | str | None = None, premultiply: primitives.Float2 | None = None, ratio: primitives.Float2 | None = None, max_size: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             texture: Initial value for Texture.
             target: Initial value for Target.
+            drive_mode: Initial value for DriveMode.
             premultiply: Initial value for Premultiply.
             ratio: Initial value for Ratio.
             max_size: Initial value for MaxSize.
@@ -36,6 +41,8 @@ class TextureSizeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.texture = texture
         if target is not None:
             self.target = target
+        if drive_mode is not None:
+            self.drive_mode = drive_mode
         if premultiply is not None:
             self.premultiply = premultiply
         if ratio is not None:
@@ -45,7 +52,7 @@ class TextureSizeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[ITexture2D])."""
+        """The texture to get a size from."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +73,7 @@ class TextureSizeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float2])."""
+        """The value field to drive with the final result value."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,21 +93,28 @@ class TextureSizeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def drive_mode(self) -> members.FieldEnum | None:
-        """The DriveMode member."""
+    def drive_mode(self) -> Mode | None:
+        """The way of restricting ``Texture`` size values as second step."""
         member = self.get_member("DriveMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Mode(member.value)
         return None
 
     @drive_mode.setter
-    def drive_mode(self, value: members.FieldEnum) -> None:
-        """Set the DriveMode member."""
-        self.set_member("DriveMode", value)
+    def drive_mode(self, value: Mode | str) -> None:
+        """Set DriveMode. The way of restricting ``Texture`` size values as second step."""
+        member = self.get_member("DriveMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DriveMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def premultiply(self) -> primitives.Float2 | None:
-        """The Premultiply field value."""
+        """The value to multiply the ``Texture`` size by as first step."""
         member = self.get_member("Premultiply")
         if member is None:
             return None
@@ -119,7 +133,7 @@ class TextureSizeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ratio(self) -> primitives.Float2 | None:
-        """The Ratio field value."""
+        """The value to multiply the ``Texture`` size by as the third step."""
         member = self.get_member("Ratio")
         if member is None:
             return None
@@ -138,7 +152,7 @@ class TextureSizeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_size(self) -> primitives.Float2 | None:
-        """The MaxSize field value."""
+        """The value to restrict the output value to be less than this as the final step."""
         member = self.get_member("MaxSize")
         if member is None:
             return None

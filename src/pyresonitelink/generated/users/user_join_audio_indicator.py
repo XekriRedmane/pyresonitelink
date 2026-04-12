@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserJoinAudioIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserJoinAudioIndicator.
+    """The UserJoinAudioIndicator component plays an audio clip when a user joins and leaves a session.
 
     Category: Users
+
+    Attach to a slot and provide some audio clips to play. The next time a
+    user joins or leaves the session, a clip from the corresponding list
+    will play.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserJoinAudioIndicator"
@@ -33,7 +37,7 @@ class UserJoinAudioIndicator(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def joined_clips(self) -> members.SyncList | None:
-        """The JoinedClips member."""
+        """A list of random audio clips to choose from when a user joins the session. Each one will have a different weight."""
         member = self.get_member("JoinedClips")
         if isinstance(member, members.SyncList):
             return member
@@ -41,12 +45,12 @@ class UserJoinAudioIndicator(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @joined_clips.setter
     def joined_clips(self, value: members.SyncList) -> None:
-        """Set the JoinedClips member."""
+        """Set JoinedClips. A list of random audio clips to choose from when a user joins the session. Each one will have a different weight."""
         self.set_member("JoinedClips", value)
 
     @property
     def left_clips(self) -> members.SyncList | None:
-        """The LeftClips member."""
+        """A list of random audio clips to choose from when a user leaves the session. Each one will have a different weight."""
         member = self.get_member("LeftClips")
         if isinstance(member, members.SyncList):
             return member
@@ -54,12 +58,12 @@ class UserJoinAudioIndicator(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @left_clips.setter
     def left_clips(self, value: members.SyncList) -> None:
-        """Set the LeftClips member."""
+        """Set LeftClips. A list of random audio clips to choose from when a user leaves the session. Each one will have a different weight."""
         self.set_member("LeftClips", value)
 
     @property
     def spatialize(self) -> primitives.Bool | None:
-        """The Spatialize field value."""
+        """Whether to play the sounds from the slot this component is on or globally."""
         member = self.get_member("Spatialize")
         if member is None:
             return None
@@ -78,7 +82,7 @@ class UserJoinAudioIndicator(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def volume(self) -> primitives.Float | None:
-        """The Volume field value."""
+        """How loud the audio clips should be by default."""
         member = self.get_member("Volume")
         if member is None:
             return None

@@ -34,7 +34,7 @@ class OnSaving(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IEx
 
     @property
     def trigger(self) -> str | None:
-        """Target ID of the Trigger reference (targets ISyncNodeOperation)."""
+        """Sends an Impulse when the node is being saved with a world or item."""
         member = self.get_member("Trigger")
         if isinstance(member, members.Reference):
             return member.targetId

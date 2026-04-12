@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VirtualHapticPointSampler(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VirtualHapticPointSampler.
+    """Virtual Haptic Point sampler is a component that is used as a way of picking up haptic sensations from the virtual environment inside Resonite, without needing a haptic device. This can be used as a way of making a device that beeps as it detects vibrations, temperature, pain, and force. It can also be used as a way of relaying vibration sensations via API to vibration devices not supported by Resonite, like speakers with base.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics
     """
@@ -49,7 +51,7 @@ class VirtualHapticPointSampler(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the sphere for this."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -68,7 +70,7 @@ class VirtualHapticPointSampler(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def show_debug_visual(self) -> primitives.Bool | None:
-        """The ShowDebugVisual field value."""
+        """Whether to show the debug visual for this sampler."""
         member = self.get_member("ShowDebugVisual")
         if member is None:
             return None
@@ -87,7 +89,7 @@ class VirtualHapticPointSampler(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def debug_visual(self) -> str | None:
-        """Target ID of the _debugVisual reference (targets OverlayFresnelMaterial)."""
+        """the material on the sphere of the current generated debug visual. Is null when ``ShowDebugVisual`` is false."""
         member = self.get_member("_debugVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +110,7 @@ class VirtualHapticPointSampler(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def force(self) -> primitives.Float | None:
-        """The Force field value."""
+        """The force sensations picked up by this haptic point sampler."""
         member = self.get_member("Force")
         if member is None:
             return None
@@ -127,7 +129,7 @@ class VirtualHapticPointSampler(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def pain(self) -> primitives.Float | None:
-        """The Pain field value."""
+        """The pain sensations picked up by this haptic point sampler."""
         member = self.get_member("Pain")
         if member is None:
             return None
@@ -146,7 +148,7 @@ class VirtualHapticPointSampler(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def temperature(self) -> primitives.Float | None:
-        """The Temperature field value."""
+        """The temperature sensations picked up by this haptic point sampler."""
         member = self.get_member("Temperature")
         if member is None:
             return None
@@ -165,7 +167,7 @@ class VirtualHapticPointSampler(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def vibration(self) -> primitives.Float | None:
-        """The Vibration field value."""
+        """the vibration sensations picked up by this haptic point sampler."""
         member = self.get_member("Vibration")
         if member is None:
             return None

@@ -1,0 +1,16 @@
+{
+  "description": "This component when triggered by a button event will make the user press all the keys in the multikey at the same time.",
+  "category": "Userspace:Virtual Keyboard",
+  "fields": {
+    "Keys": "A list of keys that should be simulated being pressed when receiving a button event and they will be simulated by the source user of the button event."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "The keys do not press in order, and keys will not be pressed more than once if listed more than once."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VirtualMultiKey&action=raw"
+}

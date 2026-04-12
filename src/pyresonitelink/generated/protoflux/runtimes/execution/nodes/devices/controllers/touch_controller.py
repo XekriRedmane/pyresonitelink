@@ -41,8 +41,6 @@ class TouchController(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
 * Trigger: Float: press strength of trigger. Same as Grip.
 * TriggerTouch: Bool: is trigger touched?
 * TriggerClick: Bool: is trigger clicked?
-
-Components
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Input.Controllers.TouchController"

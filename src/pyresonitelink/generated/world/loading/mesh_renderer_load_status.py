@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MeshRendererLoadStatus.
+    """The MeshRendererLoadStatus component keeps track of how many meshes in the list of meshes have been loaded for the local user. The meshes can be skinned mesh renderers or mesh renderers. The loaded status checks for if the mesh is loaded, including for any materials on those mesh/skinned mesh renderers.
 
     Category: World/Loading
+
+    Can be used for a loading indicator for worlds or avatars.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshRendererLoadStatus"
@@ -36,7 +38,7 @@ class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def renderers(self) -> members.SyncList | None:
-        """The Renderers member."""
+        """A list of skinned mesh renderers or mesh renderers to keep track of the load progress for."""
         member = self.get_member("Renderers")
         if isinstance(member, members.SyncList):
             return member
@@ -44,12 +46,12 @@ class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @renderers.setter
     def renderers(self, value: members.SyncList) -> None:
-        """Set the Renderers member."""
+        """Set Renderers. A list of skinned mesh renderers or mesh renderers to keep track of the load progress for."""
         self.set_member("Renderers", value)
 
     @property
     def is_loaded(self) -> primitives.Bool | None:
-        """The IsLoaded field value."""
+        """Whether all meshes are finished loading"""
         member = self.get_member("IsLoaded")
         if member is None:
             return None
@@ -68,7 +70,7 @@ class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def load_progress(self) -> primitives.Float | None:
-        """The LoadProgress field value."""
+        """The percentage of meshes that have loaded."""
         member = self.get_member("LoadProgress")
         if member is None:
             return None
@@ -87,7 +89,7 @@ class MeshRendererLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def progress_weight(self) -> primitives.Float | None:
-        """The ProgressWeight field value."""
+        """The number of not null meshes that exist in ``Renderers``."""
         member = self.get_member("ProgressWeight")
         if member is None:
             return None

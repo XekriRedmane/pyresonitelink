@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Bake Reflection Probes node takes in the root slot holding all your reflection probes, whether or not to bake the inactive reflection probes, the matching tag to bake only those reflection probes, and a delay before starting the baking process. This node will then attempt to bake them all, then returns the focused reflection probe, the index of that reflection probe, and the count of all reflection probes.
+    """The ``Bake Reflection Probes`` node takes in the root slot holding all your reflection probes, whether or not to bake the inactive reflection probes, the matching tag to bake only those reflection probes, and a delay before starting the baking process. This node will then attempt to bake them all, then returns the focused reflection probe, the index of that reflection probe, and the count of all reflection probes.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Rendering
     """
@@ -58,7 +58,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets INodeObjectOutput[Slot])."""
+        """The slot hierarchy that holds the reflection probes."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def bake_inactive(self) -> str | None:
-        """Target ID of the BakeInactive reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should be able to bake reflection probs that are not enabled."""
         member = self.get_member("BakeInactive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -100,7 +100,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def filter_with_tag(self) -> str | None:
-        """Target ID of the FilterWithTag reference (targets INodeObjectOutput[primitives.String])."""
+        """Bakes the reflection probes that match this tag."""
         member = self.get_member("FilterWithTag")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -121,7 +121,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def delay_before_bake(self) -> str | None:
-        """Target ID of the DelayBeforeBake reference (targets INodeValueOutput[primitives.Float])."""
+        """Should wait a certain amount of time before actually beginning the bake."""
         member = self.get_member("DelayBeforeBake")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -142,7 +142,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def probe(self) -> members.EmptyElement | None:
-        """The Probe member."""
+        """The current probe being baked."""
         member = self.get_member("Probe")
         if isinstance(member, members.EmptyElement):
             return member
@@ -150,12 +150,12 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @probe.setter
     def probe(self, value: members.EmptyElement) -> None:
-        """Set the Probe member."""
+        """Set Probe. The current probe being baked."""
         self.set_member("Probe", value)
 
     @property
     def probe_index(self) -> members.EmptyElement | None:
-        """The ProbeIndex member."""
+        """The index number showing which probe is being baked."""
         member = self.get_member("ProbeIndex")
         if isinstance(member, members.EmptyElement):
             return member
@@ -163,12 +163,12 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @probe_index.setter
     def probe_index(self, value: members.EmptyElement) -> None:
-        """Set the ProbeIndex member."""
+        """Set ProbeIndex. The index number showing which probe is being baked."""
         self.set_member("ProbeIndex", value)
 
     @property
     def probe_count(self) -> members.EmptyElement | None:
-        """The ProbeCount member."""
+        """The number of probes in this batch."""
         member = self.get_member("ProbeCount")
         if isinstance(member, members.EmptyElement):
             return member
@@ -176,12 +176,12 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @probe_count.setter
     def probe_count(self, value: members.EmptyElement) -> None:
-        """Set the ProbeCount member."""
+        """Set ProbeCount. The number of probes in this batch."""
         self.set_member("ProbeCount", value)
 
     @property
     def on_bake_batch_start(self) -> str | None:
-        """Target ID of the OnBakeBatchStart reference (targets INodeOperation)."""
+        """Fires when the bake has started."""
         member = self.get_member("OnBakeBatchStart")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -202,7 +202,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def on_before_probe_bake(self) -> str | None:
-        """Target ID of the OnBeforeProbeBake reference (targets INodeOperation)."""
+        """Fires before the probe is being baked."""
         member = self.get_member("OnBeforeProbeBake")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -223,7 +223,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def on_probe_baked(self) -> str | None:
-        """Target ID of the OnProbeBaked reference (targets INodeOperation)."""
+        """Fires after the probe has been baked."""
         member = self.get_member("OnProbeBaked")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -244,7 +244,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
 
     @property
     def on_bake_batch_finished(self) -> str | None:
-        """Target ID of the OnBakeBatchFinished reference (targets INodeOperation)."""
+        """Fires when the batch of probes have finished baking."""
         member = self.get_member("OnBakeBatchFinished")
         if isinstance(member, members.Reference):
             return member.targetId

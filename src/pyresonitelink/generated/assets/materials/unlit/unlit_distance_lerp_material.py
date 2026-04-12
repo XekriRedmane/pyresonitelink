@@ -3,6 +3,10 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.blend_mode import BlendMode
+from pyresonitelink.generated._enums.sidedness import Sidedness
+from pyresonitelink.generated._enums.zwrite import ZWrite
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,14 +17,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UnlitDistanceLerpMaterial.
+    """The UnlitDistanceLerpMaterial component changes it's surface depending on how close the material's surface is to a given ``Point``.
 
     Category: Assets/Materials/Unlit
+
+    Attach to a slot and use the material Component in the list of materials
+    on a MeshRenderer or a SkinnedMeshRenderer with a mesh to view what this
+    material looks like.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UnlitDistanceLerpMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, local_space: primitives.Bool | None = None, point: primitives.Float3 | None = None, distance: primitives.Float | None = None, transition_range: primitives.Float | None = None, near_texture: str | IAssetProvider[ITexture2D] | None = None, far_texture: str | IAssetProvider[ITexture2D] | None = None, near_texture_scale: primitives.Float2 | None = None, near_texture_offset: primitives.Float2 | None = None, far_texture_scale: primitives.Float2 | None = None, far_texture_offset: primitives.Float2 | None = None, near_color: primitives.ColorX | None = None, far_color: primitives.ColorX | None = None, use_vertex_colors: primitives.Bool | None = None, alpha_cutoff: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, local_space: primitives.Bool | None = None, point: primitives.Float3 | None = None, distance: primitives.Float | None = None, transition_range: primitives.Float | None = None, near_texture: str | IAssetProvider[ITexture2D] | None = None, far_texture: str | IAssetProvider[ITexture2D] | None = None, near_texture_scale: primitives.Float2 | None = None, near_texture_offset: primitives.Float2 | None = None, far_texture_scale: primitives.Float2 | None = None, far_texture_offset: primitives.Float2 | None = None, near_color: primitives.ColorX | None = None, far_color: primitives.ColorX | None = None, use_vertex_colors: primitives.Bool | None = None, vertex_color_interpolation_space: ColorProfile | str | None = None, blend_mode: BlendMode | str | None = None, alpha_cutoff: primitives.Float | None = None, sidedness: Sidedness | str | None = None, zwrite: ZWrite | str | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,7 +47,11 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
             near_color: Initial value for NearColor.
             far_color: Initial value for FarColor.
             use_vertex_colors: Initial value for UseVertexColors.
+            vertex_color_interpolation_space: Initial value for VertexColorInterpolationSpace.
+            blend_mode: Initial value for BlendMode.
             alpha_cutoff: Initial value for AlphaCutoff.
+            sidedness: Initial value for Sidedness.
+            zwrite: Initial value for ZWrite.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
             render_queue: Initial value for RenderQueue.
@@ -76,8 +88,16 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
             self.far_color = far_color
         if use_vertex_colors is not None:
             self.use_vertex_colors = use_vertex_colors
+        if vertex_color_interpolation_space is not None:
+            self.vertex_color_interpolation_space = vertex_color_interpolation_space
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
         if alpha_cutoff is not None:
             self.alpha_cutoff = alpha_cutoff
+        if sidedness is not None:
+            self.sidedness = sidedness
+        if zwrite is not None:
+            self.zwrite = zwrite
         if offset_factor is not None:
             self.offset_factor = offset_factor
         if offset_units is not None:
@@ -377,30 +397,44 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
             )
 
     @property
-    def vertex_color_interpolation_space(self) -> members.FieldEnum | None:
-        """The VertexColorInterpolationSpace member."""
+    def vertex_color_interpolation_space(self) -> ColorProfile | None:
+        """The VertexColorInterpolationSpace enum value."""
         member = self.get_member("VertexColorInterpolationSpace")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @vertex_color_interpolation_space.setter
-    def vertex_color_interpolation_space(self, value: members.FieldEnum) -> None:
-        """Set the VertexColorInterpolationSpace member."""
-        self.set_member("VertexColorInterpolationSpace", value)
+    def vertex_color_interpolation_space(self, value: ColorProfile | str) -> None:
+        """Set the VertexColorInterpolationSpace enum value."""
+        member = self.get_member("VertexColorInterpolationSpace")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "VertexColorInterpolationSpace",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def alpha_cutoff(self) -> primitives.Float | None:
@@ -422,30 +456,44 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
             )
 
     @property
-    def sidedness(self) -> members.FieldEnum | None:
-        """The Sidedness member."""
+    def sidedness(self) -> Sidedness | None:
+        """The Sidedness enum value."""
         member = self.get_member("Sidedness")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Sidedness(member.value)
         return None
 
     @sidedness.setter
-    def sidedness(self, value: members.FieldEnum) -> None:
-        """Set the Sidedness member."""
-        self.set_member("Sidedness", value)
+    def sidedness(self, value: Sidedness | str) -> None:
+        """Set the Sidedness enum value."""
+        member = self.get_member("Sidedness")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Sidedness",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def offset_factor(self) -> primitives.Float | None:

@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabbableSetterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabbableSetterTool.
+    """See Grabbable Setter Tool.
 
     Category: Tools
     """
@@ -191,7 +191,7 @@ class GrabbableSetterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouc
 
     @property
     def apply_to_object_root(self) -> primitives.Bool | None:
-        """The ApplyToObjectRoot field value."""
+        """Whether to search for a root when hitting a collider before applying the grabbable to that slot."""
         member = self.get_member("ApplyToObjectRoot")
         if member is None:
             return None
@@ -210,7 +210,7 @@ class GrabbableSetterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouc
 
     @property
     def set_scalable(self) -> primitives.Bool | None:
-        """The SetScalable field value."""
+        """Whether the applied grababble should be scalable."""
         member = self.get_member("SetScalable")
         if member is None:
             return None
@@ -229,7 +229,7 @@ class GrabbableSetterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouc
 
     @property
     def indicator_color(self) -> str | None:
-        """Target ID of the _indicatorColor reference (targets IField[primitives.ColorX])."""
+        """The color to change for indicating this tool's settings. Used for the default cone model usually."""
         member = self.get_member("_indicatorColor")
         if isinstance(member, members.Reference):
             return member.targetId

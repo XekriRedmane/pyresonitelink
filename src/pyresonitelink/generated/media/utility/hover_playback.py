@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.play_trigger import PlayTrigger
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_playback import SyncPlayback
@@ -11,18 +12,22 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HoverPlayback(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HoverPlayback.
+    """The HoverPlayback component plays or stops a Playable when on the root of a hiearchy that has colliders and is touched/pressed.
 
     Category: Media/Utility
+
+    Attach to a slot or slot hiearchy with colliders, and provide a
+    ``Target``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HoverPlayback"
 
-    def __init__(self, target: str | SyncPlayback | None = None, from_beginning: primitives.Bool | None = None, loop: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | SyncPlayback | None = None, trigger: PlayTrigger | str | None = None, from_beginning: primitives.Bool | None = None, loop: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             target: Initial value for Target.
+            trigger: Initial value for Trigger.
             from_beginning: Initial value for FromBeginning.
             loop: Initial value for Loop.
             component: Existing Component to wrap.
@@ -30,6 +35,8 @@ class HoverPlayback(GeneratedComponent, ITouchable, IWorldEventReceiver):
         super().__init__(component)
         if target is not None:
             self.target = target
+        if trigger is not None:
+            self.trigger = trigger
         if from_beginning is not None:
             self.from_beginning = from_beginning
         if loop is not None:
@@ -37,7 +44,7 @@ class HoverPlayback(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncPlayback)."""
+        """The Playback (timeline/animation) to influence."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,21 +64,28 @@ class HoverPlayback(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def trigger(self) -> members.FieldEnum | None:
-        """The Trigger member."""
+    def trigger(self) -> PlayTrigger | None:
+        """what should trigger the playback."""
         member = self.get_member("Trigger")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return PlayTrigger(member.value)
         return None
 
     @trigger.setter
-    def trigger(self, value: members.FieldEnum) -> None:
-        """Set the Trigger member."""
-        self.set_member("Trigger", value)
+    def trigger(self, value: PlayTrigger | str) -> None:
+        """Set Trigger. what should trigger the playback."""
+        member = self.get_member("Trigger")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Trigger",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def from_beginning(self) -> primitives.Bool | None:
-        """The FromBeginning field value."""
+        """Whether to play from the beginning or not."""
         member = self.get_member("FromBeginning")
         if member is None:
             return None
@@ -90,7 +104,7 @@ class HoverPlayback(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def loop(self) -> primitives.Bool | None:
-        """The Loop field value."""
+        """Whether to loop the playback."""
         member = self.get_member("Loop")
         if member is None:
             return None

@@ -50,7 +50,7 @@ class AsyncRangeLoopInt(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def start(self) -> str | None:
-        """Target ID of the Start reference (targets INodeValueOutput[primitives.Int])."""
+        """The number for ``Current`` to start at during execution."""
         member = self.get_member("Start")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -71,7 +71,7 @@ class AsyncRangeLoopInt(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def end(self) -> str | None:
-        """Target ID of the End reference (targets INodeValueOutput[primitives.Int])."""
+        """The number for ``Current`` to iterate towards and compare to during execution. This input is inclusive."""
         member = self.get_member("End")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +92,7 @@ class AsyncRangeLoopInt(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def step_size(self) -> str | None:
-        """Target ID of the StepSize reference (targets INodeValueOutput[primitives.Int])."""
+        """The value that is added or subtracted to ``Current`` per iteration for the current ``LoopIteration``. The loop will either add or subtract this value depending on whether ``Start`` is less than or greater than ``End``. There will be no iterations if this value is less than ``1``."""
         member = self.get_member("StepSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -113,7 +113,7 @@ class AsyncRangeLoopInt(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def loop_start(self) -> str | None:
-        """Target ID of the LoopStart reference (targets INodeOperation)."""
+        """Fires after ``*`` is pulsed and before any iterations are done. Will be pulsed even if ``StepSize < 1``."""
         member = self.get_member("LoopStart")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -134,7 +134,7 @@ class AsyncRangeLoopInt(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def loop_iteration(self) -> str | None:
-        """Target ID of the LoopIteration reference (targets INodeOperation)."""
+        """Fires for each iteration of the loop. This impulse is triggered until ``Current`` exceeds ``End`` in the direction of the loop, at which point the iterations will stop."""
         member = self.get_member("LoopIteration")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -155,7 +155,7 @@ class AsyncRangeLoopInt(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def loop_end(self) -> str | None:
-        """Target ID of the LoopEnd reference (targets INodeOperation)."""
+        """Fires once the loop has finished."""
         member = self.get_member("LoopEnd")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -176,7 +176,7 @@ class AsyncRangeLoopInt(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def current(self) -> members.EmptyElement | None:
-        """The Current member."""
+        """This value will start at ``Start`` for the first iteration, then at each iteration, this value will either increase or decrease by ``StepSize`` depending on whether ``End`` is greater than or less than ``Start``. This value lasts for said iteration's entire context."""
         member = self.get_member("Current")
         if isinstance(member, members.EmptyElement):
             return member
@@ -184,6 +184,6 @@ class AsyncRangeLoopInt(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @current.setter
     def current(self, value: members.EmptyElement) -> None:
-        """Set the Current member."""
+        """Set Current. This value will start at ``Start`` for the first iteration, then at each iteration, this value will either increase or decrease by ``StepSize`` depending on whether ``End`` is greater than or less than ``Start``. This value lasts for said iteration's entire context."""
         self.set_member("Current", value)
 

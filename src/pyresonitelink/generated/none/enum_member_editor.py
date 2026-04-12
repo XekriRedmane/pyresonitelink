@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EnumMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.EnumMemberEditor.
+    """The EnumMemberEditor component is used in inspectors to edit enum values.
+
+Commonly used in Ref Hacking if interacted with directly by the user instead of as part of an inspector visual.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.EnumMemberEditor"
@@ -42,7 +44,7 @@ class EnumMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def continuous(self) -> primitives.Bool | None:
-        """The Continuous field value."""
+        """Whether changes should be continuous and instant."""
         member = self.get_member("Continuous")
         if member is None:
             return None
@@ -61,7 +63,7 @@ class EnumMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def path(self) -> primitives.String | None:
-        """The _path field value."""
+        """The sub path of the value type to edit."""
         member = self.get_member("_path")
         if member is None:
             return None
@@ -80,7 +82,7 @@ class EnumMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField)."""
+        """The field to edit and get info from."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -101,7 +103,7 @@ class EnumMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text_drive(self) -> str | None:
-        """Target ID of the _textDrive reference (targets IField[primitives.String])."""
+        """The text field to drive with the enum's contents."""
         member = self.get_member("_textDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -122,7 +124,7 @@ class EnumMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets Button)."""
+        """The button to edit the enum with."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId

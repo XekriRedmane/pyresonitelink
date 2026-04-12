@@ -34,7 +34,7 @@ class IsContextMenuOpen(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """User to track Context Menu open state of."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

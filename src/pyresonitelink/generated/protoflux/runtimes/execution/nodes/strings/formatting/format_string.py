@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """This node simply calls the C# String.Format function using the provided parameters. It allows you to take a string like "I am a {0} who likes to do {1} while {2}" And populate {0}, {1}, and {2} with values. If you plug any value into the list of inputs for the Parameters, it will auto add a cast node into an object.
+    """This node simply calls the C# String.Format function using the provided parameters. It allows you to take a string like "I am a {0} who likes to do {1} while {2}" And populate {0}, {1}, and {2} with values. If you plug any value into the list of inputs for the Parameters, it will auto add a cast node into an object. 
+
+For example using the string ``"The number {0} is on the {1} hand and the fact it's enabled is {2}."`` for Format. Then Plugging in a float (1.25) for the first input, Then a Chirality (Left) to the second, then a Boolean (True) will result in the output ``"The number 1.25 is on the Left hand and the fact it's enabled is True."``
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Formatting
     """
@@ -37,7 +39,7 @@ class FormatString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def format_(self) -> str | None:
-        """Target ID of the Format reference (targets INodeObjectOutput[primitives.String])."""
+        """A composite format string."""
         member = self.get_member("Format")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +60,7 @@ class FormatString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def parameters(self) -> members.SyncList | None:
-        """The Parameters member."""
+        """A list of object-type parameters that can dynamically change this formatted string of text."""
         member = self.get_member("Parameters")
         if isinstance(member, members.SyncList):
             return member
@@ -66,12 +68,14 @@ class FormatString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @parameters.setter
     def parameters(self, value: members.SyncList) -> None:
-        """Set the Parameters member."""
+        """Set Parameters. A list of object-type parameters that can dynamically change this formatted string of text."""
         self.set_member("Parameters", value)
 
     @property
     def format_provider(self) -> str | None:
-        """Target ID of the FormatProvider reference (targets INodeObjectOutput[IFormatProvider])."""
+        """An object that supplies culture-specific formatting information.
+
+Nodes that output this type can be found in Strings/Localization"""
         member = self.get_member("FormatProvider")
         if isinstance(member, members.Reference):
             return member.targetId

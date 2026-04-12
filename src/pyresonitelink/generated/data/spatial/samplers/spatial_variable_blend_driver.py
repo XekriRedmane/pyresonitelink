@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SpatialVariableBlendDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SpatialVariableBlendDriver.
+    """The Spatial Variable Blend Driver component combines with the CloningReferenceSpatialVariableCollector component. If this is on a field on a spatial variable component which is driven by this component, the cloned version will be driven with the current blend weight for that clone. This is used for the BlendWeight for the new reverb zones. For more info on making reverb zones, see AudioListener
 
     Category: Data/Spatial/Samplers
     """
@@ -30,7 +30,7 @@ class SpatialVariableBlendDriver(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def blend_weight(self) -> str | None:
-        """Target ID of the BlendWeight reference (targets IField[primitives.Float])."""
+        """used for proportional blending and priority computation"""
         member = self.get_member("BlendWeight")
         if isinstance(member, members.Reference):
             return member.targetId

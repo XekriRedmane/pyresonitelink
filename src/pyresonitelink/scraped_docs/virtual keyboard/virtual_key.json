@@ -1,0 +1,24 @@
+{
+  "description": "Virtual key is a component that turns a button event into a button press on the keyboard in game as if it came from the physical keyboard.",
+  "category": "Userspace:Virtual Keyboard",
+  "fields": {
+    "TargetKey": "The key to simulate.",
+    "AppendString": "What text to append if the user is focused into a text field",
+    "ShiftTargetKey": "What key to use if the Virtual Shift component is taking effect, or shift is held on the physical keyboard.",
+    "ShiftAppendString": "What text to append if the user is focused into a text field and if the Virtual Shift component is taking effect, or shift is held on the physical keyboard.",
+    "IgnoreShift": "Whether to ignore shift and virtual shift keys entirely.",
+    "ModifierKey": "A key that can act as a special modifier (for example, if you wanted a key on your VR keyboard that appended \"Cat!!\" every time you type a letter)",
+    "ModifiedTargetKey": "The key to use instead of ``TargetKey`` when ``ModifiedTargetKey`` is pressed down.",
+    "ModifiedAppendString": "hat text to append if the user is focused into a text field and the key specified by ``ModifiedTargetKey`` is pressed down.",
+    "Keyboard": "The keyboard object this key is a part of."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "When paired with a UIX button or physical button on the same slot, it allows for simulation of key presses as if they came from the actual physical keyboard. This can be used for some funny effects where pressing a button forces the user that pressed it to jump (or, god forbid, make them switch to desktop or VR)\n\nThis cannot be used to send key presses outside of Resonite to control the external operating system unless the component is in Userspace."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VirtualKey&action=raw"
+}

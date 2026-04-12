@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class KeyPressed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Key Pressed node returns the local user's keyboard key being pressed down. This will change within that frame, so combining it with Fire On True is recommended.
+    """The ``Key Pressed`` node returns the local user's keyboard key being pressed down. This will change within that frame, so combining it with Fire On True is recommended.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Keyboard
     """
@@ -33,7 +33,7 @@ class KeyPressed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
 
     @property
     def key(self) -> str | None:
-        """Target ID of the Key reference (targets INodeValueOutput[Key])."""
+        """The key to check."""
         member = self.get_member("Key")
         if isinstance(member, members.Reference):
             return member.targetId

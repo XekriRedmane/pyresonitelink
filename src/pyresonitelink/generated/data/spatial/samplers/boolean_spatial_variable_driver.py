@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.boolean_spatial_variable_mode import BooleanSpatialVariableMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -11,19 +12,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BooleanSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BooleanSpatialVariableDriver.
+    """The Boolean Spatial Variable Driver component is specifically for boolean values, which combines all the found bool spatial values at given point
 
     Category: Data/Spatial/Samplers
+
+    attach to a slot for it to use as the sample point. then it will sample
+    spatial areas around it to get it's value.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BooleanSpatialVariableDriver"
 
-    def __init__(self, drive: str | IField[primitives.Bool] | None = None, variable_name: primitives.String | None = None, default_value: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, drive: str | IField[primitives.Bool] | None = None, variable_name: primitives.String | None = None, mode: BooleanSpatialVariableMode | str | None = None, default_value: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             drive: Initial value for Drive.
             variable_name: Initial value for VariableName.
+            mode: Initial value for Mode.
             default_value: Initial value for DefaultValue.
             component: Existing Component to wrap.
         """
@@ -32,12 +37,14 @@ class BooleanSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRe
             self.drive = drive
         if variable_name is not None:
             self.variable_name = variable_name
+        if mode is not None:
+            self.mode = mode
         if default_value is not None:
             self.default_value = default_value
 
     @property
     def drive(self) -> str | None:
-        """Target ID of the Drive reference (targets IField[primitives.Bool])."""
+        """The field to drive with the combined values of all the bools at the sampled slot point."""
         member = self.get_member("Drive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +65,7 @@ class BooleanSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def variable_name(self) -> primitives.String | None:
-        """The VariableName field value."""
+        """The variable name to sample."""
         member = self.get_member("VariableName")
         if member is None:
             return None
@@ -76,21 +83,28 @@ class BooleanSpatialVariableDriver(GeneratedComponent, IComponent, IWorldEventRe
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> BooleanSpatialVariableMode | None:
+        """How to aggrigate values to determine the final result."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BooleanSpatialVariableMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: BooleanSpatialVariableMode | str) -> None:
+        """Set Mode. How to aggrigate values to determine the final result."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def default_value(self) -> primitives.Bool | None:
-        """The DefaultValue field value."""
+        """The value to default to when no value can be sampled."""
         member = self.get_member("DefaultValue")
         if member is None:
             return None

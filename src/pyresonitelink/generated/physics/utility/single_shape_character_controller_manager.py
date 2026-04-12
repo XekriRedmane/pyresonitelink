@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SingleShapeCharacterControllerManager.
+    """The SingleShapeCharacterControllerManager component is used by locomotions to change the shape of a Capsule Collider based on a user's standing height and current height.
 
     Category: Physics/Utility
     """
@@ -61,7 +61,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def use_user_head_height_when_available(self) -> primitives.Bool | None:
-        """The UseUserHeadHeightWhenAvailable field value."""
+        """Whether to use the user's head height to do calculations when possible."""
         member = self.get_member("UseUserHeadHeightWhenAvailable")
         if member is None:
             return None
@@ -80,7 +80,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def head_height_offset(self) -> primitives.Float | None:
-        """The HeadHeightOffset field value."""
+        """How much to add/subtract from the user's head to make the top of the capsule."""
         member = self.get_member("HeadHeightOffset")
         if member is None:
             return None
@@ -99,7 +99,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def crouch_target_width(self) -> primitives.Float | None:
-        """The CrouchTargetWidth field value."""
+        """How wide the capsule should become when crouching."""
         member = self.get_member("CrouchTargetWidth")
         if member is None:
             return None
@@ -118,7 +118,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def crouch_start(self) -> primitives.Float | None:
-        """The CrouchStart field value."""
+        """The maximum height the user's head has to be for them to be crouching."""
         member = self.get_member("CrouchStart")
         if member is None:
             return None
@@ -137,7 +137,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def crouch_end(self) -> primitives.Float | None:
-        """The CrouchEnd field value."""
+        """The minimum height the user's head has to be for them to be crouching."""
         member = self.get_member("CrouchEnd")
         if member is None:
             return None
@@ -156,7 +156,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def default_height(self) -> primitives.Float | None:
-        """The DefaultHeight field value."""
+        """The user's default head height."""
         member = self.get_member("DefaultHeight")
         if member is None:
             return None
@@ -175,7 +175,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def default_width(self) -> primitives.Float | None:
-        """The DefaultWidth field value."""
+        """The collider's width when standing."""
         member = self.get_member("DefaultWidth")
         if member is None:
             return None
@@ -194,7 +194,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def root_at_bottom(self) -> primitives.Bool | None:
-        """The RootAtBottom field value."""
+        """Whether the bottom end of the capsule should be at the slot rather than the slot being at the middle."""
         member = self.get_member("RootAtBottom")
         if member is None:
             return None
@@ -213,7 +213,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def target_height(self) -> str | None:
-        """Target ID of the TargetHeight reference (targets IField[primitives.Float])."""
+        """The slot to drive to influence the capsule collider's height."""
         member = self.get_member("TargetHeight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -234,7 +234,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def target_width(self) -> str | None:
-        """Target ID of the TargetWidth reference (targets IField[primitives.Float])."""
+        """The slot to drive to influence the capsule collider's radius."""
         member = self.get_member("TargetWidth")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -255,7 +255,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
 
     @property
     def target_offset(self) -> str | None:
-        """Target ID of the TargetOffset reference (targets IField[primitives.Float3])."""
+        """The slot to drive to influence the capsule collider's center offset."""
         member = self.get_member("TargetOffset")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FontCollection(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FontCollection.
+    """The FontCollection component acts as a set of fonts that can be used to make one mega font. When a font in the set does not have a character for a unicode point, another font can take over.
 
     Category: Rendering/Text
+
+    Used to combine fonts
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FontCollection"
@@ -50,7 +52,7 @@ class FontCollection(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def font_sets(self) -> members.SyncList | None:
-        """The FontSets member."""
+        """The list of fonts to congregate into one huge font."""
         member = self.get_member("FontSets")
         if isinstance(member, members.SyncList):
             return member
@@ -58,6 +60,6 @@ class FontCollection(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @font_sets.setter
     def font_sets(self, value: members.SyncList) -> None:
-        """Set the FontSets member."""
+        """Set FontSets. The list of fonts to congregate into one huge font."""
         self.set_member("FontSets", value)
 

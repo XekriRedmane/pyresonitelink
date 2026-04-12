@@ -7,7 +7,9 @@ from pyresonitelink.generated._base import GeneratedComponent
 
 
 class DebugSettingSwitch(GeneratedComponent):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugSettingSwitch.
+    """The DebugSettingSwitch component is used to Switch profiles as a way of debugging. Same thing switching between VR and desktop does. Only works in user space.
+
+    Debug.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugSettingSwitch"
@@ -25,7 +27,7 @@ class DebugSettingSwitch(GeneratedComponent):
 
     @property
     def target_profile(self) -> primitives.String | None:
-        """The TargetProfile field value."""
+        """The profile to Switch to."""
         member = self.get_member("TargetProfile")
         if member is None:
             return None

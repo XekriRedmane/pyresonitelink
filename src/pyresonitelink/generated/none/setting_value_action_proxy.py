@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SettingValueActionProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SettingValueActionProxy<,>.
+    """The SettingValueActionProxy component is used to trigger an action while passing a value to it on a subsetting under the component of type S which would be globally registered in the world.
+
+    Not to be used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SettingValueActionProxy<,>"
@@ -34,7 +36,7 @@ class SettingValueActionProxy(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def action_name(self) -> primitives.String | None:
-        """The ActionName field value."""
+        """The name of the action being triggered."""
         member = self.get_member("ActionName")
         if member is None:
             return None
@@ -53,7 +55,7 @@ class SettingValueActionProxy(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def subsetting_getter(self) -> primitives.String | None:
-        """The SubsettingGetter field value."""
+        """The name of the sync delegate method being triggered."""
         member = self.get_member("SubsettingGetter")
         if member is None:
             return None
@@ -72,7 +74,7 @@ class SettingValueActionProxy(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def subsetting_key(self) -> primitives.String | None:
-        """The SubsettingKey field value."""
+        """The key being used to find the sub setting being triggered."""
         member = self.get_member("SubsettingKey")
         if member is None:
             return None
@@ -90,7 +92,7 @@ class SettingValueActionProxy(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     async def trigger(self, resolink: protocols.ResoniteLinkClient, value: str, debug: bool = False) -> dict:
-        """Call the Trigger sync method.
+        """triggers the target, while passing a value of type T, which the target specified by this component's values and generic typing.
 
         Args:
             resolink: Connected ResoniteLink client.

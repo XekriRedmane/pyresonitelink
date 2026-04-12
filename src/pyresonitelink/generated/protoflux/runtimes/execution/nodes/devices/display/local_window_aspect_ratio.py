@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalWindowAspectRatio(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Local Window Aspect Ratio node returns the user's local Resonite application aspect ratio.
+    """The ``Local Window Aspect Ratio`` node returns the user's local Resonite application aspect ratio.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Display
     """

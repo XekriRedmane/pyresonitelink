@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ExternalSlotSaver.
+    """The ExternalSlotSaver will ensure that the ``TargetSlot`` is saved as a child of the slot this component is on if the slot isn't already in the hierarchy.
 
     Category: Utility
     """
@@ -46,7 +46,7 @@ class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceive
 
     @property
     def target_slot(self) -> str | None:
-        """Target ID of the TargetSlot reference (targets Slot)."""
+        """The slot to target when saving."""
         member = self.get_member("TargetSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +67,7 @@ class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceive
 
     @property
     def save_active_self_override(self) -> primitives.Bool | None:
-        """The SaveActiveSelfOverride field value."""
+        """When not null, save this rather than ``TargetSlot``'s current active self value."""
         member = self.get_member("SaveActiveSelfOverride")
         if member is None:
             return None
@@ -86,7 +86,7 @@ class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceive
 
     @property
     def save_local_position_override(self) -> primitives.Float3 | None:
-        """The SaveLocalPositionOverride field value."""
+        """When not null, save this rather than ``TargetSlot``'s current position value."""
         member = self.get_member("SaveLocalPositionOverride")
         if member is None:
             return None
@@ -105,7 +105,7 @@ class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceive
 
     @property
     def save_local_rotation_override(self) -> primitives.FloatQ | None:
-        """The SaveLocalRotationOverride field value."""
+        """When not null, save this rather than ``TargetSlot``'s current rotation value."""
         member = self.get_member("SaveLocalRotationOverride")
         if member is None:
             return None
@@ -124,7 +124,7 @@ class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceive
 
     @property
     def save_local_scale_override(self) -> primitives.Float3 | None:
-        """The SaveLocalScaleOverride field value."""
+        """When not null, save this rather than ``TargetSlot``'s current scale value."""
         member = self.get_member("SaveLocalScaleOverride")
         if member is None:
             return None
@@ -143,7 +143,7 @@ class ExternalSlotSaver(GeneratedComponent, IItemPermissions, IWorldEventReceive
 
     @property
     def ignore_when_non_persistent_self(self) -> primitives.Bool | None:
-        """The IgnoreWhenNonPersistentSelf field value."""
+        """Whether to not save the external slot if we are non persistent ourselves."""
         member = self.get_member("IgnoreWhenNonPersistentSelf")
         if member is None:
             return None

@@ -13,9 +13,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyCloudStorageSpaceIndicator.
+    """The LegacyCloudStorageSpaceIndicator component was used in old migrated legacy content that showed the cloud storage usage for a user. This component should not be used in new content and should be replaced when possible.
 
     Category: Cloud
+
+    Just don't.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyCloudStorageSpaceIndicator"
@@ -69,7 +71,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets StorageUsageStatus)."""
+        """The source of the cloud usage data."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -90,7 +92,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def container_color(self) -> primitives.ColorX | None:
-        """The ContainerColor field value."""
+        """The color of the UI container."""
         member = self.get_member("ContainerColor")
         if member is None:
             return None
@@ -109,7 +111,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def used_color(self) -> primitives.ColorX | None:
-        """The UsedColor field value."""
+        """The normal color when storage has been used."""
         member = self.get_member("UsedColor")
         if member is None:
             return None
@@ -128,7 +130,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def low_space_color(self) -> primitives.ColorX | None:
-        """The LowSpaceColor field value."""
+        """The color to use when space is low."""
         member = self.get_member("LowSpaceColor")
         if member is None:
             return None
@@ -147,7 +149,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def critical_space_color(self) -> primitives.ColorX | None:
-        """The CriticalSpaceColor field value."""
+        """The color to use when space is almost filled or beyond filled."""
         member = self.get_member("CriticalSpaceColor")
         if member is None:
             return None
@@ -166,7 +168,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def low_space_threshold(self) -> primitives.Float | None:
-        """The LowSpaceThreshold field value."""
+        """The percentage 0 to 1 for cloud storage to be considered low space."""
         member = self.get_member("LowSpaceThreshold")
         if member is None:
             return None
@@ -185,7 +187,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def critical_space_threshold(self) -> primitives.Float | None:
-        """The CriticalSpaceThreshold field value."""
+        """The percentage from 0 to 1 for cloud storage to be considered critically full."""
         member = self.get_member("CriticalSpaceThreshold")
         if member is None:
             return None
@@ -204,7 +206,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def owner_label(self) -> str | None:
-        """Target ID of the _ownerLabel reference (targets TextRenderer)."""
+        """The text renderer that shows the owner of this cloud storage indicator."""
         member = self.get_member("_ownerLabel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -225,7 +227,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def usage_label(self) -> str | None:
-        """Target ID of the _usageLabel reference (targets TextRenderer)."""
+        """The text renderer that shows the usage of the cloud storage for the user."""
         member = self.get_member("_usageLabel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -246,7 +248,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def percent_label(self) -> str | None:
-        """Target ID of the _percentLabel reference (targets TextRenderer)."""
+        """The text renderer that shows the percentage full for the cloud storage of the user."""
         member = self.get_member("_percentLabel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -267,7 +269,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def progress_bar(self) -> str | None:
-        """Target ID of the _progressBar reference (targets LegacyProgressBar)."""
+        """The UI used to show the amount of storage used as a progress bar."""
         member = self.get_member("_progressBar")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -288,7 +290,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def legacy_owner_id(self) -> primitives.String | None:
-        """The __legacyOwnerId field value."""
+        """The legacy owner ID for what user this component was supposed to show the cloud storage for."""
         member = self.get_member("__legacyOwnerId")
         if member is None:
             return None
@@ -307,7 +309,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def legacy_member_quota(self) -> primitives.Bool | None:
-        """The __legacyMemberQuota field value."""
+        """Whether this component was supposed to show the amount of storage a user was using for a group shared storage that they were allocated."""
         member = self.get_member("__legacyMemberQuota")
         if member is None:
             return None

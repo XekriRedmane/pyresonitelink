@@ -9,9 +9,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarPoseOffset(GeneratedComponent, IAvatarPoseFilter, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseOffset.
+    """The Avatar Pose Offset Component is used to offset a user's limb while they use a tool tip or sit in an anchor.
 
     Category: Users/Common Avatar System/Pose Filters
+
+    this can be applied in a certain order relative to other constraints in
+    AvatarAnchor or in use with a tooltip. Because of this, the Component
+    can be used to either make a user's hand(s) or feet positioned as an
+    offset to where they originally are tracked or to apply an offset after
+    another Pose component has restricted movement. This component's
+    rotation can be driven in combination with using a
+    AvatarPoseBoxConstraint to freeze the user's body node. this is done by
+    driving ``RotationOffset`` to counteract the rotation of the user's
+    hand, effectively offsetting it back to zero and stopping movement.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseOffset"
@@ -32,7 +42,7 @@ class AvatarPoseOffset(GeneratedComponent, IAvatarPoseFilter, IWorldEventReceive
 
     @property
     def position_offset(self) -> primitives.Float3 | None:
-        """The PositionOffset field value."""
+        """How much position to offset a body node by after previous pose constraints have been applied."""
         member = self.get_member("PositionOffset")
         if member is None:
             return None
@@ -51,7 +61,7 @@ class AvatarPoseOffset(GeneratedComponent, IAvatarPoseFilter, IWorldEventReceive
 
     @property
     def rotation_offset(self) -> primitives.FloatQ | None:
-        """The RotationOffset field value."""
+        """How much rotation to offset a body node by after previous pose constraints have been applied."""
         member = self.get_member("RotationOffset")
         if member is None:
             return None

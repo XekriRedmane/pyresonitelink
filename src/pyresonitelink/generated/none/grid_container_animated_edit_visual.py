@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GridContainerAnimatedEditVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GridContainerAnimatedEditVisual.
+    """The GridContainerAnimatedEditVisual component is used to handle the animation of turning on and off UI Edit Mode.
+
+    Not used by the user, but used by the game in visuals.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GridContainerAnimatedEditVisual"
@@ -42,7 +44,7 @@ class GridContainerAnimatedEditVisual(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def grid(self) -> str | None:
-        """Target ID of the Grid reference (targets GridContainer)."""
+        """The grid to edit."""
         member = self.get_member("Grid")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +65,7 @@ class GridContainerAnimatedEditVisual(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def tiled_image(self) -> str | None:
-        """Target ID of the _tiledImage reference (targets TiledRawImage)."""
+        """The image being used to show the grid alignment."""
         member = self.get_member("_tiledImage")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +86,7 @@ class GridContainerAnimatedEditVisual(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def tiling(self) -> str | None:
-        """Target ID of the _tiling reference (targets IField[primitives.Float2])."""
+        """The tiling of the grid."""
         member = self.get_member("_tiling")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +107,7 @@ class GridContainerAnimatedEditVisual(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def offset(self) -> str | None:
-        """Target ID of the _offset reference (targets IField[primitives.Float2])."""
+        """The position shift of the grid from default."""
         member = self.get_member("_offset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +128,7 @@ class GridContainerAnimatedEditVisual(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def tint(self) -> str | None:
-        """Target ID of the _tint reference (targets IField[primitives.ColorX])."""
+        """The color tint of the grid."""
         member = self.get_member("_tint")
         if isinstance(member, members.Reference):
             return member.targetId

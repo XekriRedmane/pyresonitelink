@@ -9,9 +9,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocomotionAnimationBodyCollider(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocomotionAnimationBodyCollider.
+    """The LocomotionAnimationBodyCollider component is required for any colliders to be considered for self-collision for the hands.
 
     Category: Users/Common Avatar System/Animation
+
+    Attach to a slot on an avatar with a collider. That collider will now be
+    a collider the hands will hit and go around while the user is walking in
+    desktop.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocomotionAnimationBodyCollider"
@@ -32,7 +36,7 @@ class LocomotionAnimationBodyCollider(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def ignore_for_left_hand(self) -> primitives.Bool | None:
-        """The IgnoreForLeftHand field value."""
+        """Whether this collider is ignored by the player's left hand during locomotion."""
         member = self.get_member("IgnoreForLeftHand")
         if member is None:
             return None
@@ -51,7 +55,7 @@ class LocomotionAnimationBodyCollider(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def ignore_for_right_hand(self) -> primitives.Bool | None:
-        """The IgnoreForRightHand field value."""
+        """Whether this collider is ignored by the player's right hand during locomotion."""
         member = self.get_member("IgnoreForRightHand")
         if member is None:
             return None

@@ -45,7 +45,7 @@ class DistanceFromSphericalSector(GeneratedComponent, INodeValueOutput, IExecuti
 
     @property
     def center(self) -> str | None:
-        """Target ID of the Center reference (targets INodeValueOutput[primitives.Float3])."""
+        """The center of the sphere."""
         member = self.get_member("Center")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +66,7 @@ class DistanceFromSphericalSector(GeneratedComponent, INodeValueOutput, IExecuti
 
     @property
     def direction(self) -> str | None:
-        """Target ID of the Direction reference (targets INodeValueOutput[primitives.Float3])."""
+        """The facing direction of the sphere."""
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +87,7 @@ class DistanceFromSphericalSector(GeneratedComponent, INodeValueOutput, IExecuti
 
     @property
     def radius(self) -> str | None:
-        """Target ID of the Radius reference (targets INodeValueOutput[primitives.Float])."""
+        """The radius of the sphere."""
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +108,7 @@ class DistanceFromSphericalSector(GeneratedComponent, INodeValueOutput, IExecuti
 
     @property
     def angle(self) -> str | None:
-        """Target ID of the Angle reference (targets INodeValueOutput[primitives.Float])."""
+        """The angle this point and sphere is going to be using for calculations."""
         member = self.get_member("Angle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -129,7 +129,7 @@ class DistanceFromSphericalSector(GeneratedComponent, INodeValueOutput, IExecuti
 
     @property
     def point(self) -> str | None:
-        """Target ID of the Point reference (targets INodeValueOutput[primitives.Float3])."""
+        """The point we are checking."""
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             return member.targetId

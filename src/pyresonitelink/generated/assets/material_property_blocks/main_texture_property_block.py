@@ -12,9 +12,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MainTexturePropertyBlock(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MainTexturePropertyBlock.
+    """The MainTexturePropertyBlock component is a Material Property Block for the main texture of a component.
 
     Category: Assets/Material Property Blocks
+
+    This component allows one to swap out what a material considers its main
+    texture, such as the albedo texture, with the given ``Texture``. This
+    property block only applies to materials that contain a ``_MainTex``
+    material property field. Notably, UnlitMaterial does not support this
+    property block.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MainTexturePropertyBlock"
@@ -54,7 +60,7 @@ class MainTexturePropertyBlock(GeneratedComponent, IAssetProvider, ICustomInspec
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[ITexture2D])."""
+        """Texture to swap out the main texture with."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId

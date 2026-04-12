@@ -1,0 +1,12 @@
+{
+  "description": "The AvatarNodeAssigner component only functions on an avatar being equipped or de-equipped by a user. When equipped, the component finds the first AvatarObjectSlot with a body node value that equals ``Node``. if found, it assigns all slot storage fields in ``Targets`` to the slot the AvatarObjectSlot is on. When de-equipped, all slot storage fields in ``Targets`` have their stored slot cleared.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "Node": "The body node to search for when the avatar this is on is equipped.",
+    "Targets": "The slot storage fields to fill when an Component:AvatarObjectSlot of node type ``Node`` is found."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarNodeAssigner&action=raw"
+}

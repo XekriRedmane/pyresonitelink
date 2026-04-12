@@ -14,9 +14,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SimpleAwayIndicator(GeneratedComponent, IMeshBakeEventReceiver, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SimpleAwayIndicator.
+    """The SimpleAwayIndicator indicates when a user doesn't have the session focused by temporarily replacing the materials of a MeshRenderer with the specified Away Material.
+
+Usually found on the body slot of an avatar (but can be put anywhere in the world), this just needs a reference to the MeshRenderer or SkinnedMeshRenderer components to work.
+
+}}
 
     Category: Users
+
+    This is used to make a customized or fancier way of stating that you are
+    focused away into another world.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SimpleAwayIndicator"
@@ -40,7 +47,7 @@ class SimpleAwayIndicator(GeneratedComponent, IMeshBakeEventReceiver, ICustomIns
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets User)."""
+        """User whose away state will be watched. On avatars, may be set by an AvatarUserReferenceAssigner component."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +68,7 @@ class SimpleAwayIndicator(GeneratedComponent, IMeshBakeEventReceiver, ICustomIns
 
     @property
     def away_material(self) -> str | None:
-        """Target ID of the AwayMaterial reference (targets IAssetProvider[Material])."""
+        """Material to display when the user is away."""
         member = self.get_member("AwayMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +89,7 @@ class SimpleAwayIndicator(GeneratedComponent, IMeshBakeEventReceiver, ICustomIns
 
     @property
     def renderer(self) -> str | None:
-        """Target ID of the Renderer reference (targets MeshRenderer)."""
+        """Mesh renderer component whose materials should be replaced"""
         member = self.get_member("Renderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -103,7 +110,7 @@ class SimpleAwayIndicator(GeneratedComponent, IMeshBakeEventReceiver, ICustomIns
 
     @property
     def old_materials(self) -> members.SyncList | None:
-        """The _oldMaterials member."""
+        """Backup of the renderer's original material list. Written automatically when "Away" state is triggered."""
         member = self.get_member("_oldMaterials")
         if isinstance(member, members.SyncList):
             return member
@@ -111,11 +118,11 @@ class SimpleAwayIndicator(GeneratedComponent, IMeshBakeEventReceiver, ICustomIns
 
     @old_materials.setter
     def old_materials(self, value: members.SyncList) -> None:
-        """Set the _oldMaterials member."""
+        """Set _oldMaterials. Backup of the renderer's original material list. Written automatically when "Away" state is triggered."""
         self.set_member("_oldMaterials", value)
 
     async def set_away(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SetAway sync method.
+        """Stores the renderer's material list in ``_oldMaterials`` and replaces them with the ``AwayMaterial``.
 
         Returns:
             The raw JSON response dict.
@@ -125,7 +132,7 @@ class SimpleAwayIndicator(GeneratedComponent, IMeshBakeEventReceiver, ICustomIns
         )
 
     async def restore(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Restore sync method.
+        """Restores the renderer's materials from ``_oldMaterials``.
 
         Returns:
             The raw JSON response dict.

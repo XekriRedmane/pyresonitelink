@@ -7,14 +7,14 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class UserRestrictionsSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserRestrictionsSettings.
+    """The UserRestrictionsSettings component is found in the user space and contains all blocked user entries. this is a good way to handle blocked users until they fix the regression of no longer having a blocked users list introduced in the settings update.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserRestrictionsSettings"
 
     @property
     def entries(self) -> members.SyncList | None:
-        """The Entries member."""
+        """A list of blocked users."""
         member = self.get_member("Entries")
         if isinstance(member, members.SyncList):
             return member
@@ -22,7 +22,7 @@ class UserRestrictionsSettings(GeneratedComponent, ICustomInspector):
 
     @entries.setter
     def entries(self, value: members.SyncList) -> None:
-        """Set the Entries member."""
+        """Set Entries. A list of blocked users."""
         self.set_member("Entries", value)
 
     async def reset_to_default(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:

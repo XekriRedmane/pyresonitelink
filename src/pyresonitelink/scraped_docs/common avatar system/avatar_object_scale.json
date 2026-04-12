@@ -1,0 +1,16 @@
+{
+  "description": "The AvatarObjectScale component allows setting it's slot scale relative to the UserRoot slot when equipped under an avatar.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "UserSpaceScale": "The desired scale relative to the UserRoot slot."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "On equip the component will set the attached slot scale to be ``UserSpaceScale`` in the UserRoot slot space."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarObjectScale&action=raw"
+}

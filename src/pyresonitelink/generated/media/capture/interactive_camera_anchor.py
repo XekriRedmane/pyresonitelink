@@ -11,9 +11,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraAnchor.
+    """The InteractiveCameraAnchor component acts as a spot to drop or auto transition a streaming or other type of camera or to.
+
+See Camera Anchors.
 
     Category: Media/Capture
+
+    Attaching this component to a slot creates the visual as well as the
+    default values. Simply dropping a stream camera into the visual will
+    snap the camera to it.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraAnchor"
@@ -40,7 +46,7 @@ class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceive
 
     @property
     def override_root(self) -> str | None:
-        """Target ID of the OverrideRoot reference (targets Slot)."""
+        """The place other than under this component's slot to parent the cameta."""
         member = self.get_member("OverrideRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +67,7 @@ class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceive
 
     @property
     def field_of_view(self) -> primitives.Float | None:
-        """The FieldOfView field value."""
+        """What the FOV of a camera anchored to this anchor should be set to."""
         member = self.get_member("FieldOfView")
         if member is None:
             return None
@@ -80,7 +86,7 @@ class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceive
 
     @property
     def highlighted(self) -> primitives.Bool | None:
-        """The Highlighted field value."""
+        """Whether this anchor is being highlighted as part of specifying a camera anchor set/route."""
         member = self.get_member("Highlighted")
         if member is None:
             return None
@@ -99,7 +105,7 @@ class InteractiveCameraAnchor(GeneratedComponent, ITouchable, IWorldEventReceive
 
     @property
     def in_use(self) -> primitives.Bool | None:
-        """The InUse field value."""
+        """Whether or not the anchor has a camera in it."""
         member = self.get_member("InUse")
         if member is None:
             return None

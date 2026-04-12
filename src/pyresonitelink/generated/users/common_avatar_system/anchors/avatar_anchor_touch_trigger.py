@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.vibrate_preset import VibratePreset
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.avatar_anchor import AvatarAnchor
@@ -11,14 +12,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorTouchTrigger.
+    """Used often for a way of entering and exiting an Avatar Anchor when the user wants to.
 
     Category: Users/Common Avatar System/Anchors
+
+    **Behavior**: This needs a collider on the same slot to allow for clicking and bringing up the prompt. The ``EnterText`` and ``ExitText`` fields are usually driven by a component. The component automatically translates the dialogues for them in their context menu to their selected locale language.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchorTouchTrigger"
 
-    def __init__(self, anchor: str | AvatarAnchor | None = None, enter_text: primitives.String | None = None, exit_text: primitives.String | None = None, enter: primitives.Bool | None = None, exit: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, anchor: str | AvatarAnchor | None = None, enter_text: primitives.String | None = None, exit_text: primitives.String | None = None, enter: primitives.Bool | None = None, exit: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, vibrate: VibratePreset | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,6 +33,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
             accept_out_of_sight_touch: Initial value for AcceptOutOfSightTouch.
             accept_physical_touch: Initial value for AcceptPhysicalTouch.
             accept_remote_touch: Initial value for AcceptRemoteTouch.
+            vibrate: Initial value for Vibrate.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -49,10 +53,12 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
             self.accept_physical_touch = accept_physical_touch
         if accept_remote_touch is not None:
             self.accept_remote_touch = accept_remote_touch
+        if vibrate is not None:
+            self.vibrate = vibrate
 
     @property
     def anchor(self) -> str | None:
-        """Target ID of the Anchor reference (targets AvatarAnchor)."""
+        """The anchor to enter after confirming the enter anchor."""
         member = self.get_member("Anchor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +79,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
 
     @property
     def enter_text(self) -> primitives.String | None:
-        """The EnterText field value."""
+        """The text for when the user is being prompted to enter the anchor."""
         member = self.get_member("EnterText")
         if member is None:
             return None
@@ -92,7 +98,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
 
     @property
     def exit_text(self) -> primitives.String | None:
-        """The ExitText field value."""
+        """The text for when the user is being prompted to exit the anchor."""
         member = self.get_member("ExitText")
         if member is None:
             return None
@@ -111,7 +117,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
 
     @property
     def enter(self) -> primitives.Bool | None:
-        """The Enter field value."""
+        """Whether to allow this component to be used for entering the anchor."""
         member = self.get_member("Enter")
         if member is None:
             return None
@@ -130,7 +136,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
 
     @property
     def exit(self) -> primitives.Bool | None:
-        """The Exit field value."""
+        """Whether to allow this component to be used for exiting the anchor."""
         member = self.get_member("Exit")
         if member is None:
             return None
@@ -205,15 +211,22 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
             )
 
     @property
-    def vibrate(self) -> members.FieldEnum | None:
-        """The Vibrate member."""
+    def vibrate(self) -> VibratePreset | None:
+        """What kind of haptics vibration feedback to send to the user's controller when bringing up the enter or exiting prompt."""
         member = self.get_member("Vibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @vibrate.setter
-    def vibrate(self, value: members.FieldEnum) -> None:
-        """Set the Vibrate member."""
-        self.set_member("Vibrate", value)
+    def vibrate(self, value: VibratePreset | str) -> None:
+        """Set Vibrate. What kind of haptics vibration feedback to send to the user's controller when bringing up the enter or exiting prompt."""
+        member = self.get_member("Vibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Vibrate",
+                members.FieldEnum(value=str(value)),
+            )
 

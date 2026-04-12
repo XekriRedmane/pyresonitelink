@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class AssetGatherSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.AssetGatherSettings.
+    """Allows the user to set and adjust the asset download settings within dash space.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AssetGatherSettings"
@@ -30,7 +30,7 @@ class AssetGatherSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def max_concurrent_asset_transfers(self) -> primitives.Int | None:
-        """The MaxConcurrentAssetTransfers field value."""
+        """How many assets can be sent to or received from other players in parallel for the client"""
         member = self.get_member("MaxConcurrentAssetTransfers")
         if member is None:
             return None
@@ -49,7 +49,7 @@ class AssetGatherSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def max_concurrent_downloads(self) -> primitives.Int | None:
-        """The MaxConcurrentDownloads field value."""
+        """How many assets can be downloaded from the cloud at the same time."""
         member = self.get_member("MaxConcurrentDownloads")
         if member is None:
             return None

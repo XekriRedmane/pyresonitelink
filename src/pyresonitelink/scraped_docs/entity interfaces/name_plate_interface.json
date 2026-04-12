@@ -1,0 +1,20 @@
+{
+  "description": "The NamePlateInterface component is a favoritable type component that allows a user to set their custom nameplate for avatars they spawn into",
+  "category": "Utility:Entity Interfaces",
+  "fields": {
+    "ItemName": "The name of this dialogue",
+    "SpawningUser": "The user that spawned the dialouge",
+    "SpawningUserID": "The field containing the User ID of the person that spawned the dialogue",
+    "IsInstance": "Whether this dialogue was spawned by the game (true) or spawned from inventory (false)",
+    "Username": "The field to set with the username of the user who this nameplate has been spawned onto.",
+    "UserID": "The field to set with the UserID of the user who this nameplate has been spawned onto.",
+    "IconURL": "The field to set with the User profile icon of the user who this nameplate has been spawned onto.",
+    "TargetUser": "The field to set with the user this nameplate has been spawned onto.",
+    "TargetUserRef": "A user reference block to store info about the user this nameplate has been spawned onto.",
+    "VoiceStream": "The field to populate with the user voice stream of the user this nameplate has been spawned onto."
+  },
+  "methods": {},
+  "usage": "Currently unimplemented.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NamePlateInterface&action=raw"
+}

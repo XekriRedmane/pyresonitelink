@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DocumentInterface.
+    """The DocumentInterface component is a Favorites Type Component that is used in the default or custom document viewers.
 
     Category: Utility/Entity Interfaces
     """
@@ -47,7 +47,7 @@ class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRece
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[primitives.String])."""
+        """The name of this interface."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRece
 
     @property
     def spawning_user(self) -> str | None:
-        """Target ID of the SpawningUser reference (targets UserRef)."""
+        """The user that spawned this document viewer."""
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRece
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
+        """The field that contains the user ID of the user that spawned this document viewer."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +110,7 @@ class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRece
 
     @property
     def is_instance(self) -> primitives.Bool | None:
-        """The IsInstance field value."""
+        """Whether this was spawned by the Favorites system (true) or spawned from inventory (false)"""
         member = self.get_member("IsInstance")
         if member is None:
             return None
@@ -129,7 +129,7 @@ class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRece
 
     @property
     def url(self) -> str | None:
-        """Target ID of the URL reference (targets IField[str])."""
+        """The URL field of the document asset component this document viewer is showing."""
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -150,7 +150,7 @@ class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRece
 
     @property
     def page(self) -> str | None:
-        """Target ID of the Page reference (targets IField[primitives.Int])."""
+        """The field that controls which page this document viewer is currently showing."""
         member = self.get_member("Page")
         if isinstance(member, members.Reference):
             return member.targetId

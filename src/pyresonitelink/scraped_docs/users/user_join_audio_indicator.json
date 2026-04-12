@@ -1,0 +1,14 @@
+{
+  "description": "The UserJoinAudioIndicator component plays an audio clip when a user joins and leaves a session.",
+  "category": "Users",
+  "fields": {
+    "JoinedClips": "A list of random audio clips to choose from when a user joins the session. Each one will have a different weight.",
+    "LeftClips": "A list of random audio clips to choose from when a user leaves the session. Each one will have a different weight.",
+    "Spatialize": "Whether to play the sounds from the slot this component is on or globally.",
+    "Volume": "How loud the audio clips should be by default."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide some audio clips to play. The next time a user joins or leaves the session, a clip from the corresponding list will play.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserJoinAudioIndicator&action=raw"
+}

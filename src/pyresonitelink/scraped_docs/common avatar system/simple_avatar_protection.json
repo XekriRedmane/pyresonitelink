@@ -1,0 +1,20 @@
+{
+  "description": "SimpleAvatarProtection prevents other users from wearing an avatar or saving it.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "User": "The user who is permitted to use the avatar.",
+    "ReassignUserOnPackageImport": "See ResonitePackage#Simple_Avatar_Protection_handling."
+  },
+  "methods": {
+    "OnRemoveSingleInstance": "Removes this component as long as the activating user is allowed to do so.",
+    "OnRemoveAllInstances": "Removes components in the hiearchy as long as the activating user is allowed to do so."
+  },
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "When attached anywhere on an avatar, the SimpleAvatarProtection component prevents all users, other than the single user listed on the component, from saving the avatar, grabbing materials off of it, or equipping it.\n\nThe component is automatically attached to an avatar if \"Protect Avatar\" is checked in the Avatar Creator when creating it.\n\nAll instances of SimpleAvatarProtection on an avatar can be removed by its owner by clicking the \"Remove All Instances\" button. No other user can remove the component. This is useful if you are trying to clear protection from an avatar, but cannot remember where the component was; you can simply add another instance and remove them all at once."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SimpleAvatarProtection&action=raw"
+}

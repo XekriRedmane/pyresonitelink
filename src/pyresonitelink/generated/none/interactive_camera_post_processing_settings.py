@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class InteractiveCameraPostProcessingSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraPostProcessingSettings.
+    """See Camera.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraPostProcessingSettings"
@@ -30,7 +32,7 @@ class InteractiveCameraPostProcessingSettings(GeneratedComponent, ICustomInspect
 
     @property
     def motion_blur(self) -> primitives.Bool | None:
-        """The MotionBlur field value."""
+        """This enables the camera to have motion blue as it moves."""
         member = self.get_member("MotionBlur")
         if member is None:
             return None
@@ -49,7 +51,7 @@ class InteractiveCameraPostProcessingSettings(GeneratedComponent, ICustomInspect
 
     @property
     def screen_space_reflections(self) -> primitives.Bool | None:
-        """The ScreenSpaceReflections field value."""
+        """This shows screen space reflection through the preview and pictures."""
         member = self.get_member("ScreenSpaceReflections")
         if member is None:
             return None

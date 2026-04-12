@@ -10,9 +10,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicBlendShapeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicBlendShapeDriver.
+    """This component is used to map values to Blendshapes by name. 
+}}
 
     Category: Transform/Drivers
+
+    To efficiently use this component, first add some blendshape items to
+    the ``blendshapes`` list and give the blendshapes names of the
+    blendshapes on your target mesh. Next, add the skinned mesh renderer to
+    ``Renderer`` you want to automatically find the blendshapes for. The
+    component in the next update will automatically add the value sliders of
+    the blendshapes it can find on the target ``Renderer`` to the ``Field``
+    on each ``BlendShape``. To drive the blendshapes, just simply drive the
+    ``Value`` on each ``BlendShape`` for each blendshape you want. Driving
+    ``Value`` is not required, and this can be used in cases where you want
+    to toggle, cycle, or modify a blendshape's value without driving it.
+    This can be useful if you don't want to accidentally bake blendshapes
+    you are still using despite them not being driven.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicBlendShapeDriver"
@@ -33,7 +47,7 @@ class DynamicBlendShapeDriver(GeneratedComponent, ICustomInspector, IComponent, 
 
     @property
     def renderer(self) -> str | None:
-        """Target ID of the Renderer reference (targets SkinnedMeshRenderer)."""
+        """The renderer to use to search for shapekeys with"""
         member = self.get_member("Renderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -54,7 +68,7 @@ class DynamicBlendShapeDriver(GeneratedComponent, ICustomInspector, IComponent, 
 
     @property
     def blend_shapes(self) -> members.SyncList | None:
-        """The BlendShapes member."""
+        """A list of BlendShape that are searched for in order on the Renderer."""
         member = self.get_member("BlendShapes")
         if isinstance(member, members.SyncList):
             return member
@@ -62,12 +76,12 @@ class DynamicBlendShapeDriver(GeneratedComponent, ICustomInspector, IComponent, 
 
     @blend_shapes.setter
     def blend_shapes(self, value: members.SyncList) -> None:
-        """Set the BlendShapes member."""
+        """Set BlendShapes. A list of BlendShape that are searched for in order on the Renderer."""
         self.set_member("BlendShapes", value)
 
     @property
     def last_renderer(self) -> str | None:
-        """Target ID of the _lastRenderer reference (targets SkinnedMeshRenderer)."""
+        """The last renderer that was searched. This value is automatically filled and is read only."""
         member = self.get_member("_lastRenderer")
         if isinstance(member, members.Reference):
             return member.targetId

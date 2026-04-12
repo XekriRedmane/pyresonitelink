@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Rotation3DEulerRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.Rotation3DEulerRangeInitializer.
+    """The Rotation3DEulerRangeInitializer component makes particles have a random rotation between a pair of Euler angles.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.Rotation3DEulerRangeInitializer"
@@ -32,7 +37,7 @@ class Rotation3DEulerRangeInitializer(GeneratedComponent, IParticleSystemModule,
 
     @property
     def min_value(self) -> primitives.Float3 | None:
-        """The MinValue field value."""
+        """The minimum euler angle rotation a particle can have."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class Rotation3DEulerRangeInitializer(GeneratedComponent, IParticleSystemModule,
 
     @property
     def max_value(self) -> primitives.Float3 | None:
-        """The MaxValue field value."""
+        """The maximum euler angle rotation a particle can have."""
         member = self.get_member("MaxValue")
         if member is None:
             return None

@@ -36,7 +36,7 @@ class ClipRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def rect(self) -> str | None:
-        """Target ID of the Rect reference (targets INodeValueOutput[primitives.Rect])."""
+        """The first rect."""
         member = self.get_member("Rect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class ClipRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def mask(self) -> str | None:
-        """Target ID of the Mask reference (targets INodeValueOutput[primitives.Rect])."""
+        """The second rect, the one that overlaps the first rect."""
         member = self.get_member("Mask")
         if isinstance(member, members.Reference):
             return member.targetId

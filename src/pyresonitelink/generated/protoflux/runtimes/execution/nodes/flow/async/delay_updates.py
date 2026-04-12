@@ -41,7 +41,7 @@ class DelayUpdates(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after Updates (int) updates has passed after an impulse has been sent to * (ASync Call)."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class DelayUpdates(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def on_triggered(self) -> str | None:
-        """Target ID of the OnTriggered reference (targets INodeOperation)."""
+        """fires immediately after * (ASync Call) is called."""
         member = self.get_member("OnTriggered")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class DelayUpdates(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def updates(self) -> str | None:
-        """Target ID of the Updates reference (targets INodeValueOutput[primitives.Int])."""
+        """How many updates to delay for."""
         member = self.get_member("Updates")
         if isinstance(member, members.Reference):
             return member.targetId

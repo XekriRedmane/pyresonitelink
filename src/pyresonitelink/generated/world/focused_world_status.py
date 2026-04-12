@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.session_access_level import SessionAccessLevel
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -10,14 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FocusedWorldStatus.
+    """FocusedWorldStatus is a component that displays information about the currently focused world. It's used in the session tab in the dash.
 
     Category: World
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FocusedWorldStatus"
 
-    def __init__(self, world_name: primitives.String | None = None, raw_world_name: primitives.String | None = None, session_id: primitives.String | None = None, is_host: primitives.Bool | None = None, can_save: primitives.Bool | None = None, should_save: primitives.Bool | None = None, can_close: primitives.Bool | None = None, role_name: primitives.String | None = None, user_count: primitives.Int | None = None, active_user_count: primitives.Int | None = None, max_user_count: primitives.Int | None = None, hide_from_listing: primitives.Bool | None = None, away_kick_enabled: primitives.Bool | None = None, away_kick_minutes: primitives.Float | None = None, unsafe_mode: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, world_name: primitives.String | None = None, raw_world_name: primitives.String | None = None, session_id: primitives.String | None = None, is_host: primitives.Bool | None = None, can_save: primitives.Bool | None = None, should_save: primitives.Bool | None = None, can_close: primitives.Bool | None = None, role_name: primitives.String | None = None, user_count: primitives.Int | None = None, active_user_count: primitives.Int | None = None, max_user_count: primitives.Int | None = None, access_level: SessionAccessLevel | str | None = None, hide_from_listing: primitives.Bool | None = None, away_kick_enabled: primitives.Bool | None = None, away_kick_minutes: primitives.Float | None = None, unsafe_mode: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,6 +33,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             user_count: Initial value for UserCount.
             active_user_count: Initial value for ActiveUserCount.
             max_user_count: Initial value for MaxUserCount.
+            access_level: Initial value for AccessLevel.
             hide_from_listing: Initial value for HideFromListing.
             away_kick_enabled: Initial value for AwayKickEnabled.
             away_kick_minutes: Initial value for AwayKickMinutes.
@@ -61,6 +63,8 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.active_user_count = active_user_count
         if max_user_count is not None:
             self.max_user_count = max_user_count
+        if access_level is not None:
+            self.access_level = access_level
         if hide_from_listing is not None:
             self.hide_from_listing = hide_from_listing
         if away_kick_enabled is not None:
@@ -72,7 +76,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def world_name(self) -> primitives.String | None:
-        """The WorldName field value."""
+        """The name of the currently focused world."""
         member = self.get_member("WorldName")
         if member is None:
             return None
@@ -91,7 +95,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def raw_world_name(self) -> primitives.String | None:
-        """The RawWorldName field value."""
+        """The raw unfiltered name of the currently focused world."""
         member = self.get_member("RawWorldName")
         if member is None:
             return None
@@ -110,7 +114,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def session_id(self) -> primitives.String | None:
-        """The SessionId field value."""
+        """The session ID of the currently focused world."""
         member = self.get_member("SessionId")
         if member is None:
             return None
@@ -129,7 +133,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_host(self) -> primitives.Bool | None:
-        """The IsHost field value."""
+        """Whether the user is the host of the focused world."""
         member = self.get_member("IsHost")
         if member is None:
             return None
@@ -148,7 +152,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def can_save(self) -> primitives.Bool | None:
-        """The CanSave field value."""
+        """Whether the user is allowed to save the focused world."""
         member = self.get_member("CanSave")
         if member is None:
             return None
@@ -167,7 +171,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def should_save(self) -> primitives.Bool | None:
-        """The ShouldSave field value."""
+        """Whether the focused world has unsaved changes or not."""
         member = self.get_member("ShouldSave")
         if member is None:
             return None
@@ -186,7 +190,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def can_close(self) -> primitives.Bool | None:
-        """The CanClose field value."""
+        """Whether the focused world can be closed. False for the Local Home."""
         member = self.get_member("CanClose")
         if member is None:
             return None
@@ -205,7 +209,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def role_name(self) -> primitives.String | None:
-        """The RoleName field value."""
+        """The name of the role that the user currently has in the focused world."""
         member = self.get_member("RoleName")
         if member is None:
             return None
@@ -224,7 +228,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_count(self) -> primitives.Int | None:
-        """The UserCount field value."""
+        """The amount of users currently in the focused world."""
         member = self.get_member("UserCount")
         if member is None:
             return None
@@ -243,7 +247,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def active_user_count(self) -> primitives.Int | None:
-        """The ActiveUserCount field value."""
+        """How many of the users in the focused world aren't AFK."""
         member = self.get_member("ActiveUserCount")
         if member is None:
             return None
@@ -262,7 +266,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_user_count(self) -> primitives.Int | None:
-        """The MaxUserCount field value."""
+        """The maximum amount of users that can be in the focused world."""
         member = self.get_member("MaxUserCount")
         if member is None:
             return None
@@ -280,21 +284,28 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def access_level(self) -> members.FieldEnum | None:
-        """The AccessLevel member."""
+    def access_level(self) -> SessionAccessLevel | None:
+        """The access level of the focused world."""
         member = self.get_member("AccessLevel")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SessionAccessLevel(member.value)
         return None
 
     @access_level.setter
-    def access_level(self, value: members.FieldEnum) -> None:
-        """Set the AccessLevel member."""
-        self.set_member("AccessLevel", value)
+    def access_level(self, value: SessionAccessLevel | str) -> None:
+        """Set AccessLevel. The access level of the focused world."""
+        member = self.get_member("AccessLevel")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AccessLevel",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def hide_from_listing(self) -> primitives.Bool | None:
-        """The HideFromListing field value."""
+        """Whether or not the focused world should not be shown in world listings or shown to other users."""
         member = self.get_member("HideFromListing")
         if member is None:
             return None
@@ -313,7 +324,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_enabled(self) -> primitives.Bool | None:
-        """The AwayKickEnabled field value."""
+        """Whether the focused world has AFK kick enabled."""
         member = self.get_member("AwayKickEnabled")
         if member is None:
             return None
@@ -332,7 +343,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_minutes(self) -> primitives.Float | None:
-        """The AwayKickMinutes field value."""
+        """How many minutes a user can be AFK before being kicked from the focused world."""
         member = self.get_member("AwayKickMinutes")
         if member is None:
             return None
@@ -351,7 +362,7 @@ class FocusedWorldStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def unsafe_mode(self) -> primitives.Bool | None:
-        """The UnsafeMode field value."""
+        """Whether the focused world is in unsafe mode, which allows for some features to work. Can only be true in private worlds."""
         member = self.get_member("UnsafeMode")
         if member is None:
             return None

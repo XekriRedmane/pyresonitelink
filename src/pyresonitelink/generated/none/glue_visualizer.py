@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GlueVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GlueVisualizer.
+    """The GlueVisualizer component is used by the Glue Tool to visualize glue objects that are to potentially gluing objects together.
+
+    See Glue Tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GlueVisualizer"
@@ -40,7 +42,7 @@ class GlueVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets FresnelMaterial)."""
+        """The material being used to visualize the area of effect of ``Glue``."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +63,7 @@ class GlueVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def glue(self) -> str | None:
-        """Target ID of the Glue reference (targets Glue)."""
+        """The Glue component to visualize."""
         member = self.get_member("Glue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +84,7 @@ class GlueVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scale(self) -> str | None:
-        """Target ID of the Scale reference (targets IField[primitives.Float3])."""
+        """The scale field of the visual so it wobbles."""
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -103,7 +105,7 @@ class GlueVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_scale(self) -> primitives.Float3 | None:
-        """The BaseScale field value."""
+        """The default or base scale of the visual."""
         member = self.get_member("BaseScale")
         if member is None:
             return None

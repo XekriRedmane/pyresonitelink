@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BevelRingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BevelRingMesh.
+    """Bevel Ring Mesh is a component that can create an circle or part of a circle in the form of a 3D strip that can have beveled edges. The geometry made by this component can be viewed by inserting the component into a MeshRenderer.
 
     Category: Assets/Procedural Meshes/Legacy UI
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BevelRingMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, arc: primitives.Float | None = None, arc_offset: primitives.Float | None = None, radius: primitives.Float | None = None, width: primitives.Float | None = None, thickness: primitives.Float | None = None, tilt: primitives.Float | None = None, segments: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, arc: primitives.Float | None = None, arc_offset: primitives.Float | None = None, radius: primitives.Float | None = None, width: primitives.Float | None = None, thickness: primitives.Float | None = None, tilt: primitives.Float | None = None, segments: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             arc: Initial value for Arc.
             arc_offset: Initial value for ArcOffset.
             radius: Initial value for Radius.
@@ -42,6 +44,8 @@ class BevelRingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if arc is not None:
             self.arc = arc
         if arc_offset is not None:
@@ -115,21 +119,28 @@ class BevelRingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def arc(self) -> primitives.Float | None:
-        """The Arc field value."""
+        """How long the strip continues from the starting point defined by ``ArcOffset``"""
         member = self.get_member("Arc")
         if member is None:
             return None
@@ -148,7 +159,7 @@ class BevelRingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     @property
     def arc_offset(self) -> primitives.Float | None:
-        """The ArcOffset field value."""
+        """The degree that the start point of the strip is at."""
         member = self.get_member("ArcOffset")
         if member is None:
             return None
@@ -167,7 +178,7 @@ class BevelRingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The distance the middle of the strip is from the curvature center."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -186,7 +197,7 @@ class BevelRingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     @property
     def width(self) -> primitives.Float | None:
-        """The Width field value."""
+        """How wide the curved strip is"""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -205,7 +216,7 @@ class BevelRingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """The thickness of the curved strip."""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -224,7 +235,7 @@ class BevelRingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     @property
     def tilt(self) -> primitives.Float | None:
-        """The Tilt field value."""
+        """How much to bend the strip from a flat orientation to inwards/outwards slop from/towards the center. Is in degrees."""
         member = self.get_member("Tilt")
         if member is None:
             return None
@@ -243,7 +254,7 @@ class BevelRingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     @property
     def segments(self) -> primitives.Int | None:
-        """The Segments field value."""
+        """how many bends are generated in the curve. Bigger values result in smoother curve in exchange for performance."""
         member = self.get_member("Segments")
         if member is None:
             return None

@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldPath(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The World Path node returns a String that is the world path for this world.
+    """The ``World Path`` node returns a String that is the world path for this world.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

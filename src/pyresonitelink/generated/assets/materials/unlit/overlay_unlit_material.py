@@ -3,6 +3,10 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.blend_mode import BlendMode
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.sidedness import Sidedness
+from pyresonitelink.generated._enums.zwrite import ZWrite
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,14 +17,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.OverlayUnlitMaterial.
+    """The OverlayUnlitMaterial component is a material that is similar to a UnlitMaterial except it renders differently when in front or behind an object.
 
     Category: Assets/Materials/Unlit
+
+    Attach to a slot and put into the materials of a renderer like a
+    SkinnedMeshRenderer or a MeshRenderer with a mesh to view what the
+    material looks like.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OverlayUnlitMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, behind_tint_color: primitives.ColorX | None = None, front_tint_color: primitives.ColorX | None = None, behind_texture: str | IAssetProvider[ITexture2D] | None = None, behind_texture_scale: primitives.Float2 | None = None, behind_texture_offset: primitives.Float2 | None = None, front_texture: str | IAssetProvider[ITexture2D] | None = None, front_texture_scale: primitives.Float2 | None = None, front_texture_offset: primitives.Float2 | None = None, alpha_cutoff: primitives.Float | None = None, use_vertex_colors: primitives.Bool | None = None, polar_uvmapping: primitives.Bool | None = None, polar_power: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, behind_tint_color: primitives.ColorX | None = None, front_tint_color: primitives.ColorX | None = None, behind_texture: str | IAssetProvider[ITexture2D] | None = None, behind_texture_scale: primitives.Float2 | None = None, behind_texture_offset: primitives.Float2 | None = None, front_texture: str | IAssetProvider[ITexture2D] | None = None, front_texture_scale: primitives.Float2 | None = None, front_texture_offset: primitives.Float2 | None = None, blend_mode: BlendMode | str | None = None, alpha_cutoff: primitives.Float | None = None, use_vertex_colors: primitives.Bool | None = None, vertex_color_interpolation_space: ColorProfile | str | None = None, sidedness: Sidedness | str | None = None, zwrite: ZWrite | str | None = None, polar_uvmapping: primitives.Bool | None = None, polar_power: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,8 +42,12 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             front_texture: Initial value for FrontTexture.
             front_texture_scale: Initial value for FrontTextureScale.
             front_texture_offset: Initial value for FrontTextureOffset.
+            blend_mode: Initial value for BlendMode.
             alpha_cutoff: Initial value for AlphaCutoff.
             use_vertex_colors: Initial value for UseVertexColors.
+            vertex_color_interpolation_space: Initial value for VertexColorInterpolationSpace.
+            sidedness: Initial value for Sidedness.
+            zwrite: Initial value for ZWrite.
             polar_uvmapping: Initial value for PolarUVmapping.
             polar_power: Initial value for PolarPower.
             offset_factor: Initial value for OffsetFactor.
@@ -64,10 +76,18 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             self.front_texture_scale = front_texture_scale
         if front_texture_offset is not None:
             self.front_texture_offset = front_texture_offset
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
         if alpha_cutoff is not None:
             self.alpha_cutoff = alpha_cutoff
         if use_vertex_colors is not None:
             self.use_vertex_colors = use_vertex_colors
+        if vertex_color_interpolation_space is not None:
+            self.vertex_color_interpolation_space = vertex_color_interpolation_space
+        if sidedness is not None:
+            self.sidedness = sidedness
+        if zwrite is not None:
+            self.zwrite = zwrite
         if polar_uvmapping is not None:
             self.polar_uvmapping = polar_uvmapping
         if polar_power is not None:
@@ -276,17 +296,24 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def alpha_cutoff(self) -> primitives.Float | None:
@@ -327,43 +354,64 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def vertex_color_interpolation_space(self) -> members.FieldEnum | None:
-        """The VertexColorInterpolationSpace member."""
+    def vertex_color_interpolation_space(self) -> ColorProfile | None:
+        """The VertexColorInterpolationSpace enum value."""
         member = self.get_member("VertexColorInterpolationSpace")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @vertex_color_interpolation_space.setter
-    def vertex_color_interpolation_space(self, value: members.FieldEnum) -> None:
-        """Set the VertexColorInterpolationSpace member."""
-        self.set_member("VertexColorInterpolationSpace", value)
+    def vertex_color_interpolation_space(self, value: ColorProfile | str) -> None:
+        """Set the VertexColorInterpolationSpace enum value."""
+        member = self.get_member("VertexColorInterpolationSpace")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "VertexColorInterpolationSpace",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def sidedness(self) -> members.FieldEnum | None:
-        """The Sidedness member."""
+    def sidedness(self) -> Sidedness | None:
+        """The Sidedness enum value."""
         member = self.get_member("Sidedness")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Sidedness(member.value)
         return None
 
     @sidedness.setter
-    def sidedness(self, value: members.FieldEnum) -> None:
-        """Set the Sidedness member."""
-        self.set_member("Sidedness", value)
+    def sidedness(self, value: Sidedness | str) -> None:
+        """Set the Sidedness enum value."""
+        member = self.get_member("Sidedness")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Sidedness",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def polar_uvmapping(self) -> primitives.Bool | None:

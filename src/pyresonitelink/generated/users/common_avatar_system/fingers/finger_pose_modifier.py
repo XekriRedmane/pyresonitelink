@@ -8,9 +8,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FingerPoseModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FingerPoseModifier.
+    """The FingerPoseModifier component takes a ``Source`` and makes a copy of the finger pose data from it. It then modifies the copied data before making it the finger pose data of this component. This component in itself is a IFingerPoseSourceComponent.
+
+For more information on finger pose sources, please see Finger Posing System.
 
     Category: Users/Common Avatar System/Fingers
+
+    Provide the component with data from another IFingerPoseSourceComponent
+    to add extra offsets onto. This component can be used as a
+    IFingerPoseSourceComponent for other components.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FingerPoseModifier"
@@ -28,7 +34,7 @@ class FingerPoseModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorldE
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IFingerPoseSourceComponent)."""
+        """The component to take finger pose data from and make a copy to modify and make this component's finger pose data."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -49,7 +55,7 @@ class FingerPoseModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorldE
 
     @property
     def left_offsets(self) -> members.SyncObject | None:
-        """The LeftOffsets member."""
+        """How to modify the left finger pose data before making it this component's finger pose data."""
         member = self.get_member("LeftOffsets")
         if isinstance(member, members.SyncObject):
             return member
@@ -57,12 +63,12 @@ class FingerPoseModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorldE
 
     @left_offsets.setter
     def left_offsets(self, value: members.SyncObject) -> None:
-        """Set the LeftOffsets member."""
+        """Set LeftOffsets. How to modify the left finger pose data before making it this component's finger pose data."""
         self.set_member("LeftOffsets", value)
 
     @property
     def right_offsets(self) -> members.SyncObject | None:
-        """The RightOffsets member."""
+        """How to modify the right finger pose data before making it this component's finger pose data."""
         member = self.get_member("RightOffsets")
         if isinstance(member, members.SyncObject):
             return member
@@ -70,6 +76,6 @@ class FingerPoseModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorldE
 
     @right_offsets.setter
     def right_offsets(self, value: members.SyncObject) -> None:
-        """Set the RightOffsets member."""
+        """Set RightOffsets. How to modify the right finger pose data before making it this component's finger pose data."""
         self.set_member("RightOffsets", value)
 

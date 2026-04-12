@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TrailColorConstantInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.TrailColorConstantInitializer.
+    """The TrailColorConstantInitializer component makes all trails in a particle system be born with or start with a color.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.TrailColorConstantInitializer"
@@ -29,7 +34,7 @@ class TrailColorConstantInitializer(GeneratedComponent, IParticleSystemModule, I
 
     @property
     def value(self) -> primitives.ColorX | None:
-        """The Value field value."""
+        """The color all trails in a particle system should start or be born with."""
         member = self.get_member("Value")
         if member is None:
             return None

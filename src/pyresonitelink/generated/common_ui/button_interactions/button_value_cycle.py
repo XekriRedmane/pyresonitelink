@@ -9,9 +9,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonValueCycle(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonValueCycle<>.
+    """The ButtonValueCycle component holds a list of values and takes in a ``TargetValue`` of a provided type. When an IButton is pressed while this component is on it, this will cycle through the listed values and send the data through the ``TargetValue``.
+
+}}
 
     Category: Common UI/Button Interactions
+
+    Useful for needing a way to cycle through values of any type.
 
     Parameterize with a value type::
 
@@ -35,7 +39,7 @@ class ButtonValueCycle(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
 
     @property
     def target_value(self) -> str | None:
-        """Target ID of the TargetValue reference (targets IField[T])."""
+        """The value data to send outwards."""
         member = self.get_member("TargetValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +60,7 @@ class ButtonValueCycle(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
 
     @property
     def values(self) -> members.SyncList | None:
-        """The Values member."""
+        """The list of values to cycle through."""
         member = self.get_member("Values")
         if isinstance(member, members.SyncList):
             return member
@@ -64,6 +68,6 @@ class ButtonValueCycle(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
 
     @values.setter
     def values(self, value: members.SyncList) -> None:
-        """Set the Values member."""
+        """Set Values. The list of values to cycle through."""
         self.set_member("Values", value)
 

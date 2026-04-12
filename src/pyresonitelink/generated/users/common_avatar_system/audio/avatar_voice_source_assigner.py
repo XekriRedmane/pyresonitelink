@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarVoiceSourceAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarVoiceSourceAssigner.
+    """The AvatarVoiceSourceAssigner sets the ``IAudioSource`` field referenced by ``TargetReference`` to the voice stream of the active user when the avatar this component is attached to is equipped.
+
+This component is useful when adding voice-driven effects to an avatar, such as a VisemeAnalyzer or VolumeMeter
 
     Category: Users/Common Avatar System/Audio
     """
@@ -30,7 +32,7 @@ class AvatarVoiceSourceAssigner(GeneratedComponent, IAvatarObjectComponent, IWor
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets SyncRef[IWorldAudioDataSource])."""
+        """Target ``IAudioSource`` that will be assigned the user's audio stream"""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId

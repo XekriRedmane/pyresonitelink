@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PivotModule(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.PivotModule.
+    """The Pivot Module component
 
     Category: Rendering/Particle System/Modules
     """

@@ -15,9 +15,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MeshTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MeshTool.
+    """See Mesh Tool.
 
     Category: Tools
+
+    See Mesh Tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshTool"
@@ -184,7 +186,7 @@ class MeshTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIte
 
     @property
     def orb_slot(self) -> str | None:
-        """Target ID of the _orbSlot reference (targets Slot)."""
+        """The place to put a grabbed mesh orb."""
         member = self.get_member("_orbSlot")
         if isinstance(member, members.Reference):
             return member.targetId

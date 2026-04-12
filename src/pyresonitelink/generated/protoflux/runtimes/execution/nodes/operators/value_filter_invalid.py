@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueFilterInvalid(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Value Filter Invalid node takes in an expected value and a fallback value. If the expected value is not valid (such as NaN, Infinity, or -Infinity), then the fallback value will be used as the output.
+    """The Value Filter Invalid node takes in an expected value and a fallback value. If the expected value is not valid (such as ``NaN``, ``Infinity``, or ``-Infinity``), then the fallback value will be used as the output.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 
@@ -41,7 +41,7 @@ class ValueFilterInvalid(GenericComponent[T], INodeValueOutput[T], IExecutionNod
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[T])."""
+        """The value that may have a chance of being invalid."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class ValueFilterInvalid(GenericComponent[T], INodeValueOutput[T], IExecutionNod
 
     @property
     def fallback(self) -> str | None:
-        """Target ID of the Fallback reference (targets INodeValueOutput[T])."""
+        """The fallback value if our provided value is invalid (by entering ``NaN``, ``Infinity``, or ``-Infinity``)."""
         member = self.get_member("Fallback")
         if isinstance(member, members.Reference):
             return member.targetId

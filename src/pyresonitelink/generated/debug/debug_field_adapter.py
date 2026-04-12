@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugFieldAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugFieldAdapter.
+    """The DebugFieldAdapter component just Inverts ``Value``'s rgb colors and drives ``Target``'s Target with it. Used with DebugFieldAdapterTest.
 
     Category: Debug
+
+    No need for the user to use.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugFieldAdapter"
@@ -34,7 +36,7 @@ class DebugFieldAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.ColorX])."""
+        """The target field is driven to ``Value``'s rgb colors inverted."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +57,7 @@ class DebugFieldAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def value(self) -> primitives.ColorX | None:
-        """The Value field value."""
+        """The value to adapt."""
         member = self.get_member("Value")
         if member is None:
             return None

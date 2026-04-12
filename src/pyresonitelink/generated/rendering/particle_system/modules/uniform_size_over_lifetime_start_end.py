@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UniformSizeOverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.UniformSizeOverLifetimeStartEnd.
+    """The UniformSizeOverLifetimeStartEnd component makes particles in a particle system start with a size and lerp towards an end size over their lifetime.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.UniformSizeOverLifetimeStartEnd"
@@ -32,7 +37,7 @@ class UniformSizeOverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule,
 
     @property
     def start_size(self) -> primitives.Float | None:
-        """The StartSize field value."""
+        """The size that particles have when starting or being born."""
         member = self.get_member("StartSize")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class UniformSizeOverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule,
 
     @property
     def end_size(self) -> primitives.Float | None:
-        """The EndSize field value."""
+        """The size that particles go towards as their lifetime decreases."""
         member = self.get_member("EndSize")
         if member is None:
             return None

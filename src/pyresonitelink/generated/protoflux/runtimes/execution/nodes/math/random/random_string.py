@@ -37,7 +37,7 @@ class RandomString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def characters(self) -> str | None:
-        """Target ID of the Characters reference (targets INodeObjectOutput[primitives.String])."""
+        """The pool of characters used for the randomization."""
         member = self.get_member("Characters")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class RandomString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def length(self) -> str | None:
-        """Target ID of the Length reference (targets INodeValueOutput[primitives.Int])."""
+        """The length of the output string."""
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
             return member.targetId

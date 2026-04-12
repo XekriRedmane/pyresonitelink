@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,26 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TorusMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TorusMesh.
+    """The TorusMesh component generates procedural geometry that is used with MeshRenderer.
+
+This mesh resembles a Donut.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot and insert this component into a MeshRenderer to view
+    its geometry. Don't forget to add a Material
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TorusMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, minor_segments: primitives.Int | None = None, major_segments: primitives.Int | None = None, major_radius: primitives.Float | None = None, minor_radius: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, minor_segments: primitives.Int | None = None, major_segments: primitives.Int | None = None, major_radius: primitives.Float | None = None, minor_radius: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             minor_segments: Initial value for MinorSegments.
             major_segments: Initial value for MajorSegments.
             major_radius: Initial value for MajorRadius.
@@ -40,6 +47,8 @@ class TorusMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if minor_segments is not None:
             self.minor_segments = minor_segments
         if major_segments is not None:
@@ -109,21 +118,28 @@ class TorusMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def minor_segments(self) -> primitives.Int | None:
-        """The MinorSegments field value."""
+        """The amount of detail/cuts along the circle of the torus. Making this 4 will make the torus a square instead of a circle shape."""
         member = self.get_member("MinorSegments")
         if member is None:
             return None
@@ -142,7 +158,7 @@ class TorusMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def major_segments(self) -> primitives.Int | None:
-        """The MajorSegments field value."""
+        """The amount of detail/cuts going around and through the center along the outside and inside."""
         member = self.get_member("MajorSegments")
         if member is None:
             return None
@@ -161,7 +177,7 @@ class TorusMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def major_radius(self) -> primitives.Float | None:
-        """The MajorRadius field value."""
+        """The size of the torus"""
         member = self.get_member("MajorRadius")
         if member is None:
             return None
@@ -180,7 +196,7 @@ class TorusMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def minor_radius(self) -> primitives.Float | None:
-        """The MinorRadius field value."""
+        """the fatness/thickness of the torus. If this is too big than the hole in the center will seal up."""
         member = self.get_member("MinorRadius")
         if member is None:
             return None
@@ -199,7 +215,7 @@ class TorusMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def uv_scale(self) -> primitives.Float2 | None:
-        """The UVScale field value."""
+        """the scale of the material detail on the surface of the torus."""
         member = self.get_member("UVScale")
         if member is None:
             return None

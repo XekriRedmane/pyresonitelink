@@ -18,10 +18,6 @@ class GetUserFromComponent(GeneratedComponent, INodeObjectOutput, IExecutionNode
     Category: ProtoFlux/Runtimes/Execution/Nodes/Components
 
     **Example**: File:Protoflux_Get_User_From_Component.webp|an example of using Get User From Component to find the active user of a Tool Tip.
-
-
-ProtoFlux:Components
-ProtoFlux:Users
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.GetUserFromComponent"
@@ -39,7 +35,7 @@ ProtoFlux:Users
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[IComponent])."""
+        """The IComponent (Any component) to check for an active user."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserQueuedMessages(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Queued Messages node returns the user's queued messages (also called packets), and shows how behind a user is and how much they need to catch up by.
+    """The ``User Queued Messages`` node returns the user's queued messages (also called packets), and shows how behind a user is and how much they need to catch up by.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """
@@ -34,7 +34,7 @@ class UserQueuedMessages(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

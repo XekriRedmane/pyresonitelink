@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.NullableSourceDriver<>.
+    """The NullableSourceDriver component allows for getting info from a ``Source`` nullable and driving a set of split fields with content from the nullable. Changes to driven fields by this component can also be reverse written back to ``Source``.
 
     Category: Transform/Drivers
+
+    Can be used to extract data from nullables or write to them using a
+    component only solution.
 
     Parameterize with a value type::
 
@@ -53,7 +56,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IField[Nullable[T]])."""
+        """The field to get nullable data from."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -74,7 +77,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[T])."""
+        """The field to drive with the value for ``Source`` if it has a value, or instead drive with ``DefaultValue``."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -95,7 +98,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def has_value(self) -> str | None:
-        """Target ID of the HasValue reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether ``Source`` has a value."""
         member = self.get_member("HasValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -135,7 +138,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """Whether writes to the fields driven by this component will update the value of ``Source``. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None
@@ -154,7 +157,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def update_default_value(self) -> primitives.Bool | None:
-        """The UpdateDefaultValue field value."""
+        """Whether the default value gets updated when using write back and ``Source`` has no value."""
         member = self.get_member("UpdateDefaultValue")
         if member is None:
             return None

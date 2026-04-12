@@ -12,7 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CallRelay(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """alt=A visual image of an Call Relay node by itself, connected to nothing.|thumb
+    """due to wiki limitations, this node does not currently have an HTML rendering of the node.
+
+A Call Relay is a slightly different variation of the Continuation Relay node, It can be found in the node browser under Core, and when connected to itself, or as the last node before recursion in a chain or loop of nodes it will not cause an exception.
+
+This behaviour can be used to create loops within protoflux, but nodes such as While and For would be more suitable, as they come with built in ways of "ending" the loop that needs to be added for protoflux to be safe, and additional outputs for the start, continuation, and end of a loop.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
     """

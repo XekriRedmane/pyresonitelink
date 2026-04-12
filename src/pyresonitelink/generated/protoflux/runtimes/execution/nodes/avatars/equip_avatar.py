@@ -47,7 +47,7 @@ class EquipAvatar(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse after * (Call) was called and the provided User (User) has equipped the provided AvatarRoot (Slot)."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class EquipAvatar(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user that should equip the provided AvatarRoot (Slot)."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class EquipAvatar(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def avatar_root(self) -> str | None:
-        """Target ID of the AvatarRoot reference (targets INodeObjectOutput[Slot])."""
+        """The Avatar the provided User (User) should equip. This slot is usually where the AvatarRoot component would be on an avatar which usually resides with the VRIK."""
         member = self.get_member("AvatarRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +110,7 @@ class EquipAvatar(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
 
     @property
     def destroy_old(self) -> str | None:
-        """Target ID of the DestroyOld reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether the avatar the user was previously wearing should be destroyed. Only use this when nessary, because the avatar will be gone forever from the world when deleted."""
         member = self.get_member("DestroyOld")
         if isinstance(member, members.Reference):
             return member.targetId

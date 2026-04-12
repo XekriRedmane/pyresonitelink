@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonStringErase.
+    """The ButtonStringErase component can be used to remove characters from the beginning or end of a string whenever an IButton is pressed.
 
     Category: Common UI/Button Interactions
+
+    To function, the component simply needs to be attached to a slot that
+    also has a button component attached to it. From then on, pressing that
+    button will activate the ButtonStringErase, making it erase the first or
+    last ``Count`` characters from its ``TargetString``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonStringErase"
@@ -37,7 +42,7 @@ class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def target_string(self) -> str | None:
-        """Target ID of the TargetString reference (targets IField[primitives.String])."""
+        """The string from which characters will be removed."""
         member = self.get_member("TargetString")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +63,7 @@ class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def count(self) -> primitives.Int | None:
-        """The Count field value."""
+        """How many characters to remove."""
         member = self.get_member("Count")
         if member is None:
             return None
@@ -77,7 +82,7 @@ class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def erase_from_beginning(self) -> primitives.Bool | None:
-        """The EraseFromBeginning field value."""
+        """Whether or not to remove characters from the beginning of the string."""
         member = self.get_member("EraseFromBeginning")
         if member is None:
             return None

@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,18 +13,22 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ColorWheelTriangleMesh.
+    """The ColorWheelTriangleMesh component is used in the old platform's color pickers. Some may call this a "flower" or a "color picker" visual.
+
+    Attach to a slot and insert into a MeshRenderer that supports vertex
+    colors to view what it looks like.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorWheelTriangleMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, hue: primitives.Float | None = None, outer_radius: primitives.Float | None = None, inner_radius: primitives.Float | None = None, ring_segments: primitives.Int | None = None, cursor_position: primitives.Float3 | None = None, cursor_segments: primitives.Int | None = None, cursor_color: primitives.ColorX | None = None, cursor_outer_radius: primitives.Float | None = None, cursor_inner_radius: primitives.Float | None = None, cursor_zoffset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, hue: primitives.Float | None = None, outer_radius: primitives.Float | None = None, inner_radius: primitives.Float | None = None, ring_segments: primitives.Int | None = None, cursor_position: primitives.Float3 | None = None, cursor_segments: primitives.Int | None = None, cursor_color: primitives.ColorX | None = None, cursor_outer_radius: primitives.Float | None = None, cursor_inner_radius: primitives.Float | None = None, cursor_zoffset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             hue: Initial value for Hue.
             outer_radius: Initial value for OuterRadius.
             inner_radius: Initial value for InnerRadius.
@@ -43,6 +48,8 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if hue is not None:
             self.hue = hue
         if outer_radius is not None:
@@ -122,21 +129,28 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def hue(self) -> primitives.Float | None:
-        """The Hue field value."""
+        """The Hue the user picked."""
         member = self.get_member("Hue")
         if member is None:
             return None
@@ -155,7 +169,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     @property
     def outer_radius(self) -> primitives.Float | None:
-        """The OuterRadius field value."""
+        """The radius of the outer edge of the outer ring of the color circle of hues."""
         member = self.get_member("OuterRadius")
         if member is None:
             return None
@@ -174,7 +188,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     @property
     def inner_radius(self) -> primitives.Float | None:
-        """The InnerRadius field value."""
+        """The radius of the inner edge of the outer ring of the color circle of hues."""
         member = self.get_member("InnerRadius")
         if member is None:
             return None
@@ -193,7 +207,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     @property
     def ring_segments(self) -> primitives.Int | None:
-        """The RingSegments field value."""
+        """How many ring wise subdivisions of the outer ring of color hues."""
         member = self.get_member("RingSegments")
         if member is None:
             return None
@@ -212,7 +226,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     @property
     def cursor_position(self) -> primitives.Float3 | None:
-        """The CursorPosition field value."""
+        """The position of the cursor inside of the triangle."""
         member = self.get_member("CursorPosition")
         if member is None:
             return None
@@ -231,7 +245,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     @property
     def cursor_segments(self) -> primitives.Int | None:
-        """The CursorSegments field value."""
+        """How many ring wise subdivisions of the color picker cursor ring."""
         member = self.get_member("CursorSegments")
         if member is None:
             return None
@@ -250,7 +264,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     @property
     def cursor_color(self) -> primitives.ColorX | None:
-        """The CursorColor field value."""
+        """The color of the cursor for color picking."""
         member = self.get_member("CursorColor")
         if member is None:
             return None
@@ -269,7 +283,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     @property
     def cursor_outer_radius(self) -> primitives.Float | None:
-        """The CursorOuterRadius field value."""
+        """The radius of the outer edge of the cursor ring."""
         member = self.get_member("CursorOuterRadius")
         if member is None:
             return None
@@ -288,7 +302,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     @property
     def cursor_inner_radius(self) -> primitives.Float | None:
-        """The CursorInnerRadius field value."""
+        """The radius of the inner edge of the cursor ring."""
         member = self.get_member("CursorInnerRadius")
         if member is None:
             return None
@@ -307,7 +321,7 @@ class ColorWheelTriangleMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
 
     @property
     def cursor_zoffset(self) -> primitives.Float | None:
-        """The CursorZOffset field value."""
+        """How much to offset the color picker cursor off the surface of the triangle."""
         member = self.get_member("CursorZOffset")
         if member is None:
             return None

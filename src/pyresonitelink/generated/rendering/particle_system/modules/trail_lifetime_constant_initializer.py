@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TrailLifetimeConstantInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.TrailLifetimeConstantInitializer.
+    """The TrailLifetimeConstantInitializer component gives trails in a particle system a constant starting Lifetime when born.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.TrailLifetimeConstantInitializer"
@@ -29,7 +34,7 @@ class TrailLifetimeConstantInitializer(GeneratedComponent, IParticleSystemModule
 
     @property
     def value(self) -> primitives.Float | None:
-        """The Value field value."""
+        """The starting Lifetime all trails in a particle system should have."""
         member = self.get_member("Value")
         if member is None:
             return None

@@ -12,7 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CallInput(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """alt=A visual image of a Call input node by itself, connected to nothing.|thumb
+    """due to wiki limitations, this node does not currently have an HTML rendering of the node.
+
+Call Input is a ProtoFlux node that is made by holding primary on a ProtoFlux tool on an call input connector on a protoflux node. Then dragging it out and while holding primary you hit secondary. This node will now be generated at your tool tip end.
+
+The purpose of this node is for debug purposes while developing to trigger code using a manual button. Be mindful not to use this in your final creations as an input button, since non-builder users will be unable to use it.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
     """

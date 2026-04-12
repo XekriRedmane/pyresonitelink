@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.nine_slice_sizing import NineSliceSizing
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,20 +14,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.DualColorImage.
+    """The DualColorImage component takes in a SpriteProvider or Material and controls the tint and secondary tint of a UIX image. There are optional placement parameters allowing the user to adjust the offset of this image using ``FillRect``.
+
+}}
 
     Category: UIX/Graphics
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.DualColorImage"
 
-    def __init__(self, sprite: str | IAssetProvider[Sprite] | None = None, material: str | IAssetProvider[Material] | None = None, preserve_aspect: primitives.Bool | None = None, flip_horizontally: primitives.Bool | None = None, flip_vertically: primitives.Bool | None = None, interaction_target: primitives.Bool | None = None, fill_rect: primitives.Rect | None = None, legacy_zwrite: primitives.Bool | None = None, tint: primitives.ColorX | None = None, secondary_tint: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, sprite: str | IAssetProvider[Sprite] | None = None, material: str | IAssetProvider[Material] | None = None, preserve_aspect: primitives.Bool | None = None, nine_slice_sizing: NineSliceSizing | str | None = None, flip_horizontally: primitives.Bool | None = None, flip_vertically: primitives.Bool | None = None, interaction_target: primitives.Bool | None = None, fill_rect: primitives.Rect | None = None, legacy_zwrite: primitives.Bool | None = None, tint: primitives.ColorX | None = None, secondary_tint: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             sprite: Initial value for Sprite.
             material: Initial value for Material.
             preserve_aspect: Initial value for PreserveAspect.
+            nine_slice_sizing: Initial value for NineSliceSizing.
             flip_horizontally: Initial value for FlipHorizontally.
             flip_vertically: Initial value for FlipVertically.
             interaction_target: Initial value for InteractionTarget.
@@ -43,6 +47,8 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
             self.material = material
         if preserve_aspect is not None:
             self.preserve_aspect = preserve_aspect
+        if nine_slice_sizing is not None:
+            self.nine_slice_sizing = nine_slice_sizing
         if flip_horizontally is not None:
             self.flip_horizontally = flip_horizontally
         if flip_vertically is not None:
@@ -60,7 +66,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def sprite(self) -> str | None:
-        """Target ID of the Sprite reference (targets IAssetProvider[Sprite])."""
+        """The sprite to use as the image."""
         member = self.get_member("Sprite")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +87,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The Material to use as the image."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -102,7 +108,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def preserve_aspect(self) -> primitives.Bool | None:
-        """The PreserveAspect field value."""
+        """Preserves the aspect ratio of this image provided."""
         member = self.get_member("PreserveAspect")
         if member is None:
             return None
@@ -120,21 +126,28 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
             )
 
     @property
-    def nine_slice_sizing(self) -> members.FieldEnum | None:
-        """The NineSliceSizing member."""
+    def nine_slice_sizing(self) -> NineSliceSizing | None:
+        """Tells how the image gets 9-sliced on this UIX."""
         member = self.get_member("NineSliceSizing")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return NineSliceSizing(member.value)
         return None
 
     @nine_slice_sizing.setter
-    def nine_slice_sizing(self, value: members.FieldEnum) -> None:
-        """Set the NineSliceSizing member."""
-        self.set_member("NineSliceSizing", value)
+    def nine_slice_sizing(self, value: NineSliceSizing | str) -> None:
+        """Set NineSliceSizing. Tells how the image gets 9-sliced on this UIX."""
+        member = self.get_member("NineSliceSizing")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "NineSliceSizing",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def flip_horizontally(self) -> primitives.Bool | None:
-        """The FlipHorizontally field value."""
+        """Flips the image horizontally."""
         member = self.get_member("FlipHorizontally")
         if member is None:
             return None
@@ -153,7 +166,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def flip_vertically(self) -> primitives.Bool | None:
-        """The FlipVertically field value."""
+        """Flips the image vertically."""
         member = self.get_member("FlipVertically")
         if member is None:
             return None
@@ -172,7 +185,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def interaction_target(self) -> primitives.Bool | None:
-        """The InteractionTarget field value."""
+        """Makes this image as the interaction target for this UIX."""
         member = self.get_member("InteractionTarget")
         if member is None:
             return None
@@ -191,7 +204,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def fill_rect(self) -> primitives.Rect | None:
-        """The FillRect field value."""
+        """The filling rect for this image."""
         member = self.get_member("FillRect")
         if member is None:
             return None
@@ -210,7 +223,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def legacy_zwrite(self) -> primitives.Bool | None:
-        """The __legacyZWrite field value."""
+        """The legacy Z writing for this image."""
         member = self.get_member("__legacyZWrite")
         if member is None:
             return None
@@ -229,7 +242,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def tint(self) -> primitives.ColorX | None:
-        """The Tint field value."""
+        """The primary tint color for this image."""
         member = self.get_member("Tint")
         if member is None:
             return None
@@ -248,7 +261,7 @@ class DualColorImage(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def secondary_tint(self) -> primitives.ColorX | None:
-        """The SecondaryTint field value."""
+        """The secondary tint color for this image."""
         member = self.get_member("SecondaryTint")
         if member is None:
             return None

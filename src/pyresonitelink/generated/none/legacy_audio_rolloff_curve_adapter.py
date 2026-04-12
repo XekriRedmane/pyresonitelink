@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyAudioRolloffCurveAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyAudioRolloffCurveAdapter.
+    """The Legacy Audio Rolloff Curve Adapter component is used to convert driven values from the old audio system to Awwdio.
+
+    used in legacy content only.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyAudioRolloffCurveAdapter"
@@ -29,7 +31,7 @@ class LegacyAudioRolloffCurveAdapter(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[Nullable[AudioRolloffCurve]])."""
+        """The field to drive with the value converted."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -50,7 +52,7 @@ class LegacyAudioRolloffCurveAdapter(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def value(self) -> members.FieldEnum | None:
-        """The Value member."""
+        """The field being driven by a system using the legacy audio curve settings from before Awwdio."""
         member = self.get_member("Value")
         if isinstance(member, members.FieldEnum):
             return member
@@ -58,6 +60,6 @@ class LegacyAudioRolloffCurveAdapter(GeneratedComponent, IComponent, IWorldEvent
 
     @value.setter
     def value(self, value: members.FieldEnum) -> None:
-        """Set the Value member."""
+        """Set Value. The field being driven by a system using the legacy audio curve settings from before Awwdio."""
         self.set_member("Value", value)
 

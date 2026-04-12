@@ -11,9 +11,25 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BooleanUserOverrideGather.
+    """The BooleanUserOverrideGather Component allows storing Boolean "override" values for each user listed under ``_overrides`` and driving the ``Target`` field. The behavior is similar to ValueUserOverride&lt;Bool&gt;, except this component also reports aggregate information about the overrides.
+
+}}
 
     Category: Transform/Drivers
+
+    Note that the reporting fields (Any, All, None, TrueCount and
+    FalseCount) count only the values for users in the sessions (including
+    away users and headless servers), but not all the values in the
+    ``_overrides`` list.
+
+    **Behavior**: The ``_overrides`` bag contains a list of users and their associated Boolean values - whenever the local user matches a user entry in the bag, the associated value is driven to ``Target``. Otherwise, ``Target`` is driven to the value in ``Default``.
+
+``CreateOverrideOnWrite`` allows for new users and values to be added to the bag when the driven value in ``Target`` is directly or indirectly changed by that user. If it is not enabled, the value in ``Target`` is not changeable unless the override is added or changed manually from the inspector panel.
+
+Attempting to write to or otherwise cause a discrete entry to a driven field is known as Hooking it. Any Hook to the ``Target`` value is intercepted by the BooleanUserOverrideGather Component and will change the modifying user's entry in the ``_overrides`` bag. If there is no entry for the user and if ``CreateOverrideOnWrite`` is enabled, it will create an entry using the set value.
+
+    **Related Components**: * ValueUserOverride
+* NumericUserOverrideGather
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BooleanUserOverrideGather"
@@ -61,7 +77,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def default(self) -> primitives.Bool | None:
-        """The Default field value."""
+        """The default value given to ``Target`` if no suitable override exists in ``_overrides``."""
         member = self.get_member("Default")
         if member is None:
             return None
@@ -80,7 +96,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def create_override_on_write(self) -> primitives.Bool | None:
-        """The CreateOverrideOnWrite field value."""
+        """Whether an entry in ``_overrides`` should be created when ``Target`` is written back."""
         member = self.get_member("CreateOverrideOnWrite")
         if member is None:
             return None
@@ -99,7 +115,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def persistent_overrides(self) -> primitives.Bool | None:
-        """The PersistentOverrides field value."""
+        """Whether values in ``_overrides`` should persist when the component is saved."""
         member = self.get_member("PersistentOverrides")
         if member is None:
             return None
@@ -137,7 +153,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Bool])."""
+        """Reference to the field that gets driven to the override value."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -158,7 +174,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def any(self) -> primitives.Bool | None:
-        """The Any field value."""
+        """Reports ``true`` when any user in the session would have their override be ``true`` (either from the default value or an override)."""
         member = self.get_member("Any")
         if member is None:
             return None
@@ -177,7 +193,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def all(self) -> primitives.Bool | None:
-        """The All field value."""
+        """Reports ``true`` when all users in the session would have their override be ``true`` (either from the default value or an override)."""
         member = self.get_member("All")
         if member is None:
             return None
@@ -196,7 +212,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def none(self) -> primitives.Bool | None:
-        """The None field value."""
+        """Reports ``true`` when none of the users in the session would have their override be ``true`` (either from the default value or an override)."""
         member = self.get_member("None")
         if member is None:
             return None
@@ -215,7 +231,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def true_count(self) -> primitives.Int | None:
-        """The TrueCount field value."""
+        """Reports the total count of ``true`` values for all users in the session."""
         member = self.get_member("TrueCount")
         if member is None:
             return None
@@ -234,7 +250,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def false_count(self) -> primitives.Int | None:
-        """The FalseCount field value."""
+        """Reports the total count of ``false`` values for all users in the session."""
         member = self.get_member("FalseCount")
         if member is None:
             return None
@@ -253,7 +269,7 @@ class BooleanUserOverrideGather(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def exclude_headless(self) -> primitives.Bool | None:
-        """The ExcludeHeadless field value."""
+        """Whether to exclude a headless user when doing aggregates and overrides."""
         member = self.get_member("ExcludeHeadless")
         if member is None:
             return None

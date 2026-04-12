@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.sphere_emitter_direction import SphereEmitterDirection
+from pyresonitelink.generated._enums.direction_transform_mode import DirectionTransformMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.particle_system import ParticleSystem
@@ -10,14 +12,14 @@ from pyresonitelink.generated._types.iparticle_system_emitter import IParticleSy
 
 
 class SphereEmitter(GeneratedComponent, IParticleSystemEmitter):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.SphereEmitter.
+    """The SphereEmitter component is used to create particles in a particle system (See Photon Dust). This Emitter emits particles from a sphere shape.
 
     Category: Rendering/Particle System/Emitters
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SphereEmitter"
 
-    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, radius: primitives.Float | None = None, emit_from_shell: primitives.Bool | None = None, random_direction_weight: primitives.Float | None = None, forced_direction: primitives.Float3 | None = None, direction_reference_point: primitives.Float3 | None = None, direction_post_transform: primitives.Float3x3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, radius: primitives.Float | None = None, emit_from_shell: primitives.Bool | None = None, direction_mode: SphereEmitterDirection | str | None = None, random_direction_weight: primitives.Float | None = None, forced_direction: primitives.Float3 | None = None, direction_transform_mode: DirectionTransformMode | str | None = None, direction_reference_point: primitives.Float3 | None = None, direction_post_transform: primitives.Float3x3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,8 +30,10 @@ class SphereEmitter(GeneratedComponent, IParticleSystemEmitter):
             burst_on_start: Initial value for BurstOnStart.
             radius: Initial value for Radius.
             emit_from_shell: Initial value for EmitFromShell.
+            direction_mode: Initial value for DirectionMode.
             random_direction_weight: Initial value for RandomDirectionWeight.
             forced_direction: Initial value for ForcedDirection.
+            direction_transform_mode: Initial value for DirectionTransformMode.
             direction_reference_point: Initial value for DirectionReferencePoint.
             direction_post_transform: Initial value for DirectionPostTransform.
             component: Existing Component to wrap.
@@ -49,10 +53,14 @@ class SphereEmitter(GeneratedComponent, IParticleSystemEmitter):
             self.radius = radius
         if emit_from_shell is not None:
             self.emit_from_shell = emit_from_shell
+        if direction_mode is not None:
+            self.direction_mode = direction_mode
         if random_direction_weight is not None:
             self.random_direction_weight = random_direction_weight
         if forced_direction is not None:
             self.forced_direction = forced_direction
+        if direction_transform_mode is not None:
+            self.direction_transform_mode = direction_transform_mode
         if direction_reference_point is not None:
             self.direction_reference_point = direction_reference_point
         if direction_post_transform is not None:
@@ -157,7 +165,7 @@ class SphereEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the sphere shape this is emitting from."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -194,17 +202,24 @@ class SphereEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def direction_mode(self) -> members.FieldEnum | None:
-        """The DirectionMode member."""
+    def direction_mode(self) -> SphereEmitterDirection | None:
+        """How particles should be oriented when emitting from the Sphere shape."""
         member = self.get_member("DirectionMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SphereEmitterDirection(member.value)
         return None
 
     @direction_mode.setter
-    def direction_mode(self, value: members.FieldEnum) -> None:
-        """Set the DirectionMode member."""
-        self.set_member("DirectionMode", value)
+    def direction_mode(self, value: SphereEmitterDirection | str) -> None:
+        """Set DirectionMode. How particles should be oriented when emitting from the Sphere shape."""
+        member = self.get_member("DirectionMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DirectionMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def random_direction_weight(self) -> primitives.Float | None:
@@ -245,21 +260,28 @@ class SphereEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def direction_transform_mode(self) -> members.FieldEnum | None:
-        """The DirectionTransformMode member."""
+    def direction_transform_mode(self) -> DirectionTransformMode | None:
+        """The DirectionTransformMode enum value."""
         member = self.get_member("DirectionTransformMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return DirectionTransformMode(member.value)
         return None
 
     @direction_transform_mode.setter
-    def direction_transform_mode(self, value: members.FieldEnum) -> None:
-        """Set the DirectionTransformMode member."""
-        self.set_member("DirectionTransformMode", value)
+    def direction_transform_mode(self, value: DirectionTransformMode | str) -> None:
+        """Set the DirectionTransformMode enum value."""
+        member = self.get_member("DirectionTransformMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DirectionTransformMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def direction_reference_point(self) -> primitives.Float3 | None:
-        """The DirectionReferencePoint field value."""
+        """The point to use as a reference point when orienting particles upon emission."""
         member = self.get_member("DirectionReferencePoint")
         if member is None:
             return None

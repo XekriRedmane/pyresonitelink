@@ -14,6 +14,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ValueInverseLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Inverse Lerp node takes in a non-normalized arbitrary set of values that has a start and end point, along with a value that is the number that is in between those 2 provided values, then returns the value over time.
 
+This is unclamped, meaning that you are not stuck with being in between your provided values.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Interpolation
 
     Parameterize with a value type::
@@ -44,7 +46,7 @@ class ValueInverseLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     @property
     def from_(self) -> str | None:
-        """Target ID of the From reference (targets INodeValueOutput[T])."""
+        """The starting point of this lerp."""
         member = self.get_member("From")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +67,7 @@ class ValueInverseLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     @property
     def to(self) -> str | None:
-        """Target ID of the To reference (targets INodeValueOutput[T])."""
+        """The end point of this lerp."""
         member = self.get_member("To")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +88,7 @@ class ValueInverseLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[T])."""
+        """The lerp value that represents the point between the 2 provided values."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId

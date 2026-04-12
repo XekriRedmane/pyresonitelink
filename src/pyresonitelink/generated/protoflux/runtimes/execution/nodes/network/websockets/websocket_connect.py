@@ -45,7 +45,7 @@ class WebsocketConnect(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """A continuation impulse to trigger the rest of the code."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +66,7 @@ class WebsocketConnect(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
 
     @property
     def client(self) -> str | None:
-        """Target ID of the Client reference (targets INodeObjectOutput[WebsocketClient])."""
+        """A WebsocketClient component."""
         member = self.get_member("Client")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +87,7 @@ class WebsocketConnect(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
 
     @property
     def url(self) -> str | None:
-        """Target ID of the URL reference (targets INodeObjectOutput[str])."""
+        """An URI to the WebSocket server."""
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +108,7 @@ class WebsocketConnect(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
 
     @property
     def handling_user(self) -> str | None:
-        """Target ID of the HandlingUser reference (targets INodeObjectOutput[User])."""
+        """An user that will handle the WebSocket requests."""
         member = self.get_member("HandlingUser")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.chirality import Chirality
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -11,17 +12,33 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GripPoseReference.
+    """The GripPoseReference component is placed under Tools to tell them how they should be positioned when equipped.
 
     Category: Interaction
+
+    To create a simple object using GripPoseReference, add the RawDataTool
+    slot to the root of the object containing the mesh. This will
+    automatically add the GripPoseReference slots. To edit the pose, enter
+    UI Edit Mode with the Left or Right GripPoseReference slot selected in
+    Scene Inspector then adjust the object pose in one hand's grip with your
+    off hand. When the TipReference field is set, equipping the tool will
+    align your tip reference (usually at the tip of your index finger) to
+    the provided slot and ignore the transform of the grip pose. It is
+    recommended to use this for custom tools which are supposed to have
+    similar positioning to most of the default tools such as the Dev Tool.
+
+    **Interaction with hand poser**: When grabbing or equipping a tool which defines a GripPoseReference without a set TipReference, the initial location from which the grip pose is applied is interpolated based on the location of the fingers and the HandRoot configured in the corresponding HandPoser.
+
+For avatars with commonly-shaped hands with at least three fingers, this interpolated pose is usually close enough that, if you position the GripPoseReference correctly for one avatar, it should also be positioned decently well for most other avatars.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GripPoseReference"
 
-    def __init__(self, root_pos: primitives.Float3 | None = None, tip_reference: str | Slot | None = None, show_visual: primitives.Bool | None = None, disable_slider: primitives.Bool | None = None, active_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, hand_side: Chirality | str | None = None, root_pos: primitives.Float3 | None = None, tip_reference: str | Slot | None = None, show_visual: primitives.Bool | None = None, disable_slider: primitives.Bool | None = None, active_visual: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            hand_side: Initial value for HandSide.
             root_pos: Initial value for _rootPos.
             tip_reference: Initial value for TipReference.
             show_visual: Initial value for ShowVisual.
@@ -30,6 +47,8 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if hand_side is not None:
+            self.hand_side = hand_side
         if root_pos is not None:
             self.root_pos = root_pos
         if tip_reference is not None:
@@ -42,21 +61,28 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.active_visual = active_visual
 
     @property
-    def hand_side(self) -> members.FieldEnum | None:
-        """The HandSide member."""
+    def hand_side(self) -> Chirality | None:
+        """The hand side this grip pose should"""
         member = self.get_member("HandSide")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Chirality(member.value)
         return None
 
     @hand_side.setter
-    def hand_side(self, value: members.FieldEnum) -> None:
-        """Set the HandSide member."""
-        self.set_member("HandSide", value)
+    def hand_side(self, value: Chirality | str) -> None:
+        """Set HandSide. The hand side this grip pose should"""
+        member = self.get_member("HandSide")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "HandSide",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def root_pos(self) -> primitives.Float3 | None:
-        """The _rootPos field value."""
+        """The root position of the tooltip."""
         member = self.get_member("_rootPos")
         if member is None:
             return None
@@ -75,7 +101,7 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def tip_reference(self) -> str | None:
-        """Target ID of the TipReference reference (targets Slot)."""
+        """the slot for the tool tips tip in question."""
         member = self.get_member("TipReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -96,7 +122,7 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def show_visual(self) -> primitives.Bool | None:
-        """The ShowVisual field value."""
+        """Whether to show the adjustment visual."""
         member = self.get_member("ShowVisual")
         if member is None:
             return None
@@ -115,7 +141,7 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def disable_slider(self) -> primitives.Bool | None:
-        """The DisableSlider field value."""
+        """Whether to disable adjusting this grip pose."""
         member = self.get_member("DisableSlider")
         if member is None:
             return None
@@ -134,7 +160,7 @@ class GripPoseReference(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def active_visual(self) -> str | None:
-        """Target ID of the _activeVisual reference (targets Slot)."""
+        """The current adjustment visual."""
         member = self.get_member("_activeVisual")
         if isinstance(member, members.Reference):
             return member.targetId

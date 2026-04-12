@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarObjectScale(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarObjectScale.
+    """The AvatarObjectScale component allows setting it's slot scale relative to the UserRoot slot when equipped under an avatar.
 
     Category: Users/Common Avatar System
+
+    **Behavior**: On equip the component will set the attached slot scale to be ``UserSpaceScale`` in the UserRoot slot space.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarObjectScale"
@@ -29,7 +31,7 @@ class AvatarObjectScale(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def user_space_scale(self) -> primitives.Float3 | None:
-        """The UserSpaceScale field value."""
+        """The desired scale relative to the UserRoot slot."""
         member = self.get_member("UserSpaceScale")
         if member is None:
             return None

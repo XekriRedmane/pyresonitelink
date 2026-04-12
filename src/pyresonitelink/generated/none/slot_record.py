@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SlotRecord(GeneratedComponent, IButtonPressReceiver, IUIGrabbable, IUIGrabReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SlotRecord.
+    """Used solely by the Inspector when regenerating/updating.
+
+    Internal
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlotRecord"
@@ -29,7 +31,7 @@ class SlotRecord(GeneratedComponent, IButtonPressReceiver, IUIGrabbable, IUIGrab
 
     @property
     def target_slot(self) -> str | None:
-        """Target ID of the TargetSlot reference (targets Slot)."""
+        """The slot to make a record of."""
         member = self.get_member("TargetSlot")
         if isinstance(member, members.Reference):
             return member.targetId

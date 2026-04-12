@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ContinuationRelay(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """alt=A visual image of an Continuation Relay node by itself, connected to nothing.|thumb
+    """due to wiki limitations, this node does not currently have an HTML rendering of the node.
+
+A Continuation Relay is made by having a ProtoFlux tool equipped, and grabbing onto a ProtoFlux continuation wire with grip with the tool in hand. It will splice the wire and place the node in the middle, acting as a rerouter. It has no behavior, and simply acts as a visual arrangement tool.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
     """

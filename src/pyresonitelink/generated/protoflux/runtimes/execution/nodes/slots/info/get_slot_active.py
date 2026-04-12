@@ -16,6 +16,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class GetSlotActive(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Get slot active is a ProtoFlux node that will check if Instance (Slot)'s parent hierarchy or Instance (Slot) itself is disabled.
 
+This Protoflux node does not update by itself on the Active field change. If you need to react to a Slot's activity dynamically, consider sourcing the Active field of the hierarchy's root Slot instead.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots/Info
     """
 
@@ -34,7 +36,7 @@ class GetSlotActive(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """the slot to check for if itself or it's parent hierarchy is disabled."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId

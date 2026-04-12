@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,26 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TubeMesh.
+    """The TubeMesh component is used to generate a procedural tube mesh for use with a MeshRenderer.
+
+The ``Points`` field currently requires Mods to edit.
 
     Category: Assets/Procedural Meshes
+
+    Attach the component into a slot and insert it into a MeshRenderer to
+    view the geometry. Don't forget a Material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TubeMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, segment_points: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, segment_points: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             segment_points: Initial value for SegmentPoints.
             component: Existing Component to wrap.
         """
@@ -36,6 +43,8 @@ class TubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if segment_points is not None:
             self.segment_points = segment_points
 
@@ -97,21 +106,28 @@ class TubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def points(self) -> members.Member | None:
-        """The Points member."""
+        """A list of points that the tube should follow in order."""
         member = self.get_member("Points")
         if isinstance(member, members.Member):
             return member
@@ -119,12 +135,12 @@ class TubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @points.setter
     def points(self, value: members.Member) -> None:
-        """Set the Points member."""
+        """Set Points. A list of points that the tube should follow in order."""
         self.set_member("Points", value)
 
     @property
     def segment_points(self) -> primitives.Int | None:
-        """The SegmentPoints field value."""
+        """How many cuts/bend points there should be between each TubePoint in ``Points``"""
         member = self.get_member("SegmentPoints")
         if member is None:
             return None

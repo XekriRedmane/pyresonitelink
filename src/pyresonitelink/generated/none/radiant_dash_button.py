@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RadiantDashButton.
+    """See Dash menu.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadiantDashButton"
@@ -69,7 +69,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def dash(self) -> str | None:
-        """Target ID of the Dash reference (targets RadiantDash)."""
+        """The dash this is a button to."""
         member = self.get_member("Dash")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -90,7 +90,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def screen(self) -> str | None:
-        """Target ID of the Screen reference (targets RadiantDashScreen)."""
+        """The screen this button triggers a switch to for."""
         member = self.get_member("Screen")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -111,7 +111,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def switching_enabled(self) -> str | None:
-        """Target ID of the _switchingEnabled reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether switching is enabled."""
         member = self.get_member("_switchingEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -132,7 +132,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def screen_enabled(self) -> str | None:
-        """Target ID of the _screenEnabled reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether the screen is enabled."""
         member = self.get_member("_screenEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -153,7 +153,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def current_screen(self) -> str | None:
-        """Target ID of the _currentScreen reference (targets SyncRef[RadiantDashScreen])."""
+        """The current screen ``Dash`` is on."""
         member = self.get_member("_currentScreen")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -174,7 +174,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets Button)."""
+        """The button to trigger switching to the target screen."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -195,7 +195,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def text(self) -> str | None:
-        """Target ID of the _text reference (targets Text)."""
+        """The text for the button."""
         member = self.get_member("_text")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -216,7 +216,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def text_bg(self) -> str | None:
-        """Target ID of the _textBg reference (targets Image)."""
+        """The text background element."""
         member = self.get_member("_textBg")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -237,7 +237,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def icon(self) -> str | None:
-        """Target ID of the _icon reference (targets Image)."""
+        """The icon for the button."""
         member = self.get_member("_icon")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -258,7 +258,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def layout(self) -> str | None:
-        """Target ID of the _layout reference (targets LayoutElement)."""
+        """The layout UIX element of the button."""
         member = self.get_member("_layout")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -279,7 +279,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def root_rect(self) -> str | None:
-        """Target ID of the _rootRect reference (targets RectTransform)."""
+        """The root Rect UIX element for this button."""
         member = self.get_member("_rootRect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -300,7 +300,7 @@ class RadiantDashButton(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     @property
     def icon_rect(self) -> str | None:
-        """Target ID of the _iconRect reference (targets RectTransform)."""
+        """The root Rect UIX element for the button's icon."""
         member = self.get_member("_iconRect")
         if isinstance(member, members.Reference):
             return member.targetId

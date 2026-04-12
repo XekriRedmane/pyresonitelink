@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ColorTool.
+    """Color tool is a component that drives the color tool from Tools. Pressing Secondary allows for picking a color via raycast, and hitting Primary allows for setting the color of a material.
 
     Category: Tools
     """
@@ -191,7 +191,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The selected color for this tool."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -210,7 +210,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def ensure_unique_material(self) -> primitives.Bool | None:
-        """The EnsureUniqueMaterial field value."""
+        """Creates a new material rather than changing the color of the material of a target object when hitting Primary."""
         member = self.get_member("EnsureUniqueMaterial")
         if member is None:
             return None
@@ -229,7 +229,7 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def color_indicators(self) -> members.SyncList | None:
-        """The ColorIndicators member."""
+        """The field to drive to the current picked color. used for an indicator."""
         member = self.get_member("ColorIndicators")
         if isinstance(member, members.SyncList):
             return member
@@ -237,12 +237,12 @@ class ColorTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @color_indicators.setter
     def color_indicators(self, value: members.SyncList) -> None:
-        """Set the ColorIndicators member."""
+        """Set ColorIndicators. The field to drive to the current picked color. used for an indicator."""
         self.set_member("ColorIndicators", value)
 
     @property
     def color_dialog(self) -> str | None:
-        """Target ID of the _colorDialog reference (targets ColorDialogInterface)."""
+        """The currently open color picker dialogue."""
         member = self.get_member("_colorDialog")
         if isinstance(member, members.Reference):
             return member.targetId

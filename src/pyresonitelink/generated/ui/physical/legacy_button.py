@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyButton.
+    """The LegacyButton component is a leftover Component from content migrated from other platforms. It should not be used, and should be replaced whenever possible.
 
     Category: UI/Physical
     """
@@ -165,7 +165,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The color of the button."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -184,7 +184,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def width(self) -> primitives.Float | None:
-        """The Width field value."""
+        """The width of the button."""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -203,7 +203,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """The height of the button."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -222,7 +222,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """How thick the button is."""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -241,7 +241,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def slant(self) -> primitives.Float | None:
-        """The Slant field value."""
+        """How much Bevel the button should have."""
         member = self.get_member("Slant")
         if member is None:
             return None
@@ -279,7 +279,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def is_pressed(self) -> primitives.Bool | None:
-        """The IsPressed field value."""
+        """Whether the button is being pressed currently."""
         member = self.get_member("IsPressed")
         if member is None:
             return None
@@ -298,7 +298,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def accept_out_of_sight_touch(self) -> primitives.Bool | None:
-        """The AcceptOutOfSightTouch field value."""
+        """Whether this button accepts interaction if the user isn't looking at it."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is None:
             return None
@@ -317,7 +317,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def text_slot(self) -> str | None:
-        """Target ID of the _textSlot reference (targets Slot)."""
+        """The slot of the text visual for this button."""
         member = self.get_member("_textSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -338,7 +338,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def text_renderer(self) -> str | None:
-        """Target ID of the _textRenderer reference (targets TextRenderer)."""
+        """The text renderer for this button."""
         member = self.get_member("_textRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -359,7 +359,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def button_position(self) -> str | None:
-        """Target ID of the _buttonPosition reference (targets IField[primitives.Float3])."""
+        """The position field for this button for physical pressing."""
         member = self.get_member("_buttonPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -380,7 +380,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def collider_size(self) -> str | None:
-        """Target ID of the _colliderSize reference (targets IField[primitives.Float3])."""
+        """The collider size field for this button's collider."""
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -401,7 +401,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def collider_offset(self) -> str | None:
-        """Target ID of the _colliderOffset reference (targets IField[primitives.Float3])."""
+        """The collider offset field for this button's collider."""
         member = self.get_member("_colliderOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -422,7 +422,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def text_position(self) -> str | None:
-        """Target ID of the _textPosition reference (targets IField[primitives.Float3])."""
+        """The text position field for this button's text"""
         member = self.get_member("_textPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -443,7 +443,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def text_bounds(self) -> str | None:
-        """Target ID of the _textBounds reference (targets IField[primitives.Float2])."""
+        """The 2d bounds of this button's text"""
         member = self.get_member("_textBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -464,7 +464,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def holder_mesh(self) -> str | None:
-        """Target ID of the _holderMesh reference (targets BevelStripeMesh)."""
+        """The mesh that is containing this button (like a parent UI."""
         member = self.get_member("_holderMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -485,7 +485,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def button_mesh(self) -> str | None:
-        """Target ID of the _buttonMesh reference (targets BevelStripeMesh)."""
+        """The Bevel mesh that makes up this button's visual."""
         member = self.get_member("_buttonMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -506,7 +506,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def holder_material(self) -> str | None:
-        """Target ID of the _holderMaterial reference (targets PBS_RimMetallic)."""
+        """The material of the parent UI mesh."""
         member = self.get_member("_holderMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -527,7 +527,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def button_material(self) -> str | None:
-        """Target ID of the _buttonMaterial reference (targets PBS_RimMetallic)."""
+        """The material of this button's mesh visual"""
         member = self.get_member("_buttonMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -548,7 +548,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def press_depth(self) -> primitives.Float | None:
-        """The _pressDepth field value."""
+        """How far the user is currently pressing the button physically"""
         member = self.get_member("_pressDepth")
         if member is None:
             return None
@@ -567,7 +567,7 @@ class LegacyButton(GeneratedComponent, IButton, ITouchable, IWorldEventReceiver)
 
     @property
     def flash_index(self) -> primitives.Int | None:
-        """The _flashIndex field value."""
+        """How much to add to the emission of the holder material."""
         member = self.get_member("_flashIndex")
         if member is None:
             return None

@@ -1,0 +1,18 @@
+{
+  "description": "A worker inspector (as opposed to Scene Inspector) is an inspector which only shows a single worker such as a component. When you grab a component reference and click Primary it will usually create one of these inspectors. You can grab sub-objects from some components which will create one of these inspectors when clicking Primary. Some workers are only obtainable via Ref Hacking which is one of the Things to Avoid.",
+  "category": "Uncategorized",
+  "fields": {
+    "_targetContainer": "The container which holds this component or proto component (FrooxEngine.ComponentBase).",
+    "_workerFilter": "A filter to apply to the workers displayed.",
+    "_targetWorker": "The component or proto component (FrooxEngine.ComponentBase) to view."
+  },
+  "methods": {
+    "OnWorkerTypePressed": "Handles when the type for the worker is pressed.",
+    "OnRemoveComponentPressed": "Handles when the user asks to delete the viewed component or proto component (FrooxEngine.ComponentBase).",
+    "OnDuplicateComponentPressed": "Handles when the user asks to duplicate the viewed component or proto component (FrooxEngine.ComponentBase).",
+    "OnOpenContainerPressed": "Handles when the user asks to open the containing worker for the viewed component or proto component (FrooxEngine.ComponentBase)."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorkerInspector&action=raw"
+}

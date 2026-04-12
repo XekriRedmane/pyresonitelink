@@ -1,6 +1,7 @@
 """Generated component: TOTP_Dialog."""
 
 from pyresonitelink.data import members
+from pyresonitelink.generated._enums.state import State
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slide_swap_region import SlideSwapRegion
@@ -16,11 +17,12 @@ class TOTP_Dialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TOTP_Dialog"
 
-    def __init__(self, swap_region: str | SlideSwapRegion | None = None, code_field: str | TextField | None = None, message_text: str | Text | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, swap_region: str | SlideSwapRegion | None = None, state: State | str | None = None, code_field: str | TextField | None = None, message_text: str | Text | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             swap_region: Initial value for _swapRegion.
+            state: Initial value for _state.
             code_field: Initial value for _codeField.
             message_text: Initial value for _messageText.
             component: Existing Component to wrap.
@@ -28,6 +30,8 @@ class TOTP_Dialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         super().__init__(component)
         if swap_region is not None:
             self.swap_region = swap_region
+        if state is not None:
+            self.state = state
         if code_field is not None:
             self.code_field = code_field
         if message_text is not None:
@@ -55,17 +59,24 @@ class TOTP_Dialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def state(self) -> members.FieldEnum | None:
-        """The _state member."""
+    def state(self) -> State | None:
+        """The _state enum value."""
         member = self.get_member("_state")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return State(member.value)
         return None
 
     @state.setter
-    def state(self, value: members.FieldEnum) -> None:
-        """Set the _state member."""
-        self.set_member("_state", value)
+    def state(self, value: State | str) -> None:
+        """Set the _state enum value."""
+        member = self.get_member("_state")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_state",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def code_field(self) -> str | None:

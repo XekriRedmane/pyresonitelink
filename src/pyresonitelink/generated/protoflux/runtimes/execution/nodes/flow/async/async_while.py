@@ -47,7 +47,7 @@ class AsyncWhile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def condition(self) -> str | None:
-        """Target ID of the Condition reference (targets INodeValueOutput[primitives.Bool])."""
+        """Condition that the loop will check to determine if it should iterate again or not. If ``True``, it will iterate again."""
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class AsyncWhile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def loop_start(self) -> str | None:
-        """Target ID of the LoopStart reference (targets INodeOperation)."""
+        """Fires after ``*`` is pulsed and before any iterations are performed. Will be pulsed even if ``Condition`` is ``False`` at the time of the loop beginning."""
         member = self.get_member("LoopStart")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class AsyncWhile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def loop_iteration(self) -> str | None:
-        """Target ID of the LoopIteration reference (targets INodeOperation)."""
+        """Will be pulsed for as long ``Condition`` is ``True``. Only after the context of the current loop iteration is finished will the next iteration fire."""
         member = self.get_member("LoopIteration")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +110,7 @@ class AsyncWhile(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def loop_end(self) -> str | None:
-        """Target ID of the LoopEnd reference (targets INodeOperation)."""
+        """Fires after ``Condition`` turns ``False``, continuing the impulse chain from before."""
         member = self.get_member("LoopEnd")
         if isinstance(member, members.Reference):
             return member.targetId

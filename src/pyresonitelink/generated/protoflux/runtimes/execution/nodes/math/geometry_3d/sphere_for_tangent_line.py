@@ -39,7 +39,7 @@ class SphereForTangentLine(GeneratedComponent, IExecutionNode, INode, ICustomIns
 
     @property
     def line_point(self) -> str | None:
-        """Target ID of the LinePoint reference (targets INodeValueOutput[primitives.Float3])."""
+        """The point where the line is."""
         member = self.get_member("LinePoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class SphereForTangentLine(GeneratedComponent, IExecutionNode, INode, ICustomIns
 
     @property
     def line_direction(self) -> str | None:
-        """Target ID of the LineDirection reference (targets INodeValueOutput[primitives.Float3])."""
+        """The direction of a line provided."""
         member = self.get_member("LineDirection")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +81,7 @@ class SphereForTangentLine(GeneratedComponent, IExecutionNode, INode, ICustomIns
 
     @property
     def sphere_center(self) -> str | None:
-        """Target ID of the SphereCenter reference (targets INodeValueOutput[primitives.Float3])."""
+        """The sphere point we want to make (in some distance away from the line)."""
         member = self.get_member("SphereCenter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -102,7 +102,7 @@ class SphereForTangentLine(GeneratedComponent, IExecutionNode, INode, ICustomIns
 
     @property
     def tangent_point(self) -> members.EmptyElement | None:
-        """The TangentPoint member."""
+        """Returns the tangent point where the line and sphere touch."""
         member = self.get_member("TangentPoint")
         if isinstance(member, members.EmptyElement):
             return member
@@ -110,12 +110,12 @@ class SphereForTangentLine(GeneratedComponent, IExecutionNode, INode, ICustomIns
 
     @tangent_point.setter
     def tangent_point(self, value: members.EmptyElement) -> None:
-        """Set the TangentPoint member."""
+        """Set TangentPoint. Returns the tangent point where the line and sphere touch."""
         self.set_member("TangentPoint", value)
 
     @property
     def radius(self) -> members.EmptyElement | None:
-        """The Radius member."""
+        """Returns the radius of the sphere that is created by this calculation."""
         member = self.get_member("Radius")
         if isinstance(member, members.EmptyElement):
             return member
@@ -123,6 +123,6 @@ class SphereForTangentLine(GeneratedComponent, IExecutionNode, INode, ICustomIns
 
     @radius.setter
     def radius(self, value: members.EmptyElement) -> None:
-        """Set the Radius member."""
+        """Set Radius. Returns the radius of the sphere that is created by this calculation."""
         self.set_member("Radius", value)
 

@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonParentUnderUser.
+    """The ButtonParentUnderUser component takes in a slot and some optional parameters for parenting slots. When a IButton is pressed, this component will parent any slot provided to the user that pressed the button.
+
+}}
 
     Category: Common UI/Button Interactions
+
+    Useful if you want certain slots to be parented to you when a button is
+    pressed.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonParentUnderUser"
@@ -43,7 +48,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets Slot)."""
+        """The slot to parent to the user that pressed the button."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +69,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
 
     @property
     def find_object_root(self) -> primitives.Bool | None:
-        """The FindObjectRoot field value."""
+        """Looks upwards in the slot heirarchy to find the slot with the Object Root component, and then parents that slot instead to the user."""
         member = self.get_member("FindObjectRoot")
         if member is None:
             return None
@@ -83,7 +88,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
 
     @property
     def unparent_when_parented(self) -> primitives.Bool | None:
-        """The UnparentWhenParented field value."""
+        """Makes this component's parenting effects togglable."""
         member = self.get_member("UnparentWhenParented")
         if member is None:
             return None
@@ -102,7 +107,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
 
     @property
     def preserve_original_space(self) -> primitives.Bool | None:
-        """The PreserveOriginalSpace field value."""
+        """Keep track of the original space."""
         member = self.get_member("PreserveOriginalSpace")
         if member is None:
             return None
@@ -121,7 +126,7 @@ class ButtonParentUnderUser(GeneratedComponent, IButtonPressReceiver, IWorldEven
 
     @property
     def original_space(self) -> str | None:
-        """Target ID of the _originalSpace reference (targets Slot)."""
+        """The slot that represents the original space."""
         member = self.get_member("_originalSpace")
         if isinstance(member, members.Reference):
             return member.targetId

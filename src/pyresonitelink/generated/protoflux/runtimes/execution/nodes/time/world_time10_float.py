@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldTime10Float(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The World Time 10 Float node returns the total world time that this world has been open for multiplied by 10.
+    """The ``World Time 10 Float`` node returns the total world time that this world has been open for multiplied by 10.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

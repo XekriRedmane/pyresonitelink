@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.culling import Culling
+from pyresonitelink.generated._enums.alpha_handling import AlphaHandling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -15,14 +17,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PBS_MultiUV_Metallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PBS_MultiUV_Metallic.
+    """The PBS_MultiUVMetallic component is used as a material that can stack two different sets of material data except for shine maps. When this material's AlphaHandling mode is set to AlphaBlend, it behaves as if if were Opaque, which is a known bug.https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/825
 
     Category: Assets/Materials/PBS
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_MultiUV_Metallic"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, albedo_scale: primitives.Float2 | None = None, albedo_offset: primitives.Float2 | None = None, albedo_uv: primitives.Int | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, emission_map_uv: primitives.Int | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, normal_map_uv: primitives.Int | None = None, occlusion_map_scale: primitives.Float2 | None = None, occlusion_map_offset: primitives.Float2 | None = None, occlusion_map_uv: primitives.Int | None = None, secondary_albedo_scale: primitives.Float2 | None = None, secondary_albedo_offset: primitives.Float2 | None = None, secondary_albedo_uv: primitives.Int | None = None, secondary_emission_map_scale: primitives.Float2 | None = None, secondary_emission_map_offset: primitives.Float2 | None = None, secondary_emission_map_uv: primitives.Int | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, secondary_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, secondary_emissive_color: primitives.ColorX | None = None, secondary_emissive_map: str | IAssetProvider[ITexture2D] | None = None, alpha_clip: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, metallic_map_scale: primitives.Float2 | None = None, metallic_map_offset: primitives.Float2 | None = None, metallic_map_uv: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, albedo_scale: primitives.Float2 | None = None, albedo_offset: primitives.Float2 | None = None, albedo_uv: primitives.Int | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, emission_map_uv: primitives.Int | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, normal_map_uv: primitives.Int | None = None, occlusion_map_scale: primitives.Float2 | None = None, occlusion_map_offset: primitives.Float2 | None = None, occlusion_map_uv: primitives.Int | None = None, secondary_albedo_scale: primitives.Float2 | None = None, secondary_albedo_offset: primitives.Float2 | None = None, secondary_albedo_uv: primitives.Int | None = None, secondary_emission_map_scale: primitives.Float2 | None = None, secondary_emission_map_offset: primitives.Float2 | None = None, secondary_emission_map_uv: primitives.Int | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, secondary_albedo_texture: str | IAssetProvider[ITexture2D] | None = None, secondary_emissive_color: primitives.ColorX | None = None, secondary_emissive_map: str | IAssetProvider[ITexture2D] | None = None, culling: Culling | str | None = None, alpha_handling: AlphaHandling | str | None = None, alpha_clip: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, metallic_map_scale: primitives.Float2 | None = None, metallic_map_offset: primitives.Float2 | None = None, metallic_map_uv: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -56,6 +58,8 @@ class PBS_MultiUV_Metallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             secondary_albedo_texture: Initial value for SecondaryAlbedoTexture.
             secondary_emissive_color: Initial value for SecondaryEmissiveColor.
             secondary_emissive_map: Initial value for SecondaryEmissiveMap.
+            culling: Initial value for Culling.
+            alpha_handling: Initial value for AlphaHandling.
             alpha_clip: Initial value for AlphaClip.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
@@ -129,6 +133,10 @@ class PBS_MultiUV_Metallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             self.secondary_emissive_color = secondary_emissive_color
         if secondary_emissive_map is not None:
             self.secondary_emissive_map = secondary_emissive_map
+        if culling is not None:
+            self.culling = culling
+        if alpha_handling is not None:
+            self.alpha_handling = alpha_handling
         if alpha_clip is not None:
             self.alpha_clip = alpha_clip
         if offset_factor is not None:
@@ -735,30 +743,44 @@ class PBS_MultiUV_Metallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, 
             )
 
     @property
-    def culling(self) -> members.FieldEnum | None:
-        """The Culling member."""
+    def culling(self) -> Culling | None:
+        """The Culling enum value."""
         member = self.get_member("Culling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Culling(member.value)
         return None
 
     @culling.setter
-    def culling(self, value: members.FieldEnum) -> None:
-        """Set the Culling member."""
-        self.set_member("Culling", value)
+    def culling(self, value: Culling | str) -> None:
+        """Set the Culling enum value."""
+        member = self.get_member("Culling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Culling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def alpha_handling(self) -> members.FieldEnum | None:
-        """The AlphaHandling member."""
+    def alpha_handling(self) -> AlphaHandling | None:
+        """The AlphaHandling enum value."""
         member = self.get_member("AlphaHandling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AlphaHandling(member.value)
         return None
 
     @alpha_handling.setter
-    def alpha_handling(self, value: members.FieldEnum) -> None:
-        """Set the AlphaHandling member."""
-        self.set_member("AlphaHandling", value)
+    def alpha_handling(self, value: AlphaHandling | str) -> None:
+        """Set the AlphaHandling enum value."""
+        member = self.get_member("AlphaHandling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AlphaHandling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def alpha_clip(self) -> primitives.Float | None:

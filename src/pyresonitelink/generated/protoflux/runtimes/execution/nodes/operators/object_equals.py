@@ -44,7 +44,7 @@ class ObjectEquals(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], 
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeObjectOutput[T])."""
+        """The first value to check."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +65,7 @@ class ObjectEquals(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], 
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeObjectOutput[T])."""
+        """The second value to check."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId

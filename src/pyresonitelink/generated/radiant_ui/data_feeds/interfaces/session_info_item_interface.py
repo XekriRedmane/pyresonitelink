@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SessionInfoItemInterface.
+    """The SessionInfoItemInterface is usually mapped to a World Data Feed Item in order to show information about a particular session.
 
     Category: Radiant UI/Data Feeds/Interfaces
     """
@@ -432,7 +432,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def session_name(self) -> str | None:
-        """Target ID of the SessionName reference (targets IField[primitives.String])."""
+        """The field to fill with the SessionName of the FeedItem mapped to this interface."""
         member = self.get_member("SessionName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -453,7 +453,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def description(self) -> str | None:
-        """Target ID of the Description reference (targets IField[primitives.String])."""
+        """The field to fill with the Description of the FeedItem mapped to this interface."""
         member = self.get_member("Description")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -474,7 +474,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def thumbnail_url(self) -> str | None:
-        """Target ID of the ThumbnailUrl reference (targets IField[str])."""
+        """The field to fill with the ThumbnailUrl of the FeedItem mapped to this interface."""
         member = self.get_member("ThumbnailUrl")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -495,7 +495,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def session_id(self) -> str | None:
-        """Target ID of the SessionId reference (targets IField[primitives.String])."""
+        """The field to fill with the SessionId of the FeedItem mapped to this interface."""
         member = self.get_member("SessionId")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -516,7 +516,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def session_urls(self) -> str | None:
-        """Target ID of the SessionURLs reference (targets SyncFieldList[str])."""
+        """The fill to drive with the SessionURLs of the FeedItem mapped to this interface."""
         member = self.get_member("SessionURLs")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -537,7 +537,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def host_user_id(self) -> str | None:
-        """Target ID of the HostUserId reference (targets IField[primitives.String])."""
+        """The fill to drive with the HostUserId of the FeedItem mapped to this interface."""
         member = self.get_member("HostUserId")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -558,7 +558,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def host_user_session_id(self) -> str | None:
-        """Target ID of the HostUserSessionId reference (targets IField[primitives.String])."""
+        """The field to fill with the HostUserSessionId of the FeedItem mapped to this interface."""
         member = self.get_member("HostUserSessionId")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -579,7 +579,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def host_machine_id(self) -> str | None:
-        """Target ID of the HostMachineId reference (targets IField[primitives.String])."""
+        """The field to fill with the HostMachineId of the FeedItem mapped to this interface."""
         member = self.get_member("HostMachineId")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -600,7 +600,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def host_username(self) -> str | None:
-        """Target ID of the HostUsername reference (targets IField[primitives.String])."""
+        """The field to fill with the HostUsername of the FeedItem mapped to this interface."""
         member = self.get_member("HostUsername")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -621,7 +621,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def compatibility_hash(self) -> str | None:
-        """Target ID of the CompatibilityHash reference (targets IField[primitives.String])."""
+        """The field to fill with the CompatibilityHash of the FeedItem mapped to this interface."""
         member = self.get_member("CompatibilityHash")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -642,7 +642,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def universe_id(self) -> str | None:
-        """Target ID of the UniverseId reference (targets IField[primitives.String])."""
+        """The field to fill with the UniverseId of the FeedItem mapped to this interface."""
         member = self.get_member("UniverseId")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -663,7 +663,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def app_version(self) -> str | None:
-        """Target ID of the AppVersion reference (targets IField[primitives.String])."""
+        """The field to fill with the AppVersion of the FeedItem mapped to this interface."""
         member = self.get_member("AppVersion")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -684,7 +684,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def is_headless_host(self) -> str | None:
-        """Target ID of the IsHeadlessHost reference (targets IField[primitives.Bool])."""
+        """The field to fill with the IsHeadlessHost of the FeedItem mapped to this interface."""
         member = self.get_member("IsHeadlessHost")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -705,7 +705,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def is_on_lan(self) -> str | None:
-        """Target ID of the IsOnLAN reference (targets IField[primitives.Bool])."""
+        """The field to fill with the IsOnLAN of the FeedItem mapped to this interface."""
         member = self.get_member("IsOnLAN")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -726,7 +726,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def joined_users(self) -> str | None:
-        """Target ID of the JoinedUsers reference (targets IField[primitives.Int])."""
+        """The field to fill with the JoinedUsers of the FeedItem mapped to this interface."""
         member = self.get_member("JoinedUsers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -747,7 +747,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def active_users(self) -> str | None:
-        """Target ID of the ActiveUsers reference (targets IField[primitives.Int])."""
+        """The field to fill with the ActiveUsers of the FeedItem mapped to this interface."""
         member = self.get_member("ActiveUsers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -768,7 +768,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def total_joined_users(self) -> str | None:
-        """Target ID of the TotalJoinedUsers reference (targets IField[primitives.Int])."""
+        """The field to fill with the TotalJoinedUsers of the FeedItem mapped to this interface."""
         member = self.get_member("TotalJoinedUsers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -789,7 +789,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def total_active_users(self) -> str | None:
-        """Target ID of the TotalActiveUsers reference (targets IField[primitives.Int])."""
+        """The field to fill with the TotalActiveUsers of the FeedItem mapped to this interface."""
         member = self.get_member("TotalActiveUsers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -810,7 +810,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def maximum_users(self) -> str | None:
-        """Target ID of the MaximumUsers reference (targets IField[primitives.Int])."""
+        """The field to fill with the MaximumUsers of the FeedItem mapped to this interface."""
         member = self.get_member("MaximumUsers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -831,7 +831,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def session_begin_time(self) -> str | None:
-        """Target ID of the SessionBeginTime reference (targets IField[str])."""
+        """The field to fill with the SessionBeginTime of the FeedItem mapped to this interface."""
         member = self.get_member("SessionBeginTime")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -852,7 +852,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def last_update(self) -> str | None:
-        """Target ID of the LastUpdate reference (targets IField[str])."""
+        """The field to fill with the LastUpdate of the FeedItem mapped to this interface."""
         member = self.get_member("LastUpdate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -873,7 +873,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def access_level(self) -> str | None:
-        """Target ID of the AccessLevel reference (targets IField[SessionAccessLevel])."""
+        """The field to fill with the AccessLevel of the FeedItem mapped to this interface."""
         member = self.get_member("AccessLevel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -894,7 +894,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def hide_from_listing(self) -> str | None:
-        """Target ID of the HideFromListing reference (targets IField[primitives.Bool])."""
+        """The field to fill with the HideFromListing of the FeedItem mapped to this interface."""
         member = self.get_member("HideFromListing")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -915,7 +915,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def away_kick_enabled(self) -> str | None:
-        """Target ID of the AwayKickEnabled reference (targets IField[primitives.Bool])."""
+        """The field to fill with the AwayKickEnabled of the FeedItem mapped to this interface."""
         member = self.get_member("AwayKickEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -936,7 +936,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def away_kick_interval(self) -> str | None:
-        """Target ID of the AwayKickInterval reference (targets IField[str])."""
+        """The field to fill with the AwayKickInterval of the FeedItem mapped to this interface."""
         member = self.get_member("AwayKickInterval")
         if isinstance(member, members.Reference):
             return member.targetId

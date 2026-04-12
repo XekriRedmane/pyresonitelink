@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SineHapticFilter.
+    """The SineHapticFilter component is used to make haptics triggered by Components on the same slot change in intensity over time like its riding waves.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics/Filters
+
+    Attach to a slot with a HapticVolume and a collider. This component will
+    then start working.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SineHapticFilter"
@@ -44,7 +49,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def use_global_time(self) -> primitives.Bool | None:
-        """The UseGlobalTime field value."""
+        """Whether to use the global time or the initial local time for initial time when touched."""
         member = self.get_member("UseGlobalTime")
         if member is None:
             return None
@@ -63,7 +68,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def distance_scale(self) -> primitives.Float | None:
-        """The DistanceScale field value."""
+        """An optional value on how to add to the offset in time for the waves of intensity based on distance of the haptic device from the slot this component is on."""
         member = self.get_member("DistanceScale")
         if member is None:
             return None
@@ -82,7 +87,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def axis_scale(self) -> primitives.Float3 | None:
-        """The AxisScale field value."""
+        """An optional value on how to add to the offset in time for the waves of intensity based on how close it is to a line direction in local space."""
         member = self.get_member("AxisScale")
         if member is None:
             return None
@@ -101,7 +106,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_intensity(self) -> primitives.Float | None:
-        """The MinIntensity field value."""
+        """The minimum haptics intensity this component will send."""
         member = self.get_member("MinIntensity")
         if member is None:
             return None
@@ -120,7 +125,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_intensity(self) -> primitives.Float | None:
-        """The MaxIntensity field value."""
+        """The maximum haptics intensity this component will send."""
         member = self.get_member("MaxIntensity")
         if member is None:
             return None
@@ -139,7 +144,7 @@ class SineHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def frequency(self) -> primitives.Float | None:
-        """The Frequency field value."""
+        """The speed at which the sinewave goes up and down over time."""
         member = self.get_member("Frequency")
         if member is None:
             return None

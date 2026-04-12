@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraPositioningSettings.
+    """See Camera.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraPositioningSettings"
@@ -33,7 +35,7 @@ class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector)
 
     @property
     def avoid_occlusion(self) -> primitives.Bool | None:
-        """The AvoidOcclusion field value."""
+        """When the camera is behind a wall or anything that is collidable, it will zoom the view in front of it to focus on the subject. This will not work in manual mode."""
         member = self.get_member("AvoidOcclusion")
         if member is None:
             return None
@@ -52,7 +54,7 @@ class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector)
 
     @property
     def keep_in_world_space(self) -> primitives.Bool | None:
-        """The KeepInWorldSpace field value."""
+        """This keeps the camera in world space."""
         member = self.get_member("KeepInWorldSpace")
         if member is None:
             return None
@@ -71,7 +73,7 @@ class InteractiveCameraPositioningSettings(GeneratedComponent, ICustomInspector)
 
     @property
     def movement_wobble(self) -> primitives.Bool | None:
-        """The MovementWobble field value."""
+        """This makes the camera have gradual movement in different positions around the subject. This only works with Third Person or Group modes."""
         member = self.get_member("MovementWobble")
         if member is None:
             return None

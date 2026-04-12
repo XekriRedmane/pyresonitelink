@@ -1,0 +1,12 @@
+{
+  "description": "The AvatarLiveIndicator component is used to show or enable a slot (usually a visual) to let other users know that you are live. This activates from the streaming camera control panel, specifically the \"Mirror to display\" button.\n\n}}",
+  "category": "Users:Common Avatar System:Nameplate",
+  "fields": {
+    "IsLive": "Whether ``_activeUser`` is streaming or not.",
+    "_activeUser": "The user that this component is monitoring"
+  },
+  "methods": {},
+  "usage": "Usually this is used with the Camera, especially when streaming. This is also already setup along with the Nameplate and positioned on it (however, this can be customizable).",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarLiveIndicator&action=raw"
+}

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueMinMulti(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The ValueMinMulti will take multiple inputs and output the minimum value.
+    """The ``ValueMinMulti`` will take multiple inputs and output the minimum value.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math
 
@@ -27,7 +27,7 @@ class ValueMinMulti(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     @property
     def operands(self) -> members.SyncList | None:
-        """The Operands member."""
+        """One of the values to compare."""
         member = self.get_member("Operands")
         if isinstance(member, members.SyncList):
             return member
@@ -35,6 +35,6 @@ class ValueMinMulti(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     @operands.setter
     def operands(self, value: members.SyncList) -> None:
-        """Set the Operands member."""
+        """Set Operands. One of the values to compare."""
         self.set_member("Operands", value)
 

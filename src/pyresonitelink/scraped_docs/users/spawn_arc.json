@@ -1,0 +1,25 @@
+{
+  "description": "The SpawnArc component spawns in users along the arc of a circle, with an optional weight to select this spawner.\n\n}}",
+  "category": "Users",
+  "fields": {
+    "Weight": "The likelihood of this spawner being chosen for a spawning user.",
+    "Capacity": "How many users this spawner can have spawned at a time.",
+    "Radius": "The range of how far this spawner can spawn this user.",
+    "Arc": "The shape of how the spawner will place the user.",
+    "UsersPerArc": "The segment area for the users to spawn at in this arc.",
+    "CenterArcOffset": "The offset rotation of the center of the arc circle for this spawner.",
+    "GrowBothSides": "The option to extend both sides for the spawn arc, fanning out from a center point.",
+    "RowHeightOffset": "The hieght where the users will spawn along the circle.",
+    "OrientUser": "Positions and rotates the user towards the center.",
+    "ParentUser": "Keeps the user parented onto this specific spawner slot.",
+    "TiltUsers": "Tilts the user when spawning in.",
+    "PositionNode": "Takes the position of the user's body node for spawning.",
+    "RotationNode": "Takes the rotation of the user's body node for spawning.",
+    "_showTest": "Internal: Mostly for debugging.",
+    "_testSlots": "Internal: Shows the number of test slots on this spawning arc."
+  },
+  "methods": {},
+  "usage": "Used to help shape how you want users to spawn in a world.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SpawnArc&action=raw"
+}

@@ -3,6 +3,11 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.mask_texture_mode import MaskTextureMode
+from pyresonitelink.generated._enums.blend_mode import BlendMode
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.sidedness import Sidedness
+from pyresonitelink.generated._enums.zwrite import ZWrite
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -18,14 +23,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillboardMaterial, IBlendModeMaterial, ICullingMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UnlitMaterial.
+    """The UnlitMaterial component is a material that can render meshes without lighting at full bright. Optionally can render each vertex like a square that faces the user or a direction. It can also optionally render differently depending on which eye it is viewed from. This is used in the left and right cat item, and for 3D photos.
 
     Category: Assets/Materials/Unlit
+
+    Attach to a slot and use the material Component in the list of materials
+    on a MeshRenderer or a SkinnedMeshRenderer with a mesh to view what this
+    material looks like.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UnlitMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, tint_color: primitives.ColorX | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, mask_texture: str | IAssetProvider[ITexture2D] | None = None, mask_scale: primitives.Float2 | None = None, mask_offset: primitives.Float2 | None = None, alpha_cutoff: primitives.Float | None = None, use_vertex_colors: primitives.Bool | None = None, offset_texture: str | IAssetProvider[ITexture2D] | None = None, offset_magnitude: primitives.Float2 | None = None, offset_texture_scale: primitives.Float2 | None = None, offset_texture_offset: primitives.Float2 | None = None, polar_uvmapping: primitives.Bool | None = None, polar_power: primitives.Float | None = None, stereo_texture_transform: primitives.Bool | None = None, right_eye_texture_scale: primitives.Float2 | None = None, right_eye_texture_offset: primitives.Float2 | None = None, decode_as_normal_map: primitives.Bool | None = None, use_billboard_geometry: primitives.Bool | None = None, use_per_billboard_scale: primitives.Bool | None = None, use_per_billboard_rotation: primitives.Bool | None = None, use_per_billboard_uv: primitives.Bool | None = None, billboard_size: primitives.Float2 | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, unlit: str | IAssetProvider[Shader] | None = None, unlit_billboard: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, tint_color: primitives.ColorX | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, mask_texture: str | IAssetProvider[ITexture2D] | None = None, mask_scale: primitives.Float2 | None = None, mask_offset: primitives.Float2 | None = None, mask_mode: MaskTextureMode | str | None = None, blend_mode: BlendMode | str | None = None, alpha_cutoff: primitives.Float | None = None, use_vertex_colors: primitives.Bool | None = None, vertex_color_interpolation_space: ColorProfile | str | None = None, sidedness: Sidedness | str | None = None, zwrite: ZWrite | str | None = None, offset_texture: str | IAssetProvider[ITexture2D] | None = None, offset_magnitude: primitives.Float2 | None = None, offset_texture_scale: primitives.Float2 | None = None, offset_texture_offset: primitives.Float2 | None = None, polar_uvmapping: primitives.Bool | None = None, polar_power: primitives.Float | None = None, stereo_texture_transform: primitives.Bool | None = None, right_eye_texture_scale: primitives.Float2 | None = None, right_eye_texture_offset: primitives.Float2 | None = None, decode_as_normal_map: primitives.Bool | None = None, use_billboard_geometry: primitives.Bool | None = None, use_per_billboard_scale: primitives.Bool | None = None, use_per_billboard_rotation: primitives.Bool | None = None, use_per_billboard_uv: primitives.Bool | None = None, billboard_size: primitives.Float2 | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, unlit: str | IAssetProvider[Shader] | None = None, unlit_billboard: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,8 +46,13 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             mask_texture: Initial value for MaskTexture.
             mask_scale: Initial value for MaskScale.
             mask_offset: Initial value for MaskOffset.
+            mask_mode: Initial value for MaskMode.
+            blend_mode: Initial value for BlendMode.
             alpha_cutoff: Initial value for AlphaCutoff.
             use_vertex_colors: Initial value for UseVertexColors.
+            vertex_color_interpolation_space: Initial value for VertexColorInterpolationSpace.
+            sidedness: Initial value for Sidedness.
+            zwrite: Initial value for ZWrite.
             offset_texture: Initial value for OffsetTexture.
             offset_magnitude: Initial value for OffsetMagnitude.
             offset_texture_scale: Initial value for OffsetTextureScale.
@@ -78,10 +92,20 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             self.mask_scale = mask_scale
         if mask_offset is not None:
             self.mask_offset = mask_offset
+        if mask_mode is not None:
+            self.mask_mode = mask_mode
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
         if alpha_cutoff is not None:
             self.alpha_cutoff = alpha_cutoff
         if use_vertex_colors is not None:
             self.use_vertex_colors = use_vertex_colors
+        if vertex_color_interpolation_space is not None:
+            self.vertex_color_interpolation_space = vertex_color_interpolation_space
+        if sidedness is not None:
+            self.sidedness = sidedness
+        if zwrite is not None:
+            self.zwrite = zwrite
         if offset_texture is not None:
             self.offset_texture = offset_texture
         if offset_magnitude is not None:
@@ -280,30 +304,44 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def mask_mode(self) -> members.FieldEnum | None:
-        """The MaskMode member."""
+    def mask_mode(self) -> MaskTextureMode | None:
+        """The MaskMode enum value."""
         member = self.get_member("MaskMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MaskTextureMode(member.value)
         return None
 
     @mask_mode.setter
-    def mask_mode(self, value: members.FieldEnum) -> None:
-        """Set the MaskMode member."""
-        self.set_member("MaskMode", value)
+    def mask_mode(self, value: MaskTextureMode | str) -> None:
+        """Set the MaskMode enum value."""
+        member = self.get_member("MaskMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MaskMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def alpha_cutoff(self) -> primitives.Float | None:
@@ -344,43 +382,64 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
             )
 
     @property
-    def vertex_color_interpolation_space(self) -> members.FieldEnum | None:
-        """The VertexColorInterpolationSpace member."""
+    def vertex_color_interpolation_space(self) -> ColorProfile | None:
+        """The VertexColorInterpolationSpace enum value."""
         member = self.get_member("VertexColorInterpolationSpace")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @vertex_color_interpolation_space.setter
-    def vertex_color_interpolation_space(self, value: members.FieldEnum) -> None:
-        """Set the VertexColorInterpolationSpace member."""
-        self.set_member("VertexColorInterpolationSpace", value)
+    def vertex_color_interpolation_space(self, value: ColorProfile | str) -> None:
+        """Set the VertexColorInterpolationSpace enum value."""
+        member = self.get_member("VertexColorInterpolationSpace")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "VertexColorInterpolationSpace",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def sidedness(self) -> members.FieldEnum | None:
-        """The Sidedness member."""
+    def sidedness(self) -> Sidedness | None:
+        """The Sidedness enum value."""
         member = self.get_member("Sidedness")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Sidedness(member.value)
         return None
 
     @sidedness.setter
-    def sidedness(self, value: members.FieldEnum) -> None:
-        """Set the Sidedness member."""
-        self.set_member("Sidedness", value)
+    def sidedness(self, value: Sidedness | str) -> None:
+        """Set the Sidedness enum value."""
+        member = self.get_member("Sidedness")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Sidedness",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def offset_texture(self) -> str | None:

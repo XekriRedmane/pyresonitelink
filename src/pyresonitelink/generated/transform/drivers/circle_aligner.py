@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CircleAligner.
+    """The CircleAligner component is used to position a list of slots in a circle.
 
     Category: Transform/Drivers
     """
@@ -48,7 +48,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_add_children(self) -> primitives.Bool | None:
-        """The AutoAddChildren field value."""
+        """Controls whether slots below this component's slot in the hierarchy are automatically added to ``Items``"""
         member = self.get_member("AutoAddChildren")
         if member is None:
             return None
@@ -67,7 +67,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_add_ignore_tags(self) -> members.SyncList | None:
-        """The AutoAddIgnoreTags member."""
+        """If a slot has a Tag matching one of the tags in this list, it will not be auto added to ``Items``"""
         member = self.get_member("AutoAddIgnoreTags")
         if isinstance(member, members.SyncList):
             return member
@@ -75,12 +75,12 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @auto_add_ignore_tags.setter
     def auto_add_ignore_tags(self, value: members.SyncList) -> None:
-        """Set the AutoAddIgnoreTags member."""
+        """Set AutoAddIgnoreTags. If a slot has a Tag matching one of the tags in this list, it will not be auto added to ``Items``"""
         self.set_member("AutoAddIgnoreTags", value)
 
     @property
     def axis(self) -> primitives.Float3 | None:
-        """The Axis field value."""
+        """The axis around which the slots will be aligned."""
         member = self.get_member("Axis")
         if member is None:
             return None
@@ -99,7 +99,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the circle that the slots will be positioned on."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -118,7 +118,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset(self) -> primitives.Float | None:
-        """The Offset field value."""
+        """Offsets the starting position of the circle."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -137,7 +137,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def arc(self) -> primitives.Float | None:
-        """The Arc field value."""
+        """360 by default. If smaller, the slots will only fill that section of a circle. Likewise, if it is larger than 360, the slots will wrap around the circle multiple times."""
         member = self.get_member("Arc")
         if member is None:
             return None
@@ -156,7 +156,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def fill_whole_arc(self) -> primitives.Bool | None:
-        """The FillWholeArc field value."""
+        """If true, the last slot will be at the very end of the arch, otherwise there will be a gap after the last slots."""
         member = self.get_member("FillWholeArc")
         if member is None:
             return None
@@ -175,7 +175,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation_offset(self) -> primitives.Float | None:
-        """The RotationOffset field value."""
+        """An offset, in degrees, that is applied to the rotation of the target slots."""
         member = self.get_member("RotationOffset")
         if member is None:
             return None
@@ -194,7 +194,7 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def items(self) -> members.SyncList | None:
-        """The Items member."""
+        """The list of slots to be aligned."""
         member = self.get_member("Items")
         if isinstance(member, members.SyncList):
             return member
@@ -202,6 +202,6 @@ class CircleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @items.setter
     def items(self, value: members.SyncList) -> None:
-        """Set the Items member."""
+        """Set Items. The list of slots to be aligned."""
         self.set_member("Items", value)
 

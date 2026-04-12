@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacySegmentCircleMenuController.
+    """This is a Legacy item and should not be used.
+
+    Just don't.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacySegmentCircleMenuController"
@@ -60,7 +62,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def default_font_material(self) -> str | None:
-        """Target ID of the DefaultFontMaterial reference (targets TextUnlitMaterial)."""
+        """The default font to use for menu items."""
         member = self.get_member("DefaultFontMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +83,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def disabled_outline_color(self) -> primitives.ColorX | None:
-        """The DisabledOutlineColor field value."""
+        """The outline color menu items should have when disabled."""
         member = self.get_member("DisabledOutlineColor")
         if member is None:
             return None
@@ -100,7 +102,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def disabled_fill_color(self) -> primitives.ColorX | None:
-        """The DisabledFillColor field value."""
+        """The color menu items should have when disabled."""
         member = self.get_member("DisabledFillColor")
         if member is None:
             return None
@@ -119,7 +121,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def logo_circle(self) -> primitives.Bool | None:
-        """The LogoCircle field value."""
+        """Whether this is a logo Circle from a long dead platform. he who shall not be named on the holy land that is this wiki - @989onan."""
         member = self.get_member("LogoCircle")
         if member is None:
             return None
@@ -138,7 +140,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def generate_colliders(self) -> primitives.Bool | None:
-        """The GenerateColliders field value."""
+        """Whether to generate colliders for menu items."""
         member = self.get_member("GenerateColliders")
         if member is None:
             return None
@@ -157,7 +159,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def highlight_radius_offset(self) -> primitives.Float | None:
-        """The HighlightRadiusOffset field value."""
+        """The tolerance for highlighting menu items."""
         member = self.get_member("HighlightRadiusOffset")
         if member is None:
             return None
@@ -176,7 +178,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def logo_menu_mesh(self) -> str | None:
-        """Target ID of the logoMenuMesh reference (targets LegacyCircleSegmentMesh)."""
+        """The logo mesh from a long dead platform. he who shall not be named on the holy land that is this wiki - @989onan."""
         member = self.get_member("logoMenuMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -197,7 +199,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def circle_menu_items(self) -> members.SyncList | None:
-        """The circleMenuItems member."""
+        """The list of menu items this component is managing."""
         member = self.get_member("circleMenuItems")
         if isinstance(member, members.SyncList):
             return member
@@ -205,12 +207,12 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @circle_menu_items.setter
     def circle_menu_items(self, value: members.SyncList) -> None:
-        """Set the circleMenuItems member."""
+        """Set circleMenuItems. The list of menu items this component is managing."""
         self.set_member("circleMenuItems", value)
 
     @property
     def independent_menu_items(self) -> members.SyncList | None:
-        """The independentMenuItems member."""
+        """The list of independent menu items this list is managing for other tools."""
         member = self.get_member("independentMenuItems")
         if isinstance(member, members.SyncList):
             return member
@@ -218,12 +220,12 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @independent_menu_items.setter
     def independent_menu_items(self, value: members.SyncList) -> None:
-        """Set the independentMenuItems member."""
+        """Set independentMenuItems. The list of independent menu items this list is managing for other tools."""
         self.set_member("independentMenuItems", value)
 
     @property
     def items_arcs(self) -> members.SyncList | None:
-        """The itemsArcs member."""
+        """The list of item arcs this component is managing."""
         member = self.get_member("itemsArcs")
         if isinstance(member, members.SyncList):
             return member
@@ -231,12 +233,12 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @items_arcs.setter
     def items_arcs(self, value: members.SyncList) -> None:
-        """Set the itemsArcs member."""
+        """Set itemsArcs. The list of item arcs this component is managing."""
         self.set_member("itemsArcs", value)
 
     @property
     def overrides_drive(self) -> str | None:
-        """Target ID of the _overridesDrive reference (targets SyncList[MenuSegment])."""
+        """List of menu segments to use as overrides."""
         member = self.get_member("_overridesDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -257,7 +259,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def independent_drive(self) -> str | None:
-        """Target ID of the _independentDrive reference (targets SyncList[MenuSegment])."""
+        """List of indepent drives of menu segments."""
         member = self.get_member("_independentDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -278,7 +280,7 @@ class LegacySegmentCircleMenuController(GeneratedComponent, IComponent, IWorldEv
 
     @property
     def menu_items_slot(self) -> str | None:
-        """Target ID of the menuItemsSlot reference (targets Slot)."""
+        """Where to generate and place menu items for this component."""
         member = self.get_member("menuItemsSlot")
         if isinstance(member, members.Reference):
             return member.targetId

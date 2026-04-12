@@ -34,7 +34,7 @@ class HasLocalFocus(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[IFocusable])."""
+        """The target IFocusable reference to check."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

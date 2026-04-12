@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class GeneralVRSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.GeneralVRSettings.
+    """See Settings.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GeneralVRSettings"
@@ -27,7 +29,7 @@ class GeneralVRSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_vr_hotswitching(self) -> primitives.Bool | None:
-        """The UseVRHotswitching field value."""
+        """Whether to allow hot swapping to VR and desktop when taking on or off a VR headset."""
         member = self.get_member("UseVRHotswitching")
         if member is None:
             return None

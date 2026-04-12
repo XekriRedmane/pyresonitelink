@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorBySpeedMinMax(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ColorBySpeedMinMax.
+    """The Color By Speed Min Max component makes particles in a particle system change their color based on their speed using a minimum and maximum speed value. Lerps between min and max colors.
 
     Category: Rendering/Particle System/Modules
     """
@@ -38,7 +38,7 @@ class ColorBySpeedMinMax(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     @property
     def min_speed(self) -> primitives.Float | None:
-        """The MinSpeed field value."""
+        """The speed the particle has to be be traveling at or under to become ``MinColor``."""
         member = self.get_member("MinSpeed")
         if member is None:
             return None
@@ -57,7 +57,7 @@ class ColorBySpeedMinMax(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     @property
     def max_speed(self) -> primitives.Float | None:
-        """The MaxSpeed field value."""
+        """The speed the particle has to be be traveling at or above to become ``MaxColor``."""
         member = self.get_member("MaxSpeed")
         if member is None:
             return None
@@ -76,7 +76,7 @@ class ColorBySpeedMinMax(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     @property
     def min_color(self) -> primitives.ColorX | None:
-        """The MinColor field value."""
+        """The color to display when traveling at or below ``MinSpeed``."""
         member = self.get_member("MinColor")
         if member is None:
             return None
@@ -95,7 +95,7 @@ class ColorBySpeedMinMax(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     @property
     def max_color(self) -> primitives.ColorX | None:
-        """The MaxColor field value."""
+        """The color to display when traveling at or above ``MaxSpeed``."""
         member = self.get_member("MaxColor")
         if member is None:
             return None

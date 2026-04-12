@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProtoFluxImpulseListManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.Visuals.ProtoFluxImpulseListManager.
+    """The ProtoFluxImpulseListManager component is used to manage lists and their visuals like in the sequence ProtoFlux node.
+
+    Used in nodes like the sequence and async sequence nodes.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.Visuals.ProtoFluxImpulseListManager"
@@ -44,7 +46,7 @@ class ProtoFluxImpulseListManager(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def visual(self) -> str | None:
-        """Target ID of the Visual reference (targets ProtoFluxNodeVisual)."""
+        """The visual of the protoflux node this is making a list for."""
         member = self.get_member("Visual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +67,7 @@ class ProtoFluxImpulseListManager(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def list_(self) -> str | None:
-        """Target ID of the List reference (targets ISyncList)."""
+        """The list this is managing and making a UI for."""
         member = self.get_member("List")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +88,7 @@ class ProtoFluxImpulseListManager(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def min_elements(self) -> primitives.Int | None:
-        """The MinElements field value."""
+        """The minimum elements allowed in the list."""
         member = self.get_member("MinElements")
         if member is None:
             return None
@@ -105,7 +107,7 @@ class ProtoFluxImpulseListManager(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def add_button_enabled(self) -> str | None:
-        """Target ID of the AddButtonEnabled reference (targets IField[primitives.Bool])."""
+        """The enabled field of adding a list item."""
         member = self.get_member("AddButtonEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +128,7 @@ class ProtoFluxImpulseListManager(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def remove_button_enabled(self) -> str | None:
-        """Target ID of the RemoveButtonEnabled reference (targets IField[primitives.Bool])."""
+        """The enabled field of removing a list item."""
         member = self.get_member("RemoveButtonEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -147,7 +149,7 @@ class ProtoFluxImpulseListManager(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def elements(self) -> members.SyncList | None:
-        """The _elements member."""
+        """The list of elements defining the impulse connectors."""
         member = self.get_member("_elements")
         if isinstance(member, members.SyncList):
             return member
@@ -155,12 +157,12 @@ class ProtoFluxImpulseListManager(GeneratedComponent, IComponent, IWorldEventRec
 
     @elements.setter
     def elements(self, value: members.SyncList) -> None:
-        """Set the _elements member."""
+        """Set _elements. The list of elements defining the impulse connectors."""
         self.set_member("_elements", value)
 
     @property
     def impulse_type(self) -> members.FieldEnum | None:
-        """The ImpulseType member."""
+        """The type of impulse this is using (ex: Async or normal)"""
         member = self.get_member("ImpulseType")
         if isinstance(member, members.FieldEnum):
             return member
@@ -168,11 +170,11 @@ class ProtoFluxImpulseListManager(GeneratedComponent, IComponent, IWorldEventRec
 
     @impulse_type.setter
     def impulse_type(self, value: members.FieldEnum) -> None:
-        """Set the ImpulseType member."""
+        """Set ImpulseType. The type of impulse this is using (ex: Async or normal)"""
         self.set_member("ImpulseType", value)
 
     async def add_element(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the AddElement sync method.
+        """Called when the add element button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -188,7 +190,7 @@ class ProtoFluxImpulseListManager(GeneratedComponent, IComponent, IWorldEventRec
         )
 
     async def remove_element(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the RemoveElement sync method.
+        """Called when the remove element button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.

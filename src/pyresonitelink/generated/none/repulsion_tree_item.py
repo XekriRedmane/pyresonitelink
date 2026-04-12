@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RepulsionTreeItem(GeneratedComponent, IRepulsionTreeNode, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RepulsionTreeItem.
+    """Repulsion tree item is used along side the Repulsion Tree Simulator Component to make a live repulsion tree simulation. Check the simulator's page for a more detailed explanation.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RepulsionTreeItem"
@@ -30,7 +30,7 @@ class RepulsionTreeItem(GeneratedComponent, IRepulsionTreeNode, IWorldEventRecei
 
     @property
     def force(self) -> primitives.Float | None:
-        """The Force field value."""
+        """How much force to apply to other RepulsionTreeItems within range."""
         member = self.get_member("Force")
         if member is None:
             return None
@@ -49,7 +49,7 @@ class RepulsionTreeItem(GeneratedComponent, IRepulsionTreeNode, IWorldEventRecei
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of influence this item has when interacting with other items."""
         member = self.get_member("Radius")
         if member is None:
             return None

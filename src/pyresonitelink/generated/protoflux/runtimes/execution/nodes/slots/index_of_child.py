@@ -34,7 +34,7 @@ class IndexOfChild(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot to read the child index of."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId

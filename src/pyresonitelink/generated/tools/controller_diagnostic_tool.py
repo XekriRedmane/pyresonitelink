@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ControllerDiagnosticTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ControllerDiagnosticTool.
+    """The ControllerDiagnosticTool component is a tool that gives information on controller info for the hand its equipped on. For more info see Controller Diagnostic Tool.
 
     Category: Tools
     """
@@ -185,7 +185,7 @@ class ControllerDiagnosticTool(GeneratedComponent, ITool, IMaterialApplyPolicy, 
 
     @property
     def text(self) -> str | None:
-        """Target ID of the _text reference (targets TextRenderer)."""
+        """The text renderer to fill with controller diagnostic info to display."""
         member = self.get_member("_text")
         if isinstance(member, members.Reference):
             return member.targetId

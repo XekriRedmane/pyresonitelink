@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.line_emitter_direction import LineEmitterDirection
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.particle_system import ParticleSystem
@@ -10,14 +11,14 @@ from pyresonitelink.generated._types.iparticle_system_emitter import IParticleSy
 
 
 class LineEmitter(GeneratedComponent, IParticleSystemEmitter):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.LineEmitter.
+    """The LineEmitter component is used with particle systems (see Photon Dust) to create particles from a straight 3d line made from two points.
 
     Category: Rendering/Particle System/Emitters
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LineEmitter"
 
-    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, point0: primitives.Float3 | None = None, point1: primitives.Float3 | None = None, color0: primitives.ColorX | None = None, color1: primitives.ColorX | None = None, direction0: primitives.Float3 | None = None, direction1: primitives.Float3 | None = None, up_direction: primitives.Float3 | None = None, random_direction_weight: primitives.Float | None = None, direction_post_transform: primitives.Float3x3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, point0: primitives.Float3 | None = None, point1: primitives.Float3 | None = None, color0: primitives.ColorX | None = None, color1: primitives.ColorX | None = None, direction_mode: LineEmitterDirection | str | None = None, direction0: primitives.Float3 | None = None, direction1: primitives.Float3 | None = None, up_direction: primitives.Float3 | None = None, random_direction_weight: primitives.Float | None = None, direction_post_transform: primitives.Float3x3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,6 +31,7 @@ class LineEmitter(GeneratedComponent, IParticleSystemEmitter):
             point1: Initial value for Point1.
             color0: Initial value for Color0.
             color1: Initial value for Color1.
+            direction_mode: Initial value for DirectionMode.
             direction0: Initial value for Direction0.
             direction1: Initial value for Direction1.
             up_direction: Initial value for UpDirection.
@@ -56,6 +58,8 @@ class LineEmitter(GeneratedComponent, IParticleSystemEmitter):
             self.color0 = color0
         if color1 is not None:
             self.color1 = color1
+        if direction_mode is not None:
+            self.direction_mode = direction_mode
         if direction0 is not None:
             self.direction0 = direction0
         if direction1 is not None:
@@ -166,7 +170,7 @@ class LineEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def point0(self) -> primitives.Float3 | None:
-        """The Point0 field value."""
+        """Point 1 of the line for this Emitter drawn between two points."""
         member = self.get_member("Point0")
         if member is None:
             return None
@@ -185,7 +189,7 @@ class LineEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def point1(self) -> primitives.Float3 | None:
-        """The Point1 field value."""
+        """Point 2 of the line for this Emitter drawn between two points."""
         member = self.get_member("Point1")
         if member is None:
             return None
@@ -204,7 +208,7 @@ class LineEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def color0(self) -> primitives.ColorX | None:
-        """The Color0 field value."""
+        """The starting Color multiplier for particles emitted from this Emitter when being emitted nearest to ``Point0``."""
         member = self.get_member("Color0")
         if member is None:
             return None
@@ -223,7 +227,7 @@ class LineEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def color1(self) -> primitives.ColorX | None:
-        """The Color1 field value."""
+        """The starting Color multiplier for particles emitted from this Emitter when being emitted nearest to ``Point1``."""
         member = self.get_member("Color1")
         if member is None:
             return None
@@ -241,21 +245,28 @@ class LineEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def direction_mode(self) -> members.FieldEnum | None:
-        """The DirectionMode member."""
+    def direction_mode(self) -> LineEmitterDirection | None:
+        """How to handle the direction when emitting particles from the line."""
         member = self.get_member("DirectionMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return LineEmitterDirection(member.value)
         return None
 
     @direction_mode.setter
-    def direction_mode(self, value: members.FieldEnum) -> None:
-        """Set the DirectionMode member."""
-        self.set_member("DirectionMode", value)
+    def direction_mode(self, value: LineEmitterDirection | str) -> None:
+        """Set DirectionMode. How to handle the direction when emitting particles from the line."""
+        member = self.get_member("DirectionMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DirectionMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def direction0(self) -> primitives.Float3 | None:
-        """The Direction0 field value."""
+        """The direction particles should go when being emitted nearest to ``Point0``."""
         member = self.get_member("Direction0")
         if member is None:
             return None
@@ -274,7 +285,7 @@ class LineEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def direction1(self) -> primitives.Float3 | None:
-        """The Direction1 field value."""
+        """The direction particles should go when being emitted nearest to ``Point1``."""
         member = self.get_member("Direction1")
         if member is None:
             return None
@@ -293,7 +304,7 @@ class LineEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def up_direction(self) -> primitives.Float3 | None:
-        """The UpDirection field value."""
+        """The direction that should be considered up for this line."""
         member = self.get_member("UpDirection")
         if member is None:
             return None

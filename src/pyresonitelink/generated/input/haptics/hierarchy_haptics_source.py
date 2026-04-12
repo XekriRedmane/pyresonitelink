@@ -11,9 +11,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HierarchyHapticsSource(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HierarchyHapticsSource.
+    """The HiearchyHapticsSource component every ``Interval`` seconds triggers a relative intensity haptics signal (Additive) of ``RelativeIntensity``.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics
+
+    Attach to a slot and provide a slot to ``TargetHiearchy`` that is under
+    a user to trigger haptics on. Then provide some values to adjust to the
+    desired effect.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HierarchyHapticsSource"
@@ -37,7 +43,7 @@ class HierarchyHapticsSource(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def target_hierarchy(self) -> str | None:
-        """Target ID of the TargetHierarchy reference (targets Slot)."""
+        """The hiearchy of haptics to trigger. If targeting an arm slot on an avatar, triggers all haptics under the arm and hand. For a VR user this would get their controller."""
         member = self.get_member("TargetHierarchy")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +64,7 @@ class HierarchyHapticsSource(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def interval(self) -> primitives.Float | None:
-        """The Interval field value."""
+        """The amount of seconds to wait per trigger. Fires automatically every this many seconds."""
         member = self.get_member("Interval")
         if member is None:
             return None
@@ -77,7 +83,7 @@ class HierarchyHapticsSource(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def relative_intensity(self) -> primitives.Float | None:
-        """The RelativeIntensity field value."""
+        """The relative haptics intensity amount to send each trigger."""
         member = self.get_member("RelativeIntensity")
         if member is None:
             return None

@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TwitchRaidEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """This node provides Twitch raid information from a TwitchInterface.
+    """This node provides Twitch raid information from a TwitchInterface. 
+
+Note that all outputs are generated on a new Twitch raid event, and will not display any information when connected to a display node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network/Twitch
     """
@@ -58,7 +60,7 @@ class TwitchRaidEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
 
     @property
     def on_raid(self) -> str | None:
-        """Target ID of the OnRaid reference (targets ISyncNodeOperation)."""
+        """Fires on receiving a new Twitch raid."""
         member = self.get_member("OnRaid")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +81,7 @@ class TwitchRaidEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
 
     @property
     def user_id(self) -> members.EmptyElement | None:
-        """The UserId member."""
+        """Outputs the Twitch Channel ID of the raider."""
         member = self.get_member("UserId")
         if isinstance(member, members.EmptyElement):
             return member
@@ -87,12 +89,12 @@ class TwitchRaidEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
 
     @user_id.setter
     def user_id(self, value: members.EmptyElement) -> None:
-        """Set the UserId member."""
+        """Set UserId. Outputs the Twitch Channel ID of the raider."""
         self.set_member("UserId", value)
 
     @property
     def display_name(self) -> members.EmptyElement | None:
-        """The DisplayName member."""
+        """Outputs the Twitch username of the raider."""
         member = self.get_member("DisplayName")
         if isinstance(member, members.EmptyElement):
             return member
@@ -100,12 +102,12 @@ class TwitchRaidEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
 
     @display_name.setter
     def display_name(self, value: members.EmptyElement) -> None:
-        """Set the DisplayName member."""
+        """Set DisplayName. Outputs the Twitch username of the raider."""
         self.set_member("DisplayName", value)
 
     @property
     def color(self) -> members.EmptyElement | None:
-        """The Color member."""
+        """Outputs the Twitch chat color of the raider."""
         member = self.get_member("Color")
         if isinstance(member, members.EmptyElement):
             return member
@@ -113,12 +115,12 @@ class TwitchRaidEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
 
     @color.setter
     def color(self, value: members.EmptyElement) -> None:
-        """Set the Color member."""
+        """Set Color. Outputs the Twitch chat color of the raider."""
         self.set_member("Color", value)
 
     @property
     def viewer_count(self) -> members.EmptyElement | None:
-        """The ViewerCount member."""
+        """Shows the amount of viewers who are raiding with the raider."""
         member = self.get_member("ViewerCount")
         if isinstance(member, members.EmptyElement):
             return member
@@ -126,12 +128,12 @@ class TwitchRaidEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
 
     @viewer_count.setter
     def viewer_count(self, value: members.EmptyElement) -> None:
-        """Set the ViewerCount member."""
+        """Set ViewerCount. Shows the amount of viewers who are raiding with the raider."""
         self.set_member("ViewerCount", value)
 
     @property
     def is_subscriber(self) -> members.EmptyElement | None:
-        """The IsSubscriber member."""
+        """Shows if the raider is subscribed to the Twitch channel."""
         member = self.get_member("IsSubscriber")
         if isinstance(member, members.EmptyElement):
             return member
@@ -139,6 +141,6 @@ class TwitchRaidEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
 
     @is_subscriber.setter
     def is_subscriber(self, value: members.EmptyElement) -> None:
-        """Set the IsSubscriber member."""
+        """Set IsSubscriber. Shows if the raider is subscribed to the Twitch channel."""
         self.set_member("IsSubscriber", value)
 

@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Bool4ToBool2SwizzleDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Bool4ToBool2SwizzleDriver.
+    """The Bool 4To Bool 2Swizzle Driver component.
 
     Category: Relations/Swizzle Drivers
     """

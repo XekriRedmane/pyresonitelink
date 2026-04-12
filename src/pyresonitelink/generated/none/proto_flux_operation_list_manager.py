@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.Visuals.ProtoFluxOperationListManager.
+    """The ProtoFluxOperationListManager component is used for the visuals in the Sequence and Async Sequence nodes.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.Visuals.ProtoFluxOperationListManager"
@@ -47,7 +47,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
 
     @property
     def visual(self) -> str | None:
-        """Target ID of the Visual reference (targets ProtoFluxNodeVisual)."""
+        """The ProtoFlux visual this is a part of."""
         member = self.get_member("Visual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
 
     @property
     def list_(self) -> str | None:
-        """Target ID of the List reference (targets ISyncList)."""
+        """The list this is modifying."""
         member = self.get_member("List")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
 
     @property
     def min_elements(self) -> primitives.Int | None:
-        """The MinElements field value."""
+        """The minimum number of items allowed in the list."""
         member = self.get_member("MinElements")
         if member is None:
             return None
@@ -108,7 +108,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
 
     @property
     def add_button_enabled(self) -> str | None:
-        """Target ID of the AddButtonEnabled reference (targets IField[primitives.Bool])."""
+        """The enabled field of the add element list."""
         member = self.get_member("AddButtonEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -129,7 +129,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
 
     @property
     def remove_button_enabled(self) -> str | None:
-        """Target ID of the RemoveButtonEnabled reference (targets IField[primitives.Bool])."""
+        """The enabled field of the remove element list."""
         member = self.get_member("RemoveButtonEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -150,7 +150,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
 
     @property
     def elements(self) -> members.SyncList | None:
-        """The _elements member."""
+        """The list of UI elements being used to display the elements in ``List``"""
         member = self.get_member("_elements")
         if isinstance(member, members.SyncList):
             return member
@@ -158,12 +158,12 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
 
     @elements.setter
     def elements(self, value: members.SyncList) -> None:
-        """Set the _elements member."""
+        """Set _elements. The list of UI elements being used to display the elements in ``List``"""
         self.set_member("_elements", value)
 
     @property
     def supports_async(self) -> primitives.Bool | None:
-        """The SupportsAsync field value."""
+        """Whether the elements support Async input/output."""
         member = self.get_member("SupportsAsync")
         if member is None:
             return None
@@ -181,7 +181,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
             )
 
     async def add_element(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the AddElement sync method.
+        """Called when the add element button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -197,7 +197,7 @@ class ProtoFluxOperationListManager(GeneratedComponent, IComponent, IWorldEventR
         )
 
     async def remove_element(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the RemoveElement sync method.
+        """Called when the remove element button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.

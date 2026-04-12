@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.channel_configuration import ChannelConfiguration
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,19 +13,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioClipAssetMetadata.
+    """Audio Clip Asset Metadata is a component that will populate itself with different small bits of information about an audio clip, also known as metadata.
+The metadata will be the default values until an audio clip is provided, which will then populate the data.
 
     Category: Assets/Utility
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioClipAssetMetadata"
 
-    def __init__(self, audio_clip: str | IAssetProvider[AudioClip] | None = None, sample_rate: primitives.Int | None = None, channel_count: primitives.Int | None = None, sample_count: primitives.Int | None = None, duration: primitives.Double | None = None, extension: primitives.String | None = None, codec_info: primitives.String | None = None, fully_decoded: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, audio_clip: str | IAssetProvider[AudioClip] | None = None, sample_rate: primitives.Int | None = None, channels: ChannelConfiguration | str | None = None, channel_count: primitives.Int | None = None, sample_count: primitives.Int | None = None, duration: primitives.Double | None = None, extension: primitives.String | None = None, codec_info: primitives.String | None = None, fully_decoded: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             audio_clip: Initial value for AudioClip.
             sample_rate: Initial value for SampleRate.
+            channels: Initial value for Channels.
             channel_count: Initial value for ChannelCount.
             sample_count: Initial value for SampleCount.
             duration: Initial value for Duration.
@@ -38,6 +41,8 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             self.audio_clip = audio_clip
         if sample_rate is not None:
             self.sample_rate = sample_rate
+        if channels is not None:
+            self.channels = channels
         if channel_count is not None:
             self.channel_count = channel_count
         if sample_count is not None:
@@ -53,7 +58,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def audio_clip(self) -> str | None:
-        """Target ID of the AudioClip reference (targets IAssetProvider[AudioClip])."""
+        """The audio clip to read metadata from"""
         member = self.get_member("AudioClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -74,7 +79,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def sample_rate(self) -> primitives.Int | None:
-        """The SampleRate field value."""
+        """The Hz the audio is sampled at."""
         member = self.get_member("SampleRate")
         if member is None:
             return None
@@ -92,21 +97,28 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def channels(self) -> members.FieldEnum | None:
-        """The Channels member."""
+    def channels(self) -> ChannelConfiguration | None:
+        """The audio channel configuration the audio was recorded in."""
         member = self.get_member("Channels")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ChannelConfiguration(member.value)
         return None
 
     @channels.setter
-    def channels(self, value: members.FieldEnum) -> None:
-        """Set the Channels member."""
-        self.set_member("Channels", value)
+    def channels(self, value: ChannelConfiguration | str) -> None:
+        """Set Channels. The audio channel configuration the audio was recorded in."""
+        member = self.get_member("Channels")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Channels",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def channel_count(self) -> primitives.Int | None:
-        """The ChannelCount field value."""
+        """How many channels are in the audio recording. usually 1 channel for mono or 2 channels for L and R Stereo."""
         member = self.get_member("ChannelCount")
         if member is None:
             return None
@@ -125,7 +137,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def sample_count(self) -> primitives.Int | None:
-        """The SampleCount field value."""
+        """how many total samples the audio clip has"""
         member = self.get_member("SampleCount")
         if member is None:
             return None
@@ -144,7 +156,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def duration(self) -> primitives.Double | None:
-        """The Duration field value."""
+        """How long the audio clip is in seconds."""
         member = self.get_member("Duration")
         if member is None:
             return None
@@ -163,7 +175,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def extension(self) -> primitives.String | None:
-        """The Extension field value."""
+        """the extension of the file type the audio was recorded in."""
         member = self.get_member("Extension")
         if member is None:
             return None
@@ -182,7 +194,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def codec_info(self) -> primitives.String | None:
-        """The CodecInfo field value."""
+        """The codec the audio is written in like WAV or FLAC and the quality of the audio."""
         member = self.get_member("CodecInfo")
         if member is None:
             return None
@@ -201,7 +213,7 @@ class AudioClipAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def fully_decoded(self) -> primitives.Bool | None:
-        """The FullyDecoded field value."""
+        """If the audio is loaded or not and decoded (Waveform visible)"""
         member = self.get_member("FullyDecoded")
         if member is None:
             return None

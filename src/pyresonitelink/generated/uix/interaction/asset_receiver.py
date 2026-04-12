@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AssetReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.AssetReceiver<>.
+    """Asset Receiver is a useful component for getting asset data from a user through a UIX. When this item is placed on a UIX that allows receiving (like a Button) and it's ``Reference`` field is filled, it will be active. When an item is pushed through the canvas where the button is so the interaction laser is hitting it and the item is let go; the value within the field inside of ``Reference`` is set to the first available IAsset which is exposed by an Asset Proxy.
 
     Category: UIX/Interaction
 
@@ -43,7 +43,7 @@ class AssetReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventReceiver):
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets AssetRef[A])."""
+        """The field to fill with a value when a grabbed item with an Asset Proxy is dropped onto the canvas region with this component."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class AssetReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventReceiver):
 
     @property
     def undoable(self) -> primitives.Bool | None:
-        """The Undoable field value."""
+        """Whether to add changes to this value via grab receiving to the undo stack of the user that changed it."""
         member = self.get_member("Undoable")
         if member is None:
             return None

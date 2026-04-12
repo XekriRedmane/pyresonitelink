@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DevCreateNewForm(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DevCreateNewForm.
+    """See Create New Wizard.
+
+    See Create New Wizard.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DevCreateNewForm"
@@ -32,7 +34,7 @@ class DevCreateNewForm(GeneratedComponent, IDeveloperInterface, IWorldEventRecei
 
     @property
     def category_root(self) -> primitives.String | None:
-        """The CategoryRoot field value."""
+        """The current location in the create menu we are at."""
         member = self.get_member("CategoryRoot")
         if member is None:
             return None
@@ -51,7 +53,7 @@ class DevCreateNewForm(GeneratedComponent, IDeveloperInterface, IWorldEventRecei
 
     @property
     def content_root(self) -> str | None:
-        """Target ID of the _contentRoot reference (targets Slot)."""
+        """Where to list content like buttons and such."""
         member = self.get_member("_contentRoot")
         if isinstance(member, members.Reference):
             return member.targetId

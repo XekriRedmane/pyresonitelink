@@ -1,0 +1,13 @@
+{
+  "description": "The FingerSplayModifier takes data from a ``Source``, adding splay data to a copy of that data. The resulting data becomes the pose source data of this component. This component in itself is a IFingerPoseSourceComponent.\n\nFor more information on finger pose sources, please see Finger Posing System.",
+  "category": "Users:Common Avatar System:Fingers",
+  "fields": {
+    "Source": "The source data to copy to this component's Finger pose source data.",
+    "LeftSplayMagnitude": "How much splay data to the left hand to add to the data copied data from ``Source`` during copying.",
+    "RightSplayMagnitude": "How much splay data on the right hand to add to the data copied data from ``Source`` during copying."
+  },
+  "methods": {},
+  "usage": "Used as a way of modifying Finger pose data to splay the fingers, and itself be used as new finger pose data.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FingerSplayModifier&action=raw"
+}

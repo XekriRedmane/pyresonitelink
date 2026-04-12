@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class GamepadSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.GamepadSettings.
+    """See GamePad settings.
+
+    See GamePad settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GamepadSettings"
@@ -33,7 +35,7 @@ class GamepadSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def thumbstick_look_speed(self) -> primitives.Float | None:
-        """The ThumbstickLookSpeed field value."""
+        """How sensitive the thumbstick is when looking around. higher values mean faster look speed with the joystick at max."""
         member = self.get_member("ThumbstickLookSpeed")
         if member is None:
             return None
@@ -52,7 +54,7 @@ class GamepadSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def thumbstick_look_exponent(self) -> primitives.Float | None:
-        """The ThumbstickLookExponent field value."""
+        """How much faster the joystick makes the user look around as it approaches the edge, becoming exponentially fast at the very edge. This value increases and can decrease the power of this effect."""
         member = self.get_member("ThumbstickLookExponent")
         if member is None:
             return None
@@ -71,7 +73,7 @@ class GamepadSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_gamepad_when_unfocused(self) -> primitives.Bool | None:
-        """The UseGamepadWhenUnfocused field value."""
+        """Whether to allow usage of the connected gamepad when unfocused from the game."""
         member = self.get_member("UseGamepadWhenUnfocused")
         if member is None:
             return None

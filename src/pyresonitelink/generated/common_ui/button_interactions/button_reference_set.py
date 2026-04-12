@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonReferenceSet(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonReferenceSet<>.
+    """The ButtonReferenceSet component takes in a Reference Type and a ``TargetReference``. When an IButton is pressed while this component is on the same slot, this will send the reference to the provided ``TargetReference``.
 
     Category: Common UI/Button Interactions
+
+    This is similar to the Write ProtoFlux node but as a component instead.
 
     Parameterize with a value type::
 
@@ -38,7 +40,7 @@ class ButtonReferenceSet(GenericComponent[T], IButtonPressReceiver, IWorldEventR
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets SyncRef[T])."""
+        """The target to send the reference outwards."""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +61,7 @@ class ButtonReferenceSet(GenericComponent[T], IButtonPressReceiver, IWorldEventR
 
     @property
     def set_reference(self) -> str | None:
-        """Target ID of the SetReference reference (targets T)."""
+        """The reference to set when the button is pressed."""
         member = self.get_member("SetReference")
         if isinstance(member, members.Reference):
             return member.targetId

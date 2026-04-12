@@ -42,7 +42,7 @@ class RayToLineIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def origin(self) -> str | None:
-        """Target ID of the Origin reference (targets INodeValueOutput[primitives.Float2])."""
+        """Origin of the ray."""
         member = self.get_member("Origin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class RayToLineIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def direction(self) -> str | None:
-        """Target ID of the Direction reference (targets INodeValueOutput[primitives.Float2])."""
+        """Direction of the ray."""
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class RayToLineIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def line_point0(self) -> str | None:
-        """Target ID of the LinePoint0 reference (targets INodeValueOutput[primitives.Float2])."""
+        """First point of the line segment."""
         member = self.get_member("LinePoint0")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +105,7 @@ class RayToLineIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def line_point1(self) -> str | None:
-        """Target ID of the LinePoint1 reference (targets INodeValueOutput[primitives.Float2])."""
+        """Second point of the line segment."""
         member = self.get_member("LinePoint1")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +126,7 @@ class RayToLineIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def intersection(self) -> members.EmptyElement | None:
-        """The Intersection member."""
+        """The point at which the defined ray intersects with the line segment defined by ``LinePoint0`` and ``LinePoint1``. If the ray does not intersect, the value will be ``[0; 0]``."""
         member = self.get_member("Intersection")
         if isinstance(member, members.EmptyElement):
             return member
@@ -134,12 +134,12 @@ class RayToLineIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @intersection.setter
     def intersection(self, value: members.EmptyElement) -> None:
-        """Set the Intersection member."""
+        """Set Intersection. The point at which the defined ray intersects with the line segment defined by ``LinePoint0`` and ``LinePoint1``. If the ray does not intersect, the value will be ``[0; 0]``."""
         self.set_member("Intersection", value)
 
     @property
     def intersects(self) -> members.EmptyElement | None:
-        """The Intersects member."""
+        """``True`` if the ray intersects with the line segment, ``False`` otherwise. If the defined ray has both the same slope and lies on the line segment, it will not count as intersection. If the ray starts on the line segment and has a distinct slope from the line segment, it will count as intersection, and the intersection point will be ``Origin``."""
         member = self.get_member("Intersects")
         if isinstance(member, members.EmptyElement):
             return member
@@ -147,6 +147,6 @@ class RayToLineIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @intersects.setter
     def intersects(self, value: members.EmptyElement) -> None:
-        """Set the Intersects member."""
+        """Set Intersects. ``True`` if the ray intersects with the line segment, ``False`` otherwise. If the defined ray has both the same slope and lies on the line segment, it will not count as intersection. If the ray starts on the line segment and has a distinct slope from the line segment, it will count as intersection, and the intersection point will be ``Origin``."""
         self.set_member("Intersects", value)
 

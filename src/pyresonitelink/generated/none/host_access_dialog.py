@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.host_access_scope import HostAccessScope
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.text import Text
@@ -12,17 +13,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HostAccessDialog.
+    """See Request Host Access ProtoFlux Node.
+
+    Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HostAccessDialog"
 
-    def __init__(self, host: primitives.String | None = None, port: primitives.Int | None = None, host_text: str | Text | None = None, reason_text: str | Text | None = None, allow_button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, host: primitives.String | None = None, port: primitives.Int | None = None, access_type: HostAccessScope | str | None = None, host_text: str | Text | None = None, reason_text: str | Text | None = None, allow_button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             host: Initial value for Host.
             port: Initial value for Port.
+            access_type: Initial value for AccessType.
             host_text: Initial value for _hostText.
             reason_text: Initial value for _reasonText.
             allow_button: Initial value for _allowButton.
@@ -33,6 +37,8 @@ class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.host = host
         if port is not None:
             self.port = port
+        if access_type is not None:
+            self.access_type = access_type
         if host_text is not None:
             self.host_text = host_text
         if reason_text is not None:
@@ -42,7 +48,7 @@ class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def host(self) -> primitives.String | None:
-        """The Host field value."""
+        """The host destination string being accessed."""
         member = self.get_member("Host")
         if member is None:
             return None
@@ -61,7 +67,7 @@ class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def port(self) -> primitives.Int | None:
-        """The Port field value."""
+        """The port being asked for access."""
         member = self.get_member("Port")
         if member is None:
             return None
@@ -79,21 +85,28 @@ class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def access_type(self) -> members.FieldEnum | None:
-        """The AccessType member."""
+    def access_type(self) -> HostAccessScope | None:
+        """The access type wanted for the port."""
         member = self.get_member("AccessType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return HostAccessScope(member.value)
         return None
 
     @access_type.setter
-    def access_type(self, value: members.FieldEnum) -> None:
-        """Set the AccessType member."""
-        self.set_member("AccessType", value)
+    def access_type(self, value: HostAccessScope | str) -> None:
+        """Set AccessType. The access type wanted for the port."""
+        member = self.get_member("AccessType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AccessType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def host_text(self) -> str | None:
-        """Target ID of the _hostText reference (targets Text)."""
+        """The text field used to show the server wanting access for."""
         member = self.get_member("_hostText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -114,7 +127,7 @@ class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def reason_text(self) -> str | None:
-        """Target ID of the _reasonText reference (targets Text)."""
+        """The reason for accessing the server."""
         member = self.get_member("_reasonText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -135,7 +148,7 @@ class HostAccessDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def allow_button(self) -> str | None:
-        """Target ID of the _allowButton reference (targets Button)."""
+        """The button to allow the server to be accessed through your client."""
         member = self.get_member("_allowButton")
         if isinstance(member, members.Reference):
             return member.targetId

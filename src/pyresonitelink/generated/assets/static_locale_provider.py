@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StaticLocaleProvider(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StaticLocaleProvider.
+    """The StaticLocaleProvider component gets the list of locale data for all languages.
 
     Category: Assets
     """
@@ -33,7 +33,7 @@ class StaticLocaleProvider(GeneratedComponent, IStaticAssetProvider, ICustomInsp
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The place to get all Locale datas"""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -52,7 +52,7 @@ class StaticLocaleProvider(GeneratedComponent, IStaticAssetProvider, ICustomInsp
 
     @property
     def override_locale(self) -> primitives.String | None:
-        """The OverrideLocale field value."""
+        """The locale to use other than the user selected one."""
         member = self.get_member("OverrideLocale")
         if member is None:
             return None

@@ -14,9 +14,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AssetMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AssetMultiplexer<>.
+    """The AssetMultiplexer component is used to drive an asset field from a list of assets and an index within the list.
 
     Category: Assets/Utility
+
+    Add the list of assets you want to use through the SyncAssetList area,
+    then add in your assets into the items. Then you can specify the field
+    through the Target you wanna switch between different assets for.
+    Changing the Index will change which asset the Target has in it. Ensure
+    you can set the Target field on this component before making any other
+    components reference the Index field on this component if you don't
+    wanna waste your time.
 
     Parameterize with a value type::
 
@@ -43,7 +51,7 @@ class AssetMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets AssetRef[A])."""
+        """The field to drive."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +72,7 @@ class AssetMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """Which element in ``Assets`` to drive to ``Target``"""
         member = self.get_member("Index")
         if member is None:
             return None
@@ -83,7 +91,7 @@ class AssetMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def assets(self) -> members.SyncList | None:
-        """The Assets member."""
+        """The list of assets to multiplex between."""
         member = self.get_member("Assets")
         if isinstance(member, members.SyncList):
             return member
@@ -91,6 +99,6 @@ class AssetMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @assets.setter
     def assets(self, value: members.SyncList) -> None:
-        """Set the Assets member."""
+        """Set Assets. The list of assets to multiplex between."""
         self.set_member("Assets", value)
 

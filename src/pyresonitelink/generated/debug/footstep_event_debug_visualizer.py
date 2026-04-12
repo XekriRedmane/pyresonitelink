@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FootstepEventDebugVisualizer(GeneratedComponent, IFootstepEventReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FootstepEventDebugVisualizer.
+    """The FootStepEventDebugVisualizer shows footstep collisions with a collider on the same Slot as the one it's attached on.
 
     Category: Debug
+
+    **Usages**: Used to show footstep events for Debug purposes.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FootstepEventDebugVisualizer"
@@ -29,7 +31,7 @@ class FootstepEventDebugVisualizer(GeneratedComponent, IFootstepEventReceiver, I
 
     @property
     def duration(self) -> primitives.Float | None:
-        """The Duration field value."""
+        """How long the debug step visual should display for in seconds."""
         member = self.get_member("Duration")
         if member is None:
             return None

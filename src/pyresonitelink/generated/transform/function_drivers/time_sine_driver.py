@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSineDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TimeSineDriver.
+    """The TimeSineDriver component outputs a value over time that matches a Sine Wave of the provided values.
 
     Category: Transform/Function Drivers
+
+    Attach to a slot and provide a ``Target`` for it to start working.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TimeSineDriver"
@@ -40,7 +42,7 @@ class TimeSineDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float])."""
+        """The field to drive with a constantly changing Sine wave."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +63,7 @@ class TimeSineDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def speed(self) -> primitives.Float | None:
-        """The Speed field value."""
+        """The frequency/speed of the Sine Wave waves."""
         member = self.get_member("Speed")
         if member is None:
             return None
@@ -80,7 +82,7 @@ class TimeSineDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min(self) -> primitives.Float | None:
-        """The Min field value."""
+        """The minimum value to drive ``Target`` to."""
         member = self.get_member("Min")
         if member is None:
             return None
@@ -99,7 +101,7 @@ class TimeSineDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max(self) -> primitives.Float | None:
-        """The Max field value."""
+        """The maximum value to drive ``Target`` to."""
         member = self.get_member("Max")
         if member is None:
             return None

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DirectVisemeDriver.
+    """The DirectVisemeDriver component takes a viseme analyser source and a few modifying sources in order to drive a list of Visemes.
 
     Category: Rendering
     """
@@ -100,7 +100,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets VisemeAnalyzer)."""
+        """The viseme analyser used as a source of data."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -121,7 +121,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def mouth_tracking_source(self) -> str | None:
-        """Target ID of the MouthTrackingSource reference (targets IMouthTrackingSourceComponent)."""
+        """A source of mouth tracking that influences final results. Use a Component:AvatarMouthDataSourceAssigner To assign to this automatically."""
         member = self.get_member("MouthTrackingSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -142,7 +142,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def strength_multiplier(self) -> primitives.Float | None:
-        """The StrengthMultiplier field value."""
+        """How much to multiply the values from ``Source`` before sending them to the drives on this component."""
         member = self.get_member("StrengthMultiplier")
         if member is None:
             return None
@@ -161,7 +161,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def voice_mouth_supress_weight(self) -> primitives.Float | None:
-        """The VoiceMouthSupressWeight field value."""
+        """How much visemes should be affected by ``MouthTrackingSource`` if the user is not talking. Lower values mean the affect from ``MouthTrackingSource`` is greater."""
         member = self.get_member("VoiceMouthSupressWeight")
         if member is None:
             return None
@@ -180,7 +180,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def laugh_threshold(self) -> primitives.Float | None:
-        """The LaughThreshold field value."""
+        """How much probability for laughter is needed before it sends it to ``Laugh``"""
         member = self.get_member("LaughThreshold")
         if member is None:
             return None
@@ -199,7 +199,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def laugh_begin_speed(self) -> primitives.Float | None:
-        """The LaughBeginSpeed field value."""
+        """How fast ``Laugh`` transitions to 100%."""
         member = self.get_member("LaughBeginSpeed")
         if member is None:
             return None
@@ -218,7 +218,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def laugh_end_speed(self) -> primitives.Float | None:
-        """The LaughEndSpeed field value."""
+        """How fast ``Laugh`` transitions to 0%."""
         member = self.get_member("LaughEndSpeed")
         if member is None:
             return None
@@ -237,7 +237,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def silence(self) -> str | None:
-        """Target ID of the Silence reference (targets IField[primitives.Float])."""
+        """How quiet the source data is overall."""
         member = self.get_member("Silence")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -258,7 +258,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def pp(self) -> str | None:
-        """Target ID of the PP reference (targets IField[primitives.Float])."""
+        """The field to drive with ``PP`` from ``Source`` after applying filters from this component."""
         member = self.get_member("PP")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -279,7 +279,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def ff(self) -> str | None:
-        """Target ID of the FF reference (targets IField[primitives.Float])."""
+        """The field to drive with ``FF`` from ``Source`` after applying filters from this component."""
         member = self.get_member("FF")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -300,7 +300,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def th(self) -> str | None:
-        """Target ID of the TH reference (targets IField[primitives.Float])."""
+        """The field to drive with ``TH`` from ``Source`` after applying filters from this component."""
         member = self.get_member("TH")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -321,7 +321,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def dd(self) -> str | None:
-        """Target ID of the DD reference (targets IField[primitives.Float])."""
+        """The field to drive with ``DD`` from ``Source`` after applying filters from this component."""
         member = self.get_member("DD")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -342,7 +342,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def kk(self) -> str | None:
-        """Target ID of the kk reference (targets IField[primitives.Float])."""
+        """The field to drive with ``kk`` from ``Source`` after applying filters from this component."""
         member = self.get_member("kk")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -363,7 +363,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def ch(self) -> str | None:
-        """Target ID of the CH reference (targets IField[primitives.Float])."""
+        """The field to drive with ``CH`` from ``Source`` after applying filters from this component."""
         member = self.get_member("CH")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -384,7 +384,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def ss(self) -> str | None:
-        """Target ID of the SS reference (targets IField[primitives.Float])."""
+        """The field to drive with ``SS`` from ``Source`` after applying filters from this component."""
         member = self.get_member("SS")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -405,7 +405,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def nn(self) -> str | None:
-        """Target ID of the nn reference (targets IField[primitives.Float])."""
+        """The field to drive with ``nn`` from ``Source`` after applying filters from this component."""
         member = self.get_member("nn")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -426,7 +426,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def rr(self) -> str | None:
-        """Target ID of the RR reference (targets IField[primitives.Float])."""
+        """The field to drive with ``RR`` from ``Source`` after applying filters from this component."""
         member = self.get_member("RR")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -447,7 +447,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def aa(self) -> str | None:
-        """Target ID of the aa reference (targets IField[primitives.Float])."""
+        """The field to drive with ``aa`` from ``Source`` after applying filters from this component."""
         member = self.get_member("aa")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -468,7 +468,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def e(self) -> str | None:
-        """Target ID of the E reference (targets IField[primitives.Float])."""
+        """The field to drive with ``E`` from ``Source`` after applying filters from this component."""
         member = self.get_member("E")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -489,7 +489,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def ih(self) -> str | None:
-        """Target ID of the ih reference (targets IField[primitives.Float])."""
+        """The field to drive with ``ih`` from ``Source`` after applying filters from this component."""
         member = self.get_member("ih")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -510,7 +510,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def oh(self) -> str | None:
-        """Target ID of the oh reference (targets IField[primitives.Float])."""
+        """The field to drive with ``oh`` from ``Source`` after applying filters from this component."""
         member = self.get_member("oh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -531,7 +531,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def ou(self) -> str | None:
-        """Target ID of the ou reference (targets IField[primitives.Float])."""
+        """The field to drive with ``ou`` from ``Source`` after applying filters from this component."""
         member = self.get_member("ou")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -552,7 +552,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     @property
     def laugh(self) -> str | None:
-        """Target ID of the Laugh reference (targets IField[primitives.Float])."""
+        """The field to drive with ``Laugh`` from ``Source`` after applying filters from this component."""
         member = self.get_member("Laugh")
         if isinstance(member, members.Reference):
             return member.targetId

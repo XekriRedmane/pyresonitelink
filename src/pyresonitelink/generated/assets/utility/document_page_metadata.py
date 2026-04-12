@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DocumentPageMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DocumentPageMetadata.
+    """The DocumentPageMetadata component is used to give Metadata about a particular page on a document (Usually a PDF)
 
     Category: Assets/Utility
     """
@@ -38,7 +38,7 @@ class DocumentPageMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def document(self) -> str | None:
-        """Target ID of the Document reference (targets IAssetProvider[Document])."""
+        """The document to get Metadata for."""
         member = self.get_member("Document")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class DocumentPageMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def page_index(self) -> primitives.Int | None:
-        """The PageIndex field value."""
+        """The page in ``Document`` to get metadata for."""
         member = self.get_member("PageIndex")
         if member is None:
             return None
@@ -78,7 +78,7 @@ class DocumentPageMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def reference_size(self) -> primitives.Double2 | None:
-        """The ReferenceSize field value."""
+        """The size of the page."""
         member = self.get_member("ReferenceSize")
         if member is None:
             return None

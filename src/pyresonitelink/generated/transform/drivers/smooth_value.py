@@ -11,7 +11,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SmoothValue(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SmoothValue<>.
+    """The SmoothValue component smoothly interpolates a given value towards a target value at a set speed.
+To do this it drives the value it is interpolating.
 
     Category: Transform/Drivers
 
@@ -65,7 +66,7 @@ class SmoothValue(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def speed(self) -> primitives.Float | None:
-        """The Speed field value."""
+        """The speed at which it is interpolated"""
         member = self.get_member("Speed")
         if member is None:
             return None
@@ -84,7 +85,7 @@ class SmoothValue(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """If WriteBack is enabled, writing to the driven value will also set TargetValue. If not, the driven value cannot be written to. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None
@@ -103,7 +104,7 @@ class SmoothValue(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[T])."""
+        """The value that is being driven"""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId

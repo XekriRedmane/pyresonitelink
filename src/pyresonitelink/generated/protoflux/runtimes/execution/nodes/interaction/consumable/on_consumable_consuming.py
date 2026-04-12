@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnConsumableConsuming(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.OnConsumableConsuming.
+    """Listen to events and activate extra affects and behaviors when consuming using Consumable
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Consumable
     """
@@ -58,7 +58,7 @@ class OnConsumableConsuming(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def on_consuming(self) -> str | None:
-        """Target ID of the OnConsuming reference (targets ISyncNodeOperation)."""
+        """Sends an impulse when progress starts."""
         member = self.get_member("OnConsuming")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class OnConsumableConsuming(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def stage_index(self) -> members.EmptyElement | None:
-        """The StageIndex member."""
+        """What stage we are at. Taken from the List in Component:Consumable"""
         member = self.get_member("StageIndex")
         if isinstance(member, members.EmptyElement):
             return member
@@ -87,12 +87,12 @@ class OnConsumableConsuming(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @stage_index.setter
     def stage_index(self, value: members.EmptyElement) -> None:
-        """Set the StageIndex member."""
+        """Set StageIndex. What stage we are at. Taken from the List in Component:Consumable"""
         self.set_member("StageIndex", value)
 
     @property
     def normalized_consume_progress(self) -> members.EmptyElement | None:
-        """The NormalizedConsumeProgress member."""
+        """Time based progression along the event chain."""
         member = self.get_member("NormalizedConsumeProgress")
         if isinstance(member, members.EmptyElement):
             return member
@@ -100,6 +100,6 @@ class OnConsumableConsuming(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @normalized_consume_progress.setter
     def normalized_consume_progress(self, value: members.EmptyElement) -> None:
-        """Set the NormalizedConsumeProgress member."""
+        """Set NormalizedConsumeProgress. Time based progression along the event chain."""
         self.set_member("NormalizedConsumeProgress", value)
 

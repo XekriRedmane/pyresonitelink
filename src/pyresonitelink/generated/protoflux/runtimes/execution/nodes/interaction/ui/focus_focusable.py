@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FocusFocusable(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Focus Focusable node sets the target IFocusable UI for the user. When the UI is focused (if it was not already focused beforehand), it places your caret at the end of any text input.
+    """The ``Focus Focusable`` node sets the target IFocusable UI for the user. When the UI is focused (if it was not already focused beforehand), it places your caret at the end of any text input.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/UI
     """
@@ -38,7 +38,7 @@ class FocusFocusable(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INo
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after the focus has been focused."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class FocusFocusable(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INo
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[IFocusable])."""
+        """The target IFocusable reference to focus."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Workspace.
+    """The Workspace component allows for doing work inside of a containerized slot, where the user can add or remove items which gets saved every interval specified. These workspaces can be public or private, and work similarly in concept to Cloud Variables except greatly simplified and store an entire hierarchy instead of a single value. Workspaces have a path to them, which allow for having multiple different workspaces per user. Workspaces take up storage as a saved item would, and automatically synchronize in real time. Multiple users working on workspaces at the same time can cause issues however, since workspaces save their changes before loading from the cloud unless ``ReadOnly`` is enabled.
 
     Category: Utility
     """
@@ -46,7 +46,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
 
     @property
     def user(self) -> members.SyncObject | None:
-        """The User member."""
+        """The user to manage reading and writing the contents of this workspace to the cloud for."""
         member = self.get_member("User")
         if isinstance(member, members.SyncObject):
             return member
@@ -54,12 +54,12 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
 
     @user.setter
     def user(self, value: members.SyncObject) -> None:
-        """Set the User member."""
+        """Set User. The user to manage reading and writing the contents of this workspace to the cloud for."""
         self.set_member("User", value)
 
     @property
     def override_owner_id(self) -> primitives.String | None:
-        """The OverrideOwnerId field value."""
+        """The override for the owner of this workspace to read and write the data for, which allows for reading public workspaces from others."""
         member = self.get_member("OverrideOwnerId")
         if member is None:
             return None
@@ -78,7 +78,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
 
     @property
     def workspace_path(self) -> primitives.String | None:
-        """The WorkspacePath field value."""
+        """The path of the workspace on the Cloud. Adding "public/" (case ignored) to the start of the path allows for public workspaces anyone can edit. Public workspaces must exist first before another user than the owner can save to them."""
         member = self.get_member("WorkspacePath")
         if member is None:
             return None
@@ -97,7 +97,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
 
     @property
     def read_only(self) -> primitives.Bool | None:
-        """The ReadOnly field value."""
+        """Whether to only read the contents of this workspace from the cloud and not save it."""
         member = self.get_member("ReadOnly")
         if member is None:
             return None
@@ -116,7 +116,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
 
     @property
     def autosave_delay(self) -> primitives.Float | None:
-        """The AutosaveDelay field value."""
+        """How long to wait between save attempts before trying to save again. saves only happen if there have been changes."""
         member = self.get_member("AutosaveDelay")
         if member is None:
             return None
@@ -135,7 +135,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
 
     @property
     def suspend_updates(self) -> primitives.Bool | None:
-        """The SuspendUpdates field value."""
+        """Whether to pause the loading and saving of this workspace to the cloud."""
         member = self.get_member("SuspendUpdates")
         if member is None:
             return None
@@ -154,7 +154,7 @@ class Workspace(GeneratedComponent, ICustomInspector, IModifiedEventReceiver, IW
 
     @property
     def unsaved_changes(self) -> primitives.Bool | None:
-        """The _unsavedChanges field value."""
+        """Whether this workspace has changes that should be saved to the cloud upon the next save."""
         member = self.get_member("_unsavedChanges")
         if member is None:
             return None

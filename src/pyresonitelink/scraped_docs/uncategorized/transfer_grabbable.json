@@ -1,0 +1,12 @@
+{
+  "description": "Transfer Grabbable is a component that is used to mark objects that undergo Transfer grabbing, but only while in Userspace. The grabber during this process saves the object into memory including materials, then simulates a paste as it puts the object into the target world.\n\nIf the world does not allow transferring to it, the ``_indicatorMaterial`` material will replace materials on the object and light up red. Will restore the materials back if transferring is allowed to the target world.",
+  "category": "Uncategorized",
+  "fields": {
+    "PasteOnGrab": "Whether to trigger a paste event in userspace when transfering the object to user space. does not affect when releasing.",
+    "_indicatorMaterial": "The indicator material to use when transfering to worlds."
+  },
+  "methods": {},
+  "usage": "Not intended to be used directly",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TransferGrabbable&action=raw"
+}

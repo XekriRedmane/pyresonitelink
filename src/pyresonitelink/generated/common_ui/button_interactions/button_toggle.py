@@ -10,9 +10,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonToggle(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonToggle.
+    """The ButtonValueToggle component can be used to make an IButton that switches a boolean value between ``true`` and ``false`` every time the button is pressed.
 
     Category: Common UI/Button Interactions
+
+    To function, the component simply needs to be attached to a slot that
+    also has a button component attached to it. From then on, pressing that
+    button will activate the ButtonToggle, making it toggle its
+    ``TargetValue`` from true to false or the other way round.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonToggle"
@@ -30,7 +35,7 @@ class ButtonToggle(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
 
     @property
     def target_value(self) -> str | None:
-        """Target ID of the TargetValue reference (targets IField[primitives.Bool])."""
+        """The boolean to invert whenever the button is pressed."""
         member = self.get_member("TargetValue")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PackageExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PackageExportable.
+    """The PackageExportable component takes in any Slot hierarchy as a field, and when the slot that has this exportable component on it gets exported, it will actually save a file on your device of the target slot hierarchy provided (and not the item that your exporting from unless it is also under that hierarchy).
 
     Category: Assets/Export
+
+    This can be a better alternative than using the BinaryExportable for
+    storage of assets, items, or worlds.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PackageExportable"
@@ -29,7 +32,7 @@ class PackageExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets Slot)."""
+        """The slot hierarchy to be exported."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId

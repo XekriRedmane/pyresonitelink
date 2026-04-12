@@ -1,0 +1,19 @@
+{
+  "description": "The UserInspectorItem component is used to display user items of the User Inspector.",
+  "category": "Uncategorized",
+  "fields": {
+    "_user": "The user this item points to.",
+    "_userNameText": "The text field to display the user's name.",
+    "_expander": "The component used to expand items under the user like stream groups.",
+    "_expanderIndicator": "The indicator component used to show the expand/collapse arrow.",
+    "_childContainer": "The slot to display child items of this user item."
+  },
+  "methods": {
+    "OpenUser": "Is called when the user is opened by a user.",
+    "OpenComponents": "Is called when the user components are opened up.",
+    "OpenStream": "Is called when a specific stream on a user is opened up."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserInspectorItem&action=raw"
+}

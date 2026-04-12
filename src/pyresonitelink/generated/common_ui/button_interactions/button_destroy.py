@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonDestroy(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonDestroy.
+    """The ButtonDestroy component destroys the Target IDestroyable on IButton interaction, such as a slot.
+
+}}
 
     Category: Common UI/Button Interactions
+
+    This can be used in projects that need things destroyed by a button
+    press.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonDestroy"
@@ -34,7 +39,7 @@ class ButtonDestroy(GeneratedComponent, IButtonPressReceiver, IWorldEventReceive
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IDestroyable)."""
+        """The destroyable slot target."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +60,7 @@ class ButtonDestroy(GeneratedComponent, IButtonPressReceiver, IWorldEventReceive
 
     @property
     def find_object_root(self) -> primitives.Bool | None:
-        """The FindObjectRoot field value."""
+        """When this is interacted, this component will take the target and go up in the hierarchy and look for the first object root slot, then destroys it."""
         member = self.get_member("FindObjectRoot")
         if member is None:
             return None

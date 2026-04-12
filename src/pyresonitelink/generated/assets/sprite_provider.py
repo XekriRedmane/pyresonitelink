@@ -12,9 +12,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SpriteProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SpriteProvider.
+    """A SpriteProvider defines a slice of a Texture2D as a Sprite that may be used by other components e.g. UIX Images to display graphics or produce backgrounds.
 
     Category: Assets
+
+    **Behavior**: Sprite providers due to the current Unity implementation at the time of writing this have issues with switching images very quickly. They will often flash white, causing a health hazard to photo sensitive users. Having all the sprites on UIX elements at once and switching their ``OrderOffset`` to change which element renders on top will remove the flashing and is currently the only way to combat this issue.
+
+Using SpriteProvider to break up a sprite-sheet of iconography:
+
+By combining multiple icons/elements in a grid-like texture, you can reduce the size of your objects and improve load performance by reusing the same texture for multiple sprites. Please note that the ``Rect`` values are floating point percentages of the texture were 1 would equal 100%, so 1/4 or 25% would be 0.25 in floating point value. 
+
+The ``Rect`` first x,y values are from the LOWER LEFT of the texture being 0.0, 0.0, where the total inclusion of the cut out texture sprite is a percentage of the width and height in the second x,y values. 
+
+Example: Given if you take a 1024x1024 px sprite sheet texture.
+* Divide the height and width by 4 to make 12 equal sprite slots of 256x256 px chunks
+* A sprite texture on the second column from the left and on the third row from the bottom would be ``Rect``: x: 0.25 y: 0.50 x: 0.25 y: 0.25
+
+See attached example diagram for help.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SpriteProvider"
@@ -66,7 +80,7 @@ class SpriteProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[ITexture2D])."""
+        """The sprite to provide."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +101,7 @@ class SpriteProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def rect(self) -> primitives.Rect | None:
-        """The Rect field value."""
+        """The rectangle within the sprite to render. Note that the second x and y are actually the width and height of the Rect. The values are proportions of the width and height of the image in the Texture property."""
         member = self.get_member("Rect")
         if member is None:
             return None
@@ -106,7 +120,7 @@ class SpriteProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def borders(self) -> primitives.Float4 | None:
-        """The Borders field value."""
+        """Border widths for 9-slice scaling. The XYZW components set the left, bottom, right, and top borders respectively."""
         member = self.get_member("Borders")
         if member is None:
             return None
@@ -125,7 +139,7 @@ class SpriteProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def scale(self) -> primitives.Float | None:
-        """The Scale field value."""
+        """Effects the center size when 9 slicing."""
         member = self.get_member("Scale")
         if member is None:
             return None
@@ -144,7 +158,7 @@ class SpriteProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def fixed_size(self) -> primitives.Float | None:
-        """The FixedSize field value."""
+        """Effects the center size when 9 slicing."""
         member = self.get_member("FixedSize")
         if member is None:
             return None

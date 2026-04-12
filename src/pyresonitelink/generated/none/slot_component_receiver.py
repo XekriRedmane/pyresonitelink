@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SlotComponentReceiver(GeneratedComponent, IUIGrabReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SlotComponentReceiver.
+    """The SlotComponentReceiver component is used in inspectors to allow for recieving components to copy them into a slot.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlotComponentReceiver"
@@ -27,7 +27,7 @@ class SlotComponentReceiver(GeneratedComponent, IUIGrabReceiver, IWorldEventRece
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The slot to copy into."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

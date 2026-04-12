@@ -44,7 +44,7 @@ class ValueClamp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], IN
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[T])."""
+        """The value to clamp."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +65,7 @@ class ValueClamp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], IN
 
     @property
     def min(self) -> str | None:
-        """Target ID of the Min reference (targets INodeValueOutput[T])."""
+        """The forced minimum value for the input."""
         member = self.get_member("Min")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +86,7 @@ class ValueClamp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], IN
 
     @property
     def max(self) -> str | None:
-        """Target ID of the Max reference (targets INodeValueOutput[T])."""
+        """The forced maximum value for the input."""
         member = self.get_member("Max")
         if isinstance(member, members.Reference):
             return member.targetId

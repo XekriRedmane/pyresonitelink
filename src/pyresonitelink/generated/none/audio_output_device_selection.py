@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioOutputDeviceSelection(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioOutputDeviceSelection.
+    """The AudioOutputDeviceSelection component is a Legacy component that was used to change the audio output settings.
+
+    Legacy.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioOutputDeviceSelection"
@@ -35,7 +37,7 @@ class AudioOutputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def selected_device_index(self) -> primitives.Int | None:
-        """The SelectedDeviceIndex field value."""
+        """The device index in the list of devices on the user's machine."""
         member = self.get_member("SelectedDeviceIndex")
         if member is None:
             return None
@@ -54,7 +56,7 @@ class AudioOutputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def selected_device_name(self) -> primitives.String | None:
-        """The SelectedDeviceName field value."""
+        """The name of the selected device."""
         member = self.get_member("SelectedDeviceName")
         if member is None:
             return None
@@ -73,7 +75,7 @@ class AudioOutputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def device_button_root(self) -> str | None:
-        """Target ID of the _deviceButtonRoot reference (targets Slot)."""
+        """The root of the list of buttons to set an audio output device."""
         member = self.get_member("_deviceButtonRoot")
         if isinstance(member, members.Reference):
             return member.targetId

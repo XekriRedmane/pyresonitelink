@@ -12,9 +12,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueMultiplexer(GenericComponent[T], IValue[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueMultiplexer<>.
+    """The ValueMultiplexer component allows one to curate a list of values and drive a target with one of them, much like a multiplexer.
 
     Category: Utility
+
+    The component behaves similar to a ValueCopy with the list entry
+    indicated by ``Index`` as the value to output. Changes to ``Index`` or
+    the list entries will affect ``Target`` whenever the drive is evaluated.
+    In addition, the component implements the IValue interface. This allows
+    the component to be sourced by dragging out the component header with
+    the ProtoFlux tip. This allows one to use the component like an array
+    when sourcing the ``Index`` field as well. The source of this component
+    will update instantly, as opposed to the drive being limited to once per
+    frame.
 
     Parameterize with a value type::
 
@@ -44,7 +54,7 @@ class ValueMultiplexer(GenericComponent[T], IValue[T], IComponent, IWorldEventRe
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[T])."""
+        """A field which is driven with the currently selected list value"""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +75,7 @@ class ValueMultiplexer(GenericComponent[T], IValue[T], IComponent, IWorldEventRe
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """0-based index that determines which value of ``Values`` has been selected; values outside the range ``[0;length-1]`` are wrapped around internally."""
         member = self.get_member("Index")
         if member is None:
             return None
@@ -84,7 +94,7 @@ class ValueMultiplexer(GenericComponent[T], IValue[T], IComponent, IWorldEventRe
 
     @property
     def values(self) -> members.SyncList | None:
-        """The Values member."""
+        """A list of values which can also individually be driven or written to"""
         member = self.get_member("Values")
         if isinstance(member, members.SyncList):
             return member
@@ -92,12 +102,12 @@ class ValueMultiplexer(GenericComponent[T], IValue[T], IComponent, IWorldEventRe
 
     @values.setter
     def values(self, value: members.SyncList) -> None:
-        """Set the Values member."""
+        """Set Values. A list of values which can also individually be driven or written to"""
         self.set_member("Values", value)
 
     @property
     def allow_write_back(self) -> primitives.Bool | None:
-        """The AllowWriteBack field value."""
+        """Setting this to ``true`` redirects writes from ``Target`` or from a ``Source`` representing the selected value to the currently indexed list entry."""
         member = self.get_member("AllowWriteBack")
         if member is None:
             return None

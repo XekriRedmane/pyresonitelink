@@ -3,6 +3,9 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.blend_mode import BlendMode
+from pyresonitelink.generated._enums.zwrite import ZWrite
+from pyresonitelink.generated._enums.outline_style import OutlineStyle
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -14,12 +17,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FlatLitToonMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FlatLitToonMaterial.
+    """The FlatLitToonMaterial is a material that used to be used before the xiexe toon material.
+
+    Obsolete.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FlatLitToonMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, main_texture: str | IAssetProvider[ITexture2D] | None = None, color_mask: str | IAssetProvider[ITexture2D] | None = None, emission_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, main_texture_scale: primitives.Float2 | None = None, main_texture_offset: primitives.Float2 | None = None, color_mask_scale: primitives.Float2 | None = None, color_mask_offset: primitives.Float2 | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, alpha_cutoff: primitives.Float | None = None, color: primitives.ColorX | None = None, emission_color: primitives.ColorX | None = None, shadow: primitives.Float | None = None, outline_width: primitives.Float | None = None, outline_color: primitives.ColorX | None = None, outline_tint: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, main_texture: str | IAssetProvider[ITexture2D] | None = None, color_mask: str | IAssetProvider[ITexture2D] | None = None, emission_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, main_texture_scale: primitives.Float2 | None = None, main_texture_offset: primitives.Float2 | None = None, color_mask_scale: primitives.Float2 | None = None, color_mask_offset: primitives.Float2 | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, alpha_cutoff: primitives.Float | None = None, color: primitives.ColorX | None = None, emission_color: primitives.ColorX | None = None, blend_mode: BlendMode | str | None = None, zwrite: ZWrite | str | None = None, shadow: primitives.Float | None = None, outline: OutlineStyle | str | None = None, outline_width: primitives.Float | None = None, outline_color: primitives.ColorX | None = None, outline_tint: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,7 +45,10 @@ class FlatLitToonMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector,
             alpha_cutoff: Initial value for AlphaCutoff.
             color: Initial value for Color.
             emission_color: Initial value for EmissionColor.
+            blend_mode: Initial value for BlendMode.
+            zwrite: Initial value for ZWrite.
             shadow: Initial value for Shadow.
+            outline: Initial value for Outline.
             outline_width: Initial value for OutlineWidth.
             outline_color: Initial value for OutlineColor.
             outline_tint: Initial value for OutlineTint.
@@ -84,8 +92,14 @@ class FlatLitToonMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector,
             self.color = color
         if emission_color is not None:
             self.emission_color = emission_color
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
+        if zwrite is not None:
+            self.zwrite = zwrite
         if shadow is not None:
             self.shadow = shadow
+        if outline is not None:
+            self.outline = outline
         if outline_width is not None:
             self.outline_width = outline_width
         if outline_color is not None:
@@ -433,30 +447,44 @@ class FlatLitToonMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector,
             )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def shadow(self) -> primitives.Float | None:
@@ -478,17 +506,24 @@ class FlatLitToonMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector,
             )
 
     @property
-    def outline(self) -> members.FieldEnum | None:
-        """The Outline member."""
+    def outline(self) -> OutlineStyle | None:
+        """The Outline enum value."""
         member = self.get_member("Outline")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return OutlineStyle(member.value)
         return None
 
     @outline.setter
-    def outline(self, value: members.FieldEnum) -> None:
-        """Set the Outline member."""
-        self.set_member("Outline", value)
+    def outline(self, value: OutlineStyle | str) -> None:
+        """Set the Outline enum value."""
+        member = self.get_member("Outline")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Outline",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def outline_width(self) -> primitives.Float | None:

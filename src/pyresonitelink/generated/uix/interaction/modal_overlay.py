@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.ModalOverlay.
+    """The ModalOverlay component is a popup panel that a user can interact with.
+
+}}
 
     Category: UIX/Interaction
     """
@@ -46,7 +48,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
 
     @property
     def show_lerp(self) -> primitives.Float | None:
-        """The ShowLerp field value."""
+        """The lerp amount for this modal."""
         member = self.get_member("ShowLerp")
         if member is None:
             return None
@@ -65,7 +67,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
 
     @property
     def animation_time(self) -> primitives.Float | None:
-        """The AnimationTime field value."""
+        """The lerp time for this modal."""
         member = self.get_member("AnimationTime")
         if member is None:
             return None
@@ -84,7 +86,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
 
     @property
     def size_root(self) -> str | None:
-        """Target ID of the SizeRoot reference (targets RectTransform)."""
+        """The size of this modal."""
         member = self.get_member("SizeRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +107,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
 
     @property
     def content_root(self) -> str | None:
-        """Target ID of the ContentRoot reference (targets RectTransform)."""
+        """The center root of this modal."""
         member = self.get_member("ContentRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +128,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
 
     @property
     def close_on_context_menu_action(self) -> primitives.Bool | None:
-        """The CloseOnContextMenuAction field value."""
+        """Closes the modal when the user's context menu closes."""
         member = self.get_member("CloseOnContextMenuAction")
         if member is None:
             return None
@@ -145,7 +147,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
 
     @property
     def close_on_click(self) -> primitives.Bool | None:
-        """The CloseOnClick field value."""
+        """Closes this modal when it is clicked on."""
         member = self.get_member("CloseOnClick")
         if member is None:
             return None

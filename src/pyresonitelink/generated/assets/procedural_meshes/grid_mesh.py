@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,20 +14,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GridMesh.
+    """The GridMesh component generates a procedural mesh for use with Mesh Renderers that is like a Quad Mesh but has multiple squares instead of being one big square.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot and insert into a MeshRenderer to see the geometry.
+    Don't forget to use a Material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GridMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, points: primitives.Int2 | None = None, rotation: primitives.FloatQ | None = None, size: primitives.Float2 | None = None, flat_shading: primitives.Bool | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, displacement_magnitude: primitives.Float | None = None, displacement_texture: str | IAssetProvider[Texture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, points: primitives.Int2 | None = None, rotation: primitives.FloatQ | None = None, size: primitives.Float2 | None = None, flat_shading: primitives.Bool | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, displacement_magnitude: primitives.Float | None = None, displacement_texture: str | IAssetProvider[Texture2D] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             points: Initial value for Points.
             rotation: Initial value for Rotation.
             size: Initial value for Size.
@@ -44,6 +49,8 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if points is not None:
             self.points = points
         if rotation is not None:
@@ -119,21 +126,28 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def points(self) -> primitives.Int2 | None:
-        """The Points field value."""
+        """how many vertex points should be used on each axis to make the grid of quads"""
         member = self.get_member("Points")
         if member is None:
             return None
@@ -171,7 +185,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def size(self) -> primitives.Float2 | None:
-        """The Size field value."""
+        """how big the grid is scale wise."""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -190,7 +204,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def flat_shading(self) -> primitives.Bool | None:
-        """The FlatShading field value."""
+        """Disable smooth shading"""
         member = self.get_member("FlatShading")
         if member is None:
             return None
@@ -247,7 +261,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def displacement_magnitude(self) -> primitives.Float | None:
-        """The DisplacementMagnitude field value."""
+        """How far to displace the grid texture using ``DisplacementTexture``"""
         member = self.get_member("DisplacementMagnitude")
         if member is None:
             return None
@@ -266,7 +280,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def displacement_texture(self) -> str | None:
-        """Target ID of the DisplacementTexture reference (targets IAssetProvider[Texture2D])."""
+        """The texture to use for displacement. must be set to Uncompressed."""
         member = self.get_member("DisplacementTexture")
         if isinstance(member, members.Reference):
             return member.targetId

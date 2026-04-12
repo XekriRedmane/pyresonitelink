@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyRendererSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.LegacyRendererSwitcher.
+    """The LegacyRendererSwitcher component is used to switch between different rendering types depending on meshes.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LegacyRendererSwitcher"
@@ -41,7 +41,7 @@ class LegacyRendererSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def particle_mesh(self) -> str | None:
-        """Target ID of the ParticleMesh reference (targets AssetRef[Mesh])."""
+        """The particle mesh object when not null will use ``MeshRenderer`` for the renderer."""
         member = self.get_member("ParticleMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class LegacyRendererSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def billboard_renderer(self) -> str | None:
-        """Target ID of the BillboardRenderer reference (targets BillboardParticleRenderer)."""
+        """Can be switched to in order to render the particles as squares."""
         member = self.get_member("BillboardRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class LegacyRendererSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def mesh_renderer(self) -> str | None:
-        """Target ID of the MeshRenderer reference (targets MeshParticleRenderer)."""
+        """Can be switched to in order to render the particles as meshes."""
         member = self.get_member("MeshRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -104,7 +104,7 @@ class LegacyRendererSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def renderer_drive(self) -> str | None:
-        """Target ID of the RendererDrive reference (targets SyncRef[IParticleRenderer])."""
+        """Drives the target field with ``BillboardRenderer`` or ``MeshRenderer`` depending on if ``ParticleMesh`` is null."""
         member = self.get_member("RendererDrive")
         if isinstance(member, members.Reference):
             return member.targetId

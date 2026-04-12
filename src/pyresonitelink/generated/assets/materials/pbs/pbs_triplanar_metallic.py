@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.culling import Culling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -15,14 +16,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PBS_TriplanarMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PBS_TriplanarMetallic.
+    """A triplanar shader generates UVs and samples a texture by projecting in world space. The input texture is sampled 3 times, once in each of the world x, y and z axes, and the resulting information is planar projected onto the model, blended by the normal.
+
+They are particularly useful for projecting a texture onto a cubical object without causing stretching of the texture.
 
     Category: Assets/Materials/PBS
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_TriplanarMetallic"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, triplanar_blend_power: primitives.Float | None = None, object_space: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, transparent: primitives.Bool | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, triplanar_blend_power: primitives.Float | None = None, object_space: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, culling: Culling | str | None = None, transparent: primitives.Bool | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -40,6 +43,7 @@ class PBS_TriplanarMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial,
             object_space: Initial value for ObjectSpace.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
+            culling: Initial value for Culling.
             transparent: Initial value for Transparent.
             render_queue: Initial value for RenderQueue.
             metallic: Initial value for Metallic.
@@ -77,6 +81,8 @@ class PBS_TriplanarMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial,
             self.offset_factor = offset_factor
         if offset_units is not None:
             self.offset_units = offset_units
+        if culling is not None:
+            self.culling = culling
         if transparent is not None:
             self.transparent = transparent
         if render_queue is not None:
@@ -365,17 +371,24 @@ class PBS_TriplanarMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial,
             )
 
     @property
-    def culling(self) -> members.FieldEnum | None:
-        """The Culling member."""
+    def culling(self) -> Culling | None:
+        """The Culling enum value."""
         member = self.get_member("Culling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Culling(member.value)
         return None
 
     @culling.setter
-    def culling(self, value: members.FieldEnum) -> None:
-        """Set the Culling member."""
-        self.set_member("Culling", value)
+    def culling(self, value: Culling | str) -> None:
+        """Set the Culling enum value."""
+        member = self.get_member("Culling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Culling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def transparent(self) -> primitives.Bool | None:

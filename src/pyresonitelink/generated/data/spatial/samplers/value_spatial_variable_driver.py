@@ -11,9 +11,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueSpatialVariableDriver<>.
+    """The Value Spatial Variable Driver`1 component samples from Spatial variables intersecting the slot it is on and gets a value.
 
     Category: Data/Spatial/Samplers
+
+    Attach to a slot and provide a field to drive and a variable name. the
+    slot this component is on acts as the position for sampling variable
+    values.
 
     Parameterize with a value type::
 
@@ -43,7 +47,7 @@ class ValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEventRec
 
     @property
     def drive(self) -> str | None:
-        """Target ID of the Drive reference (targets IField[T])."""
+        """The field to drive with the sampled variable."""
         member = self.get_member("Drive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +68,7 @@ class ValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEventRec
 
     @property
     def variable_name(self) -> primitives.String | None:
-        """The VariableName field value."""
+        """the name of the variable to be sampling for."""
         member = self.get_member("VariableName")
         if member is None:
             return None

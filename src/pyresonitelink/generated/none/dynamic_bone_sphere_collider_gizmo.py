@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicBoneSphereColliderGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicBoneSphereColliderGizmo.
+    """The DynamicBoneSphereColliderGizmo allows for interacting with Dynamic Bone Sphere Colliders via a Sphere Gizmo. these are usually created by activating the gizmo option using the context menu while having a slot with a Dynamic Bone Sphere Collider selected.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicBoneSphereColliderGizmo"
@@ -31,7 +31,7 @@ class DynamicBoneSphereColliderGizmo(GeneratedComponent, IComponentGizmo, IWorld
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets DynamicBoneSphereCollider)."""
+        """The collider to make a visual/gizmo for."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +52,7 @@ class DynamicBoneSphereColliderGizmo(GeneratedComponent, IComponentGizmo, IWorld
 
     @property
     def sphere_gizmo(self) -> str | None:
-        """Target ID of the _sphereGizmo reference (targets SphereGizmo)."""
+        """The gizmo being used to control ``_target`` through this component."""
         member = self.get_member("_sphereGizmo")
         if isinstance(member, members.Reference):
             return member.targetId

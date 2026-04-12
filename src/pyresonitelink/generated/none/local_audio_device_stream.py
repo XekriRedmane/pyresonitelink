@@ -10,7 +10,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalAudioDeviceStream(GeneratedComponent, IWorldAudioDataSource, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocalAudioDeviceStream.
+    """The LocalAudioDeviceStream component can be used as a source of streamed audio data kind of like a player or a video for use with audio output components. This component Outputs locally the audio for a specified audio input Device by index number.
+
+    Can be used to listen to a specified audio device index using an audio
+    output. Can be used in world space and isn't limited to userspace.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocalAudioDeviceStream"
@@ -31,7 +34,7 @@ class LocalAudioDeviceStream(GeneratedComponent, IWorldAudioDataSource, ICompone
 
     @property
     def audio_device_index(self) -> primitives.Int | None:
-        """The AudioDeviceIndex field value."""
+        """The audio device to gather audio samples from."""
         member = self.get_member("AudioDeviceIndex")
         if member is None:
             return None
@@ -50,7 +53,7 @@ class LocalAudioDeviceStream(GeneratedComponent, IWorldAudioDataSource, ICompone
 
     @property
     def use_filtered_data(self) -> primitives.Bool | None:
-        """The UseFilteredData field value."""
+        """Whether to use raw audio samples or filter them."""
         member = self.get_member("UseFilteredData")
         if member is None:
             return None

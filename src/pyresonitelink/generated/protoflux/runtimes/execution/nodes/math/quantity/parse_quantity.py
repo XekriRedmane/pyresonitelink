@@ -15,6 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ParseQuantity(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Parse Quantity node takes in a string containing a written quantity value, along with the string of the default unit to assume if no explicit unit is present as part of the input string. It returns the parsed quantity value as a quantity type and a bool indicating wether it parsed successfully.
 
+To create this node, you need to specify a valid quantity type for its generic parameter. Examples: ``Mass``, ``Time``, and ``Voltage``.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Quantity
 
     Parameterize with a value type::
@@ -42,7 +44,7 @@ class ParseQuantity(GenericComponent[T], IExecutionNode[T], INode, ICustomInspec
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to parse."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +65,7 @@ class ParseQuantity(GenericComponent[T], IExecutionNode[T], INode, ICustomInspec
 
     @property
     def default_unit(self) -> str | None:
-        """Target ID of the DefaultUnit reference (targets INodeObjectOutput[primitives.String])."""
+        """The default unit to assume if no unit is present in the input string."""
         member = self.get_member("DefaultUnit")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +86,7 @@ class ParseQuantity(GenericComponent[T], IExecutionNode[T], INode, ICustomInspec
 
     @property
     def value(self) -> members.EmptyElement | None:
-        """The Value member."""
+        """The parsed quantity value."""
         member = self.get_member("Value")
         if isinstance(member, members.EmptyElement):
             return member
@@ -92,12 +94,12 @@ class ParseQuantity(GenericComponent[T], IExecutionNode[T], INode, ICustomInspec
 
     @value.setter
     def value(self, value: members.EmptyElement) -> None:
-        """Set the Value member."""
+        """Set Value. The parsed quantity value."""
         self.set_member("Value", value)
 
     @property
     def is_parsed(self) -> members.EmptyElement | None:
-        """The IsParsed member."""
+        """Wether the input string was parsed successfully."""
         member = self.get_member("IsParsed")
         if isinstance(member, members.EmptyElement):
             return member
@@ -105,6 +107,6 @@ class ParseQuantity(GenericComponent[T], IExecutionNode[T], INode, ICustomInspec
 
     @is_parsed.setter
     def is_parsed(self, value: members.EmptyElement) -> None:
-        """Set the IsParsed member."""
+        """Set IsParsed. Wether the input string was parsed successfully."""
         self.set_member("IsParsed", value)
 

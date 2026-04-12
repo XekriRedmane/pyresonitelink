@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.align_direction import AlignDirection
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -10,19 +11,26 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AxisMultiViewportPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.AxisMultiViewportPanner.
+    """The AxisMultiViewportPanner component toggles through UIX element's active state, min and max of the RectTransform's anchor. This allows a user to make "pages" in UIX.
+
+}}
 
     Category: UIX/Utility
+
+    This is useful if you want to make a slideshow, tab pages for UIX, or
+    anything that you want to have pan across for multiple pages in your
+    design.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.AxisMultiViewportPanner"
 
-    def __init__(self, viewport_index: primitives.Int | None = None, animation_time: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, viewport_index: primitives.Int | None = None, animation_time: primitives.Float | None = None, direction: AlignDirection | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             viewport_index: Initial value for ViewportIndex.
             animation_time: Initial value for AnimationTime.
+            direction: Initial value for Direction.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -30,10 +38,12 @@ class AxisMultiViewportPanner(GeneratedComponent, IComponent, IWorldEventReceive
             self.viewport_index = viewport_index
         if animation_time is not None:
             self.animation_time = animation_time
+        if direction is not None:
+            self.direction = direction
 
     @property
     def viewport_index(self) -> primitives.Int | None:
-        """The ViewportIndex field value."""
+        """The current focused viewport UIX element."""
         member = self.get_member("ViewportIndex")
         if member is None:
             return None
@@ -52,7 +62,7 @@ class AxisMultiViewportPanner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def animation_time(self) -> primitives.Float | None:
-        """The AnimationTime field value."""
+        """The time it takes to pan across to get to the selected viewport index."""
         member = self.get_member("AnimationTime")
         if member is None:
             return None
@@ -70,21 +80,28 @@ class AxisMultiViewportPanner(GeneratedComponent, IComponent, IWorldEventReceive
             )
 
     @property
-    def direction(self) -> members.FieldEnum | None:
-        """The Direction member."""
+    def direction(self) -> AlignDirection | None:
+        """The direction this animates to get to the selected viewport index."""
         member = self.get_member("Direction")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AlignDirection(member.value)
         return None
 
     @direction.setter
-    def direction(self, value: members.FieldEnum) -> None:
-        """Set the Direction member."""
-        self.set_member("Direction", value)
+    def direction(self, value: AlignDirection | str) -> None:
+        """Set Direction. The direction this animates to get to the selected viewport index."""
+        member = self.get_member("Direction")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Direction",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def viewports(self) -> members.SyncList | None:
-        """The Viewports member."""
+        """The list of UIX element viewports to pan to."""
         member = self.get_member("Viewports")
         if isinstance(member, members.SyncList):
             return member
@@ -92,6 +109,6 @@ class AxisMultiViewportPanner(GeneratedComponent, IComponent, IWorldEventReceive
 
     @viewports.setter
     def viewports(self, value: members.SyncList) -> None:
-        """Set the Viewports member."""
+        """Set Viewports. The list of UIX element viewports to pan to."""
         self.set_member("Viewports", value)
 

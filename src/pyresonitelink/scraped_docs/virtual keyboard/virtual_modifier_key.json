@@ -1,0 +1,12 @@
+{
+  "description": "Virtual Modifier Key is a way of making Virtual Keys change what they type when pressed.",
+  "category": "Userspace:Virtual Keyboard",
+  "fields": {
+    "Keyboard": "The keyboard this key is a part of.",
+    "State": "Whether this modifier key is active or not, kind of like if CAPSLOCK was active."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VirtualModifierKey&action=raw"
+}

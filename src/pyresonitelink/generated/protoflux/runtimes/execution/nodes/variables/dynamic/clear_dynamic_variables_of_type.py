@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeOperation, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Clear Dynamic Variables Of Type node takes in a slot hierarchy and a string literal path of the dynamic space name. For more information, see Dynamic Variables. This node then uses the selected type and searches through that hierarchy and only removes the dynamic variables of that matching type.
+    """The ``Clear Dynamic Variables Of Type`` node takes in a slot hierarchy and a string literal path of the dynamic space name. For more information, see Dynamic Variables. This node then uses the selected type and searches through that hierarchy and only removes the dynamic variables of that matching type.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Variables/Dynamic
 
@@ -52,7 +52,7 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[Slot])."""
+        """The slot hierarchy for this node to look through."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +73,7 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
 
     @property
     def space_name(self) -> str | None:
-        """Target ID of the SpaceName reference (targets INodeObjectOutput[primitives.String])."""
+        """The dynamic space name to find and clear out the dynamic variables of declared type from."""
         member = self.get_member("SpaceName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -94,7 +94,7 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
 
     @property
     def on_not_found(self) -> str | None:
-        """Target ID of the OnNotFound reference (targets INodeOperation)."""
+        """Fires when the path is incorrect or there is nothing to find in the given slot hierarchy that matches that type."""
         member = self.get_member("OnNotFound")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -115,7 +115,7 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
 
     @property
     def on_cleared(self) -> str | None:
-        """Target ID of the OnCleared reference (targets INodeOperation)."""
+        """Fires when the dynamic space name is found and all dynamic variables of that type under that name is removed."""
         member = self.get_member("OnCleared")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -136,7 +136,7 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
 
     @property
     def cleared_count(self) -> members.EmptyElement | None:
-        """The ClearedCount member."""
+        """Returns the number of dynamic variables of that type that have been removed by this node."""
         member = self.get_member("ClearedCount")
         if isinstance(member, members.EmptyElement):
             return member
@@ -144,6 +144,6 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
 
     @cleared_count.setter
     def cleared_count(self, value: members.EmptyElement) -> None:
-        """Set the ClearedCount member."""
+        """Set ClearedCount. Returns the number of dynamic variables of that type that have been removed by this node."""
         self.set_member("ClearedCount", value)
 

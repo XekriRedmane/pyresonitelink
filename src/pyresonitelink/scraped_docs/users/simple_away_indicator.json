@@ -1,0 +1,19 @@
+{
+  "description": "The SimpleAwayIndicator indicates when a user doesn't have the session focused by temporarily replacing the materials of a MeshRenderer with the specified Away Material.\n\nUsually found on the body slot of an avatar (but can be put anywhere in the world), this just needs a reference to the MeshRenderer or SkinnedMeshRenderer components to work.\n\n}}",
+  "category": "Users",
+  "fields": {
+    "User": "User whose away state will be watched. On avatars, may be set by an AvatarUserReferenceAssigner component.",
+    "AwayMaterial": "Material to display when the user is away.",
+    "Renderer": "Mesh renderer component whose materials should be replaced",
+    "_oldMaterials": "Backup of the renderer's original material list. Written automatically when \"Away\" state is triggered."
+  },
+  "methods": {
+    "SetAway": "Stores the renderer's material list in ``_oldMaterials`` and replaces them with the ``AwayMaterial``.",
+    "Restore": "Restores the renderer's materials from ``_oldMaterials``.",
+    "OnTestAway": "Stores the renderer's material list in ``_oldMaterials`` and replaces them with the ``AwayMaterial``.",
+    "OnTestRestore": "Restores the renderer's materials from ``_oldMaterials``."
+  },
+  "usage": "This is used to make a customized or fancier way of stating that you are focused away into another world.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SimpleAwayIndicator&action=raw"
+}

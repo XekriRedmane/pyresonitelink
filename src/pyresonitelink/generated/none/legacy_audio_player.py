@@ -19,7 +19,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyAudioPlayer.
+    """The LegacyAudioPlayer component is a leftover Component from content migrated from other platforms. It should not be used, and should be replaced whenever possible.
+
+For a replacement see Audio Player.
+
+    Not to be used.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyAudioPlayer"
@@ -91,7 +95,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def audio_clip(self) -> str | None:
-        """Target ID of the AudioClip reference (targets IAssetProvider[AudioClip])."""
+        """The audio clip for this audio player."""
         member = self.get_member("AudioClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +116,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def clip_player(self) -> str | None:
-        """Target ID of the _clipPlayer reference (targets AudioClipPlayer)."""
+        """The audio clip player that will play the audio clip."""
         member = self.get_member("_clipPlayer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -133,7 +137,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def audio_output(self) -> str | None:
-        """Target ID of the _audioOutput reference (targets AudioOutput)."""
+        """The audio output for the audio clip."""
         member = self.get_member("_audioOutput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -154,7 +158,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def waveform_material(self) -> str | None:
-        """Target ID of the _waveformMaterial reference (targets UnlitMaterial)."""
+        """The material that is used on the ring visual."""
         member = self.get_member("_waveformMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -175,7 +179,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def playback_material(self) -> str | None:
-        """Target ID of the _playbackMaterial reference (targets UnlitMaterial)."""
+        """The material that is used for the playback visual."""
         member = self.get_member("_playbackMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -196,7 +200,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def waveform_ring_mesh(self) -> str | None:
-        """Target ID of the _waveformRingMesh reference (targets RingMesh)."""
+        """The mesh used for the waveform ring visual."""
         member = self.get_member("_waveformRingMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -217,7 +221,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def playback_ring_mesh(self) -> str | None:
-        """Target ID of the _playbackRingMesh reference (targets RingMesh)."""
+        """The mesh used for the playback ring visual."""
         member = self.get_member("_playbackRingMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -238,7 +242,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def playback_ring_arc(self) -> str | None:
-        """Target ID of the _playbackRingArc reference (targets IField[primitives.Float])."""
+        """The field to drive to make the visual for the playback ring."""
         member = self.get_member("_playbackRingArc")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -259,7 +263,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def volume_ring_arc(self) -> str | None:
-        """Target ID of the _volumeRingArc reference (targets IField[primitives.Float])."""
+        """The field to drive to make the visual for the audio arc."""
         member = self.get_member("_volumeRingArc")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -280,7 +284,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def playback_time_text(self) -> str | None:
-        """Target ID of the _playbackTimeText reference (targets IField[primitives.String])."""
+        """The field to drive for the playback time text."""
         member = self.get_member("_playbackTimeText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -301,7 +305,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def clip_length_time_text(self) -> str | None:
-        """Target ID of the _clipLengthTimeText reference (targets IField[primitives.String])."""
+        """The field to drive for the audio clip length text."""
         member = self.get_member("_clipLengthTimeText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -322,7 +326,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def icon_texture_url(self) -> str | None:
-        """Target ID of the _iconTextureURL reference (targets IField[str])."""
+        """The field to drive with the icon texture URI."""
         member = self.get_member("_iconTextureURL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -343,7 +347,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def stop_item(self) -> str | None:
-        """Target ID of the _stopItem reference (targets Item)."""
+        """The item that can be clicked to stop playback."""
         member = self.get_member("_stopItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -364,7 +368,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def loop_item(self) -> str | None:
-        """Target ID of the _loopItem reference (targets Item)."""
+        """The item that can be clicked to loop playback."""
         member = self.get_member("_loopItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -385,7 +389,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def spatial_item(self) -> str | None:
-        """Target ID of the _spatialItem reference (targets Item)."""
+        """The item that can be clicked to spatialize or unspatialize the audio."""
         member = self.get_member("_spatialItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -406,7 +410,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def loop_icon_url(self) -> str | None:
-        """Target ID of the _loopIconURL reference (targets IField[str])."""
+        """The field to drive with the loop icon texture URI."""
         member = self.get_member("_loopIconURL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -427,7 +431,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def spatial_icon_url(self) -> str | None:
-        """Target ID of the _spatialIconURL reference (targets IField[str])."""
+        """The field to drive with the spatialize icon URI."""
         member = self.get_member("_spatialIconURL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -448,7 +452,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def exportable(self) -> str | None:
-        """Target ID of the _exportable reference (targets AudioExportable)."""
+        """The audio exportable component used to handle the export behavior of this audio player."""
         member = self.get_member("_exportable")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -469,7 +473,7 @@ class LegacyAudioPlayer(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def asset_proxy(self) -> str | None:
-        """Target ID of the _assetProxy reference (targets AssetProxy[AudioClip])."""
+        """The asset proxy used to handle dropping this audio player into fields that accept audio clips."""
         member = self.get_member("_assetProxy")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,9 +9,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabToolSnapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabToolSnapper.
+    """The GrabToolSnapper component snaps a grabbable component's slot on the same slot as this component to the tip of a tool or your tooltip anchor when the Grabbable is grabbed.
 
     Category: Transform/Interaction
+
+    This component is mostly for internal use, it is what is responsible for
+    the ReferenceProxy text that appears when you grab slots and fields in
+    the inspector. You can still use it if you would like, please check the
+    behavior section. = Behavior = If this component is added to a
+    IGrabbable Object, when this object is grabbed it will be positioned at
+    the tip of your Tool plus any offset specified in the offset field. On
+    it's own this is not that usable but this is used internally with some
+    UI Fields and Proxies to provide the blue text as shown above.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabToolSnapper"
@@ -29,7 +38,7 @@ class GrabToolSnapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceive
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """How far away from the tool the object should be upon grab."""
         member = self.get_member("Offset")
         if member is None:
             return None

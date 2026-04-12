@@ -1,0 +1,13 @@
+{
+  "description": "Debug hand is a component that is used to show a debug visual when the Biped Rig Component has its \"Debug Hand\" sync delegate pressed.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "_objects": "The slots of the mesh renderers that are being used to debug the hand.",
+    "_materialTarget": "The component used as a reference to apply ``_material`` to the debug when ``_material`` changes.",
+    "_material": "The material this component is using to render the visual"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarDebugHand&action=raw"
+}

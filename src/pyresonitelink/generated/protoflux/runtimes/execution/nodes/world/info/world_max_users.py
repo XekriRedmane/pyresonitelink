@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldMaxUsers(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The World Max Users node returns this world's "Maximum Users" setting from the Session tab in the Dash.
+    """The ``World Max Users`` node returns this world's "Maximum Users" setting from the Session tab in the Dash.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

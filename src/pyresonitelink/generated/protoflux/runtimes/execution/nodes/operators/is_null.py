@@ -39,7 +39,7 @@ class IsNull(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode,
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[T])."""
+        """The reference to check."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId

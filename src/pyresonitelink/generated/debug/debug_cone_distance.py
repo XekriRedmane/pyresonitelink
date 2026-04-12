@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugConeDistance(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugConeDistance.
+    """The DebugConeDistance component creates a Debug cone visual that draws lines from the list of ``Points`` to the surface of the cone. If the point is inside the cone, the point visual will be Cyan, if it is outside it will be red. The lines from the point to the cone are Yellow. When attached, the component will add 32 random points to ``Points`` that are 4 units away.
 
     Category: Debug
     """
@@ -33,7 +33,7 @@ class DebugConeDistance(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """The height of the cone."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -52,7 +52,7 @@ class DebugConeDistance(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the cone base."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -71,7 +71,7 @@ class DebugConeDistance(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def points(self) -> members.SyncList | None:
-        """The Points member."""
+        """Points that the Debug visual will draw lines to from the cone surface to the point."""
         member = self.get_member("Points")
         if isinstance(member, members.SyncList):
             return member
@@ -79,6 +79,6 @@ class DebugConeDistance(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @points.setter
     def points(self, value: members.SyncList) -> None:
-        """Set the Points member."""
+        """Set Points. Points that the Debug visual will draw lines to from the cone surface to the point."""
         self.set_member("Points", value)
 

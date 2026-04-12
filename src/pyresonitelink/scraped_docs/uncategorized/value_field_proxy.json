@@ -1,0 +1,11 @@
+{
+  "description": "The Value Field Proxy component is used to make a field accessible via grabbing when paired with a grabbable. See #Usage for more info.",
+  "category": "Uncategorized",
+  "fields": {
+    "Source": "The field to relay into the grabbable behavior this component has when paired with a grabbable."
+  },
+  "methods": {},
+  "usage": "Used to make a grabbable object able to put a value into a field. This can be done by clicking with or letting go of the object while holding it and pointing at a collider that can recieve it. Examples of recievers include inspector fields, text fields, and number fields. These objects achieve this by using a ValueReceiver.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueFieldProxy&action=raw"
+}

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToUnixMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The To Unix Milliseconds node takes in a DateTime and returns with the amount of milliseconds elapsed from that DateTime since January 1st, 1970.
+    """The ``To Unix Milliseconds`` node takes in a DateTime and returns with the amount of milliseconds elapsed from that DateTime since January 1st, 1970.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """
@@ -32,7 +32,7 @@ class ToUnixMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def date_time(self) -> str | None:
-        """Target ID of the DateTime reference (targets INodeValueOutput[str])."""
+        """The DateTime to compare against the start of Unix time."""
         member = self.get_member("DateTime")
         if isinstance(member, members.Reference):
             return member.targetId

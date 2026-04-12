@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SizeOffsetByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.SizeOffsetByVelocity.
+    """The SizeOffsetByVelocity component changes the size of particles in a particle system based on their velocity.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SizeOffsetByVelocity"
@@ -41,7 +46,7 @@ class SizeOffsetByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     @property
     def velocity_multiplier(self) -> primitives.Float3 | None:
-        """The VelocityMultiplier field value."""
+        """How much velocity should multiply the size of the particle."""
         member = self.get_member("VelocityMultiplier")
         if member is None:
             return None
@@ -60,7 +65,7 @@ class SizeOffsetByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     @property
     def offset_clamp_min(self) -> primitives.Float3 | None:
-        """The OffsetClampMin field value."""
+        """The minimum value for the clamping of the offset."""
         member = self.get_member("OffsetClampMin")
         if member is None:
             return None
@@ -79,7 +84,7 @@ class SizeOffsetByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     @property
     def offset_clamp_max(self) -> primitives.Float3 | None:
-        """The OffsetClampMax field value."""
+        """The maximum value for the clamping of the offset."""
         member = self.get_member("OffsetClampMax")
         if member is None:
             return None
@@ -98,7 +103,7 @@ class SizeOffsetByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     @property
     def result_clamp_min(self) -> primitives.Float3 | None:
-        """The ResultClampMin field value."""
+        """The minimum value for the clamping of the result."""
         member = self.get_member("ResultClampMin")
         if member is None:
             return None
@@ -117,7 +122,7 @@ class SizeOffsetByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     @property
     def result_clamp_max(self) -> primitives.Float3 | None:
-        """The ResultClampMax field value."""
+        """The maximum value for the clamping of the result."""
         member = self.get_member("ResultClampMax")
         if member is None:
             return None

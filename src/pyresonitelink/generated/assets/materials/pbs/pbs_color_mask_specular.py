@@ -13,9 +13,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PBS_ColorMaskSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PBS_ColorMaskSpecular.
+    """The PBS_ColorMaskSpecular material is a specular material that allows for four distinct colors to be used separately or mixed in on different areas of the surface based on an image map.
 
     Category: Assets/Materials/PBS
+
+    The ``ColorMask`` texture is a color mask that gets mapped to the four
+    albedo/emissive channels to change individual tints for certain parts of
+    the material. Other fields work as described on the PBS_Specular
+    material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_ColorMaskSpecular"

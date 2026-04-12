@@ -12,6 +12,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class Pi(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Pi node outputs the mathematical constant π.
 
+Applications this can be used in:
+- Geometry and Circle Calculations
+- Rotations and Angle Calculations
+- Wave Generation (combined with Sin)
+- Physics Simulations (especially when dealing with circular motion, pendulum movements, or orbital mechanics)
+- Procedural Generation (especially curves)
+- Lighting and Shading (used in lighting models to calculate angles and intensities of light, reflections, and refractions)
+- Animation Curves
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
     """
 

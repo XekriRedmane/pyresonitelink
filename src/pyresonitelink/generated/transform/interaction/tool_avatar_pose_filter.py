@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToolAvatarPoseFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ToolAvatarPoseFilter.
+    """The ToolAvatarPoseFilter component is used to assign a Pose Filter to the hand you have a Tool equipped on.
 
     Category: Transform/Interaction
+
+    This can be used on any type of tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ToolAvatarPoseFilter"
@@ -34,7 +36,7 @@ class ToolAvatarPoseFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def filter(self) -> str | None:
-        """Target ID of the Filter reference (targets IAvatarPoseFilter)."""
+        """The pose filter to apply"""
         member = self.get_member("Filter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +57,7 @@ class ToolAvatarPoseFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def priority(self) -> primitives.Int | None:
-        """The Priority field value."""
+        """Whether this pose filter should be applied before other filters."""
         member = self.get_member("Priority")
         if member is None:
             return None

@@ -37,7 +37,7 @@ class StartsWith(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to check."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class StartsWith(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
 
     @property
     def substring(self) -> str | None:
-        """Target ID of the Substring reference (targets INodeObjectOutput[primitives.String])."""
+        """Used to check if Str (String) starts with this."""
         member = self.get_member("Substring")
         if isinstance(member, members.Reference):
             return member.targetId

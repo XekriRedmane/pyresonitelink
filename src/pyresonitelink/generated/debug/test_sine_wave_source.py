@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TestSineWaveSource(GeneratedComponent, IWorldAudioDataSource, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TestSineWaveSource.
+    """The TestSineWaveSource component acts the same as a SineWaveClip if it were continuously playing as an AudioClipPlayer. The main difference though is it allows constant and quick changes in ``Frequency`` and ``Amplitude`` without needing time to recalculate.
 
     Category: Debug
     """
@@ -33,7 +33,7 @@ class TestSineWaveSource(GeneratedComponent, IWorldAudioDataSource, IComponent, 
 
     @property
     def frequency(self) -> primitives.Float | None:
-        """The Frequency field value."""
+        """The pitch of the audio streamed whistle tone."""
         member = self.get_member("Frequency")
         if member is None:
             return None
@@ -52,7 +52,7 @@ class TestSineWaveSource(GeneratedComponent, IWorldAudioDataSource, IComponent, 
 
     @property
     def amplitude(self) -> primitives.Float | None:
-        """The Amplitude field value."""
+        """The loudness of the streamed whistle tone."""
         member = self.get_member("Amplitude")
         if member is None:
             return None

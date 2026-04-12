@@ -42,7 +42,7 @@ class LineCircleIntersections(GeneratedComponent, IExecutionNode, INode, ICustom
 
     @property
     def center(self) -> str | None:
-        """Target ID of the Center reference (targets INodeValueOutput[primitives.Float2])."""
+        """Center of the circle."""
         member = self.get_member("Center")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class LineCircleIntersections(GeneratedComponent, IExecutionNode, INode, ICustom
 
     @property
     def radius(self) -> str | None:
-        """Target ID of the Radius reference (targets INodeValueOutput[primitives.Float])."""
+        """Radius of the circle."""
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class LineCircleIntersections(GeneratedComponent, IExecutionNode, INode, ICustom
 
     @property
     def line_point0(self) -> str | None:
-        """Target ID of the LinePoint0 reference (targets INodeValueOutput[primitives.Float2])."""
+        """First point of the line."""
         member = self.get_member("LinePoint0")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +105,7 @@ class LineCircleIntersections(GeneratedComponent, IExecutionNode, INode, ICustom
 
     @property
     def line_point1(self) -> str | None:
-        """Target ID of the LinePoint1 reference (targets INodeValueOutput[primitives.Float2])."""
+        """Second point of the line."""
         member = self.get_member("LinePoint1")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +126,7 @@ class LineCircleIntersections(GeneratedComponent, IExecutionNode, INode, ICustom
 
     @property
     def intersection_count(self) -> members.EmptyElement | None:
-        """The IntersectionCount member."""
+        """The amount of intersections of the defined line and circle. This is at most two."""
         member = self.get_member("IntersectionCount")
         if isinstance(member, members.EmptyElement):
             return member
@@ -134,12 +134,12 @@ class LineCircleIntersections(GeneratedComponent, IExecutionNode, INode, ICustom
 
     @intersection_count.setter
     def intersection_count(self, value: members.EmptyElement) -> None:
-        """Set the IntersectionCount member."""
+        """Set IntersectionCount. The amount of intersections of the defined line and circle. This is at most two."""
         self.set_member("IntersectionCount", value)
 
     @property
     def intersection0(self) -> members.EmptyElement | None:
-        """The Intersection0 member."""
+        """The first point of intersection between the line and circle. This is the point that occurs "later" in the intersection when tracing the line from ``LinePoint0`` to ``LinePoint1``. If there does not exist any intersection, this value is ``[NaN; NaN]``."""
         member = self.get_member("Intersection0")
         if isinstance(member, members.EmptyElement):
             return member
@@ -147,12 +147,12 @@ class LineCircleIntersections(GeneratedComponent, IExecutionNode, INode, ICustom
 
     @intersection0.setter
     def intersection0(self, value: members.EmptyElement) -> None:
-        """Set the Intersection0 member."""
+        """Set Intersection0. The first point of intersection between the line and circle. This is the point that occurs "later" in the intersection when tracing the line from ``LinePoint0`` to ``LinePoint1``. If there does not exist any intersection, this value is ``[NaN; NaN]``."""
         self.set_member("Intersection0", value)
 
     @property
     def intersection1(self) -> members.EmptyElement | None:
-        """The Intersection1 member."""
+        """The second point of intersection between the line and circle. This is the point that occurs "earlier" in the intersection when tracing the line from ``LinePoint0`` to ``LinePoint1``. If there are fewer than two intersections, this value is ``[NaN; NaN]``."""
         member = self.get_member("Intersection1")
         if isinstance(member, members.EmptyElement):
             return member
@@ -160,6 +160,6 @@ class LineCircleIntersections(GeneratedComponent, IExecutionNode, INode, ICustom
 
     @intersection1.setter
     def intersection1(self, value: members.EmptyElement) -> None:
-        """Set the Intersection1 member."""
+        """Set Intersection1. The second point of intersection between the line and circle. This is the point that occurs "earlier" in the intersection when tracing the line from ``LinePoint0`` to ``LinePoint1``. If there are fewer than two intersections, this value is ``[NaN; NaN]``."""
         self.set_member("Intersection1", value)
 

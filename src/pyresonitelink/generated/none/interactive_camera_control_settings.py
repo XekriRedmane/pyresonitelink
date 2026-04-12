@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractiveCameraControlSettings(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraControlSettings.
+    """The InteractiveCameraControlSettings component allows for changing the settings for the user's Camera.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraControlSettings"
@@ -31,7 +33,7 @@ class InteractiveCameraControlSettings(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def canvas(self) -> str | None:
-        """Target ID of the _canvas reference (targets Canvas)."""
+        """The canvas to put data into and show settings"""
         member = self.get_member("_canvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +54,7 @@ class InteractiveCameraControlSettings(GeneratedComponent, IComponent, IWorldEve
 
     @property
     def panel(self) -> str | None:
-        """Target ID of the _panel reference (targets LegacyPanel)."""
+        """The legacy panel to show the settings on."""
         member = self.get_member("_panel")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,9 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.depth_encoding import DepthEncoding
+from pyresonitelink.generated._enums.blend_mode import BlendMode
+from pyresonitelink.generated._enums.zwrite import ZWrite
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,14 +16,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DepthProjectionMaterial.
+    """The DepthProjectionMaterial is commonly used when importing depth videos and acts as a material that displaces vertices in 3D.
 
     Category: Assets/Materials/Unlit
+
+    The material uses a file that has a greyscale video (representing depth
+    at each pixel) and a normal color video in order to "overlay" the color
+    info on top of the 3D distortion created by the greyscale input. There
+    are texture2D slots for depth and color, meaning two separate files
+    could be used given the DepthTextureOffset property is set to 0.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DepthProjectionMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, color: str | IAssetProvider[ITexture2D] | None = None, depth: str | IAssetProvider[ITexture2D] | None = None, color_texture_offset: primitives.Float2 | None = None, color_texture_scale: primitives.Float2 | None = None, depth_texture_offset: primitives.Float2 | None = None, depth_texture_scale: primitives.Float2 | None = None, depth_from: primitives.Float | None = None, depth_to: primitives.Float | None = None, field_of_view: primitives.Float2 | None = None, near_clip: primitives.Float | None = None, far_clip: primitives.Float | None = None, discard_threshold: primitives.Float | None = None, discard_offset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, color: str | IAssetProvider[ITexture2D] | None = None, depth: str | IAssetProvider[ITexture2D] | None = None, depth_encoding: DepthEncoding | str | None = None, color_texture_offset: primitives.Float2 | None = None, color_texture_scale: primitives.Float2 | None = None, depth_texture_offset: primitives.Float2 | None = None, depth_texture_scale: primitives.Float2 | None = None, depth_from: primitives.Float | None = None, depth_to: primitives.Float | None = None, field_of_view: primitives.Float2 | None = None, near_clip: primitives.Float | None = None, far_clip: primitives.Float | None = None, discard_threshold: primitives.Float | None = None, discard_offset: primitives.Float | None = None, blend_mode: BlendMode | str | None = None, zwrite: ZWrite | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +37,7 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             shader: Initial value for _shader.
             color: Initial value for Color.
             depth: Initial value for Depth.
+            depth_encoding: Initial value for DepthEncoding.
             color_texture_offset: Initial value for ColorTextureOffset.
             color_texture_scale: Initial value for ColorTextureScale.
             depth_texture_offset: Initial value for DepthTextureOffset.
@@ -39,6 +49,8 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             far_clip: Initial value for FarClip.
             discard_threshold: Initial value for DiscardThreshold.
             discard_offset: Initial value for DiscardOffset.
+            blend_mode: Initial value for BlendMode.
+            zwrite: Initial value for ZWrite.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -50,6 +62,8 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             self.color = color
         if depth is not None:
             self.depth = depth
+        if depth_encoding is not None:
+            self.depth_encoding = depth_encoding
         if color_texture_offset is not None:
             self.color_texture_offset = color_texture_offset
         if color_texture_scale is not None:
@@ -72,6 +86,10 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             self.discard_threshold = discard_threshold
         if discard_offset is not None:
             self.discard_offset = discard_offset
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
+        if zwrite is not None:
+            self.zwrite = zwrite
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -156,17 +174,24 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def depth_encoding(self) -> members.FieldEnum | None:
-        """The DepthEncoding member."""
+    def depth_encoding(self) -> DepthEncoding | None:
+        """The DepthEncoding enum value."""
         member = self.get_member("DepthEncoding")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return DepthEncoding(member.value)
         return None
 
     @depth_encoding.setter
-    def depth_encoding(self, value: members.FieldEnum) -> None:
-        """Set the DepthEncoding member."""
-        self.set_member("DepthEncoding", value)
+    def depth_encoding(self, value: DepthEncoding | str) -> None:
+        """Set the DepthEncoding enum value."""
+        member = self.get_member("DepthEncoding")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DepthEncoding",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def color_texture_offset(self) -> primitives.Float2 | None:
@@ -378,28 +403,42 @@ class DepthProjectionMaterial(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 

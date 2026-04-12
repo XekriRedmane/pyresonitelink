@@ -1,0 +1,15 @@
+{
+  "description": "The AudioStreamSpawner component is used as part of the dash to spawn a selected audio stream.",
+  "category": "Utility:Tools",
+  "fields": {
+    "BitrateKbps": "The bitrate the audio stream should be",
+    "DeviceID": "the device name of the stream we are spawning",
+    "_bitrateString": "The bitrate as a string."
+  },
+  "methods": {
+    "OnStartStreaming": "Triggered by a button in order to spawn the stream in the world."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioStreamSpawner&action=raw"
+}

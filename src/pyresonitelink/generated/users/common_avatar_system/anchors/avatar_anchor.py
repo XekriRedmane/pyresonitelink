@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.user_node import UserNode
+from pyresonitelink.generated._enums.restore_mode import RestoreMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -11,25 +13,35 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchor.
+    """An anchor allows for an avatar to be attached to a slot. This component can also allow for pinning of a user's limb(s) for posing, and is most commonly used as a seat.
 
     Category: Users/Common Avatar System/Anchors
+
+    **Behavior**: By itself, an AvatarAnchor does nothing. It requires either an AvatarAnchorTouchTrigger component or a Anchor User ProtoFlux node to place an avatar into it.
+
+To exit an anchor, a AvatarAnchorLocomotionRelease component or a Release User ProtoFlux node needs to be used.
+
+When a user is anchored to an an anchor, first ``TransformRestoreMode`` takes it's effect on the settings (see above table for any field descriptions). Next the user root slot is parented under ``ParentSpace``. Then ``MinScale`` and ``MaxScale`` are applied to keep the avatar within the right size. After that the global rotation and position of the user's root slot is set to the global position and rotation of the ``PositionReference`` and ``RotationReference`` slots using their specified nodes. Lastly the avatar's filters are applied.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAnchor"
 
-    def __init__(self, highlight: primitives.Bool | None = None, min_scale: primitives.Float | None = None, max_scale: primitives.Float | None = None, position_reference: str | Slot | None = None, rotation_reference: str | Slot | None = None, preserve_up_on_enter: primitives.Bool | None = None, preserve_up_on_exit: primitives.Bool | None = None, unparent_everything_on_destroy: primitives.Bool | None = None, restore_reference: str | Slot | None = None, original_space: str | Slot | None = None, original_position: primitives.Float3 | None = None, original_rotation: primitives.FloatQ | None = None, original_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, highlight: primitives.Bool | None = None, min_scale: primitives.Float | None = None, max_scale: primitives.Float | None = None, position_node: UserNode | str | None = None, position_reference: str | Slot | None = None, rotation_node: UserNode | str | None = None, rotation_reference: str | Slot | None = None, preserve_up_on_enter: primitives.Bool | None = None, preserve_up_on_exit: primitives.Bool | None = None, unparent_everything_on_destroy: primitives.Bool | None = None, transform_restore_mode: RestoreMode | str | None = None, restore_node: UserNode | str | None = None, restore_reference: str | Slot | None = None, original_space: str | Slot | None = None, original_position: primitives.Float3 | None = None, original_rotation: primitives.FloatQ | None = None, original_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             highlight: Initial value for Highlight.
             min_scale: Initial value for MinScale.
             max_scale: Initial value for MaxScale.
+            position_node: Initial value for PositionNode.
             position_reference: Initial value for PositionReference.
+            rotation_node: Initial value for RotationNode.
             rotation_reference: Initial value for RotationReference.
             preserve_up_on_enter: Initial value for PreserveUpOnEnter.
             preserve_up_on_exit: Initial value for PreserveUpOnExit.
             unparent_everything_on_destroy: Initial value for UnparentEverythingOnDestroy.
+            transform_restore_mode: Initial value for TransformRestoreMode.
+            restore_node: Initial value for RestoreNode.
             restore_reference: Initial value for RestoreReference.
             original_space: Initial value for _originalSpace.
             original_position: Initial value for _originalPosition.
@@ -44,8 +56,12 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             self.min_scale = min_scale
         if max_scale is not None:
             self.max_scale = max_scale
+        if position_node is not None:
+            self.position_node = position_node
         if position_reference is not None:
             self.position_reference = position_reference
+        if rotation_node is not None:
+            self.rotation_node = rotation_node
         if rotation_reference is not None:
             self.rotation_reference = rotation_reference
         if preserve_up_on_enter is not None:
@@ -54,6 +70,10 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             self.preserve_up_on_exit = preserve_up_on_exit
         if unparent_everything_on_destroy is not None:
             self.unparent_everything_on_destroy = unparent_everything_on_destroy
+        if transform_restore_mode is not None:
+            self.transform_restore_mode = transform_restore_mode
+        if restore_node is not None:
+            self.restore_node = restore_node
         if restore_reference is not None:
             self.restore_reference = restore_reference
         if original_space is not None:
@@ -67,7 +87,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @property
     def highlight(self) -> primitives.Bool | None:
-        """The Highlight field value."""
+        """Whether a user is pointing at this anchor and it is possible for them to activate the enter dialogue by pressing Primary at this moment."""
         member = self.get_member("Highlight")
         if member is None:
             return None
@@ -86,7 +106,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @property
     def parent_space(self) -> members.SyncObject | None:
-        """The ParentSpace member."""
+        """The coordinate space in which to work with the avatar."""
         member = self.get_member("ParentSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -94,12 +114,12 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @parent_space.setter
     def parent_space(self, value: members.SyncObject) -> None:
-        """Set the ParentSpace member."""
+        """Set ParentSpace. The coordinate space in which to work with the avatar."""
         self.set_member("ParentSpace", value)
 
     @property
     def min_scale(self) -> primitives.Float | None:
-        """The MinScale field value."""
+        """If an avatar has a scale below the MinScale, it will be scaled up to that size."""
         member = self.get_member("MinScale")
         if member is None:
             return None
@@ -118,7 +138,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @property
     def max_scale(self) -> primitives.Float | None:
-        """The MaxScale field value."""
+        """If an avatar has a scale above the MaxScale, it will be scaled down to that size."""
         member = self.get_member("MaxScale")
         if member is None:
             return None
@@ -136,21 +156,28 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             )
 
     @property
-    def position_node(self) -> members.FieldEnum | None:
-        """The PositionNode member."""
+    def position_node(self) -> UserNode | None:
+        """Which part of the avatar to use to position the avatar."""
         member = self.get_member("PositionNode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return UserNode(member.value)
         return None
 
     @position_node.setter
-    def position_node(self, value: members.FieldEnum) -> None:
-        """Set the PositionNode member."""
-        self.set_member("PositionNode", value)
+    def position_node(self, value: UserNode | str) -> None:
+        """Set PositionNode. Which part of the avatar to use to position the avatar."""
+        member = self.get_member("PositionNode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "PositionNode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def position_reference(self) -> str | None:
-        """Target ID of the PositionReference reference (targets Slot)."""
+        """Where to position the avatar to."""
         member = self.get_member("PositionReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -170,21 +197,28 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             )
 
     @property
-    def rotation_node(self) -> members.FieldEnum | None:
-        """The RotationNode member."""
+    def rotation_node(self) -> UserNode | None:
+        """Which part of the avatar to use to rotate the avatar."""
         member = self.get_member("RotationNode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return UserNode(member.value)
         return None
 
     @rotation_node.setter
-    def rotation_node(self, value: members.FieldEnum) -> None:
-        """Set the RotationNode member."""
-        self.set_member("RotationNode", value)
+    def rotation_node(self, value: UserNode | str) -> None:
+        """Set RotationNode. Which part of the avatar to use to rotate the avatar."""
+        member = self.get_member("RotationNode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "RotationNode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def rotation_reference(self) -> str | None:
-        """Target ID of the RotationReference reference (targets Slot)."""
+        """Where to rotate the avatar to."""
         member = self.get_member("RotationReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -205,7 +239,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @property
     def preserve_up_on_enter(self) -> primitives.Bool | None:
-        """The PreserveUpOnEnter field value."""
+        """Whether to keep the user's root slot's up direction pointing the same direction it was in global space before entering, or to align them to the up of the slot of the anchor. This is disabled when ``RotationNode`` and ``RotationReference`` are set to not none."""
         member = self.get_member("PreserveUpOnEnter")
         if member is None:
             return None
@@ -224,7 +258,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @property
     def preserve_up_on_exit(self) -> primitives.Bool | None:
-        """The PreserveUpOnExit field value."""
+        """Whether to keep the user's root slot's up direction pointing the same direction it was in global space before exiting, or to align them to the up of the slot they get parented back under. This is disabled when ``TransformRestoreMode`` and ``RestoreNode`` are set to not none."""
         member = self.get_member("PreserveUpOnExit")
         if member is None:
             return None
@@ -243,7 +277,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @property
     def unparent_everything_on_destroy(self) -> primitives.Bool | None:
-        """The UnparentEverythingOnDestroy field value."""
+        """Unparent all slots under ``ParentSpace``'s Space slot and parent them under the parent of the nearest ObjectRoot (doesn't need an explicit ObjectRoot component). If ``ParentSpace``'s Space slot is null, or the ObjectRoot parent is null, then all children are deleted anyway."""
         member = self.get_member("UnparentEverythingOnDestroy")
         if member is None:
             return None
@@ -261,34 +295,48 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
             )
 
     @property
-    def transform_restore_mode(self) -> members.FieldEnum | None:
-        """The TransformRestoreMode member."""
+    def transform_restore_mode(self) -> RestoreMode | None:
+        """What slot or space to use when setting the user's transforms to what they were before they entered the anchor."""
         member = self.get_member("TransformRestoreMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return RestoreMode(member.value)
         return None
 
     @transform_restore_mode.setter
-    def transform_restore_mode(self, value: members.FieldEnum) -> None:
-        """Set the TransformRestoreMode member."""
-        self.set_member("TransformRestoreMode", value)
+    def transform_restore_mode(self, value: RestoreMode | str) -> None:
+        """Set TransformRestoreMode. What slot or space to use when setting the user's transforms to what they were before they entered the anchor."""
+        member = self.get_member("TransformRestoreMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "TransformRestoreMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def restore_node(self) -> members.FieldEnum | None:
-        """The RestoreNode member."""
+    def restore_node(self) -> UserNode | None:
+        """The part of the user's avatar that the transforms should be changed to ``_originalPosition``, ``_originalRotation``, and ``_originalScale`` when the user exits the anchor. Which space the transforms refer to (aka what it would be parented to) depends on what ``TransformRestoreMode`` is set to."""
         member = self.get_member("RestoreNode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return UserNode(member.value)
         return None
 
     @restore_node.setter
-    def restore_node(self, value: members.FieldEnum) -> None:
-        """Set the RestoreNode member."""
-        self.set_member("RestoreNode", value)
+    def restore_node(self, value: UserNode | str) -> None:
+        """Set RestoreNode. The part of the user's avatar that the transforms should be changed to ``_originalPosition``, ``_originalRotation``, and ``_originalScale`` when the user exits the anchor. Which space the transforms refer to (aka what it would be parented to) depends on what ``TransformRestoreMode`` is set to."""
+        member = self.get_member("RestoreNode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "RestoreNode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def restore_reference(self) -> str | None:
-        """Target ID of the RestoreReference reference (targets Slot)."""
+        """This will be used from when ``TransformRestoreMode`` is set to "Reference". The specified ``RestoreNode``'s transform will be set to this slot's space using ``_originalPosition``, ``_originalRotation``, and ``_originalScale``."""
         member = self.get_member("RestoreReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -309,7 +357,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @property
     def filters(self) -> members.SyncList | None:
-        """The Filters member."""
+        """A list of pose filters to use. Each one can control the position, rotation, and/or speed of a specific body node"""
         member = self.get_member("Filters")
         if isinstance(member, members.SyncList):
             return member
@@ -317,12 +365,12 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @filters.setter
     def filters(self, value: members.SyncList) -> None:
-        """Set the Filters member."""
+        """Set Filters. A list of pose filters to use. Each one can control the position, rotation, and/or speed of a specific body node"""
         self.set_member("Filters", value)
 
     @property
     def user_filters(self) -> members.SyncList | None:
-        """The UserFilters member."""
+        """Nothing currently implements IAvatarAnchorUserFilter so this currently does nothing."""
         member = self.get_member("UserFilters")
         if isinstance(member, members.SyncList):
             return member
@@ -330,12 +378,12 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @user_filters.setter
     def user_filters(self, value: members.SyncList) -> None:
-        """Set the UserFilters member."""
+        """Set UserFilters. Nothing currently implements IAvatarAnchorUserFilter so this currently does nothing."""
         self.set_member("UserFilters", value)
 
     @property
     def original_space(self) -> str | None:
-        """Target ID of the _originalSpace reference (targets Slot)."""
+        """Internal"""
         member = self.get_member("_originalSpace")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -356,7 +404,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @property
     def original_position(self) -> primitives.Float3 | None:
-        """The _originalPosition field value."""
+        """Internal"""
         member = self.get_member("_originalPosition")
         if member is None:
             return None
@@ -375,7 +423,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @property
     def original_rotation(self) -> primitives.FloatQ | None:
-        """The _originalRotation field value."""
+        """Internal"""
         member = self.get_member("_originalRotation")
         if member is None:
             return None
@@ -394,7 +442,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @property
     def original_scale(self) -> primitives.Float | None:
-        """The _originalScale field value."""
+        """Internal"""
         member = self.get_member("_originalScale")
         if member is None:
             return None
@@ -413,7 +461,7 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @property
     def dummy_object_slots(self) -> members.SyncList | None:
-        """The _dummyObjectSlots member."""
+        """Internal"""
         member = self.get_member("_dummyObjectSlots")
         if isinstance(member, members.SyncList):
             return member
@@ -421,6 +469,6 @@ class AvatarAnchor(GeneratedComponent, IAvatarAnchor, IWorldEventReceiver):
 
     @dummy_object_slots.setter
     def dummy_object_slots(self, value: members.SyncList) -> None:
-        """Set the _dummyObjectSlots member."""
+        """Set _dummyObjectSlots. Internal"""
         self.set_member("_dummyObjectSlots", value)
 

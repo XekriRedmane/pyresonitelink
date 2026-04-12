@@ -21,7 +21,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FullBodyCalibrator.
+    """See Full Body Tracking.
+
+    See Full Body Tracking.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FullBodyCalibrator"
@@ -183,7 +185,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_user(self) -> str | None:
-        """Target ID of the TargetUser reference (targets User)."""
+        """The user we are doing full body tracking for."""
         member = self.get_member("TargetUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -204,7 +206,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def use_symmetry_for_trackers(self) -> primitives.Bool | None:
-        """The UseSymmetryForTrackers field value."""
+        """Whether changes to sided points (left versus right) mirror onto the other side for the User Calibration Reference."""
         member = self.get_member("UseSymmetryForTrackers")
         if member is None:
             return None
@@ -223,7 +225,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def use_symmetry_for_avatar(self) -> primitives.Bool | None:
-        """The UseSymmetryForAvatar field value."""
+        """Whether changes to sided points (left versus right) mirror onto the other side for the Avatar Calibration."""
         member = self.get_member("UseSymmetryForAvatar")
         if member is None:
             return None
@@ -242,7 +244,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def show_body_overlay(self) -> primitives.Bool | None:
-        """The ShowBodyOverlay field value."""
+        """Whether to show the User Calibration Reference."""
         member = self.get_member("ShowBodyOverlay")
         if member is None:
             return None
@@ -261,7 +263,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def show_avatar_overlay(self) -> primitives.Bool | None:
-        """The ShowAvatarOverlay field value."""
+        """Whether to show the avatar reference."""
         member = self.get_member("ShowAvatarOverlay")
         if member is None:
             return None
@@ -280,7 +282,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def height_compensation(self) -> primitives.Float | None:
-        """The HeightCompensation field value."""
+        """The user height field."""
         member = self.get_member("HeightCompensation")
         if member is None:
             return None
@@ -299,7 +301,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_height_compensation(self) -> primitives.Float | None:
-        """The AvatarHeightCompensation field value."""
+        """How much to multiply the avatar size relative to the User Calibration Reference."""
         member = self.get_member("AvatarHeightCompensation")
         if member is None:
             return None
@@ -318,7 +320,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def calibrating_pose(self) -> primitives.Bool | None:
-        """The _calibratingPose field value."""
+        """Whether we are Calibrating the pose or not."""
         member = self.get_member("_calibratingPose")
         if member is None:
             return None
@@ -337,7 +339,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def space_offset(self) -> primitives.Float3 | None:
-        """The _spaceOffset field value."""
+        """How much to offset play space."""
         member = self.get_member("_spaceOffset")
         if member is None:
             return None
@@ -356,7 +358,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def grabbable(self) -> str | None:
-        """Target ID of the _grabbable reference (targets Grabbable)."""
+        """The grabbable Component of the base plate."""
         member = self.get_member("_grabbable")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -377,7 +379,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def head_reference(self) -> str | None:
-        """Target ID of the _headReference reference (targets Slot)."""
+        """The reference visual for the head."""
         member = self.get_member("_headReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -398,7 +400,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_hand_reference(self) -> str | None:
-        """Target ID of the _leftHandReference reference (targets Slot)."""
+        """The reference visual for the left hand."""
         member = self.get_member("_leftHandReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -419,7 +421,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_hand_reference(self) -> str | None:
-        """Target ID of the _rightHandReference reference (targets Slot)."""
+        """The reference visual for the right hand."""
         member = self.get_member("_rightHandReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -440,7 +442,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hips_source(self) -> str | None:
-        """Target ID of the _hipsSource reference (targets TrackedDevicePositioner)."""
+        """The source of the hips data."""
         member = self.get_member("_hipsSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -461,7 +463,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def chest_source(self) -> str | None:
-        """Target ID of the _chestSource reference (targets TrackedDevicePositioner)."""
+        """The source of the chest data."""
         member = self.get_member("_chestSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -482,7 +484,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_foot_source(self) -> str | None:
-        """Target ID of the _leftFootSource reference (targets TrackedDevicePositioner)."""
+        """The source of the left foot data."""
         member = self.get_member("_leftFootSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -503,7 +505,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_foot_source(self) -> str | None:
-        """Target ID of the _rightFootSource reference (targets TrackedDevicePositioner)."""
+        """The source of the right foot data."""
         member = self.get_member("_rightFootSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -524,7 +526,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_elbow_source(self) -> str | None:
-        """Target ID of the _leftElbowSource reference (targets TrackedDevicePositioner)."""
+        """The source of the left elbow data."""
         member = self.get_member("_leftElbowSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -545,7 +547,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_elbow_source(self) -> str | None:
-        """Target ID of the _rightElbowSource reference (targets TrackedDevicePositioner)."""
+        """The source of the right elbow data."""
         member = self.get_member("_rightElbowSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -566,7 +568,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_knee_source(self) -> str | None:
-        """Target ID of the _leftKneeSource reference (targets TrackedDevicePositioner)."""
+        """The source of the left knee data."""
         member = self.get_member("_leftKneeSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -587,7 +589,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_knee_source(self) -> str | None:
-        """Target ID of the _rightKneeSource reference (targets TrackedDevicePositioner)."""
+        """The source of the right knee data."""
         member = self.get_member("_rightKneeSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -608,7 +610,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def dialog(self) -> str | None:
-        """Target ID of the _dialog reference (targets FullBodyCalibratorDialog)."""
+        """The dialog used to control this full body Calibration interface."""
         member = self.get_member("_dialog")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -629,7 +631,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def platform_body(self) -> members.SyncObject | None:
-        """The _platformBody member."""
+        """The reference on the platform visual."""
         member = self.get_member("_platformBody")
         if isinstance(member, members.SyncObject):
             return member
@@ -637,12 +639,12 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @platform_body.setter
     def platform_body(self, value: members.SyncObject) -> None:
-        """Set the _platformBody member."""
+        """Set _platformBody. The reference on the platform visual."""
         self.set_member("_platformBody", value)
 
     @property
     def user_body(self) -> members.SyncObject | None:
-        """The _userBody member."""
+        """The reference on the user in world space."""
         member = self.get_member("_userBody")
         if isinstance(member, members.SyncObject):
             return member
@@ -650,12 +652,12 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @user_body.setter
     def user_body(self, value: members.SyncObject) -> None:
-        """Set the _userBody member."""
+        """Set _userBody. The reference on the user in world space."""
         self.set_member("_userBody", value)
 
     @property
     def custom_avatar(self) -> members.SyncObject | None:
-        """The _customAvatar member."""
+        """The custom avatar reference on the platform visual."""
         member = self.get_member("_customAvatar")
         if isinstance(member, members.SyncObject):
             return member
@@ -663,12 +665,12 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @custom_avatar.setter
     def custom_avatar(self, value: members.SyncObject) -> None:
-        """Set the _customAvatar member."""
+        """Set _customAvatar. The custom avatar reference on the platform visual."""
         self.set_member("_customAvatar", value)
 
     @property
     def left_hand_override(self) -> str | None:
-        """Target ID of the _leftHandOverride reference (targets Slot)."""
+        """The override slot of the left hand."""
         member = self.get_member("_leftHandOverride")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -689,7 +691,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_hand_override(self) -> str | None:
-        """Target ID of the _rightHandOverride reference (targets Slot)."""
+        """The override slot of the right hand."""
         member = self.get_member("_rightHandOverride")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -710,7 +712,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_custom_avatar(self) -> str | None:
-        """Target ID of the _targetCustomAvatar reference (targets VRIKAvatar)."""
+        """The custom avatar to edit when calibrating the avatar."""
         member = self.get_member("_targetCustomAvatar")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -731,7 +733,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_hips_offset(self) -> str | None:
-        """Target ID of the _avatarHipsOffset reference (targets Slot)."""
+        """The "Target" slot of the avatar hips."""
         member = self.get_member("_avatarHipsOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -752,7 +754,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_left_foot_offset(self) -> str | None:
-        """Target ID of the _avatarLeftFootOffset reference (targets Slot)."""
+        """The "Target" slot of the avatar left foot."""
         member = self.get_member("_avatarLeftFootOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -773,7 +775,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_right_foot_offset(self) -> str | None:
-        """Target ID of the _avatarRightFootOffset reference (targets Slot)."""
+        """The "Target" slot of the avatar right foot."""
         member = self.get_member("_avatarRightFootOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -794,7 +796,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_left_knee_default_offset(self) -> str | None:
-        """Target ID of the _avatarLeftKneeDefaultOffset reference (targets Slot)."""
+        """The "Target" slot of the avatar left knee."""
         member = self.get_member("_avatarLeftKneeDefaultOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -815,7 +817,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_right_knee_default_offset(self) -> str | None:
-        """Target ID of the _avatarRightKneeDefaultOffset reference (targets Slot)."""
+        """The "Target" slot of the avatar right knee."""
         member = self.get_member("_avatarRightKneeDefaultOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -836,7 +838,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_hip_handle(self) -> str | None:
-        """Target ID of the _avatarHipHandle reference (targets Slot)."""
+        """The handle object being used to adjust the avatar's hips."""
         member = self.get_member("_avatarHipHandle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -857,7 +859,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_left_foot_handle(self) -> str | None:
-        """Target ID of the _avatarLeftFootHandle reference (targets Slot)."""
+        """The handle object being used to adjust the avatar's left foot."""
         member = self.get_member("_avatarLeftFootHandle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -878,7 +880,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_right_foot_handle(self) -> str | None:
-        """Target ID of the _avatarRightFootHandle reference (targets Slot)."""
+        """The handle object being used to adjust the avatar's right foot."""
         member = self.get_member("_avatarRightFootHandle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -899,7 +901,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_left_knee_handle(self) -> str | None:
-        """Target ID of the _avatarLeftKneeHandle reference (targets Slot)."""
+        """The handle object being used to adjust the avatar's left knee."""
         member = self.get_member("_avatarLeftKneeHandle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -920,7 +922,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_right_knee_handle(self) -> str | None:
-        """Target ID of the _avatarRightKneeHandle reference (targets Slot)."""
+        """The handle object being used to adjust the avatar's right knee."""
         member = self.get_member("_avatarRightKneeHandle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -941,7 +943,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_left_knee_offset(self) -> str | None:
-        """Target ID of the _avatarLeftKneeOffset reference (targets IField[primitives.Float3])."""
+        """The field to hook and change for the left knee offset."""
         member = self.get_member("_avatarLeftKneeOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -962,7 +964,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_right_knee_offset(self) -> str | None:
-        """Target ID of the _avatarRightKneeOffset reference (targets IField[primitives.Float3])."""
+        """The field to hook and change for the right knee offset."""
         member = self.get_member("_avatarRightKneeOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -983,7 +985,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def platform_body_material_sets(self) -> members.SyncList | None:
-        """The _platformBodyMaterialSets member."""
+        """The set of material switchers used to change the platform Body look."""
         member = self.get_member("_platformBodyMaterialSets")
         if isinstance(member, members.SyncList):
             return member
@@ -991,12 +993,12 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @platform_body_material_sets.setter
     def platform_body_material_sets(self, value: members.SyncList) -> None:
-        """Set the _platformBodyMaterialSets member."""
+        """Set _platformBodyMaterialSets. The set of material switchers used to change the platform Body look."""
         self.set_member("_platformBodyMaterialSets", value)
 
     @property
     def ground(self) -> str | None:
-        """Target ID of the _ground reference (targets Slot)."""
+        """The Calibrator platform root slot."""
         member = self.get_member("_ground")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1017,7 +1019,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def trackers(self) -> members.SyncList | None:
-        """The _trackers member."""
+        """A list of trackers registered to the calibrating user."""
         member = self.get_member("_trackers")
         if isinstance(member, members.SyncList):
             return member
@@ -1025,12 +1027,12 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @trackers.setter
     def trackers(self, value: members.SyncList) -> None:
-        """Set the _trackers member."""
+        """Set _trackers. A list of trackers registered to the calibrating user."""
         self.set_member("_trackers", value)
 
     @property
     def visualization_root(self) -> str | None:
-        """Target ID of the _visualizationRoot reference (targets Slot)."""
+        """The slot used to store the visuals on the Calibrator platform."""
         member = self.get_member("_visualizationRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1051,7 +1053,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def body_node_material(self) -> str | None:
-        """Target ID of the _bodyNodeMaterial reference (targets FresnelMaterial)."""
+        """The material being used for the visual of the User Calibration Reference."""
         member = self.get_member("_bodyNodeMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1072,7 +1074,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def calibration_reference_material(self) -> str | None:
-        """Target ID of the _calibrationReferenceMaterial reference (targets OverlayFresnelMaterial)."""
+        """The material being used for the visual of the User Calibration Reference."""
         member = self.get_member("_calibrationReferenceMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1093,7 +1095,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_hand_override_material(self) -> str | None:
-        """Target ID of the _leftHandOverrideMaterial reference (targets OverlayFresnelMaterial)."""
+        """The override material for the left hand visual."""
         member = self.get_member("_leftHandOverrideMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1114,7 +1116,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_hand_override_material(self) -> str | None:
-        """Target ID of the _rightHandOverrideMaterial reference (targets OverlayFresnelMaterial)."""
+        """The override material for the right hand visual."""
         member = self.get_member("_rightHandOverrideMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1135,7 +1137,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_hand_override_front_color(self) -> str | None:
-        """Target ID of the _leftHandOverrideFrontColor reference (targets IField[primitives.ColorX])."""
+        """the color field for the front color of ``_leftHandOverrideMaterial``"""
         member = self.get_member("_leftHandOverrideFrontColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1156,7 +1158,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_hand_override_behind_color(self) -> str | None:
-        """Target ID of the _leftHandOverrideBehindColor reference (targets IField[primitives.ColorX])."""
+        """the color field for the behind color of ``_leftHandOverrideMaterial``"""
         member = self.get_member("_leftHandOverrideBehindColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1177,7 +1179,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_hand_override_front_color(self) -> str | None:
-        """Target ID of the _rightHandOverrideFrontColor reference (targets IField[primitives.ColorX])."""
+        """the color field for the front color of ``_rightHandOverrideMaterial``"""
         member = self.get_member("_rightHandOverrideFrontColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1198,7 +1200,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_hand_override_behind_color(self) -> str | None:
-        """Target ID of the _rightHandOverrideBehindColor reference (targets IField[primitives.ColorX])."""
+        """the color field for the behind color of ``_rightHandOverrideMaterial``"""
         member = self.get_member("_rightHandOverrideBehindColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1219,7 +1221,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def pattern_tex(self) -> str | None:
-        """Target ID of the _patternTex reference (targets StaticTexture2D)."""
+        """The pattern texture used for the holographic visual for the User Calibration Reference."""
         member = self.get_member("_patternTex")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1240,7 +1242,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def title(self) -> str | None:
-        """Target ID of the _title reference (targets TextRenderer)."""
+        """The title visual of the calibrator pedestal."""
         member = self.get_member("_title")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -12,9 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SnapTarget.
+    """The SnapTarget component allows a slot with a Snapper Component to attach to this slot.
 
     Category: Transform/Interaction
+
+    **Behavior**: Allows the slot containing this component to receive slots that contain a Snapper component, the Snapper slot will enter the hierarchy of the SnapTarget slot and get positioned to the center. The SnapperWhitelist allows you to reference specific snappers that you want to allow to link with the SnapTarget. The SnapperKeywordWhitelist allows Snappers with the same keyword to link with the SnapTarget.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SnapTarget"
@@ -50,7 +52,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
 
     @property
     def snapper_whitelist(self) -> members.SyncList | None:
-        """The SnapperWhitelist member."""
+        """List of Snappers that are allowed to attach to this component"""
         member = self.get_member("SnapperWhitelist")
         if isinstance(member, members.SyncList):
             return member
@@ -58,12 +60,12 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
 
     @snapper_whitelist.setter
     def snapper_whitelist(self, value: members.SyncList) -> None:
-        """Set the SnapperWhitelist member."""
+        """Set SnapperWhitelist. List of Snappers that are allowed to attach to this component"""
         self.set_member("SnapperWhitelist", value)
 
     @property
     def snapper_keyword_whitelist(self) -> members.SyncList | None:
-        """The SnapperKeywordWhitelist member."""
+        """List of keywords to match against a corresponding Snapper"""
         member = self.get_member("SnapperKeywordWhitelist")
         if isinstance(member, members.SyncList):
             return member
@@ -71,12 +73,12 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
 
     @snapper_keyword_whitelist.setter
     def snapper_keyword_whitelist(self, value: members.SyncList) -> None:
-        """Set the SnapperKeywordWhitelist member."""
+        """Set SnapperKeywordWhitelist. List of keywords to match against a corresponding Snapper"""
         self.set_member("SnapperKeywordWhitelist", value)
 
     @property
     def direct_snap_only(self) -> primitives.Bool | None:
-        """The DirectSnapOnly field value."""
+        """Unused"""
         member = self.get_member("DirectSnapOnly")
         if member is None:
             return None
@@ -95,7 +97,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
 
     @property
     def maximum_snap_distance(self) -> primitives.Float | None:
-        """The MaximumSnapDistance field value."""
+        """The maximum distance the Snapper can snap with the Target. This value drives the SphereCollider radius"""
         member = self.get_member("MaximumSnapDistance")
         if member is None:
             return None
@@ -133,7 +135,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
 
     @property
     def animation_time(self) -> primitives.Float | None:
-        """The AnimationTime field value."""
+        """The time it takes for the Snapper to lerp to the Target"""
         member = self.get_member("AnimationTime")
         if member is None:
             return None
@@ -171,7 +173,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
 
     @property
     def snap_collider_radius(self) -> str | None:
-        """Target ID of the _snapColliderRadius reference (targets IField[primitives.Float])."""
+        """The radius drive reference of the SphereCollider"""
         member = self.get_member("_snapColliderRadius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -192,7 +194,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
 
     @property
     def proxy_sphere(self) -> str | None:
-        """Target ID of the proxySphere reference (targets SphereCollider)."""
+        """Reference of the SphereCollider that is added on adding the SnapTarget to a slot"""
         member = self.get_member("proxySphere")
         if isinstance(member, members.Reference):
             return member.targetId

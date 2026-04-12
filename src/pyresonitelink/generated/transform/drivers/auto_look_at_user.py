@@ -12,9 +12,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AutoLookAtUser.
+    """The AutoLookAtUser component can be used to make a slot rotate towards a given user or some user that is close to it.
 
     Category: Transform/Drivers
+
+    **Related Issues**: None right now.
+
+    **Related Components**: * LookAt
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AutoLookAtUser"
@@ -59,7 +63,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def retarget_distance(self) -> primitives.Float | None:
-        """The RetargetDistance field value."""
+        """The distance that the current target needs to be from the slot for it to pick a new target."""
         member = self.get_member("RetargetDistance")
         if member is None:
             return None
@@ -78,7 +82,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def lerp_speed(self) -> primitives.Float | None:
-        """The LerpSpeed field value."""
+        """The speed at which the slot rotates towards its target."""
         member = self.get_member("LerpSpeed")
         if member is None:
             return None
@@ -97,7 +101,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def targeted_user(self) -> str | None:
-        """Target ID of the TargetedUser reference (targets User)."""
+        """The user that the slot is currently looking at."""
         member = self.get_member("TargetedUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -118,7 +122,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_target(self) -> primitives.Bool | None:
-        """The AutoTarget field value."""
+        """Whether or not the component should pick its own target."""
         member = self.get_member("AutoTarget")
         if member is None:
             return None
@@ -137,7 +141,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def exclude_active_user(self) -> primitives.Bool | None:
-        """The ExcludeActiveUser field value."""
+        """If this is true and the slot with this component is parented to a user, it won't look at that user."""
         member = self.get_member("ExcludeActiveUser")
         if member is None:
             return None
@@ -156,7 +160,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def swing_reference(self) -> primitives.Float3 | None:
-        """The SwingReference field value."""
+        """The first axis in which to restrict rotation essentially."""
         member = self.get_member("SwingReference")
         if member is None:
             return None
@@ -175,7 +179,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def twist_reference(self) -> primitives.Float3 | None:
-        """The TwistReference field value."""
+        """The second axis in which to restrict rotation essentially, for best results, make this axis perpendicular to ``SwingReference``."""
         member = self.get_member("TwistReference")
         if member is None:
             return None
@@ -194,7 +198,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_swing(self) -> primitives.Float | None:
-        """The MaxSwing field value."""
+        """How much this can rotate on the ``SwingReference`` axis."""
         member = self.get_member("MaxSwing")
         if member is None:
             return None
@@ -213,7 +217,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_twist(self) -> primitives.Float | None:
-        """The MaxTwist field value."""
+        """How much this can rotate on the ``TwistReference`` axis."""
         member = self.get_member("MaxTwist")
         if member is None:
             return None
@@ -232,7 +236,7 @@ class AutoLookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the _rotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field to drive with this component's calculations. Usually this is the slot that this component is on."""
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             return member.targetId

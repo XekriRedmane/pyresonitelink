@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarRawMouthData.
+    """The AvatarRawMouthData component reads the tracking values from any given ``DataSource`` and turns it into in game usable data.
+
+This is useful for doing debugging or Debug on face or mouth tracking.
 
     Category: Users/Common Avatar System/Face
     """
@@ -157,7 +159,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def data_source(self) -> str | None:
-        """Target ID of the DataSource reference (targets IMouthTrackingSourceComponent)."""
+        """The place to get tracking data from."""
         member = self.get_member("DataSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -178,7 +180,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def strength_multiplier(self) -> primitives.Float | None:
-        """The StrengthMultiplier field value."""
+        """How much to amplify the incoming data."""
         member = self.get_member("StrengthMultiplier")
         if member is None:
             return None
@@ -197,7 +199,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def jaw(self) -> primitives.Float3 | None:
-        """The Jaw field value."""
+        """The raw Jaw data from ``DataSource``"""
         member = self.get_member("Jaw")
         if member is None:
             return None
@@ -216,7 +218,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def jaw_open(self) -> primitives.Float | None:
-        """The JawOpen field value."""
+        """The raw JawOpen data from ``DataSource``"""
         member = self.get_member("JawOpen")
         if member is None:
             return None
@@ -235,7 +237,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def tongue(self) -> primitives.Float3 | None:
-        """The Tongue field value."""
+        """The raw Tongue data from ``DataSource``"""
         member = self.get_member("Tongue")
         if member is None:
             return None
@@ -254,7 +256,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def tongue_roll(self) -> primitives.Float | None:
-        """The TongueRoll field value."""
+        """The raw TongueRoll data from ``DataSource``"""
         member = self.get_member("TongueRoll")
         if member is None:
             return None
@@ -273,7 +275,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_upper_left_raise(self) -> primitives.Float | None:
-        """The LipUpperLeftRaise field value."""
+        """The raw LipUpperLeftRaise data from ``DataSource``"""
         member = self.get_member("LipUpperLeftRaise")
         if member is None:
             return None
@@ -292,7 +294,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_upper_right_raise(self) -> primitives.Float | None:
-        """The LipUpperRightRaise field value."""
+        """The raw LipUpperRightRaise data from ``DataSource``"""
         member = self.get_member("LipUpperRightRaise")
         if member is None:
             return None
@@ -311,7 +313,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_lower_left_raise(self) -> primitives.Float | None:
-        """The LipLowerLeftRaise field value."""
+        """The raw LipLowerLeftRaise data from ``DataSource``"""
         member = self.get_member("LipLowerLeftRaise")
         if member is None:
             return None
@@ -330,7 +332,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_lower_right_raise(self) -> primitives.Float | None:
-        """The LipLowerRightRaise field value."""
+        """The raw LipLowerRightRaise data from ``DataSource``"""
         member = self.get_member("LipLowerRightRaise")
         if member is None:
             return None
@@ -349,7 +351,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_upper_horizontal(self) -> primitives.Float | None:
-        """The LipUpperHorizontal field value."""
+        """The raw LipUpperHorizontal data from ``DataSource``"""
         member = self.get_member("LipUpperHorizontal")
         if member is None:
             return None
@@ -368,7 +370,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_lower_horizontal(self) -> primitives.Float | None:
-        """The LipLowerHorizontal field value."""
+        """The raw LipLowerHorizontal data from ``DataSource``"""
         member = self.get_member("LipLowerHorizontal")
         if member is None:
             return None
@@ -387,7 +389,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def mouth_left_smile_frown(self) -> primitives.Float | None:
-        """The MouthLeftSmileFrown field value."""
+        """The raw MouthLeftSmileFrown data from ``DataSource``"""
         member = self.get_member("MouthLeftSmileFrown")
         if member is None:
             return None
@@ -406,7 +408,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def mouth_right_smile_frown(self) -> primitives.Float | None:
-        """The MouthRightSmileFrown field value."""
+        """The raw MouthRightSmileFrown data from ``DataSource``"""
         member = self.get_member("MouthRightSmileFrown")
         if member is None:
             return None
@@ -425,7 +427,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def mouth_left_dimple(self) -> primitives.Float | None:
-        """The MouthLeftDimple field value."""
+        """The raw MouthLeftDimple data from ``DataSource``"""
         member = self.get_member("MouthLeftDimple")
         if member is None:
             return None
@@ -444,7 +446,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def mouth_right_dimple(self) -> primitives.Float | None:
-        """The MouthRightDimple field value."""
+        """The raw MouthRightDimple data from ``DataSource``"""
         member = self.get_member("MouthRightDimple")
         if member is None:
             return None
@@ -463,7 +465,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def mouth_pout(self) -> primitives.Float | None:
-        """The MouthPout field value."""
+        """The raw MouthPout data from ``DataSource``"""
         member = self.get_member("MouthPout")
         if member is None:
             return None
@@ -482,7 +484,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def mouth_pout_left(self) -> primitives.Float | None:
-        """The MouthPoutLeft field value."""
+        """The raw MouthPoutLeft data from ``DataSource``"""
         member = self.get_member("MouthPoutLeft")
         if member is None:
             return None
@@ -501,7 +503,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def mouth_pout_right(self) -> primitives.Float | None:
-        """The MouthPoutRight field value."""
+        """The raw MouthPoutRight data from ``DataSource``"""
         member = self.get_member("MouthPoutRight")
         if member is None:
             return None
@@ -520,7 +522,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_top_overturn(self) -> primitives.Float | None:
-        """The LipTopOverturn field value."""
+        """The raw LipTopOverturn data from ``DataSource``"""
         member = self.get_member("LipTopOverturn")
         if member is None:
             return None
@@ -539,7 +541,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_top_left_overturn(self) -> primitives.Float | None:
-        """The LipTopLeftOverturn field value."""
+        """The raw LipTopLeftOverturn data from ``DataSource``"""
         member = self.get_member("LipTopLeftOverturn")
         if member is None:
             return None
@@ -558,7 +560,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_top_right_overturn(self) -> primitives.Float | None:
-        """The LipTopRightOverturn field value."""
+        """The raw LipTopRightOverturn data from ``DataSource``"""
         member = self.get_member("LipTopRightOverturn")
         if member is None:
             return None
@@ -577,7 +579,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_bottom_overturn(self) -> primitives.Float | None:
-        """The LipBottomOverturn field value."""
+        """The raw LipBottomOverturn data from ``DataSource``"""
         member = self.get_member("LipBottomOverturn")
         if member is None:
             return None
@@ -596,7 +598,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_bottom_left_overturn(self) -> primitives.Float | None:
-        """The LipBottomLeftOverturn field value."""
+        """The raw LipBottomLeftOverturn data from ``DataSource``"""
         member = self.get_member("LipBottomLeftOverturn")
         if member is None:
             return None
@@ -615,7 +617,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_bottom_right_overturn(self) -> primitives.Float | None:
-        """The LipBottomRightOverturn field value."""
+        """The raw LipBottomRightOverturn data from ``DataSource``"""
         member = self.get_member("LipBottomRightOverturn")
         if member is None:
             return None
@@ -634,7 +636,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_top_over_under(self) -> primitives.Float | None:
-        """The LipTopOverUnder field value."""
+        """The raw LipTopOverUnder data from ``DataSource``"""
         member = self.get_member("LipTopOverUnder")
         if member is None:
             return None
@@ -653,7 +655,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_top_left_over_under(self) -> primitives.Float | None:
-        """The LipTopLeftOverUnder field value."""
+        """The raw LipTopLeftOverUnder data from ``DataSource``"""
         member = self.get_member("LipTopLeftOverUnder")
         if member is None:
             return None
@@ -672,7 +674,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_top_right_over_under(self) -> primitives.Float | None:
-        """The LipTopRightOverUnder field value."""
+        """The raw LipTopRightOverUnder data from ``DataSource``"""
         member = self.get_member("LipTopRightOverUnder")
         if member is None:
             return None
@@ -691,7 +693,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_bottom_over_under(self) -> primitives.Float | None:
-        """The LipBottomOverUnder field value."""
+        """The raw LipBottomOverUnder data from ``DataSource``"""
         member = self.get_member("LipBottomOverUnder")
         if member is None:
             return None
@@ -710,7 +712,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_bottom_left_over_under(self) -> primitives.Float | None:
-        """The LipBottomLeftOverUnder field value."""
+        """The raw LipBottomLeftOverUnder data from ``DataSource``"""
         member = self.get_member("LipBottomLeftOverUnder")
         if member is None:
             return None
@@ -729,7 +731,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_bottom_right_over_under(self) -> primitives.Float | None:
-        """The LipBottomRightOverUnder field value."""
+        """The raw LipBottomRightOverUnder data from ``DataSource``"""
         member = self.get_member("LipBottomRightOverUnder")
         if member is None:
             return None
@@ -748,7 +750,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_left_stretch_tighten(self) -> primitives.Float | None:
-        """The LipLeftStretchTighten field value."""
+        """The raw LipLeftStretchTighten data from ``DataSource``"""
         member = self.get_member("LipLeftStretchTighten")
         if member is None:
             return None
@@ -767,7 +769,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lip_right_stretch_tighten(self) -> primitives.Float | None:
-        """The LipRightStretchTighten field value."""
+        """The raw LipRightStretchTighten data from ``DataSource``"""
         member = self.get_member("LipRightStretchTighten")
         if member is None:
             return None
@@ -786,7 +788,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lips_left_press(self) -> primitives.Float | None:
-        """The LipsLeftPress field value."""
+        """The raw LipsLeftPress data from ``DataSource``"""
         member = self.get_member("LipsLeftPress")
         if member is None:
             return None
@@ -805,7 +807,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def lips_right_press(self) -> primitives.Float | None:
-        """The LipsRightPress field value."""
+        """The raw LipsRightPress data from ``DataSource``"""
         member = self.get_member("LipsRightPress")
         if member is None:
             return None
@@ -824,7 +826,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def cheek_left_puff_suck(self) -> primitives.Float | None:
-        """The CheekLeftPuffSuck field value."""
+        """The raw CheekLeftPuffSuck data from ``DataSource``"""
         member = self.get_member("CheekLeftPuffSuck")
         if member is None:
             return None
@@ -843,7 +845,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def cheek_right_puff_suck(self) -> primitives.Float | None:
-        """The CheekRightPuffSuck field value."""
+        """The raw CheekRightPuffSuck data from ``DataSource``"""
         member = self.get_member("CheekRightPuffSuck")
         if member is None:
             return None
@@ -862,7 +864,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def cheek_left_raise(self) -> primitives.Float | None:
-        """The CheekLeftRaise field value."""
+        """The raw CheekLeftRaise data from ``DataSource``"""
         member = self.get_member("CheekLeftRaise")
         if member is None:
             return None
@@ -881,7 +883,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def cheek_right_raise(self) -> primitives.Float | None:
-        """The CheekRightRaise field value."""
+        """The raw CheekRightRaise data from ``DataSource``"""
         member = self.get_member("CheekRightRaise")
         if member is None:
             return None
@@ -900,7 +902,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def nose_wrinkle_left(self) -> primitives.Float | None:
-        """The NoseWrinkleLeft field value."""
+        """The raw NoseWrinkleLeft data from ``DataSource``"""
         member = self.get_member("NoseWrinkleLeft")
         if member is None:
             return None
@@ -919,7 +921,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def nose_wrinkle_right(self) -> primitives.Float | None:
-        """The NoseWrinkleRight field value."""
+        """The raw NoseWrinkleRight data from ``DataSource``"""
         member = self.get_member("NoseWrinkleRight")
         if member is None:
             return None
@@ -938,7 +940,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def chin_raise_bottom(self) -> primitives.Float | None:
-        """The ChinRaiseBottom field value."""
+        """The raw ChinRaiseBottom data from ``DataSource``"""
         member = self.get_member("ChinRaiseBottom")
         if member is None:
             return None
@@ -957,7 +959,7 @@ class AvatarRawMouthData(GeneratedComponent, IAvatarObjectComponent, IWorldEvent
 
     @property
     def chin_raise_top(self) -> primitives.Float | None:
-        """The ChinRaiseTop field value."""
+        """The raw ChinRaiseTop data from ``DataSource``"""
         member = self.get_member("ChinRaiseTop")
         if member is None:
             return None

@@ -1,0 +1,11 @@
+{
+  "description": "See Voice Settings",
+  "category": "Uncategorized",
+  "fields": {
+    "MutePersistence": "this component's setting"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VoiceSettings&action=raw"
+}

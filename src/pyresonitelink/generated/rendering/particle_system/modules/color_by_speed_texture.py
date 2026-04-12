@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.wrap_mode import WrapMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,19 +13,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorBySpeedTexture(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ColorBySpeedTexture.
+    """The Color By Speed Texture component samples from the x axis of the UV depending on the min and max speeds being a 0-1 range and values beyond the range being extrapolated.
 
     Category: Rendering/Particle System/Modules
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ColorBySpeedTexture"
 
-    def __init__(self, min_speed: primitives.Float | None = None, max_speed: primitives.Float | None = None, texture: str | IAssetProvider[Texture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, min_speed: primitives.Float | None = None, max_speed: primitives.Float | None = None, u_wrap_mode: WrapMode | str | None = None, texture: str | IAssetProvider[Texture2D] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             min_speed: Initial value for MinSpeed.
             max_speed: Initial value for MaxSpeed.
+            u_wrap_mode: Initial value for U_WrapMode.
             texture: Initial value for Texture.
             component: Existing Component to wrap.
         """
@@ -33,12 +35,14 @@ class ColorBySpeedTexture(GeneratedComponent, IParticleSystemModule, IWorldEvent
             self.min_speed = min_speed
         if max_speed is not None:
             self.max_speed = max_speed
+        if u_wrap_mode is not None:
+            self.u_wrap_mode = u_wrap_mode
         if texture is not None:
             self.texture = texture
 
     @property
     def min_speed(self) -> primitives.Float | None:
-        """The MinSpeed field value."""
+        """The speed the particle has to be be traveling at or under to be considered minimum speed."""
         member = self.get_member("MinSpeed")
         if member is None:
             return None
@@ -57,7 +61,7 @@ class ColorBySpeedTexture(GeneratedComponent, IParticleSystemModule, IWorldEvent
 
     @property
     def max_speed(self) -> primitives.Float | None:
-        """The MaxSpeed field value."""
+        """The speed the particle has to be be traveling at or above to be considered maximum speed."""
         member = self.get_member("MaxSpeed")
         if member is None:
             return None
@@ -75,21 +79,28 @@ class ColorBySpeedTexture(GeneratedComponent, IParticleSystemModule, IWorldEvent
             )
 
     @property
-    def u_wrap_mode(self) -> members.FieldEnum | None:
-        """The U_WrapMode member."""
+    def u_wrap_mode(self) -> WrapMode | None:
+        """How to wrap around the X axis."""
         member = self.get_member("U_WrapMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return WrapMode(member.value)
         return None
 
     @u_wrap_mode.setter
-    def u_wrap_mode(self, value: members.FieldEnum) -> None:
-        """Set the U_WrapMode member."""
-        self.set_member("U_WrapMode", value)
+    def u_wrap_mode(self, value: WrapMode | str) -> None:
+        """Set U_WrapMode. How to wrap around the X axis."""
+        member = self.get_member("U_WrapMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "U_WrapMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[Texture2D])."""
+        """The texture to sample color from."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId

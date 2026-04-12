@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.state import State
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.text_field import TextField
@@ -16,12 +17,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MigrationDialog.
+    """The MigrationDialog component is used to collect information on what migration action should be done for transfering content from other platforms or other Resonite accounts.
+
+    Use internally, do not use.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MigrationDialog"
 
-    def __init__(self, username_field: str | TextField | None = None, password_field: str | TextField | None = None, migrate_favorites: primitives.Bool | None = None, overwrite_favorites: primitives.Bool | None = None, preserve_old_home: primitives.Bool | None = None, migrate_contacts: primitives.Bool | None = None, migrate_message_history: primitives.Bool | None = None, migrate_records: primitives.Bool | None = None, migrate_cloud_variables: primitives.Bool | None = None, migrated_cloud_variable_definitions: primitives.Bool | None = None, migrate_groups: primitives.Bool | None = None, groups_root: str | Slot | None = None, groups_message: str | Text | None = None, load_groups_button: str | Button | None = None, swap_region: str | SlideSwapRegion | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, username_field: str | TextField | None = None, password_field: str | TextField | None = None, migrate_favorites: primitives.Bool | None = None, overwrite_favorites: primitives.Bool | None = None, preserve_old_home: primitives.Bool | None = None, migrate_contacts: primitives.Bool | None = None, migrate_message_history: primitives.Bool | None = None, migrate_records: primitives.Bool | None = None, migrate_cloud_variables: primitives.Bool | None = None, migrated_cloud_variable_definitions: primitives.Bool | None = None, migrate_groups: primitives.Bool | None = None, groups_root: str | Slot | None = None, groups_message: str | Text | None = None, load_groups_button: str | Button | None = None, current_state: State | str | None = None, swap_region: str | SlideSwapRegion | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,6 +42,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             groups_root: Initial value for _groupsRoot.
             groups_message: Initial value for _groupsMessage.
             load_groups_button: Initial value for _loadGroupsButton.
+            current_state: Initial value for CurrentState.
             swap_region: Initial value for _swapRegion.
             component: Existing Component to wrap.
         """
@@ -71,12 +75,14 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.groups_message = groups_message
         if load_groups_button is not None:
             self.load_groups_button = load_groups_button
+        if current_state is not None:
+            self.current_state = current_state
         if swap_region is not None:
             self.swap_region = swap_region
 
     @property
     def username_field(self) -> str | None:
-        """Target ID of the _usernameField reference (targets TextField)."""
+        """The username of the account to transfer from."""
         member = self.get_member("_usernameField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -97,7 +103,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def password_field(self) -> str | None:
-        """Target ID of the _passwordField reference (targets TextField)."""
+        """The password of the account to transfer from."""
         member = self.get_member("_passwordField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -118,7 +124,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def migrate_favorites(self) -> primitives.Bool | None:
-        """The _migrateFavorites field value."""
+        """Whether to migrate favorites from the account or not."""
         member = self.get_member("_migrateFavorites")
         if member is None:
             return None
@@ -137,7 +143,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def overwrite_favorites(self) -> primitives.Bool | None:
-        """The _overwriteFavorites field value."""
+        """Whether to replace the favorites on the currently logged in account with the transfering from account."""
         member = self.get_member("_overwriteFavorites")
         if member is None:
             return None
@@ -156,7 +162,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def preserve_old_home(self) -> primitives.Bool | None:
-        """The _preserveOldHome field value."""
+        """Whether to keep the home world setting from the other account or create a new default home."""
         member = self.get_member("_preserveOldHome")
         if member is None:
             return None
@@ -175,7 +181,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def migrate_contacts(self) -> primitives.Bool | None:
-        """The _migrateContacts field value."""
+        """Whether to migrate contacts from the account or not."""
         member = self.get_member("_migrateContacts")
         if member is None:
             return None
@@ -194,7 +200,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def migrate_message_history(self) -> primitives.Bool | None:
-        """The _migrateMessageHistory field value."""
+        """Whether to migrate message history from the account or not."""
         member = self.get_member("_migrateMessageHistory")
         if member is None:
             return None
@@ -213,7 +219,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def migrate_records(self) -> primitives.Bool | None:
-        """The _migrateRecords field value."""
+        """Whether to migrate items, worlds, avatars, message items, or other objects/data from the account or not."""
         member = self.get_member("_migrateRecords")
         if member is None:
             return None
@@ -232,7 +238,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def migrate_cloud_variables(self) -> primitives.Bool | None:
-        """The _migrateCloudVariables field value."""
+        """Whether to migrate cloud variables made by the account or not."""
         member = self.get_member("_migrateCloudVariables")
         if member is None:
             return None
@@ -251,7 +257,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def migrated_cloud_variable_definitions(self) -> primitives.Bool | None:
-        """The _migratedCloudVariableDefinitions field value."""
+        """Whether to migrate values defined for other user's variables from the account or not."""
         member = self.get_member("_migratedCloudVariableDefinitions")
         if member is None:
             return None
@@ -270,7 +276,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def migrate_groups(self) -> primitives.Bool | None:
-        """The _migrateGroups field value."""
+        """Whether to migrate groups from the account or not."""
         member = self.get_member("_migrateGroups")
         if member is None:
             return None
@@ -289,7 +295,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def groups_root(self) -> str | None:
-        """Target ID of the _groupsRoot reference (targets Slot)."""
+        """The root of the groups section."""
         member = self.get_member("_groupsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -310,7 +316,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def groups_message(self) -> str | None:
-        """Target ID of the _groupsMessage reference (targets Text)."""
+        """The text element for groups dialog."""
         member = self.get_member("_groupsMessage")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -331,7 +337,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def load_groups_button(self) -> str | None:
-        """Target ID of the _loadGroupsButton reference (targets Button)."""
+        """The button for loading groups in."""
         member = self.get_member("_loadGroupsButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -351,21 +357,28 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def current_state(self) -> members.FieldEnum | None:
-        """The CurrentState member."""
+    def current_state(self) -> State | None:
+        """The current state of the migration dialog visual."""
         member = self.get_member("CurrentState")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return State(member.value)
         return None
 
     @current_state.setter
-    def current_state(self, value: members.FieldEnum) -> None:
-        """Set the CurrentState member."""
-        self.set_member("CurrentState", value)
+    def current_state(self, value: State | str) -> None:
+        """Set CurrentState. The current state of the migration dialog visual."""
+        member = self.get_member("CurrentState")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "CurrentState",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def swap_region(self) -> str | None:
-        """Target ID of the _swapRegion reference (targets SlideSwapRegion)."""
+        """Thw region used for animation when switching between different screens in the migration dialog"""
         member = self.get_member("_swapRegion")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -385,7 +398,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     async def set_overwrite(self, resolink: protocols.ResoniteLinkClient, button: str, data: str, overwrite: primitives.Bool, debug: bool = False) -> dict:
-        """Call the SetOverwrite sync method.
+        """Called when the overwrite button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -402,7 +415,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def set_preserve_home(self, resolink: protocols.ResoniteLinkClient, button: str, data: str, overwrite: primitives.Bool, debug: bool = False) -> dict:
-        """Call the SetPreserveHome sync method.
+        """Called when the preserve home button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -419,7 +432,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def choose_all_data(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the ChooseAllData sync method.
+        """Called when the choose all data button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -435,7 +448,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def change_step(self, resolink: protocols.ResoniteLinkClient, butoon: str, event_data: str, target_state: str, debug: bool = False) -> dict:
-        """Call the ChangeStep sync method.
+        """Called when the change step button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -452,7 +465,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def save_group_selection_and_change(self, resolink: protocols.ResoniteLinkClient, butoon: str, event_data: str, target_state: str, debug: bool = False) -> dict:
-        """Call the SaveGroupSelectionAndChange sync method.
+        """Called when the save group selection and change button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -469,7 +482,7 @@ class MigrationDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def check_login_and_next(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, next: str, debug: bool = False) -> dict:
-        """Call the CheckLoginAndNext sync method.
+        """Called when the Check login and next button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.

@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.ProgressBar.
+    """The ProgressBar component is used to show the user the normalized input of a float value on the UIX element.
+
+}}
 
     Category: UIX/Interaction
     """
@@ -46,7 +48,7 @@ class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def progress(self) -> primitives.Float | None:
-        """The Progress field value."""
+        """The normalized progression the of value"""
         member = self.get_member("Progress")
         if member is None:
             return None
@@ -65,7 +67,7 @@ class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def anchor_min_offset(self) -> primitives.Float2 | None:
-        """The AnchorMinOffset field value."""
+        """UIX Anchor minimum offset"""
         member = self.get_member("AnchorMinOffset")
         if member is None:
             return None
@@ -84,7 +86,7 @@ class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def anchor_max_offset(self) -> primitives.Float2 | None:
-        """The AnchorMaxOffset field value."""
+        """UIX Anchor maximum offset"""
         member = self.get_member("AnchorMaxOffset")
         if member is None:
             return None
@@ -103,7 +105,7 @@ class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def anchor_min(self) -> str | None:
-        """Target ID of the AnchorMin reference (targets IField[primitives.Float2])."""
+        """UIX Anchor minimum offset reference input"""
         member = self.get_member("AnchorMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -124,7 +126,7 @@ class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def anchor_max(self) -> str | None:
-        """Target ID of the AnchorMax reference (targets IField[primitives.Float2])."""
+        """UIX Anchor maximum offset reference input"""
         member = self.get_member("AnchorMax")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -145,7 +147,7 @@ class ProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def power(self) -> primitives.Float | None:
-        """The Power field value."""
+        """Modifies the Power of the progress bar"""
         member = self.get_member("Power")
         if member is None:
             return None

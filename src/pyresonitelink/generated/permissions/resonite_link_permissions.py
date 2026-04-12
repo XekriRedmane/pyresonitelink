@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ResoniteLinkPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ResoniteLinkPermissions.
+    """The Resonite Link Permissions component Is a permissions type component so it generates a list of users that the restrictions for using ResoniteLink applies to for the settings defined within this component. This component's values can only be changed by the creator of the world if they are hosting it.
 
     Category: Permissions
     """
@@ -33,7 +33,7 @@ class ResoniteLinkPermissions(GeneratedComponent, IWorkerPermissions, ICustomIns
 
     @property
     def allow_read_access(self) -> primitives.Bool | None:
-        """The AllowReadAccess field value."""
+        """Allows ResoniteLink to read data from the world."""
         member = self.get_member("AllowReadAccess")
         if member is None:
             return None
@@ -52,7 +52,7 @@ class ResoniteLinkPermissions(GeneratedComponent, IWorkerPermissions, ICustomIns
 
     @property
     def allow_write_access(self) -> primitives.Bool | None:
-        """The AllowWriteAccess field value."""
+        """Allows ResoniteLink to write data to the world."""
         member = self.get_member("AllowWriteAccess")
         if member is None:
             return None

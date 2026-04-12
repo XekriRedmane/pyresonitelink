@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUserLagging(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The IsUserLagging node was added during the 2025 April Fools' update to detect if a user was "Lagging". In reality, this node returns whether the last synchronization message received by the host from the specified User was more than 1.5 seconds ago.
+    """The IsUserLagging node was added during the 2025 April Fools' update to detect if a user was "Lagging". In reality, this node returns whether the last synchronization message received by the host from the specified ``User`` was more than 1.5 seconds ago.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """
@@ -34,7 +34,7 @@ class IsUserLagging(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user to check."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

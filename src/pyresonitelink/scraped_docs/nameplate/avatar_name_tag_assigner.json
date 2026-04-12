@@ -1,0 +1,21 @@
+{
+  "description": "The AvatarNameTagAssigner component is responsible for setting the nametag's text, color, and the ContactLink UserId. It basically defines what a nametag is.",
+  "category": "Users:Common Avatar System:Nameplate",
+  "fields": {
+    "LabelTargets": "A list of string fields that should be set to the user's display name when this component is under an avatar and the avatar is equipped.",
+    "UserIdTargets": "A list of string fields that should be set to the user's UUID (aka UserID) when this component is under an avatar and the avatar is equipped.",
+    "ColorTargets": "A list of colorX fields that should be set to the user's special color when this component is under an avatar and the avatar is equipped. Supporters, Staff, Mentors, and Moderators are some of the many users that get custom name plate colors through this component.",
+    "OutlineTargets": "Similar to ``ColorTargets`` but for the outline.",
+    "BackgroundTargets": "Similar to ``ColorTargets`` but for the background color.",
+    "DequippedLabel": "What text should display when the avatar this component belongs to is dequipped. You can be creative with this!"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "If an avatar contains this component when equipped, the user's default nametag will be hidden for those who have custom nameplates enabled.\n\nWhen an avatar is dequipped the DequippedLabel contents will be written to the LabelTargets, by default the DequippedLabel is \"---\"."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarNameTagAssigner&action=raw"
+}

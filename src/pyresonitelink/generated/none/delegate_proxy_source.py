@@ -7,7 +7,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DelegateProxySource(GenericComponent[T], IUIGrabbable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DelegateProxySource<>.
+    """The DelegateProxySource component is used to make a Button UIX element give a sync delegate proxy when grabbed. To use almost any sync delegate with this component, provide "Delegate" as the type.
+
+    Attach to a slot with a valid UIX Button and provide a delegate to
+    proxy. When the area is grabbed, the user will have the delegate in
+    their hand.
 
     Parameterize with a value type::
 

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.add_remove_list_element import AddRemoveListElement
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.sync_list import SyncList
@@ -23,7 +24,7 @@ class AddRemoveListElement(GenericComponent[T], IUndoable, IWorldEventReceiver):
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Undo.AddRemoveListElement<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.Undo.AddRemoveListElement<>"
 
-    def __init__(self, target_list: str | SyncList[T] | None = None, target_element: str | T | None = None, description: primitives.String | None = None, saved_object: str | None = None, reference_table: str | SavedReferenceTable | None = None, is_saving: primitives.Bool | None = None, performed: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_list: str | SyncList[T] | None = None, target_element: str | T | None = None, description: primitives.String | None = None, saved_object: str | None = None, reference_table: str | SavedReferenceTable | None = None, is_saving: primitives.Bool | None = None, mode: AddRemoveListElement | str | None = None, performed: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,6 +34,7 @@ class AddRemoveListElement(GenericComponent[T], IUndoable, IWorldEventReceiver):
             saved_object: Initial value for _savedObject.
             reference_table: Initial value for _referenceTable.
             is_saving: Initial value for _isSaving.
+            mode: Initial value for _mode.
             performed: Initial value for _performed.
             component: Existing Component to wrap.
         """
@@ -49,6 +51,8 @@ class AddRemoveListElement(GenericComponent[T], IUndoable, IWorldEventReceiver):
             self.reference_table = reference_table
         if is_saving is not None:
             self.is_saving = is_saving
+        if mode is not None:
+            self.mode = mode
         if performed is not None:
             self.performed = performed
 
@@ -173,17 +177,24 @@ class AddRemoveListElement(GenericComponent[T], IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The _mode member."""
+    def mode(self) -> AddRemoveListElement | None:
+        """The _mode enum value."""
         member = self.get_member("_mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AddRemoveListElement(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the _mode member."""
-        self.set_member("_mode", value)
+    def mode(self, value: AddRemoveListElement | str) -> None:
+        """Set the _mode enum value."""
+        member = self.get_member("_mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def performed(self) -> primitives.Bool | None:

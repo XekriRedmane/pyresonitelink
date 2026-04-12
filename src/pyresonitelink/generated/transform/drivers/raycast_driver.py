@@ -12,9 +12,28 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RaycastDriver.
+    """The RaycastDriver component drives the position of the Slot it is attached to to the location of the hit point of a raycast and aligns its rotation to the normal of the hit object.
 
     Category: Transform/Drivers
+
+    When placed on a slot, ``_positionDrive`` and ``_rotationDrive`` are
+    automatically filled to the slot's position and rotation. These fields
+    are not actually effective, as this component always writes to the
+    position/rotation of the slot it is on. However, if either of these
+    fields are omitted, the respective functionality of the raycast is not
+    performed. The raycast is constructed in the local coordinate space of
+    ``Origin``, where ``Offset`` controls the origin of the ray relative to
+    the origin and ``Direction`` controls the direction of the ray relative
+    to the origin. ``MaxDistance`` controls the maximum distance that the
+    raycast will travel. If a raycast is unable to make contact with a
+    collider within this distance, the position of the slot will be set to
+    ``NoHitDistance`` in the direction of the raycast. These two distances
+    are in global scale, and are not affected by either the slot's local
+    scale or the scale of the ``Origin`` slot. If the ray hits a collider,
+    the rotation of the slot will be aligned to the normal of the hit point.
+    This rotation can be transformed into the normal vector by using the Get
+    Forward node on the RaycastDriver slot. If the raycast does not hit a
+    collider, the rotation will be set to ``(0, 0, 0)``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RaycastDriver"
@@ -56,7 +75,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ignore_hierarchy(self) -> str | None:
-        """Target ID of the IgnoreHierarchy reference (targets Slot)."""
+        """a hiearchy of slots which to ignore the colliders for"""
         member = self.get_member("IgnoreHierarchy")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +96,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def filter_distance(self) -> primitives.Float | None:
-        """The FilterDistance field value."""
+        """ignore hit detections before this distance."""
         member = self.get_member("FilterDistance")
         if member is None:
             return None
@@ -96,7 +115,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def origin(self) -> str | None:
-        """Target ID of the Origin reference (targets Slot)."""
+        """The slot to start the raycast from."""
         member = self.get_member("Origin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -117,7 +136,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """The offset from ``Origin`` before starting the raycast."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -136,7 +155,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direction(self) -> primitives.Float3 | None:
-        """The Direction field value."""
+        """The direction in ``Origin``'s local space to shoot in."""
         member = self.get_member("Direction")
         if member is None:
             return None
@@ -155,7 +174,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_distance(self) -> primitives.Float | None:
-        """The MaxDistance field value."""
+        """The maximum distance to raycast for."""
         member = self.get_member("MaxDistance")
         if member is None:
             return None
@@ -174,7 +193,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def no_hit_distance(self) -> primitives.Float | None:
-        """The NoHitDistance field value."""
+        """How far to raycast shoot for in meters till reporting no hit."""
         member = self.get_member("NoHitDistance")
         if member is None:
             return None
@@ -193,7 +212,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def position_drive(self) -> str | None:
-        """Target ID of the _positionDrive reference (targets IField[primitives.Float3])."""
+        """The position field to drive. This does not actually affect the field that is driven, but if it is not filled, the component will not function."""
         member = self.get_member("_positionDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -214,7 +233,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation_drive(self) -> str | None:
-        """Target ID of the _rotationDrive reference (targets IField[primitives.FloatQ])."""
+        """The rotation field to drive. This does not actually affect the field that is driven, but if it is not filled, the rotation of the slot is not changed. Aligns itself to the normal of the surface this raycast hit, or ``(0,0,0)``."""
         member = self.get_member("_rotationDrive")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -1,0 +1,11 @@
+{
+  "description": "The LocalUserLiveStatus component outputs whether the local user is live or not.",
+  "category": "Utility",
+  "fields": {
+    "IsLive": "Outputs whether the local user is live or not."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocalUserLiveStatus&action=raw"
+}

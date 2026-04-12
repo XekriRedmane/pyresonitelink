@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnLocomotionGripBegin(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.OnLocomotionGripBegin.
+    """The On Locomotion Grip Begin node takes in a global reference from a user's PhysicalLocomotion. And fires when a grip happens that relates to that locomotion along with the data of the slot, position in 3D space, and what side of the user's grip it was.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics/Events
     """
@@ -58,7 +58,7 @@ class OnLocomotionGripBegin(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def on_event(self) -> str | None:
-        """Target ID of the OnEvent reference (targets ISyncNodeOperation)."""
+        """Fires when a locomotion grip happens."""
         member = self.get_member("OnEvent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class OnLocomotionGripBegin(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def gripped_slot(self) -> members.EmptyElement | None:
-        """The GrippedSlot member."""
+        """The slot that is being gripped."""
         member = self.get_member("GrippedSlot")
         if isinstance(member, members.EmptyElement):
             return member
@@ -87,12 +87,12 @@ class OnLocomotionGripBegin(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @gripped_slot.setter
     def gripped_slot(self, value: members.EmptyElement) -> None:
-        """Set the GrippedSlot member."""
+        """Set GrippedSlot. The slot that is being gripped."""
         self.set_member("GrippedSlot", value)
 
     @property
     def gripped_point(self) -> members.EmptyElement | None:
-        """The GrippedPoint member."""
+        """The point in 3D space where the grip is happening."""
         member = self.get_member("GrippedPoint")
         if isinstance(member, members.EmptyElement):
             return member
@@ -100,12 +100,12 @@ class OnLocomotionGripBegin(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @gripped_point.setter
     def gripped_point(self, value: members.EmptyElement) -> None:
-        """Set the GrippedPoint member."""
+        """Set GrippedPoint. The point in 3D space where the grip is happening."""
         self.set_member("GrippedPoint", value)
 
     @property
     def gripping_hand(self) -> members.EmptyElement | None:
-        """The GrippingHand member."""
+        """The side that is being gripped from a user."""
         member = self.get_member("GrippingHand")
         if isinstance(member, members.EmptyElement):
             return member
@@ -113,6 +113,6 @@ class OnLocomotionGripBegin(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @gripping_hand.setter
     def gripping_hand(self, value: members.EmptyElement) -> None:
-        """Set the GrippingHand member."""
+        """Set GrippingHand. The side that is being gripped from a user."""
         self.set_member("GrippingHand", value)
 

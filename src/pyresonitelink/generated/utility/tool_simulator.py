@@ -12,9 +12,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ToolSimulator.
+    """The ToolSimulator Component allows a tool to be used without needing it to be equipped by a User. You can make use of a Tool's primary and secondary actions but not context menu actions.
+
+You need to provide a reference to the tool component that you want to simulate, and also a reference to a simulating user. You can then make use of the Primary, Secondary, Strength and Axis properties.
+
+For example, providing a reference to a Material Tool and then making use of the Primary property will allow you to apply materials to objects in front of the tool.
 
     Category: Utility
+
+    **Known Bugs**: Currently the primary of the Dev Tool is not simulated properly and can not move gizmos. https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/3570
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ToolSimulator"
@@ -47,7 +53,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def tool(self) -> str | None:
-        """Target ID of the Tool reference (targets ITool)."""
+        """The tool to simulate the use of."""
         member = self.get_member("Tool")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +74,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def simulating_user(self) -> str | None:
-        """Target ID of the SimulatingUser reference (targets User)."""
+        """The user that should simulate the tool."""
         member = self.get_member("SimulatingUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +95,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def primary(self) -> primitives.Bool | None:
-        """The Primary field value."""
+        """Whether ``Tool`` should be simulated as holding primary."""
         member = self.get_member("Primary")
         if member is None:
             return None
@@ -108,7 +114,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def secondary(self) -> primitives.Bool | None:
-        """The Secondary field value."""
+        """Whether ``Tool`` should be simulated as holding secondary."""
         member = self.get_member("Secondary")
         if member is None:
             return None
@@ -127,7 +133,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def strength(self) -> primitives.Float | None:
-        """The Strength field value."""
+        """The primary strength the ``Tool`` should be simulated as using."""
         member = self.get_member("Strength")
         if member is None:
             return None
@@ -146,7 +152,7 @@ class ToolSimulator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def axis(self) -> primitives.Float2 | None:
-        """The Axis field value."""
+        """The position axis (like trackpad) the ``Tool`` should be simulated as using."""
         member = self.get_member("Axis")
         if member is None:
             return None

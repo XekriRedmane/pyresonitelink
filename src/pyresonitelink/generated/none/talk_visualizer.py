@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TalkVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TalkVisualizer.
+    """This component takes a float value and a colorX value, and multiplies the float value by the colorX value, and outputs a colorX.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TalkVisualizer"
@@ -39,7 +39,7 @@ class TalkVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def input_(self) -> str | None:
-        """Target ID of the Input reference (targets RawOutput[primitives.Float])."""
+        """A value that constantly changes to visualize the color for. For example, the ``Volume`` field of a Volume Meter."""
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class TalkVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_color(self) -> primitives.ColorX | None:
-        """The BaseColor field value."""
+        """The original color."""
         member = self.get_member("BaseColor")
         if member is None:
             return None
@@ -79,7 +79,7 @@ class TalkVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def material_color(self) -> str | None:
-        """Target ID of the MaterialColor reference (targets Sync[primitives.ColorX])."""
+        """The color to drive with an amplified ``BaseColor`` value based on ``Input``"""
         member = self.get_member("MaterialColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -100,7 +100,7 @@ class TalkVisualizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def light_intensity(self) -> str | None:
-        """Target ID of the LightIntensity reference (targets Sync[primitives.Float])."""
+        """How bright the output color is beyond 1 gain."""
         member = self.get_member("LightIntensity")
         if isinstance(member, members.Reference):
             return member.targetId

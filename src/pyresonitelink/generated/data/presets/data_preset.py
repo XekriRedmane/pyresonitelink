@@ -12,9 +12,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DataPreset(GeneratedComponent, ICustomInspector, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DataPreset.
+    """The DataPreset is a component that is useful for switching a list of values to a predetermined set.
 
     Category: Data/Presets
+
+    Each entry in the list of Entries is a DataPresetReference or a
+    DataPresetValue. These may be added manually, or, if the
+    DataPresetReferences and DataPresetValues are components in this slot or
+    child slots, the Add All Children button will add them for you
+    (replacing any existing list). Each entry consists of the value or
+    reference, plus a target field. The Set Active button applies all values
+    and references to their respective target fields. The only way to
+    programmatically apply the preset is to use a ProtoFlux Tool, grab the
+    ``SetActive()`` Delegate, and press the "Proxy" button in your Context
+    Menu, then feed a Call into the node.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DataPreset"
@@ -32,7 +43,7 @@ class DataPreset(GeneratedComponent, ICustomInspector, IButtonPressReceiver, IWo
 
     @property
     def is_active(self) -> primitives.Bool | None:
-        """The IsActive field value."""
+        """Indicates that all the presets in Entries have been applied. Cannot be driven."""
         member = self.get_member("IsActive")
         if member is None:
             return None
@@ -51,7 +62,7 @@ class DataPreset(GeneratedComponent, ICustomInspector, IButtonPressReceiver, IWo
 
     @property
     def entries(self) -> members.SyncList | None:
-        """The Entries member."""
+        """A list of data preset references and values."""
         member = self.get_member("Entries")
         if isinstance(member, members.SyncList):
             return member
@@ -59,11 +70,11 @@ class DataPreset(GeneratedComponent, ICustomInspector, IButtonPressReceiver, IWo
 
     @entries.setter
     def entries(self, value: members.SyncList) -> None:
-        """Set the Entries member."""
+        """Set Entries. A list of data preset references and values."""
         self.set_member("Entries", value)
 
     async def set_active(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SetActive sync method.
+        """Set all target values targeted by ``Entries`` to their preset values.
 
         Returns:
             The raw JSON response dict.
@@ -73,7 +84,7 @@ class DataPreset(GeneratedComponent, ICustomInspector, IButtonPressReceiver, IWo
         )
 
     async def set_values(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SetValues sync method.
+        """Set all preset values in ``Entries`` to their target values.
 
         Returns:
             The raw JSON response dict.

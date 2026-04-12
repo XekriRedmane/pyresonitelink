@@ -7,7 +7,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SettingsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SettingsDataFeed.
+    """The SettingsDataFeed component is a data feed that generates a list of settings and their categories.
 
     Category: Utility
     """

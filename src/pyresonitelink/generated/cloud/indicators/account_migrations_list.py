@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AccountMigrationsList.
+    """Account Migrations List is a component that only works in user space. It checks the current Migrations being ran by the cloud and gives a running count every game update. It shows how many there are total including counts of different statuses the different migrations have.
 
     Category: Cloud/Indicators
+
+    **Behavior**: Only works in user space. Updates with migrations automatically.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AccountMigrationsList"
@@ -39,7 +41,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def total_migrations(self) -> primitives.Int | None:
-        """The TotalMigrations field value."""
+        """How many total migrations are currently happening on the cloud right now for the current user."""
         member = self.get_member("TotalMigrations")
         if member is None:
             return None
@@ -58,7 +60,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def waiting_migrations(self) -> primitives.Int | None:
-        """The WaitingMigrations field value."""
+        """How many migrations are currently waiting to start on the cloud right now for the current user."""
         member = self.get_member("WaitingMigrations")
         if member is None:
             return None
@@ -77,7 +79,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def running_migrations(self) -> primitives.Int | None:
-        """The RunningMigrations field value."""
+        """How many migrations are currently happening on the cloud right now for the current user."""
         member = self.get_member("RunningMigrations")
         if member is None:
             return None
@@ -96,7 +98,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def completed_migrations(self) -> primitives.Int | None:
-        """The CompletedMigrations field value."""
+        """How many completed migrations have happened on the cloud before for the current user."""
         member = self.get_member("CompletedMigrations")
         if member is None:
             return None
@@ -115,7 +117,7 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def migration_task_ids(self) -> members.SyncList | None:
-        """The MigrationTaskIds member."""
+        """The task ID's of all the migrations for the current user."""
         member = self.get_member("MigrationTaskIds")
         if isinstance(member, members.SyncList):
             return member
@@ -123,6 +125,6 @@ class AccountMigrationsList(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @migration_task_ids.setter
     def migration_task_ids(self, value: members.SyncList) -> None:
-        """Set the MigrationTaskIds member."""
+        """Set MigrationTaskIds. The task ID's of all the migrations for the current user."""
         self.set_member("MigrationTaskIds", value)
 

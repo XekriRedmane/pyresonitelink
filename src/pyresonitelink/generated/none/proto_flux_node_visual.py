@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxNodeVisual.
+    """The ProtoFluxNodeVisual component is used to manage the visuals and interaction with ProtoFlux nodes when they are unpacked.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxNodeVisual"
@@ -66,7 +66,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets ProtoFluxNode)."""
+        """The protoflux node this is a visual for."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +87,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_selected(self) -> primitives.Bool | None:
-        """The IsSelected field value."""
+        """Whether or not this node is selected."""
         member = self.get_member("IsSelected")
         if member is None:
             return None
@@ -106,7 +106,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_highlighted(self) -> primitives.Bool | None:
-        """The IsHighlighted field value."""
+        """Whether or not this node is highlighted."""
         member = self.get_member("IsHighlighted")
         if member is None:
             return None
@@ -125,7 +125,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def node_hover_area(self) -> str | None:
-        """Target ID of the _nodeHoverArea reference (targets HoverArea)."""
+        """The Hover interaction area for this visual."""
         member = self.get_member("_nodeHoverArea")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -146,7 +146,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bg_image(self) -> str | None:
-        """Target ID of the _bgImage reference (targets Image)."""
+        """The background image for tye protoflux visual."""
         member = self.get_member("_bgImage")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -167,7 +167,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def inputs_root(self) -> str | None:
-        """Target ID of the _inputsRoot reference (targets Slot)."""
+        """The root of the different slots for node inputs."""
         member = self.get_member("_inputsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -188,7 +188,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def outputs_root(self) -> str | None:
-        """Target ID of the _outputsRoot reference (targets Slot)."""
+        """The root of the different slots for node outputs."""
         member = self.get_member("_outputsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -209,7 +209,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def references_root(self) -> str | None:
-        """Target ID of the _referencesRoot reference (targets Slot)."""
+        """The slot for references to other nodes like arrows for protoflux variables/globals."""
         member = self.get_member("_referencesRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -230,7 +230,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def overview_visual(self) -> str | None:
-        """Target ID of the _overviewVisual reference (targets IField[primitives.Bool])."""
+        """The field for enabling the overview alt version of this node."""
         member = self.get_member("_overviewVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -251,7 +251,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def overview_bg(self) -> str | None:
-        """Target ID of the _overviewBg reference (targets IField[primitives.ColorX])."""
+        """The BG color of the overview version of the visual."""
         member = self.get_member("_overviewBg")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -272,7 +272,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label_bg(self) -> str | None:
-        """Target ID of the _labelBg reference (targets IField[primitives.Bool])."""
+        """The enabled field of the label BG."""
         member = self.get_member("_labelBg")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -293,7 +293,7 @@ class ProtoFluxNodeVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label_text(self) -> str | None:
-        """Target ID of the _labelText reference (targets IField[primitives.Bool])."""
+        """The enabled field of the label text."""
         member = self.get_member("_labelText")
         if isinstance(member, members.Reference):
             return member.targetId

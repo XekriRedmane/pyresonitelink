@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.chirality import Chirality
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -10,14 +11,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegHapticPointMapper.
+    """The Leg Haptic Point Mapper works as part of the game's robust Haptics system to map haptics points in real life for the leg to the in game legs.
 
     Category: Input/Haptics
+
+    Used in the robust Haptics system to map haptics points in real life for
+    the leg to the in game legs.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegHapticPointMapper"
 
-    def __init__(self, priority: primitives.Int | None = None, show_debug_visuals: primitives.Bool | None = None, normalized_start: primitives.Float | None = None, normalized_end: primitives.Float | None = None, up_axis: primitives.Float3 | None = None, forward_axis: primitives.Float3 | None = None, upper_leg_radius: primitives.Float | None = None, knee_radius: primitives.Float | None = None, ankle_radius: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, priority: primitives.Int | None = None, show_debug_visuals: primitives.Bool | None = None, normalized_start: primitives.Float | None = None, normalized_end: primitives.Float | None = None, side: Chirality | str | None = None, up_axis: primitives.Float3 | None = None, forward_axis: primitives.Float3 | None = None, upper_leg_radius: primitives.Float | None = None, knee_radius: primitives.Float | None = None, ankle_radius: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,6 +29,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
             show_debug_visuals: Initial value for ShowDebugVisuals.
             normalized_start: Initial value for NormalizedStart.
             normalized_end: Initial value for NormalizedEnd.
+            side: Initial value for Side.
             up_axis: Initial value for UpAxis.
             forward_axis: Initial value for ForwardAxis.
             upper_leg_radius: Initial value for UpperLegRadius.
@@ -41,6 +46,8 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.normalized_start = normalized_start
         if normalized_end is not None:
             self.normalized_end = normalized_end
+        if side is not None:
+            self.side = side
         if up_axis is not None:
             self.up_axis = up_axis
         if forward_axis is not None:
@@ -54,7 +61,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def priority(self) -> primitives.Int | None:
-        """The Priority field value."""
+        """The priority of this over other haptic elements"""
         member = self.get_member("Priority")
         if member is None:
             return None
@@ -73,7 +80,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def show_debug_visuals(self) -> primitives.Bool | None:
-        """The ShowDebugVisuals field value."""
+        """Enables a sphere visual that lights up when touching haptic zones."""
         member = self.get_member("ShowDebugVisuals")
         if member is None:
             return None
@@ -92,7 +99,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bone_chain(self) -> members.SyncList | None:
-        """The BoneChain member."""
+        """The list of slots to distribute the haptic points along for the leg."""
         member = self.get_member("BoneChain")
         if isinstance(member, members.SyncList):
             return member
@@ -100,12 +107,12 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @bone_chain.setter
     def bone_chain(self, value: members.SyncList) -> None:
-        """Set the BoneChain member."""
+        """Set BoneChain. The list of slots to distribute the haptic points along for the leg."""
         self.set_member("BoneChain", value)
 
     @property
     def normalized_start(self) -> primitives.Float | None:
-        """The NormalizedStart field value."""
+        """The start of where haptics points should be placed based on a normalized position from 01 along the length of the leg, if all the bones were rotated to be along a straight line."""
         member = self.get_member("NormalizedStart")
         if member is None:
             return None
@@ -124,7 +131,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def normalized_end(self) -> primitives.Float | None:
-        """The NormalizedEnd field value."""
+        """The end of where haptics points should be placed based on a normalized position from 01 along the length of the leg, if all the bones were rotated to be along a straight line."""
         member = self.get_member("NormalizedEnd")
         if member is None:
             return None
@@ -142,21 +149,28 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def side(self) -> members.FieldEnum | None:
-        """The Side member."""
+    def side(self) -> Chirality | None:
+        """Specifies which controller/hand this component gives haptic data to."""
         member = self.get_member("Side")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Chirality(member.value)
         return None
 
     @side.setter
-    def side(self, value: members.FieldEnum) -> None:
-        """Set the Side member."""
-        self.set_member("Side", value)
+    def side(self, value: Chirality | str) -> None:
+        """Set Side. Specifies which controller/hand this component gives haptic data to."""
+        member = self.get_member("Side")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Side",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def up_axis(self) -> primitives.Float3 | None:
-        """The UpAxis field value."""
+        """The axis on the leg which determines which way is up per bone, which is used to map haptic points from real life to in game."""
         member = self.get_member("UpAxis")
         if member is None:
             return None
@@ -175,7 +189,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def forward_axis(self) -> primitives.Float3 | None:
-        """The ForwardAxis field value."""
+        """The axis on the leg which determines which way is forward per bone, which is used to map haptic points from real life to in game."""
         member = self.get_member("ForwardAxis")
         if member is None:
             return None
@@ -194,7 +208,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def upper_leg_radius(self) -> primitives.Float | None:
-        """The UpperLegRadius field value."""
+        """The radius of the upper leg, where haptics points should be placed on the surface, radii is lerped between the upper leg and knee."""
         member = self.get_member("UpperLegRadius")
         if member is None:
             return None
@@ -213,7 +227,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def knee_radius(self) -> primitives.Float | None:
-        """The KneeRadius field value."""
+        """The radius of the knee, where haptics points should be placed on the surface, radii is lerped between the upper leg and knee."""
         member = self.get_member("KneeRadius")
         if member is None:
             return None
@@ -232,7 +246,7 @@ class LegHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ankle_radius(self) -> primitives.Float | None:
-        """The AnkleRadius field value."""
+        """The radius of the upper leg, where haptics points should be placed on the surface, radii is lerped between the knee and ankle."""
         member = self.get_member("AnkleRadius")
         if member is None:
             return None

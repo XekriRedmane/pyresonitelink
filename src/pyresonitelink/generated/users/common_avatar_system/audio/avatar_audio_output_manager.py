@@ -16,9 +16,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarAudioOutputManager.
+    """Avatar Audio Output Manager is the component that handles changing the audio output values when a user changes their voice mode or mutes.
 
     Category: Users/Common Avatar System/Audio
+
+    **Related Components**: * For how to override the user's voice settings in a world, see the Avatar Audio Configuration Component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarAudioOutputManager"
@@ -105,7 +107,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def audio_output(self) -> str | None:
-        """Target ID of the AudioOutput reference (targets AudioOutput)."""
+        """The audio output this component is controlling and targeting that has the ``_activeUser``'s voice."""
         member = self.get_member("AudioOutput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +128,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def is_view_voice(self) -> primitives.Bool | None:
-        """The IsViewVoice field value."""
+        """Whether or not this component is the voice of the ``_activeUser``'s head or the ``_activeUser``'s free cam."""
         member = self.get_member("IsViewVoice")
         if member is None:
             return None
@@ -145,7 +147,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def whisper_config(self) -> members.SyncObject | None:
-        """The WhisperConfig member."""
+        """What ``AudioOutput`` should be set to when ``_activeUser`` is in Whisper voice mode."""
         member = self.get_member("WhisperConfig")
         if isinstance(member, members.SyncObject):
             return member
@@ -153,12 +155,12 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @whisper_config.setter
     def whisper_config(self, value: members.SyncObject) -> None:
-        """Set the WhisperConfig member."""
+        """Set WhisperConfig. What ``AudioOutput`` should be set to when ``_activeUser`` is in Whisper voice mode."""
         self.set_member("WhisperConfig", value)
 
     @property
     def normal_config(self) -> members.SyncObject | None:
-        """The NormalConfig member."""
+        """What ``AudioOutput`` should be set to when ``_activeUser`` is in Normal voice mode."""
         member = self.get_member("NormalConfig")
         if isinstance(member, members.SyncObject):
             return member
@@ -166,12 +168,12 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @normal_config.setter
     def normal_config(self, value: members.SyncObject) -> None:
-        """Set the NormalConfig member."""
+        """Set NormalConfig. What ``AudioOutput`` should be set to when ``_activeUser`` is in Normal voice mode."""
         self.set_member("NormalConfig", value)
 
     @property
     def shout_config(self) -> members.SyncObject | None:
-        """The ShoutConfig member."""
+        """What ``AudioOutput`` should be set to when ``_activeUser`` is in Shout voice mode."""
         member = self.get_member("ShoutConfig")
         if isinstance(member, members.SyncObject):
             return member
@@ -179,12 +181,12 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @shout_config.setter
     def shout_config(self, value: members.SyncObject) -> None:
-        """Set the ShoutConfig member."""
+        """Set ShoutConfig. What ``AudioOutput`` should be set to when ``_activeUser`` is in Shout voice mode."""
         self.set_member("ShoutConfig", value)
 
     @property
     def broadcast_config(self) -> members.SyncObject | None:
-        """The BroadcastConfig member."""
+        """What ``AudioOutput`` should be set to when the user is in Broadcast mode."""
         member = self.get_member("BroadcastConfig")
         if isinstance(member, members.SyncObject):
             return member
@@ -192,12 +194,12 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @broadcast_config.setter
     def broadcast_config(self, value: members.SyncObject) -> None:
-        """Set the BroadcastConfig member."""
+        """Set BroadcastConfig. What ``AudioOutput`` should be set to when the user is in Broadcast mode."""
         self.set_member("BroadcastConfig", value)
 
     @property
     def legacy_whisper_volume(self) -> primitives.Float | None:
-        """The __legacyWhisperVolume field value."""
+        """Internal."""
         member = self.get_member("__legacyWhisperVolume")
         if member is None:
             return None
@@ -216,7 +218,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def legacy_normal_volume(self) -> primitives.Float | None:
-        """The __legacyNormalVolume field value."""
+        """Internal."""
         member = self.get_member("__legacyNormalVolume")
         if member is None:
             return None
@@ -235,7 +237,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def legacy_shout_volume(self) -> primitives.Float | None:
-        """The __legacyShoutVolume field value."""
+        """Internal."""
         member = self.get_member("__legacyShoutVolume")
         if member is None:
             return None
@@ -254,7 +256,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def legacy_broadcast_volume(self) -> primitives.Float | None:
-        """The __legacyBroadcastVolume field value."""
+        """Internal."""
         member = self.get_member("__legacyBroadcastVolume")
         if member is None:
             return None
@@ -273,7 +275,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def legacy_normal_doppler_level(self) -> primitives.Float | None:
-        """The __legacyNormalDopplerLevel field value."""
+        """Internal."""
         member = self.get_member("__legacyNormalDopplerLevel")
         if member is None:
             return None
@@ -292,7 +294,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def legacy_shout_doppler_level(self) -> primitives.Float | None:
-        """The __legacyShoutDopplerLevel field value."""
+        """Internal."""
         member = self.get_member("__legacyShoutDopplerLevel")
         if member is None:
             return None
@@ -311,7 +313,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def legacy_whisper_range(self) -> primitives.Float | None:
-        """The __legacyWhisperRange field value."""
+        """Internal."""
         member = self.get_member("__legacyWhisperRange")
         if member is None:
             return None
@@ -330,7 +332,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def active_user(self) -> str | None:
-        """Target ID of the _activeUser reference (targets User)."""
+        """The user that this component is supposed to be managing an Audio Output Component for."""
         member = self.get_member("_activeUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -351,7 +353,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def enabled(self) -> str | None:
-        """Target ID of the _enabled reference (targets IField[primitives.Bool])."""
+        """The enabled field of the Audio Output Component controlled by this component."""
         member = self.get_member("_enabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -372,7 +374,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def volume(self) -> str | None:
-        """Target ID of the _volume reference (targets IField[primitives.Float])."""
+        """The volume field of the Audio Output Component controlled by this component."""
         member = self.get_member("_volume")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -393,7 +395,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def doppler(self) -> str | None:
-        """Target ID of the _doppler reference (targets IField[primitives.Float])."""
+        """The doppler field of the Audio Output Component controlled by this component."""
         member = self.get_member("_doppler")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -414,7 +416,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def spatialize(self) -> str | None:
-        """Target ID of the _spatialize reference (targets IField[primitives.Bool])."""
+        """The spatialize field of the Audio Output Component controlled by this component."""
         member = self.get_member("_spatialize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -435,7 +437,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def spatial_blend(self) -> str | None:
-        """Target ID of the _spatialBlend reference (targets IField[primitives.Float])."""
+        """The spatialBlend field of the Audio Output Component controlled by this component."""
         member = self.get_member("_spatialBlend")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -477,7 +479,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def min_distance(self) -> str | None:
-        """Target ID of the _minDistance reference (targets IField[primitives.Float])."""
+        """The minDistance field of the Audio Output Component controlled by this component."""
         member = self.get_member("_minDistance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -498,7 +500,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def max_distance(self) -> str | None:
-        """Target ID of the _maxDistance reference (targets IField[primitives.Float])."""
+        """The maxDistance field of the Audio Output Component controlled by this component."""
         member = self.get_member("_maxDistance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -519,7 +521,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def roll_off_mode(self) -> str | None:
-        """Target ID of the _rollOffMode reference (targets IField[AudioRolloffCurve])."""
+        """The rollOffMode field of the Audio Output Component controlled by this component."""
         member = self.get_member("_rollOffMode")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -540,7 +542,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def distance_space(self) -> str | None:
-        """Target ID of the _distanceSpace reference (targets IField[AudioDistanceSpace])."""
+        """The distance space field of the Audio Output Component controlled by this component."""
         member = self.get_member("_distanceSpace")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -561,7 +563,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def min_scale(self) -> str | None:
-        """Target ID of the _minScale reference (targets IField[primitives.Float])."""
+        """The minScale field of the Audio Output Component controlled by this component."""
         member = self.get_member("_minScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -582,7 +584,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def max_scale(self) -> str | None:
-        """Target ID of the _maxScale reference (targets IField[primitives.Float])."""
+        """The maxScale field of the Audio Output Component controlled by this component."""
         member = self.get_member("_maxScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -603,7 +605,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def scale_compensation(self) -> primitives.Float | None:
-        """The _scaleCompensation field value."""
+        """How much to scale up the volume range of the user so a small ``_activeUser`` can still be heard by everyone else."""
         member = self.get_member("_scaleCompensation")
         if member is None:
             return None
@@ -622,7 +624,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
 
     @property
     def audio_configuration(self) -> str | None:
-        """Target ID of the _audioConfiguration reference (targets AvatarAudioConfiguration)."""
+        """A field automatically filled with an Avatar Audio Configuration when the user spawns with an injected Avatar Audio Configuration courtesy of the world they spawned in. When not null, the specified component overrides ``WhisperConfig``, ``NormalConfig``, ``ShoutConfig``, and ``BroadcastConfig`` voice settings."""
         member = self.get_member("_audioConfiguration")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.type import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -13,18 +14,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NullableMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.NullableMemberEditor.
+    """The Nullable Member Editor component is commonly used in Ref Hacking and is used to modify nullable values.
+
+Please look into Flux or component alternatives other than this component to edit nullables.
+
+    Used in Ref Hacking. Don't use for your creations or they will break at
+    any time.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NullableMemberEditor"
 
-    def __init__(self, continuous: primitives.Bool | None = None, path: primitives.String | None = None, target: str | IField | None = None, check_box: str | Checkbox | None = None, state_drive: str | IField[primitives.Bool] | None = None, button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, continuous: primitives.Bool | None = None, path: primitives.String | None = None, target: str | IField | None = None, nullable_base_type: Type | str | None = None, check_box: str | Checkbox | None = None, state_drive: str | IField[primitives.Bool] | None = None, button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             continuous: Initial value for Continuous.
             path: Initial value for _path.
             target: Initial value for _target.
+            nullable_base_type: Initial value for NullableBaseType.
             check_box: Initial value for _checkBox.
             state_drive: Initial value for _stateDrive.
             button: Initial value for _button.
@@ -37,6 +44,8 @@ class NullableMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.path = path
         if target is not None:
             self.target = target
+        if nullable_base_type is not None:
+            self.nullable_base_type = nullable_base_type
         if check_box is not None:
             self.check_box = check_box
         if state_drive is not None:
@@ -46,7 +55,7 @@ class NullableMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def continuous(self) -> primitives.Bool | None:
-        """The Continuous field value."""
+        """Whether changes should instantly update a target value."""
         member = self.get_member("Continuous")
         if member is None:
             return None
@@ -65,7 +74,7 @@ class NullableMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def path(self) -> primitives.String | None:
-        """The _path field value."""
+        """The sub element to edit via C# reflection."""
         member = self.get_member("_path")
         if member is None:
             return None
@@ -84,7 +93,7 @@ class NullableMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField)."""
+        """The value to be modifying."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -104,21 +113,28 @@ class NullableMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def nullable_base_type(self) -> members.FieldEnum | None:
-        """The NullableBaseType member."""
+    def nullable_base_type(self) -> Type | None:
+        """The type of the value stored within the nullable (for "Nullable" aka "Float?" This is "Float")"""
         member = self.get_member("NullableBaseType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @nullable_base_type.setter
-    def nullable_base_type(self, value: members.FieldEnum) -> None:
-        """Set the NullableBaseType member."""
-        self.set_member("NullableBaseType", value)
+    def nullable_base_type(self, value: Type | str) -> None:
+        """Set NullableBaseType. The type of the value stored within the nullable (for "Nullable" aka "Float?" This is "Float")"""
+        member = self.get_member("NullableBaseType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "NullableBaseType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def check_box(self) -> str | None:
-        """Target ID of the _checkBox reference (targets Checkbox)."""
+        """Whether the nullable has a value."""
         member = self.get_member("_checkBox")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -139,7 +155,7 @@ class NullableMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def state_drive(self) -> str | None:
-        """Target ID of the _stateDrive reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether or not the nullable has a value."""
         member = self.get_member("_stateDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -160,7 +176,7 @@ class NullableMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets Button)."""
+        """The button for editing the nullable."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId

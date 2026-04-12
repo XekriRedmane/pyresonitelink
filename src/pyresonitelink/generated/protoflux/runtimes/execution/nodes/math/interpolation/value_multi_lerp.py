@@ -15,6 +15,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ValueMultiLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Multi Lerp node takes in any number of lerp point inputs along with a lerp value of which it lerps linearly towards, then returns the value over time.
 
+This is clamped, meaning that you are stuck with being in between all lerp input values.
+
+This node is the multi version of the Value Lerp node.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Interpolation
 
     Parameterize with a value type::
@@ -39,7 +43,7 @@ class ValueMultiLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T]
 
     @property
     def operands(self) -> members.SyncList | None:
-        """The Operands member."""
+        """The lerp value points."""
         member = self.get_member("Operands")
         if isinstance(member, members.SyncList):
             return member
@@ -47,12 +51,12 @@ class ValueMultiLerp(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T]
 
     @operands.setter
     def operands(self, value: members.SyncList) -> None:
-        """Set the Operands member."""
+        """Set Operands. The lerp value points."""
         self.set_member("Operands", value)
 
     @property
     def lerp(self) -> str | None:
-        """Target ID of the Lerp reference (targets INodeValueOutput[primitives.Float])."""
+        """The lerp value between all points."""
         member = self.get_member("Lerp")
         if isinstance(member, members.Reference):
             return member.targetId

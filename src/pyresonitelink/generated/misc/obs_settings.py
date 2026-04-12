@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class OBSSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.OBSSettings.
+    """The OBSSettings component allows for changing settings for OBS. May be legacy.
 
     Category: Misc
     """
@@ -29,7 +29,7 @@ class OBSSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def auto_mirror(self) -> primitives.Bool | None:
-        """The AutoMirror field value."""
+        """Auto Mirror on Record/Stream."""
         member = self.get_member("AutoMirror")
         if member is None:
             return None

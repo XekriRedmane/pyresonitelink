@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FundingStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FundingStatistics.
+    """The Funding Statistics component is used to get the different funding values for Resonite in United States Dollars from supporters.
 
     Category: Cloud/Indicators
     """
@@ -29,7 +29,7 @@ class FundingStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timestamp(self) -> str | None:
-        """The Timestamp field value."""
+        """The last time the values were updated as a time stamp."""
         member = self.get_member("Timestamp")
         if member is None:
             return None
@@ -48,7 +48,7 @@ class FundingStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def aggregate(self) -> members.SyncObject | None:
-        """The Aggregate member."""
+        """The combination of all support channels."""
         member = self.get_member("Aggregate")
         if isinstance(member, members.SyncObject):
             return member
@@ -56,12 +56,12 @@ class FundingStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @aggregate.setter
     def aggregate(self, value: members.SyncObject) -> None:
-        """Set the Aggregate member."""
+        """Set Aggregate. The combination of all support channels."""
         self.set_member("Aggregate", value)
 
     @property
     def patreon(self) -> members.SyncObject | None:
-        """The Patreon member."""
+        """The Monetary support from Patreon members."""
         member = self.get_member("Patreon")
         if isinstance(member, members.SyncObject):
             return member
@@ -69,12 +69,12 @@ class FundingStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @patreon.setter
     def patreon(self, value: members.SyncObject) -> None:
-        """Set the Patreon member."""
+        """Set Patreon. The Monetary support from Patreon members."""
         self.set_member("Patreon", value)
 
     @property
     def stripe(self) -> members.SyncObject | None:
-        """The Stripe member."""
+        """The Monetary support from Stripe members."""
         member = self.get_member("Stripe")
         if isinstance(member, members.SyncObject):
             return member
@@ -82,6 +82,6 @@ class FundingStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @stripe.setter
     def stripe(self, value: members.SyncObject) -> None:
-        """Set the Stripe member."""
+        """Set Stripe. The Monetary support from Stripe members."""
         self.set_member("Stripe", value)
 

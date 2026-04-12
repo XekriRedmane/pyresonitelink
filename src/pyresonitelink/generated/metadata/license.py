@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class License(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.License.
+    """License is a legacy component, that has no functionality. We don't recommend using it. There is no standard for the formats, meaning or use of the properties within the component. Due to this different communities have used it for different items and purposes leading to a lot of confusion.
 
     Category: Metadata
     """
@@ -35,7 +35,7 @@ class License(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def require_credit(self) -> primitives.Bool | None:
-        """The RequireCredit field value."""
+        """There is no common standard for this value's meaning"""
         member = self.get_member("RequireCredit")
         if member is None:
             return None
@@ -54,7 +54,7 @@ class License(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def credit_string(self) -> primitives.String | None:
-        """The CreditString field value."""
+        """There is no common standard for this value's meaning"""
         member = self.get_member("CreditString")
         if member is None:
             return None
@@ -73,7 +73,7 @@ class License(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def can_export(self) -> primitives.Bool | None:
-        """The CanExport field value."""
+        """There is no common standard for this value's meaning"""
         member = self.get_member("CanExport")
         if member is None:
             return None

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.legacy_particle_animation_type import LegacyParticleAnimationType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -12,21 +13,26 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyAnimationTypeAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.LegacyAnimationTypeAdapter.
+    """The LegacyAnimationTypeAdapter component is used in converted legacy particle systems that were converted to PhotonDust as part of The Performance Updates.
+
+    Not used directly by the user. Don't use this in new content!
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LegacyAnimationTypeAdapter"
 
-    def __init__(self, target: str | IField[TextureSheetAnimationType] | None = None, animation_tiles: str | IValue[primitives.Int2] | None = None, animation_enabled: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: LegacyParticleAnimationType | str | None = None, target: str | IField[TextureSheetAnimationType] | None = None, animation_tiles: str | IValue[primitives.Int2] | None = None, animation_enabled: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            source: Initial value for Source.
             target: Initial value for Target.
             animation_tiles: Initial value for AnimationTiles.
             animation_enabled: Initial value for AnimationEnabled.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if source is not None:
+            self.source = source
         if target is not None:
             self.target = target
         if animation_tiles is not None:
@@ -35,21 +41,28 @@ class LegacyAnimationTypeAdapter(GeneratedComponent, IComponent, IWorldEventRece
             self.animation_enabled = animation_enabled
 
     @property
-    def source(self) -> members.FieldEnum | None:
-        """The Source member."""
+    def source(self) -> LegacyParticleAnimationType | None:
+        """The original animation type from legacy content."""
         member = self.get_member("Source")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return LegacyParticleAnimationType(member.value)
         return None
 
     @source.setter
-    def source(self, value: members.FieldEnum) -> None:
-        """Set the Source member."""
-        self.set_member("Source", value)
+    def source(self, value: LegacyParticleAnimationType | str) -> None:
+        """Set Source. The original animation type from legacy content."""
+        member = self.get_member("Source")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Source",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[TextureSheetAnimationType])."""
+        """The target field to drive with the legacy animation values."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +83,7 @@ class LegacyAnimationTypeAdapter(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def animation_tiles(self) -> str | None:
-        """Target ID of the AnimationTiles reference (targets IValue[primitives.Int2])."""
+        """The field to set to the amount of animation tiles."""
         member = self.get_member("AnimationTiles")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +104,7 @@ class LegacyAnimationTypeAdapter(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def animation_enabled(self) -> str | None:
-        """Target ID of the AnimationEnabled reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether animation should be enabled."""
         member = self.get_member("AnimationEnabled")
         if isinstance(member, members.Reference):
             return member.targetId

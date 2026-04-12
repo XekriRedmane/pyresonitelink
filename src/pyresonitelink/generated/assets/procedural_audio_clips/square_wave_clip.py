@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SquareWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SquareWaveClip.
+    """The SquareWaveClip component makes a kind of buzzing noise that can be given a pitch and a loudness.
 
     Category: Assets/Procedural Audio Clips
+
+    Attach to a slot and provide a ``Frequency`` and ``Amplitude``, then
+    insert into a AudioClipPlayer to hear it.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SquareWaveClip"
@@ -56,7 +59,7 @@ class SquareWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def frequency(self) -> primitives.Float | None:
-        """The Frequency field value."""
+        """The pitch of the clip."""
         member = self.get_member("Frequency")
         if member is None:
             return None
@@ -75,7 +78,7 @@ class SquareWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def amplitude(self) -> primitives.Float | None:
-        """The Amplitude field value."""
+        """The loudness of the clip."""
         member = self.get_member("Amplitude")
         if member is None:
             return None
@@ -93,7 +96,7 @@ class SquareWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     async def bake_clip(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the BakeClip sync method.
+        """Turns the audio into a StaticAudioClip.
 
         Returns:
             The raw JSON response dict.

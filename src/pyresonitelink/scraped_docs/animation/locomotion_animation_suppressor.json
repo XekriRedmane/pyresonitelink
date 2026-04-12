@@ -1,0 +1,11 @@
+{
+  "description": "LocomotionAnimationSuppressor is used to disable feet animation in the locomotion animation system, which can be useful for things like posers.",
+  "category": "Users:Common Avatar System:Animation",
+  "fields": {
+    "SuppressFeetSimulation": "Disables feet animation."
+  },
+  "methods": {},
+  "usage": "Used to disable the walking animations if placed under an avatar.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocomotionAnimationSuppressor&action=raw"
+}

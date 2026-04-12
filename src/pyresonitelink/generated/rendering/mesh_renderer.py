@@ -4,6 +4,8 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.shadow_cast_mode import ShadowCastMode
+from pyresonitelink.generated._enums.motion_vector_mode import MotionVectorMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -16,30 +18,38 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MeshRenderer(GeneratedComponent, IBounded, IHighlightable, IRenderable, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MeshRenderer.
+    """The MeshRenderer component is used for rendering static 3D meshes in the world, and applying materials to that mesh.
 
     Category: Rendering
+
+    **See also**: * SkinnedMeshRenderer
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshRenderer"
 
-    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, sorting_order: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, mesh: str | IAssetProvider[Mesh] | None = None, shadow_cast_mode: ShadowCastMode | str | None = None, motion_vector_mode: MotionVectorMode | str | None = None, sorting_order: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             mesh: Initial value for Mesh.
+            shadow_cast_mode: Initial value for ShadowCastMode.
+            motion_vector_mode: Initial value for MotionVectorMode.
             sorting_order: Initial value for SortingOrder.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if mesh is not None:
             self.mesh = mesh
+        if shadow_cast_mode is not None:
+            self.shadow_cast_mode = shadow_cast_mode
+        if motion_vector_mode is not None:
+            self.motion_vector_mode = motion_vector_mode
         if sorting_order is not None:
             self.sorting_order = sorting_order
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the Mesh reference (targets IAssetProvider[Mesh])."""
+        """The mesh to be rendered. Can be a StaticMesh or a Procedural Mesh"""
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +70,7 @@ class MeshRenderer(GeneratedComponent, IBounded, IHighlightable, IRenderable, IC
 
     @property
     def materials(self) -> members.SyncList | None:
-        """The Materials member."""
+        """A list of materials to be applied to the mesh"""
         member = self.get_member("Materials")
         if isinstance(member, members.SyncList):
             return member
@@ -68,12 +78,12 @@ class MeshRenderer(GeneratedComponent, IBounded, IHighlightable, IRenderable, IC
 
     @materials.setter
     def materials(self, value: members.SyncList) -> None:
-        """Set the Materials member."""
+        """Set Materials. A list of materials to be applied to the mesh"""
         self.set_member("Materials", value)
 
     @property
     def material_property_blocks(self) -> members.SyncList | None:
-        """The MaterialPropertyBlocks member."""
+        """A list of material property blocks to apply to the materials on this mesh. Usually used for performance reasons where using multiple similar materials would take more resources."""
         member = self.get_member("MaterialPropertyBlocks")
         if isinstance(member, members.SyncList):
             return member
@@ -81,38 +91,52 @@ class MeshRenderer(GeneratedComponent, IBounded, IHighlightable, IRenderable, IC
 
     @material_property_blocks.setter
     def material_property_blocks(self, value: members.SyncList) -> None:
-        """Set the MaterialPropertyBlocks member."""
+        """Set MaterialPropertyBlocks. A list of material property blocks to apply to the materials on this mesh. Usually used for performance reasons where using multiple similar materials would take more resources."""
         self.set_member("MaterialPropertyBlocks", value)
 
     @property
-    def shadow_cast_mode(self) -> members.FieldEnum | None:
-        """The ShadowCastMode member."""
+    def shadow_cast_mode(self) -> ShadowCastMode | None:
+        """How this object will cast shadows onto the world, or if it only draws a shadow."""
         member = self.get_member("ShadowCastMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ShadowCastMode(member.value)
         return None
 
     @shadow_cast_mode.setter
-    def shadow_cast_mode(self, value: members.FieldEnum) -> None:
-        """Set the ShadowCastMode member."""
-        self.set_member("ShadowCastMode", value)
+    def shadow_cast_mode(self, value: ShadowCastMode | str) -> None:
+        """Set ShadowCastMode. How this object will cast shadows onto the world, or if it only draws a shadow."""
+        member = self.get_member("ShadowCastMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ShadowCastMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def motion_vector_mode(self) -> members.FieldEnum | None:
-        """The MotionVectorMode member."""
+    def motion_vector_mode(self) -> MotionVectorMode | None:
+        """See Motion vector mode."""
         member = self.get_member("MotionVectorMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MotionVectorMode(member.value)
         return None
 
     @motion_vector_mode.setter
-    def motion_vector_mode(self, value: members.FieldEnum) -> None:
-        """Set the MotionVectorMode member."""
-        self.set_member("MotionVectorMode", value)
+    def motion_vector_mode(self, value: MotionVectorMode | str) -> None:
+        """Set MotionVectorMode. See Motion vector mode."""
+        member = self.get_member("MotionVectorMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MotionVectorMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def sorting_order(self) -> primitives.Int | None:
-        """The SortingOrder field value."""
+        """Whether to render this before or after other renderers with geometry in the same location."""
         member = self.get_member("SortingOrder")
         if member is None:
             return None
@@ -130,7 +154,7 @@ class MeshRenderer(GeneratedComponent, IBounded, IHighlightable, IRenderable, IC
             )
 
     async def split_submeshes(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SplitSubmeshes sync method.
+        """Called when the split submeshes button is touched.
 
         Returns:
             The raw JSON response dict.
@@ -140,7 +164,7 @@ class MeshRenderer(GeneratedComponent, IBounded, IHighlightable, IRenderable, IC
         )
 
     async def merge_by_material(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the MergeByMaterial sync method.
+        """Called when the merge by material button is touched.
 
         Returns:
             The raw JSON response dict.

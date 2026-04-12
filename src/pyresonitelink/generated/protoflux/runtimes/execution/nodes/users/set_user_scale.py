@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Set User Scale node changes the user scale with the provided inputs. While the user is scaling and the user is in the middle of a scale animation, the user cannot be scaled again until the animation has finished.
+    """The ``Set User Scale`` node changes the user scale with the provided inputs. While the user is scaling and the user is in the middle of a scale animation, the user cannot be scaled again until the animation has finished.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users
     """
@@ -49,7 +49,7 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def user_root(self) -> str | None:
-        """Target ID of the UserRoot reference (targets INodeObjectOutput[UserRoot])."""
+        """The user root to scale."""
         member = self.get_member("UserRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +70,7 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def scale(self) -> str | None:
-        """Target ID of the Scale reference (targets INodeValueOutput[primitives.Float])."""
+        """The target scale to aim for."""
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +91,7 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def animation_time(self) -> str | None:
-        """Target ID of the AnimationTime reference (targets INodeValueOutput[primitives.Float])."""
+        """How long this scaling should take."""
         member = self.get_member("AnimationTime")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +112,7 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def on_scale_change_start(self) -> str | None:
-        """Target ID of the OnScaleChangeStart reference (targets INodeOperation)."""
+        """Fires when the scaling has started."""
         member = self.get_member("OnScaleChangeStart")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -133,7 +133,7 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
 
     @property
     def on_animation_finished(self) -> str | None:
-        """Target ID of the OnAnimationFinished reference (targets INodeOperation)."""
+        """Fires when the scaling animation has finished scaling the user."""
         member = self.get_member("OnAnimationFinished")
         if isinstance(member, members.Reference):
             return member.targetId

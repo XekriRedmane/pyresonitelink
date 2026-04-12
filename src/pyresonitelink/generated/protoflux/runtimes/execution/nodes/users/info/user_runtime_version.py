@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserRuntimeVersion(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Runtime Version node returns the runtime version in use, which is typically the version of .NET.
+    """The ``User Runtime Version`` node returns the runtime version in use, which is typically the version of .NET.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """
@@ -33,7 +33,7 @@ class UserRuntimeVersion(GeneratedComponent, INodeObjectOutput, IExecutionNode, 
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

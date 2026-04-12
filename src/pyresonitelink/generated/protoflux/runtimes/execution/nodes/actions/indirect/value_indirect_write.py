@@ -10,13 +10,14 @@ from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
 
 
 class ValueIndirectWrite(GenericComponent[T]):
-    """Indirect writes can be commonly found in legacy content that has been migrated from other platforms. Indirect writes take Variable (Variable) as an input, and the type that Variable wraps will determine what Value (Generic) will take as a value. The node will then write Value (Generic) to the field Variable (Variable) wraps.
+    """Indirect writes can be commonly found in legacy content that has been migrated from other platforms.
+Indirect writes take Variable (Variable) as an input, and the type that Variable wraps will determine what Value (Generic) will take as a value. The node will then write Value (Generic) to the field Variable (Variable) wraps.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions/Indirect
 
-    **Indirect Write or Write?**: The difference between a Write node and an Indirect Write is in how they reference the variable they affect.  In a Write node, what is called a Global is used to hold the variable, and this reference is only evaluated when the Protoflux starts executing.  Therefore, code that changes the variable for a normal Write during its execution will have no effect.
+    **Indirect Write or Write?**: The difference between a Write node and an Indirect Write is in how they reference the variable they affect. In a Write node, what is called a Global is used to hold the variable, and this reference is only evaluated when the Protoflux starts executing. Therefore, code that changes the variable for a normal Write during its execution will have no effect.
 
-In contrast, an Indirect Write node uses a normal input for its variable, which is evaluated whenever the node is called.  This allows for the variable to be programmatically changed during the flow of execution, such as via a multiplexer with an indeterminate number of possible inputs.
+In contrast, an Indirect Write node uses a normal input for its variable, which is evaluated whenever the node is called. This allows for the variable to be programmatically changed during the flow of execution, such as via a multiplexer with an indeterminate number of possible inputs.
 
 In short, if you're writing to a static variable stick with normal Write, while if your code might change the variable you're writing to during execution use Indirect Write instead.
 
@@ -51,7 +52,7 @@ In short, if you're writing to a static variable stick with normal Write, while 
 
     @property
     def on_written(self) -> str | None:
-        """Target ID of the OnWritten reference (targets INodeOperation)."""
+        """sends an impulse after * (Call) has been impulsed and the value has been written."""
         member = self.get_member("OnWritten")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -72,7 +73,7 @@ In short, if you're writing to a static variable stick with normal Write, while 
 
     @property
     def on_fail(self) -> str | None:
-        """Target ID of the OnFail reference (targets INodeOperation)."""
+        """sends an impulse after * (Call) has been impulsed and the value wasn't able to be written due to a missing target or the variable not wrapping a valid IValue`1"""
         member = self.get_member("OnFail")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -93,7 +94,7 @@ In short, if you're writing to a static variable stick with normal Write, while 
 
     @property
     def variable(self) -> str | None:
-        """Target ID of the Variable reference (targets INodeObjectOutput[IVariable])."""
+        """Value to write to the value being wrapped by Variable Variable"""
         member = self.get_member("Variable")
         if isinstance(member, members.Reference):
             return member.targetId

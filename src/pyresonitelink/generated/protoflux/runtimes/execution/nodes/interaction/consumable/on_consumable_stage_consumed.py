@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnConsumableStageConsumed(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Triggers on the start of a consumion event
+    """Listen to events and activate extra affects and behaviors when consuming using Consumable
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Consumable
     """
@@ -58,7 +58,7 @@ class OnConsumableStageConsumed(GeneratedComponent, IExecutionNode, INode, ICust
 
     @property
     def on_consumed(self) -> str | None:
-        """Target ID of the OnConsumed reference (targets ISyncNodeOperation)."""
+        """Sends an impulse when stage is complete"""
         member = self.get_member("OnConsumed")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class OnConsumableStageConsumed(GeneratedComponent, IExecutionNode, INode, ICust
 
     @property
     def consumed_stage_index(self) -> members.EmptyElement | None:
-        """The ConsumedStageIndex member."""
+        """What stage we are at. Taken from the List in Component:Consumable"""
         member = self.get_member("ConsumedStageIndex")
         if isinstance(member, members.EmptyElement):
             return member
@@ -87,6 +87,6 @@ class OnConsumableStageConsumed(GeneratedComponent, IExecutionNode, INode, ICust
 
     @consumed_stage_index.setter
     def consumed_stage_index(self, value: members.EmptyElement) -> None:
-        """Set the ConsumedStageIndex member."""
+        """Set ConsumedStageIndex. What stage we are at. Taken from the List in Component:Consumable"""
         self.set_member("ConsumedStageIndex", value)
 

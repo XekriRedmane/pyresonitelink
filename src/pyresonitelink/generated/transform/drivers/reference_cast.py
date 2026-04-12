@@ -15,9 +15,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceCast(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceCast<,>.
+    """The ReferenceCast component can be used to try to take a type and change it to another type. This performs a C# cast which requires the types to be compatible for casting to make a result.
 
     Category: Transform/Drivers
+
+    This is a way of changing a type without using ProtoFlux. Attaching this
+    component can be difficult, so you should be familiar with Complex Types
+    in Components. Keep in mind this does a C# Cast, which does not work
+    with many different conversions.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReferenceCast<,>"
@@ -41,7 +46,7 @@ class ReferenceCast(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets I)."""
+        """The source type to convert"""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +67,7 @@ class ReferenceCast(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncRef[O])."""
+        """The target field. Casts ``Source`` to this fields type, and then uses the result to drive this field."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +88,7 @@ class ReferenceCast(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """whether to allow changes to the ``Target`` to update ``Source`` instead of discarding the change. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None

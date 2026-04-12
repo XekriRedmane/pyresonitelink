@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TrailLifetimeFromSizeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.TrailLifetimeFromSizeInitializer.
+    """The TrailLifetimeFromSizeInitializer component will give trails a lifetime depending on how much more or less size they have compared to a ref size.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.TrailLifetimeFromSizeInitializer"
@@ -29,7 +34,7 @@ class TrailLifetimeFromSizeInitializer(GeneratedComponent, IParticleSystemModule
 
     @property
     def reference_size(self) -> primitives.Float | None:
-        """The ReferenceSize field value."""
+        """The size to reference a trail size against when making a trail's lifetime."""
         member = self.get_member("ReferenceSize")
         if member is None:
             return None

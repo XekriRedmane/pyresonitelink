@@ -1,0 +1,11 @@
+{
+  "description": "The AvatarEyeTrackingInfo is used to override the assigning behavior from a AvatarEyeDataSourceAssigner on the avatar when it assigns a target.",
+  "category": "Users:Common Avatar System:Face",
+  "fields": {
+    "EyeDataSource": "The data source to override the assigning behavior of a Component:AvatarEyeDataSourceAssigner on the avatar with."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarEyeTrackingInfo&action=raw"
+}

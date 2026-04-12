@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUserSilenced(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Is User Silenced node returns if the user is Silenced. For a user to be Silenced, they would need to have a special setting turned on in the User Inspector.
+    """The ``Is User Silenced`` node returns if the user is Silenced. For a user to be Silenced, they would need to have a special setting turned on in the User Inspector.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """
@@ -34,7 +34,7 @@ class IsUserSilenced(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

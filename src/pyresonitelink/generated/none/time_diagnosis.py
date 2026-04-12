@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeDiagnosis(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TimeDiagnosis.
+    """The TimeDiagnosis component is used to check diagnostic info for user time.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TimeDiagnosis"
@@ -32,7 +32,7 @@ class TimeDiagnosis(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def format_time(self) -> primitives.Bool | None:
-        """The FormatTime field value."""
+        """Whether to format the time shown."""
         member = self.get_member("FormatTime")
         if member is None:
             return None
@@ -51,7 +51,7 @@ class TimeDiagnosis(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the text reference (targets Sync[primitives.String])."""
+        """The text field to drive with time info."""
         member = self.get_member("text")
         if isinstance(member, members.Reference):
             return member.targetId

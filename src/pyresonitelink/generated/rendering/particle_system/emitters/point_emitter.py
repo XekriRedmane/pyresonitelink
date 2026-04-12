@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iparticle_system_emitter import IParticleSy
 
 
 class PointEmitter(GeneratedComponent, IParticleSystemEmitter):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.PointEmitter.
+    """The PointEmitter component is used to make particles using particle systems (see Photon Dust) from a single point.
 
     Category: Rendering/Particle System/Emitters
     """
@@ -186,7 +186,7 @@ class PointEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """Color multiplier for starting color of particles emitted from this point."""
         member = self.get_member("Color")
         if member is None:
             return None

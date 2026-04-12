@@ -1,0 +1,11 @@
+{
+  "description": "The AvatarVoiceSourceAssigner sets the ``IAudioSource`` field referenced by ``TargetReference`` to the voice stream of the active user when the avatar this component is attached to is equipped.\n\nThis component is useful when adding voice-driven effects to an avatar, such as a VisemeAnalyzer or VolumeMeter",
+  "category": "Users:Common Avatar System:Audio",
+  "fields": {
+    "TargetReference": "Target ``IAudioSource`` that will be assigned the user's audio stream"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarVoiceSourceAssigner&action=raw"
+}

@@ -3,6 +3,13 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.color_mask import ColorMask
+from pyresonitelink.generated._enums.stencil_comparison import StencilComparison
+from pyresonitelink.generated._enums.stencil_operation import StencilOperation
+from pyresonitelink.generated._enums.blend_mode import BlendMode
+from pyresonitelink.generated._enums.sidedness import Sidedness
+from pyresonitelink.generated._enums.zwrite import ZWrite
+from pyresonitelink.generated._enums.ztest import ZTest
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -20,13 +27,16 @@ class HSV_Material(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HSV_Material"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, shader: str | IAssetProvider[Shader] | None = None, hsv_offset: primitives.Float3 | None = None, hsv_multiply: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, color_mask: ColorMask | str | None = None, stencil_comparison: StencilComparison | str | None = None, stencil_operation: StencilOperation | str | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, shader: str | IAssetProvider[Shader] | None = None, hsv_offset: primitives.Float3 | None = None, hsv_multiply: primitives.Float3 | None = None, blend_mode: BlendMode | str | None = None, sidedness: Sidedness | str | None = None, zwrite: ZWrite | str | None = None, ztest: ZTest | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             rect: Initial value for Rect.
             rect_clip: Initial value for RectClip.
+            color_mask: Initial value for ColorMask.
+            stencil_comparison: Initial value for StencilComparison.
+            stencil_operation: Initial value for StencilOperation.
             stencil_id: Initial value for StencilID.
             stencil_write_mask: Initial value for StencilWriteMask.
             stencil_read_mask: Initial value for StencilReadMask.
@@ -34,6 +44,10 @@ class HSV_Material(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
             shader: Initial value for _shader.
             hsv_offset: Initial value for HSV_Offset.
             hsv_multiply: Initial value for HSV_Multiply.
+            blend_mode: Initial value for BlendMode.
+            sidedness: Initial value for Sidedness.
+            zwrite: Initial value for ZWrite.
+            ztest: Initial value for ZTest.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -43,6 +57,12 @@ class HSV_Material(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
             self.rect = rect
         if rect_clip is not None:
             self.rect_clip = rect_clip
+        if color_mask is not None:
+            self.color_mask = color_mask
+        if stencil_comparison is not None:
+            self.stencil_comparison = stencil_comparison
+        if stencil_operation is not None:
+            self.stencil_operation = stencil_operation
         if stencil_id is not None:
             self.stencil_id = stencil_id
         if stencil_write_mask is not None:
@@ -57,6 +77,14 @@ class HSV_Material(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
             self.hsv_offset = hsv_offset
         if hsv_multiply is not None:
             self.hsv_multiply = hsv_multiply
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
+        if sidedness is not None:
+            self.sidedness = sidedness
+        if zwrite is not None:
+            self.zwrite = zwrite
+        if ztest is not None:
+            self.ztest = ztest
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -116,43 +144,64 @@ class HSV_Material(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
             )
 
     @property
-    def color_mask(self) -> members.FieldEnum | None:
-        """The ColorMask member."""
+    def color_mask(self) -> ColorMask | None:
+        """The ColorMask enum value."""
         member = self.get_member("ColorMask")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorMask(member.value)
         return None
 
     @color_mask.setter
-    def color_mask(self, value: members.FieldEnum) -> None:
-        """Set the ColorMask member."""
-        self.set_member("ColorMask", value)
+    def color_mask(self, value: ColorMask | str) -> None:
+        """Set the ColorMask enum value."""
+        member = self.get_member("ColorMask")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ColorMask",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def stencil_comparison(self) -> members.FieldEnum | None:
-        """The StencilComparison member."""
+    def stencil_comparison(self) -> StencilComparison | None:
+        """The StencilComparison enum value."""
         member = self.get_member("StencilComparison")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return StencilComparison(member.value)
         return None
 
     @stencil_comparison.setter
-    def stencil_comparison(self, value: members.FieldEnum) -> None:
-        """Set the StencilComparison member."""
-        self.set_member("StencilComparison", value)
+    def stencil_comparison(self, value: StencilComparison | str) -> None:
+        """Set the StencilComparison enum value."""
+        member = self.get_member("StencilComparison")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "StencilComparison",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def stencil_operation(self) -> members.FieldEnum | None:
-        """The StencilOperation member."""
+    def stencil_operation(self) -> StencilOperation | None:
+        """The StencilOperation enum value."""
         member = self.get_member("StencilOperation")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return StencilOperation(member.value)
         return None
 
     @stencil_operation.setter
-    def stencil_operation(self, value: members.FieldEnum) -> None:
-        """Set the StencilOperation member."""
-        self.set_member("StencilOperation", value)
+    def stencil_operation(self, value: StencilOperation | str) -> None:
+        """Set the StencilOperation enum value."""
+        member = self.get_member("StencilOperation")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "StencilOperation",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def stencil_id(self) -> primitives.Byte | None:
@@ -290,54 +339,82 @@ class HSV_Material(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
             )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def sidedness(self) -> members.FieldEnum | None:
-        """The Sidedness member."""
+    def sidedness(self) -> Sidedness | None:
+        """The Sidedness enum value."""
         member = self.get_member("Sidedness")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Sidedness(member.value)
         return None
 
     @sidedness.setter
-    def sidedness(self, value: members.FieldEnum) -> None:
-        """Set the Sidedness member."""
-        self.set_member("Sidedness", value)
+    def sidedness(self, value: Sidedness | str) -> None:
+        """Set the Sidedness enum value."""
+        member = self.get_member("Sidedness")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Sidedness",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def ztest(self) -> members.FieldEnum | None:
-        """The ZTest member."""
+    def ztest(self) -> ZTest | None:
+        """The ZTest enum value."""
         member = self.get_member("ZTest")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZTest(member.value)
         return None
 
     @ztest.setter
-    def ztest(self, value: members.FieldEnum) -> None:
-        """Set the ZTest member."""
-        self.set_member("ZTest", value)
+    def ztest(self, value: ZTest | str) -> None:
+        """Set the ZTest enum value."""
+        member = self.get_member("ZTest")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZTest",
+                members.FieldEnum(value=str(value)),
+            )
 

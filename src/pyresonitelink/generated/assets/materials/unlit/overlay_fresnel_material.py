@@ -3,6 +3,9 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.blend_mode import BlendMode
+from pyresonitelink.generated._enums.sidedness import Sidedness
+from pyresonitelink.generated._enums.zwrite import ZWrite
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,14 +16,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.OverlayFresnelMaterial.
+    """The Overlay Fresnel Material functions similar to a Fresnel Material with the added attribute of displaying through objects.
 
     Category: Assets/Materials/Unlit
+
+    Attach to a slot and put into the materials of a renderer like a
+    SkinnedMeshRenderer or a MeshRenderer with a mesh to view what the
+    material looks like.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OverlayFresnelMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, exponent: primitives.Float | None = None, gamma_curve: primitives.Float | None = None, behind_far_color: primitives.ColorX | None = None, behind_near_color: primitives.ColorX | None = None, front_far_color: primitives.ColorX | None = None, front_near_color: primitives.ColorX | None = None, behind_far_texture: str | IAssetProvider[ITexture2D] | None = None, behind_near_texture: str | IAssetProvider[ITexture2D] | None = None, front_far_texture: str | IAssetProvider[ITexture2D] | None = None, front_near_texture: str | IAssetProvider[ITexture2D] | None = None, behind_far_texture_scale: primitives.Float2 | None = None, behind_far_texture_offset: primitives.Float2 | None = None, behind_near_texture_scale: primitives.Float2 | None = None, behind_near_texture_offset: primitives.Float2 | None = None, front_far_texture_scale: primitives.Float2 | None = None, front_far_texture_offset: primitives.Float2 | None = None, front_near_texture_scale: primitives.Float2 | None = None, front_near_texture_offset: primitives.Float2 | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, render_queue: primitives.Int | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, polar_uvmapping: primitives.Bool | None = None, polar_power: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, exponent: primitives.Float | None = None, gamma_curve: primitives.Float | None = None, behind_far_color: primitives.ColorX | None = None, behind_near_color: primitives.ColorX | None = None, front_far_color: primitives.ColorX | None = None, front_near_color: primitives.ColorX | None = None, behind_far_texture: str | IAssetProvider[ITexture2D] | None = None, behind_near_texture: str | IAssetProvider[ITexture2D] | None = None, front_far_texture: str | IAssetProvider[ITexture2D] | None = None, front_near_texture: str | IAssetProvider[ITexture2D] | None = None, behind_far_texture_scale: primitives.Float2 | None = None, behind_far_texture_offset: primitives.Float2 | None = None, behind_near_texture_scale: primitives.Float2 | None = None, behind_near_texture_offset: primitives.Float2 | None = None, front_far_texture_scale: primitives.Float2 | None = None, front_far_texture_offset: primitives.Float2 | None = None, front_near_texture_scale: primitives.Float2 | None = None, front_near_texture_offset: primitives.Float2 | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, blend_mode: BlendMode | str | None = None, sidedness: Sidedness | str | None = None, zwrite: ZWrite | str | None = None, render_queue: primitives.Int | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, polar_uvmapping: primitives.Bool | None = None, polar_power: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,6 +52,9 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
             front_near_texture_scale: Initial value for FrontNearTextureScale.
             front_near_texture_offset: Initial value for FrontNearTextureOffset.
             normal_map: Initial value for NormalMap.
+            blend_mode: Initial value for BlendMode.
+            sidedness: Initial value for Sidedness.
+            zwrite: Initial value for ZWrite.
             render_queue: Initial value for RenderQueue.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
@@ -95,6 +105,12 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
             self.front_near_texture_offset = front_near_texture_offset
         if normal_map is not None:
             self.normal_map = normal_map
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
+        if sidedness is not None:
+            self.sidedness = sidedness
+        if zwrite is not None:
+            self.zwrite = zwrite
         if render_queue is not None:
             self.render_queue = render_queue
         if offset_factor is not None:
@@ -518,43 +534,64 @@ class OverlayFresnelMaterial(GeneratedComponent, IAssetProvider, ICustomInspecto
             )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def sidedness(self) -> members.FieldEnum | None:
-        """The Sidedness member."""
+    def sidedness(self) -> Sidedness | None:
+        """The Sidedness enum value."""
         member = self.get_member("Sidedness")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Sidedness(member.value)
         return None
 
     @sidedness.setter
-    def sidedness(self, value: members.FieldEnum) -> None:
-        """Set the Sidedness member."""
-        self.set_member("Sidedness", value)
+    def sidedness(self, value: Sidedness | str) -> None:
+        """Set the Sidedness enum value."""
+        member = self.get_member("Sidedness")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Sidedness",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def render_queue(self) -> primitives.Int | None:

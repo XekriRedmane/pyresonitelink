@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -12,19 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorToColorX(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ColorToColorX.
+    """The ColorToColorX component uses data from a Color and a ColorProfile to drive the value of a ColorX field with optional write back.
 
     Category: Transform/Drivers
+
+    Attach to a slot and provide ``SourceColor``. Then provide either
+    ``SourceProfile``, or ``DefaultProfile``. The component will then drive
+    a ColorX field through ``Target``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorToColorX"
 
-    def __init__(self, source_color: str | IField[primitives.Color] | None = None, source_profile: str | IField[ColorProfile] | None = None, target: str | IField[primitives.ColorX] | None = None, write_back: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source_color: str | IField[primitives.Color] | None = None, source_profile: str | IField[ColorProfile] | None = None, default_profile: ColorProfile | str | None = None, target: str | IField[primitives.ColorX] | None = None, write_back: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             source_color: Initial value for SourceColor.
             source_profile: Initial value for SourceProfile.
+            default_profile: Initial value for DefaultProfile.
             target: Initial value for Target.
             write_back: Initial value for WriteBack.
             component: Existing Component to wrap.
@@ -34,6 +40,8 @@ class ColorToColorX(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.source_color = source_color
         if source_profile is not None:
             self.source_profile = source_profile
+        if default_profile is not None:
+            self.default_profile = default_profile
         if target is not None:
             self.target = target
         if write_back is not None:
@@ -41,7 +49,7 @@ class ColorToColorX(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source_color(self) -> str | None:
-        """Target ID of the SourceColor reference (targets IField[primitives.Color])."""
+        """The color to convert into a ColorX for ``Target``"""
         member = self.get_member("SourceColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +70,7 @@ class ColorToColorX(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source_profile(self) -> str | None:
-        """Target ID of the SourceProfile reference (targets IField[ColorProfile])."""
+        """The color profile to use for the resulting ``Target``"""
         member = self.get_member("SourceProfile")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,21 +90,28 @@ class ColorToColorX(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def default_profile(self) -> members.FieldEnum | None:
-        """The DefaultProfile member."""
+    def default_profile(self) -> ColorProfile | None:
+        """the ColorProfile to use for ``Target`` if ``SourceProfile`` is empty."""
         member = self.get_member("DefaultProfile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @default_profile.setter
-    def default_profile(self, value: members.FieldEnum) -> None:
-        """Set the DefaultProfile member."""
-        self.set_member("DefaultProfile", value)
+    def default_profile(self, value: ColorProfile | str) -> None:
+        """Set DefaultProfile. the ColorProfile to use for ``Target`` if ``SourceProfile`` is empty."""
+        member = self.get_member("DefaultProfile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DefaultProfile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.ColorX])."""
+        """The field to drive with the converted ``SourceColor``."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -117,7 +132,7 @@ class ColorToColorX(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """Whether to allow changes to the field specified by ``Target`` to go backwards and affect ``DefaultProfile`` or ``SourceProfile``, and ``SourceColor``. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None

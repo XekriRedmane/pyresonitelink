@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NewLine(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The New Line node is a character literal constant that represents a new line in text. Note that this node comes in two versions: A char version and a String version.
+    """The ``New Line`` node is a character literal constant that represents a new line in text. Note that this node comes in two versions: A char version and a String version.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
     """

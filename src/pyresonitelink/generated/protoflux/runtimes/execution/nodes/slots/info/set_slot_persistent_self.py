@@ -45,7 +45,7 @@ class SetSlotPersistentSelf(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse when Instance (Slot)'s persistent field is set to Persistent (bool) when * (Call) is called."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +66,7 @@ class SetSlotPersistentSelf(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """Slot to set the property for."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +87,7 @@ class SetSlotPersistentSelf(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def persistent(self) -> str | None:
-        """Target ID of the Persistent reference (targets INodeValueOutput[primitives.Bool])."""
+        """The value to set Instance (Slot)'s persistent field to."""
         member = self.get_member("Persistent")
         if isinstance(member, members.Reference):
             return member.targetId

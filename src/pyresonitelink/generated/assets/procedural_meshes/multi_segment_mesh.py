@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MultiSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MultiSegmentMesh.
+    """Multi line segment mesh is a component that generates mesh data for use with a SkinnedMeshRenderer. It uses a list of lines to generate lines of geometry with varying thickness.
 
     Category: Assets/Procedural Meshes
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MultiSegmentMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, sides: primitives.Int | None = None, flip_normal_direction: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, sides: primitives.Int | None = None, flip_normal_direction: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             sides: Initial value for Sides.
             flip_normal_direction: Initial value for FlipNormalDirection.
             component: Existing Component to wrap.
@@ -37,6 +39,8 @@ class MultiSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if sides is not None:
             self.sides = sides
         if flip_normal_direction is not None:
@@ -100,21 +104,28 @@ class MultiSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def sides(self) -> primitives.Int | None:
-        """The Sides field value."""
+        """how many faces around each line (circle wise) that the lines have."""
         member = self.get_member("Sides")
         if member is None:
             return None
@@ -133,7 +144,7 @@ class MultiSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def flip_normal_direction(self) -> primitives.Bool | None:
-        """The FlipNormalDirection field value."""
+        """Flips the normals on the generated mesh data."""
         member = self.get_member("FlipNormalDirection")
         if member is None:
             return None
@@ -152,7 +163,7 @@ class MultiSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def segments(self) -> members.SyncList | None:
-        """The Segments member."""
+        """Different lines that make up the mesh."""
         member = self.get_member("Segments")
         if isinstance(member, members.SyncList):
             return member
@@ -160,7 +171,7 @@ class MultiSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @segments.setter
     def segments(self, value: members.SyncList) -> None:
-        """Set the Segments member."""
+        """Set Segments. Different lines that make up the mesh."""
         self.set_member("Segments", value)
 
     async def bake_mesh(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:

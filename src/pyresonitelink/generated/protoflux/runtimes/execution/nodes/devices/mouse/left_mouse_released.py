@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LeftMouseReleased(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Left Mouse Released node returns the local user's left mouse button being released. This will change within that frame, so combining it with Fire On True is recommended.
+    """The ``Left Mouse Released`` node returns the local user's left mouse button being released. This will change within that frame, so combining it with Fire On True is recommended.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Mouse
     """

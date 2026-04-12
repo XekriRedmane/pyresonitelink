@@ -10,7 +10,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MaterialGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MaterialGizmo.
+    """The MaterialGizmo component is used to set up and manage Material orbs and their behavior for snapping to snapper components.
+
+    Used with the Material Tool and Scene Inspector to manage references to
+    materials as an item that can be held and looked at.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MaterialGizmo"
@@ -31,7 +34,7 @@ class MaterialGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets MaterialProvider)."""
+        """The material this Gizmo was made for."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +55,7 @@ class MaterialGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def inspector_root(self) -> str | None:
-        """Target ID of the _inspectorRoot reference (targets Slot)."""
+        """The inspector made in order to view ``_target``"""
         member = self.get_member("_inspectorRoot")
         if isinstance(member, members.Reference):
             return member.targetId

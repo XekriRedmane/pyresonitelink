@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InspectorMemberActions(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InspectorMemberActions.
+    """The InspectorMemberActions component is used in inspectors to make the clicking on the left hand side button behavior that brings up a context menu.
+
+    Used possibly in Ref Hacking.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InspectorMemberActions"
@@ -27,7 +29,7 @@ class InspectorMemberActions(GeneratedComponent, IButtonPressReceiver, IWorldEve
 
     @property
     def member(self) -> str | None:
-        """Target ID of the Member reference (targets ISyncMember)."""
+        """The member to bring up a context menu with opens to break drives and a few other things."""
         member = self.get_member("Member")
         if isinstance(member, members.Reference):
             return member.targetId

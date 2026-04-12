@@ -1,0 +1,12 @@
+{
+  "description": "The UserInterfaceEditModeSync component allows a world to tell if a user is currently in UI Edit Mode.",
+  "category": "Utility",
+  "fields": {
+    "TargetUser": "The user to check UI edit mode for.",
+    "EditModeActive": "Whether ``TargetUser`` is in UI edit mode."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and fill in the ``TargetUser`` to check UI Edit Mode for.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserInterfaceEditModeSync&action=raw"
+}

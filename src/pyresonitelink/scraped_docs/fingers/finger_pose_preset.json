@@ -1,0 +1,11 @@
+{
+  "description": "The FingerPosePreset component is itself a IFingerPoseSourceComponent type component that it's finger pose data is determined by the preset selected in ``PresetPose``.\n\nFor more information on finger pose sources, please see Finger Posing System.",
+  "category": "Users:Common Avatar System:Fingers",
+  "fields": {
+    "PresetPose": "The Finger pose data this component's finger pose data should be."
+  },
+  "methods": {},
+  "usage": "Select a Preset for ``PresetPose``. This component can now be used as a IFingerPoseSourceComponent in other components that mix or use such data.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FingerPosePreset&action=raw"
+}

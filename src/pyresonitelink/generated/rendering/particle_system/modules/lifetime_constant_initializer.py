@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LifetimeConstantInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.LifetimeConstantInitializer.
+    """The LifeTimeConstantInitializer component makes all particles in a particle system start with a lifetime/duration of ``Value``.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LifetimeConstantInitializer"
@@ -29,7 +34,7 @@ class LifetimeConstantInitializer(GeneratedComponent, IParticleSystemModule, IWo
 
     @property
     def value(self) -> primitives.Float | None:
-        """The Value field value."""
+        """The lifetime all particles should start with in the particle system."""
         member = self.get_member("Value")
         if member is None:
             return None

@@ -1,0 +1,21 @@
+{
+  "description": "The ToolSimulator Component allows a tool to be used without needing it to be equipped by a User. You can make use of a Tool's primary and secondary actions but not context menu actions.\n\nYou need to provide a reference to the tool component that you want to simulate, and also a reference to a simulating user. You can then make use of the Primary, Secondary, Strength and Axis properties.\n\nFor example, providing a reference to a Material Tool and then making use of the Primary property will allow you to apply materials to objects in front of the tool.",
+  "category": "Utility",
+  "fields": {
+    "Tool": "The tool to simulate the use of.",
+    "SimulatingUser": "The user that should simulate the tool.",
+    "Primary": "Whether ``Tool`` should be simulated as holding primary.",
+    "Secondary": "Whether ``Tool`` should be simulated as holding secondary.",
+    "Strength": "The primary strength the ``Tool`` should be simulated as using.",
+    "Axis": "The position axis (like trackpad) the ``Tool`` should be simulated as using."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Known Bugs",
+      "text": "Currently the primary of the Dev Tool is not simulated properly and can not move gizmos. https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/3570"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ToolSimulator&action=raw"
+}

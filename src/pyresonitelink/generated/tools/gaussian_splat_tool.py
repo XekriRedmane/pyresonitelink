@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.operation_mode import OperationMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -18,14 +19,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GaussianSplatTool.
+    """The GaussianSplatTool component can be applied to a slot to create a Gaussian Splat Tool, used to manipulate a Gaussian Splat in 3D space.
 
     Category: Tools
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GaussianSplatTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, box_selection_template: str | BoxInterface | None = None, sphere_selection_template: str | SphereInterface | None = None, cylinder_selection_template: str | CylinderInterface | None = None, active_box: str | BoxInterface | None = None, active_sphere: str | SphereInterface | None = None, active_cylinder: str | CylinderInterface | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, mode: OperationMode | str | None = None, box_selection_template: str | BoxInterface | None = None, sphere_selection_template: str | SphereInterface | None = None, cylinder_selection_template: str | CylinderInterface | None = None, active_box: str | BoxInterface | None = None, active_sphere: str | SphereInterface | None = None, active_cylinder: str | CylinderInterface | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -35,6 +36,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
             equip_name: Initial value for EquipName.
             override_active_tool: Initial value for _overrideActiveTool.
             grip_poses_generated: Initial value for _gripPosesGenerated.
+            mode: Initial value for Mode.
             box_selection_template: Initial value for BoxSelectionTemplate.
             sphere_selection_template: Initial value for SphereSelectionTemplate.
             cylinder_selection_template: Initial value for CylinderSelectionTemplate.
@@ -56,6 +58,8 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
             self.override_active_tool = override_active_tool
         if grip_poses_generated is not None:
             self.grip_poses_generated = grip_poses_generated
+        if mode is not None:
+            self.mode = mode
         if box_selection_template is not None:
             self.box_selection_template = box_selection_template
         if sphere_selection_template is not None:
@@ -201,21 +205,28 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> OperationMode | None:
+        """The selected mode for this Gaussian Splat Tool."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return OperationMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: OperationMode | str) -> None:
+        """Set Mode. The selected mode for this Gaussian Splat Tool."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def box_selection_template(self) -> str | None:
-        """Target ID of the BoxSelectionTemplate reference (targets BoxInterface)."""
+        """The templete used to show the user what is being cropped when using the box."""
         member = self.get_member("BoxSelectionTemplate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -236,7 +247,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
 
     @property
     def sphere_selection_template(self) -> str | None:
-        """Target ID of the SphereSelectionTemplate reference (targets SphereInterface)."""
+        """The templete used to show the user what is being cropped when using the sphere."""
         member = self.get_member("SphereSelectionTemplate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -257,7 +268,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
 
     @property
     def cylinder_selection_template(self) -> str | None:
-        """Target ID of the CylinderSelectionTemplate reference (targets CylinderInterface)."""
+        """The templete used to show the user what is being cropped when using the cylinder."""
         member = self.get_member("CylinderSelectionTemplate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -278,7 +289,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
 
     @property
     def active_box(self) -> str | None:
-        """Target ID of the _activeBox reference (targets BoxInterface)."""
+        """Internal - References the active box."""
         member = self.get_member("_activeBox")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -299,7 +310,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
 
     @property
     def active_sphere(self) -> str | None:
-        """Target ID of the _activeSphere reference (targets SphereInterface)."""
+        """Internal - References the active sphere."""
         member = self.get_member("_activeSphere")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -320,7 +331,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
 
     @property
     def active_cylinder(self) -> str | None:
-        """Target ID of the _activeCylinder reference (targets CylinderInterface)."""
+        """Internal - References the active cylinder."""
         member = self.get_member("_activeCylinder")
         if isinstance(member, members.Reference):
             return member.targetId

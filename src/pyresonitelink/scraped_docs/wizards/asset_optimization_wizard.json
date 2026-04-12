@@ -1,0 +1,25 @@
+{
+  "description": "The component that drives the Asset Optimization Wizard.",
+  "category": "Wizards",
+  "fields": {
+    "Root": "The slot specified in the generated UI for the wizard. If this is null, the wizard will use the Root slot.",
+    "IgnoreNonpersistentUsers": "Ignore the contents of the slots of users in the session or not.",
+    "_maxResolution": "The max resolution field that's part of the generated UI.",
+    "_message": "The message for the current progress and statuses of this wizard's work."
+  },
+  "methods": {
+    "CleanupUnusedAssets": "see Asset Optimization Wizard.",
+    "CleanupEmptySlots": "see Asset Optimization Wizard.",
+    "CleanupDisabledMeshRenderers": "see Asset Optimization Wizard.",
+    "DeduplicateMaterials": "see Asset Optimization Wizard.",
+    "OnSetMaxTextureResolution": "see Asset Optimization Wizard.",
+    "CleanupFileItems": "see Asset Optimization Wizard.",
+    "OnRecompressTextures": "see Asset Optimization Wizard.",
+    "OnRecalculateAllMikktspace": "see Asset Optimization Wizard.",
+    "OnRecalculateAllNormals": "see Asset Optimization Wizard.",
+    "OnRecalculateAllNormalsMerged": "see Asset Optimization Wizard."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AssetOptimizationWizard&action=raw"
+}

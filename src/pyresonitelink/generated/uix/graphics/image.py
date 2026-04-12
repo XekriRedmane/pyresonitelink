@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.nine_slice_sizing import NineSliceSizing
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,20 +14,27 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.Image.
+    """The Image component takes in a SpriteProvider or Material and renders it onto the UIX. This can be used to display graphics and produce backgrounds.
+
+}}
 
     Category: UIX/Graphics
+
+    A user can use this to just display an image with an optional tint
+    color, or have this as a background image for other images to be on top
+    of.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Image"
 
-    def __init__(self, sprite: str | IAssetProvider[Sprite] | None = None, material: str | IAssetProvider[Material] | None = None, preserve_aspect: primitives.Bool | None = None, flip_horizontally: primitives.Bool | None = None, flip_vertically: primitives.Bool | None = None, interaction_target: primitives.Bool | None = None, fill_rect: primitives.Rect | None = None, legacy_zwrite: primitives.Bool | None = None, tint: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, sprite: str | IAssetProvider[Sprite] | None = None, material: str | IAssetProvider[Material] | None = None, preserve_aspect: primitives.Bool | None = None, nine_slice_sizing: NineSliceSizing | str | None = None, flip_horizontally: primitives.Bool | None = None, flip_vertically: primitives.Bool | None = None, interaction_target: primitives.Bool | None = None, fill_rect: primitives.Rect | None = None, legacy_zwrite: primitives.Bool | None = None, tint: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             sprite: Initial value for Sprite.
             material: Initial value for Material.
             preserve_aspect: Initial value for PreserveAspect.
+            nine_slice_sizing: Initial value for NineSliceSizing.
             flip_horizontally: Initial value for FlipHorizontally.
             flip_vertically: Initial value for FlipVertically.
             interaction_target: Initial value for InteractionTarget.
@@ -42,6 +50,8 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             self.material = material
         if preserve_aspect is not None:
             self.preserve_aspect = preserve_aspect
+        if nine_slice_sizing is not None:
+            self.nine_slice_sizing = nine_slice_sizing
         if flip_horizontally is not None:
             self.flip_horizontally = flip_horizontally
         if flip_vertically is not None:
@@ -57,7 +67,7 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def sprite(self) -> str | None:
-        """Target ID of the Sprite reference (targets IAssetProvider[Sprite])."""
+        """The sprite to render"""
         member = self.get_member("Sprite")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -78,7 +88,7 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to render with. is not required."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -99,7 +109,7 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def preserve_aspect(self) -> primitives.Bool | None:
-        """The PreserveAspect field value."""
+        """Preserves the aspect ratio of this image provided."""
         member = self.get_member("PreserveAspect")
         if member is None:
             return None
@@ -117,21 +127,28 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             )
 
     @property
-    def nine_slice_sizing(self) -> members.FieldEnum | None:
-        """The NineSliceSizing member."""
+    def nine_slice_sizing(self) -> NineSliceSizing | None:
+        """Tells how the image gets 9-sliced on this UIX."""
         member = self.get_member("NineSliceSizing")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return NineSliceSizing(member.value)
         return None
 
     @nine_slice_sizing.setter
-    def nine_slice_sizing(self, value: members.FieldEnum) -> None:
-        """Set the NineSliceSizing member."""
-        self.set_member("NineSliceSizing", value)
+    def nine_slice_sizing(self, value: NineSliceSizing | str) -> None:
+        """Set NineSliceSizing. Tells how the image gets 9-sliced on this UIX."""
+        member = self.get_member("NineSliceSizing")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "NineSliceSizing",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def flip_horizontally(self) -> primitives.Bool | None:
-        """The FlipHorizontally field value."""
+        """Flips the image horizontally."""
         member = self.get_member("FlipHorizontally")
         if member is None:
             return None
@@ -150,7 +167,7 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def flip_vertically(self) -> primitives.Bool | None:
-        """The FlipVertically field value."""
+        """Flips the image vertically."""
         member = self.get_member("FlipVertically")
         if member is None:
             return None
@@ -169,7 +186,7 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def interaction_target(self) -> primitives.Bool | None:
-        """The InteractionTarget field value."""
+        """Makes this image as the interaction target for this UIX."""
         member = self.get_member("InteractionTarget")
         if member is None:
             return None
@@ -188,7 +205,7 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def fill_rect(self) -> primitives.Rect | None:
-        """The FillRect field value."""
+        """The filling rect for this image."""
         member = self.get_member("FillRect")
         if member is None:
             return None
@@ -207,7 +224,7 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def legacy_zwrite(self) -> primitives.Bool | None:
-        """The __legacyZWrite field value."""
+        """Internal - The legacy Z writing for this image."""
         member = self.get_member("__legacyZWrite")
         if member is None:
             return None
@@ -226,7 +243,7 @@ class Image(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def tint(self) -> primitives.ColorX | None:
-        """The Tint field value."""
+        """A color that is multiplied with the material's color."""
         member = self.get_member("Tint")
         if member is None:
             return None

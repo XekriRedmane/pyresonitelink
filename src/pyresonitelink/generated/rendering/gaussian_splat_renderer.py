@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GaussianSplatRenderer.
+    """The GaussianSplatRenderer component renders Gaussian Splats into the world.
 
     Category: Rendering
     """
@@ -46,7 +46,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
 
     @property
     def gaussian_splat(self) -> str | None:
-        """Target ID of the GaussianSplat reference (targets IAssetProvider[GaussianSplat])."""
+        """the splat to render."""
         member = self.get_member("GaussianSplat")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +67,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
 
     @property
     def size_scale(self) -> primitives.Float | None:
-        """The SizeScale field value."""
+        """How much to scale up or down the gaussian splat."""
         member = self.get_member("SizeScale")
         if member is None:
             return None
@@ -86,7 +86,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
 
     @property
     def opacity_scale(self) -> primitives.Float | None:
-        """The OpacityScale field value."""
+        """How transparent the Gaussian Splat is."""
         member = self.get_member("OpacityScale")
         if member is None:
             return None
@@ -105,7 +105,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
 
     @property
     def max_sh_order(self) -> primitives.Int | None:
-        """The MaxSHOrder field value."""
+        """The max Spherical Harmonics level to render with."""
         member = self.get_member("MaxSHOrder")
         if member is None:
             return None
@@ -124,7 +124,7 @@ class GaussianSplatRenderer(GeneratedComponent, IBounded, IRenderable, ICustomIn
 
     @property
     def spherical_harmonics_only(self) -> primitives.Bool | None:
-        """The SphericalHarmonicsOnly field value."""
+        """Whether to use only Spherical Harmonics."""
         member = self.get_member("SphericalHarmonicsOnly")
         if member is None:
             return None

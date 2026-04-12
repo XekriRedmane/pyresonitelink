@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HollowConeMesh.
+    """The HollowConeMesh component is used to generate geometry for use with a MeshRenderer. This component generates a cone with a hollow center with internal geometry and a thickness. Similarly to the ConeMesh, the height of this procedural mesh is determined from the center of the object.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot and insert into a MeshRenderer to view the geometry.
+    Don't forget to use a Material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HollowConeMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, height: primitives.Float | None = None, outer_radius_base: primitives.Float | None = None, inner_radius_base: primitives.Float | None = None, outer_radius_top: primitives.Float | None = None, inner_radius_top: primitives.Float | None = None, segments: primitives.Int | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, height: primitives.Float | None = None, outer_radius_base: primitives.Float | None = None, inner_radius_base: primitives.Float | None = None, outer_radius_top: primitives.Float | None = None, inner_radius_top: primitives.Float | None = None, segments: primitives.Int | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             height: Initial value for Height.
             outer_radius_base: Initial value for OuterRadiusBase.
             inner_radius_base: Initial value for InnerRadiusBase.
@@ -42,6 +47,8 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if height is not None:
             self.height = height
         if outer_radius_base is not None:
@@ -115,21 +122,28 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """the profile of the colors of vertices for this mesh."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set Profile. the profile of the colors of vertices for this mesh."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """how tall the hollow cone should be starting from the center"""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -148,7 +162,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def outer_radius_base(self) -> primitives.Float | None:
-        """The OuterRadiusBase field value."""
+        """the radius of the bottom ring that makes up the outer tube"""
         member = self.get_member("OuterRadiusBase")
         if member is None:
             return None
@@ -167,7 +181,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def inner_radius_base(self) -> primitives.Float | None:
-        """The InnerRadiusBase field value."""
+        """the radius if the bottom ring that makes up the inner tube"""
         member = self.get_member("InnerRadiusBase")
         if member is None:
             return None
@@ -186,7 +200,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def outer_radius_top(self) -> primitives.Float | None:
-        """The OuterRadiusTop field value."""
+        """the radius of the top ring that makes up the outer tube"""
         member = self.get_member("OuterRadiusTop")
         if member is None:
             return None
@@ -205,7 +219,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def inner_radius_top(self) -> primitives.Float | None:
-        """The InnerRadiusTop field value."""
+        """the radius of the top ring that makes up the inner tube"""
         member = self.get_member("InnerRadiusTop")
         if member is None:
             return None
@@ -224,7 +238,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def segments(self) -> primitives.Int | None:
-        """The Segments field value."""
+        """how many faces make up each cylinder for the outside and inside."""
         member = self.get_member("Segments")
         if member is None:
             return None
@@ -243,7 +257,7 @@ class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def uv_scale(self) -> primitives.Float2 | None:
-        """The UVScale field value."""
+        """how much to multiply the scale of the UVs for the procedural mesh."""
         member = self.get_member("UVScale")
         if member is None:
             return None

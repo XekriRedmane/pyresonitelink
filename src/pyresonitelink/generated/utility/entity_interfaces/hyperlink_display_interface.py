@@ -12,9 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HyperlinkDisplayInterface.
+    """The HyperlinkDisplayInterface component is spawned by the favorites system when a user pastes a link that is recognized as a website link rather than a specific media type. 
+
+See Favorites on favoritable items like this one.
 
     Category: Utility/Entity Interfaces
+
+    This component can be made part of a UI that can be modified and
+    favorited to become the user's default hyperlink spawning UI.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HyperlinkDisplayInterface"
@@ -47,7 +52,7 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[primitives.String])."""
+        """The name of this favoritable item."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +73,7 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
 
     @property
     def spawning_user(self) -> str | None:
-        """Target ID of the SpawningUser reference (targets UserRef)."""
+        """The user that spawned this favoritable item."""
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +94,7 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
+        """The field containing the ID of the user that spawned this favoritable item."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +115,7 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
 
     @property
     def is_instance(self) -> primitives.Bool | None:
-        """The IsInstance field value."""
+        """Whether this item is an instance."""
         member = self.get_member("IsInstance")
         if member is None:
             return None
@@ -129,7 +134,7 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
 
     @property
     def url(self) -> str | None:
-        """Target ID of the Url reference (targets IField[str])."""
+        """The field to fill with the URL this hyperlink display should leas to."""
         member = self.get_member("Url")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -150,7 +155,7 @@ class HyperlinkDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldE
 
     @property
     def url_string(self) -> str | None:
-        """Target ID of the UrlString reference (targets IField[primitives.String])."""
+        """The field to fill with the URL as a string so the hyperlink display can show what it leads to."""
         member = self.get_member("UrlString")
         if isinstance(member, members.Reference):
             return member.targetId

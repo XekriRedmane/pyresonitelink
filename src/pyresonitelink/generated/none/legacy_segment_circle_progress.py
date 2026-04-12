@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.progress_stage import ProgressStage
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.text_renderer import TextRenderer
@@ -12,15 +13,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacySegmentCircleProgress(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacySegmentCircleProgress.
+    """The LegacySegmentCircleProgress component was used to handle progress bars on arc circles. Was used in loading progress bars.
+
+    Not used directly by the user. Used in legacy content.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacySegmentCircleProgress"
 
-    def __init__(self, progress_text: str | TextRenderer | None = None, detail_text: str | TextRenderer | None = None, material: str | UnlitMaterial | None = None, tint: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, stage: ProgressStage | str | None = None, progress_text: str | TextRenderer | None = None, detail_text: str | TextRenderer | None = None, material: str | UnlitMaterial | None = None, tint: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            stage: Initial value for Stage.
             progress_text: Initial value for _progressText.
             detail_text: Initial value for _detailText.
             material: Initial value for _material.
@@ -28,6 +32,8 @@ class LegacySegmentCircleProgress(GeneratedComponent, IComponent, IWorldEventRec
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if stage is not None:
+            self.stage = stage
         if progress_text is not None:
             self.progress_text = progress_text
         if detail_text is not None:
@@ -38,21 +44,28 @@ class LegacySegmentCircleProgress(GeneratedComponent, IComponent, IWorldEventRec
             self.tint = tint
 
     @property
-    def stage(self) -> members.FieldEnum | None:
-        """The Stage member."""
+    def stage(self) -> ProgressStage | None:
+        """The stage in loading the progress bar is at."""
         member = self.get_member("Stage")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ProgressStage(member.value)
         return None
 
     @stage.setter
-    def stage(self, value: members.FieldEnum) -> None:
-        """Set the Stage member."""
-        self.set_member("Stage", value)
+    def stage(self, value: ProgressStage | str) -> None:
+        """Set Stage. The stage in loading the progress bar is at."""
+        member = self.get_member("Stage")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Stage",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def progress_text(self) -> str | None:
-        """Target ID of the _progressText reference (targets TextRenderer)."""
+        """The progress text indicator visual used to indicate the current progress."""
         member = self.get_member("_progressText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +86,7 @@ class LegacySegmentCircleProgress(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def detail_text(self) -> str | None:
-        """Target ID of the _detailText reference (targets TextRenderer)."""
+        """The detail text indicator visual used to indicate the current progress details."""
         member = self.get_member("_detailText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -94,7 +107,7 @@ class LegacySegmentCircleProgress(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets UnlitMaterial)."""
+        """The material used in the visual."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -115,7 +128,7 @@ class LegacySegmentCircleProgress(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def tint(self) -> str | None:
-        """Target ID of the _tint reference (targets IField[primitives.ColorX])."""
+        """The field to drive with the progress bar tint."""
         member = self.get_member("_tint")
         if isinstance(member, members.Reference):
             return member.targetId

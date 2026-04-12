@@ -38,7 +38,7 @@ class Resume(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICus
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse after the initial call."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId

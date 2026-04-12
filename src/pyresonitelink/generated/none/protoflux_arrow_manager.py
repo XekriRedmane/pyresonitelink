@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProtofluxArrowManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.ProtofluxArrowManager.
+    """The ProtofluxArrowManager component is used to drive and create the visuals for arrows pointing from/to variables and where they are being used.
+
+    Not usually used by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtofluxArrowManager"
@@ -47,7 +49,7 @@ class ProtofluxArrowManager(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def connect_node(self) -> str | None:
-        """Target ID of the ConnectNode reference (targets Slot)."""
+        """The node the arrow should point to."""
         member = self.get_member("ConnectNode")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +70,7 @@ class ProtofluxArrowManager(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def target_size(self) -> str | None:
-        """Target ID of the TargetSize reference (targets IValue[primitives.Float3])."""
+        """The size field of the target."""
         member = self.get_member("TargetSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +91,7 @@ class ProtofluxArrowManager(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def target_offset(self) -> str | None:
-        """Target ID of the TargetOffset reference (targets IValue[primitives.Float3])."""
+        """The offset field of the target."""
         member = self.get_member("TargetOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +112,7 @@ class ProtofluxArrowManager(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def arrow_mesh(self) -> str | None:
-        """Target ID of the _arrowMesh reference (targets ArrowMesh)."""
+        """The arrow mesh this is modifying."""
         member = self.get_member("_arrowMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -131,7 +133,7 @@ class ProtofluxArrowManager(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def renderer(self) -> str | None:
-        """Target ID of the _renderer reference (targets MeshRenderer)."""
+        """The renderer rendering ``_arrowMesh``"""
         member = self.get_member("_renderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -152,7 +154,7 @@ class ProtofluxArrowManager(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def target_vector(self) -> str | None:
-        """Target ID of the _targetVector reference (targets IField[primitives.Float3])."""
+        """The field for the target vector on the arrow mesh."""
         member = self.get_member("_targetVector")
         if isinstance(member, members.Reference):
             return member.targetId

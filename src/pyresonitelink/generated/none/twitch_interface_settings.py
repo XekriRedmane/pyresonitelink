@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class TwitchInterfaceSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.TwitchInterfaceSettings.
+    """This component is used with the settings for the InteractiveCamera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TwitchInterfaceSettings"
@@ -27,7 +27,7 @@ class TwitchInterfaceSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def channel_name(self) -> primitives.String | None:
-        """The ChannelName field value."""
+        """The twitch channel name to use."""
         member = self.get_member("ChannelName")
         if member is None:
             return None

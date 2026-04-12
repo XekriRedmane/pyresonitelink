@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class If(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The If node checks and evaluates the Condition (bool) only when * (Call) is called. After the call and evaluation, it will send a pulse out of OnTrue (Continuation) if Condition (bool) is true or OnFalse (Continuation) if it is false.
+    """The If node checks and evaluates the Condition (bool) only when * (Call) is called. After the call and evaluation, it will send a pulse out of OnTrue (Continuation) if Condition (bool) is ``true`` or OnFalse (Continuation) if it is ``false``.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """
@@ -41,7 +41,7 @@ class If(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomI
 
     @property
     def on_true(self) -> str | None:
-        """Target ID of the OnTrue reference (targets INodeOperation)."""
+        """Sends an impulse when * (Call) is impulsed and Condition (bool) is true."""
         member = self.get_member("OnTrue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class If(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomI
 
     @property
     def on_false(self) -> str | None:
-        """Target ID of the OnFalse reference (targets INodeOperation)."""
+        """Sends an impulse when * (Call) is impulsed and Condition (bool) is false."""
         member = self.get_member("OnFalse")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class If(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomI
 
     @property
     def condition(self) -> str | None:
-        """Target ID of the Condition reference (targets INodeValueOutput[primitives.Bool])."""
+        """A boolean to check only when * (Call) is impulsed."""
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):
             return member.targetId

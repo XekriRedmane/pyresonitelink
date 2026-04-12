@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StorageUsageStatus.
+    """Storage Usage Status is a component that is used to read how much storage a user has used, total, shared, and that has left to share.
 
     Category: Cloud/Indicators
+
+    Can only be used in user space and your active cloud home.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StorageUsageStatus"
@@ -71,7 +73,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def owner_id(self) -> primitives.String | None:
-        """The OwnerId field value."""
+        """The id of the user this is reading data from"""
         member = self.get_member("OwnerId")
         if member is None:
             return None
@@ -90,7 +92,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def group_member_quota(self) -> primitives.Bool | None:
-        """The GroupMemberQuota field value."""
+        """Whether to read group storage limits."""
         member = self.get_member("GroupMemberQuota")
         if member is None:
             return None
@@ -109,7 +111,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def has_valid_data(self) -> primitives.Bool | None:
-        """The HasValidData field value."""
+        """Whether this component has successfully grabbed the data."""
         member = self.get_member("HasValidData")
         if member is None:
             return None
@@ -128,7 +130,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def storage_bytes(self) -> primitives.Long | None:
-        """The StorageBytes field value."""
+        """how many bytes of storage ``OwnerId`` has total"""
         member = self.get_member("StorageBytes")
         if member is None:
             return None
@@ -147,7 +149,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def full_storage_bytes(self) -> primitives.Long | None:
-        """The FullStorageBytes field value."""
+        """how many bytes of storage ``OwnerId`` has used currently."""
         member = self.get_member("FullStorageBytes")
         if member is None:
             return None
@@ -166,7 +168,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def shareable_storage_bytes(self) -> primitives.Long | None:
-        """The ShareableStorageBytes field value."""
+        """How many bytes of storage ``OwnerId`` currently has ready to share."""
         member = self.get_member("ShareableStorageBytes")
         if member is None:
             return None
@@ -185,7 +187,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def shared_storage_bytes(self) -> primitives.Long | None:
-        """The SharedStorageBytes field value."""
+        """How many bytes of storage ``OwnerId`` has shared with others currently."""
         member = self.get_member("SharedStorageBytes")
         if member is None:
             return None
@@ -204,7 +206,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def usage_bytes(self) -> primitives.Long | None:
-        """The UsageBytes field value."""
+        """The total amount of bytes being used by ``OwnerId``."""
         member = self.get_member("UsageBytes")
         if member is None:
             return None
@@ -223,7 +225,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def usage_ratio(self) -> primitives.Float | None:
-        """The UsageRatio field value."""
+        """the percentage of how full ``OwnerId``'s storage is from 0->1"""
         member = self.get_member("UsageRatio")
         if member is None:
             return None
@@ -242,7 +244,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def storage_string(self) -> primitives.String | None:
-        """The StorageString field value."""
+        """String version with nice formatting applied of how much storage ``OwnerId`` has."""
         member = self.get_member("StorageString")
         if member is None:
             return None
@@ -261,7 +263,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def full_storage_string(self) -> primitives.String | None:
-        """The FullStorageString field value."""
+        """String version with nice formatting applied of"""
         member = self.get_member("FullStorageString")
         if member is None:
             return None
@@ -280,7 +282,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def shareable_storage_string(self) -> primitives.String | None:
-        """The ShareableStorageString field value."""
+        """String version with nice formatting applied of how much storage ``OwnerId`` has ready to share."""
         member = self.get_member("ShareableStorageString")
         if member is None:
             return None
@@ -299,7 +301,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def shared_storage_string(self) -> primitives.String | None:
-        """The SharedStorageString field value."""
+        """String version with nice formatting applied of how much storage ``OwnerId`` has shared with others."""
         member = self.get_member("SharedStorageString")
         if member is None:
             return None
@@ -318,7 +320,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def usage_string(self) -> primitives.String | None:
-        """The UsageString field value."""
+        """String version with nice formatting applied of how much storage ``OwnerId`` has used."""
         member = self.get_member("UsageString")
         if member is None:
             return None
@@ -337,7 +339,7 @@ class StorageUsageStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ratio_string(self) -> primitives.String | None:
-        """The RatioString field value."""
+        """String version with nice formatting applied of how full ``OwnerId``'s storage is."""
         member = self.get_member("RatioString")
         if member is None:
             return None

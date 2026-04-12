@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DirectionalLightIntensityFieldAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DirectionalLightIntensityFieldAdapter.
+    """The DirectionalLightIntensityFieldAdapter component is used to convert intensity in a directional light from the old SRGB color space into linear when converting worlds.
+
+    This is usually auto generated and not used by the user directly.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DirectionalLightIntensityFieldAdapter"
@@ -35,7 +37,7 @@ class DirectionalLightIntensityFieldAdapter(GeneratedComponent, IComponent, IWor
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float])."""
+        """The Float to drive with the converted value."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +58,7 @@ class DirectionalLightIntensityFieldAdapter(GeneratedComponent, IComponent, IWor
 
     @property
     def value(self) -> primitives.Float | None:
-        """The Value field value."""
+        """The original value."""
         member = self.get_member("Value")
         if member is None:
             return None
@@ -75,7 +77,7 @@ class DirectionalLightIntensityFieldAdapter(GeneratedComponent, IComponent, IWor
 
     @property
     def scale(self) -> primitives.Float | None:
-        """The Scale field value."""
+        """How much to multiply ``Value`` by."""
         member = self.get_member("Scale")
         if member is None:
             return None

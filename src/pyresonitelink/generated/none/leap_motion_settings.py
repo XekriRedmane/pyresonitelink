@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class LeapMotionSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.LeapMotionSettings.
+    """The Leap Motion Settings component
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LeapMotionSettings"

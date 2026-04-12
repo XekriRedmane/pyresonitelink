@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParticleDeathSubEmitter(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ParticleDeathSubEmitter.
+    """The Particle Death Sub Emitter component
 
     Category: Rendering/Particle System/Modules
     """

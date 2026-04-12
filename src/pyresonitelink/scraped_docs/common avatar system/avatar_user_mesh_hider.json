@@ -1,0 +1,12 @@
+{
+  "description": "The AvatarUserMeshHider component makes non Skinned meshes invisible or only cast shadows according to the active user's perspective. It does this by making value User overrides for all MeshRenderers except for those in ``Exclude``. It restores the fields back to normal after dequipping.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "Method": "How to hide the meshes for the active user under the avatar.",
+    "Exclude": "Which meshes to not hide for the active user."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarUserMeshHider&action=raw"
+}

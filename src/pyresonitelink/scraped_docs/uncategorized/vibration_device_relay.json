@@ -1,0 +1,12 @@
+{
+  "description": "The VibrationDeviceRelay component recieves haptics events and relays them to other vibration recievers.",
+  "category": "Uncategorized",
+  "fields": {
+    "TargetComponent": "The component to relay the vibration event to.",
+    "DynamicLookupTarget": "The slot to look for components in to send the vibration event to."
+  },
+  "methods": {},
+  "usage": "Attach to a slot like the hands or other slots that can recieve haptics, then specify a target or component that the vibrations should be relayed to.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VibrationDeviceRelay&action=raw"
+}

@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CameraFrustumMesh.
+    """The Camera Frustum Mesh is a component that can be used in a Mesh Renderer to visualize the limits and view cone of a Camera
 
     Category: Assets/Procedural Meshes
+
+    The CameraFrustumMesh is used alongside the InteractiveCamera to
+    visualize the range of the camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CameraFrustumMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, orientation: primitives.FloatQ | None = None, near: primitives.Float | None = None, far: primitives.Float | None = None, horizontal_angle: primitives.Float | None = None, vertical_angle: primitives.Float | None = None, dual_sided: primitives.Bool | None = None, near_cap: primitives.Bool | None = None, far_cap: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, orientation: primitives.FloatQ | None = None, near: primitives.Float | None = None, far: primitives.Float | None = None, horizontal_angle: primitives.Float | None = None, vertical_angle: primitives.Float | None = None, dual_sided: primitives.Bool | None = None, near_cap: primitives.Bool | None = None, far_cap: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             orientation: Initial value for Orientation.
             near: Initial value for Near.
             far: Initial value for Far.
@@ -43,6 +48,8 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if orientation is not None:
             self.orientation = orientation
         if near is not None:
@@ -118,21 +125,28 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def orientation(self) -> primitives.FloatQ | None:
-        """The Orientation field value."""
+        """Direction the mesh is facing."""
         member = self.get_member("Orientation")
         if member is None:
             return None
@@ -151,7 +165,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def near(self) -> primitives.Float | None:
-        """The Near field value."""
+        """Slices the mesh to demonstrate camera nearclip"""
         member = self.get_member("Near")
         if member is None:
             return None
@@ -170,7 +184,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def far(self) -> primitives.Float | None:
-        """The Far field value."""
+        """Expands the mesh to demonstrate camera farclip."""
         member = self.get_member("Far")
         if member is None:
             return None
@@ -189,7 +203,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def horizontal_angle(self) -> primitives.Float | None:
-        """The HorizontalAngle field value."""
+        """The horizontal FOV of the camera represented by this mesh."""
         member = self.get_member("HorizontalAngle")
         if member is None:
             return None
@@ -208,7 +222,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def vertical_angle(self) -> primitives.Float | None:
-        """The VerticalAngle field value."""
+        """The Vertical FOV of the camera represented by this mesh."""
         member = self.get_member("VerticalAngle")
         if member is None:
             return None
@@ -227,7 +241,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def dual_sided(self) -> primitives.Bool | None:
-        """The DualSided field value."""
+        """Enables the mesh to be dual sided."""
         member = self.get_member("DualSided")
         if member is None:
             return None
@@ -246,7 +260,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def near_cap(self) -> primitives.Bool | None:
-        """The NearCap field value."""
+        """Whether or not the end closest to the camera should be capped with a quad."""
         member = self.get_member("NearCap")
         if member is None:
             return None
@@ -265,7 +279,7 @@ class CameraFrustumMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def far_cap(self) -> primitives.Bool | None:
-        """The FarCap field value."""
+        """Whether or not the end furthest from the camera should be capped with a quad."""
         member = self.get_member("FarCap")
         if member is None:
             return None

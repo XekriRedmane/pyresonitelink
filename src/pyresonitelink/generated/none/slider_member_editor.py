@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SliderMemberEditor.
+    """The SliderMemberEditor is commonly used in inspectors and can be used for Ref hacking.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SliderMemberEditor"
@@ -46,7 +46,7 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def continuous(self) -> primitives.Bool | None:
-        """The Continuous field value."""
+        """Whether slider values should be constantly changed every frame update."""
         member = self.get_member("Continuous")
         if member is None:
             return None
@@ -65,7 +65,7 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def path(self) -> primitives.String | None:
-        """The _path field value."""
+        """The value underneath the target element to change. path elements are separated by "."."""
         member = self.get_member("_path")
         if member is None:
             return None
@@ -84,7 +84,7 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField)."""
+        """The target field to change."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +105,7 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slider(self) -> str | None:
-        """Target ID of the _slider reference (targets Slider[primitives.Float])."""
+        """The slider to trigger change events this component should use to influence ``_target``"""
         member = self.get_member("_slider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +126,7 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slider_value(self) -> str | None:
-        """Target ID of the _sliderValue reference (targets IField[primitives.Float])."""
+        """The value to be used for changing ``_target``"""
         member = self.get_member("_sliderValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -147,7 +147,7 @@ class SliderMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text_editor(self) -> str | None:
-        """Target ID of the _textEditor reference (targets PrimitiveMemberEditor)."""
+        """The text editor to change ``_target`` as a number text field."""
         member = self.get_member("_textEditor")
         if isinstance(member, members.Reference):
             return member.targetId

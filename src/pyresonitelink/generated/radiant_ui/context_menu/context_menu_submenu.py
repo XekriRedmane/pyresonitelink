@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ContextMenuSubmenu.
+    """The ContextMenuSubmenu component can be used in combination with any button component to make said button open a custom context menu when clicked.
 
     Category: Radiant UI/Context Menu
+
+    Attach this component to a slot and attach a Context Menu Item Source
+    along side it.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContextMenuSubmenu"
@@ -49,7 +52,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def items_root(self) -> str | None:
-        """Target ID of the ItemsRoot reference (targets Slot)."""
+        """All Context Menu Item Sources on slots immediately under this one will be included in the submenu."""
         member = self.get_member("ItemsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +73,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def search_whole_hierarchy(self) -> primitives.Bool | None:
-        """The SearchWholeHierarchy field value."""
+        """Display all items under ItemsRoot including sub slots, not just ones immediately under."""
         member = self.get_member("SearchWholeHierarchy")
         if member is None:
             return None
@@ -89,7 +92,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def disable_flick(self) -> primitives.Bool | None:
-        """The DisableFlick field value."""
+        """Whether to allow opening of the sub menu by clicking on the context menu center and moving it to this component's Context Menu Item Source on the same slot."""
         member = self.get_member("DisableFlick")
         if member is None:
             return None
@@ -108,7 +111,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def speed_override(self) -> primitives.Float | None:
-        """The SpeedOverride field value."""
+        """Override the speed at which the new context menu will open."""
         member = self.get_member("SpeedOverride")
         if member is None:
             return None
@@ -127,7 +130,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def counter_clockwise(self) -> primitives.Bool | None:
-        """The CounterClockwise field value."""
+        """Whether the items should be arranged clockwise or counter-clockwise in the submenu."""
         member = self.get_member("CounterClockwise")
         if member is None:
             return None
@@ -146,7 +149,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def keep_position(self) -> primitives.Bool | None:
-        """The KeepPosition field value."""
+        """When set, the context menu will stay in the same place as the submenu opens. Otherwise, the context menu will recenter on the user's laser."""
         member = self.get_member("KeepPosition")
         if member is None:
             return None
@@ -165,7 +168,7 @@ class ContextMenuSubmenu(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def hidden(self) -> primitives.Bool | None:
-        """The Hidden field value."""
+        """If set, the submenu is only visible to the user that opened it."""
         member = self.get_member("Hidden")
         if member is None:
             return None

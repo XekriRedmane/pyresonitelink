@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.wire_type import WireType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -15,16 +16,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxWireManager.
+    """The ProtoFluxWireManager component is used to drive the visual elements of protoflux wires which connect protoflux nodes.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxWireManager"
 
-    def __init__(self, connect_point: str | Slot | None = None, width: primitives.Float | None = None, start_color: primitives.ColorX | None = None, end_color: primitives.ColorX | None = None, delete_highlight: primitives.Bool | None = None, wire_mesh: str | StripeWireMesh | None = None, renderer: str | MeshRenderer | None = None, collider: str | MeshCollider | None = None, target_position: str | IField[primitives.Float3] | None = None, target_tangent: str | IField[primitives.Float3] | None = None, target_orientation: str | IField[primitives.FloatQ] | None = None, target_width: str | IField[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, connect_point: str | Slot | None = None, type_: WireType | str | None = None, width: primitives.Float | None = None, start_color: primitives.ColorX | None = None, end_color: primitives.ColorX | None = None, delete_highlight: primitives.Bool | None = None, wire_mesh: str | StripeWireMesh | None = None, renderer: str | MeshRenderer | None = None, collider: str | MeshCollider | None = None, target_position: str | IField[primitives.Float3] | None = None, target_tangent: str | IField[primitives.Float3] | None = None, target_orientation: str | IField[primitives.FloatQ] | None = None, target_width: str | IField[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             connect_point: Initial value for ConnectPoint.
+            type_: Initial value for Type.
             width: Initial value for Width.
             start_color: Initial value for StartColor.
             end_color: Initial value for EndColor.
@@ -41,6 +43,8 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
         super().__init__(component)
         if connect_point is not None:
             self.connect_point = connect_point
+        if type_ is not None:
+            self.type_ = type_
         if width is not None:
             self.width = width
         if start_color is not None:
@@ -66,7 +70,7 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def connect_point(self) -> str | None:
-        """Target ID of the ConnectPoint reference (targets Slot)."""
+        """The point this is supposed to be pointing to."""
         member = self.get_member("ConnectPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,21 +90,28 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def type_(self) -> members.FieldEnum | None:
-        """The Type member."""
+    def type_(self) -> WireType | None:
+        """The type of wire this is supposed to be showing."""
         member = self.get_member("Type")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return WireType(member.value)
         return None
 
     @type_.setter
-    def type_(self, value: members.FieldEnum) -> None:
-        """Set the Type member."""
-        self.set_member("Type", value)
+    def type_(self, value: WireType | str) -> None:
+        """Set Type. The type of wire this is supposed to be showing."""
+        member = self.get_member("Type")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Type",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def width(self) -> primitives.Float | None:
-        """The Width field value."""
+        """The width this wire should be."""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -119,7 +130,7 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def start_color(self) -> primitives.ColorX | None:
-        """The StartColor field value."""
+        """The color this wire should start at. usually used for async impulse wires."""
         member = self.get_member("StartColor")
         if member is None:
             return None
@@ -138,7 +149,7 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def end_color(self) -> primitives.ColorX | None:
-        """The EndColor field value."""
+        """The end color this wire should end at. usually used for async impulse wires."""
         member = self.get_member("EndColor")
         if member is None:
             return None
@@ -157,7 +168,7 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def delete_highlight(self) -> primitives.Bool | None:
-        """The DeleteHighlight field value."""
+        """Whether to delete the highlight visual."""
         member = self.get_member("DeleteHighlight")
         if member is None:
             return None
@@ -176,7 +187,7 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def wire_mesh(self) -> str | None:
-        """Target ID of the _wireMesh reference (targets StripeWireMesh)."""
+        """The stripe mesh this is modifying."""
         member = self.get_member("_wireMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -197,7 +208,7 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def renderer(self) -> str | None:
-        """Target ID of the _renderer reference (targets MeshRenderer)."""
+        """The renderer of the stripe mesh this is modifying."""
         member = self.get_member("_renderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -218,7 +229,7 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def collider(self) -> str | None:
-        """Target ID of the _collider reference (targets MeshCollider)."""
+        """The collider of this stripe mesh visual."""
         member = self.get_member("_collider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -239,7 +250,7 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_position(self) -> str | None:
-        """Target ID of the _targetPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive with the target position for the stripe mesh."""
         member = self.get_member("_targetPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -260,7 +271,7 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_tangent(self) -> str | None:
-        """Target ID of the _targetTangent reference (targets IField[primitives.Float3])."""
+        """The field to drive with the target tangent for the stripe mesh."""
         member = self.get_member("_targetTangent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -281,7 +292,7 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_orientation(self) -> str | None:
-        """Target ID of the _targetOrientation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive with the target orientation for the stripe mesh."""
         member = self.get_member("_targetOrientation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -302,7 +313,7 @@ class ProtoFluxWireManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_width(self) -> str | None:
-        """Target ID of the _targetWidth reference (targets IField[primitives.Float])."""
+        """The field to drive with the target width for the stripe mesh."""
         member = self.get_member("_targetWidth")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -1,0 +1,19 @@
+{
+  "description": "The FingerReferencePoseSource component is used to read and generate Pose data from the user or its already created bone hiearchy Template. The Slots used in the ``Bones`` list need to not be null. Every time the Pose data is read from this component as a Finger Pose Source, the current positions and rotations of the slots in ``Bones`` are used. This component in itself is a IFingerPoseSourceComponent.\n\nFor more information on finger pose sources, please see Finger Posing System.",
+  "category": "Users:Common Avatar System:Fingers",
+  "fields": {
+    "Bones": "A list of bones mapped to Fingers to use as the Finger pose source data for this component. The Fingers need to be in the default hand structure."
+  },
+  "methods": {
+    "AssignFromBipedRig": "Finds a biped rig Component above this component and uses the found Finger bones to fill ``Bones``.",
+    "CaptureReference": "IFingerPoseSource]] and sets this component's data with it.",
+    "CaptureMyLeftHand": "Captures the data from the Left hand of the user that pressed the button and sets this component's data with it.",
+    "CaptureMyRightHand": "Captures the data from the right hand of the user that pressed the button and sets this component's data with it.",
+    "GenerateDebugVisual": "Generates a Debug visual and Assigns its bones to any item in ``Bones`` that are missing slots and adds any finger segments that are missing entries in ``Bones``",
+    "ClearDebugVisual": "Clears the debug visuals of the hand. (WARNING: visuals may be Referenced by ``Bones``",
+    "GenerateStaticFingerPoseCode": "Frooxius]] as a way to make code for the poses like fist and point in the defaults quickly."
+  },
+  "usage": "Attach to a slot and use either the generate visuals button or assign from biped rig to make a reference armature. Then, it can either be set from the current hand pose of the user (useful for Index Controller users) or can be adjusted manually. The component can then be used as a IFingerPoseSourceComponent.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FingerReferencePoseSource&action=raw"
+}

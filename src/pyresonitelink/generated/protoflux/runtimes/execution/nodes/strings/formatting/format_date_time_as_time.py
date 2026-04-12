@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Format Date Time As Time node takes in a DateTime and extra parameters to convert it into a string.
+    """The ``Format Date Time As Time`` node takes in a DateTime and extra parameters to convert it into a string.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Formatting
     """
@@ -47,7 +47,7 @@ class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode
 
     @property
     def date(self) -> str | None:
-        """Target ID of the Date reference (targets INodeValueOutput[str])."""
+        """The DateTime to use for this string."""
         member = self.get_member("Date")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode
 
     @property
     def use24_hour_clock(self) -> str | None:
-        """Target ID of the Use24HourClock reference (targets INodeValueOutput[primitives.Bool])."""
+        """The option to make the formatted string have the style of the 24 hour clock."""
         member = self.get_member("Use24HourClock")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode
 
     @property
     def show_seconds(self) -> str | None:
-        """Target ID of the ShowSeconds reference (targets INodeValueOutput[primitives.Bool])."""
+        """Show seconds in this formatted string."""
         member = self.get_member("ShowSeconds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +110,7 @@ class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode
 
     @property
     def show_milliseconds(self) -> str | None:
-        """Target ID of the ShowMilliseconds reference (targets INodeValueOutput[primitives.Bool])."""
+        """Show milliseconds in this formatted string."""
         member = self.get_member("ShowMilliseconds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -131,7 +131,9 @@ class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode
 
     @property
     def format_provider(self) -> str | None:
-        """Target ID of the FormatProvider reference (targets INodeObjectOutput[IFormatProvider])."""
+        """An object that supplies culture-specific formatting information.
+
+Nodes that output this type can be found in Strings/Localization"""
         member = self.get_member("FormatProvider")
         if isinstance(member, members.Reference):
             return member.targetId

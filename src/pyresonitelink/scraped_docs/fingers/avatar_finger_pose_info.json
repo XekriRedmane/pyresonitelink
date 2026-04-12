@@ -1,0 +1,11 @@
+{
+  "description": "The AvatarFingerPoseInfo is used to override the assigning behavior from a AvatarHandDataAssigner on the avatar when it assigns a target.",
+  "category": "Users:Common Avatar System:Fingers",
+  "fields": {
+    "FingerPoseSource": "The data source to override the assigning behavior of a Component:AvatarHandDataAssigner on the avatar with."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarFingerPoseInfo&action=raw"
+}

@@ -41,7 +41,7 @@ class ValueMin(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[T])."""
+        """The first value."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class ValueMin(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[T])."""
+        """The second value."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractionHandlerRelay(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractionHandlerRelay.
+    """The InteractionHandlerRelay component is used internally by the game engine to find the source handler of a tool or slot.
+
+    not used by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractionHandlerRelay"
@@ -27,7 +29,7 @@ class InteractionHandlerRelay(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def common_tool(self) -> str | None:
-        """Target ID of the CommonTool reference (targets InteractionHandler)."""
+        """The handler this is a relay for."""
         member = self.get_member("CommonTool")
         if isinstance(member, members.Reference):
             return member.targetId

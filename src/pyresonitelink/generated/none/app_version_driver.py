@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AppVersionDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AppVersionDriver.
+    """App version driver is a component that drives the content of the string field provided to ``Text`` to Resonite's version.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AppVersionDriver"
@@ -28,7 +28,7 @@ class AppVersionDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IField[primitives.String])."""
+        """Drives the provided text field's content to Resonite's version. The text is formatted starting with "Beta", "Alpha", or "Release", followed by the game's compile date. The date is formatted ``year.day.month.minuteOfDay``. Minute of day is the minutes since midnight. The time is in UTC."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId

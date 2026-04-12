@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VirtualKeyboard.
+    """The Virtual Keyboard is a component that groups many Keys, Modifier Keys, and Multi Keys together.
 
     Category: Userspace/Virtual Keyboard
     """
@@ -41,7 +41,7 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
 
     @property
     def shift_active(self) -> primitives.Bool | None:
-        """The ShiftActive field value."""
+        """Whether the Virtual Shift key is toggled to pressed."""
         member = self.get_member("ShiftActive")
         if member is None:
             return None
@@ -60,7 +60,7 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
 
     @property
     def hold_shift(self) -> primitives.Bool | None:
-        """The HoldShift field value."""
+        """Whether the Virtual Shift key is held."""
         member = self.get_member("HoldShift")
         if member is None:
             return None
@@ -79,7 +79,7 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
 
     @property
     def text_preview_active(self) -> str | None:
-        """Target ID of the TextPreviewActive reference (targets IField[primitives.Bool])."""
+        """drives the visibility of the preview text display."""
         member = self.get_member("TextPreviewActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -100,7 +100,7 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
 
     @property
     def text_preview(self) -> str | None:
-        """Target ID of the TextPreview reference (targets IText)."""
+        """The text preview object that shows what the user is typing."""
         member = self.get_member("TextPreview")
         if isinstance(member, members.Reference):
             return member.targetId

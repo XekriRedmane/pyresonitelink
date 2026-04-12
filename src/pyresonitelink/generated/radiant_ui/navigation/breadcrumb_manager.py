@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BreadcrumbManager.
+    """The BreadcrumbManager component is used to instantiate BreadcrumbInterfaces and remove them based on the list of path elements on a Data Feed View Type.
 
     Category: Radiant UI/Navigation
     """
@@ -43,7 +43,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
 
     @property
     def path(self) -> str | None:
-        """Target ID of the Path reference (targets SyncFieldList[primitives.String])."""
+        """The path field in a Data Feed View Type component to show in the form of templates."""
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
 
     @property
     def ui_root(self) -> str | None:
-        """Target ID of the UI_Root reference (targets Slot)."""
+        """The place to put Breadcrumb path items in."""
         member = self.get_member("UI_Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
 
     @property
     def breadcrumb_template(self) -> str | None:
-        """Target ID of the BreadcrumbTemplate reference (targets BreadcrumbInterface)."""
+        """The template to duplicate in order to create UI."""
         member = self.get_member("BreadcrumbTemplate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +106,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
 
     @property
     def separator_template(self) -> str | None:
-        """Target ID of the SeparatorTemplate reference (targets Slot)."""
+        """The slot to duplicate and place between elements to make them have slashes or commas between them."""
         member = self.get_member("SeparatorTemplate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +126,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
             )
 
     async def set_depth(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, depth: primitives.Int, debug: bool = False) -> dict:
-        """Call the SetDepth sync method.
+        """Takes a number beside a button that when pressed will set the depth of the path.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -143,7 +143,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
         )
 
     async def set_depth_1(self, resolink: protocols.ResoniteLinkClient, depth: primitives.Int, debug: bool = False) -> dict:
-        """Call the SetDepth sync method.
+        """Takes a number beside a button that when pressed will set the depth of the path.
 
         Args:
             resolink: Connected ResoniteLink client.

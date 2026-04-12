@@ -11,9 +11,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceMultiplexer<>.
+    """ReferenceMultiplexers allow to curate a list of references and drive a target with one of them.
+
+Unlike ValueMultiplexers they don't implement IValue and therefore can't be accessed directly within ProtoFlux.
 
     Category: Utility
+
+    The component behaves similar to a ReferenceCopy with the list entry
+    indicated by ``Index`` as its ``Source``. Changes to ``Index`` or the
+    list entries will affect ``Target`` whenever the drive is evaluated.
 
     Parameterize with a value type::
 
@@ -43,7 +49,7 @@ class ReferenceMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncRef[T])."""
+        """A SyncRef which is driven with the currently selected reference"""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +70,7 @@ class ReferenceMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """0-based index that determines which reference of ``References`` has been selected; values outside the range ``[0;length-1]`` are wrapped around internally."""
         member = self.get_member("Index")
         if member is None:
             return None
@@ -83,7 +89,7 @@ class ReferenceMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def references(self) -> members.SyncList | None:
-        """The References member."""
+        """A list of references which can also individually be driven or written to"""
         member = self.get_member("References")
         if isinstance(member, members.SyncList):
             return member
@@ -91,12 +97,12 @@ class ReferenceMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @references.setter
     def references(self, value: members.SyncList) -> None:
-        """Set the References member."""
+        """Set References. A list of references which can also individually be driven or written to"""
         self.set_member("References", value)
 
     @property
     def allow_write_back(self) -> primitives.Bool | None:
-        """The AllowWriteBack field value."""
+        """Setting this to ``true`` redirects writes from ``Target`` to the currently indexed list entry."""
         member = self.get_member("AllowWriteBack")
         if member is None:
             return None

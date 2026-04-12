@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UnpackProtoFlux(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Unpack ProtoFlux node takes in the Slot root (where we want to unpack from), then unpacks them from the provided Slot. Many community-based tools (such as Redprint) use this to unpack nodes into the world.
+    """The ``Unpack ProtoFlux`` node takes in the Slot root (where we want to unpack from), then unpacks them from the provided Slot. Many community-based tools (such as Redprint) use this to unpack nodes into the world.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Nodes
     """
@@ -38,7 +38,7 @@ class UnpackProtoFlux(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues the code from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class UnpackProtoFlux(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets INodeObjectOutput[Slot])."""
+        """The Slot we want to unpack our nodes from."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.NumericUserOverrideGather<>.
+    """The NumericOverrideGather component acts the same as a ValueUserOverride`1 with the key difference being it can get the average, minimum, maximum, and sum of all the values users picked that are still in the session.
 
     Category: Transform/Drivers
+
+    Can be used to check if all users are using the same setting (like
+    saying they're ready for a game round to start) or check the average of
+    what people say the number of jellybeans in a jar is (so that someone
+    can guess the average and get the closest to the answer)
 
     Parameterize with a value type::
 
@@ -83,7 +88,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
 
     @property
     def create_override_on_write(self) -> primitives.Bool | None:
-        """The CreateOverrideOnWrite field value."""
+        """Whether changes to ``Target`` creates a new override or updates the overrides value for that user."""
         member = self.get_member("CreateOverrideOnWrite")
         if member is None:
             return None
@@ -102,7 +107,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
 
     @property
     def persistent_overrides(self) -> primitives.Bool | None:
-        """The PersistentOverrides field value."""
+        """Whether the ``_overrides`` list contents are saved when this component is saved."""
         member = self.get_member("PersistentOverrides")
         if member is None:
             return None
@@ -140,7 +145,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[T])."""
+        """The field to drive with different values for each user's local machine using the ``_overrides`` list."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -237,7 +242,7 @@ class NumericUserOverrideGather(GenericComponent[T], IComponent, IWorldEventRece
 
     @property
     def exclude_headless(self) -> primitives.Bool | None:
-        """The ExcludeHeadless field value."""
+        """Whether headless client values should be excluded from calculations."""
         member = self.get_member("ExcludeHeadless")
         if member is None:
             return None

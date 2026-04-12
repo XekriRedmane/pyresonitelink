@@ -14,7 +14,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LineSegment.
+    """The Line Segment component is used to create a line between two slots or two local points in space.
+
+    Can be used to make a line that connects two points. To use an abitrary
+    point, one can use ProtoFlux or Spatial Variables in order to
+    dynamically set ``Anchor0`` and/or ``Anchor1`` using code or proximity.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LineSegment"
@@ -62,7 +66,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the generated line"""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -81,7 +85,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sides(self) -> primitives.Int | None:
-        """The Sides field value."""
+        """How many sides along the radius circle this cylinder should have."""
         member = self.get_member("Sides")
         if member is None:
             return None
@@ -100,7 +104,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point0(self) -> primitives.Float3 | None:
-        """The Point0 field value."""
+        """Point 1 as a number in local space to place point 1 of the line visual."""
         member = self.get_member("Point0")
         if member is None:
             return None
@@ -119,7 +123,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point1(self) -> primitives.Float3 | None:
-        """The Point1 field value."""
+        """Point 2 as a number in local space to place point 2 of the line visual."""
         member = self.get_member("Point1")
         if member is None:
             return None
@@ -138,7 +142,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def anchor0(self) -> str | None:
-        """Target ID of the Anchor0 reference (targets Slot)."""
+        """Point 1 as a slot to place point 1 of the line visual."""
         member = self.get_member("Anchor0")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -159,7 +163,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def anchor1(self) -> str | None:
-        """Target ID of the Anchor1 reference (targets Slot)."""
+        """Point 2 as a slot to place point 2 of the line visual."""
         member = self.get_member("Anchor1")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -180,7 +184,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cylinder(self) -> str | None:
-        """Target ID of the _cylinder reference (targets CylinderMesh)."""
+        """The line visual to control."""
         member = self.get_member("_cylinder")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -201,7 +205,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def collider(self) -> str | None:
-        """Target ID of the _collider reference (targets CylinderCollider)."""
+        """The collider for the line visual."""
         member = self.get_member("_collider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -222,7 +226,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset(self) -> str | None:
-        """Target ID of the _offset reference (targets IField[primitives.Float3])."""
+        """The field to drive for the position of the visual + collider slot."""
         member = self.get_member("_offset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -243,7 +247,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the _rotation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive for the rotation of the visual + collider slot."""
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -264,7 +268,7 @@ class LineSegment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def visual_scale(self) -> str | None:
-        """Target ID of the _visualScale reference (targets IField[primitives.Float3])."""
+        """The field to drive for the scale of the visual + collider slot."""
         member = self.get_member("_visualScale")
         if isinstance(member, members.Reference):
             return member.targetId

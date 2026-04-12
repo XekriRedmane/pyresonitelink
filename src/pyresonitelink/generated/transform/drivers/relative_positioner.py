@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RelativePositioner(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RelativePositioner.
+    """The RelativePositioner component puts the slot its attached to in a position based on the Bounding box and position of ``Reference``. Optionally deleting the component on an update when the slot is positioned successfully.
 
     Category: Transform/Drivers
+
+    Attach to a slot and provide a ``Reference`` in order for this component
+    to do a valid position and optionally delete itself within that update.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RelativePositioner"
@@ -44,7 +47,7 @@ class RelativePositioner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets Slot)."""
+        """The slot to Relative position to."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +68,7 @@ class RelativePositioner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def reference_bounds_space(self) -> members.SyncObject | None:
-        """The ReferenceBoundsSpace member."""
+        """The space to calculate the Bounding box of ``Reference`` in."""
         member = self.get_member("ReferenceBoundsSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -73,12 +76,12 @@ class RelativePositioner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @reference_bounds_space.setter
     def reference_bounds_space(self, value: members.SyncObject) -> None:
-        """Set the ReferenceBoundsSpace member."""
+        """Set ReferenceBoundsSpace. The space to calculate the Bounding box of ``Reference`` in."""
         self.set_member("ReferenceBoundsSpace", value)
 
     @property
     def reference_anchor(self) -> primitives.Float3 | None:
-        """The ReferenceAnchor field value."""
+        """How far away from the center of the ``Reference``'s Bounding box based on size. (1,1,1) puts this slot at the positive corner in global space of ``Reference``'s Bounding box and (0,0,0) put it at ``Reference``'s center Bounding box point."""
         member = self.get_member("ReferenceAnchor")
         if member is None:
             return None
@@ -97,7 +100,7 @@ class RelativePositioner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def reference_offset(self) -> primitives.Float3 | None:
-        """The ReferenceOffset field value."""
+        """How much to add to the slot position after Bounding box positioning."""
         member = self.get_member("ReferenceOffset")
         if member is None:
             return None
@@ -116,7 +119,7 @@ class RelativePositioner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def destroy_after_done(self) -> primitives.Bool | None:
-        """The DestroyAfterDone field value."""
+        """Whether to destroy this component after update and positioning was successfully done due to needed fields not being null."""
         member = self.get_member("DestroyAfterDone")
         if member is None:
             return None
@@ -135,7 +138,7 @@ class RelativePositioner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField[primitives.Float3])."""
+        """The position field of this slot to drive."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId

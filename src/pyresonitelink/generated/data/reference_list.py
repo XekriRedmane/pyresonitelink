@@ -8,9 +8,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceList(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceList<>.
+    """The Reference List`1 component acts as a way to store a list of references as a stand alone component. like a ReferenceField, but for a list of items of the same type.
+
+This component does not provide a way to index through its items. If you need this functionality, consider using a ReferenceMultiplexer Instead.
 
     Category: Data
+
+    Can be used with Spatial variables.
 
     Parameterize with a value type::
 
@@ -23,7 +27,7 @@ class ReferenceList(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def references(self) -> members.SyncList | None:
-        """The References member."""
+        """The stored reference list."""
         member = self.get_member("References")
         if isinstance(member, members.SyncList):
             return member
@@ -31,6 +35,6 @@ class ReferenceList(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @references.setter
     def references(self, value: members.SyncList) -> None:
-        """Set the References member."""
+        """Set References. The stored reference list."""
         self.set_member("References", value)
 

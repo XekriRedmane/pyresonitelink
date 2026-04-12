@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.scale_multiplier_mode import ScaleMultiplierMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_renderer import IParticleRenderer
@@ -11,19 +12,26 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParticleStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ParticleStyle.
+    """A Particle Style defines the visual appearance and behavior for a ParticleSystem.
 
     Category: Rendering/Particle System
+
+    Used with a ParticleSystem to create the visuals and behavior for
+    particles. multiple ``Modules`` can be used to make a variety of
+    effects. Ranging from wind, laser dust swirling after firing, beat
+    visualizers, element bending, and even accretion disks from black holes,
+    the possibilities are endless.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleStyle"
 
-    def __init__(self, renderer: str | IParticleRenderer | None = None, use_system_local_scale: primitives.Bool | None = None, use_system_local_rotation: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, renderer: str | IParticleRenderer | None = None, use_system_local_scale: primitives.Bool | None = None, particle_scale_mode: ScaleMultiplierMode | str | None = None, use_system_local_rotation: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             renderer: Initial value for Renderer.
             use_system_local_scale: Initial value for UseSystemLocalScale.
+            particle_scale_mode: Initial value for ParticleScaleMode.
             use_system_local_rotation: Initial value for UseSystemLocalRotation.
             component: Existing Component to wrap.
         """
@@ -32,12 +40,14 @@ class ParticleStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.renderer = renderer
         if use_system_local_scale is not None:
             self.use_system_local_scale = use_system_local_scale
+        if particle_scale_mode is not None:
+            self.particle_scale_mode = particle_scale_mode
         if use_system_local_rotation is not None:
             self.use_system_local_rotation = use_system_local_rotation
 
     @property
     def renderer(self) -> str | None:
-        """Target ID of the Renderer reference (targets IParticleRenderer)."""
+        """How to render the particles for systems this is assigned to."""
         member = self.get_member("Renderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +68,7 @@ class ParticleStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def modules(self) -> members.SyncList | None:
-        """The Modules member."""
+        """A list of modules to influence how the particle system looks and behaves."""
         member = self.get_member("Modules")
         if isinstance(member, members.SyncList):
             return member
@@ -66,12 +76,12 @@ class ParticleStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @modules.setter
     def modules(self, value: members.SyncList) -> None:
-        """Set the Modules member."""
+        """Set Modules. A list of modules to influence how the particle system looks and behaves."""
         self.set_member("Modules", value)
 
     @property
     def use_system_local_scale(self) -> primitives.Bool | None:
-        """The UseSystemLocalScale field value."""
+        """Whether particles should rely on the particle system's simulation space for scale."""
         member = self.get_member("UseSystemLocalScale")
         if member is None:
             return None
@@ -89,21 +99,28 @@ class ParticleStyle(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def particle_scale_mode(self) -> members.FieldEnum | None:
-        """The ParticleScaleMode member."""
+    def particle_scale_mode(self) -> ScaleMultiplierMode | None:
+        """How to scale particles during simulation for this style."""
         member = self.get_member("ParticleScaleMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ScaleMultiplierMode(member.value)
         return None
 
     @particle_scale_mode.setter
-    def particle_scale_mode(self, value: members.FieldEnum) -> None:
-        """Set the ParticleScaleMode member."""
-        self.set_member("ParticleScaleMode", value)
+    def particle_scale_mode(self, value: ScaleMultiplierMode | str) -> None:
+        """Set ParticleScaleMode. How to scale particles during simulation for this style."""
+        member = self.get_member("ParticleScaleMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ParticleScaleMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def use_system_local_rotation(self) -> primitives.Bool | None:
-        """The UseSystemLocalRotation field value."""
+        """Whether particles should rely on the particle system's simulation space for rotation."""
         member = self.get_member("UseSystemLocalRotation")
         if member is None:
             return None

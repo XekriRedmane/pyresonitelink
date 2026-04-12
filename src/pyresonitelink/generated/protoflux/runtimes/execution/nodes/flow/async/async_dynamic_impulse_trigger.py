@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AsyncDynamicImpulseTrigger(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Async Dynamic Impulse Trigger node sends an async dynamic impulse to all Async Dynamic Impulse Receivers matching the provided Tag under the TargetHierarchy.
+    """The Async Dynamic Impulse Trigger node sends an async dynamic impulse to all Async Dynamic Impulse Receivers matching the provided ``Tag`` under the ``TargetHierarchy``.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Async
     """
@@ -46,7 +46,7 @@ class AsyncDynamicImpulseTrigger(GeneratedComponent, IAsyncNodeOperation, IExecu
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Triggered once the context of every receiver is completed."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +67,7 @@ class AsyncDynamicImpulseTrigger(GeneratedComponent, IAsyncNodeOperation, IExecu
 
     @property
     def tag(self) -> str | None:
-        """Target ID of the Tag reference (targets INodeObjectOutput[primitives.String])."""
+        """The tag of the dynamic impulse."""
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -88,7 +88,7 @@ class AsyncDynamicImpulseTrigger(GeneratedComponent, IAsyncNodeOperation, IExecu
 
     @property
     def target_hierarchy(self) -> str | None:
-        """Target ID of the TargetHierarchy reference (targets INodeObjectOutput[Slot])."""
+        """The slot under which to search for dynamic impulse receivers."""
         member = self.get_member("TargetHierarchy")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +109,7 @@ class AsyncDynamicImpulseTrigger(GeneratedComponent, IAsyncNodeOperation, IExecu
 
     @property
     def exclude_disabled(self) -> str | None:
-        """Target ID of the ExcludeDisabled reference (targets INodeValueOutput[primitives.Bool])."""
+        """If ``True``, the dynamic impulse will not search for receivers under disabled slots."""
         member = self.get_member("ExcludeDisabled")
         if isinstance(member, members.Reference):
             return member.targetId

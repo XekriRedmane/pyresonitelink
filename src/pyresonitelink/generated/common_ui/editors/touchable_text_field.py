@@ -11,9 +11,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TouchableTextField(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TouchableTextField.
+    """The TouchableTextField component, similar to a TextField for UIX, this component when combined with a TextEditor on the same slot, will allow any text in the world to be clicked on to make it become editable.
+
+This allows the text to be edited in both directions: In the component and in the world directly.
 
     Category: Common UI/Editors
+
+    Great for when you don't want to be bound by UIX to make editable texts.
+    If the text is not responding or is not editing properly, try adding the
+    BoxCollider component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TouchableTextField"
@@ -46,7 +52,7 @@ class TouchableTextField(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def text_editor(self) -> str | None:
-        """Target ID of the TextEditor reference (targets TextEditor)."""
+        """The TextField to allow for bi-directional editing."""
         member = self.get_member("TextEditor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -124,7 +130,7 @@ class TouchableTextField(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def edit_mode_only(self) -> primitives.Bool | None:
-        """The EditModeOnly field value."""
+        """Allows for the user to only edit this text in Edit Mode."""
         member = self.get_member("EditModeOnly")
         if member is None:
             return None
@@ -143,7 +149,7 @@ class TouchableTextField(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def active_user_root_only(self) -> primitives.Bool | None:
-        """The ActiveUserRootOnly field value."""
+        """Allows to only be editable when under the active user."""
         member = self.get_member("ActiveUserRootOnly")
         if member is None:
             return None

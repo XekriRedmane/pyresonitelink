@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterControllerUser(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Character Controller User node will get the Simulating User in the character controller reference.
+    """The ``Character Controller User`` node will get the Simulating User in the character controller reference.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """
@@ -33,7 +33,7 @@ class CharacterControllerUser(GeneratedComponent, INodeObjectOutput, IExecutionN
 
     @property
     def character(self) -> str | None:
-        """Target ID of the Character reference (targets INodeObjectOutput[CharacterController])."""
+        """The character controller to find the Simulating User."""
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             return member.targetId

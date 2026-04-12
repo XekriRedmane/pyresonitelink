@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugDataFeedView(GeneratedComponent, IDataFeedView, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugDataFeedView.
+    """The DebugDataFeedView component shows the data from a feed including calls to update already provided data from the feed.
 
     Category: Radiant UI/Data Feeds/Views
     """
@@ -140,7 +140,7 @@ class DebugDataFeedView(GeneratedComponent, IDataFeedView, IComponent, IWorldEve
 
     @property
     def target_output(self) -> str | None:
-        """Target ID of the TargetOutput reference (targets IField[primitives.String])."""
+        """The field (usually the text on a text renderer) to update with the debug feed data."""
         member = self.get_member("TargetOutput")
         if isinstance(member, members.Reference):
             return member.targetId

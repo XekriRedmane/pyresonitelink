@@ -18,6 +18,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class OnStart(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The On Start ProtoFlux node triggers on the start of that instance of the node's existence for the local user.
 
+This can be thought of as "On Local Start". 
+
+To check if a user joined, use User Joined instead of this node.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """
 
@@ -39,7 +43,7 @@ class OnStart(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExe
 
     @property
     def trigger(self) -> str | None:
-        """Target ID of the Trigger reference (targets ISyncNodeOperation)."""
+        """Sends a pulse when the node starts, this can be triggered from the node being duplicated, the node being spawned, or a user joining the session."""
         member = self.get_member("Trigger")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +64,7 @@ class OnStart(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExe
 
     @property
     def only_host(self) -> str | None:
-        """Target ID of the OnlyHost reference (targets INodeValueOutput[primitives.Bool])."""
+        """If enabled, Trigger will only fire for the host."""
         member = self.get_member("OnlyHost")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugWorld(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugWorld.
+    """The DebugWorld component renders out a block of text that displays information about the current world the component is in.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugWorld"
@@ -28,7 +28,7 @@ class DebugWorld(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the text reference (targets Sync[primitives.String])."""
+        """The text field to drive with all the debug data in a world."""
         member = self.get_member("text")
         if isinstance(member, members.Reference):
             return member.targetId

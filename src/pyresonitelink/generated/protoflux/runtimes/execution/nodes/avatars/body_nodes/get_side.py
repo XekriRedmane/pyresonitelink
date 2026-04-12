@@ -37,7 +37,7 @@ class GetSide(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICust
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[BodyNode])."""
+        """The node to convert to the provided Side (Chirality)."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class GetSide(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICust
 
     @property
     def side(self) -> str | None:
-        """Target ID of the Side reference (targets INodeValueOutput[Chirality])."""
+        """the side to convert Node (BodyNode) to."""
         member = self.get_member("Side")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -1,0 +1,18 @@
+{
+  "description": "The AudioStreamInterface component is used on AudioStream objects that are spawned in by the user via the dash to allow the engine to interface with the stored audio stream.\n\nThis is a favorite-able item. See Favorites.",
+  "category": "Utility:Entity Interfaces",
+  "fields": {
+    "ItemName": "The name of the stream like Frooxius's Stream",
+    "SpawningUser": "The user that spawned the stream",
+    "SpawningUserID": "The userid field of the ``SpawningUser``",
+    "IsInstance": "Whether this interface is being edited or is part of a spawned audio stream.",
+    "Source": "The audio stream this interfaces with",
+    "Bitrate": "The Bitrate setting of the spawned audiostream interface (like a UIX)",
+    "Volume": "The Volume slider/setting of the spawned audio stream interface (like a UIX)",
+    "Spatialize": "The Spatialize setting of the spawned audio stream interface (like a UIX)"
+  },
+  "methods": {},
+  "usage": "Can be used to make your own audio stream player interface as an inventory favorite",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioStreamInterface&action=raw"
+}

@@ -1,0 +1,31 @@
+{
+  "description": "For detailed information on how this functions for mix and match body parts. Please also see Equipping Multiple Avatars.\n\nThe AvatarManager component is found on User root slots and is used to manage avatars equipped to a particular user. It also keeps track of and sets the equipped parameters of AvatarObjectSlots under an avatar, It manages the setting of fields on the AvatarRoot and AvatarGroup components.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "_objectGroups": "A list of objects currently equipped by the user as part of an avatar.",
+    "_currentAnchor": "The anchor the user associated with this component is currently sitting in.",
+    "AutoAddNameBadge": "Whether to auto add the name badge component if it doesn't exist on an avatar when equipping it. Usually managed by the world through the Component:CommonAvatarBuilder",
+    "AutoAddIconBadge": "Whether to auto add the icon badges if it doesn't exist on an avatar when equipping it. Usually managed by the world through the Component:CommonAvatarBuilder",
+    "AutoAddLiveIndicator": "Whether to auto add the live indicator component if it doesn't exist on an avatar when equipping it. Usually managed by the world through the Component:CommonAvatarBuilder",
+    "EmptySlotHandler": "The object to handle empty avatar slots. Usually defined by the world through the Component:CommonAvatarBuilder.",
+    "DefaultScale": "The default scale multiplier of the avatar currently equipped",
+    "NameTagText": "The text that should be assigned to the avatar nametag's text field list",
+    "NameTagColor": "The color that should be assigned to the avatar nametag's color list.",
+    "NameTagOutline": "The color that should be assigned to the avatar nametag's color1 list.",
+    "NameTagBackground": "The color.that should be assigned to the avatar nametag's color background list.",
+    "_badgeTemplates": "the slot that was made for the user for storage of their badges.",
+    "_autoNameBadge": "the slot that was made for the user for their name badge.",
+    "_autoIconBadge": "the slot that was made for the user for their Icon.",
+    "_autoLiveIndicator": "The slot that was made for the user for their live indicator",
+    "_updateVersion": "Internal."
+  },
+  "methods": {},
+  "usage": "Should not be used directly by the player, since this is used by the game instead to manage avatars on a user.",
+  "notes": [
+    {
+      "title": "EquippedGroup",
+      "text": "Equipped group is internally handled as a type to hold data from a Dictionary&lt;AvatarRoot, &gt;"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarManager&action=raw"
+}

@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabReferenceSet(GenericComponent[T], IGrabEventReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabReferenceSet<>.
+    """The GrabReferenceSet can be used to write a reference to a field on grab and release.
 
     Category: Transform/Interaction
+
+    While on the same slot as a Grabbable the component can be configured to
+    set a reference on grabbed and on released.
 
     Parameterize with a value type::
 
@@ -49,7 +52,7 @@ class GrabReferenceSet(GenericComponent[T], IGrabEventReceiver, IWorldEventRecei
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncRef[T])."""
+        """The field in which to change on grab and release."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +73,7 @@ class GrabReferenceSet(GenericComponent[T], IGrabEventReceiver, IWorldEventRecei
 
     @property
     def grabbed_target(self) -> str | None:
-        """Target ID of the GrabbedTarget reference (targets T)."""
+        """The value to set the contained data of the SyncRef referenced in ``Target`` when the item is grabbed."""
         member = self.get_member("GrabbedTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +94,7 @@ class GrabReferenceSet(GenericComponent[T], IGrabEventReceiver, IWorldEventRecei
 
     @property
     def released_target(self) -> str | None:
-        """Target ID of the ReleasedTarget reference (targets T)."""
+        """The value to set the contained data of the SyncRef referenced in ``Target`` when the item is released."""
         member = self.get_member("ReleasedTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +115,7 @@ class GrabReferenceSet(GenericComponent[T], IGrabEventReceiver, IWorldEventRecei
 
     @property
     def set_on_grabbed(self) -> primitives.Bool | None:
-        """The SetOnGrabbed field value."""
+        """Whether to set the contained data of the SyncRef referenced in ``Target`` when the item is grabbed."""
         member = self.get_member("SetOnGrabbed")
         if member is None:
             return None
@@ -131,7 +134,7 @@ class GrabReferenceSet(GenericComponent[T], IGrabEventReceiver, IWorldEventRecei
 
     @property
     def set_on_released(self) -> primitives.Bool | None:
-        """The SetOnReleased field value."""
+        """Whether to set the contained data of the SyncRef referenced in ``Target`` when the item is released."""
         member = self.get_member("SetOnReleased")
         if member is None:
             return None

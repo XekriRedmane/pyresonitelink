@@ -12,9 +12,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonAudioClipPlayer(GeneratedComponent, IButtonPressReceiver, IButtonHoverReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonAudioClipPlayer.
+    """The ButtonAudioClipPlayer plays an AudioClip from a list on press, release, and hover.
+
+}}
+
+}}
 
     Category: Common UI/Button Interactions/Media
+
+    This is a powerful component that allows for customizability for your
+    many sounds in one slot, great for boopers and UIX buttons that need to
+    have a variety of sounds.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonAudioClipPlayer"
@@ -41,7 +49,7 @@ class ButtonAudioClipPlayer(GeneratedComponent, IButtonPressReceiver, IButtonHov
 
     @property
     def parent_under(self) -> str | None:
-        """Target ID of the ParentUnder reference (targets Slot)."""
+        """Parents the one shot sound under the specified slot."""
         member = self.get_member("ParentUnder")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +70,7 @@ class ButtonAudioClipPlayer(GeneratedComponent, IButtonPressReceiver, IButtonHov
 
     @property
     def min_distance(self) -> primitives.Float | None:
-        """The MinDistance field value."""
+        """The minimum distance for this sound."""
         member = self.get_member("MinDistance")
         if member is None:
             return None
@@ -81,7 +89,7 @@ class ButtonAudioClipPlayer(GeneratedComponent, IButtonPressReceiver, IButtonHov
 
     @property
     def max_distance(self) -> primitives.Float | None:
-        """The MaxDistance field value."""
+        """The maximum distance for this sound."""
         member = self.get_member("MaxDistance")
         if member is None:
             return None
@@ -100,7 +108,7 @@ class ButtonAudioClipPlayer(GeneratedComponent, IButtonPressReceiver, IButtonHov
 
     @property
     def rolloff_mode(self) -> members.FieldEnum | None:
-        """The RolloffMode member."""
+        """The rolloff for this sound."""
         member = self.get_member("RolloffMode")
         if isinstance(member, members.FieldEnum):
             return member
@@ -108,7 +116,7 @@ class ButtonAudioClipPlayer(GeneratedComponent, IButtonPressReceiver, IButtonHov
 
     @rolloff_mode.setter
     def rolloff_mode(self, value: members.FieldEnum) -> None:
-        """Set the RolloffMode member."""
+        """Set RolloffMode. The rolloff for this sound."""
         self.set_member("RolloffMode", value)
 
     @property
@@ -132,7 +140,7 @@ class ButtonAudioClipPlayer(GeneratedComponent, IButtonPressReceiver, IButtonHov
 
     @property
     def pressed_clips(self) -> members.SyncList | None:
-        """The PressedClips member."""
+        """The list of pressed clip sounds."""
         member = self.get_member("PressedClips")
         if isinstance(member, members.SyncList):
             return member
@@ -140,12 +148,12 @@ class ButtonAudioClipPlayer(GeneratedComponent, IButtonPressReceiver, IButtonHov
 
     @pressed_clips.setter
     def pressed_clips(self, value: members.SyncList) -> None:
-        """Set the PressedClips member."""
+        """Set PressedClips. The list of pressed clip sounds."""
         self.set_member("PressedClips", value)
 
     @property
     def released_clips(self) -> members.SyncList | None:
-        """The ReleasedClips member."""
+        """The list of released clip sounds."""
         member = self.get_member("ReleasedClips")
         if isinstance(member, members.SyncList):
             return member
@@ -153,12 +161,12 @@ class ButtonAudioClipPlayer(GeneratedComponent, IButtonPressReceiver, IButtonHov
 
     @released_clips.setter
     def released_clips(self, value: members.SyncList) -> None:
-        """Set the ReleasedClips member."""
+        """Set ReleasedClips. The list of released clip sounds."""
         self.set_member("ReleasedClips", value)
 
     @property
     def hover_enter_clips(self) -> members.SyncList | None:
-        """The HoverEnterClips member."""
+        """The list of hover enter clip sounds."""
         member = self.get_member("HoverEnterClips")
         if isinstance(member, members.SyncList):
             return member
@@ -166,12 +174,12 @@ class ButtonAudioClipPlayer(GeneratedComponent, IButtonPressReceiver, IButtonHov
 
     @hover_enter_clips.setter
     def hover_enter_clips(self, value: members.SyncList) -> None:
-        """Set the HoverEnterClips member."""
+        """Set HoverEnterClips. The list of hover enter clip sounds."""
         self.set_member("HoverEnterClips", value)
 
     @property
     def hover_leave_clips(self) -> members.SyncList | None:
-        """The HoverLeaveClips member."""
+        """The list of hover leave clip sounds."""
         member = self.get_member("HoverLeaveClips")
         if isinstance(member, members.SyncList):
             return member
@@ -179,6 +187,6 @@ class ButtonAudioClipPlayer(GeneratedComponent, IButtonPressReceiver, IButtonHov
 
     @hover_leave_clips.setter
     def hover_leave_clips(self, value: members.SyncList) -> None:
-        """Set the HoverLeaveClips member."""
+        """Set HoverLeaveClips. The list of hover leave clip sounds."""
         self.set_member("HoverLeaveClips", value)
 

@@ -1,0 +1,14 @@
+{
+  "description": "ReferenceMultiplexers allow to curate a list of references and drive a target with one of them.\n\nUnlike ValueMultiplexers they don't implement IValue and therefore can't be accessed directly within ProtoFlux.",
+  "category": "Utility",
+  "fields": {
+    "Target": "A SyncRef which is driven with the currently selected reference",
+    "Index": "0-based index that determines which reference of ``References`` has been selected; values outside the range ``[0;length-1]`` are wrapped around internally.",
+    "References": "A list of references which can also individually be driven or written to",
+    "AllowWriteBack": "Setting this to ``true`` redirects writes from ``Target`` to the currently indexed list entry."
+  },
+  "methods": {},
+  "usage": "The component behaves similar to a ReferenceCopy with the list entry indicated by ``Index`` as its ``Source``.\nChanges to ``Index`` or the list entries will affect ``Target`` whenever the drive is evaluated.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceMultiplexer&action=raw"
+}

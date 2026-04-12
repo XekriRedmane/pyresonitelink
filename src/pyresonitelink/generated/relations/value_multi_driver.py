@@ -8,9 +8,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueMultiDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueMultiDriver<>.
+    """The ValueMultiDriver`1 component allows you to drive multiple fields from a single value.
 
     Category: Relations
+
+    **Behavior**: == Examples ==
 
     Parameterize with a value type::
 
@@ -53,7 +55,7 @@ class ValueMultiDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def drives(self) -> members.SyncList | None:
-        """The Drives member."""
+        """A list of fields to be driven by this component"""
         member = self.get_member("Drives")
         if isinstance(member, members.SyncList):
             return member
@@ -61,6 +63,6 @@ class ValueMultiDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @drives.setter
     def drives(self, value: members.SyncList) -> None:
-        """Set the Drives member."""
+        """Set Drives. A list of fields to be driven by this component"""
         self.set_member("Drives", value)
 

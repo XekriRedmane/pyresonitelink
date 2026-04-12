@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,25 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugTestMeshThroughput(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugTestMeshThroughput.
+    """The DebugTestMeshThroughput component is used in code by parallel jamming quads into a MeshX object via multithreading to test how much can be done at once.
+
+The mesh generated is a Spiral fan of quads that goes up in a circle pattern.
 
     Category: Debug
+
+    Debugging MeshX parallel speed.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugTestMeshThroughput"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, count: primitives.Int | None = None, progress: primitives.Float | None = None, update_time: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, count: primitives.Int | None = None, progress: primitives.Float | None = None, update_time: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             count: Initial value for Count.
             progress: Initial value for Progress.
             update_time: Initial value for UpdateTime.
@@ -38,6 +44,8 @@ class DebugTestMeshThroughput(GeneratedComponent, IAssetProvider, ICustomInspect
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if count is not None:
             self.count = count
         if progress is not None:
@@ -103,21 +111,28 @@ class DebugTestMeshThroughput(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def count(self) -> primitives.Int | None:
-        """The Count field value."""
+        """How many mesh quads to parrallel jam into the meshx data."""
         member = self.get_member("Count")
         if member is None:
             return None
@@ -136,7 +151,7 @@ class DebugTestMeshThroughput(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def progress(self) -> primitives.Float | None:
-        """The Progress field value."""
+        """How much to offset the quads by in rotation."""
         member = self.get_member("Progress")
         if member is None:
             return None
@@ -155,7 +170,7 @@ class DebugTestMeshThroughput(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def update_time(self) -> primitives.Float | None:
-        """The UpdateTime field value."""
+        """How long it took for the Asset to update."""
         member = self.get_member("UpdateTime")
         if member is None:
             return None

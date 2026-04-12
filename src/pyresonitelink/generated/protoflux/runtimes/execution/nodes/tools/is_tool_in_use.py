@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsToolInUse(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Is Tool In Use node takes in a tool reference and checks if a user is currently using it ("Using it" counts as the user pressing the primary or secondary buttons while the tool is held).
+    """The ``Is Tool In Use`` node takes in a tool reference and checks if a user is currently using it ("Using it" counts as the user pressing the primary or secondary buttons while the tool is held).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """
@@ -34,7 +34,7 @@ class IsToolInUse(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def tool(self) -> str | None:
-        """Target ID of the Tool reference (targets INodeObjectOutput[ITool])."""
+        """The tool reference."""
         member = self.get_member("Tool")
         if isinstance(member, members.Reference):
             return member.targetId

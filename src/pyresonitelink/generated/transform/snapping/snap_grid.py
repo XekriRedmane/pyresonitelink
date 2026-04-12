@@ -12,9 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SnapGrid(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SnapGrid.
+    """A snap grid is a component that is able to generate a point in a grid of points given a point by another component. Usually this is used in components like the Multi User Avatar Anchor Component to determine where to place the anchors upon clicking (click point is used in such case). Since this generates a grid of points, it takes the inserted point and rounds it to the nearest grid point, then returns it to the component that called it.
+
+The functionality of this component is internal, and cannot be used by ProtoFlux to snap points using in game code.
 
     Category: Transform/Snapping
+
+    Used as an anchor point generator in the Multi User Avatar Anchor
+    Component and drawing tools.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SnapGrid"
@@ -41,7 +46,7 @@ class SnapGrid(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
 
     @property
     def bounds_size(self) -> primitives.Float3 | None:
-        """The BoundsSize field value."""
+        """How big the grid is in total, and determines the total size available for grid points to take up"""
         member = self.get_member("BoundsSize")
         if member is None:
             return None
@@ -60,7 +65,7 @@ class SnapGrid(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
 
     @property
     def grid_size(self) -> primitives.Float3 | None:
-        """The GridSize field value."""
+        """How big each grid point is, or in other words, how far apart they are."""
         member = self.get_member("GridSize")
         if member is None:
             return None
@@ -100,7 +105,7 @@ class SnapGrid(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
 
     @property
     def snap_parent(self) -> str | None:
-        """Target ID of the SnapParent reference (targets Slot)."""
+        """Where to put slots if the component is being used for slot placement."""
         member = self.get_member("SnapParent")
         if isinstance(member, members.Reference):
             return member.targetId

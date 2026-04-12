@@ -7,7 +7,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorListInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ColorListInitializer.
+    """The Color List Initializer component makes particles initialize their color in a particle system from a list of colors.
 
     Category: Rendering/Particle System/Modules
     """
@@ -16,7 +16,7 @@ class ColorListInitializer(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     @property
     def colors(self) -> members.SyncList | None:
-        """The Colors member."""
+        """A list of colors to use."""
         member = self.get_member("Colors")
         if isinstance(member, members.SyncList):
             return member
@@ -24,6 +24,6 @@ class ColorListInitializer(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     @colors.setter
     def colors(self, value: members.SyncList) -> None:
-        """Set the Colors member."""
+        """Set Colors. A list of colors to use."""
         self.set_member("Colors", value)
 

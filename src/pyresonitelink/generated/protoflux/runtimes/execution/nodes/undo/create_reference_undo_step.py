@@ -19,6 +19,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class CreateReferenceUndoStep(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Create Reference Undo Step will create an undo step in the Context Menu of the person who the impulse came from. The node will then send to the UndoManager component in the world the value that the reference field provided into Target should revert to. Or in more simpler terms, the current reference the provided Target (ISyncRef) contains is what it will be reset to when undone via the context menu.
 
+when this node is paired with an Undo Batch, it's description if has one, will be ignored, and will be part of the Undo Batch's undo step instead.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """
 
@@ -64,7 +66,7 @@ class CreateReferenceUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[ISyncRef])."""
+        """The ISyncRef to undo for this undo step."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

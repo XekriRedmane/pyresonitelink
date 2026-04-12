@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldTextureThumbnailSource(GeneratedComponent, IWorldThumbnailSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldTextureThumbnailSource.
+    """The WorldTextureThumbnailSource specifies a completely customized texture to use for the world thumbnail.
 
     Category: World
+
+    See World and Session Thumbnails.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldTextureThumbnailSource"
@@ -30,7 +32,7 @@ class WorldTextureThumbnailSource(GeneratedComponent, IWorldThumbnailSource, IWo
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[Texture2D])."""
+        """The world thumbnail texture."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -16,6 +16,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class OnDuplicate(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """On Duplicate is a ProtoFlux node that sends an impulse out of Trigger whenever the node is duplicated. This will fire on the duplicate of the code, and not the original copy.
 
+Since this node may send an impulse before the rest of the protoflux is loaded, certain functions such as Smooth Lerp may not work as intended. If you have a use case relying on interpolation, consired adding a small Delay, or using the On Start node instead.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow/Events
     """
 
@@ -34,7 +36,7 @@ class OnDuplicate(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, 
 
     @property
     def trigger(self) -> str | None:
-        """Target ID of the Trigger reference (targets ISyncNodeOperation)."""
+        """Sends an Impulse when the node is duplicated."""
         member = self.get_member("Trigger")
         if isinstance(member, members.Reference):
             return member.targetId

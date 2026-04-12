@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AngularVelocityRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.AngularVelocityRangeInitializer.
+    """The AngularVelocityRangeInitializer component makes particles have a random rotation speed within a range along their orientation axis when born.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.AngularVelocityRangeInitializer"
@@ -32,7 +37,7 @@ class AngularVelocityRangeInitializer(GeneratedComponent, IParticleSystemModule,
 
     @property
     def min_value(self) -> primitives.Float | None:
-        """The MinValue field value."""
+        """The minimum angular velocity a particle can have when born."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class AngularVelocityRangeInitializer(GeneratedComponent, IParticleSystemModule,
 
     @property
     def max_value(self) -> primitives.Float | None:
-        """The MaxValue field value."""
+        """The maximum angular velocity a particle can have when born."""
         member = self.get_member("MaxValue")
         if member is None:
             return None

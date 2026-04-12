@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.active_user_handling import ActiveUserHandling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.grabber import Grabber
@@ -14,14 +15,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Grabbable.
+    """The Grabbable component allows you to grab any slot it is attached to, provided it has some type of Collider.
 
     Category: Transform/Interaction
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Grabbable"
 
-    def __init__(self, reparent_on_release: primitives.Bool | None = None, preserve_user_space: primitives.Bool | None = None, destroy_on_release: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, grab_priority_when_grabbed: primitives.Int | None = None, edit_mode_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, drop_on_disable: primitives.Bool | None = None, scalable: primitives.Bool | None = None, receivable: primitives.Bool | None = None, allow_only_physical_grab: primitives.Bool | None = None, grabber: str | Grabber | None = None, last_parent: str | Slot | None = None, last_parent_is_user_space: primitives.Bool | None = None, legacy_active_user_root_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, reparent_on_release: primitives.Bool | None = None, preserve_user_space: primitives.Bool | None = None, destroy_on_release: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, grab_priority_when_grabbed: primitives.Int | None = None, edit_mode_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, drop_on_disable: primitives.Bool | None = None, active_user_filter: ActiveUserHandling | str | None = None, scalable: primitives.Bool | None = None, receivable: primitives.Bool | None = None, allow_only_physical_grab: primitives.Bool | None = None, grabber: str | Grabber | None = None, last_parent: str | Slot | None = None, last_parent_is_user_space: primitives.Bool | None = None, legacy_active_user_root_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,6 +34,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             edit_mode_only: Initial value for EditModeOnly.
             allow_steal: Initial value for AllowSteal.
             drop_on_disable: Initial value for DropOnDisable.
+            active_user_filter: Initial value for ActiveUserFilter.
             scalable: Initial value for Scalable.
             receivable: Initial value for Receivable.
             allow_only_physical_grab: Initial value for AllowOnlyPhysicalGrab.
@@ -59,6 +61,8 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             self.allow_steal = allow_steal
         if drop_on_disable is not None:
             self.drop_on_disable = drop_on_disable
+        if active_user_filter is not None:
+            self.active_user_filter = active_user_filter
         if scalable is not None:
             self.scalable = scalable
         if receivable is not None:
@@ -76,7 +80,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def reparent_on_release(self) -> primitives.Bool | None:
-        """The ReparentOnRelease field value."""
+        """The slot is reparented to the value of ``_lastParent``, instead of root when dropped __TPL__"""
         member = self.get_member("ReparentOnRelease")
         if member is None:
             return None
@@ -95,7 +99,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def preserve_user_space(self) -> primitives.Bool | None:
-        """The PreserveUserSpace field value."""
+        """The slot is reparented to Local User Space __TPL__"""
         member = self.get_member("PreserveUserSpace")
         if member is None:
             return None
@@ -114,7 +118,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def destroy_on_release(self) -> primitives.Bool | None:
-        """The DestroyOnRelease field value."""
+        """The slot this component is attached to is destroyed upon release"""
         member = self.get_member("DestroyOnRelease")
         if member is None:
             return None
@@ -152,7 +156,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def grab_priority_when_grabbed(self) -> primitives.Int | None:
-        """The GrabPriorityWhenGrabbed field value."""
+        """Optionally changes the grab priority of the object when it is already being grabbed. Useful for different behavior when it can be grab stolen by another player."""
         member = self.get_member("GrabPriorityWhenGrabbed")
         if member is None:
             return None
@@ -171,7 +175,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def edit_mode_only(self) -> primitives.Bool | None:
-        """The EditModeOnly field value."""
+        """Determines if this grabbable is effective only in Edit Mode"""
         member = self.get_member("EditModeOnly")
         if member is None:
             return None
@@ -190,7 +194,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def allow_steal(self) -> primitives.Bool | None:
-        """The AllowSteal field value."""
+        """Other users can grab the slot this component is attached to. Like a flag in capture the flag."""
         member = self.get_member("AllowSteal")
         if member is None:
             return None
@@ -209,7 +213,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def drop_on_disable(self) -> primitives.Bool | None:
-        """The DropOnDisable field value."""
+        """The parent slot will be dropped when this component is disabled."""
         member = self.get_member("DropOnDisable")
         if member is None:
             return None
@@ -227,21 +231,28 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             )
 
     @property
-    def active_user_filter(self) -> members.FieldEnum | None:
-        """The ActiveUserFilter member."""
+    def active_user_filter(self) -> ActiveUserHandling | None:
+        """Changes if this component can be grabbed based on who is the active user if any."""
         member = self.get_member("ActiveUserFilter")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ActiveUserHandling(member.value)
         return None
 
     @active_user_filter.setter
-    def active_user_filter(self, value: members.FieldEnum) -> None:
-        """Set the ActiveUserFilter member."""
-        self.set_member("ActiveUserFilter", value)
+    def active_user_filter(self, value: ActiveUserHandling | str) -> None:
+        """Set ActiveUserFilter. Changes if this component can be grabbed based on who is the active user if any."""
+        member = self.get_member("ActiveUserFilter")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ActiveUserFilter",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def only_users(self) -> members.SyncList | None:
-        """The OnlyUsers member."""
+        """A list of users that are allowed to grab this slot."""
         member = self.get_member("OnlyUsers")
         if isinstance(member, members.SyncList):
             return member
@@ -249,7 +260,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @only_users.setter
     def only_users(self, value: members.SyncList) -> None:
-        """Set the OnlyUsers member."""
+        """Set OnlyUsers. A list of users that are allowed to grab this slot."""
         self.set_member("OnlyUsers", value)
 
     @property
@@ -292,7 +303,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def allow_only_physical_grab(self) -> primitives.Bool | None:
-        """The AllowOnlyPhysicalGrab field value."""
+        """Only allow grab an object with a physical interaction - remote grabs are not allowed"""
         member = self.get_member("AllowOnlyPhysicalGrab")
         if member is None:
             return None
@@ -311,7 +322,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def grabber(self) -> str | None:
-        """Target ID of the _grabber reference (targets Grabber)."""
+        """Automatically Assigned, the grabber that is grabbing this component."""
         member = self.get_member("_grabber")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -332,7 +343,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def last_parent(self) -> str | None:
-        """Target ID of the _lastParent reference (targets Slot)."""
+        """Automatically Assigned, the last parent this slot had. Is used to parent the slot back (if allowed) when let go of."""
         member = self.get_member("_lastParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -353,7 +364,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def last_parent_is_user_space(self) -> primitives.Bool | None:
-        """The _lastParentIsUserSpace field value."""
+        """Automatically Assigned Whether the last parent slot is the user space slot of the user grabbing this."""
         member = self.get_member("_lastParentIsUserSpace")
         if member is None:
             return None
@@ -372,7 +383,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
 
     @property
     def legacy_active_user_root_only(self) -> primitives.Bool | None:
-        """The __legacyActiveUserRootOnly field value."""
+        """Automatically Assigned Legacy do not use. Used to handle whether only the active user can grab. Use ``ActiveUserFilter`` instead!"""
         member = self.get_member("__legacyActiveUserRootOnly")
         if member is None:
             return None

@@ -12,9 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DroneCamera.
+    """The DroneCamera is a component commonly used in 3rd person free cam desktop. It can also be influenced via Command Line Arguments to change it's behavior.
 
     Category: Utility
+
+    Used in free cam mode or to follow groups.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DroneCamera"
@@ -167,7 +169,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def camera_user(self) -> members.SyncObject | None:
-        """The CameraUser member."""
+        """The user that should be simulating this camera."""
         member = self.get_member("CameraUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -175,12 +177,12 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @camera_user.setter
     def camera_user(self, value: members.SyncObject) -> None:
-        """Set the CameraUser member."""
+        """Set CameraUser. The user that should be simulating this camera."""
         self.set_member("CameraUser", value)
 
     @property
     def simulate_on_host(self) -> primitives.Bool | None:
-        """The SimulateOnHost field value."""
+        """Whether to simulate the camera on the host."""
         member = self.get_member("SimulateOnHost")
         if member is None:
             return None
@@ -199,7 +201,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def manual_control(self) -> primitives.Bool | None:
-        """The ManualControl field value."""
+        """Whether the user is manually controlling the camera."""
         member = self.get_member("ManualControl")
         if member is None:
             return None
@@ -218,7 +220,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slow_speed(self) -> primitives.Float | None:
-        """The SlowSpeed field value."""
+        """meters per second to move when going slow."""
         member = self.get_member("SlowSpeed")
         if member is None:
             return None
@@ -237,7 +239,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def speed(self) -> primitives.Float | None:
-        """The Speed field value."""
+        """Meters per second when going normal speed."""
         member = self.get_member("Speed")
         if member is None:
             return None
@@ -256,7 +258,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def fast_speed(self) -> primitives.Float | None:
-        """The FastSpeed field value."""
+        """meters per second when holding shift."""
         member = self.get_member("FastSpeed")
         if member is None:
             return None
@@ -275,7 +277,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mouse_sensitivity(self) -> primitives.Float | None:
-        """The MouseSensitivity field value."""
+        """The look speed sensitivity."""
         member = self.get_member("MouseSensitivity")
         if member is None:
             return None
@@ -294,7 +296,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def field_of_view_source(self) -> str | None:
-        """Target ID of the FieldOfViewSource reference (targets IField[primitives.Float])."""
+        """The field to use as the field of view value."""
         member = self.get_member("FieldOfViewSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -315,7 +317,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def field_of_view(self) -> primitives.Float | None:
-        """The FieldOfView field value."""
+        """The field of view in absence of a value for ``FieldOfViewSource``."""
         member = self.get_member("FieldOfView")
         if member is None:
             return None
@@ -334,7 +336,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def aspect_ratio_source(self) -> str | None:
-        """Target ID of the AspectRatioSource reference (targets IField[primitives.Float])."""
+        """The field to use as the aspect ratio source."""
         member = self.get_member("AspectRatioSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -355,7 +357,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def aspect_ratio(self) -> primitives.Float | None:
-        """The AspectRatio field value."""
+        """The aspect ratio in absence of a value for ``AspectRatioSource``."""
         member = self.get_member("AspectRatio")
         if member is None:
             return None
@@ -374,7 +376,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def follow_user(self) -> str | None:
-        """Target ID of the FollowUser reference (targets User)."""
+        """The user to follow."""
         member = self.get_member("FollowUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -395,7 +397,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def controller_reject_distance(self) -> primitives.Float | None:
-        """The ControllerRejectDistance field value."""
+        """Distance limit for rejecting a controller."""
         member = self.get_member("ControllerRejectDistance")
         if member is None:
             return None
@@ -414,7 +416,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def group_search_radius(self) -> primitives.Float | None:
-        """The GroupSearchRadius field value."""
+        """The radius to search for groups of users."""
         member = self.get_member("GroupSearchRadius")
         if member is None:
             return None
@@ -433,7 +435,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def biggest_group_search_interval(self) -> primitives.Float | None:
-        """The BiggestGroupSearchInterval field value."""
+        """The time to wait before checking for the largest group of users in the world to track."""
         member = self.get_member("BiggestGroupSearchInterval")
         if member is None:
             return None
@@ -452,7 +454,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ignore_other_cameras(self) -> primitives.Bool | None:
-        """The IgnoreOtherCameras field value."""
+        """Whether to ignore other cameras."""
         member = self.get_member("IgnoreOtherCameras")
         if member is None:
             return None
@@ -471,7 +473,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def head_forward_point_distance(self) -> primitives.Float | None:
-        """The HeadForwardPointDistance field value."""
+        """The distance from a user's head in a group to stay back from when the camera in front of them."""
         member = self.get_member("HeadForwardPointDistance")
         if member is None:
             return None
@@ -490,7 +492,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def head_backward_point_distance(self) -> primitives.Float | None:
-        """The HeadBackwardPointDistance field value."""
+        """The distance from a user's head in a group to stay back from when the camera is behind them."""
         member = self.get_member("HeadBackwardPointDistance")
         if member is None:
             return None
@@ -509,7 +511,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def head_up_point_distance(self) -> primitives.Float | None:
-        """The HeadUpPointDistance field value."""
+        """The distance from a user's head in a group to stay back from when the camera is above them."""
         member = self.get_member("HeadUpPointDistance")
         if member is None:
             return None
@@ -528,7 +530,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def head_down_point_distance(self) -> primitives.Float | None:
-        """The HeadDownPointDistance field value."""
+        """The distance from a user's head in a group to stay back from when the camera is below them."""
         member = self.get_member("HeadDownPointDistance")
         if member is None:
             return None
@@ -547,7 +549,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def height_offset(self) -> primitives.Float | None:
-        """The HeightOffset field value."""
+        """How far up or down to look from a target user's view point."""
         member = self.get_member("HeightOffset")
         if member is None:
             return None
@@ -566,7 +568,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def circle_offset(self) -> primitives.Float | None:
-        """The CircleOffset field value."""
+        """The offset from the circle around a user to position this component"""
         member = self.get_member("CircleOffset")
         if member is None:
             return None
@@ -585,7 +587,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def distance_offset(self) -> primitives.Float | None:
-        """The DistanceOffset field value."""
+        """The distance offset to have from a target."""
         member = self.get_member("DistanceOffset")
         if member is None:
             return None
@@ -604,7 +606,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def circle_speed(self) -> primitives.Float | None:
-        """The CircleSpeed field value."""
+        """How fast to travel a circle around a target."""
         member = self.get_member("CircleSpeed")
         if member is None:
             return None
@@ -623,7 +625,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def position_speed(self) -> primitives.Float | None:
-        """The PositionSpeed field value."""
+        """The speed of this component's position change."""
         member = self.get_member("PositionSpeed")
         if member is None:
             return None
@@ -642,7 +644,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def look_speed(self) -> primitives.Float | None:
-        """The LookSpeed field value."""
+        """The look around speed of the camera."""
         member = self.get_member("LookSpeed")
         if member is None:
             return None
@@ -661,7 +663,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def distance_speed(self) -> primitives.Float | None:
-        """The DistanceSpeed field value."""
+        """How fast to close the distance in seconds to a target position when focusing on something or a UI."""
         member = self.get_member("DistanceSpeed")
         if member is None:
             return None
@@ -680,7 +682,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_influence_speed(self) -> primitives.Float | None:
-        """The UserInfluenceSpeed field value."""
+        """How fast to restore user influence."""
         member = self.get_member("UserInfluenceSpeed")
         if member is None:
             return None
@@ -699,7 +701,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def height_amplitude(self) -> primitives.Float | None:
-        """The HeightAmplitude field value."""
+        """The height Amplitude for a target height."""
         member = self.get_member("HeightAmplitude")
         if member is None:
             return None
@@ -718,7 +720,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def distance_amplitude(self) -> primitives.Float | None:
-        """The DistanceAmplitude field value."""
+        """The distance Amplitude for a target distance from a subject."""
         member = self.get_member("DistanceAmplitude")
         if member is None:
             return None
@@ -737,7 +739,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def circle_amplitude(self) -> primitives.Float | None:
-        """The CircleAmplitude field value."""
+        """The circle Amplitude for a circle distance."""
         member = self.get_member("CircleAmplitude")
         if member is None:
             return None
@@ -756,7 +758,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def height_period(self) -> primitives.Float | None:
-        """The HeightPeriod field value."""
+        """The period in which to change height."""
         member = self.get_member("HeightPeriod")
         if member is None:
             return None
@@ -775,7 +777,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def distance_period(self) -> primitives.Float | None:
-        """The DistancePeriod field value."""
+        """The period in which to change distance."""
         member = self.get_member("DistancePeriod")
         if member is None:
             return None
@@ -794,7 +796,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def circle_period(self) -> primitives.Float | None:
-        """The CirclePeriod field value."""
+        """The period in which to change circle distance."""
         member = self.get_member("CirclePeriod")
         if member is None:
             return None
@@ -813,7 +815,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def circle_period_noise_speed(self) -> primitives.Float | None:
-        """The CirclePeriodNoiseSpeed field value."""
+        """The speed of noise influence on the circle period attribute."""
         member = self.get_member("CirclePeriodNoiseSpeed")
         if member is None:
             return None
@@ -832,7 +834,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def circle_period_noise_influence(self) -> primitives.Float | None:
-        """The CirclePeriodNoiseInfluence field value."""
+        """The influence of noise on the circle period attribute."""
         member = self.get_member("CirclePeriodNoiseInfluence")
         if member is None:
             return None
@@ -851,7 +853,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def check_occlusion(self) -> primitives.Bool | None:
-        """The CheckOcclusion field value."""
+        """Whether to check if a subject has parts of them occluded."""
         member = self.get_member("CheckOcclusion")
         if member is None:
             return None
@@ -870,7 +872,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def adjust_height_on_occlusion(self) -> primitives.Bool | None:
-        """The AdjustHeightOnOcclusion field value."""
+        """Whether to adjust camera height when the target is occluded."""
         member = self.get_member("AdjustHeightOnOcclusion")
         if member is None:
             return None
@@ -889,7 +891,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def teleport_wait_time(self) -> primitives.Float | None:
-        """The TeleportWaitTime field value."""
+        """How long to wait before teleporting to a target position."""
         member = self.get_member("TeleportWaitTime")
         if member is None:
             return None
@@ -908,7 +910,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def teleport_trigger_relative_distance(self) -> primitives.Float | None:
-        """The TeleportTriggerRelativeDistance field value."""
+        """How far of a distance is needed to teleport to a target position."""
         member = self.get_member("TeleportTriggerRelativeDistance")
         if member is None:
             return None
@@ -927,7 +929,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def teleport_trigger_angle(self) -> primitives.Float | None:
-        """The TeleportTriggerAngle field value."""
+        """How big of an angle needed to teleport to a target rotation."""
         member = self.get_member("TeleportTriggerAngle")
         if member is None:
             return None
@@ -946,7 +948,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_randomize_fov_interval(self) -> primitives.Float | None:
-        """The MinRandomizeFovInterval field value."""
+        """The minimum time to wait before randomly changing the camera FOV."""
         member = self.get_member("MinRandomizeFovInterval")
         if member is None:
             return None
@@ -965,7 +967,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_randomize_fov_interval(self) -> primitives.Float | None:
-        """The MaxRandomizeFovInterval field value."""
+        """The maximum time to wait before randomly changing the camera FOV."""
         member = self.get_member("MaxRandomizeFovInterval")
         if member is None:
             return None
@@ -984,7 +986,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_fov(self) -> primitives.Float | None:
-        """The MinFov field value."""
+        """The minimum FOV this camera can randomly change to."""
         member = self.get_member("MinFov")
         if member is None:
             return None
@@ -1003,7 +1005,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_fov(self) -> primitives.Float | None:
-        """The MaxFov field value."""
+        """The maximum FOV this camera can randomly change to."""
         member = self.get_member("MaxFov")
         if member is None:
             return None
@@ -1022,7 +1024,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_change_fov_time(self) -> primitives.Float | None:
-        """The MinChangeFovTime field value."""
+        """The minimum time it takes for the FOV on this camera to change randomly."""
         member = self.get_member("MinChangeFovTime")
         if member is None:
             return None
@@ -1041,7 +1043,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_change_fov_time(self) -> primitives.Float | None:
-        """The MaxChangeFovTime field value."""
+        """The maximum time it takes for the FOV on this camera to change randomly."""
         member = self.get_member("MaxChangeFovTime")
         if member is None:
             return None

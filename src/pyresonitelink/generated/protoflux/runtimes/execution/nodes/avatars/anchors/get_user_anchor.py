@@ -33,7 +33,9 @@ class GetUserAnchor(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user to check for what anchor they are sitting in.
+
+If there is no source input then the local user will be used."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

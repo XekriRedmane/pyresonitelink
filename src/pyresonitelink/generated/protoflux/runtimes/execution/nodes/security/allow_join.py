@@ -38,7 +38,7 @@ class AllowJoin(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continue the code from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class AllowJoin(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
 
     @property
     def handle(self) -> str | None:
-        """Target ID of the Handle reference (targets INodeObjectOutput[JoinRequestHandle])."""
+        """The handle for the join verification system."""
         member = self.get_member("Handle")
         if isinstance(member, members.Reference):
             return member.targetId

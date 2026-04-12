@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RepulsionTreeSimulator(GeneratedComponent, IRepulsionTreeNode, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RepulsionTreeSimulator.
+    """The RepulsionTreeSimulator can be used alongside the RepulsionTreeItem component on it's children slots to create a repulsion tree simulation. A repulsion tree is a simulation that keeps a bunch of RepulsionTreeItems on the outside shell of a sphere. The different slots of the tree will move around as they push or pull each other in real time.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RepulsionTreeSimulator"
@@ -33,7 +33,7 @@ class RepulsionTreeSimulator(GeneratedComponent, IRepulsionTreeNode, IWorldEvent
 
     @property
     def falloff_power(self) -> primitives.Float | None:
-        """The FalloffPower field value."""
+        """how quickly the force power diminishes by distance."""
         member = self.get_member("FalloffPower")
         if member is None:
             return None
@@ -52,7 +52,7 @@ class RepulsionTreeSimulator(GeneratedComponent, IRepulsionTreeNode, IWorldEvent
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of this repulsion tree's sphere."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -71,7 +71,7 @@ class RepulsionTreeSimulator(GeneratedComponent, IRepulsionTreeNode, IWorldEvent
 
     @property
     def force(self) -> primitives.Float | None:
-        """The Force field value."""
+        """how much to multiply the forces of the children objects."""
         member = self.get_member("Force")
         if member is None:
             return None

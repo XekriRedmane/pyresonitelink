@@ -13,9 +13,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueGraphRecorder.
+    """The ValueGraphRecorder component is used to show a graph of values over time with a specified number of points worth of history. As new points are added, the graph is shifted sideways and old points are deleted.
 
     Category: Utility
+
+    Attach to a slot and use with a StandaloneRectMesh on a MeshRenderer
+    with a material to view. Use either the fields or drive fields to drive
+    aspects of the graph display for viewing the graph line.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ValueGraphRecorder"
@@ -78,7 +82,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def recording_user(self) -> members.SyncObject | None:
-        """The RecordingUser member."""
+        """The user handling updates for this component."""
         member = self.get_member("RecordingUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -86,12 +90,12 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @recording_user.setter
     def recording_user(self, value: members.SyncObject) -> None:
-        """Set the RecordingUser member."""
+        """Set RecordingUser. The user handling updates for this component."""
         self.set_member("RecordingUser", value)
 
     @property
     def source_value(self) -> str | None:
-        """Target ID of the SourceValue reference (targets IField[primitives.Float])."""
+        """The field that will be sampled for values."""
         member = self.get_member("SourceValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +116,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def update_interval(self) -> primitives.Float | None:
-        """The UpdateInterval field value."""
+        """The interval, in seconds, that the source field will be sampled at."""
         member = self.get_member("UpdateInterval")
         if member is None:
             return None
@@ -131,7 +135,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def points(self) -> primitives.Int | None:
-        """The Points field value."""
+        """The number of samples to retain."""
         member = self.get_member("Points")
         if member is None:
             return None
@@ -150,7 +154,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_array(self) -> str | None:
-        """Target ID of the TargetArray reference (targets SyncArray[primitives.Float])."""
+        """The array to store samples in. Typically this will be the Values field in a StandaloneRectMesh&lt;LineGraphMesh&gt;"""
         member = self.get_member("TargetArray")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -171,7 +175,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_array_offset(self) -> str | None:
-        """Target ID of the TargetArrayOffset reference (targets IField[primitives.Int])."""
+        """The integer field to set with the offset of where in the TargetArray to start showing samples at."""
         member = self.get_member("TargetArrayOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -192,7 +196,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_range_adjust_threshold(self) -> primitives.Float | None:
-        """The MinRangeAdjustThreshold field value."""
+        """If a value in the graph goes beyond this value for currently shown samples, adjust the graph minimum value."""
         member = self.get_member("MinRangeAdjustThreshold")
         if member is None:
             return None
@@ -211,7 +215,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_range_adjust_multiplier(self) -> primitives.Float | None:
-        """The MinRangeAdjustMultiplier field value."""
+        """How much to increase the graph size downwards when adjusting for min value (1 is exactly to where the value edge is, 2 is add 2 times the needed value to show min on the graph."""
         member = self.get_member("MinRangeAdjustMultiplier")
         if member is None:
             return None
@@ -230,7 +234,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_range_adjust_threshold(self) -> primitives.Float | None:
-        """The MaxRangeAdjustThreshold field value."""
+        """If a value in the graph goes beyond this value for currently shown samples, adjust the graph maximum value."""
         member = self.get_member("MaxRangeAdjustThreshold")
         if member is None:
             return None
@@ -249,7 +253,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_range_adjust_multiplier(self) -> primitives.Float | None:
-        """The MaxRangeAdjustMultiplier field value."""
+        """How much to increase the graph size upwards when adjusting for min value (1 is exactly to where the value edge is, 2 is add 2 times the needed value to show min on the graph."""
         member = self.get_member("MaxRangeAdjustMultiplier")
         if member is None:
             return None
@@ -268,7 +272,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def range_min(self) -> str | None:
-        """Target ID of the RangeMin reference (targets IField[primitives.Float])."""
+        """The field to drive with what the minimum range of the graph all points being shown is currently."""
         member = self.get_member("RangeMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -289,7 +293,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def range_max(self) -> str | None:
-        """Target ID of the RangeMax reference (targets IField[primitives.Float])."""
+        """The field to drive with what the maximum range of the graph all points being shown is currently."""
         member = self.get_member("RangeMax")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -310,7 +314,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def drive(self) -> primitives.Bool | None:
-        """The Drive field value."""
+        """Whether to use drive fields to drive target values rather than field pointers. Makes the calculations local."""
         member = self.get_member("Drive")
         if member is None:
             return None
@@ -329,7 +333,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def array_drive(self) -> str | None:
-        """Target ID of the _arrayDrive reference (targets SyncArray[primitives.Float])."""
+        """The field to drive with the set of samples. Typically this will be the Values field in a StandaloneRectMesh&lt;LineGraphMesh&gt;"""
         member = self.get_member("_arrayDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -350,7 +354,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def array_offset_drive(self) -> str | None:
-        """Target ID of the _arrayOffsetDrive reference (targets IField[primitives.Int])."""
+        """The integer field to drive with the offset in the TargetArray to start showing samples at."""
         member = self.get_member("_arrayOffsetDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -371,7 +375,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def range_min_drive(self) -> str | None:
-        """Target ID of the _rangeMinDrive reference (targets IField[primitives.Float])."""
+        """The field to drive with what the minimum range of the graph all points being shown is currently."""
         member = self.get_member("_rangeMinDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -392,7 +396,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def range_max_drive(self) -> str | None:
-        """Target ID of the _rangeMaxDrive reference (targets IField[primitives.Float])."""
+        """The field to drive with what the maximum range of the graph all points being shown is currently."""
         member = self.get_member("_rangeMaxDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -412,7 +416,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     async def write_value(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the WriteValue sync method.
+        """force a write of a value to the graph rather than waiting on ``Interval``
 
         Returns:
             The raw JSON response dict.

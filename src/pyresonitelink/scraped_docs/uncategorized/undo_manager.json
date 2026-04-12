@@ -1,0 +1,12 @@
+{
+  "description": "The UndoManager component keeps track of all user's actions in the world, allowing users to Undo or revert back to a previous step or action. Undoing can be controlled in ProtoFlux within the Undo Category, where users create undo batches and steps that this component can utilize. Undoing can be disabled by setting max steps to ``0``.",
+  "category": "Uncategorized",
+  "fields": {
+    "MaxUndoSteps": "The maximum memory for Undoable actions per user for the current world.",
+    "UnsavedChanges": "Whether the user has done anything that makes an undo step, which tells the world it has unsaved changes."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UndoManager&action=raw"
+}

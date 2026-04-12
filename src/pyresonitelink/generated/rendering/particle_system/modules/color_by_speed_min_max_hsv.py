@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ColorBySpeedMinMaxHSV.
+    """The Color By Speed Min Max HSV component changes the HSV values of particles in a particle system depending on their speed.
 
     Category: Rendering/Particle System/Modules
     """
@@ -50,7 +50,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     @property
     def min_speed(self) -> primitives.Float | None:
-        """The MinSpeed field value."""
+        """The speed the particle has to be be traveling at or under to be considered minimum speed."""
         member = self.get_member("MinSpeed")
         if member is None:
             return None
@@ -69,7 +69,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     @property
     def max_speed(self) -> primitives.Float | None:
-        """The MaxSpeed field value."""
+        """The speed the particle has to be be traveling at or above to be considered maximum speed."""
         member = self.get_member("MaxSpeed")
         if member is None:
             return None
@@ -88,7 +88,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     @property
     def min_hue(self) -> primitives.Float | None:
-        """The MinHue field value."""
+        """The Hue to display when traveling at or below ``MinSpeed``."""
         member = self.get_member("MinHue")
         if member is None:
             return None
@@ -107,7 +107,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     @property
     def max_hue(self) -> primitives.Float | None:
-        """The MaxHue field value."""
+        """The Hue to display when traveling at or above ``MaxSpeed``"""
         member = self.get_member("MaxHue")
         if member is None:
             return None
@@ -126,7 +126,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     @property
     def min_saturation(self) -> primitives.Float | None:
-        """The MinSaturation field value."""
+        """The Saturation to display when traveling at or below ``MinSpeed``."""
         member = self.get_member("MinSaturation")
         if member is None:
             return None
@@ -145,7 +145,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     @property
     def max_saturation(self) -> primitives.Float | None:
-        """The MaxSaturation field value."""
+        """The Saturation to display when traveling at or above ``MaxSpeed``"""
         member = self.get_member("MaxSaturation")
         if member is None:
             return None
@@ -164,7 +164,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     @property
     def min_value(self) -> primitives.Float | None:
-        """The MinValue field value."""
+        """The Value to display when traveling at or below ``MinSpeed``."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -183,7 +183,7 @@ class ColorBySpeedMinMaxHSV(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     @property
     def max_value(self) -> primitives.Float | None:
-        """The MaxValue field value."""
+        """The Value to display when traveling at or above ``MaxSpeed``"""
         member = self.get_member("MaxValue")
         if member is None:
             return None

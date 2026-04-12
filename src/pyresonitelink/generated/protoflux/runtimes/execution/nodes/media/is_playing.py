@@ -34,7 +34,7 @@ class IsPlaying(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeObjectOutput[IPlayable])."""
+        """The clip to check if it is playing"""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId

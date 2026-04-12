@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalDateTimeConvertor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocalDateTimeConvertor.
+    """The LocalDateTimeConvertor converts an inputted time to the user's local timezone.
 
     Category: Data/Conversions
     """
@@ -33,7 +33,7 @@ class LocalDateTimeConvertor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IField[str])."""
+        """The source field holding the date time to convert."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -54,7 +54,7 @@ class LocalDateTimeConvertor(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def local_date_time(self) -> str | None:
-        """The LocalDateTime field value."""
+        """The value of the field targeted by ``Source`` converted to the local user's datetime."""
         member = self.get_member("LocalDateTime")
         if member is None:
             return None

@@ -12,7 +12,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceProxy(GeneratedComponent, IReferenceSource, ITriggerActionReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceProxy.
+    """The ReferenceProxy component is used to make a grabbed item this is on act as the reference this refers to. This is also generated when a reference in an Scene Inspector is grabbed in the form of a block of text showing the reference and its id.
+
+    Attach to a slot with an IGrabbable to make the grabbable act as the
+    reference value itself.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReferenceProxy"
@@ -33,7 +36,7 @@ class ReferenceProxy(GeneratedComponent, IReferenceSource, ITriggerActionReceive
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets IWorldElement)."""
+        """The reference this component should point to for grabbable objects, making them like inspector grab cards."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -54,7 +57,7 @@ class ReferenceProxy(GeneratedComponent, IReferenceSource, ITriggerActionReceive
 
     @property
     def spawn_instance_on_trigger(self) -> primitives.Bool | None:
-        """The SpawnInstanceOnTrigger field value."""
+        """Whether to spawn an inspector when clicking primary with the grabbable this is on is being held."""
         member = self.get_member("SpawnInstanceOnTrigger")
         if member is None:
             return None

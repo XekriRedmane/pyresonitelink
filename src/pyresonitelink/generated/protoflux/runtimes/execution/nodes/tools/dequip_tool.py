@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Dequip Tool node makes a user take off a tool from their hand of a specific side of that user.
+    """The ``Dequip Tool`` node makes a user take off a tool from their hand of a specific side of that user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """
@@ -50,7 +50,7 @@ class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user to dequip the tool from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -71,7 +71,7 @@ class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def side(self) -> str | None:
-        """Target ID of the Side reference (targets INodeValueOutput[Chirality])."""
+        """The side to dequip from."""
         member = self.get_member("Side")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +92,7 @@ class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def pop_off(self) -> str | None:
-        """Target ID of the PopOff reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should the tool pop off a certain distance from your hand."""
         member = self.get_member("PopOff")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -113,7 +113,7 @@ class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def on_dequipped(self) -> str | None:
-        """Target ID of the OnDequipped reference (targets INodeOperation)."""
+        """Fires when the tool is dequipped."""
         member = self.get_member("OnDequipped")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -134,7 +134,7 @@ class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def on_dequip_fail(self) -> str | None:
-        """Target ID of the OnDequipFail reference (targets INodeOperation)."""
+        """Fires when the tool failed to dequip in any way."""
         member = self.get_member("OnDequipFail")
         if isinstance(member, members.Reference):
             return member.targetId

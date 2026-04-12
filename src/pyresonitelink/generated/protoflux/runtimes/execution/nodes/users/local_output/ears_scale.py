@@ -12,6 +12,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class EarsScale(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Ears Scale node returns the local user's audio output (hearing audio) scale.
 
+The Camera has the ability to override this scale by using the ``Audio from camera viewpoint`` setting, and if true, will return this new scale value, otherwise it will just use the user's head proxy's scale.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Local Output
     """
 

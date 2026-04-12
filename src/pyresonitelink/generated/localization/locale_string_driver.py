@@ -14,9 +14,36 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocaleStringDriver.
+    """The LocaleStringDriver component is used to turn a key into a translated string from a locale, and then fill its value arguments with field contents or values.
 
     Category: Localization
+
+    To use the LocaleStringDriver provide it with locale resource, a string
+    to be driven and the name of the locale key you want to use. A list of
+    all locale keys can be found in the Yellow-Dog-Man/Locale repository.
+    You can find a locale resource in the form of the StaticLocaleProvider
+    component on the world Root slot. If the locale string has no template
+    arguments (for example "General.OK") this is all that you need to do. If
+    it does have template parameters you will need to provide them using the
+    ArgumentSources and ArgumentValues dictionaries. Because Resonite does
+    not support editing Dictionaries through the scene inspector, you will
+    need to use the Sync Delegates that the component exposes. For example,
+    if you want to format the "Dash.Exit.Header" key which in english has
+    the value "Exit {appName}" you would need to provide the "appName"
+    parameter using one of the dictionaries. The ArgumentValues dictionary
+    will take priority over the ArgumentSources dictionary. ArgumentSources
+    maps parameter names to fields which will then be read to format the
+    string. To add a parameter pull out the method proxy for
+    SetArgumentSource and plug "appName" into Arg0 and a reference to the
+    field you want to use. In this example you might want to use the
+    PlatformName field of the PlatformInfo component. ArgumentValues maps
+    parameter names to values which will be directly used to format the
+    string. To add a parameter pull out the method proxy for
+    SetArgumentValue and plug "appName" into Arg0 and a string with the
+    value you'd like into Arg1. The Format field on the LocaleStringDriver
+    component can also be used to add some extra text around the translated
+    string, for example putting "Click here to {0}" would produce "Click
+    here to Exit Resonite" with the above example. 600px
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocaleStringDriver"
@@ -43,7 +70,7 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.String])."""
+        """The string field to drive with the final locale translation."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +91,7 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def key(self) -> primitives.String | None:
-        """The Key field value."""
+        """The locale key to get a translation with."""
         member = self.get_member("Key")
         if member is None:
             return None
@@ -83,7 +110,7 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def format_(self) -> primitives.String | None:
-        """The Format field value."""
+        """How to format the output."""
         member = self.get_member("Format")
         if member is None:
             return None
@@ -102,7 +129,7 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def locale(self) -> str | None:
-        """Target ID of the Locale reference (targets IAssetProvider[LocaleResource])."""
+        """The locale resource to use ``Key`` on to get the translated string for."""
         member = self.get_member("Locale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -123,7 +150,7 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def argument_sources(self) -> members.SyncDictionary | None:
-        """The ArgumentSources member."""
+        """A list of argument strings in a locale translation and their fields to get the values for them from."""
         member = self.get_member("ArgumentSources")
         if isinstance(member, members.SyncDictionary):
             return member
@@ -131,11 +158,11 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @argument_sources.setter
     def argument_sources(self, value: members.SyncDictionary) -> None:
-        """Set the ArgumentSources member."""
+        """Set ArgumentSources. A list of argument strings in a locale translation and their fields to get the values for them from."""
         self.set_member("ArgumentSources", value)
 
     async def set_argument_source(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, field: str, debug: bool = False) -> dict:
-        """Call the SetArgumentSource sync method.
+        """Can be called to set the argument source for the locale data.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -151,7 +178,7 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         )
 
     async def set_argument_value(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, value: str, debug: bool = False) -> dict:
-        """Call the SetArgumentValue sync method.
+        """Can be called to set the argument value for the locale data.
 
         Args:
             resolink: Connected ResoniteLink client.

@@ -18,9 +18,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TeleportLocomotion.
+    """The TeleportLocomotion component is used to allow users to teleport to spots using an arc path as a location selector.
 
     Category: Locomotion/Modules
+
+    Used for accessibility reasons, and for puzzle games.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TeleportLocomotion"
@@ -213,7 +215,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def backstep_distance(self) -> primitives.Float | None:
-        """The BackstepDistance field value."""
+        """How far to go backwards when pressing the backwards movement direction."""
         member = self.get_member("BackstepDistance")
         if member is None:
             return None
@@ -232,7 +234,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def activation_time(self) -> primitives.Float | None:
-        """The ActivationTime field value."""
+        """How long it takes for the teleport visual to show and for the locomotion to allow teleport when pressing the forward movement direction."""
         member = self.get_member("ActivationTime")
         if member is None:
             return None
@@ -251,7 +253,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def height_input_max(self) -> primitives.Float | None:
-        """The HeightInputMax field value."""
+        """The maximum teleport up distance."""
         member = self.get_member("HeightInputMax")
         if member is None:
             return None
@@ -270,7 +272,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def height_input_min(self) -> primitives.Float | None:
-        """The HeightInputMin field value."""
+        """The minimum teleport height distance."""
         member = self.get_member("HeightInputMin")
         if member is None:
             return None
@@ -289,7 +291,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def initial_force_min(self) -> primitives.Float | None:
-        """The InitialForceMin field value."""
+        """The minimum inital arc force value for the destination selection arc."""
         member = self.get_member("InitialForceMin")
         if member is None:
             return None
@@ -308,7 +310,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def initial_force_max(self) -> primitives.Float | None:
-        """The InitialForceMax field value."""
+        """The maximum inital arc force value for the destination selection arc."""
         member = self.get_member("InitialForceMax")
         if member is None:
             return None
@@ -327,7 +329,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def range_exp(self) -> primitives.Float | None:
-        """The RangeExp field value."""
+        """The amount to boost the teleport range."""
         member = self.get_member("RangeExp")
         if member is None:
             return None
@@ -346,7 +348,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def step_unit(self) -> primitives.Float | None:
-        """The StepUnit field value."""
+        """What to use for the step value in the teleport arc."""
         member = self.get_member("StepUnit")
         if member is None:
             return None
@@ -365,7 +367,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def drag(self) -> primitives.Float | None:
-        """The Drag field value."""
+        """What to use for the drag value in the teleport arc."""
         member = self.get_member("Drag")
         if member is None:
             return None
@@ -384,7 +386,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def max_small_object_size(self) -> primitives.Float | None:
-        """The MaxSmallObjectSize field value."""
+        """The maximum size to allow before a small object is not ignored for teleport destinations."""
         member = self.get_member("MaxSmallObjectSize")
         if member is None:
             return None
@@ -403,7 +405,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def wall_distance(self) -> primitives.Float | None:
-        """The WallDistance field value."""
+        """The depth a wall has to be compared to the user's size to be considered a wall."""
         member = self.get_member("WallDistance")
         if member is None:
             return None
@@ -422,7 +424,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def path_mesh(self) -> str | None:
-        """Target ID of the _pathMesh reference (targets BallisticPathMesh)."""
+        """The path mesh being used to display this locomotion's teleport location selector."""
         member = self.get_member("_pathMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -443,7 +445,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def path_material(self) -> str | None:
-        """Target ID of the _pathMaterial reference (targets PBS_RimMetallic)."""
+        """The material to control the look of that is on ``_pathMesh``."""
         member = self.get_member("_pathMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -464,7 +466,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def path_renderer(self) -> str | None:
-        """Target ID of the _pathRenderer reference (targets MeshRenderer)."""
+        """The renderer of this teleport locomotion's location selector visual."""
         member = self.get_member("_pathRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -485,7 +487,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def path_visual(self) -> str | None:
-        """Target ID of the _pathVisual reference (targets Slot)."""
+        """the root slot of this teleport locomotion's location selector visual"""
         member = self.get_member("_pathVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -506,7 +508,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def target_point_visual(self) -> str | None:
-        """Target ID of the _targetPointVisual reference (targets Slot)."""
+        """the root of the hit point visual of this teleport locomotion's location selector visual"""
         member = self.get_member("_targetPointVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -527,7 +529,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
 
     @property
     def character_controller(self) -> str | None:
-        """Target ID of the _characterController reference (targets CharacterController)."""
+        """The character controller for this teleport locomotion."""
         member = self.get_member("_characterController")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.RendererDecouplingSettings.
+    """The Renderer Decoupling Settings component controls how the render engine will decouple from FrooxEngine when FrooxEngine lags to prevent sea-sickness.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RendererDecouplingSettings"
@@ -36,7 +36,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def activation_framerate(self) -> primitives.Float | None:
-        """The ActivationFramerate field value."""
+        """How low the framerate from frooxengine needs to be to activate a decoupled frooxengine state"""
         member = self.get_member("ActivationFramerate")
         if member is None:
             return None
@@ -55,7 +55,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def deactivation_frames(self) -> primitives.Int | None:
-        """The DeactivationFrames field value."""
+        """How high the framerate from frooxengine needs to be to deactivate a decoupled frooxengine state"""
         member = self.get_member("DeactivationFrames")
         if member is None:
             return None
@@ -74,7 +74,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def force_decouple(self) -> primitives.Bool | None:
-        """The ForceDecouple field value."""
+        """Whether or not to wait for frooxengine at all, and to just runaway render frames."""
         member = self.get_member("ForceDecouple")
         if member is None:
             return None
@@ -93,7 +93,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def asset_processing_max_time_milliseconds(self) -> primitives.Float | None:
-        """The AssetProcessingMaxTimeMilliseconds field value."""
+        """How long to wait to process assets before continuing on the next frame anyways."""
         member = self.get_member("AssetProcessingMaxTimeMilliseconds")
         if member is None:
             return None
@@ -111,7 +111,7 @@ class RendererDecouplingSettings(GeneratedComponent, ICustomInspector):
             )
 
     async def reset_to_default(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ResetToDefault sync method.
+        """Reset settings on this component back to their default.
 
         Returns:
             The raw JSON response dict.

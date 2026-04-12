@@ -4,6 +4,9 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.step_mode import StepMode
+from pyresonitelink.generated._enums.path_shape import PathShape
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,26 +15,31 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BallisticPathMesh.
+    """The ballistics path mesh is a component that generates a stripe or tube mesh that traces the future path of a virtual thrown object.
+
+Tube mode currently does not work due to a small oversight. See issue 2901
 
     Category: Assets/Procedural Meshes
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BallisticPathMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, initial_position: primitives.Float3 | None = None, initial_velocity: primitives.Float3 | None = None, gravity: primitives.Float3 | None = None, drag: primitives.Float | None = None, step_size: primitives.Float | None = None, total_units: primitives.Float | None = None, size: primitives.Float | None = None, points: primitives.Int | None = None, dual_sided: primitives.Bool | None = None, up: primitives.Float3 | None = None, distance_size_growth: primitives.Float | None = None, min_grown_size: primitives.Float | None = None, max_grown_size: primitives.Float | None = None, use_last_segment: primitives.Bool | None = None, last_segment_position: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, initial_position: primitives.Float3 | None = None, initial_velocity: primitives.Float3 | None = None, gravity: primitives.Float3 | None = None, drag: primitives.Float | None = None, mode: StepMode | str | None = None, step_size: primitives.Float | None = None, total_units: primitives.Float | None = None, shape: PathShape | str | None = None, size: primitives.Float | None = None, points: primitives.Int | None = None, dual_sided: primitives.Bool | None = None, up: primitives.Float3 | None = None, distance_size_growth: primitives.Float | None = None, min_grown_size: primitives.Float | None = None, max_grown_size: primitives.Float | None = None, use_last_segment: primitives.Bool | None = None, last_segment_position: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             initial_position: Initial value for InitialPosition.
             initial_velocity: Initial value for InitialVelocity.
             gravity: Initial value for Gravity.
             drag: Initial value for Drag.
+            mode: Initial value for Mode.
             step_size: Initial value for StepSize.
             total_units: Initial value for TotalUnits.
+            shape: Initial value for Shape.
             size: Initial value for Size.
             points: Initial value for Points.
             dual_sided: Initial value for DualSided.
@@ -50,6 +58,8 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if initial_position is not None:
             self.initial_position = initial_position
         if initial_velocity is not None:
@@ -58,10 +68,14 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             self.gravity = gravity
         if drag is not None:
             self.drag = drag
+        if mode is not None:
+            self.mode = mode
         if step_size is not None:
             self.step_size = step_size
         if total_units is not None:
             self.total_units = total_units
+        if shape is not None:
+            self.shape = shape
         if size is not None:
             self.size = size
         if points is not None:
@@ -139,21 +153,28 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def initial_position(self) -> primitives.Float3 | None:
-        """The InitialPosition field value."""
+        """The initial position of the ballistics path."""
         member = self.get_member("InitialPosition")
         if member is None:
             return None
@@ -172,7 +193,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def initial_velocity(self) -> primitives.Float3 | None:
-        """The InitialVelocity field value."""
+        """The initial velocity of the ballistics path."""
         member = self.get_member("InitialVelocity")
         if member is None:
             return None
@@ -191,7 +212,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def gravity(self) -> primitives.Float3 | None:
-        """The Gravity field value."""
+        """The gravity affecting the ballistics path (m/s^2)"""
         member = self.get_member("Gravity")
         if member is None:
             return None
@@ -210,7 +231,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def drag(self) -> primitives.Float | None:
-        """The Drag field value."""
+        """the resistance through the air of the generated ballistics path"""
         member = self.get_member("Drag")
         if member is None:
             return None
@@ -228,21 +249,28 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> StepMode | None:
+        """What units ``StepSize`` is in."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return StepMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: StepMode | str) -> None:
+        """Set Mode. What units ``StepSize`` is in."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def step_size(self) -> primitives.Float | None:
-        """The StepSize field value."""
+        """How many units maximum every bend/segment is in length (the last segment may be shorter)."""
         member = self.get_member("StepSize")
         if member is None:
             return None
@@ -261,7 +289,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def total_units(self) -> primitives.Float | None:
-        """The TotalUnits field value."""
+        """How many segments the path mesh will have give or take 1 or 2."""
         member = self.get_member("TotalUnits")
         if member is None:
             return None
@@ -279,21 +307,28 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
             )
 
     @property
-    def shape(self) -> members.FieldEnum | None:
-        """The Shape member."""
+    def shape(self) -> PathShape | None:
+        """What shape the arc should be rendered as."""
         member = self.get_member("Shape")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return PathShape(member.value)
         return None
 
     @shape.setter
-    def shape(self, value: members.FieldEnum) -> None:
-        """Set the Shape member."""
-        self.set_member("Shape", value)
+    def shape(self, value: PathShape | str) -> None:
+        """Set Shape. What shape the arc should be rendered as."""
+        member = self.get_member("Shape")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Shape",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def size(self) -> primitives.Float | None:
-        """The Size field value."""
+        """How big to scale this ballisitics path"""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -312,7 +347,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def points(self) -> primitives.Int | None:
-        """The Points field value."""
+        """how many sides the tube mesh uses. Only accepts values greater than or equal to 3."""
         member = self.get_member("Points")
         if member is None:
             return None
@@ -331,7 +366,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def dual_sided(self) -> primitives.Bool | None:
-        """The DualSided field value."""
+        """whether the generated mesh should be dual sided."""
         member = self.get_member("DualSided")
         if member is None:
             return None
@@ -350,7 +385,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def up(self) -> primitives.Float3 | None:
-        """The Up field value."""
+        """The up direction against gravity for the generated mesh (local space)"""
         member = self.get_member("Up")
         if member is None:
             return None
@@ -369,7 +404,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def distance_size_growth(self) -> primitives.Float | None:
-        """The DistanceSizeGrowth field value."""
+        """How much to make the width/radius of the path mesh grow as it progresses along the arc."""
         member = self.get_member("DistanceSizeGrowth")
         if member is None:
             return None
@@ -388,7 +423,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def min_grown_size(self) -> primitives.Float | None:
-        """The MinGrownSize field value."""
+        """How skinny at minimum the Ballistic Path Mesh will get from applying ``DistanceSizeGrowth``."""
         member = self.get_member("MinGrownSize")
         if member is None:
             return None
@@ -407,7 +442,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def max_grown_size(self) -> primitives.Float | None:
-        """The MaxGrownSize field value."""
+        """How wide at maximum the Ballistic Path Mesh will get from applying ``DistanceSizeGrowth``."""
         member = self.get_member("MaxGrownSize")
         if member is None:
             return None
@@ -426,7 +461,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def use_last_segment(self) -> primitives.Bool | None:
-        """The UseLastSegment field value."""
+        """Whether to add one final segment that goes to LastSegmentPosition"""
         member = self.get_member("UseLastSegment")
         if member is None:
             return None
@@ -445,7 +480,7 @@ class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def last_segment_position(self) -> primitives.Float3 | None:
-        """The LastSegmentPosition field value."""
+        """The local position to place the end of the last segment at if ``UseLastSegment`` is enabled."""
         member = self.get_member("LastSegmentPosition")
         if member is None:
             return None

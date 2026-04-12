@@ -12,9 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldCaptureThumbnailSource(GeneratedComponent, IWorldThumbnailSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldCaptureThumbnailSource.
+    """The WorldCaptureThumbnailSource component is used as a point in space to capture the preview of a world in the world browser minus users in the session when a world is saved.
 
     Category: World
+
+    see: World and Session Thumbnails#Customising Thumbnails
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldCaptureThumbnailSource"
@@ -35,7 +37,7 @@ class WorldCaptureThumbnailSource(GeneratedComponent, IWorldThumbnailSource, IWo
 
     @property
     def overlay(self) -> str | None:
-        """Target ID of the Overlay reference (targets IAssetProvider[Texture2D])."""
+        """The texture to use as an overlay for capturing the thumbnail."""
         member = self.get_member("Overlay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +58,7 @@ class WorldCaptureThumbnailSource(GeneratedComponent, IWorldThumbnailSource, IWo
 
     @property
     def exclude_users_in_capture(self) -> primitives.Bool | None:
-        """The ExcludeUsersInCapture field value."""
+        """Whether to exclude users from the thumbnail."""
         member = self.get_member("ExcludeUsersInCapture")
         if member is None:
             return None

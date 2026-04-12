@@ -15,6 +15,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class BlackBodyColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Black Body Color returns a color value of the light emitted by an ideal black body radiator. This can be used to calculate appropriate values for various color temperatures.
 
+This node can convert color values in the range 1000 - 40000 Kelvin. Values outside this range are clamped.
+
+The implementation in Resonite appears to use this table as a source of values. For values more granular than 100 Kelvin, the node interpolates linearly between the closest two values.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """
 
@@ -33,7 +37,7 @@ class BlackBodyColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def temperature(self) -> str | None:
-        """Target ID of the Temperature reference (targets INodeValueOutput[primitives.Float])."""
+        """The temperature, in Kelvin, to calculate the resulting color for."""
         member = self.get_member("Temperature")
         if isinstance(member, members.Reference):
             return member.targetId

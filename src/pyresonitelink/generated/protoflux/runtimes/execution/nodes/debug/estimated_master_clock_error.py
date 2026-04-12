@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EstimatedMasterClockError(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Estimated Master Clock Error node returns the clock error in this world. This node shows the deviation between the expected time in the world and what the clock is actually reporting. More specifically, it is the estimated Authority Time error rate. If you are the host of a world, this will show zero (0).
+    """The ``Estimated Master Clock Error`` node returns the clock error in this world. This node shows the deviation between the expected time in the world and what the clock is actually reporting. More specifically, it is the estimated Authority Time error rate. If you are the host of a world, this will show zero (0).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Debug
     """

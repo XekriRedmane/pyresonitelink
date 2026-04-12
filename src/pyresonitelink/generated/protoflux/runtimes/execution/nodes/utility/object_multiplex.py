@@ -13,13 +13,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectMultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Multiplex node is a node that changes its output to a specific input based on its index.
+    """The ``Multiplex`` node is a node that changes its output to a specific input based on its index.
+
+The node can be used as a fixed-size* array in ProtoFlux or to iterate over multiple values or variables in a For Loop. The size of a multiplex can be near infinite, and can multiplex any Type.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
 
     **Footnotes**: * It can be made bigger or smaller while editing the flux.
-
-ProtoFlux:Utility
 
     Parameterize with a value type::
 
@@ -43,7 +43,7 @@ ProtoFlux:Utility
 
     @property
     def inputs(self) -> members.SyncList | None:
-        """The Inputs member."""
+        """A fixed-size* array of items with a type that will always match Output's type."""
         member = self.get_member("Inputs")
         if isinstance(member, members.SyncList):
             return member
@@ -51,12 +51,12 @@ ProtoFlux:Utility
 
     @inputs.setter
     def inputs(self, value: members.SyncList) -> None:
-        """Set the Inputs member."""
+        """Set Inputs. A fixed-size* array of items with a type that will always match Output's type."""
         self.set_member("Inputs", value)
 
     @property
     def index(self) -> str | None:
-        """Target ID of the Index reference (targets INodeValueOutput[primitives.Int])."""
+        """Selects the input value for the output."""
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +77,7 @@ ProtoFlux:Utility
 
     @property
     def output(self) -> members.EmptyElement | None:
-        """The Output member."""
+        """Returns the selected value from the selected index."""
         member = self.get_member("Output")
         if isinstance(member, members.EmptyElement):
             return member
@@ -85,12 +85,12 @@ ProtoFlux:Utility
 
     @output.setter
     def output(self, value: members.EmptyElement) -> None:
-        """Set the Output member."""
+        """Set Output. Returns the selected value from the selected index."""
         self.set_member("Output", value)
 
     @property
     def input_count(self) -> members.EmptyElement | None:
-        """The InputCount member."""
+        """The number of inputs in the fixed-size* array of items in Inputs."""
         member = self.get_member("InputCount")
         if isinstance(member, members.EmptyElement):
             return member
@@ -98,6 +98,6 @@ ProtoFlux:Utility
 
     @input_count.setter
     def input_count(self, value: members.EmptyElement) -> None:
-        """Set the InputCount member."""
+        """Set InputCount. The number of inputs in the fixed-size* array of items in Inputs."""
         self.set_member("InputCount", value)
 

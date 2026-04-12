@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FootstepSoundDefinition.
+    """The FootstepSoundDefinition component can be referenced by other components which can trigger this to play noise during footstep events.
 
     Category: Locomotion/Footsteps
+
+    Used to play sound when footsteps happen on surfaces or it receives a
+    footstep event.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FootstepSoundDefinition"
@@ -37,7 +40,7 @@ class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorld
 
     @property
     def parent_under(self) -> str | None:
-        """Target ID of the ParentUnder reference (targets Slot)."""
+        """The slot to parent played sounds under."""
         member = self.get_member("ParentUnder")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +61,7 @@ class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorld
 
     @property
     def min_distance(self) -> primitives.Float | None:
-        """The MinDistance field value."""
+        """The minimum distance the audio can be heard from before playing at maximum amount."""
         member = self.get_member("MinDistance")
         if member is None:
             return None
@@ -77,7 +80,7 @@ class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorld
 
     @property
     def max_distance(self) -> primitives.Float | None:
-        """The MaxDistance field value."""
+        """The max distance before the audio cannot be heard anymore."""
         member = self.get_member("MaxDistance")
         if member is None:
             return None
@@ -96,7 +99,7 @@ class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorld
 
     @property
     def rolloff_mode(self) -> members.FieldEnum | None:
-        """The RolloffMode member."""
+        """How played audio should fall off based on distance."""
         member = self.get_member("RolloffMode")
         if isinstance(member, members.FieldEnum):
             return member
@@ -104,12 +107,12 @@ class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorld
 
     @rolloff_mode.setter
     def rolloff_mode(self, value: members.FieldEnum) -> None:
-        """Set the RolloffMode member."""
+        """Set RolloffMode. How played audio should fall off based on distance."""
         self.set_member("RolloffMode", value)
 
     @property
     def clips(self) -> members.SyncList | None:
-        """The Clips member."""
+        """Different footsteps that can play when this component is triggered"""
         member = self.get_member("Clips")
         if isinstance(member, members.SyncList):
             return member
@@ -117,6 +120,6 @@ class FootstepSoundDefinition(GeneratedComponent, IFootstepSoundMaterial, IWorld
 
     @clips.setter
     def clips(self, value: members.SyncList) -> None:
-        """Set the Clips member."""
+        """Set Clips. Different footsteps that can play when this component is triggered"""
         self.set_member("Clips", value)
 

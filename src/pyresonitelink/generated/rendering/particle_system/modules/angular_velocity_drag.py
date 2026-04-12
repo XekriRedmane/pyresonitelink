@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AngularVelocityDrag(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.AngularVelocityDrag.
+    """The Angular Velocity Drag component reduces the angular momentum of particles in a particle system over time.
 
     Category: Rendering/Particle System/Modules
     """
@@ -29,7 +29,7 @@ class AngularVelocityDrag(GeneratedComponent, IParticleSystemModule, IWorldEvent
 
     @property
     def drag(self) -> primitives.Float | None:
-        """The Drag field value."""
+        """How much force to apply to slow down. like resistance."""
         member = self.get_member("Drag")
         if member is None:
             return None

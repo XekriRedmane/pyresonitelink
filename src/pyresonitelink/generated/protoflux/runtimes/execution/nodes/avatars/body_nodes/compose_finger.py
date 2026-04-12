@@ -41,7 +41,7 @@ class ComposeFinger(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def finger(self) -> str | None:
-        """Target ID of the Finger reference (targets INodeValueOutput[FingerType])."""
+        """The finger you want to get a body node enum for."""
         member = self.get_member("Finger")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class ComposeFinger(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def segment(self) -> str | None:
-        """Target ID of the Segment reference (targets INodeValueOutput[FingerSegmentType])."""
+        """The segment of the Finger (FingerType) you want to get a body node enum for."""
         member = self.get_member("Segment")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class ComposeFinger(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def chirality(self) -> str | None:
-        """Target ID of the Chirality reference (targets INodeValueOutput[Chirality])."""
+        """Which hand, left or right, you want to get a body node for using Finger (FingerType) and Segment (FingerSegmentType)."""
         member = self.get_member("Chirality")
         if isinstance(member, members.Reference):
             return member.targetId

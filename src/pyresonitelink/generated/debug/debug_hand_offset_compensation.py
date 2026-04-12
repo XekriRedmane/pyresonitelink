@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugHandOffsetCompensation(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugHandOffsetCompensation.
+    """The DebugHandOffsetCompensation component constantly changes the mapping offsets of the left and right controllers with the values in its fields. These offsets determine how a controller is kept in a consistent orientation to other controllers a user can have.
 
     Category: Debug
     """
@@ -38,7 +38,7 @@ class DebugHandOffsetCompensation(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def left_hand_position(self) -> primitives.Float3 | None:
-        """The LeftHandPosition field value."""
+        """The position offset of the left hand."""
         member = self.get_member("LeftHandPosition")
         if member is None:
             return None
@@ -57,7 +57,7 @@ class DebugHandOffsetCompensation(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def left_hand_rotation(self) -> primitives.FloatQ | None:
-        """The LeftHandRotation field value."""
+        """The rotation Offset of the left hand."""
         member = self.get_member("LeftHandRotation")
         if member is None:
             return None
@@ -76,7 +76,7 @@ class DebugHandOffsetCompensation(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def right_hand_position(self) -> primitives.Float3 | None:
-        """The RightHandPosition field value."""
+        """The position offset of the right hand."""
         member = self.get_member("RightHandPosition")
         if member is None:
             return None
@@ -95,7 +95,7 @@ class DebugHandOffsetCompensation(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def right_hand_rotation(self) -> primitives.FloatQ | None:
-        """The RightHandRotation field value."""
+        """The rotation offset of the right hand."""
         member = self.get_member("RightHandRotation")
         if member is None:
             return None

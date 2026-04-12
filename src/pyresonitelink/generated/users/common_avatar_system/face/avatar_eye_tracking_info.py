@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarEyeTrackingInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarEyeTrackingInfo.
+    """The AvatarEyeTrackingInfo is used to override the assigning behavior from a AvatarEyeDataSourceAssigner on the avatar when it assigns a target.
 
     Category: Users/Common Avatar System/Face
     """
@@ -29,7 +29,7 @@ class AvatarEyeTrackingInfo(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def eye_data_source(self) -> str | None:
-        """Target ID of the EyeDataSource reference (targets IEyeDataSourceComponent)."""
+        """The data source to override the assigning behavior of a Component:AvatarEyeDataSourceAssigner on the avatar with."""
         member = self.get_member("EyeDataSource")
         if isinstance(member, members.Reference):
             return member.targetId

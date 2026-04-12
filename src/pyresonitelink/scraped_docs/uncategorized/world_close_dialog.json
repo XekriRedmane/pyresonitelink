@@ -1,0 +1,20 @@
+{
+  "description": "The WorldCloseDialog component is used to confirm closing a world that the user is currently trying to close.",
+  "category": "Uncategorized",
+  "fields": {
+    "_worldName": "The text field showing the name of the world being closed.",
+    "_saveButton": "The button used to save the world being closed.",
+    "_saveAsButton": "The button used to save the world as something for the world being closed.",
+    "_discardButton": "The button used to discard changes for the world being closed.",
+    "_saveAction": "The component to trigger with the request to save the world being closed.",
+    "_saveAsAction": "The component to trigger with the request to save the world as something for the world being closed.",
+    "_discardAction": "The component to trigger with the request to discard changes for the world being closed."
+  },
+  "methods": {
+    "Close": "Tells the world to close.",
+    "OnCancel": "Tells the dialog to cancel closing the world."
+  },
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldCloseDialog&action=raw"
+}

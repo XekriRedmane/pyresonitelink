@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class LocaleSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocaleSettings.
+    """The Locale Settings component is part of the Settings system and controls the platform's language.
+
+    Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocaleSettings"
@@ -33,7 +35,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def primary_interface_locale_code(self) -> primitives.String | None:
-        """The PrimaryInterfaceLocaleCode field value."""
+        """The primary language for the UI."""
         member = self.get_member("PrimaryInterfaceLocaleCode")
         if member is None:
             return None
@@ -52,7 +54,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def culture_locale_code(self) -> primitives.String | None:
-        """The CultureLocaleCode field value."""
+        """The locale code for the primary language, Ex: "en_us", "ru", or "pl_PL""""
         member = self.get_member("CultureLocaleCode")
         if member is None:
             return None
@@ -71,7 +73,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_imperial_units(self) -> primitives.Bool | None:
-        """The UseImperialUnits field value."""
+        """Whether to use Imperial or Metric units regardless of language selection."""
         member = self.get_member("UseImperialUnits")
         if member is None:
             return None
@@ -89,7 +91,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
             )
 
     async def set_current_locale(self, resolink: protocols.ResoniteLinkClient, locale_code: primitives.String, debug: bool = False) -> dict:
-        """Call the SetCurrentLocale sync method.
+        """Called when the set current locale button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.

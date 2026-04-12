@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FieldDriveReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FieldDriveReceiver<>.
+    """The FieldDriveReceiver component is used to handle the dropping of field names onto other field names in order to drive one with the other in inspectors, otherwise known as Drives. This is used as an interactable UIX element.
 
     Parameterize with a value type::
 
@@ -33,7 +33,7 @@ class FieldDriveReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventReceiv
 
     @property
     def field(self) -> str | None:
-        """Target ID of the Field reference (targets IField[T])."""
+        """The field to expose to dropping other field names onto it for driving."""
         member = self.get_member("Field")
         if isinstance(member, members.Reference):
             return member.targetId

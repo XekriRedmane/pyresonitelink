@@ -54,7 +54,9 @@ class EquipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
 
     @property
     def tool(self) -> str | None:
-        """Target ID of the Tool reference (targets INodeObjectOutput[ITool])."""
+        """The tool to equip.
+
+If the tool is null or the tool is already equipped ``OnEquipFail`` will fire."""
         member = self.get_member("Tool")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -75,7 +77,9 @@ class EquipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user to equip the tool to.
+
+If the user is null then the execution context's local user will be used, and if that local user is null then ``OnEquipFail`` will fire."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -96,7 +100,9 @@ class EquipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
 
     @property
     def side(self) -> str | None:
-        """Target ID of the Side reference (targets INodeValueOutput[Chirality])."""
+        """The chirality of the user to equip this tool.
+
+If an interaction handler for the side can not be found then ``OnEquipFail`` will fire."""
         member = self.get_member("Side")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -117,7 +123,9 @@ class EquipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
 
     @property
     def dequip_existing(self) -> str | None:
-        """Target ID of the DequipExisting reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should this tool dequip an already held tool.
+
+If an another tool is already equipped and ``DequipExisting`` is false then ``OnEquipFail`` will fire."""
         member = self.get_member("DequipExisting")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -138,7 +146,7 @@ class EquipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
 
     @property
     def on_equipped(self) -> str | None:
-        """Target ID of the OnEquipped reference (targets INodeOperation)."""
+        """Fires if the tool successfully equips to a user."""
         member = self.get_member("OnEquipped")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -159,7 +167,7 @@ class EquipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
 
     @property
     def on_equip_fail(self) -> str | None:
-        """Target ID of the OnEquipFail reference (targets INodeOperation)."""
+        """Fires if the tool fails to equip."""
         member = self.get_member("OnEquipFail")
         if isinstance(member, members.Reference):
             return member.targetId

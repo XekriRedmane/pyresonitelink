@@ -19,6 +19,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class SetGlobalTransformMatrix(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Set Global Transform Matrix node takes in a slot to transform (position, rotation, and scale) in 3D space along with the matrix value.
 
+To create a transform matrix, the ProtoFlux Matrix Catagory has many helpful nodes to do this.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform
     """
 
@@ -43,7 +45,7 @@ class SetGlobalTransformMatrix(GeneratedComponent, ISyncNodeOperation, IExecutio
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues the flow of execution from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +66,7 @@ class SetGlobalTransformMatrix(GeneratedComponent, ISyncNodeOperation, IExecutio
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot to transform."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +87,7 @@ class SetGlobalTransformMatrix(GeneratedComponent, ISyncNodeOperation, IExecutio
 
     @property
     def matrix(self) -> str | None:
-        """Target ID of the Matrix reference (targets INodeValueOutput[primitives.Float4x4])."""
+        """The exact value to set the slot's transform."""
         member = self.get_member("Matrix")
         if isinstance(member, members.Reference):
             return member.targetId

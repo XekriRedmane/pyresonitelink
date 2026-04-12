@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedGridInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedGridInterface.
+    """The FeedGridInterface component is used as a template type item in data feed mappers in the Data Feeds system.
 
     Category: Radiant UI/Data Feeds/Interfaces
     """

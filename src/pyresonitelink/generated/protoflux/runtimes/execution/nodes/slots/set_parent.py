@@ -20,9 +20,6 @@ class SetParent(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
     """Sets the parent of Instance (Slot).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots
-
-    **Inputs**: === * (Call) ===
-Set the parent of Instance (Slot) to NewParent (Slot)
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Slots.SetParent"
@@ -49,7 +46,7 @@ Set the parent of Instance (Slot) to NewParent (Slot)
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse when Instance (Slot) is sucessfully parented to NewParent (Slot), or if NewParent (Slot) is null it will set it to the Root Slot of the World."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +67,7 @@ Set the parent of Instance (Slot) to NewParent (Slot)
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot to set the parent of."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +88,7 @@ Set the parent of Instance (Slot) to NewParent (Slot)
 
     @property
     def new_parent(self) -> str | None:
-        """Target ID of the NewParent reference (targets INodeObjectOutput[Slot])."""
+        """The slot to set the parent of Instance (Slot) to."""
         member = self.get_member("NewParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +109,7 @@ Set the parent of Instance (Slot) to NewParent (Slot)
 
     @property
     def preserve_global_position(self) -> str | None:
-        """Target ID of the PreserveGlobalPosition reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether or not to keep the values for Instance (Slot)'s local transforms or to keep it in the same place visually."""
         member = self.get_member("PreserveGlobalPosition")
         if isinstance(member, members.Reference):
             return member.targetId

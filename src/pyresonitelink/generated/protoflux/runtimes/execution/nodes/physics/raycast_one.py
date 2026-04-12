@@ -17,7 +17,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """There are a few ways in which the Raycast One node may not work as expected, particularly relating to directions and distances.
+    """The Raycast One node performs a single raycast check when an impulse is received. The input parameters determine from where, in what direction, and how far the ray should be cast as well as determining which colliders are valid hits. When a raycast detects a valid collider, it returns data pertaining to that hit and fires from the OnHit continuation output. If there is no valid hit, whether there were no colliders hit or the ones hit were not valid targets, the OnMiss continuation output fires.
+
+The data output values are only valid for a given raycast hit for the duration of the impulse chain downstream of OnHit.
+
+This node can be combined with the Hit UV Coordinate node to get further data from this hit, such as a 2D location point on the collider for example.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
 
@@ -38,7 +42,6 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
     produce a ray 1 unit long. However, a Direction input of [0;0;2] and
     MaxDistance of 1 will produce a ray 2 units long. Additionally, the
     reported HitDistance value will be halved in the second case.
-    ProtoFlux:Physics
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.RaycastOne"
@@ -80,7 +83,7 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def origin(self) -> str | None:
-        """Target ID of the Origin reference (targets INodeValueOutput[primitives.Float3])."""
+        """The starting position from which the ray is cast. Default is [0;0;0]."""
         member = self.get_member("Origin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -101,7 +104,7 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def direction(self) -> str | None:
-        """Target ID of the Direction reference (targets INodeValueOutput[primitives.Float3])."""
+        """The direction in which the ray is cast. Default is [0;0;0] which results in no ray being cast. (Use for example [0;0;1] for directly forward.)"""
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -122,7 +125,7 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def max_distance(self) -> str | None:
-        """Target ID of the MaxDistance reference (targets INodeValueOutput[primitives.Float])."""
+        """The maximum distance the raycast should travel from its origin. Default is the maximum float value which is extremely high."""
         member = self.get_member("MaxDistance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -143,7 +146,7 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def hit_triggers(self) -> str | None:
-        """Target ID of the HitTriggers reference (targets INodeValueOutput[primitives.Bool])."""
+        """Determines whether colliders with the Trigger, StaticTrigger or StaticTriggerAuto ColliderType value are valid hit targets. Default is False."""
         member = self.get_member("HitTriggers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -164,7 +167,7 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def users_only(self) -> str | None:
-        """Target ID of the UsersOnly reference (targets INodeValueOutput[primitives.Bool])."""
+        """Determines whether only user bone or simplified capsule colliders are valid targets. Default is False."""
         member = self.get_member("UsersOnly")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -185,7 +188,7 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def debug_duration(self) -> str | None:
-        """Target ID of the DebugDuration reference (targets INodeValueOutput[primitives.Float])."""
+        """Determines the duration in seconds that a debug visual will be shown after each raycast. Default is -1 which disables the debug visual. When enabled, the visual shows a yellow line indicating the full path of the raycast along with the hit point (red spheres) and hit normal direction (blue arrows)."""
         member = self.get_member("DebugDuration")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -206,7 +209,7 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets INodeObjectOutput[Slot])."""
+        """The slot in whose coordinate space the Origin, Direction and MaxDistance values should be evaluated. Default is the world root slot, i.e. the values are treated as being in the global coordinate space."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -227,7 +230,7 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def on_hit(self) -> str | None:
-        """Target ID of the OnHit reference (targets INodeOperation)."""
+        """Fires an impulse if a valid hit is found when performing a raycast."""
         member = self.get_member("OnHit")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -248,7 +251,7 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def on_miss(self) -> str | None:
-        """Target ID of the OnMiss reference (targets INodeOperation)."""
+        """Fires an impulse in any situation where a valid hit is not found when performing a raycast."""
         member = self.get_member("OnMiss")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -269,7 +272,7 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def hit_collider(self) -> members.EmptyElement | None:
-        """The HitCollider member."""
+        """The first valid hit collider."""
         member = self.get_member("HitCollider")
         if isinstance(member, members.EmptyElement):
             return member
@@ -277,12 +280,12 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @hit_collider.setter
     def hit_collider(self, value: members.EmptyElement) -> None:
-        """Set the HitCollider member."""
+        """Set HitCollider. The first valid hit collider."""
         self.set_member("HitCollider", value)
 
     @property
     def hit_distance(self) -> members.EmptyElement | None:
-        """The HitDistance member."""
+        """The distance from the Origin to the hit point in global coordinate space."""
         member = self.get_member("HitDistance")
         if isinstance(member, members.EmptyElement):
             return member
@@ -290,12 +293,12 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @hit_distance.setter
     def hit_distance(self, value: members.EmptyElement) -> None:
-        """Set the HitDistance member."""
+        """Set HitDistance. The distance from the Origin to the hit point in global coordinate space."""
         self.set_member("HitDistance", value)
 
     @property
     def hit_point(self) -> members.EmptyElement | None:
-        """The HitPoint member."""
+        """The global position at which the ray hit the collider."""
         member = self.get_member("HitPoint")
         if isinstance(member, members.EmptyElement):
             return member
@@ -303,12 +306,12 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @hit_point.setter
     def hit_point(self, value: members.EmptyElement) -> None:
-        """Set the HitPoint member."""
+        """Set HitPoint. The global position at which the ray hit the collider."""
         self.set_member("HitPoint", value)
 
     @property
     def hit_normal(self) -> members.EmptyElement | None:
-        """The HitNormal member."""
+        """The facing normal direction of the hit collider at the hit point."""
         member = self.get_member("HitNormal")
         if isinstance(member, members.EmptyElement):
             return member
@@ -316,12 +319,12 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @hit_normal.setter
     def hit_normal(self, value: members.EmptyElement) -> None:
-        """Set the HitNormal member."""
+        """Set HitNormal. The facing normal direction of the hit collider at the hit point."""
         self.set_member("HitNormal", value)
 
     @property
     def hit_triangle_index(self) -> members.EmptyElement | None:
-        """The HitTriangleIndex member."""
+        """The triangle index on the mesh corresponding to the hit collider. This value is 0 unless the HitCollider is a MeshCollider."""
         member = self.get_member("HitTriangleIndex")
         if isinstance(member, members.EmptyElement):
             return member
@@ -329,6 +332,6 @@ class RaycastOne(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @hit_triangle_index.setter
     def hit_triangle_index(self, value: members.EmptyElement) -> None:
-        """Set the HitTriangleIndex member."""
+        """Set HitTriangleIndex. The triangle index on the mesh corresponding to the hit collider. This value is 0 unless the HitCollider is a MeshCollider."""
         self.set_member("HitTriangleIndex", value)
 

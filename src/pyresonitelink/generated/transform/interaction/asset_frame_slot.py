@@ -14,7 +14,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparentBlock, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AssetFrameSlot<>.
+    """An asset frame slot is a component that takes any Asset Type as an attach component type argument, and allows for snapping assets to a frame. The asset in the frame can be used as a source to drive a list of asset fields which is defined in Targets.
+Optionally it calls a sync delegate that takes an argument of the chosen asset type for this component.
 
     Category: Transform/Interaction
 
@@ -55,7 +56,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
 
     @property
     def frame_size(self) -> primitives.Float | None:
-        """The FrameSize field value."""
+        """how thick the frame should be."""
         member = self.get_member("FrameSize")
         if member is None:
             return None
@@ -74,7 +75,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
 
     @property
     def frame_anim_speed(self) -> primitives.Float | None:
-        """The FrameAnimSpeed field value."""
+        """how fast the frame should fit to the asset's bounding box in seconds"""
         member = self.get_member("FrameAnimSpeed")
         if member is None:
             return None
@@ -93,7 +94,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
 
     @property
     def snap_anim_time(self) -> primitives.Float | None:
-        """The SnapAnimTime field value."""
+        """How long the animation should be for the asset going into the frame when snapped in seconds."""
         member = self.get_member("SnapAnimTime")
         if member is None:
             return None
@@ -112,7 +113,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
 
     @property
     def targets(self) -> members.SyncList | None:
-        """The Targets member."""
+        """The items to drive with the snapped object's asset."""
         member = self.get_member("Targets")
         if isinstance(member, members.SyncList):
             return member
@@ -120,12 +121,12 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
 
     @targets.setter
     def targets(self, value: members.SyncList) -> None:
-        """Set the Targets member."""
+        """Set Targets. The items to drive with the snapped object's asset."""
         self.set_member("Targets", value)
 
     @property
     def current(self) -> str | None:
-        """Target ID of the _current reference (targets Slot)."""
+        """The slot of the asset item inside of the frame."""
         member = self.get_member("_current")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -146,7 +147,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
 
     @property
     def current_ratio(self) -> primitives.Float2 | None:
-        """The _currentRatio field value."""
+        """The ratio of the asset's bounding box held in the frame"""
         member = self.get_member("_currentRatio")
         if member is None:
             return None
@@ -165,7 +166,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
 
     @property
     def frame_size(self) -> str | None:
-        """Target ID of the _frameSize reference (targets IField[primitives.Float2])."""
+        """The field to drive with what the size of the frame should be for the held asset's bounding box."""
         member = self.get_member("_frameSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -186,7 +187,7 @@ class AssetFrameSlot(GenericComponent[T], IGrabbableReceiver, IGrabbableReparent
 
     @property
     def collider(self) -> str | None:
-        """Target ID of the _collider reference (targets BoxCollider)."""
+        """The collider to drive the values of the size of the held asset's bounding box."""
         member = self.get_member("_collider")
         if isinstance(member, members.Reference):
             return member.targetId

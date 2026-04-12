@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserRefToSyncRefAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserRefToSyncRefAdapter.
+    """The UserRefToSyncRefAdapter component takes a UserRef type and drives a user ref field with what it has inside of it.
 
     Category: Transform/Drivers
+
+    Attach to a slot and provide values for all fields in order for this
+    component to work.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserRefToSyncRefAdapter"
@@ -35,7 +38,7 @@ class UserRefToSyncRefAdapter(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def user(self) -> members.SyncObject | None:
-        """The User member."""
+        """The ref to get a user from."""
         member = self.get_member("User")
         if isinstance(member, members.SyncObject):
             return member
@@ -43,12 +46,12 @@ class UserRefToSyncRefAdapter(GeneratedComponent, IComponent, IWorldEventReceive
 
     @user.setter
     def user(self, value: members.SyncObject) -> None:
-        """Set the User member."""
+        """Set User. The ref to get a user from."""
         self.set_member("User", value)
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets SyncRef[User])."""
+        """The field to drive with what user ``User`` refers to."""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -69,7 +72,7 @@ class UserRefToSyncRefAdapter(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """Whether changes to the field ``TargetReference`` will update the value of ``User``. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None

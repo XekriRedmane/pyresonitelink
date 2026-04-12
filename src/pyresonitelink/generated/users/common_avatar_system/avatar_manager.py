@@ -13,9 +13,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarManager.
+    """For detailed information on how this functions for mix and match body parts. Please also see Equipping Multiple Avatars.
+
+The AvatarManager component is found on User root slots and is used to manage avatars equipped to a particular user. It also keeps track of and sets the equipped parameters of AvatarObjectSlots under an avatar, It manages the setting of fields on the AvatarRoot and AvatarGroup components.
 
     Category: Users/Common Avatar System
+
+    Should not be used directly by the player, since this is used by the
+    game instead to manage avatars on a user.
+
+    **EquippedGroup**: Equipped group is internally handled as a type to hold data from a Dictionary&lt;AvatarRoot, &gt;
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarManager"
@@ -75,7 +82,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def object_groups(self) -> members.SyncList | None:
-        """The _objectGroups member."""
+        """A list of objects currently equipped by the user as part of an avatar."""
         member = self.get_member("_objectGroups")
         if isinstance(member, members.SyncList):
             return member
@@ -83,12 +90,12 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @object_groups.setter
     def object_groups(self, value: members.SyncList) -> None:
-        """Set the _objectGroups member."""
+        """Set _objectGroups. A list of objects currently equipped by the user as part of an avatar."""
         self.set_member("_objectGroups", value)
 
     @property
     def current_anchor(self) -> str | None:
-        """Target ID of the _currentAnchor reference (targets AvatarAnchor)."""
+        """The anchor the user associated with this component is currently sitting in."""
         member = self.get_member("_currentAnchor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +116,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_add_name_badge(self) -> primitives.Bool | None:
-        """The AutoAddNameBadge field value."""
+        """Whether to auto add the name badge component if it doesn't exist on an avatar when equipping it. Usually managed by the world through the Component:CommonAvatarBuilder"""
         member = self.get_member("AutoAddNameBadge")
         if member is None:
             return None
@@ -128,7 +135,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_add_icon_badge(self) -> primitives.Bool | None:
-        """The AutoAddIconBadge field value."""
+        """Whether to auto add the icon badges if it doesn't exist on an avatar when equipping it. Usually managed by the world through the Component:CommonAvatarBuilder"""
         member = self.get_member("AutoAddIconBadge")
         if member is None:
             return None
@@ -147,7 +154,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_add_live_indicator(self) -> primitives.Bool | None:
-        """The AutoAddLiveIndicator field value."""
+        """Whether to auto add the live indicator component if it doesn't exist on an avatar when equipping it. Usually managed by the world through the Component:CommonAvatarBuilder"""
         member = self.get_member("AutoAddLiveIndicator")
         if member is None:
             return None
@@ -166,7 +173,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def empty_slot_handler(self) -> str | None:
-        """Target ID of the EmptySlotHandler reference (targets IEmptyAvatarSlotHandler)."""
+        """The object to handle empty avatar slots. Usually defined by the world through the Component:CommonAvatarBuilder."""
         member = self.get_member("EmptySlotHandler")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -187,7 +194,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def default_scale(self) -> primitives.Float | None:
-        """The DefaultScale field value."""
+        """The default scale multiplier of the avatar currently equipped"""
         member = self.get_member("DefaultScale")
         if member is None:
             return None
@@ -206,7 +213,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def name_tag_text(self) -> primitives.String | None:
-        """The NameTagText field value."""
+        """The text that should be assigned to the avatar nametag's text field list"""
         member = self.get_member("NameTagText")
         if member is None:
             return None
@@ -225,7 +232,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def name_tag_color(self) -> primitives.ColorX | None:
-        """The NameTagColor field value."""
+        """The color that should be assigned to the avatar nametag's color list."""
         member = self.get_member("NameTagColor")
         if member is None:
             return None
@@ -244,7 +251,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def name_tag_outline(self) -> primitives.ColorX | None:
-        """The NameTagOutline field value."""
+        """The color that should be assigned to the avatar nametag's color1 list."""
         member = self.get_member("NameTagOutline")
         if member is None:
             return None
@@ -263,7 +270,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def name_tag_background(self) -> primitives.ColorX | None:
-        """The NameTagBackground field value."""
+        """The color.that should be assigned to the avatar nametag's color background list."""
         member = self.get_member("NameTagBackground")
         if member is None:
             return None
@@ -282,7 +289,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def badge_templates(self) -> str | None:
-        """Target ID of the _badgeTemplates reference (targets Slot)."""
+        """the slot that was made for the user for storage of their badges."""
         member = self.get_member("_badgeTemplates")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -303,7 +310,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_name_badge(self) -> str | None:
-        """Target ID of the _autoNameBadge reference (targets Slot)."""
+        """the slot that was made for the user for their name badge."""
         member = self.get_member("_autoNameBadge")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -324,7 +331,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_icon_badge(self) -> str | None:
-        """Target ID of the _autoIconBadge reference (targets Slot)."""
+        """the slot that was made for the user for their Icon."""
         member = self.get_member("_autoIconBadge")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -345,7 +352,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_live_indicator(self) -> str | None:
-        """Target ID of the _autoLiveIndicator reference (targets Slot)."""
+        """The slot that was made for the user for their live indicator"""
         member = self.get_member("_autoLiveIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -366,7 +373,7 @@ class AvatarManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def update_version(self) -> primitives.Int | None:
-        """The _updateVersion field value."""
+        """Internal."""
         member = self.get_member("_updateVersion")
         if member is None:
             return None

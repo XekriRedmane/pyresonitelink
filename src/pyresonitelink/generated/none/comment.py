@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Comment(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Comment.
+    """Comment is a component that allows you to store text for another person using an inspector, ex: another content creator. This is useful for explaining what a slot is for or does.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Comment"
@@ -27,7 +27,7 @@ class Comment(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> primitives.String | None:
-        """The Text field value."""
+        """The text to store for others to see when in an inspector"""
         member = self.get_member("Text")
         if member is None:
             return None

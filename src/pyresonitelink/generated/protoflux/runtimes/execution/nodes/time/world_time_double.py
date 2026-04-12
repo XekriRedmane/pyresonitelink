@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldTimeDouble(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The World Time Double node returns the total world time that this world has been open for.
+    """The ``World Time Double`` node returns the total world time that this world has been open for.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

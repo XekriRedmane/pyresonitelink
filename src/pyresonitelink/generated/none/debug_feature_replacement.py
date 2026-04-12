@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugFeatureReplacement(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugFeatureReplacement.
+    """The DebugFeatureReplacement component is used to test upgrading features which is an Elements.Core.dll C# tag function.
+
+    Debug.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugFeatureReplacement"
@@ -30,7 +32,7 @@ class DebugFeatureReplacement(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def test(self) -> primitives.Int | None:
-        """The Test field value."""
+        """The feature to upgrade."""
         member = self.get_member("Test")
         if member is None:
             return None
@@ -49,7 +51,7 @@ class DebugFeatureReplacement(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def test2(self) -> primitives.Float | None:
-        """The Test2 field value."""
+        """A test value to replace with."""
         member = self.get_member("Test2")
         if member is None:
             return None

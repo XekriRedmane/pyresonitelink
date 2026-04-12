@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The standard controller node allows one to interact with the players virtual reality controller as well as generic inputs on Desktop mode.
+    """This node provides information for generic controllers.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Controllers
 
@@ -45,7 +45,7 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user to get controller information from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +66,7 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[Chirality])."""
+        """The controller side to get information from."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +87,7 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @property
     def is_active(self) -> members.EmptyElement | None:
-        """The IsActive member."""
+        """Is this controller actively being used right now."""
         member = self.get_member("IsActive")
         if isinstance(member, members.EmptyElement):
             return member
@@ -95,12 +95,12 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @is_active.setter
     def is_active(self, value: members.EmptyElement) -> None:
-        """Set the IsActive member."""
+        """Set IsActive. Is this controller actively being used right now."""
         self.set_member("IsActive", value)
 
     @property
     def type_(self) -> members.EmptyElement | None:
-        """The Type member."""
+        """The controller type being used. (a subtype of IStandardController if a controller exists or ``null``)"""
         member = self.get_member("Type")
         if isinstance(member, members.EmptyElement):
             return member
@@ -108,12 +108,12 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @type_.setter
     def type_(self, value: members.EmptyElement) -> None:
-        """Set the Type member."""
+        """Set Type. The controller type being used. (a subtype of IStandardController if a controller exists or ``null``)"""
         self.set_member("Type", value)
 
     @property
     def battery_level(self) -> members.EmptyElement | None:
-        """The BatteryLevel member."""
+        """The battery level of this controller. (``1``: full, ``0``: empty, ``-1``: battery level not available)"""
         member = self.get_member("BatteryLevel")
         if isinstance(member, members.EmptyElement):
             return member
@@ -121,12 +121,12 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @battery_level.setter
     def battery_level(self, value: members.EmptyElement) -> None:
-        """Set the BatteryLevel member."""
+        """Set BatteryLevel. The battery level of this controller. (``1``: full, ``0``: empty, ``-1``: battery level not available)"""
         self.set_member("BatteryLevel", value)
 
     @property
     def is_battery_charging(self) -> members.EmptyElement | None:
-        """The IsBatteryCharging member."""
+        """Is this controller currently charging."""
         member = self.get_member("IsBatteryCharging")
         if isinstance(member, members.EmptyElement):
             return member
@@ -134,12 +134,12 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @is_battery_charging.setter
     def is_battery_charging(self, value: members.EmptyElement) -> None:
-        """Set the IsBatteryCharging member."""
+        """Set IsBatteryCharging. Is this controller currently charging."""
         self.set_member("IsBatteryCharging", value)
 
     @property
     def primary(self) -> members.EmptyElement | None:
-        """The Primary member."""
+        """Is primary pressed right now."""
         member = self.get_member("Primary")
         if isinstance(member, members.EmptyElement):
             return member
@@ -147,12 +147,12 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @primary.setter
     def primary(self, value: members.EmptyElement) -> None:
-        """Set the Primary member."""
+        """Set Primary. Is primary pressed right now."""
         self.set_member("Primary", value)
 
     @property
     def secondary(self) -> members.EmptyElement | None:
-        """The Secondary member."""
+        """Is secondary pressed right now."""
         member = self.get_member("Secondary")
         if isinstance(member, members.EmptyElement):
             return member
@@ -160,12 +160,12 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @secondary.setter
     def secondary(self, value: members.EmptyElement) -> None:
-        """Set the Secondary member."""
+        """Set Secondary. Is secondary pressed right now."""
         self.set_member("Secondary", value)
 
     @property
     def grab(self) -> members.EmptyElement | None:
-        """The Grab member."""
+        """Is the controller's grip button pressed right now."""
         member = self.get_member("Grab")
         if isinstance(member, members.EmptyElement):
             return member
@@ -173,12 +173,12 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @grab.setter
     def grab(self, value: members.EmptyElement) -> None:
-        """Set the Grab member."""
+        """Set Grab. Is the controller's grip button pressed right now."""
         self.set_member("Grab", value)
 
     @property
     def menu(self) -> members.EmptyElement | None:
-        """The Menu member."""
+        """Is the menu button being pressed right now."""
         member = self.get_member("Menu")
         if isinstance(member, members.EmptyElement):
             return member
@@ -186,12 +186,12 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @menu.setter
     def menu(self, value: members.EmptyElement) -> None:
-        """Set the Menu member."""
+        """Set Menu. Is the menu button being pressed right now."""
         self.set_member("Menu", value)
 
     @property
     def strength(self) -> members.EmptyElement | None:
-        """The Strength member."""
+        """How much the trigger is pressed currently. (from ``0`` to ``1``)"""
         member = self.get_member("Strength")
         if isinstance(member, members.EmptyElement):
             return member
@@ -199,12 +199,14 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @strength.setter
     def strength(self, value: members.EmptyElement) -> None:
-        """Set the Strength member."""
+        """Set Strength. How much the trigger is pressed currently. (from ``0`` to ``1``)"""
         self.set_member("Strength", value)
 
     @property
     def axis(self) -> members.EmptyElement | None:
-        """The Axis member."""
+        """The position of this controller's joystick or touchpad depending on controller type. (``[-1; -1]``: bottom left, ``[+1; +1]``: top right, ``[0; 0]`` for touchpads that are untouched)
+
+Index Controllers have both types of input. ``Axis`` returns the touchpad position."""
         member = self.get_member("Axis")
         if isinstance(member, members.EmptyElement):
             return member
@@ -212,6 +214,8 @@ class StandardController(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @axis.setter
     def axis(self, value: members.EmptyElement) -> None:
-        """Set the Axis member."""
+        """Set Axis. The position of this controller's joystick or touchpad depending on controller type. (``[-1; -1]``: bottom left, ``[+1; +1]``: top right, ``[0; 0]`` for touchpads that are untouched)
+
+Index Controllers have both types of input. ``Axis`` returns the touchpad position."""
         self.set_member("Axis", value)
 

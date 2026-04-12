@@ -9,9 +9,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CloudUserInfo.
+    """The CloudUserInfo component can be used to retrieve information about a user from the Resonite cloud, such as their name or profile picture, based on their user ID.
 
     Category: Cloud/Indicators
+
+    To get info about a user, type their user ID into the ``UserId`` field
+    of the component. You can get their user ID through multiple ways, for
+    example using the Protoflux node or Resonite's cloud API.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CloudUserInfo"
@@ -50,7 +54,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_id(self) -> primitives.String | None:
-        """The UserId field value."""
+        """The ID of the user that this component should display information about"""
         member = self.get_member("UserId")
         if member is None:
             return None
@@ -69,7 +73,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_loaded(self) -> primitives.Bool | None:
-        """The IsLoaded field value."""
+        """Whether or not the given user's information has been loaded"""
         member = self.get_member("IsLoaded")
         if member is None:
             return None
@@ -88,7 +92,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def username(self) -> primitives.String | None:
-        """The Username field value."""
+        """The name of the given user"""
         member = self.get_member("Username")
         if member is None:
             return None
@@ -107,7 +111,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def registration_date(self) -> str | None:
-        """The RegistrationDate field value."""
+        """The time that the given user registered their account"""
         member = self.get_member("RegistrationDate")
         if member is None:
             return None
@@ -126,7 +130,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def original_registration_date(self) -> str | None:
-        """The OriginalRegistrationDate field value."""
+        """The time that the given user registered their account which they migrated from."""
         member = self.get_member("OriginalRegistrationDate")
         if member is None:
             return None
@@ -145,7 +149,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def icon_url(self) -> str | None:
-        """The IconURL field value."""
+        """A URL, pointing to the user's profile picture"""
         member = self.get_member("IconURL")
         if member is None:
             return None
@@ -164,7 +168,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_contact(self) -> primitives.Bool | None:
-        """The IsContact field value."""
+        """Whether or not this user is one of your contacts (only works in userspace)"""
         member = self.get_member("IsContact")
         if member is None:
             return None
@@ -183,7 +187,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def loaded_user_id(self) -> primitives.String | None:
-        """The _loadedUserId field value."""
+        """The user ID corresponding to the information this component is currently outputting. This is an internal value and shouldn't be edited manually."""
         member = self.get_member("_loadedUserId")
         if member is None:
             return None

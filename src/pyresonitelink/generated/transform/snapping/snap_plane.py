@@ -12,9 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SnapPlane(GeneratedComponent, IPointSnappable, IUIInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SnapPlane.
+    """A snap plane is a component that is able to generate a point in a plane shape when given a point by another component. Usually this is used in components like the Multi User Avatar Anchor Component to determine where to place the anchors upon clicking (click point is used in such case). This component will take a given point by another component and find the closest surface point to a plane with a normal + with a center positioned at the slot it is on. This component will then return the point to the component that called it.
+
+The functionality of this component is internal, and cannot be used by ProtoFlux to snap points using in game code.
 
     Category: Transform/Snapping
+
+    Used as an anchor point generator in the Multi User Avatar Anchor
+    Component and drawing tools.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SnapPlane"
@@ -35,7 +40,7 @@ class SnapPlane(GeneratedComponent, IPointSnappable, IUIInterface, IWorldEventRe
 
     @property
     def normal(self) -> primitives.Float3 | None:
-        """The Normal field value."""
+        """Determines which direction the plane is facing"""
         member = self.get_member("Normal")
         if member is None:
             return None
@@ -54,7 +59,7 @@ class SnapPlane(GeneratedComponent, IPointSnappable, IUIInterface, IWorldEventRe
 
     @property
     def snap_parent(self) -> str | None:
-        """Target ID of the SnapParent reference (targets Slot)."""
+        """Where to put slots if the component is being used for slot placement."""
         member = self.get_member("SnapParent")
         if isinstance(member, members.Reference):
             return member.targetId

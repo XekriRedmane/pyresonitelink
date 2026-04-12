@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabValueSet(GenericComponent[T], IGrabEventReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabValueSet<>.
+    """The GrabValueSet component has options to set the value within a value field upon release and/or grabbing of a grabbable Component on the same slot.
 
     Category: Transform/Interaction
+
+    Can be used to change the color of an item on grab or release, or any
+    other value type.
 
     Parameterize with a value type::
 
@@ -49,7 +52,7 @@ class GrabValueSet(GenericComponent[T], IGrabEventReceiver, IWorldEventReceiver)
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[T])."""
+        """The field to set the contained value of during grabbing events."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +111,7 @@ class GrabValueSet(GenericComponent[T], IGrabEventReceiver, IWorldEventReceiver)
 
     @property
     def set_on_grabbed(self) -> primitives.Bool | None:
-        """The SetOnGrabbed field value."""
+        """Whether to set the contained value of the field referenced by ``Target`` on grabbed."""
         member = self.get_member("SetOnGrabbed")
         if member is None:
             return None
@@ -127,7 +130,7 @@ class GrabValueSet(GenericComponent[T], IGrabEventReceiver, IWorldEventReceiver)
 
     @property
     def set_on_released(self) -> primitives.Bool | None:
-        """The SetOnReleased field value."""
+        """Whether to set the contained value of the field referenced by ``Target`` on letting go."""
         member = self.get_member("SetOnReleased")
         if member is None:
             return None

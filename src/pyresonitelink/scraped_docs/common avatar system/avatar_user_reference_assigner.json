@@ -1,0 +1,12 @@
+{
+  "description": "The AvatarUserReferenceAssigner component is used to assign the user reference to a list of targets (depending on the ``AssignMode``). This component activates only when in the slot hierarchy of an Avatar and when a user equips it.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "AssignMode": "How to use the list when assigning users to User storage fields.",
+    "References": "The references to scan through when assigning."
+  },
+  "methods": {},
+  "usage": "This is often used with assigning the user reference to nameplates, and the components within.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarUserReferenceAssigner&action=raw"
+}

@@ -11,7 +11,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarTrackingOffset(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarTrackingOffset.
+    """AvatarTrackingOffset can be used to shift the position of your trackers (including headset and hands) by a certain amount for an avatar.
+To work, the component needs to be in the avatar's hierarchy.
+
+This component effectively works like a "Playspace Mover".
 
     Category: Users/Common Avatar System
     """
@@ -34,7 +37,7 @@ class AvatarTrackingOffset(GeneratedComponent, IAvatarObjectComponent, IWorldEve
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """The amount that your tracking position should be offset when in the avatar"""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -53,7 +56,7 @@ class AvatarTrackingOffset(GeneratedComponent, IAvatarObjectComponent, IWorldEve
 
     @property
     def user(self) -> str | None:
-        """Target ID of the _user reference (targets User)."""
+        """The user to which the offset is applied. This is set automatically when equipping an avatar with this component"""
         member = self.get_member("_user")
         if isinstance(member, members.Reference):
             return member.targetId

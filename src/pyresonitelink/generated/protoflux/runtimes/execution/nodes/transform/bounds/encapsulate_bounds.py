@@ -36,7 +36,7 @@ class EncapsulateBounds(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def bounds(self) -> str | None:
-        """Target ID of the Bounds reference (targets INodeValueOutput[primitives.BoundingBox])."""
+        """The bounding box to be enlarged. Default value is a bounding box with center [0;0;0] and size [0;0;0]."""
         member = self.get_member("Bounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class EncapsulateBounds(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def other_bounds(self) -> str | None:
-        """Target ID of the OtherBounds reference (targets INodeValueOutput[primitives.BoundingBox])."""
+        """The bounding box to be encapsulated. Default value is a bounding box with center [0;0;0] and size [0;0;0]."""
         member = self.get_member("OtherBounds")
         if isinstance(member, members.Reference):
             return member.targetId

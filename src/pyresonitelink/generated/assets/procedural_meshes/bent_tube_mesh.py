@@ -4,6 +4,9 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.ends import Ends
+from pyresonitelink.generated._enums.shading import Shading
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +15,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BentTubeMesh.
+    """Bent tube mesh is a component that makes a tube structure.
+
+When calculating the curve, the generator uses a quadratic bezier curve formula. ``StartPoint`` being P0, ``DirectTargetPoint`` being P1, and ``ActualTargetPoint`` being P2.
 
     Category: Assets/Procedural Meshes
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BentTubeMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: primitives.Float | None = None, sides: primitives.Int | None = None, segments: primitives.Int | None = None, start_point: primitives.Float3 | None = None, direct_target_point: primitives.Float3 | None = None, actual_target_point: primitives.Float3 | None = None, start_point_color: primitives.ColorX | None = None, end_point_color: primitives.ColorX | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, radius: primitives.Float | None = None, sides: primitives.Int | None = None, segments: primitives.Int | None = None, start_point: primitives.Float3 | None = None, direct_target_point: primitives.Float3 | None = None, actual_target_point: primitives.Float3 | None = None, start_point_color: primitives.ColorX | None = None, end_point_color: primitives.ColorX | None = None, ends: Ends | str | None = None, shading: Shading | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             radius: Initial value for Radius.
             sides: Initial value for Sides.
             segments: Initial value for Segments.
@@ -34,6 +40,8 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             actual_target_point: Initial value for ActualTargetPoint.
             start_point_color: Initial value for StartPointColor.
             end_point_color: Initial value for EndPointColor.
+            ends: Initial value for Ends.
+            shading: Initial value for Shading.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -43,6 +51,8 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if radius is not None:
             self.radius = radius
         if sides is not None:
@@ -59,6 +69,10 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             self.start_point_color = start_point_color
         if end_point_color is not None:
             self.end_point_color = end_point_color
+        if ends is not None:
+            self.ends = ends
+        if shading is not None:
+            self.shading = shading
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -118,21 +132,28 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the tube (from center to outside)."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -151,7 +172,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def sides(self) -> primitives.Int | None:
-        """The Sides field value."""
+        """How many sides the tube should have around it"""
         member = self.get_member("Sides")
         if member is None:
             return None
@@ -170,7 +191,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def segments(self) -> primitives.Int | None:
-        """The Segments field value."""
+        """how many bends from end to end the tube should have"""
         member = self.get_member("Segments")
         if member is None:
             return None
@@ -189,7 +210,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def start_point(self) -> primitives.Float3 | None:
-        """The StartPoint field value."""
+        """Where the tube should start at in local space. Also known as P0 on a quadratic bezier curve."""
         member = self.get_member("StartPoint")
         if member is None:
             return None
@@ -208,7 +229,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def direct_target_point(self) -> primitives.Float3 | None:
-        """The DirectTargetPoint field value."""
+        """P1 on the quadratic bezier curve in local space."""
         member = self.get_member("DirectTargetPoint")
         if member is None:
             return None
@@ -227,7 +248,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def actual_target_point(self) -> primitives.Float3 | None:
-        """The ActualTargetPoint field value."""
+        """P2 on the quadratic bezier curve in local space."""
         member = self.get_member("ActualTargetPoint")
         if member is None:
             return None
@@ -246,7 +267,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def start_point_color(self) -> primitives.ColorX | None:
-        """The StartPointColor field value."""
+        """What the color of the tube should be at the start if using a material that supports vertex colors."""
         member = self.get_member("StartPointColor")
         if member is None:
             return None
@@ -265,7 +286,7 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def end_point_color(self) -> primitives.ColorX | None:
-        """The EndPointColor field value."""
+        """What the color of the tube should be at the end if using a material that supports vertex colors."""
         member = self.get_member("EndPointColor")
         if member is None:
             return None
@@ -283,30 +304,44 @@ class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def ends(self) -> members.FieldEnum | None:
-        """The Ends member."""
+    def ends(self) -> Ends | None:
+        """How to handle the geometry of the ends of the tube."""
         member = self.get_member("Ends")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Ends(member.value)
         return None
 
     @ends.setter
-    def ends(self, value: members.FieldEnum) -> None:
-        """Set the Ends member."""
-        self.set_member("Ends", value)
+    def ends(self, value: Ends | str) -> None:
+        """Set Ends. How to handle the geometry of the ends of the tube."""
+        member = self.get_member("Ends")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Ends",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def shading(self) -> members.FieldEnum | None:
-        """The Shading member."""
+    def shading(self) -> Shading | None:
+        """Toggle this mesh being smooth shaded"""
         member = self.get_member("Shading")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Shading(member.value)
         return None
 
     @shading.setter
-    def shading(self, value: members.FieldEnum) -> None:
-        """Set the Shading member."""
-        self.set_member("Shading", value)
+    def shading(self, value: Shading | str) -> None:
+        """Set Shading. Toggle this mesh being smooth shaded"""
+        member = self.get_member("Shading")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Shading",
+                members.FieldEnum(value=str(value)),
+            )
 
     async def bake_mesh(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
         """Call the BakeMesh sync method.

@@ -13,9 +13,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LookAt.
+    """Look at is a component that is used to make one slot point to look at another slot via a SwingTwist interpolation.
+Swing Twist is a concept that is too complicated to explain on this wiki, but essentially constrains the rotation on two axies when rotating to a point, locking it within a range. kind of like a turret.
 
     Category: Transform/Drivers
+
+    Attach the component to a slot and provide a ``Target`` or
+    ``TargetPoint`` to make it look at or point at a position. It is
+    recommended to put a slot under this component's slot to apply offsets
+    to the rotation.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LookAt"
@@ -54,7 +60,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The slot to try to look at."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -75,7 +81,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     @property
     def target_point(self) -> primitives.Float3 | None:
-        """The TargetPoint field value."""
+        """The 3D point to look at when ``Target`` is not provided."""
         member = self.get_member("TargetPoint")
         if member is None:
             return None
@@ -94,7 +100,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     @property
     def target_point_space(self) -> members.SyncObject | None:
-        """The TargetPointSpace member."""
+        """The Coordinate space of ``TargetPoint``"""
         member = self.get_member("TargetPointSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -102,12 +108,12 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     @target_point_space.setter
     def target_point_space(self, value: members.SyncObject) -> None:
-        """Set the TargetPointSpace member."""
+        """Set TargetPointSpace. The Coordinate space of ``TargetPoint``"""
         self.set_member("TargetPointSpace", value)
 
     @property
     def up(self) -> primitives.Float3 | None:
-        """The Up field value."""
+        """The up axis of this slot, usually best to keep at (0,1,0)"""
         member = self.get_member("Up")
         if member is None:
             return None
@@ -126,7 +132,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     @property
     def rotation_offset(self) -> primitives.FloatQ | None:
-        """The RotationOffset field value."""
+        """How much to rotate the slot by after applying the look at (quaternion multiplying)"""
         member = self.get_member("RotationOffset")
         if member is None:
             return None
@@ -145,7 +151,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     @property
     def swing_reference(self) -> primitives.Float3 | None:
-        """The SwingReference field value."""
+        """The axis to apply "Swing" rotation to."""
         member = self.get_member("SwingReference")
         if member is None:
             return None
@@ -164,7 +170,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     @property
     def twist_reference(self) -> primitives.Float3 | None:
-        """The TwistReference field value."""
+        """The axis to apply "Twist" rotation to."""
         member = self.get_member("TwistReference")
         if member is None:
             return None
@@ -183,7 +189,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     @property
     def max_swing(self) -> primitives.Float | None:
-        """The MaxSwing field value."""
+        """The maximum (pos/neg) amount that the slot can rotate on ``SwingReference``"""
         member = self.get_member("MaxSwing")
         if member is None:
             return None
@@ -202,7 +208,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     @property
     def max_twist(self) -> primitives.Float | None:
-        """The MaxTwist field value."""
+        """The maximum (pos/neg) amount that the slot can rotate on ``TwistReference``"""
         member = self.get_member("MaxTwist")
         if member is None:
             return None
@@ -221,7 +227,7 @@ class LookAt(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiv
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField[primitives.FloatQ])."""
+        """The field to apply the rotation result to."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId

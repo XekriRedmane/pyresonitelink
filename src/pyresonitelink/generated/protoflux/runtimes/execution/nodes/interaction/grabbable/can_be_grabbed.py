@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CanBeGrabbed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Can Be Grabbed node takes in a slot and a grabber from a user, and checks if this slot can be grabbed using that provided grabber. It will not check if it is being grabbed, only if it could be grabbed.
+    """The ``Can Be Grabbed`` node takes in a slot and a grabber from a user, and checks if this slot can be grabbed using that provided grabber. It will not check if it is being grabbed, only if it could be grabbed.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Grabbable
     """
@@ -38,7 +38,7 @@ class CanBeGrabbed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def slot(self) -> str | None:
-        """Target ID of the Slot reference (targets INodeObjectOutput[Slot])."""
+        """The Slot to check if it can be grabbed."""
         member = self.get_member("Slot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class CanBeGrabbed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def grabber(self) -> str | None:
-        """Target ID of the Grabber reference (targets INodeObjectOutput[Grabber])."""
+        """The grabber on a user (``LeftHand`` or ``RightHand``)."""
         member = self.get_member("Grabber")
         if isinstance(member, members.Reference):
             return member.targetId

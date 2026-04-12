@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StaticBinary(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StaticBinary.
+    """The StaticBinary component is used to take in a URL and treats it like a Binary type, mostly used by other components.
 
     Category: Assets
+
+    This component can be combined with the BinaryExportable component to
+    allow for exporting the Slot as a binary file on your device.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticBinary"
@@ -29,7 +32,7 @@ class StaticBinary(GeneratedComponent, IStaticAssetProvider, ICustomInspector, I
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The url to point to as being a binary for this component."""
         member = self.get_member("URL")
         if member is None:
             return None

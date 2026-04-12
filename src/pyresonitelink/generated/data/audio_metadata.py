@@ -11,9 +11,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioMetadata.
+    """The AudioMetadata component provides information about an audio clip. It is automatically added to audio clips recorded with the Microphone Tool and stores data about when, where, and by whom the audio was recorded.
 
     Category: Data
+
+    This component is essentially a bunch of fields with semantic meaning to
+    them. Usage of this component outside of the microphone tool is
+    straightforward--one simply needs to write to the relevant fields the
+    relevant data. It is common convention to place the component on the
+    same slot that the audio clip resides.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioMetadata"
@@ -52,7 +58,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def location_name(self) -> primitives.String | None:
-        """The LocationName field value."""
+        """Name of the session the audio was recorded in"""
         member = self.get_member("LocationName")
         if member is None:
             return None
@@ -71,7 +77,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def location_url(self) -> str | None:
-        """The LocationURL field value."""
+        """the URI of the world the audio was recorded in"""
         member = self.get_member("LocationURL")
         if member is None:
             return None
@@ -90,7 +96,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def location_host(self) -> members.SyncObject | None:
-        """The LocationHost member."""
+        """Host of the session the audio was recorded in"""
         member = self.get_member("LocationHost")
         if isinstance(member, members.SyncObject):
             return member
@@ -98,12 +104,12 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @location_host.setter
     def location_host(self, value: members.SyncObject) -> None:
-        """Set the LocationHost member."""
+        """Set LocationHost. Host of the session the audio was recorded in"""
         self.set_member("LocationHost", value)
 
     @property
     def location_access_level(self) -> members.FieldEnum | None:
-        """The LocationAccessLevel member."""
+        """Access level of the session the audio was recorded in"""
         member = self.get_member("LocationAccessLevel")
         if isinstance(member, members.FieldEnum):
             return member
@@ -111,12 +117,12 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @location_access_level.setter
     def location_access_level(self, value: members.FieldEnum) -> None:
-        """Set the LocationAccessLevel member."""
+        """Set LocationAccessLevel. Access level of the session the audio was recorded in"""
         self.set_member("LocationAccessLevel", value)
 
     @property
     def location_hidden_from_listing(self) -> primitives.Bool | None:
-        """The LocationHiddenFromListing field value."""
+        """Whether the session was marked as hidden when the audio was recorded."""
         member = self.get_member("LocationHiddenFromListing")
         if member is None:
             return None
@@ -135,7 +141,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def time_taken(self) -> str | None:
-        """The TimeTaken field value."""
+        """Exact timestamp that the audio was recorded at"""
         member = self.get_member("TimeTaken")
         if member is None:
             return None
@@ -154,7 +160,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def taken_by(self) -> members.SyncObject | None:
-        """The TakenBy member."""
+        """The user who recorded the audio"""
         member = self.get_member("TakenBy")
         if isinstance(member, members.SyncObject):
             return member
@@ -162,12 +168,12 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @taken_by.setter
     def taken_by(self, value: members.SyncObject) -> None:
-        """Set the TakenBy member."""
+        """Set TakenBy. The user who recorded the audio"""
         self.set_member("TakenBy", value)
 
     @property
     def taken_global_position(self) -> primitives.Float3 | None:
-        """The TakenGlobalPosition field value."""
+        """the position in global space the microphone tip was at the time of recording."""
         member = self.get_member("TakenGlobalPosition")
         if member is None:
             return None
@@ -186,7 +192,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def taken_global_rotation(self) -> primitives.FloatQ | None:
-        """The TakenGlobalRotation field value."""
+        """the rotation in global space the microphone tip was at the time of recording."""
         member = self.get_member("TakenGlobalRotation")
         if member is None:
             return None
@@ -205,7 +211,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def taken_global_scale(self) -> primitives.Float3 | None:
-        """The TakenGlobalScale field value."""
+        """the scale in global space the microphone tip was at the time of recording."""
         member = self.get_member("TakenGlobalScale")
         if member is None:
             return None
@@ -224,7 +230,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def app_version(self) -> primitives.String | None:
-        """The AppVersion field value."""
+        """Resonite version number of the recording user"""
         member = self.get_member("AppVersion")
         if member is None:
             return None
@@ -243,7 +249,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def user_infos(self) -> members.SyncList | None:
-        """The UserInfos member."""
+        """Users present at the time of recording"""
         member = self.get_member("UserInfos")
         if isinstance(member, members.SyncList):
             return member
@@ -251,12 +257,12 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @user_infos.setter
     def user_infos(self, value: members.SyncList) -> None:
-        """Set the UserInfos member."""
+        """Set UserInfos. Users present at the time of recording"""
         self.set_member("UserInfos", value)
 
     @property
     def legacy_present_users(self) -> members.SyncList | None:
-        """The __legacyPresentUsers member."""
+        """legacy list of users present at the time of recording."""
         member = self.get_member("__legacyPresentUsers")
         if isinstance(member, members.SyncList):
             return member
@@ -264,7 +270,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @legacy_present_users.setter
     def legacy_present_users(self, value: members.SyncList) -> None:
-        """Set the __legacyPresentUsers member."""
+        """Set __legacyPresentUsers. legacy list of users present at the time of recording."""
         self.set_member("__legacyPresentUsers", value)
 
     async def set_from_current_world(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:

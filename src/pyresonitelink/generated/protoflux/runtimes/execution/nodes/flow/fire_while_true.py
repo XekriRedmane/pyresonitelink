@@ -93,7 +93,7 @@ class FireWhileTrue(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode,
 
     @property
     def on_update(self) -> str | None:
-        """Target ID of the OnUpdate reference (targets ISyncNodeOperation)."""
+        """Will send impulses at the game tick rate of the user in UpdatingUser only while UpdatingUser sees Condition as true."""
         member = self.get_member("OnUpdate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -114,7 +114,9 @@ class FireWhileTrue(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode,
 
     @property
     def condition(self) -> str | None:
-        """Target ID of the Condition reference (targets INodeValueOutput[primitives.Bool])."""
+        """The value that needs to be true for this node to start sending impluses out of OnUpdate.
+
+By default it will be null, which will allow impulses even if UpdatingUser is null."""
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):
             return member.targetId

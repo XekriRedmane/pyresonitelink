@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetValue(GenericComponent[T], IUndoable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Undo.SetValue<>.
+    """Set Value is a component that is part of the undo system.
 
     Parameterize with a value type::
 
@@ -47,7 +47,7 @@ class SetValue(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[T])."""
+        """The field edited by the user."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +106,7 @@ class SetValue(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def performed(self) -> primitives.Bool | None:
-        """The _performed field value."""
+        """Whether this has been done or has been undone instead."""
         member = self.get_member("_performed")
         if member is None:
             return None
@@ -125,7 +125,7 @@ class SetValue(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def description(self) -> primitives.String | None:
-        """The _description field value."""
+        """The description of this undo step."""
         member = self.get_member("_description")
         if member is None:
             return None

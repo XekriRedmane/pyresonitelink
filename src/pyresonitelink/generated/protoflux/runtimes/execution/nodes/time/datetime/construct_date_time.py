@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Construct DateTime node takes in everything needed to create a DateTime, the parts include the Year, Month, Day, Hour, Minute, Second, Millisecond, and Kind. This gets combined into a newly created DateTime value that can be used.
+    """The ``Construct DateTime`` node takes in everything needed to create a DateTime, the parts include the ``Year``, ``Month``, ``Day``, ``Hour``, ``Minute``, ``Second``, ``Millisecond``, and ``Kind``. This gets combined into a newly created DateTime value that can be used.
+
+- Putting negative numbers into the inputs will break this node.|warning}}
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """
@@ -55,7 +57,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def year(self) -> str | None:
-        """Target ID of the Year reference (targets INodeValueOutput[primitives.Int])."""
+        """The year for creating this DateTime."""
         member = self.get_member("Year")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -76,7 +78,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def month(self) -> str | None:
-        """Target ID of the Month reference (targets INodeValueOutput[primitives.Int])."""
+        """The month for creating this DateTime."""
         member = self.get_member("Month")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -97,7 +99,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def day(self) -> str | None:
-        """Target ID of the Day reference (targets INodeValueOutput[primitives.Int])."""
+        """The day for creating this DateTime."""
         member = self.get_member("Day")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -118,7 +120,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def hour(self) -> str | None:
-        """Target ID of the Hour reference (targets INodeValueOutput[primitives.Int])."""
+        """The hour for creating this DateTime."""
         member = self.get_member("Hour")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -139,7 +141,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def minute(self) -> str | None:
-        """Target ID of the Minute reference (targets INodeValueOutput[primitives.Int])."""
+        """The minute for creating this DateTime."""
         member = self.get_member("Minute")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -160,7 +162,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def second(self) -> str | None:
-        """Target ID of the Second reference (targets INodeValueOutput[primitives.Int])."""
+        """The second for creating this DateTime."""
         member = self.get_member("Second")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -181,7 +183,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def millisecond(self) -> str | None:
-        """Target ID of the Millisecond reference (targets INodeValueOutput[primitives.Int])."""
+        """The millisecond for creating this DateTime."""
         member = self.get_member("Millisecond")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -202,7 +204,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def kind(self) -> str | None:
-        """Target ID of the Kind reference (targets INodeValueOutput[DateTimeKind])."""
+        """The type of time this is (``Unspecified``, ``Utc``, or ``Local``)"""
         member = self.get_member("Kind")
         if isinstance(member, members.Reference):
             return member.targetId

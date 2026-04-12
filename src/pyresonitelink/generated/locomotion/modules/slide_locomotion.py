@@ -14,9 +14,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SlideLocomotion.
+    """The SlideLocomotion component acts the same as a NoclipLocomotion except that this locomotion will attach the user to a raycasted surface below them regardless of collider type. When a surface is not found, Behavior compared to noclip is identical.
 
     Category: Locomotion/Modules
+
+    Can be used for sticky fly locomotion.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlideLocomotion"
@@ -173,7 +175,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
 
     @property
     def max_speed(self) -> primitives.Float | None:
-        """The MaxSpeed field value."""
+        """The fastest speed this locomotion can travel."""
         member = self.get_member("MaxSpeed")
         if member is None:
             return None
@@ -192,7 +194,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
 
     @property
     def minimum_fly_speed_ratio(self) -> primitives.Float | None:
-        """The MinimumFlySpeedRatio field value."""
+        """Unused."""
         member = self.get_member("MinimumFlySpeedRatio")
         if member is None:
             return None
@@ -211,7 +213,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
 
     @property
     def max_snap_distance(self) -> primitives.Float | None:
-        """The MaxSnapDistance field value."""
+        """The maximum distance to check from the user's feet position plus ``SnapCheckOffset`` downward."""
         member = self.get_member("MaxSnapDistance")
         if member is None:
             return None
@@ -230,7 +232,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
 
     @property
     def snap_check_offset(self) -> primitives.Float | None:
-        """The SnapCheckOffset field value."""
+        """anything from the user's feet within this range downward is not raycasted."""
         member = self.get_member("SnapCheckOffset")
         if member is None:
             return None
@@ -249,7 +251,7 @@ class SlideLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModul
 
     @property
     def snap_min_object_size(self) -> primitives.Float | None:
-        """The SnapMinObjectSize field value."""
+        """The minimum size of the object's max dimensions on any axis in global space compared to the user's max size on any axis needed for us to snap to it's surface below us."""
         member = self.get_member("SnapMinObjectSize")
         if member is None:
             return None

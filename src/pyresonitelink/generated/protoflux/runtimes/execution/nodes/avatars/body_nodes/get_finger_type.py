@@ -15,6 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class GetFingerType(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Get Finger Segment Type is a ProtoFlux node that returns the FingerType Enum value that describes the provided Node (BodyNode), or -1 if not a finger.
 
+This is a simplified node version of taking a BodyNode, using a To String node on it, and checking it's name contents for one of the FingerType values also fed to a To String
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Body Nodes
     """
 
@@ -33,7 +35,7 @@ class GetFingerType(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[BodyNode])."""
+        """The Body node to check for a finger segment"""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId

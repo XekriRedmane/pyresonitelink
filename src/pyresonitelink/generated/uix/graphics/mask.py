@@ -9,9 +9,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Mask(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.Mask.
+    """The Mask component restricts the rendering of anything beneath it. It requires an Image component, text, arc, rectmesh, or anything that displays a graphic on the same slot. Only opaque areas of the graphic on the same slot will render the UIX below. This is also utilized in ScrollRect since it can mask anything outside of the scrolling viewport when using the component.
+
+There is a UIX Tutorial that use masking and ScrollRects to help you understand how masks work.
+
+|warning}}
+
+}}
 
     Category: UIX/Graphics
+
+    This can be used for fancy cutout effects.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Mask"
@@ -29,7 +37,7 @@ class Mask(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def show_mask_graphic(self) -> primitives.Bool | None:
-        """The ShowMaskGraphic field value."""
+        """Shows the graphic being used to do the masking for debug purposes."""
         member = self.get_member("ShowMaskGraphic")
         if member is None:
             return None

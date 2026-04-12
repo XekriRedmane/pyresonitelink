@@ -19,6 +19,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Field Hook node takes in a target field and the source field value, then returns if this field is driving, as well as allowing the user to start and stop driving this field. This node gives the user more control to programmatically drive fields directly using ProtoFlux. This node hooks the given field, so whenever something external tries to write to it, it will receive a pulse from OnHook as well as the value it tried to write from HookedValue.
 
+Manually unlinking the drive in an inspector behaves the same as triggering StopDrive.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 
     Parameterize with a value type::
@@ -55,7 +57,7 @@ class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[IField[T]])."""
+        """The target field to drive."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -76,7 +78,7 @@ class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     @property
     def is_driving(self) -> members.EmptyElement | None:
-        """The IsDriving member."""
+        """Returns if the target field is being driven."""
         member = self.get_member("IsDriving")
         if isinstance(member, members.EmptyElement):
             return member
@@ -84,12 +86,12 @@ class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     @is_driving.setter
     def is_driving(self, value: members.EmptyElement) -> None:
-        """Set the IsDriving member."""
+        """Set IsDriving. Returns if the target field is being driven."""
         self.set_member("IsDriving", value)
 
     @property
     def start_drive(self) -> members.EmptyElement | None:
-        """The StartDrive member."""
+        """Calls an impulse to start driving the target (hooking into it)."""
         member = self.get_member("StartDrive")
         if isinstance(member, members.EmptyElement):
             return member
@@ -97,12 +99,12 @@ class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     @start_drive.setter
     def start_drive(self, value: members.EmptyElement) -> None:
-        """Set the StartDrive member."""
+        """Set StartDrive. Calls an impulse to start driving the target (hooking into it)."""
         self.set_member("StartDrive", value)
 
     @property
     def stop_drive(self) -> members.EmptyElement | None:
-        """The StopDrive member."""
+        """Calls an impulse to stop driving the target (unhooking it)."""
         member = self.get_member("StopDrive")
         if isinstance(member, members.EmptyElement):
             return member
@@ -110,12 +112,12 @@ class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     @stop_drive.setter
     def stop_drive(self, value: members.EmptyElement) -> None:
-        """Set the StopDrive member."""
+        """Set StopDrive. Calls an impulse to stop driving the target (unhooking it)."""
         self.set_member("StopDrive", value)
 
     @property
     def on_start_drive(self) -> str | None:
-        """Target ID of the OnStartDrive reference (targets INodeOperation)."""
+        """Fires when we started driving the target field."""
         member = self.get_member("OnStartDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -136,7 +138,7 @@ class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     @property
     def on_stop_drive(self) -> str | None:
-        """Target ID of the OnStopDrive reference (targets INodeOperation)."""
+        """Fires when we stopped driving the target field."""
         member = self.get_member("OnStopDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -157,7 +159,7 @@ class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     @property
     def on_hook(self) -> str | None:
-        """Target ID of the OnHook reference (targets ISyncNodeOperation)."""
+        """Fires when something writes to the target field while it is being driven by this node."""
         member = self.get_member("OnHook")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -178,7 +180,7 @@ class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeObjectOutput[T])."""
+        """The source to drive Target from. While active this acts like any other drive."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -199,7 +201,7 @@ class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     @property
     def hooked_value(self) -> members.EmptyElement | None:
-        """The HookedValue member."""
+        """Returns the value that was written by the OnHook call."""
         member = self.get_member("HookedValue")
         if isinstance(member, members.EmptyElement):
             return member
@@ -207,6 +209,6 @@ class ObjectFieldHook(GenericComponent[T], IProtoFluxEngineProxyNode, IMappableN
 
     @hooked_value.setter
     def hooked_value(self, value: members.EmptyElement) -> None:
-        """Set the HookedValue member."""
+        """Set HookedValue. Returns the value that was written by the OnHook call."""
         self.set_member("HookedValue", value)
 

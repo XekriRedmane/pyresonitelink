@@ -43,7 +43,7 @@ class PackNullable(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T],
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[T])."""
+        """The value itself."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class PackNullable(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T],
 
     @property
     def has_value(self) -> str | None:
-        """Target ID of the HasValue reference (targets INodeValueOutput[primitives.Bool])."""
+        """Sets the state of having a value."""
         member = self.get_member("HasValue")
         if isinstance(member, members.Reference):
             return member.targetId

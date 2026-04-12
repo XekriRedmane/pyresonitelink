@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugSphereRaycast(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugSphereRaycast.
+    """The DebugSphereRaycast component is used to show the multiple hit normals (1 per collider) of a sweep raycast of a sphere. This essentially acts as a fat raycast, which has thickness. Unfortunately this raycast is only for Debug purposes. Is simulated on the host machine.
 
     Category: Debug
     """
@@ -32,7 +32,7 @@ class DebugSphereRaycast(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direction(self) -> primitives.Float3 | None:
-        """The Direction field value."""
+        """the direction and distance the raycast should go."""
         member = self.get_member("Direction")
         if member is None:
             return None
@@ -51,7 +51,7 @@ class DebugSphereRaycast(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """How far the raycasts created should go."""
         member = self.get_member("Radius")
         if member is None:
             return None

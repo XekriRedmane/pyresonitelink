@@ -17,13 +17,14 @@ class OSC_Receiver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OSC_Receiver"
 
-    def __init__(self, access_reason: primitives.String | None = None, port: primitives.Int | None = None, is_listening: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, access_reason: primitives.String | None = None, port: primitives.Int | None = None, is_listening: primitives.Bool | None = None, connection_error: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             access_reason: Initial value for AccessReason.
             port: Initial value for Port.
             is_listening: Initial value for IsListening.
+            connection_error: Initial value for ConnectionError.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -33,6 +34,8 @@ class OSC_Receiver(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.port = port
         if is_listening is not None:
             self.is_listening = is_listening
+        if connection_error is not None:
+            self.connection_error = connection_error
 
     @property
     def handling_user(self) -> members.SyncObject | None:
@@ -102,5 +105,24 @@ class OSC_Receiver(GeneratedComponent, IComponent, IWorldEventReceiver):
         else:
             self.set_member(
                 "IsListening", fields.FieldBool(value=value)
+            )
+
+    @property
+    def connection_error(self) -> primitives.String | None:
+        """The ConnectionError field value."""
+        member = self.get_member("ConnectionError")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @connection_error.setter
+    def connection_error(self, value: primitives.String) -> None:
+        """Set the ConnectionError field value."""
+        member = self.get_member("ConnectionError")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ConnectionError", fields.FieldString(value=value)
             )
 

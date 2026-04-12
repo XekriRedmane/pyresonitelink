@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserUserRoot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User User Root node returns a user's User Root.
+    """The ``User User Root`` node returns a user's User Root.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users
     """
@@ -33,7 +33,7 @@ class UserUserRoot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting the user root from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

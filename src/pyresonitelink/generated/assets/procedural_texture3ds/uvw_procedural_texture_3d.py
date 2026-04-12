@@ -3,6 +3,10 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.texture_filter_mode import TextureFilterMode
+from pyresonitelink.generated._enums.texture_wrap_mode import TextureWrapMode
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.texture_format import TextureFormat
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_provider import ITextureProvider
@@ -18,13 +22,19 @@ class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspe
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UVW_ProceduralTexture3D"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, anisotropic_level: primitives.Int | None = None, size: primitives.Int3 | None = None, value_offset: primitives.Float3 | None = None, value_multiplier: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, filter_mode: TextureFilterMode | str | None = None, anisotropic_level: primitives.Int | None = None, wrap_mode_u: TextureWrapMode | str | None = None, wrap_mode_v: TextureWrapMode | str | None = None, wrap_mode_w: TextureWrapMode | str | None = None, profile: ColorProfile | str | None = None, size: primitives.Int3 | None = None, format_: TextureFormat | str | None = None, value_offset: primitives.Float3 | None = None, value_multiplier: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
+            filter_mode: Initial value for FilterMode.
             anisotropic_level: Initial value for AnisotropicLevel.
+            wrap_mode_u: Initial value for WrapModeU.
+            wrap_mode_v: Initial value for WrapModeV.
+            wrap_mode_w: Initial value for WrapModeW.
+            profile: Initial value for Profile.
             size: Initial value for Size.
+            format_: Initial value for Format.
             value_offset: Initial value for ValueOffset.
             value_multiplier: Initial value for ValueMultiplier.
             component: Existing Component to wrap.
@@ -32,10 +42,22 @@ class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspe
         super().__init__(component)
         if high_priority_integration is not None:
             self.high_priority_integration = high_priority_integration
+        if filter_mode is not None:
+            self.filter_mode = filter_mode
         if anisotropic_level is not None:
             self.anisotropic_level = anisotropic_level
+        if wrap_mode_u is not None:
+            self.wrap_mode_u = wrap_mode_u
+        if wrap_mode_v is not None:
+            self.wrap_mode_v = wrap_mode_v
+        if wrap_mode_w is not None:
+            self.wrap_mode_w = wrap_mode_w
+        if profile is not None:
+            self.profile = profile
         if size is not None:
             self.size = size
+        if format_ is not None:
+            self.format_ = format_
         if value_offset is not None:
             self.value_offset = value_offset
         if value_multiplier is not None:
@@ -61,17 +83,24 @@ class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspe
             )
 
     @property
-    def filter_mode(self) -> members.FieldEnum | None:
-        """The FilterMode member."""
+    def filter_mode(self) -> TextureFilterMode | None:
+        """The FilterMode enum value."""
         member = self.get_member("FilterMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureFilterMode(member.value)
         return None
 
     @filter_mode.setter
-    def filter_mode(self, value: members.FieldEnum) -> None:
-        """Set the FilterMode member."""
-        self.set_member("FilterMode", value)
+    def filter_mode(self, value: TextureFilterMode | str) -> None:
+        """Set the FilterMode enum value."""
+        member = self.get_member("FilterMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "FilterMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def anisotropic_level(self) -> primitives.Int | None:
@@ -93,56 +122,84 @@ class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspe
             )
 
     @property
-    def wrap_mode_u(self) -> members.FieldEnum | None:
-        """The WrapModeU member."""
+    def wrap_mode_u(self) -> TextureWrapMode | None:
+        """The WrapModeU enum value."""
         member = self.get_member("WrapModeU")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureWrapMode(member.value)
         return None
 
     @wrap_mode_u.setter
-    def wrap_mode_u(self, value: members.FieldEnum) -> None:
-        """Set the WrapModeU member."""
-        self.set_member("WrapModeU", value)
+    def wrap_mode_u(self, value: TextureWrapMode | str) -> None:
+        """Set the WrapModeU enum value."""
+        member = self.get_member("WrapModeU")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapModeU",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def wrap_mode_v(self) -> members.FieldEnum | None:
-        """The WrapModeV member."""
+    def wrap_mode_v(self) -> TextureWrapMode | None:
+        """The WrapModeV enum value."""
         member = self.get_member("WrapModeV")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureWrapMode(member.value)
         return None
 
     @wrap_mode_v.setter
-    def wrap_mode_v(self, value: members.FieldEnum) -> None:
-        """Set the WrapModeV member."""
-        self.set_member("WrapModeV", value)
+    def wrap_mode_v(self, value: TextureWrapMode | str) -> None:
+        """Set the WrapModeV enum value."""
+        member = self.get_member("WrapModeV")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapModeV",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def wrap_mode_w(self) -> members.FieldEnum | None:
-        """The WrapModeW member."""
+    def wrap_mode_w(self) -> TextureWrapMode | None:
+        """The WrapModeW enum value."""
         member = self.get_member("WrapModeW")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureWrapMode(member.value)
         return None
 
     @wrap_mode_w.setter
-    def wrap_mode_w(self, value: members.FieldEnum) -> None:
-        """Set the WrapModeW member."""
-        self.set_member("WrapModeW", value)
+    def wrap_mode_w(self, value: TextureWrapMode | str) -> None:
+        """Set the WrapModeW enum value."""
+        member = self.get_member("WrapModeW")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapModeW",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def size(self) -> primitives.Int3 | None:
@@ -164,17 +221,24 @@ class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspe
             )
 
     @property
-    def format_(self) -> members.FieldEnum | None:
-        """The Format member."""
+    def format_(self) -> TextureFormat | None:
+        """The Format enum value."""
         member = self.get_member("Format")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureFormat(member.value)
         return None
 
     @format_.setter
-    def format_(self, value: members.FieldEnum) -> None:
-        """Set the Format member."""
-        self.set_member("Format", value)
+    def format_(self, value: TextureFormat | str) -> None:
+        """Set the Format enum value."""
+        member = self.get_member("Format")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Format",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def value_offset(self) -> primitives.Float3 | None:

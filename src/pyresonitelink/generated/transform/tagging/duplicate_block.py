@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DuplicateBlock(GeneratedComponent, IDuplicateBlock, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DuplicateBlock.
+    """The Duplicate Block component blocks duplication of a Grabbable slot tagged with this component by using the Context menu, but not via the Scene Inspector or ProtoFlux.
 
     Category: Transform/Tagging
     """

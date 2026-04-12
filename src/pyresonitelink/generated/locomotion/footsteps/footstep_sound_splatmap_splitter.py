@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FootstepSoundSplatmapSplitter.
+    """The FootstepSoundSplatmapSplitter component plays a different sound player depending on what part of a mesh collider on in the same slot a player walks on.
 
     Category: Locomotion/Footsteps
+
+    Used to map texture maps for different terrain sections to different
+    noises.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FootstepSoundSplatmapSplitter"
@@ -62,7 +65,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     @property
     def splat_map(self) -> str | None:
-        """Target ID of the SplatMap reference (targets IAssetProvider[Texture2D])."""
+        """The texture to get channel data from for playing different sound materials."""
         member = self.get_member("SplatMap")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +86,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     @property
     def r_sound_material(self) -> str | None:
-        """Target ID of the R_SoundMaterial reference (targets IFootstepSoundMaterial)."""
+        """The sound material to play when the user walks on a part of the mesh collider that maps to the R channel of ``SplatMap``"""
         member = self.get_member("R_SoundMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -104,7 +107,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     @property
     def g_sound_material(self) -> str | None:
-        """Target ID of the G_SoundMaterial reference (targets IFootstepSoundMaterial)."""
+        """The sound material to play when the user walks on a part of the mesh collider that maps to the G channel of ``SplatMap``"""
         member = self.get_member("G_SoundMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -125,7 +128,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     @property
     def b_sound_material(self) -> str | None:
-        """Target ID of the B_SoundMaterial reference (targets IFootstepSoundMaterial)."""
+        """The sound material to play when the user walks on a part of the mesh collider that maps to the B channel of ``SplatMap``"""
         member = self.get_member("B_SoundMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -146,7 +149,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     @property
     def a_sound_material(self) -> str | None:
-        """Target ID of the A_SoundMaterial reference (targets IFootstepSoundMaterial)."""
+        """The sound material to play when the user walks on a part of the mesh collider that maps to the A channel of ``SplatMap``"""
         member = self.get_member("A_SoundMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -167,7 +170,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     @property
     def blend_sounds(self) -> primitives.Bool | None:
-        """The BlendSounds field value."""
+        """Whether to blend sounds together based on what mix of channels the user is stepping on."""
         member = self.get_member("BlendSounds")
         if member is None:
             return None
@@ -186,7 +189,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     @property
     def minimum_threshold(self) -> primitives.Float | None:
-        """The MinimumThreshold field value."""
+        """The minimum threshold needed for a channel to be for it to cound for a sound."""
         member = self.get_member("MinimumThreshold")
         if member is None:
             return None
@@ -205,7 +208,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     @property
     def r_weight(self) -> primitives.Float | None:
-        """The R_Weight field value."""
+        """The strength the sound for the R channel has, which can make it have more importance than other channel sounds on the same pixel."""
         member = self.get_member("R_Weight")
         if member is None:
             return None
@@ -224,7 +227,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     @property
     def g_weight(self) -> primitives.Float | None:
-        """The G_Weight field value."""
+        """The strength the sound for the G channel has, which can make it have more importance than other channel sounds on the same pixel."""
         member = self.get_member("G_Weight")
         if member is None:
             return None
@@ -243,7 +246,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     @property
     def b_weight(self) -> primitives.Float | None:
-        """The B_Weight field value."""
+        """The strength the sound for the B channel has, which can make it have more importance than other channel sounds on the same pixel."""
         member = self.get_member("B_Weight")
         if member is None:
             return None
@@ -262,7 +265,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
 
     @property
     def a_weight(self) -> primitives.Float | None:
-        """The A_Weight field value."""
+        """The strength the sound for the A channel has, which can make it have more importance than other channel sounds on the same pixel."""
         member = self.get_member("A_Weight")
         if member is None:
             return None

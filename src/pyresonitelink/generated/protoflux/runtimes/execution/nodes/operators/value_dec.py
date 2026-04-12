@@ -14,6 +14,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ValueDec(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Value Dec node takes in a value and returns that value -1.
 
+This node is similar to the Sub node, but setting the sub node to only subtract 1. |suggestion}}
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 
     Parameterize with a value type::
@@ -38,7 +40,7 @@ class ValueDec(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     @property
     def n(self) -> str | None:
-        """Target ID of the N reference (targets INodeValueOutput[T])."""
+        """The value to decrement by 1."""
         member = self.get_member("N")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -1,6 +1,7 @@
 """Generated component: CubemapCreator."""
 
 from pyresonitelink.data import members
+from pyresonitelink.generated._enums.rotation import Rotation
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -11,17 +12,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CubemapCreator.
+    """See Cubemap Creator.
 
     Category: Wizards
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CubemapCreator"
 
-    def __init__(self, pos_x: str | IAssetProvider[Texture2D] | None = None, neg_x: str | IAssetProvider[Texture2D] | None = None, pos_y: str | IAssetProvider[Texture2D] | None = None, neg_y: str | IAssetProvider[Texture2D] | None = None, pos_z: str | IAssetProvider[Texture2D] | None = None, neg_z: str | IAssetProvider[Texture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, top_bottom_rotation: Rotation | str | None = None, pos_x: str | IAssetProvider[Texture2D] | None = None, neg_x: str | IAssetProvider[Texture2D] | None = None, pos_y: str | IAssetProvider[Texture2D] | None = None, neg_y: str | IAssetProvider[Texture2D] | None = None, pos_z: str | IAssetProvider[Texture2D] | None = None, neg_z: str | IAssetProvider[Texture2D] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            top_bottom_rotation: Initial value for TopBottomRotation.
             pos_x: Initial value for PosX.
             neg_x: Initial value for NegX.
             pos_y: Initial value for PosY.
@@ -31,6 +33,8 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if top_bottom_rotation is not None:
+            self.top_bottom_rotation = top_bottom_rotation
         if pos_x is not None:
             self.pos_x = pos_x
         if neg_x is not None:
@@ -45,21 +49,28 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
             self.neg_z = neg_z
 
     @property
-    def top_bottom_rotation(self) -> members.FieldEnum | None:
-        """The TopBottomRotation member."""
+    def top_bottom_rotation(self) -> Rotation | None:
+        """How to Rotate the top and bottom images to fit."""
         member = self.get_member("TopBottomRotation")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Rotation(member.value)
         return None
 
     @top_bottom_rotation.setter
-    def top_bottom_rotation(self, value: members.FieldEnum) -> None:
-        """Set the TopBottomRotation member."""
-        self.set_member("TopBottomRotation", value)
+    def top_bottom_rotation(self, value: Rotation | str) -> None:
+        """Set TopBottomRotation. How to Rotate the top and bottom images to fit."""
+        member = self.get_member("TopBottomRotation")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "TopBottomRotation",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def pos_x(self) -> str | None:
-        """Target ID of the PosX reference (targets IAssetProvider[Texture2D])."""
+        """What to use for the positive X side."""
         member = self.get_member("PosX")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -80,7 +91,7 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
 
     @property
     def neg_x(self) -> str | None:
-        """Target ID of the NegX reference (targets IAssetProvider[Texture2D])."""
+        """What to use for the negative X side."""
         member = self.get_member("NegX")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -101,7 +112,7 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
 
     @property
     def pos_y(self) -> str | None:
-        """Target ID of the PosY reference (targets IAssetProvider[Texture2D])."""
+        """What to use for the positive Y side."""
         member = self.get_member("PosY")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -122,7 +133,7 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
 
     @property
     def neg_y(self) -> str | None:
-        """Target ID of the NegY reference (targets IAssetProvider[Texture2D])."""
+        """What to use for the negative Y side."""
         member = self.get_member("NegY")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -143,7 +154,7 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
 
     @property
     def pos_z(self) -> str | None:
-        """Target ID of the PosZ reference (targets IAssetProvider[Texture2D])."""
+        """What to use for the top side."""
         member = self.get_member("PosZ")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -164,7 +175,7 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
 
     @property
     def neg_z(self) -> str | None:
-        """Target ID of the NegZ reference (targets IAssetProvider[Texture2D])."""
+        """What to use for the bottom side."""
         member = self.get_member("NegZ")
         if isinstance(member, members.Reference):
             return member.targetId

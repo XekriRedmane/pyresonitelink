@@ -15,6 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class FromBaseValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The From Base Value node takes in a base value as a double and returns the corresponding quantity as a quantity type.
 
+To create this node, you need to specify a valid quantity type for its generic parameter. Examples: ``Mass``, ``Time``, and ``Voltage``.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Quantity
 
     Parameterize with a value type::
@@ -39,7 +41,7 @@ class FromBaseValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     @property
     def base_value(self) -> str | None:
-        """Target ID of the BaseValue reference (targets INodeValueOutput[primitives.Double])."""
+        """The base value of the quantity, in the quantity type's base unit. (See Quantity Types for a list of all quantity types and their corresponding base units)"""
         member = self.get_member("BaseValue")
         if isinstance(member, members.Reference):
             return member.targetId

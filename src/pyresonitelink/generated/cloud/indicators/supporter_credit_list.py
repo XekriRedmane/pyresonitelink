@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.credit_type import CreditType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -10,17 +11,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SupporterCreditList.
+    """The SupporterCreditList component is used to get a list of supporters currently supporting the game financially.
 
     Category: Cloud/Indicators
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SupporterCreditList"
 
-    def __init__(self, separator: primitives.String | None = None, prefix: primitives.String | None = None, suffix: primitives.String | None = None, formatted_list: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, credit_type: CreditType | str | None = None, separator: primitives.String | None = None, prefix: primitives.String | None = None, suffix: primitives.String | None = None, formatted_list: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            credit_type: Initial value for CreditType.
             separator: Initial value for Separator.
             prefix: Initial value for Prefix.
             suffix: Initial value for Suffix.
@@ -28,6 +30,8 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if credit_type is not None:
+            self.credit_type = credit_type
         if separator is not None:
             self.separator = separator
         if prefix is not None:
@@ -38,21 +42,28 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.formatted_list = formatted_list
 
     @property
-    def credit_type(self) -> members.FieldEnum | None:
-        """The CreditType member."""
+    def credit_type(self) -> CreditType | None:
+        """What kind of supporter level/category to get names from."""
         member = self.get_member("CreditType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CreditType(member.value)
         return None
 
     @credit_type.setter
-    def credit_type(self, value: members.FieldEnum) -> None:
-        """Set the CreditType member."""
-        self.set_member("CreditType", value)
+    def credit_type(self, value: CreditType | str) -> None:
+        """Set CreditType. What kind of supporter level/category to get names from."""
+        member = self.get_member("CreditType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "CreditType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def separator(self) -> primitives.String | None:
-        """The Separator field value."""
+        """How to separate the list of names."""
         member = self.get_member("Separator")
         if member is None:
             return None
@@ -71,7 +82,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def prefix(self) -> primitives.String | None:
-        """The Prefix field value."""
+        """What to put at the beginning of each name (Usually a color tag)"""
         member = self.get_member("Prefix")
         if member is None:
             return None
@@ -90,7 +101,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def suffix(self) -> primitives.String | None:
-        """The Suffix field value."""
+        """What to put at the end of each name (Usually a color tag ender."""
         member = self.get_member("Suffix")
         if member is None:
             return None
@@ -109,7 +120,7 @@ class SupporterCreditList(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def formatted_list(self) -> primitives.String | None:
-        """The FormattedList field value."""
+        """The resulting list."""
         member = self.get_member("FormattedList")
         if member is None:
             return None

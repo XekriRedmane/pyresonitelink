@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VelocityHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VelocityHapticFilter.
+    """The VelocityHapticFilter component is used to influence the haptics a user feels on a haptics device as the device moves through a HapticVolume at different speeds.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics/Filters
+
+    Attach to a slot with a valid and working HapticVolume to add to the
+    list of multiplicative haptic filters.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VelocityHapticFilter"
@@ -44,7 +49,7 @@ class VelocityHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def velocity_smooth_time(self) -> primitives.Float | None:
-        """The VelocitySmoothTime field value."""
+        """How much to smooth the changes in velocity this component works with."""
         member = self.get_member("VelocitySmoothTime")
         if member is None:
             return None
@@ -63,7 +68,7 @@ class VelocityHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def start_velocity(self) -> primitives.Float | None:
-        """The StartVelocity field value."""
+        """The velocity to map to ``StartIntensity``."""
         member = self.get_member("StartVelocity")
         if member is None:
             return None
@@ -82,7 +87,7 @@ class VelocityHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def end_velocity(self) -> primitives.Float | None:
-        """The EndVelocity field value."""
+        """The velocity to map to ``EndIntensity``."""
         member = self.get_member("EndVelocity")
         if member is None:
             return None
@@ -101,7 +106,7 @@ class VelocityHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def start_intensity(self) -> primitives.Float | None:
-        """The StartIntensity field value."""
+        """The intensity to use when a haptics device is moving at ``StartVelocity`` through a valid Component:HapticVolume on the same slot."""
         member = self.get_member("StartIntensity")
         if member is None:
             return None
@@ -120,7 +125,7 @@ class VelocityHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def end_intensity(self) -> primitives.Float | None:
-        """The EndIntensity field value."""
+        """The intensity to use when a haptics device is moving at ``EndVelocity`` through a valid Component:HapticVolume on the same slot."""
         member = self.get_member("EndIntensity")
         if member is None:
             return None
@@ -139,7 +144,7 @@ class VelocityHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def power(self) -> primitives.Float | None:
-        """The Power field value."""
+        """The multiplier of the haptics intensity before applying it."""
         member = self.get_member("Power")
         if member is None:
             return None

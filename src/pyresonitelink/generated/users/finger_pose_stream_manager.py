@@ -14,9 +14,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FingerPoseStreamManager.
+    """The FingerPoseStreamManager component uses streaming data from the ValueStream component (seen in the user Inspector) to control the left and right fingers on a user's avatar. This component in itself is a IFingerPoseSourceComponent.
+
+For more information on finger pose sources, please see Finger Posing System.
 
     Category: Users
+
+    Used for Finger Posing System.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FingerPoseStreamManager"
@@ -49,7 +53,7 @@ class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IW
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets User)."""
+        """The referenced user to get tracking data from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +74,7 @@ class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IW
 
     @property
     def left_is_tracking(self) -> str | None:
-        """Target ID of the LeftIsTracking reference (targets ValueStream[primitives.Bool])."""
+        """The stream data for the left hand."""
         member = self.get_member("LeftIsTracking")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +95,7 @@ class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IW
 
     @property
     def right_is_tracking(self) -> str | None:
-        """Target ID of the RightIsTracking reference (targets ValueStream[primitives.Bool])."""
+        """The stream data for the right hand."""
         member = self.get_member("RightIsTracking")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +116,7 @@ class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IW
 
     @property
     def stream(self) -> str | None:
-        """Target ID of the Stream reference (targets MultiValueStream[primitives.FloatQ])."""
+        """The stream data from all the tracking."""
         member = self.get_member("Stream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -133,7 +137,7 @@ class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IW
 
     @property
     def tracks_metacarpals(self) -> primitives.Bool | None:
-        """The TracksMetacarpals field value."""
+        """Should the metacarpals be tracked."""
         member = self.get_member("TracksMetacarpals")
         if member is None:
             return None
@@ -152,7 +156,7 @@ class FingerPoseStreamManager(GeneratedComponent, IFingerPoseSourceComponent, IW
 
     @property
     def pose_controller(self) -> str | None:
-        """Target ID of the PoseController reference (targets UserPoseController)."""
+        """The pose controller from the user."""
         member = self.get_member("PoseController")
         if isinstance(member, members.Reference):
             return member.targetId

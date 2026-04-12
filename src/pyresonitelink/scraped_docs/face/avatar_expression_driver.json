@@ -1,0 +1,22 @@
+{
+  "description": "Allows the assignment of the IMouthTrackingSourceComponent to blendshapes.",
+  "category": "Users:Common Avatar System:Face",
+  "fields": {
+    "DataSource": "The component that is providing raw mouth tracking data from a physical or virtual device on a machine.",
+    "StrengthMultiplier": "Determines strength of expressions",
+    "VolumeSource": "A volume source like a Volume Meter that is used to determine facial tracking better.",
+    "SilenceSource": "A silence source like the target value of the ``Silence`` field on a Direct Viseme Driver",
+    "ExpressionDrivers": "A list of Expression Drivers that take facial data and drive a float or blendshape with the data."
+  },
+  "methods": {
+    "AutoAssign": "Assign blendshapes to this component's drivers and create new drivers based on heuristics."
+  },
+  "usage": "",
+  "notes": [
+    {
+      "title": "Expression",
+      "text": "The different expressions an ExpressionDriver can have when driving any float value (or blendshapes)\n\nThis list is ever constantly expanding, and as such will be incomplete for vast periods of time. Feel free to help us fill this table."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarExpressionDriver&action=raw"
+}

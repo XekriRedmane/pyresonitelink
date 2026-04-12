@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalScreenPointToWorld(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Local Screen Point To World node takes in a normalized screen space (0 to 1 along the user's screen in the X and Y position), and converts it to a position in world space. This node just takes where you are looking plus the distance from the local user and makes a value someplace outward from your camera/screen.
+    """The Local Screen Point To World node takes in a normalized screen space (``0`` to ``1`` along the user's screen in the X and Y position), and converts it to a position in world space. This node just takes where you are looking plus the distance from the local user and makes a value someplace outward from your camera/screen.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform/Conversion
     """
@@ -36,7 +36,7 @@ class LocalScreenPointToWorld(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def normalized_screen_point(self) -> str | None:
-        """Target ID of the NormalizedScreenPoint reference (targets INodeValueOutput[primitives.Float2])."""
+        """The screen point from the user's perspective."""
         member = self.get_member("NormalizedScreenPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class LocalScreenPointToWorld(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def distance(self) -> str | None:
-        """Target ID of the Distance reference (targets INodeValueOutput[primitives.Float])."""
+        """The distance from this local user's view point."""
         member = self.get_member("Distance")
         if isinstance(member, members.Reference):
             return member.targetId

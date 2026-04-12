@@ -4,56 +4,92 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.gaussian_splat_quality_preset import GaussianSplatQualityPreset
+from pyresonitelink.generated._enums.gaussian_vector_format import GaussianVectorFormat
+from pyresonitelink.generated._enums.gaussian_color_format import GaussianColorFormat
+from pyresonitelink.generated._enums.gaussian_sh_format import GaussianSHFormat
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class GaussianSplatQualitySettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.GaussianSplatQualitySettings.
+    """The Gaussian Splat Quality Settings component is used to control the quality of Gaussian Splats in a world.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GaussianSplatQualitySettings"
 
-    def __init__(self, advanced_quality: primitives.Bool | None = None, sort_mega_operations_per_camera: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, quality_preset: GaussianSplatQualityPreset | str | None = None, min_local_quality: GaussianSplatQualityPreset | str | None = None, advanced_quality: primitives.Bool | None = None, position_format: GaussianVectorFormat | str | None = None, scale_format: GaussianVectorFormat | str | None = None, color_format: GaussianColorFormat | str | None = None, spherical_harmonics_format: GaussianSHFormat | str | None = None, sort_mega_operations_per_camera: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            quality_preset: Initial value for QualityPreset.
+            min_local_quality: Initial value for MinLocalQuality.
             advanced_quality: Initial value for AdvancedQuality.
+            position_format: Initial value for PositionFormat.
+            scale_format: Initial value for ScaleFormat.
+            color_format: Initial value for ColorFormat.
+            spherical_harmonics_format: Initial value for SphericalHarmonicsFormat.
             sort_mega_operations_per_camera: Initial value for SortMegaOperationsPerCamera.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if quality_preset is not None:
+            self.quality_preset = quality_preset
+        if min_local_quality is not None:
+            self.min_local_quality = min_local_quality
         if advanced_quality is not None:
             self.advanced_quality = advanced_quality
+        if position_format is not None:
+            self.position_format = position_format
+        if scale_format is not None:
+            self.scale_format = scale_format
+        if color_format is not None:
+            self.color_format = color_format
+        if spherical_harmonics_format is not None:
+            self.spherical_harmonics_format = spherical_harmonics_format
         if sort_mega_operations_per_camera is not None:
             self.sort_mega_operations_per_camera = sort_mega_operations_per_camera
 
     @property
-    def quality_preset(self) -> members.FieldEnum | None:
-        """The QualityPreset member."""
+    def quality_preset(self) -> GaussianSplatQualityPreset | None:
+        """The preset to use for quality of Gaussian splats."""
         member = self.get_member("QualityPreset")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return GaussianSplatQualityPreset(member.value)
         return None
 
     @quality_preset.setter
-    def quality_preset(self, value: members.FieldEnum) -> None:
-        """Set the QualityPreset member."""
-        self.set_member("QualityPreset", value)
+    def quality_preset(self, value: GaussianSplatQualityPreset | str) -> None:
+        """Set QualityPreset. The preset to use for quality of Gaussian splats."""
+        member = self.get_member("QualityPreset")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "QualityPreset",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def min_local_quality(self) -> members.FieldEnum | None:
-        """The MinLocalQuality member."""
+    def min_local_quality(self) -> GaussianSplatQualityPreset | None:
+        """The preset to use for the minimum quality of Gaussian splats."""
         member = self.get_member("MinLocalQuality")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return GaussianSplatQualityPreset(member.value)
         return None
 
     @min_local_quality.setter
-    def min_local_quality(self, value: members.FieldEnum) -> None:
-        """Set the MinLocalQuality member."""
-        self.set_member("MinLocalQuality", value)
+    def min_local_quality(self, value: GaussianSplatQualityPreset | str) -> None:
+        """Set MinLocalQuality. The preset to use for the minimum quality of Gaussian splats."""
+        member = self.get_member("MinLocalQuality")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MinLocalQuality",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def advanced_quality(self) -> primitives.Bool | None:
@@ -75,60 +111,88 @@ class GaussianSplatQualitySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def position_format(self) -> members.FieldEnum | None:
-        """The PositionFormat member."""
+    def position_format(self) -> GaussianVectorFormat | None:
+        """The PositionFormat enum value."""
         member = self.get_member("PositionFormat")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return GaussianVectorFormat(member.value)
         return None
 
     @position_format.setter
-    def position_format(self, value: members.FieldEnum) -> None:
-        """Set the PositionFormat member."""
-        self.set_member("PositionFormat", value)
+    def position_format(self, value: GaussianVectorFormat | str) -> None:
+        """Set the PositionFormat enum value."""
+        member = self.get_member("PositionFormat")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "PositionFormat",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def scale_format(self) -> members.FieldEnum | None:
-        """The ScaleFormat member."""
+    def scale_format(self) -> GaussianVectorFormat | None:
+        """The ScaleFormat enum value."""
         member = self.get_member("ScaleFormat")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return GaussianVectorFormat(member.value)
         return None
 
     @scale_format.setter
-    def scale_format(self, value: members.FieldEnum) -> None:
-        """Set the ScaleFormat member."""
-        self.set_member("ScaleFormat", value)
+    def scale_format(self, value: GaussianVectorFormat | str) -> None:
+        """Set the ScaleFormat enum value."""
+        member = self.get_member("ScaleFormat")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ScaleFormat",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def color_format(self) -> members.FieldEnum | None:
-        """The ColorFormat member."""
+    def color_format(self) -> GaussianColorFormat | None:
+        """The ColorFormat enum value."""
         member = self.get_member("ColorFormat")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return GaussianColorFormat(member.value)
         return None
 
     @color_format.setter
-    def color_format(self, value: members.FieldEnum) -> None:
-        """Set the ColorFormat member."""
-        self.set_member("ColorFormat", value)
+    def color_format(self, value: GaussianColorFormat | str) -> None:
+        """Set the ColorFormat enum value."""
+        member = self.get_member("ColorFormat")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ColorFormat",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def spherical_harmonics_format(self) -> members.FieldEnum | None:
-        """The SphericalHarmonicsFormat member."""
+    def spherical_harmonics_format(self) -> GaussianSHFormat | None:
+        """The SphericalHarmonicsFormat enum value."""
         member = self.get_member("SphericalHarmonicsFormat")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return GaussianSHFormat(member.value)
         return None
 
     @spherical_harmonics_format.setter
-    def spherical_harmonics_format(self, value: members.FieldEnum) -> None:
-        """Set the SphericalHarmonicsFormat member."""
-        self.set_member("SphericalHarmonicsFormat", value)
+    def spherical_harmonics_format(self, value: GaussianSHFormat | str) -> None:
+        """Set the SphericalHarmonicsFormat enum value."""
+        member = self.get_member("SphericalHarmonicsFormat")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SphericalHarmonicsFormat",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def sort_mega_operations_per_camera(self) -> primitives.Float | None:
-        """The SortMegaOperationsPerCamera field value."""
+        """The amount of sorting to do in different cameras rendering Gaussian splats."""
         member = self.get_member("SortMegaOperationsPerCamera")
         if member is None:
             return None

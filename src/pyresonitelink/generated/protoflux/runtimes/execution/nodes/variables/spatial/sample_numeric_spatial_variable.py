@@ -17,6 +17,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class SampleNumericSpatialVariable(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Sample Numeric Spatial Variable node takes in a point in 3D space, a name that matches that space, a priority mode, and a default (base) value if that space cannot be found, then returns the (weighted) value found in the space, otherwise it will return the default value.
 
+This node works with spatial variable components, and will need a BoxConstantValueSpatialVariable or similar to function as expected.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Variables/Spatial
 
     Parameterize with a value type::
@@ -50,7 +52,7 @@ class SampleNumericSpatialVariable(GenericComponent[T], INodeValueOutput[T], IEx
 
     @property
     def point(self) -> str | None:
-        """Target ID of the Point reference (targets INodeValueOutput[primitives.Float3])."""
+        """The point to check in global 3D space."""
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -71,7 +73,7 @@ class SampleNumericSpatialVariable(GenericComponent[T], INodeValueOutput[T], IEx
 
     @property
     def name(self) -> str | None:
-        """Target ID of the Name reference (targets INodeObjectOutput[primitives.String])."""
+        """The named space/area to look for."""
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +94,7 @@ class SampleNumericSpatialVariable(GenericComponent[T], INodeValueOutput[T], IEx
 
     @property
     def mode(self) -> str | None:
-        """Target ID of the Mode reference (targets INodeValueOutput[ValueSpatialVariableMode])."""
+        """The priority mode used to determine the value of this sample. (``HighestPriority``, ``WeightedAverage``, ``PrioritySortedBlend``, or ``Additive``)"""
         member = self.get_member("Mode")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -113,7 +115,7 @@ class SampleNumericSpatialVariable(GenericComponent[T], INodeValueOutput[T], IEx
 
     @property
     def base_value(self) -> str | None:
-        """Target ID of the BaseValue reference (targets INodeValueOutput[T])."""
+        """If a named space cannot be found, use this value."""
         member = self.get_member("BaseValue")
         if isinstance(member, members.Reference):
             return member.targetId

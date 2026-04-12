@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SphereMeshGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SphereMeshGizmo.
+    """The SphereMeshGizmo component is used to adjust the radius of a sphere mesh.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SphereMeshGizmo"
@@ -31,7 +31,7 @@ class SphereMeshGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets SphereMesh)."""
+        """Sphere mesh to modify."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +52,7 @@ class SphereMeshGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def sphere_gizmo(self) -> str | None:
-        """Target ID of the _sphereGizmo reference (targets SphereGizmo)."""
+        """The gizmo to use to edit the sphere mesh size."""
         member = self.get_member("_sphereGizmo")
         if isinstance(member, members.Reference):
             return member.targetId

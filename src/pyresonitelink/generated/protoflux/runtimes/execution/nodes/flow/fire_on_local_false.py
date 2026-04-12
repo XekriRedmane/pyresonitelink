@@ -9,16 +9,15 @@ from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperat
 
 
 class FireOnLocalFalse(GeneratedComponent):
-    """The FireOnLocalFalse node will listen for changes on its input bool and fire an impulse whenever the input turns from True to False across updates.
+    """The FireOnLocalFalse node will listen for changes on its input bool and fire an impulse whenever the input turns from ``True`` to ``False`` across updates.
+
+Unlike its non-local equivalent, every user's client will be listening for changes and fire impulses owned by themselves as opposed to only one user. This is useful when a time-sensitive value is already evaluated locally, making this node work without extra network delay.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
 
     **See also**: * FireOnFalse for the non-local equivalent of this node where a user to fire the impulse on can be specified.
 * FireOnLocalTrue
 * FireOnLocalChange
-
-ProtoFlux:Flow
-Listener nodes
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.FireOnLocalFalse"
@@ -60,7 +59,7 @@ Listener nodes
 
     @property
     def on_change(self) -> str | None:
-        """Target ID of the OnChange reference (targets ISyncNodeOperation)."""
+        """Fires a single impulse owned by the local user whenever the provided input turns from ``True`` to ``False`` across updates."""
         member = self.get_member("OnChange")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.type import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.proto_flux_node import ProtoFluxNode
@@ -12,12 +13,15 @@ from pyresonitelink.generated._types.isync_ref import ISyncRef
 
 
 class ProtoFluxInputProxy(GeneratedComponent):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxInputProxy.
+    """The ProtoFluxInputProxy component is used to manage the input sockets of protoflux nodes, making components become the actual visuals the user uses to interact with protoflux with. Otherwise, users would have to use purely the developer tool.
+
+    Used to manage the wire visuals and interfacing with protoflux
+    Components and their visuals.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxInputProxy"
 
-    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: primitives.String | None = None, is_dynamic: primitives.Bool | None = None, index: primitives.Int | None = None, connect_point: str | Slot | None = None, wire: str | ProtoFluxWireManager | None = None, node_input: str | ISyncRef | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: primitives.String | None = None, is_dynamic: primitives.Bool | None = None, index: primitives.Int | None = None, connect_point: str | Slot | None = None, wire: str | ProtoFluxWireManager | None = None, node_input: str | ISyncRef | None = None, input_type: Type | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +32,7 @@ class ProtoFluxInputProxy(GeneratedComponent):
             connect_point: Initial value for ConnectPoint.
             wire: Initial value for Wire.
             node_input: Initial value for NodeInput.
+            input_type: Initial value for InputType.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -45,10 +50,12 @@ class ProtoFluxInputProxy(GeneratedComponent):
             self.wire = wire
         if node_input is not None:
             self.node_input = node_input
+        if input_type is not None:
+            self.input_type = input_type
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets ProtoFluxNode)."""
+        """The ProtoFlux component whose input you wish to proxy."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -69,7 +76,7 @@ class ProtoFluxInputProxy(GeneratedComponent):
 
     @property
     def element_name(self) -> primitives.String | None:
-        """The ElementName field value."""
+        """The name that appears when you hover this input with a Flux Tool."""
         member = self.get_member("ElementName")
         if member is None:
             return None
@@ -88,7 +95,7 @@ class ProtoFluxInputProxy(GeneratedComponent):
 
     @property
     def is_dynamic(self) -> primitives.Bool | None:
-        """The IsDynamic field value."""
+        """Whether this input can be converted by inputting a different type."""
         member = self.get_member("IsDynamic")
         if member is None:
             return None
@@ -107,7 +114,7 @@ class ProtoFluxInputProxy(GeneratedComponent):
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """The index in a list if this points to a list of inputs/outputs."""
         member = self.get_member("Index")
         if member is None:
             return None
@@ -126,7 +133,7 @@ class ProtoFluxInputProxy(GeneratedComponent):
 
     @property
     def connect_point(self) -> str | None:
-        """Target ID of the ConnectPoint reference (targets Slot)."""
+        """What Slot a wire visual parents itself under."""
         member = self.get_member("ConnectPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -147,7 +154,7 @@ class ProtoFluxInputProxy(GeneratedComponent):
 
     @property
     def wire(self) -> str | None:
-        """Target ID of the Wire reference (targets ProtoFluxWireManager)."""
+        """The wire Manager handling the visual for the connection to this connector."""
         member = self.get_member("Wire")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -168,7 +175,7 @@ class ProtoFluxInputProxy(GeneratedComponent):
 
     @property
     def node_input(self) -> str | None:
-        """Target ID of the NodeInput reference (targets ISyncRef)."""
+        """The field on a protoflux node Component this connector is being used as a way to connect to."""
         member = self.get_member("NodeInput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -188,15 +195,22 @@ class ProtoFluxInputProxy(GeneratedComponent):
             )
 
     @property
-    def input_type(self) -> members.FieldEnum | None:
-        """The InputType member."""
+    def input_type(self) -> Type | None:
+        """The type of the input this proxy is for."""
         member = self.get_member("InputType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @input_type.setter
-    def input_type(self, value: members.FieldEnum) -> None:
-        """Set the InputType member."""
-        self.set_member("InputType", value)
+    def input_type(self, value: Type | str) -> None:
+        """Set InputType. The type of the input this proxy is for."""
+        member = self.get_member("InputType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "InputType",
+                members.FieldEnum(value=str(value)),
+            )
 

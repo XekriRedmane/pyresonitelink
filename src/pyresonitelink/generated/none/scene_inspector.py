@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloperInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SceneInspector.
+    """See Scene Inspector!
+
+    See Scene Inspector!
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SceneInspector"
@@ -52,7 +54,7 @@ class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloper
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets Slot)."""
+        """The root of the view of this inspector's hiearchy."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +75,7 @@ class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloper
 
     @property
     def component_view(self) -> str | None:
-        """Target ID of the ComponentView reference (targets Slot)."""
+        """The currently selected slot to view components for."""
         member = self.get_member("ComponentView")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -94,7 +96,7 @@ class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloper
 
     @property
     def root_text(self) -> str | None:
-        """Target ID of the _rootText reference (targets Sync[primitives.String])."""
+        """The text field for the display of the root hiearchy slot for this inspector's view."""
         member = self.get_member("_rootText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -115,7 +117,7 @@ class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloper
 
     @property
     def component_text(self) -> str | None:
-        """Target ID of the _componentText reference (targets Sync[primitives.String])."""
+        """The text field for the display of the slot for this inspector's component view."""
         member = self.get_member("_componentText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -136,7 +138,7 @@ class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloper
 
     @property
     def hierarchy_content_root(self) -> str | None:
-        """Target ID of the _hierarchyContentRoot reference (targets Slot)."""
+        """The root of the view for slots on the currently viewed slot hiearchy."""
         member = self.get_member("_hierarchyContentRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -157,7 +159,7 @@ class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloper
 
     @property
     def components_content_root(self) -> str | None:
-        """Target ID of the _componentsContentRoot reference (targets Slot)."""
+        """The root of the view for components on the currently selected slot."""
         member = self.get_member("_componentsContentRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -178,7 +180,7 @@ class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloper
 
     @property
     def current_component(self) -> str | None:
-        """Target ID of the _currentComponent reference (targets Slot)."""
+        """The current component this is looking at."""
         member = self.get_member("_currentComponent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -199,7 +201,7 @@ class SceneInspector(GeneratedComponent, INoDestroyUndo, IObjectRoot, IDeveloper
 
     @property
     def current_root(self) -> str | None:
-        """Target ID of the _currentRoot reference (targets Slot)."""
+        """The current root this is looking at."""
         member = self.get_member("_currentRoot")
         if isinstance(member, members.Reference):
             return member.targetId

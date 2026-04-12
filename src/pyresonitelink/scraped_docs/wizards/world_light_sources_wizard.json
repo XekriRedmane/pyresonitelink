@@ -1,0 +1,26 @@
+{
+  "description": "See World Light Sources Wizard.",
+  "category": "Wizards",
+  "fields": {
+    "Root": "The root directory in which all lights underneath it will be affected.",
+    "ProcessPointLights": "Whether to process point lights.",
+    "ProcessSpotLights": "Whether to process spot lights.",
+    "ProcessDirectionalLights": "Whether to process directional lights.",
+    "ProcessDisabled": "Whether to process lights that are not part of an active hiearchy or the component itself is disabled.",
+    "TargetShadowType": "The shadow type to set all lights to.",
+    "_tag": "The slot tag that lights have to have under ``Root`` to be affected.",
+    "_intensityField": "The intensity to set all lights under ``Root`` to.",
+    "_rangeField": "The distance range to set all lights under ``Root`` to."
+  },
+  "methods": {
+    "SetShadowType": "Handles when the shadow type is set in the dialog.",
+    "ChangeIntensity": "Handles when the intensity is changed in the dialog.",
+    "ChangeRange": "Handles when the range is changed in the dialog.",
+    "Remove": "Handles when the dialog asks to remove lights.",
+    "Disable": "Handles when the dialog asks to disable lights.",
+    "Enable": "Handles when the dialog asks to enable lights."
+  },
+  "usage": "See World Light Sources Wizard.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldLightSourcesWizard&action=raw"
+}

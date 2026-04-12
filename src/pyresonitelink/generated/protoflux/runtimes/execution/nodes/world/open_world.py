@@ -18,7 +18,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Open World node is used to open a world when called, given a valid Url and a set of optional parameters the user can give it to open a world in a certain way. You can chain this node with the Focus World node by using this node's SessionURL connected to the focus world node.
+    """The ``Open World`` node is used to open a world when called, given a valid Url and a set of optional parameters the user can give it to open a world in a certain way. You can chain this node with the Focus World node by using this node's SessionURL connected to the focus world node.
+
+You can easily make a custom loading indicator using this node just by turning off the loading indicator and utilizing the OnOpenStart Async Continuation, however there is no way to make a custom loading bar to have an "accurate" percentage, thus is a tradeoff.
+
+This node is also useful when making Exit Strategies, as you can set it up to where if the world is valid to open and using the AutoFocus option, you can jump to the new focused world, and have the node continue from here to play a particle effect, a sound, and much more. Combining it further with the focus world node to close the old world is also an option.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World
     """
@@ -68,7 +72,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def url(self) -> str | None:
-        """Target ID of the URL reference (targets INodeObjectOutput[str])."""
+        """The World URL needed to open a world."""
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +93,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def world_link(self) -> str | None:
-        """Target ID of the WorldLink reference (targets INodeObjectOutput[IWorldLink])."""
+        """The link to a world (using the WorldLink component). This can be an alternative way of opening a world."""
         member = self.get_member("WorldLink")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +114,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def relation(self) -> str | None:
-        """Target ID of the Relation reference (targets INodeValueOutput[WorldRelation])."""
+        """The relation to a world (Not necessary for opening a world). See the Relation Type for more info."""
         member = self.get_member("Relation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -131,7 +135,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def get_existing(self) -> str | None:
-        """Target ID of the GetExisting reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should this try to get an already opened world first."""
         member = self.get_member("GetExisting")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -152,7 +156,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def loading_indicator(self) -> str | None:
-        """Target ID of the LoadingIndicator reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should this show a loading indicator to the user that is opening the world."""
         member = self.get_member("LoadingIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -173,7 +177,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def auto_focus(self) -> str | None:
-        """Target ID of the AutoFocus reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should this automatically focus the user to the opened world as soon as it opens."""
         member = self.get_member("AutoFocus")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -194,7 +198,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def make_private(self) -> str | None:
-        """Target ID of the MakePrivate reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should this make the opening world private when opening it."""
         member = self.get_member("MakePrivate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -215,7 +219,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def session_id(self) -> members.EmptyElement | None:
-        """The SessionID member."""
+        """The session ID for the opened world and user connection to it."""
         member = self.get_member("SessionID")
         if isinstance(member, members.EmptyElement):
             return member
@@ -223,12 +227,12 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @session_id.setter
     def session_id(self, value: members.EmptyElement) -> None:
-        """Set the SessionID member."""
+        """Set SessionID. The session ID for the opened world and user connection to it."""
         self.set_member("SessionID", value)
 
     @property
     def session_url(self) -> members.EmptyElement | None:
-        """The SessionURL member."""
+        """The world URL for the opened session."""
         member = self.get_member("SessionURL")
         if isinstance(member, members.EmptyElement):
             return member
@@ -236,12 +240,12 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @session_url.setter
     def session_url(self, value: members.EmptyElement) -> None:
-        """Set the SessionURL member."""
+        """Set SessionURL. The world URL for the opened session."""
         self.set_member("SessionURL", value)
 
     @property
     def on_open_start(self) -> str | None:
-        """Target ID of the OnOpenStart reference (targets INodeOperation)."""
+        """Fires when the world has started to open."""
         member = self.get_member("OnOpenStart")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -262,7 +266,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def on_open_done(self) -> str | None:
-        """Target ID of the OnOpenDone reference (targets INodeOperation)."""
+        """Fires when the world has finished opening."""
         member = self.get_member("OnOpenDone")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -283,7 +287,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def on_world_ready(self) -> str | None:
-        """Target ID of the OnWorldReady reference (targets INodeOperation)."""
+        """Fires when the world has finished opening and is ready to hold users."""
         member = self.get_member("OnWorldReady")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -304,7 +308,7 @@ class OpenWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def on_open_fail(self) -> str | None:
-        """Target ID of the OnOpenFail reference (targets INodeOperation)."""
+        """Fires when the world could not be opened or the world URL is not valid."""
         member = self.get_member("OnOpenFail")
         if isinstance(member, members.Reference):
             return member.targetId

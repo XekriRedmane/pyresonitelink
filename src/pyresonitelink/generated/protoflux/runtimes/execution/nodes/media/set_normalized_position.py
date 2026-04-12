@@ -43,7 +43,7 @@ class SetNormalizedPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse after the initial call."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,8 @@ class SetNormalizedPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def normalized_position(self) -> str | None:
-        """Target ID of the NormalizedPosition reference (targets INodeValueOutput[primitives.Float])."""
+        """Set the normalized position of the playback on the target.
+Note this is the normalized position, so the valid range is 0 - 1."""
         member = self.get_member("NormalizedPosition")
         if isinstance(member, members.Reference):
             return member.targetId

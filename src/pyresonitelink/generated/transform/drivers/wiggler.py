@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Wiggler(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Wiggler.
+    """The Wiggler component is used to make a FloatQ rotate randomly. Usually used on a slot's rotation.
 
     Category: Transform/Drivers
+
+    Used in tails, flags, antennas, and much more random wobbly rotating
+    things.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Wiggler"
@@ -43,7 +46,7 @@ class Wiggler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField[primitives.FloatQ])."""
+        """The field to wiggle."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +67,7 @@ class Wiggler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset(self) -> primitives.FloatQ | None:
-        """The _offset field value."""
+        """The base value to "add" to when rotating."""
         member = self.get_member("_offset")
         if member is None:
             return None
@@ -83,7 +86,7 @@ class Wiggler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def speed(self) -> primitives.Float3 | None:
-        """The _speed field value."""
+        """How fast to wiggle on each axis."""
         member = self.get_member("_speed")
         if member is None:
             return None
@@ -102,7 +105,7 @@ class Wiggler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def magnitude(self) -> primitives.Float3 | None:
-        """The _magnitude field value."""
+        """How much to wiggle on each axis"""
         member = self.get_member("_magnitude")
         if member is None:
             return None
@@ -121,7 +124,7 @@ class Wiggler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def seed(self) -> primitives.Float3 | None:
-        """The _seed field value."""
+        """the seed for the randomness of the wiggle."""
         member = self.get_member("_seed")
         if member is None:
             return None

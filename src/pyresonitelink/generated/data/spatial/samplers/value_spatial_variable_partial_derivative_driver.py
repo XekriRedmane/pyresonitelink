@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.value_spatial_variable_mode import ValueSpatialVariableMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -11,9 +12,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueSpatialVariablePartialDerivativeDriver<>.
+    """The Value Spatial Variable Driver`1 component samples from Spatial variables intersecting the slot it is on and gets a value.
 
     Category: Data/Spatial/Samplers
+
+    Attach to a slot and provide a fields to drive and a variable name. the
+    slot this component is on acts as the position for sampling variable
+    values and do some math.
 
     Parameterize with a value type::
 
@@ -24,7 +29,7 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ValueSpatialVariablePartialDerivativeDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ValueSpatialVariablePartialDerivativeDriver<>"
 
-    def __init__(self, drive_x: str | IField[T] | None = None, drive_y: str | IField[T] | None = None, drive_z: str | IField[T] | None = None, variable_name: primitives.String | None = None, default_value: T | None = None, sampling_distance: primitives.Float | None = None, compute_in_local_space: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, drive_x: str | IField[T] | None = None, drive_y: str | IField[T] | None = None, drive_z: str | IField[T] | None = None, variable_name: primitives.String | None = None, mode: ValueSpatialVariableMode | str | None = None, default_value: T | None = None, sampling_distance: primitives.Float | None = None, compute_in_local_space: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,6 +37,7 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
             drive_y: Initial value for DriveY.
             drive_z: Initial value for DriveZ.
             variable_name: Initial value for VariableName.
+            mode: Initial value for Mode.
             default_value: Initial value for DefaultValue.
             sampling_distance: Initial value for SamplingDistance.
             compute_in_local_space: Initial value for ComputeInLocalSpace.
@@ -46,6 +52,8 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
             self.drive_z = drive_z
         if variable_name is not None:
             self.variable_name = variable_name
+        if mode is not None:
+            self.mode = mode
         if default_value is not None:
             self.default_value = default_value
         if sampling_distance is not None:
@@ -55,7 +63,7 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
 
     @property
     def drive_x(self) -> str | None:
-        """Target ID of the DriveX reference (targets IField[T])."""
+        """Field X to drive with the sampled variable."""
         member = self.get_member("DriveX")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -76,7 +84,7 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
 
     @property
     def drive_y(self) -> str | None:
-        """Target ID of the DriveY reference (targets IField[T])."""
+        """Field Y to drive with the sampled variable."""
         member = self.get_member("DriveY")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -97,7 +105,7 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
 
     @property
     def drive_z(self) -> str | None:
-        """Target ID of the DriveZ reference (targets IField[T])."""
+        """Field Z to drive with the sampled variable."""
         member = self.get_member("DriveZ")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -118,7 +126,7 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
 
     @property
     def variable_name(self) -> primitives.String | None:
-        """The VariableName field value."""
+        """the name of the variable to be sampling for."""
         member = self.get_member("VariableName")
         if member is None:
             return None
@@ -136,17 +144,24 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> ValueSpatialVariableMode | None:
+        """How to interpret the sampled values."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ValueSpatialVariableMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: ValueSpatialVariableMode | str) -> None:
+        """Set Mode. How to interpret the sampled values."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def default_value(self) -> T | None:

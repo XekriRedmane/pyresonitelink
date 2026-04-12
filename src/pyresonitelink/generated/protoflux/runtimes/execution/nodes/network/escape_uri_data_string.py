@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EscapeUriDataString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Escape Uri Data String node takes in a string literal and converts that string into another string that uses Percent Encoding. This is used mostly for applications that can only read the ASCII representation of characters.
+    """The ``Escape Uri Data String`` node takes in a string literal and converts that string into another string that uses Percent Encoding. This is used mostly for applications that can only read the ASCII representation of characters.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network
     """

@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsCharacterOnGround(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Is Character On Ground node takes in a character controller reference and returns if that character controller is touching the ground and has a simulating user.
+    """The ``Is Character On Ground`` node takes in a character controller reference and returns if that character controller is touching the ground and has a simulating user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """
@@ -34,7 +34,7 @@ class IsCharacterOnGround(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     @property
     def character(self) -> str | None:
-        """Target ID of the Character reference (targets INodeObjectOutput[CharacterController])."""
+        """The character controller reference."""
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             return member.targetId

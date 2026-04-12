@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """There are a few ways in which the Raycaster node may not work as expected, particularly relating to directions and distances.
+    """The Raycaster node performs a raycast check every update, essentially acting as a constant raycast. The input parameters determine from where, in what direction, and how far the ray should be cast as well as determining which colliders are valid hits. When a raycast detects a valid collider, it returns data pertaining to that hit from the node outputs.
+
+This node can be combined with the Hit UV Coordinate node to get further data from this hit, such as a 2D location point on the collider for example. Since this node returns data per frame, it can be very useful for debugging and testing raycast hit detection.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
 
@@ -36,7 +38,6 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
     produce a ray 1 unit long. However, a Direction input of [0;0;2] and
     MaxDistance of 1 will produce a ray 2 units long. Additionally, the
     reported HitDistance value will be halved in the second case.
-    ProtoFlux:Physics ContinuouslyChanging nodes
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.Raycaster"
@@ -69,7 +70,7 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def origin(self) -> str | None:
-        """Target ID of the Origin reference (targets INodeValueOutput[primitives.Float3])."""
+        """The starting position from which the ray is cast. Default is [0;0;0]."""
         member = self.get_member("Origin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -90,7 +91,7 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def direction(self) -> str | None:
-        """Target ID of the Direction reference (targets INodeValueOutput[primitives.Float3])."""
+        """The direction in which the ray is cast. Default is [0;0;0] which results in no ray being cast."""
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -111,7 +112,7 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def max_distance(self) -> str | None:
-        """Target ID of the MaxDistance reference (targets INodeValueOutput[primitives.Float])."""
+        """The maximum distance the raycast should travel from its origin. Default is the maximum float value which is extremely high."""
         member = self.get_member("MaxDistance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -132,7 +133,7 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def hit_triggers(self) -> str | None:
-        """Target ID of the HitTriggers reference (targets INodeValueOutput[primitives.Bool])."""
+        """Determines whether colliders with the Trigger, StaticTrigger or StaticTriggerAuto ColliderType value are valid hit targets. Default is False."""
         member = self.get_member("HitTriggers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -153,7 +154,7 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def users_only(self) -> str | None:
-        """Target ID of the UsersOnly reference (targets INodeValueOutput[primitives.Bool])."""
+        """Determines whether only user bone or simplified capsule colliders are valid targets. Default is False."""
         member = self.get_member("UsersOnly")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -174,7 +175,7 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets INodeObjectOutput[Slot])."""
+        """The slot in whose coordinate space the Origin, Direction and MaxDistance values should be evaluated. Default is the world root slot, i.e. the values are treated as being in the global coordinate space."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -208,7 +209,7 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def hit_collider(self) -> members.EmptyElement | None:
-        """The HitCollider member."""
+        """The first valid hit collider."""
         member = self.get_member("HitCollider")
         if isinstance(member, members.EmptyElement):
             return member
@@ -216,12 +217,12 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @hit_collider.setter
     def hit_collider(self, value: members.EmptyElement) -> None:
-        """Set the HitCollider member."""
+        """Set HitCollider. The first valid hit collider."""
         self.set_member("HitCollider", value)
 
     @property
     def hit_distance(self) -> members.EmptyElement | None:
-        """The HitDistance member."""
+        """The distance from the Origin to the hit point in global coordinate space."""
         member = self.get_member("HitDistance")
         if isinstance(member, members.EmptyElement):
             return member
@@ -229,12 +230,12 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @hit_distance.setter
     def hit_distance(self, value: members.EmptyElement) -> None:
-        """Set the HitDistance member."""
+        """Set HitDistance. The distance from the Origin to the hit point in global coordinate space."""
         self.set_member("HitDistance", value)
 
     @property
     def hit_point(self) -> members.EmptyElement | None:
-        """The HitPoint member."""
+        """The global position at which the ray hit the collider."""
         member = self.get_member("HitPoint")
         if isinstance(member, members.EmptyElement):
             return member
@@ -242,12 +243,12 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @hit_point.setter
     def hit_point(self, value: members.EmptyElement) -> None:
-        """Set the HitPoint member."""
+        """Set HitPoint. The global position at which the ray hit the collider."""
         self.set_member("HitPoint", value)
 
     @property
     def hit_normal(self) -> members.EmptyElement | None:
-        """The HitNormal member."""
+        """The facing normal direction of the hit collider at the hit point."""
         member = self.get_member("HitNormal")
         if isinstance(member, members.EmptyElement):
             return member
@@ -255,12 +256,12 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @hit_normal.setter
     def hit_normal(self, value: members.EmptyElement) -> None:
-        """Set the HitNormal member."""
+        """Set HitNormal. The facing normal direction of the hit collider at the hit point."""
         self.set_member("HitNormal", value)
 
     @property
     def hit_triangle_index(self) -> members.EmptyElement | None:
-        """The HitTriangleIndex member."""
+        """The triangle index on the mesh corresponding to the hit collider. This value is 0 unless the HitCollider is a MeshCollider."""
         member = self.get_member("HitTriangleIndex")
         if isinstance(member, members.EmptyElement):
             return member
@@ -268,6 +269,6 @@ class Raycaster(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @hit_triangle_index.setter
     def hit_triangle_index(self, value: members.EmptyElement) -> None:
-        """Set the HitTriangleIndex member."""
+        """Set HitTriangleIndex. The triangle index on the mesh corresponding to the hit collider. This value is 0 unless the HitCollider is a MeshCollider."""
         self.set_member("HitTriangleIndex", value)
 

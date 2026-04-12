@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioFilterBlendWrapper(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioFilterBlendWrapper.
+    """The Audio Filter Blend Wrapper component is used to wrap other filters and provides blending functionality. This is useful for audio reverb zones, allowing each listener with its own blend weight to share the same instance of AudioZitaReverb (and potentially other filters in the future)
 
     Category: Audio
+
+    See AudioListener.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioFilterBlendWrapper"
@@ -34,7 +36,7 @@ class AudioFilterBlendWrapper(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def blend_weight(self) -> primitives.Float | None:
-        """The BlendWeight field value."""
+        """The amount of weight this filter has with other filters."""
         member = self.get_member("BlendWeight")
         if member is None:
             return None
@@ -53,7 +55,7 @@ class AudioFilterBlendWrapper(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def nested_filter(self) -> str | None:
-        """Target ID of the NestedFilter reference (targets AudioDSP_Effect)."""
+        """The filter this wraps around."""
         member = self.get_member("NestedFilter")
         if isinstance(member, members.Reference):
             return member.targetId

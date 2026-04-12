@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StripeMesh.
+    """The StripeMesh component generates mesh data that is used with a MeshRenderer.
 
     Category: Assets/Procedural Meshes
+
+    Attach this component to a slot and insert into a MeshRenderer to view
+    the geometry. Don't forget to add a Material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StripeMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, segment_points: primitives.Int | None = None, dual_sided: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, segment_points: primitives.Int | None = None, dual_sided: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             segment_points: Initial value for SegmentPoints.
             dual_sided: Initial value for DualSided.
             component: Existing Component to wrap.
@@ -37,6 +42,8 @@ class StripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if segment_points is not None:
             self.segment_points = segment_points
         if dual_sided is not None:
@@ -100,21 +107,28 @@ class StripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def points(self) -> members.Member | None:
-        """The Points member."""
+        """The points used to generate the geometry for this mesh."""
         member = self.get_member("Points")
         if isinstance(member, members.Member):
             return member
@@ -122,12 +136,12 @@ class StripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
 
     @points.setter
     def points(self, value: members.Member) -> None:
-        """Set the Points member."""
+        """Set Points. The points used to generate the geometry for this mesh."""
         self.set_member("Points", value)
 
     @property
     def segment_points(self) -> primitives.Int | None:
-        """The SegmentPoints field value."""
+        """How many cuts/bends are between each point. Higher means more detail"""
         member = self.get_member("SegmentPoints")
         if member is None:
             return None
@@ -146,7 +160,7 @@ class StripeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
 
     @property
     def dual_sided(self) -> primitives.Bool | None:
-        """The DualSided field value."""
+        """Whether this mesh is visible from the back and front."""
         member = self.get_member("DualSided")
         if member is None:
             return None

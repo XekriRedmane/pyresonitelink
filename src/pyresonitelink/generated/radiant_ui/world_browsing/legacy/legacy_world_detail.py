@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.detail_category import DetailCategory
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.text import Text
@@ -22,14 +23,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyWorldDetail.
+    """The WorldDetail component is used to display information about a world to a UI.
 
     Category: Radiant UI/World Browsing/Legacy
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyWorldDetail"
 
-    def __init__(self, world_or_session_id: primitives.String | None = None, visited: primitives.Bool | None = None, total_active_users: primitives.Int | None = None, total_contacts: primitives.Int | None = None, expanded: primitives.Bool | None = None, compact_detail_expanded: primitives.Bool | None = None, modal_compact_size: primitives.Float2 | None = None, modal_expanded_size: primitives.Float2 | None = None, host_text: str | Text | None = None, session_items_root: str | Slot | None = None, thumbnail_graphic: str | RawGraphic | None = None, thumbnail_texture: str | StaticTexture2D | None = None, detail_image_root: str | Slot | None = None, compact_root: str | Slot | None = None, compact_header_root: str | Slot | None = None, detail_header_root: str | Slot | None = None, compact_mask_enabled: str | IField[primitives.Bool] | None = None, compact_mask_root_enabled: str | IField[primitives.Bool] | None = None, open_button: str | Button | None = None, scroll_rect: str | ScrollRect | None = None, expand_button: str | Button | None = None, expand_icon: str | Image | None = None, expand_sprite: str | IAssetProvider[Sprite] | None = None, compact_sprite: str | IAssetProvider[Sprite] | None = None, description: str | Text | None = None, left_details_root: str | Slot | None = None, right_details_root: str | Slot | None = None, details_text: str | Text | None = None, cycle_left_button: str | Button | None = None, cycle_right_button: str | Button | None = None, compact_parent: str | SyncRef[Slot] | None = None, compact_header_parent: str | SyncRef[Slot] | None = None, sidebar_active: str | IField[primitives.Bool] | None = None, sidebar_anchor_min: str | IField[primitives.Float2] | None = None, sidebar_anchor_max: str | IField[primitives.Float2] | None = None, content_anchor_min: str | IField[primitives.Float2] | None = None, content_anchor_max: str | IField[primitives.Float2] | None = None, rect_transform_lerp: str | IField[primitives.Float] | None = None, modal_anchor_min: str | IField[primitives.Float2] | None = None, modal_anchor_max: str | IField[primitives.Float2] | None = None, compact_buttons_active: str | IField[primitives.Bool] | None = None, compact_buttons_anchor_min: str | IField[primitives.Float2] | None = None, compact_buttons_anchor_max: str | IField[primitives.Float2] | None = None, compact_detail_rect: str | IField[primitives.Rect] | None = None, compact_detail_button_rect: str | IField[primitives.Rect] | None = None, compact_detail_text: str | Text | None = None, compact_detail_expand_button: str | Button | None = None, new_session_item_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, world_or_session_id: primitives.String | None = None, visited: primitives.Bool | None = None, total_active_users: primitives.Int | None = None, total_contacts: primitives.Int | None = None, expanded: primitives.Bool | None = None, compact_detail_expanded: primitives.Bool | None = None, compact_detail_category: DetailCategory | str | None = None, modal_compact_size: primitives.Float2 | None = None, modal_expanded_size: primitives.Float2 | None = None, host_text: str | Text | None = None, session_items_root: str | Slot | None = None, thumbnail_graphic: str | RawGraphic | None = None, thumbnail_texture: str | StaticTexture2D | None = None, detail_image_root: str | Slot | None = None, compact_root: str | Slot | None = None, compact_header_root: str | Slot | None = None, detail_header_root: str | Slot | None = None, compact_mask_enabled: str | IField[primitives.Bool] | None = None, compact_mask_root_enabled: str | IField[primitives.Bool] | None = None, open_button: str | Button | None = None, scroll_rect: str | ScrollRect | None = None, expand_button: str | Button | None = None, expand_icon: str | Image | None = None, expand_sprite: str | IAssetProvider[Sprite] | None = None, compact_sprite: str | IAssetProvider[Sprite] | None = None, description: str | Text | None = None, left_details_root: str | Slot | None = None, right_details_root: str | Slot | None = None, details_text: str | Text | None = None, cycle_left_button: str | Button | None = None, cycle_right_button: str | Button | None = None, compact_parent: str | SyncRef[Slot] | None = None, compact_header_parent: str | SyncRef[Slot] | None = None, sidebar_active: str | IField[primitives.Bool] | None = None, sidebar_anchor_min: str | IField[primitives.Float2] | None = None, sidebar_anchor_max: str | IField[primitives.Float2] | None = None, content_anchor_min: str | IField[primitives.Float2] | None = None, content_anchor_max: str | IField[primitives.Float2] | None = None, rect_transform_lerp: str | IField[primitives.Float] | None = None, modal_anchor_min: str | IField[primitives.Float2] | None = None, modal_anchor_max: str | IField[primitives.Float2] | None = None, compact_buttons_active: str | IField[primitives.Bool] | None = None, compact_buttons_anchor_min: str | IField[primitives.Float2] | None = None, compact_buttons_anchor_max: str | IField[primitives.Float2] | None = None, compact_detail_rect: str | IField[primitives.Rect] | None = None, compact_detail_button_rect: str | IField[primitives.Rect] | None = None, compact_detail_text: str | Text | None = None, compact_detail_expand_button: str | Button | None = None, new_session_item_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,6 +40,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
             total_contacts: Initial value for _totalContacts.
             expanded: Initial value for Expanded.
             compact_detail_expanded: Initial value for CompactDetailExpanded.
+            compact_detail_category: Initial value for CompactDetailCategory.
             modal_compact_size: Initial value for ModalCompactSize.
             modal_expanded_size: Initial value for ModalExpandedSize.
             host_text: Initial value for _hostText.
@@ -96,6 +98,8 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.expanded = expanded
         if compact_detail_expanded is not None:
             self.compact_detail_expanded = compact_detail_expanded
+        if compact_detail_category is not None:
+            self.compact_detail_category = compact_detail_category
         if modal_compact_size is not None:
             self.modal_compact_size = modal_compact_size
         if modal_expanded_size is not None:
@@ -183,7 +187,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def updating_user(self) -> members.SyncObject | None:
-        """The UpdatingUser member."""
+        """The user managing updates for this component."""
         member = self.get_member("UpdatingUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -191,12 +195,12 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @updating_user.setter
     def updating_user(self, value: members.SyncObject) -> None:
-        """Set the UpdatingUser member."""
+        """Set UpdatingUser. The user managing updates for this component."""
         self.set_member("UpdatingUser", value)
 
     @property
     def world_or_session_id(self) -> primitives.String | None:
-        """The WorldOrSessionId field value."""
+        """The world or session ID to get info on."""
         member = self.get_member("WorldOrSessionId")
         if member is None:
             return None
@@ -215,7 +219,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def visited(self) -> primitives.Bool | None:
-        """The _visited field value."""
+        """Whether ``UpdatingUser`` has visited this world."""
         member = self.get_member("_visited")
         if member is None:
             return None
@@ -234,7 +238,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def total_active_users(self) -> primitives.Int | None:
-        """The _totalActiveUsers field value."""
+        """How many active ussrs are in the world."""
         member = self.get_member("_totalActiveUsers")
         if member is None:
             return None
@@ -253,7 +257,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def total_contacts(self) -> primitives.Int | None:
-        """The _totalContacts field value."""
+        """How many contacts of ``UpdatingUser`` are in the world."""
         member = self.get_member("_totalContacts")
         if member is None:
             return None
@@ -272,7 +276,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def expanded(self) -> primitives.Bool | None:
-        """The Expanded field value."""
+        """Whether the world item UI has been hovered over in the dash."""
         member = self.get_member("Expanded")
         if member is None:
             return None
@@ -291,7 +295,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_detail_expanded(self) -> primitives.Bool | None:
-        """The CompactDetailExpanded field value."""
+        """Whether the extra detail has been expanded."""
         member = self.get_member("CompactDetailExpanded")
         if member is None:
             return None
@@ -309,21 +313,28 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def compact_detail_category(self) -> members.FieldEnum | None:
-        """The CompactDetailCategory member."""
+    def compact_detail_category(self) -> DetailCategory | None:
+        """The detail to show in the compact view."""
         member = self.get_member("CompactDetailCategory")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return DetailCategory(member.value)
         return None
 
     @compact_detail_category.setter
-    def compact_detail_category(self, value: members.FieldEnum) -> None:
-        """Set the CompactDetailCategory member."""
-        self.set_member("CompactDetailCategory", value)
+    def compact_detail_category(self, value: DetailCategory | str) -> None:
+        """Set CompactDetailCategory. The detail to show in the compact view."""
+        member = self.get_member("CompactDetailCategory")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "CompactDetailCategory",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def modal_compact_size(self) -> primitives.Float2 | None:
-        """The ModalCompactSize field value."""
+        """The size of the world item when not hovered over."""
         member = self.get_member("ModalCompactSize")
         if member is None:
             return None
@@ -342,7 +353,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def modal_expanded_size(self) -> primitives.Float2 | None:
-        """The ModalExpandedSize field value."""
+        """The size of the world item when hovered over."""
         member = self.get_member("ModalExpandedSize")
         if member is None:
             return None
@@ -361,7 +372,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def host_text(self) -> str | None:
-        """Target ID of the _hostText reference (targets Text)."""
+        """The Text Component showing the host name."""
         member = self.get_member("_hostText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -382,7 +393,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def session_items_root(self) -> str | None:
-        """Target ID of the _sessionItemsRoot reference (targets Slot)."""
+        """The slot containing current sessions of the world."""
         member = self.get_member("_sessionItemsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -403,7 +414,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def thumbnail_graphic(self) -> str | None:
-        """Target ID of the _thumbnailGraphic reference (targets RawGraphic)."""
+        """The UIX graphic showing the thumbnail."""
         member = self.get_member("_thumbnailGraphic")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -424,7 +435,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def thumbnail_texture(self) -> str | None:
-        """Target ID of the _thumbnailTexture reference (targets StaticTexture2D)."""
+        """The texture for the world thumbnail."""
         member = self.get_member("_thumbnailTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -445,7 +456,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def detail_image_root(self) -> str | None:
-        """Target ID of the _detailImageRoot reference (targets Slot)."""
+        """The root slot of the detail image graphic."""
         member = self.get_member("_detailImageRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -466,7 +477,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_root(self) -> str | None:
-        """Target ID of the _compactRoot reference (targets Slot)."""
+        """The root of the graphic when it is not clicked into."""
         member = self.get_member("_compactRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -487,7 +498,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_header_root(self) -> str | None:
-        """Target ID of the _compactHeaderRoot reference (targets Slot)."""
+        """the root of the text graphic of the world item before clicking into it."""
         member = self.get_member("_compactHeaderRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -508,7 +519,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def detail_header_root(self) -> str | None:
-        """Target ID of the _detailHeaderRoot reference (targets Slot)."""
+        """the root of the text graphic of the world item after clicking into it."""
         member = self.get_member("_detailHeaderRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -529,7 +540,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_mask_enabled(self) -> str | None:
-        """Target ID of the _compactMaskEnabled reference (targets IField[primitives.Bool])."""
+        """The field to drive for whether or not the compact view mask should be enabled."""
         member = self.get_member("_compactMaskEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -550,7 +561,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_mask_root_enabled(self) -> str | None:
-        """Target ID of the _compactMaskRootEnabled reference (targets IField[primitives.Bool])."""
+        """The field to drive for whether or not the compact mask root slot should be enabled."""
         member = self.get_member("_compactMaskRootEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -571,7 +582,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def open_button(self) -> str | None:
-        """Target ID of the _openButton reference (targets Button)."""
+        """The button Component for opening the world."""
         member = self.get_member("_openButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -592,7 +603,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scroll_rect(self) -> str | None:
-        """Target ID of the _scrollRect reference (targets ScrollRect)."""
+        """The scroll rectangle for the detail menu of the world item."""
         member = self.get_member("_scrollRect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -613,7 +624,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def expand_button(self) -> str | None:
-        """Target ID of the _expandButton reference (targets Button)."""
+        """The button used for showing the un compact view."""
         member = self.get_member("_expandButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -634,7 +645,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def expand_icon(self) -> str | None:
-        """Target ID of the _expandIcon reference (targets Image)."""
+        """The icon for ``_expandButton``."""
         member = self.get_member("_expandIcon")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -655,7 +666,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def expand_sprite(self) -> str | None:
-        """Target ID of the _expandSprite reference (targets IAssetProvider[Sprite])."""
+        """The sprite for ``_expandButton``."""
         member = self.get_member("_expandSprite")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -676,7 +687,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_sprite(self) -> str | None:
-        """Target ID of the _compactSprite reference (targets IAssetProvider[Sprite])."""
+        """The sprite for the switch to compact mode."""
         member = self.get_member("_compactSprite")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -697,7 +708,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def description(self) -> str | None:
-        """Target ID of the _description reference (targets Text)."""
+        """The text used to show the world description."""
         member = self.get_member("_description")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -718,7 +729,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_details_root(self) -> str | None:
-        """Target ID of the _leftDetailsRoot reference (targets Slot)."""
+        """the slot used to store the left side details."""
         member = self.get_member("_leftDetailsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -739,7 +750,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_details_root(self) -> str | None:
-        """Target ID of the _rightDetailsRoot reference (targets Slot)."""
+        """the slot used to store the right side details."""
         member = self.get_member("_rightDetailsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -760,7 +771,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def details_text(self) -> str | None:
-        """Target ID of the _detailsText reference (targets Text)."""
+        """The text used to show the world details."""
         member = self.get_member("_detailsText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -781,7 +792,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cycle_left_button(self) -> str | None:
-        """Target ID of the _cycleLeftButton reference (targets Button)."""
+        """the button for cycling left."""
         member = self.get_member("_cycleLeftButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -802,7 +813,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cycle_right_button(self) -> str | None:
-        """Target ID of the _cycleRightButton reference (targets Button)."""
+        """the button for cycling right."""
         member = self.get_member("_cycleRightButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -823,7 +834,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_parent(self) -> str | None:
-        """Target ID of the _compactParent reference (targets SyncRef[Slot])."""
+        """the parent slot of the compact view graphic."""
         member = self.get_member("_compactParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -844,7 +855,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_header_parent(self) -> str | None:
-        """Target ID of the _compactHeaderParent reference (targets SyncRef[Slot])."""
+        """the parent slot of the compact views text header."""
         member = self.get_member("_compactHeaderParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -865,7 +876,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sidebar_active(self) -> str | None:
-        """Target ID of the _sidebarActive reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether the sidebar should be active."""
         member = self.get_member("_sidebarActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -886,7 +897,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sidebar_anchor_min(self) -> str | None:
-        """Target ID of the _sidebarAnchorMin reference (targets IField[primitives.Float2])."""
+        """The field to drive for the sidebar's rectangle anchor minimum."""
         member = self.get_member("_sidebarAnchorMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -907,7 +918,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sidebar_anchor_max(self) -> str | None:
-        """Target ID of the _sidebarAnchorMax reference (targets IField[primitives.Float2])."""
+        """The field to drive for the sidebar's rectangle anchor maximum."""
         member = self.get_member("_sidebarAnchorMax")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -928,7 +939,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def content_anchor_min(self) -> str | None:
-        """Target ID of the _contentAnchorMin reference (targets IField[primitives.Float2])."""
+        """The field to drive for the content's rectangle anchor minimum."""
         member = self.get_member("_contentAnchorMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -949,7 +960,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def content_anchor_max(self) -> str | None:
-        """Target ID of the _contentAnchorMax reference (targets IField[primitives.Float2])."""
+        """The field to drive for the content's rectangle anchor maximum."""
         member = self.get_member("_contentAnchorMax")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -970,7 +981,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rect_transform_lerp(self) -> str | None:
-        """Target ID of the _rectTransformLerp reference (targets IField[primitives.Float])."""
+        """The field to drive for the animation transitions for the item hovering."""
         member = self.get_member("_rectTransformLerp")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -991,7 +1002,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def modal_anchor_min(self) -> str | None:
-        """Target ID of the _modalAnchorMin reference (targets IField[primitives.Float2])."""
+        """The field to drive for the modal's rectangle anchor minimum."""
         member = self.get_member("_modalAnchorMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1012,7 +1023,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def modal_anchor_max(self) -> str | None:
-        """Target ID of the _modalAnchorMax reference (targets IField[primitives.Float2])."""
+        """The field to drive for the modal's rectangle anchor maximum."""
         member = self.get_member("_modalAnchorMax")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1033,7 +1044,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_buttons_active(self) -> str | None:
-        """Target ID of the _compactButtonsActive reference (targets IField[primitives.Bool])."""
+        """The field to drive for the compact buttons active status."""
         member = self.get_member("_compactButtonsActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1054,7 +1065,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_buttons_anchor_min(self) -> str | None:
-        """Target ID of the _compactButtonsAnchorMin reference (targets IField[primitives.Float2])."""
+        """The field to drive for the compact buttons rectangle anchor minimum."""
         member = self.get_member("_compactButtonsAnchorMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1075,7 +1086,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_buttons_anchor_max(self) -> str | None:
-        """Target ID of the _compactButtonsAnchorMax reference (targets IField[primitives.Float2])."""
+        """The field to drive for the compact buttons rectangle anchor maximum."""
         member = self.get_member("_compactButtonsAnchorMax")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1096,7 +1107,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_detail_rect(self) -> str | None:
-        """Target ID of the _compactDetailRect reference (targets IField[primitives.Rect])."""
+        """The field to drive with the current compact details rectangle component."""
         member = self.get_member("_compactDetailRect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1117,7 +1128,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_detail_button_rect(self) -> str | None:
-        """Target ID of the _compactDetailButtonRect reference (targets IField[primitives.Rect])."""
+        """The field to drive with the current compact details button rectangle component."""
         member = self.get_member("_compactDetailButtonRect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1138,7 +1149,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_detail_text(self) -> str | None:
-        """Target ID of the _compactDetailText reference (targets Text)."""
+        """The text field that stores the compact view details."""
         member = self.get_member("_compactDetailText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1159,7 +1170,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compact_detail_expand_button(self) -> str | None:
-        """Target ID of the _compactDetailExpandButton reference (targets Button)."""
+        """The button Component that is used to expand the details in the compact view."""
         member = self.get_member("_compactDetailExpandButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1180,7 +1191,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def new_session_item_root(self) -> str | None:
-        """Target ID of the _newSessionItemRoot reference (targets Slot)."""
+        """The slot for the graphic for making a new session button."""
         member = self.get_member("_newSessionItemRoot")
         if isinstance(member, members.Reference):
             return member.targetId

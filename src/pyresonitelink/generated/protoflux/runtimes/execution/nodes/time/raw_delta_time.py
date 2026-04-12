@@ -10,15 +10,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RawDeltaTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Returns the time it took to perform the last update, clamped to a maximum of 0.1 seconds.
+    """The RawDeltaTime node returns the time it took to perform the last update in seconds.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
 
     **See also**: * DeltaTime returns the same value as this node, but clamped to a maximum of 0.1 seconds.
 * SmoothDeltaTime tries to smooth out the delta time to minimize interference from stutters.
-
-ProtoFlux:Time
-ContinuouslyChanging nodes
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Time.RawDeltaTime"

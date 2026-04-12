@@ -41,7 +41,7 @@ class TransformBounds(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def bounds(self) -> str | None:
-        """Target ID of the Bounds reference (targets INodeValueOutput[primitives.BoundingBox])."""
+        """The bounding box is to be transformed. Default is a bounding box with center [0;0;0] and size [0;0;0]."""
         member = self.get_member("Bounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class TransformBounds(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def source_space(self) -> str | None:
-        """Target ID of the SourceSpace reference (targets INodeObjectOutput[Slot])."""
+        """The slot in whose local coordinate space the Bounds are interpreted. Default is null, which results in the global coordinate space being used."""
         member = self.get_member("SourceSpace")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class TransformBounds(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def target_space(self) -> str | None:
-        """Target ID of the TargetSpace reference (targets INodeObjectOutput[Slot])."""
+        """The slot in whose local coordinate space the Bounds are transformed. Default is null, which results in the global coordinate space being used."""
         member = self.get_member("TargetSpace")
         if isinstance(member, members.Reference):
             return member.targetId

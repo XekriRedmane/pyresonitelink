@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonAudioDeviceSet(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonAudioDeviceSet.
+    """The ButtonAudioDeviceSet component sets the audio device a user is using, and can only be used in Userspace, as switching audio devices is a Settings thing. (TODO: double check this)
 
     Category: Common UI/Button Interactions/Specialized
     """
@@ -29,7 +29,7 @@ class ButtonAudioDeviceSet(GeneratedComponent, IButtonPressReceiver, IWorldEvent
 
     @property
     def device_index(self) -> primitives.Int | None:
-        """The DeviceIndex field value."""
+        """The device to select."""
         member = self.get_member("DeviceIndex")
         if member is None:
             return None

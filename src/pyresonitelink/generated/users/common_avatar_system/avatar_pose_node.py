@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.body_node import BodyNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.avatar_object_slot import AvatarObjectSlot
@@ -14,17 +15,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseNode.
+    """For detailed information on how this functions for mix and match body parts. Please also see Equipping Multiple Avatars.
+
+The AvatarPoseNode component is activated when a user equips an avatar with this component under it. The component drives the transforms of the slot it is on, in order to copy the transforms of an AvatarObjectSlot of the given ``Node``.
 
     Category: Users/Common Avatar System
+
+    This can be used to make avatars, with only single parts like hands or
+    arms and be mixed and matched with other parts.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseNode"
 
-    def __init__(self, equip_order_priority: primitives.Int | None = None, run_after_input_update: primitives.Bool | None = None, is_tracking: primitives.Bool | None = None, source_is_tracking: primitives.Bool | None = None, source_is_active: primitives.Bool | None = None, source_is_simulated: primitives.Bool | None = None, object_slot: str | AvatarObjectSlot | None = None, source: str | Slot | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, scale: str | IField[primitives.Float3] | None = None, active: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: BodyNode | str | None = None, equip_order_priority: primitives.Int | None = None, run_after_input_update: primitives.Bool | None = None, is_tracking: primitives.Bool | None = None, source_is_tracking: primitives.Bool | None = None, source_is_active: primitives.Bool | None = None, source_is_simulated: primitives.Bool | None = None, object_slot: str | AvatarObjectSlot | None = None, source: str | Slot | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, scale: str | IField[primitives.Float3] | None = None, active: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            node: Initial value for Node.
             equip_order_priority: Initial value for EquipOrderPriority.
             run_after_input_update: Initial value for RunAfterInputUpdate.
             is_tracking: Initial value for IsTracking.
@@ -40,6 +47,8 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if node is not None:
+            self.node = node
         if equip_order_priority is not None:
             self.equip_order_priority = equip_order_priority
         if run_after_input_update is not None:
@@ -66,21 +75,28 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
             self.active = active
 
     @property
-    def node(self) -> members.FieldEnum | None:
-        """The Node member."""
+    def node(self) -> BodyNode | None:
+        """the node this component is copying."""
         member = self.get_member("Node")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BodyNode(member.value)
         return None
 
     @node.setter
-    def node(self, value: members.FieldEnum) -> None:
-        """Set the Node member."""
-        self.set_member("Node", value)
+    def node(self, value: BodyNode | str) -> None:
+        """Set Node. the node this component is copying."""
+        member = self.get_member("Node")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Node",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def equip_order_priority(self) -> primitives.Int | None:
-        """The EquipOrderPriority field value."""
+        """The priority of this node being updated in the list of Pose Nodes on an Avatar."""
         member = self.get_member("EquipOrderPriority")
         if member is None:
             return None
@@ -99,7 +115,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def run_after_input_update(self) -> primitives.Bool | None:
-        """The RunAfterInputUpdate field value."""
+        """Whether to run this component's copy Behavior after the engine's input received stage."""
         member = self.get_member("RunAfterInputUpdate")
         if member is None:
             return None
@@ -118,7 +134,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def mutually_exclusive_nodes(self) -> members.SyncList | None:
-        """The MutuallyExclusiveNodes member."""
+        """When equipped as part of an avatar, if the user equipping has an AvatarObjectSlot with a BodyNode value from this list, it is forced to dequip the Type:IAvatarObjects bound to it, kicking them off the user."""
         member = self.get_member("MutuallyExclusiveNodes")
         if isinstance(member, members.SyncList):
             return member
@@ -126,12 +142,12 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @mutually_exclusive_nodes.setter
     def mutually_exclusive_nodes(self, value: members.SyncList) -> None:
-        """Set the MutuallyExclusiveNodes member."""
+        """Set MutuallyExclusiveNodes. When equipped as part of an avatar, if the user equipping has an AvatarObjectSlot with a BodyNode value from this list, it is forced to dequip the Type:IAvatarObjects bound to it, kicking them off the user."""
         self.set_member("MutuallyExclusiveNodes", value)
 
     @property
     def is_tracking(self) -> primitives.Bool | None:
-        """The IsTracking field value."""
+        """Whether this component is tracking"""
         member = self.get_member("IsTracking")
         if member is None:
             return None
@@ -150,7 +166,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def source_is_tracking(self) -> primitives.Bool | None:
-        """The SourceIsTracking field value."""
+        """Whether the source ``_objectSlot`` is currently tracking an inputting object like a controller or FBT device"""
         member = self.get_member("SourceIsTracking")
         if member is None:
             return None
@@ -169,7 +185,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def source_is_active(self) -> primitives.Bool | None:
-        """The SourceIsActive field value."""
+        """Whether the source ``_objectSlot`` is active."""
         member = self.get_member("SourceIsActive")
         if member is None:
             return None
@@ -188,7 +204,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def source_is_simulated(self) -> primitives.Bool | None:
-        """The SourceIsSimulated field value."""
+        """Whether the source ``_objectSlot`` is being simulated by the procedural animation system."""
         member = self.get_member("SourceIsSimulated")
         if member is None:
             return None
@@ -207,7 +223,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def object_slot(self) -> str | None:
-        """Target ID of the _objectSlot reference (targets AvatarObjectSlot)."""
+        """The object slot this component is getting pose data and tracking data from."""
         member = self.get_member("_objectSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -228,7 +244,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def source(self) -> str | None:
-        """Target ID of the _source reference (targets Slot)."""
+        """the slot of ``_objectSlot``"""
         member = self.get_member("_source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -249,7 +265,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def position(self) -> str | None:
-        """Target ID of the _position reference (targets IField[primitives.Float3])."""
+        """The position field to drive to the pose data. Usually the position field of the slot this component is on."""
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -270,7 +286,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the _rotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field to drive to the pose data. Usually the rotation field of the slot this component is on."""
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -291,7 +307,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def scale(self) -> str | None:
-        """Target ID of the _scale reference (targets IField[primitives.Float3])."""
+        """The scale to drive to the scale of ``_source`` if drive scale is enabled on the ``_objectSlot``."""
         member = self.get_member("_scale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -312,7 +328,7 @@ class AvatarPoseNode(GeneratedComponent, IAvatarObject, IInputUpdateReceiver, IW
 
     @property
     def active(self) -> str | None:
-        """Target ID of the _active reference (targets IField[primitives.Bool])."""
+        """Whether this component is currently active and setting pose data."""
         member = self.get_member("_active")
         if isinstance(member, members.Reference):
             return member.targetId

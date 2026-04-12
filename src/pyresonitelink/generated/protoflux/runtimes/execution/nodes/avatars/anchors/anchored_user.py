@@ -33,7 +33,7 @@ class AnchoredUser(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def anchor(self) -> str | None:
-        """Target ID of the Anchor reference (targets INodeObjectOutput[IAvatarAnchor])."""
+        """The anchor to check for an anchored user."""
         member = self.get_member("Anchor")
         if isinstance(member, members.Reference):
             return member.targetId

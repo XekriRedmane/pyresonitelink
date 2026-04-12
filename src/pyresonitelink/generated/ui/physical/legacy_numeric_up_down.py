@@ -18,9 +18,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyNumericUpDown.
+    """The LegacyNumericUpDown component comes from Legacy migrated content. This component should not be used in new content, and should be removed when possible.
 
     Category: UI/Physical
+
+    Just dont.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyNumericUpDown"
@@ -202,7 +204,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The color of the UI elements."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -221,7 +223,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def width(self) -> primitives.Float | None:
-        """The Width field value."""
+        """The width of the UI."""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -240,7 +242,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """The height of the UI."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -259,7 +261,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """The thickness of the UI."""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -278,7 +280,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def slant(self) -> primitives.Float | None:
-        """The Slant field value."""
+        """How beveled the UI elements should be."""
         member = self.get_member("Slant")
         if member is None:
             return None
@@ -297,7 +299,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def text_slot(self) -> str | None:
-        """Target ID of the _textSlot reference (targets Slot)."""
+        """the slot of the text for the number this component is editing."""
         member = self.get_member("_textSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -318,7 +320,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def text_renderer(self) -> str | None:
-        """Target ID of the _textRenderer reference (targets TextRenderer)."""
+        """The text renderer for the number this component is editing."""
         member = self.get_member("_textRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -339,7 +341,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def text_editor(self) -> str | None:
-        """Target ID of the _textEditor reference (targets TextEditor)."""
+        """The text editor that allows for direct editing of the number this component is editing."""
         member = self.get_member("_textEditor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -360,7 +362,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets PBS_RimMetallic)."""
+        """The material this UI is using."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -381,7 +383,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the _mesh reference (targets BevelStripeMesh)."""
+        """The mesh this UI is using."""
         member = self.get_member("_mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -402,7 +404,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def text_bounds(self) -> str | None:
-        """Target ID of the _textBounds reference (targets IField[primitives.Float2])."""
+        """The field to drive to make the UI fit around the text."""
         member = self.get_member("_textBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -423,7 +425,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def collider_size(self) -> str | None:
-        """Target ID of the _colliderSize reference (targets IField[primitives.Float3])."""
+        """The field of the collider size for this UI."""
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -444,7 +446,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def mesh_left(self) -> str | None:
-        """Target ID of the _meshLeft reference (targets BevelStripeMesh)."""
+        """The mesh being used by this component's left button."""
         member = self.get_member("_meshLeft")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -465,7 +467,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def mesh_right(self) -> str | None:
-        """Target ID of the _meshRight reference (targets BevelStripeMesh)."""
+        """The mesh being used by this component's right button."""
         member = self.get_member("_meshRight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -486,7 +488,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def text_left_bounds(self) -> str | None:
-        """Target ID of the _textLeftBounds reference (targets IField[primitives.Float2])."""
+        """The field to drive to make the left button stay wrapped around its text."""
         member = self.get_member("_textLeftBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -507,7 +509,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def text_right_bounds(self) -> str | None:
-        """Target ID of the _textRightBounds reference (targets IField[primitives.Float2])."""
+        """The field to drive to make the right button stay wrapped around its text."""
         member = self.get_member("_textRightBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -528,7 +530,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def left_text_renderer(self) -> str | None:
-        """Target ID of the _leftTextRenderer reference (targets TextRenderer)."""
+        """The text renderer for the left button."""
         member = self.get_member("_leftTextRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -549,7 +551,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def right_text_renderer(self) -> str | None:
-        """Target ID of the _rightTextRenderer reference (targets TextRenderer)."""
+        """The text renderer for the right button."""
         member = self.get_member("_rightTextRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -570,7 +572,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def collider_left_size(self) -> str | None:
-        """Target ID of the _colliderLeftSize reference (targets IField[primitives.Float3])."""
+        """The collider size field of the left button."""
         member = self.get_member("_colliderLeftSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -591,7 +593,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def collider_right_size(self) -> str | None:
-        """Target ID of the _colliderRightSize reference (targets IField[primitives.Float3])."""
+        """The collider size field of the right button."""
         member = self.get_member("_colliderRightSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -612,7 +614,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def left_offset(self) -> str | None:
-        """Target ID of the _leftOffset reference (targets IField[primitives.Float3])."""
+        """The collider offset field of the left button."""
         member = self.get_member("_leftOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -633,7 +635,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def right_offset(self) -> str | None:
-        """Target ID of the _rightOffset reference (targets IField[primitives.Float3])."""
+        """The collider offset field of the right button."""
         member = self.get_member("_rightOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -654,7 +656,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def left_text_position(self) -> str | None:
-        """Target ID of the _leftTextPosition reference (targets IField[primitives.Float3])."""
+        """The text position field of the left button."""
         member = self.get_member("_leftTextPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -675,7 +677,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def right_text_position(self) -> str | None:
-        """Target ID of the _rightTextPosition reference (targets IField[primitives.Float3])."""
+        """The text position field of the right button."""
         member = self.get_member("_rightTextPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -696,7 +698,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def drive_field(self) -> str | None:
-        """Target ID of the DriveField reference (targets IField[primitives.Float])."""
+        """The field this component should drive with ``Value``"""
         member = self.get_member("DriveField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -717,7 +719,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def allow_write_back(self) -> primitives.Bool | None:
-        """The AllowWriteBack field value."""
+        """Whether changes to the value of the field targeted by ``DriveField`` should be written to this component's ``Value`` field instead."""
         member = self.get_member("AllowWriteBack")
         if member is None:
             return None
@@ -736,7 +738,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def value(self) -> primitives.Float | None:
-        """The Value field value."""
+        """The value that this component currently has for the edited field."""
         member = self.get_member("Value")
         if member is None:
             return None
@@ -755,7 +757,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def decimal_points(self) -> primitives.Int | None:
-        """The DecimalPoints field value."""
+        """How many decimal places this component should keep track of."""
         member = self.get_member("DecimalPoints")
         if member is None:
             return None
@@ -774,7 +776,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def min_value(self) -> primitives.Float | None:
-        """The MinValue field value."""
+        """The minimum possible value for ``Value``."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -793,7 +795,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def max_value(self) -> primitives.Float | None:
-        """The MaxValue field value."""
+        """The maximum possible value for ``Value``."""
         member = self.get_member("MaxValue")
         if member is None:
             return None
@@ -812,7 +814,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def increment_value(self) -> primitives.Float | None:
-        """The IncrementValue field value."""
+        """How much to increment or decrement ``Value`` by when pressing the left and right buttons."""
         member = self.get_member("IncrementValue")
         if member is None:
             return None
@@ -850,7 +852,7 @@ class LegacyNumericUpDown(GeneratedComponent, INumericUpDown, ITouchable, IWorld
 
     @property
     def text_drive(self) -> str | None:
-        """Target ID of the _textDrive reference (targets IField[primitives.String])."""
+        """The string field to drive with the current ``Value`` for the visuals."""
         member = self.get_member("_textDrive")
         if isinstance(member, members.Reference):
             return member.targetId

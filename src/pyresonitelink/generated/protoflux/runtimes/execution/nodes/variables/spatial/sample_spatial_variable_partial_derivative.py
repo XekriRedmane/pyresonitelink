@@ -56,7 +56,7 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @property
     def point(self) -> str | None:
-        """Target ID of the Point reference (targets INodeValueOutput[primitives.Float3])."""
+        """The point at which to sample the spatial variable. This point is in global space."""
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +77,7 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @property
     def orientation(self) -> str | None:
-        """Target ID of the Orientation reference (targets INodeValueOutput[primitives.FloatQ])."""
+        """The orientation that the partial derivatives will be calculated in. This essentially defines the coordinate space of the calculation."""
         member = self.get_member("Orientation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -98,7 +98,7 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @property
     def name(self) -> str | None:
-        """Target ID of the Name reference (targets INodeObjectOutput[primitives.String])."""
+        """The name of the spatial variable to sample."""
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -119,7 +119,7 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @property
     def mode(self) -> str | None:
-        """Target ID of the Mode reference (targets INodeValueOutput[ValueSpatialVariableMode])."""
+        """If multiple spatial variables of the same name and type exist at the sampled point, this input will determine how the value of the spatial variable will be calculated."""
         member = self.get_member("Mode")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -140,7 +140,7 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @property
     def base_value(self) -> str | None:
-        """Target ID of the BaseValue reference (targets INodeValueOutput[T])."""
+        """If a spatial variable does not exist at the point or at any of the partial derivative calculation points, this value will be substituted instead."""
         member = self.get_member("BaseValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -161,7 +161,7 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @property
     def sampling_distance(self) -> str | None:
-        """Target ID of the SamplingDistance reference (targets INodeValueOutput[primitives.Float])."""
+        """The length of sample that the partial derivative calculation will use. The calculation will sample the spatial variable at a distance of ``SamplingDistance / 2`` in each direction for each axis."""
         member = self.get_member("SamplingDistance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -182,7 +182,7 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @property
     def x(self) -> members.EmptyElement | None:
-        """The X member."""
+        """The partial derivative in the X direction."""
         member = self.get_member("X")
         if isinstance(member, members.EmptyElement):
             return member
@@ -190,12 +190,12 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @x.setter
     def x(self, value: members.EmptyElement) -> None:
-        """Set the X member."""
+        """Set X. The partial derivative in the X direction."""
         self.set_member("X", value)
 
     @property
     def y(self) -> members.EmptyElement | None:
-        """The Y member."""
+        """The partial derivative in the Y direction."""
         member = self.get_member("Y")
         if isinstance(member, members.EmptyElement):
             return member
@@ -203,12 +203,12 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @y.setter
     def y(self, value: members.EmptyElement) -> None:
-        """Set the Y member."""
+        """Set Y. The partial derivative in the Y direction."""
         self.set_member("Y", value)
 
     @property
     def z(self) -> members.EmptyElement | None:
-        """The Z member."""
+        """The partial derivative in the Z direction."""
         member = self.get_member("Z")
         if isinstance(member, members.EmptyElement):
             return member
@@ -216,6 +216,6 @@ class SampleSpatialVariablePartialDerivative(GenericComponent[T], IExecutionNode
 
     @z.setter
     def z(self, value: members.EmptyElement) -> None:
-        """Set the Z member."""
+        """Set Z. The partial derivative in the Z direction."""
         self.set_member("Z", value)
 

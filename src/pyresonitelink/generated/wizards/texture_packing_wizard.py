@@ -4,6 +4,8 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_channel import ColorChannel
+from pyresonitelink.generated._enums.resolution_size_handling import ResolutionSizeHandling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -14,29 +16,34 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TexturePackingWizard.
+    """The Texture Packing Wizard component
 
     Category: Wizards
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TexturePackingWizard"
 
-    def __init__(self, rtexture: str | IAssetProvider[ITexture2D] | None = None, rfallback_value: primitives.Float | None = None, rinvert: primitives.Bool | None = None, gtexture: str | IAssetProvider[ITexture2D] | None = None, gfallback_value: primitives.Float | None = None, ginvert: primitives.Bool | None = None, btexture: str | IAssetProvider[ITexture2D] | None = None, bfallback_value: primitives.Float | None = None, binvert: primitives.Bool | None = None, atexture: str | IAssetProvider[ITexture2D] | None = None, afallback_value: primitives.Float | None = None, ainvert: primitives.Bool | None = None, empty_fallback_resolution: primitives.Int2 | None = None, generate_mips: primitives.Bool | None = None, output_texture: str | IAssetProvider[ITexture2D] | None = None, is_processing: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, rtexture: str | IAssetProvider[ITexture2D] | None = None, rfallback_value: primitives.Float | None = None, rcolor_channel: ColorChannel | str | None = None, rinvert: primitives.Bool | None = None, gtexture: str | IAssetProvider[ITexture2D] | None = None, gfallback_value: primitives.Float | None = None, gcolor_channel: ColorChannel | str | None = None, ginvert: primitives.Bool | None = None, btexture: str | IAssetProvider[ITexture2D] | None = None, bfallback_value: primitives.Float | None = None, bcolor_channel: ColorChannel | str | None = None, binvert: primitives.Bool | None = None, atexture: str | IAssetProvider[ITexture2D] | None = None, afallback_value: primitives.Float | None = None, acolor_channel: ColorChannel | str | None = None, ainvert: primitives.Bool | None = None, resolution_sizing: ResolutionSizeHandling | str | None = None, empty_fallback_resolution: primitives.Int2 | None = None, generate_mips: primitives.Bool | None = None, output_texture: str | IAssetProvider[ITexture2D] | None = None, is_processing: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             rtexture: Initial value for RTexture.
             rfallback_value: Initial value for RFallbackValue.
+            rcolor_channel: Initial value for RColorChannel.
             rinvert: Initial value for RInvert.
             gtexture: Initial value for GTexture.
             gfallback_value: Initial value for GFallbackValue.
+            gcolor_channel: Initial value for GColorChannel.
             ginvert: Initial value for GInvert.
             btexture: Initial value for BTexture.
             bfallback_value: Initial value for BFallbackValue.
+            bcolor_channel: Initial value for BColorChannel.
             binvert: Initial value for BInvert.
             atexture: Initial value for ATexture.
             afallback_value: Initial value for AFallbackValue.
+            acolor_channel: Initial value for AColorChannel.
             ainvert: Initial value for AInvert.
+            resolution_sizing: Initial value for ResolutionSizing.
             empty_fallback_resolution: Initial value for EmptyFallbackResolution.
             generate_mips: Initial value for GenerateMips.
             output_texture: Initial value for OutputTexture.
@@ -48,26 +55,36 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
             self.rtexture = rtexture
         if rfallback_value is not None:
             self.rfallback_value = rfallback_value
+        if rcolor_channel is not None:
+            self.rcolor_channel = rcolor_channel
         if rinvert is not None:
             self.rinvert = rinvert
         if gtexture is not None:
             self.gtexture = gtexture
         if gfallback_value is not None:
             self.gfallback_value = gfallback_value
+        if gcolor_channel is not None:
+            self.gcolor_channel = gcolor_channel
         if ginvert is not None:
             self.ginvert = ginvert
         if btexture is not None:
             self.btexture = btexture
         if bfallback_value is not None:
             self.bfallback_value = bfallback_value
+        if bcolor_channel is not None:
+            self.bcolor_channel = bcolor_channel
         if binvert is not None:
             self.binvert = binvert
         if atexture is not None:
             self.atexture = atexture
         if afallback_value is not None:
             self.afallback_value = afallback_value
+        if acolor_channel is not None:
+            self.acolor_channel = acolor_channel
         if ainvert is not None:
             self.ainvert = ainvert
+        if resolution_sizing is not None:
+            self.resolution_sizing = resolution_sizing
         if empty_fallback_resolution is not None:
             self.empty_fallback_resolution = empty_fallback_resolution
         if generate_mips is not None:
@@ -118,17 +135,24 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
             )
 
     @property
-    def rcolor_channel(self) -> members.FieldEnum | None:
-        """The RColorChannel member."""
+    def rcolor_channel(self) -> ColorChannel | None:
+        """The RColorChannel enum value."""
         member = self.get_member("RColorChannel")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorChannel(member.value)
         return None
 
     @rcolor_channel.setter
-    def rcolor_channel(self, value: members.FieldEnum) -> None:
-        """Set the RColorChannel member."""
-        self.set_member("RColorChannel", value)
+    def rcolor_channel(self, value: ColorChannel | str) -> None:
+        """Set the RColorChannel enum value."""
+        member = self.get_member("RColorChannel")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "RColorChannel",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def rinvert(self) -> primitives.Bool | None:
@@ -190,17 +214,24 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
             )
 
     @property
-    def gcolor_channel(self) -> members.FieldEnum | None:
-        """The GColorChannel member."""
+    def gcolor_channel(self) -> ColorChannel | None:
+        """The GColorChannel enum value."""
         member = self.get_member("GColorChannel")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorChannel(member.value)
         return None
 
     @gcolor_channel.setter
-    def gcolor_channel(self, value: members.FieldEnum) -> None:
-        """Set the GColorChannel member."""
-        self.set_member("GColorChannel", value)
+    def gcolor_channel(self, value: ColorChannel | str) -> None:
+        """Set the GColorChannel enum value."""
+        member = self.get_member("GColorChannel")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "GColorChannel",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def ginvert(self) -> primitives.Bool | None:
@@ -262,17 +293,24 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
             )
 
     @property
-    def bcolor_channel(self) -> members.FieldEnum | None:
-        """The BColorChannel member."""
+    def bcolor_channel(self) -> ColorChannel | None:
+        """The BColorChannel enum value."""
         member = self.get_member("BColorChannel")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorChannel(member.value)
         return None
 
     @bcolor_channel.setter
-    def bcolor_channel(self, value: members.FieldEnum) -> None:
-        """Set the BColorChannel member."""
-        self.set_member("BColorChannel", value)
+    def bcolor_channel(self, value: ColorChannel | str) -> None:
+        """Set the BColorChannel enum value."""
+        member = self.get_member("BColorChannel")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BColorChannel",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def binvert(self) -> primitives.Bool | None:
@@ -334,17 +372,24 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
             )
 
     @property
-    def acolor_channel(self) -> members.FieldEnum | None:
-        """The AColorChannel member."""
+    def acolor_channel(self) -> ColorChannel | None:
+        """The AColorChannel enum value."""
         member = self.get_member("AColorChannel")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorChannel(member.value)
         return None
 
     @acolor_channel.setter
-    def acolor_channel(self, value: members.FieldEnum) -> None:
-        """Set the AColorChannel member."""
-        self.set_member("AColorChannel", value)
+    def acolor_channel(self, value: ColorChannel | str) -> None:
+        """Set the AColorChannel enum value."""
+        member = self.get_member("AColorChannel")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AColorChannel",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def ainvert(self) -> primitives.Bool | None:
@@ -379,17 +424,24 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
         self.set_member("ResolutionOverride", value)
 
     @property
-    def resolution_sizing(self) -> members.FieldEnum | None:
-        """The ResolutionSizing member."""
+    def resolution_sizing(self) -> ResolutionSizeHandling | None:
+        """The ResolutionSizing enum value."""
         member = self.get_member("ResolutionSizing")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ResolutionSizeHandling(member.value)
         return None
 
     @resolution_sizing.setter
-    def resolution_sizing(self, value: members.FieldEnum) -> None:
-        """Set the ResolutionSizing member."""
-        self.set_member("ResolutionSizing", value)
+    def resolution_sizing(self, value: ResolutionSizeHandling | str) -> None:
+        """Set the ResolutionSizing enum value."""
+        member = self.get_member("ResolutionSizing")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ResolutionSizing",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def empty_fallback_resolution(self) -> primitives.Int2 | None:

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.spatial_variable_blend_distance_mode import SpatialVariableBlendDistanceMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ispatial_variable import ISpatialVariable
@@ -11,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BoxVertexValueSpatialVariable<>.
+    """The Box Vertex Value Spatial Variable`1 component makes a spatial variable that provides samplers with a different value depending on what vertex of the area a sampler is closest to. This is similar to the color properties of a box emitter.
 
     Category: Data/Spatial/Box Variables
+
+    Attach to a slot and provide a size and variable name in order for this
+    to function.
 
     Parameterize with a value type::
 
@@ -24,7 +28,7 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxVertexValueSpatialVariable<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.BoxVertexValueSpatialVariable<>"
 
-    def __init__(self, variable_name: primitives.String | None = None, priority: primitives.Int | None = None, size: primitives.Float3 | None = None, blend_distance: primitives.Float | None = None, value0: T | None = None, value1: T | None = None, value2: T | None = None, value3: T | None = None, value4: T | None = None, value5: T | None = None, value6: T | None = None, value7: T | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, priority: primitives.Int | None = None, size: primitives.Float3 | None = None, blend_distance: primitives.Float | None = None, blend_distance_mode: SpatialVariableBlendDistanceMode | str | None = None, value0: T | None = None, value1: T | None = None, value2: T | None = None, value3: T | None = None, value4: T | None = None, value5: T | None = None, value6: T | None = None, value7: T | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,6 +36,7 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
             priority: Initial value for Priority.
             size: Initial value for Size.
             blend_distance: Initial value for BlendDistance.
+            blend_distance_mode: Initial value for BlendDistanceMode.
             value0: Initial value for Value0.
             value1: Initial value for Value1.
             value2: Initial value for Value2.
@@ -51,6 +56,8 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
             self.size = size
         if blend_distance is not None:
             self.blend_distance = blend_distance
+        if blend_distance_mode is not None:
+            self.blend_distance_mode = blend_distance_mode
         if value0 is not None:
             self.value0 = value0
         if value1 is not None:
@@ -108,7 +115,7 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
 
     @property
     def size(self) -> primitives.Float3 | None:
-        """The Size field value."""
+        """The size of the cube for this spatial variable's influence."""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -145,17 +152,24 @@ class BoxVertexValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IC
             )
 
     @property
-    def blend_distance_mode(self) -> members.FieldEnum | None:
-        """The BlendDistanceMode member."""
+    def blend_distance_mode(self) -> SpatialVariableBlendDistanceMode | None:
+        """The BlendDistanceMode enum value."""
         member = self.get_member("BlendDistanceMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SpatialVariableBlendDistanceMode(member.value)
         return None
 
     @blend_distance_mode.setter
-    def blend_distance_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendDistanceMode member."""
-        self.set_member("BlendDistanceMode", value)
+    def blend_distance_mode(self, value: SpatialVariableBlendDistanceMode | str) -> None:
+        """Set the BlendDistanceMode enum value."""
+        member = self.get_member("BlendDistanceMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendDistanceMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def value0(self) -> T | None:

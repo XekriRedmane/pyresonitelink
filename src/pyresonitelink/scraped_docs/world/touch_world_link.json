@@ -1,0 +1,13 @@
+{
+  "description": "The TouchWorldLink component when touched allows a user to go to the world of the given link.",
+  "category": "World",
+  "fields": {
+    "Vibrate": "How to vibrate the haptics of the hand that touched this component.",
+    "LastOpened": "The last world time this component was pressed.",
+    "WorldLink": "The world link to open upon touch."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with a static collider, and provide a ``WorldLink`` for this to link to in order for it to work.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TouchWorldLink&action=raw"
+}

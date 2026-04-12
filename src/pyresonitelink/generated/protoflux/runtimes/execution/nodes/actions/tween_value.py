@@ -65,7 +65,9 @@ class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], IN
 
     @property
     def to(self) -> str | None:
-        """Target ID of the To reference (targets INodeValueOutput[T])."""
+        """The value to tween towards over Duration (float)
+
+Examples: Key Enum, Float, Int, etc"""
         member = self.get_member("To")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +88,9 @@ class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], IN
 
     @property
     def from_(self) -> str | None:
-        """Target ID of the From reference (targets INodeValueOutput[T])."""
+        """The value to tween away from over Duration (float)
+
+Examples: Key Enum, Float, Int, etc"""
         member = self.get_member("From")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +111,7 @@ class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], IN
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Float])."""
+        """The duration in seconds that the value should tween for."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -128,7 +132,7 @@ class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], IN
 
     @property
     def curve(self) -> str | None:
-        """Target ID of the Curve reference (targets INodeValueOutput[CurvePreset])."""
+        """The interpolation type to use while tweening."""
         member = self.get_member("Curve")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -149,7 +153,7 @@ class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], IN
 
     @property
     def proportional_duration(self) -> str | None:
-        """Target ID of the ProportionalDuration reference (targets INodeValueOutput[primitives.Bool])."""
+        """If true, multiplies the duration of the tween by the distance between the two endpoints, making the average speed over the whole tween equal to 1."""
         member = self.get_member("ProportionalDuration")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -170,7 +174,7 @@ class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], IN
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[IField[T]])."""
+        """The value this node should Tween."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -191,7 +195,7 @@ class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], IN
 
     @property
     def on_started(self) -> str | None:
-        """Target ID of the OnStarted reference (targets INodeOperation)."""
+        """Sends an Async Impulse once the node starts tweening the Target (Numeric or Enum IField`1)."""
         member = self.get_member("OnStarted")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -212,7 +216,7 @@ class TweenValue(GenericComponent[T], IAsyncNodeOperation, IExecutionNode[T], IN
 
     @property
     def on_done(self) -> str | None:
-        """Target ID of the OnDone reference (targets INodeOperation)."""
+        """Sends an Impulse once the node is done tweening Target (Numeric or Enum IField`1)."""
         member = self.get_member("OnDone")
         if isinstance(member, members.Reference):
             return member.targetId

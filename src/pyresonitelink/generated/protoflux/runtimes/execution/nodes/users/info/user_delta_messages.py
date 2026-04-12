@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserDeltaMessages(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Delta Messages node takes in a user and returns that user's delta (or change of) time of the messages. If the user is host, then that number is always zero (0).
+    """The ``User Delta Messages`` node takes in a user and returns that user's delta (or change of) time of the messages. If the user is host, then that number is always zero (0).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """
@@ -34,7 +34,7 @@ class UserDeltaMessages(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user that we want info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

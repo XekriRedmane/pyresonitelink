@@ -1,0 +1,15 @@
+{
+  "description": "The AvatarHandDataAssigner component is usually located on avatar hands, and is used to assign key objects that make a hand work like tip touch sources and the avatar object controlling it.",
+  "category": "Users:Common Avatar System:Fingers",
+  "fields": {
+    "TargetReference": "A field to assign a finger pose source to when the avatar above this component is equipped. Usually the ``PoseSource`` on a Component:HandPoser is specified here.",
+    "TouchSource": "A tip touch source component to put data into when the avatar above this component is equipped.",
+    "VibrationRelay": "A vibration device relay component to put data into when the avatar above this component is equipped.",
+    "Chirality": "Whether this component should assign data from the left or right hand data sets.",
+    "_equippingSlot": "This field is auto filled with the avatar object slot that is controlling the tip touch source and other components specified by this component."
+  },
+  "methods": {},
+  "usage": "This component needs to be under an avatar in order to work, and is used to manage avatar hands.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarHandDataAssigner&action=raw"
+}

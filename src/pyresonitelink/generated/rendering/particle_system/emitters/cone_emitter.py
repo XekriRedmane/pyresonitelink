@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.cone_emitter_direction import ConeEmitterDirection
+from pyresonitelink.generated._enums.direction_transform_mode import DirectionTransformMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.particle_system import ParticleSystem
@@ -10,14 +12,14 @@ from pyresonitelink.generated._types.iparticle_system_emitter import IParticleSy
 
 
 class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ConeEmitter.
+    """The ConeEmitter component is used to create particles via a particle system (see Photon Dust). This Emitter does this in a cone shape.
 
     Category: Rendering/Particle System/Emitters
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ConeEmitter"
 
-    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, base_radius: primitives.Float | None = None, height: primitives.Float | None = None, emit_from_shell: primitives.Bool | None = None, random_direction_weight: primitives.Float | None = None, direction: primitives.Float3 | None = None, relative_direction_reference_point: primitives.Float3 | None = None, direction_post_transform: primitives.Float3x3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, base_radius: primitives.Float | None = None, height: primitives.Float | None = None, emit_from_shell: primitives.Bool | None = None, direction_mode: ConeEmitterDirection | str | None = None, random_direction_weight: primitives.Float | None = None, direction: primitives.Float3 | None = None, direction_transform_mode: DirectionTransformMode | str | None = None, relative_direction_reference_point: primitives.Float3 | None = None, direction_post_transform: primitives.Float3x3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,8 +31,10 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
             base_radius: Initial value for BaseRadius.
             height: Initial value for Height.
             emit_from_shell: Initial value for EmitFromShell.
+            direction_mode: Initial value for DirectionMode.
             random_direction_weight: Initial value for RandomDirectionWeight.
             direction: Initial value for Direction.
+            direction_transform_mode: Initial value for DirectionTransformMode.
             relative_direction_reference_point: Initial value for RelativeDirectionReferencePoint.
             direction_post_transform: Initial value for DirectionPostTransform.
             component: Existing Component to wrap.
@@ -52,10 +56,14 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
             self.height = height
         if emit_from_shell is not None:
             self.emit_from_shell = emit_from_shell
+        if direction_mode is not None:
+            self.direction_mode = direction_mode
         if random_direction_weight is not None:
             self.random_direction_weight = random_direction_weight
         if direction is not None:
             self.direction = direction
+        if direction_transform_mode is not None:
+            self.direction_transform_mode = direction_transform_mode
         if relative_direction_reference_point is not None:
             self.relative_direction_reference_point = relative_direction_reference_point
         if direction_post_transform is not None:
@@ -160,7 +168,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def base_radius(self) -> primitives.Float | None:
-        """The BaseRadius field value."""
+        """The radius of the cone to emit from."""
         member = self.get_member("BaseRadius")
         if member is None:
             return None
@@ -179,7 +187,7 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """The height of the cone to emit from."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -216,17 +224,24 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def direction_mode(self) -> members.FieldEnum | None:
-        """The DirectionMode member."""
+    def direction_mode(self) -> ConeEmitterDirection | None:
+        """How particles are emitted from the cone."""
         member = self.get_member("DirectionMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ConeEmitterDirection(member.value)
         return None
 
     @direction_mode.setter
-    def direction_mode(self, value: members.FieldEnum) -> None:
-        """Set the DirectionMode member."""
-        self.set_member("DirectionMode", value)
+    def direction_mode(self, value: ConeEmitterDirection | str) -> None:
+        """Set DirectionMode. How particles are emitted from the cone."""
+        member = self.get_member("DirectionMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DirectionMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def random_direction_weight(self) -> primitives.Float | None:
@@ -267,17 +282,24 @@ class ConeEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def direction_transform_mode(self) -> members.FieldEnum | None:
-        """The DirectionTransformMode member."""
+    def direction_transform_mode(self) -> DirectionTransformMode | None:
+        """The DirectionTransformMode enum value."""
         member = self.get_member("DirectionTransformMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return DirectionTransformMode(member.value)
         return None
 
     @direction_transform_mode.setter
-    def direction_transform_mode(self, value: members.FieldEnum) -> None:
-        """Set the DirectionTransformMode member."""
-        self.set_member("DirectionTransformMode", value)
+    def direction_transform_mode(self, value: DirectionTransformMode | str) -> None:
+        """Set the DirectionTransformMode enum value."""
+        member = self.get_member("DirectionTransformMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DirectionTransformMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def relative_direction_reference_point(self) -> primitives.Float3 | None:

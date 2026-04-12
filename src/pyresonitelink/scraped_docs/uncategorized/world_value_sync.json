@@ -1,0 +1,11 @@
+{
+  "description": "The WorldValueSync component is used to sync values from world space to user space.",
+  "category": "Uncategorized",
+  "fields": {
+    "LocalValue": "The value to sync."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldValueSync&action=raw"
+}

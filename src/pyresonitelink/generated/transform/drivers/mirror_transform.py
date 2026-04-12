@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MirrorTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MirrorTransform.
+    """The Mirror Transform drives the position of the slot to mirror the position of an inputted slot across the normal of a plane.
 
     Category: Transform/Drivers
+
+    Attach to a slot and provide ``MirrorSource``, ``MirrorPlane``, and
+    ``MirrorNormal`` for this component to start working.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MirrorTransform"
@@ -50,7 +53,7 @@ class MirrorTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mirror_source(self) -> str | None:
-        """Target ID of the MirrorSource reference (targets Slot)."""
+        """The slot to get the mirror data from."""
         member = self.get_member("MirrorSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -71,7 +74,7 @@ class MirrorTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mirror_plane(self) -> str | None:
-        """Target ID of the MirrorPlane reference (targets Slot)."""
+        """The slot to use as the position to mirror across."""
         member = self.get_member("MirrorPlane")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +95,7 @@ class MirrorTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mirror_offset(self) -> primitives.Float3 | None:
-        """The MirrorOffset field value."""
+        """An offset from the ``MirrorPlane`` to mirror across."""
         member = self.get_member("MirrorOffset")
         if member is None:
             return None
@@ -111,7 +114,7 @@ class MirrorTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mirror_normal(self) -> primitives.Float3 | None:
-        """The MirrorNormal field value."""
+        """The direction to mirror from."""
         member = self.get_member("MirrorNormal")
         if member is None:
             return None
@@ -130,7 +133,7 @@ class MirrorTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def allow_write_back(self) -> primitives.Bool | None:
-        """The AllowWriteBack field value."""
+        """Whether to allow changing the target fields of ``_position`` or ``_rotation`` to change the position and rotation of ``MirrorSource``."""
         member = self.get_member("AllowWriteBack")
         if member is None:
             return None
@@ -149,7 +152,7 @@ class MirrorTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def position(self) -> str | None:
-        """Target ID of the _position reference (targets IField[primitives.Float3])."""
+        """The position field to drive with the mirrored mirror data. Usually the Position field of the slot this component is on."""
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -170,7 +173,7 @@ class MirrorTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the _rotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field to drive with the mirrored mirror data. Usually the Rotation field of the slot this component is on."""
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             return member.targetId

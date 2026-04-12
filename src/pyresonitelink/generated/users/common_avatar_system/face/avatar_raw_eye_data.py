@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarRawEyeData.
+    """The AvatarRawEyeData component provides the eye tracking data on a particular User. This component links to a user upon being part of an Avatar that a user equips.
 
     Category: Users/Common Avatar System/Face
     """
@@ -37,7 +37,7 @@ class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
 
     @property
     def left_eye(self) -> members.SyncObject | None:
-        """The LeftEye member."""
+        """Data about the left eye from the user's eye tracking device"""
         member = self.get_member("LeftEye")
         if isinstance(member, members.SyncObject):
             return member
@@ -45,12 +45,12 @@ class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
 
     @left_eye.setter
     def left_eye(self, value: members.SyncObject) -> None:
-        """Set the LeftEye member."""
+        """Set LeftEye. Data about the left eye from the user's eye tracking device"""
         self.set_member("LeftEye", value)
 
     @property
     def right_eye(self) -> members.SyncObject | None:
-        """The RightEye member."""
+        """Data about the right eye from the user's eye tracking device"""
         member = self.get_member("RightEye")
         if isinstance(member, members.SyncObject):
             return member
@@ -58,12 +58,12 @@ class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
 
     @right_eye.setter
     def right_eye(self, value: members.SyncObject) -> None:
-        """Set the RightEye member."""
+        """Set RightEye. Data about the right eye from the user's eye tracking device"""
         self.set_member("RightEye", value)
 
     @property
     def combined_eye(self) -> members.SyncObject | None:
-        """The CombinedEye member."""
+        """Data about combined eye Data from the user's tracking device"""
         member = self.get_member("CombinedEye")
         if isinstance(member, members.SyncObject):
             return member
@@ -71,12 +71,12 @@ class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
 
     @combined_eye.setter
     def combined_eye(self, value: members.SyncObject) -> None:
-        """Set the CombinedEye member."""
+        """Set CombinedEye. Data about combined eye Data from the user's tracking device"""
         self.set_member("CombinedEye", value)
 
     @property
     def convergence_distance(self) -> primitives.Float | None:
-        """The ConvergenceDistance field value."""
+        """The User's eye tracking convergence distance data"""
         member = self.get_member("ConvergenceDistance")
         if member is None:
             return None
@@ -95,7 +95,7 @@ class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
 
     @property
     def timestamp(self) -> primitives.Double | None:
-        """The Timestamp field value."""
+        """The timestamp value gotten directly from the eye tracking device."""
         member = self.get_member("Timestamp")
         if member is None:
             return None
@@ -114,7 +114,7 @@ class AvatarRawEyeData(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
 
     @property
     def active_user(self) -> str | None:
-        """Target ID of the _activeUser reference (targets User)."""
+        """The user that the component is reading eye tracking data from."""
         member = self.get_member("_activeUser")
         if isinstance(member, members.Reference):
             return member.targetId

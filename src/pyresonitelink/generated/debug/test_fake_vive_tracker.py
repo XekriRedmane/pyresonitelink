@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TestFakeViveTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TestFakeViveTracker.
+    """The TestFakeViveTracker component simulates a vive Tracker for ``User`` that has the position and rotation of the slot this component is on. This allows for making fake trackers that can be used to control the ``User``'s IK as a real Tracker would. It even """tricks""" the input system into fully seeing this as a Tracker, even generating a visual for the user. The tracker device's position/rotation is based on its position/rotation in global space compared to ``User``'s root slot global position/rotation.
 
     Category: Debug
+
+    Attach to a slot and preferably parent it under the ``User`` to create a
+    new tracker for the targeted ``User``. a user is needed for this
+    component to work.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TestFakeViveTracker"
@@ -33,7 +37,7 @@ class TestFakeViveTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def id_(self) -> primitives.String | None:
-        """The Id field value."""
+        """Upon attaching is a random GUID. Can be changed which makes a new Tracker object. If identical to another older tracker the user has used before, will take on the old tracker's identity and settings."""
         member = self.get_member("Id")
         if member is None:
             return None
@@ -52,7 +56,7 @@ class TestFakeViveTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_tracking(self) -> primitives.Bool | None:
-        """The IsTracking field value."""
+        """Controls whether the tracker has lost tracking."""
         member = self.get_member("IsTracking")
         if member is None:
             return None
@@ -71,7 +75,7 @@ class TestFakeViveTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user(self) -> members.SyncObject | None:
-        """The User member."""
+        """The user this tracker shoul"""
         member = self.get_member("User")
         if isinstance(member, members.SyncObject):
             return member
@@ -79,6 +83,6 @@ class TestFakeViveTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @user.setter
     def user(self, value: members.SyncObject) -> None:
-        """Set the User member."""
+        """Set User. The user this tracker shoul"""
         self.set_member("User", value)
 

@@ -13,6 +13,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class Sequence(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Sequence node performs each of the provided impulses in order, waiting for the chain of each impulse to finish before executing the next one.
 
+This can be useful for organizational purposes or to avoid code duplication if something needs to be performed after a bunch of branching paths.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """
 
@@ -20,7 +22,7 @@ class Sequence(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, IC
 
     @property
     def calls(self) -> members.SyncList | None:
-        """The Calls member."""
+        """The list of impulses to fire in order. This node will start at the first impulse, and after the context of the impulse finishes, the next impulse is fired. Repeats until the last impulse finishes."""
         member = self.get_member("Calls")
         if isinstance(member, members.SyncList):
             return member
@@ -28,6 +30,6 @@ class Sequence(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, IC
 
     @calls.setter
     def calls(self, value: members.SyncList) -> None:
-        """Set the Calls member."""
+        """Set Calls. The list of impulses to fire in order. This node will start at the first impulse, and after the context of the impulse finishes, the next impulse is fired. Repeats until the last impulse finishes."""
         self.set_member("Calls", value)
 

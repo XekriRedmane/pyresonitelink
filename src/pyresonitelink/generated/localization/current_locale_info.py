@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CurrentLocaleInfo.
+    """The CurrentLocaleInfo component gives localized values of the user's current locale.
 
     Category: Localization
     """
@@ -38,7 +38,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def locale_code(self) -> primitives.String | None:
-        """The LocaleCode field value."""
+        """The code of the culture of the current locale."""
         member = self.get_member("LocaleCode")
         if member is None:
             return None
@@ -57,7 +57,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def language_code(self) -> primitives.String | None:
-        """The LanguageCode field value."""
+        """The code of the language of the current locale."""
         member = self.get_member("LanguageCode")
         if member is None:
             return None
@@ -76,7 +76,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def native_locale_name(self) -> primitives.String | None:
-        """The NativeLocaleName field value."""
+        """The name of the current locale in native language (Ex: "Español")"""
         member = self.get_member("NativeLocaleName")
         if member is None:
             return None
@@ -95,7 +95,7 @@ class CurrentLocaleInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def english_locale_name(self) -> primitives.String | None:
-        """The EnglishLocaleName field value."""
+        """The name of the current locale in english (Ex: "Spanish")"""
         member = self.get_member("EnglishLocaleName")
         if member is None:
             return None

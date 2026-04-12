@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarPoseBoxConstraint(GeneratedComponent, IAvatarPoseFilter, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseBoxConstraint.
+    """The AvatarPoseBoxConstraint component is a BodyPoseFilter that can be used in the construction of tool tips, anchors, grabbable items, and more. This pose filter is used to force the slot corresponding to a body node (In the case of a hand for example, it will constrict the position of the hand bone position, rather than the whole hand) to stay within a rotatable box specified.
 
     Category: Users/Common Avatar System/Pose Filters
+
+    This is widely used in seats where the user's legs and hips are posed in
+    a sitting position, like when sitting in a car.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseBoxConstraint"
@@ -37,7 +40,7 @@ class AvatarPoseBoxConstraint(GeneratedComponent, IAvatarPoseFilter, IWorldEvent
 
     @property
     def box_size(self) -> primitives.Float3 | None:
-        """The BoxSize field value."""
+        """the size of the box that a user's body node should be constrained within. (0,0,0) is valid for this field."""
         member = self.get_member("BoxSize")
         if member is None:
             return None
@@ -56,7 +59,7 @@ class AvatarPoseBoxConstraint(GeneratedComponent, IAvatarPoseFilter, IWorldEvent
 
     @property
     def default_pose_reference(self) -> str | None:
-        """Target ID of the DefaultPoseReference reference (targets Slot)."""
+        """the slot which the box will be positioned, rotated, and scaled by. If null, this is the slot this component is on."""
         member = self.get_member("DefaultPoseReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +80,7 @@ class AvatarPoseBoxConstraint(GeneratedComponent, IAvatarPoseFilter, IWorldEvent
 
     @property
     def process_simulated_poses(self) -> primitives.Bool | None:
-        """The ProcessSimulatedPoses field value."""
+        """Whether to affect simulated poses like from the animation system."""
         member = self.get_member("ProcessSimulatedPoses")
         if member is None:
             return None

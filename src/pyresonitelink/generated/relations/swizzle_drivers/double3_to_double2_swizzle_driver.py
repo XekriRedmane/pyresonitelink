@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Double3ToDouble2SwizzleDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Double3ToDouble2SwizzleDriver.
+    """The Double 3To Double 2Swizzle Driver component.
 
     Category: Relations/Swizzle Drivers
     """

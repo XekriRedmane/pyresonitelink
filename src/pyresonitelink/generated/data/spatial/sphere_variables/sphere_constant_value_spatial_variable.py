@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.spatial_variable_blend_distance_mode import SpatialVariableBlendDistanceMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ispatial_variable import ISpatialVariable
@@ -11,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SphereConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SphereConstantValueSpatialVariable<>.
+    """The Sphere Constant Value Spatial Variable`1 component is part of the Spatial variables system.
 
     Category: Data/Spatial/Sphere Variables
+
+    Attach to a slot and provide a radius and variable name in order for
+    this to function.
 
     Parameterize with a value type::
 
@@ -24,7 +28,7 @@ class SphereConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SphereConstantValueSpatialVariable<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.SphereConstantValueSpatialVariable<>"
 
-    def __init__(self, variable_name: primitives.String | None = None, priority: primitives.Int | None = None, radius: primitives.Float | None = None, blend_distance: primitives.Float | None = None, value: T | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, priority: primitives.Int | None = None, radius: primitives.Float | None = None, blend_distance: primitives.Float | None = None, blend_distance_mode: SpatialVariableBlendDistanceMode | str | None = None, value: T | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,6 +36,7 @@ class SphereConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
             priority: Initial value for Priority.
             radius: Initial value for Radius.
             blend_distance: Initial value for BlendDistance.
+            blend_distance_mode: Initial value for BlendDistanceMode.
             value: Initial value for Value.
             component: Existing Component to wrap.
         """
@@ -44,6 +49,8 @@ class SphereConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
             self.radius = radius
         if blend_distance is not None:
             self.blend_distance = blend_distance
+        if blend_distance_mode is not None:
+            self.blend_distance_mode = blend_distance_mode
         if value is not None:
             self.value = value
 
@@ -87,7 +94,7 @@ class SphereConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the sphere this makes that samplers can sample this variable's value within."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -124,17 +131,24 @@ class SphereConstantValueSpatialVariable(GenericComponent[T], ISpatialVariable[T
             )
 
     @property
-    def blend_distance_mode(self) -> members.FieldEnum | None:
-        """The BlendDistanceMode member."""
+    def blend_distance_mode(self) -> SpatialVariableBlendDistanceMode | None:
+        """The BlendDistanceMode enum value."""
         member = self.get_member("BlendDistanceMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SpatialVariableBlendDistanceMode(member.value)
         return None
 
     @blend_distance_mode.setter
-    def blend_distance_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendDistanceMode member."""
-        self.set_member("BlendDistanceMode", value)
+    def blend_distance_mode(self, value: SpatialVariableBlendDistanceMode | str) -> None:
+        """Set the BlendDistanceMode enum value."""
+        member = self.get_member("BlendDistanceMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendDistanceMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def value(self) -> T | None:

@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.ProjectedRectSlotDriver.
+    """The ProjectedRectSlotDriver component takes a Slot in the ``Target`` field and places that slot in the center of where this compoennt's UIX element's transform is. This target slot will be resized to match a pizel scale that the UIX Canvas uses.
+
+}}
 
     Category: UIX/Utility
+
+    This can be used if you want to place a slot to where some UIX is at
+    anytime.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ProjectedRectSlotDriver"
@@ -46,7 +51,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
 
     @property
     def position(self) -> str | None:
-        """Target ID of the _position reference (targets IField[primitives.Float3])."""
+        """Internal - The position of the target slot."""
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +72,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The slot to reposition onto this UIX."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -88,7 +93,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the _rotation reference (targets IField[primitives.FloatQ])."""
+        """Internal - The rotation of the target slot."""
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +114,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
 
     @property
     def scale(self) -> str | None:
-        """Target ID of the _scale reference (targets IField[primitives.Float3])."""
+        """Internal - The scale of the target slot."""
         member = self.get_member("_scale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -130,7 +135,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
 
     @property
     def original_parent(self) -> str | None:
-        """Target ID of the _originalParent reference (targets Slot)."""
+        """Internal - The original parent this slot came from."""
         member = self.get_member("_originalParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -151,7 +156,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
 
     @property
     def last_target(self) -> str | None:
-        """Target ID of the _lastTarget reference (targets Slot)."""
+        """Internal - The last known slot target this component used."""
         member = self.get_member("_lastTarget")
         if isinstance(member, members.Reference):
             return member.targetId

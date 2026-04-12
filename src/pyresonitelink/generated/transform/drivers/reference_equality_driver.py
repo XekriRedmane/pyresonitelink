@@ -12,9 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceEqualityDriver<>.
+    """The ReferenceEqualityDriver component checks the equality of two objects and says whether they are equal. For objects that define their own behavior for checking Equality (Like Bounding boxes) this will check based on that logic (for Bounding boxes they only need to be numerically equal, like being the same size and center).
 
     Category: Transform/Drivers
+
+    Attach to a slot and provide a reference object to check against, or
+    provide nothing to check against if null or not null. Then put in a
+    field to check for a reference inside of, and the component will start
+    working.
 
     Parameterize with a value type::
 
@@ -47,7 +52,7 @@ class ReferenceEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiv
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets SyncRef[T])."""
+        """The reference to check."""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +73,7 @@ class ReferenceEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiv
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets T)."""
+        """The reference to use as a thing to compare against."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +94,7 @@ class ReferenceEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiv
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Bool])."""
+        """The boolean field to drive to whether ``TargetReference`` and ``Reference`` are equal. Doesn't always mean they are the exact same object."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +115,7 @@ class ReferenceEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiv
 
     @property
     def invert(self) -> primitives.Bool | None:
-        """The Invert field value."""
+        """Whether to invert the result sent to ``Target``."""
         member = self.get_member("Invert")
         if member is None:
             return None

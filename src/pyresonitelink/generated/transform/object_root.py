@@ -8,9 +8,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectRoot(GeneratedComponent, IObjectRoot, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ObjectRoot.
+    """The ObjectRoot component marks a slot as the root of an object, where an object is the slot itself plus all of its child slots, recursively.
 
     Category: Transform
+
+    Setting a slot as the ObjectRoot helps the Scene Inspector's "up to
+    object root" button find the root of the object.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ObjectRoot"
@@ -18,7 +21,7 @@ class ObjectRoot(GeneratedComponent, IObjectRoot, ICustomInspector, IWorldEventR
     pass
 
     async def remove_children_object_roots(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the RemoveChildrenObjectRoots sync method.
+        """will recursively delete any ObjectRoot components from this slot's children.
 
         Returns:
             The raw JSON response dict.

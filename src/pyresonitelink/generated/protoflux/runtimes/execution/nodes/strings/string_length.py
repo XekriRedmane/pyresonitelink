@@ -34,7 +34,7 @@ class StringLength(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to check the length for."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId

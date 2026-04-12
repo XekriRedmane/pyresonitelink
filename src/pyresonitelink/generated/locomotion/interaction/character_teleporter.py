@@ -10,9 +10,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CharacterTeleporter.
+    """The CharacterTeleporter sets up a Slot to teleport a character to the associated teleport exit when the Slot's Collider is hit. The Collider must be of type Trigger unless ``TriggersOnly`` is disabled.
 
     Category: Locomotion/Interaction
+
+    Place the component on a slot with a collider that has character
+    collider field enabled. Next, specify slot(s) for the user to exit out
+    of in the ``Exits`` list. Walking into the collider zone will send you
+    and anyone else to the target Exit
+
+    **Related Components**: * RandomObjectSpawner
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterTeleporter"
@@ -42,7 +49,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def triggers_only(self) -> primitives.Bool | None:
-        """The TriggersOnly field value."""
+        """Whether to only allow triggers in this component's slot hiearchy to trigger the teleporter."""
         member = self.get_member("TriggersOnly")
         if member is None:
             return None
@@ -61,7 +68,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def exits(self) -> members.SyncList | None:
-        """The Exits member."""
+        """A list of slot exits to send the user to, which include rotation and individualized data."""
         member = self.get_member("Exits")
         if isinstance(member, members.SyncList):
             return member
@@ -69,12 +76,12 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @exits.setter
     def exits(self, value: members.SyncList) -> None:
-        """Set the Exits member."""
+        """Set Exits. A list of slot exits to send the user to, which include rotation and individualized data."""
         self.set_member("Exits", value)
 
     @property
     def minimum_velocity(self) -> primitives.Float | None:
-        """The MinimumVelocity field value."""
+        """the minimum velocity the user has to be traveling to enter the teleporter."""
         member = self.get_member("MinimumVelocity")
         if member is None:
             return None
@@ -93,7 +100,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direction_reference(self) -> primitives.Float3 | None:
-        """The DirectionReference field value."""
+        """Which way is looking forward for this teleporter."""
         member = self.get_member("DirectionReference")
         if member is None:
             return None
@@ -112,7 +119,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_direction_angle(self) -> primitives.Float | None:
-        """The MaxDirectionAngle field value."""
+        """If the user's velocity direction has an angle greater than this compared to the ``DirectionReference``, then don't teleport the user."""
         member = self.get_member("MaxDirectionAngle")
         if member is None:
             return None
@@ -131,7 +138,7 @@ class CharacterTeleporter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ignore_parent_user(self) -> primitives.Bool | None:
-        """The IgnoreParentUser field value."""
+        """Whether to ignore the active user of this component when finding users that meet the criteria to go through the teleporter."""
         member = self.get_member("IgnoreParentUser")
         if member is None:
             return None

@@ -33,7 +33,7 @@ class IsWhiteSpace(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def character(self) -> str | None:
-        """Target ID of the Character reference (targets INodeValueOutput[primitives.Char])."""
+        """The character literal to check."""
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             return member.targetId

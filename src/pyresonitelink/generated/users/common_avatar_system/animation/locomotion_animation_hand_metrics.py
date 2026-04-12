@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.locomotion_metrics_space import LocomotionMetricsSpace
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -10,17 +11,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocomotionAnimationHandMetrics(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocomotionAnimationHandMetrics.
+    """The LocomotionAnimationHandMetrics component can be used to adjust the settings on the hands for an avatar for its rest state.
 
     Category: Users/Common Avatar System/Animation
+
+    Can be used to adjust the arms rest state so they don't collide with the
+    legs or hips too much.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocomotionAnimationHandMetrics"
 
-    def __init__(self, shoulder_separation: primitives.Float | None = None, shoulder_height: primitives.Float | None = None, shoulder_offset: primitives.Float | None = None, hand_offset: primitives.Float | None = None, arm_length: primitives.Float | None = None, hand_palm_distance: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, space: LocomotionMetricsSpace | str | None = None, shoulder_separation: primitives.Float | None = None, shoulder_height: primitives.Float | None = None, shoulder_offset: primitives.Float | None = None, hand_offset: primitives.Float | None = None, arm_length: primitives.Float | None = None, hand_palm_distance: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            space: Initial value for Space.
             shoulder_separation: Initial value for ShoulderSeparation.
             shoulder_height: Initial value for ShoulderHeight.
             shoulder_offset: Initial value for ShoulderOffset.
@@ -30,6 +35,8 @@ class LocomotionAnimationHandMetrics(GeneratedComponent, IComponent, IWorldEvent
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if space is not None:
+            self.space = space
         if shoulder_separation is not None:
             self.shoulder_separation = shoulder_separation
         if shoulder_height is not None:
@@ -44,21 +51,28 @@ class LocomotionAnimationHandMetrics(GeneratedComponent, IComponent, IWorldEvent
             self.hand_palm_distance = hand_palm_distance
 
     @property
-    def space(self) -> members.FieldEnum | None:
-        """The Space member."""
+    def space(self) -> LocomotionMetricsSpace | None:
+        """What transform space the metric values are in for this component."""
         member = self.get_member("Space")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return LocomotionMetricsSpace(member.value)
         return None
 
     @space.setter
-    def space(self, value: members.FieldEnum) -> None:
-        """Set the Space member."""
-        self.set_member("Space", value)
+    def space(self, value: LocomotionMetricsSpace | str) -> None:
+        """Set Space. What transform space the metric values are in for this component."""
+        member = self.get_member("Space")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Space",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def shoulder_separation(self) -> primitives.Float | None:
-        """The ShoulderSeparation field value."""
+        """An optional value to specify how apart the shoulders are in local space meters."""
         member = self.get_member("ShoulderSeparation")
         if member is None:
             return None
@@ -77,7 +91,7 @@ class LocomotionAnimationHandMetrics(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def shoulder_height(self) -> primitives.Float | None:
-        """The ShoulderHeight field value."""
+        """An optional value to specify how far the shoulders are from the ground in local space meters."""
         member = self.get_member("ShoulderHeight")
         if member is None:
             return None
@@ -96,7 +110,7 @@ class LocomotionAnimationHandMetrics(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def shoulder_offset(self) -> primitives.Float | None:
-        """The ShoulderOffset field value."""
+        """The offset of the shoulders forwards or backwards in meters."""
         member = self.get_member("ShoulderOffset")
         if member is None:
             return None
@@ -115,7 +129,7 @@ class LocomotionAnimationHandMetrics(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def hand_offset(self) -> primitives.Float | None:
-        """The HandOffset field value."""
+        """An optional value to specify how far the hands should be offseted from the avatar center in local space meters."""
         member = self.get_member("HandOffset")
         if member is None:
             return None
@@ -134,7 +148,7 @@ class LocomotionAnimationHandMetrics(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def arm_length(self) -> primitives.Float | None:
-        """The ArmLength field value."""
+        """An optional value to specify how long the arms are in local space meters."""
         member = self.get_member("ArmLength")
         if member is None:
             return None
@@ -153,7 +167,7 @@ class LocomotionAnimationHandMetrics(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def hand_palm_distance(self) -> primitives.Float | None:
-        """The HandPalmDistance field value."""
+        """An optional value to specify how long the palms are in local space meters."""
         member = self.get_member("HandPalmDistance")
         if member is None:
             return None

@@ -15,6 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ObjectLessThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Less Than node takes in 2 values and returns if the first value is smaller than the second value.
 
+|suggestion}}
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 
     Parameterize with a value type::
@@ -42,7 +44,7 @@ class ObjectLessThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T]
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeObjectOutput[T])."""
+        """The first value."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +65,7 @@ class ObjectLessThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T]
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeObjectOutput[T])."""
+        """The second value."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId

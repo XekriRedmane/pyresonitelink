@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarObjectComponentProxy(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarObjectComponentProxy.
+    """The AvatarObjectComponentProxy component receives equipping, dequipping, and preequipping events and sends them to every IAvatarObjectComponent component under the ``Target``
 
     Category: Users/Common Avatar System
     """
@@ -29,7 +29,7 @@ class AvatarObjectComponentProxy(GeneratedComponent, IAvatarObjectComponent, IWo
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The slot with components to send Equipping, Deequipping, and prequipping events to."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

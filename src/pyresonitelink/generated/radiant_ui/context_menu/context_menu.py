@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.state import State
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -26,14 +27,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ContextMenu.
+    """The ContextMenu component is the main component that handles the functionality of every user's Context Menu.
 
     Category: Radiant UI/Context Menu
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContextMenu"
 
-    def __init__(self, owner: str | User | None = None, pointer: str | Slot | None = None, separation: primitives.Float | None = None, label_size: primitives.Float2 | None = None, radius_ratio: primitives.Float | None = None, current_summoner: str | IWorldElement | None = None, canvas: str | Canvas | None = None, arc_layout: str | ArcLayout | None = None, canvas_active: str | IField[primitives.Bool] | None = None, collider_enabled: str | IField[primitives.Bool] | None = None, icon_image: str | Image | None = None, offset_min: str | IField[primitives.Float2] | None = None, offset_max: str | IField[primitives.Float2] | None = None, inner_circle: str | OutlinedArc | None = None, inner_circle_button: str | Button | None = None, inner_circle_anchor_min: str | IField[primitives.Float2] | None = None, inner_circle_anchor_max: str | IField[primitives.Float2] | None = None, items_root: str | Slot | None = None, arc_material: str | UI_CircleSegment | None = None, font_material: str | UI_TextUnlitMaterial | None = None, sprite_material: str | UI_UnlitMaterial | None = None, arc_overlay: str | IField[primitives.Bool] | None = None, font_overlay: str | IField[primitives.Bool] | None = None, sprite_overlay: str | IField[primitives.Bool] | None = None, arc_ztest: str | IField[ZTest] | None = None, font_ztest: str | IField[ZTest] | None = None, sprite_ztest: str | IField[ZTest] | None = None, zwrite_arc: str | IField[ZWrite] | None = None, zwrite_text: str | IField[ZWrite] | None = None, arc_render_queue: str | IField[primitives.Int] | None = None, font_render_queue: str | IField[primitives.Int] | None = None, sprite_render_queue: str | IField[primitives.Int] | None = None, canvas_offset: str | IField[primitives.Int] | None = None, fill_fade: str | IField[primitives.ColorX] | None = None, outline_fade: str | IField[primitives.ColorX] | None = None, text_fade: str | IField[primitives.ColorX] | None = None, icon_fade: str | IField[primitives.ColorX] | None = None, lerp: primitives.Float | None = None, flick_mode_active: primitives.Bool | None = None, flick_enabled: primitives.Bool | None = None, hidden: primitives.Bool | None = None, selected_item: str | ContextMenuItem | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, owner: str | User | None = None, pointer: str | Slot | None = None, separation: primitives.Float | None = None, label_size: primitives.Float2 | None = None, radius_ratio: primitives.Float | None = None, current_summoner: str | IWorldElement | None = None, canvas: str | Canvas | None = None, arc_layout: str | ArcLayout | None = None, canvas_active: str | IField[primitives.Bool] | None = None, collider_enabled: str | IField[primitives.Bool] | None = None, icon_image: str | Image | None = None, offset_min: str | IField[primitives.Float2] | None = None, offset_max: str | IField[primitives.Float2] | None = None, inner_circle: str | OutlinedArc | None = None, inner_circle_button: str | Button | None = None, inner_circle_anchor_min: str | IField[primitives.Float2] | None = None, inner_circle_anchor_max: str | IField[primitives.Float2] | None = None, items_root: str | Slot | None = None, arc_material: str | UI_CircleSegment | None = None, font_material: str | UI_TextUnlitMaterial | None = None, sprite_material: str | UI_UnlitMaterial | None = None, arc_overlay: str | IField[primitives.Bool] | None = None, font_overlay: str | IField[primitives.Bool] | None = None, sprite_overlay: str | IField[primitives.Bool] | None = None, arc_ztest: str | IField[ZTest] | None = None, font_ztest: str | IField[ZTest] | None = None, sprite_ztest: str | IField[ZTest] | None = None, zwrite_arc: str | IField[ZWrite] | None = None, zwrite_text: str | IField[ZWrite] | None = None, arc_render_queue: str | IField[primitives.Int] | None = None, font_render_queue: str | IField[primitives.Int] | None = None, sprite_render_queue: str | IField[primitives.Int] | None = None, canvas_offset: str | IField[primitives.Int] | None = None, fill_fade: str | IField[primitives.ColorX] | None = None, outline_fade: str | IField[primitives.ColorX] | None = None, text_fade: str | IField[primitives.ColorX] | None = None, icon_fade: str | IField[primitives.ColorX] | None = None, lerp: primitives.Float | None = None, state: State | str | None = None, flick_mode_active: primitives.Bool | None = None, flick_enabled: primitives.Bool | None = None, hidden: primitives.Bool | None = None, selected_item: str | ContextMenuItem | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -75,6 +76,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             text_fade: Initial value for _textFade.
             icon_fade: Initial value for _iconFade.
             lerp: Initial value for _lerp.
+            state: Initial value for _state.
             flick_mode_active: Initial value for _flickModeActive.
             flick_enabled: Initial value for _flickEnabled.
             hidden: Initial value for _hidden.
@@ -158,6 +160,8 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.icon_fade = icon_fade
         if lerp is not None:
             self.lerp = lerp
+        if state is not None:
+            self.state = state
         if flick_mode_active is not None:
             self.flick_mode_active = flick_mode_active
         if flick_enabled is not None:
@@ -169,7 +173,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def owner(self) -> str | None:
-        """Target ID of the Owner reference (targets User)."""
+        """The user that is using this context menu"""
         member = self.get_member("Owner")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -190,7 +194,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def pointer(self) -> str | None:
-        """Target ID of the Pointer reference (targets Slot)."""
+        """the slot that represents the pointer the user is interacting with the menu with."""
         member = self.get_member("Pointer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -211,7 +215,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def separation(self) -> primitives.Float | None:
-        """The Separation field value."""
+        """How many degrees of separation each arc button has."""
         member = self.get_member("Separation")
         if member is None:
             return None
@@ -230,7 +234,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label_size(self) -> primitives.Float2 | None:
-        """The LabelSize field value."""
+        """The size of image labels on the buttons"""
         member = self.get_member("LabelSize")
         if member is None:
             return None
@@ -249,7 +253,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def radius_ratio(self) -> primitives.Float | None:
-        """The RadiusRatio field value."""
+        """The ratio of the button arcs vs the size of the circle in the middle."""
         member = self.get_member("RadiusRatio")
         if member is None:
             return None
@@ -268,7 +272,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_summoner(self) -> str | None:
-        """Target ID of the _currentSummoner reference (targets IWorldElement)."""
+        """The thing opening the menu currently"""
         member = self.get_member("_currentSummoner")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -289,7 +293,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def canvas(self) -> str | None:
-        """Target ID of the _canvas reference (targets Canvas)."""
+        """The UIX canvas rendering the buttons."""
         member = self.get_member("_canvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -310,7 +314,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def arc_layout(self) -> str | None:
-        """Target ID of the _arcLayout reference (targets ArcLayout)."""
+        """The layout being used to arrange the buttons"""
         member = self.get_member("_arcLayout")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -331,7 +335,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def canvas_active(self) -> str | None:
-        """Target ID of the _canvasActive reference (targets IField[primitives.Bool])."""
+        """The active field of the canvas this context menu's visuals are being drawn on."""
         member = self.get_member("_canvasActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -352,7 +356,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def collider_enabled(self) -> str | None:
-        """Target ID of the _colliderEnabled reference (targets IField[primitives.Bool])."""
+        """The active field of the collider of the context menu to allow interaction with it."""
         member = self.get_member("_colliderEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -373,7 +377,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def icon_image(self) -> str | None:
-        """Target ID of the _iconImage reference (targets Image)."""
+        """The icon of the center circle button. Used to display the image of the hovered button option."""
         member = self.get_member("_iconImage")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -394,7 +398,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def separation(self) -> str | None:
-        """Target ID of the _separation reference (targets IField[primitives.Float])."""
+        """The field used to control the separation of button options in the context menu."""
         member = self.get_member("_separation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -415,7 +419,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset_min(self) -> str | None:
-        """Target ID of the _offsetMin reference (targets IField[primitives.Float2])."""
+        """The offset min field of the radial menu section"""
         member = self.get_member("_offsetMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -436,7 +440,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset_max(self) -> str | None:
-        """Target ID of the _offsetMax reference (targets IField[primitives.Float2])."""
+        """The offset max field of the radial menu section."""
         member = self.get_member("_offsetMax")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -457,7 +461,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def inner_circle(self) -> str | None:
-        """Target ID of the _innerCircle reference (targets OutlinedArc)."""
+        """The graphic of the inner circle for the context menu"""
         member = self.get_member("_innerCircle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -478,7 +482,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def inner_circle_button(self) -> str | None:
-        """Target ID of the _innerCircleButton reference (targets Button)."""
+        """The button part of the inner circle of the context menu."""
         member = self.get_member("_innerCircleButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -499,7 +503,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def inner_circle_anchor_min(self) -> str | None:
-        """Target ID of the _innerCircleAnchorMin reference (targets IField[primitives.Float2])."""
+        """The anchor min field of the rectangle transform of the inner circle graphic. Used to control how it looks when flicking and changing its size."""
         member = self.get_member("_innerCircleAnchorMin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -520,7 +524,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def inner_circle_anchor_max(self) -> str | None:
-        """Target ID of the _innerCircleAnchorMax reference (targets IField[primitives.Float2])."""
+        """The anchor max field of the rectangle transform of the inner circle graphic. Used to control how it looks when flicking and changing its size."""
         member = self.get_member("_innerCircleAnchorMax")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -541,7 +545,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def items_root(self) -> str | None:
-        """Target ID of the _itemsRoot reference (targets Slot)."""
+        """the slot that contains all the arc items that makes up the context menu options."""
         member = self.get_member("_itemsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -562,7 +566,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def arc_material(self) -> str | None:
-        """Target ID of the _arcMaterial reference (targets UI_CircleSegment)."""
+        """The material used to draw the menu options in the context meny."""
         member = self.get_member("_arcMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -583,7 +587,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def font_material(self) -> str | None:
-        """Target ID of the _fontMaterial reference (targets UI_TextUnlitMaterial)."""
+        """The material used to render the text for the context menu options"""
         member = self.get_member("_fontMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -604,7 +608,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sprite_material(self) -> str | None:
-        """Target ID of the _spriteMaterial reference (targets UI_UnlitMaterial)."""
+        """The material used to render the image sprites on the buttons in the context menu."""
         member = self.get_member("_spriteMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -625,7 +629,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def arc_overlay(self) -> str | None:
-        """Target ID of the _arcOverlay reference (targets IField[primitives.Bool])."""
+        """The enable Overlay mode on the arc material. Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_arcOverlay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -646,7 +650,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def font_overlay(self) -> str | None:
-        """Target ID of the _fontOverlay reference (targets IField[primitives.Bool])."""
+        """The enable Overlay mode on the font material. Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_fontOverlay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -667,7 +671,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sprite_overlay(self) -> str | None:
-        """Target ID of the _spriteOverlay reference (targets IField[primitives.Bool])."""
+        """The enable Overlay mode on the sprite material. Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_spriteOverlay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -688,7 +692,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def arc_ztest(self) -> str | None:
-        """Target ID of the _arcZTest reference (targets IField[ZTest])."""
+        """the Ztest field on the arc material. Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_arcZTest")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -709,7 +713,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def font_ztest(self) -> str | None:
-        """Target ID of the _fontZTest reference (targets IField[ZTest])."""
+        """the Ztest field on the font material. Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_fontZTest")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -730,7 +734,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sprite_ztest(self) -> str | None:
-        """Target ID of the _spriteZTest reference (targets IField[ZTest])."""
+        """the Ztest field on the spite material. Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_spriteZTest")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -751,7 +755,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def zwrite_arc(self) -> str | None:
-        """Target ID of the _zwriteArc reference (targets IField[ZWrite])."""
+        """the Zwrite field on the arc material. Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_zwriteArc")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -772,7 +776,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def zwrite_text(self) -> str | None:
-        """Target ID of the _zwriteText reference (targets IField[ZWrite])."""
+        """the Zwrite field on the font material. Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_zwriteText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -793,7 +797,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def arc_render_queue(self) -> str | None:
-        """Target ID of the _arcRenderQueue reference (targets IField[primitives.Int])."""
+        """the render queue field on the arc material. Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_arcRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -814,7 +818,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def font_render_queue(self) -> str | None:
-        """Target ID of the _fontRenderQueue reference (targets IField[primitives.Int])."""
+        """the render queue field on the font material. Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_fontRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -835,7 +839,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sprite_render_queue(self) -> str | None:
-        """Target ID of the _spriteRenderQueue reference (targets IField[primitives.Int])."""
+        """the render queue field on the sprite material. Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_spriteRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -856,7 +860,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def canvas_offset(self) -> str | None:
-        """Target ID of the _canvasOffset reference (targets IField[primitives.Int])."""
+        """Used to control if the context menu should appear ontop of everything else."""
         member = self.get_member("_canvasOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -877,7 +881,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def fill_fade(self) -> str | None:
-        """Target ID of the _fillFade reference (targets IField[primitives.ColorX])."""
+        """Is faded by ``_lerp``."""
         member = self.get_member("_fillFade")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -898,7 +902,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def outline_fade(self) -> str | None:
-        """Target ID of the _outlineFade reference (targets IField[primitives.ColorX])."""
+        """Is faded by ``_lerp``."""
         member = self.get_member("_outlineFade")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -919,7 +923,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text_fade(self) -> str | None:
-        """Target ID of the _textFade reference (targets IField[primitives.ColorX])."""
+        """Is faded by ``_lerp``."""
         member = self.get_member("_textFade")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -940,7 +944,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def icon_fade(self) -> str | None:
-        """Target ID of the _iconFade reference (targets IField[primitives.ColorX])."""
+        """Is faded by ``_lerp``."""
         member = self.get_member("_iconFade")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -961,7 +965,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def lerp(self) -> primitives.Float | None:
-        """The _lerp field value."""
+        """Lerps between 0 and 1. 0 for context menu closed and 1 for context menu open."""
         member = self.get_member("_lerp")
         if member is None:
             return None
@@ -979,21 +983,28 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def state(self) -> members.FieldEnum | None:
-        """The _state member."""
+    def state(self) -> State | None:
+        """Communicates what opening stage the context menu is in."""
         member = self.get_member("_state")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return State(member.value)
         return None
 
     @state.setter
-    def state(self, value: members.FieldEnum) -> None:
-        """Set the _state member."""
-        self.set_member("_state", value)
+    def state(self, value: State | str) -> None:
+        """Set _state. Communicates what opening stage the context menu is in."""
+        member = self.get_member("_state")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_state",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def flick_mode_active(self) -> primitives.Bool | None:
-        """The _flickModeActive field value."""
+        """Whether the context menu currently is being flicked."""
         member = self.get_member("_flickModeActive")
         if member is None:
             return None
@@ -1012,7 +1023,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def flick_enabled(self) -> primitives.Bool | None:
-        """The _flickEnabled field value."""
+        """Whether the context menu currently allows flicking."""
         member = self.get_member("_flickEnabled")
         if member is None:
             return None
@@ -1031,7 +1042,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hidden(self) -> primitives.Bool | None:
-        """The _hidden field value."""
+        """Whether the context menu is currently hidden from every user except ``Owner``"""
         member = self.get_member("_hidden")
         if member is None:
             return None
@@ -1050,7 +1061,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def selected_item(self) -> str | None:
-        """Target ID of the _selectedItem reference (targets ContextMenuItem)."""
+        """The item currently being hovered over by the user's pointer."""
         member = self.get_member("_selectedItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1070,7 +1081,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     async def close_menu(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the CloseMenu sync method.
+        """Closes the menu if it is currently open.
 
         Args:
             resolink: Connected ResoniteLink client.

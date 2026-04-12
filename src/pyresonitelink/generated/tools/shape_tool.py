@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.shape import Shape
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -17,14 +18,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ShapeTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ShapeTool.
+    """See Shape Tool.
 
     Category: Tools
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ShapeTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, material: str | IAssetProvider[Material] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, active_shape: Shape | str | None = None, material: str | IAssetProvider[Material] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,6 +35,7 @@ class ShapeTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             equip_name: Initial value for EquipName.
             override_active_tool: Initial value for _overrideActiveTool.
             grip_poses_generated: Initial value for _gripPosesGenerated.
+            active_shape: Initial value for activeShape.
             material: Initial value for Material.
             component: Existing Component to wrap.
         """
@@ -50,6 +52,8 @@ class ShapeTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             self.override_active_tool = override_active_tool
         if grip_poses_generated is not None:
             self.grip_poses_generated = grip_poses_generated
+        if active_shape is not None:
+            self.active_shape = active_shape
         if material is not None:
             self.material = material
 
@@ -185,21 +189,28 @@ class ShapeTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def active_shape(self) -> members.FieldEnum | None:
-        """The activeShape member."""
+    def active_shape(self) -> Shape | None:
+        """The shape to draw."""
         member = self.get_member("activeShape")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Shape(member.value)
         return None
 
     @active_shape.setter
-    def active_shape(self, value: members.FieldEnum) -> None:
-        """Set the activeShape member."""
-        self.set_member("activeShape", value)
+    def active_shape(self, value: Shape | str) -> None:
+        """Set activeShape. The shape to draw."""
+        member = self.get_member("activeShape")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "activeShape",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def shapes(self) -> members.SyncList | None:
-        """The shapes member."""
+        """A list of shapes to switch between depending on ``activeShape`` for the tool tips visual."""
         member = self.get_member("shapes")
         if isinstance(member, members.SyncList):
             return member
@@ -207,12 +218,12 @@ class ShapeTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @shapes.setter
     def shapes(self, value: members.SyncList) -> None:
-        """Set the shapes member."""
+        """Set shapes. A list of shapes to switch between depending on ``activeShape`` for the tool tips visual."""
         self.set_member("shapes", value)
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to use when drawing shapes."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId

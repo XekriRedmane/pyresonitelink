@@ -13,9 +13,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarExpressionDriver(GeneratedComponent, IAvatarObjectComponent, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarExpressionDriver.
+    """Allows the assignment of the IMouthTrackingSourceComponent to blendshapes.
 
     Category: Users/Common Avatar System/Face
+
+    **Expression**: The different expressions an ExpressionDriver can have when driving any float value (or blendshapes)
+
+This list is ever constantly expanding, and as such will be incomplete for vast periods of time. Feel free to help us fill this table.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarExpressionDriver"
@@ -42,7 +46,7 @@ class AvatarExpressionDriver(GeneratedComponent, IAvatarObjectComponent, ICustom
 
     @property
     def data_source(self) -> str | None:
-        """Target ID of the DataSource reference (targets IMouthTrackingSourceComponent)."""
+        """The component that is providing raw mouth tracking data from a physical or virtual device on a machine."""
         member = self.get_member("DataSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +67,7 @@ class AvatarExpressionDriver(GeneratedComponent, IAvatarObjectComponent, ICustom
 
     @property
     def strength_multiplier(self) -> primitives.Float | None:
-        """The StrengthMultiplier field value."""
+        """Determines strength of expressions"""
         member = self.get_member("StrengthMultiplier")
         if member is None:
             return None
@@ -82,7 +86,7 @@ class AvatarExpressionDriver(GeneratedComponent, IAvatarObjectComponent, ICustom
 
     @property
     def volume_source(self) -> str | None:
-        """Target ID of the VolumeSource reference (targets IField[primitives.Float])."""
+        """A volume source like a Volume Meter that is used to determine facial tracking better."""
         member = self.get_member("VolumeSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -103,7 +107,7 @@ class AvatarExpressionDriver(GeneratedComponent, IAvatarObjectComponent, ICustom
 
     @property
     def silence_source(self) -> str | None:
-        """Target ID of the SilenceSource reference (targets IField[primitives.Float])."""
+        """A silence source like the target value of the ``Silence`` field on a Direct Viseme Driver"""
         member = self.get_member("SilenceSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -124,7 +128,7 @@ class AvatarExpressionDriver(GeneratedComponent, IAvatarObjectComponent, ICustom
 
     @property
     def expression_drivers(self) -> members.SyncList | None:
-        """The ExpressionDrivers member."""
+        """A list of Expression Drivers that take facial data and drive a float or blendshape with the data."""
         member = self.get_member("ExpressionDrivers")
         if isinstance(member, members.SyncList):
             return member
@@ -132,6 +136,6 @@ class AvatarExpressionDriver(GeneratedComponent, IAvatarObjectComponent, ICustom
 
     @expression_drivers.setter
     def expression_drivers(self, value: members.SyncList) -> None:
-        """Set the ExpressionDrivers member."""
+        """Set ExpressionDrivers. A list of Expression Drivers that take facial data and drive a float or blendshape with the data."""
         self.set_member("ExpressionDrivers", value)
 

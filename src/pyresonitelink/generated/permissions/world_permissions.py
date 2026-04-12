@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.save_permission import SavePermission
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworker_permissions import IWorkerPermissions
@@ -11,14 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldPermissions.
+    """The WorldPermissions component controls various actions the selected roles can do in the world.
 
     Category: Permissions
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldPermissions"
 
-    def __init__(self, allow_saving_items: primitives.Bool | None = None, allow_transfering_objects_out: primitives.Bool | None = None, allow_spawning_objects: primitives.Bool | None = None, allow_swapping_avatars: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, allow_saving_items: primitives.Bool | None = None, allow_transfering_objects_out: primitives.Bool | None = None, allow_spawning_objects: primitives.Bool | None = None, allow_swapping_avatars: primitives.Bool | None = None, save_copy_permission: SavePermission | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -26,6 +27,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
             allow_transfering_objects_out: Initial value for AllowTransferingObjectsOut.
             allow_spawning_objects: Initial value for AllowSpawningObjects.
             allow_swapping_avatars: Initial value for AllowSwappingAvatars.
+            save_copy_permission: Initial value for SaveCopyPermission.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -37,10 +39,12 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
             self.allow_spawning_objects = allow_spawning_objects
         if allow_swapping_avatars is not None:
             self.allow_swapping_avatars = allow_swapping_avatars
+        if save_copy_permission is not None:
+            self.save_copy_permission = save_copy_permission
 
     @property
     def allow_saving_items(self) -> primitives.Bool | None:
-        """The AllowSavingItems field value."""
+        """Whether the selected roles can save items."""
         member = self.get_member("AllowSavingItems")
         if member is None:
             return None
@@ -59,7 +63,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
 
     @property
     def allow_transfering_objects_out(self) -> primitives.Bool | None:
-        """The AllowTransferingObjectsOut field value."""
+        """Whether the selected roles can smuggle items out."""
         member = self.get_member("AllowTransferingObjectsOut")
         if member is None:
             return None
@@ -78,7 +82,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
 
     @property
     def allow_spawning_objects(self) -> primitives.Bool | None:
-        """The AllowSpawningObjects field value."""
+        """Whether the selected roles can spawn objects."""
         member = self.get_member("AllowSpawningObjects")
         if member is None:
             return None
@@ -97,7 +101,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
 
     @property
     def allow_swapping_avatars(self) -> primitives.Bool | None:
-        """The AllowSwappingAvatars field value."""
+        """Whether the selected roles can swap into a different avatar."""
         member = self.get_member("AllowSwappingAvatars")
         if member is None:
             return None
@@ -115,15 +119,22 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
             )
 
     @property
-    def save_copy_permission(self) -> members.FieldEnum | None:
-        """The SaveCopyPermission member."""
+    def save_copy_permission(self) -> SavePermission | None:
+        """When can the selected roles save the world?"""
         member = self.get_member("SaveCopyPermission")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SavePermission(member.value)
         return None
 
     @save_copy_permission.setter
-    def save_copy_permission(self, value: members.FieldEnum) -> None:
-        """Set the SaveCopyPermission member."""
-        self.set_member("SaveCopyPermission", value)
+    def save_copy_permission(self, value: SavePermission | str) -> None:
+        """Set SaveCopyPermission. When can the selected roles save the world?"""
+        member = self.get_member("SaveCopyPermission")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SaveCopyPermission",
+                members.FieldEnum(value=str(value)),
+            )
 

@@ -33,7 +33,7 @@ class BoundingBoxProperties(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def bounds(self) -> str | None:
-        """Target ID of the Bounds reference (targets INodeValueOutput[primitives.BoundingBox])."""
+        """Default is a bounding box with center [0;0;0] and size [0;0;0]."""
         member = self.get_member("Bounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -54,7 +54,7 @@ class BoundingBoxProperties(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def min(self) -> members.EmptyElement | None:
-        """The Min member."""
+        """The minimum position values for the Bounds along each axis."""
         member = self.get_member("Min")
         if isinstance(member, members.EmptyElement):
             return member
@@ -62,12 +62,12 @@ class BoundingBoxProperties(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @min.setter
     def min(self, value: members.EmptyElement) -> None:
-        """Set the Min member."""
+        """Set Min. The minimum position values for the Bounds along each axis."""
         self.set_member("Min", value)
 
     @property
     def max(self) -> members.EmptyElement | None:
-        """The Max member."""
+        """The maximum position values for the Bounds along each axis."""
         member = self.get_member("Max")
         if isinstance(member, members.EmptyElement):
             return member
@@ -75,12 +75,12 @@ class BoundingBoxProperties(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @max.setter
     def max(self, value: members.EmptyElement) -> None:
-        """Set the Max member."""
+        """Set Max. The maximum position values for the Bounds along each axis."""
         self.set_member("Max", value)
 
     @property
     def center(self) -> members.EmptyElement | None:
-        """The Center member."""
+        """The center point of the Bounds."""
         member = self.get_member("Center")
         if isinstance(member, members.EmptyElement):
             return member
@@ -88,12 +88,12 @@ class BoundingBoxProperties(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @center.setter
     def center(self, value: members.EmptyElement) -> None:
-        """Set the Center member."""
+        """Set Center. The center point of the Bounds."""
         self.set_member("Center", value)
 
     @property
     def size(self) -> members.EmptyElement | None:
-        """The Size member."""
+        """The size of the Bounds along each axis."""
         member = self.get_member("Size")
         if isinstance(member, members.EmptyElement):
             return member
@@ -101,12 +101,12 @@ class BoundingBoxProperties(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @size.setter
     def size(self, value: members.EmptyElement) -> None:
-        """Set the Size member."""
+        """Set Size. The size of the Bounds along each axis."""
         self.set_member("Size", value)
 
     @property
     def valid(self) -> members.EmptyElement | None:
-        """The Valid member."""
+        """Returns whether the Bounds is a valid bounding box."""
         member = self.get_member("Valid")
         if isinstance(member, members.EmptyElement):
             return member
@@ -114,12 +114,12 @@ class BoundingBoxProperties(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @valid.setter
     def valid(self, value: members.EmptyElement) -> None:
-        """Set the Valid member."""
+        """Set Valid. Returns whether the Bounds is a valid bounding box."""
         self.set_member("Valid", value)
 
     @property
     def empty(self) -> members.EmptyElement | None:
-        """The Empty member."""
+        """Returns whether the Bounds is an empty bounding box."""
         member = self.get_member("Empty")
         if isinstance(member, members.EmptyElement):
             return member
@@ -127,6 +127,6 @@ class BoundingBoxProperties(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @empty.setter
     def empty(self, value: members.EmptyElement) -> None:
-        """Set the Empty member."""
+        """Set Empty. Returns whether the Bounds is an empty bounding box."""
         self.set_member("Empty", value)
 

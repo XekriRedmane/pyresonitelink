@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DiagnosticGaussianSplat(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DiagnosticGaussianSplat.
+    """The Diagnostic Gaussian Splat component is used to render diagnostic info on Gaussian Splats.
 
     Category: Assets/Procedural Gaussian Splats
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DiagnosticGaussianSplat"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, splat_color_profile: ColorProfile | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            splat_color_profile: Initial value for SplatColorProfile.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -35,6 +37,8 @@ class DiagnosticGaussianSplat(GeneratedComponent, IAssetProvider, ICustomInspect
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if splat_color_profile is not None:
+            self.splat_color_profile = splat_color_profile
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -94,21 +98,28 @@ class DiagnosticGaussianSplat(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def splat_color_profile(self) -> members.FieldEnum | None:
-        """The SplatColorProfile member."""
+    def splat_color_profile(self) -> ColorProfile | None:
+        """The SplatColorProfile enum value."""
         member = self.get_member("SplatColorProfile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @splat_color_profile.setter
-    def splat_color_profile(self, value: members.FieldEnum) -> None:
-        """Set the SplatColorProfile member."""
-        self.set_member("SplatColorProfile", value)
+    def splat_color_profile(self, value: ColorProfile | str) -> None:
+        """Set the SplatColorProfile enum value."""
+        member = self.get_member("SplatColorProfile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SplatColorProfile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def splats(self) -> members.SyncList | None:
-        """The Splats member."""
+        """A list of splats to render diagnostics for."""
         member = self.get_member("Splats")
         if isinstance(member, members.SyncList):
             return member
@@ -116,7 +127,7 @@ class DiagnosticGaussianSplat(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @splats.setter
     def splats(self, value: members.SyncList) -> None:
-        """Set the Splats member."""
+        """Set Splats. A list of splats to render diagnostics for."""
         self.set_member("Splats", value)
 
     async def bake_gaussian_splat(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NullCoalesce(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Null Coalesce node takes two reference type inputs of the same type. If the first input is null, it returns the value of the second input. Otherwise, it returns the value of the first input.
+    """The Null Coalesce node takes two reference type inputs of the same type. If the first input is ``null``, it returns the value of the second input. Otherwise, it returns the value of the first input.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 
@@ -41,7 +41,7 @@ class NullCoalesce(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T],
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeObjectOutput[T])."""
+        """The first reference value to check."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class NullCoalesce(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T],
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeObjectOutput[T])."""
+        """The second reference value to check."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId

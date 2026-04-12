@@ -12,7 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueEvaluationPoint(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Evaluation Point node does not have a currently known use.
+    """due to wiki limitations, this node does not currently have an HTML rendering of the node.
+
+The Evaluation Point node does not have a currently known use. 
+
+Evaluation Points are used internally in FrooxEngine as a way to evaluate a chain of ProtoFlux.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

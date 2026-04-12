@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedResettableGroupInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedResettableGroupInterface.
+    """The Feed Resettable Group Interface component is used to act as a button to reset the settings in a settings section.
 
     Category: Radiant UI/Data Feeds/Interfaces
     """
@@ -360,7 +360,7 @@ class FeedResettableGroupInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def reset_action(self) -> str | None:
-        """Target ID of the ResetAction reference (targets SyncDelegate[Action])."""
+        """The action that can be used to reset the child settings items."""
         member = self.get_member("ResetAction")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,16 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.mode import Mode
+from pyresonitelink.generated._enums.tint_mode import TintMode
+from pyresonitelink.generated._enums.outside import Outside
+from pyresonitelink.generated._enums.sidedness import Sidedness
+from pyresonitelink.generated._enums.zwrite import ZWrite
+from pyresonitelink.generated._enums.ztest import ZTest
+from pyresonitelink.generated._enums.blend_mode import BlendMode
+from pyresonitelink.generated._enums.color_mask import ColorMask
+from pyresonitelink.generated._enums.stencil_comparison import StencilComparison
+from pyresonitelink.generated._enums.stencil_operation import StencilOperation
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -24,7 +34,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Projection360Material"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, secondary_texture: str | IAssetProvider[ITexture2D] | None = None, cubemap: str | IAssetProvider[Cubemap] | None = None, secondary_cubemap: str | IAssetProvider[Cubemap] | None = None, cubemap_lod: primitives.Float | None = None, texture_lerp: primitives.Float | None = None, field_of_view: primitives.Float2 | None = None, angle_offset: primitives.Float2 | None = None, perspective_field_of_view: primitives.Float2 | None = None, perspective_angle_offset: primitives.Float2 | None = None, tint: primitives.ColorX | None = None, exposure: primitives.Float | None = None, gamma: primitives.Float | None = None, tint_texture: str | IAssetProvider[ITexture2D] | None = None, tint_texture_scale: primitives.Float2 | None = None, tint_texture_offset: primitives.Float2 | None = None, tint0: primitives.ColorX | None = None, tint1: primitives.ColorX | None = None, outside_color: primitives.ColorX | None = None, texture_offset: primitives.Float2 | None = None, texture_scale: primitives.Float2 | None = None, stereo_texture_transform: primitives.Bool | None = None, right_eye_texture_offset: primitives.Float2 | None = None, right_eye_texture_scale: primitives.Float2 | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, max_intensity: primitives.Float | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, offset_texture: str | IAssetProvider[ITexture2D] | None = None, offset_mask: str | IAssetProvider[ITexture2D] | None = None, offset_texture_offset: primitives.Float2 | None = None, offset_texture_scale: primitives.Float2 | None = None, offset_magnitude: primitives.Float2 | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, secondary_texture: str | IAssetProvider[ITexture2D] | None = None, cubemap: str | IAssetProvider[Cubemap] | None = None, secondary_cubemap: str | IAssetProvider[Cubemap] | None = None, cubemap_lod: primitives.Float | None = None, texture_lerp: primitives.Float | None = None, projection: Mode | str | None = None, field_of_view: primitives.Float2 | None = None, angle_offset: primitives.Float2 | None = None, perspective_field_of_view: primitives.Float2 | None = None, perspective_angle_offset: primitives.Float2 | None = None, tint: primitives.ColorX | None = None, exposure: primitives.Float | None = None, gamma: primitives.Float | None = None, tint_texture: str | IAssetProvider[ITexture2D] | None = None, tint_texture_scale: primitives.Float2 | None = None, tint_texture_offset: primitives.Float2 | None = None, tint_texture_mode: TintMode | str | None = None, tint0: primitives.ColorX | None = None, tint1: primitives.ColorX | None = None, outside_mode: Outside | str | None = None, outside_color: primitives.ColorX | None = None, texture_offset: primitives.Float2 | None = None, texture_scale: primitives.Float2 | None = None, stereo_texture_transform: primitives.Bool | None = None, right_eye_texture_offset: primitives.Float2 | None = None, right_eye_texture_scale: primitives.Float2 | None = None, sidedness: Sidedness | str | None = None, zwrite: ZWrite | str | None = None, ztest: ZTest | str | None = None, blend_mode: BlendMode | str | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, max_intensity: primitives.Float | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, color_mask: ColorMask | str | None = None, offset_texture: str | IAssetProvider[ITexture2D] | None = None, offset_mask: str | IAssetProvider[ITexture2D] | None = None, offset_texture_offset: primitives.Float2 | None = None, offset_texture_scale: primitives.Float2 | None = None, offset_magnitude: primitives.Float2 | None = None, stencil_comparison: StencilComparison | str | None = None, stencil_operation: StencilOperation | str | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,6 +46,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             secondary_cubemap: Initial value for SecondaryCubemap.
             cubemap_lod: Initial value for CubemapLOD.
             texture_lerp: Initial value for TextureLerp.
+            projection: Initial value for Projection.
             field_of_view: Initial value for FieldOfView.
             angle_offset: Initial value for AngleOffset.
             perspective_field_of_view: Initial value for PerspectiveFieldOfView.
@@ -46,24 +57,33 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             tint_texture: Initial value for TintTexture.
             tint_texture_scale: Initial value for TintTextureScale.
             tint_texture_offset: Initial value for TintTextureOffset.
+            tint_texture_mode: Initial value for TintTextureMode.
             tint0: Initial value for Tint0.
             tint1: Initial value for Tint1.
+            outside_mode: Initial value for OutsideMode.
             outside_color: Initial value for OutsideColor.
             texture_offset: Initial value for TextureOffset.
             texture_scale: Initial value for TextureScale.
             stereo_texture_transform: Initial value for StereoTextureTransform.
             right_eye_texture_offset: Initial value for RightEyeTextureOffset.
             right_eye_texture_scale: Initial value for RightEyeTextureScale.
+            sidedness: Initial value for Sidedness.
+            zwrite: Initial value for ZWrite.
+            ztest: Initial value for ZTest.
+            blend_mode: Initial value for BlendMode.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
             max_intensity: Initial value for MaxIntensity.
             rect: Initial value for Rect.
             rect_clip: Initial value for RectClip.
+            color_mask: Initial value for ColorMask.
             offset_texture: Initial value for OffsetTexture.
             offset_mask: Initial value for OffsetMask.
             offset_texture_offset: Initial value for OffsetTextureOffset.
             offset_texture_scale: Initial value for OffsetTextureScale.
             offset_magnitude: Initial value for OffsetMagnitude.
+            stencil_comparison: Initial value for StencilComparison.
+            stencil_operation: Initial value for StencilOperation.
             stencil_id: Initial value for StencilID.
             stencil_write_mask: Initial value for StencilWriteMask.
             stencil_read_mask: Initial value for StencilReadMask.
@@ -87,6 +107,8 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             self.cubemap_lod = cubemap_lod
         if texture_lerp is not None:
             self.texture_lerp = texture_lerp
+        if projection is not None:
+            self.projection = projection
         if field_of_view is not None:
             self.field_of_view = field_of_view
         if angle_offset is not None:
@@ -107,10 +129,14 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             self.tint_texture_scale = tint_texture_scale
         if tint_texture_offset is not None:
             self.tint_texture_offset = tint_texture_offset
+        if tint_texture_mode is not None:
+            self.tint_texture_mode = tint_texture_mode
         if tint0 is not None:
             self.tint0 = tint0
         if tint1 is not None:
             self.tint1 = tint1
+        if outside_mode is not None:
+            self.outside_mode = outside_mode
         if outside_color is not None:
             self.outside_color = outside_color
         if texture_offset is not None:
@@ -123,6 +149,14 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             self.right_eye_texture_offset = right_eye_texture_offset
         if right_eye_texture_scale is not None:
             self.right_eye_texture_scale = right_eye_texture_scale
+        if sidedness is not None:
+            self.sidedness = sidedness
+        if zwrite is not None:
+            self.zwrite = zwrite
+        if ztest is not None:
+            self.ztest = ztest
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
         if offset_factor is not None:
             self.offset_factor = offset_factor
         if offset_units is not None:
@@ -133,6 +167,8 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             self.rect = rect
         if rect_clip is not None:
             self.rect_clip = rect_clip
+        if color_mask is not None:
+            self.color_mask = color_mask
         if offset_texture is not None:
             self.offset_texture = offset_texture
         if offset_mask is not None:
@@ -143,6 +179,10 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             self.offset_texture_scale = offset_texture_scale
         if offset_magnitude is not None:
             self.offset_magnitude = offset_magnitude
+        if stencil_comparison is not None:
+            self.stencil_comparison = stencil_comparison
+        if stencil_operation is not None:
+            self.stencil_operation = stencil_operation
         if stencil_id is not None:
             self.stencil_id = stencil_id
         if stencil_write_mask is not None:
@@ -194,7 +234,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[ITexture2D])."""
+        """The primary texture to use for the skybox when ``TextureLerp`` is at 0."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -215,7 +255,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     @property
     def secondary_texture(self) -> str | None:
-        """Target ID of the SecondaryTexture reference (targets IAssetProvider[ITexture2D])."""
+        """The secondary texture to use for the skybox when ``TextureLerp`` is at 1."""
         member = self.get_member("SecondaryTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -236,7 +276,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     @property
     def cubemap(self) -> str | None:
-        """Target ID of the Cubemap reference (targets IAssetProvider[Cubemap])."""
+        """A cubemap override to use to make the skybox when ``TextureLerp`` is at 0."""
         member = self.get_member("Cubemap")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -257,7 +297,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     @property
     def secondary_cubemap(self) -> str | None:
-        """Target ID of the SecondaryCubemap reference (targets IAssetProvider[Cubemap])."""
+        """A cubemap override to use to make the skybox when ``TextureLerp`` is at 1."""
         member = self.get_member("SecondaryCubemap")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -278,7 +318,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     @property
     def cubemap_lod(self) -> primitives.Float | None:
-        """The CubemapLOD field value."""
+        """which LOD to use of the Cubemap"""
         member = self.get_member("CubemapLOD")
         if member is None:
             return None
@@ -297,7 +337,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     @property
     def texture_lerp(self) -> primitives.Float | None:
-        """The TextureLerp field value."""
+        """How much to lerp between set 1 or 2 for this material."""
         member = self.get_member("TextureLerp")
         if member is None:
             return None
@@ -315,21 +355,28 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def projection(self) -> members.FieldEnum | None:
-        """The Projection member."""
+    def projection(self) -> Mode | None:
+        """How to handle projection of the skybox texture for this skybox."""
         member = self.get_member("Projection")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Mode(member.value)
         return None
 
     @projection.setter
-    def projection(self, value: members.FieldEnum) -> None:
-        """Set the Projection member."""
-        self.set_member("Projection", value)
+    def projection(self, value: Mode | str) -> None:
+        """Set Projection. How to handle projection of the skybox texture for this skybox."""
+        member = self.get_member("Projection")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Projection",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def field_of_view(self) -> primitives.Float2 | None:
-        """The FieldOfView field value."""
+        """What area of the texture to sample of the skybox in terms of FOV."""
         member = self.get_member("FieldOfView")
         if member is None:
             return None
@@ -348,7 +395,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     @property
     def angle_offset(self) -> primitives.Float2 | None:
-        """The AngleOffset field value."""
+        """how much to shift the skybox sample area by in degrees."""
         member = self.get_member("AngleOffset")
         if member is None:
             return None
@@ -367,7 +414,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     @property
     def perspective_field_of_view(self) -> primitives.Float2 | None:
-        """The PerspectiveFieldOfView field value."""
+        """What area of the texture to sample of the skybox in terms of perspective FOV."""
         member = self.get_member("PerspectiveFieldOfView")
         if member is None:
             return None
@@ -386,7 +433,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     @property
     def perspective_angle_offset(self) -> primitives.Float2 | None:
-        """The PerspectiveAngleOffset field value."""
+        """how much to shift the skybox sample area by in perspective degrees."""
         member = self.get_member("PerspectiveAngleOffset")
         if member is None:
             return None
@@ -405,7 +452,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
 
     @property
     def tint(self) -> primitives.ColorX | None:
-        """The Tint field value."""
+        """What color to multiply the skybox with."""
         member = self.get_member("Tint")
         if member is None:
             return None
@@ -520,17 +567,24 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def tint_texture_mode(self) -> members.FieldEnum | None:
-        """The TintTextureMode member."""
+    def tint_texture_mode(self) -> TintMode | None:
+        """The TintTextureMode enum value."""
         member = self.get_member("TintTextureMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TintMode(member.value)
         return None
 
     @tint_texture_mode.setter
-    def tint_texture_mode(self, value: members.FieldEnum) -> None:
-        """Set the TintTextureMode member."""
-        self.set_member("TintTextureMode", value)
+    def tint_texture_mode(self, value: TintMode | str) -> None:
+        """Set the TintTextureMode enum value."""
+        member = self.get_member("TintTextureMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "TintTextureMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def tint0(self) -> primitives.ColorX | None:
@@ -571,17 +625,24 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def outside_mode(self) -> members.FieldEnum | None:
-        """The OutsideMode member."""
+    def outside_mode(self) -> Outside | None:
+        """The OutsideMode enum value."""
         member = self.get_member("OutsideMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Outside(member.value)
         return None
 
     @outside_mode.setter
-    def outside_mode(self, value: members.FieldEnum) -> None:
-        """Set the OutsideMode member."""
-        self.set_member("OutsideMode", value)
+    def outside_mode(self, value: Outside | str) -> None:
+        """Set the OutsideMode enum value."""
+        member = self.get_member("OutsideMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OutsideMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def outside_color(self) -> primitives.ColorX | None:
@@ -698,56 +759,84 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def sidedness(self) -> members.FieldEnum | None:
-        """The Sidedness member."""
+    def sidedness(self) -> Sidedness | None:
+        """The Sidedness enum value."""
         member = self.get_member("Sidedness")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Sidedness(member.value)
         return None
 
     @sidedness.setter
-    def sidedness(self, value: members.FieldEnum) -> None:
-        """Set the Sidedness member."""
-        self.set_member("Sidedness", value)
+    def sidedness(self, value: Sidedness | str) -> None:
+        """Set the Sidedness enum value."""
+        member = self.get_member("Sidedness")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Sidedness",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def ztest(self) -> members.FieldEnum | None:
-        """The ZTest member."""
+    def ztest(self) -> ZTest | None:
+        """The ZTest enum value."""
         member = self.get_member("ZTest")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZTest(member.value)
         return None
 
     @ztest.setter
-    def ztest(self, value: members.FieldEnum) -> None:
-        """Set the ZTest member."""
-        self.set_member("ZTest", value)
+    def ztest(self, value: ZTest | str) -> None:
+        """Set the ZTest enum value."""
+        member = self.get_member("ZTest")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZTest",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def offset_factor(self) -> primitives.Float | None:
@@ -845,17 +934,24 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def color_mask(self) -> members.FieldEnum | None:
-        """The ColorMask member."""
+    def color_mask(self) -> ColorMask | None:
+        """The ColorMask enum value."""
         member = self.get_member("ColorMask")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorMask(member.value)
         return None
 
     @color_mask.setter
-    def color_mask(self, value: members.FieldEnum) -> None:
-        """Set the ColorMask member."""
-        self.set_member("ColorMask", value)
+    def color_mask(self, value: ColorMask | str) -> None:
+        """Set the ColorMask enum value."""
+        member = self.get_member("ColorMask")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ColorMask",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def offset_texture(self) -> str | None:
@@ -957,30 +1053,44 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
             )
 
     @property
-    def stencil_comparison(self) -> members.FieldEnum | None:
-        """The StencilComparison member."""
+    def stencil_comparison(self) -> StencilComparison | None:
+        """The StencilComparison enum value."""
         member = self.get_member("StencilComparison")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return StencilComparison(member.value)
         return None
 
     @stencil_comparison.setter
-    def stencil_comparison(self, value: members.FieldEnum) -> None:
-        """Set the StencilComparison member."""
-        self.set_member("StencilComparison", value)
+    def stencil_comparison(self, value: StencilComparison | str) -> None:
+        """Set the StencilComparison enum value."""
+        member = self.get_member("StencilComparison")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "StencilComparison",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def stencil_operation(self) -> members.FieldEnum | None:
-        """The StencilOperation member."""
+    def stencil_operation(self) -> StencilOperation | None:
+        """The StencilOperation enum value."""
         member = self.get_member("StencilOperation")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return StencilOperation(member.value)
         return None
 
     @stencil_operation.setter
-    def stencil_operation(self, value: members.FieldEnum) -> None:
-        """Set the StencilOperation member."""
-        self.set_member("StencilOperation", value)
+    def stencil_operation(self, value: StencilOperation | str) -> None:
+        """Set the StencilOperation enum value."""
+        member = self.get_member("StencilOperation")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "StencilOperation",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def stencil_id(self) -> primitives.Byte | None:

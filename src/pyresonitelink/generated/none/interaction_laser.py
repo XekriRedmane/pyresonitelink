@@ -20,7 +20,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractionLaser.
+    """The InteractionLaser component is part of the user to world interaction interfacing. This component is entirely regenerated separate from the avatar per respawn, making it un-reference-able.
+
+    Not to be interacted with by the user. handles internal behavior.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractionLaser"
@@ -191,7 +193,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def smooth_speed(self) -> primitives.Float | None:
-        """The SmoothSpeed field value."""
+        """How much to smooth laser movement for this laser."""
         member = self.get_member("SmoothSpeed")
         if member is None:
             return None
@@ -210,7 +212,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def smooth_modulate_start_angle(self) -> primitives.Float | None:
-        """The SmoothModulateStartAngle field value."""
+        """Angle at which the laser smoothing speed will start modulating to catch up to your movements. Increasing this value will require larger movements for the laser to start catching up."""
         member = self.get_member("SmoothModulateStartAngle")
         if member is None:
             return None
@@ -229,7 +231,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def smooth_modulate_end_angle(self) -> primitives.Float | None:
-        """The SmoothModulateEndAngle field value."""
+        """Related to the modulate start angle, this indicates when the modulation will reach maximum speed. By changing the start and end angles, you can control how responsive the laser is the more you move your hand."""
         member = self.get_member("SmoothModulateEndAngle")
         if member is None:
             return None
@@ -248,7 +250,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def smooth_modulate_exp(self) -> primitives.Float | None:
-        """The SmoothModulateExp field value."""
+        """Controls the response curve of the laser modulation between the start and end angles. You can use this to either make the laser respond more sluggishly at first or to start responding quickly and then tapering off."""
         member = self.get_member("SmoothModulateExp")
         if member is None:
             return None
@@ -267,7 +269,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def smooth_modulate_multiplier(self) -> primitives.Float | None:
-        """The SmoothModulateMultiplier field value."""
+        """The laser smoothing speed will be multiplied by this value once you have reached the modulate end angle. Increasing this value will make the laser catch up quicker once you move your hand far enough. Lowering the value will make it take longer to catch up."""
         member = self.get_member("SmoothModulateMultiplier")
         if member is None:
             return None
@@ -286,7 +288,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def stick_threshold(self) -> primitives.Float | None:
-        """The StickThreshold field value."""
+        """Controls how much the laser will stick to interactive items. Larger values will make it stick more. Setting this to zero will stop the stickiness completely."""
         member = self.get_member("StickThreshold")
         if member is None:
             return None
@@ -305,7 +307,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def show_in_desktop(self) -> primitives.Bool | None:
-        """The ShowInDesktop field value."""
+        """When on, the laser visual will be rendered to you fully when in first person view in desktop mode."""
         member = self.get_member("ShowInDesktop")
         if member is None:
             return None
@@ -324,7 +326,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_touch_penetration_distance(self) -> primitives.Float | None:
-        """The MaxTouchPenetrationDistance field value."""
+        """Determined by the RelayTouchSource's ``MaxTouchPenetrationDistance``."""
         member = self.get_member("MaxTouchPenetrationDistance")
         if member is None:
             return None
@@ -343,7 +345,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def stick_point_space(self) -> str | None:
-        """Target ID of the StickPointSpace reference (targets Slot)."""
+        """The slot the laser is sticking to."""
         member = self.get_member("StickPointSpace")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -364,7 +366,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def stick_point_position(self) -> primitives.Float3 | None:
-        """The StickPointPosition field value."""
+        """The position the laser is sticking to."""
         member = self.get_member("StickPointPosition")
         if member is None:
             return None
@@ -383,7 +385,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def handler(self) -> str | None:
-        """Target ID of the _handler reference (targets InteractionHandler)."""
+        """The interaction handler used to handle behavior for this component."""
         member = self.get_member("_handler")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -404,7 +406,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def last_hit(self) -> str | None:
-        """Target ID of the _lastHit reference (targets Slot)."""
+        """The last slot hit by the laser."""
         member = self.get_member("_lastHit")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -425,7 +427,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def last_interaction_target(self) -> str | None:
-        """Target ID of the _lastInteractionTarget reference (targets IInteractionTarget)."""
+        """The last interactable element this laser hit."""
         member = self.get_member("_lastInteractionTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -446,7 +448,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def last_interaction_modifier(self) -> str | None:
-        """Target ID of the _lastInteractionModifier reference (targets ILaserInteractionModifier)."""
+        """The last interaction modifier this laser was affected by."""
         member = self.get_member("_lastInteractionModifier")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -467,7 +469,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hit_color(self) -> primitives.ColorX | None:
-        """The _hitColor field value."""
+        """The color the laser should have when it hits something."""
         member = self.get_member("_hitColor")
         if member is None:
             return None
@@ -486,7 +488,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def laser_texture_speed(self) -> primitives.Float | None:
-        """The _laserTextureSpeed field value."""
+        """The speed the texture of the laser moves for effects like dotted lines."""
         member = self.get_member("_laserTextureSpeed")
         if member is None:
             return None
@@ -505,7 +507,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def touch_source(self) -> str | None:
-        """Target ID of the _touchSource reference (targets RelayTouchSource)."""
+        """The touch source associated with this laser for touching things physically"""
         member = self.get_member("_touchSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -526,7 +528,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def laser_mesh(self) -> str | None:
-        """Target ID of the _laserMesh reference (targets BentTubeMesh)."""
+        """The laser mesh being constantly updated to make up this laser's visual."""
         member = self.get_member("_laserMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -547,7 +549,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def laser_material(self) -> str | None:
-        """Target ID of the _laserMaterial reference (targets OverlayUnlitMaterial)."""
+        """The material being used for this laser's visual."""
         member = self.get_member("_laserMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -568,7 +570,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def laser_texture(self) -> str | None:
-        """Target ID of the _laserTexture reference (targets StaticTexture2D)."""
+        """The texture being used for this laser's visual."""
         member = self.get_member("_laserTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -589,7 +591,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def behind_laser_tint(self) -> str | None:
-        """Target ID of the _behindLaserTint reference (targets IField[primitives.ColorX])."""
+        """The tint field being used for this laser's visual."""
         member = self.get_member("_behindLaserTint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -610,7 +612,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def laser_render_queue(self) -> str | None:
-        """Target ID of the _laserRenderQueue reference (targets IField[primitives.Int])."""
+        """The render queue field of the material being used for this laser's visual."""
         member = self.get_member("_laserRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -631,7 +633,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def laser_front_texture_offset(self) -> str | None:
-        """Target ID of the _laserFrontTextureOffset reference (targets IField[primitives.Float2])."""
+        """The front texture field of the material being used for this laser's visual."""
         member = self.get_member("_laserFrontTextureOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -652,7 +654,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def laser_behind_texture_offset(self) -> str | None:
-        """Target ID of the _laserBehindTextureOffset reference (targets IField[primitives.Float2])."""
+        """The behind texture field of the material being used for this laser's visual."""
         member = self.get_member("_laserBehindTextureOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -673,7 +675,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direct_point(self) -> str | None:
-        """Target ID of the _directPoint reference (targets IField[primitives.Float3])."""
+        """The field of the direct point of the bent tube mesh being used for this laser's visual."""
         member = self.get_member("_directPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -694,7 +696,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def actual_point(self) -> str | None:
-        """Target ID of the _actualPoint reference (targets IField[primitives.Float3])."""
+        """The field of the actual point of the bent tube mesh being used for this laser's visual."""
         member = self.get_member("_actualPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -715,7 +717,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def start_color(self) -> str | None:
-        """Target ID of the _startColor reference (targets IField[primitives.ColorX])."""
+        """The field of the start color of the bent tube mesh being used for this laser's visual."""
         member = self.get_member("_startColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -736,7 +738,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def end_color(self) -> str | None:
-        """Target ID of the _endColor reference (targets IField[primitives.ColorX])."""
+        """The field of the end color of the bent tube mesh being used for this laser's visual."""
         member = self.get_member("_endColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -757,7 +759,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point_slot(self) -> str | None:
-        """Target ID of the _pointSlot reference (targets Slot)."""
+        """The field of the point slot of the bent tube mesh being used for this laser's visual."""
         member = self.get_member("_pointSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -778,7 +780,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point_slot_pos(self) -> str | None:
-        """Target ID of the _pointSlotPos reference (targets IField[primitives.Float3])."""
+        """The field of the position of the point slot being used for this laser's visual."""
         member = self.get_member("_pointSlotPos")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -799,7 +801,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def laser_visible(self) -> str | None:
-        """Target ID of the _laserVisible reference (targets IField[primitives.Bool])."""
+        """The field used to control the visibility of the laser."""
         member = self.get_member("_laserVisible")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -820,7 +822,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_visible(self) -> str | None:
-        """Target ID of the _cursorVisible reference (targets IField[primitives.Bool])."""
+        """The field used to control the cursor visibility of the laser."""
         member = self.get_member("_cursorVisible")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -841,7 +843,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_root(self) -> str | None:
-        """Target ID of the _cursorRoot reference (targets Slot)."""
+        """The root slot of the cursor visual."""
         member = self.get_member("_cursorRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -862,7 +864,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_image_root(self) -> str | None:
-        """Target ID of the _cursorImageRoot reference (targets Slot)."""
+        """The root slot of the cursor image visual."""
         member = self.get_member("_cursorImageRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -883,7 +885,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_texture(self) -> str | None:
-        """Target ID of the _cursorTexture reference (targets StaticTexture2D)."""
+        """The component used for the cursor texture."""
         member = self.get_member("_cursorTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -904,7 +906,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_material(self) -> str | None:
-        """Target ID of the _cursorMaterial reference (targets OverlayUnlitMaterial)."""
+        """The material of the cursor."""
         member = self.get_member("_cursorMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -925,7 +927,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_front_tint(self) -> str | None:
-        """Target ID of the _cursorFrontTint reference (targets IField[primitives.ColorX])."""
+        """The field used to control the tint of the cursor when it is directly visible by the camera."""
         member = self.get_member("_cursorFrontTint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -946,7 +948,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_behind_tint(self) -> str | None:
-        """Target ID of the _cursorBehindTint reference (targets IField[primitives.ColorX])."""
+        """The field used to control the tint of the cursor when it is not directly visible by the camera."""
         member = self.get_member("_cursorBehindTint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -967,7 +969,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_render_queue(self) -> str | None:
-        """Target ID of the _cursorRenderQueue reference (targets IField[primitives.Int])."""
+        """The render queue field of the material being used for this laser's cursor visual."""
         member = self.get_member("_cursorRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -988,7 +990,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_orientation(self) -> str | None:
-        """Target ID of the _cursorOrientation reference (targets IField[primitives.FloatQ])."""
+        """The field used to control the orientation for this laser's cursor visual."""
         member = self.get_member("_cursorOrientation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1009,7 +1011,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cursor_tint(self) -> primitives.ColorX | None:
-        """The _cursorTint field value."""
+        """The field used to control the color for this laser's cursor visual."""
         member = self.get_member("_cursorTint")
         if member is None:
             return None
@@ -1028,7 +1030,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direct_cursor_visuals_visible(self) -> primitives.Bool | None:
-        """The _directCursorVisualsVisible field value."""
+        """Whether the cursor's direct view visuals are visible or not."""
         member = self.get_member("_directCursorVisualsVisible")
         if member is None:
             return None
@@ -1047,7 +1049,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direct_cursor_active(self) -> str | None:
-        """Target ID of the _directCursorActive reference (targets IField[primitives.Bool])."""
+        """the field to drive with whether the direct cursor is active."""
         member = self.get_member("_directCursorActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1068,7 +1070,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direct_cursor_root(self) -> str | None:
-        """Target ID of the _directCursorRoot reference (targets Slot)."""
+        """The root slot of the direct cursor visual."""
         member = self.get_member("_directCursorRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1089,7 +1091,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direct_cursor_image_root(self) -> str | None:
-        """Target ID of the _directCursorImageRoot reference (targets Slot)."""
+        """The root slot of the direct cursor image."""
         member = self.get_member("_directCursorImageRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1110,7 +1112,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direct_cursor_offset(self) -> str | None:
-        """Target ID of the _directCursorOffset reference (targets IField[primitives.Float3])."""
+        """The field to drive with the direct cursor's offset."""
         member = self.get_member("_directCursorOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1131,7 +1133,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direct_cursor_orientation(self) -> str | None:
-        """Target ID of the _directCursorOrientation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive with the direct cursor's orientation."""
         member = self.get_member("_directCursorOrientation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1152,7 +1154,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direct_line_target(self) -> str | None:
-        """Target ID of the _directLineTarget reference (targets IField[primitives.Float3])."""
+        """The field to drive with the direct cursor's direct line position."""
         member = self.get_member("_directLineTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1173,7 +1175,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direct_line_mesh(self) -> str | None:
-        """Target ID of the _directLineMesh reference (targets SegmentMesh)."""
+        """The mesh being used for the direct line visual."""
         member = self.get_member("_directLineMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1194,7 +1196,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def segment_color_front(self) -> str | None:
-        """Target ID of the _segmentColorFront reference (targets IField[primitives.ColorX])."""
+        """The color field of the direct line mesh's front color."""
         member = self.get_member("_segmentColorFront")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1215,7 +1217,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def segment_color_behind(self) -> str | None:
-        """Target ID of the _segmentColorBehind reference (targets IField[primitives.ColorX])."""
+        """The color field of the direct line mesh's behind color."""
         member = self.get_member("_segmentColorBehind")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1236,7 +1238,7 @@ class InteractionLaser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def segment_render_queue(self) -> str | None:
-        """Target ID of the _segmentRenderQueue reference (targets IField[primitives.Int])."""
+        """The render queue field of the direct line mesh's material."""
         member = self.get_member("_segmentRenderQueue")
         if isinstance(member, members.Reference):
             return member.targetId

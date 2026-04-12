@@ -40,7 +40,7 @@ class Substring(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, IC
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to remove a segment from."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +61,7 @@ class Substring(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, IC
 
     @property
     def start_index(self) -> str | None:
-        """Target ID of the StartIndex reference (targets INodeValueOutput[primitives.Int])."""
+        """The 0-indexed starting point of retrieval from ``Str``."""
         member = self.get_member("StartIndex")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +82,7 @@ class Substring(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, IC
 
     @property
     def length(self) -> str | None:
-        """Target ID of the Length reference (targets INodeValueOutput[primitives.Int])."""
+        """Length of the output substring. If no node is connected to this input, the substring will continue until the end of the string."""
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
             return member.targetId

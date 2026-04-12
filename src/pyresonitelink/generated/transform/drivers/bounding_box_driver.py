@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BoundingBoxDriver.
+    """The BoundingBoxDriver component is commonly used in Basic text objects to size the collider based on the text. This takes any IBounded and turns its Bounding box data into its local space center point and local space size. This is useful for auto generating the size and center of a BoxCollider around a procedural mesh.
 
     Category: Transform/Drivers
+
+    Attach to a slot and provide ``BoundedSource``. The output fields are
+    best used to drive a BoxCollider.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoundingBoxDriver"
@@ -44,7 +47,7 @@ class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bounded_source(self) -> str | None:
-        """Target ID of the BoundedSource reference (targets IBounded)."""
+        """The object to get Bounding box data from."""
         member = self.get_member("BoundedSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +68,7 @@ class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def size(self) -> str | None:
-        """Target ID of the Size reference (targets IField[primitives.Float3])."""
+        """The field to drive with the local space size of the bounding box of ``BoundedSource``."""
         member = self.get_member("Size")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +89,7 @@ class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def center(self) -> str | None:
-        """Target ID of the Center reference (targets IField[primitives.Float3])."""
+        """The field to drive with the local space center of the bounding box of ``BoundedSource``."""
         member = self.get_member("Center")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +110,7 @@ class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def padding(self) -> primitives.Float3 | None:
-        """The Padding field value."""
+        """how much to add to the output of ``Size``"""
         member = self.get_member("Padding")
         if member is None:
             return None
@@ -126,7 +129,7 @@ class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scale(self) -> primitives.Float3 | None:
-        """The Scale field value."""
+        """how much to multiply the output of ``Size``"""
         member = self.get_member("Scale")
         if member is None:
             return None

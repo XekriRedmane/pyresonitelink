@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Consumable.
+    """Consumable allows an item to be consumed by bringing it to the avatar's mouth. It was introduced in build 2026.4.1.11
+
+Consumable Allows the item to be consumed by users.
 
     Category: Transform/Interaction
     """
@@ -59,7 +61,7 @@ class Consumable(GeneratedComponent, ICustomInspector, IComponent, IWorldEventRe
 
     @property
     def must_be_holding(self) -> primitives.Bool | None:
-        """The MustBeHolding field value."""
+        """Only allow component to be triggered when held. Needs to be paired by a grabbable in the same slot."""
         member = self.get_member("MustBeHolding")
         if member is None:
             return None

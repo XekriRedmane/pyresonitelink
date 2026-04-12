@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugTextureIssue(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugTextureIssue.
+    """The Debug Texture Issue component seems to be a dev component that was left in the game for some reason... - @989onan
 
     Category: Debug
     """

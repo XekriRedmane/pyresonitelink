@@ -11,7 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BrowserCreateDirectoryDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BrowserCreateDirectoryDialog.
+    """The BrowserCreateDirectoryDialogue component is used mainly in the inventory screen when creating a new directory in the inventory.
+
+    Used internally. Don't use it. :)
+
+    **CreateHandler**: A sync delegate that takes a name and an "out string message" and modifies the message coming in. Returns a boolean.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BrowserCreateDirectoryDialog"
@@ -35,7 +39,7 @@ class BrowserCreateDirectoryDialog(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def browser(self) -> str | None:
-        """Target ID of the _browser reference (targets BrowserDialog)."""
+        """The source browser Component."""
         member = self.get_member("_browser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +60,7 @@ class BrowserCreateDirectoryDialog(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def text(self) -> str | None:
-        """Target ID of the _text reference (targets Text)."""
+        """The text for the Create Directory dialouge box."""
         member = self.get_member("_text")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +81,7 @@ class BrowserCreateDirectoryDialog(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def text_field(self) -> str | None:
-        """Target ID of the _textField reference (targets TextField)."""
+        """The text field that is the name of the new directory."""
         member = self.get_member("_textField")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.culling import Culling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -15,14 +16,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PBS_IntersectMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PBS_IntersectMetallic.
+    """A PBS Intersect Shader (both metallic & specular variants) renders a glow outline when intersecting with opaque materials (any that write to ZBuffer).
 
     Category: Assets/Materials/PBS
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_IntersectMetallic"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, begin_transition_start: primitives.Float | None = None, begin_transition_end: primitives.Float | None = None, end_transition_start: primitives.Float | None = None, end_transition_end: primitives.Float | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, intersect_albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, intersect_emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, begin_transition_start: primitives.Float | None = None, begin_transition_end: primitives.Float | None = None, end_transition_start: primitives.Float | None = None, end_transition_end: primitives.Float | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, intersect_albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, intersect_emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, culling: Culling | str | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -43,6 +44,7 @@ class PBS_IntersectMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial,
             normal_map: Initial value for NormalMap.
             normal_scale: Initial value for NormalScale.
             occlusion_map: Initial value for OcclusionMap.
+            culling: Initial value for Culling.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
             render_queue: Initial value for RenderQueue.
@@ -86,6 +88,8 @@ class PBS_IntersectMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial,
             self.normal_scale = normal_scale
         if occlusion_map is not None:
             self.occlusion_map = occlusion_map
+        if culling is not None:
+            self.culling = culling
         if offset_factor is not None:
             self.offset_factor = offset_factor
         if offset_units is not None:
@@ -433,17 +437,24 @@ class PBS_IntersectMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial,
             )
 
     @property
-    def culling(self) -> members.FieldEnum | None:
-        """The Culling member."""
+    def culling(self) -> Culling | None:
+        """The Culling enum value."""
         member = self.get_member("Culling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Culling(member.value)
         return None
 
     @culling.setter
-    def culling(self, value: members.FieldEnum) -> None:
-        """Set the Culling member."""
-        self.set_member("Culling", value)
+    def culling(self, value: Culling | str) -> None:
+        """Set the Culling enum value."""
+        member = self.get_member("Culling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Culling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def offset_factor(self) -> primitives.Float | None:

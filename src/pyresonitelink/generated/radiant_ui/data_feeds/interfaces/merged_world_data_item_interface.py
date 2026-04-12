@@ -15,9 +15,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MergedWorldDataItemInterface.
+    """The MergedWorldDataItemInterface component is used to display world details from a WorldsDataFeed.
 
     Category: Radiant UI/Data Feeds/Interfaces
+
+    Used in data feed Template generating systems. See Data Feeds.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MergedWorldDataItemInterface"
@@ -379,7 +381,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def is_merged(self) -> str | None:
-        """Target ID of the IsMerged reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether or not the source data feed item was merged."""
         member = self.get_member("IsMerged")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -400,7 +402,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def session_count(self) -> str | None:
-        """Target ID of the SessionCount reference (targets IField[primitives.Int])."""
+        """The field to drive with the amount of sessions in this set of worlds."""
         member = self.get_member("SessionCount")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -421,7 +423,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def world_count(self) -> str | None:
-        """Target ID of the WorldCount reference (targets IField[primitives.Int])."""
+        """The field to drive with the amount of Merged worlds into this item."""
         member = self.get_member("WorldCount")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -442,7 +444,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def main_name(self) -> str | None:
-        """Target ID of the MainName reference (targets IField[primitives.String])."""
+        """The field to drive with the main world name of this Merged item."""
         member = self.get_member("MainName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -463,7 +465,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def main_thumbnail(self) -> str | None:
-        """Target ID of the MainThumbnail reference (targets IField[str])."""
+        """The field to drive with the main world's thumbnail of this Merged item."""
         member = self.get_member("MainThumbnail")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -484,7 +486,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def world_or_session_id(self) -> str | None:
-        """Target ID of the WorldOrSessionId reference (targets IField[primitives.String])."""
+        """The field to drive with the main world or session ID of this Merged item."""
         member = self.get_member("WorldOrSessionId")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -505,7 +507,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def total_aggregate_active_users(self) -> str | None:
-        """Target ID of the TotalAggregateActiveUsers reference (targets IField[primitives.Int])."""
+        """The field to drive with the total active users of all the worlds Merged into this item."""
         member = self.get_member("TotalAggregateActiveUsers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -526,7 +528,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def total_aggregate_contacts(self) -> str | None:
-        """Target ID of the TotalAggregateContacts reference (targets IField[primitives.Int])."""
+        """The field to drive with the total users that are contacts in all the worlds Merged into this item."""
         member = self.get_member("TotalAggregateContacts")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -547,7 +549,7 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def sessions(self) -> members.SyncObject | None:
-        """The Sessions member."""
+        """The list of item templates to instantiate with session info from this merged item."""
         member = self.get_member("Sessions")
         if isinstance(member, members.SyncObject):
             return member
@@ -555,12 +557,12 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @sessions.setter
     def sessions(self, value: members.SyncObject) -> None:
-        """Set the Sessions member."""
+        """Set Sessions. The list of item templates to instantiate with session info from this merged item."""
         self.set_member("Sessions", value)
 
     @property
     def worlds(self) -> members.SyncObject | None:
-        """The Worlds member."""
+        """The list of item templates to instantiate with the world data of this merged item."""
         member = self.get_member("Worlds")
         if isinstance(member, members.SyncObject):
             return member
@@ -568,6 +570,6 @@ class MergedWorldDataItemInterface(GeneratedComponent, IComponent, IWorldEventRe
 
     @worlds.setter
     def worlds(self, value: members.SyncObject) -> None:
-        """Set the Worlds member."""
+        """Set Worlds. The list of item templates to instantiate with the world data of this merged item."""
         self.set_member("Worlds", value)
 

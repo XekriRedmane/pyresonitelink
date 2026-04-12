@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InspectorPanel(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InspectorPanel.
+    """See Inspector
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InspectorPanel"

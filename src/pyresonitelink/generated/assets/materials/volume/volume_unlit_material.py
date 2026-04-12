@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.display_mode import DisplayMode
+from pyresonitelink.generated._enums.blend_mode import BlendMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,19 +15,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VolumeUnlitMaterial.
+    """The VolumeUnlitMaterial component is used to display 3D Textures like Xrays, sunbeams, MRIs, CT scans, or any other 3D texture in a volumetric 3D cube that can optionally be sliced. Can also be used for volumetric lighting, but high texture resolutions can be large and cause considerable render lag.
+
+This is a raymarched material, which means that a ray is stepped iteratively closer and closer to the volume in order to determine what is shown or not.
 
     Category: Assets/Materials/Volume
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VolumeUnlitMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, render_queue: primitives.Int | None = None, volume: str | IAssetProvider[Texture3D] | None = None, step_size: primitives.Float | None = None, gain: primitives.Float | None = None, exp: primitives.Float | None = None, accumulation_cutoff: primitives.Float | None = None, hit_threshold: primitives.Float | None = None, input_range: primitives.Float | None = None, input_offset: primitives.Float | None = None, use_alpha_channel: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, mode: DisplayMode | str | None = None, blend_mode: BlendMode | str | None = None, render_queue: primitives.Int | None = None, volume: str | IAssetProvider[Texture3D] | None = None, step_size: primitives.Float | None = None, gain: primitives.Float | None = None, exp: primitives.Float | None = None, accumulation_cutoff: primitives.Float | None = None, hit_threshold: primitives.Float | None = None, input_range: primitives.Float | None = None, input_offset: primitives.Float | None = None, use_alpha_channel: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             shader: Initial value for _shader.
+            mode: Initial value for Mode.
+            blend_mode: Initial value for BlendMode.
             render_queue: Initial value for RenderQueue.
             volume: Initial value for Volume.
             step_size: Initial value for StepSize.
@@ -43,6 +49,10 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             self.high_priority_integration = high_priority_integration
         if shader is not None:
             self.shader = shader
+        if mode is not None:
+            self.mode = mode
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
         if render_queue is not None:
             self.render_queue = render_queue
         if volume is not None:
@@ -105,30 +115,44 @@ class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, 
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> DisplayMode | None:
+        """The Mode enum value."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return DisplayMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: DisplayMode | str) -> None:
+        """Set the Mode enum value."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def render_queue(self) -> primitives.Int | None:

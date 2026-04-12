@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextureUnpackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextureUnpackingWizard.
+    """The Texture Unpacking Wizard component
 
     Category: Wizards
     """

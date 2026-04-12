@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,27 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FrameMesh.
+    """The FrameMesh component generates a procedural mesh that is like a flat polygon 2d frame for use with Mesh Renderers.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot, and give it ``ContentSize`` and ``Thickness``. Then
+    put into a Mesh Renderer with a material to view it.
+
+    **Related Components**: * AssetFrameSlot
+* IAsset Type
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FrameMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, content_size: primitives.Float2 | None = None, thickness: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, content_size: primitives.Float2 | None = None, thickness: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             content_size: Initial value for ContentSize.
             thickness: Initial value for Thickness.
             uv_scale: Initial value for UVScale.
@@ -38,6 +46,8 @@ class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if content_size is not None:
             self.content_size = content_size
         if thickness is not None:
@@ -103,21 +113,28 @@ class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def content_size(self) -> primitives.Float2 | None:
-        """The ContentSize field value."""
+        """The size of interior object. usually driven by Asset Frames"""
         member = self.get_member("ContentSize")
         if member is None:
             return None
@@ -136,7 +153,7 @@ class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """How thick the frame should be, expanding outwards from the center content."""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -155,7 +172,7 @@ class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def uv_scale(self) -> primitives.Float2 | None:
-        """The UVScale field value."""
+        """How big the procedural UV map should be, which influences material detail and color map scales."""
         member = self.get_member("UVScale")
         if member is None:
             return None

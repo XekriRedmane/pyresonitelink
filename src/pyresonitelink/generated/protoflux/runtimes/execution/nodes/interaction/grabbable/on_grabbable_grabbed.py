@@ -58,7 +58,7 @@ class OnGrabbableGrabbed(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @property
     def on_grabbed(self) -> str | None:
-        """Target ID of the OnGrabbed reference (targets ISyncNodeOperation)."""
+        """Sends an impulse when someone starts grabbing Grabbable (IGrabbable)."""
         member = self.get_member("OnGrabbed")
         if isinstance(member, members.Reference):
             return member.targetId

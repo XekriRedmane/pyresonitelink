@@ -15,9 +15,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldTextRendererWizard.
+    """See World Text Renderer Wizard.
 
     Category: Wizards
+
+    See World Text Renderer Wizard.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldTextRendererWizard"
@@ -56,7 +58,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets Slot)."""
+        """The root to do processing for."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +79,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to replace text renderer materials with."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -98,7 +100,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def font(self) -> str | None:
-        """Target ID of the Font reference (targets IAssetProvider[FontSet])."""
+        """The font to override texts with."""
         member = self.get_member("Font")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -119,7 +121,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def process_disabled(self) -> primitives.Bool | None:
-        """The ProcessDisabled field value."""
+        """Whether to process disabled texts or not."""
         member = self.get_member("ProcessDisabled")
         if member is None:
             return None
@@ -138,7 +140,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def process_standalone_renderers(self) -> primitives.Bool | None:
-        """The ProcessStandaloneRenderers field value."""
+        """Whether to process Component:TextRenderers."""
         member = self.get_member("ProcessStandaloneRenderers")
         if member is None:
             return None
@@ -157,7 +159,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def process_uix_renderers(self) -> primitives.Bool | None:
-        """The ProcessUIXRenderers field value."""
+        """Whether to process Component:Texts."""
         member = self.get_member("ProcessUIXRenderers")
         if member is None:
             return None
@@ -176,7 +178,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """What color to change the texts to."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -195,7 +197,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def tag(self) -> str | None:
-        """Target ID of the _tag reference (targets TextField)."""
+        """Only process texts with this tag."""
         member = self.get_member("_tag")
         if isinstance(member, members.Reference):
             return member.targetId

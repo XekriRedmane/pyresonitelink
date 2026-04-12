@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterGroundCollider(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Character Ground Collider node takes in a character controller reference and returns an ICollider from what it detects under this slot's character controller component. "Ground" refers to your local rotation, so you could be standing on the ceiling and this would detect that the ceiling is your "ground".
+    """The ``Character Ground Collider`` node takes in a character controller reference and returns an ICollider from what it detects under this slot's character controller component. "Ground" refers to your local rotation, so you could be standing on the ceiling and this would detect that the ceiling is your "ground".
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """
@@ -33,7 +33,7 @@ class CharacterGroundCollider(GeneratedComponent, INodeObjectOutput, IExecutionN
 
     @property
     def character(self) -> str | None:
-        """Target ID of the Character reference (targets INodeObjectOutput[CharacterController])."""
+        """The Character Controller reference."""
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             return member.targetId

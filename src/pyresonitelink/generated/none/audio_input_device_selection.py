@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioInputDeviceSelection.
+    """The AudioInputDeviceSelection component is a Legacy component part of the old settings UI.
+
+    Used in your Local Space settings to select your Audio Input device.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioInputDeviceSelection"
@@ -54,7 +56,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def selected_device_index(self) -> primitives.Int | None:
-        """The SelectedDeviceIndex field value."""
+        """The current selected."""
         member = self.get_member("SelectedDeviceIndex")
         if member is None:
             return None
@@ -73,7 +75,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def selected_device_name(self) -> primitives.String | None:
-        """The SelectedDeviceName field value."""
+        """The name of the currently selected device."""
         member = self.get_member("SelectedDeviceName")
         if member is None:
             return None
@@ -92,7 +94,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def use_filtered_data(self) -> primitives.Bool | None:
-        """The UseFilteredData field value."""
+        """Whether to filter the incoming audio."""
         member = self.get_member("UseFilteredData")
         if member is None:
             return None
@@ -111,7 +113,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def device_button_root(self) -> str | None:
-        """Target ID of the _deviceButtonRoot reference (targets Slot)."""
+        """The slot to place device selection buttons."""
         member = self.get_member("_deviceButtonRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -132,7 +134,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def audio_stream(self) -> str | None:
-        """Target ID of the _audioStream reference (targets LocalAudioDeviceStream)."""
+        """The audio stream of the currently selected audio device."""
         member = self.get_member("_audioStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -153,7 +155,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def audio_output(self) -> str | None:
-        """Target ID of the _audioOutput reference (targets AudioOutput)."""
+        """The audio output being used to preview the audio input device."""
         member = self.get_member("_audioOutput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -174,7 +176,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def device_volume(self) -> str | None:
-        """Target ID of the _deviceVolume reference (targets VolumeMeter)."""
+        """The component being used to analyze the incoming audio of the selected input device and turn it into volume."""
         member = self.get_member("_deviceVolume")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -195,7 +197,7 @@ class AudioInputDeviceSelection(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def volume_bar(self) -> str | None:
-        """Target ID of the _volumeBar reference (targets ProgressBar)."""
+        """The bar being used to preview the input audio device volume."""
         member = self.get_member("_volumeBar")
         if isinstance(member, members.Reference):
             return member.targetId

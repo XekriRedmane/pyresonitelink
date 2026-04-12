@@ -1,0 +1,34 @@
+{
+  "description": "The VideoImportDialog component is better explained in the Importing page.",
+  "category": "With Nested Enums",
+  "fields": {
+    "_videoType": "The type of video being imported.",
+    "_stereoLayout": "The kind of video stereo layout the video being imported has.",
+    "_depthPreset": "The kind of depth the video being imported has."
+  },
+  "methods": {
+    "OpenRoot": "Handles when the dialog is opened to the root menu.",
+    "Preset_Video": "Imports default video.",
+    "Preset_360": "Imports as a 360 video.",
+    "Preset_StereoVideo": "Imports as a default stereo video.",
+    "Preset_Stereo360": "Imports as a stereo 360 video.",
+    "Preset_Depth": "Imports as a depth video.",
+    "Preset_180": "Imports as a 180 video.",
+    "Preset_Stereo180": "Imports as a stereo 180 video.",
+    "MenuStereoLayout": "Switches the menu to show the stereo options.",
+    "Preset_HorizontalLR": "Imports the video as a stereo horizontal Left Right layout.",
+    "Preset_HorizontalRL": "Imports the video as a stereo horizontal Right Left layout.",
+    "Preset_VerticalLR": "Imports the video as a stereo vertical Left Right layout.",
+    "Preset_VerticalRL": "Imports the video as a stereo vertical Right Left layout.",
+    "MenuDepthPreset": "Switches the menu to show the depth options.",
+    "Preset_DepthDefault": "Uses the default depth option.",
+    "Preset_DepthPFCapture": "Uses the PF capture vertical depth option.",
+    "Preset_DepthPFCaptureHorizontal": "Uses the PF capture horizontal depth option.",
+    "Preset_DepthHolofix": "Uses the holofix depth option.",
+    "AsRawFile": "Imports the video as a raw file.",
+    "Return": "Navigates the menu to the previous menu."
+  },
+  "usage": "See Importing.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VideoImportDialog&action=raw"
+}

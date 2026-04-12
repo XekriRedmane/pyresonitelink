@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.end_mode import EndMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.text_renderer import TextRenderer
@@ -12,15 +13,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AppEnder(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AppEnder.
+    """AppEnder is used by the local world to handle the logging out or exiting the game of the local user.
+
+    **EndMode**: EndMode
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AppEnder"
 
-    def __init__(self, changes_saved: primitives.Bool | None = None, text: str | TextRenderer | None = None, text_color: str | IField[primitives.ColorX] | None = None, outline_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, mode: EndMode | str | None = None, changes_saved: primitives.Bool | None = None, text: str | TextRenderer | None = None, text_color: str | IField[primitives.ColorX] | None = None, outline_color: str | IField[primitives.ColorX] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            mode: Initial value for Mode.
             changes_saved: Initial value for ChangesSaved.
             text: Initial value for _text.
             text_color: Initial value for _textColor.
@@ -28,6 +32,8 @@ class AppEnder(GeneratedComponent, IComponent, IWorldEventReceiver):
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if mode is not None:
+            self.mode = mode
         if changes_saved is not None:
             self.changes_saved = changes_saved
         if text is not None:
@@ -38,21 +44,28 @@ class AppEnder(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.outline_color = outline_color
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> EndMode | None:
+        """Whether to exit the game or logout."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return EndMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: EndMode | str) -> None:
+        """Set Mode. Whether to exit the game or logout."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def changes_saved(self) -> primitives.Bool | None:
-        """The ChangesSaved field value."""
+        """Whether the items saved and dash changes for the current user have been saved"""
         member = self.get_member("ChangesSaved")
         if member is None:
             return None
@@ -71,7 +84,7 @@ class AppEnder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the _text reference (targets TextRenderer)."""
+        """the text object that is currently showing the status of the game exiting or logging out"""
         member = self.get_member("_text")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +105,7 @@ class AppEnder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text_color(self) -> str | None:
-        """Target ID of the _textColor reference (targets IField[primitives.ColorX])."""
+        """the color of the text object for this ender."""
         member = self.get_member("_textColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -113,7 +126,7 @@ class AppEnder(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def outline_color(self) -> str | None:
-        """Target ID of the _outlineColor reference (targets IField[primitives.ColorX])."""
+        """The outline color of the text object for this ender."""
         member = self.get_member("_outlineColor")
         if isinstance(member, members.Reference):
             return member.targetId

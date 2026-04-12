@@ -1,0 +1,22 @@
+{
+  "description": "App version is a component that updates it's fields with the live information of Resonite's version.",
+  "category": "Utility",
+  "fields": {
+    "VersionNumber": "The version number of Resonite. usually formatted year.month.day.minute. The minute part of the version is the minute from midnight UTC the version was compiled.",
+    "VersionName": "The name of the version of Resonite. Usually this is \"Beta\", \"Alpha\" or \"Release\" followed by ``VersionNumber``",
+    "FullVersionString": "Usually the same as ``VersionNumber``",
+    "BuildYear": "The year Resonite was compiled.",
+    "BuildMonth": "The month Resonite was compiled.",
+    "BuildDay": "The day Resonite was compiled.",
+    "BuildTimeOfDay": "The amount of minutes since midnight UTC."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "The fields are \"Pseudo Driven\" or constantly being written to. Attempting to change a field makes it instantly change back and not send an update event."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AppVersion&action=raw"
+}

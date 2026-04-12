@@ -9,7 +9,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SaveProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SaveProxy.
+    """The Save Proxy component saves another slot instead of this one when the slot this component is on is saved.
+
+    Can be used to make an item save an external slot or object without
+    having to parent it first.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SaveProxy"
@@ -27,7 +30,7 @@ class SaveProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The slot to save the hiearchy of when the slot this component is on is saved instead of this slot."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

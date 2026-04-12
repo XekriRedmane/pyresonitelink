@@ -62,7 +62,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[SyncPlayback])."""
+        """The Network Synced Playable that will become un-networked via being driven by this node."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def normalized_position(self) -> str | None:
-        """Target ID of the NormalizedPosition reference (targets INodeValueOutput[primitives.Float])."""
+        """The position to drive Target (SyncPlayback) to from 0 to 1."""
         member = self.get_member("NormalizedPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -125,7 +125,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def speed(self) -> str | None:
-        """Target ID of the Speed reference (targets INodeValueOutput[primitives.Float])."""
+        """The a multiplier for the playback speed of Target (SyncPlayback)."""
         member = self.get_member("Speed")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -146,7 +146,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def play(self) -> str | None:
-        """Target ID of the Play reference (targets INodeValueOutput[primitives.Bool])."""
+        """If the Target (SyncPlayback) should be playing. (default true if normalized position is given and moving)"""
         member = self.get_member("Play")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -167,7 +167,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def loop(self) -> str | None:
-        """Target ID of the Loop reference (targets INodeValueOutput[primitives.Bool])."""
+        """If the Target (SyncPlayback) should loop. May clash when providing NormalizedPosition (float)"""
         member = self.get_member("Loop")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -188,7 +188,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def is_driving(self) -> members.EmptyElement | None:
-        """The IsDriving member."""
+        """If the Target (SyncPlayback) is currently driving. (Aka StartDrive (Call) was called but not StopDrive (Call) yet.)"""
         member = self.get_member("IsDriving")
         if isinstance(member, members.EmptyElement):
             return member
@@ -196,12 +196,12 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @is_driving.setter
     def is_driving(self, value: members.EmptyElement) -> None:
-        """Set the IsDriving member."""
+        """Set IsDriving. If the Target (SyncPlayback) is currently driving. (Aka StartDrive (Call) was called but not StopDrive (Call) yet.)"""
         self.set_member("IsDriving", value)
 
     @property
     def start_drive(self) -> members.EmptyElement | None:
-        """The StartDrive member."""
+        """Starts driving the Target (SyncPlayback) in a non networked fashion, which essentially makes the provided Target (SyncPlayback) no longer synced until StopDrive (Call) is called."""
         member = self.get_member("StartDrive")
         if isinstance(member, members.EmptyElement):
             return member
@@ -209,12 +209,12 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @start_drive.setter
     def start_drive(self, value: members.EmptyElement) -> None:
-        """Set the StartDrive member."""
+        """Set StartDrive. Starts driving the Target (SyncPlayback) in a non networked fashion, which essentially makes the provided Target (SyncPlayback) no longer synced until StopDrive (Call) is called."""
         self.set_member("StartDrive", value)
 
     @property
     def stop_drive(self) -> members.EmptyElement | None:
-        """The StopDrive member."""
+        """Stop driving the Target (SyncPlayback), making it networked again."""
         member = self.get_member("StopDrive")
         if isinstance(member, members.EmptyElement):
             return member
@@ -222,12 +222,12 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @stop_drive.setter
     def stop_drive(self, value: members.EmptyElement) -> None:
-        """Set the StopDrive member."""
+        """Set StopDrive. Stop driving the Target (SyncPlayback), making it networked again."""
         self.set_member("StopDrive", value)
 
     @property
     def force_resync(self) -> members.EmptyElement | None:
-        """The ForceResync member."""
+        """When this is impulsed, The node will try to sync the current Target (SyncPlayback) position that the local user sees with everyone else in a session. (See Impulses for what a local user on an Impulse means) If this is called and NormalizedPosition (float) does not have an input, it will do nothing."""
         member = self.get_member("ForceResync")
         if isinstance(member, members.EmptyElement):
             return member
@@ -235,12 +235,12 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @force_resync.setter
     def force_resync(self, value: members.EmptyElement) -> None:
-        """Set the ForceResync member."""
+        """Set ForceResync. When this is impulsed, The node will try to sync the current Target (SyncPlayback) position that the local user sees with everyone else in a session. (See Impulses for what a local user on an Impulse means) If this is called and NormalizedPosition (float) does not have an input, it will do nothing."""
         self.set_member("ForceResync", value)
 
     @property
     def on_start_drive(self) -> str | None:
-        """Target ID of the OnStartDrive reference (targets INodeOperation)."""
+        """When StartDrive (Call) is impulsed and it can drive Target (SyncPlayback)"""
         member = self.get_member("OnStartDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -261,7 +261,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def on_stop_drive(self) -> str | None:
-        """Target ID of the OnStopDrive reference (targets INodeOperation)."""
+        """When StopDrive (Call) is impulsed and this node was driving Target (SyncPlayback)"""
         member = self.get_member("OnStopDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -282,7 +282,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
 
     @property
     def on_resync(self) -> str | None:
-        """Target ID of the OnResync reference (targets INodeOperation)."""
+        """sends an impulse when ForceResync (Call) succeeds."""
         member = self.get_member("OnResync")
         if isinstance(member, members.Reference):
             return member.targetId

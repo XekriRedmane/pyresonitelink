@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceRadio(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.ReferenceRadio<>.
+    """The ReferenceRadio component is a listener component that activates or deactivates slots using the ``CheckVisual`` field, based if a ``TargetReference`` matches the ``OptionReference`` field. When a match is found, the ``CheckVisual`` field will be set to true.
 
     Category: UIX/Interaction
 
@@ -43,7 +43,7 @@ class ReferenceRadio(GenericComponent[T], IButtonPressReceiver, IWorldEventRecei
 
     @property
     def check_visual(self) -> str | None:
-        """Target ID of the CheckVisual reference (targets IField[primitives.Bool])."""
+        """The bool that will be set true when there is a match."""
         member = self.get_member("CheckVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class ReferenceRadio(GenericComponent[T], IButtonPressReceiver, IWorldEventRecei
 
     @property
     def option_reference(self) -> str | None:
-        """Target ID of the OptionReference reference (targets T)."""
+        """The reference we are checking a match for, when found, it will trigger this option."""
         member = self.get_member("OptionReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class ReferenceRadio(GenericComponent[T], IButtonPressReceiver, IWorldEventRecei
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets SyncRef[T])."""
+        """The thing we are using to check."""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId

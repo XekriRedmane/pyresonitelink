@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class ResolutionSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.ResolutionSettings.
+    """The ResolutionSettings component is a Settings component.
+
+    See Resolution Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ResolutionSettings"
@@ -42,7 +44,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def fullscreen(self) -> primitives.Bool | None:
-        """The Fullscreen field value."""
+        """Whether or not the game should change to fullscreen mode."""
         member = self.get_member("Fullscreen")
         if member is None:
             return None
@@ -61,7 +63,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def window_resolution(self) -> primitives.Int2 | None:
-        """The WindowResolution field value."""
+        """The resolution in pixels the main window should render at while in windowed mode."""
         member = self.get_member("WindowResolution")
         if member is None:
             return None
@@ -80,7 +82,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def fullscreen_resolution(self) -> primitives.Int2 | None:
-        """The FullscreenResolution field value."""
+        """The resolution in pixels the main window should render at while in full screen."""
         member = self.get_member("FullscreenResolution")
         if member is None:
             return None
@@ -99,7 +101,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def commited_window_resolution(self) -> primitives.Int2 | None:
-        """The CommitedWindowResolution field value."""
+        """The resolution in pixels the main window is currently at while in windowed mode."""
         member = self.get_member("CommitedWindowResolution")
         if member is None:
             return None
@@ -118,7 +120,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def commited_fullscreen_resolution(self) -> primitives.Int2 | None:
-        """The CommitedFullscreenResolution field value."""
+        """The resolution in pixels the main window is currently at while in full screen."""
         member = self.get_member("CommitedFullscreenResolution")
         if member is None:
             return None
@@ -137,7 +139,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def needs_to_apply_resolution(self) -> primitives.Bool | None:
-        """The NeedsToApplyResolution field value."""
+        """Whether or not the resolution settings need to be applied."""
         member = self.get_member("NeedsToApplyResolution")
         if member is None:
             return None
@@ -155,7 +157,7 @@ class ResolutionSettings(GeneratedComponent, ICustomInspector):
             )
 
     async def apply_resolution(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ApplyResolution sync method.
+        """Applies the currently chosen resolution.
 
         Returns:
             The raw JSON response dict.

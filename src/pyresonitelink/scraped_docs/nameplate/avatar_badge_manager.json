@@ -1,0 +1,15 @@
+{
+  "description": "The AvatarBadgeManager component initializes the user's badges under the ``Badges Root`` slot.\n\n}}",
+  "category": "Users:Common Avatar System:Nameplate",
+  "fields": {
+    "BadgeSize": "The size of the generated badges in local space.",
+    "BadgeSeparation": "The separation in meters between the badges in local space",
+    "MaxRowSize": "The maximum amount of badges on one row before moving to the next.",
+    "_badgesRoot": "The slot to put the badges under.",
+    "_badgesOffset": "The position of the ``_badgesRoot`` slot, which is used to move the badges away from the user's name tag and keep them positioned properly."
+  },
+  "methods": {},
+  "usage": "This is used to help with organizing badges on a user's Nameplate, including custom badges. The user badge manager does this internally to help assign badges accordingly.\n\nIf an avatar contains this component when equipped, the user's default badges will be hidden for those who have custom nameplates enabled.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarBadgeManager&action=raw"
+}

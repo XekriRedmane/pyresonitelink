@@ -13,9 +13,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProgressBarInterface.
+    """The ProgressBarInterface component is a favoritable item that appears when the user imports a file into Resonite.
 
     Category: Utility/Entity Interfaces
+
+    Used to make custom import dialogue visuals for a user by saving a
+    custom UI with this component to inventory and setting as custom loading
+    indicator.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProgressBarInterface"
@@ -84,7 +88,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[primitives.String])."""
+        """The name of this favoritable interface."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +109,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user(self) -> str | None:
-        """Target ID of the SpawningUser reference (targets UserRef)."""
+        """The user that spawned this favoritable interface."""
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +130,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
+        """The field containing the ID of the user that spawned this favoritable interface."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -147,7 +151,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def is_instance(self) -> primitives.Bool | None:
-        """The IsInstance field value."""
+        """Whether this interface is an instance."""
         member = self.get_member("IsInstance")
         if member is None:
             return None
@@ -166,7 +170,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def progress_known(self) -> str | None:
-        """Target ID of the ProgressKnown reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether or not the progress is known of the importing item."""
         member = self.get_member("ProgressKnown")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -187,7 +191,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def progress(self) -> str | None:
-        """Target ID of the Progress reference (targets IField[primitives.Float])."""
+        """The field to drive with the current progress import percentage from 0 to 1 of the importing item."""
         member = self.get_member("Progress")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -208,7 +212,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def processed_count_known(self) -> str | None:
-        """Target ID of the ProcessedCountKnown reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether or not the amount of processed items is known for the importing item."""
         member = self.get_member("ProcessedCountKnown")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -229,7 +233,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def processed_item_count(self) -> str | None:
-        """Target ID of the ProcessedItemCount reference (targets IField[primitives.Int])."""
+        """The field to drive with the number of processed items for the importing item."""
         member = self.get_member("ProcessedItemCount")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -250,7 +254,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def total_item_count_known(self) -> str | None:
-        """Target ID of the TotalItemCountKnown reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether the total number of items that need to be processed for the importing item is known."""
         member = self.get_member("TotalItemCountKnown")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -271,7 +275,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def total_item_count(self) -> str | None:
-        """Target ID of the TotalItemCount reference (targets IField[primitives.Int])."""
+        """The field to drive with the total number of items that need to be processed for the importing item."""
         member = self.get_member("TotalItemCount")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -292,7 +296,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def phase_name(self) -> str | None:
-        """Target ID of the PhaseName reference (targets IField[primitives.String])."""
+        """The field to drive with the current phase name of the importing item being imported is."""
         member = self.get_member("PhaseName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -313,7 +317,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def sub_phase_name(self) -> str | None:
-        """Target ID of the SubPhaseName reference (targets IField[primitives.String])."""
+        """The field to drive with the current sub phase name of the item being imported."""
         member = self.get_member("SubPhaseName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -334,7 +338,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def stage(self) -> str | None:
-        """Target ID of the Stage reference (targets IField[ProgressStage])."""
+        """The field to drive with the progress stage for the importing item."""
         member = self.get_member("Stage")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -355,7 +359,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def has_completed(self) -> str | None:
-        """Target ID of the HasCompleted reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether the item has finished importing."""
         member = self.get_member("HasCompleted")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -376,7 +380,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def has_failed(self) -> str | None:
-        """Target ID of the HasFailed reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether the item has failed to import."""
         member = self.get_member("HasFailed")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -397,7 +401,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def completion_message(self) -> str | None:
-        """Target ID of the CompletionMessage reference (targets IField[primitives.String])."""
+        """The field to drive with the message for when the item has finished importing."""
         member = self.get_member("CompletionMessage")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -418,7 +422,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def failure_reason(self) -> str | None:
-        """Target ID of the FailureReason reference (targets IField[primitives.String])."""
+        """The field to drive with the failure reason for something to import."""
         member = self.get_member("FailureReason")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -439,7 +443,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def can_be_hidden(self) -> str | None:
-        """Target ID of the CanBeHidden reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether this import dialogue can be hidden by the user."""
         member = self.get_member("CanBeHidden")
         if isinstance(member, members.Reference):
             return member.targetId

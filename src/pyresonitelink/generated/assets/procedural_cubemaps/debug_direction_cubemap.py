@@ -3,6 +3,9 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.texture_filter_mode import TextureFilterMode
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.texture_format import TextureFormat
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_provider import ITextureProvider
@@ -11,36 +14,45 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugDirectionCubemap(GeneratedComponent, ITextureProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Assets.DebugDirectionCubemap.
+    """The Debug Direction Cubemap component allows for diagnosing which direction in the sky a part of a cubemap points to. This component was probably made to diagnose issues during testing for cubemaps between Unity engine and FrooxEngine and was left for users to test with.
 
     Category: Assets/Procedural Cubemaps
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Assets.DebugDirectionCubemap"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, anisotropic_level: primitives.Int | None = None, mipmap_bias: primitives.Float | None = None, size: primitives.Int | None = None, mipmaps: primitives.Bool | None = None, rgb_mask: primitives.Bool3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, filter_mode: TextureFilterMode | str | None = None, anisotropic_level: primitives.Int | None = None, mipmap_bias: primitives.Float | None = None, profile: ColorProfile | str | None = None, size: primitives.Int | None = None, mipmaps: primitives.Bool | None = None, format_: TextureFormat | str | None = None, rgb_mask: primitives.Bool3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
+            filter_mode: Initial value for FilterMode.
             anisotropic_level: Initial value for AnisotropicLevel.
             mipmap_bias: Initial value for MipmapBias.
+            profile: Initial value for Profile.
             size: Initial value for Size.
             mipmaps: Initial value for Mipmaps.
+            format_: Initial value for Format.
             rgb_mask: Initial value for RGB_Mask.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if high_priority_integration is not None:
             self.high_priority_integration = high_priority_integration
+        if filter_mode is not None:
+            self.filter_mode = filter_mode
         if anisotropic_level is not None:
             self.anisotropic_level = anisotropic_level
         if mipmap_bias is not None:
             self.mipmap_bias = mipmap_bias
+        if profile is not None:
+            self.profile = profile
         if size is not None:
             self.size = size
         if mipmaps is not None:
             self.mipmaps = mipmaps
+        if format_ is not None:
+            self.format_ = format_
         if rgb_mask is not None:
             self.rgb_mask = rgb_mask
 
@@ -64,17 +76,24 @@ class DebugDirectionCubemap(GeneratedComponent, ITextureProvider, ICustomInspect
             )
 
     @property
-    def filter_mode(self) -> members.FieldEnum | None:
-        """The FilterMode member."""
+    def filter_mode(self) -> TextureFilterMode | None:
+        """The FilterMode enum value."""
         member = self.get_member("FilterMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureFilterMode(member.value)
         return None
 
     @filter_mode.setter
-    def filter_mode(self, value: members.FieldEnum) -> None:
-        """Set the FilterMode member."""
-        self.set_member("FilterMode", value)
+    def filter_mode(self, value: TextureFilterMode | str) -> None:
+        """Set the FilterMode enum value."""
+        member = self.get_member("FilterMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "FilterMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def anisotropic_level(self) -> primitives.Int | None:
@@ -115,17 +134,24 @@ class DebugDirectionCubemap(GeneratedComponent, ITextureProvider, ICustomInspect
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def size(self) -> primitives.Int | None:
@@ -166,21 +192,28 @@ class DebugDirectionCubemap(GeneratedComponent, ITextureProvider, ICustomInspect
             )
 
     @property
-    def format_(self) -> members.FieldEnum | None:
-        """The Format member."""
+    def format_(self) -> TextureFormat | None:
+        """The Format enum value."""
         member = self.get_member("Format")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureFormat(member.value)
         return None
 
     @format_.setter
-    def format_(self, value: members.FieldEnum) -> None:
-        """Set the Format member."""
-        self.set_member("Format", value)
+    def format_(self, value: TextureFormat | str) -> None:
+        """Set the Format enum value."""
+        member = self.get_member("Format")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Format",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def rgb_mask(self) -> primitives.Bool3 | None:
-        """The RGB_Mask field value."""
+        """The colors to include or not to include in direction debugging."""
         member = self.get_member("RGB_Mask")
         if member is None:
             return None

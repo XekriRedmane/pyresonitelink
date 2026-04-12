@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacySlider.
+    """The LegacySlider component was used in old legacy content to act as a UI for adjusting a float via a slider. This component should not be used in new content and should be replaced whenever possible.
 
     Category: UI/Physical
     """
@@ -222,7 +222,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def drive_field(self) -> str | None:
-        """Target ID of the DriveField reference (targets IField[primitives.Float])."""
+        """The float field to drive with ``Value``"""
         member = self.get_member("DriveField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -243,7 +243,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def allow_write_back(self) -> primitives.Bool | None:
-        """The AllowWriteBack field value."""
+        """Whether changes to the value of the field targeted by ``DriveField`` should be written back to ``Value``."""
         member = self.get_member("AllowWriteBack")
         if member is None:
             return None
@@ -262,7 +262,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def create_undo_step(self) -> primitives.Bool | None:
-        """The CreateUndoStep field value."""
+        """Whether using this UI creates an Undo step."""
         member = self.get_member("CreateUndoStep")
         if member is None:
             return None
@@ -281,7 +281,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def value(self) -> primitives.Float | None:
-        """The Value field value."""
+        """The value this component is influencing."""
         member = self.get_member("Value")
         if member is None:
             return None
@@ -300,7 +300,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def min(self) -> primitives.Float | None:
-        """The Min field value."""
+        """The minimum value for ``Value``."""
         member = self.get_member("Min")
         if member is None:
             return None
@@ -319,7 +319,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def max(self) -> primitives.Float | None:
-        """The Max field value."""
+        """The maximum value for ``Value``."""
         member = self.get_member("Max")
         if member is None:
             return None
@@ -338,7 +338,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def increment(self) -> primitives.Float | None:
-        """The Increment field value."""
+        """How much to shift ``Value`` by when using the slider side buttons."""
         member = self.get_member("Increment")
         if member is None:
             return None
@@ -357,7 +357,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def integer_only(self) -> primitives.Bool | None:
-        """The IntegerOnly field value."""
+        """Whether ``Value`` can only be a whole number."""
         member = self.get_member("IntegerOnly")
         if member is None:
             return None
@@ -376,7 +376,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def color_field(self) -> primitives.ColorX | None:
-        """The ColorField field value."""
+        """The color of this UI."""
         member = self.get_member("ColorField")
         if member is None:
             return None
@@ -395,7 +395,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def symmetrical_field(self) -> primitives.Bool | None:
-        """The SymmetricalField field value."""
+        """whether this UI should be symmetrical."""
         member = self.get_member("SymmetricalField")
         if member is None:
             return None
@@ -414,7 +414,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def width_field(self) -> primitives.Float | None:
-        """The WidthField field value."""
+        """The width of this UI."""
         member = self.get_member("WidthField")
         if member is None:
             return None
@@ -433,7 +433,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def height_field(self) -> primitives.Float | None:
-        """The HeightField field value."""
+        """The height of this UI."""
         member = self.get_member("HeightField")
         if member is None:
             return None
@@ -452,7 +452,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def cursor_ratio_field(self) -> primitives.Float | None:
-        """The CursorRatioField field value."""
+        """the size of the slider cursor compared to the slider container."""
         member = self.get_member("CursorRatioField")
         if member is None:
             return None
@@ -471,7 +471,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def thickness_field(self) -> primitives.Float | None:
-        """The ThicknessField field value."""
+        """the thickness of the UI."""
         member = self.get_member("ThicknessField")
         if member is None:
             return None
@@ -490,7 +490,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def slant_field(self) -> primitives.Float | None:
-        """The SlantField field value."""
+        """How beveled the UI is."""
         member = self.get_member("SlantField")
         if member is None:
             return None
@@ -509,7 +509,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def spacing_ratio_field(self) -> primitives.Float | None:
-        """The SpacingRatioField field value."""
+        """How to space out the center UI and its buttons."""
         member = self.get_member("SpacingRatioField")
         if member is None:
             return None
@@ -528,7 +528,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def track_ratio_field(self) -> primitives.Float | None:
-        """The TrackRatioField field value."""
+        """How big the slider track should be compared to the UI."""
         member = self.get_member("TrackRatioField")
         if member is None:
             return None
@@ -547,7 +547,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def button_ratio_field(self) -> primitives.Float | None:
-        """The ButtonRatioField field value."""
+        """How big the buttons should be compared to the slider."""
         member = self.get_member("ButtonRatioField")
         if member is None:
             return None
@@ -566,7 +566,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def track_mesh(self) -> str | None:
-        """Target ID of the _trackMesh reference (targets MultiBevelStripeMesh)."""
+        """The mesh for the slider track."""
         member = self.get_member("_trackMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -587,7 +587,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def left_mesh(self) -> str | None:
-        """Target ID of the _leftMesh reference (targets BevelStripeMesh)."""
+        """The mesh for the left button."""
         member = self.get_member("_leftMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -608,7 +608,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def right_mesh(self) -> str | None:
-        """Target ID of the _rightMesh reference (targets BevelStripeMesh)."""
+        """The mesh for the right button."""
         member = self.get_member("_rightMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -629,7 +629,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def cursor_mesh(self) -> str | None:
-        """Target ID of the _cursorMesh reference (targets BevelStripeMesh)."""
+        """The mesh for the slider cursor."""
         member = self.get_member("_cursorMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -650,7 +650,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def track_material(self) -> str | None:
-        """Target ID of the _trackMaterial reference (targets PBS_RimMetallic)."""
+        """The material of the slider track."""
         member = self.get_member("_trackMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -671,7 +671,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def left_material(self) -> str | None:
-        """Target ID of the _leftMaterial reference (targets PBS_RimMetallic)."""
+        """The material of the left button."""
         member = self.get_member("_leftMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -692,7 +692,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def right_material(self) -> str | None:
-        """Target ID of the _rightMaterial reference (targets PBS_RimMetallic)."""
+        """The material of the right button."""
         member = self.get_member("_rightMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -713,7 +713,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def cursor_material(self) -> str | None:
-        """Target ID of the _cursorMaterial reference (targets PBS_RimMetallic)."""
+        """The material of the slider cursor."""
         member = self.get_member("_cursorMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -734,7 +734,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def left_position(self) -> str | None:
-        """Target ID of the _leftPosition reference (targets IField[primitives.Float3])."""
+        """The position field of the left button."""
         member = self.get_member("_leftPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -755,7 +755,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def right_position(self) -> str | None:
-        """Target ID of the _rightPosition reference (targets IField[primitives.Float3])."""
+        """The position field of the right button."""
         member = self.get_member("_rightPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -776,7 +776,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def cursor_position(self) -> str | None:
-        """Target ID of the _cursorPosition reference (targets IField[primitives.Float3])."""
+        """The position field of the cursor."""
         member = self.get_member("_cursorPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -797,7 +797,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def left_collider_size(self) -> str | None:
-        """Target ID of the _leftColliderSize reference (targets IField[primitives.Float3])."""
+        """The size field of the left button's collider."""
         member = self.get_member("_leftColliderSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -818,7 +818,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def right_collider_size(self) -> str | None:
-        """Target ID of the _rightColliderSize reference (targets IField[primitives.Float3])."""
+        """The size field of the right button's collider."""
         member = self.get_member("_rightColliderSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -839,7 +839,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def track_collider_size(self) -> str | None:
-        """Target ID of the _trackColliderSize reference (targets IField[primitives.Float3])."""
+        """The size field of the track's collider."""
         member = self.get_member("_trackColliderSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -860,7 +860,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
 
     @property
     def cursor_collider_size(self) -> str | None:
-        """Target ID of the _cursorColliderSize reference (targets IField[primitives.Float3])."""
+        """The size field of the cursor's collider."""
         member = self.get_member("_cursorColliderSize")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalUserLiveStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocalUserLiveStatus.
+    """The LocalUserLiveStatus component outputs whether the local user is live or not.
 
     Category: Utility
     """
@@ -29,7 +29,7 @@ class LocalUserLiveStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_live(self) -> primitives.Bool | None:
-        """The IsLive field value."""
+        """Outputs whether the local user is live or not."""
         member = self.get_member("IsLive")
         if member is None:
             return None

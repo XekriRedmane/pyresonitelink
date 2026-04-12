@@ -1,0 +1,26 @@
+{
+  "description": "This component modifies the rotation of the fingers of an avatar's hand based on a pose source.\nThe HandPoser works with whatever data is avilable, either precise finger tracking like a LeapMotion, or course grained like a vive wand, where grip and trigger affect the main finger positions.\n\nThe HandPoser is made of five duplicate finger objects, each of which contains four duplicate bone objects. Each bone object contains a Coordinate Compensation, Root, OrigionalRotation, and RotationDrive.\nThe below chart is difficult to read for this reason, but read it as: the same four fields, duplicated four times (one for each bone), duplicated five times (one for each finger).\n\nDue to this pattern, the intermediate bone of the thumb should never be bound as a human thumb does not have an intermediate bone.",
+  "category": "Users:Common Avatar System:Fingers",
+  "fields": {
+    "PoseSource": "What the finger transform data is derived from.",
+    "Side": "Which hand this poser is representing",
+    "PoseMetacarpals": "If metacarpals should be posed (this should normally be left as True)",
+    "HandRoot": "The root of the hand (if null the slot the component is attached to is used)",
+    "HandForward": "A unit vector pointing forward from the wrist to the fingers.",
+    "HandUp": "A unit vector pointing from the back of the hand outwards (alternatively phrased, this is pointing into the palm)",
+    "HandRight": "A unit vector pointing to the right of the hand, if the hand is facing down. This is roughly the direction of the thumb on the left hand, and the other side of the hand from the thumb on the right hand.",
+    "Thumb": "The Thumb on an anthro hand.",
+    "Index": "The Index on an anthro hand.",
+    "Middle": "The Middle on an anthro hand.",
+    "Ring": "The Ring on an anthro hand.",
+    "Pinky": "The Pinky on an anthro hand.",
+    "DebugFingers": "Whether to show visuals for debugging the fingers."
+  },
+  "methods": {
+    "OnAssignFromRig": "Rig]] component.",
+    "OnInitializeHand": "Sets up the default rotations and coordinate compensations for the fingers currently in this component from its current pose."
+  },
+  "usage": "This component forcibly assigns the rotation of each bound finger to a particular bone relative to the palm.\nAs an example of this, if you only assign a Distal bone, that bone will spin 270 degrees starting pointing forwards, curling to point out the direction of the palm, back towards the wrist, then pointing out the back of the hand.\n\nIt is often easiest to make changes to this component following this procedure:\n# Have the avatar be unequipped\n# Clear every RotationDrive field\n# Assign the Root field of each bone in the hand to be driven, this list will not be complete and some roots will be null.\n# Press InitializeHand at the bottom of the component (Note: This button only works once, to reset the button select another slot, then select the slot with the component again).\n# Re-Equip the avatar and see if the hands initialized successfully.\n# If a bone did not bind correctly, repeat.\n\n== Interaction with grabbable items ==",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HandPoser&action=raw"
+}

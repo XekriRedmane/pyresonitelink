@@ -6,9 +6,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NullParticleRenderer(GeneratedComponent, IParticleRenderer, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.NullParticleRenderer.
+    """The Null Particle Renderer component is used with Photon Dust to render zero geometry particles.
 
     Category: Rendering/Particle System/Renderers
+
+    Used for debugging.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.NullParticleRenderer"

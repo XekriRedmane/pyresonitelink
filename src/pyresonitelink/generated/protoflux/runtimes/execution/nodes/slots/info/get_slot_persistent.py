@@ -34,7 +34,7 @@ class GetSlotPersistent(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """Slot to check."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId

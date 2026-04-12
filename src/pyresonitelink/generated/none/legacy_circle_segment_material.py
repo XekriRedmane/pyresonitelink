@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyCircleSegmentMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyCircleSegmentMaterial.
+    """The LegacyCircleSegmentMaterial component is a leftover Component from content migrated from other platforms. It should not be used, and should be replaced whenever possible.
+
+    Not to be used.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyCircleSegmentMaterial"

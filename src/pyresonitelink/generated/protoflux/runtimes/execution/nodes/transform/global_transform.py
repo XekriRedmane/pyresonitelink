@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GlobalTransform(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Global Transform node outputs the position, rotation and scale of the input slot in global coordinate space, i.e. the slot's transform relative to the world root slot.
+    """The ``Global Transform`` node outputs the position, rotation and scale of the input slot in global coordinate space, i.e. the slot's transform relative to the world root slot.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform
     """

@@ -19,6 +19,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class SetChildIndex(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Sets the offset of the provided Instance (Slot) in the inspector compared to others that have the same immediate parent to Index (Int).
 
+It should be noted that this node may update the OrderOffset of the other slots with the same parent (ie. siblings) to ensure that the Instance slot gets the correct child index.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots
     """
 
@@ -43,7 +45,7 @@ class SetChildIndex(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """sends an impulse after * (Call) is called and Instance (Slot) has had it's index set to Index (Int)."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +66,7 @@ class SetChildIndex(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot to set the child index of."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +87,7 @@ class SetChildIndex(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def index(self) -> str | None:
-        """Target ID of the Index reference (targets INodeValueOutput[primitives.Int])."""
+        """The child index to set Instance (Slot) to."""
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             return member.targetId

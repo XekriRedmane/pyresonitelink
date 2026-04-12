@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSpanFromSeconds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The TimeSpan From Seconds node takes in the amount of seconds and converts it into a TimeSpan that shows the span of time in seconds.
+    """The ``TimeSpan From Seconds`` node takes in the amount of seconds and converts it into a TimeSpan that shows the span of time in seconds.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/Timespan
     """
@@ -33,7 +33,7 @@ class TimeSpanFromSeconds(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[primitives.Double])."""
+        """The amount of seconds."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId

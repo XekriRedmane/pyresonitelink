@@ -9,7 +9,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StaticAnimationProvider(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StaticAnimationProvider.
+    """Static Animation Provider is a Component that is generated when importing AnimJ's or files with animation data. 
+}}
 
     Category: Assets
     """
@@ -29,7 +30,7 @@ class StaticAnimationProvider(GeneratedComponent, IStaticAssetProvider, ICustomI
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """an asset URI pointing to a valid Animation file type."""
         member = self.get_member("URL")
         if member is None:
             return None

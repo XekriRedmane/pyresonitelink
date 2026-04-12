@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OpenHomeFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.OpenHomeFacetPreset.
+    """The OpenHomeFacetPreset component loads the Open Home facet when it's not ``_fullyLoaded``. It does this by loading the facet from the cloud, and using that loaded data to make the preset
 
     Category: Radiant UI/Facets
+
+    used in the main dash. no need to be used by the user unless they are
+    missing the Open Home facet.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OpenHomeFacetPreset"
@@ -29,7 +32,7 @@ class OpenHomeFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def fully_loaded(self) -> primitives.Bool | None:
-        """The _fullyLoaded field value."""
+        """Whether this facet has been fully loaded and ready to use"""
         member = self.get_member("_fullyLoaded")
         if member is None:
             return None

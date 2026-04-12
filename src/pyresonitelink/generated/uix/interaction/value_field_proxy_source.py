@@ -10,9 +10,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueFieldProxySource(GenericComponent[T], IUIGrabbable, IValueFieldProxySource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueFieldProxySource<>.
+    """The ValueFieldProxySource component allows for the user to grab a value from what is stored in a field off from a UIX element. This requires a Button component to work.
+
+}}
 
     Category: UIX/Interaction
+
+    This is used to carry values to other UIX elements that are looking for
+    it. Using this component along with the ValueReceiver and ValueField
+    will allow the user to carry the field's value from source to receiver
+    directly.
 
     Parameterize with a value type::
 
@@ -36,7 +43,7 @@ class ValueFieldProxySource(GenericComponent[T], IUIGrabbable, IValueFieldProxyS
 
     @property
     def field(self) -> str | None:
-        """Target ID of the Field reference (targets IField[T])."""
+        """The field to grab a value from."""
         member = self.get_member("Field")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IndexOfString(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Index Of String is a ProtoFlux node that gives a index of where a string occurs in another string.
+    """Index Of String is a ProtoFlux node that gives a index of where a string occurs in another string. 
+
+The output is at where it starts.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """
@@ -47,7 +49,7 @@ class IndexOfString(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to search for Part (String) in."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +70,7 @@ class IndexOfString(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def part(self) -> str | None:
-        """Target ID of the Part reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to look for inside of Str (String). Returns ``-1`` if not found."""
         member = self.get_member("Part")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +91,7 @@ class IndexOfString(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def start_index(self) -> str | None:
-        """Target ID of the StartIndex reference (targets INodeValueOutput[primitives.Int])."""
+        """The position after which to start searching. Default ``0``."""
         member = self.get_member("StartIndex")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +112,7 @@ class IndexOfString(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def search_from_end(self) -> str | None:
-        """Target ID of the SearchFromEnd reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether this should start searching from the end rather than the beginning after StartIndex (int)."""
         member = self.get_member("SearchFromEnd")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -13,7 +13,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetRawDataToolHit(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.Tools.GetRawDataToolHit.
+    """The ``Get Raw Data Tool Hit`` node creates a raycast from the origin (tip reference slot position and direction?) looking and retrieving for valid hits. This node acts similarly to the Raycaster and Raycast One nodes in functionality.
+
+This node returns data per frame, and is very useful for debugging and testing hit detection due to its constant updates.
+
+This node can be combined with the Hit UV Coordinate node to get further data from this hit, such as a 2D location point on the collider for example.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """
@@ -67,7 +71,7 @@ class GetRawDataToolHit(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def hit_point(self) -> members.EmptyElement | None:
-        """The HitPoint member."""
+        """The point in 3D space of where we hit."""
         member = self.get_member("HitPoint")
         if isinstance(member, members.EmptyElement):
             return member
@@ -75,12 +79,12 @@ class GetRawDataToolHit(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @hit_point.setter
     def hit_point(self, value: members.EmptyElement) -> None:
-        """Set the HitPoint member."""
+        """Set HitPoint. The point in 3D space of where we hit."""
         self.set_member("HitPoint", value)
 
     @property
     def hit_normal(self) -> members.EmptyElement | None:
-        """The HitNormal member."""
+        """The normal of the collider facing direction."""
         member = self.get_member("HitNormal")
         if isinstance(member, members.EmptyElement):
             return member
@@ -88,12 +92,12 @@ class GetRawDataToolHit(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @hit_normal.setter
     def hit_normal(self, value: members.EmptyElement) -> None:
-        """Set the HitNormal member."""
+        """Set HitNormal. The normal of the collider facing direction."""
         self.set_member("HitNormal", value)
 
     @property
     def hit_distance(self) -> members.EmptyElement | None:
-        """The HitDistance member."""
+        """The distance of how far this hit was from the origin of this raycast."""
         member = self.get_member("HitDistance")
         if isinstance(member, members.EmptyElement):
             return member
@@ -101,12 +105,12 @@ class GetRawDataToolHit(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @hit_distance.setter
     def hit_distance(self, value: members.EmptyElement) -> None:
-        """Set the HitDistance member."""
+        """Set HitDistance. The distance of how far this hit was from the origin of this raycast."""
         self.set_member("HitDistance", value)
 
     @property
     def hit_triangle_index(self) -> members.EmptyElement | None:
-        """The HitTriangleIndex member."""
+        """The mesh data number of our hit."""
         member = self.get_member("HitTriangleIndex")
         if isinstance(member, members.EmptyElement):
             return member
@@ -114,6 +118,6 @@ class GetRawDataToolHit(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @hit_triangle_index.setter
     def hit_triangle_index(self, value: members.EmptyElement) -> None:
-        """Set the HitTriangleIndex member."""
+        """Set HitTriangleIndex. The mesh data number of our hit."""
         self.set_member("HitTriangleIndex", value)
 

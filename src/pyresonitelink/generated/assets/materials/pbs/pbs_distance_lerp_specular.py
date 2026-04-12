@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.culling import Culling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -14,14 +15,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PBS_DistanceLerpSpecular(GeneratedComponent, ICullingMaterial, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PBS_DistanceLerpSpecular.
+    """Works on meshes with dense vertices. Can apply tint based on distance to specified points, and also displaces the vertices in the mesh based on distance to specified points (possibly towards/away from the point).
 
     Category: Assets/Materials/PBS
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_DistanceLerpSpecular"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, grid_size: primitives.Float3 | None = None, grid_offset: primitives.Float3 | None = None, displace_from: primitives.Float | None = None, displace_to: primitives.Float | None = None, displace_magnitude_from: primitives.Float | None = None, displace_magnitude_to: primitives.Float | None = None, emission_from: primitives.Float | None = None, emission_to: primitives.Float | None = None, emission_color_from: primitives.ColorX | None = None, emission_color_to: primitives.ColorX | None = None, override_displacement_direction: primitives.Float3 | None = None, local_space: primitives.Bool | None = None, transparent: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, grid_size: primitives.Float3 | None = None, grid_offset: primitives.Float3 | None = None, displace_from: primitives.Float | None = None, displace_to: primitives.Float | None = None, displace_magnitude_from: primitives.Float | None = None, displace_magnitude_to: primitives.Float | None = None, emission_from: primitives.Float | None = None, emission_to: primitives.Float | None = None, emission_color_from: primitives.ColorX | None = None, emission_color_to: primitives.ColorX | None = None, override_displacement_direction: primitives.Float3 | None = None, local_space: primitives.Bool | None = None, culling: Culling | str | None = None, transparent: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -47,6 +48,7 @@ class PBS_DistanceLerpSpecular(GeneratedComponent, ICullingMaterial, IAssetProvi
             emission_color_to: Initial value for EmissionColorTo.
             override_displacement_direction: Initial value for OverrideDisplacementDirection.
             local_space: Initial value for LocalSpace.
+            culling: Initial value for Culling.
             transparent: Initial value for Transparent.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
@@ -101,6 +103,8 @@ class PBS_DistanceLerpSpecular(GeneratedComponent, ICullingMaterial, IAssetProvi
             self.override_displacement_direction = override_displacement_direction
         if local_space is not None:
             self.local_space = local_space
+        if culling is not None:
+            self.culling = culling
         if transparent is not None:
             self.transparent = transparent
         if offset_factor is not None:
@@ -556,17 +560,24 @@ class PBS_DistanceLerpSpecular(GeneratedComponent, ICullingMaterial, IAssetProvi
         self.set_member("Points", value)
 
     @property
-    def culling(self) -> members.FieldEnum | None:
-        """The Culling member."""
+    def culling(self) -> Culling | None:
+        """The Culling enum value."""
         member = self.get_member("Culling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Culling(member.value)
         return None
 
     @culling.setter
-    def culling(self, value: members.FieldEnum) -> None:
-        """Set the Culling member."""
-        self.set_member("Culling", value)
+    def culling(self, value: Culling | str) -> None:
+        """Set the Culling enum value."""
+        member = self.get_member("Culling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Culling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def transparent(self) -> primitives.Bool | None:

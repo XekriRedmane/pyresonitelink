@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReflectionProbeWizard.
+    """See Reflection Probe Wizard for more up to date info
+
+    See Reflection Probe Wizard.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReflectionProbeWizard"
@@ -49,7 +51,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets Slot)."""
+        """The root slot in which all probes in it's hierarchy should be baked."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +72,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
 
     @property
     def process_disabled(self) -> primitives.Bool | None:
-        """The ProcessDisabled field value."""
+        """Whether to bake probes in disabled hierarchies."""
         member = self.get_member("ProcessDisabled")
         if member is None:
             return None
@@ -89,7 +91,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
 
     @property
     def teleport_user_to_probe(self) -> primitives.Bool | None:
-        """The TeleportUserToProbe field value."""
+        """Whether to teleport the user to the probe before baking."""
         member = self.get_member("TeleportUserToProbe")
         if member is None:
             return None
@@ -108,7 +110,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
 
     @property
     def tag(self) -> str | None:
-        """Target ID of the _tag reference (targets TextField)."""
+        """Probes only with this tag will be baked."""
         member = self.get_member("_tag")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -129,7 +131,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
 
     @property
     def delay_between_probes(self) -> str | None:
-        """Target ID of the _delayBetweenProbes reference (targets FloatTextEditorParser)."""
+        """How long to wait between baking probes."""
         member = self.get_member("_delayBetweenProbes")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -150,7 +152,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
 
     @property
     def bake_count(self) -> primitives.Int | None:
-        """The _bakeCount field value."""
+        """The number of probes baked"""
         member = self.get_member("_bakeCount")
         if member is None:
             return None
@@ -169,7 +171,7 @@ class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEvent
 
     @property
     def bake_index(self) -> primitives.Int | None:
-        """The _bakeIndex field value."""
+        """The current probe being baked."""
         member = self.get_member("_bakeIndex")
         if member is None:
             return None

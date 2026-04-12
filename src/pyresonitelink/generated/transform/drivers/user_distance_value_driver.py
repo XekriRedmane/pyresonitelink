@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.user_node import UserNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -11,9 +12,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserDistanceValueDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserDistanceValueDriver<>.
+    """The UserDistanceValueDriver switches or flip flops or flips between two different values like a conditional or ternary operator when a user is close to or far away from the slot this component is on. The switch is local.
 
     Category: Transform/Drivers
+
+    Attach to a slot that a distance to the local user for a particular slot
+    in global space needs to be checked for. Then provide values for all the
+    component's fields in order for it to work.
 
     Parameterize with a value type::
 
@@ -24,10 +29,11 @@ class UserDistanceValueDriver(GenericComponent[T], IComponent, IWorldEventReceiv
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserDistanceValueDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.UserDistanceValueDriver<>"
 
-    def __init__(self, distance: primitives.Float | None = None, target_field: str | IField[T] | None = None, near_value: T | None = None, far_value: T | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: UserNode | str | None = None, distance: primitives.Float | None = None, target_field: str | IField[T] | None = None, near_value: T | None = None, far_value: T | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            node: Initial value for Node.
             distance: Initial value for Distance.
             target_field: Initial value for TargetField.
             near_value: Initial value for NearValue.
@@ -35,6 +41,8 @@ class UserDistanceValueDriver(GenericComponent[T], IComponent, IWorldEventReceiv
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if node is not None:
+            self.node = node
         if distance is not None:
             self.distance = distance
         if target_field is not None:
@@ -45,21 +53,28 @@ class UserDistanceValueDriver(GenericComponent[T], IComponent, IWorldEventReceiv
             self.far_value = far_value
 
     @property
-    def node(self) -> members.FieldEnum | None:
-        """The Node member."""
+    def node(self) -> UserNode | None:
+        """The user node to check distance from."""
         member = self.get_member("Node")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return UserNode(member.value)
         return None
 
     @node.setter
-    def node(self, value: members.FieldEnum) -> None:
-        """Set the Node member."""
-        self.set_member("Node", value)
+    def node(self, value: UserNode | str) -> None:
+        """Set Node. The user node to check distance from."""
+        member = self.get_member("Node")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Node",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def distance(self) -> primitives.Float | None:
-        """The Distance field value."""
+        """The distance to use when checking near vs far."""
         member = self.get_member("Distance")
         if member is None:
             return None
@@ -78,7 +93,7 @@ class UserDistanceValueDriver(GenericComponent[T], IComponent, IWorldEventReceiv
 
     @property
     def target_field(self) -> str | None:
-        """Target ID of the TargetField reference (targets IField[T])."""
+        """The field to drive with either ``NearValue`` or flip to ``FarValue`` depending on distance."""
         member = self.get_member("TargetField")
         if isinstance(member, members.Reference):
             return member.targetId

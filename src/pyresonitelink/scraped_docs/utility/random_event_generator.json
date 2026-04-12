@@ -1,0 +1,20 @@
+{
+  "description": "Random event generator is a component that is used to generate random events and point events given a minimum and maximum delay between events.",
+  "category": "Utility",
+  "fields": {
+    "MinInterval": "The minimum time in seconds before another event is generated",
+    "MaxInterval": "The maximum time in seconds before another event is generated",
+    "RandomPointGenerator": "a point generator component that is used as the limiter on where random point events can be located.",
+    "Events": "Random events that when calling a Sync Delegate provide no data to it's arguments.",
+    "PointEvents": "Random events that when calling a Sync Delegate provide a Float3 to it's arguments."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Generates random events and sends them to the lists of ``Events`` and ``PointEvents``."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RandomEventGenerator&action=raw"
+}

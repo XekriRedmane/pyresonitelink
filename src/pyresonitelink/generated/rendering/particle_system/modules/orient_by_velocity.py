@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OrientByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.OrientByVelocity.
+    """The OrientByVelocity component makes particles orient the ``Up`` axis of the particle in the direction they are moving.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.OrientByVelocity"
@@ -35,7 +40,7 @@ class OrientByVelocity(GeneratedComponent, IParticleSystemModule, IWorldEventRec
 
     @property
     def up(self) -> primitives.Float3 | None:
-        """The Up field value."""
+        """What axis of the particle to orient in the direction the particle is moving."""
         member = self.get_member("Up")
         if member is None:
             return None

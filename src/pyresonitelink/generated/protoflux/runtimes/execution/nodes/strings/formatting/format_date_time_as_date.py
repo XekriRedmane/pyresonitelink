@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatDateTimeAsDate(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Format DateTime As Date node takes a DateTime and converts it into a string, formatted in a date format.
+    """The ``Format DateTime As Date`` node takes a DateTime and converts it into a string, formatted in a date format.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Formatting
     """
@@ -37,7 +37,7 @@ class FormatDateTimeAsDate(GeneratedComponent, INodeObjectOutput, IExecutionNode
 
     @property
     def date(self) -> str | None:
-        """Target ID of the Date reference (targets INodeValueOutput[str])."""
+        """The DateTime as time."""
         member = self.get_member("Date")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,9 @@ class FormatDateTimeAsDate(GeneratedComponent, INodeObjectOutput, IExecutionNode
 
     @property
     def format_provider(self) -> str | None:
-        """Target ID of the FormatProvider reference (targets INodeObjectOutput[IFormatProvider])."""
+        """An object that supplies culture-specific formatting information.
+
+Nodes that output this type can be found in Strings/Localization"""
         member = self.get_member("FormatProvider")
         if isinstance(member, members.Reference):
             return member.targetId

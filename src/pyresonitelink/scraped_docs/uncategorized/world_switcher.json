@@ -1,0 +1,20 @@
+{
+  "description": "The WorldSwitcher component is legacy content for switching worlds via rotating the wrist.",
+  "category": "Uncategorized",
+  "fields": {
+    "Show": "Whether the switcher should be shown.",
+    "IgnoreTouchesFrom": "A slot to ignore touch events from. like the hand it is on.",
+    "_repulsionTree": "The repulsion tree used to arrange the orbs in the menu.",
+    "_linesMesh": "A multi segment mesh used to create the selection and indication visuals.",
+    "_slider": "The slider used as part of the selection menu.",
+    "_centerOrb": "The center orb that moves the rest of the orbs to places around it.",
+    "_visualRoot": "The root slot for all the visuals of the switcher."
+  },
+  "methods": {
+    "WorldOrbTouched": "Handles when a world orb is touched for switching to it.",
+    "WorldOrbLongPressed": "Handles when a world orb is long touched to bring up options."
+  },
+  "usage": "Can be brought up through the legacy world switcher option in the legacy settings options.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldSwitcher&action=raw"
+}

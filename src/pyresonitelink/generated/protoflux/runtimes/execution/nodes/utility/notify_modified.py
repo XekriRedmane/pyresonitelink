@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NotifyModified(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Notify Modified node takes in an IComponent, and when called will invoke the NotifyModified method on the input Component. Used for components which implement IModifiedEventReceiver like GridContainerPreset and Workspace.
+    """The ``Notify Modified`` node takes in an IComponent, and when called will invoke the ``NotifyModified`` method on the input Component. Used for components which implement IModifiedEventReceiver like GridContainerPreset and Workspace.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
     """
@@ -38,7 +38,7 @@ class NotifyModified(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INo
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continue the code from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class NotifyModified(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INo
 
     @property
     def modified_component(self) -> str | None:
-        """Target ID of the ModifiedComponent reference (targets INodeObjectOutput[IComponent])."""
+        """The component to check."""
         member = self.get_member("ModifiedComponent")
         if isinstance(member, members.Reference):
             return member.targetId

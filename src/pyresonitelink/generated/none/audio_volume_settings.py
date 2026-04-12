@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioVolumeSettings.
+    """The AudioVolumeSettings is a Legacy component previously used for settings in the game.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioVolumeSettings"
@@ -39,7 +39,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def master_volume(self) -> primitives.Float | None:
-        """The MasterVolume field value."""
+        """The volume setting for everything in the game."""
         member = self.get_member("MasterVolume")
         if member is None:
             return None
@@ -58,7 +58,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def sound_effect_volume(self) -> primitives.Float | None:
-        """The SoundEffectVolume field value."""
+        """The volume setting for sound effects in the game."""
         member = self.get_member("SoundEffectVolume")
         if member is None:
             return None
@@ -77,7 +77,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def multimedia_volume(self) -> primitives.Float | None:
-        """The MultimediaVolume field value."""
+        """The volume setting for multimedia in the game."""
         member = self.get_member("MultimediaVolume")
         if member is None:
             return None
@@ -96,7 +96,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def voice_volume(self) -> primitives.Float | None:
-        """The VoiceVolume field value."""
+        """The volume setting for voices in the game."""
         member = self.get_member("VoiceVolume")
         if member is None:
             return None
@@ -115,7 +115,7 @@ class AudioVolumeSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def user_interface_volume(self) -> primitives.Float | None:
-        """The UserInterfaceVolume field value."""
+        """The volume setting for the user interface in the game."""
         member = self.get_member("UserInterfaceVolume")
         if member is None:
             return None

@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectTransform(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.RectTransform.
+    """The RectTransform component defines what space a slot with UIX components on it will use, based on the total amount of space that has been provided. This is mostly used to encapsulate elements with inside it, then provides options to anchor, offset, and pivot the placement of the RectTransform container.
 
     Category: UIX
+
+    This can be used for placements inside your canvas or other upper
+    elements, for your images or other lower elements for this container
+    component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.RectTransform"
@@ -42,7 +46,7 @@ class RectTransform(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def anchor_min(self) -> primitives.Float2 | None:
-        """The AnchorMin field value."""
+        """The normalized position (0 to 1) in the parent object that the lower left corner is anchored to."""
         member = self.get_member("AnchorMin")
         if member is None:
             return None
@@ -61,7 +65,7 @@ class RectTransform(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def anchor_max(self) -> primitives.Float2 | None:
-        """The AnchorMax field value."""
+        """The normalized position (0 to 1) in the parent object that the upper right corner is anchored to."""
         member = self.get_member("AnchorMax")
         if member is None:
             return None
@@ -80,7 +84,7 @@ class RectTransform(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def offset_min(self) -> primitives.Float2 | None:
-        """The OffsetMin field value."""
+        """The offset of the lower left corner of the rectangle relative to the lower left anchor, in pixels."""
         member = self.get_member("OffsetMin")
         if member is None:
             return None
@@ -99,7 +103,7 @@ class RectTransform(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def offset_max(self) -> primitives.Float2 | None:
-        """The OffsetMax field value."""
+        """The offset of the upper right corner of the rectangle relative to the upper right anchor, in pixels."""
         member = self.get_member("OffsetMax")
         if member is None:
             return None
@@ -118,7 +122,7 @@ class RectTransform(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def pivot(self) -> primitives.Float2 | None:
-        """The Pivot field value."""
+        """The normalized position in this rectangle that it rotates around."""
         member = self.get_member("Pivot")
         if member is None:
             return None

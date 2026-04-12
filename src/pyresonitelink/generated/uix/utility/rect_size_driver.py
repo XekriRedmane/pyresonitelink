@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectSizeDriver(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.RectSizeDriver.
+    """The RectSizeDriver component is used to change the size of a RectTransform (or any other float2 value).
+
+}}
 
     Category: UIX/Utility
     """
@@ -34,7 +36,7 @@ class RectSizeDriver(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def target_size(self) -> str | None:
-        """Target ID of the TargetSize reference (targets IField[primitives.Float2])."""
+        """The target to scale using this component."""
         member = self.get_member("TargetSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +57,7 @@ class RectSizeDriver(GeneratedComponent, IUIComputeComponent, IWorldEventReceive
 
     @property
     def scale(self) -> primitives.Float2 | None:
-        """The Scale field value."""
+        """The scale to adjust."""
         member = self.get_member("Scale")
         if member is None:
             return None

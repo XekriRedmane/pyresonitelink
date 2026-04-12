@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SettingActionProxy<>.
+    """The SettingActionProxy component is used to trigger an action on a subsetting under the component of type S which would be globally registered in the world.
+
+    Used in the settings menu and only works in user space.
 
     Parameterize with a value type::
 
@@ -40,7 +42,7 @@ class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def action_name(self) -> primitives.String | None:
-        """The ActionName field value."""
+        """The name of the action being triggered."""
         member = self.get_member("ActionName")
         if member is None:
             return None
@@ -59,7 +61,7 @@ class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def subsetting_getter(self) -> primitives.String | None:
-        """The SubsettingGetter field value."""
+        """The name of the sync delegate method being triggered."""
         member = self.get_member("SubsettingGetter")
         if member is None:
             return None
@@ -78,7 +80,7 @@ class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def subsetting_key(self) -> primitives.String | None:
-        """The SubsettingKey field value."""
+        """The key being used to find the sub setting being triggered."""
         member = self.get_member("SubsettingKey")
         if member is None:
             return None
@@ -96,7 +98,7 @@ class SettingActionProxy(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     async def trigger(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Trigger sync method.
+        """triggers the target specified by this component's values and generic typing.
 
         Returns:
             The raw JSON response dict.

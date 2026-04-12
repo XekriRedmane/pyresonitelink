@@ -11,14 +11,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Used for lasers and interactions.
+    """The InteractionHandlerStreamDriver component uses streaming data from the ValueStream component (seen in the user Inspector) to control the interaction (such as lasers) on a user's avatar or Userspace.
+
+}}
 
     Category: Users
 
     Used for lasers and interactions.
-
-    **Related Components**: Interaction Handler Stream Driver
-Interaction Handler Stream Driver
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractionHandlerStreamDriver"

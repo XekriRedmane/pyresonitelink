@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SecondsTimer(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Seconds Timer node sends a pulse from the UpdatingUser at the specified interval of seconds.
+    """The Seconds Timer node sends a pulse from the ``UpdatingUser`` at the specified interval of seconds.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """
@@ -89,7 +89,9 @@ class SecondsTimer(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, 
 
     @property
     def on_update(self) -> str | None:
-        """Target ID of the OnUpdate reference (targets ISyncNodeOperation)."""
+        """Sends a pulse at every ``Interval`` seconds from the ``UpdatingUser``.
+
+This input can be driven by a Local User node to generate impulses for every user."""
         member = self.get_member("OnUpdate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +112,7 @@ class SecondsTimer(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, 
 
     @property
     def interval(self) -> str | None:
-        """Target ID of the Interval reference (targets INodeValueOutput[primitives.Float])."""
+        """The interval in seconds to send pulses at."""
         member = self.get_member("Interval")
         if isinstance(member, members.Reference):
             return member.targetId

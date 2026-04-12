@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.collider_type import ColliderType
+from pyresonitelink.generated._enums.mesh_collider_sidedness import MeshColliderSidedness
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,28 +14,34 @@ from pyresonitelink.generated._types.imesh_physics_data_requester import IMeshPh
 
 
 class MeshCollider(GeneratedComponent, ICustomInspector, IMeshPhysicsDataRequester):
-    """Wrapper for [FrooxEngine]FrooxEngine.MeshCollider.
+    """A mesh collider allows for making a 1:1 collider of the given ``Mesh``.
 
     Category: Physics/Colliders
+
+    General practice is to use mesh colliders very sparingly.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshCollider"
 
-    def __init__(self, offset: primitives.Float3 | None = None, mass: primitives.Float | None = None, character_collider: primitives.Bool | None = None, ignore_raycasts: primitives.Bool | None = None, mesh: str | IAssetProvider[Mesh] | None = None, actual_speculative_margin: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, offset: primitives.Float3 | None = None, type_: ColliderType | str | None = None, mass: primitives.Float | None = None, character_collider: primitives.Bool | None = None, ignore_raycasts: primitives.Bool | None = None, mesh: str | IAssetProvider[Mesh] | None = None, sidedness: MeshColliderSidedness | str | None = None, actual_speculative_margin: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             offset: Initial value for Offset.
+            type_: Initial value for Type.
             mass: Initial value for Mass.
             character_collider: Initial value for CharacterCollider.
             ignore_raycasts: Initial value for IgnoreRaycasts.
             mesh: Initial value for Mesh.
+            sidedness: Initial value for Sidedness.
             actual_speculative_margin: Initial value for ActualSpeculativeMargin.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if offset is not None:
             self.offset = offset
+        if type_ is not None:
+            self.type_ = type_
         if mass is not None:
             self.mass = mass
         if character_collider is not None:
@@ -42,6 +50,8 @@ class MeshCollider(GeneratedComponent, ICustomInspector, IMeshPhysicsDataRequest
             self.ignore_raycasts = ignore_raycasts
         if mesh is not None:
             self.mesh = mesh
+        if sidedness is not None:
+            self.sidedness = sidedness
         if actual_speculative_margin is not None:
             self.actual_speculative_margin = actual_speculative_margin
 
@@ -65,17 +75,24 @@ class MeshCollider(GeneratedComponent, ICustomInspector, IMeshPhysicsDataRequest
             )
 
     @property
-    def type_(self) -> members.FieldEnum | None:
-        """The Type member."""
+    def type_(self) -> ColliderType | None:
+        """The Type enum value."""
         member = self.get_member("Type")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColliderType(member.value)
         return None
 
     @type_.setter
-    def type_(self, value: members.FieldEnum) -> None:
-        """Set the Type member."""
-        self.set_member("Type", value)
+    def type_(self, value: ColliderType | str) -> None:
+        """Set the Type enum value."""
+        member = self.get_member("Type")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Type",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def mass(self) -> primitives.Float | None:
@@ -136,7 +153,7 @@ class MeshCollider(GeneratedComponent, ICustomInspector, IMeshPhysicsDataRequest
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the Mesh reference (targets IAssetProvider[Mesh])."""
+        """The mesh to make a collision shape made of groups of polygons out of."""
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -156,21 +173,28 @@ class MeshCollider(GeneratedComponent, ICustomInspector, IMeshPhysicsDataRequest
             )
 
     @property
-    def sidedness(self) -> members.FieldEnum | None:
-        """The Sidedness member."""
+    def sidedness(self) -> MeshColliderSidedness | None:
+        """Front or back sided collisions."""
         member = self.get_member("Sidedness")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MeshColliderSidedness(member.value)
         return None
 
     @sidedness.setter
-    def sidedness(self, value: members.FieldEnum) -> None:
-        """Set the Sidedness member."""
-        self.set_member("Sidedness", value)
+    def sidedness(self, value: MeshColliderSidedness | str) -> None:
+        """Set Sidedness. Front or back sided collisions."""
+        member = self.get_member("Sidedness")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Sidedness",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def actual_speculative_margin(self) -> primitives.Float | None:
-        """The ActualSpeculativeMargin field value."""
+        """Essentially the room for error on the collisions for this collider."""
         member = self.get_member("ActualSpeculativeMargin")
         if member is None:
             return None

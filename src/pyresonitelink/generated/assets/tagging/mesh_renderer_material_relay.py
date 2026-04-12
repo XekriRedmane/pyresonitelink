@@ -10,9 +10,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MeshRendererMaterialRelay(GeneratedComponent, IMaterialTarget, IMaterialSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MeshRendererMaterialRelay.
+    """Attach to a slot and provide the mesh renderers that should have materials applied to them with the material Tool in Renderers.
 
     Category: Assets/Tagging
+
+    Attach to a slot and provide the mesh renderers that should have
+    materials applied to them with the material Tool in ``Renderers``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshRendererMaterialRelay"
@@ -30,7 +33,7 @@ class MeshRendererMaterialRelay(GeneratedComponent, IMaterialTarget, IMaterialSo
 
     @property
     def renderers(self) -> members.SyncList | None:
-        """The Renderers member."""
+        """The list of renderers to relay to the material tool."""
         member = self.get_member("Renderers")
         if isinstance(member, members.SyncList):
             return member
@@ -38,12 +41,12 @@ class MeshRendererMaterialRelay(GeneratedComponent, IMaterialTarget, IMaterialSo
 
     @renderers.setter
     def renderers(self, value: members.SyncList) -> None:
-        """Set the Renderers member."""
+        """Set Renderers. The list of renderers to relay to the material tool."""
         self.set_member("Renderers", value)
 
     @property
     def renderer(self) -> str | None:
-        """Target ID of the _renderer reference (targets MeshRenderer)."""
+        """An extra renderer that's legacy."""
         member = self.get_member("_renderer")
         if isinstance(member, members.Reference):
             return member.targetId

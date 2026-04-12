@@ -17,6 +17,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class Toggle(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Toggle node tells a IPlayable to start or stop playback upon impulse, depending on the current state.
 
+This will start playback on impulse if it's currently stopped, and vice versa.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """
 
@@ -38,7 +40,7 @@ class Toggle(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICus
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse after the initial call."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId

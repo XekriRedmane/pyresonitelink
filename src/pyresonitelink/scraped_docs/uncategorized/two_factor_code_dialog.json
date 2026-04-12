@@ -1,0 +1,13 @@
+{
+  "description": "The TwoFactorCodeDialog component is used to accept and process a 2FA code from a user when logging into Resonite.",
+  "category": "Uncategorized",
+  "fields": {
+    "_code": "The text field used to enter the 2FA code."
+  },
+  "methods": {
+    "OnConfirm": "Handles when the user hits the confirm code button."
+  },
+  "usage": "Not to be used by the user directly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TwoFactorCodeDialog&action=raw"
+}

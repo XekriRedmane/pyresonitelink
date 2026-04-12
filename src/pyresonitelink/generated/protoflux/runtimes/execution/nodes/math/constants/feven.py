@@ -13,10 +13,6 @@ class Feven(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICusto
     """The almighty Feven.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
-
-    **Outputs**: A ulong that does not allow the User to connect to anything. This is a known issue in Resonite.
-
-ProtoFlux:Math:Constants
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Constants.Feven"

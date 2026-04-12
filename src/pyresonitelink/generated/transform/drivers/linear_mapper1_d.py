@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LinearMapper1D.
+    """Linear Mapper 1D is a component that live maps one range to another, allowing for a reverse mapping of the target range value back to the source range when it is written to.
 
     Category: Transform/Drivers
+
+    Can be used to keep the fullness of two different containers the same
+    percentage wise based on purely the stored units and maximum capacity.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LinearMapper1D"
@@ -53,7 +56,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IValue[primitives.Float])."""
+        """The value to map from ``SourceMin`` to ``SourceMax`` using ``Target``."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -74,7 +77,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float])."""
+        """The value to map from ``TargetMin`` to ``TargetMax`` using ``Source``."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -95,7 +98,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source_min(self) -> primitives.Float | None:
-        """The SourceMin field value."""
+        """The minimum of the range of the ``Source`` value."""
         member = self.get_member("SourceMin")
         if member is None:
             return None
@@ -114,7 +117,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source_max(self) -> primitives.Float | None:
-        """The SourceMax field value."""
+        """The maximum of the range of the ``Source`` value."""
         member = self.get_member("SourceMax")
         if member is None:
             return None
@@ -133,7 +136,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_min(self) -> primitives.Float | None:
-        """The TargetMin field value."""
+        """The minimum of the range of the ``Target`` value."""
         member = self.get_member("TargetMin")
         if member is None:
             return None
@@ -152,7 +155,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_max(self) -> primitives.Float | None:
-        """The TargetMax field value."""
+        """The maximum of the range of the ``Target`` value."""
         member = self.get_member("TargetMax")
         if member is None:
             return None
@@ -171,7 +174,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def allow_reverse_mapping(self) -> primitives.Bool | None:
-        """The AllowReverseMapping field value."""
+        """Allow ``Target`` to map it's value to ``Source``'s ranged value when written to. See write backs."""
         member = self.get_member("AllowReverseMapping")
         if member is None:
             return None
@@ -190,7 +193,7 @@ class LinearMapper1D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def clamp(self) -> primitives.Bool | None:
-        """The Clamp field value."""
+        """Whether to prevent ``Source`` and ``Target`` from going outside their defined ranges."""
         member = self.get_member("Clamp")
         if member is None:
             return None

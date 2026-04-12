@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.mode import Mode
+from pyresonitelink.generated._enums.space import Space
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -10,19 +12,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CharacterForceField.
+    """This component creates a force field that allows the setting of or applying force to the velocity of Character Controllers.
 
     Category: Locomotion/Interaction
+
+    **Behavior**: Needs a collider on the same hierarchy to allow triggering this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterForceField"
 
-    def __init__(self, triggers_only: primitives.Bool | None = None, force: primitives.Float3 | None = None, radial_force_radius: primitives.Float | None = None, min_activation_velocity: primitives.Float | None = None, max_force_velocity: primitives.Float | None = None, hold_jump_max_force_velocity: primitives.Float | None = None, preseve_direction_across_plane: primitives.Bool | None = None, ignore_parent_user: primitives.Bool | None = None, no_jump_multiplier: primitives.Float | None = None, hold_jump_multiplier: primitives.Float | None = None, max_character_velocity: primitives.Float | None = None, min_character_velocity: primitives.Float | None = None, character_velocity_dampening_speed: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, triggers_only: primitives.Bool | None = None, force: primitives.Float3 | None = None, force_mode: Mode | str | None = None, force_space: Space | str | None = None, radial_force_radius: primitives.Float | None = None, min_activation_velocity: primitives.Float | None = None, max_force_velocity: primitives.Float | None = None, hold_jump_max_force_velocity: primitives.Float | None = None, preseve_direction_across_plane: primitives.Bool | None = None, ignore_parent_user: primitives.Bool | None = None, no_jump_multiplier: primitives.Float | None = None, hold_jump_multiplier: primitives.Float | None = None, max_character_velocity: primitives.Float | None = None, min_character_velocity: primitives.Float | None = None, character_velocity_dampening_speed: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             triggers_only: Initial value for TriggersOnly.
             force: Initial value for Force.
+            force_mode: Initial value for ForceMode.
+            force_space: Initial value for ForceSpace.
             radial_force_radius: Initial value for RadialForceRadius.
             min_activation_velocity: Initial value for MinActivationVelocity.
             max_force_velocity: Initial value for MaxForceVelocity.
@@ -41,6 +47,10 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.triggers_only = triggers_only
         if force is not None:
             self.force = force
+        if force_mode is not None:
+            self.force_mode = force_mode
+        if force_space is not None:
+            self.force_space = force_space
         if radial_force_radius is not None:
             self.radial_force_radius = radial_force_radius
         if min_activation_velocity is not None:
@@ -66,7 +76,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def triggers_only(self) -> primitives.Bool | None:
-        """The TriggersOnly field value."""
+        """Whether to only allow trigger colliders attached to character controller objects to activate the force field."""
         member = self.get_member("TriggersOnly")
         if member is None:
             return None
@@ -85,7 +95,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def force(self) -> primitives.Float3 | None:
-        """The Force field value."""
+        """force direction and magnitude to apply a character controller within range with."""
         member = self.get_member("Force")
         if member is None:
             return None
@@ -103,34 +113,48 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def force_mode(self) -> members.FieldEnum | None:
-        """The ForceMode member."""
+    def force_mode(self) -> Mode | None:
+        """Whether to use impulse, apply, or set velocity using ``Force``"""
         member = self.get_member("ForceMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Mode(member.value)
         return None
 
     @force_mode.setter
-    def force_mode(self, value: members.FieldEnum) -> None:
-        """Set the ForceMode member."""
-        self.set_member("ForceMode", value)
+    def force_mode(self, value: Mode | str) -> None:
+        """Set ForceMode. Whether to use impulse, apply, or set velocity using ``Force``"""
+        member = self.get_member("ForceMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ForceMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def force_space(self) -> members.FieldEnum | None:
-        """The ForceSpace member."""
+    def force_space(self) -> Space | None:
+        """Whether to do the force direction in local or global space (so should ``Force`` be scaled and rotated by the slot this is on or not?)"""
         member = self.get_member("ForceSpace")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Space(member.value)
         return None
 
     @force_space.setter
-    def force_space(self, value: members.FieldEnum) -> None:
-        """Set the ForceSpace member."""
-        self.set_member("ForceSpace", value)
+    def force_space(self, value: Space | str) -> None:
+        """Set ForceSpace. Whether to do the force direction in local or global space (so should ``Force`` be scaled and rotated by the slot this is on or not?)"""
+        member = self.get_member("ForceSpace")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ForceSpace",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def radial_force_radius(self) -> primitives.Float | None:
-        """The RadialForceRadius field value."""
+        """The range of effect this force field has."""
         member = self.get_member("RadialForceRadius")
         if member is None:
             return None
@@ -149,7 +173,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def force_slot_space(self) -> members.SyncObject | None:
-        """The ForceSlotSpace member."""
+        """Override the transform space for ``Force`` with this if set."""
         member = self.get_member("ForceSlotSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -157,12 +181,12 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @force_slot_space.setter
     def force_slot_space(self, value: members.SyncObject) -> None:
-        """Set the ForceSlotSpace member."""
+        """Set ForceSlotSpace. Override the transform space for ``Force`` with this if set."""
         self.set_member("ForceSlotSpace", value)
 
     @property
     def min_activation_velocity(self) -> primitives.Float | None:
-        """The MinActivationVelocity field value."""
+        """The minimum velocity a character controller has to be going to trigger this force field."""
         member = self.get_member("MinActivationVelocity")
         if member is None:
             return None
@@ -181,7 +205,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_force_velocity(self) -> primitives.Float | None:
-        """The MaxForceVelocity field value."""
+        """How fast the character controller's velocity can be at max after being affected by this component when the user isn't holding Jump"""
         member = self.get_member("MaxForceVelocity")
         if member is None:
             return None
@@ -200,7 +224,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hold_jump_max_force_velocity(self) -> primitives.Float | None:
-        """The HoldJumpMaxForceVelocity field value."""
+        """How fast the character controller's velocity can be at max after being affected by this component when the user is holding Jump"""
         member = self.get_member("HoldJumpMaxForceVelocity")
         if member is None:
             return None
@@ -219,7 +243,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def preseve_direction_across_plane(self) -> primitives.Bool | None:
-        """The PreseveDirectionAcrossPlane field value."""
+        """Calculates a plane that is perpendicular to the vector ``Force`` (like a stick stuck into a piece of paper) and maintains the initial direction of the velocity of the character controller in either the forward or backwards facing direction of this plane."""
         member = self.get_member("PreseveDirectionAcrossPlane")
         if member is None:
             return None
@@ -238,7 +262,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ignore_parent_user(self) -> primitives.Bool | None:
-        """The IgnoreParentUser field value."""
+        """Whether to ignore the active user when finding character controllers within range of ``RadialForceRadius``. This does not ignore character controllers that are simulated by the user."""
         member = self.get_member("IgnoreParentUser")
         if member is None:
             return None
@@ -257,7 +281,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def no_jump_multiplier(self) -> primitives.Float | None:
-        """The NoJumpMultiplier field value."""
+        """How much to multiply the effect of ``Force`` when the user isn't holding Jump"""
         member = self.get_member("NoJumpMultiplier")
         if member is None:
             return None
@@ -276,7 +300,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hold_jump_multiplier(self) -> primitives.Float | None:
-        """The HoldJumpMultiplier field value."""
+        """How much to multiply the effect of ``Force`` when the user is holding Jump"""
         member = self.get_member("HoldJumpMultiplier")
         if member is None:
             return None
@@ -295,7 +319,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_character_velocity(self) -> primitives.Float | None:
-        """The MaxCharacterVelocity field value."""
+        """The maximum velocity this component can set a character controller's speed to after setting a force on it."""
         member = self.get_member("MaxCharacterVelocity")
         if member is None:
             return None
@@ -314,7 +338,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_character_velocity(self) -> primitives.Float | None:
-        """The MinCharacterVelocity field value."""
+        """The minimum velocity this component can set a character controller's speed to after setting a force on it."""
         member = self.get_member("MinCharacterVelocity")
         if member is None:
             return None
@@ -333,7 +357,7 @@ class CharacterForceField(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def character_velocity_dampening_speed(self) -> primitives.Float | None:
-        """The CharacterVelocityDampeningSpeed field value."""
+        """How fast to slow the user down. this can be used to give the effect of jumping into molasses."""
         member = self.get_member("CharacterVelocityDampeningSpeed")
         if member is None:
             return None

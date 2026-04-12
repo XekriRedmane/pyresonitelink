@@ -41,7 +41,7 @@ class CreateUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def description(self) -> str | None:
-        """Target ID of the Description reference (targets INodeObjectOutput[primitives.String])."""
+        """The description for this undo batch. The description will be automatically prepended with "Undo" in bigger text in the context menu."""
         member = self.get_member("Description")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class CreateUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def create(self) -> str | None:
-        """Target ID of the Create reference (targets ISyncNodeOperation)."""
+        """The impulse created when the undo batch is started but not ended."""
         member = self.get_member("Create")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class CreateUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def on_created(self) -> str | None:
-        """Target ID of the OnCreated reference (targets INodeOperation)."""
+        """The impulse created after the undo batch is ended."""
         member = self.get_member("OnCreated")
         if isinstance(member, members.Reference):
             return member.targetId

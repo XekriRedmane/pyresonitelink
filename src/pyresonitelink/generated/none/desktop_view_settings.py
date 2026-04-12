@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class DesktopViewSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.DesktopViewSettings.
+    """The DesktopViewSettings component is used to adjust how viewing the local user's computer screen is done via the Dash Menu.
+
+    Used in the dash desktop tab. Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DesktopViewSettings"
@@ -33,7 +35,7 @@ class DesktopViewSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def follow_cursor(self) -> primitives.Bool | None:
-        """The FollowCursor field value."""
+        """Whether the Desktop cursor should follow where the user's in game cursor is on the dash in real time."""
         member = self.get_member("FollowCursor")
         if member is None:
             return None
@@ -52,7 +54,7 @@ class DesktopViewSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def brightness(self) -> primitives.Float | None:
-        """The Brightness field value."""
+        """How bright the display of the desktop is on the in game dash menu."""
         member = self.get_member("Brightness")
         if member is None:
             return None
@@ -71,7 +73,7 @@ class DesktopViewSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def opacity(self) -> primitives.Float | None:
-        """The Opacity field value."""
+        """How transparent the in game view of the desktop is on the dash menu."""
         member = self.get_member("Opacity")
         if member is None:
             return None

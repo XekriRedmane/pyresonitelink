@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserLeft(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Left node is an event that fires when a user leaves the current world this node is in, as well as providing that user.
+    """The ``User Left`` node is an event that fires when a user leaves the current world this node is in, as well as providing that user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World
     """
@@ -39,7 +39,7 @@ class UserLeft(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IEx
 
     @property
     def only_host(self) -> str | None:
-        """Target ID of the OnlyHost reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should this impulse only run on the host. (Default: true) Will run an impulse for all users when set to false."""
         member = self.get_member("OnlyHost")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class UserLeft(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IEx
 
     @property
     def on_left(self) -> str | None:
-        """Target ID of the OnLeft reference (targets ISyncNodeOperation)."""
+        """Fires when a user leaves the world."""
         member = self.get_member("OnLeft")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +81,7 @@ class UserLeft(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IEx
 
     @property
     def left_user(self) -> members.EmptyElement | None:
-        """The LeftUser member."""
+        """The User that left the world."""
         member = self.get_member("LeftUser")
         if isinstance(member, members.EmptyElement):
             return member
@@ -89,6 +89,6 @@ class UserLeft(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IEx
 
     @left_user.setter
     def left_user(self, value: members.EmptyElement) -> None:
-        """Set the LeftUser member."""
+        """Set LeftUser. The User that left the world."""
         self.set_member("LeftUser", value)
 

@@ -11,9 +11,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceSpatialVariableDriver<>.
+    """The Reference Spatial Variable Driver`1 component gets the closest reference value in the Spatial variables system and drives a field with it.
 
     Category: Data/Spatial/Samplers
+
+    Attach to a slot and provide a field to drive and a variable name. the
+    slot this component is on acts as the position for sampling variable
+    values.
 
     Parameterize with a value type::
 
@@ -43,7 +47,7 @@ class ReferenceSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEven
 
     @property
     def drive(self) -> str | None:
-        """Target ID of the Drive reference (targets SyncRef[T])."""
+        """The field to drive."""
         member = self.get_member("Drive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +68,7 @@ class ReferenceSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEven
 
     @property
     def variable_name(self) -> primitives.String | None:
-        """The VariableName field value."""
+        """The variable name to sample for."""
         member = self.get_member("VariableName")
         if member is None:
             return None
@@ -83,7 +87,7 @@ class ReferenceSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEven
 
     @property
     def default_target(self) -> str | None:
-        """Target ID of the DefaultTarget reference (targets T)."""
+        """The value to default to when no reference can be sampled."""
         member = self.get_member("DefaultTarget")
         if isinstance(member, members.Reference):
             return member.targetId

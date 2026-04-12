@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocomotionAnimationSuppressor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocomotionAnimationSuppressor.
+    """LocomotionAnimationSuppressor is used to disable feet animation in the locomotion animation system, which can be useful for things like posers.
 
     Category: Users/Common Avatar System/Animation
+
+    Used to disable the walking animations if placed under an avatar.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocomotionAnimationSuppressor"
@@ -29,7 +31,7 @@ class LocomotionAnimationSuppressor(GeneratedComponent, IComponent, IWorldEventR
 
     @property
     def suppress_feet_simulation(self) -> primitives.Bool | None:
-        """The SuppressFeetSimulation field value."""
+        """Disables feet animation."""
         member = self.get_member("SuppressFeetSimulation")
         if member is None:
             return None

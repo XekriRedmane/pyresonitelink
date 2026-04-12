@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DestroyWithoutChildren(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DestroyWithoutChildren.
+    """The DestroyWithoutChildren component is used to make a slot self-destruct when it has no children.
 
     Category: Transform
     """

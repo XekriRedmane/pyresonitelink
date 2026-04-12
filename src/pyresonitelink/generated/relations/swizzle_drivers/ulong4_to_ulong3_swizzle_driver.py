@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Ulong4ToUlong3SwizzleDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Ulong4ToUlong3SwizzleDriver.
+    """The Ulong 4To Ulong 3Swizzle Driver component.
 
     Category: Relations/Swizzle Drivers
     """

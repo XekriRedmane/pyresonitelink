@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.legacy_particle_trail_mode import LegacyParticleTrailMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -13,15 +14,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.LegacyTrailsRibbonAdapter.
+    """The Legacy Trails Ribbon Adapter component is used to convert legacy content from the old particle system driven by Unity to Photon Dust.
+
+    Used in legacy content. do not use in new content.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LegacyTrailsRibbonAdapter"
 
-    def __init__(self, particle_size_affects_trail_width: primitives.Bool | None = None, inherit_trail_color_from_particle: primitives.Bool | None = None, trail_world_space: primitives.Bool | None = None, trails_module: str | IField[primitives.Bool] | None = None, ribbon_module: str | IField[primitives.Bool] | None = None, ribbon_use_particle_size: str | IField[primitives.Bool] | None = None, ribbon_use_particle_color: str | IField[primitives.Bool] | None = None, trail_size_inheritance: str | IField[TrailParticleInheritance] | None = None, trail_color_inheritance: str | IField[TrailParticleInheritance] | None = None, trails_space: str | RootSpace | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, trails_mode: LegacyParticleTrailMode | str | None = None, particle_size_affects_trail_width: primitives.Bool | None = None, inherit_trail_color_from_particle: primitives.Bool | None = None, trail_world_space: primitives.Bool | None = None, trails_module: str | IField[primitives.Bool] | None = None, ribbon_module: str | IField[primitives.Bool] | None = None, ribbon_use_particle_size: str | IField[primitives.Bool] | None = None, ribbon_use_particle_color: str | IField[primitives.Bool] | None = None, trail_size_inheritance: str | IField[TrailParticleInheritance] | None = None, trail_color_inheritance: str | IField[TrailParticleInheritance] | None = None, trails_space: str | RootSpace | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            trails_mode: Initial value for TrailsMode.
             particle_size_affects_trail_width: Initial value for ParticleSizeAffectsTrailWidth.
             inherit_trail_color_from_particle: Initial value for InheritTrailColorFromParticle.
             trail_world_space: Initial value for TrailWorldSpace.
@@ -35,6 +39,8 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if trails_mode is not None:
+            self.trails_mode = trails_mode
         if particle_size_affects_trail_width is not None:
             self.particle_size_affects_trail_width = particle_size_affects_trail_width
         if inherit_trail_color_from_particle is not None:
@@ -57,21 +63,28 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
             self.trails_space = trails_space
 
     @property
-    def trails_mode(self) -> members.FieldEnum | None:
-        """The TrailsMode member."""
+    def trails_mode(self) -> LegacyParticleTrailMode | None:
+        """The enum used to control the conversion from legacy trails to Photon Dust."""
         member = self.get_member("TrailsMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return LegacyParticleTrailMode(member.value)
         return None
 
     @trails_mode.setter
-    def trails_mode(self, value: members.FieldEnum) -> None:
-        """Set the TrailsMode member."""
-        self.set_member("TrailsMode", value)
+    def trails_mode(self, value: LegacyParticleTrailMode | str) -> None:
+        """Set TrailsMode. The enum used to control the conversion from legacy trails to Photon Dust."""
+        member = self.get_member("TrailsMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "TrailsMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def particle_size_affects_trail_width(self) -> primitives.Bool | None:
-        """The ParticleSizeAffectsTrailWidth field value."""
+        """Whether the particle size should affect the trail width."""
         member = self.get_member("ParticleSizeAffectsTrailWidth")
         if member is None:
             return None
@@ -90,7 +103,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def inherit_trail_color_from_particle(self) -> primitives.Bool | None:
-        """The InheritTrailColorFromParticle field value."""
+        """Whether the trail should inherit color from the particle it is following."""
         member = self.get_member("InheritTrailColorFromParticle")
         if member is None:
             return None
@@ -109,7 +122,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def trail_world_space(self) -> primitives.Bool | None:
-        """The TrailWorldSpace field value."""
+        """Whether the trail is in world or local space."""
         member = self.get_member("TrailWorldSpace")
         if member is None:
             return None
@@ -128,7 +141,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def trails_module(self) -> str | None:
-        """Target ID of the TrailsModule reference (targets IField[primitives.Bool])."""
+        """The enabled field on a trails module to drive."""
         member = self.get_member("TrailsModule")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -149,7 +162,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def ribbon_module(self) -> str | None:
-        """Target ID of the RibbonModule reference (targets IField[primitives.Bool])."""
+        """The enabled field on a ribbons module to drive."""
         member = self.get_member("RibbonModule")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -170,7 +183,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def ribbon_use_particle_size(self) -> str | None:
-        """Target ID of the RibbonUseParticleSize reference (targets IField[primitives.Bool])."""
+        """The use particle size field to drive on a ribbons module."""
         member = self.get_member("RibbonUseParticleSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -191,7 +204,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def ribbon_use_particle_color(self) -> str | None:
-        """Target ID of the RibbonUseParticleColor reference (targets IField[primitives.Bool])."""
+        """The use particle color field to drive on a ribbons module."""
         member = self.get_member("RibbonUseParticleColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -212,7 +225,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def trail_size_inheritance(self) -> str | None:
-        """Target ID of the TrailSizeInheritance reference (targets IField[TrailParticleInheritance])."""
+        """The use particle size field to drive on a trails module."""
         member = self.get_member("TrailSizeInheritance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -233,7 +246,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def trail_color_inheritance(self) -> str | None:
-        """Target ID of the TrailColorInheritance reference (targets IField[TrailParticleInheritance])."""
+        """The use particle color field to drive on a trails module."""
         member = self.get_member("TrailColorInheritance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -254,7 +267,7 @@ class LegacyTrailsRibbonAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def trails_space(self) -> str | None:
-        """Target ID of the TrailsSpace reference (targets RootSpace)."""
+        """The trails space field to drive on a trails module."""
         member = self.get_member("TrailsSpace")
         if isinstance(member, members.Reference):
             return member.targetId

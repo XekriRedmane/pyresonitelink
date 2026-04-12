@@ -10,9 +10,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FingerPoseLerp(GeneratedComponent, IFingerPoseSourceComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FingerPoseLerp.
+    """The FingerPoseLerp component allows for a linear blending between two different Finger pose sources. The resulting data becomes the pose source data of this component. This component in itself is a IFingerPoseSourceComponent.
+
+For more information on finger pose sources, please see Finger Posing System.
 
     Category: Users/Common Avatar System/Fingers
+
+    Can be used as a way of blending two different Finger pose data sources
+    and then be used as a new finger pose data source that is the blend of
+    the original two sources in other components.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FingerPoseLerp"
@@ -36,7 +42,7 @@ class FingerPoseLerp(GeneratedComponent, IFingerPoseSourceComponent, IWorldEvent
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets IFingerPoseSourceComponent)."""
+        """The pose to start at when interpolating."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +63,7 @@ class FingerPoseLerp(GeneratedComponent, IFingerPoseSourceComponent, IWorldEvent
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets IFingerPoseSourceComponent)."""
+        """The pose to end at when interpolating."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -78,7 +84,7 @@ class FingerPoseLerp(GeneratedComponent, IFingerPoseSourceComponent, IWorldEvent
 
     @property
     def lerp(self) -> primitives.Float | None:
-        """The Lerp field value."""
+        """The value to use 01 when interpolating from ``A````B``"""
         member = self.get_member("Lerp")
         if member is None:
             return None

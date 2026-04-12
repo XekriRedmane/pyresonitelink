@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EyeTrackingStreamManager(GeneratedComponent, IEyeDataSourceComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.EyeTrackingStreamManager.
+    """The EyeTrackingStreamManager component uses streaming data from the ValueStream data type (seen in the user Inspector) to control the left and right eyes on a user's avatar.
 
     Category: Users
+
+    Used for Eye Tracking.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.EyeTrackingStreamManager"
@@ -37,7 +39,7 @@ class EyeTrackingStreamManager(GeneratedComponent, IEyeDataSourceComponent, IWor
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets User)."""
+        """The focused user to get streaming data from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +60,7 @@ class EyeTrackingStreamManager(GeneratedComponent, IEyeDataSourceComponent, IWor
 
     @property
     def convergence_distance(self) -> str | None:
-        """Target ID of the ConvergenceDistance reference (targets ValueStream[primitives.Float])."""
+        """The eye distance data from the headset."""
         member = self.get_member("ConvergenceDistance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +81,7 @@ class EyeTrackingStreamManager(GeneratedComponent, IEyeDataSourceComponent, IWor
 
     @property
     def is_eye_tracking_active(self) -> str | None:
-        """Target ID of the IsEyeTrackingActive reference (targets ValueStream[primitives.Bool])."""
+        """Returns true if the eyes are being tracked from the headset."""
         member = self.get_member("IsEyeTrackingActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -100,7 +102,7 @@ class EyeTrackingStreamManager(GeneratedComponent, IEyeDataSourceComponent, IWor
 
     @property
     def left_eye_streams(self) -> members.SyncObject | None:
-        """The LeftEyeStreams member."""
+        """A set of fields for the left eye."""
         member = self.get_member("LeftEyeStreams")
         if isinstance(member, members.SyncObject):
             return member
@@ -108,12 +110,12 @@ class EyeTrackingStreamManager(GeneratedComponent, IEyeDataSourceComponent, IWor
 
     @left_eye_streams.setter
     def left_eye_streams(self, value: members.SyncObject) -> None:
-        """Set the LeftEyeStreams member."""
+        """Set LeftEyeStreams. A set of fields for the left eye."""
         self.set_member("LeftEyeStreams", value)
 
     @property
     def right_eye_streams(self) -> members.SyncObject | None:
-        """The RightEyeStreams member."""
+        """A set of fields for the right eye."""
         member = self.get_member("RightEyeStreams")
         if isinstance(member, members.SyncObject):
             return member
@@ -121,6 +123,6 @@ class EyeTrackingStreamManager(GeneratedComponent, IEyeDataSourceComponent, IWor
 
     @right_eye_streams.setter
     def right_eye_streams(self, value: members.SyncObject) -> None:
-        """Set the RightEyeStreams member."""
+        """Set RightEyeStreams. A set of fields for the right eye."""
         self.set_member("RightEyeStreams", value)
 

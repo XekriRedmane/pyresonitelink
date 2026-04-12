@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarDestroyOnDequip(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarDestroyOnDequip.
+    """The AvatarDestroyOnDequip component destroys ``DestroyRoot`` when the avatar it's in the hierarchy of is unequipped, or the slot the component is attached to if ``DestroyRoot`` is null.
 
     Category: Users/Common Avatar System
     """
@@ -29,7 +29,7 @@ class AvatarDestroyOnDequip(GeneratedComponent, IAvatarObjectComponent, IWorldEv
 
     @property
     def destroy_root(self) -> str | None:
-        """Target ID of the DestroyRoot reference (targets Slot)."""
+        """The slot to destroy when the avatar this component is a part of is dequipped, or null to destroy the slot this component is attached to."""
         member = self.get_member("DestroyRoot")
         if isinstance(member, members.Reference):
             return member.targetId

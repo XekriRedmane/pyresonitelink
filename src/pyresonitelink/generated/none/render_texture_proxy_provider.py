@@ -7,7 +7,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RenderTextureProxyProvider(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RenderTextureProxyProvider.
+    """Unused. See RenderTextureProvider instead.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RenderTextureProxyProvider"

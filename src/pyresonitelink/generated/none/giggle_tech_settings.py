@@ -10,7 +10,11 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class GiggleTechSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.GiggleTechSettings.
+    """The GiggleTechSettings Component is used to control different aspects of giggle pucks for use in Resonite.
+
+See Settings for information.
+
+    See Settings for information.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GiggleTechSettings"
@@ -31,7 +35,7 @@ class GiggleTechSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def devices(self) -> members.SyncList | None:
-        """The Devices member."""
+        """A list of giggle pucks with settings for them."""
         member = self.get_member("Devices")
         if isinstance(member, members.SyncList):
             return member
@@ -39,12 +43,12 @@ class GiggleTechSettings(GeneratedComponent, ICustomInspector):
 
     @devices.setter
     def devices(self, value: members.SyncList) -> None:
-        """Set the Devices member."""
+        """Set Devices. A list of giggle pucks with settings for them."""
         self.set_member("Devices", value)
 
     @property
     def giggle_puck_ip(self) -> primitives.String | None:
-        """The GigglePuckIP field value."""
+        """the IP address of the giggle puck."""
         member = self.get_member("GigglePuckIP")
         if member is None:
             return None
@@ -63,7 +67,7 @@ class GiggleTechSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def is_giggle_puck_valid(self) -> primitives.Bool | None:
-        """The IsGigglePuckValid field value."""
+        """Whether the giggle puck is valid and tracking."""
         member = self.get_member("IsGigglePuckValid")
         if member is None:
             return None
@@ -81,7 +85,7 @@ class GiggleTechSettings(GeneratedComponent, ICustomInspector):
             )
 
     async def register_giggle_puck(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the RegisterGigglePuck sync method.
+        """Register a gigglepuck to the list
 
         Returns:
             The raw JSON response dict.
@@ -91,7 +95,7 @@ class GiggleTechSettings(GeneratedComponent, ICustomInspector):
         )
 
     async def get_device_for_subsetting(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, debug: bool = False) -> dict:
-        """Call the GetDeviceForSubsetting sync method.
+        """Get one of the ``Devices`` by key.
 
         Args:
             resolink: Connected ResoniteLink client.

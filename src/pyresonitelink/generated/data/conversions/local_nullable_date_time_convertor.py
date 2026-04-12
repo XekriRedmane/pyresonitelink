@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalNullableDateTimeConvertor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocalNullableDateTimeConvertor.
+    """The NullableLocalDateTimeConvertor converts a nullable inputted time to the user's local timezone.
 
     Category: Data/Conversions
     """
@@ -34,7 +34,7 @@ class LocalNullableDateTimeConvertor(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IField[Nullable[str]])."""
+        """The source field holding the date time to convert."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +55,7 @@ class LocalNullableDateTimeConvertor(GeneratedComponent, IComponent, IWorldEvent
 
     @property
     def local_date_time(self) -> str | None:
-        """The LocalDateTime field value."""
+        """The value of the field targeted by ``Source`` converted to the local user's datetime."""
         member = self.get_member("LocalDateTime")
         if member is None:
             return None

@@ -1,0 +1,13 @@
+{
+  "description": "The UserspaceFacetAnchor component is used to control the user facet anchors on the head, hands, and arms of the user in user space.",
+  "category": "Uncategorized",
+  "fields": {
+    "Point": "The facet anchor point to follow.",
+    "BackgroundImage": "The image used for the canvas background.",
+    "BackgroundMaterial": "The material used for the canvas background."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserspaceFacetAnchor&action=raw"
+}

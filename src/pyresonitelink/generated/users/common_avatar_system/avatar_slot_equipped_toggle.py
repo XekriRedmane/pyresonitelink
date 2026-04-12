@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarSlotEquippedToggle(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarSlotEquippedToggle.
+    """The AvatarSlotEquippedToggle component drives one or two booleans to a state depending on if an AvatarObjectSlot is equipped or not.
 
     Category: Users/Common Avatar System
     """
@@ -37,7 +37,7 @@ class AvatarSlotEquippedToggle(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def object_slot(self) -> str | None:
-        """Target ID of the ObjectSlot reference (targets AvatarObjectSlot)."""
+        """The Avatar Object Slot to monitor for equipping status."""
         member = self.get_member("ObjectSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class AvatarSlotEquippedToggle(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def equipped_drive(self) -> str | None:
-        """Target ID of the EquippedDrive reference (targets IField[primitives.Bool])."""
+        """Drives the target bool to true when ``ObjectSlot`` is equipped. Otherwise false."""
         member = self.get_member("EquippedDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class AvatarSlotEquippedToggle(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def dequipped_drive(self) -> str | None:
-        """Target ID of the DequippedDrive reference (targets IField[primitives.Bool])."""
+        """Drives the target bool to false when ``ObjectSlot`` is equipped. Otherwise true."""
         member = self.get_member("DequippedDrive")
         if isinstance(member, members.Reference):
             return member.targetId

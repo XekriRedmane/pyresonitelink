@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SpherePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SpherePointGenerator.
+    """A generator for points arranged in a sphere with a given radius. Used in Common Spawn Areas usually.
 
     Category: Transform/Point Generators
+
+    Used in a Common Spawn Area to define in what kind of spawn area shape
+    users should initially spawn into.
+
+    **Related Components**: * CommonSpawnArea
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SpherePointGenerator"
@@ -32,7 +37,7 @@ class SpherePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventRecei
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """How big the sphere should be for generating points in"""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class SpherePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventRecei
 
     @property
     def shell(self) -> primitives.Bool | None:
-        """The Shell field value."""
+        """Whether or not to generate points on the outside edge rather than inside the sphere too."""
         member = self.get_member("Shell")
         if member is None:
             return None

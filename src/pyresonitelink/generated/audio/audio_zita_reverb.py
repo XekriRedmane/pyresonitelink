@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioZitaReverb.
+    """The Audio Zita Reverb component can be used to create echo effects (called ZitaParameters) onto audio clips, or on listeners in an area using the Awwdio system. To see how to use it with audio listeners, see AudioListener.
 
     Category: Audio
     """
@@ -62,7 +62,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     @property
     def in_delay(self) -> primitives.Float | None:
-        """The InDelay field value."""
+        """Delay in ms before reverberation begins."""
         member = self.get_member("InDelay")
         if member is None:
             return None
@@ -81,7 +81,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     @property
     def crossover(self) -> primitives.Float | None:
-        """The Crossover field value."""
+        """Crossover frequency separating low and middle frequencies (Hz)."""
         member = self.get_member("Crossover")
         if member is None:
             return None
@@ -100,7 +100,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     @property
     def rt60_low(self) -> primitives.Float | None:
-        """The RT60Low field value."""
+        """Time (in seconds) to decay 60db in low-frequency band."""
         member = self.get_member("RT60Low")
         if member is None:
             return None
@@ -119,7 +119,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     @property
     def rt60_mid(self) -> primitives.Float | None:
-        """The RT60Mid field value."""
+        """Time (in seconds) to decay 60db in mid-frequency band."""
         member = self.get_member("RT60Mid")
         if member is None:
             return None
@@ -138,7 +138,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     @property
     def high_frequency_damping(self) -> primitives.Float | None:
-        """The HighFrequencyDamping field value."""
+        """Frequency (Hz) at which the high-frequency T60 is half the middle-band's T60."""
         member = self.get_member("HighFrequencyDamping")
         if member is None:
             return None
@@ -157,7 +157,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     @property
     def eq1_frequency(self) -> primitives.Float | None:
-        """The EQ1Frequency field value."""
+        """Center frequency of second-order Regalia Mitra peaking equalizer section 1."""
         member = self.get_member("EQ1Frequency")
         if member is None:
             return None
@@ -176,7 +176,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     @property
     def eq1_level(self) -> primitives.Float | None:
-        """The EQ1Level field value."""
+        """Peak level in dB of second-order Regalia-Mitra peaking equalizer section 1"""
         member = self.get_member("EQ1Level")
         if member is None:
             return None
@@ -195,7 +195,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     @property
     def eq2_frequency(self) -> primitives.Float | None:
-        """The EQ2Frequency field value."""
+        """Center frequency of second-order Regalia Mitra peaking equalizer section 2."""
         member = self.get_member("EQ2Frequency")
         if member is None:
             return None
@@ -214,7 +214,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     @property
     def eq2_level(self) -> primitives.Float | None:
-        """The EQ2Level field value."""
+        """Peak level in dB of second-order Regalia-Mitra peaking equalizer section 2."""
         member = self.get_member("EQ2Level")
         if member is None:
             return None
@@ -233,7 +233,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     @property
     def mix(self) -> primitives.Float | None:
-        """The Mix field value."""
+        """0 is all dry, 1 is all wet."""
         member = self.get_member("Mix")
         if member is None:
             return None
@@ -252,7 +252,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
 
     @property
     def level(self) -> primitives.Float | None:
-        """The Level field value."""
+        """Output scale factor (in dB)."""
         member = self.get_member("Level")
         if member is None:
             return None
@@ -270,7 +270,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
             )
 
     async def preset_off(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetOff sync method.
+        """Sets the values to not have an effect at all
 
         Returns:
             The raw JSON response dict.
@@ -280,7 +280,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_generic(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetGeneric sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -290,7 +290,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_padded_cell(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetPaddedCell sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -300,7 +300,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_room(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetRoom sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -310,7 +310,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_bathroom(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetBathroom sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -320,7 +320,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_livingroom(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetLivingroom sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -330,7 +330,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_stoneroom(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetStoneroom sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -340,7 +340,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_auditorium(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetAuditorium sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -350,7 +350,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_concerthall(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetConcerthall sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -360,7 +360,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_cave(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetCave sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -370,7 +370,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_arena(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetArena sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -380,7 +380,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_hangar(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetHangar sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -390,7 +390,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_carpeted_hallway(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetCarpetedHallway sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -400,7 +400,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_hallway(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetHallway sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -410,7 +410,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_stone_corridor(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetStoneCorridor sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -420,7 +420,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_alley(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetAlley sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -430,7 +430,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_forest(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetForest sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -440,7 +440,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_city(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetCity sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -450,7 +450,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_mountains(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetMountains sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -460,7 +460,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_quarry(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetQuarry sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -470,7 +470,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_plain(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetPlain sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -480,7 +480,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_parking_lot(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetParkingLot sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -490,7 +490,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_sewer_pipe(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetSewerPipe sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -500,7 +500,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_underwater(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetUnderwater sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -510,7 +510,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_drugged(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetDrugged sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -520,7 +520,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_dizzy(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetDizzy sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.
@@ -530,7 +530,7 @@ class AudioZitaReverb(GeneratedComponent, IZitaFilter, ICustomInspector, ICompon
         )
 
     async def preset_psychotic(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the PresetPsychotic sync method.
+        """Sets the values to a preset that replicates this button's name
 
         Returns:
             The raw JSON response dict.

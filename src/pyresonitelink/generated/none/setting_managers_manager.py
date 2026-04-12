@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SettingManagersManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SettingManagersManager.
+    """The Setting Managers Manager component is used to manage the changing from cloud to local setting sets.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SettingManagersManager"
@@ -30,7 +30,7 @@ class SettingManagersManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def local_settings(self) -> str | None:
-        """Target ID of the LocalSettings reference (targets SettingManager)."""
+        """The manager handling locally stored settings."""
         member = self.get_member("LocalSettings")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -51,7 +51,7 @@ class SettingManagersManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def cloud_settings(self) -> str | None:
-        """Target ID of the CloudSettings reference (targets SettingManager)."""
+        """The manager handling cloud stored settings."""
         member = self.get_member("CloudSettings")
         if isinstance(member, members.Reference):
             return member.targetId

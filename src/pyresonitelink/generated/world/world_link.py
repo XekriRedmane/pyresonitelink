@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.world_relation import WorldRelation
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworld_link import IWorldLink
@@ -10,18 +11,26 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldLink(GeneratedComponent, IWorldLink, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldLink.
+    """The WorldLink component is used to set the world information, either to use as a way to jump to different worlds or to pre-load worlds.
+
+}}
 
     Category: World
+
+    * This can be combined with the ButtonWorldLink component to setup a
+    button for loading a world for a user. * This can be hooked up into
+    ProtoFlux with the Open World or Focus World nodes to open or jump to
+    another world.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldLink"
 
-    def __init__(self, url: str | None = None, auto_focus: primitives.Bool | None = None, get_existing: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, world_relation: WorldRelation | str | None = None, auto_focus: primitives.Bool | None = None, get_existing: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             url: Initial value for URL.
+            world_relation: Initial value for WorldRelation.
             auto_focus: Initial value for AutoFocus.
             get_existing: Initial value for GetExisting.
             component: Existing Component to wrap.
@@ -29,6 +38,8 @@ class WorldLink(GeneratedComponent, IWorldLink, IWorldEventReceiver):
         super().__init__(component)
         if url is not None:
             self.url = url
+        if world_relation is not None:
+            self.world_relation = world_relation
         if auto_focus is not None:
             self.auto_focus = auto_focus
         if get_existing is not None:
@@ -36,7 +47,7 @@ class WorldLink(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The world to link."""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -55,7 +66,7 @@ class WorldLink(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def active_session_urls(self) -> members.SyncList | None:
-        """The ActiveSessionURLs member."""
+        """Used for session orbs."""
         member = self.get_member("ActiveSessionURLs")
         if isinstance(member, members.SyncList):
             return member
@@ -63,25 +74,32 @@ class WorldLink(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @active_session_urls.setter
     def active_session_urls(self, value: members.SyncList) -> None:
-        """Set the ActiveSessionURLs member."""
+        """Set ActiveSessionURLs. Used for session orbs."""
         self.set_member("ActiveSessionURLs", value)
 
     @property
-    def world_relation(self) -> members.FieldEnum | None:
-        """The WorldRelation member."""
+    def world_relation(self) -> WorldRelation | None:
+        """The relation of the world."""
         member = self.get_member("WorldRelation")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return WorldRelation(member.value)
         return None
 
     @world_relation.setter
-    def world_relation(self, value: members.FieldEnum) -> None:
-        """Set the WorldRelation member."""
-        self.set_member("WorldRelation", value)
+    def world_relation(self, value: WorldRelation | str) -> None:
+        """Set WorldRelation. The relation of the world."""
+        member = self.get_member("WorldRelation")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WorldRelation",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def auto_focus(self) -> primitives.Bool | None:
-        """The AutoFocus field value."""
+        """After the world loads, focus to this world automatically."""
         member = self.get_member("AutoFocus")
         if member is None:
             return None
@@ -100,7 +118,7 @@ class WorldLink(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     @property
     def get_existing(self) -> primitives.Bool | None:
-        """The GetExisting field value."""
+        """If a world we are looking for already exists, then don't make a new one and then optionally focus onto it."""
         member = self.get_member("GetExisting")
         if member is None:
             return None

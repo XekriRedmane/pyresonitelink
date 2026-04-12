@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioInputFilteringSettings.
+    """See Audio Settings.
+
+    See Audio Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioInputFilteringSettings"
@@ -45,7 +47,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_voice_normalization(self) -> primitives.Bool | None:
-        """The UseVoiceNormalization field value."""
+        """Whether to normalize the incoming voice data."""
         member = self.get_member("UseVoiceNormalization")
         if member is None:
             return None
@@ -64,7 +66,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def normalization_threshold(self) -> primitives.Float | None:
-        """The NormalizationThreshold field value."""
+        """When below this volume, boost so the voice is louder."""
         member = self.get_member("NormalizationThreshold")
         if member is None:
             return None
@@ -83,7 +85,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_noise_suppression(self) -> primitives.Bool | None:
-        """The UseNoiseSuppression field value."""
+        """Whether to use noise suppression."""
         member = self.get_member("UseNoiseSuppression")
         if member is None:
             return None
@@ -102,7 +104,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def noise_gate_threshold(self) -> primitives.Float | None:
-        """The NoiseGateThreshold field value."""
+        """The threshold that audio needs to be above for the voice to get through."""
         member = self.get_member("NoiseGateThreshold")
         if member is None:
             return None
@@ -121,7 +123,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def noise_gate_attack(self) -> primitives.Float | None:
-        """The NoiseGateAttack field value."""
+        """This indicates how fast the noise gate responds to an incoming sound that is louder than the threshold volume. Larger values will result in a slower volume fade in, while smaller ones will make the volume ramp up quicker."""
         member = self.get_member("NoiseGateAttack")
         if member is None:
             return None
@@ -140,7 +142,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def noise_gate_hold(self) -> primitives.Float | None:
-        """The NoiseGateHold field value."""
+        """This controls how long it takes for the noise gate to begin to close after the microphone input volume falls below the threshold volume."""
         member = self.get_member("NoiseGateHold")
         if member is None:
             return None
@@ -159,7 +161,7 @@ class AudioInputFilteringSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def noise_gate_release(self) -> primitives.Float | None:
-        """The NoiseGateRelease field value."""
+        """This setting controls how fast the noise gate closes after the incoming audio has quieted again."""
         member = self.get_member("NoiseGateRelease")
         if member is None:
             return None

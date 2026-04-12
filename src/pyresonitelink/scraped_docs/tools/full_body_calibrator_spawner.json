@@ -1,0 +1,9 @@
+{
+  "description": "The FullBodyCalibratorSpawner when on the same Slot as a button, spawns a full body calibrator UI in front of the user that pressed the button.",
+  "category": "Utility:Tools",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FullBodyCalibratorSpawner&action=raw"
+}

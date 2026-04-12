@@ -39,7 +39,7 @@ class TorqueEstimate(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def initial_torque(self) -> str | None:
-        """Target ID of the InitialTorque reference (targets INodeValueOutput[primitives.Float3])."""
+        """The amount of push for this torque."""
         member = self.get_member("InitialTorque")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class TorqueEstimate(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def drag(self) -> str | None:
-        """Target ID of the Drag reference (targets INodeValueOutput[primitives.Float])."""
+        """The amount of resistance for this torque."""
         member = self.get_member("Drag")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +81,7 @@ class TorqueEstimate(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def time(self) -> str | None:
-        """Target ID of the Time reference (targets INodeValueOutput[primitives.Float])."""
+        """The time in between the initial torque and now."""
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             return member.targetId

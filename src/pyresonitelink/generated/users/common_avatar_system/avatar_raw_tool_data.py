@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.chirality import Chirality
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -12,17 +13,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarRawToolData.
+    """The AvatarRawToolData component is used to read controller data associated with RawDataTools from.
 
     Category: Users/Common Avatar System
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarRawToolData"
 
-    def __init__(self, pressing_primary: primitives.Bool | None = None, pressing_secondary: primitives.Bool | None = None, pressing_grab: primitives.Bool | None = None, primary_strength: primitives.Float | None = None, secondary_axis: primitives.Float2 | None = None, active_user: str | User | None = None, strength_stream: str | ValueStream[primitives.Float] | None = None, axis_stream: str | ValueStream[primitives.Float2] | None = None, primary_stream: str | ValueStream[primitives.Bool] | None = None, secondary_stream: str | ValueStream[primitives.Bool] | None = None, grab_stream: str | ValueStream[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, controller_side: Chirality | str | None = None, pressing_primary: primitives.Bool | None = None, pressing_secondary: primitives.Bool | None = None, pressing_grab: primitives.Bool | None = None, primary_strength: primitives.Float | None = None, secondary_axis: primitives.Float2 | None = None, active_user: str | User | None = None, strength_stream: str | ValueStream[primitives.Float] | None = None, axis_stream: str | ValueStream[primitives.Float2] | None = None, primary_stream: str | ValueStream[primitives.Bool] | None = None, secondary_stream: str | ValueStream[primitives.Bool] | None = None, grab_stream: str | ValueStream[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            controller_side: Initial value for ControllerSide.
             pressing_primary: Initial value for PressingPrimary.
             pressing_secondary: Initial value for PressingSecondary.
             pressing_grab: Initial value for PressingGrab.
@@ -37,6 +39,8 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if controller_side is not None:
+            self.controller_side = controller_side
         if pressing_primary is not None:
             self.pressing_primary = pressing_primary
         if pressing_secondary is not None:
@@ -61,21 +65,28 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
             self.grab_stream = grab_stream
 
     @property
-    def controller_side(self) -> members.FieldEnum | None:
-        """The ControllerSide member."""
+    def controller_side(self) -> Chirality | None:
+        """The side to read data from the user's controller for."""
         member = self.get_member("ControllerSide")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Chirality(member.value)
         return None
 
     @controller_side.setter
-    def controller_side(self, value: members.FieldEnum) -> None:
-        """Set the ControllerSide member."""
-        self.set_member("ControllerSide", value)
+    def controller_side(self, value: Chirality | str) -> None:
+        """Set ControllerSide. The side to read data from the user's controller for."""
+        member = self.get_member("ControllerSide")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ControllerSide",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def pressing_primary(self) -> primitives.Bool | None:
-        """The PressingPrimary field value."""
+        """Whether the user is pressing Primary"""
         member = self.get_member("PressingPrimary")
         if member is None:
             return None
@@ -94,7 +105,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def pressing_secondary(self) -> primitives.Bool | None:
-        """The PressingSecondary field value."""
+        """Whether the user is pressing Secondary."""
         member = self.get_member("PressingSecondary")
         if member is None:
             return None
@@ -113,7 +124,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def pressing_grab(self) -> primitives.Bool | None:
-        """The PressingGrab field value."""
+        """Whether the user is pressing the grab button"""
         member = self.get_member("PressingGrab")
         if member is None:
             return None
@@ -132,7 +143,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def primary_strength(self) -> primitives.Float | None:
-        """The PrimaryStrength field value."""
+        """The strength the user is pressing Primary."""
         member = self.get_member("PrimaryStrength")
         if member is None:
             return None
@@ -151,7 +162,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def secondary_axis(self) -> primitives.Float2 | None:
-        """The SecondaryAxis field value."""
+        """What direction the user is moving their secondary button joystick"""
         member = self.get_member("SecondaryAxis")
         if member is None:
             return None
@@ -170,7 +181,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def active_user(self) -> str | None:
-        """Target ID of the _activeUser reference (targets User)."""
+        """The user this is reading data and getting streams from."""
         member = self.get_member("_activeUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -191,7 +202,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def strength_stream(self) -> str | None:
-        """Target ID of the _strengthStream reference (targets ValueStream[primitives.Float])."""
+        """The stream to get ``PrimaryStrength``'s value from"""
         member = self.get_member("_strengthStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -212,7 +223,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def axis_stream(self) -> str | None:
-        """Target ID of the _axisStream reference (targets ValueStream[primitives.Float2])."""
+        """The stream to get ``SecondaryAxis``'s value from."""
         member = self.get_member("_axisStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -233,7 +244,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def primary_stream(self) -> str | None:
-        """Target ID of the _primaryStream reference (targets ValueStream[primitives.Bool])."""
+        """The stream to get ``PressingPrimary``'s value from."""
         member = self.get_member("_primaryStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -254,7 +265,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def secondary_stream(self) -> str | None:
-        """Target ID of the _secondaryStream reference (targets ValueStream[primitives.Bool])."""
+        """The stream to get ``PressingSecondary``'s value from."""
         member = self.get_member("_secondaryStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -275,7 +286,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
 
     @property
     def grab_stream(self) -> str | None:
-        """Target ID of the _grabStream reference (targets ValueStream[primitives.Bool])."""
+        """The stream to get ``PressingGrab``'s value from."""
         member = self.get_member("_grabStream")
         if isinstance(member, members.Reference):
             return member.targetId

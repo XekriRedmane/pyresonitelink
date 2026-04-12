@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorOverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ColorOverLifetimeStartEnd.
+    """The ColorOverLifetimeStartEnd component makes particles in a Particle system change color linearly over the duration of their lifetime.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ColorOverLifetimeStartEnd"
@@ -32,7 +37,7 @@ class ColorOverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, IWorl
 
     @property
     def start_color(self) -> primitives.ColorX | None:
-        """The StartColor field value."""
+        """The color particles should be when emitted."""
         member = self.get_member("StartColor")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class ColorOverLifetimeStartEnd(GeneratedComponent, IParticleSystemModule, IWorl
 
     @property
     def end_color(self) -> primitives.ColorX | None:
-        """The EndColor field value."""
+        """The color particles should lerp towards over their lifetime and they will have this color right before they die."""
         member = self.get_member("EndColor")
         if member is None:
             return None

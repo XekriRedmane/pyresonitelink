@@ -6,7 +6,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacySettingsData(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacySettingsData.
+    """The Legacy Settings Data component was used in the old settings menu before the settings were updated in the settings update series.
+
+    Not used directly by the user. Used in legacy content.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacySettingsData"

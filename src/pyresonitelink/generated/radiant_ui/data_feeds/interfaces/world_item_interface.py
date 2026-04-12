@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldItemInterface.
+    """The WorldItemInterface component is used with Data Feeds to show information about a particular world mapped to it. This is used in the worlds menu.
 
     Category: Radiant UI/Data Feeds/Interfaces
     """
@@ -379,7 +379,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def world_name(self) -> str | None:
-        """Target ID of the WorldName reference (targets IField[primitives.String])."""
+        """The name of the world mapped to this template."""
         member = self.get_member("WorldName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -400,7 +400,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def description(self) -> str | None:
-        """Target ID of the Description reference (targets IField[primitives.String])."""
+        """The description of the world mapped to this template."""
         member = self.get_member("Description")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -421,7 +421,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def thumbnail_url(self) -> str | None:
-        """Target ID of the ThumbnailUrl reference (targets IField[str])."""
+        """The URL of the preview world texture for the world mapped to this template."""
         member = self.get_member("ThumbnailUrl")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -442,7 +442,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def joined_users(self) -> str | None:
-        """Target ID of the JoinedUsers reference (targets IField[primitives.Int])."""
+        """The amount of users currently in the world mapped to this template."""
         member = self.get_member("JoinedUsers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -463,7 +463,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def active_users(self) -> str | None:
-        """Target ID of the ActiveUsers reference (targets IField[primitives.Int])."""
+        """The amount of focused active users in the world mapped to this template."""
         member = self.get_member("ActiveUsers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -484,7 +484,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_host(self) -> str | None:
-        """Target ID of the IsHost reference (targets IField[primitives.Bool])."""
+        """Whether the local user is the host of the world mapped to this template."""
         member = self.get_member("IsHost")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -505,7 +505,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_enabled(self) -> str | None:
-        """Target ID of the AwayKickEnabled reference (targets IField[primitives.Bool])."""
+        """Whether away kick is enabled for this world."""
         member = self.get_member("AwayKickEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -526,7 +526,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_interval(self) -> str | None:
-        """Target ID of the AwayKickInterval reference (targets IField[str])."""
+        """The interval at which after this amount of time, users should be kicked."""
         member = self.get_member("AwayKickInterval")
         if isinstance(member, members.Reference):
             return member.targetId

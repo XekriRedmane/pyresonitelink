@@ -36,7 +36,7 @@ class ColorSoftAdditiveBlend(GeneratedComponent, INodeValueOutput, IExecutionNod
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeValueOutput[primitives.Color])."""
+        """The color that is blended "onto" the destination."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class ColorSoftAdditiveBlend(GeneratedComponent, INodeValueOutput, IExecutionNod
 
     @property
     def destination(self) -> str | None:
-        """Target ID of the Destination reference (targets INodeValueOutput[primitives.Color])."""
+        """The destination color that the source is blended "onto"."""
         member = self.get_member("Destination")
         if isinstance(member, members.Reference):
             return member.targetId

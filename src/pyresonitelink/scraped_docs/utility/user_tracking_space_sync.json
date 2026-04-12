@@ -1,0 +1,12 @@
+{
+  "description": "User Tracking Space Sync is a component that provides the local user's height, and whether they are currently using seated mode.",
+  "category": "Utility",
+  "fields": {
+    "SeatedMode": "whether the local user is using seated mode.",
+    "UserHeight": "the local user's height in meters."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserTrackingSpaceSync&action=raw"
+}

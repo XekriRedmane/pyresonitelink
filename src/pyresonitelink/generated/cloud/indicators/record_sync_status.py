@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RecordSyncStatus.
+    """The RecordSyncStatus component reports the current status of syncing items like worlds, avatars, settings, and user generated content when present in the user space world where the dash is.
 
     Category: Cloud/Indicators
     """
@@ -53,7 +53,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def record_queue_count(self) -> primitives.Int | None:
-        """The RecordQueueCount field value."""
+        """How many items are left in the queue of items to Sync from the user's machine to the cloud."""
         member = self.get_member("RecordQueueCount")
         if member is None:
             return None
@@ -72,7 +72,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def asset_variant_queue_count(self) -> primitives.Int | None:
-        """The AssetVariantQueueCount field value."""
+        """How many asset variants are left to upload for the items being uploaded to the cloud."""
         member = self.get_member("AssetVariantQueueCount")
         if member is None:
             return None
@@ -91,7 +91,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_task_progress(self) -> primitives.Float | None:
-        """The CurrentTaskProgress field value."""
+        """How far along the Asset uploader is to uploading the current item."""
         member = self.get_member("CurrentTaskProgress")
         if member is None:
             return None
@@ -110,7 +110,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def last_error(self) -> primitives.String | None:
-        """The LastError field value."""
+        """The last error given by the cloud item uploader process."""
         member = self.get_member("LastError")
         if member is None:
             return None
@@ -129,7 +129,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def status_message(self) -> primitives.String | None:
-        """The StatusMessage field value."""
+        """The status message for the item uploader process."""
         member = self.get_member("StatusMessage")
         if member is None:
             return None
@@ -148,7 +148,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def fully_synced_color(self) -> primitives.ColorX | None:
-        """The FullySyncedColor field value."""
+        """The color the UI should be if it is fully done syncing."""
         member = self.get_member("FullySyncedColor")
         if member is None:
             return None
@@ -167,7 +167,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def error_color(self) -> primitives.ColorX | None:
-        """The ErrorColor field value."""
+        """The color the UI should be if there was an error (UH OH!!! Stuck Sync!!!)"""
         member = self.get_member("ErrorColor")
         if member is None:
             return None
@@ -186,7 +186,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def syncing_records_color(self) -> primitives.ColorX | None:
-        """The SyncingRecordsColor field value."""
+        """The color the UI should be when the item uploader task is syncing Record items."""
         member = self.get_member("SyncingRecordsColor")
         if member is None:
             return None
@@ -205,7 +205,7 @@ class RecordSyncStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def uploading_asset_variants_color(self) -> primitives.ColorX | None:
-        """The UploadingAssetVariantsColor field value."""
+        """The color the UI should be when the item uploader is uploading Asset variants for things like textures or skyboxes."""
         member = self.get_member("UploadingAssetVariantsColor")
         if member is None:
             return None

@@ -15,7 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Pause(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Pause is a ProtoFlux node that pauses the provided Target (IPlayable) when * (Call) is called. Pause doesn't change the current Position Output, it essentially sets Is Playing Output to false.
+    """Pause is a ProtoFlux node that pauses the provided Target (IPlayable) when * (Call) is called.
+Pause doesn't change the current Position Output, it essentially sets Is Playing Output to false.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """
@@ -38,7 +39,7 @@ class Pause(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICust
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse after * (Call) was called and it was successfully paused."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +60,7 @@ class Pause(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICust
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[IPlayable])."""
+        """The IPlayable to pause."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

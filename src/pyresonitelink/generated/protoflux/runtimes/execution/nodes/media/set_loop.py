@@ -43,7 +43,7 @@ class SetLoop(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICu
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse after the initial call."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class SetLoop(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICu
 
     @property
     def loop(self) -> str | None:
-        """Target ID of the Loop reference (targets INodeValueOutput[primitives.Bool])."""
+        """Set whether the target should loop or not."""
         member = self.get_member("Loop")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -41,7 +41,7 @@ class ValuePlusMinus(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[T])."""
+        """The starting value."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class ValuePlusMinus(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
 
     @property
     def offset(self) -> str | None:
-        """Target ID of the Offset reference (targets INodeValueOutput[T])."""
+        """The offset to add and subtract from the starting value."""
         member = self.get_member("Offset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class ValuePlusMinus(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
 
     @property
     def plus(self) -> members.EmptyElement | None:
-        """The Plus member."""
+        """Returns the additive offset value."""
         member = self.get_member("Plus")
         if isinstance(member, members.EmptyElement):
             return member
@@ -91,12 +91,12 @@ class ValuePlusMinus(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
 
     @plus.setter
     def plus(self, value: members.EmptyElement) -> None:
-        """Set the Plus member."""
+        """Set Plus. Returns the additive offset value."""
         self.set_member("Plus", value)
 
     @property
     def minus(self) -> members.EmptyElement | None:
-        """The Minus member."""
+        """Returns the subtracted offset value."""
         member = self.get_member("Minus")
         if isinstance(member, members.EmptyElement):
             return member
@@ -104,6 +104,6 @@ class ValuePlusMinus(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
 
     @minus.setter
     def minus(self, value: members.EmptyElement) -> None:
-        """Set the Minus member."""
+        """Set Minus. Returns the subtracted offset value."""
         self.set_member("Minus", value)
 

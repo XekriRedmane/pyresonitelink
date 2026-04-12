@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicBoneSphereCollider(GeneratedComponent, IDynamicBoneCollider, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicBoneSphereCollider.
+    """The dynamic bone sphere collider is a component that allows for making a static sphere collider by adding it to the list of ``StaticColliders`` on a DynamicBoneChain or make it dynamic by making it part of the ``Colliders`` list on a DynamicBonePlayerColliders Component
 
     Category: Physics/Dynamic Bones
     """
@@ -29,7 +29,7 @@ class DynamicBoneSphereCollider(GeneratedComponent, IDynamicBoneCollider, IWorld
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the sphere created by this component in local space of the Slot it is made on."""
         member = self.get_member("Radius")
         if member is None:
             return None

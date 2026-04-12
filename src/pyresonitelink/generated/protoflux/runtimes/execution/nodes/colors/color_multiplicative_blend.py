@@ -15,6 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ColorMultiplicativeBlend(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Color Multiplicative Blend does a multiplicative blend of its two input colors. The result is the product of each component between the target and destination.
 
+This is a symmetric operation, the result is the same with target and destination swapped. Regardless, the "target" and "destination" terminology is used for consistency with other blend nodes.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """
 
@@ -36,7 +38,7 @@ class ColorMultiplicativeBlend(GeneratedComponent, INodeValueOutput, IExecutionN
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeValueOutput[primitives.Color])."""
+        """The color that is blended "onto" the destination."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +59,7 @@ class ColorMultiplicativeBlend(GeneratedComponent, INodeValueOutput, IExecutionN
 
     @property
     def destination(self) -> str | None:
-        """Target ID of the Destination reference (targets INodeValueOutput[primitives.Color])."""
+        """The destination color that the source is blended "onto"."""
         member = self.get_member("Destination")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,9 +9,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InventoryLink(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InventoryLink.
+    """This component overrides the saving behavior of an item being saved to act as an inventory folder. The component will be overridden by another component if it is under another slot on an item with a different export behavior. (Ex: A Texture Exportable Component)
 
     Category: Cloud
+
+    Attach to a slot and give the component a ``TargetName`` and a URI that
+    links to a folder on the cloud for the ``Target`` saving an item with
+    this component on it will make the item act like a folder link.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InventoryLink"
@@ -32,7 +36,7 @@ class InventoryLink(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_name(self) -> primitives.String | None:
-        """The TargetName field value."""
+        """The name of the folder this component is linking to. This will change the display name of the folder when saved, but if shared by the same user again from their inventory, this will become what the cloud says the folder's name is and not the custom name it was when saved."""
         member = self.get_member("TargetName")
         if member is None:
             return None
@@ -51,7 +55,7 @@ class InventoryLink(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """The Target field value."""
+        """The folder URI link on the cloud that this component represents."""
         member = self.get_member("Target")
         if member is None:
             return None

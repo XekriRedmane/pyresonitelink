@@ -10,9 +10,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ContactLink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ContactLink.
+    """The ContactLink component allows a slot to be clicked on by a user to open their Dash Menu to the Contacts Menu of a specific user (by using a provided ``UserId``).
 
     Category: Cloud
+
+    Add the ContactLink component to an object, clicking on that object will
+    open up the Contacts Menu and will show the User page of the user
+    defined in the ``UserId`` field. When you attach it, your own User ID
+    will be automatically filled in. For UIX, a button component is required
+    to click and take the user to that contact page. Otherwise, a collider
+    works just fine without a button for this component to work.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContactLink"
@@ -30,7 +37,7 @@ class ContactLink(GeneratedComponent, ITouchable, IButtonPressReceiver, IWorldEv
 
     @property
     def user_id(self) -> primitives.String | None:
-        """The UserId field value."""
+        """The User ID of the User whose contact page will be opened upon clicking the object."""
         member = self.get_member("UserId")
         if member is None:
             return None

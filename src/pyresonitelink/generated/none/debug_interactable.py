@@ -9,7 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugInteractable(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.DebugInteractable.
+    """The DebugInteractable component is a UIX interactable that changes the color of an image on the same slot when the component area is interacted with.
+
+This was possibly made by Frooxius while they were creating UIX during the UIX development of FrooxEngine.
+
+    Attach to a slot of a UIX with an Image component to start debugging via
+    touch.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.DebugInteractable"
@@ -30,7 +35,7 @@ class DebugInteractable(GeneratedComponent, IUIInteractable, IWorldEventReceiver
 
     @property
     def touch_exit_lock(self) -> primitives.Bool | None:
-        """The TouchExitLock field value."""
+        """Whether the component can have an exit event or not when touching the component is stopped."""
         member = self.get_member("TouchExitLock")
         if member is None:
             return None
@@ -49,7 +54,7 @@ class DebugInteractable(GeneratedComponent, IUIInteractable, IWorldEventReceiver
 
     @property
     def touch_enter_lock(self) -> primitives.Bool | None:
-        """The TouchEnterLock field value."""
+        """Whether the component can have an enter event or not when touching the component is started."""
         member = self.get_member("TouchEnterLock")
         if member is None:
             return None

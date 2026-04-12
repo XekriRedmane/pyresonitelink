@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SlotInspector(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SlotInspector.
+    """The Slot Inspector component controls the slot items shown in a Scene Inspector and their drop down menus.
+
+    Not used directly by the user. Used in Scene Inspectors.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlotInspector"
@@ -51,7 +53,7 @@ class SlotInspector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def selection_reference(self) -> str | None:
-        """Target ID of the _selectionReference reference (targets SyncRef[Slot])."""
+        """The slot this points to."""
         member = self.get_member("_selectionReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -72,7 +74,7 @@ class SlotInspector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def root_slot(self) -> str | None:
-        """Target ID of the _rootSlot reference (targets Slot)."""
+        """The root of the visual for this item."""
         member = self.get_member("_rootSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -93,7 +95,7 @@ class SlotInspector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def child_container(self) -> str | None:
-        """Target ID of the _childContainer reference (targets Slot)."""
+        """The container for slot inspectors that are children of this one."""
         member = self.get_member("_childContainer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -114,7 +116,7 @@ class SlotInspector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def depth(self) -> primitives.Int | None:
-        """The _depth field value."""
+        """How far down this slot inspector is from the root selected slot inspector in it's parent Scene Inspector."""
         member = self.get_member("_depth")
         if member is None:
             return None
@@ -133,7 +135,7 @@ class SlotInspector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def expander(self) -> str | None:
-        """Target ID of the _expander reference (targets Expander)."""
+        """The component responsible for expanding the children slot inspector hierarchy of this item."""
         member = self.get_member("_expander")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -154,7 +156,7 @@ class SlotInspector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def expander_indicator(self) -> str | None:
-        """Target ID of the _expanderIndicator reference (targets TextExpandIndicator)."""
+        """The indicator for whether the slot inspector children hierarchy is expanded or not."""
         member = self.get_member("_expanderIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -175,7 +177,7 @@ class SlotInspector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slot_name_text(self) -> str | None:
-        """Target ID of the _slotNameText reference (targets Text)."""
+        """The name of the slot this slot inspector is pointing to."""
         member = self.get_member("_slotNameText")
         if isinstance(member, members.Reference):
             return member.targetId

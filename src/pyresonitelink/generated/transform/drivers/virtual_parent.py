@@ -12,9 +12,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VirtualParent(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VirtualParent.
+    """The Virtual Parent Component is used to make a Slot act as the child of another Slot without needing to be in the normal hierarchy order. This can be useful when you need it to respond in a certain way using transforms of the overriding parent.
 
     Category: Transform/Drivers
+
+    **Description**: The Virtual Parent Component is used to make a Slot act as the child of another Slot without needing to be in the normal hierarchy order. This can be useful when you need it to respond in a certain way using transforms of the overriding parent.
+
+The different ways to force this Slot (that has the Virtual Parent Component on it) to update its own transform, is to move it by grabbing it, using other components to move it, or using Flux.
+
+You can use the provided local offset fields to then further position this slot from its virtual parent.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VirtualParent"
@@ -50,7 +56,7 @@ class VirtualParent(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def override_parent(self) -> str | None:
-        """Target ID of the OverrideParent reference (targets Slot)."""
+        """If not null, the slot that the object gets reparented to"""
         member = self.get_member("OverrideParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -71,7 +77,7 @@ class VirtualParent(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_pos(self) -> str | None:
-        """Target ID of the _targetPos reference (targets IField[primitives.Float3])."""
+        """Position to be driven by parent's position."""
         member = self.get_member("_targetPos")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +98,7 @@ class VirtualParent(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_rot(self) -> str | None:
-        """Target ID of the _targetRot reference (targets IField[primitives.FloatQ])."""
+        """Rotation to be driven by parent's rotation."""
         member = self.get_member("_targetRot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -113,7 +119,7 @@ class VirtualParent(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_scl(self) -> str | None:
-        """Target ID of the _targetScl reference (targets IField[primitives.Float3])."""
+        """Scale to be driven by parent's scale."""
         member = self.get_member("_targetScl")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -134,7 +140,7 @@ class VirtualParent(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def local_position(self) -> primitives.Float3 | None:
-        """The LocalPosition field value."""
+        """Object's position relative to parent."""
         member = self.get_member("LocalPosition")
         if member is None:
             return None
@@ -153,7 +159,7 @@ class VirtualParent(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def local_rotation(self) -> primitives.FloatQ | None:
-        """The LocalRotation field value."""
+        """Object's rotation relative to parent."""
         member = self.get_member("LocalRotation")
         if member is None:
             return None
@@ -172,7 +178,7 @@ class VirtualParent(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def local_scale(self) -> primitives.Float3 | None:
-        """The LocalScale field value."""
+        """Object's scale relative to parent."""
         member = self.get_member("LocalScale")
         if member is None:
             return None

@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class AudioAccessibilitySettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioAccessibilitySettings.
+    """See Settings/Audio Accessibility
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioAccessibilitySettings"
@@ -33,7 +33,7 @@ class AudioAccessibilitySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def whisper_volume(self) -> primitives.Float | None:
-        """The WhisperVolume field value."""
+        """Controls the volume of sounds outside of your whisper sphere when using whisper mode."""
         member = self.get_member("WhisperVolume")
         if member is None:
             return None
@@ -52,7 +52,7 @@ class AudioAccessibilitySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def voice_message_volume(self) -> primitives.Float | None:
-        """The VoiceMessageVolume field value."""
+        """Controls the volume of sounds while you are recording a voice message."""
         member = self.get_member("VoiceMessageVolume")
         if member is None:
             return None

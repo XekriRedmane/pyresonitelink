@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.UniformSizeSineMultiplier.
+    """The UniformSizeSineMultiplier component makes particles start their size multipled by the current point in a constantly changing Sine wave.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.UniformSizeSineMultiplier"
@@ -38,7 +43,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
 
     @property
     def speed(self) -> primitives.Float | None:
-        """The Speed field value."""
+        """The speed of the Sine Wave change."""
         member = self.get_member("Speed")
         if member is None:
             return None
@@ -57,7 +62,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
 
     @property
     def offset(self) -> primitives.Float | None:
-        """The Offset field value."""
+        """The initial offset of the Sine Wave."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -76,7 +81,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
 
     @property
     def min_multiplier(self) -> primitives.Float | None:
-        """The MinMultiplier field value."""
+        """The minimum Sine Wave value that can be outputted and multipled with the particle's starting size."""
         member = self.get_member("MinMultiplier")
         if member is None:
             return None
@@ -95,7 +100,7 @@ class UniformSizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorl
 
     @property
     def max_multiplier(self) -> primitives.Float | None:
-        """The MaxMultiplier field value."""
+        """The maximum Sine Wave value that can be outputted and multipled with the particle's starting size."""
         member = self.get_member("MaxMultiplier")
         if member is None:
             return None

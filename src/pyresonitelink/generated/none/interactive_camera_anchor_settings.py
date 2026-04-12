@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class InteractiveCameraAnchorSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraAnchorSettings.
+    """See Camera.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraAnchorSettings"
@@ -33,7 +35,7 @@ class InteractiveCameraAnchorSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def interpolate_between_anchors(self) -> primitives.Bool | None:
-        """The InterpolateBetweenAnchors field value."""
+        """This allows the camera to smoothly go between anchor positions and rotations. If this is off, the camera will instantly go to the anchor instead of being smooth."""
         member = self.get_member("InterpolateBetweenAnchors")
         if member is None:
             return None
@@ -52,7 +54,7 @@ class InteractiveCameraAnchorSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def anchor_interpolation_speed(self) -> primitives.Float | None:
-        """The AnchorInterpolationSpeed field value."""
+        """The speed of which the camera moves between anchor positions and rotations."""
         member = self.get_member("AnchorInterpolationSpeed")
         if member is None:
             return None
@@ -71,7 +73,7 @@ class InteractiveCameraAnchorSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_linear_interpolation(self) -> primitives.Bool | None:
-        """The UseLinearInterpolation field value."""
+        """This moves the camera linearly to the anchor position, without smoothing it."""
         member = self.get_member("UseLinearInterpolation")
         if member is None:
             return None

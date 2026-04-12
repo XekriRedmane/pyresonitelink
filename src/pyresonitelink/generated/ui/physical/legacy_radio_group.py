@@ -15,9 +15,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyRadioGroup.
+    """The LegacyRadioGroup component was used to manage multiple Legacy Radios as part of a list of exclusive options. This component is a part of migrated content and should not be used in new content. This component should be replaced whenever possible.
 
     Category: UI/Physical
+
+    Just dont.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyRadioGroup"
@@ -140,7 +142,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
 
     @property
     def selected_option(self) -> str | None:
-        """Target ID of the _selectedOption reference (targets LegacyRadio)."""
+        """The Legacy Radio this component has as the chosen option."""
         member = self.get_member("_selectedOption")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -161,7 +163,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
 
     @property
     def choice_visual(self) -> str | None:
-        """Target ID of the _choiceVisual reference (targets Slot)."""
+        """the slot of the choice check mark."""
         member = self.get_member("_choiceVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -182,7 +184,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
 
     @property
     def choice_position(self) -> str | None:
-        """Target ID of the _choicePosition reference (targets IField[primitives.Float3])."""
+        """The field to drive to position the check mark."""
         member = self.get_member("_choicePosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -203,7 +205,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
 
     @property
     def choice_rotation(self) -> str | None:
-        """Target ID of the _choiceRotation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive for the check mark's rotation."""
         member = self.get_member("_choiceRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -224,7 +226,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
 
     @property
     def choice_scale(self) -> str | None:
-        """Target ID of the _choiceScale reference (targets IField[primitives.Float3])."""
+        """The field to drive for the check mark's scale."""
         member = self.get_member("_choiceScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -245,7 +247,7 @@ class LegacyRadioGroup(GeneratedComponent, IRadioGroup, IWorldEventReceiver):
 
     @property
     def choice_material(self) -> str | None:
-        """Target ID of the _choiceMaterial reference (targets PBS_RimMetallic)."""
+        """The material of the check mark visual."""
         member = self.get_member("_choiceMaterial")
         if isinstance(member, members.Reference):
             return member.targetId

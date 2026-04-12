@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MultiValueTextFormatDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MultiValueTextFormatDriver.
+    """The ValueTextFormatDriver applies the value of a multiple values to a text format string and drives the target string field. Elements are defined by putting {} brackets around a number to specify an element in ``Sources``.
 
     Category: Utility
     """
@@ -34,7 +34,7 @@ class MultiValueTextFormatDriver(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def sources(self) -> members.SyncList | None:
-        """The Sources member."""
+        """A list of source fields."""
         member = self.get_member("Sources")
         if isinstance(member, members.SyncList):
             return member
@@ -42,12 +42,12 @@ class MultiValueTextFormatDriver(GeneratedComponent, IComponent, IWorldEventRece
 
     @sources.setter
     def sources(self, value: members.SyncList) -> None:
-        """Set the Sources member."""
+        """Set Sources. A list of source fields."""
         self.set_member("Sources", value)
 
     @property
     def format_(self) -> primitives.String | None:
-        """The Format field value."""
+        """The format string, which has a list of "{X}" where "X" is a number that refers to an item number in ``Sources``. The entire "{X}" gets replaced by a source with that number."""
         member = self.get_member("Format")
         if member is None:
             return None
@@ -66,7 +66,7 @@ class MultiValueTextFormatDriver(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IField[primitives.String])."""
+        """The target field."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId

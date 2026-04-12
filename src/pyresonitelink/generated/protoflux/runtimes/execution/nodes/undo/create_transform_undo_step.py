@@ -17,7 +17,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Create Transform Undo Step will create an undo step in the Context Menu of the person who the impulse came from. The node will then send to the UndoManager in the world the slot transforms that the slot provided into Target should revert to. Or in more simpler terms, the current transforms the provided Target (Slot) contains is what it will be reset to when undone via the context menu. Certain transforms will be included or omitted depending on booleans provided into the inputs.
+    """The Create Transform Undo Step will create an undo step in the Context Menu of the person who the impulse came from. The node will then send to the UndoManager in the world the slot transforms that the slot provided into Target should revert to. Or in more simpler terms, the current transforms the provided Target (Slot) contains is what it will be reset to when undone via the context menu. Certain transforms will be included or omitted depending on booleans provided into the inputs. 
+
+when this node is paired with an Undo Batch, it's description if has one, will be ignored, and will be part of the Undo Batch's undo step instead.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Undo
     """
@@ -52,7 +54,7 @@ class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues to More undo steps, continues to code that eventually ends, or an End Undo Batch that continues to eventually ended code."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +75,7 @@ class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[Slot])."""
+        """The Slot which it's transforms will be undo able for this undo step."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -94,7 +96,7 @@ class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def save_parent(self) -> str | None:
-        """Target ID of the SaveParent reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whither to make the Slot's Parent undoable with this undo step."""
         member = self.get_member("SaveParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -115,7 +117,7 @@ class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def save_position(self) -> str | None:
-        """Target ID of the SavePosition reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whither to make the Slot's Position undoable with this undo step."""
         member = self.get_member("SavePosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -136,7 +138,7 @@ class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def save_rotation(self) -> str | None:
-        """Target ID of the SaveRotation reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whither to make the Slot's Rotation undoable with this undo step."""
         member = self.get_member("SaveRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -157,7 +159,7 @@ class CreateTransformUndoStep(GeneratedComponent, ISyncNodeOperation, IExecution
 
     @property
     def save_scale(self) -> str | None:
-        """Target ID of the SaveScale reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whither to make the Slot's Scale undoable with this undo step."""
         member = self.get_member("SaveScale")
         if isinstance(member, members.Reference):
             return member.targetId

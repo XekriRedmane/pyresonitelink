@@ -34,7 +34,7 @@ class IsGrabbableScalable(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     @property
     def grabbable(self) -> str | None:
-        """Target ID of the Grabbable reference (targets INodeObjectOutput[IGrabbable])."""
+        """The grabbable to check the scalable capabilities for."""
         member = self.get_member("Grabbable")
         if isinstance(member, members.Reference):
             return member.targetId

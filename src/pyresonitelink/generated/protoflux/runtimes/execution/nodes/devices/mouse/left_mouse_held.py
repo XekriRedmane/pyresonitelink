@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LeftMouseHeld(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Left Mouse Held node returns the local user's left mouse button being held down.
+    """The ``Left Mouse Held`` node returns the local user's left mouse button being held down.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Mouse
     """

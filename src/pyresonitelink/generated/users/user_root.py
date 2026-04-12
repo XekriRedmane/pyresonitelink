@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserRoot(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Usually users find the slot containing this component by using the ProtoFlux node User Root Slot.
+    """The UserRoot component can be found on the top slot of a user, this component references the user's AvatarRenderSettings, ScreenController and any current AvatarUserRootOverrideAssigners.
 
     Category: Users
 

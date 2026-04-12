@@ -33,7 +33,7 @@ class BodyNodeChirality(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[BodyNode])."""
+        """The body node to check if it is on the left or right side of the body."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId

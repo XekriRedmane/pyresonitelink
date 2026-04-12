@@ -37,7 +37,7 @@ class MultiplyString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to repeat B (int) times."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class MultiplyString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[primitives.Int])."""
+        """How many times to repeat A (String)."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId

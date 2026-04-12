@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Tool Events node takes in a referenced ITool, and fires events if the tool is equipped or dequipped from the user.
+    """The ``Tool Events`` node takes in a referenced ITool, and fires events if the tool is equipped or dequipped from the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """
@@ -61,7 +61,7 @@ class ToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
 
     @property
     def equipped(self) -> str | None:
-        """Target ID of the Equipped reference (targets ISyncNodeOperation)."""
+        """Fires when the tool is equipped."""
         member = self.get_member("Equipped")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +82,7 @@ class ToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
 
     @property
     def dequipped(self) -> str | None:
-        """Target ID of the Dequipped reference (targets ISyncNodeOperation)."""
+        """Fires when the tool is dequipped."""
         member = self.get_member("Dequipped")
         if isinstance(member, members.Reference):
             return member.targetId

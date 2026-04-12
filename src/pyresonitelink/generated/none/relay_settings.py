@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class RelaySettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.RelaySettings.
+    """For better info, see Settings.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RelaySettings"
@@ -34,7 +36,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def always_use_relay(self) -> primitives.Bool | None:
-        """The AlwaysUseRelay field value."""
+        """Relays are typically used as a fallback when a direct connection to the host cannot be established. By enabling this option, you will force the connection to always happen through a relay. This can be useful in cases of connection issues to particular hosts. It is NOT recommended to have this option permanently on."""
         member = self.get_member("AlwaysUseRelay")
         if member is None:
             return None
@@ -53,7 +55,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def use_closest_available_relay(self) -> primitives.Bool | None:
-        """The UseClosestAvailableRelay field value."""
+        """When this option is enabled, the closest available relay will be automatically selected. If you want to connect through a specific relay (e.g. in case of long distance connections to avoid packet queuing) you can disable this option and configure the preferred relays below."""
         member = self.get_member("UseClosestAvailableRelay")
         if member is None:
             return None
@@ -72,7 +74,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def relay_priorities(self) -> members.SyncList | None:
-        """The RelayPriorities member."""
+        """A list of relays to use in order when trying to connect to a host."""
         member = self.get_member("RelayPriorities")
         if isinstance(member, members.SyncList):
             return member
@@ -80,12 +82,12 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
 
     @relay_priorities.setter
     def relay_priorities(self, value: members.SyncList) -> None:
-        """Set the RelayPriorities member."""
+        """Set RelayPriorities. A list of relays to use in order when trying to connect to a host."""
         self.set_member("RelayPriorities", value)
 
     @property
     def relay_priorities_enabled(self) -> primitives.Bool | None:
-        """The RelayPrioritiesEnabled field value."""
+        """Whether or not to use the relay priorities list."""
         member = self.get_member("RelayPrioritiesEnabled")
         if member is None:
             return None
@@ -103,7 +105,7 @@ class RelaySettings(GeneratedComponent, ICustomInspector):
             )
 
     async def get_entry(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, debug: bool = False) -> dict:
-        """Call the GetEntry sync method.
+        """Can be used to retrieve an entry from the list of ``RelayPriorities``.
 
         Args:
             resolink: Connected ResoniteLink client.

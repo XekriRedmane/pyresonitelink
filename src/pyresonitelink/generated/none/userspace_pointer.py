@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserspacePointer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserspacePointer.
+    """The UserspacePointer component is used in user space and is used to control the behavior of the user space lasers for interacting with user space elements like the dash menu.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserspacePointer"
@@ -48,7 +48,7 @@ class UserspacePointer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @property
     def equip_link(self) -> members.EmptyElement | None:
-        """The _equipLink member."""
+        """A special internal link to equipping a tool."""
         member = self.get_member("_equipLink")
         if isinstance(member, members.EmptyElement):
             return member
@@ -56,12 +56,12 @@ class UserspacePointer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @equip_link.setter
     def equip_link(self, value: members.EmptyElement) -> None:
-        """Set the _equipLink member."""
+        """Set _equipLink. A special internal link to equipping a tool."""
         self.set_member("_equipLink", value)
 
     @property
     def tip_reference(self) -> str | None:
-        """Target ID of the TipReference reference (targets Slot)."""
+        """The tip reference for the laser."""
         member = self.get_member("TipReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +82,7 @@ class UserspacePointer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @property
     def block_grip_equip(self) -> primitives.Bool | None:
-        """The BlockGripEquip field value."""
+        """Whether to block grip equip or not."""
         member = self.get_member("BlockGripEquip")
         if member is None:
             return None
@@ -101,7 +101,7 @@ class UserspacePointer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @property
     def block_remote_equip(self) -> primitives.Bool | None:
-        """The BlockRemoteEquip field value."""
+        """Whether to block remote equip or not."""
         member = self.get_member("BlockRemoteEquip")
         if member is None:
             return None
@@ -120,7 +120,7 @@ class UserspacePointer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @property
     def equip_name(self) -> primitives.String | None:
-        """The EquipName field value."""
+        """The name for equipping the tool."""
         member = self.get_member("EquipName")
         if member is None:
             return None
@@ -139,7 +139,7 @@ class UserspacePointer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @property
     def override_active_tool(self) -> str | None:
-        """Target ID of the _overrideActiveTool reference (targets InteractionHandler)."""
+        """The interaction handler to use as an override for the equipped tool."""
         member = self.get_member("_overrideActiveTool")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -160,7 +160,7 @@ class UserspacePointer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchab
 
     @property
     def grip_poses_generated(self) -> primitives.Bool | None:
-        """The _gripPosesGenerated field value."""
+        """Whether or not the grip poses have been generated."""
         member = self.get_member("_gripPosesGenerated")
         if member is None:
             return None

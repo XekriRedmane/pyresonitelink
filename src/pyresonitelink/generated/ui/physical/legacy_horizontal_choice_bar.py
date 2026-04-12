@@ -13,9 +13,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyHorizontalChoiceBar.
+    """The LegacyHorizontalChoiceBar component is used in old migrated legacy content. This should not be used in new content, and should be replaced whenever possible. This was primarily used in old Gizmos.
 
     Category: UI/Physical
+
+    Just dont.
+
+    **SegmentTouchEvent**: SegmentTouchEvent() is a sync delegate that is the type Delegate&lt;LegacyHorizontalChoiceBar sender, Int itemIndex, TouchEventInfo eventInfo&gt; and can be used to handle the press events of a LegacyHorizontalChoiceBar.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyHorizontalChoiceBar"
@@ -122,7 +126,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def items(self) -> members.SyncList | None:
-        """The _items member."""
+        """A list of items to be able to press."""
         member = self.get_member("_items")
         if isinstance(member, members.SyncList):
             return member
@@ -130,12 +134,12 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
 
     @items.setter
     def items(self, value: members.SyncList) -> None:
-        """Set the _items member."""
+        """Set _items. A list of items to be able to press."""
         self.set_member("_items", value)
 
     @property
     def width(self) -> primitives.Float | None:
-        """The Width field value."""
+        """The width of each item."""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -154,7 +158,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """The height of each item."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -173,7 +177,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """The thickness of each item."""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -192,7 +196,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def spacing(self) -> primitives.Float | None:
-        """The Spacing field value."""
+        """How far apart the items should be placed."""
         member = self.get_member("Spacing")
         if member is None:
             return None
@@ -211,7 +215,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def slant(self) -> primitives.Float | None:
-        """The Slant field value."""
+        """The Bevel of the meshes of each item."""
         member = self.get_member("Slant")
         if member is None:
             return None
@@ -230,7 +234,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def symmetrical(self) -> primitives.Bool | None:
-        """The Symmetrical field value."""
+        """Whether the Horizontal layout should be symmetrical."""
         member = self.get_member("Symmetrical")
         if member is None:
             return None
@@ -249,7 +253,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def root(self) -> str | None:
-        """Target ID of the _root reference (targets Slot)."""
+        """the place to parent all the items."""
         member = self.get_member("_root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -270,7 +274,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def root_scale(self) -> str | None:
-        """Target ID of the _rootScale reference (targets IField[primitives.Float3])."""
+        """The scale field of the slot to place the items."""
         member = self.get_member("_rootScale")
         if isinstance(member, members.Reference):
             return member.targetId

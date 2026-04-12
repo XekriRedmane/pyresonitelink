@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteractable, IUIGrabbable, IUIGrabReceiver, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GridContainer.
+    """The GridContainer component allows for placing facets in a grid format and storing them under a container.
 
     Category: Radiant UI/Containers
     """
@@ -66,7 +66,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @property
     def edit_mode(self) -> primitives.Bool | None:
-        """The EditMode field value."""
+        """Whether this grid container is currently being edited (UI edit mode)"""
         member = self.get_member("EditMode")
         if member is None:
             return None
@@ -85,7 +85,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @property
     def facets_root(self) -> str | None:
-        """Target ID of the FacetsRoot reference (targets Slot)."""
+        """Where to put facets when they are placed on the grid."""
         member = self.get_member("FacetsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +106,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @property
     def background(self) -> str | None:
-        """Target ID of the _background reference (targets RectTransform)."""
+        """The UIX rectangle that specifies what the background is."""
         member = self.get_member("_background")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -127,7 +127,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @property
     def content(self) -> str | None:
-        """Target ID of the _content reference (targets RectTransform)."""
+        """The UIX rectangle for the content like facets."""
         member = self.get_member("_content")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -148,7 +148,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @property
     def overlay(self) -> str | None:
-        """Target ID of the _overlay reference (targets RectTransform)."""
+        """The UIX rectangle for the grid Overlay when editing."""
         member = self.get_member("_overlay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -169,7 +169,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @property
     def recalculate_on_size_change(self) -> primitives.Bool | None:
-        """The RecalculateOnSizeChange field value."""
+        """Whether to recalculate the facets on size change of the canvas."""
         member = self.get_member("RecalculateOnSizeChange")
         if member is None:
             return None
@@ -188,7 +188,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @property
     def cell_count(self) -> members.FieldEnum | None:
-        """The CellCount member."""
+        """The forced cell count of this grid container."""
         member = self.get_member("CellCount")
         if isinstance(member, members.FieldEnum):
             return member
@@ -196,12 +196,12 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @cell_count.setter
     def cell_count(self, value: members.FieldEnum) -> None:
-        """Set the CellCount member."""
+        """Set CellCount. The forced cell count of this grid container."""
         self.set_member("CellCount", value)
 
     @property
     def cell_size(self) -> primitives.Float2 | None:
-        """The CellSize field value."""
+        """How big each cell is in pixels."""
         member = self.get_member("CellSize")
         if member is None:
             return None
@@ -220,7 +220,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @property
     def padding(self) -> primitives.Float2 | None:
-        """The Padding field value."""
+        """How much padding between facets there should be."""
         member = self.get_member("Padding")
         if member is None:
             return None
@@ -239,7 +239,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @property
     def last_calculated_centering_offset(self) -> primitives.Float2 | None:
-        """The _lastCalculatedCenteringOffset field value."""
+        """The last centering offset calculated by this component, if at all."""
         member = self.get_member("_lastCalculatedCenteringOffset")
         if member is None:
             return None
@@ -258,7 +258,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @property
     def last_calculated_cell_size(self) -> primitives.Float2 | None:
-        """The _lastCalculatedCellSize field value."""
+        """The last cell size calculated by this component, if at all. Created when ``CellCount`` is specified."""
         member = self.get_member("_lastCalculatedCellSize")
         if member is None:
             return None
@@ -277,7 +277,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
 
     @property
     def last_calculated_padding(self) -> primitives.Float2 | None:
-        """The _lastCalculatedPadding field value."""
+        """The last calculated padding between facets if at all."""
         member = self.get_member("_lastCalculatedPadding")
         if member is None:
             return None

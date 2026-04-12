@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LabelPointerMesh.
+    """The LabelPointerMesh component is used by the labeler tool to point to a position and underline some generated text elements.
 
     Category: Assets/Procedural Meshes
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LabelPointerMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, label_point: primitives.Float3 | None = None, target_point: primitives.Float3 | None = None, label_rotation: primitives.FloatQ | None = None, label_width: primitives.Float | None = None, width: primitives.Float | None = None, expand_lerp: primitives.Float | None = None, dual_sided: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, label_point: primitives.Float3 | None = None, target_point: primitives.Float3 | None = None, label_rotation: primitives.FloatQ | None = None, label_width: primitives.Float | None = None, width: primitives.Float | None = None, expand_lerp: primitives.Float | None = None, dual_sided: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             label_point: Initial value for LabelPoint.
             target_point: Initial value for TargetPoint.
             label_rotation: Initial value for LabelRotation.
@@ -42,6 +44,8 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if label_point is not None:
             self.label_point = label_point
         if target_point is not None:
@@ -115,21 +119,28 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def label_point(self) -> primitives.Float3 | None:
-        """The LabelPoint field value."""
+        """Where the label should render in local space."""
         member = self.get_member("LabelPoint")
         if member is None:
             return None
@@ -148,7 +159,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def target_point(self) -> primitives.Float3 | None:
-        """The TargetPoint field value."""
+        """Where the line from the label should point to."""
         member = self.get_member("TargetPoint")
         if member is None:
             return None
@@ -167,7 +178,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def label_rotation(self) -> primitives.FloatQ | None:
-        """The LabelRotation field value."""
+        """The rotation of the label visual."""
         member = self.get_member("LabelRotation")
         if member is None:
             return None
@@ -186,7 +197,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def label_width(self) -> primitives.Float | None:
-        """The LabelWidth field value."""
+        """The width of the label visual."""
         member = self.get_member("LabelWidth")
         if member is None:
             return None
@@ -205,7 +216,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def width(self) -> primitives.Float | None:
-        """The Width field value."""
+        """The width of the line going from the label to ``TargetPoint``"""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -224,7 +235,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def expand_lerp(self) -> primitives.Float | None:
-        """The ExpandLerp field value."""
+        """How long the label underline should be."""
         member = self.get_member("ExpandLerp")
         if member is None:
             return None
@@ -243,7 +254,7 @@ class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def dual_sided(self) -> primitives.Bool | None:
-        """The DualSided field value."""
+        """Whether the mesh should have duplicate geometry with the fronts facing the opposite direction."""
         member = self.get_member("DualSided")
         if member is None:
             return None

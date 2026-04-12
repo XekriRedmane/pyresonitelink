@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NiceTypeName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Nice Type Name node takes in a Type as well as optional open and close symbols, then returns the pretty human readable name of the provided type. For example, using a type that has a float and connecting it to this node, it will return float.
+    """The ``Nice Type Name`` node takes in a Type as well as optional open and close symbols, then returns the pretty human readable name of the provided type. For example, using a type that has a float and connecting it to this node, it will return ``float``.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
     """
@@ -40,7 +40,7 @@ class NiceTypeName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def type_(self) -> str | None:
-        """Target ID of the Type reference (targets INodeObjectOutput[Type])."""
+        """The type we want the nice name of."""
         member = self.get_member("Type")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +61,7 @@ class NiceTypeName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def open_symbol(self) -> str | None:
-        """Target ID of the OpenSymbol reference (targets INodeObjectOutput[primitives.String])."""
+        """The open symbol from this type (defaults to ``<``)."""
         member = self.get_member("OpenSymbol")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +82,7 @@ class NiceTypeName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def close_symbol(self) -> str | None:
-        """Target ID of the CloseSymbol reference (targets INodeObjectOutput[primitives.String])."""
+        """The close symbol from this type (defaults to ``>``)."""
         member = self.get_member("CloseSymbol")
         if isinstance(member, members.Reference):
             return member.targetId

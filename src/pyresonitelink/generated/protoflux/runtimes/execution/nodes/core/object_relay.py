@@ -12,7 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectRelay(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """alt=Relay|thumb|A ProtoFlux Relay.
+    """The Relay node can be for data or impulses. Relays are commonly used to route wires for an easier time reading ProtoFlux.
+
+The impulse relays are used to rearrange and combine impulse wires together for managing Protoflux code. Impulse relays can take many inputs connections and can only have one output connection.
+
+The data relays takes in an input and outputs the same type, carrying the same value or reference from the input. Data relays can only take one input connection and can have many output connections.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 
@@ -38,7 +42,7 @@ class ObjectRelay(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], 
 
     @property
     def input_(self) -> str | None:
-        """Target ID of the Input reference (targets INodeObjectOutput[T])."""
+        """A value, reference, or impulse from the input."""
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             return member.targetId

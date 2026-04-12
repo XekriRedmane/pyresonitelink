@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.color_mode import ColorMode
+from pyresonitelink.generated._enums.vibrate_preset import VibratePreset
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -13,14 +15,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.Button.
+    """The Button component is an interactive UIX element that allows for users to click on its RectTransform. It can provide visual feedback by altering the colors of graphics on the RectTransform Slot, such as the Image component. This is able to trigger several other components, such as Text Field, by using the Button Events system.
+
+}}
 
     Category: UIX/Interaction
+
+    This can be used with ProtoFlux, and specifically the Button Events
+    node. Allowing it to fire Impulses from this IButton reference.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Button"
 
-    def __init__(self, base_color: primitives.ColorX | None = None, legacy_normal_color: primitives.ColorX | None = None, legacy_highlight_color: primitives.ColorX | None = None, legacy_press_color: primitives.ColorX | None = None, legacy_disabled_color: primitives.ColorX | None = None, legacy_color_drive: str | IField[primitives.ColorX] | None = None, is_pressed: primitives.Bool | None = None, is_hovering: primitives.Bool | None = None, clear_focus_on_press: primitives.Bool | None = None, pass_through_horizontal_movement: primitives.Bool | None = None, pass_through_vertical_movement: primitives.Bool | None = None, require_lock_in_to_press: primitives.Bool | None = None, require_initial_press: primitives.Bool | None = None, press_point: primitives.Float2 | None = None, send_slot_events: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, base_color: primitives.ColorX | None = None, legacy_normal_color: primitives.ColorX | None = None, legacy_highlight_color: primitives.ColorX | None = None, legacy_press_color: primitives.ColorX | None = None, legacy_disabled_color: primitives.ColorX | None = None, legacy_tint_color_mode: ColorMode | str | None = None, legacy_color_drive: str | IField[primitives.ColorX] | None = None, is_pressed: primitives.Bool | None = None, is_hovering: primitives.Bool | None = None, hover_vibrate: VibratePreset | str | None = None, press_vibrate: VibratePreset | str | None = None, clear_focus_on_press: primitives.Bool | None = None, pass_through_horizontal_movement: primitives.Bool | None = None, pass_through_vertical_movement: primitives.Bool | None = None, require_lock_in_to_press: primitives.Bool | None = None, require_initial_press: primitives.Bool | None = None, press_point: primitives.Float2 | None = None, send_slot_events: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,9 +36,12 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             legacy_highlight_color: Initial value for __legacy_HighlightColor.
             legacy_press_color: Initial value for __legacy_PressColor.
             legacy_disabled_color: Initial value for __legacy_DisabledColor.
+            legacy_tint_color_mode: Initial value for __legacy_TintColorMode.
             legacy_color_drive: Initial value for __legacy_ColorDrive.
             is_pressed: Initial value for IsPressed.
             is_hovering: Initial value for IsHovering.
+            hover_vibrate: Initial value for HoverVibrate.
+            press_vibrate: Initial value for PressVibrate.
             clear_focus_on_press: Initial value for ClearFocusOnPress.
             pass_through_horizontal_movement: Initial value for PassThroughHorizontalMovement.
             pass_through_vertical_movement: Initial value for PassThroughVerticalMovement.
@@ -52,12 +62,18 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             self.legacy_press_color = legacy_press_color
         if legacy_disabled_color is not None:
             self.legacy_disabled_color = legacy_disabled_color
+        if legacy_tint_color_mode is not None:
+            self.legacy_tint_color_mode = legacy_tint_color_mode
         if legacy_color_drive is not None:
             self.legacy_color_drive = legacy_color_drive
         if is_pressed is not None:
             self.is_pressed = is_pressed
         if is_hovering is not None:
             self.is_hovering = is_hovering
+        if hover_vibrate is not None:
+            self.hover_vibrate = hover_vibrate
+        if press_vibrate is not None:
+            self.press_vibrate = press_vibrate
         if clear_focus_on_press is not None:
             self.clear_focus_on_press = clear_focus_on_press
         if pass_through_horizontal_movement is not None:
@@ -75,7 +91,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def base_color(self) -> primitives.ColorX | None:
-        """The BaseColor field value."""
+        """The color that all other tints will be based on"""
         member = self.get_member("BaseColor")
         if member is None:
             return None
@@ -94,7 +110,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def color_drivers(self) -> members.SyncList | None:
-        """The ColorDrivers member."""
+        """A list of sets of colors. Each one points at another component's color, and determines how it looks normally, when highlighted, when pressed, and when disabled"""
         member = self.get_member("ColorDrivers")
         if isinstance(member, members.SyncList):
             return member
@@ -102,12 +118,12 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @color_drivers.setter
     def color_drivers(self, value: members.SyncList) -> None:
-        """Set the ColorDrivers member."""
+        """Set ColorDrivers. A list of sets of colors. Each one points at another component's color, and determines how it looks normally, when highlighted, when pressed, and when disabled"""
         self.set_member("ColorDrivers", value)
 
     @property
     def legacy_normal_color(self) -> primitives.ColorX | None:
-        """The __legacy_NormalColor field value."""
+        """Legacy normal button color."""
         member = self.get_member("__legacy_NormalColor")
         if member is None:
             return None
@@ -126,7 +142,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def legacy_highlight_color(self) -> primitives.ColorX | None:
-        """The __legacy_HighlightColor field value."""
+        """Legacy highlight button color."""
         member = self.get_member("__legacy_HighlightColor")
         if member is None:
             return None
@@ -145,7 +161,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def legacy_press_color(self) -> primitives.ColorX | None:
-        """The __legacy_PressColor field value."""
+        """Legacy press button color."""
         member = self.get_member("__legacy_PressColor")
         if member is None:
             return None
@@ -164,7 +180,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def legacy_disabled_color(self) -> primitives.ColorX | None:
-        """The __legacy_DisabledColor field value."""
+        """Legacy disabled button color."""
         member = self.get_member("__legacy_DisabledColor")
         if member is None:
             return None
@@ -182,21 +198,28 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             )
 
     @property
-    def legacy_tint_color_mode(self) -> members.FieldEnum | None:
-        """The __legacy_TintColorMode member."""
+    def legacy_tint_color_mode(self) -> ColorMode | None:
+        """Legacy tint button color."""
         member = self.get_member("__legacy_TintColorMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorMode(member.value)
         return None
 
     @legacy_tint_color_mode.setter
-    def legacy_tint_color_mode(self, value: members.FieldEnum) -> None:
-        """Set the __legacy_TintColorMode member."""
-        self.set_member("__legacy_TintColorMode", value)
+    def legacy_tint_color_mode(self, value: ColorMode | str) -> None:
+        """Set __legacy_TintColorMode. Legacy tint button color."""
+        member = self.get_member("__legacy_TintColorMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "__legacy_TintColorMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def legacy_color_drive(self) -> str | None:
-        """Target ID of the __legacy_ColorDrive reference (targets IField[primitives.ColorX])."""
+        """Legacy color drive button."""
         member = self.get_member("__legacy_ColorDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -217,7 +240,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def is_pressed(self) -> primitives.Bool | None:
-        """The IsPressed field value."""
+        """True if the button is being pressed"""
         member = self.get_member("IsPressed")
         if member is None:
             return None
@@ -236,7 +259,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def is_hovering(self) -> primitives.Bool | None:
-        """The IsHovering field value."""
+        """True if someone is hovering over the button"""
         member = self.get_member("IsHovering")
         if member is None:
             return None
@@ -254,34 +277,48 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
             )
 
     @property
-    def hover_vibrate(self) -> members.FieldEnum | None:
-        """The HoverVibrate member."""
+    def hover_vibrate(self) -> VibratePreset | None:
+        """How a controller should vibrate when hovering over this button"""
         member = self.get_member("HoverVibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @hover_vibrate.setter
-    def hover_vibrate(self, value: members.FieldEnum) -> None:
-        """Set the HoverVibrate member."""
-        self.set_member("HoverVibrate", value)
+    def hover_vibrate(self, value: VibratePreset | str) -> None:
+        """Set HoverVibrate. How a controller should vibrate when hovering over this button"""
+        member = self.get_member("HoverVibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "HoverVibrate",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def press_vibrate(self) -> members.FieldEnum | None:
-        """The PressVibrate member."""
+    def press_vibrate(self) -> VibratePreset | None:
+        """How a controller should vibrate when pressing this button"""
         member = self.get_member("PressVibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @press_vibrate.setter
-    def press_vibrate(self, value: members.FieldEnum) -> None:
-        """Set the PressVibrate member."""
-        self.set_member("PressVibrate", value)
+    def press_vibrate(self, value: VibratePreset | str) -> None:
+        """Set PressVibrate. How a controller should vibrate when pressing this button"""
+        member = self.get_member("PressVibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "PressVibrate",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def clear_focus_on_press(self) -> primitives.Bool | None:
-        """The ClearFocusOnPress field value."""
+        """If set, will defocus any currently focused TextEditor, DesktopInteractionRelay, or any other IFocusable when this button is pressed. Defaults to true."""
         member = self.get_member("ClearFocusOnPress")
         if member is None:
             return None
@@ -300,7 +337,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def pass_through_horizontal_movement(self) -> primitives.Bool | None:
-        """The PassThroughHorizontalMovement field value."""
+        """Whether or not press-and-drag movement should be passed to higher components"""
         member = self.get_member("PassThroughHorizontalMovement")
         if member is None:
             return None
@@ -319,7 +356,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def pass_through_vertical_movement(self) -> primitives.Bool | None:
-        """The PassThroughVerticalMovement field value."""
+        """Whether or not press-and-drag movement should be passed to higher components"""
         member = self.get_member("PassThroughVerticalMovement")
         if member is None:
             return None
@@ -338,7 +375,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def require_lock_in_to_press(self) -> primitives.Bool | None:
-        """The RequireLockInToPress field value."""
+        """Internal. Defaults to false."""
         member = self.get_member("RequireLockInToPress")
         if member is None:
             return None
@@ -357,7 +394,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def require_initial_press(self) -> primitives.Bool | None:
-        """The RequireInitialPress field value."""
+        """Internal - Check for the initial press of the button. Defaults to true."""
         member = self.get_member("RequireInitialPress")
         if member is None:
             return None
@@ -376,7 +413,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def press_point(self) -> primitives.Float2 | None:
-        """The PressPoint field value."""
+        """The (x,y) coordinate where the button is being pressed"""
         member = self.get_member("PressPoint")
         if member is None:
             return None
@@ -395,7 +432,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
 
     @property
     def send_slot_events(self) -> primitives.Bool | None:
-        """The SendSlotEvents field value."""
+        """If set, all Pressing, Pressed, Released, HoverEnter, HoverStay, and HoverLeave events are sent to all IButtonPressReceiver components within this component's slot. Defaults to true."""
         member = self.get_member("SendSlotEvents")
         if member is None:
             return None

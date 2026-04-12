@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UndoManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Undo.UndoManager.
+    """The UndoManager component keeps track of all user's actions in the world, allowing users to Undo or revert back to a previous step or action. Undoing can be controlled in ProtoFlux within the Undo Category, where users create undo batches and steps that this component can utilize. Undoing can be disabled by setting max steps to ``0``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Undo.UndoManager"
@@ -30,7 +30,7 @@ class UndoManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_undo_steps(self) -> primitives.Int | None:
-        """The MaxUndoSteps field value."""
+        """The maximum memory for Undoable actions per user for the current world."""
         member = self.get_member("MaxUndoSteps")
         if member is None:
             return None
@@ -49,7 +49,7 @@ class UndoManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def unsaved_changes(self) -> primitives.Bool | None:
-        """The UnsavedChanges field value."""
+        """Whether the user has done anything that makes an undo step, which tells the world it has unsaved changes."""
         member = self.get_member("UnsavedChanges")
         if member is None:
             return None

@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserJoined(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Joined node is an event that fires when a user joins the current world this node is in, as well as providing that user.
+    """The ``User Joined`` node is an event that fires when a user joins the current world this node is in, as well as providing that user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World
     """
@@ -39,7 +39,7 @@ class UserJoined(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, I
 
     @property
     def only_host(self) -> str | None:
-        """Target ID of the OnlyHost reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should this impulse only run on the host. (Default: true) Will run an impulse for all users when set to false."""
         member = self.get_member("OnlyHost")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class UserJoined(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, I
 
     @property
     def on_joined(self) -> str | None:
-        """Target ID of the OnJoined reference (targets ISyncNodeOperation)."""
+        """Fires when a user joins the world."""
         member = self.get_member("OnJoined")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +81,7 @@ class UserJoined(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, I
 
     @property
     def joined_user(self) -> members.EmptyElement | None:
-        """The JoinedUser member."""
+        """The User that joined the world."""
         member = self.get_member("JoinedUser")
         if isinstance(member, members.EmptyElement):
             return member
@@ -89,6 +89,6 @@ class UserJoined(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, I
 
     @joined_user.setter
     def joined_user(self, value: members.EmptyElement) -> None:
-        """Set the JoinedUser member."""
+        """Set JoinedUser. The User that joined the world."""
         self.set_member("JoinedUser", value)
 

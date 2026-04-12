@@ -1,0 +1,11 @@
+{
+  "description": "The UnresolvedReferences component is internal to FrooxEngine and is found usually on a world root. It is used to store references that are unresolved by the load controller of the game for that world.",
+  "category": "With Nested Types",
+  "fields": {
+    "References": "A list of references to keep a storage for."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UnresolvedReferences&action=raw"
+}

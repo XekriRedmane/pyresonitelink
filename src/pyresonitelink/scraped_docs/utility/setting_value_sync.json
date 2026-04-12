@@ -1,0 +1,15 @@
+{
+  "description": "The SettingValueSync component allows for reading (And sometimes writing) a setting from a particular ``SyncingUser`` for the purpose of changing an item/world's appearance or behavior depending on that settings value.",
+  "category": "Utility",
+  "fields": {
+    "SyncingUser": "The user to get the setting from.",
+    "SettingName": "The setting or setting group to get a value for. This is a path separated by \".\".",
+    "TargetField": "The field to put the setting value into, can also write back to the setting if the world is unsafe or the setting allows for the world to write it.",
+    "SubsettingGetter": "The subsetting method name to use to get a subsetting.",
+    "SubsettingKey": "The key to pass to the subsetting getter method found under the name specified by ``SubsettingGetter`` in order to get a subsetting."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a setting path (``SettingName``) and a ``SyncingUser`` to read from in order to read values. For subsettings like audio devices or trackers a name provided to ``SubsettingGetter`` of a SubsettingGetter and a key to use in ``SubsettingKey`` is needed.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SettingValueSync&action=raw"
+}

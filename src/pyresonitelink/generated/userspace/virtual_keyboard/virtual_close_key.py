@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VirtualCloseKey(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VirtualCloseKey.
+    """Closes the Keyboard in ``Keyboard`` field when it receives a button event. Using a button on the same slot of this component and pressing it will make this component receive said event.
 
     Category: Userspace/Virtual Keyboard
     """
@@ -29,7 +29,7 @@ class VirtualCloseKey(GeneratedComponent, IButtonPressReceiver, IWorldEventRecei
 
     @property
     def keyboard(self) -> str | None:
-        """Target ID of the Keyboard reference (targets VirtualKeyboard)."""
+        """The virtual keyboard to close."""
         member = self.get_member("Keyboard")
         if isinstance(member, members.Reference):
             return member.targetId

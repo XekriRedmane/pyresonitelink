@@ -12,6 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class Tau(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Tau node outputs the mathematical constant tau. Tau is a constant that represents 2PI. Tau is the circumference of a circle with a radius of one.
 
+Applications this constant can be used in:
+- Circumference, angular, and rotation measurements
+- Wave Generation (combined with Sin)
+- Shader Programming (usually simplifying/streamlining the code)
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
     """
 

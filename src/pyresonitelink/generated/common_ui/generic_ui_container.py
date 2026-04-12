@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GenericUIContainer(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GenericUIContainer.
+    """The Generic UI Container is a component that is seen on UIX panels and canvases. It does two primary things, match the title for the panel of a provided text, and flag when it closes and then destroys the provided hierarchy root slot.
 
     Category: Common UI
+
+    There is no known usage for this component to be used in projects, but
+    only seen on certain panels and canvases.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GenericUIContainer"
@@ -38,7 +41,7 @@ class GenericUIContainer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def title(self) -> str | None:
-        """Target ID of the Title reference (targets IField[primitives.String])."""
+        """Changes the title for this panel."""
         member = self.get_member("Title")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +62,7 @@ class GenericUIContainer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def close_request(self) -> primitives.Bool | None:
-        """The CloseRequest field value."""
+        """Becomes true when this container (UIX panel/canvas) is closing."""
         member = self.get_member("CloseRequest")
         if member is None:
             return None
@@ -78,7 +81,7 @@ class GenericUIContainer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def close_destroy_root(self) -> str | None:
-        """Target ID of the CloseDestroyRoot reference (targets Slot)."""
+        """The target slot to destroy."""
         member = self.get_member("CloseDestroyRoot")
         if isinstance(member, members.Reference):
             return member.targetId

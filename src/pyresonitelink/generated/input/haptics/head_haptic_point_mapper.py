@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HeadHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HeadHapticPointMapper.
+    """The HeadHapticPointMapper component handles mapping haptic points around and to the head area of a user.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics
     """
@@ -43,7 +45,7 @@ class HeadHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def priority(self) -> primitives.Int | None:
-        """The Priority field value."""
+        """The priority of this Mapper over other mappers."""
         member = self.get_member("Priority")
         if member is None:
             return None
@@ -62,7 +64,7 @@ class HeadHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def show_debug_visuals(self) -> primitives.Bool | None:
-        """The ShowDebugVisuals field value."""
+        """Whether to show the area visual of the Mapper and the different haptics mapped to it."""
         member = self.get_member("ShowDebugVisuals")
         if member is None:
             return None
@@ -81,7 +83,7 @@ class HeadHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def head_size(self) -> primitives.Float3 | None:
-        """The HeadSize field value."""
+        """How big the head is."""
         member = self.get_member("HeadSize")
         if member is None:
             return None
@@ -100,7 +102,7 @@ class HeadHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def head_center(self) -> primitives.Float3 | None:
-        """The HeadCenter field value."""
+        """The center offset of the head area compared to the slot this component is on (the head slot)"""
         member = self.get_member("HeadCenter")
         if member is None:
             return None
@@ -119,7 +121,7 @@ class HeadHapticPointMapper(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def debug_visual(self) -> str | None:
-        """Target ID of the _debugVisual reference (targets Slot)."""
+        """The root slot of the current Debug visual."""
         member = self.get_member("_debugVisual")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FromUnixMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The From Unix Milliseconds node takes in the Unix milliseconds and then converts it into a DateTime, along with an option to offset it to make it a local DateTime (based on your time zone). The amount of milliseconds given will count up from the Unix epoch.
+    """The ``From Unix Milliseconds`` node takes in the Unix milliseconds and then converts it into a DateTime, along with an option to offset it to make it a local DateTime (based on your time zone). The amount of milliseconds given will count up from the Unix epoch.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """
@@ -57,7 +57,7 @@ class FromUnixMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     @property
     def is_local(self) -> str | None:
-        """Target ID of the IsLocal reference (targets INodeValueOutput[primitives.Bool])."""
+        """Should adjust for local time."""
         member = self.get_member("IsLocal")
         if isinstance(member, members.Reference):
             return member.targetId

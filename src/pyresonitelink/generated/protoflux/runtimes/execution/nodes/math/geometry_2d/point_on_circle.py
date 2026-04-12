@@ -36,7 +36,7 @@ class PointOnCircle(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def normalized_position(self) -> str | None:
-        """Target ID of the NormalizedPosition reference (targets INodeValueOutput[primitives.Float])."""
+        """Position of the point along the path. Essentially represents an angle of ``2*pi*NormalizedPosition`` radians."""
         member = self.get_member("NormalizedPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class PointOnCircle(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def radius(self) -> str | None:
-        """Target ID of the Radius reference (targets INodeValueOutput[primitives.Float])."""
+        """Radius of the circle to trace along."""
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             return member.targetId

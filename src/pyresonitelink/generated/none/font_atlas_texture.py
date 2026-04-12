@@ -7,7 +7,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FontAtlasTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FontAtlasTexture.
+    """The FontAtlasTexture component makes a GlyphAtlas containing an atlas of Glyphs representing characters into one large texture that can be used. The internal mechanisms of this component are not assignable directly.
+
+    Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FontAtlasTexture"

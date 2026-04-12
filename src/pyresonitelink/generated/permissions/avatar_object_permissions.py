@@ -8,16 +8,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarObjectPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarObjectPermissions.
+    """The AvatarObjectPermission component is a Permissions component which determines which avatars users are allowed to equip if the avatar is tagged properly.
 
     Category: Permissions
+
+    This permission allows or disallows specific avatars to be used. Tags
+    are used to determine to in-/equipability of such tagged avatars.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarObjectPermissions"
 
     @property
     def tags(self) -> members.SyncObject | None:
-        """The Tags member."""
+        """The list of tags and whether they are white listed or black listed"""
         member = self.get_member("Tags")
         if isinstance(member, members.SyncObject):
             return member
@@ -25,6 +28,6 @@ class AvatarObjectPermissions(GeneratedComponent, IWorkerPermissions, ICustomIns
 
     @tags.setter
     def tags(self, value: members.SyncObject) -> None:
-        """Set the Tags member."""
+        """Set Tags. The list of tags and whether they are white listed or black listed"""
         self.set_member("Tags", value)
 

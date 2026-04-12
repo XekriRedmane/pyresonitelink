@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugFieldAdapterTest(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugFieldAdapterTest.
+    """The DebugFieldAdapterTest is used with DebugFieldAdapter to test the accuracy. If set properly, the ``InvertedColor`` should flash between inverted and not inverted every frame.
 
     Category: Debug
+
+    Is a test item. Is not needed to be used by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugFieldAdapterTest"
@@ -32,7 +34,7 @@ class DebugFieldAdapterTest(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def inverted_color(self) -> primitives.ColorX | None:
-        """The InvertedColor field value."""
+        """``SourceColor`` inverted. Doesn't do this when this component is by itself. Is set to ``SourceColor`` every time this component changes in any way."""
         member = self.get_member("InvertedColor")
         if member is None:
             return None
@@ -51,7 +53,7 @@ class DebugFieldAdapterTest(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def source_color(self) -> primitives.ColorX | None:
-        """The SourceColor field value."""
+        """The source color. Doesn't affect or is changed by anything. Except for sets or drives."""
         member = self.get_member("SourceColor")
         if member is None:
             return None

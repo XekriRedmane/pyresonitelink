@@ -1,0 +1,11 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "UserHeight": "The height of the user in meters."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserMetricsSettings&action=raw"
+}

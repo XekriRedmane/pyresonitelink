@@ -10,7 +10,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConvertibleUlongDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ConvertibleUlongDriver<>.
+    """The ConvertibleUlongDriver component is used to convert a value into a Ulong using the value's convert to Ulong method.
+
+    Used to convert values from one type into another via Components rather
+    than ProtoFlux.
 
     Parameterize with a value type::
 
@@ -37,7 +40,7 @@ class ConvertibleUlongDriver(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IField[T])."""
+        """The value to convert."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +61,7 @@ class ConvertibleUlongDriver(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.ULong])."""
+        """The field to drive with ``Source`` converted into a Ulong."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

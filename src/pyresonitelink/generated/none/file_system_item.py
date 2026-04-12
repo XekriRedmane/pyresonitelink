@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.entry_type import EntryType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.browser_dialog import BrowserDialog
@@ -11,12 +12,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FileSystemItem.
+    """The FileSystemItem component is a type of BrowserItem used for system files or inventory items being viewed on the dash menu.
+
+    Used internally by the inventory and file system menus. Not used by the
+    user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FileSystemItem"
 
-    def __init__(self, browser: str | BrowserDialog | None = None, selected_color: primitives.ColorX | None = None, selected_text: primitives.ColorX | None = None, normal_color: primitives.ColorX | None = None, normal_text: primitives.ColorX | None = None, name: primitives.String | None = None, base_path: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, browser: str | BrowserDialog | None = None, selected_color: primitives.ColorX | None = None, selected_text: primitives.ColorX | None = None, normal_color: primitives.ColorX | None = None, normal_text: primitives.ColorX | None = None, name: primitives.String | None = None, base_path: primitives.String | None = None, type_: EntryType | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,6 +31,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
             normal_text: Initial value for NormalText.
             name: Initial value for Name.
             base_path: Initial value for BasePath.
+            type_: Initial value for Type.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -44,10 +49,12 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
             self.name = name
         if base_path is not None:
             self.base_path = base_path
+        if type_ is not None:
+            self.type_ = type_
 
     @property
     def browser(self) -> str | None:
-        """Target ID of the Browser reference (targets BrowserDialog)."""
+        """The source browser this item came from."""
         member = self.get_member("Browser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +75,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
 
     @property
     def selected_color(self) -> primitives.ColorX | None:
-        """The SelectedColor field value."""
+        """The color this item's background should be when selected."""
         member = self.get_member("SelectedColor")
         if member is None:
             return None
@@ -87,7 +94,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
 
     @property
     def selected_text(self) -> primitives.ColorX | None:
-        """The SelectedText field value."""
+        """The color this item's text should be when selected."""
         member = self.get_member("SelectedText")
         if member is None:
             return None
@@ -106,7 +113,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
 
     @property
     def normal_color(self) -> primitives.ColorX | None:
-        """The NormalColor field value."""
+        """The color this item's background should be at rest state"""
         member = self.get_member("NormalColor")
         if member is None:
             return None
@@ -125,7 +132,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
 
     @property
     def normal_text(self) -> primitives.ColorX | None:
-        """The NormalText field value."""
+        """The color this item's text would be at rest state."""
         member = self.get_member("NormalText")
         if member is None:
             return None
@@ -144,7 +151,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
 
     @property
     def name(self) -> primitives.String | None:
-        """The Name field value."""
+        """The name of the"""
         member = self.get_member("Name")
         if member is None:
             return None
@@ -163,7 +170,7 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
 
     @property
     def base_path(self) -> primitives.String | None:
-        """The BasePath field value."""
+        """The base directory of the item."""
         member = self.get_member("BasePath")
         if member is None:
             return None
@@ -181,15 +188,22 @@ class FileSystemItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiv
             )
 
     @property
-    def type_(self) -> members.FieldEnum | None:
-        """The Type member."""
+    def type_(self) -> EntryType | None:
+        """Whether if this is a file or folder."""
         member = self.get_member("Type")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return EntryType(member.value)
         return None
 
     @type_.setter
-    def type_(self, value: members.FieldEnum) -> None:
-        """Set the Type member."""
-        self.set_member("Type", value)
+    def type_(self, value: EntryType | str) -> None:
+        """Set Type. Whether if this is a file or folder."""
+        member = self.get_member("Type")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Type",
+                members.FieldEnum(value=str(value)),
+            )
 

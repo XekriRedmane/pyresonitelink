@@ -3,6 +3,9 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.color_mask import ColorMask
+from pyresonitelink.generated._enums.stencil_comparison import StencilComparison
+from pyresonitelink.generated._enums.stencil_operation import StencilOperation
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -14,14 +17,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PBS_StencilMaterialMetallic(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PBS_StencilMaterialMetallic.
+    """The PBS_StencilMaterialMetallic component is used as a material for meshes to make them render differently when in front of other stencil materials.
+
+See Stencils.
 
     Category: Assets/Materials/PBS
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_StencilMaterialMetallic"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, rect_dummy: primitives.Rect | None = None, rect_clip_dummy: primitives.Bool | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, color_mask: ColorMask | str | None = None, stencil_comparison: StencilComparison | str | None = None, stencil_operation: StencilOperation | str | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, rect_dummy: primitives.Rect | None = None, rect_clip_dummy: primitives.Bool | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -35,6 +40,9 @@ class PBS_StencilMaterialMetallic(GeneratedComponent, IUIX_Material, ICustomInsp
             normal_map: Initial value for NormalMap.
             normal_scale: Initial value for NormalScale.
             occlusion_map: Initial value for OcclusionMap.
+            color_mask: Initial value for ColorMask.
+            stencil_comparison: Initial value for StencilComparison.
+            stencil_operation: Initial value for StencilOperation.
             stencil_id: Initial value for StencilID.
             stencil_write_mask: Initial value for StencilWriteMask.
             stencil_read_mask: Initial value for StencilReadMask.
@@ -70,6 +78,12 @@ class PBS_StencilMaterialMetallic(GeneratedComponent, IUIX_Material, ICustomInsp
             self.normal_scale = normal_scale
         if occlusion_map is not None:
             self.occlusion_map = occlusion_map
+        if color_mask is not None:
+            self.color_mask = color_mask
+        if stencil_comparison is not None:
+            self.stencil_comparison = stencil_comparison
+        if stencil_operation is not None:
+            self.stencil_operation = stencil_operation
         if stencil_id is not None:
             self.stencil_id = stencil_id
         if stencil_write_mask is not None:
@@ -294,43 +308,64 @@ class PBS_StencilMaterialMetallic(GeneratedComponent, IUIX_Material, ICustomInsp
             )
 
     @property
-    def color_mask(self) -> members.FieldEnum | None:
-        """The ColorMask member."""
+    def color_mask(self) -> ColorMask | None:
+        """The ColorMask enum value."""
         member = self.get_member("ColorMask")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorMask(member.value)
         return None
 
     @color_mask.setter
-    def color_mask(self, value: members.FieldEnum) -> None:
-        """Set the ColorMask member."""
-        self.set_member("ColorMask", value)
+    def color_mask(self, value: ColorMask | str) -> None:
+        """Set the ColorMask enum value."""
+        member = self.get_member("ColorMask")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ColorMask",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def stencil_comparison(self) -> members.FieldEnum | None:
-        """The StencilComparison member."""
+    def stencil_comparison(self) -> StencilComparison | None:
+        """The StencilComparison enum value."""
         member = self.get_member("StencilComparison")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return StencilComparison(member.value)
         return None
 
     @stencil_comparison.setter
-    def stencil_comparison(self, value: members.FieldEnum) -> None:
-        """Set the StencilComparison member."""
-        self.set_member("StencilComparison", value)
+    def stencil_comparison(self, value: StencilComparison | str) -> None:
+        """Set the StencilComparison enum value."""
+        member = self.get_member("StencilComparison")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "StencilComparison",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def stencil_operation(self) -> members.FieldEnum | None:
-        """The StencilOperation member."""
+    def stencil_operation(self) -> StencilOperation | None:
+        """The StencilOperation enum value."""
         member = self.get_member("StencilOperation")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return StencilOperation(member.value)
         return None
 
     @stencil_operation.setter
-    def stencil_operation(self, value: members.FieldEnum) -> None:
-        """Set the StencilOperation member."""
-        self.set_member("StencilOperation", value)
+    def stencil_operation(self, value: StencilOperation | str) -> None:
+        """Set the StencilOperation enum value."""
+        member = self.get_member("StencilOperation")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "StencilOperation",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def stencil_id(self) -> primitives.Byte | None:

@@ -18,6 +18,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class DebugBox(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Debug Box is a ProtoFlux node that when called will make a cube visual at the global coordinates with a size provided and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.
 
+See also: Coordinate spaces
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Debug
     """
 
@@ -51,7 +53,7 @@ class DebugBox(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecution
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after * (Call) is impulsed and the visual was created successfully."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -93,7 +95,7 @@ class DebugBox(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecution
 
     @property
     def size(self) -> str | None:
-        """Target ID of the Size reference (targets INodeValueOutput[primitives.Float3])."""
+        """The size of the box visual in meters."""
         member = self.get_member("Size")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -114,7 +116,7 @@ class DebugBox(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecution
 
     @property
     def orientation(self) -> str | None:
-        """Target ID of the Orientation reference (targets INodeValueOutput[primitives.FloatQ])."""
+        """The Rotation in global space for the debug visual. Default 0."""
         member = self.get_member("Orientation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -156,7 +158,7 @@ class DebugBox(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecution
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Float])."""
+        """How long the debug box visual appears for in seconds."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId

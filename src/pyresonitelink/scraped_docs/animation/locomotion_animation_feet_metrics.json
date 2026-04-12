@@ -1,0 +1,16 @@
+{
+  "description": "The LocomotionAnimationFeetMetrics component is used to adjust the settings for an avatar's feet.",
+  "category": "Users:Common Avatar System:Animation",
+  "fields": {
+    "Space": "What transform space the metric values are in for this component.",
+    "FeetSeparation": "How far apart the feet should be placed from each other.",
+    "FeetBackwardsOffset": "How much the foot should be shifted forwards or backwards.",
+    "FootHeight": "The distance from the floor to the foot bone for the whole foot.",
+    "FootFrontOffset": "An optional value to influence the foot front distance from floor value.",
+    "FootBackOffset": "An optional value to influence the foot back distance from floor value."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocomotionAnimationFeetMetrics&action=raw"
+}

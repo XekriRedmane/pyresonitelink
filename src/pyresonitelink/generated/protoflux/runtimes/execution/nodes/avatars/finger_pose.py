@@ -38,7 +38,7 @@ class FingerPose(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
 
     @property
     def pose_source(self) -> str | None:
-        """Target ID of the PoseSource reference (targets INodeObjectOutput[IFingerPoseSourceComponent])."""
+        """A pose source usually obtained using a User Finger Pose Source Node."""
         member = self.get_member("PoseSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class FingerPose(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
 
     @property
     def finger_node(self) -> str | None:
-        """Target ID of the FingerNode reference (targets INodeValueOutput[BodyNode])."""
+        """A finger node as a body node, providing a non finger body node will make the output a default 0."""
         member = self.get_member("FingerNode")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -80,7 +80,7 @@ class FingerPose(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
 
     @property
     def position(self) -> members.EmptyElement | None:
-        """The Position member."""
+        """The position of the finger node if PoseSource (IFingerPoseSource) is not null and FingerNode (BodyNode) is a body node that points to a finger."""
         member = self.get_member("Position")
         if isinstance(member, members.EmptyElement):
             return member
@@ -88,12 +88,12 @@ class FingerPose(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
 
     @position.setter
     def position(self, value: members.EmptyElement) -> None:
-        """Set the Position member."""
+        """Set Position. The position of the finger node if PoseSource (IFingerPoseSource) is not null and FingerNode (BodyNode) is a body node that points to a finger."""
         self.set_member("Position", value)
 
     @property
     def rotation(self) -> members.EmptyElement | None:
-        """The Rotation member."""
+        """The rotation of the finger if PoseSource (IFingerPoseSource) is not null and FingerNode (BodyNode) is a body node that points to a finger."""
         member = self.get_member("Rotation")
         if isinstance(member, members.EmptyElement):
             return member
@@ -101,6 +101,6 @@ class FingerPose(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
 
     @rotation.setter
     def rotation(self, value: members.EmptyElement) -> None:
-        """Set the Rotation member."""
+        """Set Rotation. The rotation of the finger if PoseSource (IFingerPoseSource) is not null and FingerNode (BodyNode) is a body node that points to a finger."""
         self.set_member("Rotation", value)
 

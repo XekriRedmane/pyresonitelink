@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DefocusFocusable(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Defocus Focusable node clears the target IFocusable UI from the user.
+    """The ``Defocus Focusable`` node clears the target IFocusable UI from the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/UI
     """
@@ -38,7 +38,7 @@ class DefocusFocusable(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after the focus has been defocused."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class DefocusFocusable(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[IFocusable])."""
+        """The target IFocusable reference to defocus from."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

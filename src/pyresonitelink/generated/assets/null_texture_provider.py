@@ -7,7 +7,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NullTextureProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.NullTextureProvider.
+    """Null texture providers are automatically added to the Root as a way of telling the render engine of FrooxEngine what to use as a null texture when a material is missing. This texture is a procedural gray and dark gray checkerboard texture.
 
     Category: Assets
     """

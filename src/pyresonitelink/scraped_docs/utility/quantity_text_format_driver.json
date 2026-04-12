@@ -1,0 +1,25 @@
+{
+  "description": "The QuantityTextFormatDriver allows driving a string with an auto formatted quantity.",
+  "category": "Utility",
+  "fields": {
+    "Target": "The field to drive with the formatted Quantity string.",
+    "BaseValue": "Value to get converted into string",
+    "FormatUnit": "Unit to format BaseValue in.",
+    "FormatNumber": "How to format the number when making it part of the string (So if it should remove decimals.",
+    "CompoundFormatUnits": "A list of format Units this can use to format the base value (common ones are \"ft\" as an entry followed by another entry with \"in\" or \"m\" as an entry followed by another entry with \"cm\" ).",
+    "CompoundUseLongNames": "Show the long names of compound units.",
+    "CompoundOverrideNames": "Whether the compound format unit names should be used rather than their usual name.",
+    "CompoundDiscardLastFraction": "Whether to discard the decimal of the smallest unit being displayed in the output or not. (so \"3m 2.5cm\" will become 3m 2cm\")",
+    "CompoundSeparator": "String to put between compound units.",
+    "CompoundZeroHandling": "Remove or trim compound units with a value of zero."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "The most suitable unit type is automatically chosen based on the BaseValue, you can override this behavior by inputting a unit type into FormatUnit or using compound units."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:QuantityTextFormatDriver&action=raw"
+}

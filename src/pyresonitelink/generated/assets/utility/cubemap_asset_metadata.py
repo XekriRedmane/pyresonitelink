@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.texture_format import TextureFormat
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,14 +14,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CubemapAssetMetadata.
+    """The CubemapAssetMetadata component is used to display info about any particular cube map provided.
 
     Category: Assets/Utility
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CubemapAssetMetadata"
 
-    def __init__(self, cubemap: str | IAssetProvider[Cubemap] | None = None, size: primitives.Int | None = None, has_mip_maps: primitives.Bool | None = None, mip_map_count: primitives.Int | None = None, memory_bytes: primitives.Long | None = None, formatted_memory_bytes: primitives.String | None = None, actual_loaded_variant: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, cubemap: str | IAssetProvider[Cubemap] | None = None, size: primitives.Int | None = None, has_mip_maps: primitives.Bool | None = None, mip_map_count: primitives.Int | None = None, memory_bytes: primitives.Long | None = None, formatted_memory_bytes: primitives.String | None = None, format_: TextureFormat | str | None = None, actual_loaded_variant: primitives.String | None = None, profile: ColorProfile | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,7 +31,9 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             mip_map_count: Initial value for MipMapCount.
             memory_bytes: Initial value for MemoryBytes.
             formatted_memory_bytes: Initial value for FormattedMemoryBytes.
+            format_: Initial value for Format.
             actual_loaded_variant: Initial value for ActualLoadedVariant.
+            profile: Initial value for Profile.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -45,12 +49,16 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.memory_bytes = memory_bytes
         if formatted_memory_bytes is not None:
             self.formatted_memory_bytes = formatted_memory_bytes
+        if format_ is not None:
+            self.format_ = format_
         if actual_loaded_variant is not None:
             self.actual_loaded_variant = actual_loaded_variant
+        if profile is not None:
+            self.profile = profile
 
     @property
     def cubemap(self) -> str | None:
-        """Target ID of the Cubemap reference (targets IAssetProvider[Cubemap])."""
+        """The cubemap to analyse."""
         member = self.get_member("Cubemap")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -71,7 +79,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def size(self) -> primitives.Int | None:
-        """The Size field value."""
+        """The size in pixels of the width or height of any 1 of the 6 sides. (The sides are the same size)"""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -90,7 +98,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def has_mip_maps(self) -> primitives.Bool | None:
-        """The HasMipMaps field value."""
+        """Whether the cubemap has mipmap data."""
         member = self.get_member("HasMipMaps")
         if member is None:
             return None
@@ -109,7 +117,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mip_map_count(self) -> primitives.Int | None:
-        """The MipMapCount field value."""
+        """How many mip map resolution variants the cubemap has."""
         member = self.get_member("MipMapCount")
         if member is None:
             return None
@@ -128,7 +136,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def memory_bytes(self) -> primitives.Long | None:
-        """The MemoryBytes field value."""
+        """How much memory the cubemap takes up."""
         member = self.get_member("MemoryBytes")
         if member is None:
             return None
@@ -147,7 +155,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def formatted_memory_bytes(self) -> primitives.String | None:
-        """The FormattedMemoryBytes field value."""
+        """The bytes formatted into a readable string."""
         member = self.get_member("FormattedMemoryBytes")
         if member is None:
             return None
@@ -165,21 +173,28 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def format_(self) -> members.FieldEnum | None:
-        """The Format member."""
+    def format_(self) -> TextureFormat | None:
+        """The texture format of the cube map."""
         member = self.get_member("Format")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureFormat(member.value)
         return None
 
     @format_.setter
-    def format_(self, value: members.FieldEnum) -> None:
-        """Set the Format member."""
-        self.set_member("Format", value)
+    def format_(self, value: TextureFormat | str) -> None:
+        """Set Format. The texture format of the cube map."""
+        member = self.get_member("Format")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Format",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def actual_loaded_variant(self) -> primitives.String | None:
-        """The ActualLoadedVariant field value."""
+        """The Asset variant Type currently loaded."""
         member = self.get_member("ActualLoadedVariant")
         if member is None:
             return None
@@ -197,15 +212,22 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The color profile being used for this texture when rendering it."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set Profile. The color profile being used for this texture when rendering it."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 

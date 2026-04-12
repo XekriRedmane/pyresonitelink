@@ -34,7 +34,7 @@ class Position(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeObjectOutput[IPlayable])."""
+        """The IPlayable to set the position on."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId

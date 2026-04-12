@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueInput(GenericComponent[T], IInput[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """alt=A bool input|thumb|A Type:bool|bool input. alt=A float input|thumb|A Type:float|float input. alt=a string input|thumb|A Type:string|string input.
+    """The Input node holds a value or reference type that can be output to any other input. Unlike variables, these can be directly modified to see instant changes without the need for a write node.
+
+Different types may have different UI interfaces to represent the values they contain, such as bool will have a check box, numerical values like an int and float will have a TextField that takes in only numbers, and strings can take multiple characters.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 

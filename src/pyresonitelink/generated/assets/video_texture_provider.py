@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.texture_filter_mode import TextureFilterMode
+from pyresonitelink.generated._enums.texture_wrap_mode import TextureWrapMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
@@ -14,14 +16,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IWorldAudioDataSource, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VideoTextureProvider.
+    """The VideoTextureProvider component is used to display and play video. This component importantly implements both ITexture2D and IAudioSource which means it can be used as both a texture and a source of audio like a StaticAudioClip
 
     Category: Assets
+
+    This component is often seen with Video Players, as they implement
+    ITexture2D (meaning they are also a texture) and also implement
+    IAudioSource (Which mean that are also like an audio clip) and can be
+    used by users in different ways (i.e. Multiple screens and speakers
+    sharing one Video Player texture).
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VideoTextureProvider"
 
-    def __init__(self, url: str | None = None, stream: primitives.Bool | None = None, volume: primitives.Float | None = None, force_playback_engine: primitives.String | None = None, force_video_streaming_service_parsing: primitives.Bool | None = None, video_title: primitives.String | None = None, current_playback_engine: primitives.String | None = None, current_clock_error: primitives.Float | None = None, anisotropic_level: primitives.Int | None = None, audio_track_index: primitives.Int | None = None, prefer_audio_only: primitives.Bool | None = None, max_width: primitives.Int | None = None, max_height: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, stream: primitives.Bool | None = None, volume: primitives.Float | None = None, force_playback_engine: primitives.String | None = None, force_video_streaming_service_parsing: primitives.Bool | None = None, video_title: primitives.String | None = None, current_playback_engine: primitives.String | None = None, current_clock_error: primitives.Float | None = None, filter_mode: TextureFilterMode | str | None = None, anisotropic_level: primitives.Int | None = None, wrap_mode_u: TextureWrapMode | str | None = None, wrap_mode_v: TextureWrapMode | str | None = None, audio_track_index: primitives.Int | None = None, prefer_audio_only: primitives.Bool | None = None, max_width: primitives.Int | None = None, max_height: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +41,10 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
             video_title: Initial value for VideoTitle.
             current_playback_engine: Initial value for CurrentPlaybackEngine.
             current_clock_error: Initial value for CurrentClockError.
+            filter_mode: Initial value for FilterMode.
             anisotropic_level: Initial value for AnisotropicLevel.
+            wrap_mode_u: Initial value for WrapModeU.
+            wrap_mode_v: Initial value for WrapModeV.
             audio_track_index: Initial value for AudioTrackIndex.
             prefer_audio_only: Initial value for PreferAudioOnly.
             max_width: Initial value for MaxWidth.
@@ -57,8 +68,14 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
             self.current_playback_engine = current_playback_engine
         if current_clock_error is not None:
             self.current_clock_error = current_clock_error
+        if filter_mode is not None:
+            self.filter_mode = filter_mode
         if anisotropic_level is not None:
             self.anisotropic_level = anisotropic_level
+        if wrap_mode_u is not None:
+            self.wrap_mode_u = wrap_mode_u
+        if wrap_mode_v is not None:
+            self.wrap_mode_v = wrap_mode_v
         if audio_track_index is not None:
             self.audio_track_index = audio_track_index
         if prefer_audio_only is not None:
@@ -70,7 +87,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @property
     def playback(self) -> members.SyncPlayback | None:
-        """The Playback member."""
+        """controls the playback of both the audio and visual elements of this component at the same time."""
         member = self.get_member("Playback")
         if isinstance(member, members.SyncPlayback):
             return member
@@ -78,12 +95,12 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @playback.setter
     def playback(self, value: members.SyncPlayback) -> None:
-        """Set the Playback member."""
+        """Set Playback. controls the playback of both the audio and visual elements of this component at the same time."""
         self.set_member("Playback", value)
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The website or file source of the video. Like a youtube video or a file on a machine."""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -102,7 +119,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @property
     def stream(self) -> primitives.Bool | None:
-        """The Stream field value."""
+        """Whether this video should stream the data or cache it"""
         member = self.get_member("Stream")
         if member is None:
             return None
@@ -121,7 +138,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @property
     def volume(self) -> primitives.Float | None:
-        """The Volume field value."""
+        """The volume of the video when being used as an IAudioSource in an audio player."""
         member = self.get_member("Volume")
         if member is None:
             return None
@@ -140,7 +157,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @property
     def force_playback_engine(self) -> primitives.String | None:
-        """The ForcePlaybackEngine field value."""
+        """The engine to use for playback like UnityPlaybackEngine or LibVLC."""
         member = self.get_member("ForcePlaybackEngine")
         if member is None:
             return None
@@ -159,7 +176,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @property
     def force_video_streaming_service_parsing(self) -> primitives.Bool | None:
-        """The ForceVideoStreamingServiceParsing field value."""
+        """Whether to force parsing a streaming service like Twitch."""
         member = self.get_member("ForceVideoStreamingServiceParsing")
         if member is None:
             return None
@@ -178,7 +195,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @property
     def video_title(self) -> primitives.String | None:
-        """The VideoTitle field value."""
+        """The field to populate with the name of the video that has been loaded."""
         member = self.get_member("VideoTitle")
         if member is None:
             return None
@@ -197,7 +214,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @property
     def current_playback_engine(self) -> primitives.String | None:
-        """The CurrentPlaybackEngine field value."""
+        """The current engine being used for playback"""
         member = self.get_member("CurrentPlaybackEngine")
         if member is None:
             return None
@@ -216,7 +233,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @property
     def current_clock_error(self) -> primitives.Float | None:
-        """The CurrentClockError field value."""
+        """The amount of seconds the player may have in error due to lag or otherwise."""
         member = self.get_member("CurrentClockError")
         if member is None:
             return None
@@ -234,17 +251,24 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
             )
 
     @property
-    def filter_mode(self) -> members.FieldEnum | None:
-        """The FilterMode member."""
+    def filter_mode(self) -> TextureFilterMode | None:
+        """The FilterMode enum value."""
         member = self.get_member("FilterMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureFilterMode(member.value)
         return None
 
     @filter_mode.setter
-    def filter_mode(self, value: members.FieldEnum) -> None:
-        """Set the FilterMode member."""
-        self.set_member("FilterMode", value)
+    def filter_mode(self, value: TextureFilterMode | str) -> None:
+        """Set the FilterMode enum value."""
+        member = self.get_member("FilterMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "FilterMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def anisotropic_level(self) -> primitives.Int | None:
@@ -266,34 +290,48 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
             )
 
     @property
-    def wrap_mode_u(self) -> members.FieldEnum | None:
-        """The WrapModeU member."""
+    def wrap_mode_u(self) -> TextureWrapMode | None:
+        """The WrapModeU enum value."""
         member = self.get_member("WrapModeU")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureWrapMode(member.value)
         return None
 
     @wrap_mode_u.setter
-    def wrap_mode_u(self, value: members.FieldEnum) -> None:
-        """Set the WrapModeU member."""
-        self.set_member("WrapModeU", value)
+    def wrap_mode_u(self, value: TextureWrapMode | str) -> None:
+        """Set the WrapModeU enum value."""
+        member = self.get_member("WrapModeU")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapModeU",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def wrap_mode_v(self) -> members.FieldEnum | None:
-        """The WrapModeV member."""
+    def wrap_mode_v(self) -> TextureWrapMode | None:
+        """The WrapModeV enum value."""
         member = self.get_member("WrapModeV")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureWrapMode(member.value)
         return None
 
     @wrap_mode_v.setter
-    def wrap_mode_v(self, value: members.FieldEnum) -> None:
-        """Set the WrapModeV member."""
-        self.set_member("WrapModeV", value)
+    def wrap_mode_v(self, value: TextureWrapMode | str) -> None:
+        """Set the WrapModeV enum value."""
+        member = self.get_member("WrapModeV")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapModeV",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def audio_track_index(self) -> primitives.Int | None:
-        """The AudioTrackIndex field value."""
+        """the audio track that the video player should use to play"""
         member = self.get_member("AudioTrackIndex")
         if member is None:
             return None
@@ -312,7 +350,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @property
     def prefer_audio_only(self) -> primitives.Bool | None:
-        """The PreferAudioOnly field value."""
+        """whether to parse the video source as audio only rather than video and audio. An example of an audio only is an MP3 file type."""
         member = self.get_member("PreferAudioOnly")
         if member is None:
             return None
@@ -331,7 +369,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @property
     def max_width(self) -> primitives.Int | None:
-        """The MaxWidth field value."""
+        """The max pixels on the x axis that will be rendered when using this as a texture."""
         member = self.get_member("MaxWidth")
         if member is None:
             return None
@@ -350,7 +388,7 @@ class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IW
 
     @property
     def max_height(self) -> primitives.Int | None:
-        """The MaxHeight field value."""
+        """The max pixels on the y axis that will be rendered when using this as a texture."""
         member = self.get_member("MaxHeight")
         if member is None:
             return None

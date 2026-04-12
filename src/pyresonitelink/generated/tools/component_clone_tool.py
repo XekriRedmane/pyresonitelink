@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ComponentCloneTool.
+    """See Component Clone Tool
 
     Category: Tools
     """
@@ -197,7 +197,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     @property
     def apply_to_object_root(self) -> primitives.Bool | None:
-        """The ApplyToObjectRoot field value."""
+        """Whether to search for an object root to put the Component onto rather than the hit component or slot."""
         member = self.get_member("ApplyToObjectRoot")
         if member is None:
             return None
@@ -216,7 +216,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     @property
     def ensure_single_instance(self) -> primitives.Bool | None:
-        """The EnsureSingleInstance field value."""
+        """Whether the tool should delete existing components of the same type before adding the ones from the template."""
         member = self.get_member("EnsureSingleInstance")
         if member is None:
             return None
@@ -235,7 +235,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     @property
     def allow_pickup(self) -> primitives.Bool | None:
-        """The AllowPickup field value."""
+        """Whether the tool can add components to its template list with secondary."""
         member = self.get_member("AllowPickup")
         if member is None:
             return None
@@ -254,7 +254,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     @property
     def label(self) -> str | None:
-        """Target ID of the _label reference (targets TextRenderer)."""
+        """The label giving information on this tool."""
         member = self.get_member("_label")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -275,7 +275,7 @@ class ComponentCloneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     @property
     def template_root(self) -> str | None:
-        """Target ID of the _templateRoot reference (targets Slot)."""
+        """The slot this tool is using to store its list of components to place onto other slots."""
         member = self.get_member("_templateRoot")
         if isinstance(member, members.Reference):
             return member.targetId

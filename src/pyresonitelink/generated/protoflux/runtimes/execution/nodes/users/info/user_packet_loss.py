@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserPacketLoss(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Packet Loss node takes in a user and returns that user's lost packets during this network communication, session, or protocol. If the user is host, then that number is always zero (0).
+    """The ``User Packet Loss`` node takes in a user and returns that user's lost packets during this network communication, session, or protocol. If the user is host, then that number is always zero (0).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """
@@ -34,7 +34,7 @@ class UserPacketLoss(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user that we want info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

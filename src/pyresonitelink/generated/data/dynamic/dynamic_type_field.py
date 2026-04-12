@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicTypeField(GeneratedComponent, IDynamicVariable, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicTypeField.
+    """The DynamicTypeField Component is used to mark a field containing a Type as the value of a dynamic variable.
 
     Category: Data/Dynamic
+
+    For more info on Dynamic Variables and how they work including this type
+    of component, see Dynamic Variables.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicTypeField"
@@ -38,7 +41,7 @@ class DynamicTypeField(GeneratedComponent, IDynamicVariable, IComponent, IWorldE
 
     @property
     def variable_name(self) -> primitives.String | None:
-        """The VariableName field value."""
+        """The name of the variable."""
         member = self.get_member("VariableName")
         if member is None:
             return None
@@ -57,7 +60,7 @@ class DynamicTypeField(GeneratedComponent, IDynamicVariable, IComponent, IWorldE
 
     @property
     def target_field(self) -> str | None:
-        """Target ID of the TargetField reference (targets SyncType)."""
+        """The field to stay up to date with and change the value of the dynamic variable's value."""
         member = self.get_member("TargetField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -78,7 +81,7 @@ class DynamicTypeField(GeneratedComponent, IDynamicVariable, IComponent, IWorldE
 
     @property
     def override_on_link(self) -> primitives.Bool | None:
-        """The OverrideOnLink field value."""
+        """Whether to write the current value of the dynamic variable in a space when it connects to it with the one this component is storing."""
         member = self.get_member("OverrideOnLink")
         if member is None:
             return None

@@ -90,7 +90,7 @@ class WebsocketTextMessageSender(GeneratedComponent, IAsyncNodeOperation, IExecu
 
     @property
     def on_send_start(self) -> str | None:
-        """Target ID of the OnSendStart reference (targets INodeOperation)."""
+        """A continuation impulse triggered when the data is sent successfully."""
         member = self.get_member("OnSendStart")
         if isinstance(member, members.Reference):
             return member.targetId

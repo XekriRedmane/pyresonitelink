@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.viseme_analyzer_engine import VisemeAnalyzerEngine
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworld_audio_data_source import IWorldAudioDataSource
@@ -12,19 +13,22 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VisemeAnalyzer.
+    """The VisemeAnalyzer can be used to analyze the sounds from a user's voice, a video, an audio clip player, or any other sound source. The component does analyzing of audio to discern Viseme sounds.
 
     Category: Media/Utility
+
+    This should not need to be used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VisemeAnalyzer"
 
-    def __init__(self, source: str | IWorldAudioDataSource | None = None, remote_source: str | MultiValueStream[primitives.Float] | None = None, smoothing: primitives.Float | None = None, silence: primitives.Float | None = None, pp: primitives.Float | None = None, ff: primitives.Float | None = None, th: primitives.Float | None = None, dd: primitives.Float | None = None, kk: primitives.Float | None = None, ch: primitives.Float | None = None, ss: primitives.Float | None = None, nn: primitives.Float | None = None, rr: primitives.Float | None = None, aa: primitives.Float | None = None, e: primitives.Float | None = None, ih: primitives.Float | None = None, oh: primitives.Float | None = None, ou: primitives.Float | None = None, laughter_probability: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IWorldAudioDataSource | None = None, remote_source: str | MultiValueStream[primitives.Float] | None = None, preferred_analyzer: VisemeAnalyzerEngine | str | None = None, smoothing: primitives.Float | None = None, silence: primitives.Float | None = None, pp: primitives.Float | None = None, ff: primitives.Float | None = None, th: primitives.Float | None = None, dd: primitives.Float | None = None, kk: primitives.Float | None = None, ch: primitives.Float | None = None, ss: primitives.Float | None = None, nn: primitives.Float | None = None, rr: primitives.Float | None = None, aa: primitives.Float | None = None, e: primitives.Float | None = None, ih: primitives.Float | None = None, oh: primitives.Float | None = None, ou: primitives.Float | None = None, laughter_probability: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             source: Initial value for Source.
             remote_source: Initial value for RemoteSource.
+            preferred_analyzer: Initial value for PreferredAnalyzer.
             smoothing: Initial value for Smoothing.
             silence: Initial value for Silence.
             pp: Initial value for PP.
@@ -49,6 +53,8 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.source = source
         if remote_source is not None:
             self.remote_source = remote_source
+        if preferred_analyzer is not None:
+            self.preferred_analyzer = preferred_analyzer
         if smoothing is not None:
             self.smoothing = smoothing
         if silence is not None:
@@ -86,7 +92,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IWorldAudioDataSource)."""
+        """The audio source to analyze the audio and extract live viseme data for."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +113,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def remote_source(self) -> str | None:
-        """Target ID of the RemoteSource reference (targets MultiValueStream[primitives.Float])."""
+        """An alternative source of raw data for viseme data."""
         member = self.get_member("RemoteSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -127,21 +133,28 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def preferred_analyzer(self) -> members.FieldEnum | None:
-        """The PreferredAnalyzer member."""
+    def preferred_analyzer(self) -> VisemeAnalyzerEngine | None:
+        """The PreferredAnalyzer enum value."""
         member = self.get_member("PreferredAnalyzer")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VisemeAnalyzerEngine(member.value)
         return None
 
     @preferred_analyzer.setter
-    def preferred_analyzer(self, value: members.FieldEnum) -> None:
-        """Set the PreferredAnalyzer member."""
-        self.set_member("PreferredAnalyzer", value)
+    def preferred_analyzer(self, value: VisemeAnalyzerEngine | str) -> None:
+        """Set the PreferredAnalyzer enum value."""
+        member = self.get_member("PreferredAnalyzer")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "PreferredAnalyzer",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def smoothing(self) -> primitives.Float | None:
-        """The Smoothing field value."""
+        """How much to smooth lerp all the outputs."""
         member = self.get_member("Smoothing")
         if member is None:
             return None
@@ -160,7 +173,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def silence(self) -> primitives.Float | None:
-        """The Silence field value."""
+        """How quiet the audio is in general."""
         member = self.get_member("Silence")
         if member is None:
             return None
@@ -179,7 +192,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def pp(self) -> primitives.Float | None:
-        """The PP field value."""
+        """Outputs the amount that the source audio is making a "Puh" sound."""
         member = self.get_member("PP")
         if member is None:
             return None
@@ -198,7 +211,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ff(self) -> primitives.Float | None:
-        """The FF field value."""
+        """Outputs the amount that the source audio is making a "efff" sound."""
         member = self.get_member("FF")
         if member is None:
             return None
@@ -217,7 +230,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def th(self) -> primitives.Float | None:
-        """The TH field value."""
+        """Outputs the amount that the source audio is making a "thuh" sound."""
         member = self.get_member("TH")
         if member is None:
             return None
@@ -236,7 +249,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def dd(self) -> primitives.Float | None:
-        """The DD field value."""
+        """Outputs the amount that the source audio is making a "deh" or "duh" sound."""
         member = self.get_member("DD")
         if member is None:
             return None
@@ -255,7 +268,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def kk(self) -> primitives.Float | None:
-        """The kk field value."""
+        """Outputs the amount that the source audio is making a "kay" sound."""
         member = self.get_member("kk")
         if member is None:
             return None
@@ -274,7 +287,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ch(self) -> primitives.Float | None:
-        """The CH field value."""
+        """Outputs the amount that the source audio is making a "cuh" sound."""
         member = self.get_member("CH")
         if member is None:
             return None
@@ -293,7 +306,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ss(self) -> primitives.Float | None:
-        """The SS field value."""
+        """Outputs the amount that the source audio is making a "ess" sound."""
         member = self.get_member("SS")
         if member is None:
             return None
@@ -312,7 +325,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def nn(self) -> primitives.Float | None:
-        """The nn field value."""
+        """Outputs the amount that the source audio is making a "enm" sound."""
         member = self.get_member("nn")
         if member is None:
             return None
@@ -331,7 +344,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rr(self) -> primitives.Float | None:
-        """The RR field value."""
+        """Outputs the amount that the source audio is making a "erh" sound."""
         member = self.get_member("RR")
         if member is None:
             return None
@@ -350,7 +363,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def aa(self) -> primitives.Float | None:
-        """The aa field value."""
+        """Outputs the amount that the source audio is making a "ah" sound."""
         member = self.get_member("aa")
         if member is None:
             return None
@@ -369,7 +382,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def e(self) -> primitives.Float | None:
-        """The E field value."""
+        """Outputs the amount that the source audio is making a "eee" sound."""
         member = self.get_member("E")
         if member is None:
             return None
@@ -388,7 +401,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ih(self) -> primitives.Float | None:
-        """The ih field value."""
+        """Outputs the amount that the source audio is making a "eh" sound."""
         member = self.get_member("ih")
         if member is None:
             return None
@@ -407,7 +420,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def oh(self) -> primitives.Float | None:
-        """The oh field value."""
+        """Outputs the amount that the source audio is making a "oah" sound."""
         member = self.get_member("oh")
         if member is None:
             return None
@@ -426,7 +439,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ou(self) -> primitives.Float | None:
-        """The ou field value."""
+        """Outputs the amount that the source audio is making a "ooh" sound."""
         member = self.get_member("ou")
         if member is None:
             return None
@@ -445,7 +458,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def laughter_probability(self) -> primitives.Float | None:
-        """The LaughterProbability field value."""
+        """How likely it is that the audio source is playing laughter sounds."""
         member = self.get_member("LaughterProbability")
         if member is None:
             return None

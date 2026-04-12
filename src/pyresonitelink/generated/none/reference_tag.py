@@ -8,7 +8,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceTag(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceTag<>.
+    """The ReferenceTag component is used to store a reference to something of type T.
 
     Parameterize with a value type::
 
@@ -32,7 +32,7 @@ class ReferenceTag(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets T)."""
+        """the object to store a reference of."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId

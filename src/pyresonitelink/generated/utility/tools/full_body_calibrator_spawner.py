@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FullBodyCalibratorSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FullBodyCalibratorSpawner.
+    """The FullBodyCalibratorSpawner when on the same Slot as a button, spawns a full body calibrator UI in front of the user that pressed the button.
 
     Category: Utility/Tools
     """

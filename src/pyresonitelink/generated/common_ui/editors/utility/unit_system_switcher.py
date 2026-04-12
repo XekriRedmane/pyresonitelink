@@ -11,9 +11,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UnitSystemSwitcher.
+    """The UnitSystemSwitcher component takes in one quantity type and converts it to another as a string. This is commonly used to make editors easily able to take any unit input and automatically know which one the user is referring to.
+
+}}
 
     Category: Common UI/Editors/Utility
+
+    Useful for unit conversions.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UnitSystemSwitcher"
@@ -49,7 +53,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def default_unit(self) -> str | None:
-        """Target ID of the DefaultUnit reference (targets IField[primitives.String])."""
+        """Changes the default unit to show in the text (especially if the ``FormatUnit`` is incorrect)."""
         member = self.get_member("DefaultUnit")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +74,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def format_unit(self) -> str | None:
-        """Target ID of the FormatUnit reference (targets IField[primitives.String])."""
+        """The unit to show in the text."""
         member = self.get_member("FormatUnit")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +95,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def format_number(self) -> str | None:
-        """Target ID of the FormatNumber reference (targets IField[primitives.String])."""
+        """Formats the string."""
         member = self.get_member("FormatNumber")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +116,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compound_format_units(self) -> str | None:
-        """Target ID of the CompoundFormatUnits reference (targets SyncFieldList[primitives.String])."""
+        """Compounds units together (example: feet and inches for height)."""
         member = self.get_member("CompoundFormatUnits")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -133,7 +137,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compound_override_names(self) -> str | None:
-        """Target ID of the CompoundOverrideNames reference (targets IField[primitives.Bool])."""
+        """Overrides the names."""
         member = self.get_member("CompoundOverrideNames")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -154,7 +158,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compound_use_long_names(self) -> str | None:
-        """Target ID of the CompoundUseLongNames reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether to use long names like "meters" instead of "m"."""
         member = self.get_member("CompoundUseLongNames")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -175,7 +179,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def compound_separator(self) -> str | None:
-        """Target ID of the CompoundSeparator reference (targets IField[primitives.String])."""
+        """Separates the compound units."""
         member = self.get_member("CompoundSeparator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -196,7 +200,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def default_preset(self) -> members.SyncObject | None:
-        """The DefaultPreset member."""
+        """The default preset."""
         member = self.get_member("DefaultPreset")
         if isinstance(member, members.SyncObject):
             return member
@@ -204,12 +208,12 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @default_preset.setter
     def default_preset(self, value: members.SyncObject) -> None:
-        """Set the DefaultPreset member."""
+        """Set DefaultPreset. The default preset."""
         self.set_member("DefaultPreset", value)
 
     @property
     def imperial_preset(self) -> members.SyncObject | None:
-        """The ImperialPreset member."""
+        """The imperial preset."""
         member = self.get_member("ImperialPreset")
         if isinstance(member, members.SyncObject):
             return member
@@ -217,6 +221,6 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @imperial_preset.setter
     def imperial_preset(self, value: members.SyncObject) -> None:
-        """Set the ImperialPreset member."""
+        """Set ImperialPreset. The imperial preset."""
         self.set_member("ImperialPreset", value)
 

@@ -33,7 +33,7 @@ class TrimString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, I
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to trim."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId

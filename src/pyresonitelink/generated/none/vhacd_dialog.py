@@ -1,6 +1,7 @@
 """Generated component: VHACD_Dialog."""
 
 from pyresonitelink.data import members
+from pyresonitelink.generated._enums.decomposition_mode import DecompositionMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.mesh_collider import MeshCollider
@@ -17,7 +18,7 @@ class VHACD_Dialog(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VHACD_Dialog"
 
-    def __init__(self, target_collider: str | MeshCollider | None = None, merge_doubles: str | Checkbox | None = None, resolution: str | IntTextEditorParser | None = None, depth: str | IntTextEditorParser | None = None, concavity: str | FloatTextEditorParser | None = None, plane_downsampling: str | IntTextEditorParser | None = None, convex_hull_downsampling: str | IntTextEditorParser | None = None, alpha: str | FloatTextEditorParser | None = None, beta: str | FloatTextEditorParser | None = None, gamma: str | FloatTextEditorParser | None = None, delta: str | FloatTextEditorParser | None = None, pca: str | Checkbox | None = None, max_vertices_per_hull: str | IntTextEditorParser | None = None, min_volume_per_hull: str | FloatTextEditorParser | None = None, convex_hull_approximation: str | Checkbox | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_collider: str | MeshCollider | None = None, merge_doubles: str | Checkbox | None = None, resolution: str | IntTextEditorParser | None = None, depth: str | IntTextEditorParser | None = None, concavity: str | FloatTextEditorParser | None = None, plane_downsampling: str | IntTextEditorParser | None = None, convex_hull_downsampling: str | IntTextEditorParser | None = None, alpha: str | FloatTextEditorParser | None = None, beta: str | FloatTextEditorParser | None = None, gamma: str | FloatTextEditorParser | None = None, delta: str | FloatTextEditorParser | None = None, pca: str | Checkbox | None = None, mode: DecompositionMode | str | None = None, max_vertices_per_hull: str | IntTextEditorParser | None = None, min_volume_per_hull: str | FloatTextEditorParser | None = None, convex_hull_approximation: str | Checkbox | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,6 +34,7 @@ class VHACD_Dialog(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver)
             gamma: Initial value for Gamma.
             delta: Initial value for Delta.
             pca: Initial value for PCA.
+            mode: Initial value for Mode.
             max_vertices_per_hull: Initial value for MaxVerticesPerHull.
             min_volume_per_hull: Initial value for MinVolumePerHull.
             convex_hull_approximation: Initial value for ConvexHullApproximation.
@@ -63,6 +65,8 @@ class VHACD_Dialog(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver)
             self.delta = delta
         if pca is not None:
             self.pca = pca
+        if mode is not None:
+            self.mode = mode
         if max_vertices_per_hull is not None:
             self.max_vertices_per_hull = max_vertices_per_hull
         if min_volume_per_hull is not None:
@@ -323,17 +327,24 @@ class VHACD_Dialog(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver)
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> DecompositionMode | None:
+        """The Mode enum value."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return DecompositionMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: DecompositionMode | str) -> None:
+        """Set the Mode enum value."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def max_vertices_per_hull(self) -> str | None:

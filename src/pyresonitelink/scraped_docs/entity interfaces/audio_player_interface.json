@@ -1,0 +1,21 @@
+{
+  "description": "The AudioPlayerInterface component is used on AudioClip objects that are spawned in by the user to allow the engine to interface with the stored audio clip.\n\nThis is a favorite-able item. See Favorites.",
+  "category": "Utility:Entity Interfaces",
+  "fields": {
+    "ItemName": "The name of the audio clip.",
+    "SpawningUser": "The user that spawned this audio clip.",
+    "SpawningUserID": "The field of the UserRef that stores the spawning user's id.",
+    "IsInstance": "Whether this audio clip interface is a spawned interface or one being edited currently by the user. Usually set to true by the game when loaded as a user's favorite audio clip player",
+    "URL": "The field of the URI on the Type:AudioClip this component interfaces with.",
+    "Clip": "The Type:AudioClip interfaced by this component.",
+    "Group": "The audio group setting for this audio clip.",
+    "Volume": "The volume setting of this audio clip.",
+    "Spatialize": "The Spatialize setting of the audio clip.",
+    "Doppler": "The Doppler setting of the audio clip.",
+    "DefaultAudioClip": "The audio clip"
+  },
+  "methods": {},
+  "usage": "This can be attached to a slot in order for the user to make own audio clip interface for when they import an audio clip. Although, it may be easier to edit the default existing audio clip player interface.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioPlayerInterface&action=raw"
+}

@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.EyeManager.
+    """The Eye Manager Component is a component that is used for configuring the Eyes of an avatar, Both supporting simulated eye-movement, and real eye tracking using a headset with built in eye tracking sensors such as the HTC Vive pro eye.
+
+This component is automatically set up by default when setting up an avatar with detectable eyes and blink shape keys.
 
     Category: Users/Common Avatar System/Face
     """
@@ -237,7 +239,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_point(self) -> primitives.Float3 | None:
-        """The TargetPoint field value."""
+        """The average point The eyes are trying to look at currently. Simulated or controlled."""
         member = self.get_member("TargetPoint")
         if member is None:
             return None
@@ -256,7 +258,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_eye_target_point(self) -> primitives.Float3 | None:
-        """The LeftEyeTargetPoint field value."""
+        """The point The left eye specifically is looking at. Simulated or controlled. This can be different from ``TargetPoint`` if ``LeftEyeTargetOffset`` has a non zero value."""
         member = self.get_member("LeftEyeTargetPoint")
         if member is None:
             return None
@@ -275,7 +277,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_eye_target_point(self) -> primitives.Float3 | None:
-        """The RightEyeTargetPoint field value."""
+        """The point The right eye specifically is looking at. Simulated or controlled. This can be different from ``TargetPoint`` if ``RightEyeTargetOffset`` has a non zero value."""
         member = self.get_member("RightEyeTargetPoint")
         if member is None:
             return None
@@ -294,7 +296,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_eye_close(self) -> primitives.Float | None:
-        """The LeftEyeClose field value."""
+        """How much the left eye is closed currently. Simulated or controlled."""
         member = self.get_member("LeftEyeClose")
         if member is None:
             return None
@@ -313,7 +315,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_eye_close(self) -> primitives.Float | None:
-        """The RightEyeClose field value."""
+        """How much the right eye is closed currently. Simulated or controlled."""
         member = self.get_member("RightEyeClose")
         if member is None:
             return None
@@ -332,7 +334,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def combined_eye_close(self) -> primitives.Float | None:
-        """The CombinedEyeClose field value."""
+        """an average of how much both eyes are closed."""
         member = self.get_member("CombinedEyeClose")
         if member is None:
             return None
@@ -351,7 +353,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_eye_pupil_size_millimeters(self) -> primitives.Float | None:
-        """The LeftEyePupilSizeMillimeters field value."""
+        """how big the left eye's pupil is in millimeters currently. Simulated or controlled."""
         member = self.get_member("LeftEyePupilSizeMillimeters")
         if member is None:
             return None
@@ -370,7 +372,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_eye_pupil_size_millimeters(self) -> primitives.Float | None:
-        """The RightEyePupilSizeMillimeters field value."""
+        """How big the right eye's pupil is currently. Simulated or controlled."""
         member = self.get_member("RightEyePupilSizeMillimeters")
         if member is None:
             return None
@@ -389,7 +391,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def combined_eye_pupil_size_millimeters(self) -> primitives.Float | None:
-        """The CombinedEyePupilSizeMillimeters field value."""
+        """The average pupil size of both eyes. Simulated or controlled."""
         member = self.get_member("CombinedEyePupilSizeMillimeters")
         if member is None:
             return None
@@ -408,7 +410,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_eye_widen(self) -> primitives.Float | None:
-        """The LeftEyeWiden field value."""
+        """A 0-1 value representing how much the left eye is being wider than rest. Simulated or controlled."""
         member = self.get_member("LeftEyeWiden")
         if member is None:
             return None
@@ -427,7 +429,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_eye_widen(self) -> primitives.Float | None:
-        """The RightEyeWiden field value."""
+        """A 0-1 value representing how much the right eye is being wider than rest. Simulated or controlled."""
         member = self.get_member("RightEyeWiden")
         if member is None:
             return None
@@ -446,7 +448,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def combined_eye_widen(self) -> primitives.Float | None:
-        """The CombinedEyeWiden field value."""
+        """An average of the eyes being widened. Simulated or controlled."""
         member = self.get_member("CombinedEyeWiden")
         if member is None:
             return None
@@ -465,7 +467,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_eye_squeeze(self) -> primitives.Float | None:
-        """The LeftEyeSqueeze field value."""
+        """A 0-1 value of how scrunched the upper and lower lids are on the left eye. Simulated or controlled."""
         member = self.get_member("LeftEyeSqueeze")
         if member is None:
             return None
@@ -484,7 +486,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_eye_squeeze(self) -> primitives.Float | None:
-        """The RightEyeSqueeze field value."""
+        """A 0-1 value of how scrunched the upper and lower lids are on the right eye. Simulated or controlled."""
         member = self.get_member("RightEyeSqueeze")
         if member is None:
             return None
@@ -503,7 +505,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def combined_eye_squeeze(self) -> primitives.Float | None:
-        """The CombinedEyeSqueeze field value."""
+        """An average of the squinting of both eyes. Simulated or controlled."""
         member = self.get_member("CombinedEyeSqueeze")
         if member is None:
             return None
@@ -522,7 +524,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_eye_frown(self) -> primitives.Float | None:
-        """The LeftEyeFrown field value."""
+        """The amount that the left eye is frowning according to the eye tracker if it exists."""
         member = self.get_member("LeftEyeFrown")
         if member is None:
             return None
@@ -541,7 +543,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_eye_frown(self) -> primitives.Float | None:
-        """The RightEyeFrown field value."""
+        """The amount that the right eye is frowning according to the eye tracker if it exists."""
         member = self.get_member("RightEyeFrown")
         if member is None:
             return None
@@ -560,7 +562,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def combined_eye_frown(self) -> primitives.Float | None:
-        """The CombinedEyeFrown field value."""
+        """The average amount of both eyes frowning according to the eye tracker if it exists."""
         member = self.get_member("CombinedEyeFrown")
         if member is None:
             return None
@@ -579,7 +581,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_eye_inner_brow_vertical(self) -> primitives.Float | None:
-        """The LeftEyeInnerBrowVertical field value."""
+        """Eye tracking left inner brow vertical value."""
         member = self.get_member("LeftEyeInnerBrowVertical")
         if member is None:
             return None
@@ -598,7 +600,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_eye_inner_brow_vertical(self) -> primitives.Float | None:
-        """The RightEyeInnerBrowVertical field value."""
+        """Eye tracking right inner brow vertical value."""
         member = self.get_member("RightEyeInnerBrowVertical")
         if member is None:
             return None
@@ -617,7 +619,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def combined_eye_inner_brow_vertical(self) -> primitives.Float | None:
-        """The CombinedEyeInnerBrowVertical field value."""
+        """Eye tracking average inner brow vertical value."""
         member = self.get_member("CombinedEyeInnerBrowVertical")
         if member is None:
             return None
@@ -636,7 +638,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_eye_outer_brow_vertical(self) -> primitives.Float | None:
-        """The LeftEyeOuterBrowVertical field value."""
+        """Eye tracking left outer brow vertical value."""
         member = self.get_member("LeftEyeOuterBrowVertical")
         if member is None:
             return None
@@ -655,7 +657,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_eye_outer_brow_vertical(self) -> primitives.Float | None:
-        """The RightEyeOuterBrowVertical field value."""
+        """Eye tracking right outer brow vertical value."""
         member = self.get_member("RightEyeOuterBrowVertical")
         if member is None:
             return None
@@ -674,7 +676,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def combined_eye_outer_brow_vertical(self) -> primitives.Float | None:
-        """The CombinedEyeOuterBrowVertical field value."""
+        """Eye tracking average outer brow vertical value."""
         member = self.get_member("CombinedEyeOuterBrowVertical")
         if member is None:
             return None
@@ -693,7 +695,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def eye_data_source(self) -> str | None:
-        """Target ID of the EyeDataSource reference (targets IEyeDataSourceComponent)."""
+        """Eye tracking data"""
         member = self.get_member("EyeDataSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -714,7 +716,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def simulating_user(self) -> str | None:
-        """Target ID of the SimulatingUser reference (targets User)."""
+        """Determines the user simulating the eye manager"""
         member = self.get_member("SimulatingUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -735,7 +737,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def simulate_on_host(self) -> primitives.Bool | None:
-        """The SimulateOnHost field value."""
+        """Determines if the eye manager is simulated by the host"""
         member = self.get_member("SimulateOnHost")
         if member is None:
             return None
@@ -754,7 +756,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ignore_local_user_head(self) -> primitives.Bool | None:
-        """The IgnoreLocalUserHead field value."""
+        """Determines if the eye manager should ignore the local user's head"""
         member = self.get_member("IgnoreLocalUserHead")
         if member is None:
             return None
@@ -773,7 +775,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_head_weight(self) -> primitives.Float | None:
-        """The UserHeadWeight field value."""
+        """Weight for looking at other user heads"""
         member = self.get_member("UserHeadWeight")
         if member is None:
             return None
@@ -792,7 +794,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_hand_weight(self) -> primitives.Float | None:
-        """The UserHandWeight field value."""
+        """Weight for looking at hands"""
         member = self.get_member("UserHandWeight")
         if member is None:
             return None
@@ -811,7 +813,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def gripping_hand_weight(self) -> primitives.Float | None:
-        """The GrippingHandWeight field value."""
+        """Weight for looking at hands that are gripping"""
         member = self.get_member("GrippingHandWeight")
         if member is None:
             return None
@@ -830,7 +832,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def camera_weight(self) -> primitives.Float | None:
-        """The CameraWeight field value."""
+        """Weight for looking at cameras"""
         member = self.get_member("CameraWeight")
         if member is None:
             return None
@@ -849,7 +851,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def forced_camera_weight(self) -> primitives.Float | None:
-        """The ForcedCameraWeight field value."""
+        """Weight for looking at cameras that are forcing eyes to look at it"""
         member = self.get_member("ForcedCameraWeight")
         if member is None:
             return None
@@ -868,7 +870,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def eye_reference(self) -> str | None:
-        """Target ID of the EyeReference reference (targets Slot)."""
+        """Slot that is used for referencing the origin of eye tracking data"""
         member = self.get_member("EyeReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -889,7 +891,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def eye_separation(self) -> primitives.Float | None:
-        """The EyeSeparation field value."""
+        """Seperation of the eyes"""
         member = self.get_member("EyeSeparation")
         if member is None:
             return None
@@ -908,7 +910,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def saccade_speed(self) -> primitives.Float | None:
-        """The SaccadeSpeed field value."""
+        """Speed the eyes move during saccades (does not affect eye tracking)"""
         member = self.get_member("SaccadeSpeed")
         if member is None:
             return None
@@ -927,7 +929,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def look_target_root(self) -> str | None:
-        """Target ID of the LookTargetRoot reference (targets Slot)."""
+        """Slot that the eyes should look at"""
         member = self.get_member("LookTargetRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -948,7 +950,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def look_target_local_point(self) -> primitives.Float3 | None:
-        """The LookTargetLocalPoint field value."""
+        """The point that the eyes are looking at in local space."""
         member = self.get_member("LookTargetLocalPoint")
         if member is None:
             return None
@@ -967,7 +969,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_eye_target_offset(self) -> primitives.Float3 | None:
-        """The LeftEyeTargetOffset field value."""
+        """The point that the left eye is looking at in global space."""
         member = self.get_member("LeftEyeTargetOffset")
         if member is None:
             return None
@@ -986,7 +988,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_eye_target_offset(self) -> primitives.Float3 | None:
-        """The RightEyeTargetOffset field value."""
+        """The point that the right eye is looking at in global space."""
         member = self.get_member("RightEyeTargetOffset")
         if member is None:
             return None
@@ -1005,7 +1007,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def look_target_offset(self) -> primitives.Float3 | None:
-        """The LookTargetOffset field value."""
+        """The point between the points both eyes are looking at in global space."""
         member = self.get_member("LookTargetOffset")
         if member is None:
             return None
@@ -1024,7 +1026,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_random_saccade_interval(self) -> primitives.Float | None:
-        """The MinRandomSaccadeInterval field value."""
+        """Minimum time in seconds between random saccades"""
         member = self.get_member("MinRandomSaccadeInterval")
         if member is None:
             return None
@@ -1043,7 +1045,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_random_saccade_interval(self) -> primitives.Float | None:
-        """The MaxRandomSaccadeInterval field value."""
+        """Maximum time in seconds between random saccades"""
         member = self.get_member("MaxRandomSaccadeInterval")
         if member is None:
             return None
@@ -1062,7 +1064,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_target_saccade_interval(self) -> primitives.Float | None:
-        """The MinTargetSaccadeInterval field value."""
+        """Minimum time in seconds between Targeting saccades"""
         member = self.get_member("MinTargetSaccadeInterval")
         if member is None:
             return None
@@ -1081,7 +1083,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_target_saccade_interval(self) -> primitives.Float | None:
-        """The MaxTargetSaccadeInterval field value."""
+        """Maximum time in seconds between Targeting saccades"""
         member = self.get_member("MaxTargetSaccadeInterval")
         if member is None:
             return None
@@ -1100,7 +1102,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_random_saccade_offset(self) -> primitives.Float | None:
-        """The MaxRandomSaccadeOffset field value."""
+        """Maximum distance the eyes can randomly saccade off of the center of a target"""
         member = self.get_member("MaxRandomSaccadeOffset")
         if member is None:
             return None
@@ -1119,7 +1121,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def default_accept_angle(self) -> primitives.Float | None:
-        """The DefaultAcceptAngle field value."""
+        """Maximum acceptance angle for random objects"""
         member = self.get_member("DefaultAcceptAngle")
         if member is None:
             return None
@@ -1138,7 +1140,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def default_break_angle(self) -> primitives.Float | None:
-        """The DefaultBreakAngle field value."""
+        """Maximum angle before breaking eye contact with random objects"""
         member = self.get_member("DefaultBreakAngle")
         if member is None:
             return None
@@ -1157,7 +1159,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def head_accept_angle(self) -> primitives.Float | None:
-        """The HeadAcceptAngle field value."""
+        """Maximum acceptance angle for Players"""
         member = self.get_member("HeadAcceptAngle")
         if member is None:
             return None
@@ -1176,7 +1178,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def head_break_angle(self) -> primitives.Float | None:
-        """The HeadBreakAngle field value."""
+        """Maximum angle before breaking eye contact with Players"""
         member = self.get_member("HeadBreakAngle")
         if member is None:
             return None
@@ -1195,7 +1197,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def camera_accept_angle(self) -> primitives.Float | None:
-        """The CameraAcceptAngle field value."""
+        """Maximum acceptance angle for cameras"""
         member = self.get_member("CameraAcceptAngle")
         if member is None:
             return None
@@ -1214,7 +1216,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def camera_break_angle(self) -> primitives.Float | None:
-        """The CameraBreakAngle field value."""
+        """Maximum angle before breaking eye contact with cameras"""
         member = self.get_member("CameraBreakAngle")
         if member is None:
             return None
@@ -1233,7 +1235,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hand_accept_angle(self) -> primitives.Float | None:
-        """The HandAcceptAngle field value."""
+        """Maximum acceptance angle for hands"""
         member = self.get_member("HandAcceptAngle")
         if member is None:
             return None
@@ -1252,7 +1254,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hand_break_angle(self) -> primitives.Float | None:
-        """The HandBreakAngle field value."""
+        """Maximum angle before breaking eye contact with hands"""
         member = self.get_member("HandBreakAngle")
         if member is None:
             return None
@@ -1271,7 +1273,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def distance_compensation_exp(self) -> primitives.Float | None:
-        """The DistanceCompensationExp field value."""
+        """At higher values, objects further away become easier to be within angle accept. Equation is [(ObjectAngleToEyeBall) * (Object Distance)^``DistanceCompensationExp`` == new (ObjectAngleToEyeBall)]"""
         member = self.get_member("DistanceCompensationExp")
         if member is None:
             return None
@@ -1290,7 +1292,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def left_eye_close_override(self) -> primitives.Float | None:
-        """The LeftEyeCloseOverride field value."""
+        """Overrides the left eyelid when open"""
         member = self.get_member("LeftEyeCloseOverride")
         if member is None:
             return None
@@ -1309,7 +1311,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def right_eye_close_override(self) -> primitives.Float | None:
-        """The RightEyeCloseOverride field value."""
+        """Overrides the right eyelid when open"""
         member = self.get_member("RightEyeCloseOverride")
         if member is None:
             return None
@@ -1328,7 +1330,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_blink_interval(self) -> primitives.Float | None:
-        """The MinBlinkInterval field value."""
+        """Minimum interval between blinks in seconds"""
         member = self.get_member("MinBlinkInterval")
         if member is None:
             return None
@@ -1347,7 +1349,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_blink_interval(self) -> primitives.Float | None:
-        """The MaxBlinkInterval field value."""
+        """Maximum interval between blinks in seconds"""
         member = self.get_member("MaxBlinkInterval")
         if member is None:
             return None
@@ -1366,7 +1368,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def blink_min_speed(self) -> primitives.Float | None:
-        """The BlinkMinSpeed field value."""
+        """Minimum Speed for blinks"""
         member = self.get_member("BlinkMinSpeed")
         if member is None:
             return None
@@ -1385,7 +1387,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def blink_max_speed(self) -> primitives.Float | None:
-        """The BlinkMaxSpeed field value."""
+        """Maximum Speed for blinks"""
         member = self.get_member("BlinkMaxSpeed")
         if member is None:
             return None
@@ -1404,7 +1406,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def blink_speed_spread(self) -> primitives.Float | None:
-        """The BlinkSpeedSpread field value."""
+        """How much to scale the randomness of blink speed. Basically to make more extreme values more common."""
         member = self.get_member("BlinkSpeedSpread")
         if member is None:
             return None
@@ -1423,7 +1425,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_pupil_size(self) -> primitives.Float | None:
-        """The MinPupilSize field value."""
+        """Minimum pupil size"""
         member = self.get_member("MinPupilSize")
         if member is None:
             return None
@@ -1442,7 +1444,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_pupil_size(self) -> primitives.Float | None:
-        """The MaxPupilSize field value."""
+        """Maximum pupil size"""
         member = self.get_member("MaxPupilSize")
         if member is None:
             return None
@@ -1461,7 +1463,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def pupil_size_noise_speed(self) -> primitives.Float | None:
-        """The PupilSizeNoiseSpeed field value."""
+        """How fast the random pupil noise will move"""
         member = self.get_member("PupilSizeNoiseSpeed")
         if member is None:
             return None
@@ -1480,7 +1482,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def pupil_size_noise_offset(self) -> primitives.Float | None:
-        """The PupilSizeNoiseOffset field value."""
+        """How much extra random noise the right eye pupil size will have vs the left one."""
         member = self.get_member("PupilSizeNoiseOffset")
         if member is None:
             return None
@@ -1499,7 +1501,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def eye_tracking_pupil_size_smooth_speed(self) -> primitives.Float | None:
-        """The EyeTrackingPupilSizeSmoothSpeed field value."""
+        """Smooth speed for tracked pupil dilation"""
         member = self.get_member("EyeTrackingPupilSizeSmoothSpeed")
         if member is None:
             return None
@@ -1518,7 +1520,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mini_expression_probability(self) -> primitives.Float | None:
-        """The MiniExpressionProbability field value."""
+        """chance for a miniexpression to occur"""
         member = self.get_member("MiniExpressionProbability")
         if member is None:
             return None
@@ -1537,7 +1539,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mini_expression_interval(self) -> primitives.Float | None:
-        """The MiniExpressionInterval field value."""
+        """Interval between attempting to do a miniexpression"""
         member = self.get_member("MiniExpressionInterval")
         if member is None:
             return None
@@ -1556,7 +1558,7 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mini_expressions(self) -> members.SyncList | None:
-        """The MiniExpressions member."""
+        """A list of mini expressions to use when attempting a mini expression."""
         member = self.get_member("MiniExpressions")
         if isinstance(member, members.SyncList):
             return member
@@ -1564,6 +1566,6 @@ class EyeManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @mini_expressions.setter
     def mini_expressions(self, value: members.SyncList) -> None:
-        """Set the MiniExpressions member."""
+        """Set MiniExpressions. A list of mini expressions to use when attempting a mini expression."""
         self.set_member("MiniExpressions", value)
 

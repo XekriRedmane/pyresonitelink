@@ -15,6 +15,25 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class WavelengthColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Wavelength Color node takes in a float number value (in nanometers) and converts that to a visible light spectrum color.
 
+The table here shows the wavelength values that correspond to the output color:
+{| class="wikitable"
+|+
+! Color !! Wavelength
+|-
+| Violet || 380–450 nm (688–789 THz frequency)
+|-
+| Blue || 450–495 nm.
+|-
+| Green || 495–570 nm.
+|-
+| Yellow || 570–590 nm.
+|-
+| Orange || 590–620 nm.
+|-
+| Red || 620–750 nm (400–484 THz frequency).
+|-
+|}
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """
 
@@ -33,7 +52,7 @@ class WavelengthColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def wavelength(self) -> str | None:
-        """Target ID of the Wavelength reference (targets INodeValueOutput[primitives.Float])."""
+        """The wavelength value in nanometers."""
         member = self.get_member("Wavelength")
         if isinstance(member, members.Reference):
             return member.targetId

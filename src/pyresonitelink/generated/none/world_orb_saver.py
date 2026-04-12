@@ -13,7 +13,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldOrbSaver.
+    """The WorldOrbSaver Component handles when a user is saving a world to their inventory when saving a world in general.
+
+See World for more info about worlds.
+
+    See World for more info about worlds.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldOrbSaver"
@@ -49,7 +53,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def orb(self) -> str | None:
-        """Target ID of the Orb reference (targets WorldOrb)."""
+        """The orb to save to the user's inventory."""
         member = self.get_member("Orb")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +74,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def save_here_item(self) -> str | None:
-        """Target ID of the saveHereItem reference (targets ContextMenuItem)."""
+        """The context menu item used to trigger "Save Here"."""
         member = self.get_member("saveHereItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +95,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def save_to_inventory_item(self) -> str | None:
-        """Target ID of the saveToInventoryItem reference (targets ContextMenuItem)."""
+        """The context menu item used to trigger "Save to Inventory"."""
         member = self.get_member("saveToInventoryItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +116,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cancel_item(self) -> str | None:
-        """Target ID of the cancelItem reference (targets ContextMenuItem)."""
+        """The context menu item used to trigger "Cancel""""
         member = self.get_member("cancelItem")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -133,7 +137,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def menu(self) -> str | None:
-        """Target ID of the menu reference (targets ContextMenu)."""
+        """The context menu that was opened to handle this item's menu."""
         member = self.get_member("menu")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -154,7 +158,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def interactive(self) -> primitives.Bool | None:
-        """The interactive field value."""
+        """Whether this item is interactive or not."""
         member = self.get_member("interactive")
         if member is None:
             return None
@@ -173,7 +177,7 @@ class WorldOrbSaver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def saving(self) -> primitives.Bool | None:
-        """The saving field value."""
+        """Whether this item is currently saving to the user's inventory."""
         member = self.get_member("saving")
         if member is None:
             return None

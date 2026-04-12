@@ -1,0 +1,18 @@
+{
+  "description": "Stopped playable cleaner is used on play one shots in order to delete or clean them once they have finished playing.",
+  "category": "Utility",
+  "fields": {
+    "Playable": "the audio player that is playing audio",
+    "GracePeriod": "How long to wait before deleting the component after it has finished playing.",
+    "CheckingUser": "The user that is monitoring the ``Playable`` on their machine to check when it has stopped playing"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "This component can stop working if the user is AFK or the slot is disabled, and can cause issues in items like boopers and overload the sound buffer."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StoppedPlayableCleaner&action=raw"
+}

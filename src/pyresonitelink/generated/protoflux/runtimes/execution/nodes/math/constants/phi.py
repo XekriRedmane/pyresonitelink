@@ -13,8 +13,6 @@ class Phi(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomIn
     """The Phi node outputs the Golden Ratio mathematical constant.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
-
-    **Inputs**: None.
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Constants.Phi"

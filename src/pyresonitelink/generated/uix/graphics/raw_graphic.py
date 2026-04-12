@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.rect_orientation import RectOrientation
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,14 +14,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.RawGraphic.
+    """The RawGraphic component takes in a Material or a Material Property Block component, then shows the raw graphic image onto the UIX.
+
+}}
 
     Category: UIX/Graphics
+
+    Use this component when the Image component does not have what your
+    looking for in your UIX design.
+
+    **Related Components**: * MainTexturePropertyBlock
+* Projection360PropertyBlock
+* MainAndMaskTexturePropertyBlock
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.RawGraphic"
 
-    def __init__(self, material: str | IAssetProvider[Material] | None = None, property_block: str | IAssetProvider[MaterialPropertyBlock] | None = None, fill_rect: primitives.Rect | None = None, color: primitives.ColorX | None = None, uv_rect: primitives.Rect | None = None, normal: primitives.Float3 | None = None, tangent: primitives.Float4 | None = None, hide_with_no_material: primitives.Bool | None = None, preserve_uv_aspect_ratio: primitives.Bool | None = None, interaction_target: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, material: str | IAssetProvider[Material] | None = None, property_block: str | IAssetProvider[MaterialPropertyBlock] | None = None, fill_rect: primitives.Rect | None = None, color: primitives.ColorX | None = None, uv_rect: primitives.Rect | None = None, orientation: RectOrientation | str | None = None, normal: primitives.Float3 | None = None, tangent: primitives.Float4 | None = None, hide_with_no_material: primitives.Bool | None = None, preserve_uv_aspect_ratio: primitives.Bool | None = None, interaction_target: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,6 +39,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             fill_rect: Initial value for FillRect.
             color: Initial value for Color.
             uv_rect: Initial value for UVRect.
+            orientation: Initial value for Orientation.
             normal: Initial value for Normal.
             tangent: Initial value for Tangent.
             hide_with_no_material: Initial value for HideWithNoMaterial.
@@ -47,6 +58,8 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             self.color = color
         if uv_rect is not None:
             self.uv_rect = uv_rect
+        if orientation is not None:
+            self.orientation = orientation
         if normal is not None:
             self.normal = normal
         if tangent is not None:
@@ -60,7 +73,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to take the raw graphic from."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +94,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def property_block(self) -> str | None:
-        """Target ID of the PropertyBlock reference (targets IAssetProvider[MaterialPropertyBlock])."""
+        """The image within a literal image block."""
         member = self.get_member("PropertyBlock")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -102,7 +115,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def fill_rect(self) -> primitives.Rect | None:
-        """The FillRect field value."""
+        """The filling rect for this image."""
         member = self.get_member("FillRect")
         if member is None:
             return None
@@ -121,7 +134,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """Changes the color of the image."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -140,7 +153,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def uv_rect(self) -> primitives.Rect | None:
-        """The UVRect field value."""
+        """Shifts the UV of the raw image."""
         member = self.get_member("UVRect")
         if member is None:
             return None
@@ -158,21 +171,28 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
             )
 
     @property
-    def orientation(self) -> members.FieldEnum | None:
-        """The Orientation member."""
+    def orientation(self) -> RectOrientation | None:
+        """Rotates the raw image and respects aspect ratio."""
         member = self.get_member("Orientation")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return RectOrientation(member.value)
         return None
 
     @orientation.setter
-    def orientation(self, value: members.FieldEnum) -> None:
-        """Set the Orientation member."""
-        self.set_member("Orientation", value)
+    def orientation(self, value: RectOrientation | str) -> None:
+        """Set Orientation. Rotates the raw image and respects aspect ratio."""
+        member = self.get_member("Orientation")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Orientation",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def normal(self) -> primitives.Float3 | None:
-        """The Normal field value."""
+        """The normal for this raw graphic."""
         member = self.get_member("Normal")
         if member is None:
             return None
@@ -191,7 +211,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def tangent(self) -> primitives.Float4 | None:
-        """The Tangent field value."""
+        """The tangent for this raw graphic."""
         member = self.get_member("Tangent")
         if member is None:
             return None
@@ -210,7 +230,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def hide_with_no_material(self) -> primitives.Bool | None:
-        """The HideWithNoMaterial field value."""
+        """If there is no material, hid this raw image."""
         member = self.get_member("HideWithNoMaterial")
         if member is None:
             return None
@@ -229,7 +249,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def preserve_uv_aspect_ratio(self) -> primitives.Bool | None:
-        """The PreserveUVAspectRatio field value."""
+        """If this raw graphic should preserve its aspect ratio."""
         member = self.get_member("PreserveUVAspectRatio")
         if member is None:
             return None
@@ -248,7 +268,7 @@ class RawGraphic(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def interaction_target(self) -> primitives.Bool | None:
-        """The InteractionTarget field value."""
+        """Makes this image as the interaction target for this UIX."""
         member = self.get_member("InteractionTarget")
         if member is None:
             return None

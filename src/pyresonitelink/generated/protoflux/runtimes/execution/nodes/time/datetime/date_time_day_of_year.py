@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DateTimeDayOfYear(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The DateTime Day Of Year node takes in a DateTime and returns the day of the year (represented as an int) from that DateTime. This takes into account the days in the months accumulated so far in that year and adds them together, as well as any leap year days that were in that year.
+    """The ``DateTime Day Of Year`` node takes in a DateTime and returns the day of the year (represented as an int) from that DateTime. This takes into account the days in the months accumulated so far in that year and adds them together, as well as any leap year days that were in that year.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """
@@ -32,7 +32,7 @@ class DateTimeDayOfYear(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def date_time(self) -> str | None:
-        """Target ID of the DateTime reference (targets INodeValueOutput[str])."""
+        """The DateTime we are getting info from."""
         member = self.get_member("DateTime")
         if isinstance(member, members.Reference):
             return member.targetId

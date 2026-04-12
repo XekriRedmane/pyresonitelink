@@ -11,7 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AssetMetadata.
+    """This component is used as a base component for other components like PhotoMetadata
+
+    This component is used as a base component for other components like
+    PhotoMetadata
+
+    **UserInfo**: See UserInfo.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AssetMetadata"
@@ -50,7 +55,7 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def location_name(self) -> primitives.String | None:
-        """The LocationName field value."""
+        """Name of the world the photo was taken in."""
         member = self.get_member("LocationName")
         if member is None:
             return None
@@ -69,7 +74,7 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def location_url(self) -> str | None:
-        """The LocationURL field value."""
+        """The url of the world the photo was taken in."""
         member = self.get_member("LocationURL")
         if member is None:
             return None
@@ -88,7 +93,7 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def location_host(self) -> members.SyncObject | None:
-        """The LocationHost member."""
+        """The host user of the session the photo was taken in."""
         member = self.get_member("LocationHost")
         if isinstance(member, members.SyncObject):
             return member
@@ -96,12 +101,12 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @location_host.setter
     def location_host(self, value: members.SyncObject) -> None:
-        """Set the LocationHost member."""
+        """Set LocationHost. The host user of the session the photo was taken in."""
         self.set_member("LocationHost", value)
 
     @property
     def location_access_level(self) -> members.FieldEnum | None:
-        """The LocationAccessLevel member."""
+        """The access level of the world the photo was taken in."""
         member = self.get_member("LocationAccessLevel")
         if isinstance(member, members.FieldEnum):
             return member
@@ -109,12 +114,12 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @location_access_level.setter
     def location_access_level(self, value: members.FieldEnum) -> None:
-        """Set the LocationAccessLevel member."""
+        """Set LocationAccessLevel. The access level of the world the photo was taken in."""
         self.set_member("LocationAccessLevel", value)
 
     @property
     def location_hidden_from_listing(self) -> primitives.Bool | None:
-        """The LocationHiddenFromListing field value."""
+        """whether the photo was taken in a hidden world or not."""
         member = self.get_member("LocationHiddenFromListing")
         if member is None:
             return None
@@ -133,7 +138,7 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def time_taken(self) -> str | None:
-        """The TimeTaken field value."""
+        """The time the photo was taken."""
         member = self.get_member("TimeTaken")
         if member is None:
             return None
@@ -152,7 +157,7 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def taken_by(self) -> members.SyncObject | None:
-        """The TakenBy member."""
+        """the user who took the photo."""
         member = self.get_member("TakenBy")
         if isinstance(member, members.SyncObject):
             return member
@@ -160,12 +165,12 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @taken_by.setter
     def taken_by(self, value: members.SyncObject) -> None:
-        """Set the TakenBy member."""
+        """Set TakenBy. the user who took the photo."""
         self.set_member("TakenBy", value)
 
     @property
     def taken_global_position(self) -> primitives.Float3 | None:
-        """The TakenGlobalPosition field value."""
+        """The Position the Asset was generated in global space."""
         member = self.get_member("TakenGlobalPosition")
         if member is None:
             return None
@@ -184,7 +189,7 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def taken_global_rotation(self) -> primitives.FloatQ | None:
-        """The TakenGlobalRotation field value."""
+        """The rotation the Asset was generated in global space."""
         member = self.get_member("TakenGlobalRotation")
         if member is None:
             return None
@@ -203,7 +208,7 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def taken_global_scale(self) -> primitives.Float3 | None:
-        """The TakenGlobalScale field value."""
+        """The scale of the point this Asset was generated in global space."""
         member = self.get_member("TakenGlobalScale")
         if member is None:
             return None
@@ -222,7 +227,7 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def app_version(self) -> primitives.String | None:
-        """The AppVersion field value."""
+        """The Version of the game the photo was taken in."""
         member = self.get_member("AppVersion")
         if member is None:
             return None
@@ -241,7 +246,7 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def user_infos(self) -> members.SyncList | None:
-        """The UserInfos member."""
+        """A list of users present in the session when the photo was taken."""
         member = self.get_member("UserInfos")
         if isinstance(member, members.SyncList):
             return member
@@ -249,12 +254,12 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @user_infos.setter
     def user_infos(self, value: members.SyncList) -> None:
-        """Set the UserInfos member."""
+        """Set UserInfos. A list of users present in the session when the photo was taken."""
         self.set_member("UserInfos", value)
 
     @property
     def legacy_present_users(self) -> members.SyncList | None:
-        """The __legacyPresentUsers member."""
+        """A list of users present in the session when the photo was taken. This is internal legacy data."""
         member = self.get_member("__legacyPresentUsers")
         if isinstance(member, members.SyncList):
             return member
@@ -262,7 +267,7 @@ class AssetMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @legacy_present_users.setter
     def legacy_present_users(self, value: members.SyncList) -> None:
-        """Set the __legacyPresentUsers member."""
+        """Set __legacyPresentUsers. A list of users present in the session when the photo was taken. This is internal legacy data."""
         self.set_member("__legacyPresentUsers", value)
 
     async def set_from_current_world(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:

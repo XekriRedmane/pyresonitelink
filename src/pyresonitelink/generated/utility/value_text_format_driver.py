@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueTextFormatDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueTextFormatDriver<>.
+    """ValueTextFormatDriver applies the value of a single source field to a text format string and drives the target string field. The source field is element 0 in the format string. Elements are defined by putting {} brackets around a number. Although the image shown and the field list below have the source field being a float, this component is generic, so any field type (that can be converted to a string) can be used.
 
     Category: Utility
+
+    Attach to a slot and provide a format string and source value in order
+    to drive a string field (possibly text) with the formatted number.
 
     Parameterize with a value type::
 
@@ -43,7 +46,7 @@ class ValueTextFormatDriver(GenericComponent[T], IComponent, IWorldEventReceiver
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IField[T])."""
+        """The source field for the value."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +67,7 @@ class ValueTextFormatDriver(GenericComponent[T], IComponent, IWorldEventReceiver
 
     @property
     def format_(self) -> primitives.String | None:
-        """The Format field value."""
+        """The string format with "{0}" in it somewhere"""
         member = self.get_member("Format")
         if member is None:
             return None
@@ -83,7 +86,7 @@ class ValueTextFormatDriver(GenericComponent[T], IComponent, IWorldEventReceiver
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IField[primitives.String])."""
+        """The target field."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId

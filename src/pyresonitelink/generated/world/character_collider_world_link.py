@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CharacterColliderWorldLink.
+    """Character collider world link is a component that allows for having a user trigger a world link when they collide against a collider or go into a trigger zone.
 
     Category: World
     """
@@ -43,7 +43,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def triggers_only(self) -> primitives.Bool | None:
-        """The TriggersOnly field value."""
+        """Whether to only allow collision events from trigger type colliders on this slot to trigger or all types of colliders to trigger this world link."""
         member = self.get_member("TriggersOnly")
         if member is None:
             return None
@@ -62,7 +62,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def open_on_contact_start(self) -> primitives.Bool | None:
-        """The OpenOnContactStart field value."""
+        """Use world link on contact start."""
         member = self.get_member("OpenOnContactStart")
         if member is None:
             return None
@@ -81,7 +81,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def open_on_contact_stay(self) -> primitives.Bool | None:
-        """The OpenOnContactStay field value."""
+        """Use world link on contact stay."""
         member = self.get_member("OpenOnContactStay")
         if member is None:
             return None
@@ -100,7 +100,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def open_on_contact_end(self) -> primitives.Bool | None:
-        """The OpenOnContactEnd field value."""
+        """Use world link on contact end."""
         member = self.get_member("OpenOnContactEnd")
         if member is None:
             return None
@@ -119,7 +119,7 @@ class CharacterColliderWorldLink(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def world_link(self) -> str | None:
-        """Target ID of the WorldLink reference (targets WorldLink)."""
+        """The world to open and optionally go to to on contact."""
         member = self.get_member("WorldLink")
         if isinstance(member, members.Reference):
             return member.targetId

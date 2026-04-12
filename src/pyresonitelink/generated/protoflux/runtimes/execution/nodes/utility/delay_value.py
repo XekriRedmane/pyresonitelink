@@ -44,7 +44,7 @@ class DelayValue(GenericComponent[T], IExecutionUpdateReceiver[T], IMappableNode
 
     @property
     def delay_seconds(self) -> str | None:
-        """Target ID of the DelaySeconds reference (targets INodeValueOutput[primitives.Float])."""
+        """The amount of seconds to delay the data."""
         member = self.get_member("DelaySeconds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +65,7 @@ class DelayValue(GenericComponent[T], IExecutionUpdateReceiver[T], IMappableNode
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[T])."""
+        """The value to delay."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +86,7 @@ class DelayValue(GenericComponent[T], IExecutionUpdateReceiver[T], IMappableNode
 
     @property
     def delayed_value(self) -> members.EmptyElement | None:
-        """The DelayedValue member."""
+        """The delayed value."""
         member = self.get_member("DelayedValue")
         if isinstance(member, members.EmptyElement):
             return member
@@ -94,6 +94,6 @@ class DelayValue(GenericComponent[T], IExecutionUpdateReceiver[T], IMappableNode
 
     @delayed_value.setter
     def delayed_value(self, value: members.EmptyElement) -> None:
-        """Set the DelayedValue member."""
+        """Set DelayedValue. The delayed value."""
         self.set_member("DelayedValue", value)
 

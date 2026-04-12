@@ -6,9 +6,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocomotionGrip(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocomotionGrip.
+    """The LocomotionGrip component controls if users can climb on a collider hierarchy. 
+
+For some locomotions, colliders have to specifically be tagged as being climbable. In these cases, this component is used for that purpose.
 
     Category: Locomotion/Interaction
+
+    While this component is enabled on a slot the hierarchy will be
+    climbable, while this component is disabled on a slot the hierarchy will
+    not be climbable even if climbing is enabled by default in the
+    locomotion.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocomotionGrip"

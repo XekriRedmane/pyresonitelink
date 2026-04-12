@@ -9,7 +9,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColliderEventRelay(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ColliderEventRelay.
+    """The ColliderEventRelay takes a collider to monitor and sends ContactEvent messages when certain collisions happen.
+
+    Can be used to trigger any other Component with a contact event method
+    when a contact event happens.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColliderEventRelay"
@@ -27,7 +30,7 @@ class ColliderEventRelay(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def collider(self) -> str | None:
-        """Target ID of the Collider reference (targets ICollider)."""
+        """The collider to monitor events for."""
         member = self.get_member("Collider")
         if isinstance(member, members.Reference):
             return member.targetId

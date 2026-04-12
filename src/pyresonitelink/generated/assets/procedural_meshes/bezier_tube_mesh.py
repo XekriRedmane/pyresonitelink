@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BezierTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BezierTubeMesh.
+    """Bezier tube mesh is a component that allows for making a continuous tube of geometry that is a Bezier curve shape defined by points.
 
     Category: Assets/Procedural Meshes
+
+    **Related Components**: * Curve Point
+* Bezier Curve
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BezierTubeMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: primitives.Float | None = None, segment_points: primitives.Int | None = None, steps_per_unit_length: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, radius: primitives.Float | None = None, segment_points: primitives.Int | None = None, steps_per_unit_length: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             radius: Initial value for Radius.
             segment_points: Initial value for SegmentPoints.
             steps_per_unit_length: Initial value for StepsPerUnitLength.
@@ -38,6 +43,8 @@ class BezierTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if radius is not None:
             self.radius = radius
         if segment_points is not None:
@@ -103,21 +110,28 @@ class BezierTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the tube (from center to outside)."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -136,7 +150,7 @@ class BezierTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def points(self) -> members.Member | None:
-        """The Points member."""
+        """Curve tangent point/handle array used for the generation of this mesh. Editing this via Mods produces undesirable results where the curve has really sharp bends."""
         member = self.get_member("Points")
         if isinstance(member, members.Member):
             return member
@@ -144,12 +158,12 @@ class BezierTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @points.setter
     def points(self, value: members.Member) -> None:
-        """Set the Points member."""
+        """Set Points. Curve tangent point/handle array used for the generation of this mesh. Editing this via Mods produces undesirable results where the curve has really sharp bends."""
         self.set_member("Points", value)
 
     @property
     def segment_points(self) -> primitives.Int | None:
-        """The SegmentPoints field value."""
+        """How many sides the tube mesh has around it's mid section."""
         member = self.get_member("SegmentPoints")
         if member is None:
             return None
@@ -168,7 +182,7 @@ class BezierTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def steps_per_unit_length(self) -> primitives.Int | None:
-        """The StepsPerUnitLength field value."""
+        """How many bends from point to point the tube should have."""
         member = self.get_member("StepsPerUnitLength")
         if member is None:
             return None

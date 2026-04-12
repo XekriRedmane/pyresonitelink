@@ -12,7 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AssetProxy(GenericComponent[T], IReferenceSource[T], IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AssetProxy<>.
+    """Asset Proxy is a component that allows for access to an asset through a slot when being grabbed by the user.
+
+    put this component on a slot and fill the ``AssetReference`` with an
+    asset reference to allow access to an asset via holding this slot's
+    object root. The asset will then be available when holding onto the
+    object root of the slot this component is on, and clicking on a UIX
+    field (ex: an inspector field) places the asset type that this component
+    has inside of it into the field.
 
     Parameterize with a value type::
 
@@ -36,7 +43,7 @@ class AssetProxy(GenericComponent[T], IReferenceSource[T], IWorldEventReceiver):
 
     @property
     def asset_reference(self) -> str | None:
-        """Target ID of the AssetReference reference (targets IAssetProvider[A])."""
+        """The asset to expose to asset ref fields when grabbing the object root of the slot this component is on."""
         member = self.get_member("AssetReference")
         if isinstance(member, members.Reference):
             return member.targetId

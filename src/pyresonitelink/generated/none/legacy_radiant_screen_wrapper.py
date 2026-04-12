@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.texture_2d import Texture2D
 
 
 class LegacyRadiantScreenWrapper(GenericComponent[T]):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyRadiantScreenWrapper<>.
+    """The LegacyRadiantScreenWrapper component was used to handle the old ui when the bottom buttons used to be physical. this should never be used in new content ever.
 
     Parameterize with a value type::
 
@@ -74,7 +74,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def icon(self) -> str | None:
-        """The Icon field value."""
+        """The icon of the current screen."""
         member = self.get_member("Icon")
         if member is None:
             return None
@@ -93,7 +93,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def active_color(self) -> primitives.ColorX | None:
-        """The ActiveColor field value."""
+        """The color of the current screen."""
         member = self.get_member("ActiveColor")
         if member is None:
             return None
@@ -112,7 +112,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def label(self) -> primitives.String | None:
-        """The Label field value."""
+        """The label text of the current screen."""
         member = self.get_member("Label")
         if member is None:
             return None
@@ -131,7 +131,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def screen_enabled(self) -> primitives.Bool | None:
-        """The ScreenEnabled field value."""
+        """The enabled status of the current screen."""
         member = self.get_member("ScreenEnabled")
         if member is None:
             return None
@@ -150,7 +150,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def base_resolution(self) -> primitives.Float2 | None:
-        """The BaseResolution field value."""
+        """The base resolution of the current screen."""
         member = self.get_member("BaseResolution")
         if member is None:
             return None
@@ -169,7 +169,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def screen_root(self) -> str | None:
-        """Target ID of the _screenRoot reference (targets Slot)."""
+        """The root slot of the current screen."""
         member = self.get_member("_screenRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -190,7 +190,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def screen_canvas(self) -> str | None:
-        """Target ID of the _screenCanvas reference (targets Canvas)."""
+        """The canvas component of the current screen."""
         member = self.get_member("_screenCanvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -211,7 +211,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def modal_overlay_manager(self) -> str | None:
-        """Target ID of the _modalOverlayManager reference (targets ModalOverlayManager)."""
+        """The modal overlay manager of the dash this component controls."""
         member = self.get_member("_modalOverlayManager")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -232,7 +232,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets RadiantDashButton)."""
+        """The button for the current screen."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -253,7 +253,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def icon_texture(self) -> str | None:
-        """Target ID of the _iconTexture reference (targets IAssetProvider[Texture2D])."""
+        """The icon for the current screen."""
         member = self.get_member("_iconTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -274,7 +274,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def extra_side_padding(self) -> primitives.Float | None:
-        """The ExtraSidePadding field value."""
+        """How much to pad the current screen"""
         member = self.get_member("ExtraSidePadding")
         if member is None:
             return None
@@ -293,7 +293,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def background(self) -> primitives.ColorX | None:
-        """The Background field value."""
+        """The background color of the current screen."""
         member = self.get_member("Background")
         if member is None:
             return None
@@ -312,7 +312,7 @@ class LegacyRadiantScreenWrapper(GenericComponent[T]):
 
     @property
     def initialized(self) -> primitives.Bool | None:
-        """The _initialized field value."""
+        """Whether this component is finished setup."""
         member = self.get_member("_initialized")
         if member is None:
             return None

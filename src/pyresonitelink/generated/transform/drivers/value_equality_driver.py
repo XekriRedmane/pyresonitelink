@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueEqualityDriver<>.
+    """The ValueEqualityDriver component lets you drive a boolean to whether or not one value is equal to another.
 
     Category: Transform/Drivers
+
+    Use to drive the target boolean with whether the target's value is equal
+    to the reference value.
 
     Parameterize with a value type::
 
@@ -49,7 +52,7 @@ class ValueEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target_value(self) -> str | None:
-        """Target ID of the TargetValue reference (targets IField[T])."""
+        """The value being compared to ``Reference``."""
         member = self.get_member("TargetValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +92,7 @@ class ValueEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Bool])."""
+        """The boolean that is driven to true if ``TargetValue`` is equal to ``Reference`` and false if it isn't."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +113,7 @@ class ValueEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def invert(self) -> primitives.Bool | None:
-        """The Invert field value."""
+        """Whether to invert the result of ``TargetValue``"""
         member = self.get_member("Invert")
         if member is None:
             return None
@@ -129,7 +132,7 @@ class ValueEqualityDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def use_approximate_comparison(self) -> primitives.Bool | None:
-        """The UseApproximateComparison field value."""
+        """Whether or not to use approximate comparison for types such as float, where values that seem identical can be very slightly different."""
         member = self.get_member("UseApproximateComparison")
         if member is None:
             return None

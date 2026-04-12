@@ -9,7 +9,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceDriveReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceDriveReceiver<>.
+    """The ReferenceDriveReceiver component is used to allow dropping a reference proxy via the user's hand onto a UIX element to trigger the prompt for driving a reference field. This requires a UIX button to work.
+
+    Attach to a slot as part of a Canvas hierarchy with a Button in the same
+    slot. Provide a value for ``Reference`` for it to start working.
 
     Parameterize with a value type::
 
@@ -33,7 +36,7 @@ class ReferenceDriveReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventRe
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets SyncRef[T])."""
+        """The field this should allow an option to drive for when a reference is dropped onto the UIX element this is on."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HyperlinkOpenDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HyperlinkOpenDialog.
+    """The HyperlinkOpenDialog component shows in user space as a UIX when the user clicks on a HyperLink component.
+
+    Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HyperlinkOpenDialog"
@@ -38,7 +40,7 @@ class HyperlinkOpenDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The url being accessed."""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -57,7 +59,7 @@ class HyperlinkOpenDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hyperlink_text(self) -> str | None:
-        """Target ID of the _hyperlinkText reference (targets Text)."""
+        """The text to fill with what is being accessed."""
         member = self.get_member("_hyperlinkText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -78,7 +80,7 @@ class HyperlinkOpenDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def reason_text(self) -> str | None:
-        """Target ID of the _reasonText reference (targets Text)."""
+        """The text to show the reason for the link dialog showing."""
         member = self.get_member("_reasonText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -99,7 +101,7 @@ class HyperlinkOpenDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def open_button(self) -> str | None:
-        """Target ID of the _openButton reference (targets Button)."""
+        """The button to open the link in ``URL`` using the user's OS default browser."""
         member = self.get_member("_openButton")
         if isinstance(member, members.Reference):
             return member.targetId

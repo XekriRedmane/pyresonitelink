@@ -41,7 +41,7 @@ class CountOccurrences(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to search for Search (String) in."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class CountOccurrences(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def search(self) -> str | None:
-        """Target ID of the Search reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to be searching for."""
         member = self.get_member("Search")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class CountOccurrences(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def comparison_mode(self) -> str | None:
-        """Target ID of the ComparisonMode reference (targets INodeValueOutput[StringComparison])."""
+        """The search method to use when searching."""
         member = self.get_member("ComparisonMode")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -1,0 +1,17 @@
+{
+  "description": "The UserspacePointer component is used in user space and is used to control the behavior of the user space lasers for interacting with user space elements like the dash menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "_equipLink": "A special internal link to equipping a tool.",
+    "TipReference": "The tip reference for the laser.",
+    "BlockGripEquip": "Whether to block grip equip or not.",
+    "BlockRemoteEquip": "Whether to block remote equip or not.",
+    "EquipName": "The name for equipping the tool.",
+    "_overrideActiveTool": "The interaction handler to use as an override for the equipped tool.",
+    "_gripPosesGenerated": "Whether or not the grip poses have been generated."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserspacePointer&action=raw"
+}

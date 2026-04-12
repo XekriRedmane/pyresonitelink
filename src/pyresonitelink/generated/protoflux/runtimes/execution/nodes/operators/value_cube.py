@@ -38,7 +38,7 @@ class ValueCube(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INo
 
     @property
     def n(self) -> str | None:
-        """Target ID of the N reference (targets INodeValueOutput[T])."""
+        """The number we want to cube."""
         member = self.get_member("N")
         if isinstance(member, members.Reference):
             return member.targetId

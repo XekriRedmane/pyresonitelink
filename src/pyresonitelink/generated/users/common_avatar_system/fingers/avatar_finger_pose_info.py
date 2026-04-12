@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarFingerPoseInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarFingerPoseInfo.
+    """The AvatarFingerPoseInfo is used to override the assigning behavior from a AvatarHandDataAssigner on the avatar when it assigns a target.
 
     Category: Users/Common Avatar System/Fingers
     """
@@ -29,7 +29,7 @@ class AvatarFingerPoseInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def finger_pose_source(self) -> str | None:
-        """Target ID of the FingerPoseSource reference (targets IFingerPoseSourceComponent)."""
+        """The data source to override the assigning behavior of a Component:AvatarHandDataAssigner on the avatar with."""
         member = self.get_member("FingerPoseSource")
         if isinstance(member, members.Reference):
             return member.targetId

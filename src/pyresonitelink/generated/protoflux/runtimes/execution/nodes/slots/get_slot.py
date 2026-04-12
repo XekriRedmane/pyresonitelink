@@ -33,7 +33,7 @@ class GetSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICus
 
     @property
     def component_(self) -> str | None:
-        """Target ID of the Component reference (targets INodeObjectOutput[IComponent])."""
+        """The component you want to find the slot of."""
         member = self.get_member("Component")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -15,7 +15,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Play(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Play is a ProtoFlux node that plays the provided Target (IPlayable) when * (Call) is called. Play doesn't change the current Position Output, it essentially sets Is Playing Output to true.
+    """Play is a ProtoFlux node that plays the provided Target (IPlayable) when * (Call) is called.
+Play doesn't change the current Position Output, it essentially sets Is Playing Output to true.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Media
     """
@@ -38,7 +39,7 @@ class Play(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICusto
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse after * (Call) was called and it successfully started playing."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +60,7 @@ class Play(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICusto
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[IPlayable])."""
+        """The IPlayable to play."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

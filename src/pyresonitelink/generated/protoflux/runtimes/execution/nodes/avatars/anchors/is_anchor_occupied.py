@@ -34,7 +34,7 @@ class IsAnchorOccupied(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def anchor(self) -> str | None:
-        """Target ID of the Anchor reference (targets INodeObjectOutput[IAvatarAnchor])."""
+        """The anchor to check for if a user is sitting in it."""
         member = self.get_member("Anchor")
         if isinstance(member, members.Reference):
             return member.targetId

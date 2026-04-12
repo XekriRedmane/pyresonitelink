@@ -12,6 +12,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ViewScale(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The View Scale node returns the local user's view output scale in global space.
 
+When in desktop mode or VR mode, this node will return the value of where your head proxy is scaled. When an item or object that can override your view is used (such as using a different head proxy, templated head proxy, or something else that moves your view point), this node will return a new scale value.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Local Output
     """
 

@@ -1,0 +1,24 @@
+{
+  "description": "Used often for a way of entering and exiting an Avatar Anchor when the user wants to.",
+  "category": "Users:Common Avatar System:Anchors",
+  "fields": {
+    "Anchor": "The anchor to enter after confirming the enter anchor.",
+    "EnterText": "The text for when the user is being prompted to enter the anchor.",
+    "ExitText": "The text for when the user is being prompted to exit the anchor.",
+    "Enter": "Whether to allow this component to be used for entering the anchor.",
+    "Exit": "Whether to allow this component to be used for exiting the anchor.",
+    "Vibrate": "What kind of haptics vibration feedback to send to the user's controller when bringing up the enter or exiting prompt."
+  },
+  "methods": {
+    "OnEnterConfirm": "Handles a user clicking on the anchor and confirming they want to enter.",
+    "OnExitConfirm": "Handles a user clicking on the anchor and confirming they want to exit."
+  },
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "This needs a collider on the same slot to allow for clicking and bringing up the prompt. The ``EnterText`` and ``ExitText`` fields are usually driven by a component. The component automatically translates the dialogues for them in their context menu to their selected locale language."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarAnchorTouchTrigger&action=raw"
+}

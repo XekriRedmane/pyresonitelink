@@ -9,9 +9,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsPlayingDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.IsPlayingDriver.
+    """The IsPlayingDriver component checks if a particular SyncPlayback is currently playing, and drives a set of Bool to reflect this status.
 
     Category: Media/Utility
+
+    Attach to a slot and provide a value for ``Playback`` then any boolean
+    in the list of ``Targets`` will drive to whether or not ``Playback`` is
+    currently playing.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.IsPlayingDriver"
@@ -29,7 +33,7 @@ class IsPlayingDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def playback(self) -> str | None:
-        """Target ID of the Playback reference (targets SyncPlayback)."""
+        """The playback to check if it is playing"""
         member = self.get_member("Playback")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -50,7 +54,7 @@ class IsPlayingDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def targets(self) -> members.SyncList | None:
-        """The Targets member."""
+        """The set of booleans to drive to whether or not ``Playback`` is playing or not."""
         member = self.get_member("Targets")
         if isinstance(member, members.SyncList):
             return member
@@ -58,6 +62,6 @@ class IsPlayingDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @targets.setter
     def targets(self, value: members.SyncList) -> None:
-        """Set the Targets member."""
+        """Set Targets. The set of booleans to drive to whether or not ``Playback`` is playing or not."""
         self.set_member("Targets", value)
 

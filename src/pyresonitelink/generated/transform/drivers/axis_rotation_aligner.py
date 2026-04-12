@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AxisRotationAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AxisRotationAligner.
+    """The AxisRotationAligner can be used to keep a slot facing a direction relative to a space.
 
     Category: Transform/Drivers
+
+    The defined ``LocalDirection`` will be rotated to line up with the
+    ``TargetDirection`` inside ``DirectionSpace``'s coordinate space.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AxisRotationAligner"
@@ -40,7 +43,7 @@ class AxisRotationAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def local_direction(self) -> primitives.Float3 | None:
-        """The LocalDirection field value."""
+        """A vector direction in this slot's local space to align to ``TargetDirection`` via rotating this slot."""
         member = self.get_member("LocalDirection")
         if member is None:
             return None
@@ -59,7 +62,7 @@ class AxisRotationAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_direction(self) -> primitives.Float3 | None:
-        """The TargetDirection field value."""
+        """The direction vector to align to."""
         member = self.get_member("TargetDirection")
         if member is None:
             return None
@@ -78,7 +81,7 @@ class AxisRotationAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direction_space(self) -> members.SyncObject | None:
-        """The DirectionSpace member."""
+        """The coordinate space that ``TargetDirection`` is in."""
         member = self.get_member("DirectionSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -86,12 +89,12 @@ class AxisRotationAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @direction_space.setter
     def direction_space(self, value: members.SyncObject) -> None:
-        """Set the DirectionSpace member."""
+        """Set DirectionSpace. The coordinate space that ``TargetDirection`` is in."""
         self.set_member("DirectionSpace", value)
 
     @property
     def local_rotation(self) -> primitives.FloatQ | None:
-        """The LocalRotation field value."""
+        """A rotation offset to the alignment."""
         member = self.get_member("LocalRotation")
         if member is None:
             return None
@@ -110,7 +113,7 @@ class AxisRotationAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the _rotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of the slot this component is on. Is driven to do the rotation alignment."""
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             return member.targetId

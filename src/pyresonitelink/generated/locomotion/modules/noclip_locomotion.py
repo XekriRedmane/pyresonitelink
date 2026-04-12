@@ -14,9 +14,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NoclipLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.NoclipLocomotion.
+    """The NoclipLocomotion component when being used as an active locomotion by the user allows for a user to go through walls.
+
+If all of a user's colliders on their avatar are set up with their VRIKAvatar's collider list, they won't trigger any trigger zones during noclip.
 
     Category: Locomotion/Modules
+
+    When attached to a slot, the component will add the nessary
+    complementary components in order for it to function. When placed under
+    the world lomotions slot, it will be added to every new user's
+    locomotion menu. This can also be injected into a user using locomotion
+    injector ProtoFlux.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NoclipLocomotion"
@@ -164,7 +172,7 @@ class NoclipLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModu
 
     @property
     def max_speed(self) -> primitives.Float | None:
-        """The MaxSpeed field value."""
+        """How fast the user can go in this mode."""
         member = self.get_member("MaxSpeed")
         if member is None:
             return None
@@ -183,7 +191,7 @@ class NoclipLocomotion(GeneratedComponent, IInputUpdateReceiver, ILocomotionModu
 
     @property
     def minimum_fly_speed_ratio(self) -> primitives.Float | None:
-        """The MinimumFlySpeedRatio field value."""
+        """Unused."""
         member = self.get_member("MinimumFlySpeedRatio")
         if member is None:
             return None

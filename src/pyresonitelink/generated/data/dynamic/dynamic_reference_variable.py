@@ -11,9 +11,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicReferenceVariable(GenericComponent[T], IDynamicVariable[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicReferenceVariable<>.
+    """A dynamic reference variable is a component that allows storing any reference Type inside the component. The reference is then accessible and changeable via the Dynamic Variables system.
+}}
 
     Category: Data/Dynamic
+
+    This component can be used as an accessory and setter of the Dynamic
+    Variables system. For more info check the Dynamic Variables page.
 
     Parameterize with a value type::
 
@@ -62,7 +66,7 @@ class DynamicReferenceVariable(GenericComponent[T], IDynamicVariable[T], ICompon
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets T)."""
+        """The reference this variable holds. Can set and be changed by the Dynamic Variables system."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId

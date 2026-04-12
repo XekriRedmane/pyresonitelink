@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.mode import Mode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,14 +20,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MeterTool.
+    """See Meter Tool.
 
     Category: Tools
+
+    See Meter Tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeterTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, indication_color: str | IField[primitives.ColorX] | None = None, measure_in_object_space: primitives.Bool | None = None, raycast_ignores_users: primitives.Bool | None = None, multi_point: primitives.Bool | None = None, last_point: str | Slot | None = None, current_meter: str | DistanceMeter | None = None, current_line_transform: str | LineTransform | None = None, format_number: primitives.String | None = None, format_unit: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, indication_color: str | IField[primitives.ColorX] | None = None, meter_mode: Mode | str | None = None, measure_in_object_space: primitives.Bool | None = None, raycast_ignores_users: primitives.Bool | None = None, multi_point: primitives.Bool | None = None, last_point: str | Slot | None = None, current_meter: str | DistanceMeter | None = None, current_line_transform: str | LineTransform | None = None, format_number: primitives.String | None = None, format_unit: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,6 +40,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             override_active_tool: Initial value for _overrideActiveTool.
             grip_poses_generated: Initial value for _gripPosesGenerated.
             indication_color: Initial value for _indicationColor.
+            meter_mode: Initial value for MeterMode.
             measure_in_object_space: Initial value for MeasureInObjectSpace.
             raycast_ignores_users: Initial value for RaycastIgnoresUsers.
             multi_point: Initial value for MultiPoint.
@@ -62,6 +66,8 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             self.grip_poses_generated = grip_poses_generated
         if indication_color is not None:
             self.indication_color = indication_color
+        if meter_mode is not None:
+            self.meter_mode = meter_mode
         if measure_in_object_space is not None:
             self.measure_in_object_space = measure_in_object_space
         if raycast_ignores_users is not None:
@@ -212,7 +218,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def indication_color(self) -> str | None:
-        """Target ID of the _indicationColor reference (targets IField[primitives.ColorX])."""
+        """The field to change the color value for when doing status indications."""
         member = self.get_member("_indicationColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -232,21 +238,28 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             )
 
     @property
-    def meter_mode(self) -> members.FieldEnum | None:
-        """The MeterMode member."""
+    def meter_mode(self) -> Mode | None:
+        """The mode the tool is currently in."""
         member = self.get_member("MeterMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Mode(member.value)
         return None
 
     @meter_mode.setter
-    def meter_mode(self, value: members.FieldEnum) -> None:
-        """Set the MeterMode member."""
-        self.set_member("MeterMode", value)
+    def meter_mode(self, value: Mode | str) -> None:
+        """Set MeterMode. The mode the tool is currently in."""
+        member = self.get_member("MeterMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MeterMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def measure_in_object_space(self) -> primitives.Bool | None:
-        """The MeasureInObjectSpace field value."""
+        """If measurements should be done in global space or parent space."""
         member = self.get_member("MeasureInObjectSpace")
         if member is None:
             return None
@@ -265,7 +278,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def raycast_ignores_users(self) -> primitives.Bool | None:
-        """The RaycastIgnoresUsers field value."""
+        """Whether the tool raycast ignores colliders with an active user."""
         member = self.get_member("RaycastIgnoresUsers")
         if member is None:
             return None
@@ -284,7 +297,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def multi_point(self) -> primitives.Bool | None:
-        """The MultiPoint field value."""
+        """Measure between two points, or any amount of points."""
         member = self.get_member("MultiPoint")
         if member is None:
             return None
@@ -303,7 +316,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def last_point(self) -> str | None:
-        """Target ID of the _lastPoint reference (targets Slot)."""
+        """The slot of the last point placed by the tool."""
         member = self.get_member("_lastPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -324,7 +337,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def current_meter(self) -> str | None:
-        """Target ID of the _currentMeter reference (targets DistanceMeter)."""
+        """The current object displaying the distance between points."""
         member = self.get_member("_currentMeter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -345,7 +358,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def current_line_transform(self) -> str | None:
-        """Target ID of the _currentLineTransform reference (targets LineTransform)."""
+        """The current line transform object being used to display the distance between points"""
         member = self.get_member("_currentLineTransform")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -366,7 +379,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def format_number(self) -> primitives.String | None:
-        """The FormatNumber field value."""
+        """How to format the numbers."""
         member = self.get_member("FormatNumber")
         if member is None:
             return None
@@ -385,7 +398,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
 
     @property
     def format_unit(self) -> primitives.String | None:
-        """The FormatUnit field value."""
+        """How to format the units."""
         member = self.get_member("FormatUnit")
         if member is None:
             return None

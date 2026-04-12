@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CopyGlobalTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CopyGlobalTransform.
+    """The CopyGlobalTransform component is used to ensure that one object has the exact same global transform (position and rotation) as another object.
 
     Category: Transform/Drivers
     """
@@ -37,7 +37,7 @@ class CopyGlobalTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets Slot)."""
+        """The object that serves as the transform reference."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class CopyGlobalTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def pos_drive(self) -> str | None:
-        """Target ID of the _posDrive reference (targets IField[primitives.Float3])."""
+        """The field that is driven to match the global position of the source. This automatically gets populated with the position field of the slot that this component is added to."""
         member = self.get_member("_posDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class CopyGlobalTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rot_drive(self) -> str | None:
-        """Target ID of the _rotDrive reference (targets IField[primitives.FloatQ])."""
+        """The field that is driven to match the global rotation of the source. This automatically gets populated with the rotation field of the slot that this component is added to."""
         member = self.get_member("_rotDrive")
         if isinstance(member, members.Reference):
             return member.targetId

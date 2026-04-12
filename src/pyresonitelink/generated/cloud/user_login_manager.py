@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserLoginManager.
+    """The UserLoginManager component is used to handle the user's login status.
 
     Category: Cloud
     """
@@ -53,7 +53,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_logged_in(self) -> primitives.Bool | None:
-        """The IsLoggedIn field value."""
+        """Whether the current user is logged in or not."""
         member = self.get_member("IsLoggedIn")
         if member is None:
             return None
@@ -72,7 +72,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_logging_out(self) -> primitives.Bool | None:
-        """The IsLoggingOut field value."""
+        """Whether the local user is currently logging out or not."""
         member = self.get_member("IsLoggingOut")
         if member is None:
             return None
@@ -91,7 +91,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_username(self) -> primitives.String | None:
-        """The CurrentUsername field value."""
+        """The username of the local user."""
         member = self.get_member("CurrentUsername")
         if member is None:
             return None
@@ -110,7 +110,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_user_id(self) -> primitives.String | None:
-        """The CurrentUserId field value."""
+        """The user ID of the local user."""
         member = self.get_member("CurrentUserId")
         if member is None:
             return None
@@ -129,7 +129,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_account_type(self) -> primitives.String | None:
-        """The CurrentAccountType field value."""
+        """The account type of the local user (patreon status or team member likewise)"""
         member = self.get_member("CurrentAccountType")
         if member is None:
             return None
@@ -148,7 +148,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_account_color_override(self) -> primitives.ColorX | None:
-        """The CurrentAccountColorOverride field value."""
+        """The current user color override of the local user. Like nametag colors."""
         member = self.get_member("CurrentAccountColorOverride")
         if member is None:
             return None
@@ -167,7 +167,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_profile_icon(self) -> str | None:
-        """The CurrentProfileIcon field value."""
+        """The user icon of the local user."""
         member = self.get_member("CurrentProfileIcon")
         if member is None:
             return None
@@ -186,7 +186,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def login_logout_button(self) -> str | None:
-        """Target ID of the LoginLogoutButton reference (targets Button)."""
+        """Only works in userspace. Is the button for logging in or out."""
         member = self.get_member("LoginLogoutButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -206,7 +206,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     async def do_login_logout(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the DoLoginLogout sync method.
+        """Triggers the login/logout process.
 
         Args:
             resolink: Connected ResoniteLink client.

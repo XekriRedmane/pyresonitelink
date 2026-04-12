@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueDiv(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Div node takes in 2 inputs and returns the calculated result. The second input (B) will divide the first input (A) into sub sections (mathematically speaking), and the result will show how many of our first value will fit into the second value.
+    """The Div node takes in 2 inputs and returns the calculated result. The second input (``B``) will divide the first input (``A``) into sub sections (mathematically speaking), and the result will show how many of our first value will fit into the second value.
+
+Division is non-commutative (known as Anticommutative), which means where you put your inputs matters.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 
@@ -41,7 +43,7 @@ class ValueDiv(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[T])."""
+        """The value we have."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +64,7 @@ class ValueDiv(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INod
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[T])."""
+        """The value we want to divide from (basically, how many times to cut our first value into to fit these many sub sections)."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId

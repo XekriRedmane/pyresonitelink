@@ -1,0 +1,21 @@
+{
+  "description": "The WorldOrbSaver Component handles when a user is saving a world to their inventory when saving a world in general.\n\nSee World for more info about worlds.",
+  "category": "Uncategorized",
+  "fields": {
+    "Orb": "The orb to save to the user's inventory.",
+    "saveHereItem": "The context menu item used to trigger \"Save Here\".",
+    "saveToInventoryItem": "The context menu item used to trigger \"Save to Inventory\".",
+    "cancelItem": "The context menu item used to trigger \"Cancel\"",
+    "menu": "The context menu that was opened to handle this item's menu.",
+    "interactive": "Whether this item is interactive or not.",
+    "saving": "Whether this item is currently saving to the user's inventory."
+  },
+  "methods": {
+    "OnSaveHere": "Handles when the item is being \"saved here\".",
+    "OnSaveToInventory": "Handles when the item is being saved to inventory.",
+    "OnCancel": "Handles when the saving of this item is being canceled."
+  },
+  "usage": "See World for more info about worlds.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldOrbSaver&action=raw"
+}

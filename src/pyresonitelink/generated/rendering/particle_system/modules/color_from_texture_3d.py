@@ -12,9 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorFromTexture3D(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ColorFromTexture3D.
+    """The ColorFromTexture3D component makes particles sample their color from the color in their same position within a Texture3D.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ColorFromTexture3D"
@@ -38,7 +43,7 @@ class ColorFromTexture3D(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     @property
     def texture_3d(self) -> str | None:
-        """Target ID of the Texture3D reference (targets IAssetProvider[Texture3D])."""
+        """The 3D texture to sample from."""
         member = self.get_member("Texture3D")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +64,7 @@ class ColorFromTexture3D(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     @property
     def scale(self) -> primitives.Float3 | None:
-        """The Scale field value."""
+        """How much bias to choose higher axis values. The default is 1 which is no bias."""
         member = self.get_member("Scale")
         if member is None:
             return None
@@ -78,7 +83,7 @@ class ColorFromTexture3D(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """How much to add to the chosen point in the 3D texture, which can cut off lower or higher values from ever being chosen."""
         member = self.get_member("Offset")
         if member is None:
             return None

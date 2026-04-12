@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldUserCount(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The World User Count node returns this world's current user count in the world now. This will include users that are AFK/focused away from the world.
+    """The ``World User Count`` node returns this world's current user count in the world now. This will include users that are AFK/focused away from the world.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World/Info
     """

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.type import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.proto_flux_node import ProtoFluxNode
@@ -13,12 +14,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxOutputProxy.
+    """The ProtoFluxOutputProxy component is used to manage the output sockets of protoflux nodes, making components become the actual visuals the user uses to interact with protoflux with. Otherwise, users would have to use purely the developer tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxOutputProxy"
 
-    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: primitives.String | None = None, is_dynamic: primitives.Bool | None = None, index: primitives.Int | None = None, connect_point: str | Slot | None = None, node_output: str | INodeOutput | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: primitives.String | None = None, is_dynamic: primitives.Bool | None = None, index: primitives.Int | None = None, connect_point: str | Slot | None = None, node_output: str | INodeOutput | None = None, output_type: Type | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +29,7 @@ class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
             index: Initial value for Index.
             connect_point: Initial value for ConnectPoint.
             node_output: Initial value for NodeOutput.
+            output_type: Initial value for OutputType.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -43,10 +45,12 @@ class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.connect_point = connect_point
         if node_output is not None:
             self.node_output = node_output
+        if output_type is not None:
+            self.output_type = output_type
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets ProtoFluxNode)."""
+        """The ProtoFlux component whose output you wish to proxy."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +71,7 @@ class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def element_name(self) -> primitives.String | None:
-        """The ElementName field value."""
+        """The name that appears when you hover this output with a Flux Tool."""
         member = self.get_member("ElementName")
         if member is None:
             return None
@@ -86,7 +90,7 @@ class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_dynamic(self) -> primitives.Bool | None:
-        """The IsDynamic field value."""
+        """Whether this output can be converted by inputting a different type."""
         member = self.get_member("IsDynamic")
         if member is None:
             return None
@@ -105,7 +109,7 @@ class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """The index in a list if this points to a list of outputs."""
         member = self.get_member("Index")
         if member is None:
             return None
@@ -124,7 +128,7 @@ class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def connect_point(self) -> str | None:
-        """Target ID of the ConnectPoint reference (targets Slot)."""
+        """What Slot a wire visual parents itself under."""
         member = self.get_member("ConnectPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -145,7 +149,7 @@ class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def node_output(self) -> str | None:
-        """Target ID of the NodeOutput reference (targets INodeOutput)."""
+        """The field on a protoflux node Component this connector is being used as a way to connect to."""
         member = self.get_member("NodeOutput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -165,15 +169,22 @@ class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def output_type(self) -> members.FieldEnum | None:
-        """The OutputType member."""
+    def output_type(self) -> Type | None:
+        """The type of the output this proxy is for."""
         member = self.get_member("OutputType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @output_type.setter
-    def output_type(self, value: members.FieldEnum) -> None:
-        """Set the OutputType member."""
-        self.set_member("OutputType", value)
+    def output_type(self, value: Type | str) -> None:
+        """Set OutputType. The type of the output this proxy is for."""
+        member = self.get_member("OutputType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OutputType",
+                members.FieldEnum(value=str(value)),
+            )
 

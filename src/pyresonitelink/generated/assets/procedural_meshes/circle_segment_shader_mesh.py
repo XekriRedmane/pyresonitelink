@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CircleSegmentShaderMesh.
+    """The CircleSegmentShaderMesh creates a single quad that covers the bounding box area of a flat torus circle defined by the given values. This is used to render the UI_CircleSegment material.
 
     Category: Assets/Procedural Meshes
+
+    Used as a mesh to render the UI_CircleSegment material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CircleSegmentShaderMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius_start: primitives.Float | None = None, thickness: primitives.Float | None = None, angle_start: primitives.Float | None = None, arc_length: primitives.Float | None = None, fill_color: primitives.ColorX | None = None, border_color: primitives.ColorX | None = None, border_size: primitives.Float | None = None, rounded_corner_radius: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, radius_start: primitives.Float | None = None, thickness: primitives.Float | None = None, angle_start: primitives.Float | None = None, arc_length: primitives.Float | None = None, fill_color: primitives.ColorX | None = None, border_color: primitives.ColorX | None = None, border_size: primitives.Float | None = None, rounded_corner_radius: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             radius_start: Initial value for RadiusStart.
             thickness: Initial value for Thickness.
             angle_start: Initial value for AngleStart.
@@ -43,6 +47,8 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if radius_start is not None:
             self.radius_start = radius_start
         if thickness is not None:
@@ -118,21 +124,28 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def radius_start(self) -> primitives.Float | None:
-        """The RadiusStart field value."""
+        """The inner radius of the circle"""
         member = self.get_member("RadiusStart")
         if member is None:
             return None
@@ -151,7 +164,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """How thick the circle is outwards from the inner radius"""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -170,7 +183,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def angle_start(self) -> primitives.Float | None:
-        """The AngleStart field value."""
+        """What angle the circle starts at in degrees"""
         member = self.get_member("AngleStart")
         if member is None:
             return None
@@ -189,7 +202,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def arc_length(self) -> primitives.Float | None:
-        """The ArcLength field value."""
+        """The amount of degrees of the circle arch"""
         member = self.get_member("ArcLength")
         if member is None:
             return None
@@ -208,7 +221,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def fill_color(self) -> primitives.ColorX | None:
-        """The FillColor field value."""
+        """Used to color the vertices of the mesh (vertex colors)"""
         member = self.get_member("FillColor")
         if member is None:
             return None
@@ -227,7 +240,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def border_color(self) -> primitives.ColorX | None:
-        """The BorderColor field value."""
+        """The border color the Component:UI_CircleSegment rendering on this mesh."""
         member = self.get_member("BorderColor")
         if member is None:
             return None
@@ -246,7 +259,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def border_size(self) -> primitives.Float | None:
-        """The BorderSize field value."""
+        """The border thickness of the Component:UI_CircleSegment rendering on this mesh."""
         member = self.get_member("BorderSize")
         if member is None:
             return None
@@ -265,7 +278,7 @@ class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def rounded_corner_radius(self) -> primitives.Float | None:
-        """The RoundedCornerRadius field value."""
+        """The radius of the corner rounding of the Component:UI_CircleSegment rendering on this mesh."""
         member = self.get_member("RoundedCornerRadius")
         if member is None:
             return None

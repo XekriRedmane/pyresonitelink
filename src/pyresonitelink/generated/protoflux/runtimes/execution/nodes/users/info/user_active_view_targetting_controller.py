@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserActiveViewTargettingController(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Active View Targetting Controller node returns a user's targetting controller. This seems to return a result when a user is in desktop mode, as VR mode returns only null.
+    """The ``User Active View Targetting Controller`` node returns a user's targetting controller. This seems to return a result when a user is in desktop mode, as VR mode returns only null.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """
@@ -33,7 +33,7 @@ class UserActiveViewTargettingController(GeneratedComponent, INodeObjectOutput, 
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

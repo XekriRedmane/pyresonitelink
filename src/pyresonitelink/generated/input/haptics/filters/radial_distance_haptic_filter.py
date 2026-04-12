@@ -9,9 +9,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RadialDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RadialDistanceHapticFilter.
+    """The RadialDistanceHapticFilter controls haptic areas on the same slot so that haptics within their range are influenced differently depending on how far away they are from the slot center in local space. The start and end intensities when mapped to the haptic devices Distance from the slot, the power is unclamped.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics/Filters
+
+    Attach to a slot with a HapticVolume for the simplest use case. Bringing
+    a user's VR controllers closer or further away changes that device's
+    haptics intensity.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadialDistanceHapticFilter"
@@ -41,7 +47,7 @@ class RadialDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def start_radius(self) -> primitives.Float | None:
-        """The StartRadius field value."""
+        """The starting radius point (Usually 0 distance). When the haptic device point is this Distance away from the slot this component is on in local space, the haptic gets a signal of ``Power``*``StartIntensity``"""
         member = self.get_member("StartRadius")
         if member is None:
             return None
@@ -60,7 +66,7 @@ class RadialDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def end_radius(self) -> primitives.Float | None:
-        """The EndRadius field value."""
+        """The ending radius point (Usually 0 distance). When the haptic device point is this Distance away from the slot this component is on in local space, the haptic gets a signal of ``Power``*``StartIntensity``."""
         member = self.get_member("EndRadius")
         if member is None:
             return None
@@ -79,7 +85,7 @@ class RadialDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def start_intensity(self) -> primitives.Float | None:
-        """The StartIntensity field value."""
+        """The intensity*``Power`` for the haptic device when it is ``StartRadius`` from the slot this component is on."""
         member = self.get_member("StartIntensity")
         if member is None:
             return None
@@ -98,7 +104,7 @@ class RadialDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def end_intensity(self) -> primitives.Float | None:
-        """The EndIntensity field value."""
+        """The intensity*``Power`` for the haptic device when it is ``EndRadius`` from the slot this component is on."""
         member = self.get_member("EndIntensity")
         if member is None:
             return None
@@ -117,7 +123,7 @@ class RadialDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def power(self) -> primitives.Float | None:
-        """The Power field value."""
+        """How much to amplify the intensity for the haptic device."""
         member = self.get_member("Power")
         if member is None:
             return None

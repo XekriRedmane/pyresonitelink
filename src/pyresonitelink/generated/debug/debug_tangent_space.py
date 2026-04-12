@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugTangentSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugTangentSpace.
+    """This component was added in Beta 2023.12.15.22 to diagnose tangent space on meshes.
+
+It may be removed at any time in the future.
 
     Category: Debug
     """
@@ -40,7 +42,7 @@ class DebugTangentSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the Mesh reference (targets MeshRenderer)."""
+        """The mesh renderer to Debug tangents for."""
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +63,7 @@ class DebugTangentSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def triangle(self) -> primitives.Int | None:
-        """The Triangle field value."""
+        """The triangle index to Debug tangents for."""
         member = self.get_member("Triangle")
         if member is None:
             return None
@@ -80,7 +82,7 @@ class DebugTangentSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bary_coord(self) -> primitives.Float3 | None:
-        """The BaryCoord field value."""
+        """Used as an interpolator for the tangents and normals of the target triangle."""
         member = self.get_member("BaryCoord")
         if member is None:
             return None
@@ -99,7 +101,7 @@ class DebugTangentSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def radius_ratio(self) -> primitives.Float | None:
-        """The RadiusRatio field value."""
+        """unused."""
         member = self.get_member("RadiusRatio")
         if member is None:
             return None

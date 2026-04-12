@@ -10,9 +10,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueRadio(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.ValueRadio<>.
+    """The ValueRadio component is a listener component that activates or deactivates slots using the ``CheckVisual`` field, based if a ``TargetValue`` matches the ``OptionValue`` field. When a match is found, the ``CheckVisual`` field will be set to true.
 
     Category: UIX/Interaction
+
+    To function, the component simply needs to be attached to a slot that
+    also has a button component attached to it. From then on, pressing that
+    button will activate the ValueRadio, making it set its ``TargetValue``
+    to its ``OptionValue``, which then also sets its ``CheckVisual`` to
+    true. * This is useful for making forms that need one answer from many
+    choices, a set of button that should only have one being active, and
+    anything that requires only one activation from many things. * the
+    ``CheckVisual`` field does not just have to be the active of a slot,
+    this can be any IField bool, allowing users to be creative with how they
+    want to structure their component's logic.
 
     Parameterize with a value type::
 
@@ -42,7 +53,7 @@ class ValueRadio(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver)
 
     @property
     def check_visual(self) -> str | None:
-        """Target ID of the CheckVisual reference (targets IField[primitives.Bool])."""
+        """The boolean that is driven to true whenever the ``TargetValue`` is equal to the ``OptionValue``"""
         member = self.get_member("CheckVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +93,7 @@ class ValueRadio(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver)
 
     @property
     def target_value(self) -> str | None:
-        """Target ID of the TargetValue reference (targets IField[T])."""
+        """The value to set when the button is pressed."""
         member = self.get_member("TargetValue")
         if isinstance(member, members.Reference):
             return member.targetId

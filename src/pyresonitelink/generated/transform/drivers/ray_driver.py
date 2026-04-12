@@ -11,9 +11,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RayDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RayDriver.
+    """A ray driver is a component that takes a start origin and a direction and drives point A and B via a RayCast, keeping the distance between the two below MaxDistance.
 
     Category: Transform/Drivers
+
+    * LaserPointer Tool with RayDriver by ProbablePrime
+
+    **Related Components**: RaycastDriver component
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RayDriver"
@@ -43,7 +47,7 @@ class RayDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_distance(self) -> primitives.Float | None:
-        """The MaxDistance field value."""
+        """the max distance that A and B can be from each other"""
         member = self.get_member("MaxDistance")
         if member is None:
             return None
@@ -62,7 +66,7 @@ class RayDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point_a(self) -> str | None:
-        """Target ID of the PointA reference (targets Sync[primitives.Float3])."""
+        """what to drive with the local space start position of the Raycast"""
         member = self.get_member("PointA")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +87,7 @@ class RayDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point_b(self) -> str | None:
-        """Target ID of the PointB reference (targets Sync[primitives.Float3])."""
+        """what to drive with the local space end point of the raycast"""
         member = self.get_member("PointB")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -104,7 +108,7 @@ class RayDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def local_origin(self) -> primitives.Float3 | None:
-        """The LocalOrigin field value."""
+        """the local space start point of the raycast"""
         member = self.get_member("LocalOrigin")
         if member is None:
             return None
@@ -123,7 +127,7 @@ class RayDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def local_direction(self) -> primitives.Float3 | None:
-        """The LocalDirection field value."""
+        """the direction in local space to fire the raycast in."""
         member = self.get_member("LocalDirection")
         if member is None:
             return None

@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugUsers(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugUsers.
+    """The DebugUsers component drives get contents of a string field to show statistics of each user in the current world.
 
     Category: Debug
     """
@@ -30,7 +30,7 @@ class DebugUsers(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the text reference (targets Sync[primitives.String])."""
+        """The field to populate with world users statistics."""
         member = self.get_member("text")
         if isinstance(member, members.Reference):
             return member.targetId

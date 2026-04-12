@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MeshRendererGizmo(GeneratedComponent, IComponentGizmo, IDevModeReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MeshRendererGizmo.
+    """The MeshRenderer Gizmo is used to change the Bounding properties to a mesh object using the dev tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshRendererGizmo"
@@ -32,7 +32,7 @@ class MeshRendererGizmo(GeneratedComponent, IComponentGizmo, IDevModeReceiver, I
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets MeshRenderer)."""
+        """The mesh renderer to edit."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -53,7 +53,7 @@ class MeshRendererGizmo(GeneratedComponent, IComponentGizmo, IDevModeReceiver, I
 
     @property
     def mesh_collider(self) -> str | None:
-        """Target ID of the _meshCollider reference (targets MeshCollider)."""
+        """The mesh collider to edit along with ``_target``."""
         member = self.get_member("_meshCollider")
         if isinstance(member, members.Reference):
             return member.targetId

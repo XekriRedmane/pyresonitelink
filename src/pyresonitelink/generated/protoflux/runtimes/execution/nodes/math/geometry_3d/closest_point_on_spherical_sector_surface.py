@@ -45,7 +45,7 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
 
     @property
     def center(self) -> str | None:
-        """Target ID of the Center reference (targets INodeValueOutput[primitives.Float3])."""
+        """The center of the sphere."""
         member = self.get_member("Center")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +66,7 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
 
     @property
     def direction(self) -> str | None:
-        """Target ID of the Direction reference (targets INodeValueOutput[primitives.Float3])."""
+        """The facing direction of the sphere."""
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +87,7 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
 
     @property
     def radius(self) -> str | None:
-        """Target ID of the Radius reference (targets INodeValueOutput[primitives.Float])."""
+        """The radius of the sphere."""
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +108,7 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
 
     @property
     def angle(self) -> str | None:
-        """Target ID of the Angle reference (targets INodeValueOutput[primitives.Float])."""
+        """The angle this point and sphere is going to be using for calculations."""
         member = self.get_member("Angle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -129,7 +129,7 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
 
     @property
     def point(self) -> str | None:
-        """Target ID of the Point reference (targets INodeValueOutput[primitives.Float3])."""
+        """The point we are checking."""
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -150,7 +150,7 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
 
     @property
     def closest_point(self) -> members.EmptyElement | None:
-        """The ClosestPoint member."""
+        """Returns the point in the sphere's surface compared with the point given."""
         member = self.get_member("ClosestPoint")
         if isinstance(member, members.EmptyElement):
             return member
@@ -158,12 +158,12 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
 
     @closest_point.setter
     def closest_point(self, value: members.EmptyElement) -> None:
-        """Set the ClosestPoint member."""
+        """Set ClosestPoint. Returns the point in the sphere's surface compared with the point given."""
         self.set_member("ClosestPoint", value)
 
     @property
     def is_point_inside(self) -> members.EmptyElement | None:
-        """The IsPointInside member."""
+        """Returns if the point is within this sphere."""
         member = self.get_member("IsPointInside")
         if isinstance(member, members.EmptyElement):
             return member
@@ -171,6 +171,6 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
 
     @is_point_inside.setter
     def is_point_inside(self, value: members.EmptyElement) -> None:
-        """Set the IsPointInside member."""
+        """Set IsPointInside. Returns if the point is within this sphere."""
         self.set_member("IsPointInside", value)
 

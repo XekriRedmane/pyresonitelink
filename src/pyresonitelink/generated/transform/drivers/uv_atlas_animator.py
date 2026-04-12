@@ -12,9 +12,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UVAtlasAnimator(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UVAtlasAnimator.
+    """The UVAtlasAnimator component is used primarily to drive texture animations on materials like GIFs. It can also be used as a sprite sheet to animate things like 2D mouths.
 
     Category: Transform/Drivers
+
+    Attach to a slot and provide the component with the Scale and Offset
+    fields of any Material. Then, set the material's image to a sprite sheet
+    of a set of animation frames. Then provide a AtlasInfo with the proper
+    data. Finally, use a TimeIntDriver to drive ``Frame`` to animate always,
+    or set/drive ``Frame`` to the frame on the sheet you want in some other
+    way like ProtoFlux.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UVAtlasAnimator"
@@ -41,7 +48,7 @@ class UVAtlasAnimator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scale_field(self) -> str | None:
-        """Target ID of the ScaleField reference (targets IField[primitives.Float2])."""
+        """The texture's ``TextureScale`` field that should be driven"""
         member = self.get_member("ScaleField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +69,7 @@ class UVAtlasAnimator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset_field(self) -> str | None:
-        """Target ID of the OffsetField reference (targets IField[primitives.Float2])."""
+        """The texture's ``TextureOffset`` field that should be driven"""
         member = self.get_member("OffsetField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +90,7 @@ class UVAtlasAnimator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def atlas_info(self) -> str | None:
-        """Target ID of the AtlasInfo reference (targets AtlasInfo)."""
+        """The AtlasInfo component that provides the size and frame amount for the atlas"""
         member = self.get_member("AtlasInfo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -104,7 +111,7 @@ class UVAtlasAnimator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def frame(self) -> primitives.Int | None:
-        """The Frame field value."""
+        """Which frame of the atlas the texture scale and offset should be driven to"""
         member = self.get_member("Frame")
         if member is None:
             return None

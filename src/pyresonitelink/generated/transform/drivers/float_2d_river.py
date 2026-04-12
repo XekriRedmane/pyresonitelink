@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Float2Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Float2Driver.
+    """The Float2Driver component can be used to drive a foat2 value, based on an X and a Y value.
 
     Category: Transform/Drivers
     """
@@ -37,7 +37,7 @@ class Float2Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def x(self) -> str | None:
-        """Target ID of the X reference (targets Sync[primitives.Float])."""
+        """The field that holds the X value for the float2. If null, the X component of the float2 will be 0."""
         member = self.get_member("X")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class Float2Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def y(self) -> str | None:
-        """Target ID of the Y reference (targets Sync[primitives.Float])."""
+        """The field that holds the Y value for the float2. If null, the Y component of the float2 will be 0."""
         member = self.get_member("Y")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class Float2Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float2])."""
+        """The field that is driven to the constructed float2."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

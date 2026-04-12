@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class CutenessSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.CutenessSettings.
+    """This component is solely a joke, and is supposed to make a setting that marks U-GlitchFur as cute and cannot be changed. It only appears for that user.
+
+    **Behavior**: If ``AmCute`` is ever disabled, it is re-enabled automatically within the next 1-10 seconds.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CutenessSettings"
@@ -27,7 +29,7 @@ class CutenessSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def am_cute(self) -> primitives.Bool | None:
-        """The AmCute field value."""
+        """An unchangeable bool that stays true for U-GlitchFur. The description reads: "This setting indicates if the current user is very cute. When this setting is on, the current user makes a legally binding admission of their own cuteness.""""
         member = self.get_member("AmCute")
         if member is None:
             return None

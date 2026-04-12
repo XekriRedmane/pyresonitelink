@@ -4,6 +4,11 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.text_horizontal_alignment import TextHorizontalAlignment
+from pyresonitelink.generated._enums.text_vertical_alignment import TextVerticalAlignment
+from pyresonitelink.generated._enums.alignment_mode import AlignmentMode
+from pyresonitelink.generated._enums.alignment import Alignment
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -17,29 +22,36 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextRenderer.
+    """The TextRenderer component shows Text in the world. An example can be created from the Create New menu, Text, then Basic or Outline.
 
     Category: Rendering
+
+    **See also**: UIX Text
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextRenderer"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, font: str | IAssetProvider[FontSet] | None = None, text: primitives.String | None = None, parse_rich_text: primitives.Bool | None = None, null_text: primitives.String | None = None, size: primitives.Float | None = None, color: primitives.ColorX | None = None, line_height: primitives.Float | None = None, bounded: primitives.Bool | None = None, bounds_size: primitives.Float2 | None = None, mask_pattern: primitives.String | None = None, horizontal_auto_size: primitives.Bool | None = None, vertical_auto_size: primitives.Bool | None = None, caret_position: primitives.Int | None = None, selection_start: primitives.Int | None = None, caret_color: primitives.ColorX | None = None, selection_color: primitives.ColorX | None = None, legacy_font_material: str | FontMaterial | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, font: str | IAssetProvider[FontSet] | None = None, text: primitives.String | None = None, parse_rich_text: primitives.Bool | None = None, null_text: primitives.String | None = None, size: primitives.Float | None = None, horizontal_align: TextHorizontalAlignment | str | None = None, vertical_align: TextVerticalAlignment | str | None = None, alignment_mode: AlignmentMode | str | None = None, color: primitives.ColorX | None = None, line_height: primitives.Float | None = None, bounded: primitives.Bool | None = None, bounds_size: primitives.Float2 | None = None, bounds_alignment: Alignment | str | None = None, mask_pattern: primitives.String | None = None, horizontal_auto_size: primitives.Bool | None = None, vertical_auto_size: primitives.Bool | None = None, caret_position: primitives.Int | None = None, selection_start: primitives.Int | None = None, caret_color: primitives.ColorX | None = None, selection_color: primitives.ColorX | None = None, legacy_font_material: str | FontMaterial | None = None, legacy_align: Alignment | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             font: Initial value for Font.
             text: Initial value for Text.
             parse_rich_text: Initial value for ParseRichText.
             null_text: Initial value for NullText.
             size: Initial value for Size.
+            horizontal_align: Initial value for HorizontalAlign.
+            vertical_align: Initial value for VerticalAlign.
+            alignment_mode: Initial value for AlignmentMode.
             color: Initial value for Color.
             line_height: Initial value for LineHeight.
             bounded: Initial value for Bounded.
             bounds_size: Initial value for BoundsSize.
+            bounds_alignment: Initial value for BoundsAlignment.
             mask_pattern: Initial value for MaskPattern.
             horizontal_auto_size: Initial value for HorizontalAutoSize.
             vertical_auto_size: Initial value for VerticalAutoSize.
@@ -48,6 +60,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             caret_color: Initial value for CaretColor.
             selection_color: Initial value for SelectionColor.
             legacy_font_material: Initial value for _legacyFontMaterial.
+            legacy_align: Initial value for _legacyAlign.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -57,6 +70,8 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if font is not None:
             self.font = font
         if text is not None:
@@ -67,6 +82,12 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             self.null_text = null_text
         if size is not None:
             self.size = size
+        if horizontal_align is not None:
+            self.horizontal_align = horizontal_align
+        if vertical_align is not None:
+            self.vertical_align = vertical_align
+        if alignment_mode is not None:
+            self.alignment_mode = alignment_mode
         if color is not None:
             self.color = color
         if line_height is not None:
@@ -75,6 +96,8 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             self.bounded = bounded
         if bounds_size is not None:
             self.bounds_size = bounds_size
+        if bounds_alignment is not None:
+            self.bounds_alignment = bounds_alignment
         if mask_pattern is not None:
             self.mask_pattern = mask_pattern
         if horizontal_auto_size is not None:
@@ -91,6 +114,8 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             self.selection_color = selection_color
         if legacy_font_material is not None:
             self.legacy_font_material = legacy_font_material
+        if legacy_align is not None:
+            self.legacy_align = legacy_align
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -150,21 +175,28 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def font(self) -> str | None:
-        """Target ID of the Font reference (targets IAssetProvider[FontSet])."""
+        """The font set to use to render the text. For example, Times new Roman, or Avali Scratch."""
         member = self.get_member("Font")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -185,7 +217,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def text(self) -> primitives.String | None:
-        """The Text field value."""
+        """The text to display. For example, "Hello world!""""
         member = self.get_member("Text")
         if member is None:
             return None
@@ -204,7 +236,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def parse_rich_text(self) -> primitives.Bool | None:
-        """The ParseRichText field value."""
+        """Whether or not to interpret text formatting tags like "" for bold and "" for itallic."""
         member = self.get_member("ParseRichText")
         if member is None:
             return None
@@ -223,7 +255,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def null_text(self) -> primitives.String | None:
-        """The NullText field value."""
+        """the text to display if ``Text`` is null. (Empty text doesn't count)"""
         member = self.get_member("NullText")
         if member is None:
             return None
@@ -242,7 +274,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def size(self) -> primitives.Float | None:
-        """The Size field value."""
+        """how big to render the text as."""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -260,47 +292,68 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def horizontal_align(self) -> members.FieldEnum | None:
-        """The HorizontalAlign member."""
+    def horizontal_align(self) -> TextHorizontalAlignment | None:
+        """How to align the text horizontally."""
         member = self.get_member("HorizontalAlign")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextHorizontalAlignment(member.value)
         return None
 
     @horizontal_align.setter
-    def horizontal_align(self, value: members.FieldEnum) -> None:
-        """Set the HorizontalAlign member."""
-        self.set_member("HorizontalAlign", value)
+    def horizontal_align(self, value: TextHorizontalAlignment | str) -> None:
+        """Set HorizontalAlign. How to align the text horizontally."""
+        member = self.get_member("HorizontalAlign")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "HorizontalAlign",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def vertical_align(self) -> members.FieldEnum | None:
-        """The VerticalAlign member."""
+    def vertical_align(self) -> TextVerticalAlignment | None:
+        """how to align the text vertically."""
         member = self.get_member("VerticalAlign")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextVerticalAlignment(member.value)
         return None
 
     @vertical_align.setter
-    def vertical_align(self, value: members.FieldEnum) -> None:
-        """Set the VerticalAlign member."""
-        self.set_member("VerticalAlign", value)
+    def vertical_align(self, value: TextVerticalAlignment | str) -> None:
+        """Set VerticalAlign. how to align the text vertically."""
+        member = self.get_member("VerticalAlign")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "VerticalAlign",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def alignment_mode(self) -> members.FieldEnum | None:
-        """The AlignmentMode member."""
+    def alignment_mode(self) -> AlignmentMode | None:
+        """how to align the text within the bounding box"""
         member = self.get_member("AlignmentMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AlignmentMode(member.value)
         return None
 
     @alignment_mode.setter
-    def alignment_mode(self, value: members.FieldEnum) -> None:
-        """Set the AlignmentMode member."""
-        self.set_member("AlignmentMode", value)
+    def alignment_mode(self, value: AlignmentMode | str) -> None:
+        """Set AlignmentMode. how to align the text within the bounding box"""
+        member = self.get_member("AlignmentMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AlignmentMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """what color to render the text in."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -319,7 +372,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def materials(self) -> members.SyncList | None:
-        """The Materials member."""
+        """what materials to render the text as. Really only works with Unlit Text Material type."""
         member = self.get_member("Materials")
         if isinstance(member, members.SyncList):
             return member
@@ -327,12 +380,12 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @materials.setter
     def materials(self, value: members.SyncList) -> None:
-        """Set the Materials member."""
+        """Set Materials. what materials to render the text as. Really only works with Unlit Text Material type."""
         self.set_member("Materials", value)
 
     @property
     def line_height(self) -> primitives.Float | None:
-        """The LineHeight field value."""
+        """how much space each text line should take up"""
         member = self.get_member("LineHeight")
         if member is None:
             return None
@@ -351,7 +404,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def bounded(self) -> primitives.Bool | None:
-        """The Bounded field value."""
+        """whether to restrict the text within a certain area"""
         member = self.get_member("Bounded")
         if member is None:
             return None
@@ -370,7 +423,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def bounds_size(self) -> primitives.Float2 | None:
-        """The BoundsSize field value."""
+        """the area to use if ``Bounded`` is enabled."""
         member = self.get_member("BoundsSize")
         if member is None:
             return None
@@ -388,21 +441,28 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def bounds_alignment(self) -> members.FieldEnum | None:
-        """The BoundsAlignment member."""
+    def bounds_alignment(self) -> Alignment | None:
+        """how to align the text to the bounds and therefore how to handle text that spills out."""
         member = self.get_member("BoundsAlignment")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Alignment(member.value)
         return None
 
     @bounds_alignment.setter
-    def bounds_alignment(self, value: members.FieldEnum) -> None:
-        """Set the BoundsAlignment member."""
-        self.set_member("BoundsAlignment", value)
+    def bounds_alignment(self, value: Alignment | str) -> None:
+        """Set BoundsAlignment. how to align the text to the bounds and therefore how to handle text that spills out."""
+        member = self.get_member("BoundsAlignment")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BoundsAlignment",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def mask_pattern(self) -> primitives.String | None:
-        """The MaskPattern field value."""
+        """a string to replace every character in ``Text`` with when rendering. Useful for password fields."""
         member = self.get_member("MaskPattern")
         if member is None:
             return None
@@ -421,7 +481,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def horizontal_auto_size(self) -> primitives.Bool | None:
-        """The HorizontalAutoSize field value."""
+        """whether to scale the text to fit the bounds horizontally"""
         member = self.get_member("HorizontalAutoSize")
         if member is None:
             return None
@@ -440,7 +500,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def vertical_auto_size(self) -> primitives.Bool | None:
-        """The VerticalAutoSize field value."""
+        """whether to scale the text to fit the bounds vertically"""
         member = self.get_member("VerticalAutoSize")
         if member is None:
             return None
@@ -459,7 +519,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def caret_position(self) -> primitives.Int | None:
-        """The CaretPosition field value."""
+        """Where the typing cursor position is within the text by character index."""
         member = self.get_member("CaretPosition")
         if member is None:
             return None
@@ -478,7 +538,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def selection_start(self) -> primitives.Int | None:
-        """The SelectionStart field value."""
+        """where the selection starts if the text is being edited currently."""
         member = self.get_member("SelectionStart")
         if member is None:
             return None
@@ -497,7 +557,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def caret_color(self) -> primitives.ColorX | None:
-        """The CaretColor field value."""
+        """the color of the typing cursor"""
         member = self.get_member("CaretColor")
         if member is None:
             return None
@@ -516,7 +576,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def selection_color(self) -> primitives.ColorX | None:
-        """The SelectionColor field value."""
+        """the color of the typing selection."""
         member = self.get_member("SelectionColor")
         if member is None:
             return None
@@ -535,7 +595,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def legacy_font_material(self) -> str | None:
-        """Target ID of the _legacyFontMaterial reference (targets FontMaterial)."""
+        """Internal."""
         member = self.get_member("_legacyFontMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -555,17 +615,24 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
             )
 
     @property
-    def legacy_align(self) -> members.FieldEnum | None:
-        """The _legacyAlign member."""
+    def legacy_align(self) -> Alignment | None:
+        """Internal."""
         member = self.get_member("_legacyAlign")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Alignment(member.value)
         return None
 
     @legacy_align.setter
-    def legacy_align(self, value: members.FieldEnum) -> None:
-        """Set the _legacyAlign member."""
-        self.set_member("_legacyAlign", value)
+    def legacy_align(self, value: Alignment | str) -> None:
+        """Set _legacyAlign. Internal."""
+        member = self.get_member("_legacyAlign")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_legacyAlign",
+                members.FieldEnum(value=str(value)),
+            )
 
     async def bake_mesh(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
         """Call the BakeMesh sync method.

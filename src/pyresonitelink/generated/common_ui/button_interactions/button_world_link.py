@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonWorldLink(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonWorldLink.
+    """The ButtonWorldLink component takes in a WorldLink Component. When an IButton is pressed while this component is in the same slot as it, this component will attempt to open a world that is provided from that world link component.
+
+}}
 
     Category: Common UI/Button Interactions
+
+    This allows a user to make customizable world loading buttons, either as
+    a way to go to another world or to pre-load a world.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonWorldLink"
@@ -29,7 +34,7 @@ class ButtonWorldLink(GeneratedComponent, IButtonPressReceiver, IWorldEventRecei
 
     @property
     def world_link(self) -> str | None:
-        """Target ID of the WorldLink reference (targets WorldLink)."""
+        """The WorldLink component that contains the world information."""
         member = self.get_member("WorldLink")
         if isinstance(member, members.Reference):
             return member.targetId

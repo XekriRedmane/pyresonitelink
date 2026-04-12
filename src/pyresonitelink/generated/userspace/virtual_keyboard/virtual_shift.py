@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VirtualShift.
+    """Simulates pressing or holding onto the shift key on a normal physical keyboard.
 
     Category: Userspace/Virtual Keyboard
     """
@@ -40,7 +40,7 @@ class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
 
     @property
     def keyboard(self) -> str | None:
-        """Target ID of the Keyboard reference (targets VirtualKeyboard)."""
+        """The keyboard which the keys should be set or unset from the holding shift state."""
         member = self.get_member("Keyboard")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +61,7 @@ class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
 
     @property
     def hold_press_interval(self) -> primitives.Float | None:
-        """The HoldPressInterval field value."""
+        """what value ``_lastPress`` has to be below when the button is pressed again to enable ``AlwaysHold`` field."""
         member = self.get_member("HoldPressInterval")
         if member is None:
             return None
@@ -80,7 +80,7 @@ class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
 
     @property
     def always_hold(self) -> primitives.Bool | None:
-        """The AlwaysHold field value."""
+        """Whether the user has double clicked shift and enabled a constant hold shift state."""
         member = self.get_member("AlwaysHold")
         if member is None:
             return None
@@ -99,7 +99,7 @@ class VirtualShift(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver
 
     @property
     def last_press(self) -> primitives.Double | None:
-        """The _lastPress field value."""
+        """Internal, how many seconds has passed since this button was last pressed. is used to handle enabling/disabling ``AlwaysHold`` field."""
         member = self.get_member("_lastPress")
         if member is None:
             return None

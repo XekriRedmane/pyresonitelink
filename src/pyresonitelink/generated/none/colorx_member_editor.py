@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ColorXMemberEditor.
+    """The ColorXMemberEditor component is used in inspectors and Ref Hacking to edit ColorX Fields and their UIX elements.
+
+    Internal.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorXMemberEditor"
@@ -51,7 +53,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def continuous(self) -> primitives.Bool | None:
-        """The Continuous field value."""
+        """Whether updates to the target are continuous."""
         member = self.get_member("Continuous")
         if member is None:
             return None
@@ -70,7 +72,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def path(self) -> primitives.String | None:
-        """The _path field value."""
+        """Usually "r" "g" "b" "a" to edit parts of the colorX value."""
         member = self.get_member("_path")
         if member is None:
             return None
@@ -89,7 +91,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField)."""
+        """The colorX to edit."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +112,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def labels(self) -> primitives.Bool | None:
-        """The Labels field value."""
+        """Whether to show field labels."""
         member = self.get_member("Labels")
         if member is None:
             return None
@@ -129,7 +131,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def vertical(self) -> primitives.Bool | None:
-        """The Vertical field value."""
+        """Whether the inspector showing this component is showing it in a vertical fashion."""
         member = self.get_member("Vertical")
         if member is None:
             return None
@@ -148,7 +150,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def color_drive(self) -> str | None:
-        """Target ID of the _colorDrive reference (targets IField[primitives.ColorX])."""
+        """The field to drive with the colorX color for the inspector visual."""
         member = self.get_member("_colorDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -169,7 +171,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def color_drive_no_alpha(self) -> str | None:
-        """Target ID of the _colorDriveNoAlpha reference (targets IField[primitives.ColorX])."""
+        """The field to drive with the colorX target with no alpha applied for the inspector visual."""
         member = self.get_member("_colorDriveNoAlpha")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -190,7 +192,7 @@ class ColorXMemberEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def color_dialog(self) -> str | None:
-        """Target ID of the _colorDialog reference (targets ColorDialogInterface)."""
+        """The color dialogue currently being used to edit the color."""
         member = self.get_member("_colorDialog")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.vibrate_preset import VibratePreset
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -15,14 +16,28 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestroyBlock, IDuplicateBlock, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicBoneChain.
+    """Dynamic Bone Chain is a component that allows you to add rigidbody physics to the bones of a rigged model or avatar. Bones with rigid body physics are called dynamic bones.
+
+For examples on how to set up Dynamic Bones, including and troubleshooting, see: Usage
+
+The Dynamic Bone Chain component contains various properties for adjusting the physical behavior of the bone chain. The most important properties in the component are Inertia, InertiaForce, Damping, Elasticity, and Stiffness. The descriptions of each are listed below.
 
     Category: Physics/Dynamic Bones
+
+    To add dynamic bones to a model, navigate through the model's armature
+    in the Inspector until you locate the bone you want to use as the "root"
+    or "master" bone. Then, attach the Dynamic Bone Chain component, and
+    click Setup From Children. This will add the root bone and all its
+    children to the dynamic bone chain. Tips/Problems: * Chain is not
+    grabbable. ** Make sure the "Collide" and "DynamicPlayerCollision" bools
+    are set on bones. * You can use the ProtoFlux Grabbable to detect
+    someone grabbing the chain. * Make tails sway with the Wobbler3D
+    component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicBoneChain"
 
-    def __init__(self, inertia: primitives.Float | None = None, inertia_force: primitives.Float | None = None, damping: primitives.Float | None = None, elasticity: primitives.Float | None = None, stiffness: primitives.Float | None = None, simulate_terminal_bones: primitives.Bool | None = None, base_bone_radius: primitives.Float | None = None, dynamic_player_collision: primitives.Bool | None = None, collide_with_own_body: primitives.Bool | None = None, collide_with_head: primitives.Bool | None = None, collide_with_body: primitives.Bool | None = None, collide_with_left_hand: primitives.Bool | None = None, collide_with_right_hand: primitives.Bool | None = None, gravity: primitives.Float3 | None = None, use_user_gravity_direction: primitives.Bool | None = None, local_force: primitives.Float3 | None = None, global_stretch: primitives.Float | None = None, max_stretch_ratio: primitives.Float | None = None, current_stretch_ratio: primitives.Float | None = None, stretch_restore_speed: primitives.Float | None = None, use_local_user_space: primitives.Bool | None = None, visualize_colliders: primitives.Bool | None = None, visualize_bones: primitives.Bool | None = None, is_grabbable: primitives.Bool | None = None, active_user_root_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, ignore_grab_on_first_bone: primitives.Bool | None = None, grab_radius_tolerance: primitives.Float | None = None, grab_release_distance: primitives.Float | None = None, grab_slipping: primitives.Bool | None = None, grab_terminal_bones: primitives.Bool | None = None, ignore_own_left_hand: primitives.Bool | None = None, ignore_own_right_hand: primitives.Bool | None = None, effector_target: str | Slot | None = None, effector_bone_index: primitives.Int | None = None, effector_bone_offset: primitives.Float3 | None = None, active_grabber: str | Grabber | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, inertia: primitives.Float | None = None, inertia_force: primitives.Float | None = None, damping: primitives.Float | None = None, elasticity: primitives.Float | None = None, stiffness: primitives.Float | None = None, simulate_terminal_bones: primitives.Bool | None = None, base_bone_radius: primitives.Float | None = None, dynamic_player_collision: primitives.Bool | None = None, collide_with_own_body: primitives.Bool | None = None, hand_collision_vibration: VibratePreset | str | None = None, collide_with_head: primitives.Bool | None = None, collide_with_body: primitives.Bool | None = None, collide_with_left_hand: primitives.Bool | None = None, collide_with_right_hand: primitives.Bool | None = None, gravity: primitives.Float3 | None = None, use_user_gravity_direction: primitives.Bool | None = None, local_force: primitives.Float3 | None = None, global_stretch: primitives.Float | None = None, max_stretch_ratio: primitives.Float | None = None, current_stretch_ratio: primitives.Float | None = None, stretch_restore_speed: primitives.Float | None = None, use_local_user_space: primitives.Bool | None = None, visualize_colliders: primitives.Bool | None = None, visualize_bones: primitives.Bool | None = None, is_grabbable: primitives.Bool | None = None, active_user_root_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, ignore_grab_on_first_bone: primitives.Bool | None = None, grab_radius_tolerance: primitives.Float | None = None, grab_release_distance: primitives.Float | None = None, grab_slipping: primitives.Bool | None = None, grab_terminal_bones: primitives.Bool | None = None, grab_vibration: VibratePreset | str | None = None, ignore_own_left_hand: primitives.Bool | None = None, ignore_own_right_hand: primitives.Bool | None = None, effector_target: str | Slot | None = None, effector_bone_index: primitives.Int | None = None, effector_bone_offset: primitives.Float3 | None = None, active_grabber: str | Grabber | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -35,6 +50,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             base_bone_radius: Initial value for BaseBoneRadius.
             dynamic_player_collision: Initial value for DynamicPlayerCollision.
             collide_with_own_body: Initial value for CollideWithOwnBody.
+            hand_collision_vibration: Initial value for HandCollisionVibration.
             collide_with_head: Initial value for CollideWithHead.
             collide_with_body: Initial value for CollideWithBody.
             collide_with_left_hand: Initial value for CollideWithLeftHand.
@@ -58,6 +74,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             grab_release_distance: Initial value for GrabReleaseDistance.
             grab_slipping: Initial value for GrabSlipping.
             grab_terminal_bones: Initial value for GrabTerminalBones.
+            grab_vibration: Initial value for GrabVibration.
             ignore_own_left_hand: Initial value for IgnoreOwnLeftHand.
             ignore_own_right_hand: Initial value for IgnoreOwnRightHand.
             effector_target: Initial value for EffectorTarget.
@@ -85,6 +102,8 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             self.dynamic_player_collision = dynamic_player_collision
         if collide_with_own_body is not None:
             self.collide_with_own_body = collide_with_own_body
+        if hand_collision_vibration is not None:
+            self.hand_collision_vibration = hand_collision_vibration
         if collide_with_head is not None:
             self.collide_with_head = collide_with_head
         if collide_with_body is not None:
@@ -131,6 +150,8 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             self.grab_slipping = grab_slipping
         if grab_terminal_bones is not None:
             self.grab_terminal_bones = grab_terminal_bones
+        if grab_vibration is not None:
+            self.grab_vibration = grab_vibration
         if ignore_own_left_hand is not None:
             self.ignore_own_left_hand = ignore_own_left_hand
         if ignore_own_right_hand is not None:
@@ -146,7 +167,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def inertia(self) -> primitives.Float | None:
-        """The Inertia field value."""
+        """Controls the amount of inertia a bone experiences. Does not affect acceleration of bones."""
         member = self.get_member("Inertia")
         if member is None:
             return None
@@ -165,7 +186,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def inertia_force(self) -> primitives.Float | None:
-        """The InertiaForce field value."""
+        """Controls the amount of inertia a bone experiences. Does affect acceleration of bones."""
         member = self.get_member("InertiaForce")
         if member is None:
             return None
@@ -184,7 +205,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def damping(self) -> primitives.Float | None:
-        """The Damping field value."""
+        """Controls the amount of damping a bone experiences. A high damping value will cause bones to decelerate quickly."""
         member = self.get_member("Damping")
         if member is None:
             return None
@@ -203,7 +224,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def elasticity(self) -> primitives.Float | None:
-        """The Elasticity field value."""
+        """Controls the elasticity of bone joints. A high elasticity value will cause bones to accelerate toward their starting rotation more quickly."""
         member = self.get_member("Elasticity")
         if member is None:
             return None
@@ -222,7 +243,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def stiffness(self) -> primitives.Float | None:
-        """The Stiffness field value."""
+        """Controls the stiffness of bone joints."""
         member = self.get_member("Stiffness")
         if member is None:
             return None
@@ -241,7 +262,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def simulate_terminal_bones(self) -> primitives.Bool | None:
-        """The SimulateTerminalBones field value."""
+        """Whether or not to use the last bone in the chain. If your armature has end bones that do not control anything, you probably want this off."""
         member = self.get_member("SimulateTerminalBones")
         if member is None:
             return None
@@ -260,7 +281,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def base_bone_radius(self) -> primitives.Float | None:
-        """The BaseBoneRadius field value."""
+        """The default size of the sphere that allows a bone to be interacted with."""
         member = self.get_member("BaseBoneRadius")
         if member is None:
             return None
@@ -279,7 +300,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def dynamic_player_collision(self) -> primitives.Bool | None:
-        """The DynamicPlayerCollision field value."""
+        """Whether or not to allow this bone chain to collide with players."""
         member = self.get_member("DynamicPlayerCollision")
         if member is None:
             return None
@@ -298,7 +319,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def collide_with_own_body(self) -> primitives.Bool | None:
-        """The CollideWithOwnBody field value."""
+        """Whether or not to allow this bone chain to collide with the active user of the dynamic bone chain."""
         member = self.get_member("CollideWithOwnBody")
         if member is None:
             return None
@@ -316,21 +337,28 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def hand_collision_vibration(self) -> members.FieldEnum | None:
-        """The HandCollisionVibration member."""
+    def hand_collision_vibration(self) -> VibratePreset | None:
+        """The vibration intensity when touching the chain colliders with a hand."""
         member = self.get_member("HandCollisionVibration")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @hand_collision_vibration.setter
-    def hand_collision_vibration(self, value: members.FieldEnum) -> None:
-        """Set the HandCollisionVibration member."""
-        self.set_member("HandCollisionVibration", value)
+    def hand_collision_vibration(self, value: VibratePreset | str) -> None:
+        """Set HandCollisionVibration. The vibration intensity when touching the chain colliders with a hand."""
+        member = self.get_member("HandCollisionVibration")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "HandCollisionVibration",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def collide_with_head(self) -> primitives.Bool | None:
-        """The CollideWithHead field value."""
+        """Whether or not to allow this bone chain to collide with player heads."""
         member = self.get_member("CollideWithHead")
         if member is None:
             return None
@@ -349,7 +377,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def collide_with_body(self) -> primitives.Bool | None:
-        """The CollideWithBody field value."""
+        """Whether or not to allow this bone chain to collide with player body parts."""
         member = self.get_member("CollideWithBody")
         if member is None:
             return None
@@ -368,7 +396,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def collide_with_left_hand(self) -> primitives.Bool | None:
-        """The CollideWithLeftHand field value."""
+        """Whether or not to allow this bone chain to collide with a player's left hand."""
         member = self.get_member("CollideWithLeftHand")
         if member is None:
             return None
@@ -387,7 +415,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def collide_with_right_hand(self) -> primitives.Bool | None:
-        """The CollideWithRightHand field value."""
+        """Whether or not to allow this bone chain to collide with a player's right hand."""
         member = self.get_member("CollideWithRightHand")
         if member is None:
             return None
@@ -406,7 +434,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def gravity(self) -> primitives.Float3 | None:
-        """The Gravity field value."""
+        """A force like gravity in ``GravitySpace`` space that should be applied to the bone chain at all times."""
         member = self.get_member("Gravity")
         if member is None:
             return None
@@ -425,7 +453,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def gravity_space(self) -> members.SyncObject | None:
-        """The GravitySpace member."""
+        """The coordinate space to apply ``Gravity`` in."""
         member = self.get_member("GravitySpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -433,12 +461,12 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @gravity_space.setter
     def gravity_space(self, value: members.SyncObject) -> None:
-        """Set the GravitySpace member."""
+        """Set GravitySpace. The coordinate space to apply ``Gravity`` in."""
         self.set_member("GravitySpace", value)
 
     @property
     def use_user_gravity_direction(self) -> primitives.Bool | None:
-        """The UseUserGravityDirection field value."""
+        """Whether or not to use the active user of the dynamic bone chain's character controller gravity for the gravity direction"""
         member = self.get_member("UseUserGravityDirection")
         if member is None:
             return None
@@ -457,7 +485,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def local_force(self) -> primitives.Float3 | None:
-        """The LocalForce field value."""
+        """Constant force being applied to the bone in the dynamic bone chain's local space."""
         member = self.get_member("LocalForce")
         if member is None:
             return None
@@ -476,7 +504,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def global_stretch(self) -> primitives.Float | None:
-        """The GlobalStretch field value."""
+        """How stretched out the bone chain should be at rest."""
         member = self.get_member("GlobalStretch")
         if member is None:
             return None
@@ -495,7 +523,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def max_stretch_ratio(self) -> primitives.Float | None:
-        """The MaxStretchRatio field value."""
+        """The maximum amount of stretching that can be caused by pulling on the bones."""
         member = self.get_member("MaxStretchRatio")
         if member is None:
             return None
@@ -514,7 +542,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def current_stretch_ratio(self) -> primitives.Float | None:
-        """The CurrentStretchRatio field value."""
+        """The current amount of stretching applied to the bones."""
         member = self.get_member("CurrentStretchRatio")
         if member is None:
             return None
@@ -533,7 +561,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def stretch_restore_speed(self) -> primitives.Float | None:
-        """The StretchRestoreSpeed field value."""
+        """How quickly extra stretching dissipates."""
         member = self.get_member("StretchRestoreSpeed")
         if member is None:
             return None
@@ -552,7 +580,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def use_local_user_space(self) -> primitives.Bool | None:
-        """The UseLocalUserSpace field value."""
+        """Whether or not to make the dynamic bone only respond to movements generated from the user slot's local position changing."""
         member = self.get_member("UseLocalUserSpace")
         if member is None:
             return None
@@ -571,7 +599,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def simulation_space(self) -> members.SyncObject | None:
-        """The SimulationSpace member."""
+        """The coordinate space that movement in should affect this dynamic bone chain."""
         member = self.get_member("SimulationSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -579,12 +607,12 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @simulation_space.setter
     def simulation_space(self, value: members.SyncObject) -> None:
-        """Set the SimulationSpace member."""
+        """Set SimulationSpace. The coordinate space that movement in should affect this dynamic bone chain."""
         self.set_member("SimulationSpace", value)
 
     @property
     def static_colliders(self) -> members.SyncList | None:
-        """The StaticColliders member."""
+        """A list of dynamic bone collider components to be used."""
         member = self.get_member("StaticColliders")
         if isinstance(member, members.SyncList):
             return member
@@ -592,12 +620,12 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @static_colliders.setter
     def static_colliders(self, value: members.SyncList) -> None:
-        """Set the StaticColliders member."""
+        """Set StaticColliders. A list of dynamic bone collider components to be used."""
         self.set_member("StaticColliders", value)
 
     @property
     def visualize_colliders(self) -> primitives.Bool | None:
-        """The VisualizeColliders field value."""
+        """Causes all bone colliders colliding with this bone to be displayed."""
         member = self.get_member("VisualizeColliders")
         if member is None:
             return None
@@ -616,7 +644,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def visualize_bones(self) -> primitives.Bool | None:
-        """The VisualizeBones field value."""
+        """Causes the bones, their colliders, and the connections between them to be displayed."""
         member = self.get_member("VisualizeBones")
         if member is None:
             return None
@@ -635,7 +663,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def is_grabbable(self) -> primitives.Bool | None:
-        """The IsGrabbable field value."""
+        """Allows you to grab bones by touching them and grabbing. Requires DynamicPlayerCollision to be checked."""
         member = self.get_member("IsGrabbable")
         if member is None:
             return None
@@ -654,7 +682,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def active_user_root_only(self) -> primitives.Bool | None:
-        """The ActiveUserRootOnly field value."""
+        """Allows the active user of the dynamic bone chain to be the only user that can grab it."""
         member = self.get_member("ActiveUserRootOnly")
         if member is None:
             return None
@@ -673,7 +701,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def allow_steal(self) -> primitives.Bool | None:
-        """The AllowSteal field value."""
+        """Whether or not a second user can grab the chain while someone is holding it."""
         member = self.get_member("AllowSteal")
         if member is None:
             return None
@@ -711,7 +739,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def ignore_grab_on_first_bone(self) -> primitives.Bool | None:
-        """The IgnoreGrabOnFirstBone field value."""
+        """Prevents EffectorBoneIndex from being 0 while being grabbed."""
         member = self.get_member("IgnoreGrabOnFirstBone")
         if member is None:
             return None
@@ -730,7 +758,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def grab_radius_tolerance(self) -> primitives.Float | None:
-        """The GrabRadiusTolerance field value."""
+        """how much further a user can grab a bone with their grab sphere despite the radius of the bone not being in contact with their grab sphere."""
         member = self.get_member("GrabRadiusTolerance")
         if member is None:
             return None
@@ -749,7 +777,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def grab_release_distance(self) -> primitives.Float | None:
-        """The GrabReleaseDistance field value."""
+        """How far a bone can be dragged before it automatically releases."""
         member = self.get_member("GrabReleaseDistance")
         if member is None:
             return None
@@ -768,7 +796,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def grab_slipping(self) -> primitives.Bool | None:
-        """The GrabSlipping field value."""
+        """Whether or not to make the EffectorBoneIndex increase as the hand moves along the bone chain away from the first bone in the chain. Does not let EffectorBoneIndex decrease unless re-grabbed."""
         member = self.get_member("GrabSlipping")
         if member is None:
             return None
@@ -787,7 +815,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def grab_terminal_bones(self) -> primitives.Bool | None:
-        """The GrabTerminalBones field value."""
+        """Whether or not the final bone in the chain can be grabbed."""
         member = self.get_member("GrabTerminalBones")
         if member is None:
             return None
@@ -805,21 +833,28 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
             )
 
     @property
-    def grab_vibration(self) -> members.FieldEnum | None:
-        """The GrabVibration member."""
+    def grab_vibration(self) -> VibratePreset | None:
+        """The vibration intensity when grabbing the chain with a hand."""
         member = self.get_member("GrabVibration")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @grab_vibration.setter
-    def grab_vibration(self, value: members.FieldEnum) -> None:
-        """Set the GrabVibration member."""
-        self.set_member("GrabVibration", value)
+    def grab_vibration(self, value: VibratePreset | str) -> None:
+        """Set GrabVibration. The vibration intensity when grabbing the chain with a hand."""
+        member = self.get_member("GrabVibration")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "GrabVibration",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def ignore_own_left_hand(self) -> primitives.Bool | None:
-        """The IgnoreOwnLeftHand field value."""
+        """Whether or not to allow this bone chain to be grabbed with the left hand of the active user of the dynamic bone chain."""
         member = self.get_member("IgnoreOwnLeftHand")
         if member is None:
             return None
@@ -838,7 +873,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def ignore_own_right_hand(self) -> primitives.Bool | None:
-        """The IgnoreOwnRightHand field value."""
+        """Whether or not to allow this bone chain to be grabbed with the right hand of the active user of the dynamic bone chain."""
         member = self.get_member("IgnoreOwnRightHand")
         if member is None:
             return None
@@ -857,7 +892,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def effector_target(self) -> str | None:
-        """Target ID of the EffectorTarget reference (targets Slot)."""
+        """The chain tries to position one if its bones at this slot (used for grabbing)"""
         member = self.get_member("EffectorTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -878,7 +913,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def effector_bone_index(self) -> primitives.Int | None:
-        """The EffectorBoneIndex field value."""
+        """Which bone is being positioned, every other bone after this acts as if it is not being grabbed"""
         member = self.get_member("EffectorBoneIndex")
         if member is None:
             return None
@@ -897,7 +932,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def effector_bone_offset(self) -> primitives.Float3 | None:
-        """The EffectorBoneOffset field value."""
+        """acts as an offset from the grabbing slot in the grabbing slot's local space at the moment the bone was grabbed. Essentially prevents the bone from snapping to the center of the hand's grab sphere and keeps an offset for a smoother grabbing experience. Is automatically set every grab."""
         member = self.get_member("EffectorBoneOffset")
         if member is None:
             return None
@@ -916,7 +951,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def active_grabber(self) -> str | None:
-        """Target ID of the _activeGrabber reference (targets Grabber)."""
+        """The grabber component that is grabbing this bone chain currently"""
         member = self.get_member("_activeGrabber")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -937,7 +972,7 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @property
     def bones(self) -> members.SyncList | None:
-        """The Bones member."""
+        """The bones that should be controlled by this dynamic bone chain."""
         member = self.get_member("Bones")
         if isinstance(member, members.SyncList):
             return member
@@ -945,6 +980,6 @@ class DynamicBoneChain(GeneratedComponent, ICustomInspector, IGrabbable, IDestro
 
     @bones.setter
     def bones(self, value: members.SyncList) -> None:
-        """Set the Bones member."""
+        """Set Bones. The bones that should be controlled by this dynamic bone chain."""
         self.set_member("Bones", value)
 

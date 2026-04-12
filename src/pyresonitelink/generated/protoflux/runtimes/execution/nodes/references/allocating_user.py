@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AllocatingUser(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Allocating User node takes in an IWorldElement and returns with the user that allocated (spawned/created) it.
+    """The ``Allocating User`` node takes in an IWorldElement and returns with the user that allocated (spawned/created) it.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/References
     """
@@ -33,7 +33,7 @@ class AllocatingUser(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def element(self) -> str | None:
-        """Target ID of the Element reference (targets INodeObjectOutput[IWorldElement])."""
+        """The world element that was spawned/created."""
         member = self.get_member("Element")
         if isinstance(member, members.Reference):
             return member.targetId

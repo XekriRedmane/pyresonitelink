@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabBlock(GeneratedComponent, IGrabBlock, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabBlock.
+    """Used to prevent grabbing a Slot from a certain Collider or set of colliders. Place between a collider and a Grabbable component and the slot will no longer be able to be grabbed via that collider.
 
     Category: Transform/Tagging
     """

@@ -14,9 +14,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueOptionDescriptionDriver<>.
+    """The ValueOptionDescriptionDriver component is used primarily to drive the parts that make up a Context Menu Item Source. This component along with ContextMenuItemSource is used in context menus for toggles where the toggle controls a value.
+
+}}
 
     Category: Common UI/Drivers
+
+    This component can be more efficient than using a bunch of Value
+    Equality Drivers and generating a number based on such, or using
+    ProtoFlux for a context menu.
 
     Parameterize with a value type::
 
@@ -61,7 +67,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[T])."""
+        """The value field to compare against."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +88,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def force_deselected(self) -> primitives.Bool | None:
-        """The ForceDeselected field value."""
+        """Forces any context menu item source to change regardless if it is deselected."""
         member = self.get_member("ForceDeselected")
         if member is None:
             return None
@@ -101,7 +107,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def label(self) -> str | None:
-        """Target ID of the Label reference (targets IField[primitives.String])."""
+        """The string to set to the chosen label in the list of ``Options``."""
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -122,7 +128,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def color(self) -> str | None:
-        """Target ID of the Color reference (targets IField[primitives.ColorX])."""
+        """The color to set to the chosen color in the list of ``Options``"""
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -143,7 +149,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def sprite(self) -> str | None:
-        """Target ID of the Sprite reference (targets SyncRef[IAssetProvider[Sprite]])."""
+        """The Sprite to set to the chosen Sprite in the list of ``Options``."""
         member = self.get_member("Sprite")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -164,7 +170,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def sprite_url(self) -> str | None:
-        """Target ID of the SpriteURL reference (targets IField[str])."""
+        """The sprite url."""
         member = self.get_member("SpriteURL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -185,7 +191,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def sprite_tint(self) -> str | None:
-        """Target ID of the SpriteTint reference (targets IField[primitives.ColorX])."""
+        """The sprite tint."""
         member = self.get_member("SpriteTint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -206,7 +212,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     @property
     def default_option(self) -> members.SyncObject | None:
-        """The DefaultOption member."""
+        """The option to set ``Label``, ``Color``, and ``Sprite`` to when ``Reference`` doesn't match any ``ReferenceTarget``s under the list of ``Options``."""
         member = self.get_member("DefaultOption")
         if isinstance(member, members.SyncObject):
             return member
@@ -214,12 +220,12 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     @default_option.setter
     def default_option(self, value: members.SyncObject) -> None:
-        """Set the DefaultOption member."""
+        """Set DefaultOption. The option to set ``Label``, ``Color``, and ``Sprite`` to when ``Reference`` doesn't match any ``ReferenceTarget``s under the list of ``Options``."""
         self.set_member("DefaultOption", value)
 
     @property
     def options(self) -> members.SyncList | None:
-        """The Options member."""
+        """The list to search for a ``ReferenceTarget`` that matches ``Value``. once a match is found, the option's ``Label``, ``Color``, and ``Sprite`` is used to drive this section's drive targets of ``Label``, ``Color``, and ``Sprite``."""
         member = self.get_member("Options")
         if isinstance(member, members.SyncList):
             return member
@@ -227,12 +233,12 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
 
     @options.setter
     def options(self, value: members.SyncList) -> None:
-        """Set the Options member."""
+        """Set Options. The list to search for a ``ReferenceTarget`` that matches ``Value``. once a match is found, the option's ``Label``, ``Color``, and ``Sprite`` is used to drive this section's drive targets of ``Label``, ``Color``, and ``Sprite``."""
         self.set_member("Options", value)
 
     @property
     def sprite_tint_base(self) -> primitives.ColorX | None:
-        """The SpriteTintBase field value."""
+        """Tints the entire sprite with a ColorX."""
         member = self.get_member("SpriteTintBase")
         if member is None:
             return None

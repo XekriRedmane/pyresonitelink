@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugSettingSwitchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugSettingSwitchSource.
+    """The DebugSettingSwitchSource component is used to test settings profiles for switching between different profiles like desktop and VR switching.
 
     Category: Debug
     """
@@ -29,7 +29,7 @@ class DebugSettingSwitchSource(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def current_profile(self) -> primitives.String | None:
-        """The CurrentProfile field value."""
+        """The profile of settings to use."""
         member = self.get_member("CurrentProfile")
         if member is None:
             return None

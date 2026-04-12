@@ -11,9 +11,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParentValueLink(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ParentValueLink<>.
+    """The ParentValueLink&lt;T&gt; component drives a field depending on the value of a compatible ParentValue as part of a parent value system.
 
     Category: Data/Parent
+
+    Upon a change of parent, this component will search for ParentValue
+    components on the slot's immediate parent that have a matching type and
+    tag. If it can find such a component and link to it, it will drive the
+    ``Target`` field based on the ``Value`` of the ParentValue. If it can
+    not find such a component, it will use the ``DefaultValue`` value.
 
     Parameterize with a value type::
 
@@ -46,7 +52,7 @@ class ParentValueLink(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def match_tag(self) -> primitives.String | None:
-        """The MatchTag field value."""
+        """The tag to search for on the slot's immediate parent. Compatible ParentValue components must have the same ``Tag``."""
         member = self.get_member("MatchTag")
         if member is None:
             return None
@@ -65,7 +71,7 @@ class ParentValueLink(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[T])."""
+        """The field to drive using the value of the linked parent."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +92,7 @@ class ParentValueLink(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """If ``True``, any writes to the driven field will be propagated back to the ``Value`` provided by the ParentValue. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None

@@ -16,6 +16,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class GrabbablePriority(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Grabbable Priority is a ProtoFlux node that gets the priority of an IGrabbable.
 
+Grab Priority
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Grabbable
     """
 
@@ -34,7 +36,7 @@ class GrabbablePriority(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def grabbable(self) -> str | None:
-        """Target ID of the Grabbable reference (targets INodeObjectOutput[IGrabbable])."""
+        """The grabbable that should be checked for a grabber that is grabbing it."""
         member = self.get_member("Grabbable")
         if isinstance(member, members.Reference):
             return member.targetId

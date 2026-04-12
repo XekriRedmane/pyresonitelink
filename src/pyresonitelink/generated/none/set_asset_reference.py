@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetAssetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Undo.SetAssetReference<>.
+    """The Set Asset Reference component is used to store an undo step for setting a reference field for assets to another asset.
+
+    Not used directly by the user.
 
     Parameterize with a value type::
 
@@ -51,7 +53,7 @@ class SetAssetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets AssetRef[A])."""
+        """The field that was changed."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -72,7 +74,7 @@ class SetAssetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def target_before(self) -> str | None:
-        """Target ID of the TargetBefore reference (targets IAssetProvider[A])."""
+        """The asset value before the change"""
         member = self.get_member("TargetBefore")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -93,7 +95,7 @@ class SetAssetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def target_after(self) -> str | None:
-        """Target ID of the TargetAfter reference (targets IAssetProvider[A])."""
+        """The asset value after the change."""
         member = self.get_member("TargetAfter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -114,7 +116,7 @@ class SetAssetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def performed(self) -> primitives.Bool | None:
-        """The _performed field value."""
+        """Whether the undo step was done or undone."""
         member = self.get_member("_performed")
         if member is None:
             return None
@@ -133,7 +135,7 @@ class SetAssetReference(GenericComponent[T], IUndoable, IWorldEventReceiver):
 
     @property
     def description(self) -> primitives.String | None:
-        """The _description field value."""
+        """The description of the change that was made and what to for the context menu label text when undoing/redoing."""
         member = self.get_member("_description")
         if member is None:
             return None

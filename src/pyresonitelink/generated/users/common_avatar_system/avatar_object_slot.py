@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.body_node import BodyNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iavatar_object import IAvatarObject
@@ -12,19 +13,22 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarObjectSlot.
+    """For detailed information on how this functions for mix and match body parts. Please also see Equipping Multiple Avatars.
+
+Avatar Object slot is a component that is used to move and drive certain parts of the avatar like the head and hand body parts.
 
     Category: Users/Common Avatar System
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarObjectSlot"
 
-    def __init__(self, priority: primitives.Int | None = None, equipped: str | IAvatarObject | None = None, is_tracking: primitives.Bool | None = None, is_active: primitives.Bool | None = None, is_simulated: primitives.Bool | None = None, drive_active: primitives.Bool | None = None, drive_scale: primitives.Bool | None = None, do_not_simulate: primitives.Bool | None = None, auto_smoothing: str | AvatarPoseSmoothLerp | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, priority: primitives.Int | None = None, equipped: str | IAvatarObject | None = None, node: BodyNode | str | None = None, is_tracking: primitives.Bool | None = None, is_active: primitives.Bool | None = None, is_simulated: primitives.Bool | None = None, drive_active: primitives.Bool | None = None, drive_scale: primitives.Bool | None = None, do_not_simulate: primitives.Bool | None = None, auto_smoothing: str | AvatarPoseSmoothLerp | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             priority: Initial value for Priority.
             equipped: Initial value for Equipped.
+            node: Initial value for Node.
             is_tracking: Initial value for IsTracking.
             is_active: Initial value for IsActive.
             is_simulated: Initial value for IsSimulated.
@@ -39,6 +43,8 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.priority = priority
         if equipped is not None:
             self.equipped = equipped
+        if node is not None:
+            self.node = node
         if is_tracking is not None:
             self.is_tracking = is_tracking
         if is_active is not None:
@@ -56,7 +62,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def priority(self) -> primitives.Int | None:
-        """The Priority field value."""
+        """Whether to do the equip checking on this AvatarObjectSlot before other AvatarObjectSlots"""
         member = self.get_member("Priority")
         if member is None:
             return None
@@ -75,7 +81,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def equipped(self) -> str | None:
-        """Target ID of the Equipped reference (targets IAvatarObject)."""
+        """Usually an Avatar Pose Node that is on one of the proxies on an avatar."""
         member = self.get_member("Equipped")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -95,21 +101,28 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def node(self) -> members.FieldEnum | None:
-        """The Node member."""
+    def node(self) -> BodyNode | None:
+        """the body node of the avatar this component's slot is. Unless already specified by a Biped Rig Component higher up in the hierarchy."""
         member = self.get_member("Node")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BodyNode(member.value)
         return None
 
     @node.setter
-    def node(self, value: members.FieldEnum) -> None:
-        """Set the Node member."""
-        self.set_member("Node", value)
+    def node(self, value: BodyNode | str) -> None:
+        """Set Node. the body node of the avatar this component's slot is. Unless already specified by a Biped Rig Component higher up in the hierarchy."""
+        member = self.get_member("Node")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Node",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def is_tracking(self) -> primitives.Bool | None:
-        """The IsTracking field value."""
+        """Whether this component is currently being simulated by the procedural animation system."""
         member = self.get_member("IsTracking")
         if member is None:
             return None
@@ -128,7 +141,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_active(self) -> primitives.Bool | None:
-        """The IsActive field value."""
+        """Whether this component is currently active and controlling an avatar."""
         member = self.get_member("IsActive")
         if member is None:
             return None
@@ -147,7 +160,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_simulated(self) -> primitives.Bool | None:
-        """The IsSimulated field value."""
+        """Whether this object slot is being controlled by the procedural animation system."""
         member = self.get_member("IsSimulated")
         if member is None:
             return None
@@ -166,7 +179,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def drive_active(self) -> primitives.Bool | None:
-        """The DriveActive field value."""
+        """Whether to drive the active of this slot when hooked into by an Avatar Pose Node."""
         member = self.get_member("DriveActive")
         if member is None:
             return None
@@ -185,7 +198,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def drive_scale(self) -> primitives.Bool | None:
-        """The DriveScale field value."""
+        """Whether to drive the scale of this slot when hooked into by an Avatar Pose Node."""
         member = self.get_member("DriveScale")
         if member is None:
             return None
@@ -204,7 +217,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def do_not_simulate(self) -> primitives.Bool | None:
-        """The DoNotSimulate field value."""
+        """Whether to not control this with the procedural locomotion system"""
         member = self.get_member("DoNotSimulate")
         if member is None:
             return None
@@ -223,7 +236,7 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def filters(self) -> members.SyncObject | None:
-        """The Filters member."""
+        """Filters that are currently effecting this and their priorities. See Avatar Pose Filters"""
         member = self.get_member("Filters")
         if isinstance(member, members.SyncObject):
             return member
@@ -231,12 +244,12 @@ class AvatarObjectSlot(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @filters.setter
     def filters(self, value: members.SyncObject) -> None:
-        """Set the Filters member."""
+        """Set Filters. Filters that are currently effecting this and their priorities. See Avatar Pose Filters"""
         self.set_member("Filters", value)
 
     @property
     def auto_smoothing(self) -> str | None:
-        """Target ID of the _autoSmoothing reference (targets AvatarPoseSmoothLerp)."""
+        """The Component currently smoothing the transform changes of this Avatar Object slot."""
         member = self.get_member("_autoSmoothing")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -1,0 +1,32 @@
+{
+  "description": "The VideoPlayerInterface component is a favoritable item that is used to specify the UI elements of a custom Video Player.",
+  "category": "Utility:Entity Interfaces",
+  "fields": {
+    "ItemName": "The name of this favoritable item.",
+    "SpawningUser": "The user that spawned this favoritable item.",
+    "SpawningUserID": "The field containing the ID of the user that spawned this favoritable item.",
+    "IsInstance": "Whether this item is an instance.",
+    "URL": "The field to fill with the URL of the imported video asset.",
+    "Stream": "The field to fill with whether this video player is showing stream.",
+    "VideoClip": "The field to fill with what the video being displayed is.",
+    "VideoClipTexture": "The field to fill (Usually a material texture field) with the showing video texture.",
+    "AspectRatio": "The field to fill with what the video's aspect ratio is.",
+    "DefaultVideoClip": "The default video texture to use if one isn't filled in.",
+    "StereoRenderingEnabled": "The field to fill with whether the video is a stero video (3D)",
+    "StereoLayout": "The field to fill with the kind of stero image layout the image has.",
+    "StereoTransformLeft": "The field to fill with what the rectangle area for the left eye should be.",
+    "StereoTransformRight": "The field to fill with what the rectangle area for the right eye should be.",
+    "StereoTransformScaleLeft": "The field to fill with what the UV scale for the left eye should be.",
+    "StereoTransformOffsetLeft": "The field to fill with what the UV offset for the left eye should be.",
+    "StereoTransformScaleRight": "The field to fill with what the UV scale for the right eye should be.",
+    "StereoTransformOffsetRight": "The field to fill with what the UV offset for the right eye should be.",
+    "PanoramicRenderingEnabled": "The field to fill with whether the video is a 360 video",
+    "PanoramicHorizontalFOV": "The field to fill with the video's horizontal 360 video FOV.",
+    "PanoramicVerticalFOV": "The field to fill with the video's vertical 360 video FOV.",
+    "PanoramicProjection": "The field to fill with what the video's panoramic texture arrangement is."
+  },
+  "methods": {},
+  "usage": "Use either the existing Resonite video player under Resonite Essentials or make a UI by attaching the component and making one from scratch. Then save the item with this component to the inventory and favorite it so it becomes the default player upon restarting.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VideoPlayerInterface&action=raw"
+}

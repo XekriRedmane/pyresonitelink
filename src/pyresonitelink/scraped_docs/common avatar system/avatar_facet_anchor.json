@@ -1,0 +1,12 @@
+{
+  "description": "Avatar Facet Anchor is a component that is used to position a userspace facet anchor to the slot this is on.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "FacetAnchorPoint": "Which facet anchor should be positioned at the slot this component is on.",
+    "OverrideState": "Whether to force this anchor to stay on or off."
+  },
+  "methods": {},
+  "usage": "Will not work if the component's active user is not the local user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarFacetAnchor&action=raw"
+}

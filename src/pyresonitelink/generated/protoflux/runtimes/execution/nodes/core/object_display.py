@@ -17,6 +17,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ObjectDisplay(GenericComponent[T], IProtoFluxNodePackUnpackListener, IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Display node takes in an input, but unlike the Input Display node, it will not display out a value onto the node UI, instead this is most likely used for internal use in FrooxEngine.
 
+It is theorized that the wording "External" (found in the node browser after entering that selection) could be in reference to something that allows FrooxEngine to display the value that was inputted outside of the client/engine. Possibly for a console or receiver that is listening outside the application for debugging purposes. (Sources needed please!)
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 
     Parameterize with a value type::

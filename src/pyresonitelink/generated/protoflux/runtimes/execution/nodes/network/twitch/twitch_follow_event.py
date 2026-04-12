@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TwitchFollowEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """This node provides Twitch follow event information from a TwitchInterface.
+    """This node provides Twitch follow event information from a TwitchInterface. 
+
+Note that all outputs are generated on a new Twitch follow, and will not display any information when connected to a display node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network/Twitch
     """
@@ -58,7 +60,7 @@ class TwitchFollowEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def on_follow(self) -> str | None:
-        """Target ID of the OnFollow reference (targets ISyncNodeOperation)."""
+        """Fires on receiving a new Twitch channel follow."""
         member = self.get_member("OnFollow")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +81,7 @@ class TwitchFollowEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def user_id(self) -> members.EmptyElement | None:
-        """The UserId member."""
+        """Outputs the Twitch Channel ID of the follower."""
         member = self.get_member("UserId")
         if isinstance(member, members.EmptyElement):
             return member
@@ -87,12 +89,12 @@ class TwitchFollowEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @user_id.setter
     def user_id(self, value: members.EmptyElement) -> None:
-        """Set the UserId member."""
+        """Set UserId. Outputs the Twitch Channel ID of the follower."""
         self.set_member("UserId", value)
 
     @property
     def display_name(self) -> members.EmptyElement | None:
-        """The DisplayName member."""
+        """Outputs the Twitch username of the follower."""
         member = self.get_member("DisplayName")
         if isinstance(member, members.EmptyElement):
             return member
@@ -100,6 +102,6 @@ class TwitchFollowEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @display_name.setter
     def display_name(self, value: members.EmptyElement) -> None:
-        """Set the DisplayName member."""
+        """Set DisplayName. Outputs the Twitch username of the follower."""
         self.set_member("DisplayName", value)
 

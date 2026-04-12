@@ -12,9 +12,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PlaybackSynchronizer.
+    """The PlaybackSynchronizer component is used to make two Audio Clips play together in unison, play at the same time, or to synchronize.
 
     Category: Media/Utility
+
+    This can be used with any playable like an Animator or otherwise with
+    another animator or audio. It can also be used to synchronize Videos
+    with each other. This can be useful when you want animations/videos to
+    sync up with audio, in perfect unison without having to worry about
+    networking.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PlaybackSynchronizer"
@@ -44,7 +50,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncPlayback)."""
+        """The playable to synchronize the playback position with the position of ``Source``."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +71,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IPlayable)."""
+        """The playable that will drive ``Target``'s playback"""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +92,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def use_normalized_position(self) -> primitives.Bool | None:
-        """The UseNormalizedPosition field value."""
+        """Whether to speed up or slow down the playback of ``Target`` if the duration doesn't match."""
         member = self.get_member("UseNormalizedPosition")
         if member is None:
             return None
@@ -105,7 +111,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def position_offset(self) -> primitives.Float | None:
-        """The PositionOffset field value."""
+        """How many seconds/normalized position to offset the ``Target``'s synchronization with ``Source``'s position."""
         member = self.get_member("PositionOffset")
         if member is None:
             return None
@@ -124,7 +130,7 @@ class PlaybackSynchronizer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def position_rate(self) -> primitives.Float | None:
-        """The PositionRate field value."""
+        """How much to multiply ``Source``'s position before driving ``Target``'s position with it."""
         member = self.get_member("PositionRate")
         if member is None:
             return None

@@ -19,7 +19,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyPanel.
+    """The LegacyPanel component is used in old migrated legacy content UI.
+
+    Don't use in new content.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyPanel"
@@ -133,7 +135,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def style(self) -> str | None:
-        """Target ID of the Style reference (targets LegacyUIStyle)."""
+        """The style that determines what this panel looks like."""
         member = self.get_member("Style")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -192,7 +194,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def show_header(self) -> primitives.Bool | None:
-        """The ShowHeader field value."""
+        """Whether to show the panel title."""
         member = self.get_member("ShowHeader")
         if member is None:
             return None
@@ -211,7 +213,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def show_handle(self) -> primitives.Bool | None:
-        """The ShowHandle field value."""
+        """Whether to show the panel side bar bevel mesh."""
         member = self.get_member("ShowHandle")
         if member is None:
             return None
@@ -230,7 +232,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def padding(self) -> primitives.Float | None:
-        """The Padding field value."""
+        """How much padding should be used from the edge to the inner content."""
         member = self.get_member("Padding")
         if member is None:
             return None
@@ -249,7 +251,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def zpadding(self) -> primitives.Float | None:
-        """The ZPadding field value."""
+        """How much the UI elements should float above the backing plate."""
         member = self.get_member("ZPadding")
         if member is None:
             return None
@@ -268,7 +270,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """The thickness of the beveled panel mesh."""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -287,7 +289,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def white_list(self) -> members.SyncList | None:
-        """The WhiteList member."""
+        """Elements that should not be used in the bounds calculations."""
         member = self.get_member("WhiteList")
         if isinstance(member, members.SyncList):
             return member
@@ -295,12 +297,12 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @white_list.setter
     def white_list(self, value: members.SyncList) -> None:
-        """Set the WhiteList member."""
+        """Set WhiteList. Elements that should not be used in the bounds calculations."""
         self.set_member("WhiteList", value)
 
     @property
     def black_list(self) -> members.SyncList | None:
-        """The BlackList member."""
+        """Elements that should be used in the bounds calculations."""
         member = self.get_member("BlackList")
         if isinstance(member, members.SyncList):
             return member
@@ -308,12 +310,12 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @black_list.setter
     def black_list(self, value: members.SyncList) -> None:
-        """Set the BlackList member."""
+        """Set BlackList. Elements that should be used in the bounds calculations."""
         self.set_member("BlackList", value)
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The color of the panel."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -332,7 +334,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets PBS_RimMetallic)."""
+        """The material being used for this panel."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -353,7 +355,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def panel_mesh(self) -> str | None:
-        """Target ID of the _panelMesh reference (targets BevelPlaneMesh)."""
+        """The mesh being used for this panel."""
         member = self.get_member("_panelMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -374,7 +376,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def panel_pos(self) -> str | None:
-        """Target ID of the _panelPos reference (targets IField[primitives.Float3])."""
+        """The position field of this panel."""
         member = self.get_member("_panelPos")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -395,7 +397,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def handle_active(self) -> str | None:
-        """Target ID of the _handleActive reference (targets IField[primitives.Bool])."""
+        """The handle active field of this panel."""
         member = self.get_member("_handleActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -416,7 +418,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def header_active(self) -> str | None:
-        """Target ID of the _headerActive reference (targets IField[primitives.Bool])."""
+        """The header active field of this panel."""
         member = self.get_member("_headerActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -437,7 +439,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def handle_mesh(self) -> str | None:
-        """Target ID of the _handleMesh reference (targets BevelStripeMesh)."""
+        """The handle mesh of this panel."""
         member = self.get_member("_handleMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -458,7 +460,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def handle_pos(self) -> str | None:
-        """Target ID of the _handlePos reference (targets IField[primitives.Float3])."""
+        """The handle position of this panel."""
         member = self.get_member("_handlePos")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -479,7 +481,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def handle_collider_size(self) -> str | None:
-        """Target ID of the _handleColliderSize reference (targets IField[primitives.Float3])."""
+        """The handle collider size of this panel."""
         member = self.get_member("_handleColliderSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -500,7 +502,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def header_title_mesh(self) -> str | None:
-        """Target ID of the _headerTitleMesh reference (targets BevelStripeMesh)."""
+        """The title mesh of this panel."""
         member = self.get_member("_headerTitleMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -521,7 +523,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def header_button_mesh(self) -> str | None:
-        """Target ID of the _headerButtonMesh reference (targets BevelStripeMesh)."""
+        """The header button mesh of this panel."""
         member = self.get_member("_headerButtonMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -542,7 +544,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def header_collider(self) -> str | None:
-        """Target ID of the _headerCollider reference (targets IField[primitives.Float3])."""
+        """The header collider of this panel."""
         member = self.get_member("_headerCollider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -563,7 +565,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def header_pos(self) -> str | None:
-        """Target ID of the _headerPos reference (targets IField[primitives.Float3])."""
+        """The header position field of this panel."""
         member = self.get_member("_headerPos")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -584,7 +586,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def header_title_pos(self) -> str | None:
-        """Target ID of the _headerTitlePos reference (targets IField[primitives.Float3])."""
+        """The header title position of this panel."""
         member = self.get_member("_headerTitlePos")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -605,7 +607,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def title(self) -> primitives.String | None:
-        """The _title field value."""
+        """The title name of this panel."""
         member = self.get_member("_title")
         if member is None:
             return None
@@ -624,7 +626,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def title_text(self) -> str | None:
-        """Target ID of the _titleText reference (targets TextRenderer)."""
+        """The text renderer that displays the title of this panel."""
         member = self.get_member("_titleText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -645,7 +647,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def indicate_private(self) -> primitives.Bool | None:
-        """The _indicatePrivate field value."""
+        """Is used to change the colors of the panel to indicate that it is in userspace."""
         member = self.get_member("_indicatePrivate")
         if member is None:
             return None
@@ -664,7 +666,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def title_pos(self) -> str | None:
-        """Target ID of the _titlePos reference (targets IField[primitives.Float3])."""
+        """The position field of the title of this panel"""
         member = self.get_member("_titlePos")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -685,7 +687,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def title_bounds(self) -> str | None:
-        """Target ID of the _titleBounds reference (targets IField[primitives.Float2])."""
+        """The bounds of the title of this panel."""
         member = self.get_member("_titleBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -706,7 +708,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def content_slot(self) -> str | None:
-        """Target ID of the _contentSlot reference (targets Slot)."""
+        """The content root slot of this panel."""
         member = self.get_member("_contentSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -727,7 +729,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def header_root(self) -> str | None:
-        """Target ID of the _headerRoot reference (targets Slot)."""
+        """The header root slot of this panel."""
         member = self.get_member("_headerRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -748,7 +750,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def handle_anchor_point(self) -> str | None:
-        """Target ID of the _handleAnchorPoint reference (targets Slot)."""
+        """The side bar handle mesh's anchor point for this panel."""
         member = self.get_member("_handleAnchorPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -769,7 +771,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def handle_anchor_point_position(self) -> str | None:
-        """Target ID of the _handleAnchorPointPosition reference (targets IField[primitives.Float3])."""
+        """The handle position field of this panel."""
         member = self.get_member("_handleAnchorPointPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -790,7 +792,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def userspace_owner(self) -> members.SyncObject | None:
-        """The _userspaceOwner member."""
+        """The owner of this panel."""
         member = self.get_member("_userspaceOwner")
         if isinstance(member, members.SyncObject):
             return member
@@ -798,12 +800,12 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @userspace_owner.setter
     def userspace_owner(self, value: members.SyncObject) -> None:
-        """Set the _userspaceOwner member."""
+        """Set _userspaceOwner. The owner of this panel."""
         self.set_member("_userspaceOwner", value)
 
     @property
     def title_buttons(self) -> members.SyncList | None:
-        """The _titleButtons member."""
+        """The list of buttons that make up the panel's title."""
         member = self.get_member("_titleButtons")
         if isinstance(member, members.SyncList):
             return member
@@ -811,12 +813,12 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @title_buttons.setter
     def title_buttons(self, value: members.SyncList) -> None:
-        """Set the _titleButtons member."""
+        """Set _titleButtons. The list of buttons that make up the panel's title."""
         self.set_member("_titleButtons", value)
 
     @property
     def highlighted_button(self) -> str | None:
-        """Target ID of the _highlightedButton reference (targets TitleButton)."""
+        """The title button object for the currently highlighted button."""
         member = self.get_member("_highlightedButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -837,7 +839,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     @property
     def pin_button(self) -> str | None:
-        """Target ID of the _pinButton reference (targets TitleButton)."""
+        """The title button object for the pin to user button."""
         member = self.get_member("_pinButton")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -1,0 +1,11 @@
+{
+  "description": "Avatar Tool anchor is a component that defines where to place either the tool, toolshelf, or grab area anchors when the avatar is equipped. Or where to position the context menu when it is opened.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "AnchorPoint": "The type of tool anchor to place under the slot this component is on for this hand."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarToolAnchor&action=raw"
+}

@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacySessionOrbsController.
+    """The LegacySessionOrbsController component displays session orbs of current sessions into a slot. This component was used in what some players called the "Session plate" which would have many world orbs of active sessions.
+
+    Used in items that display current sessions in Resonite.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacySessionOrbsController"
@@ -44,7 +46,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def spawn_radius(self) -> primitives.Float | None:
-        """The SpawnRadius field value."""
+        """The radius of spawning orbs in a cylinder shape."""
         member = self.get_member("SpawnRadius")
         if member is None:
             return None
@@ -63,7 +65,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def spawn_height(self) -> primitives.Float | None:
-        """The SpawnHeight field value."""
+        """The height of spawning orbs in a cylinder shape."""
         member = self.get_member("SpawnHeight")
         if member is None:
             return None
@@ -82,7 +84,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def spawn_offset(self) -> primitives.Float3 | None:
-        """The SpawnOffset field value."""
+        """The offset of the spawn cylinder shape in local space vs the center on ``_root``"""
         member = self.get_member("SpawnOffset")
         if member is None:
             return None
@@ -101,7 +103,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def root(self) -> str | None:
-        """Target ID of the _root reference (targets Slot)."""
+        """Where to place and spawn session orbs."""
         member = self.get_member("_root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -122,7 +124,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def max_orbs(self) -> primitives.Int | None:
-        """The MaxOrbs field value."""
+        """How many orbs can be under ``_root`` at any one time."""
         member = self.get_member("MaxOrbs")
         if member is None:
             return None
@@ -141,7 +143,7 @@ class LegacySessionOrbsController(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def show_headless(self) -> primitives.Bool | None:
-        """The ShowHeadless field value."""
+        """Whether to show headless sessions"""
         member = self.get_member("ShowHeadless")
         if member is None:
             return None

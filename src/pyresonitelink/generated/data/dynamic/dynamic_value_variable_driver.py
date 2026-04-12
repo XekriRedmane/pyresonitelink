@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicValueVariableDriver(GenericComponent[T], IDynamicVariable[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicValueVariableDriver<>.
+    """Dynamic Value Variable Driver is a component that can drive a IField`1 (Value Holder) to the value assigned to a dynamic variable with the name ``VariableName``. if the specified variable cannot be found, the value will revert to ``DefaultTarget`` how this works is explained on Dynamic Variables page.
 
     Category: Data/Dynamic
 

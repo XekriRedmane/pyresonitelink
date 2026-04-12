@@ -1,0 +1,11 @@
+{
+  "description": "The SettingsDataFeed component is a data feed that generates a list of settings and their categories.",
+  "category": "Utility",
+  "fields": {},
+  "methods": {
+    "PathSegmentName": "Gets the locale string of a path using a depth and a name."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SettingsDataFeed&action=raw"
+}

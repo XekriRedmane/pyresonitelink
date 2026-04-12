@@ -1,0 +1,28 @@
+{
+  "description": "The ProgressBarInterface component is a favoritable item that appears when the user imports a file into Resonite.",
+  "category": "Utility:Entity Interfaces",
+  "fields": {
+    "ItemName": "The name of this favoritable interface.",
+    "SpawningUser": "The user that spawned this favoritable interface.",
+    "SpawningUserID": "The field containing the ID of the user that spawned this favoritable interface.",
+    "IsInstance": "Whether this interface is an instance.",
+    "ProgressKnown": "The field to drive with whether or not the progress is known of the importing item.",
+    "Progress": "The field to drive with the current progress import percentage from 0 to 1 of the importing item.",
+    "ProcessedCountKnown": "The field to drive with whether or not the amount of processed items is known for the importing item.",
+    "ProcessedItemCount": "The field to drive with the number of processed items for the importing item.",
+    "TotalItemCountKnown": "The field to drive with whether the total number of items that need to be processed for the importing item is known.",
+    "TotalItemCount": "The field to drive with the total number of items that need to be processed for the importing item.",
+    "PhaseName": "The field to drive with the current phase name of the importing item being imported is.",
+    "SubPhaseName": "The field to drive with the current sub phase name of the item being imported.",
+    "Stage": "The field to drive with the progress stage for the importing item.",
+    "HasCompleted": "The field to drive with whether the item has finished importing.",
+    "HasFailed": "The field to drive with whether the item has failed to import.",
+    "CompletionMessage": "The field to drive with the message for when the item has finished importing.",
+    "FailureReason": "The field to drive with the failure reason for something to import.",
+    "CanBeHidden": "The field to drive with whether this import dialogue can be hidden by the user."
+  },
+  "methods": {},
+  "usage": "Used to make custom import dialogue visuals for a user by saving a custom UI with this component to inventory and setting as custom loading indicator.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProgressBarInterface&action=raw"
+}

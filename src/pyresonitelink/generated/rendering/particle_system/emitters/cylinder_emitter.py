@@ -3,6 +3,9 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.cylinder_emitter_direction import CylinderEmitterDirection
+from pyresonitelink.generated._enums.cylinder_emitter_caps_direction import CylinderEmitterCapsDirection
+from pyresonitelink.generated._enums.direction_transform_mode import DirectionTransformMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.particle_system import ParticleSystem
@@ -10,14 +13,14 @@ from pyresonitelink.generated._types.iparticle_system_emitter import IParticleSy
 
 
 class CylinderEmitter(GeneratedComponent, IParticleSystemEmitter):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.CylinderEmitter.
+    """The CylinderEmitter component is used to emit particles in PhotonDust.
 
     Category: Rendering/Particle System/Emitters
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.CylinderEmitter"
 
-    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, radius: primitives.Float | None = None, height: primitives.Float | None = None, emit_from_shell: primitives.Bool | None = None, exclude_caps: primitives.Bool | None = None, random_direction_weight: primitives.Float | None = None, direction: primitives.Float3 | None = None, direction_post_transform: primitives.Float3x3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, radius: primitives.Float | None = None, height: primitives.Float | None = None, emit_from_shell: primitives.Bool | None = None, exclude_caps: primitives.Bool | None = None, direction_mode: CylinderEmitterDirection | str | None = None, caps_direction_mode: CylinderEmitterCapsDirection | str | None = None, random_direction_weight: primitives.Float | None = None, direction: primitives.Float3 | None = None, direction_transform_mode: DirectionTransformMode | str | None = None, direction_post_transform: primitives.Float3x3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,8 +33,11 @@ class CylinderEmitter(GeneratedComponent, IParticleSystemEmitter):
             height: Initial value for Height.
             emit_from_shell: Initial value for EmitFromShell.
             exclude_caps: Initial value for ExcludeCaps.
+            direction_mode: Initial value for DirectionMode.
+            caps_direction_mode: Initial value for CapsDirectionMode.
             random_direction_weight: Initial value for RandomDirectionWeight.
             direction: Initial value for Direction.
+            direction_transform_mode: Initial value for DirectionTransformMode.
             direction_post_transform: Initial value for DirectionPostTransform.
             component: Existing Component to wrap.
         """
@@ -54,10 +60,16 @@ class CylinderEmitter(GeneratedComponent, IParticleSystemEmitter):
             self.emit_from_shell = emit_from_shell
         if exclude_caps is not None:
             self.exclude_caps = exclude_caps
+        if direction_mode is not None:
+            self.direction_mode = direction_mode
+        if caps_direction_mode is not None:
+            self.caps_direction_mode = caps_direction_mode
         if random_direction_weight is not None:
             self.random_direction_weight = random_direction_weight
         if direction is not None:
             self.direction = direction
+        if direction_transform_mode is not None:
+            self.direction_transform_mode = direction_transform_mode
         if direction_post_transform is not None:
             self.direction_post_transform = direction_post_transform
 
@@ -160,7 +172,7 @@ class CylinderEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the emitting cylinder shape"""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -179,7 +191,7 @@ class CylinderEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """The height of the emitting cylinder shape."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -217,7 +229,7 @@ class CylinderEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def exclude_caps(self) -> primitives.Bool | None:
-        """The ExcludeCaps field value."""
+        """Whether to exclude the ends of the cylinder when emitting particles."""
         member = self.get_member("ExcludeCaps")
         if member is None:
             return None
@@ -235,30 +247,44 @@ class CylinderEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def direction_mode(self) -> members.FieldEnum | None:
-        """The DirectionMode member."""
+    def direction_mode(self) -> CylinderEmitterDirection | None:
+        """How to emit particles from the cylinder."""
         member = self.get_member("DirectionMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CylinderEmitterDirection(member.value)
         return None
 
     @direction_mode.setter
-    def direction_mode(self, value: members.FieldEnum) -> None:
-        """Set the DirectionMode member."""
-        self.set_member("DirectionMode", value)
+    def direction_mode(self, value: CylinderEmitterDirection | str) -> None:
+        """Set DirectionMode. How to emit particles from the cylinder."""
+        member = self.get_member("DirectionMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DirectionMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def caps_direction_mode(self) -> members.FieldEnum | None:
-        """The CapsDirectionMode member."""
+    def caps_direction_mode(self) -> CylinderEmitterCapsDirection | None:
+        """how to emit particles from the cylinder caps."""
         member = self.get_member("CapsDirectionMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CylinderEmitterCapsDirection(member.value)
         return None
 
     @caps_direction_mode.setter
-    def caps_direction_mode(self, value: members.FieldEnum) -> None:
-        """Set the CapsDirectionMode member."""
-        self.set_member("CapsDirectionMode", value)
+    def caps_direction_mode(self, value: CylinderEmitterCapsDirection | str) -> None:
+        """Set CapsDirectionMode. how to emit particles from the cylinder caps."""
+        member = self.get_member("CapsDirectionMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "CapsDirectionMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def random_direction_weight(self) -> primitives.Float | None:
@@ -299,21 +325,28 @@ class CylinderEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def direction_transform_mode(self) -> members.FieldEnum | None:
-        """The DirectionTransformMode member."""
+    def direction_transform_mode(self) -> DirectionTransformMode | None:
+        """How to handle the direction when emitting particles."""
         member = self.get_member("DirectionTransformMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return DirectionTransformMode(member.value)
         return None
 
     @direction_transform_mode.setter
-    def direction_transform_mode(self, value: members.FieldEnum) -> None:
-        """Set the DirectionTransformMode member."""
-        self.set_member("DirectionTransformMode", value)
+    def direction_transform_mode(self, value: DirectionTransformMode | str) -> None:
+        """Set DirectionTransformMode. How to handle the direction when emitting particles."""
+        member = self.get_member("DirectionTransformMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DirectionTransformMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def direction_post_transform(self) -> primitives.Float3x3 | None:
-        """The DirectionPostTransform field value."""
+        """The direction particles should be when spawned post transform using a matrix."""
         member = self.get_member("DirectionPostTransform")
         if member is None:
             return None

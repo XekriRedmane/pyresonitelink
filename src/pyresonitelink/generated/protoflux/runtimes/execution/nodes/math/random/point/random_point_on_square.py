@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomPointOnSquare(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Random Point On Square node returns a random float2 value of a point on the edge of a unit square centered at [0; 0].
+    """The Random Point On Square node returns a random float2 value of a point on the edge of a unit square centered at ``[0; 0]``.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Random/Point
     """

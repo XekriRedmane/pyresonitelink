@@ -14,15 +14,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TwitchRewardRedeemEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """This node provides Twitch reward redeem information from a TwitchInterface.
+    """This node provides Twitch reward redeem information from a TwitchInterface. 
+
+Note that all outputs are generated on a new Twitch reward redeem, and will not display any information when connected to a display node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network/Twitch
 
     **Legacy Twitch API**: Due to the depreciation of the Twitch V5 API that Resonite currently uses, this node will fail to pulse on a redeem event from Twitch. This means currently that this node is inoperable, and should be considered unusable until updated.
 
 The issue is marked as a bug on the Resonite GitHub under Issue 68.
-
-ProtoFlux:Network:Twitch
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Cloud.Twitch.TwitchRewardRedeemEvent"

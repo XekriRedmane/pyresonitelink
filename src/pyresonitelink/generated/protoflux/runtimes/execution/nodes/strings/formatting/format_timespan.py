@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Format Timespan node takes in a TimeSpan and extra parameters to convert it into a string.
+    """The ``Format Timespan`` node takes in a TimeSpan and extra parameters to convert it into a string.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Formatting
     """
@@ -44,7 +44,7 @@ class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def time_span(self) -> str | None:
-        """Target ID of the TimeSpan reference (targets INodeValueOutput[str])."""
+        """The TimeSpan to use for this string."""
         member = self.get_member("TimeSpan")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +65,7 @@ class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def show_seconds(self) -> str | None:
-        """Target ID of the ShowSeconds reference (targets INodeValueOutput[primitives.Bool])."""
+        """Show seconds in this formatted string."""
         member = self.get_member("ShowSeconds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +86,7 @@ class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def show_milliseconds(self) -> str | None:
-        """Target ID of the ShowMilliseconds reference (targets INodeValueOutput[primitives.Bool])."""
+        """Show milliseconds in this formatted string."""
         member = self.get_member("ShowMilliseconds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +107,9 @@ class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def format_provider(self) -> str | None:
-        """Target ID of the FormatProvider reference (targets INodeObjectOutput[IFormatProvider])."""
+        """An object that supplies culture-specific formatting information.
+
+Nodes that output this type can be found in Strings/Localization"""
         member = self.get_member("FormatProvider")
         if isinstance(member, members.Reference):
             return member.targetId

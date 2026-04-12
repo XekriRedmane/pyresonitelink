@@ -1,0 +1,16 @@
+{
+  "description": "The ViewReferenceController component is a view controller type component mainly used in desktop mode.",
+  "category": "Uncategorized",
+  "fields": {
+    "PositionStream": "The source for position values for this component.",
+    "RotationStream": "The source for rotation values for this component.",
+    "ObjectSlot": "The slot this is controlling.",
+    "ShouldVoiceBeActive": "The field to drive with whether the user's voice should be transmitting.",
+    "_objectSlotScale": "The field to drive with the object scale value.",
+    "_objectSlotActive": "The field to drive with whether the object slot should be active."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ViewReferenceController&action=raw"
+}

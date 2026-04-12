@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Footstep Events node takes in the global source of a FootstepEventRelay or SelfFootstepEventRelay component, and returns the values from this user's footstep. The footstep event counts when any proxy on a slot detects the collision and raycast from a user's feet onto that ICollider, as long as that collider does not have the No Collision setting on, and also does not have the Ignore Raycasts setting on.
+    """The Footstep Events node takes in the global source of a FootstepEventRelay or SelfFootstepEventRelay component, and returns the values from this user's footstep. The footstep event counts when any proxy on a slot detects the collision and raycast from a user's feet onto that ICollider, as long as that collider does not have the ``No Collision`` setting on, and also does not have the ``Ignore Raycasts`` setting on.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Locomotion
     """
@@ -58,7 +58,7 @@ class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def footstep(self) -> str | None:
-        """Target ID of the Footstep reference (targets ISyncNodeOperation)."""
+        """Fires when a footstep event happens from a FootstepEventRelay or SelfFootstepEventRelay component."""
         member = self.get_member("Footstep")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def side(self) -> members.EmptyElement | None:
-        """The Side member."""
+        """Returns the side of that footstep."""
         member = self.get_member("Side")
         if isinstance(member, members.EmptyElement):
             return member
@@ -87,12 +87,12 @@ class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @side.setter
     def side(self, value: members.EmptyElement) -> None:
-        """Set the Side member."""
+        """Set Side. Returns the side of that footstep."""
         self.set_member("Side", value)
 
     @property
     def position(self) -> members.EmptyElement | None:
-        """The Position member."""
+        """Returns the position of that footstep."""
         member = self.get_member("Position")
         if isinstance(member, members.EmptyElement):
             return member
@@ -100,12 +100,12 @@ class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @position.setter
     def position(self, value: members.EmptyElement) -> None:
-        """Set the Position member."""
+        """Set Position. Returns the position of that footstep."""
         self.set_member("Position", value)
 
     @property
     def rotation(self) -> members.EmptyElement | None:
-        """The Rotation member."""
+        """Returns the rotation of that footstep."""
         member = self.get_member("Rotation")
         if isinstance(member, members.EmptyElement):
             return member
@@ -113,12 +113,12 @@ class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @rotation.setter
     def rotation(self, value: members.EmptyElement) -> None:
-        """Set the Rotation member."""
+        """Set Rotation. Returns the rotation of that footstep."""
         self.set_member("Rotation", value)
 
     @property
     def impact_velocity(self) -> members.EmptyElement | None:
-        """The ImpactVelocity member."""
+        """Returns the impact velocity of that footstep."""
         member = self.get_member("ImpactVelocity")
         if isinstance(member, members.EmptyElement):
             return member
@@ -126,12 +126,12 @@ class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @impact_velocity.setter
     def impact_velocity(self, value: members.EmptyElement) -> None:
-        """Set the ImpactVelocity member."""
+        """Set ImpactVelocity. Returns the impact velocity of that footstep."""
         self.set_member("ImpactVelocity", value)
 
     @property
     def has_landed(self) -> members.EmptyElement | None:
-        """The HasLanded member."""
+        """Returns if this footstep has landed."""
         member = self.get_member("HasLanded")
         if isinstance(member, members.EmptyElement):
             return member
@@ -139,12 +139,12 @@ class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @has_landed.setter
     def has_landed(self, value: members.EmptyElement) -> None:
-        """Set the HasLanded member."""
+        """Set HasLanded. Returns if this footstep has landed."""
         self.set_member("HasLanded", value)
 
     @property
     def hit_collider(self) -> members.EmptyElement | None:
-        """The HitCollider member."""
+        """Returns the collider that this footstep has collided with."""
         member = self.get_member("HitCollider")
         if isinstance(member, members.EmptyElement):
             return member
@@ -152,12 +152,12 @@ class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @hit_collider.setter
     def hit_collider(self, value: members.EmptyElement) -> None:
-        """Set the HitCollider member."""
+        """Set HitCollider. Returns the collider that this footstep has collided with."""
         self.set_member("HitCollider", value)
 
     @property
     def hit_triangle_index(self) -> members.EmptyElement | None:
-        """The HitTriangleIndex member."""
+        """Returns the particular triangle of where this footstep has collided with."""
         member = self.get_member("HitTriangleIndex")
         if isinstance(member, members.EmptyElement):
             return member
@@ -165,6 +165,6 @@ class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @hit_triangle_index.setter
     def hit_triangle_index(self, value: members.EmptyElement) -> None:
-        """Set the HitTriangleIndex member."""
+        """Set HitTriangleIndex. Returns the particular triangle of where this footstep has collided with."""
         self.set_member("HitTriangleIndex", value)
 

@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MeshAssetMetadata.
+    """The MeshAssetMetadata component gives info about the data on a mesh component.
 
     Category: Assets/Utility
+
+    Attach to a slot and provide a Mesh to ``Mesh`` to make the component
+    output data.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshAssetMetadata"
@@ -71,7 +74,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the Mesh reference (targets IAssetProvider[Mesh])."""
+        """The mesh to get meta data on."""
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +95,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def vertex_count(self) -> primitives.Int | None:
-        """The VertexCount field value."""
+        """The amount of vertices in ``Mesh``."""
         member = self.get_member("VertexCount")
         if member is None:
             return None
@@ -111,7 +114,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def triangle_count(self) -> primitives.Int | None:
-        """The TriangleCount field value."""
+        """The amount of triangles in ``Mesh``."""
         member = self.get_member("TriangleCount")
         if member is None:
             return None
@@ -130,7 +133,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point_count(self) -> primitives.Int | None:
-        """The PointCount field value."""
+        """the amount of vertices with no connected faces in ``Mesh``."""
         member = self.get_member("PointCount")
         if member is None:
             return None
@@ -149,7 +152,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def submesh_count(self) -> primitives.Int | None:
-        """The SubmeshCount field value."""
+        """How many sub meshes are in the main ``Mesh``."""
         member = self.get_member("SubmeshCount")
         if member is None:
             return None
@@ -168,7 +171,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bone_count(self) -> primitives.Int | None:
-        """The BoneCount field value."""
+        """The amount of bones in ``Mesh``."""
         member = self.get_member("BoneCount")
         if member is None:
             return None
@@ -187,7 +190,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def blendshape_count(self) -> primitives.Int | None:
-        """The BlendshapeCount field value."""
+        """The amount of blendshapes in ``Mesh``."""
         member = self.get_member("BlendshapeCount")
         if member is None:
             return None
@@ -206,7 +209,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def has_normals(self) -> primitives.Bool | None:
-        """The HasNormals field value."""
+        """Whether ``Mesh`` has normal data."""
         member = self.get_member("HasNormals")
         if member is None:
             return None
@@ -225,7 +228,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def has_tangents(self) -> primitives.Bool | None:
-        """The HasTangents field value."""
+        """Whether ``Mesh`` has tangent data."""
         member = self.get_member("HasTangents")
         if member is None:
             return None
@@ -244,7 +247,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def has_vertex_colors(self) -> primitives.Bool | None:
-        """The HasVertexColors field value."""
+        """Whether ``Mesh`` has vertex color data."""
         member = self.get_member("HasVertexColors")
         if member is None:
             return None
@@ -263,7 +266,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def has_uv0s(self) -> primitives.Bool | None:
-        """The HasUV0s field value."""
+        """Whether ``Mesh`` has data for the first UV map."""
         member = self.get_member("HasUV0s")
         if member is None:
             return None
@@ -282,7 +285,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def has_uv1s(self) -> primitives.Bool | None:
-        """The HasUV1s field value."""
+        """Whether ``Mesh`` has data for the second UV map."""
         member = self.get_member("HasUV1s")
         if member is None:
             return None
@@ -301,7 +304,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def has_uv2s(self) -> primitives.Bool | None:
-        """The HasUV2s field value."""
+        """Whether ``Mesh`` has data for the third UV map."""
         member = self.get_member("HasUV2s")
         if member is None:
             return None
@@ -320,7 +323,7 @@ class MeshAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def has_uv3s(self) -> primitives.Bool | None:
-        """The HasUV3s field value."""
+        """Whether ``Mesh`` has data for the fourth UV map."""
         member = self.get_member("HasUV3s")
         if member is None:
             return None

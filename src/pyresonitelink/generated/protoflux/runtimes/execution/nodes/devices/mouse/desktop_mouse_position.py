@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DesktopMousePosition(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Desktop Mouse Position node returns the local user's mouse position from their device. The mouse position calculation starts at the top-left of the main monitor. If you are focused on the Resonite application, the mouse will always be centered in that window while you move the mouse around, giving a consistent result from this node. If you have multiple monitors, it will track the mouse outside of Resonite and calculate accordingly, sometimes returning really large values depending how your system is set up.
+    """The ``Desktop Mouse Position`` node returns the local user's mouse position from their device. The mouse position calculation starts at the top-left of the main monitor. If you are focused on the Resonite application, the mouse will always be centered in that window while you move the mouse around, giving a consistent result from this node. If you have multiple monitors, it will track the mouse outside of Resonite and calculate accordingly, sometimes returning really large values depending how your system is set up.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Mouse
     """

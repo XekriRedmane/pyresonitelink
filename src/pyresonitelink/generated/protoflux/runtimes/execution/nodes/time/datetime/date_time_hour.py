@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DateTimeHour(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The DateTime Hour node takes in a DateTime and returns the hour of that DateTime. This returns the hour as if it were a 24-hour time (if the hour is 3pm, it returns 15).
+    """The ``DateTime Hour`` node takes in a DateTime and returns the hour of that DateTime. This returns the hour as if it were a 24-hour time (if the hour is 3pm, it returns 15).
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/DateTime
     """
@@ -32,7 +32,7 @@ class DateTimeHour(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def date_time(self) -> str | None:
-        """Target ID of the DateTime reference (targets INodeValueOutput[str])."""
+        """The DateTime we are getting info from."""
         member = self.get_member("DateTime")
         if isinstance(member, members.Reference):
             return member.targetId

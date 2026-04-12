@@ -12,7 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CallbackRefArgument(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CallbackRefArgument<>.
+    """Similar to CallbackValueArgument but instead of a value it's a reference for an action.
+
+There are some Sync Delegates in the game that match this component's requirements, but not many.
+
+    **Related Components**: * CallbackValueArgument
 
     Parameterize with a value type::
 
@@ -36,7 +40,7 @@ class CallbackRefArgument(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets A)."""
+        """The reference to give to ``Callback``"""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +60,7 @@ class CallbackRefArgument(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     async def call(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Call sync method.
+        """Call ``Callback`` sync delegate and provide it ``Reference``.
 
         Returns:
             The raw JSON response dict.
@@ -66,7 +70,7 @@ class CallbackRefArgument(GenericComponent[T], IComponent, IWorldEventReceiver):
         )
 
     async def call_and_destroy(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the CallAndDestroy sync method.
+        """Do ``Call()`` and then destroy this component.
 
         Returns:
             The raw JSON response dict.

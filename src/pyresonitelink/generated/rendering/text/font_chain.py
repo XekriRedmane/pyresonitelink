@@ -12,9 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FontChain(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FontChain.
+    """The FontChain component provides an easy way to use "Fallback" fonts for a main font, usually in the event that the main font does not contain certain Unicode characters. Any place where a StaticFont can be used, a FontChain can be used.
+
+The ``MainFont`` defines which font will be primarily used for the text. For any characters of a text that do not exist in the main font, all the ``FallbackFonts`` will be searched through, in order, to find a matching character. Only if all fallback fonts do not contain the character will a "true fallback" of a box will appear.
 
     Category: Rendering/Text
+
+    Useful for example for Avali-Scratch, where numbers don't have a
+    character. or for fonts where characters don't exist.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FontChain"
@@ -54,7 +59,7 @@ class FontChain(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def main_font(self) -> str | None:
-        """Target ID of the MainFont reference (targets IAssetProvider[Font])."""
+        """The main font to use."""
         member = self.get_member("MainFont")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -75,7 +80,7 @@ class FontChain(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def fallback_fonts(self) -> members.SyncList | None:
-        """The FallbackFonts member."""
+        """The fallback fonts to use."""
         member = self.get_member("FallbackFonts")
         if isinstance(member, members.SyncList):
             return member
@@ -83,6 +88,6 @@ class FontChain(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @fallback_fonts.setter
     def fallback_fonts(self, value: members.SyncList) -> None:
-        """Set the FallbackFonts member."""
+        """Set FallbackFonts. The fallback fonts to use."""
         self.set_member("FallbackFonts", value)
 

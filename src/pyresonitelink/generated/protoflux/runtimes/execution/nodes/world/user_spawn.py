@@ -16,7 +16,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserSpawn(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Spawn node is an event that fires when a user spawns/respawns in the current world this node is in, as well as providing that user.
+    """The ``User Spawn`` node is an event that fires when a user spawns/respawns in the current world this node is in, as well as providing that user.
+
+Spawn events can happen when a user either gets removed or deleted from the hierarchy, using the respawn button in the session menu, or using a gadget to respawn a user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/World
     """
@@ -39,7 +41,7 @@ class UserSpawn(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @property
     def only_host(self) -> str | None:
-        """Target ID of the OnlyHost reference (targets INodeValueOutput[primitives.Bool])."""
+        """Fires events for user spawns only for the host of the session."""
         member = self.get_member("OnlyHost")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +62,7 @@ class UserSpawn(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @property
     def on_spawn(self) -> str | None:
-        """Target ID of the OnSpawn reference (targets ISyncNodeOperation)."""
+        """Fires when a user spawned in the world."""
         member = self.get_member("OnSpawn")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +83,7 @@ class UserSpawn(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @property
     def spawned_user(self) -> members.EmptyElement | None:
-        """The SpawnedUser member."""
+        """The User that spawned in this world."""
         member = self.get_member("SpawnedUser")
         if isinstance(member, members.EmptyElement):
             return member
@@ -89,6 +91,6 @@ class UserSpawn(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IE
 
     @spawned_user.setter
     def spawned_user(self, value: members.EmptyElement) -> None:
-        """Set the SpawnedUser member."""
+        """Set SpawnedUser. The User that spawned in this world."""
         self.set_member("SpawnedUser", value)
 

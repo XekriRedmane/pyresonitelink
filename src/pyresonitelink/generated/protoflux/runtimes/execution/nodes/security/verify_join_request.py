@@ -16,6 +16,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Verify Join Request node listens for join requests when users join a world with an enabled join verification system, firing an event when it happens. This node returns a set of information that contains info of the joining user. This node can be combined with the Allow Join, Deny Join, and Assign Role nodes.
 
+To activate a join verification system, a user needs to open the node in a Scene Inspector and go to the VerifyJoinRequest component. The bottom of the component has a button labeled "Set as custom join request verifier" and a warning letting users know that this feature does not prevent tampering of worlds that use this feature.
+
+The following is the exact warning inside this node:
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Security
     """
 
@@ -34,7 +38,7 @@ class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappable
 
     @property
     def verify(self) -> str | None:
-        """Target ID of the Verify reference (targets INodeOperation)."""
+        """Fires when a user is wanting to join the world."""
         member = self.get_member("Verify")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -94,7 +98,7 @@ class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappable
 
     @property
     def username(self) -> members.EmptyElement | None:
-        """The Username member."""
+        """The username that is wanting to join the world."""
         member = self.get_member("Username")
         if isinstance(member, members.EmptyElement):
             return member
@@ -102,12 +106,12 @@ class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappable
 
     @username.setter
     def username(self, value: members.EmptyElement) -> None:
-        """Set the Username member."""
+        """Set Username. The username that is wanting to join the world."""
         self.set_member("Username", value)
 
     @property
     def head_output_device(self) -> members.EmptyElement | None:
-        """The HeadOutputDevice member."""
+        """The joining user's head output device."""
         member = self.get_member("HeadOutputDevice")
         if isinstance(member, members.EmptyElement):
             return member
@@ -115,12 +119,12 @@ class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappable
 
     @head_output_device.setter
     def head_output_device(self, value: members.EmptyElement) -> None:
-        """Set the HeadOutputDevice member."""
+        """Set HeadOutputDevice. The joining user's head output device."""
         self.set_member("HeadOutputDevice", value)
 
     @property
     def platform(self) -> members.EmptyElement | None:
-        """The Platform member."""
+        """The joining user's platform."""
         member = self.get_member("Platform")
         if isinstance(member, members.EmptyElement):
             return member
@@ -128,12 +132,12 @@ class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappable
 
     @platform.setter
     def platform(self, value: members.EmptyElement) -> None:
-        """Set the Platform member."""
+        """Set Platform. The joining user's platform."""
         self.set_member("Platform", value)
 
     @property
     def is_invited(self) -> members.EmptyElement | None:
-        """The IsInvited member."""
+        """Returns if this joining user was invited."""
         member = self.get_member("IsInvited")
         if isinstance(member, members.EmptyElement):
             return member
@@ -141,12 +145,12 @@ class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappable
 
     @is_invited.setter
     def is_invited(self, value: members.EmptyElement) -> None:
-        """Set the IsInvited member."""
+        """Set IsInvited. Returns if this joining user was invited."""
         self.set_member("IsInvited", value)
 
     @property
     def is_contact(self) -> members.EmptyElement | None:
-        """The IsContact member."""
+        """Returns if this joining user is in the host's contacts list."""
         member = self.get_member("IsContact")
         if isinstance(member, members.EmptyElement):
             return member
@@ -154,12 +158,12 @@ class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappable
 
     @is_contact.setter
     def is_contact(self, value: members.EmptyElement) -> None:
-        """Set the IsContact member."""
+        """Set IsContact. Returns if this joining user is in the host's contacts list."""
         self.set_member("IsContact", value)
 
     @property
     def is_in_kiosk_mode(self) -> members.EmptyElement | None:
-        """The IsInKioskMode member."""
+        """Returns if this joining user is in kiosk mode."""
         member = self.get_member("IsInKioskMode")
         if isinstance(member, members.EmptyElement):
             return member
@@ -167,12 +171,12 @@ class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappable
 
     @is_in_kiosk_mode.setter
     def is_in_kiosk_mode(self, value: members.EmptyElement) -> None:
-        """Set the IsInKioskMode member."""
+        """Set IsInKioskMode. Returns if this joining user is in kiosk mode."""
         self.set_member("IsInKioskMode", value)
 
     @property
     def is_spectator_banned(self) -> members.EmptyElement | None:
-        """The IsSpectatorBanned member."""
+        """Returns if this joining user was banned as a spectator."""
         member = self.get_member("IsSpectatorBanned")
         if isinstance(member, members.EmptyElement):
             return member
@@ -180,12 +184,12 @@ class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappable
 
     @is_spectator_banned.setter
     def is_spectator_banned(self, value: members.EmptyElement) -> None:
-        """Set the IsSpectatorBanned member."""
+        """Set IsSpectatorBanned. Returns if this joining user was banned as a spectator."""
         self.set_member("IsSpectatorBanned", value)
 
     @property
     def is_mute_banned(self) -> members.EmptyElement | None:
-        """The IsMuteBanned member."""
+        """Returns if this joining user was banned and muted."""
         member = self.get_member("IsMuteBanned")
         if isinstance(member, members.EmptyElement):
             return member
@@ -193,12 +197,12 @@ class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappable
 
     @is_mute_banned.setter
     def is_mute_banned(self, value: members.EmptyElement) -> None:
-        """Set the IsMuteBanned member."""
+        """Set IsMuteBanned. Returns if this joining user was banned and muted."""
         self.set_member("IsMuteBanned", value)
 
     @property
     def handle(self) -> members.EmptyElement | None:
-        """The Handle member."""
+        """Returns this join request as a type."""
         member = self.get_member("Handle")
         if isinstance(member, members.EmptyElement):
             return member
@@ -206,6 +210,6 @@ class VerifyJoinRequest(GeneratedComponent, IProtoFluxEngineProxyNode, IMappable
 
     @handle.setter
     def handle(self, value: members.EmptyElement) -> None:
-        """Set the Handle member."""
+        """Set Handle. Returns this join request as a type."""
         self.set_member("Handle", value)
 

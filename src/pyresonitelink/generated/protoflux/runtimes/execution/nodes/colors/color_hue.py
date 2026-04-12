@@ -33,7 +33,7 @@ class ColorHue(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
 
     @property
     def hue(self) -> str | None:
-        """Target ID of the Hue reference (targets INodeValueOutput[primitives.Float])."""
+        """The hue to get a color for. Values must be in the range [0, 1], values outside this range are wrapped to it. For example a value of 1.5 gives the same result as 0.5."""
         member = self.get_member("Hue")
         if isinstance(member, members.Reference):
             return member.targetId

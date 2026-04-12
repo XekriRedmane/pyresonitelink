@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RadiantDashStateSync(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RadiantDashStateSync.
+    """The RadiantDashStateSync component is a userspace component that grabs the current dash component in the userspace world and cross synchronizes its values with the dash.
 
     Category: Radiant UI
+
+    Best used when attached to an item that will exist on the dash, like a
+    facet.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadiantDashStateSync"
@@ -35,7 +38,7 @@ class RadiantDashStateSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_freeform(self) -> primitives.Bool | None:
-        """The IsFreeform field value."""
+        """Whether the userspace dash is set to freeform movement."""
         member = self.get_member("IsFreeform")
         if member is None:
             return None
@@ -54,7 +57,7 @@ class RadiantDashStateSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_open(self) -> primitives.Bool | None:
-        """The IsOpen field value."""
+        """Whether the userspace dash is currently open."""
         member = self.get_member("IsOpen")
         if member is None:
             return None
@@ -73,7 +76,7 @@ class RadiantDashStateSync(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def curvature(self) -> primitives.Float | None:
-        """The Curvature field value."""
+        """What the curvature of the dash is currently."""
         member = self.get_member("Curvature")
         if member is None:
             return None

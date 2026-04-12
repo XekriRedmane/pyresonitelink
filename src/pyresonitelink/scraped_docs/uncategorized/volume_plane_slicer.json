@@ -1,0 +1,17 @@
+{
+  "description": "See Volume Unlit Material Examples section for better information on how slicers work.",
+  "category": "Uncategorized",
+  "fields": {
+    "Mode": "The kind of slicer mode this slicer is doing.",
+    "HighlightColor": "The color highlight to highlight the slicer with. please see Volume Unlit Material Examples section for better info.",
+    "HighlightRange": "The color highlight range to use. please see Volume Unlit Material Examples section for better info.",
+    "_colorDialog": "The dialog ui currently being used to choose a color to display for the color highlight.",
+    "_grabGrid": "The slot to enable when grabbing the slicer to show the grid visual."
+  },
+  "methods": {
+    "SelectColor": "Handles when the user requests to use the slicer."
+  },
+  "usage": "See Volume Unlit Material Examples section.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VolumePlaneSlicer&action=raw"
+}

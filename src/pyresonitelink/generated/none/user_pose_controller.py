@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserPoseController.
+    """The UserPoseController component is used to control the posing of the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserPoseController"
@@ -51,7 +51,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_controller(self) -> str | None:
-        """Target ID of the ScreenController reference (targets ScreenController)."""
+        """the currently used screen controller."""
         member = self.get_member("ScreenController")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -72,7 +72,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def body_horizontal_angle(self) -> primitives.Float | None:
-        """The BodyHorizontalAngle field value."""
+        """The current user body angle."""
         member = self.get_member("BodyHorizontalAngle")
         if member is None:
             return None
@@ -91,7 +91,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def render_debug_visuals(self) -> primitives.Bool | None:
-        """The RenderDebugVisuals field value."""
+        """Whether or not to render the debug visuals."""
         member = self.get_member("RenderDebugVisuals")
         if member is None:
             return None
@@ -110,7 +110,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def pause_locomotion_animation(self) -> primitives.Bool | None:
-        """The PauseLocomotionAnimation field value."""
+        """Whether or not to pause the current locomotion animation."""
         member = self.get_member("PauseLocomotionAnimation")
         if member is None:
             return None
@@ -129,7 +129,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def override_locomotion_velocity(self) -> primitives.Float3 | None:
-        """The OverrideLocomotionVelocity field value."""
+        """What to override the current locomotion animation with."""
         member = self.get_member("OverrideLocomotionVelocity")
         if member is None:
             return None
@@ -148,7 +148,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def override_locomotion_angular_velocity(self) -> primitives.Float | None:
-        """The OverrideLocomotionAngularVelocity field value."""
+        """What to override the current locomotion animation angular velocity with."""
         member = self.get_member("OverrideLocomotionAngularVelocity")
         if member is None:
             return None
@@ -167,7 +167,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def simulation_speed_ratio(self) -> primitives.Float | None:
-        """The SimulationSpeedRatio field value."""
+        """The specified simulation speed ratio."""
         member = self.get_member("SimulationSpeedRatio")
         if member is None:
             return None
@@ -186,7 +186,7 @@ class UserPoseController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def default_config(self) -> str | None:
-        """Target ID of the _defaultConfig reference (targets LocomotionAnimationConfiguration)."""
+        """What the default locomotion animation for all avatars that don't specify it should be."""
         member = self.get_member("_defaultConfig")
         if isinstance(member, members.Reference):
             return member.targetId

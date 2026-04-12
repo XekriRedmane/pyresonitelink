@@ -34,7 +34,7 @@ class Speed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustom
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeObjectOutput[IPlayable])."""
+        """The IPlayable to get the speed of."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId

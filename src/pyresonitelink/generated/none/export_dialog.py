@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ExportDialog.
+    """See Exporting.
+
+    See Exporting.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ExportDialog"
@@ -49,7 +51,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def selected_export_option(self) -> primitives.Int | None:
-        """The SelectedExportOption field value."""
+        """What Export Option is selected."""
         member = self.get_member("SelectedExportOption")
         if member is None:
             return None
@@ -68,7 +70,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def export_name(self) -> str | None:
-        """Target ID of the ExportName reference (targets TextField)."""
+        """The name of the Export file."""
         member = self.get_member("ExportName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +91,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_folder(self) -> primitives.String | None:
-        """The _targetFolder field value."""
+        """The target folder location to Export to."""
         member = self.get_member("_targetFolder")
         if member is None:
             return None
@@ -108,7 +110,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def edit_enabled(self) -> primitives.Bool | None:
-        """The EditEnabled field value."""
+        """Whether this component is edit enabled."""
         member = self.get_member("EditEnabled")
         if member is None:
             return None
@@ -127,7 +129,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cancel(self) -> str | None:
-        """Target ID of the _cancel reference (targets Button)."""
+        """The button for canceling the export."""
         member = self.get_member("_cancel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -148,7 +150,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def export(self) -> str | None:
-        """Target ID of the _export reference (targets Button)."""
+        """The button to start the export."""
         member = self.get_member("_export")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -169,7 +171,7 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def export_options(self) -> members.SyncList | None:
-        """The _exportOptions member."""
+        """The kinds of Export options available."""
         member = self.get_member("_exportOptions")
         if isinstance(member, members.SyncList):
             return member
@@ -177,12 +179,12 @@ class ExportDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @export_options.setter
     def export_options(self, value: members.SyncList) -> None:
-        """Set the _exportOptions member."""
+        """Set _exportOptions. The kinds of Export options available."""
         self.set_member("_exportOptions", value)
 
     @property
     def file_name(self) -> str | None:
-        """Target ID of the FileName reference (targets IField)."""
+        """The name of the file when exporting."""
         member = self.get_member("FileName")
         if isinstance(member, members.Reference):
             return member.targetId

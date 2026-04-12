@@ -8,14 +8,16 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class HostAccessSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.HostAccessSettings.
+    """See Host Access Settings.
+
+    See Host Access Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HostAccessSettings"
 
     @property
     def entries(self) -> members.SyncDictionary | None:
-        """The Entries member."""
+        """A list of allowed and denied IP address locations."""
         member = self.get_member("Entries")
         if isinstance(member, members.SyncDictionary):
             return member
@@ -23,11 +25,11 @@ class HostAccessSettings(GeneratedComponent, ICustomInspector):
 
     @entries.setter
     def entries(self, value: members.SyncDictionary) -> None:
-        """Set the Entries member."""
+        """Set Entries. A list of allowed and denied IP address locations."""
         self.set_member("Entries", value)
 
     async def get_entry(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, debug: bool = False) -> dict:
-        """Call the GetEntry sync method.
+        """HostAccessSettings.Entry]] from the list of ``Entries``.
 
         Args:
             resolink: Connected ResoniteLink client.

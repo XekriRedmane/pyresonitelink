@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Undo.UpdateTransform.
+    """Update transform is part of the Undo system, and is used in the Undo Manager to allow undoing and redoing of moving an object.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Undo.UpdateTransform"
@@ -89,7 +89,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets Slot)."""
+        """The slot that was moved."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +110,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def restore_parent(self) -> primitives.Bool | None:
-        """The RestoreParent field value."""
+        """Whether or not to restore the parent object."""
         member = self.get_member("RestoreParent")
         if member is None:
             return None
@@ -129,7 +129,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def restore_position(self) -> primitives.Bool | None:
-        """The RestorePosition field value."""
+        """Whether or not to restore the position of the object."""
         member = self.get_member("RestorePosition")
         if member is None:
             return None
@@ -148,7 +148,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def restore_rotation(self) -> primitives.Bool | None:
-        """The RestoreRotation field value."""
+        """Whether or not to restore the rotation of the object."""
         member = self.get_member("RestoreRotation")
         if member is None:
             return None
@@ -167,7 +167,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def restore_scale(self) -> primitives.Bool | None:
-        """The RestoreScale field value."""
+        """Whether or not to restore the scale of the object."""
         member = self.get_member("RestoreScale")
         if member is None:
             return None
@@ -186,7 +186,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def parent_before(self) -> str | None:
-        """Target ID of the ParentBefore reference (targets Slot)."""
+        """The parent slot that the object had before the move."""
         member = self.get_member("ParentBefore")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -207,7 +207,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def parent_after(self) -> str | None:
-        """Target ID of the ParentAfter reference (targets Slot)."""
+        """The parent slot the object had after the move."""
         member = self.get_member("ParentAfter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -228,7 +228,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def local_position_before(self) -> primitives.Float3 | None:
-        """The LocalPositionBefore field value."""
+        """The Local Position that the object had before the move."""
         member = self.get_member("LocalPositionBefore")
         if member is None:
             return None
@@ -247,7 +247,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def local_rotation_before(self) -> primitives.FloatQ | None:
-        """The LocalRotationBefore field value."""
+        """The Local Rotation that the object had before the move."""
         member = self.get_member("LocalRotationBefore")
         if member is None:
             return None
@@ -266,7 +266,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def local_scale_before(self) -> primitives.Float3 | None:
-        """The LocalScaleBefore field value."""
+        """The Local Scale that the object had before the move."""
         member = self.get_member("LocalScaleBefore")
         if member is None:
             return None
@@ -285,7 +285,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def global_position_before(self) -> primitives.Float3 | None:
-        """The GlobalPositionBefore field value."""
+        """The Global Position that the object had before the move."""
         member = self.get_member("GlobalPositionBefore")
         if member is None:
             return None
@@ -304,7 +304,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def global_rotation_before(self) -> primitives.FloatQ | None:
-        """The GlobalRotationBefore field value."""
+        """The Global Rotation that the object had before the move."""
         member = self.get_member("GlobalRotationBefore")
         if member is None:
             return None
@@ -323,7 +323,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def global_scale_before(self) -> primitives.Float3 | None:
-        """The GlobalScaleBefore field value."""
+        """The Global Scale that the object had before the move."""
         member = self.get_member("GlobalScaleBefore")
         if member is None:
             return None
@@ -342,7 +342,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def local_position_after(self) -> primitives.Float3 | None:
-        """The LocalPositionAfter field value."""
+        """The Local Position the object had after the move."""
         member = self.get_member("LocalPositionAfter")
         if member is None:
             return None
@@ -361,7 +361,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def local_rotation_after(self) -> primitives.FloatQ | None:
-        """The LocalRotationAfter field value."""
+        """The Local Rotation the object had after the move."""
         member = self.get_member("LocalRotationAfter")
         if member is None:
             return None
@@ -380,7 +380,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def local_scale_after(self) -> primitives.Float3 | None:
-        """The LocalScaleAfter field value."""
+        """The Local Scale the object had after the move."""
         member = self.get_member("LocalScaleAfter")
         if member is None:
             return None
@@ -399,7 +399,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def global_position_after(self) -> primitives.Float3 | None:
-        """The GlobalPositionAfter field value."""
+        """The Global Position the object had after the move."""
         member = self.get_member("GlobalPositionAfter")
         if member is None:
             return None
@@ -418,7 +418,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def global_rotation_after(self) -> primitives.FloatQ | None:
-        """The GlobalRotationAfter field value."""
+        """The Global Rotation the object had after the move."""
         member = self.get_member("GlobalRotationAfter")
         if member is None:
             return None
@@ -437,7 +437,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def global_scale_after(self) -> primitives.Float3 | None:
-        """The GlobalScaleAfter field value."""
+        """The Global Scale the object had after the move."""
         member = self.get_member("GlobalScaleAfter")
         if member is None:
             return None
@@ -456,7 +456,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def performed(self) -> primitives.Bool | None:
-        """The _performed field value."""
+        """Whether the action is performed or it is in the future (due to undoing by the user."""
         member = self.get_member("_performed")
         if member is None:
             return None
@@ -475,7 +475,7 @@ class UpdateTransform(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def description(self) -> primitives.String | None:
-        """The _description field value."""
+        """The description of this move action."""
         member = self.get_member("_description")
         if member is None:
             return None

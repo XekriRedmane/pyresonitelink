@@ -1,0 +1,11 @@
+{
+  "description": "The AvatarDestroyOnDequip component destroys ``DestroyRoot`` when the avatar it's in the hierarchy of is unequipped, or the slot the component is attached to if ``DestroyRoot`` is null.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "DestroyRoot": "The slot to destroy when the avatar this component is a part of is dequipped, or null to destroy the slot this component is attached to."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarDestroyOnDequip&action=raw"
+}

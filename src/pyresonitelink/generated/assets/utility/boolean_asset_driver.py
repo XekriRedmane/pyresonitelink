@@ -15,9 +15,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BooleanAssetDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BooleanAssetDriver<>.
+    """This component is functionally identical to Boolean Reference Driver. Except it only accepts IAssets and acts as a user for assets in ``FalseTarget`` and ``TrueTarget`` meaning assets assigned to this component won't get cleaned up by the asset optimizer world processes.
 
     Category: Assets/Utility
+
+    Attach this component to a slot, and (optionally) put an asset into the
+    False and/or True target fields. Then, put a field which you want to
+    change the asset of into ``Target``. now, switching ``State`` will allow
+    switching between the values of ``FalseTarget`` and ``TrueTarget``.
 
     Parameterize with a value type::
 
@@ -50,7 +55,7 @@ class BooleanAssetDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def state(self) -> primitives.Bool | None:
-        """The State field value."""
+        """Whether to drive ``Target`` to ``TrueTarget`` or ``FalseTarget``"""
         member = self.get_member("State")
         if member is None:
             return None
@@ -69,7 +74,7 @@ class BooleanAssetDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets AssetRef[A])."""
+        """The field to drive the value of."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -90,7 +95,7 @@ class BooleanAssetDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def false_target(self) -> str | None:
-        """Target ID of the FalseTarget reference (targets IAssetProvider[A])."""
+        """The asset to drive ``Target`` to when ``State`` is false."""
         member = self.get_member("FalseTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -111,7 +116,7 @@ class BooleanAssetDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def true_target(self) -> str | None:
-        """Target ID of the TrueTarget reference (targets IAssetProvider[A])."""
+        """The asset to drive ``Target`` to when ``State`` is true."""
         member = self.get_member("TrueTarget")
         if isinstance(member, members.Reference):
             return member.targetId

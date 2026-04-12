@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ClearFocus(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Clear Focus node clears the current IFocusable UI from the user.
+    """The ``Clear Focus`` node clears the current IFocusable UI from the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/UI
     """
@@ -33,7 +33,7 @@ class ClearFocus(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after the focus has cleared."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId

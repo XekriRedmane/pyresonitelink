@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectToPositionSize(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Rect To Position Size node takes in a rect value and returns 2 specific float2 values giving a position of the rect's X and Y position, and giving the size of the rect with the literal Width and Height. In contrast to the Rect To Min Max node where it adds the position and size to get a rect's bounding data.
+    """The Rect To Position Size node takes in a rect value and returns 2 specific float2 values giving a position of the rect's ``X`` and ``Y`` position, and giving the size of the rect with the literal ``Width`` and ``Height``. In contrast to the Rect To Min Max node where it adds the position and size to get a rect's bounding data.
+
+If you need to split a rect into specific and separated outputs, use the Rect To XYWH node instead.|suggestion}}
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Rects
     """
@@ -33,7 +35,7 @@ class RectToPositionSize(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @property
     def rect(self) -> str | None:
-        """Target ID of the Rect reference (targets INodeValueOutput[primitives.Rect])."""
+        """The rect value."""
         member = self.get_member("Rect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -54,7 +56,7 @@ class RectToPositionSize(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @property
     def position(self) -> members.EmptyElement | None:
-        """The Position member."""
+        """Returns the ``X`` and ``Y`` position of this rect."""
         member = self.get_member("Position")
         if isinstance(member, members.EmptyElement):
             return member
@@ -62,12 +64,12 @@ class RectToPositionSize(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @position.setter
     def position(self, value: members.EmptyElement) -> None:
-        """Set the Position member."""
+        """Set Position. Returns the ``X`` and ``Y`` position of this rect."""
         self.set_member("Position", value)
 
     @property
     def size(self) -> members.EmptyElement | None:
-        """The Size member."""
+        """Returns the literal ``Width`` and ``Height`` size of this rect."""
         member = self.get_member("Size")
         if isinstance(member, members.EmptyElement):
             return member
@@ -75,6 +77,6 @@ class RectToPositionSize(GeneratedComponent, IExecutionNode, INode, ICustomInspe
 
     @size.setter
     def size(self, value: members.EmptyElement) -> None:
-        """Set the Size member."""
+        """Set Size. Returns the literal ``Width`` and ``Height`` size of this rect."""
         self.set_member("Size", value)
 

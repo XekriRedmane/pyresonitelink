@@ -3,6 +3,9 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.circle_emitter_alignment import CircleEmitterAlignment
+from pyresonitelink.generated._enums.circle_emitter_direction import CircleEmitterDirection
+from pyresonitelink.generated._enums.direction_transform_mode import DirectionTransformMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.particle_system import ParticleSystem
@@ -10,14 +13,16 @@ from pyresonitelink.generated._types.iparticle_system_emitter import IParticleSy
 
 
 class CircleEmitter(GeneratedComponent, IParticleSystemEmitter):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.CircleEmitter.
+    """Circle emitters are used with Particle Systems to emit new particles into the system from a circle shaped source.
 
     Category: Rendering/Particle System/Emitters
+
+    Used in particle systems to create new particles
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.CircleEmitter"
 
-    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, radius: primitives.Float | None = None, scale: primitives.Float2 | None = None, emit_from_shell: primitives.Bool | None = None, direction: primitives.Float3 | None = None, direction_post_transform: primitives.Float3x3 | None = None, random_direction_weight: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, radius: primitives.Float | None = None, scale: primitives.Float2 | None = None, emit_from_shell: primitives.Bool | None = None, circle_alignment: CircleEmitterAlignment | str | None = None, direction_mode: CircleEmitterDirection | str | None = None, direction: primitives.Float3 | None = None, direction_transform_mode: DirectionTransformMode | str | None = None, direction_post_transform: primitives.Float3x3 | None = None, random_direction_weight: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,7 +34,10 @@ class CircleEmitter(GeneratedComponent, IParticleSystemEmitter):
             radius: Initial value for Radius.
             scale: Initial value for Scale.
             emit_from_shell: Initial value for EmitFromShell.
+            circle_alignment: Initial value for CircleAlignment.
+            direction_mode: Initial value for DirectionMode.
             direction: Initial value for Direction.
+            direction_transform_mode: Initial value for DirectionTransformMode.
             direction_post_transform: Initial value for DirectionPostTransform.
             random_direction_weight: Initial value for RandomDirectionWeight.
             component: Existing Component to wrap.
@@ -51,8 +59,14 @@ class CircleEmitter(GeneratedComponent, IParticleSystemEmitter):
             self.scale = scale
         if emit_from_shell is not None:
             self.emit_from_shell = emit_from_shell
+        if circle_alignment is not None:
+            self.circle_alignment = circle_alignment
+        if direction_mode is not None:
+            self.direction_mode = direction_mode
         if direction is not None:
             self.direction = direction
+        if direction_transform_mode is not None:
+            self.direction_transform_mode = direction_transform_mode
         if direction_post_transform is not None:
             self.direction_post_transform = direction_post_transform
         if random_direction_weight is not None:
@@ -157,7 +171,7 @@ class CircleEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """How big the circle is."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -176,7 +190,7 @@ class CircleEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def scale(self) -> primitives.Float2 | None:
-        """The Scale field value."""
+        """The size of the circle on the x and y separately. used to make elipses."""
         member = self.get_member("Scale")
         if member is None:
             return None
@@ -213,30 +227,44 @@ class CircleEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def circle_alignment(self) -> members.FieldEnum | None:
-        """The CircleAlignment member."""
+    def circle_alignment(self) -> CircleEmitterAlignment | None:
+        """How to align the particles via the circle on start."""
         member = self.get_member("CircleAlignment")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CircleEmitterAlignment(member.value)
         return None
 
     @circle_alignment.setter
-    def circle_alignment(self, value: members.FieldEnum) -> None:
-        """Set the CircleAlignment member."""
-        self.set_member("CircleAlignment", value)
+    def circle_alignment(self, value: CircleEmitterAlignment | str) -> None:
+        """Set CircleAlignment. How to align the particles via the circle on start."""
+        member = self.get_member("CircleAlignment")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "CircleAlignment",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def direction_mode(self) -> members.FieldEnum | None:
-        """The DirectionMode member."""
+    def direction_mode(self) -> CircleEmitterDirection | None:
+        """How to emit particles from the circle."""
         member = self.get_member("DirectionMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CircleEmitterDirection(member.value)
         return None
 
     @direction_mode.setter
-    def direction_mode(self, value: members.FieldEnum) -> None:
-        """Set the DirectionMode member."""
-        self.set_member("DirectionMode", value)
+    def direction_mode(self, value: CircleEmitterDirection | str) -> None:
+        """Set DirectionMode. How to emit particles from the circle."""
+        member = self.get_member("DirectionMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DirectionMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def direction(self) -> primitives.Float3 | None:
@@ -258,17 +286,24 @@ class CircleEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def direction_transform_mode(self) -> members.FieldEnum | None:
-        """The DirectionTransformMode member."""
+    def direction_transform_mode(self) -> DirectionTransformMode | None:
+        """The DirectionTransformMode enum value."""
         member = self.get_member("DirectionTransformMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return DirectionTransformMode(member.value)
         return None
 
     @direction_transform_mode.setter
-    def direction_transform_mode(self, value: members.FieldEnum) -> None:
-        """Set the DirectionTransformMode member."""
-        self.set_member("DirectionTransformMode", value)
+    def direction_transform_mode(self, value: DirectionTransformMode | str) -> None:
+        """Set the DirectionTransformMode enum value."""
+        member = self.get_member("DirectionTransformMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DirectionTransformMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def direction_post_transform(self) -> primitives.Float3x3 | None:

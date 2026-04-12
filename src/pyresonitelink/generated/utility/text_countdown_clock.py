@@ -11,9 +11,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextCountdownClock(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextCountdownClock.
+    """The TextCountdownClock component is able to make a countdown till a certain value of T (world time) since a session started. This drives a text field to do so.
 
     Category: Utility
+
+    This component creates a Text String in the form of HH:MM:SS as a
+    countdown timer based on the difference in the value of T (world time)
+    and the value of CountdownTime.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextCountdownClock"
@@ -37,7 +41,7 @@ class TextCountdownClock(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def countdown_time(self) -> primitives.Double | None:
-        """The CountdownTime field value."""
+        """The world time we are counting down to (The world time is zero when a session starts)"""
         member = self.get_member("CountdownTime")
         if member is None:
             return None
@@ -56,7 +60,7 @@ class TextCountdownClock(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def allow_negative(self) -> primitives.Bool | None:
-        """The AllowNegative field value."""
+        """Whether negative time can be displayed after the time for the world has been reached. Or to display 0 if false."""
         member = self.get_member("AllowNegative")
         if member is None:
             return None
@@ -75,7 +79,7 @@ class TextCountdownClock(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text_target(self) -> str | None:
-        """Target ID of the TextTarget reference (targets IField[primitives.String])."""
+        """Text String field to drive with the form of HH:MM:SS based on the value in ``CountdownTime``."""
         member = self.get_member("TextTarget")
         if isinstance(member, members.Reference):
             return member.targetId

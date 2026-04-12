@@ -1,0 +1,21 @@
+{
+  "description": "The World Close Screen component is used in the dash and appears when the user asks to close a world. This acts as a conformation. This is also an internally used component.",
+  "category": "Uncategorized",
+  "fields": {
+    "Icon": "The icon for this dialogue screen.",
+    "ActiveColor": "The color when this screen is selected and active.",
+    "Label": "The label of this dash screen.",
+    "ScreenEnabled": "Whether this dash screen is enabled or not.",
+    "BaseResolution": "The resolution this screen renders at.",
+    "_screenRoot": "The root slot of this screen's visual elements.",
+    "_screenCanvas": "The canvas Component used to render this dash screen.",
+    "_modalOverlayManager": "This is the Overlay manager that handles editing mode on this screen.",
+    "_button": "This is the button to switch to viewing this screen.",
+    "_iconTexture": "This is the texture Component showing the icon for the tab of this screen.",
+    "_closeDialog": "The close dialog this is controlling."
+  },
+  "methods": {},
+  "usage": "Not used by the user, is an internally used component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldCloseScreen&action=raw"
+}

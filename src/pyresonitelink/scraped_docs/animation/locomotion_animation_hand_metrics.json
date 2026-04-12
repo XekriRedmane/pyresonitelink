@@ -1,0 +1,17 @@
+{
+  "description": "The LocomotionAnimationHandMetrics component can be used to adjust the settings on the hands for an avatar for its rest state.",
+  "category": "Users:Common Avatar System:Animation",
+  "fields": {
+    "Space": "What transform space the metric values are in for this component.",
+    "ShoulderSeparation": "An optional value to specify how apart the shoulders are in local space meters.",
+    "ShoulderHeight": "An optional value to specify how far the shoulders are from the ground in local space meters.",
+    "ShoulderOffset": "The offset of the shoulders forwards or backwards in meters.",
+    "HandOffset": "An optional value to specify how far the hands should be offseted from the avatar center in local space meters.",
+    "ArmLength": "An optional value to specify how long the arms are in local space meters.",
+    "HandPalmDistance": "An optional value to specify how long the palms are in local space meters."
+  },
+  "methods": {},
+  "usage": "Can be used to adjust the arms rest state so they don't collide with the legs or hips too much.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocomotionAnimationHandMetrics&action=raw"
+}

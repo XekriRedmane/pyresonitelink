@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TubeSpiralMeshMonoAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TubeSpiralMeshMonoAdapter.
+    """The Tube Spiral Mesh Mono Adapter component takes the incoming value from ``Value``, and if it's less than .001 or null it drive ``Target`` to .001, else what ``Value`` contains.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TubeSpiralMeshMonoAdapter"
@@ -33,7 +33,7 @@ class TubeSpiralMeshMonoAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[Nullable[primitives.Float]])."""
+        """The value to drive with ``Value`` converted."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -54,7 +54,7 @@ class TubeSpiralMeshMonoAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def value(self) -> primitives.Float | None:
-        """The Value field value."""
+        """The value to convert."""
         member = self.get_member("Value")
         if member is None:
             return None

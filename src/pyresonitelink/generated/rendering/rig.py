@@ -8,7 +8,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Rig(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Rig.
+    """The Rig component is used to inform what bones are "Rig" bones for components like Dynamic Bone Chains.
 
     Category: Rendering
     """
@@ -17,7 +17,7 @@ class Rig(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver)
 
     @property
     def bones(self) -> members.SyncList | None:
-        """The Bones member."""
+        """The bones that are a part of the item this component is on."""
         member = self.get_member("Bones")
         if isinstance(member, members.SyncList):
             return member
@@ -25,6 +25,6 @@ class Rig(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver)
 
     @bones.setter
     def bones(self, value: members.SyncList) -> None:
-        """Set the Bones member."""
+        """Set Bones. The bones that are a part of the item this component is on."""
         self.set_member("Bones", value)
 

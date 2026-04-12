@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReflectionProbeMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReflectionProbeMetadata.
+    """The Reflection Probe Metadata component provides raw data about a reflection probe, which can often be seen at the bottom of the source component. this exposes them as actual values.
 
     Category: Rendering/Metadata
     """
@@ -34,7 +34,7 @@ class ReflectionProbeMetadata(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def probe(self) -> str | None:
-        """Target ID of the Probe reference (targets ReflectionProbe)."""
+        """The probe to read data from."""
         member = self.get_member("Probe")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +55,7 @@ class ReflectionProbeMetadata(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def on_changes_render_count(self) -> primitives.Int | None:
-        """The OnChangesRenderCount field value."""
+        """The amount of times the probe has had to re-render the enviroment due to changes from it's internal OnChanges list changing."""
         member = self.get_member("OnChangesRenderCount")
         if member is None:
             return None

@@ -4,31 +4,40 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.audio_frame_size import AudioFrameSize
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class AudioPerformanceSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioPerformanceSettings.
+    """The Audio Performance Settings component is part of the Settings that control audio buffers.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioPerformanceSettings"
 
-    def __init__(self, max_voices: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, max_voices: primitives.Int | None = None, output_buffer_size: AudioFrameSize | str | None = None, simulation_frame_size: AudioFrameSize | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             max_voices: Initial value for MaxVoices.
+            output_buffer_size: Initial value for OutputBufferSize.
+            simulation_frame_size: Initial value for SimulationFrameSize.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if max_voices is not None:
             self.max_voices = max_voices
+        if output_buffer_size is not None:
+            self.output_buffer_size = output_buffer_size
+        if simulation_frame_size is not None:
+            self.simulation_frame_size = simulation_frame_size
 
     @property
     def max_voices(self) -> primitives.Int | None:
-        """The MaxVoices field value."""
+        """The maximum voices the user is allowed to hear."""
         member = self.get_member("MaxVoices")
         if member is None:
             return None
@@ -46,30 +55,44 @@ class AudioPerformanceSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def output_buffer_size(self) -> members.FieldEnum | None:
-        """The OutputBufferSize member."""
+    def output_buffer_size(self) -> AudioFrameSize | None:
+        """The output buffer size in samples."""
         member = self.get_member("OutputBufferSize")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AudioFrameSize(member.value)
         return None
 
     @output_buffer_size.setter
-    def output_buffer_size(self, value: members.FieldEnum) -> None:
-        """Set the OutputBufferSize member."""
-        self.set_member("OutputBufferSize", value)
+    def output_buffer_size(self, value: AudioFrameSize | str) -> None:
+        """Set OutputBufferSize. The output buffer size in samples."""
+        member = self.get_member("OutputBufferSize")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OutputBufferSize",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def simulation_frame_size(self) -> members.FieldEnum | None:
-        """The SimulationFrameSize member."""
+    def simulation_frame_size(self) -> AudioFrameSize | None:
+        """The simulation buffer size in samples."""
         member = self.get_member("SimulationFrameSize")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AudioFrameSize(member.value)
         return None
 
     @simulation_frame_size.setter
-    def simulation_frame_size(self, value: members.FieldEnum) -> None:
-        """Set the SimulationFrameSize member."""
-        self.set_member("SimulationFrameSize", value)
+    def simulation_frame_size(self, value: AudioFrameSize | str) -> None:
+        """Set SimulationFrameSize. The simulation buffer size in samples."""
+        member = self.get_member("SimulationFrameSize")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SimulationFrameSize",
+                members.FieldEnum(value=str(value)),
+            )
 
     async def reset_to_default(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
         """Call the ResetToDefault sync method.

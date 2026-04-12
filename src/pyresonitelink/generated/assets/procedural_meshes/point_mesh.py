@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,25 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PointMesh.
+    """Point mesh makes geometry data of a cloud of points that have UVs, scales, colors, and more. These points can be displayed via a Mesh Renderer using a Unlit Material with at least it's ``UseBillboardGeometry`` field set to true.
 
     Category: Assets/Procedural Meshes
+
+    Not usually usable by the user without Mods, as most fields depend on
+    arrays.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PointMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, sort: primitives.Bool | None = None, sort_point: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, colors_profile: ColorProfile | str | None = None, sort: primitives.Bool | None = None, sort_point: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
+            colors_profile: Initial value for ColorsProfile.
             sort: Initial value for Sort.
             sort_point: Initial value for SortPoint.
             component: Existing Component to wrap.
@@ -37,6 +43,10 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
+        if colors_profile is not None:
+            self.colors_profile = colors_profile
         if sort is not None:
             self.sort = sort
         if sort_point is not None:
@@ -100,17 +110,24 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def points(self) -> list[primitives.Float3] | None:
@@ -189,17 +206,24 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
             )
 
     @property
-    def colors_profile(self) -> members.FieldEnum | None:
-        """The ColorsProfile member."""
+    def colors_profile(self) -> ColorProfile | None:
+        """The color profile of each vertex point."""
         member = self.get_member("ColorsProfile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @colors_profile.setter
-    def colors_profile(self, value: members.FieldEnum) -> None:
-        """Set the ColorsProfile member."""
-        self.set_member("ColorsProfile", value)
+    def colors_profile(self, value: ColorProfile | str) -> None:
+        """Set ColorsProfile. The color profile of each vertex point."""
+        member = self.get_member("ColorsProfile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ColorsProfile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def uvs(self) -> list[primitives.Float4] | None:
@@ -222,7 +246,7 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def sort(self) -> primitives.Bool | None:
-        """The Sort field value."""
+        """Enable sorting the mesh vertex indices by distance from ``SortPoint``."""
         member = self.get_member("Sort")
         if member is None:
             return None
@@ -241,7 +265,7 @@ class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEven
 
     @property
     def sort_point(self) -> primitives.Float3 | None:
-        """The SortPoint field value."""
+        """The point to sort by distance from."""
         member = self.get_member("SortPoint")
         if member is None:
             return None

@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,26 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.IcoSphereMesh.
+    """The IcoSphereMesh component procedurally generates a icosahedron mesh for use with a MeshRenderer, according to the parameters provided. 
+
+As of Version 2020.10.25.1103, this value is clamped in the range [0,8] to prevent accidentally creating a mesh with an excessive number of vertices.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot and insert into a MeshRenderer to view the geometry.
+    Don't forget to use a Material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.IcoSphereMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: primitives.Float | None = None, subdivisions: primitives.Int | None = None, flat_shading: primitives.Bool | None = None, flat_face_extrude: primitives.Float | None = None, flat_face_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, radius: primitives.Float | None = None, subdivisions: primitives.Int | None = None, flat_shading: primitives.Bool | None = None, flat_face_extrude: primitives.Float | None = None, flat_face_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             radius: Initial value for Radius.
             subdivisions: Initial value for Subdivisions.
             flat_shading: Initial value for FlatShading.
@@ -40,6 +47,8 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if radius is not None:
             self.radius = radius
         if subdivisions is not None:
@@ -109,21 +118,28 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """Radius of the IcoSphere"""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -142,7 +158,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     @property
     def subdivisions(self) -> primitives.Int | None:
-        """The Subdivisions field value."""
+        """Number of IcoSphere subdivisions — Values are clamped in the range [0,8]"""
         member = self.get_member("Subdivisions")
         if member is None:
             return None
@@ -161,7 +177,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     @property
     def flat_shading(self) -> primitives.Bool | None:
-        """The FlatShading field value."""
+        """Use flat/faceted shading instead of smooth shading."""
         member = self.get_member("FlatShading")
         if member is None:
             return None
@@ -180,7 +196,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     @property
     def flat_face_extrude(self) -> primitives.Float | None:
-        """The FlatFaceExtrude field value."""
+        """Distance to extrude faces after being generated. Creates an "Exploded" appearance"""
         member = self.get_member("FlatFaceExtrude")
         if member is None:
             return None
@@ -199,7 +215,7 @@ class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     @property
     def flat_face_scale(self) -> primitives.Float | None:
-        """The FlatFaceScale field value."""
+        """Scale of individual faces, relative to their base size."""
         member = self.get_member("FlatFaceScale")
         if member is None:
             return None

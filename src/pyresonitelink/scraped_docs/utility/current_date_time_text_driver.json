@@ -1,0 +1,14 @@
+{
+  "description": "The CurrentDateTimeTextDriver component takes the current time and formats it using C# DateTime to string using format as an argument.",
+  "category": "Utility",
+  "fields": {
+    "Target": "What to drive the contents to be the current time formatted.",
+    "Pattern": "The pattern to use when rendering the date time, EX: 24 vs 12 hr.",
+    "UseUTC": "Whether the current time outputted should be UTC time zone.",
+    "OverrideFormat": "How to format the outputted current time."
+  },
+  "methods": {},
+  "usage": "See the .NET Standard date and time format strings for DateTimePattern values:",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CurrentDateTimeTextDriver&action=raw"
+}

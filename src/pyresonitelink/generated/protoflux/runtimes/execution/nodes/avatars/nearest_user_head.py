@@ -43,7 +43,7 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets INodeObjectOutput[Slot])."""
+        """The slot which to use as a point to find the closest head to."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @property
     def ignore_user(self) -> str | None:
-        """Target ID of the IgnoreUser reference (targets INodeObjectOutput[User])."""
+        """The user to ignore when looking for the nearest head."""
         member = self.get_member("IgnoreUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @property
     def ignore_afk(self) -> str | None:
-        """Target ID of the IgnoreAFK reference (targets INodeValueOutput[primitives.Bool])."""
+        """Will not return a head position from a user that is not currently focused into the world."""
         member = self.get_member("IgnoreAFK")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +106,7 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @property
     def slot(self) -> members.EmptyElement | None:
-        """The Slot member."""
+        """The slot of the head when found."""
         member = self.get_member("Slot")
         if isinstance(member, members.EmptyElement):
             return member
@@ -114,12 +114,12 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @slot.setter
     def slot(self, value: members.EmptyElement) -> None:
-        """Set the Slot member."""
+        """Set Slot. The slot of the head when found."""
         self.set_member("Slot", value)
 
     @property
     def user(self) -> members.EmptyElement | None:
-        """The User member."""
+        """The user of the head that was found."""
         member = self.get_member("User")
         if isinstance(member, members.EmptyElement):
             return member
@@ -127,12 +127,12 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @user.setter
     def user(self, value: members.EmptyElement) -> None:
-        """Set the User member."""
+        """Set User. The user of the head that was found."""
         self.set_member("User", value)
 
     @property
     def distance(self) -> members.EmptyElement | None:
-        """The Distance member."""
+        """How far away the found head was."""
         member = self.get_member("Distance")
         if isinstance(member, members.EmptyElement):
             return member
@@ -140,6 +140,6 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @distance.setter
     def distance(self, value: members.EmptyElement) -> None:
-        """Set the Distance member."""
+        """Set Distance. How far away the found head was."""
         self.set_member("Distance", value)
 

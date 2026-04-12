@@ -1,0 +1,14 @@
+{
+  "description": "Simulates pressing or holding onto the shift key on a normal physical keyboard.",
+  "category": "Userspace:Virtual Keyboard",
+  "fields": {
+    "Keyboard": "The keyboard which the keys should be set or unset from the holding shift state.",
+    "HoldPressInterval": "what value ``_lastPress`` has to be below when the button is pressed again to enable ``AlwaysHold`` field.",
+    "AlwaysHold": "Whether the user has double clicked shift and enabled a constant hold shift state.",
+    "_lastPress": "Internal, how many seconds has passed since this button was last pressed. is used to handle enabling/disabling ``AlwaysHold`` field."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VirtualShift&action=raw"
+}

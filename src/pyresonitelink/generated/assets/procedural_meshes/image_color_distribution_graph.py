@@ -4,6 +4,8 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.space import Space
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,21 +15,27 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ImageColorDistributionGraph.
+    """The ImageColorDistributionGraph component is used to make mesh data for a set of points with colors and sizes based on a provided image's pixels. The mesh needs to be used with Billboard geometry to be viewed properly.
 
     Category: Assets/Procedural Meshes
+
+    Attach this component to a slot, and place it into a Mesh Renderer
+    Component with an Unlit Material set to use billboard geometry to view
+    the mesh and its graph points.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ImageColorDistributionGraph"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, texture: str | IAssetProvider[Texture2D] | None = None, max_texture_size: primitives.Int | None = None, base_size: primitives.Float | None = None, accumulate_size: primitives.Float | None = None, max_size: primitives.Float | None = None, scale: primitives.Float3 | None = None, alpha_threshold: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, texture: str | IAssetProvider[Texture2D] | None = None, color_space: Space | str | None = None, max_texture_size: primitives.Int | None = None, base_size: primitives.Float | None = None, accumulate_size: primitives.Float | None = None, max_size: primitives.Float | None = None, scale: primitives.Float3 | None = None, alpha_threshold: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             texture: Initial value for Texture.
+            color_space: Initial value for ColorSpace.
             max_texture_size: Initial value for MaxTextureSize.
             base_size: Initial value for BaseSize.
             accumulate_size: Initial value for AccumulateSize.
@@ -43,8 +51,12 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if texture is not None:
             self.texture = texture
+        if color_space is not None:
+            self.color_space = color_space
         if max_texture_size is not None:
             self.max_texture_size = max_texture_size
         if base_size is not None:
@@ -116,21 +128,28 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[Texture2D])."""
+        """The texture to analyze and use to generate the vertex graph for this mesh."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -150,21 +169,28 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
             )
 
     @property
-    def color_space(self) -> members.FieldEnum | None:
-        """The ColorSpace member."""
+    def color_space(self) -> Space | None:
+        """The color space to use for X, Y, and Z coordinates on the graph for."""
         member = self.get_member("ColorSpace")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Space(member.value)
         return None
 
     @color_space.setter
-    def color_space(self, value: members.FieldEnum) -> None:
-        """Set the ColorSpace member."""
-        self.set_member("ColorSpace", value)
+    def color_space(self, value: Space | str) -> None:
+        """Set ColorSpace. The color space to use for X, Y, and Z coordinates on the graph for."""
+        member = self.get_member("ColorSpace")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ColorSpace",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def max_texture_size(self) -> primitives.Int | None:
-        """The MaxTextureSize field value."""
+        """The max size of the image on one axis that this image will use when making the graph. The image gets resized internally to fit this size."""
         member = self.get_member("MaxTextureSize")
         if member is None:
             return None
@@ -183,7 +209,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
 
     @property
     def base_size(self) -> primitives.Float | None:
-        """The BaseSize field value."""
+        """The size of any color point on the graph at minimum."""
         member = self.get_member("BaseSize")
         if member is None:
             return None
@@ -202,7 +228,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
 
     @property
     def accumulate_size(self) -> primitives.Float | None:
-        """The AccumulateSize field value."""
+        """How much to add to the size of a graph point if a color is repeated with the same RGB values."""
         member = self.get_member("AccumulateSize")
         if member is None:
             return None
@@ -221,7 +247,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
 
     @property
     def max_size(self) -> primitives.Float | None:
-        """The MaxSize field value."""
+        """The maximum size a color point on the graph can be."""
         member = self.get_member("MaxSize")
         if member is None:
             return None
@@ -240,7 +266,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
 
     @property
     def scale(self) -> primitives.Float3 | None:
-        """The Scale field value."""
+        """How much to scale the graph up or down."""
         member = self.get_member("Scale")
         if member is None:
             return None
@@ -259,7 +285,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
 
     @property
     def alpha_threshold(self) -> primitives.Float | None:
-        """The AlphaThreshold field value."""
+        """if alpha is below this threshold, then don't add the color to the graph."""
         member = self.get_member("AlphaThreshold")
         if member is None:
             return None

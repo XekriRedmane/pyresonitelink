@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.sun_type import SunType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.light import Light
@@ -11,15 +12,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProceduralSky.
+    """The ProceduralSky texture is used to dynamically create a skybox using a sun rotation and intensity including sun color.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProceduralSky"
 
-    def __init__(self, sun_size: primitives.Float | None = None, sun: str | Light | None = None, atmosphere_thickness: primitives.Float | None = None, sky_tint: primitives.ColorX | None = None, ground_color: primitives.ColorX | None = None, exposure: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, sun_quality: SunType | str | None = None, sun_size: primitives.Float | None = None, sun: str | Light | None = None, atmosphere_thickness: primitives.Float | None = None, sky_tint: primitives.ColorX | None = None, ground_color: primitives.ColorX | None = None, exposure: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            sun_quality: Initial value for SunQuality.
             sun_size: Initial value for SunSize.
             sun: Initial value for Sun.
             atmosphere_thickness: Initial value for AtmosphereThickness.
@@ -29,6 +31,8 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if sun_quality is not None:
+            self.sun_quality = sun_quality
         if sun_size is not None:
             self.sun_size = sun_size
         if sun is not None:
@@ -43,21 +47,28 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.exposure = exposure
 
     @property
-    def sun_quality(self) -> members.FieldEnum | None:
-        """The SunQuality member."""
+    def sun_quality(self) -> SunType | None:
+        """The quality preset of the sun in the sky."""
         member = self.get_member("SunQuality")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SunType(member.value)
         return None
 
     @sun_quality.setter
-    def sun_quality(self, value: members.FieldEnum) -> None:
-        """Set the SunQuality member."""
-        self.set_member("SunQuality", value)
+    def sun_quality(self, value: SunType | str) -> None:
+        """Set SunQuality. The quality preset of the sun in the sky."""
+        member = self.get_member("SunQuality")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SunQuality",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def sun_size(self) -> primitives.Float | None:
-        """The SunSize field value."""
+        """size of the sun in the sky"""
         member = self.get_member("SunSize")
         if member is None:
             return None
@@ -76,7 +87,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sun(self) -> str | None:
-        """Target ID of the Sun reference (targets Light)."""
+        """The light to use for rotation, intensity, and color of the sun on this material."""
         member = self.get_member("Sun")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -97,7 +108,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def atmosphere_thickness(self) -> primitives.Float | None:
-        """The AtmosphereThickness field value."""
+        """How much the atmosphere will light up the scene. If this is low, the ``SkyTint`` color coming up from the lower region of the world won't make it up to the top of the world as well, and will gradient into black. good for thin atmosphere planets, or 0 for no atmosphere."""
         member = self.get_member("AtmosphereThickness")
         if member is None:
             return None
@@ -116,7 +127,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sky_tint(self) -> primitives.ColorX | None:
-        """The SkyTint field value."""
+        """The tint of the atmosphere of the world."""
         member = self.get_member("SkyTint")
         if member is None:
             return None
@@ -135,7 +146,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ground_color(self) -> primitives.ColorX | None:
-        """The GroundColor field value."""
+        """The tint of the sky below the horizon line."""
         member = self.get_member("GroundColor")
         if member is None:
             return None
@@ -154,7 +165,7 @@ class ProceduralSky(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def exposure(self) -> primitives.Float | None:
-        """The Exposure field value."""
+        """How much to light up or darken the sky color overall."""
         member = self.get_member("Exposure")
         if member is None:
             return None

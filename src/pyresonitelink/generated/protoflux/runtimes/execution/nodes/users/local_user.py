@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalUser(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Local User node gets the local user in this world's session. This will return you as the user.
+    """The ``Local User`` node gets the local user in this world's session. This will return you as the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users
     """

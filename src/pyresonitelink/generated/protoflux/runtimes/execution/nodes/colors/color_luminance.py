@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorLuminance(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Color Luminance calculates the relative luminance of an input color. For correct result, the input must be in the Linear color profile, which may be a bug
+    """Color Luminance calculates the relative luminance of an input color. For correct result, the input must be in the Linear color profile, which may be a bug.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """
@@ -33,7 +33,7 @@ class ColorLuminance(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def color(self) -> str | None:
-        """Target ID of the Color reference (targets INodeValueOutput[primitives.Color])."""
+        """The color to calculate the relative luminance of."""
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             return member.targetId

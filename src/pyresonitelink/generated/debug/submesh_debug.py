@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SubmeshDebug.
+    """The Submesh Debug component generates a bunch of triangles, each having an offset of ``Offset`` in the Y axis from the previous generated triangle up to ``SubmeshCount`` each being a new submesh. Used for debugging and testing.
 
     Category: Debug
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SubmeshDebug"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, offset: primitives.Float | None = None, submesh_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, offset: primitives.Float | None = None, submesh_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             offset: Initial value for Offset.
             submesh_count: Initial value for SubmeshCount.
             component: Existing Component to wrap.
@@ -37,6 +39,8 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if offset is not None:
             self.offset = offset
         if submesh_count is not None:
@@ -100,21 +104,28 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def offset(self) -> primitives.Float | None:
-        """The Offset field value."""
+        """How much to space all the generated triangles."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -133,7 +144,7 @@ class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def submesh_count(self) -> primitives.Int | None:
-        """The SubmeshCount field value."""
+        """How many submesh triangles to generate."""
         member = self.get_member("SubmeshCount")
         if member is None:
             return None

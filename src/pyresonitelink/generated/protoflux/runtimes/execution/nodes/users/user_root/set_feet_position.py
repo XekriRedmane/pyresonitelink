@@ -43,7 +43,7 @@ class SetFeetPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues flow execution from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class SetFeetPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def user_root(self) -> str | None:
-        """Target ID of the UserRoot reference (targets INodeObjectOutput[UserRoot])."""
+        """The user's user root."""
         member = self.get_member("UserRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class SetFeetPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def position(self) -> str | None:
-        """Target ID of the Position reference (targets INodeValueOutput[primitives.Float3])."""
+        """The position to set for the feet."""
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             return member.targetId

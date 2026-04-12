@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SessionPermissionController(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SessionPermissionController.
+    """The SessionPermissionController component is used to change the roles or view the roles of a specific user in the current session.
+
+    Not to be used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SessionPermissionController"
@@ -27,7 +29,7 @@ class SessionPermissionController(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def name(self) -> str | None:
-        """Target ID of the _name reference (targets Text)."""
+        """The text element showing the name of the user this belongs to."""
         member = self.get_member("_name")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -48,7 +50,7 @@ class SessionPermissionController(GeneratedComponent, IComponent, IWorldEventRec
 
     @property
     def roles_buttons(self) -> members.SyncList | None:
-        """The _rolesButtons member."""
+        """A list of button elements used to assign the user this belongs to to a role."""
         member = self.get_member("_rolesButtons")
         if isinstance(member, members.SyncList):
             return member
@@ -56,6 +58,6 @@ class SessionPermissionController(GeneratedComponent, IComponent, IWorldEventRec
 
     @roles_buttons.setter
     def roles_buttons(self, value: members.SyncList) -> None:
-        """Set the _rolesButtons member."""
+        """Set _rolesButtons. A list of button elements used to assign the user this belongs to to a role."""
         self.set_member("_rolesButtons", value)
 

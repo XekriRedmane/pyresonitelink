@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.texture_sheet_animation_type import TextureSheetAnimationType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -10,19 +11,25 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.TextureSheetAnimator.
+    """The TextureSheetAnimator component makes particles animate their texture over lifetime or duration.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.TextureSheetAnimator"
 
-    def __init__(self, tile_grid_size: primitives.Int2 | None = None, animation_cycle_count: primitives.Float | None = None, row_index: primitives.Int | None = None, use_random_row: primitives.Bool | None = None, start_with_random_offset: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tile_grid_size: primitives.Int2 | None = None, animation_cycle_count: primitives.Float | None = None, animation_type: TextureSheetAnimationType | str | None = None, row_index: primitives.Int | None = None, use_random_row: primitives.Bool | None = None, start_with_random_offset: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             tile_grid_size: Initial value for TileGridSize.
             animation_cycle_count: Initial value for AnimationCycleCount.
+            animation_type: Initial value for AnimationType.
             row_index: Initial value for RowIndex.
             use_random_row: Initial value for UseRandomRow.
             start_with_random_offset: Initial value for StartWithRandomOffset.
@@ -33,6 +40,8 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
             self.tile_grid_size = tile_grid_size
         if animation_cycle_count is not None:
             self.animation_cycle_count = animation_cycle_count
+        if animation_type is not None:
+            self.animation_type = animation_type
         if row_index is not None:
             self.row_index = row_index
         if use_random_row is not None:
@@ -42,7 +51,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     @property
     def tile_grid_size(self) -> primitives.Int2 | None:
-        """The TileGridSize field value."""
+        """The amount of cells and rows that the texture atlas sheet has."""
         member = self.get_member("TileGridSize")
         if member is None:
             return None
@@ -61,7 +70,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     @property
     def animation_cycle_count(self) -> primitives.Float | None:
-        """The AnimationCycleCount field value."""
+        """How many times to cycle the animation during the specified time frame."""
         member = self.get_member("AnimationCycleCount")
         if member is None:
             return None
@@ -79,21 +88,28 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
             )
 
     @property
-    def animation_type(self) -> members.FieldEnum | None:
-        """The AnimationType member."""
+    def animation_type(self) -> TextureSheetAnimationType | None:
+        """The animation type to use for the texture sheet animation."""
         member = self.get_member("AnimationType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureSheetAnimationType(member.value)
         return None
 
     @animation_type.setter
-    def animation_type(self, value: members.FieldEnum) -> None:
-        """Set the AnimationType member."""
-        self.set_member("AnimationType", value)
+    def animation_type(self, value: TextureSheetAnimationType | str) -> None:
+        """Set AnimationType. The animation type to use for the texture sheet animation."""
+        member = self.get_member("AnimationType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AnimationType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def row_index(self) -> primitives.Int | None:
-        """The RowIndex field value."""
+        """The row index to start on."""
         member = self.get_member("RowIndex")
         if member is None:
             return None
@@ -112,7 +128,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     @property
     def use_random_row(self) -> primitives.Bool | None:
-        """The UseRandomRow field value."""
+        """Whether to start the texture sheet animation in a random row."""
         member = self.get_member("UseRandomRow")
         if member is None:
             return None
@@ -131,7 +147,7 @@ class TextureSheetAnimator(GeneratedComponent, IParticleSystemModule, IWorldEven
 
     @property
     def start_with_random_offset(self) -> primitives.Bool | None:
-        """The StartWithRandomOffset field value."""
+        """Start the texture sheet animation in a random column."""
         member = self.get_member("StartWithRandomOffset")
         if member is None:
             return None

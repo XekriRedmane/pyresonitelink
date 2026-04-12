@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScaleGroup(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ScaleGroup.
+    """The ScaleGroup component is used to make a touchable selection system that can be used to select items like the Steamtm store and big picture menus.
 
     Category: Transform/Interaction
+
+    Used with a Scale Element list to make a list of selectable elements.
+    Using ProtoFlux to get the slot of the ``SelectedElement`` can make this
+    useful for a physical based selection system usable in both VR and
+    Desktop.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaleGroup"
@@ -43,7 +48,7 @@ class ScaleGroup(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def selected_element(self) -> str | None:
-        """Target ID of the SelectedElement reference (targets ScaleElement)."""
+        """The currently selected element for this group."""
         member = self.get_member("SelectedElement")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +69,7 @@ class ScaleGroup(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def idle_scale(self) -> primitives.Float3 | None:
-        """The IdleScale field value."""
+        """The scale of elements when they aren't selected."""
         member = self.get_member("IdleScale")
         if member is None:
             return None
@@ -83,7 +88,7 @@ class ScaleGroup(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def background_scale(self) -> primitives.Float3 | None:
-        """The BackgroundScale field value."""
+        """The scale of elements when they go into the background."""
         member = self.get_member("BackgroundScale")
         if member is None:
             return None
@@ -102,7 +107,7 @@ class ScaleGroup(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def selected_scale(self) -> primitives.Float3 | None:
-        """The SelectedScale field value."""
+        """The scale of any element when it is selected."""
         member = self.get_member("SelectedScale")
         if member is None:
             return None
@@ -121,7 +126,7 @@ class ScaleGroup(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def smooth_speed(self) -> primitives.Float | None:
-        """The SmoothSpeed field value."""
+        """The speed at which elements change scale when they change state."""
         member = self.get_member("SmoothSpeed")
         if member is None:
             return None

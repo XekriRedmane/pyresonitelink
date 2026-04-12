@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserAudioStream(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserAudioStream<>.
+    """The UserAudioStream component writes Audio from a user Audio device to a specified stream. The audio device used is set internally and such methods are not accessible to the user.
 
     Category: Users
 
@@ -43,7 +43,7 @@ class UserAudioStream(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def stream(self) -> str | None:
-        """Target ID of the Stream reference (targets AudioStream[S])."""
+        """The stream to write audio to."""
         member = self.get_member("Stream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class UserAudioStream(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def use_filtered_data(self) -> primitives.Bool | None:
-        """The UseFilteredData field value."""
+        """Whether to filter the audio data being written to ``Stream`` from the user."""
         member = self.get_member("UseFilteredData")
         if member is None:
             return None

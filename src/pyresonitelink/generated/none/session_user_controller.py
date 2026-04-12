@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SessionUserController(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SessionUserController.
+    """The SessionUserController component is used to control a user in a session granted the local user has the proper permissions.
+
+    Not to be used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SessionUserController"
@@ -51,7 +53,7 @@ class SessionUserController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def name(self) -> str | None:
-        """Target ID of the _name reference (targets Text)."""
+        """The name of the target user."""
         member = self.get_member("_name")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -72,7 +74,7 @@ class SessionUserController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def slider(self) -> str | None:
-        """Target ID of the _slider reference (targets Slider[primitives.Float])."""
+        """The slider used to change the volume of the target user."""
         member = self.get_member("_slider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -93,7 +95,7 @@ class SessionUserController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def mute(self) -> str | None:
-        """Target ID of the _mute reference (targets Button)."""
+        """The button used to mute the target user."""
         member = self.get_member("_mute")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -114,7 +116,7 @@ class SessionUserController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def jump(self) -> str | None:
-        """Target ID of the _jump reference (targets Button)."""
+        """The button used to jump to the target user."""
         member = self.get_member("_jump")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -135,7 +137,7 @@ class SessionUserController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def respawn(self) -> str | None:
-        """Target ID of the _respawn reference (targets Button)."""
+        """The button used to respawn the target user."""
         member = self.get_member("_respawn")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -156,7 +158,7 @@ class SessionUserController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def silence(self) -> str | None:
-        """Target ID of the _silence reference (targets Button)."""
+        """The button used to silence the target user."""
         member = self.get_member("_silence")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -177,7 +179,7 @@ class SessionUserController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def kick(self) -> str | None:
-        """Target ID of the _kick reference (targets Button)."""
+        """The button used to kick the target user."""
         member = self.get_member("_kick")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -198,7 +200,7 @@ class SessionUserController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def ban(self) -> str | None:
-        """Target ID of the _ban reference (targets Button)."""
+        """The button used to ban the target user."""
         member = self.get_member("_ban")
         if isinstance(member, members.Reference):
             return member.targetId

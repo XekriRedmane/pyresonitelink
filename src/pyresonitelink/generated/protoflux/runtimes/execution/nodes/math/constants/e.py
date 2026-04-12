@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class e(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Called '''Euler's number''', e is approximately equal to 2.71828.
+    """Called Euler's number, e is approximately equal to 2.71828.
+
+It is the base of natural logarithms.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
     """

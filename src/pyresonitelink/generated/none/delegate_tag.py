@@ -7,7 +7,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DelegateTag(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DelegateTag<>.
+    """The Delegate Tag component is used to store a delegate of type T
 
     Parameterize with a value type::
 

@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.TrackingSmoothingSettings.
+    """The TrackingSmoothingSettings component is better explained on the Settings page.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TrackingSmoothingSettings"
@@ -42,7 +42,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def hand_position_smoothing(self) -> primitives.Float | None:
-        """The HandPositionSmoothing field value."""
+        """How much to smooth hand positioning, if not null."""
         member = self.get_member("HandPositionSmoothing")
         if member is None:
             return None
@@ -61,7 +61,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def hand_rotation_smoothing(self) -> primitives.Float | None:
-        """The HandRotationSmoothing field value."""
+        """How much to smooth hand rotation, if not null."""
         member = self.get_member("HandRotationSmoothing")
         if member is None:
             return None
@@ -80,7 +80,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def feet_position_smoothing(self) -> primitives.Float | None:
-        """The FeetPositionSmoothing field value."""
+        """How much to smooth feet positioning, if not null."""
         member = self.get_member("FeetPositionSmoothing")
         if member is None:
             return None
@@ -99,7 +99,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def feet_rotation_smoothing(self) -> primitives.Float | None:
-        """The FeetRotationSmoothing field value."""
+        """How much to smooth feet rotation, if not null."""
         member = self.get_member("FeetRotationSmoothing")
         if member is None:
             return None
@@ -118,7 +118,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def hips_position_smoothing(self) -> primitives.Float | None:
-        """The HipsPositionSmoothing field value."""
+        """How much to smooth hips positioning, if not null."""
         member = self.get_member("HipsPositionSmoothing")
         if member is None:
             return None
@@ -137,7 +137,7 @@ class TrackingSmoothingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def hips_rotation_smoothing(self) -> primitives.Float | None:
-        """The HipsRotationSmoothing field value."""
+        """How much to smooth hips rotation, if not null."""
         member = self.get_member("HipsRotationSmoothing")
         if member is None:
             return None

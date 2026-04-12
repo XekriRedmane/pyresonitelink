@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class LaserSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.LaserSettings.
+    """The LaserSettings component is used in the Settings.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LaserSettings"
@@ -45,7 +47,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def smooth_speed(self) -> primitives.Float | None:
-        """The SmoothSpeed field value."""
+        """Controls how fast the laser responds to your movements. Lower values will make the laser more sluggish, but better at filtering tremors. Higher values will be more responsive, but also transfer more controller shake."""
         member = self.get_member("SmoothSpeed")
         if member is None:
             return None
@@ -64,7 +66,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def modulate_start_angle(self) -> primitives.Float | None:
-        """The ModulateStartAngle field value."""
+        """Angle at which the laser smoothing speed will start modulating to catch up to your movements."""
         member = self.get_member("ModulateStartAngle")
         if member is None:
             return None
@@ -83,7 +85,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def modulate_end_angle(self) -> primitives.Float | None:
-        """The ModulateEndAngle field value."""
+        """Related to the modulate start angle, this indicates when the modulation will reach maximum speed. By changing the start and end angles, you can control how responsive the laser is the more you move your hand."""
         member = self.get_member("ModulateEndAngle")
         if member is None:
             return None
@@ -102,7 +104,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def modulate_exponent(self) -> primitives.Float | None:
-        """The ModulateExponent field value."""
+        """Controls the response curve of the laser modulation between the start and end angles. You can use this to either make the laser respond more sluggishly at first or to start responding quickly and then tapering off."""
         member = self.get_member("ModulateExponent")
         if member is None:
             return None
@@ -121,7 +123,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def modulate_speed_multiplier(self) -> primitives.Float | None:
-        """The ModulateSpeedMultiplier field value."""
+        """The laser smoothing speed will be multiplied by this value once you have reached the modulate end angle. Increasing this value will make the laser catch up quicker once you move your hand far enough. Lowering the value will make it take longer to catch up."""
         member = self.get_member("ModulateSpeedMultiplier")
         if member is None:
             return None
@@ -140,7 +142,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def stick_threshold(self) -> primitives.Float | None:
-        """The StickThreshold field value."""
+        """Controls how much the laser will stick to interactive items. Larger values will make it stick more. Setting this to zero will stop the stickiness completely."""
         member = self.get_member("StickThreshold")
         if member is None:
             return None
@@ -159,7 +161,7 @@ class LaserSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def show_in_desktop(self) -> primitives.Bool | None:
-        """The ShowInDesktop field value."""
+        """When on, the laser visual will be rendered to you fully when in first person view in desktop mode."""
         member = self.get_member("ShowInDesktop")
         if member is None:
             return None

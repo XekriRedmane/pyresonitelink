@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectFromMinMax(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Rect From Min Max node takes in 2 specific float2 values, giving the minimum size of the rect, usually just at the X and Y position, and also needing the max size of this rect, which is usually X + Width and Y + Height. Then this node returns a rect value that has the min and max provided. In contrast to the Rect From Position Size node where it takes the literal position and size to get a rect's bounding data.
+    """The Rect From Min Max node takes in 2 specific float2 values, giving the minimum size of the rect, usually just at the ``X`` and ``Y`` position, and also needing the max size of this rect, which is usually ``X`` + ``Width`` and ``Y`` + ``Height``. Then this node returns a rect value that has the min and max provided. In contrast to the Rect From Position Size node where it takes the literal position and size to get a rect's bounding data.
+
+If you want to make a rect using specific and separated inputs, use the Rect From XYWH node instead.|suggestion}}
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Rects
     """
@@ -36,7 +38,7 @@ class RectFromMinMax(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def min(self) -> str | None:
-        """Target ID of the Min reference (targets INodeValueOutput[primitives.Float2])."""
+        """The minimum size of this rect (usually returning the ``X`` and ``Y`` position of this rect)."""
         member = self.get_member("Min")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +59,7 @@ class RectFromMinMax(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def max(self) -> str | None:
-        """Target ID of the Max reference (targets INodeValueOutput[primitives.Float2])."""
+        """The maximum size of this rect (usually returning the ``X`` + ``Width`` and ``Y`` + ``Height`` of this rect)."""
         member = self.get_member("Max")
         if isinstance(member, members.Reference):
             return member.targetId

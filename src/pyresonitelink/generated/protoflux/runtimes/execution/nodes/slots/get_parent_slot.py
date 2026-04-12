@@ -33,7 +33,7 @@ class GetParentSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot to get the parent of."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId

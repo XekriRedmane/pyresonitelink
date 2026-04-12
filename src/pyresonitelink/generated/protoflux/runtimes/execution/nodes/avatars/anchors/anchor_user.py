@@ -18,6 +18,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class AnchorUser(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Anchor User is a ProtoFlux node that attempts to anchor a user to any anchor, which is provided to the node via the IAvatarAnchor type.
 
+If the anchor succeeds, it doesn't nessarily mean the user has stayed in the anchor, and requires checking Anchored User Node A few updates later.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Anchors
     """
 
@@ -45,7 +47,7 @@ class AnchorUser(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def anchor(self) -> str | None:
-        """Target ID of the Anchor reference (targets INodeObjectOutput[IAvatarAnchor])."""
+        """The anchor to put the provided User (User) into."""
         member = self.get_member("Anchor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +68,7 @@ class AnchorUser(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user to put into the provided Anchor (IAvatarAnchor)."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +89,7 @@ class AnchorUser(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
 
     @property
     def on_anchored(self) -> str | None:
-        """Target ID of the OnAnchored reference (targets INodeOperation)."""
+        """Sends an impulse after * (Call) is called and the user was sucessfully anchored."""
         member = self.get_member("OnAnchored")
         if isinstance(member, members.Reference):
             return member.targetId

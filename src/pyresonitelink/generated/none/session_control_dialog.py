@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.tab import Tab
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,15 +20,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SessionControlDialog.
+    """The SessionControlDialog component is used to edit and view session settings like permissions, roles, and name to list a few.
+
+See Session.
+
+    See Session.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SessionControlDialog"
 
-    def __init__(self, content_root: str | Slot | None = None, world_name: str | TextField | None = None, max_users: str | IntTextEditorParser | None = None, away_kick_enabled: str | Checkbox | None = None, away_kick_minutes: str | FloatTextEditorParser | None = None, autosave_enabled: str | Checkbox | None = None, autosave_minutes: str | FloatTextEditorParser | None = None, autoclean_enabled: str | Checkbox | None = None, autoclean_minutes: str | FloatTextEditorParser | None = None, mobile_friendly: str | Checkbox | None = None, hide_from_listing: str | Checkbox | None = None, description: str | TextField | None = None, world_name_button: str | Button | None = None, description_button: str | Button | None = None, max_users_button: str | Button | None = None, away_kick_enabled_button: str | Button | None = None, away_kick_minutes_button: str | Button | None = None, autosave_enabled_button: str | Button | None = None, autosave_minutes_button: str | Button | None = None, autoclean_enabled_button: str | Button | None = None, autoclean_minutes_button: str | Button | None = None, mobile_friendly_button: str | Button | None = None, hide_from_listing_button: str | Button | None = None, permission_overrides_indicator: str | Text | None = None, permission_overrides_button: str | Button | None = None, get_session_orb: str | Button | None = None, get_world_orb: str | Button | None = None, edit_mode: str | Button | None = None, copy_session_url: str | Button | None = None, copy_world_url: str | Button | None = None, copy_record_url: str | Button | None = None, world_name_sync: str | WorldValueSync[primitives.String] | None = None, description_sync: str | WorldValueSync[primitives.String] | None = None, max_users_sync: str | WorldValueSync[primitives.Int] | None = None, away_kick_enabled_sync: str | WorldValueSync[primitives.Bool] | None = None, away_kick_minutes_sync: str | WorldValueSync[primitives.Float] | None = None, autosave_enabled_sync: str | WorldValueSync[primitives.Bool] | None = None, autosave_minutes_sync: str | WorldValueSync[primitives.Float] | None = None, autoclean_enabled_sync: str | WorldValueSync[primitives.Bool] | None = None, autoclean_seconds_sync: str | WorldValueSync[primitives.Float] | None = None, mobile_friendly_sync: str | WorldValueSync[primitives.Bool] | None = None, hide_from_listing_sync: str | WorldValueSync[primitives.Bool] | None = None, edit_mode_sync: str | WorldValueSync[primitives.Bool] | None = None, access_level_sync: str | WorldValueSync[SessionAccessLevel] | None = None, custom_verifier_label: str | Text | None = None, custom_verifier_checkbox: str | Checkbox | None = None, custom_verifier_button: str | Button | None = None, custom_verifier_sync: str | WorldValueSync[primitives.Bool] | None = None, ui_content_root: str | Slot | None = None, slide_swap: str | SlideSwapRegion | None = None, save_world: str | Button | None = None, save_world_as: str | Button | None = None, save_world_copy: str | Button | None = None, enable_resonite_link: str | Button | None = None, resonite_link_port: str | Text | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, active_tab: Tab | str | None = None, content_root: str | Slot | None = None, world_name: str | TextField | None = None, max_users: str | IntTextEditorParser | None = None, away_kick_enabled: str | Checkbox | None = None, away_kick_minutes: str | FloatTextEditorParser | None = None, autosave_enabled: str | Checkbox | None = None, autosave_minutes: str | FloatTextEditorParser | None = None, autoclean_enabled: str | Checkbox | None = None, autoclean_minutes: str | FloatTextEditorParser | None = None, mobile_friendly: str | Checkbox | None = None, hide_from_listing: str | Checkbox | None = None, description: str | TextField | None = None, world_name_button: str | Button | None = None, description_button: str | Button | None = None, max_users_button: str | Button | None = None, away_kick_enabled_button: str | Button | None = None, away_kick_minutes_button: str | Button | None = None, autosave_enabled_button: str | Button | None = None, autosave_minutes_button: str | Button | None = None, autoclean_enabled_button: str | Button | None = None, autoclean_minutes_button: str | Button | None = None, mobile_friendly_button: str | Button | None = None, hide_from_listing_button: str | Button | None = None, permission_overrides_indicator: str | Text | None = None, permission_overrides_button: str | Button | None = None, get_session_orb: str | Button | None = None, get_world_orb: str | Button | None = None, edit_mode: str | Button | None = None, copy_session_url: str | Button | None = None, copy_world_url: str | Button | None = None, copy_record_url: str | Button | None = None, world_name_sync: str | WorldValueSync[primitives.String] | None = None, description_sync: str | WorldValueSync[primitives.String] | None = None, max_users_sync: str | WorldValueSync[primitives.Int] | None = None, away_kick_enabled_sync: str | WorldValueSync[primitives.Bool] | None = None, away_kick_minutes_sync: str | WorldValueSync[primitives.Float] | None = None, autosave_enabled_sync: str | WorldValueSync[primitives.Bool] | None = None, autosave_minutes_sync: str | WorldValueSync[primitives.Float] | None = None, autoclean_enabled_sync: str | WorldValueSync[primitives.Bool] | None = None, autoclean_seconds_sync: str | WorldValueSync[primitives.Float] | None = None, mobile_friendly_sync: str | WorldValueSync[primitives.Bool] | None = None, hide_from_listing_sync: str | WorldValueSync[primitives.Bool] | None = None, edit_mode_sync: str | WorldValueSync[primitives.Bool] | None = None, access_level_sync: str | WorldValueSync[SessionAccessLevel] | None = None, custom_verifier_label: str | Text | None = None, custom_verifier_checkbox: str | Checkbox | None = None, custom_verifier_button: str | Button | None = None, custom_verifier_sync: str | WorldValueSync[primitives.Bool] | None = None, ui_content_root: str | Slot | None = None, slide_swap: str | SlideSwapRegion | None = None, save_world: str | Button | None = None, save_world_as: str | Button | None = None, save_world_copy: str | Button | None = None, enable_resonite_link: str | Button | None = None, resonite_link_port: str | Text | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            active_tab: Initial value for ActiveTab.
             content_root: Initial value for _contentRoot.
             world_name: Initial value for _worldName.
             max_users: Initial value for _maxUsers.
@@ -86,6 +92,8 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if active_tab is not None:
+            self.active_tab = active_tab
         if content_root is not None:
             self.content_root = content_root
         if world_name is not None:
@@ -198,21 +206,28 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.resonite_link_port = resonite_link_port
 
     @property
-    def active_tab(self) -> members.FieldEnum | None:
-        """The ActiveTab member."""
+    def active_tab(self) -> Tab | None:
+        """The tab this view is currently on."""
         member = self.get_member("ActiveTab")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Tab(member.value)
         return None
 
     @active_tab.setter
-    def active_tab(self, value: members.FieldEnum) -> None:
-        """Set the ActiveTab member."""
-        self.set_member("ActiveTab", value)
+    def active_tab(self, value: Tab | str) -> None:
+        """Set ActiveTab. The tab this view is currently on."""
+        member = self.get_member("ActiveTab")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ActiveTab",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def content_root(self) -> str | None:
-        """Target ID of the _contentRoot reference (targets Slot)."""
+        """Where to place visuals for session options."""
         member = self.get_member("_contentRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -233,7 +248,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def world_name(self) -> str | None:
-        """Target ID of the _worldName reference (targets TextField)."""
+        """The field containing the session name."""
         member = self.get_member("_worldName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -254,7 +269,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_users(self) -> str | None:
-        """Target ID of the _maxUsers reference (targets IntTextEditorParser)."""
+        """The field containing the session max users."""
         member = self.get_member("_maxUsers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -275,7 +290,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_enabled(self) -> str | None:
-        """Target ID of the _awayKickEnabled reference (targets Checkbox)."""
+        """The field containing the session away kick enabler."""
         member = self.get_member("_awayKickEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -296,7 +311,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_minutes(self) -> str | None:
-        """Target ID of the _awayKickMinutes reference (targets FloatTextEditorParser)."""
+        """The field containing the session away kick minutes."""
         member = self.get_member("_awayKickMinutes")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -317,7 +332,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autosave_enabled(self) -> str | None:
-        """Target ID of the _autosaveEnabled reference (targets Checkbox)."""
+        """The field containing the session auto save enabler."""
         member = self.get_member("_autosaveEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -338,7 +353,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autosave_minutes(self) -> str | None:
-        """Target ID of the _autosaveMinutes reference (targets FloatTextEditorParser)."""
+        """The field containing the session auto save minutes."""
         member = self.get_member("_autosaveMinutes")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -359,7 +374,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autoclean_enabled(self) -> str | None:
-        """Target ID of the _autocleanEnabled reference (targets Checkbox)."""
+        """The field containing the session auto clean enabler."""
         member = self.get_member("_autocleanEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -380,7 +395,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autoclean_minutes(self) -> str | None:
-        """Target ID of the _autocleanMinutes reference (targets FloatTextEditorParser)."""
+        """The field containing the session auto clean minutes."""
         member = self.get_member("_autocleanMinutes")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -401,7 +416,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mobile_friendly(self) -> str | None:
-        """Target ID of the _mobileFriendly reference (targets Checkbox)."""
+        """The field containing the session mobile friendly enabler."""
         member = self.get_member("_mobileFriendly")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -422,7 +437,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hide_from_listing(self) -> str | None:
-        """Target ID of the _hideFromListing reference (targets Checkbox)."""
+        """The field containing the session hide from listing enabler."""
         member = self.get_member("_hideFromListing")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -443,7 +458,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def description(self) -> str | None:
-        """Target ID of the _description reference (targets TextField)."""
+        """The field containing the session description."""
         member = self.get_member("_description")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -464,7 +479,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def world_name_button(self) -> str | None:
-        """Target ID of the _worldNameButton reference (targets Button)."""
+        """The button to edit the session name."""
         member = self.get_member("_worldNameButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -485,7 +500,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def description_button(self) -> str | None:
-        """Target ID of the _descriptionButton reference (targets Button)."""
+        """The button to edit the session description."""
         member = self.get_member("_descriptionButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -506,7 +521,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_users_button(self) -> str | None:
-        """Target ID of the _maxUsersButton reference (targets Button)."""
+        """The button to edit the session max users."""
         member = self.get_member("_maxUsersButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -527,7 +542,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_enabled_button(self) -> str | None:
-        """Target ID of the _awayKickEnabledButton reference (targets Button)."""
+        """The button to edit the session away kick enabled status."""
         member = self.get_member("_awayKickEnabledButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -548,7 +563,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_minutes_button(self) -> str | None:
-        """Target ID of the _awayKickMinutesButton reference (targets Button)."""
+        """The button to edit the session away kick minutes."""
         member = self.get_member("_awayKickMinutesButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -569,7 +584,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autosave_enabled_button(self) -> str | None:
-        """Target ID of the _autosaveEnabledButton reference (targets Button)."""
+        """The button to edit the session auto save enabled status."""
         member = self.get_member("_autosaveEnabledButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -590,7 +605,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autosave_minutes_button(self) -> str | None:
-        """Target ID of the _autosaveMinutesButton reference (targets Button)."""
+        """The button to edit the session auto save minutes."""
         member = self.get_member("_autosaveMinutesButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -611,7 +626,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autoclean_enabled_button(self) -> str | None:
-        """Target ID of the _autocleanEnabledButton reference (targets Button)."""
+        """The button to edit the session auto clean enabled button."""
         member = self.get_member("_autocleanEnabledButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -632,7 +647,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autoclean_minutes_button(self) -> str | None:
-        """Target ID of the _autocleanMinutesButton reference (targets Button)."""
+        """The button to edit the session auto clean minutes."""
         member = self.get_member("_autocleanMinutesButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -653,7 +668,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mobile_friendly_button(self) -> str | None:
-        """Target ID of the _mobileFriendlyButton reference (targets Button)."""
+        """The button to edit the session mobile friendly enabled status."""
         member = self.get_member("_mobileFriendlyButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -674,7 +689,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hide_from_listing_button(self) -> str | None:
-        """Target ID of the _hideFromListingButton reference (targets Button)."""
+        """The button to edit the session hide from listing enabled status."""
         member = self.get_member("_hideFromListingButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -695,7 +710,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def permission_overrides_indicator(self) -> str | None:
-        """Target ID of the _permissionOverridesIndicator reference (targets Text)."""
+        """The element that shows how many user overrides are currently active for permissions"""
         member = self.get_member("_permissionOverridesIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -716,7 +731,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def permission_overrides_button(self) -> str | None:
-        """Target ID of the _permissionOverridesButton reference (targets Button)."""
+        """The button that resets all user overrides for permissions."""
         member = self.get_member("_permissionOverridesButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -737,7 +752,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def get_session_orb(self) -> str | None:
-        """Target ID of the _getSessionOrb reference (targets Button)."""
+        """The button that gets the session orb."""
         member = self.get_member("_getSessionOrb")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -758,7 +773,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def get_world_orb(self) -> str | None:
-        """Target ID of the _getWorldOrb reference (targets Button)."""
+        """The button that gets the world orb."""
         member = self.get_member("_getWorldOrb")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -779,7 +794,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def edit_mode(self) -> str | None:
-        """Target ID of the _editMode reference (targets Button)."""
+        """The button that enables edit mode for the local user."""
         member = self.get_member("_editMode")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -800,7 +815,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def copy_session_url(self) -> str | None:
-        """Target ID of the _copySessionURL reference (targets Button)."""
+        """The button that copies the session URL."""
         member = self.get_member("_copySessionURL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -821,7 +836,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def copy_world_url(self) -> str | None:
-        """Target ID of the _copyWorldURL reference (targets Button)."""
+        """The button that copies the world URL."""
         member = self.get_member("_copyWorldURL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -842,7 +857,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def copy_record_url(self) -> str | None:
-        """Target ID of the _copyRecordURL reference (targets Button)."""
+        """The button that copies the record URL."""
         member = self.get_member("_copyRecordURL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -863,7 +878,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def access_level_radios(self) -> members.SyncList | None:
-        """The _accessLevelRadios member."""
+        """The set of radios to set session access level."""
         member = self.get_member("_accessLevelRadios")
         if isinstance(member, members.SyncList):
             return member
@@ -871,12 +886,12 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @access_level_radios.setter
     def access_level_radios(self, value: members.SyncList) -> None:
-        """Set the _accessLevelRadios member."""
+        """Set _accessLevelRadios. The set of radios to set session access level."""
         self.set_member("_accessLevelRadios", value)
 
     @property
     def access_level_radios_buttons(self) -> members.SyncList | None:
-        """The _accessLevelRadiosButtons member."""
+        """The set of radio buttons to set session access level."""
         member = self.get_member("_accessLevelRadiosButtons")
         if isinstance(member, members.SyncList):
             return member
@@ -884,12 +899,12 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @access_level_radios_buttons.setter
     def access_level_radios_buttons(self, value: members.SyncList) -> None:
-        """Set the _accessLevelRadiosButtons member."""
+        """Set _accessLevelRadiosButtons. The set of radio buttons to set session access level."""
         self.set_member("_accessLevelRadiosButtons", value)
 
     @property
     def world_name_sync(self) -> str | None:
-        """Target ID of the _worldNameSync reference (targets WorldValueSync[primitives.String])."""
+        """The field that is used to edit the world Name."""
         member = self.get_member("_worldNameSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -910,7 +925,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def description_sync(self) -> str | None:
-        """Target ID of the _descriptionSync reference (targets WorldValueSync[primitives.String])."""
+        """The field that is used to edit the world description."""
         member = self.get_member("_descriptionSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -931,7 +946,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_users_sync(self) -> str | None:
-        """Target ID of the _maxUsersSync reference (targets WorldValueSync[primitives.Int])."""
+        """The field that is used to edit the world max Users."""
         member = self.get_member("_maxUsersSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -952,7 +967,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_enabled_sync(self) -> str | None:
-        """Target ID of the _awayKickEnabledSync reference (targets WorldValueSync[primitives.Bool])."""
+        """The field that is used to edit the world away Kick Enabled."""
         member = self.get_member("_awayKickEnabledSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -973,7 +988,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_kick_minutes_sync(self) -> str | None:
-        """Target ID of the _awayKickMinutesSync reference (targets WorldValueSync[primitives.Float])."""
+        """The field that is used to edit the world away Kick Minutes."""
         member = self.get_member("_awayKickMinutesSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -994,7 +1009,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autosave_enabled_sync(self) -> str | None:
-        """Target ID of the _autosaveEnabledSync reference (targets WorldValueSync[primitives.Bool])."""
+        """The field that is used to edit the world auto save Enabled."""
         member = self.get_member("_autosaveEnabledSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1015,7 +1030,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autosave_minutes_sync(self) -> str | None:
-        """Target ID of the _autosaveMinutesSync reference (targets WorldValueSync[primitives.Float])."""
+        """The field that is used to edit the world auto save Minutes."""
         member = self.get_member("_autosaveMinutesSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1036,7 +1051,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autoclean_enabled_sync(self) -> str | None:
-        """Target ID of the _autocleanEnabledSync reference (targets WorldValueSync[primitives.Bool])."""
+        """The field that is used to edit the world auto clean Enabled."""
         member = self.get_member("_autocleanEnabledSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1057,7 +1072,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def autoclean_seconds_sync(self) -> str | None:
-        """Target ID of the _autocleanSecondsSync reference (targets WorldValueSync[primitives.Float])."""
+        """The field that is used to edit the world auto clean Seconds."""
         member = self.get_member("_autocleanSecondsSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1078,7 +1093,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mobile_friendly_sync(self) -> str | None:
-        """Target ID of the _mobileFriendlySync reference (targets WorldValueSync[primitives.Bool])."""
+        """The field that is used to edit the world mobile Friendly."""
         member = self.get_member("_mobileFriendlySync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1099,7 +1114,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hide_from_listing_sync(self) -> str | None:
-        """Target ID of the _hideFromListingSync reference (targets WorldValueSync[primitives.Bool])."""
+        """The field that is used to edit the world hide From Listing."""
         member = self.get_member("_hideFromListingSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1120,7 +1135,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def edit_mode_sync(self) -> str | None:
-        """Target ID of the _editModeSync reference (targets WorldValueSync[primitives.Bool])."""
+        """The field that is used to edit the world edit Mode status for the local user."""
         member = self.get_member("_editModeSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1141,7 +1156,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def access_level_sync(self) -> str | None:
-        """Target ID of the _accessLevelSync reference (targets WorldValueSync[SessionAccessLevel])."""
+        """The field that is used to edit the world access Level."""
         member = self.get_member("_accessLevelSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1162,7 +1177,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def custom_verifier_label(self) -> str | None:
-        """Target ID of the _customVerifierLabel reference (targets Text)."""
+        """The label used to indicate the world's custom verifier."""
         member = self.get_member("_customVerifierLabel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1183,7 +1198,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def custom_verifier_checkbox(self) -> str | None:
-        """Target ID of the _customVerifierCheckbox reference (targets Checkbox)."""
+        """The checkbox for enabling/disabling a custom world verifier."""
         member = self.get_member("_customVerifierCheckbox")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1204,7 +1219,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def custom_verifier_button(self) -> str | None:
-        """Target ID of the _customVerifierButton reference (targets Button)."""
+        """The button for enabling/disabling a custom world verifier."""
         member = self.get_member("_customVerifierButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1225,7 +1240,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def custom_verifier_sync(self) -> str | None:
-        """Target ID of the _customVerifierSync reference (targets WorldValueSync[primitives.Bool])."""
+        """The field that is used to edit the world custom Verifier."""
         member = self.get_member("_customVerifierSync")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1246,7 +1261,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ui_content_root(self) -> str | None:
-        """Target ID of the _uiContentRoot reference (targets Slot)."""
+        """The slot that contains all the ui content of the world."""
         member = self.get_member("_uiContentRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1267,7 +1282,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slide_swap(self) -> str | None:
-        """Target ID of the _slideSwap reference (targets SlideSwapRegion)."""
+        """The swap region used to make the animation for going between session menu views."""
         member = self.get_member("_slideSwap")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1288,7 +1303,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def save_world(self) -> str | None:
-        """Target ID of the _saveWorld reference (targets Button)."""
+        """The button to save world changes."""
         member = self.get_member("_saveWorld")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1309,7 +1324,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def save_world_as(self) -> str | None:
-        """Target ID of the _saveWorldAs reference (targets Button)."""
+        """The button to save the world as a certain name."""
         member = self.get_member("_saveWorldAs")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1330,7 +1345,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def save_world_copy(self) -> str | None:
-        """Target ID of the _saveWorldCopy reference (targets Button)."""
+        """The button to save a copy of the world."""
         member = self.get_member("_saveWorldCopy")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1393,7 +1408,7 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def tab_buttons(self) -> members.SyncList | None:
-        """The _tabButtons member."""
+        """A list of the buttons used to change between session menu views."""
         member = self.get_member("_tabButtons")
         if isinstance(member, members.SyncList):
             return member
@@ -1401,6 +1416,6 @@ class SessionControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @tab_buttons.setter
     def tab_buttons(self, value: members.SyncList) -> None:
-        """Set the _tabButtons member."""
+        """Set _tabButtons. A list of the buttons used to change between session menu views."""
         self.set_member("_tabButtons", value)
 

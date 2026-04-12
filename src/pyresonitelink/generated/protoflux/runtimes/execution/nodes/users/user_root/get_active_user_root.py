@@ -33,7 +33,7 @@ class GetActiveUserRoot(GeneratedComponent, INodeObjectOutput, IExecutionNode, I
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot to check for an active UserRoot."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId

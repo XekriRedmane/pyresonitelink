@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Update(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Update node sends a pulse at every engine update from the UpdatingUser.
+    """The Update node sends a pulse at every engine update from the ``UpdatingUser``.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """
@@ -85,7 +85,7 @@ class Update(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, IExecu
 
     @property
     def on_update(self) -> str | None:
-        """Target ID of the OnUpdate reference (targets ISyncNodeOperation)."""
+        """Sends a pulse every engine update from the ``UpdatingUser``."""
         member = self.get_member("OnUpdate")
         if isinstance(member, members.Reference):
             return member.targetId

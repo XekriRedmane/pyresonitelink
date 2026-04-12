@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InvertedDeltaTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Inverted Delta Time node returns the frames per second, shown when pulling a display node from it and comparing it to the Dash's FPS counter.
+    """The ``Inverted Delta Time`` node returns the frames per second, shown when pulling a display node from it and comparing it to the Dash's FPS counter.
+
+This is done by taking the reciprocal of delta time: FPS = 1 / dT
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """

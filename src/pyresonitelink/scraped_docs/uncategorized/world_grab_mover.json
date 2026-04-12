@@ -1,0 +1,17 @@
+{
+  "description": "The WorldGrabMover component is used as a visual for the grab world locomotion.",
+  "category": "Uncategorized",
+  "fields": {
+    "ShowLerp": "The lerp value for showing the visual.",
+    "_activatingUser": "The user making this visual for grabbing onto the world.",
+    "_crossMesh": "The cross mesh being used for the anchor visual.",
+    "_visualVisible": "Whether the visual should be visible.",
+    "_visualRotation": "The field to drive with the rotation for the visual.",
+    "_material": "The material that the visual is using.",
+    "_referencePosition": "the position this visual is trying to stay and anchor at."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldGrabMover&action=raw"
+}

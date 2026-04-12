@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Float3Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Float3Driver.
+    """The Float3Driver component can be used to drive a foat3 value, based on an X, Y and a Z value.
 
     Category: Transform/Drivers
     """
@@ -40,7 +40,7 @@ class Float3Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def x(self) -> str | None:
-        """Target ID of the X reference (targets Sync[primitives.Float])."""
+        """The field that holds the X value for the float3. If null, the X component of the float3 will be 0."""
         member = self.get_member("X")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +61,7 @@ class Float3Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def y(self) -> str | None:
-        """Target ID of the Y reference (targets Sync[primitives.Float])."""
+        """The field that holds the Y value for the float3. If null, the Y component of the float3 will be 0."""
         member = self.get_member("Y")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +82,7 @@ class Float3Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def z(self) -> str | None:
-        """Target ID of the Z reference (targets Sync[primitives.Float])."""
+        """The field that holds the Z value for the float3. If null, the Z component of the float3 will be 0."""
         member = self.get_member("Z")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -103,7 +103,7 @@ class Float3Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float3])."""
+        """The field that is driven to the constructed float3."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

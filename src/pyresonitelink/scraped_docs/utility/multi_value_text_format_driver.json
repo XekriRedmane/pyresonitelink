@@ -1,0 +1,13 @@
+{
+  "description": "The ValueTextFormatDriver applies the value of a multiple values to a text format string and drives the target string field. Elements are defined by putting {} brackets around a number to specify an element in ``Sources``.",
+  "category": "Utility",
+  "fields": {
+    "Sources": "A list of source fields.",
+    "Format": "The format string, which has a list of \"{X}\" where \"X\" is a number that refers to an item number in ``Sources``. The entire \"{X}\" gets replaced by a source with that number.",
+    "Text": "The target field."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MultiValueTextFormatDriver&action=raw"
+}

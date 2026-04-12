@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.EyeRotationDriver.
+    """The EyeRotationDriver component can control the rotation of slots using the data from an EyeManager.
 
     Category: Users/Common Avatar System/Face
+
+    Set up automatically on avatars that are made using the Avatar Creator.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.EyeRotationDriver"
@@ -40,7 +42,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def eye_manager(self) -> str | None:
-        """Target ID of the EyeManager reference (targets EyeManager)."""
+        """The source of the eye rotation data."""
         member = self.get_member("EyeManager")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +63,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def eye_motion_scale(self) -> primitives.Float | None:
-        """The EyeMotionScale field value."""
+        """How much to multiply the target rotation by before applying it to an Eye."""
         member = self.get_member("EyeMotionScale")
         if member is None:
             return None
@@ -80,7 +82,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def eye_motion_exp(self) -> primitives.Float | None:
-        """The EyeMotionExp field value."""
+        """The exponent. This makes the eye rotate more or less as it reaches higher rotation target values."""
         member = self.get_member("EyeMotionExp")
         if member is None:
             return None
@@ -99,7 +101,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_swing(self) -> primitives.Float | None:
-        """The MaxSwing field value."""
+        """The maximum amount the eyes can rotate in degrees from forward facing."""
         member = self.get_member("MaxSwing")
         if member is None:
             return None
@@ -118,7 +120,7 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def eyes(self) -> members.SyncList | None:
-        """The Eyes member."""
+        """A list of eyes to drive the rotation of."""
         member = self.get_member("Eyes")
         if isinstance(member, members.SyncList):
             return member
@@ -126,6 +128,6 @@ class EyeRotationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @eyes.setter
     def eyes(self, value: members.SyncList) -> None:
-        """Set the Eyes member."""
+        """Set Eyes. A list of eyes to drive the rotation of."""
         self.set_member("Eyes", value)
 

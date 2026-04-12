@@ -7,9 +7,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueProxySource(GenericComponent[T], IUIGrabbable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueProxySource<>.
+    """The ValueProxySource component allows for the user to grab a value off from a UIX element. This requires a Button component to work.
+
+}}
 
     Category: UIX/Interaction
+
+    This is used to carry values to other UIX elements that are looking for
+    it. Using this component along with the ValueReceiver and ValueField of
+    a value type will allow the user to carry the value from source to
+    receiver directly.
 
     Parameterize with a value type::
 

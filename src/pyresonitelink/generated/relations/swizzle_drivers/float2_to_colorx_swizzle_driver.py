@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Float2ToColorXSwizzleDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Float2ToColorXSwizzleDriver.
+    """The Float 2To Color XSwizzle Driver component.
 
     Category: Relations/Swizzle Drivers
     """

@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Snapper.
+    """The Snapper component allows a slot to parent to Snap Target slots.
 
     Category: Transform/Interaction
+
+    **Behavior**: Allows the slot in which this component resides in to snap to a Snap Target in another slot. The SnapTargetWhitelist allows you to specify a list of SnapTargets that this component will link to in case you want to limit its snapability. The keywords list allows you to provide a list of words which the Snap Target can use to filter for specific types of snappers.
+
+It is important to have this in a slot shared with a Grabbable component in the root link of the object you wish to snap. Snapped components will become children of the snap target.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Snapper"
@@ -74,7 +78,7 @@ class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
 
     @property
     def check_static_colliders(self) -> primitives.Bool | None:
-        """The CheckStaticColliders field value."""
+        """Allows the Snapper to look for colliders that are set to Static rather then Trigger."""
         member = self.get_member("CheckStaticColliders")
         if member is None:
             return None
@@ -93,7 +97,7 @@ class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
 
     @property
     def snap_target_whitelist(self) -> members.SyncList | None:
-        """The SnapTargetWhitelist member."""
+        """List of Snap Targets that the slot can attach to"""
         member = self.get_member("SnapTargetWhitelist")
         if isinstance(member, members.SyncList):
             return member
@@ -101,12 +105,12 @@ class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
 
     @snap_target_whitelist.setter
     def snap_target_whitelist(self, value: members.SyncList) -> None:
-        """Set the SnapTargetWhitelist member."""
+        """Set SnapTargetWhitelist. List of Snap Targets that the slot can attach to"""
         self.set_member("SnapTargetWhitelist", value)
 
     @property
     def keywords(self) -> members.SyncList | None:
-        """The Keywords member."""
+        """List of keywords to match against a corresponding Snap Targets. Can have multiple keywords to snap to multiple Snap Targets"""
         member = self.get_member("Keywords")
         if isinstance(member, members.SyncList):
             return member
@@ -114,6 +118,6 @@ class Snapper(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
 
     @keywords.setter
     def keywords(self, value: members.SyncList) -> None:
-        """Set the Keywords member."""
+        """Set Keywords. List of keywords to match against a corresponding Snap Targets. Can have multiple keywords to snap to multiple Snap Targets"""
         self.set_member("Keywords", value)
 

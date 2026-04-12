@@ -3,6 +3,10 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.culling import Culling
+from pyresonitelink.generated._enums.alpha_handling import AlphaHandling
+from pyresonitelink.generated._enums.color_target import ColorTarget
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -15,14 +19,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PBS_VertexColorSpecular.
+    """The PBS_VertexColorSpecular component is a PBS_Specular component except that it allows for the use of vertex colors as a multiplier for different colors/properties of the material.
+
+For your meshes to have vertex colors, it needs to be explicitly set to do so under the advanced settings when importing a model before clicking "run import!"
 
     Category: Assets/Materials/PBS
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_VertexColorSpecular"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, alpha_clip: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, transparent_front: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, vertex_color_interpolation_space: ColorProfile | str | None = None, culling: Culling | str | None = None, alpha_handling: AlphaHandling | str | None = None, alpha_clip: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, vertex_color_target: ColorTarget | str | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent: str | IAssetProvider[Shader] | None = None, transparent_front: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,12 +42,16 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
             normal_map: Initial value for NormalMap.
             normal_scale: Initial value for NormalScale.
             occlusion_map: Initial value for OcclusionMap.
+            vertex_color_interpolation_space: Initial value for VertexColorInterpolationSpace.
+            culling: Initial value for Culling.
+            alpha_handling: Initial value for AlphaHandling.
             alpha_clip: Initial value for AlphaClip.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
             render_queue: Initial value for RenderQueue.
             specular_color: Initial value for SpecularColor.
             specular_map: Initial value for SpecularMap.
+            vertex_color_target: Initial value for VertexColorTarget.
             regular: Initial value for _regular.
             transparent: Initial value for _transparent.
             transparent_front: Initial value for _transparentFront.
@@ -68,6 +78,12 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
             self.normal_scale = normal_scale
         if occlusion_map is not None:
             self.occlusion_map = occlusion_map
+        if vertex_color_interpolation_space is not None:
+            self.vertex_color_interpolation_space = vertex_color_interpolation_space
+        if culling is not None:
+            self.culling = culling
+        if alpha_handling is not None:
+            self.alpha_handling = alpha_handling
         if alpha_clip is not None:
             self.alpha_clip = alpha_clip
         if offset_factor is not None:
@@ -80,6 +96,8 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
             self.specular_color = specular_color
         if specular_map is not None:
             self.specular_map = specular_map
+        if vertex_color_target is not None:
+            self.vertex_color_target = vertex_color_target
         if regular is not None:
             self.regular = regular
         if transparent is not None:
@@ -286,43 +304,64 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
             )
 
     @property
-    def vertex_color_interpolation_space(self) -> members.FieldEnum | None:
-        """The VertexColorInterpolationSpace member."""
+    def vertex_color_interpolation_space(self) -> ColorProfile | None:
+        """The VertexColorInterpolationSpace enum value."""
         member = self.get_member("VertexColorInterpolationSpace")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @vertex_color_interpolation_space.setter
-    def vertex_color_interpolation_space(self, value: members.FieldEnum) -> None:
-        """Set the VertexColorInterpolationSpace member."""
-        self.set_member("VertexColorInterpolationSpace", value)
+    def vertex_color_interpolation_space(self, value: ColorProfile | str) -> None:
+        """Set the VertexColorInterpolationSpace enum value."""
+        member = self.get_member("VertexColorInterpolationSpace")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "VertexColorInterpolationSpace",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def culling(self) -> members.FieldEnum | None:
-        """The Culling member."""
+    def culling(self) -> Culling | None:
+        """The Culling enum value."""
         member = self.get_member("Culling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Culling(member.value)
         return None
 
     @culling.setter
-    def culling(self, value: members.FieldEnum) -> None:
-        """Set the Culling member."""
-        self.set_member("Culling", value)
+    def culling(self, value: Culling | str) -> None:
+        """Set the Culling enum value."""
+        member = self.get_member("Culling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Culling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def alpha_handling(self) -> members.FieldEnum | None:
-        """The AlphaHandling member."""
+    def alpha_handling(self) -> AlphaHandling | None:
+        """The AlphaHandling enum value."""
         member = self.get_member("AlphaHandling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AlphaHandling(member.value)
         return None
 
     @alpha_handling.setter
-    def alpha_handling(self, value: members.FieldEnum) -> None:
-        """Set the AlphaHandling member."""
-        self.set_member("AlphaHandling", value)
+    def alpha_handling(self, value: AlphaHandling | str) -> None:
+        """Set the AlphaHandling enum value."""
+        member = self.get_member("AlphaHandling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AlphaHandling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def alpha_clip(self) -> primitives.Float | None:
@@ -441,17 +480,24 @@ class PBS_VertexColorSpecular(GeneratedComponent, IPBS_Specular, ICullingMateria
             )
 
     @property
-    def vertex_color_target(self) -> members.FieldEnum | None:
-        """The VertexColorTarget member."""
+    def vertex_color_target(self) -> ColorTarget | None:
+        """The VertexColorTarget enum value."""
         member = self.get_member("VertexColorTarget")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorTarget(member.value)
         return None
 
     @vertex_color_target.setter
-    def vertex_color_target(self, value: members.FieldEnum) -> None:
-        """Set the VertexColorTarget member."""
-        self.set_member("VertexColorTarget", value)
+    def vertex_color_target(self, value: ColorTarget | str) -> None:
+        """Set the VertexColorTarget enum value."""
+        member = self.get_member("VertexColorTarget")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "VertexColorTarget",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def regular(self) -> str | None:

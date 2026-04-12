@@ -1,0 +1,17 @@
+{
+  "description": "AvatarNameplateVisibilityDriver is used to drive the visibility of nameplates during certain scenarios.",
+  "category": "Users:Common Avatar System:Nameplate",
+  "fields": {
+    "AlwaysShowToContacts": "Show to contacts regardless of whether it should be hidden or not.",
+    "Visible": "The boolean to drive for nameplate visiblity (like the active of the nameplate slot)"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "This disables the target of ``Visible`` when nameplates are hidden locally through the nameplate visibility facet on the Home tab of the Dash Menu. This also drives the visibility of nameplates for other reasons, like when visibility of default nameplates is needed locally. It also hides the target nameplate during certain render contexts, like when a user is taking a picture with hide nameplates during pictures setting turned on."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarNameplateVisibilityDriver&action=raw"
+}

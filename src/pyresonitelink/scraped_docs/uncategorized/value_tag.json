@@ -1,0 +1,11 @@
+{
+  "description": "The ValueTag component is a simplified version of the ValueField component. The value can be read and written.",
+  "category": "Uncategorized",
+  "fields": {
+    "Value": "The value this stores."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueTag&action=raw"
+}

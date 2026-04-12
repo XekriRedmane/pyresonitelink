@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SizeOverLifetimeTexture(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.SizeOverLifetimeTexture.
+    """The Size Over Lifetime Texture component samples a texture from 0->1 in normalized UV coordinates to figure out how big a particle should be should be in it's lifetime normalized to 0->1.
 
     Category: Rendering/Particle System/Modules
     """
@@ -30,7 +30,7 @@ class SizeOverLifetimeTexture(GeneratedComponent, IParticleSystemModule, IWorldE
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[Texture2D])."""
+        """The texture to sample for size over lifetime."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId

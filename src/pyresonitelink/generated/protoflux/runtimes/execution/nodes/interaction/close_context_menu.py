@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CloseContextMenu(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Close Context Menu node takes in a summoner (the thing that opened the context menu), and tells it to close the menu for the user.
+    """The ``Close Context Menu`` node takes in a summoner (the thing that opened the context menu), and tells it to close the menu for the user.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction
     """
@@ -38,7 +38,7 @@ class CloseContextMenu(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues execution from this node."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class CloseContextMenu(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
 
     @property
     def summoner(self) -> str | None:
-        """Target ID of the Summoner reference (targets INodeObjectOutput[IWorldElement])."""
+        """The thing that opened the context menu."""
         member = self.get_member("Summoner")
         if isinstance(member, members.Reference):
             return member.targetId

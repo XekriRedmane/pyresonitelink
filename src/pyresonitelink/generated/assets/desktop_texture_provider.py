@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DesktopTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DesktopTextureProvider.
+    """The DesktopTextureProvider component only works in user space. This component is an ITexture2D and can be used as a texture. This texture is able to display what is on any particular monitor on a user's machine. This component is commonly used in the desktop tab on a user's Dash.
 
     Category: Assets
+
+    This should not be used by the user, but it could be used to make a
+    special facet. Insert the component into a texture field on a material
+    to display it.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DesktopTextureProvider"
@@ -30,7 +34,7 @@ class DesktopTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInsp
 
     @property
     def display_index(self) -> primitives.Int | None:
-        """The DisplayIndex field value."""
+        """What monitor to get image data for."""
         member = self.get_member("DisplayIndex")
         if member is None:
             return None

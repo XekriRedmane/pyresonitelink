@@ -1,0 +1,11 @@
+{
+  "description": "Closes the Keyboard in ``Keyboard`` field when it receives a button event. Using a button on the same slot of this component and pressing it will make this component receive said event.",
+  "category": "Userspace:Virtual Keyboard",
+  "fields": {
+    "Keyboard": "The virtual keyboard to close."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VirtualCloseKey&action=raw"
+}

@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugValueStreamRange(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugValueStreamRange.
+    """The DebugValueStreamRange component is used to debug the range of a Float3 stream for debugging. Like a graph of sorts.
+
+    Not generally useful to the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugValueStreamRange"
@@ -35,7 +37,7 @@ class DebugValueStreamRange(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def stream(self) -> str | None:
-        """Target ID of the Stream reference (targets ValueStream[primitives.Float3])."""
+        """The stream to debug."""
         member = self.get_member("Stream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +58,7 @@ class DebugValueStreamRange(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def position_drive(self) -> str | None:
-        """Target ID of the positionDrive reference (targets IField[primitives.Float3])."""
+        """The position field to drive with the stream position."""
         member = self.get_member("positionDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +79,7 @@ class DebugValueStreamRange(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def size_drive(self) -> str | None:
-        """Target ID of the sizeDrive reference (targets IField[primitives.Float3])."""
+        """The field to drive with the overall stream range."""
         member = self.get_member("sizeDrive")
         if isinstance(member, members.Reference):
             return member.targetId

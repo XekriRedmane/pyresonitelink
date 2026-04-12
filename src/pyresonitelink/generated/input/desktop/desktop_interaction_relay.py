@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DesktopInteractionRelay(GeneratedComponent, IUIInteractable, IFocusable, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DesktopInteractionRelay.
+    """The DesktopInteractionRelay component only works in user space. When part of a UIX, it sends events from user inputs (the position is determined by the RectTransform) to the desktop display at ``DisplayIndex``
 
     Category: Input/Desktop
     """
@@ -34,7 +34,7 @@ class DesktopInteractionRelay(GeneratedComponent, IUIInteractable, IFocusable, I
 
     @property
     def display_index(self) -> primitives.Int | None:
-        """The DisplayIndex field value."""
+        """The display to send Interactions to."""
         member = self.get_member("DisplayIndex")
         if member is None:
             return None
@@ -53,7 +53,7 @@ class DesktopInteractionRelay(GeneratedComponent, IUIInteractable, IFocusable, I
 
     @property
     def use_legacy_text_input(self) -> primitives.Bool | None:
-        """The UseLegacyTextInput field value."""
+        """Whether to use the legacy text input system."""
         member = self.get_member("UseLegacyTextInput")
         if member is None:
             return None

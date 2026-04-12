@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.page import Page
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.full_body_calibrator import FullBodyCalibrator
@@ -17,16 +18,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FullBodyCalibratorDialog.
+    """See Full Body Tracking.
+
+    See Full Body Tracking.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FullBodyCalibratorDialog"
 
-    def __init__(self, calibrator: str | FullBodyCalibrator | None = None, confirm_trackers: str | Button | None = None, reset_trackers: str | Button | None = None, calibrate_avatar: str | Button | None = None, height_compensation: str | Slider[primitives.Float] | None = None, use_symmetry: str | Checkbox | None = None, show_body_overlay: str | Checkbox | None = None, show_avatar_overlay: str | Checkbox | None = None, hips_mapping: str | Text | None = None, feet_mapping: str | Text | None = None, chest_mapping: str | Text | None = None, elbows_mapping: str | Text | None = None, knees_mapping: str | Text | None = None, height_field: str | QuantityTextEditorParser | None = None, height_warning: str | Text | None = None, use_imperial: primitives.Bool | None = None, swap_region: str | SlideSwapRegion | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, calibrator: str | FullBodyCalibrator | None = None, current_page: Page | str | None = None, confirm_trackers: str | Button | None = None, reset_trackers: str | Button | None = None, calibrate_avatar: str | Button | None = None, height_compensation: str | Slider[primitives.Float] | None = None, use_symmetry: str | Checkbox | None = None, show_body_overlay: str | Checkbox | None = None, show_avatar_overlay: str | Checkbox | None = None, hips_mapping: str | Text | None = None, feet_mapping: str | Text | None = None, chest_mapping: str | Text | None = None, elbows_mapping: str | Text | None = None, knees_mapping: str | Text | None = None, height_field: str | QuantityTextEditorParser | None = None, height_warning: str | Text | None = None, use_imperial: primitives.Bool | None = None, swap_region: str | SlideSwapRegion | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             calibrator: Initial value for _calibrator.
+            current_page: Initial value for _currentPage.
             confirm_trackers: Initial value for _confirmTrackers.
             reset_trackers: Initial value for _resetTrackers.
             calibrate_avatar: Initial value for _calibrateAvatar.
@@ -48,6 +52,8 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
         super().__init__(component)
         if calibrator is not None:
             self.calibrator = calibrator
+        if current_page is not None:
+            self.current_page = current_page
         if confirm_trackers is not None:
             self.confirm_trackers = confirm_trackers
         if reset_trackers is not None:
@@ -83,7 +89,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def calibrator(self) -> str | None:
-        """Target ID of the _calibrator reference (targets FullBodyCalibrator)."""
+        """The current calibrator this dialog is linked to."""
         member = self.get_member("_calibrator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -103,21 +109,28 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
             )
 
     @property
-    def current_page(self) -> members.FieldEnum | None:
-        """The _currentPage member."""
+    def current_page(self) -> Page | None:
+        """The current dialog page this is showing."""
         member = self.get_member("_currentPage")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Page(member.value)
         return None
 
     @current_page.setter
-    def current_page(self, value: members.FieldEnum) -> None:
-        """Set the _currentPage member."""
-        self.set_member("_currentPage", value)
+    def current_page(self, value: Page | str) -> None:
+        """Set _currentPage. The current dialog page this is showing."""
+        member = self.get_member("_currentPage")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_currentPage",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def confirm_trackers(self) -> str | None:
-        """Target ID of the _confirmTrackers reference (targets Button)."""
+        """The button to confirm trackers."""
         member = self.get_member("_confirmTrackers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -138,7 +151,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def reset_trackers(self) -> str | None:
-        """Target ID of the _resetTrackers reference (targets Button)."""
+        """The button to reset tracker mappings."""
         member = self.get_member("_resetTrackers")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -159,7 +172,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def calibrate_avatar(self) -> str | None:
-        """Target ID of the _calibrateAvatar reference (targets Button)."""
+        """The button to start avatar calibration"""
         member = self.get_member("_calibrateAvatar")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -180,7 +193,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def height_compensation(self) -> str | None:
-        """Target ID of the _heightCompensation reference (targets Slider[primitives.Float])."""
+        """How much to scale up the avatar to fit the user."""
         member = self.get_member("_heightCompensation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -201,7 +214,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def use_symmetry(self) -> str | None:
-        """Target ID of the _useSymmetry reference (targets Checkbox)."""
+        """Whether changes to sided points (left versus right) mirror onto the other side."""
         member = self.get_member("_useSymmetry")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -222,7 +235,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def show_body_overlay(self) -> str | None:
-        """Target ID of the _showBodyOverlay reference (targets Checkbox)."""
+        """Whether to show the invisible person Overlay."""
         member = self.get_member("_showBodyOverlay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -243,7 +256,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def show_avatar_overlay(self) -> str | None:
-        """Target ID of the _showAvatarOverlay reference (targets Checkbox)."""
+        """Whether to show a copy of the avatar on the pedestal."""
         member = self.get_member("_showAvatarOverlay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -264,7 +277,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def hips_mapping(self) -> str | None:
-        """Target ID of the _hipsMapping reference (targets Text)."""
+        """The text to indicate if hips are mapped or not."""
         member = self.get_member("_hipsMapping")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -285,7 +298,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def feet_mapping(self) -> str | None:
-        """Target ID of the _feetMapping reference (targets Text)."""
+        """The text to indicate if feet are mapped or not."""
         member = self.get_member("_feetMapping")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -306,7 +319,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def chest_mapping(self) -> str | None:
-        """Target ID of the _chestMapping reference (targets Text)."""
+        """The text to indicate if chest is mapped or not."""
         member = self.get_member("_chestMapping")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -327,7 +340,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def elbows_mapping(self) -> str | None:
-        """Target ID of the _elbowsMapping reference (targets Text)."""
+        """The text to indicate if elbows are mapped or not."""
         member = self.get_member("_elbowsMapping")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -348,7 +361,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def knees_mapping(self) -> str | None:
-        """Target ID of the _kneesMapping reference (targets Text)."""
+        """The text to indicate if knees are mapped or not."""
         member = self.get_member("_kneesMapping")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -369,7 +382,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def height_field(self) -> str | None:
-        """Target ID of the _heightField reference (targets QuantityTextEditorParser)."""
+        """The text field that changes your user height setting on the fly."""
         member = self.get_member("_heightField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -390,7 +403,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def height_warning(self) -> str | None:
-        """Target ID of the _heightWarning reference (targets Text)."""
+        """The text to warn if the height is improper."""
         member = self.get_member("_heightWarning")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -411,7 +424,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def use_imperial(self) -> primitives.Bool | None:
-        """The _useImperial field value."""
+        """Whether the height should be interpreted in yee haw (imperal height)."""
         member = self.get_member("_useImperial")
         if member is None:
             return None
@@ -430,7 +443,7 @@ class FullBodyCalibratorDialog(GeneratedComponent, IComponent, IWorldEventReceiv
 
     @property
     def swap_region(self) -> str | None:
-        """Target ID of the _swapRegion reference (targets SlideSwapRegion)."""
+        """The component that handles transitions from one page to another on the dialog."""
         member = self.get_member("_swapRegion")
         if isinstance(member, members.Reference):
             return member.targetId

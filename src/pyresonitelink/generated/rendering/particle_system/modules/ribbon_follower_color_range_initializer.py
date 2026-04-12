@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RibbonFollowerColorRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.RibbonFollowerColorRangeInitializer.
+    """The RibbonFollowerColorRangeInitializer component gives ribbon followers in a particle system a random color in a range upon start.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.RibbonFollowerColorRangeInitializer"
@@ -32,7 +35,7 @@ class RibbonFollowerColorRangeInitializer(GeneratedComponent, IParticleSystemMod
 
     @property
     def min_value(self) -> primitives.ColorX | None:
-        """The MinValue field value."""
+        """The minimum color a ribbon follower can have."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -51,7 +54,7 @@ class RibbonFollowerColorRangeInitializer(GeneratedComponent, IParticleSystemMod
 
     @property
     def max_value(self) -> primitives.ColorX | None:
-        """The MaxValue field value."""
+        """The maximum color a ribbon follower can have."""
         member = self.get_member("MaxValue")
         if member is None:
             return None

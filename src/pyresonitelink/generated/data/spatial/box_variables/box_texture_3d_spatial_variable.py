@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.spatial_variable_blend_distance_mode import SpatialVariableBlendDistanceMode
+from pyresonitelink.generated._enums.wrap_mode import WrapMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -20,7 +22,7 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxTexture3D_SpatialVariable"
 
-    def __init__(self, variable_name: primitives.String | None = None, priority: primitives.Int | None = None, size: primitives.Float3 | None = None, blend_distance: primitives.Float | None = None, texture: str | IAssetProvider[Texture3D] | None = None, use_normalized_coordinates: primitives.Bool | None = None, scale: primitives.Float3 | None = None, offset: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, variable_name: primitives.String | None = None, priority: primitives.Int | None = None, size: primitives.Float3 | None = None, blend_distance: primitives.Float | None = None, blend_distance_mode: SpatialVariableBlendDistanceMode | str | None = None, texture: str | IAssetProvider[Texture3D] | None = None, use_normalized_coordinates: primitives.Bool | None = None, scale: primitives.Float3 | None = None, offset: primitives.Float3 | None = None, wrap_u: WrapMode | str | None = None, wrap_v: WrapMode | str | None = None, wrap_w: WrapMode | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,10 +30,14 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
             priority: Initial value for Priority.
             size: Initial value for Size.
             blend_distance: Initial value for BlendDistance.
+            blend_distance_mode: Initial value for BlendDistanceMode.
             texture: Initial value for Texture.
             use_normalized_coordinates: Initial value for UseNormalizedCoordinates.
             scale: Initial value for Scale.
             offset: Initial value for Offset.
+            wrap_u: Initial value for WrapU.
+            wrap_v: Initial value for WrapV.
+            wrap_w: Initial value for WrapW.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -43,6 +49,8 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
             self.size = size
         if blend_distance is not None:
             self.blend_distance = blend_distance
+        if blend_distance_mode is not None:
+            self.blend_distance_mode = blend_distance_mode
         if texture is not None:
             self.texture = texture
         if use_normalized_coordinates is not None:
@@ -51,6 +59,12 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
             self.scale = scale
         if offset is not None:
             self.offset = offset
+        if wrap_u is not None:
+            self.wrap_u = wrap_u
+        if wrap_v is not None:
+            self.wrap_v = wrap_v
+        if wrap_w is not None:
+            self.wrap_w = wrap_w
 
     @property
     def variable_name(self) -> primitives.String | None:
@@ -129,17 +143,24 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
             )
 
     @property
-    def blend_distance_mode(self) -> members.FieldEnum | None:
-        """The BlendDistanceMode member."""
+    def blend_distance_mode(self) -> SpatialVariableBlendDistanceMode | None:
+        """The BlendDistanceMode enum value."""
         member = self.get_member("BlendDistanceMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SpatialVariableBlendDistanceMode(member.value)
         return None
 
     @blend_distance_mode.setter
-    def blend_distance_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendDistanceMode member."""
-        self.set_member("BlendDistanceMode", value)
+    def blend_distance_mode(self, value: SpatialVariableBlendDistanceMode | str) -> None:
+        """Set the BlendDistanceMode enum value."""
+        member = self.get_member("BlendDistanceMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendDistanceMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def texture(self) -> str | None:
@@ -220,41 +241,62 @@ class BoxTexture3D_SpatialVariable(GeneratedComponent, ISpatialVariable, ICompon
             )
 
     @property
-    def wrap_u(self) -> members.FieldEnum | None:
-        """The WrapU member."""
+    def wrap_u(self) -> WrapMode | None:
+        """The WrapU enum value."""
         member = self.get_member("WrapU")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return WrapMode(member.value)
         return None
 
     @wrap_u.setter
-    def wrap_u(self, value: members.FieldEnum) -> None:
-        """Set the WrapU member."""
-        self.set_member("WrapU", value)
+    def wrap_u(self, value: WrapMode | str) -> None:
+        """Set the WrapU enum value."""
+        member = self.get_member("WrapU")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapU",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def wrap_v(self) -> members.FieldEnum | None:
-        """The WrapV member."""
+    def wrap_v(self) -> WrapMode | None:
+        """The WrapV enum value."""
         member = self.get_member("WrapV")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return WrapMode(member.value)
         return None
 
     @wrap_v.setter
-    def wrap_v(self, value: members.FieldEnum) -> None:
-        """Set the WrapV member."""
-        self.set_member("WrapV", value)
+    def wrap_v(self, value: WrapMode | str) -> None:
+        """Set the WrapV enum value."""
+        member = self.get_member("WrapV")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapV",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def wrap_w(self) -> members.FieldEnum | None:
-        """The WrapW member."""
+    def wrap_w(self) -> WrapMode | None:
+        """The WrapW enum value."""
         member = self.get_member("WrapW")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return WrapMode(member.value)
         return None
 
     @wrap_w.setter
-    def wrap_w(self, value: members.FieldEnum) -> None:
-        """Set the WrapW member."""
-        self.set_member("WrapW", value)
+    def wrap_w(self, value: WrapMode | str) -> None:
+        """Set the WrapW enum value."""
+        member = self.get_member("WrapW")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapW",
+                members.FieldEnum(value=str(value)),
+            )
 

@@ -20,6 +20,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Bake Meshes is a ProtoFlux node that takes a slot and combines it's meshes and slots into one slot. Allowing for the optimization of content and allowing for packing together objects. For example, many avatar statue makers use this to create statues out of people's avatars with no functionalities. It's a way to make a statue of your favorite contact on your shelf withouut having to have their 10000 ProtoFlux nodes still on it.
 
+Avatar Protections in the hierarchy of any slot you try to bake using this node will cause the bake to fail unless the Local User of the * (AsyncCall) Async call is coming from the user that the avatar protections is assigned to. In the case of avatar protections assigned to different users under the entire hiearchy, the bake will fail regardless. Because if one user tries to bake their protections, the other user's protections will prevent the node from working.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
     """
 
@@ -65,7 +67,7 @@ class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets INodeObjectOutput[Slot])."""
+        """The slot to bake all of it's content for."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +88,9 @@ class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def skinned_mesh_mode(self) -> str | None:
-        """Target ID of the SkinnedMeshMode reference (targets INodeValueOutput[primitives.Bool])."""
+        """=== IncludeInactive (bool) ===
+
+Include meshes and objects that currently aren't visible in the final product."""
         member = self.get_member("SkinnedMeshMode")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -128,7 +132,7 @@ class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def destroy_original(self) -> str | None:
-        """Target ID of the DestroyOriginal reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether to destroy the Root (Slot) when baked. Bad idea with baking statues for players."""
         member = self.get_member("DestroyOriginal")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -149,7 +153,7 @@ class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def assets_slot(self) -> str | None:
-        """Target ID of the AssetsSlot reference (targets INodeObjectOutput[Slot])."""
+        """Where to put the assets?"""
         member = self.get_member("AssetsSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -170,7 +174,7 @@ class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def grabbable_handling(self) -> str | None:
-        """Target ID of the GrabbableHandling reference (targets INodeValueOutput[ComponentHandling])."""
+        """What to do with grabbable components under what you're baking."""
         member = self.get_member("GrabbableHandling")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -191,7 +195,7 @@ class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def collider_handling(self) -> str | None:
-        """Target ID of the ColliderHandling reference (targets INodeValueOutput[ComponentHandling])."""
+        """What to do with Colliders under what you're baking."""
         member = self.get_member("ColliderHandling")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -212,7 +216,7 @@ class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def undoable(self) -> str | None:
-        """Target ID of the Undoable reference (targets INodeValueOutput[primitives.Bool])."""
+        """Weither the action can be undone via the undo keybind of the user that triggered the node."""
         member = self.get_member("Undoable")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -233,7 +237,7 @@ class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def baked_root(self) -> members.EmptyElement | None:
-        """The BakedRoot member."""
+        """The result of the bake and all of it's contents will be under this slot minus assets. This will only have a value during the OnBaked (Continuation) impulse."""
         member = self.get_member("BakedRoot")
         if isinstance(member, members.EmptyElement):
             return member
@@ -241,12 +245,12 @@ class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @baked_root.setter
     def baked_root(self, value: members.EmptyElement) -> None:
-        """Set the BakedRoot member."""
+        """Set BakedRoot. The result of the bake and all of it's contents will be under this slot minus assets. This will only have a value during the OnBaked (Continuation) impulse."""
         self.set_member("BakedRoot", value)
 
     @property
     def on_bake_started(self) -> str | None:
-        """Target ID of the OnBakeStarted reference (targets INodeOperation)."""
+        """Called immediately after * (AsyncCall) is called and the bake successfully started."""
         member = self.get_member("OnBakeStarted")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -267,7 +271,7 @@ class BakeMeshes(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
 
     @property
     def on_baked(self) -> str | None:
-        """Target ID of the OnBaked reference (targets INodeOperation)."""
+        """Fires some time after * (AsyncCall) is called and the bake successfully finished."""
         member = self.get_member("OnBaked")
         if isinstance(member, members.Reference):
             return member.targetId

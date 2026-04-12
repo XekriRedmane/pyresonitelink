@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarPoseRotationConstraint(GeneratedComponent, IAvatarPoseFilter, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseRotationConstraint.
+    """The AvatarPoseRotationConstraint component is used to either restrict the rotation direction of the user's arm when using a tooltip, or to restrict the rotation of a particular BodyNode.
 
     Category: Users/Common Avatar System/Pose Filters
+
+    Used in avatar anchors and in tooltip contraints.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarPoseRotationConstraint"
@@ -38,7 +40,7 @@ class AvatarPoseRotationConstraint(GeneratedComponent, IAvatarPoseFilter, IWorld
 
     @property
     def max_twist(self) -> primitives.Float | None:
-        """The MaxTwist field value."""
+        """the max twist in degrees allowed for the object being filtered."""
         member = self.get_member("MaxTwist")
         if member is None:
             return None
@@ -57,7 +59,7 @@ class AvatarPoseRotationConstraint(GeneratedComponent, IAvatarPoseFilter, IWorld
 
     @property
     def max_swing(self) -> primitives.Float | None:
-        """The MaxSwing field value."""
+        """the max swing in degrees allowed for the object being filtered."""
         member = self.get_member("MaxSwing")
         if member is None:
             return None
@@ -76,7 +78,7 @@ class AvatarPoseRotationConstraint(GeneratedComponent, IAvatarPoseFilter, IWorld
 
     @property
     def axis(self) -> primitives.Float3 | None:
-        """The Axis field value."""
+        """swing axis direction for the object being filtered."""
         member = self.get_member("Axis")
         if member is None:
             return None
@@ -95,7 +97,7 @@ class AvatarPoseRotationConstraint(GeneratedComponent, IAvatarPoseFilter, IWorld
 
     @property
     def twist_reference_axis(self) -> primitives.Float3 | None:
-        """The TwistReferenceAxis field value."""
+        """The twist axis direction for the object being filtered."""
         member = self.get_member("TwistReferenceAxis")
         if member is None:
             return None

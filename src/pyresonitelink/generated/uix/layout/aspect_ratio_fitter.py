@@ -9,9 +9,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AspectRatioFitter(GeneratedComponent, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.AspectRatioFitter.
+    """The AspectRatioFitter component makes the contents (child slots) of the RectTransform stay the same dimensions (or the same ratio), even when the canvas or UIX element this component is in changes size.
+
+}}
 
     Category: UIX/Layout
+
+    Great for keeping things more uniform by a ratio.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.AspectRatioFitter"
@@ -29,7 +33,7 @@ class AspectRatioFitter(GeneratedComponent, IUIComputeComponent, IWorldEventRece
 
     @property
     def aspect_ratio(self) -> primitives.Float | None:
-        """The AspectRatio field value."""
+        """The aspect ratio of this UIX element. ``1`` is a perfect square, less than ``1`` is a vertical ratio, greater than ``1`` is a horizontal ratio."""
         member = self.get_member("AspectRatio")
         if member is None:
             return None

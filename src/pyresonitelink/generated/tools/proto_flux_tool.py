@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.type import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -19,14 +20,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxTool.
+    """For more info on the protoflux tool in general, see ProtoFlux and ProtoFlux Tool.
 
     Category: Tools
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, wire_point: str | Slot | None = None, max_connect_distance: primitives.Float | None = None, selection_progress: primitives.Float | None = None, hovering_element_name: primitives.String | None = None, hovering_element_color: primitives.ColorX | None = None, wire_point_position: str | IField[primitives.Float3] | None = None, text: str | TextRenderer | None = None, current_proxy: str | ProtoFluxElementProxy | None = None, current_temp_wire: str | Slot | None = None, current_cut_line: str | Slot | None = None, cut_line_scale: str | IField[primitives.Float3] | None = None, cut_line_orientation: str | IField[primitives.FloatQ] | None = None, current_highlighted_node: str | ProtoFluxNodeVisual | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, spawn_node_type: Type | str | None = None, wire_point: str | Slot | None = None, max_connect_distance: primitives.Float | None = None, selection_progress: primitives.Float | None = None, hovering_element_name: primitives.String | None = None, hovering_element_content_type: Type | str | None = None, hovering_element_color: primitives.ColorX | None = None, wire_point_position: str | IField[primitives.Float3] | None = None, text: str | TextRenderer | None = None, current_proxy: str | ProtoFluxElementProxy | None = None, current_temp_wire: str | Slot | None = None, current_cut_line: str | Slot | None = None, cut_line_scale: str | IField[primitives.Float3] | None = None, cut_line_orientation: str | IField[primitives.FloatQ] | None = None, current_highlighted_node: str | ProtoFluxNodeVisual | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,10 +37,12 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             equip_name: Initial value for EquipName.
             override_active_tool: Initial value for _overrideActiveTool.
             grip_poses_generated: Initial value for _gripPosesGenerated.
+            spawn_node_type: Initial value for SpawnNodeType.
             wire_point: Initial value for WirePoint.
             max_connect_distance: Initial value for MaxConnectDistance.
             selection_progress: Initial value for SelectionProgress.
             hovering_element_name: Initial value for HoveringElementName.
+            hovering_element_content_type: Initial value for HoveringElementContentType.
             hovering_element_color: Initial value for HoveringElementColor.
             wire_point_position: Initial value for _wirePointPosition.
             text: Initial value for _text.
@@ -64,6 +67,8 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             self.override_active_tool = override_active_tool
         if grip_poses_generated is not None:
             self.grip_poses_generated = grip_poses_generated
+        if spawn_node_type is not None:
+            self.spawn_node_type = spawn_node_type
         if wire_point is not None:
             self.wire_point = wire_point
         if max_connect_distance is not None:
@@ -72,6 +77,8 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             self.selection_progress = selection_progress
         if hovering_element_name is not None:
             self.hovering_element_name = hovering_element_name
+        if hovering_element_content_type is not None:
+            self.hovering_element_content_type = hovering_element_content_type
         if hovering_element_color is not None:
             self.hovering_element_color = hovering_element_color
         if wire_point_position is not None:
@@ -223,21 +230,28 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def spawn_node_type(self) -> members.FieldEnum | None:
-        """The SpawnNodeType member."""
+    def spawn_node_type(self) -> Type | None:
+        """The type of the ProtoFlux node to spawn."""
         member = self.get_member("SpawnNodeType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @spawn_node_type.setter
-    def spawn_node_type(self, value: members.FieldEnum) -> None:
-        """Set the SpawnNodeType member."""
-        self.set_member("SpawnNodeType", value)
+    def spawn_node_type(self, value: Type | str) -> None:
+        """Set SpawnNodeType. The type of the ProtoFlux node to spawn."""
+        member = self.get_member("SpawnNodeType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SpawnNodeType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def wire_point(self) -> str | None:
-        """Target ID of the WirePoint reference (targets Slot)."""
+        """The slot that the tool is currently pulling a wire out of."""
         member = self.get_member("WirePoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -258,7 +272,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def max_connect_distance(self) -> primitives.Float | None:
-        """The MaxConnectDistance field value."""
+        """The distance this protoflux tool will search for nodes from it's tip before stopping. it's usually 20 meters in local space."""
         member = self.get_member("MaxConnectDistance")
         if member is None:
             return None
@@ -277,7 +291,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def selection_progress(self) -> primitives.Float | None:
-        """The SelectionProgress field value."""
+        """How far the user is to selecting nodes by holding Secondary"""
         member = self.get_member("SelectionProgress")
         if member is None:
             return None
@@ -296,7 +310,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def hovering_element_name(self) -> primitives.String | None:
-        """The HoveringElementName field value."""
+        """The name of the protoflux element this tool is currently hovering over"""
         member = self.get_member("HoveringElementName")
         if member is None:
             return None
@@ -314,21 +328,28 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
             )
 
     @property
-    def hovering_element_content_type(self) -> members.FieldEnum | None:
-        """The HoveringElementContentType member."""
+    def hovering_element_content_type(self) -> Type | None:
+        """The type of the protoflux element this tool is currently hovering over"""
         member = self.get_member("HoveringElementContentType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @hovering_element_content_type.setter
-    def hovering_element_content_type(self, value: members.FieldEnum) -> None:
-        """Set the HoveringElementContentType member."""
-        self.set_member("HoveringElementContentType", value)
+    def hovering_element_content_type(self, value: Type | str) -> None:
+        """Set HoveringElementContentType. The type of the protoflux element this tool is currently hovering over"""
+        member = self.get_member("HoveringElementContentType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "HoveringElementContentType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def hovering_element_color(self) -> primitives.ColorX | None:
-        """The HoveringElementColor field value."""
+        """The color of ``HoveringElementContentType``"""
         member = self.get_member("HoveringElementColor")
         if member is None:
             return None
@@ -347,7 +368,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def selected_nodes(self) -> members.SyncList | None:
-        """The _selectedNodes member."""
+        """The list of nodes the protoflux nodes that the tool currently has selected."""
         member = self.get_member("_selectedNodes")
         if isinstance(member, members.SyncList):
             return member
@@ -355,12 +376,12 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @selected_nodes.setter
     def selected_nodes(self, value: members.SyncList) -> None:
-        """Set the _selectedNodes member."""
+        """Set _selectedNodes. The list of nodes the protoflux nodes that the tool currently has selected."""
         self.set_member("_selectedNodes", value)
 
     @property
     def wire_point_position(self) -> str | None:
-        """Target ID of the _wirePointPosition reference (targets IField[primitives.Float3])."""
+        """What field to drive on a StripeMesh for a currently pulled wire."""
         member = self.get_member("_wirePointPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -381,7 +402,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def text(self) -> str | None:
-        """Target ID of the _text reference (targets TextRenderer)."""
+        """The text to drive with information from this tool."""
         member = self.get_member("_text")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -402,7 +423,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def current_proxy(self) -> str | None:
-        """Target ID of the _currentProxy reference (targets ProtoFluxElementProxy)."""
+        """What element the protoflux tool is currently pulling in order to connect to another element via the UI."""
         member = self.get_member("_currentProxy")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -423,7 +444,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def current_temp_wire(self) -> str | None:
-        """Target ID of the _currentTempWire reference (targets Slot)."""
+        """The current wire that this tool is pulling from a protoflux connector."""
         member = self.get_member("_currentTempWire")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -444,7 +465,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def current_cut_line(self) -> str | None:
-        """Target ID of the _currentCutLine reference (targets Slot)."""
+        """The current wire that this tool is trying to cut."""
         member = self.get_member("_currentCutLine")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -465,7 +486,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def cut_line_scale(self) -> str | None:
-        """Target ID of the _cutLineScale reference (targets IField[primitives.Float3])."""
+        """The current wire that this tool is trying to cut's scale."""
         member = self.get_member("_cutLineScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -486,7 +507,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def cut_line_orientation(self) -> str | None:
-        """Target ID of the _cutLineOrientation reference (targets IField[primitives.FloatQ])."""
+        """The orientation of the current wire that this tool is trying to cut."""
         member = self.get_member("_cutLineOrientation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -507,7 +528,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def current_highlighted_node(self) -> str | None:
-        """Target ID of the _currentHighlightedNode reference (targets ProtoFluxNodeVisual)."""
+        """The current node this tool is looking at."""
         member = self.get_member("_currentHighlightedNode")
         if isinstance(member, members.Reference):
             return member.targetId

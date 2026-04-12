@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RadiantDashScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RadiantDashScreen.
+    """See Dash menu.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadiantDashScreen"
@@ -61,7 +61,7 @@ class RadiantDashScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def icon(self) -> str | None:
-        """The Icon field value."""
+        """The icon for this screen."""
         member = self.get_member("Icon")
         if member is None:
             return None
@@ -80,7 +80,7 @@ class RadiantDashScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def active_color(self) -> primitives.ColorX | None:
-        """The ActiveColor field value."""
+        """The color when this screen is active."""
         member = self.get_member("ActiveColor")
         if member is None:
             return None
@@ -99,7 +99,7 @@ class RadiantDashScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label(self) -> primitives.String | None:
-        """The Label field value."""
+        """The name of this screen."""
         member = self.get_member("Label")
         if member is None:
             return None
@@ -118,7 +118,7 @@ class RadiantDashScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_enabled(self) -> primitives.Bool | None:
-        """The ScreenEnabled field value."""
+        """Whether this screen is enabled."""
         member = self.get_member("ScreenEnabled")
         if member is None:
             return None
@@ -137,7 +137,7 @@ class RadiantDashScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_resolution(self) -> primitives.Float2 | None:
-        """The BaseResolution field value."""
+        """The resolution of this screen."""
         member = self.get_member("BaseResolution")
         if member is None:
             return None
@@ -156,7 +156,7 @@ class RadiantDashScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_root(self) -> str | None:
-        """Target ID of the _screenRoot reference (targets Slot)."""
+        """The root of the elements on this screen."""
         member = self.get_member("_screenRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -177,7 +177,7 @@ class RadiantDashScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_canvas(self) -> str | None:
-        """Target ID of the _screenCanvas reference (targets Canvas)."""
+        """The canvas being used to render this screen."""
         member = self.get_member("_screenCanvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -198,7 +198,7 @@ class RadiantDashScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def modal_overlay_manager(self) -> str | None:
-        """Target ID of the _modalOverlayManager reference (targets ModalOverlayManager)."""
+        """The manager handling edit mode for this screen."""
         member = self.get_member("_modalOverlayManager")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -219,7 +219,7 @@ class RadiantDashScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets RadiantDashButton)."""
+        """The button to select this screen for the dash."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -240,7 +240,7 @@ class RadiantDashScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def icon_texture(self) -> str | None:
-        """Target ID of the _iconTexture reference (targets IAssetProvider[Texture2D])."""
+        """The texture being used for the icon for this screen."""
         member = self.get_member("_iconTexture")
         if isinstance(member, members.Reference):
             return member.targetId

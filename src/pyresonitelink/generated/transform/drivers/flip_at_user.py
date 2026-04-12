@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FlipAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FlipAtUser.
+    """The FlipAtUser component can be used to make an object face towards positive or negative Z, depending on what side of it the local user is.
 
     Category: Transform/Drivers
+
+    **Related Components**: Look At User
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FlipAtUser"
@@ -30,7 +32,7 @@ class FlipAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def up_space(self) -> members.SyncObject | None:
-        """The UpSpace member."""
+        """the coordinate space that is used when calculating what is "up". If set to local user space, then the up direction of this component is the up direction of the slot the user is parented under, which is usually up for that user. This can be useful if a user is in a gravity direction which doesn't match the world's up direction, and will make this orient to that user's direction for a better reading experience for example."""
         member = self.get_member("UpSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -38,12 +40,12 @@ class FlipAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @up_space.setter
     def up_space(self, value: members.SyncObject) -> None:
-        """Set the UpSpace member."""
+        """Set UpSpace. the coordinate space that is used when calculating what is "up". If set to local user space, then the up direction of this component is the up direction of the slot the user is parented under, which is usually up for that user. This can be useful if a user is in a gravity direction which doesn't match the world's up direction, and will make this orient to that user's direction for a better reading experience for example."""
         self.set_member("UpSpace", value)
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the _rotation reference (targets IField[primitives.FloatQ])."""
+        """The field that is driven to make the object rotate to the user. This is automatically set to the Rotation field of the slot this component is added to."""
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             return member.targetId

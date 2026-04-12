@@ -1,0 +1,15 @@
+{
+  "description": "The MultiTextureFader component can be used with the PBSLerpMetallic or PBSLerpSpecular to lerp multiple textures rather than just one.",
+  "category": "Utility",
+  "fields": {
+    "FirstTexture": "Usually set to the Texture set 0 of a lerping material.",
+    "SecondTexture": "Usually set to the Texture set 1 of a lerping material. The type of texture set like albedo or emission this one is driving should be the same as ``FirstTexture``.",
+    "Lerp": "The lerp field of the material. Can be left blank if using multiple of this component on the same material.",
+    "Position": "The position in the list of ``Textures`` to fade between. If this is a decimal, the ``FirstTexture`` and ``SecondTexture`` will be set to textures in ``Textures`` that are at the positon of floor and ceiling of this value.",
+    "Textures": "A list of textures to lerp between and set ``FirstTexture`` and ``SecondTexture`` to using ``Position`` to determine the texture from this list."
+  },
+  "methods": {},
+  "usage": "Can be attached to a slot and given a list of materials. Using a PBSLerpMetallic or PBSLerpSpecular with this component can lerp the list of ``Textures`` using ``Position``. The lerp of the material can be driven via the ``Lerp`` on this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MultiTextureFader&action=raw"
+}

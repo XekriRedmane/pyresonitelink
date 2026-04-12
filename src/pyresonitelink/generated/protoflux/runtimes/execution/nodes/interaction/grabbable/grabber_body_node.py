@@ -34,7 +34,7 @@ class GrabberBodyNode(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def grabber(self) -> str | None:
-        """Target ID of the Grabber reference (targets INodeObjectOutput[Grabber])."""
+        """A grabbable component on a User."""
         member = self.get_member("Grabber")
         if isinstance(member, members.Reference):
             return member.targetId

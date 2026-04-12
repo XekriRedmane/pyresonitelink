@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RandomAudioClipPlayer.
+    """The RandomAudioClipPlayer component is able to play a random audio file all the way through from a list of ``Clips`` and parent the resulting one shots under a slot.
 
     Category: Media
+
+    Attach to a slot and give the component some ``Clips`` to play. This
+    component can be trigged via it's sync delegates or by button events
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RandomAudioClipPlayer"
@@ -41,7 +44,7 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def parent_under(self) -> str | None:
-        """Target ID of the ParentUnder reference (targets Slot)."""
+        """The slot to parent the one shot objects under."""
         member = self.get_member("ParentUnder")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +65,7 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def min_distance(self) -> primitives.Float | None:
-        """The MinDistance field value."""
+        """the distance in meters in the audio's set transform space where the audio's perceived volume stops increasing and stays constant all the way to the center."""
         member = self.get_member("MinDistance")
         if member is None:
             return None
@@ -81,7 +84,7 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def max_distance(self) -> primitives.Float | None:
-        """The MaxDistance field value."""
+        """the maximum distance in meters in the audio's set transform space in meters before it cannot be heard."""
         member = self.get_member("MaxDistance")
         if member is None:
             return None
@@ -100,7 +103,7 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def rolloff_mode(self) -> members.FieldEnum | None:
-        """The RolloffMode member."""
+        """An optional AudioRolloffMode"""
         member = self.get_member("RolloffMode")
         if isinstance(member, members.FieldEnum):
             return member
@@ -108,7 +111,7 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @rolloff_mode.setter
     def rolloff_mode(self, value: members.FieldEnum) -> None:
-        """Set the RolloffMode member."""
+        """Set RolloffMode. An optional AudioRolloffMode"""
         self.set_member("RolloffMode", value)
 
     @property
@@ -132,7 +135,7 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def clips(self) -> members.SyncList | None:
-        """The Clips member."""
+        """The list of ClipData to choose from, randomly with weights."""
         member = self.get_member("Clips")
         if isinstance(member, members.SyncList):
             return member
@@ -140,11 +143,11 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @clips.setter
     def clips(self, value: members.SyncList) -> None:
-        """Set the Clips member."""
+        """Set Clips. The list of ClipData to choose from, randomly with weights."""
         self.set_member("Clips", value)
 
     async def play(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Play sync method.
+        """Plays a random audio clip at it's current position
 
         Returns:
             The raw JSON response dict.
@@ -154,7 +157,7 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
         )
 
     async def play_at_point(self, resolink: protocols.ResoniteLinkClient, point: primitives.Float3, debug: bool = False) -> dict:
-        """Call the PlayAtPoint sync method.
+        """Plays a random audio clip at the provided position.
 
         Args:
             resolink: Connected ResoniteLink client.

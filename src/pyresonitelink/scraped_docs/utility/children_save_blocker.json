@@ -1,0 +1,14 @@
+{
+  "description": "The ChildrenSaveBlocker component prevents the slot's children from being saved with the slot.",
+  "category": "Utility",
+  "fields": {},
+  "methods": {},
+  "usage": "When attached to a slot, the children of the slot will not be saved when the slot is part of an item being saved. The slot itself will still be saved.",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* GrabbableSaveBlock for blocking saves of grabbable items."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ChildrenSaveBlocker&action=raw"
+}

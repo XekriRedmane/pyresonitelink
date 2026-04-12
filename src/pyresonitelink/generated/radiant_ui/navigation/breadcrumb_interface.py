@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BreadcrumbInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BreadcrumbInterface.
+    """The BreadcrumbInterface component is used by data feeds to get the translated name of one directory in a list of directories that makes a path. This is most commonly used in the Settings at the top to show a user where in the settings they are.
 
     Category: Radiant UI/Navigation
+
+    Used with a BreadcrumbManager to generate a list of path elements to
+    show to the user in their language.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BreadcrumbInterface"
@@ -37,7 +40,7 @@ class BreadcrumbInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[primitives.String])."""
+        """The field to drive with the localized string of the path segment (on an OS, this would be like the programmer name of a folder translated to your language)"""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +61,7 @@ class BreadcrumbInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def path_segment(self) -> primitives.String | None:
-        """The PathSegment field value."""
+        """The path segment programmer name to convert to your language."""
         member = self.get_member("PathSegment")
         if member is None:
             return None
@@ -77,7 +80,7 @@ class BreadcrumbInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def item_depth(self) -> primitives.Int | None:
-        """The ItemDepth field value."""
+        """How many levels down in the path this string element would be."""
         member = self.get_member("ItemDepth")
         if member is None:
             return None

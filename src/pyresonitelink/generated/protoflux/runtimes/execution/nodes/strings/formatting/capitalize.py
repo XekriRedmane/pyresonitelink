@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Capitalize(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Capitalize node takes in a string and capitalizes the first letter of the string. Having a letter that is not in the first index of the string will not capitalize the string.
+    """The ``Capitalize`` node takes in a string and capitalizes the first letter of the string. Having a letter that is not in the first index of the string will not capitalize the string.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Formatting
     """
@@ -33,7 +33,7 @@ class Capitalize(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, I
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to capitalize."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId

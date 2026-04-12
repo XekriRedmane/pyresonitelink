@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RibbonColorConstantInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.RibbonColorConstantInitializer.
+    """The RibbonColorConstantInitializer gives all ribbons a color of ``Value`` upon start in a particle system.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.RibbonColorConstantInitializer"
@@ -29,7 +34,7 @@ class RibbonColorConstantInitializer(GeneratedComponent, IParticleSystemModule, 
 
     @property
     def value(self) -> primitives.ColorX | None:
-        """The Value field value."""
+        """The color to give all ribbons."""
         member = self.get_member("Value")
         if member is None:
             return None

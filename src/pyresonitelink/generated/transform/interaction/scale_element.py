@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ScaleElement.
+    """The ScaleElement component scales itself up or down depending on if it is the selected scale element in a Scale Group..
 
     Category: Transform/Interaction
+
+    Used along with a Scale Group to make a list of selectable items via
+    touching them.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaleElement"
@@ -41,7 +44,7 @@ class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def group(self) -> str | None:
-        """Target ID of the Group reference (targets ScaleGroup)."""
+        """The group this belongs to. If there is a group in this component's parents, the group is auto filled into this field on attach."""
         member = self.get_member("Group")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +65,7 @@ class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def respond_to_physical_touch(self) -> primitives.Bool | None:
-        """The RespondToPhysicalTouch field value."""
+        """Whether to make this item selected upon physical touch."""
         member = self.get_member("RespondToPhysicalTouch")
         if member is None:
             return None
@@ -81,7 +84,7 @@ class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def respond_to_remote_touch(self) -> primitives.Bool | None:
-        """The RespondToRemoteTouch field value."""
+        """Whether to make this item selected upon clicking via laser."""
         member = self.get_member("RespondToRemoteTouch")
         if member is None:
             return None
@@ -100,7 +103,7 @@ class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def scale_target(self) -> str | None:
-        """Target ID of the _scaleTarget reference (targets IField[primitives.Float3])."""
+        """The field to drive in order to influence the scale of this slot when selecting/deselecting."""
         member = self.get_member("_scaleTarget")
         if isinstance(member, members.Reference):
             return member.targetId

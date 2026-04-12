@@ -38,7 +38,7 @@ class GetObjectRoot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """A slot within the object you want the root of."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,15 @@ class GetObjectRoot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode
 
     @property
     def only_explicit(self) -> str | None:
-        """Target ID of the OnlyExplicit reference (targets INodeValueOutput[primitives.Bool])."""
+        """If this is true, only slots with an ObjectRoot component will be considered a root. 
+
+If this is false, slots containing a component implementing ``IObjectRoot`` are also considered roots. These are:
+
+* LegacyPanel
+* SceneInspector
+* ObjectRoot
+* Grabbable
+* ProtoFluxNode"""
         member = self.get_member("OnlyExplicit")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -11,9 +11,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParentReferenceLink(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ParentReferenceLink<>.
+    """The ParentReferenceLink&lt;T&gt; component drives a field depending on the value of a compatible ParentReference as part of a parent value system.
 
     Category: Data/Parent
+
+    Upon a change of parent, this component will search for ParentReference
+    components on the slot's immediate parent that have a matching type and
+    tag. If it can find such a component and link to it, it will drive the
+    ``Target`` field based on the ``Reference`` of the ParentReference. If
+    it can not find such a component, it will use the ``DefaultReference``
+    value.
 
     Parameterize with a value type::
 
@@ -46,7 +53,7 @@ class ParentReferenceLink(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def match_tag(self) -> primitives.String | None:
-        """The MatchTag field value."""
+        """The tag to search for on the slot's immediate parent. Compatible ParentReference components must have the same ``Tag``."""
         member = self.get_member("MatchTag")
         if member is None:
             return None
@@ -65,7 +72,7 @@ class ParentReferenceLink(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncRef[T])."""
+        """The field to drive using the value of the linked parent."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +93,7 @@ class ParentReferenceLink(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """If ``True``, any writes to the driven field will be propagated back to the ``Reference`` provided by the ParentReference. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None
@@ -105,7 +112,7 @@ class ParentReferenceLink(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def default_reference(self) -> str | None:
-        """Target ID of the DefaultReference reference (targets T)."""
+        """Default value to use if the component can not find a compatible ParentReference."""
         member = self.get_member("DefaultReference")
         if isinstance(member, members.Reference):
             return member.targetId

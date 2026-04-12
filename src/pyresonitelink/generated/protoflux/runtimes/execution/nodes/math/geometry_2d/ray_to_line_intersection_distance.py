@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RayToLineIntersectionDistance(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Ray To Line Intersection Distance node determines the distance from a ray origin to the point at which the ray intersects a line segment defined by two points. This node is functionally equivalent to using the ProtoFlux:Ray To Line Intersection node, then plugging the value used for Origin and the Intersection output into a Distancefloat2 node.
+    """The Ray To Line Intersection Distance node determines the distance from a ray origin to the point at which the ray intersects a line segment defined by two points. This node is functionally equivalent to using the Ray To Line Intersection node, then plugging the value used for ``Origin`` and the ``Intersection`` output into a Distance node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Geometry 2D
     """
@@ -42,7 +42,7 @@ class RayToLineIntersectionDistance(GeneratedComponent, IExecutionNode, INode, I
 
     @property
     def origin(self) -> str | None:
-        """Target ID of the Origin reference (targets INodeValueOutput[primitives.Float2])."""
+        """Origin of the ray."""
         member = self.get_member("Origin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class RayToLineIntersectionDistance(GeneratedComponent, IExecutionNode, INode, I
 
     @property
     def direction(self) -> str | None:
-        """Target ID of the Direction reference (targets INodeValueOutput[primitives.Float2])."""
+        """Direction of the ray."""
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class RayToLineIntersectionDistance(GeneratedComponent, IExecutionNode, INode, I
 
     @property
     def line_point0(self) -> str | None:
-        """Target ID of the LinePoint0 reference (targets INodeValueOutput[primitives.Float2])."""
+        """First point of the line segment."""
         member = self.get_member("LinePoint0")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +105,7 @@ class RayToLineIntersectionDistance(GeneratedComponent, IExecutionNode, INode, I
 
     @property
     def line_point1(self) -> str | None:
-        """Target ID of the LinePoint1 reference (targets INodeValueOutput[primitives.Float2])."""
+        """Second point of the line segment."""
         member = self.get_member("LinePoint1")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +126,7 @@ class RayToLineIntersectionDistance(GeneratedComponent, IExecutionNode, INode, I
 
     @property
     def distance(self) -> members.EmptyElement | None:
-        """The Distance member."""
+        """The Euclidean distance between ``Origin`` and the point at which the defined ray intersects with the line segment with endpoints ``LinePoint0`` and ``LinePoint1``. If the ray does not intersect, the value will be ``0``."""
         member = self.get_member("Distance")
         if isinstance(member, members.EmptyElement):
             return member
@@ -134,12 +134,12 @@ class RayToLineIntersectionDistance(GeneratedComponent, IExecutionNode, INode, I
 
     @distance.setter
     def distance(self, value: members.EmptyElement) -> None:
-        """Set the Distance member."""
+        """Set Distance. The Euclidean distance between ``Origin`` and the point at which the defined ray intersects with the line segment with endpoints ``LinePoint0`` and ``LinePoint1``. If the ray does not intersect, the value will be ``0``."""
         self.set_member("Distance", value)
 
     @property
     def intersects(self) -> members.EmptyElement | None:
-        """The Intersects member."""
+        """``True`` if the ray intersects with the line segment, ``False`` otherwise. See Ray To Line Intersection for what counts as intersection."""
         member = self.get_member("Intersects")
         if isinstance(member, members.EmptyElement):
             return member
@@ -147,6 +147,6 @@ class RayToLineIntersectionDistance(GeneratedComponent, IExecutionNode, INode, I
 
     @intersects.setter
     def intersects(self, value: members.EmptyElement) -> None:
-        """Set the Intersects member."""
+        """Set Intersects. ``True`` if the ray intersects with the line segment, ``False`` otherwise. See Ray To Line Intersection for what counts as intersection."""
         self.set_member("Intersects", value)
 

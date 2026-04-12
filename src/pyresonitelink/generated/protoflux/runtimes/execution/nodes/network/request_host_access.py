@@ -17,7 +17,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Request Host Access node takes in a Host IP address, an accessible port of that address, the scope of what type of connection this is, and the reason why this user should connect to this service. When everything is accurate, this node will fire an event depending if this local user has successfully connected to the host service. This relates to the settings in the Dash that a user can look through to see what services they have access to.
+    """The ``Request Host Access`` node takes in a Host IP address, an accessible port of that address, the scope of what type of connection this is, and the reason why this user should connect to this service. When everything is accurate, this node will fire an event depending if this local user has successfully connected to the host service. This relates to the settings in the Dash that a user can look through to see what services they have access to.
+
+If you provide a scheme (also called a protocol) inside the host string, it will be overridden by the scope every time, as the scope takes priority to determine the type of the network connection. A scheme looks like ``https://`` or ``ws://``.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network
     """
@@ -55,7 +57,7 @@ class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def on_granted(self) -> str | None:
-        """Target ID of the OnGranted reference (targets INodeOperation)."""
+        """Fires when the local user has accepted the host access to the service. This adds to thier list of host accesses in the settings in the Dash."""
         member = self.get_member("OnGranted")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -76,7 +78,7 @@ class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def on_denied(self) -> str | None:
-        """Target ID of the OnDenied reference (targets INodeOperation)."""
+        """Fires when the local user has declined the host access to the service."""
         member = self.get_member("OnDenied")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -97,7 +99,7 @@ class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def on_ignored(self) -> str | None:
-        """Target ID of the OnIgnored reference (targets INodeOperation)."""
+        """Fires when the local user has clicked the close button on the pop-up dialoge that asks for the host access, or somehow avoided the notification through other means."""
         member = self.get_member("OnIgnored")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -118,7 +120,7 @@ class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def host(self) -> str | None:
-        """Target ID of the Host reference (targets INodeObjectOutput[primitives.String])."""
+        """The IP address to connect to."""
         member = self.get_member("Host")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -139,7 +141,7 @@ class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def port(self) -> str | None:
-        """Target ID of the Port reference (targets INodeValueOutput[primitives.Int])."""
+        """The Port Number used to access this IP address."""
         member = self.get_member("Port")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -160,7 +162,7 @@ class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def scope(self) -> str | None:
-        """Target ID of the Scope reference (targets INodeValueOutput[HostAccessScope])."""
+        """The access type used for this network connection."""
         member = self.get_member("Scope")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -181,7 +183,7 @@ class RequestHostAccess(GeneratedComponent, IAsyncNodeOperation, IExecutionNode,
 
     @property
     def reason(self) -> str | None:
-        """Target ID of the Reason reference (targets INodeObjectOutput[primitives.String])."""
+        """The reason to why this user should allow access to the host's service."""
         member = self.get_member("Reason")
         if isinstance(member, members.Reference):
             return member.targetId

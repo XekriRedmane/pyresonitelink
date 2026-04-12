@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SearchBarFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SearchBarFacetPreset.
+    """The SearchBarFacetPreset component is used to control search functions in different parts of the game
 
     Category: Radiant UI/Facets
     """
@@ -29,7 +29,7 @@ class SearchBarFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def search_bar(self) -> str | None:
-        """Target ID of the _searchBar reference (targets RadiantSearchBar)."""
+        """The searching component this should be controlling"""
         member = self.get_member("_searchBar")
         if isinstance(member, members.Reference):
             return member.targetId

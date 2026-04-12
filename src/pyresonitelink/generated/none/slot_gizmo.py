@@ -19,7 +19,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SlotGizmo.
+    """The SlotGizmo is used with the Dev tool to interact with slots when they are selected and their sub gizmos. This is rarely interacted directly with by the user, but is a very important component for interacting with the game.
+
+    **SlotGizmoReplacement**: Sync Delegate of identity Func`2&lt;SlotGizmo, SlotGizmo&gt; for replacing the old gimzo (argument 1) with a new one.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlotGizmo"
@@ -100,7 +102,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def is_folded(self) -> primitives.Bool | None:
-        """The _isFolded field value."""
+        """Whether the gizmo is folded up."""
         member = self.get_member("_isFolded")
         if member is None:
             return None
@@ -119,7 +121,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def active_gizmo(self) -> str | None:
-        """Target ID of the _activeGizmo reference (targets Worker)."""
+        """Which gizmo is being shown right now via tool options."""
         member = self.get_member("_activeGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -140,7 +142,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def target_slot(self) -> str | None:
-        """Target ID of the _targetSlot reference (targets Slot)."""
+        """The slot this is affecting."""
         member = self.get_member("_targetSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -161,7 +163,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def position_drive(self) -> str | None:
-        """Target ID of the _positionDrive reference (targets IField[primitives.Float3])."""
+        """The field to drive position with for this visual."""
         member = self.get_member("_positionDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -182,7 +184,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def scale_drive(self) -> str | None:
-        """Target ID of the _scaleDrive reference (targets IField[primitives.Float3])."""
+        """The field to drive scale with for this visual."""
         member = self.get_member("_scaleDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -203,7 +205,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def bounds_mesh(self) -> str | None:
-        """Target ID of the _boundsMesh reference (targets TubeBoxMesh)."""
+        """The mesh to use to show bounds."""
         member = self.get_member("_boundsMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -224,7 +226,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def bounds_root(self) -> str | None:
-        """Target ID of the _boundsRoot reference (targets Slot)."""
+        """The slot to make bounds for."""
         member = self.get_member("_boundsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -245,7 +247,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def bounds_rotation(self) -> str | None:
-        """Target ID of the _boundsRotation reference (targets IField[primitives.FloatQ])."""
+        """the field to drive for the bounds rotation."""
         member = self.get_member("_boundsRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -266,7 +268,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def bounds_offset(self) -> str | None:
-        """Target ID of the _boundsOffset reference (targets IField[primitives.Float3])."""
+        """The field to drive for bounds offset."""
         member = self.get_member("_boundsOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -287,7 +289,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def bounds_active(self) -> str | None:
-        """Target ID of the _boundsActive reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether the bounds are active or not."""
         member = self.get_member("_boundsActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -308,7 +310,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def name_text(self) -> str | None:
-        """Target ID of the _nameText reference (targets IField[primitives.String])."""
+        """The field to drive with the name of the target slot."""
         member = self.get_member("_nameText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -329,7 +331,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def name_offset(self) -> str | None:
-        """Target ID of the _nameOffset reference (targets IField[primitives.Float3])."""
+        """The position offset field for the visual of the name of targeted slot."""
         member = self.get_member("_nameOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -350,7 +352,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def name_rotation(self) -> str | None:
-        """Target ID of the _nameRotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field for the visual of the name of targeted slot."""
         member = self.get_member("_nameRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -371,7 +373,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def name_active(self) -> str | None:
-        """Target ID of the _nameActive reference (targets IField[primitives.Bool])."""
+        """The active field for the visual of the name of targeted slot."""
         member = self.get_member("_nameActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -392,7 +394,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def x_pos_segment(self) -> str | None:
-        """Target ID of the _xPosSegment reference (targets SegmentMesh)."""
+        """The segment used for the X position vs this slot's parent slot."""
         member = self.get_member("_xPosSegment")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -413,7 +415,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def y_pos_segment(self) -> str | None:
-        """Target ID of the _yPosSegment reference (targets SegmentMesh)."""
+        """The segment used for the Y position vs this slot's parent slot."""
         member = self.get_member("_yPosSegment")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -434,7 +436,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def z_pos_segment(self) -> str | None:
-        """Target ID of the _zPosSegment reference (targets SegmentMesh)."""
+        """The segment used for the Z position vs this slot's parent slot."""
         member = self.get_member("_zPosSegment")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -455,7 +457,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def bounds_anchor_positions(self) -> members.SyncList | None:
-        """The _boundsAnchorPositions member."""
+        """A list of infos for anchors this slot gizmo has."""
         member = self.get_member("_boundsAnchorPositions")
         if isinstance(member, members.SyncList):
             return member
@@ -463,12 +465,12 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @bounds_anchor_positions.setter
     def bounds_anchor_positions(self, value: members.SyncList) -> None:
-        """Set the _boundsAnchorPositions member."""
+        """Set _boundsAnchorPositions. A list of infos for anchors this slot gizmo has."""
         self.set_member("_boundsAnchorPositions", value)
 
     @property
     def root_anchor(self) -> str | None:
-        """Target ID of the _rootAnchor reference (targets PointAnchor)."""
+        """The root point anchor for this gizmo."""
         member = self.get_member("_rootAnchor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -489,7 +491,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def translation_gizmo(self) -> str | None:
-        """Target ID of the _translationGizmo reference (targets TranslationGizmo)."""
+        """The gizmo used for changing this slot's position."""
         member = self.get_member("_translationGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -510,7 +512,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def rotation_gizmo(self) -> str | None:
-        """Target ID of the _rotationGizmo reference (targets RotationGizmo)."""
+        """The gizmo used for changing this slot's rotation."""
         member = self.get_member("_rotationGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -531,7 +533,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def scale_gizmo(self) -> str | None:
-        """Target ID of the _scaleGizmo reference (targets ScaleGizmo)."""
+        """The gizmo used for changing this slot's scale."""
         member = self.get_member("_scaleGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -552,7 +554,7 @@ class SlotGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def is_local_space(self) -> primitives.Bool | None:
-        """The IsLocalSpace field value."""
+        """Whether this gizmo is oriented to local space or not."""
         member = self.get_member("IsLocalSpace")
         if member is None:
             return None

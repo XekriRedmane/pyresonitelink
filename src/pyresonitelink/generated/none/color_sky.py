@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorSky(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ColorSky.
+    """The ColorSky component creates a skybox with a color. Currently when this component is added to a slot, it will be immediately replaced with a Skybox and a material component automatically. It exists as a stub to maintain compatibility with legacy content.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorSky"
@@ -28,7 +28,7 @@ class ColorSky(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_color(self) -> primitives.ColorX | None:
-        """The BaseColor field value."""
+        """Internal"""
         member = self.get_member("BaseColor")
         if member is None:
             return None
@@ -47,7 +47,7 @@ class ColorSky(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def gradients(self) -> members.SyncList | None:
-        """The _gradients member."""
+        """Internal"""
         member = self.get_member("_gradients")
         if isinstance(member, members.SyncList):
             return member
@@ -55,6 +55,6 @@ class ColorSky(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @gradients.setter
     def gradients(self, value: members.SyncList) -> None:
-        """Set the _gradients member."""
+        """Set _gradients. Internal"""
         self.set_member("_gradients", value)
 

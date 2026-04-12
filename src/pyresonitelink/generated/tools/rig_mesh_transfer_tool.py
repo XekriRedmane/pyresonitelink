@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RigMeshTransferTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RigMeshTransferTool.
+    """See Rig Mesh Transfer Tool.
 
     Category: Tools
     """
@@ -189,7 +189,7 @@ class RigMeshTransferTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouc
 
     @property
     def source_rig(self) -> str | None:
-        """Target ID of the SourceRig reference (targets Rig)."""
+        """The original rig Component to get data from."""
         member = self.get_member("SourceRig")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -210,7 +210,7 @@ class RigMeshTransferTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouc
 
     @property
     def label(self) -> str | None:
-        """Target ID of the _label reference (targets TextRenderer)."""
+        """The indication label for this tool."""
         member = self.get_member("_label")
         if isinstance(member, members.Reference):
             return member.targetId

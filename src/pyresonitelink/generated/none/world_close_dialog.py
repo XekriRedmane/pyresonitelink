@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldCloseDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldCloseDialog.
+    """The WorldCloseDialog component is used to confirm closing a world that the user is currently trying to close.
+
+    Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldCloseDialog"
@@ -47,7 +49,7 @@ class WorldCloseDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def world_name(self) -> str | None:
-        """Target ID of the _worldName reference (targets Text)."""
+        """The text field showing the name of the world being closed."""
         member = self.get_member("_worldName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +70,7 @@ class WorldCloseDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def save_button(self) -> str | None:
-        """Target ID of the _saveButton reference (targets Button)."""
+        """The button used to save the world being closed."""
         member = self.get_member("_saveButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +91,7 @@ class WorldCloseDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def save_as_button(self) -> str | None:
-        """Target ID of the _saveAsButton reference (targets Button)."""
+        """The button used to save the world as something for the world being closed."""
         member = self.get_member("_saveAsButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +112,7 @@ class WorldCloseDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def discard_button(self) -> str | None:
-        """Target ID of the _discardButton reference (targets Button)."""
+        """The button used to discard changes for the world being closed."""
         member = self.get_member("_discardButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -131,7 +133,7 @@ class WorldCloseDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def save_action(self) -> str | None:
-        """Target ID of the _saveAction reference (targets WorldCloseAction)."""
+        """The component to trigger with the request to save the world being closed."""
         member = self.get_member("_saveAction")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -152,7 +154,7 @@ class WorldCloseDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def save_as_action(self) -> str | None:
-        """Target ID of the _saveAsAction reference (targets WorldCloseAction)."""
+        """The component to trigger with the request to save the world as something for the world being closed."""
         member = self.get_member("_saveAsAction")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -173,7 +175,7 @@ class WorldCloseDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def discard_action(self) -> str | None:
-        """Target ID of the _discardAction reference (targets WorldCloseAction)."""
+        """The component to trigger with the request to discard changes for the world being closed."""
         member = self.get_member("_discardAction")
         if isinstance(member, members.Reference):
             return member.targetId

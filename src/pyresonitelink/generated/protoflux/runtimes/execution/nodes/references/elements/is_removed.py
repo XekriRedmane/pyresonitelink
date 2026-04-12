@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsRemoved(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Is Removed node takes in a world element and returns if that element was removed from the world. Destruction of the slot prevents the result from changing, as by the time the slot is gone, it is too late. There is however a method to check if something did get removed, see the examples below.
+    """The ``Is Removed`` node takes in a world element and returns if that element was removed from the world. Destruction of the slot prevents the result from changing, as by the time the slot is gone, it is too late. There is however a method to check if something did get removed, see the examples below.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/References/Elements
     """
@@ -34,7 +34,7 @@ class IsRemoved(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
 
     @property
     def element(self) -> str | None:
-        """Target ID of the Element reference (targets INodeObjectOutput[IWorldElement])."""
+        """The world element in question."""
         member = self.get_member("Element")
         if isinstance(member, members.Reference):
             return member.targetId

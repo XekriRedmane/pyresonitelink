@@ -33,7 +33,7 @@ class RelativeBodyNode(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[BodyNode])."""
+        """The node to find the relative node for."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId

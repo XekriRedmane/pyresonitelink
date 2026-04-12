@@ -16,7 +16,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PackProtoFluxFromNode(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Pack ProtoFlux From Node node takes in a start point for your ProtoFlux code and a target slot to place your code in, and when called, will pack everything in place into that provided slot.
+    """The ``Pack ProtoFlux From Node`` node takes in a start point for your ProtoFlux code and a target slot to place your code in, and when called, will pack everything in place into that provided slot.
+
+If you decide to add more nodes and connect them to a node that is under a different slot, the connected nodes will pack correctly and be under the new slot. However, unpacking from the new slot may not completely unpack properly.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Nodes
     """
@@ -42,7 +44,7 @@ class PackProtoFluxFromNode(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues the code from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +65,7 @@ class PackProtoFluxFromNode(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def start_node(self) -> str | None:
-        """Target ID of the StartNode reference (targets INodeObjectOutput[ProtoFluxNode])."""
+        """The starting point node where we should pack the nodes from."""
         member = self.get_member("StartNode")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +86,7 @@ class PackProtoFluxFromNode(GeneratedComponent, ISyncNodeOperation, IExecutionNo
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[Slot])."""
+        """The target slot we want to pack to."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

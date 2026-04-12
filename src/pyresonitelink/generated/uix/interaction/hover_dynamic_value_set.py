@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HoverDynamicValueSet(GenericComponent[T], IUIHoverable, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.HoverDynamicValueSet<>.
+    """The HoverDynamicValueSet component listens for a user's hover event on a UIX element and sets a value.
+
+}}
 
     Category: UIX/Interaction
 
@@ -48,7 +50,7 @@ class HoverDynamicValueSet(GenericComponent[T], IUIHoverable, IUIComputeComponen
 
     @property
     def variable_name(self) -> primitives.String | None:
-        """The VariableName field value."""
+        """The dynamic variable name to find these values."""
         member = self.get_member("VariableName")
         if member is None:
             return None
@@ -105,7 +107,7 @@ class HoverDynamicValueSet(GenericComponent[T], IUIHoverable, IUIComputeComponen
 
     @property
     def set_value_on_begin_hover(self) -> primitives.Bool | None:
-        """The SetValueOnBeginHover field value."""
+        """Sets the value when a hover event is detected."""
         member = self.get_member("SetValueOnBeginHover")
         if member is None:
             return None
@@ -124,7 +126,7 @@ class HoverDynamicValueSet(GenericComponent[T], IUIHoverable, IUIComputeComponen
 
     @property
     def set_value_on_end_hover(self) -> primitives.Bool | None:
-        """The SetValueOnEndHover field value."""
+        """Sets the value when a hover event has ended."""
         member = self.get_member("SetValueOnEndHover")
         if member is None:
             return None

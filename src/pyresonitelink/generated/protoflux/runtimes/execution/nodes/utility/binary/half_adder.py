@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HalfAdder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Half Adder node takes in 2 boolean values (A and B), and returns 2 boolean values (Y and CarryOut). In computing & electronics, this is called a half adder, and helps with boolean math.
+    """The ``Half Adder`` node takes in 2 boolean values (``A`` and ``B``), and returns 2 boolean values (``Y`` and ``CarryOut``). In computing & electronics, this is called a half adder, and helps with boolean math.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/Binary
     """
@@ -36,7 +36,7 @@ class HalfAdder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[primitives.Bool])."""
+        """The first boolean input value."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class HalfAdder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[primitives.Bool])."""
+        """The second boolean input value."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -78,7 +78,7 @@ class HalfAdder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @property
     def y(self) -> members.EmptyElement | None:
-        """The Y member."""
+        """The result boolean output value."""
         member = self.get_member("Y")
         if isinstance(member, members.EmptyElement):
             return member
@@ -86,12 +86,12 @@ class HalfAdder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @y.setter
     def y(self, value: members.EmptyElement) -> None:
-        """Set the Y member."""
+        """Set Y. The result boolean output value."""
         self.set_member("Y", value)
 
     @property
     def carry_out(self) -> members.EmptyElement | None:
-        """The CarryOut member."""
+        """The carry out boolean output value."""
         member = self.get_member("CarryOut")
         if isinstance(member, members.EmptyElement):
             return member
@@ -99,6 +99,6 @@ class HalfAdder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IOb
 
     @carry_out.setter
     def carry_out(self, value: members.EmptyElement) -> None:
-        """Set the CarryOut member."""
+        """Set CarryOut. The carry out boolean output value."""
         self.set_member("CarryOut", value)
 

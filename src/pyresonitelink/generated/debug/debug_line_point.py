@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugLinePoint(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugLinePoint.
+    """The DebugLinePoint component draws a line from ``LinePoint0`` to ``LinePoint1`` which is the central line. When attached, it generates 128 random Float3's which get added to ``Points``. Every point in said list have a line drawn from them to the closest point on the central line.
 
     Category: Debug
     """
@@ -33,7 +33,7 @@ class DebugLinePoint(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def line_point0(self) -> primitives.Float3 | None:
-        """The LinePoint0 field value."""
+        """The starting point of the central line."""
         member = self.get_member("LinePoint0")
         if member is None:
             return None
@@ -52,7 +52,7 @@ class DebugLinePoint(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def line_point1(self) -> primitives.Float3 | None:
-        """The LinePoint1 field value."""
+        """the ending point of the central line."""
         member = self.get_member("LinePoint1")
         if member is None:
             return None
@@ -71,7 +71,7 @@ class DebugLinePoint(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def points(self) -> members.SyncList | None:
-        """The Points member."""
+        """A list of points to draw lines from to the closest point on the central line."""
         member = self.get_member("Points")
         if isinstance(member, members.SyncList):
             return member
@@ -79,6 +79,6 @@ class DebugLinePoint(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @points.setter
     def points(self, value: members.SyncList) -> None:
-        """Set the Points member."""
+        """Set Points. A list of points to draw lines from to the closest point on the central line."""
         self.set_member("Points", value)
 

@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorConstantInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ColorConstantInitializer.
+    """The ColorConstantInitializer component makes all particles start with the same color when they are born.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ColorConstantInitializer"
@@ -29,7 +34,7 @@ class ColorConstantInitializer(GeneratedComponent, IParticleSystemModule, IWorld
 
     @property
     def value(self) -> primitives.ColorX | None:
-        """The Value field value."""
+        """The color all particles should start with."""
         member = self.get_member("Value")
         if member is None:
             return None

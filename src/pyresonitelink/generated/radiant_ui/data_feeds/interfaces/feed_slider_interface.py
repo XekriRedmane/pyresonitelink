@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedSliderInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedSliderInterface<>.
+    """The FeedSliderInterface component is used as a template type item in data feed mappers in the Data Feeds system. This component in particular is used to make sliders for stuff like volume or motion blur.
 
     Category: Radiant UI/Data Feeds/Interfaces
 
@@ -379,7 +379,7 @@ class FeedSliderInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[T])."""
+        """The field that represents the data that should be read from and written to the source data feed."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -400,7 +400,7 @@ class FeedSliderInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def formatting(self) -> str | None:
-        """Target ID of the Formatting reference (targets IField[primitives.String])."""
+        """The field to fill with data on how to format the value for displaying it."""
         member = self.get_member("Formatting")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -421,7 +421,7 @@ class FeedSliderInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def min(self) -> str | None:
-        """Target ID of the Min reference (targets IField[T])."""
+        """The value Field to fill with the minimum value this feed number can be."""
         member = self.get_member("Min")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -442,7 +442,7 @@ class FeedSliderInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def max(self) -> str | None:
-        """Target ID of the Max reference (targets IField[T])."""
+        """The value Field to fill with the maximum value this feed number can be."""
         member = self.get_member("Max")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -463,7 +463,7 @@ class FeedSliderInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def reference_value(self) -> str | None:
-        """Target ID of the ReferenceValue reference (targets IField[T])."""
+        """The default reference value field for this slider (ex: this is a value that the slider should have by default)"""
         member = self.get_member("ReferenceValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -484,7 +484,7 @@ class FeedSliderInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def reference_value_cleanup_root(self) -> str | None:
-        """Target ID of the ReferenceValueCleanupRoot reference (targets Slot)."""
+        """The slot to delete if a reference value is not needed."""
         member = self.get_member("ReferenceValueCleanupRoot")
         if isinstance(member, members.Reference):
             return member.targetId

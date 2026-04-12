@@ -10,9 +10,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FingerPoseMultiplexer(GeneratedComponent, IFingerPoseSourceComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FingerPoseMultiplexer.
+    """The FingerPoseMultiplexer component can be used to get data from multiple finger pose sources and make that data its own finger pose source data. This component in itself is a IFingerPoseSourceComponent.
+
+For more information on finger pose sources, please see Finger Posing System.
 
     Category: Users/Common Avatar System/Fingers
+
+    Add items to the list of ``Sources`` to transition between and get data
+    from. The data gotten is copied and becomes the data of this component.
+    Can be used in the ways outlined in Finger Posing System.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FingerPoseMultiplexer"
@@ -33,7 +39,7 @@ class FingerPoseMultiplexer(GeneratedComponent, IFingerPoseSourceComponent, IWor
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """What Component in ``Sources`` to copy data from for the finger pose data for this component."""
         member = self.get_member("Index")
         if member is None:
             return None
@@ -52,7 +58,7 @@ class FingerPoseMultiplexer(GeneratedComponent, IFingerPoseSourceComponent, IWor
 
     @property
     def interpolation_speed(self) -> primitives.Float | None:
-        """The InterpolationSpeed field value."""
+        """How fast the Multiplexer transitions what data this component is copying for this component's finger pose data."""
         member = self.get_member("InterpolationSpeed")
         if member is None:
             return None
@@ -71,7 +77,7 @@ class FingerPoseMultiplexer(GeneratedComponent, IFingerPoseSourceComponent, IWor
 
     @property
     def sources(self) -> members.SyncList | None:
-        """The Sources member."""
+        """The list if Finger pose sources to copy data from for the data for this component's Finger pose data."""
         member = self.get_member("Sources")
         if isinstance(member, members.SyncList):
             return member
@@ -79,6 +85,6 @@ class FingerPoseMultiplexer(GeneratedComponent, IFingerPoseSourceComponent, IWor
 
     @sources.setter
     def sources(self, value: members.SyncList) -> None:
-        """Set the Sources member."""
+        """Set Sources. The list if Finger pose sources to copy data from for the data for this component's Finger pose data."""
         self.set_member("Sources", value)
 

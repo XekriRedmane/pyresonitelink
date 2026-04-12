@@ -41,7 +41,7 @@ class FindChildByTag(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot to scan for child slots from."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class FindChildByTag(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def tag(self) -> str | None:
-        """Target ID of the Tag reference (targets INodeObjectOutput[primitives.String])."""
+        """The tag to look for below Instance (Slot)."""
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,9 @@ class FindChildByTag(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def search_depth(self) -> str | None:
-        """Target ID of the SearchDepth reference (targets INodeValueOutput[primitives.Int])."""
+        """How far to search for a child with a tag that matches the given Tag (String).
+
+Examples: 0 > Search immediate children. 1 > Search children of slot including those slot's children. -1 > Search infinitely far down (HEAVY)"""
         member = self.get_member("SearchDepth")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -43,7 +43,7 @@ class SetSpeed(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, IC
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse after the initial call."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class SetSpeed(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, IC
 
     @property
     def speed(self) -> str | None:
-        """Target ID of the Speed reference (targets INodeValueOutput[primitives.Float])."""
+        """Set the speed of the playback on the target. 1 is equivalent to x1.0."""
         member = self.get_member("Speed")
         if isinstance(member, members.Reference):
             return member.targetId

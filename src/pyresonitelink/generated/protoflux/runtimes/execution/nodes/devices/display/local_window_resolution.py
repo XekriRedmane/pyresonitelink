@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocalWindowResolution(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Local Window Resolution node returns the user's local Resonite application resolution.
+    """The ``Local Window Resolution`` node returns the user's local Resonite application resolution.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Display
     """

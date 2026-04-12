@@ -33,7 +33,7 @@ class FingerNodeIndex(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[BodyNode])."""
+        """The node to check for a finger node index for"""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId

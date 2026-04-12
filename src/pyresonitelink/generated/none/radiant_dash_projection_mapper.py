@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RadiantDashProjectionMapper(GeneratedComponent, ICanvasPointProjector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RadiantDashProjectionMapper.
+    """See Dash menu.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadiantDashProjectionMapper"
@@ -47,7 +47,7 @@ class RadiantDashProjectionMapper(GeneratedComponent, ICanvasPointProjector, IWo
 
     @property
     def dash(self) -> str | None:
-        """Target ID of the Dash reference (targets RadiantDash)."""
+        """The Dash this is pointing to."""
         member = self.get_member("Dash")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class RadiantDashProjectionMapper(GeneratedComponent, ICanvasPointProjector, IWo
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets Slot)."""
+        """The root of the thing this is trying to project from."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class RadiantDashProjectionMapper(GeneratedComponent, ICanvasPointProjector, IWo
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the Mesh reference (targets CurvedPlaneMesh)."""
+        """The mesh this is trying to project to."""
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +110,7 @@ class RadiantDashProjectionMapper(GeneratedComponent, ICanvasPointProjector, IWo
 
     @property
     def camera(self) -> str | None:
-        """Target ID of the Camera reference (targets Camera)."""
+        """The camera that is rendering ``Root``."""
         member = self.get_member("Camera")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -131,7 +131,7 @@ class RadiantDashProjectionMapper(GeneratedComponent, ICanvasPointProjector, IWo
 
     @property
     def uv_scale(self) -> str | None:
-        """Target ID of the UVScale reference (targets IField[primitives.Float2])."""
+        """The scale field to drive in order to do the remapping."""
         member = self.get_member("UVScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -152,7 +152,7 @@ class RadiantDashProjectionMapper(GeneratedComponent, ICanvasPointProjector, IWo
 
     @property
     def uv_offset(self) -> str | None:
-        """Target ID of the UVOffset reference (targets IField[primitives.Float2])."""
+        """The offset field to drive in order to do the remapping."""
         member = self.get_member("UVOffset")
         if isinstance(member, members.Reference):
             return member.targetId

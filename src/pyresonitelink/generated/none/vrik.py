@@ -10,7 +10,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FinalIK.VRIK.
+    """All weight values are 1-0, excluding clamps which are inverted 0-1.
+
+    All weight values are 1-0, excluding clamps which are inverted 0-1. You
+    can overdrive some of them with interesting results.
+
+    **Introduction**: The VRIK component is used to configure Inverse Kinematics on an avatar, for posing joints based on the position of IK Targets such as a VR HMD, hand tracking, or Vive Trackers
+
+This component is automatically configured when importing a mesh with a detectable humanoid rig, and generally should not be modified unless you know what you are doing.
+
+Documentation on this component may take some time, as it is very complex, and not commonly used. The basis for this component seems to be the VRIK solver developed by Final IK.
+
+    **IKSolverVR**: Most of the complexity in VRIK is actually stored in the IKSolverVR type. And even this is spread across multiple types.
+
+    **BoneDrive**: Bonedrive fields use a combination of the ``defaultLocalPositions`` and ``defaultLocalRotations`` entries at this element's entry position in the list as well as VRIK position and rotation solved values to determine the final driven value.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FinalIK.VRIK"
@@ -34,7 +47,7 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_update(self) -> primitives.Bool | None:
-        """The AutoUpdate field value."""
+        """Whether to update the VRIK regardless of whether or not the sync delegates are called by a VRIK avatar or similar sources. this can break systems still using a VRIKAvatar but can fix ones with a lack of such component."""
         member = self.get_member("AutoUpdate")
         if member is None:
             return None
@@ -53,7 +66,7 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def fix_transforms_enabled(self) -> primitives.Bool | None:
-        """The FixTransformsEnabled field value."""
+        """Clamps IK transforms to reasonable values and Resets IK every update."""
         member = self.get_member("FixTransformsEnabled")
         if member is None:
             return None
@@ -72,7 +85,7 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def solver(self) -> members.SyncObject | None:
-        """The Solver member."""
+        """The actual solver that contains most of the fields of this component."""
         member = self.get_member("Solver")
         if isinstance(member, members.SyncObject):
             return member
@@ -80,12 +93,12 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @solver.setter
     def solver(self, value: members.SyncObject) -> None:
-        """Set the Solver member."""
+        """Set Solver. The actual solver that contains most of the fields of this component."""
         self.set_member("Solver", value)
 
     @property
     def component_initiated(self) -> primitives.Bool | None:
-        """The componentInitiated field value."""
+        """Marks this component as fully started and ready to solve IK transforms."""
         member = self.get_member("componentInitiated")
         if member is None:
             return None
@@ -104,7 +117,7 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def drives(self) -> members.SyncList | None:
-        """The _drives member."""
+        """A list of fields to drive with ``defaultLocalPositions`` and ``defaultLocalRotations`` plus transforms solved by the IK using ``defaultLocalPositions`` and ``defaultLocalRotations`` as a basis."""
         member = self.get_member("_drives")
         if isinstance(member, members.SyncList):
             return member
@@ -112,6 +125,6 @@ class VRIK(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @drives.setter
     def drives(self, value: members.SyncList) -> None:
-        """Set the _drives member."""
+        """Set _drives. A list of fields to drive with ``defaultLocalPositions`` and ``defaultLocalRotations`` plus transforms solved by the IK using ``defaultLocalPositions`` and ``defaultLocalRotations`` as a basis."""
         self.set_member("_drives", value)
 

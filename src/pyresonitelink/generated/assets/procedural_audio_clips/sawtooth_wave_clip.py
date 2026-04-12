@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SawtoothWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SawtoothWaveClip.
+    """The SawtoothWaveClip component is used to get a buzzing type frequency of audio that can have a different pitch or loudness.
 
     Category: Assets/Procedural Audio Clips
+
+    Attach to a slot and provide a ``Frequency`` and ``Amplitude``, then
+    insert into a AudioClipPlayer to hear it.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SawtoothWaveClip"
@@ -56,7 +59,7 @@ class SawtoothWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def frequency(self) -> primitives.Float | None:
-        """The Frequency field value."""
+        """The pitch of the audio."""
         member = self.get_member("Frequency")
         if member is None:
             return None
@@ -75,7 +78,7 @@ class SawtoothWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     @property
     def amplitude(self) -> primitives.Float | None:
-        """The Amplitude field value."""
+        """How loud the audio is."""
         member = self.get_member("Amplitude")
         if member is None:
             return None
@@ -93,7 +96,7 @@ class SawtoothWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     async def bake_clip(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the BakeClip sync method.
+        """Turns the audio into a StaticAudioClip.
 
         Returns:
             The raw JSON response dict.

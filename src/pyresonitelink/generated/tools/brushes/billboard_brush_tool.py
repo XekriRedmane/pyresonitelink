@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.template_handling import TemplateHandling
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -24,14 +26,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BillboardBrushTool.
+    """The BillboardBrushTool is a Brush Tool that draws ribbons.
 
     Category: Tools/Brushes
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BillboardBrushTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, fixed_minimum_point_distance: primitives.Float | None = None, position_smoothing: primitives.Float | None = None, rotation_smoothing: primitives.Float | None = None, pressure_smoothing: primitives.Float | None = None, max_stroke_length: primitives.Float | None = None, stroke_fade_in_length: primitives.Float | None = None, stroke_fade_out_length: primitives.Float | None = None, stroke_group_finish_wait_time: primitives.Float | None = None, activation_threshold: primitives.Float | None = None, deactivation_threshold_ratio: primitives.Float | None = None, menu_size_change: primitives.Float | None = None, snap_tip: primitives.Bool | None = None, snap_line: primitives.Bool | None = None, make_strokes_grabbable: primitives.Bool | None = None, position_strokes_to_tip: primitives.Bool | None = None, orient_strokes_to_tip: primitives.Bool | None = None, scale_strokes_to_user: primitives.Bool | None = None, pick_materials: primitives.Bool | None = None, pick_colors: primitives.Bool | None = None, current_material: str | IAssetProvider[Material] | None = None, particle_system: str | ParticleSystem | None = None, mesh_emitter_template: str | MeshEmitter | None = None, emission_rate_per_unit_length: primitives.Float | None = None, color_picker: str | ColorDialogInterface | None = None, picked_color: primitives.ColorX | None = None, last_used_material: str | IAssetProvider[Material] | None = None, last_created_material: str | IAssetProvider[Material] | None = None, pressure: primitives.Float | None = None, position: primitives.Float3 | None = None, rotation: primitives.FloatQ | None = None, last_point_delta: primitives.Float3 | None = None, velocity: primitives.Float3 | None = None, raw_delta: primitives.Float3 | None = None, raw_velocity: primitives.Float3 | None = None, raw_stroke_length: primitives.Float | None = None, stroke_length: primitives.Float | None = None, normalized_stroke_length: primitives.Float | None = None, stroke_fade_multiplier: primitives.Float | None = None, stroke_group_index: primitives.Int | None = None, stroke_group_active: primitives.Bool | None = None, tip_anchor: str | Slot | None = None, stroke_point_rate: primitives.Float | None = None, constant_point_rate: primitives.Float | None = None, pressure_affects_rate: primitives.Bool | None = None, pressure_affects_radius: primitives.Bool | None = None, particle_spawn_radius: primitives.Float | None = None, snap_points: primitives.Bool | None = None, min_color: primitives.Color | None = None, max_color: primitives.Color | None = None, color_gap: primitives.Float | None = None, min_size: primitives.Float2 | None = None, max_size: primitives.Float2 | None = None, size_gap: primitives.Float | None = None, atlas_info: str | AtlasInfo | None = None, pressure_affects_size: primitives.Bool | None = None, pressure_affects_alpha: primitives.Bool | None = None, pressure_affects_intensity: primitives.Bool | None = None, use_color: primitives.Bool | None = None, min_rotation: primitives.Float | None = None, max_rotation: primitives.Float | None = None, rotation_gap: primitives.Float | None = None, use_rotation: primitives.Bool | None = None, use_size: primitives.Bool | None = None, use_uv: primitives.Bool | None = None, preview_renderer: str | MeshRenderer | None = None, preview_mesh: str | PointMesh | None = None, preview_mesh_offset: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, fixed_minimum_point_distance: primitives.Float | None = None, position_smoothing: primitives.Float | None = None, rotation_smoothing: primitives.Float | None = None, pressure_smoothing: primitives.Float | None = None, max_stroke_length: primitives.Float | None = None, stroke_fade_in_length: primitives.Float | None = None, stroke_fade_out_length: primitives.Float | None = None, stroke_group_finish_wait_time: primitives.Float | None = None, activation_threshold: primitives.Float | None = None, deactivation_threshold_ratio: primitives.Float | None = None, menu_size_change: primitives.Float | None = None, snap_tip: primitives.Bool | None = None, snap_line: primitives.Bool | None = None, make_strokes_grabbable: primitives.Bool | None = None, position_strokes_to_tip: primitives.Bool | None = None, orient_strokes_to_tip: primitives.Bool | None = None, scale_strokes_to_user: primitives.Bool | None = None, pick_materials: primitives.Bool | None = None, pick_colors: primitives.Bool | None = None, current_material: str | IAssetProvider[Material] | None = None, particle_system: str | ParticleSystem | None = None, mesh_emitter_template: str | MeshEmitter | None = None, particle_template_handling: TemplateHandling | str | None = None, emission_rate_per_unit_length: primitives.Float | None = None, color_picker: str | ColorDialogInterface | None = None, picked_color: primitives.ColorX | None = None, last_used_material: str | IAssetProvider[Material] | None = None, last_created_material: str | IAssetProvider[Material] | None = None, pressure: primitives.Float | None = None, position: primitives.Float3 | None = None, rotation: primitives.FloatQ | None = None, last_point_delta: primitives.Float3 | None = None, velocity: primitives.Float3 | None = None, raw_delta: primitives.Float3 | None = None, raw_velocity: primitives.Float3 | None = None, raw_stroke_length: primitives.Float | None = None, stroke_length: primitives.Float | None = None, normalized_stroke_length: primitives.Float | None = None, stroke_fade_multiplier: primitives.Float | None = None, stroke_group_index: primitives.Int | None = None, stroke_group_active: primitives.Bool | None = None, tip_anchor: str | Slot | None = None, stroke_point_rate: primitives.Float | None = None, constant_point_rate: primitives.Float | None = None, pressure_affects_rate: primitives.Bool | None = None, pressure_affects_radius: primitives.Bool | None = None, particle_spawn_radius: primitives.Float | None = None, snap_points: primitives.Bool | None = None, min_color: primitives.Color | None = None, max_color: primitives.Color | None = None, profile: ColorProfile | str | None = None, color_gap: primitives.Float | None = None, min_size: primitives.Float2 | None = None, max_size: primitives.Float2 | None = None, size_gap: primitives.Float | None = None, atlas_info: str | AtlasInfo | None = None, pressure_affects_size: primitives.Bool | None = None, pressure_affects_alpha: primitives.Bool | None = None, pressure_affects_intensity: primitives.Bool | None = None, use_color: primitives.Bool | None = None, min_rotation: primitives.Float | None = None, max_rotation: primitives.Float | None = None, rotation_gap: primitives.Float | None = None, use_rotation: primitives.Bool | None = None, use_size: primitives.Bool | None = None, use_uv: primitives.Bool | None = None, preview_renderer: str | MeshRenderer | None = None, preview_mesh: str | PointMesh | None = None, preview_mesh_offset: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -63,6 +65,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             current_material: Initial value for CurrentMaterial.
             particle_system: Initial value for ParticleSystem.
             mesh_emitter_template: Initial value for MeshEmitterTemplate.
+            particle_template_handling: Initial value for ParticleTemplateHandling.
             emission_rate_per_unit_length: Initial value for EmissionRatePerUnitLength.
             color_picker: Initial value for _colorPicker.
             picked_color: Initial value for _pickedColor.
@@ -90,6 +93,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             snap_points: Initial value for SnapPoints.
             min_color: Initial value for MinColor.
             max_color: Initial value for MaxColor.
+            profile: Initial value for Profile.
             color_gap: Initial value for ColorGap.
             min_size: Initial value for MinSize.
             max_size: Initial value for MaxSize.
@@ -167,6 +171,8 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             self.particle_system = particle_system
         if mesh_emitter_template is not None:
             self.mesh_emitter_template = mesh_emitter_template
+        if particle_template_handling is not None:
+            self.particle_template_handling = particle_template_handling
         if emission_rate_per_unit_length is not None:
             self.emission_rate_per_unit_length = emission_rate_per_unit_length
         if color_picker is not None:
@@ -221,6 +227,8 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             self.min_color = min_color
         if max_color is not None:
             self.max_color = max_color
+        if profile is not None:
+            self.profile = profile
         if color_gap is not None:
             self.color_gap = color_gap
         if min_size is not None:
@@ -840,17 +848,24 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def particle_template_handling(self) -> members.FieldEnum | None:
-        """The ParticleTemplateHandling member."""
+    def particle_template_handling(self) -> TemplateHandling | None:
+        """The ParticleTemplateHandling enum value."""
         member = self.get_member("ParticleTemplateHandling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TemplateHandling(member.value)
         return None
 
     @particle_template_handling.setter
-    def particle_template_handling(self, value: members.FieldEnum) -> None:
-        """Set the ParticleTemplateHandling member."""
-        self.set_member("ParticleTemplateHandling", value)
+    def particle_template_handling(self, value: TemplateHandling | str) -> None:
+        """Set the ParticleTemplateHandling enum value."""
+        member = self.get_member("ParticleTemplateHandling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ParticleTemplateHandling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def emission_rate_per_unit_length(self) -> primitives.Float | None:
@@ -1387,17 +1402,24 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def color_gap(self) -> primitives.Float | None:
@@ -1574,7 +1596,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     @property
     def min_rotation(self) -> primitives.Float | None:
-        """The MinRotation field value."""
+        """the minimum rotation the generated geometry can have."""
         member = self.get_member("MinRotation")
         if member is None:
             return None
@@ -1593,7 +1615,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     @property
     def max_rotation(self) -> primitives.Float | None:
-        """The MaxRotation field value."""
+        """the maximum rotation the generated geometry can have."""
         member = self.get_member("MaxRotation")
         if member is None:
             return None
@@ -1612,7 +1634,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     @property
     def rotation_gap(self) -> primitives.Float | None:
-        """The RotationGap field value."""
+        """the bias of the rotation of generated geometry"""
         member = self.get_member("RotationGap")
         if member is None:
             return None
@@ -1631,7 +1653,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     @property
     def use_rotation(self) -> primitives.Bool | None:
-        """The UseRotation field value."""
+        """Whether the generated geometry should use rotation."""
         member = self.get_member("UseRotation")
         if member is None:
             return None
@@ -1650,7 +1672,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     @property
     def use_size(self) -> primitives.Bool | None:
-        """The UseSize field value."""
+        """Whether the generated geometry should utilize size arguments."""
         member = self.get_member("UseSize")
         if member is None:
             return None
@@ -1669,7 +1691,7 @@ class BillboardBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouch
 
     @property
     def use_uv(self) -> primitives.Bool | None:
-        """The UseUV field value."""
+        """Whether the generated geometry should have UVs."""
         member = self.get_member("UseUV")
         if member is None:
             return None

@@ -19,8 +19,6 @@ class ColorToHexCode(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
 
     **Gallery**: File:Protoflux_Color_To_Hex.webp|A simple example of Color To Hex with an input and an output display.
-
-    **References**: ProtoFlux:Colors
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Color.ColorToHexCode"
@@ -47,7 +45,7 @@ class ColorToHexCode(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def color(self) -> str | None:
-        """Target ID of the Color reference (targets INodeValueOutput[primitives.Color])."""
+        """The color to convert. Color components are clamped to the range 0-1."""
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +66,7 @@ class ColorToHexCode(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def short_form(self) -> str | None:
-        """Target ID of the ShortForm reference (targets INodeValueOutput[primitives.Bool])."""
+        """If true, convert to a short form such as "#FAC" instead of "#FFAACC"."""
         member = self.get_member("ShortForm")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +87,7 @@ class ColorToHexCode(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def include_alpha(self) -> str | None:
-        """Target ID of the IncludeAlpha reference (targets INodeValueOutput[primitives.Bool])."""
+        """If true, include the alpha channel as the last component."""
         member = self.get_member("IncludeAlpha")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +108,7 @@ class ColorToHexCode(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
 
     @property
     def prefix(self) -> str | None:
-        """Target ID of the Prefix reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to prefix the color code with. Defaults to "#"."""
         member = self.get_member("Prefix")
         if isinstance(member, members.Reference):
             return member.targetId

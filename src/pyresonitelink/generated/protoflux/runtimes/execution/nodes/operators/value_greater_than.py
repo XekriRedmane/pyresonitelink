@@ -14,6 +14,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ValueGreaterThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Greater Than node takes in 2 values and returns if the first value is larger than the second value.
 
+|suggestion}}
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 
     Parameterize with a value type::
@@ -41,7 +43,7 @@ class ValueGreaterThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[T])."""
+        """The first value."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +64,7 @@ class ValueGreaterThan(GenericComponent[T], INodeValueOutput[T], IExecutionNode[
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[T])."""
+        """The second value."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId

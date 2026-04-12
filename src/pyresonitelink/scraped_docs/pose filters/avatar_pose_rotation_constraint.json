@@ -1,0 +1,14 @@
+{
+  "description": "The AvatarPoseRotationConstraint component is used to either restrict the rotation direction of the user's arm when using a tooltip, or to restrict the rotation of a particular BodyNode.",
+  "category": "Users:Common Avatar System:Pose Filters",
+  "fields": {
+    "MaxTwist": "the max twist in degrees allowed for the object being filtered.",
+    "MaxSwing": "the max swing in degrees allowed for the object being filtered.",
+    "Axis": "swing axis direction for the object being filtered.",
+    "TwistReferenceAxis": "The twist axis direction for the object being filtered."
+  },
+  "methods": {},
+  "usage": "Used in avatar anchors and in tooltip contraints.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarPoseRotationConstraint&action=raw"
+}

@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyRotation3DAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.LegacyRotation3DAdapter.
+    """The LegacyRotation3DAdapter component can be used to convert legacy rotation values to the new particle system values.
+
+    Not used directly by the user. Used in legacy content.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LegacyRotation3DAdapter"
@@ -40,7 +42,7 @@ class LegacyRotation3DAdapter(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float3])."""
+        """The field to drive with the converted value."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +63,7 @@ class LegacyRotation3DAdapter(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def value(self) -> primitives.Float3 | None:
-        """The Value field value."""
+        """The original rotation value."""
         member = self.get_member("Value")
         if member is None:
             return None
@@ -80,7 +82,7 @@ class LegacyRotation3DAdapter(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def particle_mesh(self) -> str | None:
-        """Target ID of the ParticleMesh reference (targets AssetRef[Mesh])."""
+        """The mesh particle that was used with the original if any."""
         member = self.get_member("ParticleMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -101,7 +103,7 @@ class LegacyRotation3DAdapter(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def using_stretch(self) -> str | None:
-        """Target ID of the UsingStretch reference (targets IField[primitives.Bool])."""
+        """Whether or not stretch was used with the particle."""
         member = self.get_member("UsingStretch")
         if isinstance(member, members.Reference):
             return member.targetId

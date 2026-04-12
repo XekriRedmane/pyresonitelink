@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BagEditorItem(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BagEditorItem.
+    """The BagEditorItem component is used in conjunction with a BagEditor. This is a reference to an item in the bag. For more information, please see the page on BagEditor.
+
+    See BagEditor.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BagEditorItem"
@@ -27,7 +29,7 @@ class BagEditorItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def item(self) -> str | None:
-        """Target ID of the Item reference (targets IWorldElement)."""
+        """The bag item this is referencing."""
         member = self.get_member("Item")
         if isinstance(member, members.Reference):
             return member.targetId

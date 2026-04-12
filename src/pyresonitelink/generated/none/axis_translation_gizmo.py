@@ -17,7 +17,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AxisTranslationGizmo.
+    """The AxisTranslationGizmo is the squares often seen on a Gizmo to translate it along 2 axies at the same time.
+
+    Used For Gizmos.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AxisTranslationGizmo"
@@ -104,7 +106,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def target_slot(self) -> str | None:
-        """Target ID of the TargetSlot reference (targets Slot)."""
+        """The slot to translate and edit."""
         member = self.get_member("TargetSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -125,7 +127,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def auto_position_at_target_slot(self) -> primitives.Bool | None:
-        """The AutoPositionAtTargetSlot field value."""
+        """Whether to automatically position this at the target slot."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
             return None
@@ -144,7 +146,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def interacting_component(self) -> str | None:
-        """Target ID of the _interactingComponent reference (targets Component)."""
+        """the component This is interacting with."""
         member = self.get_member("_interactingComponent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -165,7 +167,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets OverlayFresnelMaterial)."""
+        """The material being used for the visual."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -186,7 +188,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def tool_point(self) -> str | None:
-        """Target ID of the _toolPoint reference (targets Slot)."""
+        """The point that follows the interacting tool's tip."""
         member = self.get_member("_toolPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -207,7 +209,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def active_point(self) -> str | None:
-        """Target ID of the _activePoint reference (targets Slot)."""
+        """The point that follows the gizmo visual."""
         member = self.get_member("_activePoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -228,7 +230,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def line_root(self) -> str | None:
-        """Target ID of the _lineRoot reference (targets Slot)."""
+        """the root of the line visual from the gizmo to the interacting tool's tip."""
         member = self.get_member("_lineRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -249,7 +251,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def line_segment(self) -> str | None:
-        """Target ID of the _lineSegment reference (targets SegmentMesh)."""
+        """The segment mesh being used for the line visual."""
         member = self.get_member("_lineSegment")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -270,7 +272,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def snap_highlight(self) -> str | None:
-        """Target ID of the _snapHighlight reference (targets Slot)."""
+        """the root of the snap highlight for snapping."""
         member = self.get_member("_snapHighlight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -291,7 +293,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def axis(self) -> primitives.Float3 | None:
-        """The Axis field value."""
+        """The direction of the 2d plane this will translate along."""
         member = self.get_member("Axis")
         if member is None:
             return None
@@ -310,7 +312,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def axis_space(self) -> members.SyncObject | None:
-        """The AxisSpace member."""
+        """The coordinate space of ``Axis``."""
         member = self.get_member("AxisSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -318,12 +320,12 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @axis_space.setter
     def axis_space(self, value: members.SyncObject) -> None:
-        """Set the AxisSpace member."""
+        """Set AxisSpace. The coordinate space of ``Axis``."""
         self.set_member("AxisSpace", value)
 
     @property
     def point_space(self) -> members.SyncObject | None:
-        """The PointSpace member."""
+        """The coordinate space of ``TargetPoint`` drive value."""
         member = self.get_member("PointSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -331,12 +333,12 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @point_space.setter
     def point_space(self, value: members.SyncObject) -> None:
-        """Set the PointSpace member."""
+        """Set PointSpace. The coordinate space of ``TargetPoint`` drive value."""
         self.set_member("PointSpace", value)
 
     @property
     def target_point(self) -> str | None:
-        """Target ID of the TargetPoint reference (targets IField[primitives.Float3])."""
+        """A field to drive with the target point position."""
         member = self.get_member("TargetPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -357,7 +359,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def target_value(self) -> str | None:
-        """Target ID of the TargetValue reference (targets IField[primitives.Float])."""
+        """The field to use for ``TargetPoint``"""
         member = self.get_member("TargetValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -378,7 +380,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def use_custom_visual(self) -> primitives.Bool | None:
-        """The UseCustomVisual field value."""
+        """Whether to use a custom visual rather than the default code generated one."""
         member = self.get_member("UseCustomVisual")
         if member is None:
             return None
@@ -397,7 +399,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def custom_visual_root(self) -> str | None:
-        """Target ID of the _customVisualRoot reference (targets Slot)."""
+        """The root slot of the custom visual."""
         member = self.get_member("_customVisualRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -418,7 +420,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def arrow_length(self) -> primitives.Float | None:
-        """The ArrowLength field value."""
+        """The length of the arrow this gizmo is attached to."""
         member = self.get_member("ArrowLength")
         if member is None:
             return None
@@ -437,7 +439,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def create_undo_steps(self) -> primitives.Bool | None:
-        """The CreateUndoSteps field value."""
+        """Whether to make edits done with this component undoable."""
         member = self.get_member("CreateUndoSteps")
         if member is None:
             return None
@@ -456,7 +458,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def visual_root(self) -> str | None:
-        """Target ID of the _visualRoot reference (targets Slot)."""
+        """The root slot of the visual for interaction."""
         member = self.get_member("_visualRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -477,7 +479,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def visual_rot(self) -> str | None:
-        """Target ID of the _visualRot reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of the visual."""
         member = self.get_member("_visualRot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -498,7 +500,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def arrow_vector(self) -> str | None:
-        """Target ID of the _arrowVector reference (targets IField[primitives.Float3])."""
+        """The vector field of the arrow mesh visual."""
         member = self.get_member("_arrowVector")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -519,7 +521,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def arrow(self) -> str | None:
-        """Target ID of the _arrow reference (targets ArrowMesh)."""
+        """The arrow mesh of the visual."""
         member = self.get_member("_arrow")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -540,7 +542,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def collider(self) -> str | None:
-        """Target ID of the _collider reference (targets CylinderCollider)."""
+        """The collider of the visual."""
         member = self.get_member("_collider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -561,7 +563,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def lines_root(self) -> str | None:
-        """Target ID of the _linesRoot reference (targets Slot)."""
+        """the root slot of the lines visual."""
         member = self.get_member("_linesRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -582,7 +584,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def line0(self) -> str | None:
-        """Target ID of the _line0 reference (targets SegmentMesh)."""
+        """The segment mesh being used for the first line."""
         member = self.get_member("_line0")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -603,7 +605,7 @@ class AxisTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEvent
 
     @property
     def line1(self) -> str | None:
-        """Target ID of the _line1 reference (targets SegmentMesh)."""
+        """The segment mesh being used for the second line."""
         member = self.get_member("_line1")
         if isinstance(member, members.Reference):
             return member.targetId

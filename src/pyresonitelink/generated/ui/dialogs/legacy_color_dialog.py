@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -15,14 +16,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyColorDialog.
+    """The LegacyColorDialog component is used in old Legacy content that was migrated and was used to pick colors for color fields. This component should not be used and should be replaced whenever possible.
 
     Category: UI/Dialogs
+
+    Just don't.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyColorDialog"
 
-    def __init__(self, realtime: primitives.Bool | None = None, target_field: str | IField[primitives.ColorX] | None = None, original_color: primitives.ColorX | None = None, hue: primitives.Float | None = None, saturation: primitives.Float | None = None, value: primitives.Float | None = None, alpha: primitives.Float | None = None, gain: primitives.Float | None = None, r_slider: str | LegacySlider | None = None, g_slider: str | LegacySlider | None = None, b_slider: str | LegacySlider | None = None, a_slider: str | LegacySlider | None = None, gain_slider: str | LegacySlider | None = None, r_value: str | IField[primitives.Float] | None = None, g_value: str | IField[primitives.Float] | None = None, b_value: str | IField[primitives.Float] | None = None, a_value: str | IField[primitives.Float] | None = None, gain_value: str | IField[primitives.Float] | None = None, color_wheel_mesh: str | ColorWheelTriangleMesh | None = None, ok_button: str | LegacyButton | None = None, cancel_button: str | LegacyButton | None = None, style: str | LegacyUIStyle | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, realtime: primitives.Bool | None = None, target_field: str | IField[primitives.ColorX] | None = None, original_color: primitives.ColorX | None = None, hue: primitives.Float | None = None, saturation: primitives.Float | None = None, value: primitives.Float | None = None, alpha: primitives.Float | None = None, profile: ColorProfile | str | None = None, gain: primitives.Float | None = None, r_slider: str | LegacySlider | None = None, g_slider: str | LegacySlider | None = None, b_slider: str | LegacySlider | None = None, a_slider: str | LegacySlider | None = None, gain_slider: str | LegacySlider | None = None, r_value: str | IField[primitives.Float] | None = None, g_value: str | IField[primitives.Float] | None = None, b_value: str | IField[primitives.Float] | None = None, a_value: str | IField[primitives.Float] | None = None, gain_value: str | IField[primitives.Float] | None = None, color_wheel_mesh: str | ColorWheelTriangleMesh | None = None, ok_button: str | LegacyButton | None = None, cancel_button: str | LegacyButton | None = None, style: str | LegacyUIStyle | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,6 +36,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
             saturation: Initial value for _saturation.
             value: Initial value for _value.
             alpha: Initial value for _alpha.
+            profile: Initial value for _profile.
             gain: Initial value for _gain.
             r_slider: Initial value for _rSlider.
             g_slider: Initial value for _gSlider.
@@ -65,6 +69,8 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
             self.value = value
         if alpha is not None:
             self.alpha = alpha
+        if profile is not None:
+            self.profile = profile
         if gain is not None:
             self.gain = gain
         if r_slider is not None:
@@ -98,7 +104,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def realtime(self) -> primitives.Bool | None:
-        """The Realtime field value."""
+        """Whether this component should instantly update the value of the target field in ``TargetField``"""
         member = self.get_member("Realtime")
         if member is None:
             return None
@@ -117,7 +123,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def target_field(self) -> str | None:
-        """Target ID of the TargetField reference (targets IField[primitives.ColorX])."""
+        """The color field this component is editing."""
         member = self.get_member("TargetField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -138,7 +144,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def original_color(self) -> primitives.ColorX | None:
-        """The _originalColor field value."""
+        """The original color value ``TargetField``'s target field had before editing."""
         member = self.get_member("_originalColor")
         if member is None:
             return None
@@ -157,7 +163,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def hue(self) -> primitives.Float | None:
-        """The _hue field value."""
+        """The current selected color hue."""
         member = self.get_member("_hue")
         if member is None:
             return None
@@ -176,7 +182,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def saturation(self) -> primitives.Float | None:
-        """The _saturation field value."""
+        """The current selected color saturation."""
         member = self.get_member("_saturation")
         if member is None:
             return None
@@ -195,7 +201,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def value(self) -> primitives.Float | None:
-        """The _value field value."""
+        """The current selected color value."""
         member = self.get_member("_value")
         if member is None:
             return None
@@ -214,7 +220,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def alpha(self) -> primitives.Float | None:
-        """The _alpha field value."""
+        """The current selected color transparency."""
         member = self.get_member("_alpha")
         if member is None:
             return None
@@ -232,21 +238,28 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The _profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The current selected color profile."""
         member = self.get_member("_profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the _profile member."""
-        self.set_member("_profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set _profile. The current selected color profile."""
+        member = self.get_member("_profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def gain(self) -> primitives.Float | None:
-        """The _gain field value."""
+        """The current selected color gain."""
         member = self.get_member("_gain")
         if member is None:
             return None
@@ -265,7 +278,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def r_slider(self) -> str | None:
-        """Target ID of the _rSlider reference (targets LegacySlider)."""
+        """The slider to change the red of the color with."""
         member = self.get_member("_rSlider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -286,7 +299,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def g_slider(self) -> str | None:
-        """Target ID of the _gSlider reference (targets LegacySlider)."""
+        """The slider to change the green of the color with."""
         member = self.get_member("_gSlider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -307,7 +320,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def b_slider(self) -> str | None:
-        """Target ID of the _bSlider reference (targets LegacySlider)."""
+        """The slider to change the blue of the color with."""
         member = self.get_member("_bSlider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -328,7 +341,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def a_slider(self) -> str | None:
-        """Target ID of the _aSlider reference (targets LegacySlider)."""
+        """The slider to change the transparency/alpha of the color with."""
         member = self.get_member("_aSlider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -349,7 +362,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def gain_slider(self) -> str | None:
-        """Target ID of the _gainSlider reference (targets LegacySlider)."""
+        """The slider to change the gain of the color with."""
         member = self.get_member("_gainSlider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -370,7 +383,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def r_value(self) -> str | None:
-        """Target ID of the _rValue reference (targets IField[primitives.Float])."""
+        """The field to drive with the current selected red value."""
         member = self.get_member("_rValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -391,7 +404,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def g_value(self) -> str | None:
-        """Target ID of the _gValue reference (targets IField[primitives.Float])."""
+        """The field to drive with the current selected green value."""
         member = self.get_member("_gValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -412,7 +425,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def b_value(self) -> str | None:
-        """Target ID of the _bValue reference (targets IField[primitives.Float])."""
+        """The field to drive with the current selected blue value."""
         member = self.get_member("_bValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -433,7 +446,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def a_value(self) -> str | None:
-        """Target ID of the _aValue reference (targets IField[primitives.Float])."""
+        """The field to drive with the current selected transparency/alpha value."""
         member = self.get_member("_aValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -454,7 +467,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def gain_value(self) -> str | None:
-        """Target ID of the _gainValue reference (targets IField[primitives.Float])."""
+        """The field to drive with the current selected gain value."""
         member = self.get_member("_gainValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -475,7 +488,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def color_wheel_mesh(self) -> str | None:
-        """Target ID of the _colorWheelMesh reference (targets ColorWheelTriangleMesh)."""
+        """The triangle color mesh for this UI."""
         member = self.get_member("_colorWheelMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -496,7 +509,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def ok_button(self) -> str | None:
-        """Target ID of the _okButton reference (targets LegacyButton)."""
+        """The button that when pressed applies the selected color and closes the UI."""
         member = self.get_member("_okButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -517,7 +530,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
 
     @property
     def cancel_button(self) -> str | None:
-        """Target ID of the _cancelButton reference (targets LegacyButton)."""
+        """The button that when pressed reverts the value of the targeted field in ``TargetField`` to ``_originalColor`` and closes the ui."""
         member = self.get_member("_cancelButton")
         if isinstance(member, members.Reference):
             return member.targetId

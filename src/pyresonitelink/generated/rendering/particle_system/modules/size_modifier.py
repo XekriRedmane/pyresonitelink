@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SizeModifier(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.SizeModifier.
+    """The SizeModifier component modifies the size of particles as an extra effect on top of existing size modifiers.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SizeModifier"
@@ -38,7 +43,7 @@ class SizeModifier(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
 
     @property
     def multiplier(self) -> primitives.Float3 | None:
-        """The Multiplier field value."""
+        """How much to multiply the size of all particles."""
         member = self.get_member("Multiplier")
         if member is None:
             return None
@@ -57,7 +62,7 @@ class SizeModifier(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """How much to add to the size of all particles."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -76,7 +81,7 @@ class SizeModifier(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
 
     @property
     def size_clamp_min(self) -> primitives.Float3 | None:
-        """The SizeClampMin field value."""
+        """The minimum size particles can be."""
         member = self.get_member("SizeClampMin")
         if member is None:
             return None
@@ -95,7 +100,7 @@ class SizeModifier(GeneratedComponent, IParticleSystemModule, IWorldEventReceive
 
     @property
     def size_clamp_max(self) -> primitives.Float3 | None:
-        """The SizeClampMax field value."""
+        """The maximum size particles can be."""
         member = self.get_member("SizeClampMax")
         if member is None:
             return None

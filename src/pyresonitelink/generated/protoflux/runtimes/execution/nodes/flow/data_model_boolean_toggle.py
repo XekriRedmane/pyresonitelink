@@ -40,7 +40,7 @@ class DataModelBooleanToggle(GeneratedComponent, IVariable, IDataModelStore, IPr
 
     @property
     def set_(self) -> members.EmptyElement | None:
-        """The Set member."""
+        """Set the state to True."""
         member = self.get_member("Set")
         if isinstance(member, members.EmptyElement):
             return member
@@ -48,12 +48,12 @@ class DataModelBooleanToggle(GeneratedComponent, IVariable, IDataModelStore, IPr
 
     @set_.setter
     def set_(self, value: members.EmptyElement) -> None:
-        """Set the Set member."""
+        """Set Set. Set the state to True."""
         self.set_member("Set", value)
 
     @property
     def reset(self) -> members.EmptyElement | None:
-        """The Reset member."""
+        """Set the state to False."""
         member = self.get_member("Reset")
         if isinstance(member, members.EmptyElement):
             return member
@@ -61,12 +61,12 @@ class DataModelBooleanToggle(GeneratedComponent, IVariable, IDataModelStore, IPr
 
     @reset.setter
     def reset(self, value: members.EmptyElement) -> None:
-        """Set the Reset member."""
+        """Set Reset. Set the state to False."""
         self.set_member("Reset", value)
 
     @property
     def toggle(self) -> members.EmptyElement | None:
-        """The Toggle member."""
+        """Toggle the state to the opposite state."""
         member = self.get_member("Toggle")
         if isinstance(member, members.EmptyElement):
             return member
@@ -74,12 +74,12 @@ class DataModelBooleanToggle(GeneratedComponent, IVariable, IDataModelStore, IPr
 
     @toggle.setter
     def toggle(self, value: members.EmptyElement) -> None:
-        """Set the Toggle member."""
+        """Set Toggle. Toggle the state to the opposite state."""
         self.set_member("Toggle", value)
 
     @property
     def on_set(self) -> str | None:
-        """Target ID of the OnSet reference (targets INodeOperation)."""
+        """Fires when Set is pulsed or Toggle has switched the state to True."""
         member = self.get_member("OnSet")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -100,7 +100,7 @@ class DataModelBooleanToggle(GeneratedComponent, IVariable, IDataModelStore, IPr
 
     @property
     def on_reset(self) -> str | None:
-        """Target ID of the OnReset reference (targets INodeOperation)."""
+        """Fires when Reset is pulsed or Toggle has switched the state to False."""
         member = self.get_member("OnReset")
         if isinstance(member, members.Reference):
             return member.targetId

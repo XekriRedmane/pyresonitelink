@@ -58,7 +58,7 @@ class OnLocomotionGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInsp
 
     @property
     def on_event(self) -> str | None:
-        """Target ID of the OnEvent reference (targets ISyncNodeOperation)."""
+        """Fires when a locomotion grip ends."""
         member = self.get_member("OnEvent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class OnLocomotionGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInsp
 
     @property
     def gripped_slot(self) -> members.EmptyElement | None:
-        """The GrippedSlot member."""
+        """The slot that has been gripped."""
         member = self.get_member("GrippedSlot")
         if isinstance(member, members.EmptyElement):
             return member
@@ -87,12 +87,12 @@ class OnLocomotionGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInsp
 
     @gripped_slot.setter
     def gripped_slot(self, value: members.EmptyElement) -> None:
-        """Set the GrippedSlot member."""
+        """Set GrippedSlot. The slot that has been gripped."""
         self.set_member("GrippedSlot", value)
 
     @property
     def gripped_point(self) -> members.EmptyElement | None:
-        """The GrippedPoint member."""
+        """The point in 3D space where the grip has ended."""
         member = self.get_member("GrippedPoint")
         if isinstance(member, members.EmptyElement):
             return member
@@ -100,12 +100,12 @@ class OnLocomotionGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInsp
 
     @gripped_point.setter
     def gripped_point(self, value: members.EmptyElement) -> None:
-        """Set the GrippedPoint member."""
+        """Set GrippedPoint. The point in 3D space where the grip has ended."""
         self.set_member("GrippedPoint", value)
 
     @property
     def gripping_hand(self) -> members.EmptyElement | None:
-        """The GrippingHand member."""
+        """The side that has been gripped from a user."""
         member = self.get_member("GrippingHand")
         if isinstance(member, members.EmptyElement):
             return member
@@ -113,6 +113,6 @@ class OnLocomotionGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInsp
 
     @gripping_hand.setter
     def gripping_hand(self, value: members.EmptyElement) -> None:
-        """Set the GrippingHand member."""
+        """Set GrippingHand. The side that has been gripped from a user."""
         self.set_member("GrippingHand", value)
 

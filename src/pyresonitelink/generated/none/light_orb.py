@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LightOrb(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LightOrb.
+    """The Light Orb component is used as a visual for lights created by the Light Tool.
+
+    Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LightOrb"
@@ -42,7 +44,7 @@ class LightOrb(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def flip_on_touch(self) -> primitives.Bool | None:
-        """The FlipOnTouch field value."""
+        """Whether this can be toggled by touching a collider on the same slot."""
         member = self.get_member("FlipOnTouch")
         if member is None:
             return None
@@ -61,7 +63,7 @@ class LightOrb(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def light(self) -> str | None:
-        """Target ID of the Light reference (targets Light)."""
+        """The light to control."""
         member = self.get_member("Light")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +84,7 @@ class LightOrb(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def emission_color(self) -> str | None:
-        """Target ID of the EmissionColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive to control the emission color of the light."""
         member = self.get_member("EmissionColor")
         if isinstance(member, members.Reference):
             return member.targetId

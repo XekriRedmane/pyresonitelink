@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MultiLineMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MultiLineMesh.
+    """The MultiLineMesh component generates geometry for use with a MeshRenderer. For now, this component is unusable without Mods due to having a list type object.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot and insert into a MeshRenderer to view the generated
+    geometry. Don't forget to use a Material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MultiLineMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -35,6 +40,8 @@ class MultiLineMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -94,21 +101,28 @@ class MultiLineMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def lines(self) -> members.SyncList | None:
-        """The Lines member."""
+        """A set of lines that make up the source of the data for the geometry of this mesh."""
         member = self.get_member("Lines")
         if isinstance(member, members.SyncList):
             return member
@@ -116,7 +130,7 @@ class MultiLineMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
 
     @lines.setter
     def lines(self, value: members.SyncList) -> None:
-        """Set the Lines member."""
+        """Set Lines. A set of lines that make up the source of the data for the geometry of this mesh."""
         self.set_member("Lines", value)
 
     async def bake_mesh(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:

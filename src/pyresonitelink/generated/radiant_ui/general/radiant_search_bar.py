@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RadiantSearchBar.
+    """The RadiantSearchBar component is most commonly used and found in the World Browser.
 
     Category: Radiant UI/General
     """
@@ -68,7 +68,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def search_term(self) -> primitives.String | None:
-        """The SearchTerm field value."""
+        """The term this is searching for."""
         member = self.get_member("SearchTerm")
         if member is None:
             return None
@@ -87,7 +87,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def is_searching(self) -> primitives.Bool | None:
-        """The IsSearching field value."""
+        """Whether this component is currently searching."""
         member = self.get_member("IsSearching")
         if member is None:
             return None
@@ -106,7 +106,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def search_anim_tile_speed(self) -> primitives.Float | None:
-        """The SearchAnimTileSpeed field value."""
+        """How fast the search animation scrolling speed should be."""
         member = self.get_member("SearchAnimTileSpeed")
         if member is None:
             return None
@@ -125,7 +125,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def search_anim_color(self) -> primitives.ColorX | None:
-        """The SearchAnimColor field value."""
+        """What the color of the search bar should be while searching."""
         member = self.get_member("SearchAnimColor")
         if member is None:
             return None
@@ -144,7 +144,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text_field(self) -> str | None:
-        """Target ID of the _textField reference (targets TextField)."""
+        """The text field for entering a search."""
         member = self.get_member("_textField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -165,7 +165,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def search_text(self) -> str | None:
-        """Target ID of the _searchText reference (targets Text)."""
+        """The text UIX Component for searching"""
         member = self.get_member("_searchText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -186,7 +186,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def default_text(self) -> str | None:
-        """Target ID of the _defaultText reference (targets Text)."""
+        """The text UIX Component that should be visible if a search term has not yet been entered."""
         member = self.get_member("_defaultText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -207,7 +207,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def searching_visual(self) -> str | None:
-        """Target ID of the _searchingVisual reference (targets TiledRawImage)."""
+        """The visual to show while searching"""
         member = self.get_member("_searchingVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -228,7 +228,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def cancel_button(self) -> str | None:
-        """Target ID of the _cancelButton reference (targets Button)."""
+        """The button that can be used to cancel a currently running search."""
         member = self.get_member("_cancelButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -249,7 +249,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def default_visible(self) -> str | None:
-        """Target ID of the _defaultVisible reference (targets IField[primitives.Bool])."""
+        """The field to drive with what should be visible by default."""
         member = self.get_member("_defaultVisible")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -270,7 +270,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def searching_animation_color(self) -> str | None:
-        """Target ID of the _searchingAnimationColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive for the color of the searching animation visual."""
         member = self.get_member("_searchingAnimationColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -291,7 +291,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def searching_texture_offset(self) -> str | None:
-        """Target ID of the _searchingTextureOffset reference (targets IField[primitives.Float2])."""
+        """The offset field to drive to create the searching animation scrolling visual."""
         member = self.get_member("_searchingTextureOffset")
         if isinstance(member, members.Reference):
             return member.targetId

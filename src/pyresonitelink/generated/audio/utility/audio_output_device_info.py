@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioOutputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioOutputDeviceInfo.
+    """The AudioOutputDeviceInfo component only works in user space, and is used to find an audio device by name and get info about it.
 
     Category: Audio/Utility
     """
@@ -32,7 +32,7 @@ class AudioOutputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def device_index(self) -> primitives.Int | None:
-        """The DeviceIndex field value."""
+        """The device index if found"""
         member = self.get_member("DeviceIndex")
         if member is None:
             return None
@@ -51,7 +51,7 @@ class AudioOutputDeviceInfo(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def device_name(self) -> primitives.String | None:
-        """The DeviceName field value."""
+        """the name to use when looking for a device"""
         member = self.get_member("DeviceName")
         if member is None:
             return None

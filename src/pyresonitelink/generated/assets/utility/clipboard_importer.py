@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ClipboardImporter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ClipboardImporter.
+    """Clipboard importer is used by the game as a manager for pasting items and text from the clipboard. Without it, pasting text isn't possible in a world until it is added back to the world.
 
     Category: Assets/Utility
     """

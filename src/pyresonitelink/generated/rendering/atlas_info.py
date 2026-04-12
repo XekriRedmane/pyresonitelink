@@ -9,9 +9,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AtlasInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AtlasInfo.
+    """Atlas info is used in the UVAtlasAnimator to provide the animator with information on format of an image that is an atlas of all the frames in an animation.
 
     Category: Rendering
+
+    When used in conjunction with a TimeIntDriver, and a UVAtlasAnimator
+    this can let you animate for example pixel art images (spritesheets,
+    Atlases, etc) AtlasInfo by itself dosen't have much use but when placed
+    on a UVAtlasAnimator which is driving the Scale and Offset fields of a
+    Material it will transform the UV of the material so that only one frame
+    of the Texture is visible at a time To automate the change of frames
+    over time, you can use a TimeIntDriver and set the repeat to Frames +1
+    Repeat field is [0,x) || [0,x]
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AtlasInfo"
@@ -32,7 +41,7 @@ class AtlasInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def grid_size(self) -> primitives.Int2 | None:
-        """The GridSize field value."""
+        """The size of the grid that the image frames take up on the atlas (Ex: 4 by 8 grid of frames for a max of 32 total frames)"""
         member = self.get_member("GridSize")
         if member is None:
             return None
@@ -51,7 +60,7 @@ class AtlasInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def grid_frames(self) -> primitives.Int | None:
-        """The GridFrames field value."""
+        """The amount of frames on the animation atlas image. If the amount of frames is less than the max (the two ``GridSize`` numbers multiplied together) then it will stop on frame ``GridFrames`` when this component is used by UVAtlasAnimator."""
         member = self.get_member("GridFrames")
         if member is None:
             return None

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.compound_zero_handling import CompoundZeroHandling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -11,9 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.QuantityTextFormatDriver<>.
+    """The QuantityTextFormatDriver allows driving a string with an auto formatted quantity.
 
     Category: Utility
+
+    **Behavior**: The most suitable unit type is automatically chosen based on the BaseValue, you can override this behavior by inputting a unit type into FormatUnit or using compound units.
 
     Parameterize with a value type::
 
@@ -24,7 +27,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.QuantityTextFormatDriver<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.QuantityTextFormatDriver<>"
 
-    def __init__(self, target: str | IField[primitives.String] | None = None, base_value: primitives.Double | None = None, format_unit: primitives.String | None = None, format_number: primitives.String | None = None, compound_use_long_names: primitives.Bool | None = None, compound_override_names: primitives.Bool | None = None, compound_discard_last_fraction: primitives.Bool | None = None, compound_separator: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[primitives.String] | None = None, base_value: primitives.Double | None = None, format_unit: primitives.String | None = None, format_number: primitives.String | None = None, compound_use_long_names: primitives.Bool | None = None, compound_override_names: primitives.Bool | None = None, compound_discard_last_fraction: primitives.Bool | None = None, compound_separator: primitives.String | None = None, compound_zero_handling: CompoundZeroHandling | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -36,6 +39,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
             compound_override_names: Initial value for CompoundOverrideNames.
             compound_discard_last_fraction: Initial value for CompoundDiscardLastFraction.
             compound_separator: Initial value for CompoundSeparator.
+            compound_zero_handling: Initial value for CompoundZeroHandling.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -55,10 +59,12 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
             self.compound_discard_last_fraction = compound_discard_last_fraction
         if compound_separator is not None:
             self.compound_separator = compound_separator
+        if compound_zero_handling is not None:
+            self.compound_zero_handling = compound_zero_handling
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.String])."""
+        """The field to drive with the formatted Quantity string."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +85,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def base_value(self) -> primitives.Double | None:
-        """The BaseValue field value."""
+        """Value to get converted into string"""
         member = self.get_member("BaseValue")
         if member is None:
             return None
@@ -98,7 +104,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def format_unit(self) -> primitives.String | None:
-        """The FormatUnit field value."""
+        """Unit to format BaseValue in."""
         member = self.get_member("FormatUnit")
         if member is None:
             return None
@@ -117,7 +123,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def format_number(self) -> primitives.String | None:
-        """The FormatNumber field value."""
+        """How to format the number when making it part of the string (So if it should remove decimals."""
         member = self.get_member("FormatNumber")
         if member is None:
             return None
@@ -136,7 +142,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def compound_format_units(self) -> members.SyncList | None:
-        """The CompoundFormatUnits member."""
+        """A list of format Units this can use to format the base value (common ones are "ft" as an entry followed by another entry with "in" or "m" as an entry followed by another entry with "cm" )."""
         member = self.get_member("CompoundFormatUnits")
         if isinstance(member, members.SyncList):
             return member
@@ -144,12 +150,12 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @compound_format_units.setter
     def compound_format_units(self, value: members.SyncList) -> None:
-        """Set the CompoundFormatUnits member."""
+        """Set CompoundFormatUnits. A list of format Units this can use to format the base value (common ones are "ft" as an entry followed by another entry with "in" or "m" as an entry followed by another entry with "cm" )."""
         self.set_member("CompoundFormatUnits", value)
 
     @property
     def compound_use_long_names(self) -> primitives.Bool | None:
-        """The CompoundUseLongNames field value."""
+        """Show the long names of compound units."""
         member = self.get_member("CompoundUseLongNames")
         if member is None:
             return None
@@ -168,7 +174,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def compound_override_names(self) -> primitives.Bool | None:
-        """The CompoundOverrideNames field value."""
+        """Whether the compound format unit names should be used rather than their usual name."""
         member = self.get_member("CompoundOverrideNames")
         if member is None:
             return None
@@ -187,7 +193,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def compound_discard_last_fraction(self) -> primitives.Bool | None:
-        """The CompoundDiscardLastFraction field value."""
+        """Whether to discard the decimal of the smallest unit being displayed in the output or not. (so "3m 2.5cm" will become 3m 2cm")"""
         member = self.get_member("CompoundDiscardLastFraction")
         if member is None:
             return None
@@ -206,7 +212,7 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def compound_separator(self) -> primitives.String | None:
-        """The CompoundSeparator field value."""
+        """String to put between compound units."""
         member = self.get_member("CompoundSeparator")
         if member is None:
             return None
@@ -224,15 +230,22 @@ class QuantityTextFormatDriver(GenericComponent[T], IComponent, IWorldEventRecei
             )
 
     @property
-    def compound_zero_handling(self) -> members.FieldEnum | None:
-        """The CompoundZeroHandling member."""
+    def compound_zero_handling(self) -> CompoundZeroHandling | None:
+        """Remove or trim compound units with a value of zero."""
         member = self.get_member("CompoundZeroHandling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CompoundZeroHandling(member.value)
         return None
 
     @compound_zero_handling.setter
-    def compound_zero_handling(self, value: members.FieldEnum) -> None:
-        """Set the CompoundZeroHandling member."""
-        self.set_member("CompoundZeroHandling", value)
+    def compound_zero_handling(self, value: CompoundZeroHandling | str) -> None:
+        """Set CompoundZeroHandling. Remove or trim compound units with a value of zero."""
+        member = self.get_member("CompoundZeroHandling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "CompoundZeroHandling",
+                members.FieldEnum(value=str(value)),
+            )
 

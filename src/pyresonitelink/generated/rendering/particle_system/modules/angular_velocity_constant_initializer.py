@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AngularVelocityConstantInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.AngularVelocityConstantInitializer.
+    """The AngularVelocityConstantInitializer component makes particles have a constant starting rotation speed within a range along their orientation axis when born.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.AngularVelocityConstantInitializer"
@@ -29,7 +34,7 @@ class AngularVelocityConstantInitializer(GeneratedComponent, IParticleSystemModu
 
     @property
     def value(self) -> primitives.Float | None:
-        """The Value field value."""
+        """The rotation speed particles should have when born."""
         member = self.get_member("Value")
         if member is None:
             return None

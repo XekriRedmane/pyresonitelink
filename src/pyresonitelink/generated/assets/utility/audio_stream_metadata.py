@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioStreamMetadata<>.
+    """Audio Stream Metadata is a component that reads the running tallies of the different samples being sent and received by an AudioStream`1.
 
     Category: Assets/Utility
 
@@ -88,7 +88,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def stream(self) -> str | None:
-        """Target ID of the Stream reference (targets AudioStream[S])."""
+        """The audio source to get data from"""
         member = self.get_member("Stream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +109,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def unread_samples(self) -> primitives.Int | None:
-        """The UnreadSamples field value."""
+        """The amount of samples yet to be played"""
         member = self.get_member("UnreadSamples")
         if member is None:
             return None
@@ -128,7 +128,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def total_missed_samples(self) -> primitives.Int | None:
-        """The TotalMissedSamples field value."""
+        """Samples missed due to lag or other reasons."""
         member = self.get_member("TotalMissedSamples")
         if member is None:
             return None
@@ -147,7 +147,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def last_missed_samples(self) -> primitives.Int | None:
-        """The LastMissedSamples field value."""
+        """The last time samples were missed instead of being read from the audio source."""
         member = self.get_member("LastMissedSamples")
         if member is None:
             return None
@@ -166,7 +166,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def buffer_length(self) -> primitives.Int | None:
-        """The BufferLength field value."""
+        """How big the sample buffer is."""
         member = self.get_member("BufferLength")
         if member is None:
             return None
@@ -185,7 +185,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def average_read_samples_per_second(self) -> primitives.Double | None:
-        """The AverageReadSamplesPerSecond field value."""
+        """How many samples per second on a running average are being processed."""
         member = self.get_member("AverageReadSamplesPerSecond")
         if member is None:
             return None
@@ -204,7 +204,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def average_write_samples_per_second(self) -> primitives.Double | None:
-        """The AverageWriteSamplesPerSecond field value."""
+        """The many samples per second on a running average are being written to the buffer per second."""
         member = self.get_member("AverageWriteSamplesPerSecond")
         if member is None:
             return None
@@ -223,7 +223,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def global_index(self) -> primitives.Long | None:
-        """The GlobalIndex field value."""
+        """The audio source's index in the pool of audio players playing sounds."""
         member = self.get_member("GlobalIndex")
         if member is None:
             return None
@@ -242,7 +242,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def samples_available_for_encode(self) -> primitives.Int | None:
-        """The SamplesAvailableForEncode field value."""
+        """Samples currently ready to be encoded to a format supported by FrooxEngine's audio system."""
         member = self.get_member("SamplesAvailableForEncode")
         if member is None:
             return None
@@ -261,7 +261,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def frame_size(self) -> primitives.Int | None:
-        """The FrameSize field value."""
+        """The size of audio data coming in, which is in bytes and is influenced by data and channel count."""
         member = self.get_member("FrameSize")
         if member is None:
             return None
@@ -280,7 +280,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def max_frame_size(self) -> primitives.Int | None:
-        """The MaxFrameSize field value."""
+        """The max size of audio data coming in, which is in bytes and is influenced by data and channel count."""
         member = self.get_member("MaxFrameSize")
         if member is None:
             return None
@@ -299,7 +299,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def encoded_sample_rate(self) -> primitives.Int | None:
-        """The EncodedSampleRate field value."""
+        """how fast encoded samples are being processed."""
         member = self.get_member("EncodedSampleRate")
         if member is None:
             return None
@@ -318,7 +318,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def total_packet_count(self) -> primitives.Int | None:
-        """The TotalPacketCount field value."""
+        """How many audio packets have been networked by the audio source so far."""
         member = self.get_member("TotalPacketCount")
         if member is None:
             return None
@@ -337,7 +337,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def total_lost_packets(self) -> primitives.Int | None:
-        """The TotalLostPackets field value."""
+        """How many packets of the network that were not received from the audio source."""
         member = self.get_member("TotalLostPackets")
         if member is None:
             return None
@@ -356,7 +356,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def last_lost_packets(self) -> primitives.Int | None:
-        """The LastLostPackets field value."""
+        """The last time packets were lost by the audio source."""
         member = self.get_member("LastLostPackets")
         if member is None:
             return None
@@ -375,7 +375,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def packet_loss_ratio(self) -> primitives.Float | None:
-        """The PacketLossRatio field value."""
+        """On average, the percentage of audio packets from the network that are being lost."""
         member = self.get_member("PacketLossRatio")
         if member is None:
             return None
@@ -394,7 +394,7 @@ class AudioStreamMetadata(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def average_codec_samples_per_second(self) -> primitives.Double | None:
-        """The AverageCodecSamplesPerSecond field value."""
+        """The average amount of samples incoming in encoded form."""
         member = self.get_member("AverageCodecSamplesPerSecond")
         if member is None:
             return None

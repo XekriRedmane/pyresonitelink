@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicSubtitleProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicSubtitleProvider.
+    """The DynamicSubtitleProvider component is used to provide subtitles on videos that are playing in world.
 
     Category: Assets/Procedural Animations
     """
@@ -52,7 +52,7 @@ class DynamicSubtitleProvider(GeneratedComponent, IAssetProvider, ICustomInspect
 
     @property
     def asset_url(self) -> str | None:
-        """The AssetURL field value."""
+        """The URI to the subtitle file."""
         member = self.get_member("AssetURL")
         if member is None:
             return None

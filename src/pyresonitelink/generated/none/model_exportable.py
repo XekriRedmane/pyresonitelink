@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ModelExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ModelExportable.
+    """The ModelExportable component is used to mark a slot hierarchy as a model that can be exported to a user's local machine. This will export static and skinned meshes, but is subject to the same restrictions normal model exporting has.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ModelExportable"
@@ -27,7 +27,7 @@ class ModelExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets Slot)."""
+        """The slot to treat as a model that can be exported."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -48,7 +48,7 @@ class ModelExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @property
     def only_components(self) -> members.SyncList | None:
-        """The OnlyComponents member."""
+        """What components should only be exported, rather than all mesh data components in the hiearchy. If this list is blank, it will not have any affect."""
         member = self.get_member("OnlyComponents")
         if isinstance(member, members.SyncList):
             return member
@@ -56,6 +56,6 @@ class ModelExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @only_components.setter
     def only_components(self, value: members.SyncList) -> None:
-        """Set the OnlyComponents member."""
+        """Set OnlyComponents. What components should only be exported, rather than all mesh data components in the hiearchy. If this list is blank, it will not have any affect."""
         self.set_member("OnlyComponents", value)
 

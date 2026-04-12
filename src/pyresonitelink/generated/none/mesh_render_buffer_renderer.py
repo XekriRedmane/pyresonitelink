@@ -1,6 +1,7 @@
 """Generated component: MeshRenderBufferRenderer."""
 
 from pyresonitelink.data import members
+from pyresonitelink.generated._enums.mesh_alignment import MeshAlignment
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,18 +14,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MeshRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MeshRenderBufferRenderer.
+    """The MeshRenderBufferRenderer component is used to render point buffers for normal particles as meshes.
+
+    Used with Photon Dust.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MeshRenderBufferRenderer"
 
-    def __init__(self, buffer: str | IAssetProvider[PointRenderBuffer] | None = None, material: str | IAssetProvider[Material] | None = None, mesh: str | IAssetProvider[Mesh] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, buffer: str | IAssetProvider[PointRenderBuffer] | None = None, material: str | IAssetProvider[Material] | None = None, mesh: str | IAssetProvider[Mesh] | None = None, alignment: MeshAlignment | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             buffer: Initial value for Buffer.
             material: Initial value for Material.
             mesh: Initial value for Mesh.
+            alignment: Initial value for Alignment.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -34,10 +38,12 @@ class MeshRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponent,
             self.material = material
         if mesh is not None:
             self.mesh = mesh
+        if alignment is not None:
+            self.alignment = alignment
 
     @property
     def buffer(self) -> str | None:
-        """Target ID of the Buffer reference (targets IAssetProvider[PointRenderBuffer])."""
+        """The Buffer to render as meshes."""
         member = self.get_member("Buffer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +64,7 @@ class MeshRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponent,
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to render on the meshes."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +85,7 @@ class MeshRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponent,
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the Mesh reference (targets IAssetProvider[Mesh])."""
+        """The mesh to render."""
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -99,15 +105,22 @@ class MeshRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponent,
             )
 
     @property
-    def alignment(self) -> members.FieldEnum | None:
-        """The Alignment member."""
+    def alignment(self) -> MeshAlignment | None:
+        """How to align the meshes rendered using orientation and camera position."""
         member = self.get_member("Alignment")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MeshAlignment(member.value)
         return None
 
     @alignment.setter
-    def alignment(self, value: members.FieldEnum) -> None:
-        """Set the Alignment member."""
-        self.set_member("Alignment", value)
+    def alignment(self, value: MeshAlignment | str) -> None:
+        """Set Alignment. How to align the meshes rendered using orientation and camera position."""
+        member = self.get_member("Alignment")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Alignment",
+                members.FieldEnum(value=str(value)),
+            )
 

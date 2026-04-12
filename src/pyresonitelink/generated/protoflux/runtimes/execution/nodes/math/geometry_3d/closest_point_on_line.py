@@ -39,7 +39,7 @@ class ClosestPointOnLine(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def line_point0(self) -> str | None:
-        """Target ID of the LinePoint0 reference (targets INodeValueOutput[primitives.Float3])."""
+        """The first point."""
         member = self.get_member("LinePoint0")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class ClosestPointOnLine(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def line_point1(self) -> str | None:
-        """Target ID of the LinePoint1 reference (targets INodeValueOutput[primitives.Float3])."""
+        """The second point."""
         member = self.get_member("LinePoint1")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +81,7 @@ class ClosestPointOnLine(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def point(self) -> str | None:
-        """Target ID of the Point reference (targets INodeValueOutput[primitives.Float3])."""
+        """The point to check."""
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             return member.targetId

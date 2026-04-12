@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PackProtoFluxNodes(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Pack ProtoFlux Nodes node takes in the Slot root (where we want to pack to), and the Slot target (the set of ProtoFlux nodes we want to pack), then packs them into the Slot. Many community-based tools (such as Redprint) use this to pack nodes into slots.
+    """The ``Pack ProtoFlux Nodes`` node takes in the Slot root (where we want to pack to), and the Slot target (the set of ProtoFlux nodes we want to pack), then packs them into the Slot. Many community-based tools (such as Redprint) use this to pack nodes into slots.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Nodes
     """
@@ -41,7 +41,7 @@ class PackProtoFluxNodes(GeneratedComponent, ISyncNodeOperation, IExecutionNode,
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues the code from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class PackProtoFluxNodes(GeneratedComponent, ISyncNodeOperation, IExecutionNode,
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets INodeObjectOutput[Slot])."""
+        """The Slot we want to pack our nodes in."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class PackProtoFluxNodes(GeneratedComponent, ISyncNodeOperation, IExecutionNode,
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[Slot])."""
+        """The target set of connected nodes we want to pack."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -58,7 +58,7 @@ class WebsocketTextMessageReceiver(GeneratedComponent, IExecutionNode, INode, IC
 
     @property
     def on_received(self) -> str | None:
-        """Target ID of the OnReceived reference (targets ISyncNodeOperation)."""
+        """A Call triggered when a text message is received."""
         member = self.get_member("OnReceived")
         if isinstance(member, members.Reference):
             return member.targetId

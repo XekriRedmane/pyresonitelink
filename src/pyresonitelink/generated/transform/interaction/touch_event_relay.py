@@ -10,9 +10,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TouchEventRelay(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TouchEventRelay.
+    """The TouchEventRelay component is used to relay touch events recieved by a slot to other ITouchables.
 
     Category: Transform/Interaction
+
+    *To trigger a hyperlink component without a touchable/interactable
+    component you can use a TouchEventRelay. You a touch event relay on the
+    collider of your object, then put a hyperlink or other touchables as
+    children (with no colliders on them) then add them to the
+    TouchableTargets list of the TouchEventRelay.
+
+    **Related Components**: * Touchable Events can be used with TouchEventRelay.
+TouchEventRelay can relay events from a Touchable element to fire another ITouchable component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TouchEventRelay"
@@ -30,7 +39,7 @@ class TouchEventRelay(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def accept_out_of_sight_touch(self) -> primitives.Bool | None:
-        """The AcceptOutOfSightTouch field value."""
+        """Whether this component allows touch events from a user not looking directly at the slot with this component."""
         member = self.get_member("AcceptOutOfSightTouch")
         if member is None:
             return None
@@ -49,7 +58,7 @@ class TouchEventRelay(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def touchable_targets(self) -> members.SyncList | None:
-        """The TouchableTargets member."""
+        """Target touchable components to send the touch event to."""
         member = self.get_member("TouchableTargets")
         if isinstance(member, members.SyncList):
             return member
@@ -57,6 +66,6 @@ class TouchEventRelay(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @touchable_targets.setter
     def touchable_targets(self, value: members.SyncList) -> None:
-        """Set the TouchableTargets member."""
+        """Set TouchableTargets. Target touchable components to send the touch event to."""
         self.set_member("TouchableTargets", value)
 

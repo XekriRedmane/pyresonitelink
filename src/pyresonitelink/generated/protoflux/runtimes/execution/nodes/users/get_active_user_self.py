@@ -14,6 +14,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class GetActiveUserSelf(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """This node gets the active user.
 
+For instance, grabbing the node will make you appear as the active user. Packing the node into a slot and parenting said slot under your user will also have the same effect.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users
     """
 

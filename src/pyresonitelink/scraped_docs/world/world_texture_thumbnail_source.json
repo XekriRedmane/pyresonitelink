@@ -1,0 +1,11 @@
+{
+  "description": "The WorldTextureThumbnailSource specifies a completely customized texture to use for the world thumbnail.",
+  "category": "World",
+  "fields": {
+    "Texture": "The world thumbnail texture."
+  },
+  "methods": {},
+  "usage": "See World and Session Thumbnails.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldTextureThumbnailSource&action=raw"
+}

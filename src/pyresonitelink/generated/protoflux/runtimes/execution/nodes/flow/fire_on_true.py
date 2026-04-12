@@ -18,16 +18,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FireOnTrue(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The FireOnTrue node will listen for changes on its input bool and fire an impulse for the specified user whenever the input turns from False to True across updates.
+    """The FireOnTrue node will listen for changes on its input bool and fire an impulse for the specified user whenever the input turns from ``False`` to ``True`` across updates.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
 
     **See also**: * FireOnLocalTrue will fire an impulse for every user that detects ``True`` rather than a specific user.
 * FireOnFalse
 * FireOnChange
-
-ProtoFlux:Flow
-Listener nodes
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.FireOnTrue"
@@ -51,7 +48,7 @@ Listener nodes
 
     @property
     def only_for_user(self) -> str | None:
-        """Target ID of the OnlyForUser reference (targets INodeObjectOutput[User])."""
+        """The user that will listen to the boolean and fire the impulse."""
         member = self.get_member("OnlyForUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -72,7 +69,7 @@ Listener nodes
 
     @property
     def on_changed(self) -> str | None:
-        """Target ID of the OnChanged reference (targets ISyncNodeOperation)."""
+        """Fires a single impulse from the specified user whenever the provided input turns from ``False`` to ``True`` across updates."""
         member = self.get_member("OnChanged")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -93,7 +90,7 @@ Listener nodes
 
     @property
     def condition(self) -> str | None:
-        """Target ID of the Condition reference (targets INodeValueOutput[primitives.Bool])."""
+        """The bool that should be listened to for changes."""
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):
             return member.targetId

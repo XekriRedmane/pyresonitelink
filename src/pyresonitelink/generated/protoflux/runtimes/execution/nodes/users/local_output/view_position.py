@@ -12,6 +12,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ViewPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The View Position node returns the local user's view output position.
 
+When in Desktop Mode or VR Mode, this node will return the value of where your head proxy is positioned. When an item or object that can override your view is used (such as using a different head proxy, templated head proxy, or something else that moves your view point (such as the AvatarUserRootOverrideAssigner or AvatarObjectSlot components)), this node will return a new position value.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Local Output
     """
 

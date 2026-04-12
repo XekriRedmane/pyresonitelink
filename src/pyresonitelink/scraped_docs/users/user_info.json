@@ -1,0 +1,12 @@
+{
+  "description": "The UserInfo component handles keeping certain bits of data about a player spawned physically in the world. It's stored under the user root slot.",
+  "category": "Users",
+  "fields": {
+    "Controllers": "The slots of the controllers this user is using.",
+    "Hands": "The slots of the hands this user."
+  },
+  "methods": {},
+  "usage": "Used internally.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserInfo&action=raw"
+}

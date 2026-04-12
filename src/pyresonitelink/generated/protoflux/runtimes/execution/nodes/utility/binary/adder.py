@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Adder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Adder node takes in 3 boolean values (A, B, and CarryIn), and returns 2 boolean values (Y and CarryOut). In computing & electronics, this is called an adder, and helps with boolean math.
+    """The ``Adder`` node takes in 3 boolean values (``A``, ``B``, and ``CarryIn``), and returns 2 boolean values (``Y`` and ``CarryOut``). In computing & electronics, this is called an adder, and helps with boolean math.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility/Binary
     """
@@ -39,7 +39,7 @@ class Adder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObject
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[primitives.Bool])."""
+        """The first boolean input value."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class Adder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObject
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[primitives.Bool])."""
+        """The second boolean input value."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +81,7 @@ class Adder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObject
 
     @property
     def carry_in(self) -> str | None:
-        """Target ID of the CarryIn reference (targets INodeValueOutput[primitives.Bool])."""
+        """The carry in boolean input value."""
         member = self.get_member("CarryIn")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -102,7 +102,7 @@ class Adder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObject
 
     @property
     def y(self) -> members.EmptyElement | None:
-        """The Y member."""
+        """The result boolean output value."""
         member = self.get_member("Y")
         if isinstance(member, members.EmptyElement):
             return member
@@ -110,12 +110,12 @@ class Adder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObject
 
     @y.setter
     def y(self, value: members.EmptyElement) -> None:
-        """Set the Y member."""
+        """Set Y. The result boolean output value."""
         self.set_member("Y", value)
 
     @property
     def carry_out(self) -> members.EmptyElement | None:
-        """The CarryOut member."""
+        """The carry out boolean output value."""
         member = self.get_member("CarryOut")
         if isinstance(member, members.EmptyElement):
             return member
@@ -123,6 +123,6 @@ class Adder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObject
 
     @carry_out.setter
     def carry_out(self, value: members.EmptyElement) -> None:
-        """Set the CarryOut member."""
+        """Set CarryOut. The carry out boolean output value."""
         self.set_member("CarryOut", value)
 

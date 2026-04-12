@@ -9,7 +9,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicValueVariableReset<>.
+    """Dynamic Value Variable Reset is a component that will reset the value for a Dynamic Variable to a specified Value. This is useful for when you are messing with an item, but you want the values for it to clear themselves with it is saved, loaded, or duplicated. The variable space is determined by the searching algorithm explained on Dynamic Variables page from the slot this is on.
+}}
 
     Category: Data/Dynamic
 
@@ -66,7 +67,7 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
 
     @property
     def reset_on_load(self) -> primitives.Bool | None:
-        """The ResetOnLoad field value."""
+        """Reset when this component is loaded with a world."""
         member = self.get_member("ResetOnLoad")
         if member is None:
             return None
@@ -85,7 +86,7 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
 
     @property
     def reset_on_duplicate(self) -> primitives.Bool | None:
-        """The ResetOnDuplicate field value."""
+        """Reset when the object this is under is duplicated."""
         member = self.get_member("ResetOnDuplicate")
         if member is None:
             return None
@@ -104,7 +105,7 @@ class DynamicValueVariableReset(GenericComponent[T], IComponent, IWorldEventRece
 
     @property
     def reset_on_paste(self) -> primitives.Bool | None:
-        """The ResetOnPaste field value."""
+        """Reset when the object this is under is pasted from clipboard."""
         member = self.get_member("ResetOnPaste")
         if member is None:
             return None

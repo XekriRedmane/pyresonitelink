@@ -1,0 +1,15 @@
+{
+  "description": "Multi User Avatar anchor allows you to auto generate anchors, but only if you have a collider on the same slot as the multi anchor. It uses an IAvatarAnchor type component as a template, and generates them in a shape based on a Snapper (Snap Circle Component or Snap Sphere Component to name a couple). \n\nThe snapper component determines how the users will be positioned when clicking on the object. If the anchor then anchors the user, and the user position is further determined by the anchor's positioning settings. If the anchor position in global space is too close to another anchor (determined by field MinDistance), then the user will not be anchored.\n\nThis component doesn't fall under a IAvatarAnchor type, and as such cannot be referenced by ProtoFlux. This means you can only anchor users with this component if they explicitly click on the anchor. \n\nIt also doesn't give confirmation for clicking actions, which may be a bug.",
+  "category": "Users:Common Avatar System:Anchors",
+  "fields": {
+    "AnchorPointSnap": "A Snappable from snapping category",
+    "MaxUsers": "the maximum users that can be in this multi anchor",
+    "MinDistance": "How close a new anchor can be to another when a user clicks on the anchor before it denies it. The location of the anchor before this check is done is determined by the component in AnchorPointSnap.",
+    "Template": "The IAvatarAnchor to use as a template for making anchors. will duplicate the slot the anchor is on that this is referencing",
+    "AnchorsRoot": "what shape to put the anchors when they are generated. The part of the shape the anchor is placed on is determined by the point the user clicked on. If user clicks on left side of a cube, user is positioned on the left face."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MultiUserAvatarAnchor&action=raw"
+}

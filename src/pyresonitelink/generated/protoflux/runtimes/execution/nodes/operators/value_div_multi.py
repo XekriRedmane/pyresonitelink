@@ -27,7 +27,7 @@ class ValueDivMulti(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     @property
     def inputs(self) -> members.SyncList | None:
-        """The Inputs member."""
+        """The numbers to divide with, using the first value as a starting point."""
         member = self.get_member("Inputs")
         if isinstance(member, members.SyncList):
             return member
@@ -35,6 +35,6 @@ class ValueDivMulti(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     @inputs.setter
     def inputs(self, value: members.SyncList) -> None:
-        """Set the Inputs member."""
+        """Set Inputs. The numbers to divide with, using the first value as a starting point."""
         self.set_member("Inputs", value)
 

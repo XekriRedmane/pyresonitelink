@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedClampedValueFieldInterface<>.
+    """The FeedClampedValueFieldInterface component is used as a template type item in data feed mappers in the Data Feeds system. This component allows for making a UI Template for changing a value with a minimum and maximum value.
 
     Category: Radiant UI/Data Feeds/Interfaces
 
@@ -373,7 +373,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[T])."""
+        """The field that represents the data that should be read from and written to the source data feed."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -394,7 +394,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
 
     @property
     def formatting(self) -> str | None:
-        """Target ID of the Formatting reference (targets IField[primitives.String])."""
+        """The field to fill with data on how to format the value for displaying it."""
         member = self.get_member("Formatting")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -415,7 +415,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
 
     @property
     def min(self) -> str | None:
-        """Target ID of the Min reference (targets IField[T])."""
+        """The value Field to fill with the minimum value this feed number can be."""
         member = self.get_member("Min")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -436,7 +436,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
 
     @property
     def max(self) -> str | None:
-        """Target ID of the Max reference (targets IField[T])."""
+        """The value field to fill with the maximum value this feed number can be."""
         member = self.get_member("Max")
         if isinstance(member, members.Reference):
             return member.targetId

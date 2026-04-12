@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class InteractiveCameraPhotoSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraPhotoSettings.
+    """See Camera.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraPhotoSettings"
@@ -27,7 +29,7 @@ class InteractiveCameraPhotoSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def spawn_photo_in_world(self) -> primitives.Bool | None:
-        """The SpawnPhotoInWorld field value."""
+        """This will spawn the photo in to the world after a picture is taken. If this is off, it will only be saved on your device."""
         member = self.get_member("SpawnPhotoInWorld")
         if member is None:
             return None

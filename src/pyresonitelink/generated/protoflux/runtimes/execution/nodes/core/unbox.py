@@ -14,14 +14,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Unbox(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The UnboxT node converts a boxed object back into its underlying value type.
+    """The Unbox&lt;T&gt; node converts a boxed object back into its underlying value type.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 
     **See also**: * Box for boxing value types into objects
 * Microsoft documentation on C# boxing and unboxing
-
-ProtoFlux:Core
 
     Parameterize with a value type::
 
@@ -45,7 +43,7 @@ ProtoFlux:Core
 
     @property
     def input_(self) -> str | None:
-        """Target ID of the Input reference (targets INodeObjectOutput[object])."""
+        """The object to unbox."""
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             return member.targetId

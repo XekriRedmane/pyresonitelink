@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConstantAngularVelocityForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ConstantAngularVelocityForce.
+    """The Constant Angular Velocity Force component applies constant angular velocity in euler angles to all particles in a particle system.
 
     Category: Rendering/Particle System/Modules
     """
@@ -29,7 +29,7 @@ class ConstantAngularVelocityForce(GeneratedComponent, IParticleSystemModule, IW
 
     @property
     def force(self) -> primitives.Float3 | None:
-        """The Force field value."""
+        """The euler angles force to apply to particles."""
         member = self.get_member("Force")
         if member is None:
             return None

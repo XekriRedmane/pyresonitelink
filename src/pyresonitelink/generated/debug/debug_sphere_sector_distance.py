@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugSphereSectorDistance(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugSphereSectorDistance.
+    """The DebugSphereSectorDistance component makes a bunch of spazzy lines all over the place that vaguely resembles two spheres having a shoot out. This is only used for Debug.
 
     Category: Debug
     """
@@ -33,7 +33,7 @@ class DebugSphereSectorDistance(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def angle(self) -> primitives.Float | None:
-        """The Angle field value."""
+        """The angle of the sphere to debug"""
         member = self.get_member("Angle")
         if member is None:
             return None
@@ -52,7 +52,7 @@ class DebugSphereSectorDistance(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the sphere"""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -71,7 +71,7 @@ class DebugSphereSectorDistance(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def points(self) -> members.SyncList | None:
-        """The Points member."""
+        """A bunch of random points"""
         member = self.get_member("Points")
         if isinstance(member, members.SyncList):
             return member
@@ -79,6 +79,6 @@ class DebugSphereSectorDistance(GeneratedComponent, IComponent, IWorldEventRecei
 
     @points.setter
     def points(self, value: members.SyncList) -> None:
-        """Set the Points member."""
+        """Set Points. A bunch of random points"""
         self.set_member("Points", value)
 

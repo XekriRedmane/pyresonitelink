@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.color_channel_data import ColorChannelData
+from pyresonitelink.generated._enums.alpha_channel_data import AlphaChannelData
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,14 +14,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BitmapAssetMetadata.
+    """The BitmapAssetMetadata component is used to get pixel data information on a given image or texture.
 
     Category: Assets/Metadata
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BitmapAssetMetadata"
 
-    def __init__(self, asset: str | IAssetProvider[Texture2D] | None = None, width: primitives.Int | None = None, height: primitives.Int | None = None, base_format: primitives.String | None = None, bits_per_pixel: primitives.Double | None = None, channel_count: primitives.Int | None = None, average_color: primitives.ColorX | None = None, average_visible_color: primitives.ColorX | None = None, average_hsv: primitives.ColorX | None = None, average_visible_hsv: primitives.ColorX | None = None, invalid_pixel_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, asset: str | IAssetProvider[Texture2D] | None = None, width: primitives.Int | None = None, height: primitives.Int | None = None, base_format: primitives.String | None = None, color_data: ColorChannelData | str | None = None, alpha_data: AlphaChannelData | str | None = None, bits_per_pixel: primitives.Double | None = None, channel_count: primitives.Int | None = None, average_color: primitives.ColorX | None = None, average_visible_color: primitives.ColorX | None = None, average_hsv: primitives.ColorX | None = None, average_visible_hsv: primitives.ColorX | None = None, invalid_pixel_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,6 +29,8 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             width: Initial value for Width.
             height: Initial value for Height.
             base_format: Initial value for BaseFormat.
+            color_data: Initial value for ColorData.
+            alpha_data: Initial value for AlphaData.
             bits_per_pixel: Initial value for BitsPerPixel.
             channel_count: Initial value for ChannelCount.
             average_color: Initial value for AverageColor.
@@ -45,6 +49,10 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.height = height
         if base_format is not None:
             self.base_format = base_format
+        if color_data is not None:
+            self.color_data = color_data
+        if alpha_data is not None:
+            self.alpha_data = alpha_data
         if bits_per_pixel is not None:
             self.bits_per_pixel = bits_per_pixel
         if channel_count is not None:
@@ -62,7 +70,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def asset(self) -> str | None:
-        """Target ID of the Asset reference (targets IAssetProvider[Texture2D])."""
+        """The image to get data from."""
         member = self.get_member("Asset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +91,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def width(self) -> primitives.Int | None:
-        """The Width field value."""
+        """The width of ``Asset``."""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -102,7 +110,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def height(self) -> primitives.Int | None:
-        """The Height field value."""
+        """The height of ``Asset``."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -121,7 +129,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_format(self) -> primitives.String | None:
-        """The BaseFormat field value."""
+        """The format of ``Asset``."""
         member = self.get_member("BaseFormat")
         if member is None:
             return None
@@ -139,34 +147,48 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def color_data(self) -> members.FieldEnum | None:
-        """The ColorData member."""
+    def color_data(self) -> ColorChannelData | None:
+        """The ColorChannelData for ``Asset``"""
         member = self.get_member("ColorData")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorChannelData(member.value)
         return None
 
     @color_data.setter
-    def color_data(self, value: members.FieldEnum) -> None:
-        """Set the ColorData member."""
-        self.set_member("ColorData", value)
+    def color_data(self, value: ColorChannelData | str) -> None:
+        """Set ColorData. The ColorChannelData for ``Asset``"""
+        member = self.get_member("ColorData")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ColorData",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def alpha_data(self) -> members.FieldEnum | None:
-        """The AlphaData member."""
+    def alpha_data(self) -> AlphaChannelData | None:
+        """The AlphaChannelData for ``Asset``."""
         member = self.get_member("AlphaData")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AlphaChannelData(member.value)
         return None
 
     @alpha_data.setter
-    def alpha_data(self, value: members.FieldEnum) -> None:
-        """Set the AlphaData member."""
-        self.set_member("AlphaData", value)
+    def alpha_data(self, value: AlphaChannelData | str) -> None:
+        """Set AlphaData. The AlphaChannelData for ``Asset``."""
+        member = self.get_member("AlphaData")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AlphaData",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def bits_per_pixel(self) -> primitives.Double | None:
-        """The BitsPerPixel field value."""
+        """How many bits are used per pixel to store color data in ``Asset``."""
         member = self.get_member("BitsPerPixel")
         if member is None:
             return None
@@ -185,7 +207,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def channel_count(self) -> primitives.Int | None:
-        """The ChannelCount field value."""
+        """How many channels ``Asset`` has (RGBA for example is 4, but some images may have more or less.)"""
         member = self.get_member("ChannelCount")
         if member is None:
             return None
@@ -204,7 +226,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def average_color(self) -> primitives.ColorX | None:
-        """The AverageColor field value."""
+        """``Asset``'s average color, visible or not."""
         member = self.get_member("AverageColor")
         if member is None:
             return None
@@ -223,7 +245,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def average_visible_color(self) -> primitives.ColorX | None:
-        """The AverageVisibleColor field value."""
+        """``Asset``'s average visible color."""
         member = self.get_member("AverageVisibleColor")
         if member is None:
             return None
@@ -242,7 +264,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def average_hsv(self) -> primitives.ColorX | None:
-        """The AverageHSV field value."""
+        """``Asset``'s average HSV color, visible ot not."""
         member = self.get_member("AverageHSV")
         if member is None:
             return None
@@ -261,7 +283,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def average_visible_hsv(self) -> primitives.ColorX | None:
-        """The AverageVisibleHSV field value."""
+        """``Asset``'s average visible HSV color."""
         member = self.get_member("AverageVisibleHSV")
         if member is None:
             return None
@@ -280,7 +302,7 @@ class BitmapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def invalid_pixel_count(self) -> primitives.Int | None:
-        """The InvalidPixelCount field value."""
+        """how many pixels in ``Asset`` that have NAN values in their color values."""
         member = self.get_member("InvalidPixelCount")
         if member is None:
             return None

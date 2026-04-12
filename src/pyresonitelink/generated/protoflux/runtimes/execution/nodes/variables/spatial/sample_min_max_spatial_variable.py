@@ -16,6 +16,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class SampleMinMaxSpatialVariable(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Sample Min Max Spatial Variable node takes in a point in 3D space, and a name that matches that space, then returns the values found in the space that defined a min and max range.
 
+This node works with spatial variable components, and will need a BoxConstantValueSpatialVariable or similar to function as expected.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Variables/Spatial
 
     Parameterize with a value type::
@@ -43,7 +45,7 @@ class SampleMinMaxSpatialVariable(GenericComponent[T], IExecutionNode[T], INode,
 
     @property
     def point(self) -> str | None:
-        """Target ID of the Point reference (targets INodeValueOutput[primitives.Float3])."""
+        """The point to check in global 3D space."""
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +66,7 @@ class SampleMinMaxSpatialVariable(GenericComponent[T], IExecutionNode[T], INode,
 
     @property
     def name(self) -> str | None:
-        """Target ID of the Name reference (targets INodeObjectOutput[primitives.String])."""
+        """The named space/area to look for."""
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +87,7 @@ class SampleMinMaxSpatialVariable(GenericComponent[T], IExecutionNode[T], INode,
 
     @property
     def min(self) -> members.EmptyElement | None:
-        """The Min member."""
+        """Returns the min value found in this space/area."""
         member = self.get_member("Min")
         if isinstance(member, members.EmptyElement):
             return member
@@ -93,12 +95,12 @@ class SampleMinMaxSpatialVariable(GenericComponent[T], IExecutionNode[T], INode,
 
     @min.setter
     def min(self, value: members.EmptyElement) -> None:
-        """Set the Min member."""
+        """Set Min. Returns the min value found in this space/area."""
         self.set_member("Min", value)
 
     @property
     def max(self) -> members.EmptyElement | None:
-        """The Max member."""
+        """Returns the max value found in this space/area."""
         member = self.get_member("Max")
         if isinstance(member, members.EmptyElement):
             return member
@@ -106,12 +108,12 @@ class SampleMinMaxSpatialVariable(GenericComponent[T], IExecutionNode[T], INode,
 
     @max.setter
     def max(self, value: members.EmptyElement) -> None:
-        """Set the Max member."""
+        """Set Max. Returns the max value found in this space/area."""
         self.set_member("Max", value)
 
     @property
     def found_any(self) -> members.EmptyElement | None:
-        """The FoundAny member."""
+        """Returns if there is a matching space/area at all."""
         member = self.get_member("FoundAny")
         if isinstance(member, members.EmptyElement):
             return member
@@ -119,6 +121,6 @@ class SampleMinMaxSpatialVariable(GenericComponent[T], IExecutionNode[T], INode,
 
     @found_any.setter
     def found_any(self, value: members.EmptyElement) -> None:
-        """Set the FoundAny member."""
+        """Set FoundAny. Returns if there is a matching space/area at all."""
         self.set_member("FoundAny", value)
 

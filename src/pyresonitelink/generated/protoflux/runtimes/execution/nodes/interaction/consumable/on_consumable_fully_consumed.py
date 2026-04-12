@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnConsumableFullyConsumed(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Triggers on the start of a consumion event
+    """Listen to events and activate extra affects and behaviors when consuming using Consumable
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Consumable
     """
@@ -58,7 +58,7 @@ class OnConsumableFullyConsumed(GeneratedComponent, IExecutionNode, INode, ICust
 
     @property
     def on_consumed(self) -> str | None:
-        """Target ID of the OnConsumed reference (targets ISyncNodeOperation)."""
+        """Item is fully consumed. Reached end of list."""
         member = self.get_member("OnConsumed")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -4,18 +4,21 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.photo_encode_format import PhotoEncodeFormat
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotoCaptureSettings.
+    """The PhotoCaptureSettings component is used to control the behavior of the PhotoCaptureManager and what it does.
+
+See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotoCaptureSettings"
 
-    def __init__(self, finger_gesture_enabled: primitives.Bool | None = None, normal_capture_resolution: primitives.Int2 | None = None, timer_capture_resolution: primitives.Int2 | None = None, timer_seconds: primitives.Float | None = None, hands_near_fov: primitives.Float | None = None, hands_far_fov: primitives.Float | None = None, capture_private_ui: primitives.Bool | None = None, capture_stereo: primitives.Bool | None = None, stereo_separation: primitives.Float | None = None, always_hide_nameplates: primitives.Bool | None = None, photo_autosave_path: primitives.String | None = None, autosave_active: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, finger_gesture_enabled: primitives.Bool | None = None, normal_capture_resolution: primitives.Int2 | None = None, timer_capture_resolution: primitives.Int2 | None = None, timer_seconds: primitives.Float | None = None, hands_near_fov: primitives.Float | None = None, hands_far_fov: primitives.Float | None = None, capture_private_ui: primitives.Bool | None = None, capture_stereo: primitives.Bool | None = None, stereo_separation: primitives.Float | None = None, always_hide_nameplates: primitives.Bool | None = None, encode_format: PhotoEncodeFormat | str | None = None, photo_autosave_path: primitives.String | None = None, autosave_active: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,6 +32,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             capture_stereo: Initial value for CaptureStereo.
             stereo_separation: Initial value for StereoSeparation.
             always_hide_nameplates: Initial value for AlwaysHideNameplates.
+            encode_format: Initial value for EncodeFormat.
             photo_autosave_path: Initial value for PhotoAutosavePath.
             autosave_active: Initial value for AutosaveActive.
             component: Existing Component to wrap.
@@ -54,6 +58,8 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             self.stereo_separation = stereo_separation
         if always_hide_nameplates is not None:
             self.always_hide_nameplates = always_hide_nameplates
+        if encode_format is not None:
+            self.encode_format = encode_format
         if photo_autosave_path is not None:
             self.photo_autosave_path = photo_autosave_path
         if autosave_active is not None:
@@ -61,7 +67,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def finger_gesture_enabled(self) -> primitives.Bool | None:
-        """The FingerGestureEnabled field value."""
+        """Whether the finger photos should even render."""
         member = self.get_member("FingerGestureEnabled")
         if member is None:
             return None
@@ -80,7 +86,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def normal_capture_resolution(self) -> primitives.Int2 | None:
-        """The NormalCaptureResolution field value."""
+        """The resolution of pictures taken without timer."""
         member = self.get_member("NormalCaptureResolution")
         if member is None:
             return None
@@ -99,7 +105,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def timer_capture_resolution(self) -> primitives.Int2 | None:
-        """The TimerCaptureResolution field value."""
+        """The resolution of pictures taken with timer."""
         member = self.get_member("TimerCaptureResolution")
         if member is None:
             return None
@@ -118,7 +124,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def timer_seconds(self) -> primitives.Float | None:
-        """The TimerSeconds field value."""
+        """How long the timer should be for timed photos."""
         member = self.get_member("TimerSeconds")
         if member is None:
             return None
@@ -175,7 +181,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def capture_private_ui(self) -> primitives.Bool | None:
-        """The CapturePrivateUI field value."""
+        """Whether finger photos should capture private ui elements like the dash."""
         member = self.get_member("CapturePrivateUI")
         if member is None:
             return None
@@ -194,7 +200,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def capture_stereo(self) -> primitives.Bool | None:
-        """The CaptureStereo field value."""
+        """Whether photos should be 3D with a left and right "eye"."""
         member = self.get_member("CaptureStereo")
         if member is None:
             return None
@@ -213,7 +219,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def stereo_separation(self) -> primitives.Float | None:
-        """The StereoSeparation field value."""
+        """how far apart the left and right "eye" are when taking stereo photos."""
         member = self.get_member("StereoSeparation")
         if member is None:
             return None
@@ -232,7 +238,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def always_hide_nameplates(self) -> primitives.Bool | None:
-        """The AlwaysHideNameplates field value."""
+        """Whether to always hide nameplates in taken photos."""
         member = self.get_member("AlwaysHideNameplates")
         if member is None:
             return None
@@ -250,21 +256,28 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def encode_format(self) -> members.FieldEnum | None:
-        """The EncodeFormat member."""
+    def encode_format(self) -> PhotoEncodeFormat | None:
+        """The format taken photos should output as."""
         member = self.get_member("EncodeFormat")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return PhotoEncodeFormat(member.value)
         return None
 
     @encode_format.setter
-    def encode_format(self, value: members.FieldEnum) -> None:
-        """Set the EncodeFormat member."""
-        self.set_member("EncodeFormat", value)
+    def encode_format(self, value: PhotoEncodeFormat | str) -> None:
+        """Set EncodeFormat. The format taken photos should output as."""
+        member = self.get_member("EncodeFormat")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "EncodeFormat",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def photo_autosave_path(self) -> primitives.String | None:
-        """The PhotoAutosavePath field value."""
+        """Where to auto save photos in the inventory to."""
         member = self.get_member("PhotoAutosavePath")
         if member is None:
             return None
@@ -283,7 +296,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def autosave_active(self) -> primitives.Bool | None:
-        """The AutosaveActive field value."""
+        """Whether to use the auto save photos to inventory feature."""
         member = self.get_member("AutosaveActive")
         if member is None:
             return None
@@ -301,7 +314,7 @@ class PhotoCaptureSettings(GeneratedComponent, ICustomInspector):
             )
 
     async def open_autosave_path(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the OpenAutosavePath sync method.
+        """Opens the auto save path set in the settings.
 
         Returns:
             The raw JSON response dict.

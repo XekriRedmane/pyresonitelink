@@ -13,8 +13,6 @@ class CurrentCulture(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
     """The CurrentCulture node outputs the local user's culture.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Localization
-
-    **See also**: ProtoFlux:Strings:Localization
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Utility.CurrentCulture"

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicVisemeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicVisemeDriver.
+    """The DynamicVisemeDriver component allows using a viseme analyser to drive Float values. It allows for combinations of visemes with weights to drive a Float, and said Float may be a shapekey.
 
     Category: Rendering
     """
@@ -41,7 +41,7 @@ class DynamicVisemeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets VisemeAnalyzer)."""
+        """The analyzer making viseme data."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class DynamicVisemeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mouth_tracking_source(self) -> str | None:
-        """Target ID of the MouthTrackingSource reference (targets IMouthTrackingSourceComponent)."""
+        """The source of mouth tracking to influence viseme data."""
         member = self.get_member("MouthTrackingSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -102,7 +102,7 @@ class DynamicVisemeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def voice_mouth_supress_weight(self) -> primitives.Float | None:
-        """The VoiceMouthSupressWeight field value."""
+        """How much audio supresses the effect of the ``MouthTrackingSource`` data."""
         member = self.get_member("VoiceMouthSupressWeight")
         if member is None:
             return None
@@ -121,7 +121,7 @@ class DynamicVisemeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def drivers(self) -> members.SyncList | None:
-        """The Drivers member."""
+        """A list of drivers that use the ``Source`` and ``MouthTrackingSource`` data to drive their targets."""
         member = self.get_member("Drivers")
         if isinstance(member, members.SyncList):
             return member
@@ -129,6 +129,6 @@ class DynamicVisemeDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @drivers.setter
     def drivers(self, value: members.SyncList) -> None:
-        """Set the Drivers member."""
+        """Set Drivers. A list of drivers that use the ``Source`` and ``MouthTrackingSource`` data to drive their targets."""
         self.set_member("Drivers", value)
 

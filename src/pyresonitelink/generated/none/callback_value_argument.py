@@ -8,7 +8,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CallbackValueArgument(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CallbackValueArgument<>.
+    """This isn't very often used by the user, since there aren't many Sync Delegates in the game that match this component's requirements.
 
     Parameterize with a value type::
 
@@ -50,7 +50,7 @@ class CallbackValueArgument(GenericComponent[T], IComponent, IWorldEventReceiver
             )
 
     async def call(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Call sync method.
+        """Call ``Callback`` sync delegate and provide it ``Value``.
 
         Returns:
             The raw JSON response dict.
@@ -60,7 +60,7 @@ class CallbackValueArgument(GenericComponent[T], IComponent, IWorldEventReceiver
         )
 
     async def call_and_destroy(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the CallAndDestroy sync method.
+        """Do ``Call()`` and then destroy this component.
 
         Returns:
             The raw JSON response dict.

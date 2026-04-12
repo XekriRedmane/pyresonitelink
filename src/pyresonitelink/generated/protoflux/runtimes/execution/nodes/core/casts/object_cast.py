@@ -16,7 +16,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ObjectCast(GeneratedComponent, ICast, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """alt=A picture of an object cast. Looks like a square object with one side a different color than the other, with a split down the middle that has a beveled edge. Though it's just an image so you can't actually feel such bevel in game even with detailed haptics.|thumb|An object cast from Type:IWorldElement|IWorldElement to IFieldint.
+    """HTML Visual replaced by image due to wiki limitations
+
+alt=A picture of an object cast. Looks like a square object with one side a different color than the other, with a split down the middle that has a beveled edge. Though it's just an image so you can't actually feel such bevel in game even with detailed haptics.|thumb|An object cast from IWorldElement|IWorldElement to IField.
+
+The Object Cast casts any Object type into any other object type.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core/Casts
     """
@@ -36,7 +40,7 @@ class ObjectCast(GeneratedComponent, ICast, INodeObjectOutput, IExecutionNode, I
 
     @property
     def input_(self) -> str | None:
-        """Target ID of the Input reference (targets INodeObjectOutput[I])."""
+        """The object to cast."""
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             return member.targetId

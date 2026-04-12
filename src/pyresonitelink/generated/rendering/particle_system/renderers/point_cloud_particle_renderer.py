@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PointCloudParticleRenderer(GeneratedComponent, IParticleRenderer, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.PointCloudParticleRenderer.
+    """The PointCloudParticleRenderer component is used to render particles as dots with size using a material
 
     Category: Rendering/Particle System/Renderers
+
+    Used with particle systems.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.PointCloudParticleRenderer"
@@ -30,7 +32,7 @@ class PointCloudParticleRenderer(GeneratedComponent, IParticleRenderer, IWorldEv
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to render with."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId

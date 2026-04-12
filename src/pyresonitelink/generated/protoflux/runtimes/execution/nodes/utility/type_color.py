@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TypeColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Type Color node takes in a Type, and returns the color associated with that type's class inside the FrooxEngine.
+    """The ``Type Color`` node takes in a Type, and returns the color associated with that type's class inside the FrooxEngine.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Utility
     """
@@ -34,7 +34,7 @@ class TypeColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
 
     @property
     def type_(self) -> str | None:
-        """Target ID of the Type reference (targets INodeObjectOutput[Type])."""
+        """The type to get the color from."""
         member = self.get_member("Type")
         if isinstance(member, members.Reference):
             return member.targetId

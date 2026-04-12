@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReleaseAllGrabbed(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Release All Grabbed node, when impulsed, makes all slots the provided body node has, to become released. This also has the option to suppress events, useful if the slots were listening using the On Grabbable Released node, preventing a lot of pulses from firing.
+    """The ``Release All Grabbed`` node, when impulsed, makes all slots the provided body node has, to become released. This also has the option to suppress events, useful if the slots were listening using the On Grabbable Released node, preventing a lot of pulses from firing.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Grabbable
     """
@@ -42,7 +42,7 @@ class ReleaseAllGrabbed(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse when * (Call) is called and the provided Node (BodyNode) has had it's grabber release everything it was grabbing."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class ReleaseAllGrabbed(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[BodyNode])."""
+        """The node to find a grabber for so this node can make it release all that it is holding."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId

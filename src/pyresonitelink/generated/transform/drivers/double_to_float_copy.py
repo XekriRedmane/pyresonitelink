@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DoubleToFloatCopy(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DoubleToFloatCopy.
+    """The Double To Float Copy component copies a double field to a float field, while casting it down to the lower precision values of a float. this is useful for copying between these slightly incompatible types (not fully incompatible though as seen in flux).
 
     Category: Transform/Drivers
     """
@@ -37,7 +37,7 @@ class DoubleToFloatCopy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IField[primitives.Double])."""
+        """The source Double field to copy from."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class DoubleToFloatCopy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float])."""
+        """The field to drive with the value of a Float representation of ``Source``"""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class DoubleToFloatCopy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """Whether changes to ``Target`` get written back to ``Source``"""
         member = self.get_member("WriteBack")
         if member is None:
             return None

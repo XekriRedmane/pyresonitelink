@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.SizeSineMultiplier.
+    """The SizeSineMultiplier component makes particles multiply their size on start with a value sampled from a Sine Wave based on the time they were emitted in a particle system. 
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SizeSineMultiplier"
@@ -38,7 +43,7 @@ class SizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     @property
     def speed(self) -> primitives.Float3 | None:
-        """The Speed field value."""
+        """The speed that the Sine Wave changes."""
         member = self.get_member("Speed")
         if member is None:
             return None
@@ -57,7 +62,7 @@ class SizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """The initial offset of the Sine Wave function."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -76,7 +81,7 @@ class SizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     @property
     def min_multiplier(self) -> primitives.Float3 | None:
-        """The MinMultiplier field value."""
+        """The minimum value outputted by the sinewave function."""
         member = self.get_member("MinMultiplier")
         if member is None:
             return None
@@ -95,7 +100,7 @@ class SizeSineMultiplier(GeneratedComponent, IParticleSystemModule, IWorldEventR
 
     @property
     def max_multiplier(self) -> primitives.Float3 | None:
-        """The MaxMultiplier field value."""
+        """The maximum value outputted by the sinewave function."""
         member = self.get_member("MaxMultiplier")
         if member is None:
             return None

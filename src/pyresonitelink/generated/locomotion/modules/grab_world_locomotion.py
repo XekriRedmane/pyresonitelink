@@ -16,9 +16,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabWorldLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabWorldLocomotion.
+    """The GrabWorldLocomotion component can be used to make a locomotion for a world or injected into a user from an avatar or tooltip.
 
     Category: Locomotion/Modules
+
+    Can be used by making this locomotion active via the context menu. When
+    used as a locomotion, it can allow for fine turning by pressing left and
+    right and fine translational precision control by pressing forward on
+    the joystick.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabWorldLocomotion"
@@ -175,7 +180,7 @@ class GrabWorldLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRece
 
     @property
     def activation_threshold(self) -> primitives.Float | None:
-        """The ActivationThreshold field value."""
+        """The primary strength from the user before activation."""
         member = self.get_member("ActivationThreshold")
         if member is None:
             return None
@@ -194,7 +199,7 @@ class GrabWorldLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRece
 
     @property
     def deactivation_threshold(self) -> primitives.Float | None:
-        """The DeactivationThreshold field value."""
+        """The primary strength from the user before deactivation."""
         member = self.get_member("DeactivationThreshold")
         if member is None:
             return None
@@ -213,7 +218,7 @@ class GrabWorldLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRece
 
     @property
     def visual(self) -> str | None:
-        """Target ID of the _visual reference (targets Slot)."""
+        """the slot of the cross mesh visual used when moving."""
         member = self.get_member("_visual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -234,7 +239,7 @@ class GrabWorldLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRece
 
     @property
     def cross_mesh(self) -> str | None:
-        """Target ID of the _crossMesh reference (targets CrossMesh)."""
+        """The cross mesh that should appear at the user's hand whenever moving with this locomotion."""
         member = self.get_member("_crossMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -255,7 +260,7 @@ class GrabWorldLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRece
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets PBS_RimMetallic)."""
+        """The material applied to the cross mesh visual."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId

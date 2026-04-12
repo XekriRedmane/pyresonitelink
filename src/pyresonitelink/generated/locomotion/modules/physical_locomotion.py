@@ -3,6 +3,9 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.movement_mode import MovementMode
+from pyresonitelink.generated._enums.environment_gripping import EnvironmentGripping
+from pyresonitelink.generated._enums.grip_rotation import GripRotation
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -18,14 +21,29 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomotion, IFieldOfViewModifier, IInputUpdateReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhysicalLocomotion.
+    """The PhysicalLocomotion component is a versatile Locomotion Module that can be used for walking, climbing, flying, and Zero-G.
+
+= Fields =
+}}
 
     Category: Locomotion/Modules
+
+    **Gripping**: PhysicalLocomotion has a feature which is unique to it, called Gripping. This feature allows you to grip other objects in the world in order to use them to climb or traverse the world. A good analogy is rock climbing as this is exactly how this feature feels to use. Gripping, only works when allowed by the world author. 
+
+This feature is commonly called "Climbing" or "Physical Grab/Climbing" or even "Player Climbing", the official name "Gripping" will be used throughout this page. 
+
+Additionally, this feature is often confused with "Grabbables" which refer to any object in that you can move around in the world by grabbing it. These features are independent, for a quick way to remember the difference:
+* Grabbing involves moving an object which you are "Grabbing"
+* Gripping involves moving you using an object which you are "Gripping"
+
+Or if that doesn't work, its the difference between climbing a ladder and moving that ladder.
+
+World authors can configure this feature by changing the properties on the PhysicalLocomotion component. The main property here is "Gripping" which has the following settings and meanings:
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhysicalLocomotion"
 
-    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, min_initialization_delay: primitives.Float | None = None, max_initialization_delay: primitives.Float | None = None, initialization_collider_root: str | Slot | None = None, use_speed_from_user_settings: primitives.Bool | None = None, description: primitives.String | None = None, grip_on_hold: primitives.Bool | None = None, grip_radius: primitives.Float | None = None, grip_velocity_multiplier: primitives.Float | None = None, hand_grip_rotation_smooth_speed: primitives.Float | None = None, fall_respawn_position: primitives.Float | None = None, make_gravity_character_local: primitives.Bool | None = None, auto_align_vertical_with_gravity_speed: primitives.Float | None = None, manual_align_vertical_with_gravity_speed: primitives.Float | None = None, air_deceleration_speed: primitives.Float | None = None, grip_scale_delay: primitives.Float | None = None, allow_crouch: primitives.Bool | None = None, maximum_normalized_speed: primitives.Float | None = None, default_icon: str | None = None, default_color: primitives.ColorX | None = None, character_controller: str | CharacterController | None = None, legacy_name: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, icon: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, current_controller: str | LocomotionController | None = None, last_default_icon: str | None = None, last_default_color: primitives.ColorX | None = None, min_initialization_delay: primitives.Float | None = None, max_initialization_delay: primitives.Float | None = None, initialization_collider_root: str | Slot | None = None, use_speed_from_user_settings: primitives.Bool | None = None, description: primitives.String | None = None, mode: MovementMode | str | None = None, gripping: EnvironmentGripping | str | None = None, grip_on_hold: primitives.Bool | None = None, grip_radius: primitives.Float | None = None, grip_velocity_multiplier: primitives.Float | None = None, grip_hand_rotation_mode: GripRotation | str | None = None, grip_object_rotation_mode: GripRotation | str | None = None, hand_grip_rotation_smooth_speed: primitives.Float | None = None, fall_respawn_position: primitives.Float | None = None, make_gravity_character_local: primitives.Bool | None = None, auto_align_vertical_with_gravity_speed: primitives.Float | None = None, manual_align_vertical_with_gravity_speed: primitives.Float | None = None, air_deceleration_speed: primitives.Float | None = None, grip_scale_delay: primitives.Float | None = None, allow_crouch: primitives.Bool | None = None, maximum_normalized_speed: primitives.Float | None = None, default_icon: str | None = None, default_color: primitives.ColorX | None = None, character_controller: str | CharacterController | None = None, legacy_name: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,9 +57,13 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             initialization_collider_root: Initial value for InitializationColliderRoot.
             use_speed_from_user_settings: Initial value for UseSpeedFromUserSettings.
             description: Initial value for Description.
+            mode: Initial value for Mode.
+            gripping: Initial value for Gripping.
             grip_on_hold: Initial value for GripOnHold.
             grip_radius: Initial value for GripRadius.
             grip_velocity_multiplier: Initial value for GripVelocityMultiplier.
+            grip_hand_rotation_mode: Initial value for GripHandRotationMode.
+            grip_object_rotation_mode: Initial value for GripObjectRotationMode.
             hand_grip_rotation_smooth_speed: Initial value for HandGripRotationSmoothSpeed.
             fall_respawn_position: Initial value for FallRespawnPosition.
             make_gravity_character_local: Initial value for MakeGravityCharacterLocal.
@@ -78,12 +100,20 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             self.use_speed_from_user_settings = use_speed_from_user_settings
         if description is not None:
             self.description = description
+        if mode is not None:
+            self.mode = mode
+        if gripping is not None:
+            self.gripping = gripping
         if grip_on_hold is not None:
             self.grip_on_hold = grip_on_hold
         if grip_radius is not None:
             self.grip_radius = grip_radius
         if grip_velocity_multiplier is not None:
             self.grip_velocity_multiplier = grip_velocity_multiplier
+        if grip_hand_rotation_mode is not None:
+            self.grip_hand_rotation_mode = grip_hand_rotation_mode
+        if grip_object_rotation_mode is not None:
+            self.grip_object_rotation_mode = grip_object_rotation_mode
         if hand_grip_rotation_smooth_speed is not None:
             self.hand_grip_rotation_smooth_speed = hand_grip_rotation_smooth_speed
         if fall_respawn_position is not None:
@@ -225,7 +255,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def archetype(self) -> members.FieldEnum | None:
-        """The Archetype member."""
+        """Used to specify what kind of locomotion this is, to help with identification in flux and compatibility with user settings."""
         member = self.get_member("Archetype")
         if isinstance(member, members.FieldEnum):
             return member
@@ -233,12 +263,12 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @archetype.setter
     def archetype(self, value: members.FieldEnum) -> None:
-        """Set the Archetype member."""
+        """Set Archetype. Used to specify what kind of locomotion this is, to help with identification in flux and compatibility with user settings."""
         self.set_member("Archetype", value)
 
     @property
     def min_initialization_delay(self) -> primitives.Float | None:
-        """The MinInitializationDelay field value."""
+        """The minimum time to wait for the locomotion to allow initalization."""
         member = self.get_member("MinInitializationDelay")
         if member is None:
             return None
@@ -257,7 +287,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def max_initialization_delay(self) -> primitives.Float | None:
-        """The MaxInitializationDelay field value."""
+        """If the amount of time passed after this component was created is past this value, the locomotion is forced to initialize anyways."""
         member = self.get_member("MaxInitializationDelay")
         if member is None:
             return None
@@ -276,7 +306,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def initialization_collider_root(self) -> str | None:
-        """Target ID of the InitializationColliderRoot reference (targets Slot)."""
+        """The slot which a collider in its hiearchy has to be raycastable (From the user's feet downward) in order for this locomotion to initalize."""
         member = self.get_member("InitializationColliderRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -297,7 +327,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def use_speed_from_user_settings(self) -> primitives.Bool | None:
-        """The UseSpeedFromUserSettings field value."""
+        """Whether to allow the speed in the user settings to influence this locomotion's speed."""
         member = self.get_member("UseSpeedFromUserSettings")
         if member is None:
             return None
@@ -316,7 +346,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def description(self) -> primitives.String | None:
-        """The Description field value."""
+        """The description of this locomotion in the context menu."""
         member = self.get_member("Description")
         if member is None:
             return None
@@ -334,34 +364,48 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> MovementMode | None:
+        """How the enviroment/user influences how this locomotion can move."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MovementMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: MovementMode | str) -> None:
+        """Set Mode. How the enviroment/user influences how this locomotion can move."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def gripping(self) -> members.FieldEnum | None:
-        """The Gripping member."""
+    def gripping(self) -> EnvironmentGripping | None:
+        """See #Gripping for more information"""
         member = self.get_member("Gripping")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return EnvironmentGripping(member.value)
         return None
 
     @gripping.setter
-    def gripping(self, value: members.FieldEnum) -> None:
-        """Set the Gripping member."""
-        self.set_member("Gripping", value)
+    def gripping(self, value: EnvironmentGripping | str) -> None:
+        """Set Gripping. See #Gripping for more information"""
+        member = self.get_member("Gripping")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Gripping",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def grip_on_hold(self) -> primitives.Bool | None:
-        """The GripOnHold field value."""
+        """See #Gripping for more information"""
         member = self.get_member("GripOnHold")
         if member is None:
             return None
@@ -380,7 +424,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def grip_radius(self) -> primitives.Float | None:
-        """The GripRadius field value."""
+        """See #Gripping for more information"""
         member = self.get_member("GripRadius")
         if member is None:
             return None
@@ -399,7 +443,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def grip_velocity_multiplier(self) -> primitives.Float | None:
-        """The GripVelocityMultiplier field value."""
+        """See #Gripping for more information"""
         member = self.get_member("GripVelocityMultiplier")
         if member is None:
             return None
@@ -417,34 +461,48 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
             )
 
     @property
-    def grip_hand_rotation_mode(self) -> members.FieldEnum | None:
-        """The GripHandRotationMode member."""
+    def grip_hand_rotation_mode(self) -> GripRotation | None:
+        """See #Gripping for more information"""
         member = self.get_member("GripHandRotationMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return GripRotation(member.value)
         return None
 
     @grip_hand_rotation_mode.setter
-    def grip_hand_rotation_mode(self, value: members.FieldEnum) -> None:
-        """Set the GripHandRotationMode member."""
-        self.set_member("GripHandRotationMode", value)
+    def grip_hand_rotation_mode(self, value: GripRotation | str) -> None:
+        """Set GripHandRotationMode. See #Gripping for more information"""
+        member = self.get_member("GripHandRotationMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "GripHandRotationMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def grip_object_rotation_mode(self) -> members.FieldEnum | None:
-        """The GripObjectRotationMode member."""
+    def grip_object_rotation_mode(self) -> GripRotation | None:
+        """See #Gripping for more information"""
         member = self.get_member("GripObjectRotationMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return GripRotation(member.value)
         return None
 
     @grip_object_rotation_mode.setter
-    def grip_object_rotation_mode(self, value: members.FieldEnum) -> None:
-        """Set the GripObjectRotationMode member."""
-        self.set_member("GripObjectRotationMode", value)
+    def grip_object_rotation_mode(self, value: GripRotation | str) -> None:
+        """Set GripObjectRotationMode. See #Gripping for more information"""
+        member = self.get_member("GripObjectRotationMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "GripObjectRotationMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def hand_grip_rotation_smooth_speed(self) -> primitives.Float | None:
-        """The HandGripRotationSmoothSpeed field value."""
+        """See #Gripping for more information"""
         member = self.get_member("HandGripRotationSmoothSpeed")
         if member is None:
             return None
@@ -463,7 +521,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def fall_respawn_position(self) -> primitives.Float | None:
-        """The FallRespawnPosition field value."""
+        """How far down in global space the user needs to be to respawn."""
         member = self.get_member("FallRespawnPosition")
         if member is None:
             return None
@@ -482,7 +540,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def make_gravity_character_local(self) -> primitives.Bool | None:
-        """The MakeGravityCharacterLocal field value."""
+        """Whether the gravity should be based on the user's parent space orientation (true) or global (false)"""
         member = self.get_member("MakeGravityCharacterLocal")
         if member is None:
             return None
@@ -501,7 +559,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def auto_align_vertical_with_gravity_speed(self) -> primitives.Float | None:
-        """The AutoAlignVerticalWithGravitySpeed field value."""
+        """How fast to rotate the player to orient them to the direction of gravity."""
         member = self.get_member("AutoAlignVerticalWithGravitySpeed")
         if member is None:
             return None
@@ -520,7 +578,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def manual_align_vertical_with_gravity_speed(self) -> primitives.Float | None:
-        """The ManualAlignVerticalWithGravitySpeed field value."""
+        """How fast the user aligns with gravity if 3 axis rotation is enabled and they're pressing the manual align button."""
         member = self.get_member("ManualAlignVerticalWithGravitySpeed")
         if member is None:
             return None
@@ -539,7 +597,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def air_deceleration_speed(self) -> primitives.Float | None:
-        """The AirDecelerationSpeed field value."""
+        """How fast the user is slowed down while in air."""
         member = self.get_member("AirDecelerationSpeed")
         if member is None:
             return None
@@ -558,7 +616,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def grip_scale_delay(self) -> primitives.Float | None:
-        """The GripScaleDelay field value."""
+        """How long the user has to wait after gripping a surface in order to be able to scale with both hands in VR."""
         member = self.get_member("GripScaleDelay")
         if member is None:
             return None
@@ -577,7 +635,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def allow_crouch(self) -> primitives.Bool | None:
-        """The AllowCrouch field value."""
+        """Whether this locomotion allows the user to crouch down."""
         member = self.get_member("AllowCrouch")
         if member is None:
             return None
@@ -596,7 +654,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def maximum_normalized_speed(self) -> primitives.Float | None:
-        """The MaximumNormalizedSpeed field value."""
+        """The fastest speed this locomotion is allowed to travel."""
         member = self.get_member("MaximumNormalizedSpeed")
         if member is None:
             return None
@@ -615,7 +673,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def default_icon(self) -> str | None:
-        """The _defaultIcon field value."""
+        """The default icon url for this kind of locomotion."""
         member = self.get_member("_defaultIcon")
         if member is None:
             return None
@@ -634,7 +692,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def default_color(self) -> primitives.ColorX | None:
-        """The _defaultColor field value."""
+        """The default color for this kind of locomotion."""
         member = self.get_member("_defaultColor")
         if member is None:
             return None
@@ -653,7 +711,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def character_controller(self) -> str | None:
-        """Target ID of the _characterController reference (targets CharacterController)."""
+        """The character controller associated with this locomotion component."""
         member = self.get_member("_characterController")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -674,7 +732,7 @@ class PhysicalLocomotion(GeneratedComponent, ICustomInspector, IPhysicalLocomoti
 
     @property
     def legacy_name(self) -> primitives.String | None:
-        """The __legacyName field value."""
+        """Internal."""
         member = self.get_member("__legacyName")
         if member is None:
             return None

@@ -9,7 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MissingComponent(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MissingComponent.
+    """The MissingComponent component is used to signify that a component previously saved on a slot no longer exists inside of Resonite. seeing this component is rare due to the backwards compatibility of Resonite. This component does not have any active functionality.
+
+    This component will appear on content sometimes. Replace the component
+    with an equivalent or more up to date method, then delete this
+    component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MissingComponent"
@@ -27,7 +31,7 @@ class MissingComponent(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def type_(self) -> primitives.String | None:
-        """The Type field value."""
+        """The string version of a Type of the removed or depreciated component."""
         member = self.get_member("Type")
         if member is None:
             return None

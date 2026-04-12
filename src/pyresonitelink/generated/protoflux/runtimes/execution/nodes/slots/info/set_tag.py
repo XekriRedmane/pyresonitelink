@@ -42,7 +42,7 @@ class SetTag(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICus
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse when Instance (Slot)'s tag is set to Tag (String) when * (Call) is called."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class SetTag(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICus
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """Slot to set the property for."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class SetTag(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICus
 
     @property
     def tag(self) -> str | None:
-        """Target ID of the Tag reference (targets INodeObjectOutput[primitives.String])."""
+        """The value to set Instance (Slot)'s Tag field to when * (Call) is called."""
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):
             return member.targetId

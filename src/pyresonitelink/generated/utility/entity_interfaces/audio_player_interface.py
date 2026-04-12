@@ -16,9 +16,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioPlayerInterface.
+    """The AudioPlayerInterface component is used on AudioClip objects that are spawned in by the user to allow the engine to interface with the stored audio clip.
+
+This is a favorite-able item. See Favorites.
 
     Category: Utility/Entity Interfaces
+
+    This can be attached to a slot in order for the user to make own audio
+    clip interface for when they import an audio clip. Although, it may be
+    easier to edit the default existing audio clip player interface.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioPlayerInterface"
@@ -66,7 +72,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[primitives.String])."""
+        """The name of the audio clip."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +93,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user(self) -> str | None:
-        """Target ID of the SpawningUser reference (targets UserRef)."""
+        """The user that spawned this audio clip."""
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +114,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
+        """The field of the UserRef that stores the spawning user's id."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -129,7 +135,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def is_instance(self) -> primitives.Bool | None:
-        """The IsInstance field value."""
+        """Whether this audio clip interface is a spawned interface or one being edited currently by the user. Usually set to true by the game when loaded as a user's favorite audio clip player"""
         member = self.get_member("IsInstance")
         if member is None:
             return None
@@ -148,7 +154,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def url(self) -> str | None:
-        """Target ID of the URL reference (targets IField[str])."""
+        """The field of the URI on the Type:AudioClip this component interfaces with."""
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -169,7 +175,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def clip(self) -> str | None:
-        """Target ID of the Clip reference (targets AssetRef[AudioClip])."""
+        """The Type:AudioClip interfaced by this component."""
         member = self.get_member("Clip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -190,7 +196,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def group(self) -> str | None:
-        """Target ID of the Group reference (targets IField[AudioTypeGroup])."""
+        """The audio group setting for this audio clip."""
         member = self.get_member("Group")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -211,7 +217,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def volume(self) -> str | None:
-        """Target ID of the Volume reference (targets IField[primitives.Float])."""
+        """The volume setting of this audio clip."""
         member = self.get_member("Volume")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -232,7 +238,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spatialize(self) -> str | None:
-        """Target ID of the Spatialize reference (targets IField[primitives.Bool])."""
+        """The Spatialize setting of the audio clip."""
         member = self.get_member("Spatialize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -253,7 +259,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def doppler(self) -> str | None:
-        """Target ID of the Doppler reference (targets IField[primitives.Float])."""
+        """The Doppler setting of the audio clip."""
         member = self.get_member("Doppler")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -274,7 +280,7 @@ class AudioPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def default_audio_clip(self) -> str | None:
-        """Target ID of the DefaultAudioClip reference (targets IAssetProvider[AudioClip])."""
+        """The audio clip"""
         member = self.get_member("DefaultAudioClip")
         if isinstance(member, members.Reference):
             return member.targetId

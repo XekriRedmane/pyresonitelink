@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CirclePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CirclePointGenerator.
+    """A generator for points arranged in a circle with a given radius.
 
     Category: Transform/Point Generators
+
+    Used in a Common Spawn Area to define in what kind of spawn area shape
+    users should initially spawn into.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CirclePointGenerator"
@@ -32,7 +35,7 @@ class CirclePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventRecei
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The distance from center to outside that this point generator should make points."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -51,7 +54,7 @@ class CirclePointGenerator(GeneratedComponent, IPointGenerator, IWorldEventRecei
 
     @property
     def shell(self) -> primitives.Bool | None:
-        """The Shell field value."""
+        """Generate the points for this generator only along the outside edge."""
         member = self.get_member("Shell")
         if member is None:
             return None

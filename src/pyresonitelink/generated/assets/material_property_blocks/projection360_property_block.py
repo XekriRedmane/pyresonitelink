@@ -12,9 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Projection360PropertyBlock(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Projection360PropertyBlock.
+    """See Material Property Block for a vastly detailed explaination.
 
     Category: Assets/Material Property Blocks
+
+    See Material Property Block for a vastly detailed explaination.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Projection360PropertyBlock"
@@ -60,7 +62,7 @@ class Projection360PropertyBlock(GeneratedComponent, IAssetProvider, ICustomInsp
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[ITexture2D])."""
+        """The texture to override the ``Texture`` field of a Projection360Material for a renderer."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +83,7 @@ class Projection360PropertyBlock(GeneratedComponent, IAssetProvider, ICustomInsp
 
     @property
     def perspective_field_of_view(self) -> primitives.Float2 | None:
-        """The PerspectiveFieldOfView field value."""
+        """The value to override the ``PerspectiveFieldOfView`` field of a Projection360Material for a renderer."""
         member = self.get_member("PerspectiveFieldOfView")
         if member is None:
             return None
@@ -100,7 +102,7 @@ class Projection360PropertyBlock(GeneratedComponent, IAssetProvider, ICustomInsp
 
     @property
     def perspective_angle_offset(self) -> primitives.Float2 | None:
-        """The PerspectiveAngleOffset field value."""
+        """The value to override the ``PerspectiveAngleOffset`` field of a Projection360Material for a renderer."""
         member = self.get_member("PerspectiveAngleOffset")
         if member is None:
             return None

@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RibbonFollowerWidthConstantInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.RibbonFollowerWidthConstantInitializer.
+    """The RibbonFollowerWidthConstantInitializer component makes all ribbon followers in a particle system have a starting width of ``Value``.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.RibbonFollowerWidthConstantInitializer"
@@ -29,7 +34,7 @@ class RibbonFollowerWidthConstantInitializer(GeneratedComponent, IParticleSystem
 
     @property
     def value(self) -> primitives.Float | None:
-        """The Value field value."""
+        """The starting width all ribbon followers in the particle system should have."""
         member = self.get_member("Value")
         if member is None:
             return None

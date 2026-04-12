@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.clone_mode import CloneMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.slot import Slot
@@ -10,9 +11,12 @@ from pyresonitelink.generated._types.isync_ref_list import ISyncRefList
 
 
 class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
-    """Wrapper for [FrooxEngine]FrooxEngine.CloningReferenceSpatialVariableCollector<>.
+    """The Cloning Reference Spatial Variable Collector`1 component is part of the Spatial variables system. It works similarly to ReferenceSpatialVariableCollector, but specifically for components. For each component it finds at the point, it will create & maintain a duplicate. It can duplicate either just the component itself or the whole Slot it's on. The duplicates can be made Local only (it's your responsibility to make sure that the target list can reference local elements). It will never clone spatial variables present on the slot.
 
     Category: Data/Spatial/Samplers
+
+    Attach to a slot and bring near a set of Spatial variables to get a list
+    of references. don't forget to add a variable name and reference list.
 
     Parameterize with a value type::
 
@@ -23,13 +27,14 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CloningReferenceSpatialVariableCollector<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.CloningReferenceSpatialVariableCollector<>"
 
-    def __init__(self, clone_parent: str | Slot | None = None, make_clones_local: primitives.Bool | None = None, variable_name: primitives.String | None = None, reference_list: str | ISyncRefList[T] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, clone_parent: str | Slot | None = None, make_clones_local: primitives.Bool | None = None, variable_name: primitives.String | None = None, mode: CloneMode | str | None = None, reference_list: str | ISyncRefList[T] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             clone_parent: Initial value for CloneParent.
             make_clones_local: Initial value for MakeClonesLocal.
             variable_name: Initial value for VariableName.
+            mode: Initial value for Mode.
             reference_list: Initial value for ReferenceList.
             component: Existing Component to wrap.
         """
@@ -40,12 +45,14 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
             self.make_clones_local = make_clones_local
         if variable_name is not None:
             self.variable_name = variable_name
+        if mode is not None:
+            self.mode = mode
         if reference_list is not None:
             self.reference_list = reference_list
 
     @property
     def clone_parent(self) -> str | None:
-        """Target ID of the CloneParent reference (targets Slot)."""
+        """The slot to parent cloned elements to."""
         member = self.get_member("CloneParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +73,7 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
 
     @property
     def make_clones_local(self) -> primitives.Bool | None:
-        """The MakeClonesLocal field value."""
+        """Whether cloned items should be on the local machine rather than networked."""
         member = self.get_member("MakeClonesLocal")
         if member is None:
             return None
@@ -85,7 +92,7 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
 
     @property
     def variable_name(self) -> primitives.String | None:
-        """The VariableName field value."""
+        """The name of the variable being sampled."""
         member = self.get_member("VariableName")
         if member is None:
             return None
@@ -103,21 +110,28 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> CloneMode | None:
+        """How to clone elements this samples."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CloneMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: CloneMode | str) -> None:
+        """Set Mode. How to clone elements this samples."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def reference_list(self) -> str | None:
-        """Target ID of the ReferenceList reference (targets ISyncRefList[T])."""
+        """The list of references this component has sampled at the point of the slot it is on."""
         member = self.get_member("ReferenceList")
         if isinstance(member, members.Reference):
             return member.targetId

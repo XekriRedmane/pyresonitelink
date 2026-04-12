@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.session_access_level import SessionAccessLevel
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.text_field import TextField
@@ -12,12 +13,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.NewWorldDialog.
+    """The NewWorldDialog component is used internally to control the new world prompt when making a new world in dash space.
+
+    Used internally.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.NewWorldDialog"
 
-    def __init__(self, world_name: str | TextField | None = None, mobile_friendly: str | Checkbox | None = None, unsafe_mode: str | Checkbox | None = None, auto_port: str | Checkbox | None = None, port: str | TextField | None = None, preset_index: primitives.Int | None = None, ui_built: primitives.Bool | None = None, initialized: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, world_name: str | TextField | None = None, mobile_friendly: str | Checkbox | None = None, unsafe_mode: str | Checkbox | None = None, auto_port: str | Checkbox | None = None, port: str | TextField | None = None, access_level: SessionAccessLevel | str | None = None, preset_index: primitives.Int | None = None, ui_built: primitives.Bool | None = None, initialized: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -26,6 +29,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             unsafe_mode: Initial value for _unsafeMode.
             auto_port: Initial value for _autoPort.
             port: Initial value for _port.
+            access_level: Initial value for _accessLevel.
             preset_index: Initial value for _presetIndex.
             ui_built: Initial value for _uiBuilt.
             initialized: Initial value for _initialized.
@@ -42,6 +46,8 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.auto_port = auto_port
         if port is not None:
             self.port = port
+        if access_level is not None:
+            self.access_level = access_level
         if preset_index is not None:
             self.preset_index = preset_index
         if ui_built is not None:
@@ -51,7 +57,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def world_name(self) -> str | None:
-        """Target ID of the _worldName reference (targets TextField)."""
+        """The field to define the name of the new world."""
         member = self.get_member("_worldName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -72,7 +78,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mobile_friendly(self) -> str | None:
-        """Target ID of the _mobileFriendly reference (targets Checkbox)."""
+        """Whether the new world should be mobile friendly."""
         member = self.get_member("_mobileFriendly")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -93,7 +99,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def unsafe_mode(self) -> str | None:
-        """Target ID of the _unsafeMode reference (targets Checkbox)."""
+        """Whether the new world is going to be unsafe mode."""
         member = self.get_member("_unsafeMode")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -114,7 +120,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_port(self) -> str | None:
-        """Target ID of the _autoPort reference (targets Checkbox)."""
+        """Whether the new world should boot with auto defined port."""
         member = self.get_member("_autoPort")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -135,7 +141,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def port(self) -> str | None:
-        """Target ID of the _port reference (targets TextField)."""
+        """The port of the new world."""
         member = self.get_member("_port")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -155,21 +161,28 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def access_level(self) -> members.FieldEnum | None:
-        """The _accessLevel member."""
+    def access_level(self) -> SessionAccessLevel | None:
+        """The access level of the new world."""
         member = self.get_member("_accessLevel")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SessionAccessLevel(member.value)
         return None
 
     @access_level.setter
-    def access_level(self, value: members.FieldEnum) -> None:
-        """Set the _accessLevel member."""
-        self.set_member("_accessLevel", value)
+    def access_level(self, value: SessionAccessLevel | str) -> None:
+        """Set _accessLevel. The access level of the new world."""
+        member = self.get_member("_accessLevel")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_accessLevel",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def preset_index(self) -> primitives.Int | None:
-        """The _presetIndex field value."""
+        """Which preset to use for the new world."""
         member = self.get_member("_presetIndex")
         if member is None:
             return None
@@ -188,7 +201,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ui_built(self) -> primitives.Bool | None:
-        """The _uiBuilt field value."""
+        """Whether the world UI is built."""
         member = self.get_member("_uiBuilt")
         if member is None:
             return None
@@ -207,7 +220,7 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def access_level_radios(self) -> members.SyncList | None:
-        """The _accessLevelRadios member."""
+        """A list of session access level options for the UI."""
         member = self.get_member("_accessLevelRadios")
         if isinstance(member, members.SyncList):
             return member
@@ -215,12 +228,12 @@ class NewWorldDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @access_level_radios.setter
     def access_level_radios(self, value: members.SyncList) -> None:
-        """Set the _accessLevelRadios member."""
+        """Set _accessLevelRadios. A list of session access level options for the UI."""
         self.set_member("_accessLevelRadios", value)
 
     @property
     def initialized(self) -> primitives.Bool | None:
-        """The _initialized field value."""
+        """Whether the UI is built and ready."""
         member = self.get_member("_initialized")
         if member is None:
             return None

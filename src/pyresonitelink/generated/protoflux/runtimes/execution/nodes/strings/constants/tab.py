@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Tab(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Tab node is a character literal constant for the "Tab" character (Unicode: U+0009).
+    """The ``Tab`` node is a character literal constant for the "Tab" character (Unicode: U+0009).
+
+This node is about the text character. Its usage should not be confused with that of keyboard keys used for handling input.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Constants
 

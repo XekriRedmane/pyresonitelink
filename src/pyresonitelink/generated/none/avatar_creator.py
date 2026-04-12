@@ -13,7 +13,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AvatarCreator.
+    """The avatar creator component is the component that drives the functionality of the avatar creator object. See Avatar Creation for a much less technical page on this, and for information on how to actually use the avatar creator.
+
+    Used for creating avatars. You can spawn it from your Local Space if you
+    have the Builder Role permission to spawn it.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AvatarCreator"
@@ -106,7 +109,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def headset_point(self) -> str | None:
-        """Target ID of the _headsetPoint reference (targets Slot)."""
+        """the headset point that marks the head proxy target slot position."""
         member = self.get_member("_headsetPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -127,7 +130,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def left_point(self) -> str | None:
-        """Target ID of the _leftPoint reference (targets Slot)."""
+        """the point that marks the left hand's target slot position."""
         member = self.get_member("_leftPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -148,7 +151,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def right_point(self) -> str | None:
-        """Target ID of the _rightPoint reference (targets Slot)."""
+        """the point that marks the right hand's target slot position."""
         member = self.get_member("_rightPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -169,7 +172,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def left_foot_point(self) -> str | None:
-        """Target ID of the _leftFootPoint reference (targets Slot)."""
+        """the point that marks the foot's target slot position."""
         member = self.get_member("_leftFootPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -190,7 +193,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def right_foot_point(self) -> str | None:
-        """Target ID of the _rightFootPoint reference (targets Slot)."""
+        """the point that marks the right foot target slot position."""
         member = self.get_member("_rightFootPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -211,7 +214,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def pelvis_point(self) -> str | None:
-        """Target ID of the _pelvisPoint reference (targets Slot)."""
+        """the pelvis guide object that marks the pelvis proxy position."""
         member = self.get_member("_pelvisPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -232,7 +235,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def headset_reference(self) -> str | None:
-        """Target ID of the _headsetReference reference (targets Slot)."""
+        """the headset guide that marks the headset proxy position (eyeballs/view position)"""
         member = self.get_member("_headsetReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -253,7 +256,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def pelvis_reference(self) -> str | None:
-        """Target ID of the _pelvisReference reference (targets Slot)."""
+        """the pelvis guide object that marks the pelvis proxy position."""
         member = self.get_member("_pelvisReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -274,7 +277,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def left_reference(self) -> str | None:
-        """Target ID of the _leftReference reference (targets Slot)."""
+        """the left hand guide object that marks the left hand proxy."""
         member = self.get_member("_leftReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -295,7 +298,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def right_reference(self) -> str | None:
-        """Target ID of the _rightReference reference (targets Slot)."""
+        """the right hand guide object that marks the right hand proxy."""
         member = self.get_member("_rightReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -316,7 +319,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def left_foot_reference(self) -> str | None:
-        """Target ID of the _leftFootReference reference (targets Slot)."""
+        """the left foot guide object."""
         member = self.get_member("_leftFootReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -337,7 +340,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def right_foot_reference(self) -> str | None:
-        """Target ID of the _rightFootReference reference (targets Slot)."""
+        """the right foot guide object."""
         member = self.get_member("_rightFootReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -358,7 +361,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def initialized(self) -> primitives.Bool | None:
-        """The _initialized field value."""
+        """whether this avatar creator is ready to be used."""
         member = self.get_member("_initialized")
         if member is None:
             return None
@@ -377,7 +380,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def show_anchors(self) -> primitives.Bool | None:
-        """The _showAnchors field value."""
+        """whether to show the tool anchors on the hands."""
         member = self.get_member("_showAnchors")
         if member is None:
             return None
@@ -396,7 +399,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def use_symmetry(self) -> primitives.Bool | None:
-        """The _useSymmetry field value."""
+        """whether to enforce symmetry of the objects across the headset location during settup."""
         member = self.get_member("_useSymmetry")
         if member is None:
             return None
@@ -415,7 +418,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def setup_volume_meter(self) -> primitives.Bool | None:
-        """The _setupVolumeMeter field value."""
+        """Whether to set up a volume meter component on the avatar when the avatar is created."""
         member = self.get_member("_setupVolumeMeter")
         if member is None:
             return None
@@ -434,7 +437,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def setup_protection(self) -> primitives.Bool | None:
-        """The _setupProtection field value."""
+        """Whether to set up avatar protection components on the root and meshes of the avatar upon creation."""
         member = self.get_member("_setupProtection")
         if member is None:
             return None
@@ -453,7 +456,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def setup_eyes(self) -> primitives.Bool | None:
-        """The _setupEyes field value."""
+        """Whether to set up the eye bones and eye manager upon avatar creation"""
         member = self.get_member("_setupEyes")
         if member is None:
             return None
@@ -472,7 +475,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def setup_face_tracking(self) -> primitives.Bool | None:
-        """The _setupFaceTracking field value."""
+        """Whether to set up a face tracking component for the mesh with the most shapekey matches for visemes."""
         member = self.get_member("_setupFaceTracking")
         if member is None:
             return None
@@ -491,7 +494,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def calibrate_feet(self) -> primitives.Bool | None:
-        """The _calibrateFeet field value."""
+        """Whether to show the feet calibration guide objects."""
         member = self.get_member("_calibrateFeet")
         if member is None:
             return None
@@ -510,7 +513,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def calibrate_pelvis(self) -> primitives.Bool | None:
-        """The _calibratePelvis field value."""
+        """whether to show the pelvis calibration guide object."""
         member = self.get_member("_calibratePelvis")
         if member is None:
             return None
@@ -529,7 +532,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def can_protect(self) -> primitives.Bool | None:
-        """The _canProtect field value."""
+        """Whether the user is allowed to protect. This is false if in local."""
         member = self.get_member("_canProtect")
         if member is None:
             return None
@@ -548,7 +551,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def symmetry_setup(self) -> primitives.Bool | None:
-        """The _symmetrySetup field value."""
+        """Whether to enforce symmetry on the avatar when creating."""
         member = self.get_member("_symmetrySetup")
         if member is None:
             return None
@@ -567,7 +570,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def anchors(self) -> members.SyncList | None:
-        """The _anchors member."""
+        """A list of Anchor that are the different parts for avatar markers the user can move when using this creator."""
         member = self.get_member("_anchors")
         if isinstance(member, members.SyncList):
             return member
@@ -575,12 +578,12 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @anchors.setter
     def anchors(self, value: members.SyncList) -> None:
-        """Set the _anchors member."""
+        """Set _anchors. A list of Anchor that are the different parts for avatar markers the user can move when using this creator."""
         self.set_member("_anchors", value)
 
     @property
     def scale(self) -> primitives.Float | None:
-        """The _scale field value."""
+        """the scale of all the ``_anchors`` of this avatar creator."""
         member = self.get_member("_scale")
         if member is None:
             return None
@@ -599,7 +602,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def protect_avatar_enabled(self) -> str | None:
-        """Target ID of the _protectAvatarEnabled reference (targets IField[primitives.Bool])."""
+        """The protect avatar checkbox button enabled field. The checkbox disables when in user space"""
         member = self.get_member("_protectAvatarEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -620,7 +623,7 @@ class AvatarCreator(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceive
 
     @property
     def create_enabled(self) -> str | None:
-        """Target ID of the _createEnabled reference (targets IField[primitives.Bool])."""
+        """The field that controls the enabled state of the create avatar button."""
         member = self.get_member("_createEnabled")
         if isinstance(member, members.Reference):
             return member.targetId

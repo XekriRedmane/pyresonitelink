@@ -16,7 +16,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugTriangle(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Debug Triangle is a ProtoFlux node that when called will make a triangle visual using 3 global Points Point0, Point1, and Point2, being (float3) and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.
+    """Debug Triangle is a ProtoFlux node that when called will make a triangle visual using 3 global Points ``Point0``, ``Point1``, and ``Point2``, being (float3) and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.
+
+See also: Coordinate spaces
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Debug
     """
@@ -51,7 +53,7 @@ class DebugTriangle(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExec
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after * (Call) is impulsed and the visual was created successfully."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId

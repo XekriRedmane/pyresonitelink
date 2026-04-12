@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PackProtoFluxInPlace(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Pack ProtoFlux In Place node takes in a start point for your ProtoFlux code, and when called, will pack everything in place, no matter where. If you have all your code sitting in Root or inside a Slot, it will pack it at that exact location.
+    """The ``Pack ProtoFlux In Place`` node takes in a start point for your ProtoFlux code, and when called, will pack everything in place, no matter where. If you have all your code sitting in Root or inside a Slot, it will pack it at that exact location.
+
+If you decide to add more nodes and connect them to a node that is under a different slot, the connected nodes will pack correctly and be under the ``StartNode``'s slot. However, unpacking from that slot that is holding the ``StartNode`` may not completely unpack properly.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Nodes
     """
@@ -38,7 +40,7 @@ class PackProtoFluxInPlace(GeneratedComponent, ISyncNodeOperation, IExecutionNod
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Continues the code from here."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +61,7 @@ class PackProtoFluxInPlace(GeneratedComponent, ISyncNodeOperation, IExecutionNod
 
     @property
     def start_node(self) -> str | None:
-        """Target ID of the StartNode reference (targets INodeObjectOutput[ProtoFluxNode])."""
+        """The starting point node where we should pack the nodes from."""
         member = self.get_member("StartNode")
         if isinstance(member, members.Reference):
             return member.targetId

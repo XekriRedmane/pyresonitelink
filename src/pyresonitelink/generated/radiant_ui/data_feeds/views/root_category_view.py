@@ -13,9 +13,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RootCategoryView(GeneratedComponent, ICustomInspector, IDataFeedView, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.RootCategoryView.
+    """The RootCategoryView component is commonly used in Settings, and Worlds Menu view to show the list of root view categories while still showing the current ``Path`` like audio device lists, trackers, worlds, or anything else feeds might have.
 
     Category: Radiant UI/Data Feeds/Views
+
+    Attach to a slot and provide a Feed, a Item Mapper, and Slots to place
+    items in order for it to work.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RootCategoryView"
@@ -137,7 +140,7 @@ class RootCategoryView(GeneratedComponent, ICustomInspector, IDataFeedView, ICom
 
     @property
     def category_manager(self) -> members.SyncObject | None:
-        """The CategoryManager member."""
+        """The Mapper to handle showing categories in the root regardless of what ``Path`` is."""
         member = self.get_member("CategoryManager")
         if isinstance(member, members.SyncObject):
             return member
@@ -145,12 +148,12 @@ class RootCategoryView(GeneratedComponent, ICustomInspector, IDataFeedView, ICom
 
     @category_manager.setter
     def category_manager(self, value: members.SyncObject) -> None:
-        """Set the CategoryManager member."""
+        """Set CategoryManager. The Mapper to handle showing categories in the root regardless of what ``Path`` is."""
         self.set_member("CategoryManager", value)
 
     @property
     def items_manager(self) -> members.SyncObject | None:
-        """The ItemsManager member."""
+        """The Mapper to handle showing items within a selected ``Path``, no matter how deep of a ``Path`` this is viewing."""
         member = self.get_member("ItemsManager")
         if isinstance(member, members.SyncObject):
             return member
@@ -158,6 +161,6 @@ class RootCategoryView(GeneratedComponent, ICustomInspector, IDataFeedView, ICom
 
     @items_manager.setter
     def items_manager(self, value: members.SyncObject) -> None:
-        """Set the ItemsManager member."""
+        """Set ItemsManager. The Mapper to handle showing items within a selected ``Path``, no matter how deep of a ``Path`` this is viewing."""
         self.set_member("ItemsManager", value)
 

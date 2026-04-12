@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TrackingOffsetCompensator(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TrackingOffsetCompensator.
+    """The TrackingOffsetCompensator counteracts changes to tracking offset to all trackers at once, so this one doesn't move when all others do. usually due to a tracking offset component or seated mode.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TrackingOffsetCompensator"

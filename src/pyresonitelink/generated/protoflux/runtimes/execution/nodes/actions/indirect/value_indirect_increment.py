@@ -9,7 +9,8 @@ from pyresonitelink.generated._types.ivariable import IVariable
 
 
 class ValueIndirectIncrement(GenericComponent[T]):
-    """Indirect increments can be commonly found in legacy content that has been migrated from other platforms. Indirect increments take Variable (Variable) as an input, and will increase the value that is wrapped by Variable (Variable) by one.
+    """Indirect increments can be commonly found in legacy content that has been migrated from other platforms.
+Indirect increments take Variable (Variable) as an input, and will increase the value that is wrapped by Variable (Variable) by one.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Actions/Indirect
 
@@ -41,7 +42,7 @@ class ValueIndirectIncrement(GenericComponent[T]):
 
     @property
     def on_written(self) -> str | None:
-        """Target ID of the OnWritten reference (targets INodeOperation)."""
+        """sends an impulse after * (Call) has been impulsed and the value has been incremented ."""
         member = self.get_member("OnWritten")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +63,7 @@ class ValueIndirectIncrement(GenericComponent[T]):
 
     @property
     def on_fail(self) -> str | None:
-        """Target ID of the OnFail reference (targets INodeOperation)."""
+        """sends an impulse after * (Call) has been impulsed and the value wasn't able to be incremented due to a missing target or the variable not wrapping a valid IValue`1"""
         member = self.get_member("OnFail")
         if isinstance(member, members.Reference):
             return member.targetId

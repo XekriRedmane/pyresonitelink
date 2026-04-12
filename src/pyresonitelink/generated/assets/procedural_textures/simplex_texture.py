@@ -4,6 +4,10 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.texture_filter_mode import TextureFilterMode
+from pyresonitelink.generated._enums.texture_wrap_mode import TextureWrapMode
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.texture_format import TextureFormat
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
@@ -12,22 +16,29 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SimplexTexture.
+    """The SimplexTexture component is used to generate procedural noise to use in any material.
 
     Category: Assets/Procedural Textures
+
+    Insert into any material to view what this texture looks like.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SimplexTexture"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, anisotropic_level: primitives.Int | None = None, mipmap_bias: primitives.Float | None = None, size: primitives.Int2 | None = None, mipmaps: primitives.Bool | None = None, offset: primitives.Float2 | None = None, scale: primitives.Float2 | None = None, background: primitives.ColorX | None = None, foreground: primitives.ColorX | None = None, use_3d: primitives.Bool | None = None, zoffset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, filter_mode: TextureFilterMode | str | None = None, anisotropic_level: primitives.Int | None = None, wrap_mode_u: TextureWrapMode | str | None = None, wrap_mode_v: TextureWrapMode | str | None = None, mipmap_bias: primitives.Float | None = None, profile: ColorProfile | str | None = None, size: primitives.Int2 | None = None, mipmaps: primitives.Bool | None = None, format_: TextureFormat | str | None = None, offset: primitives.Float2 | None = None, scale: primitives.Float2 | None = None, background: primitives.ColorX | None = None, foreground: primitives.ColorX | None = None, use_3d: primitives.Bool | None = None, zoffset: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
+            filter_mode: Initial value for FilterMode.
             anisotropic_level: Initial value for AnisotropicLevel.
+            wrap_mode_u: Initial value for WrapModeU.
+            wrap_mode_v: Initial value for WrapModeV.
             mipmap_bias: Initial value for MipmapBias.
+            profile: Initial value for Profile.
             size: Initial value for Size.
             mipmaps: Initial value for Mipmaps.
+            format_: Initial value for Format.
             offset: Initial value for Offset.
             scale: Initial value for Scale.
             background: Initial value for Background.
@@ -39,14 +50,24 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
         super().__init__(component)
         if high_priority_integration is not None:
             self.high_priority_integration = high_priority_integration
+        if filter_mode is not None:
+            self.filter_mode = filter_mode
         if anisotropic_level is not None:
             self.anisotropic_level = anisotropic_level
+        if wrap_mode_u is not None:
+            self.wrap_mode_u = wrap_mode_u
+        if wrap_mode_v is not None:
+            self.wrap_mode_v = wrap_mode_v
         if mipmap_bias is not None:
             self.mipmap_bias = mipmap_bias
+        if profile is not None:
+            self.profile = profile
         if size is not None:
             self.size = size
         if mipmaps is not None:
             self.mipmaps = mipmaps
+        if format_ is not None:
+            self.format_ = format_
         if offset is not None:
             self.offset = offset
         if scale is not None:
@@ -80,17 +101,24 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
             )
 
     @property
-    def filter_mode(self) -> members.FieldEnum | None:
-        """The FilterMode member."""
+    def filter_mode(self) -> TextureFilterMode | None:
+        """The FilterMode enum value."""
         member = self.get_member("FilterMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureFilterMode(member.value)
         return None
 
     @filter_mode.setter
-    def filter_mode(self, value: members.FieldEnum) -> None:
-        """Set the FilterMode member."""
-        self.set_member("FilterMode", value)
+    def filter_mode(self, value: TextureFilterMode | str) -> None:
+        """Set the FilterMode enum value."""
+        member = self.get_member("FilterMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "FilterMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def anisotropic_level(self) -> primitives.Int | None:
@@ -112,30 +140,44 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
             )
 
     @property
-    def wrap_mode_u(self) -> members.FieldEnum | None:
-        """The WrapModeU member."""
+    def wrap_mode_u(self) -> TextureWrapMode | None:
+        """The WrapModeU enum value."""
         member = self.get_member("WrapModeU")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureWrapMode(member.value)
         return None
 
     @wrap_mode_u.setter
-    def wrap_mode_u(self, value: members.FieldEnum) -> None:
-        """Set the WrapModeU member."""
-        self.set_member("WrapModeU", value)
+    def wrap_mode_u(self, value: TextureWrapMode | str) -> None:
+        """Set the WrapModeU enum value."""
+        member = self.get_member("WrapModeU")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapModeU",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def wrap_mode_v(self) -> members.FieldEnum | None:
-        """The WrapModeV member."""
+    def wrap_mode_v(self) -> TextureWrapMode | None:
+        """The WrapModeV enum value."""
         member = self.get_member("WrapModeV")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureWrapMode(member.value)
         return None
 
     @wrap_mode_v.setter
-    def wrap_mode_v(self, value: members.FieldEnum) -> None:
-        """Set the WrapModeV member."""
-        self.set_member("WrapModeV", value)
+    def wrap_mode_v(self, value: TextureWrapMode | str) -> None:
+        """Set the WrapModeV enum value."""
+        member = self.get_member("WrapModeV")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapModeV",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def mipmap_bias(self) -> primitives.Float | None:
@@ -157,17 +199,24 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def size(self) -> primitives.Int2 | None:
@@ -208,21 +257,28 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
             )
 
     @property
-    def format_(self) -> members.FieldEnum | None:
-        """The Format member."""
+    def format_(self) -> TextureFormat | None:
+        """The Format enum value."""
         member = self.get_member("Format")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureFormat(member.value)
         return None
 
     @format_.setter
-    def format_(self, value: members.FieldEnum) -> None:
-        """Set the Format member."""
-        self.set_member("Format", value)
+    def format_(self, value: TextureFormat | str) -> None:
+        """Set the Format enum value."""
+        member = self.get_member("Format")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Format",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def offset(self) -> primitives.Float2 | None:
-        """The Offset field value."""
+        """How much to shift the procedural noise."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -241,7 +297,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
 
     @property
     def scale(self) -> primitives.Float2 | None:
-        """The Scale field value."""
+        """scales the pattern up or down inside the image."""
         member = self.get_member("Scale")
         if member is None:
             return None
@@ -260,7 +316,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
 
     @property
     def background(self) -> primitives.ColorX | None:
-        """The Background field value."""
+        """The background color of the noise."""
         member = self.get_member("Background")
         if member is None:
             return None
@@ -279,7 +335,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
 
     @property
     def foreground(self) -> primitives.ColorX | None:
-        """The Foreground field value."""
+        """The color of the noise itself."""
         member = self.get_member("Foreground")
         if member is None:
             return None
@@ -298,7 +354,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
 
     @property
     def use_3d(self) -> primitives.Bool | None:
-        """The Use3D field value."""
+        """Whether to allow ``ZOffset`` to affect the texture, and generates 3D noise."""
         member = self.get_member("Use3D")
         if member is None:
             return None
@@ -317,7 +373,7 @@ class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, I
 
     @property
     def zoffset(self) -> primitives.Float | None:
-        """The ZOffset field value."""
+        """The offset in the 3D noise, which takes a slice of the 3D noise for the texture."""
         member = self.get_member("ZOffset")
         if member is None:
             return None

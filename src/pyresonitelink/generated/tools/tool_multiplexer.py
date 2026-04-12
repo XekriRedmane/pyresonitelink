@@ -15,9 +15,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToolMultiplexer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ToolMultiplexer.
+    """A Tool Multiplexer is a key component in almost every multitool to ever exist. It handles the switching and usage of multiple tools, and allows all of them to act as one tool tip the user can equip, making multiple tool usage easier. Multitools can be assigned to the ``Tools`` list of other multitools.
 
     Category: Tools
+
+    **Behavior**: Curiously, the transform position of the slot of a tool listed in the ``Tools`` list and its tip transform position can cause the multitool's laser tip to move if that tool is selected. Putting all the tools used by the multitool under one slot and making sure their tip and tool roots are in the same transform place is the preferred way of making sure your tool tip laser position stays consistent.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ToolMultiplexer"
@@ -184,7 +186,7 @@ class ToolMultiplexer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchabl
 
     @property
     def active_tool_index(self) -> primitives.Int | None:
-        """The ActiveToolIndex field value."""
+        """The tool that this tool tip is currently using"""
         member = self.get_member("ActiveToolIndex")
         if member is None:
             return None
@@ -203,7 +205,7 @@ class ToolMultiplexer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchabl
 
     @property
     def tools(self) -> members.SyncList | None:
-        """The Tools member."""
+        """A list of tools that this tool tip is to switch between using ``ActiveToolIndex`` as the one it should be currently using."""
         member = self.get_member("Tools")
         if isinstance(member, members.SyncList):
             return member
@@ -211,6 +213,6 @@ class ToolMultiplexer(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchabl
 
     @tools.setter
     def tools(self, value: members.SyncList) -> None:
-        """Set the Tools member."""
+        """Set Tools. A list of tools that this tool tip is to switch between using ``ActiveToolIndex`` as the one it should be currently using."""
         self.set_member("Tools", value)
 

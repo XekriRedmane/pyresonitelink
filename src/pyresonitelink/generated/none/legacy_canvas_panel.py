@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyCanvasPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyCanvasPanel.
+    """The LegacyCanvasPanel component was used to control content that used backing panels. It is a leftover component from older content. It should not be used, and should be replaced whenever possible.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyCanvasPanel"
@@ -31,7 +31,7 @@ class LegacyCanvasPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def canvas(self) -> str | None:
-        """Target ID of the _canvas reference (targets Canvas)."""
+        """The canvas component for this backing panel."""
         member = self.get_member("_canvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +52,7 @@ class LegacyCanvasPanel(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def panel(self) -> str | None:
-        """Target ID of the _panel reference (targets LegacyPanel)."""
+        """The panel being used for this backing panel."""
         member = self.get_member("_panel")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.body_node import BodyNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -14,18 +15,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TrackedDevicePositioner.
+    """The TrackedDevicePositioner component is used to get information from the user's input system to get positioning data for tracked objects like headset, hands, and full body trackers.
 
     Category: Users
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TrackedDevicePositioner"
 
-    def __init__(self, device_index: primitives.Int | None = None, always_render_model: primitives.Bool | None = None, reference_model: str | Slot | None = None, body_node_root: str | Slot | None = None, object_slot: str | AvatarObjectSlot | None = None, is_tracking: primitives.Bool | None = None, is_active: primitives.Bool | None = None, is_simulated: primitives.Bool | None = None, create_avatar_object_slot: primitives.Bool | None = None, pose_filter: str | UserPoseController | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, device_index: primitives.Int | None = None, corresponding_body_node: BodyNode | str | None = None, always_render_model: primitives.Bool | None = None, reference_model: str | Slot | None = None, body_node_root: str | Slot | None = None, object_slot: str | AvatarObjectSlot | None = None, is_tracking: primitives.Bool | None = None, is_active: primitives.Bool | None = None, is_simulated: primitives.Bool | None = None, create_avatar_object_slot: primitives.Bool | None = None, pose_filter: str | UserPoseController | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             device_index: Initial value for DeviceIndex.
+            corresponding_body_node: Initial value for CorrespondingBodyNode.
             always_render_model: Initial value for AlwaysRenderModel.
             reference_model: Initial value for ReferenceModel.
             body_node_root: Initial value for BodyNodeRoot.
@@ -40,6 +42,8 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
         super().__init__(component)
         if device_index is not None:
             self.device_index = device_index
+        if corresponding_body_node is not None:
+            self.corresponding_body_node = corresponding_body_node
         if always_render_model is not None:
             self.always_render_model = always_render_model
         if reference_model is not None:
@@ -61,7 +65,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def device_index(self) -> primitives.Int | None:
-        """The DeviceIndex field value."""
+        """The input Device by index to track."""
         member = self.get_member("DeviceIndex")
         if member is None:
             return None
@@ -79,21 +83,28 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
             )
 
     @property
-    def corresponding_body_node(self) -> members.FieldEnum | None:
-        """The CorrespondingBodyNode member."""
+    def corresponding_body_node(self) -> BodyNode | None:
+        """The body node of the found input Device tracker."""
         member = self.get_member("CorrespondingBodyNode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BodyNode(member.value)
         return None
 
     @corresponding_body_node.setter
-    def corresponding_body_node(self, value: members.FieldEnum) -> None:
-        """Set the CorrespondingBodyNode member."""
-        self.set_member("CorrespondingBodyNode", value)
+    def corresponding_body_node(self, value: BodyNode | str) -> None:
+        """Set CorrespondingBodyNode. The body node of the found input Device tracker."""
+        member = self.get_member("CorrespondingBodyNode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "CorrespondingBodyNode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def auto_body_node(self) -> members.FieldEnum | None:
-        """The AutoBodyNode member."""
+        """If present, use this to find the input Device to track rather than ``DeviceIndex``."""
         member = self.get_member("AutoBodyNode")
         if isinstance(member, members.FieldEnum):
             return member
@@ -101,12 +112,12 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @auto_body_node.setter
     def auto_body_node(self, value: members.FieldEnum) -> None:
-        """Set the AutoBodyNode member."""
+        """Set AutoBodyNode. If present, use this to find the input Device to track rather than ``DeviceIndex``."""
         self.set_member("AutoBodyNode", value)
 
     @property
     def always_render_model(self) -> primitives.Bool | None:
-        """The AlwaysRenderModel field value."""
+        """Whether to always render the tracker Debug model regardless of if its mapped to a 3d model."""
         member = self.get_member("AlwaysRenderModel")
         if member is None:
             return None
@@ -125,7 +136,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def reference_model(self) -> str | None:
-        """Target ID of the ReferenceModel reference (targets Slot)."""
+        """The slot of the debug model visual."""
         member = self.get_member("ReferenceModel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -146,7 +157,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def body_node_root(self) -> str | None:
-        """Target ID of the BodyNodeRoot reference (targets Slot)."""
+        """acts as an offset for the actual position of a Tracked object."""
         member = self.get_member("BodyNodeRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -167,7 +178,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def object_slot(self) -> str | None:
-        """Target ID of the ObjectSlot reference (targets AvatarObjectSlot)."""
+        """The avatar object slot this component is driving."""
         member = self.get_member("ObjectSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -188,7 +199,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def is_tracking(self) -> primitives.Bool | None:
-        """The IsTracking field value."""
+        """Whether the input Device is tracking or lost its tracking."""
         member = self.get_member("IsTracking")
         if member is None:
             return None
@@ -207,7 +218,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def is_active(self) -> primitives.Bool | None:
-        """The IsActive field value."""
+        """Whether the input Device is enabled."""
         member = self.get_member("IsActive")
         if member is None:
             return None
@@ -226,7 +237,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def is_simulated(self) -> primitives.Bool | None:
-        """The IsSimulated field value."""
+        """Whether the device is being simulated instead by the locomotion animation system."""
         member = self.get_member("IsSimulated")
         if member is None:
             return None
@@ -245,7 +256,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def create_avatar_object_slot(self) -> primitives.Bool | None:
-        """The CreateAvatarObjectSlot field value."""
+        """Whether to create an avatar object slot component on a slot named "BodyNode" under this component slot if ``BodyNodeRoot`` is null."""
         member = self.get_member("CreateAvatarObjectSlot")
         if member is None:
             return None
@@ -264,7 +275,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
 
     @property
     def pose_filter(self) -> str | None:
-        """Target ID of the PoseFilter reference (targets UserPoseController)."""
+        """The pose controller for this component to filter its position and movement based on if this component should be filtered."""
         member = self.get_member("PoseFilter")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class InteractiveCameraGroupSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraGroupSettings.
+    """See Camera.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraGroupSettings"
@@ -30,7 +32,7 @@ class InteractiveCameraGroupSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def group_detection_radius(self) -> primitives.Float | None:
-        """The GroupDetectionRadius field value."""
+        """How close a user needs to be to others to be in a group."""
         member = self.get_member("GroupDetectionRadius")
         if member is None:
             return None
@@ -49,7 +51,7 @@ class InteractiveCameraGroupSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def group_leave_boundary(self) -> primitives.Float | None:
-        """The GroupLeaveBoundary field value."""
+        """How far a user needs to move from a group before they are removed as being part of a group."""
         member = self.get_member("GroupLeaveBoundary")
         if member is None:
             return None

@@ -1,0 +1,42 @@
+"""Generated enum: TextureFormat."""
+
+from enum import StrEnum
+
+
+class TextureFormat(StrEnum):
+    """Enum: [Renderite.Shared]Renderite.Shared.TextureFormat."""
+
+    unknown = "Unknown"
+    alpha8 = "Alpha8"
+    r8 = "R8"
+    rgb_24 = "RGB24"
+    a_rgb_32 = "ARGB32"
+    rgb_a32 = "RGBA32"
+    bgra32 = "BGRA32"
+    rgb_565 = "RGB565"
+    bgr565 = "BGR565"
+    rgb_ahalf = "RGBAHalf"
+    a_rgb_half = "ARGBHalf"
+    rhalf = "RHalf"
+    rg_half = "RGHalf"
+    rgb_afloat = "RGBAFloat"
+    a_rgb_float = "ARGBFloat"
+    rfloat = "RFloat"
+    rg_float = "RGFloat"
+    bc1 = "BC1"
+    bc2 = "BC2"
+    bc3 = "BC3"
+    bc4 = "BC4"
+    bc5 = "BC5"
+    bc6_h = "BC6H"
+    bc7 = "BC7"
+    etc2_rgb = "ETC2_RGB"
+    etc2_rgb_a1 = "ETC2_RGBA1"
+    etc2_rgb_a8 = "ETC2_RGBA8"
+    astc_4x4 = "ASTC_4x4"
+    astc_5x5 = "ASTC_5x5"
+    astc_6x6 = "ASTC_6x6"
+    astc_8x8 = "ASTC_8x8"
+    astc_10x10 = "ASTC_10x10"
+    astc_12x12 = "ASTC_12x12"
+

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.radial_force_mode import RadialForceMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
@@ -10,18 +11,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.RadialForce.
+    """The RadialForce component makes particles attracted or repelled from a point in 3D space when they get closer or further away. The gradient for the force does not cut off at ``MinDistance`` and/or ``MaxDistance``. instead the gradient continues into infinity at the value it was when it hits these values. The ``Force`` determines the distance truely if ``MinDistance`` is at 0 and ``MaxDistance`` is at infinity.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.RadialForce"
 
-    def __init__(self, force: primitives.Float | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, min_force: primitives.Float | None = None, max_force: primitives.Float | None = None, center: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, force: primitives.Float | None = None, mode: RadialForceMode | str | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, min_force: primitives.Float | None = None, max_force: primitives.Float | None = None, center: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             force: Initial value for Force.
+            mode: Initial value for Mode.
             min_distance: Initial value for MinDistance.
             max_distance: Initial value for MaxDistance.
             min_force: Initial value for MinForce.
@@ -32,6 +39,8 @@ class RadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver
         super().__init__(component)
         if force is not None:
             self.force = force
+        if mode is not None:
+            self.mode = mode
         if min_distance is not None:
             self.min_distance = min_distance
         if max_distance is not None:
@@ -45,7 +54,7 @@ class RadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver
 
     @property
     def force(self) -> primitives.Float | None:
-        """The Force field value."""
+        """How much force this component exerts on particles in a system."""
         member = self.get_member("Force")
         if member is None:
             return None
@@ -63,21 +72,28 @@ class RadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> RadialForceMode | None:
+        """How to determine how the force is calculated."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return RadialForceMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: RadialForceMode | str) -> None:
+        """Set Mode. How to determine how the force is calculated."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def min_distance(self) -> primitives.Float | None:
-        """The MinDistance field value."""
+        """The minimum distance for the force gradient, aka force gradient start point, the gradient does not stop here."""
         member = self.get_member("MinDistance")
         if member is None:
             return None
@@ -96,7 +112,7 @@ class RadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver
 
     @property
     def max_distance(self) -> primitives.Float | None:
-        """The MaxDistance field value."""
+        """The maximum distance for the force gradient, aka force gradient start point, the gradient does not stop here."""
         member = self.get_member("MaxDistance")
         if member is None:
             return None
@@ -115,7 +131,7 @@ class RadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver
 
     @property
     def min_force(self) -> primitives.Float | None:
-        """The MinForce field value."""
+        """how much force should be applied at ``MinDistance`` modified by ``Force``."""
         member = self.get_member("MinForce")
         if member is None:
             return None
@@ -134,7 +150,7 @@ class RadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver
 
     @property
     def max_force(self) -> primitives.Float | None:
-        """The MaxForce field value."""
+        """how much force should be applied at ``MaxDistance`` modified by ``Force``."""
         member = self.get_member("MaxForce")
         if member is None:
             return None
@@ -153,7 +169,7 @@ class RadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver
 
     @property
     def override_force_space(self) -> members.SyncObject | None:
-        """The OverrideForceSpace member."""
+        """The space to calculate this component's values in. The values get converted to the particle system's space."""
         member = self.get_member("OverrideForceSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -161,12 +177,12 @@ class RadialForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver
 
     @override_force_space.setter
     def override_force_space(self, value: members.SyncObject) -> None:
-        """Set the OverrideForceSpace member."""
+        """Set OverrideForceSpace. The space to calculate this component's values in. The values get converted to the particle system's space."""
         self.set_member("OverrideForceSpace", value)
 
     @property
     def center(self) -> primitives.Float3 | None:
-        """The Center field value."""
+        """The center point of the force point."""
         member = self.get_member("Center")
         if member is None:
             return None

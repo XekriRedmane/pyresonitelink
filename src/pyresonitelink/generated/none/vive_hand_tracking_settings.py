@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class ViveHandTrackingSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.ViveHandTrackingSettings.
+    """The Vive Hand Tracking Settings component
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ViveHandTrackingSettings"

@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ScaleObject.
+    """The ScaleObject component can be used to position and scale a slot relative to a ScaleObjectManager.
 
     Category: Transform/Scaling
     """

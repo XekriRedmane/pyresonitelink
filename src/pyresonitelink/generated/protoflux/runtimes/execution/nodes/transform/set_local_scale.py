@@ -43,7 +43,7 @@ class SetLocalScale(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """An impulse is fired whenever the Instance slot's scale is set after the node receives an impulse. No impulse is fired from this output if the Instance input is null."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class SetLocalScale(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot whose local scale is set. Default is null, the node does not function without this input."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class SetLocalScale(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def scale(self) -> str | None:
-        """Target ID of the Scale reference (targets INodeValueOutput[primitives.Float3])."""
+        """The local scale the input Instance slot is set to. Default is [1;1;1]."""
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
             return member.targetId

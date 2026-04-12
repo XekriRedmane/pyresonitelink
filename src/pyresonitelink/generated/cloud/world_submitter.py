@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldSubmitter.
+    """See World Submitter.
 
     Category: Cloud
+
+    See World Submitter.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldSubmitter"
@@ -40,7 +42,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def group_id(self) -> primitives.String | None:
-        """The GroupId field value."""
+        """The group ID of the world being submitted."""
         member = self.get_member("GroupId")
         if member is None:
             return None
@@ -59,7 +61,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the world orb grabbing area."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -78,7 +80,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """The height of the world orb grabbing area."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -97,7 +99,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def visual(self) -> str | None:
-        """Target ID of the _visual reference (targets Slot)."""
+        """The slot of the world orb grabbing visual."""
         member = self.get_member("_visual")
         if isinstance(member, members.Reference):
             return member.targetId

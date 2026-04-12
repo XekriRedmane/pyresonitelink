@@ -11,9 +11,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Spinner(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Spinner.
+    """The Spinner component is used to make something rotate on 1 or more axis at a constant rate.
 
     Category: Transform/Drivers
+
+    Note: While this component works very well for fixed or discrete speed
+    steps, it might not behave as expected when the speed field is
+    continuously changing, even a very small change can cause the component
+    to 'jerk' on each change. If you want to make something speed up or slow
+    down smoothly, one option is to use rotational maths to recreate this
+    component in flux, for example using AxisAngle
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Spinner"
@@ -40,7 +47,7 @@ class Spinner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def range_(self) -> primitives.Float3 | None:
-        """The Range field value."""
+        """how much each axis can go up to from 0 before wrapping around."""
         member = self.get_member("Range")
         if member is None:
             return None
@@ -59,7 +66,7 @@ class Spinner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets IField[primitives.FloatQ])."""
+        """The rotation field to spin."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -80,7 +87,7 @@ class Spinner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset(self) -> primitives.FloatQ | None:
-        """The _offset field value."""
+        """the offset rotation to start at world start from."""
         member = self.get_member("_offset")
         if member is None:
             return None
@@ -99,7 +106,7 @@ class Spinner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def speed(self) -> primitives.Float3 | None:
-        """The _speed field value."""
+        """how fast to rotate on each axis, in Degrees per Second. Negative values go in reverse."""
         member = self.get_member("_speed")
         if member is None:
             return None

@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedEntityInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedEntityInterface<>.
+    """The FeedEntityInterface component is used as a template type item in data feed mappers in the Data Feeds system. This is most commonly used with the WorldUsersFeed feed to template user items from the feed.
 
     Category: Radiant UI/Data Feeds/Interfaces
 
@@ -367,7 +367,7 @@ class FeedEntityInterface(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets SyncRef[E])."""
+        """The field to fill with the reference value from the source data feed."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId

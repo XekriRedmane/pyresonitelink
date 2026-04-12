@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProtoFluxOperationProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxOperationProxy.
+    """The ProtoFluxOperationProxy component is used to allow plugging impulse wires into protoflux visuals.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxOperationProxy"
@@ -49,7 +49,7 @@ class ProtoFluxOperationProxy(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets ProtoFluxNode)."""
+        """The protoflux node this is pointing to."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +70,7 @@ class ProtoFluxOperationProxy(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def element_name(self) -> primitives.String | None:
-        """The ElementName field value."""
+        """The name of the input this is targeting."""
         member = self.get_member("ElementName")
         if member is None:
             return None
@@ -89,7 +89,7 @@ class ProtoFluxOperationProxy(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def is_dynamic(self) -> primitives.Bool | None:
-        """The IsDynamic field value."""
+        """Whether or not this is dynamic."""
         member = self.get_member("IsDynamic")
         if member is None:
             return None
@@ -108,7 +108,7 @@ class ProtoFluxOperationProxy(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """The index from top to bottom of the node's inputs."""
         member = self.get_member("Index")
         if member is None:
             return None
@@ -127,7 +127,7 @@ class ProtoFluxOperationProxy(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def connect_point(self) -> str | None:
-        """Target ID of the ConnectPoint reference (targets Slot)."""
+        """The point the wire should connect to."""
         member = self.get_member("ConnectPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -148,7 +148,7 @@ class ProtoFluxOperationProxy(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def node_operation(self) -> str | None:
-        """Target ID of the NodeOperation reference (targets INodeOperation)."""
+        """The node operation target (impulse target) this is a connector for."""
         member = self.get_member("NodeOperation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -169,7 +169,7 @@ class ProtoFluxOperationProxy(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def is_async(self) -> primitives.Bool | None:
-        """The IsAsync field value."""
+        """Whether the impulse input type is async."""
         member = self.get_member("IsAsync")
         if member is None:
             return None

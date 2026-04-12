@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.volume_plane_mode import VolumePlaneMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.color_dialog_interface import ColorDialogInterface
@@ -13,15 +14,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VolumePlaneSlicer(GeneratedComponent, ITouchable, IGrabEventReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VolumePlaneSlicer.
+    """See Volume Unlit Material Examples section for better information on how slicers work.
+
+    See Volume Unlit Material Examples section.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VolumePlaneSlicer"
 
-    def __init__(self, highlight_color: primitives.ColorX | None = None, highlight_range: primitives.Float | None = None, color_dialog: str | ColorDialogInterface | None = None, grab_grid: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, mode: VolumePlaneMode | str | None = None, highlight_color: primitives.ColorX | None = None, highlight_range: primitives.Float | None = None, color_dialog: str | ColorDialogInterface | None = None, grab_grid: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            mode: Initial value for Mode.
             highlight_color: Initial value for HighlightColor.
             highlight_range: Initial value for HighlightRange.
             color_dialog: Initial value for _colorDialog.
@@ -29,6 +33,8 @@ class VolumePlaneSlicer(GeneratedComponent, ITouchable, IGrabEventReceiver, IWor
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if mode is not None:
+            self.mode = mode
         if highlight_color is not None:
             self.highlight_color = highlight_color
         if highlight_range is not None:
@@ -39,21 +45,28 @@ class VolumePlaneSlicer(GeneratedComponent, ITouchable, IGrabEventReceiver, IWor
             self.grab_grid = grab_grid
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> VolumePlaneMode | None:
+        """The kind of slicer mode this slicer is doing."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VolumePlaneMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: VolumePlaneMode | str) -> None:
+        """Set Mode. The kind of slicer mode this slicer is doing."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def highlight_color(self) -> primitives.ColorX | None:
-        """The HighlightColor field value."""
+        """The color highlight to highlight the slicer with. please see Volume Unlit Material Examples section for better info."""
         member = self.get_member("HighlightColor")
         if member is None:
             return None
@@ -72,7 +85,7 @@ class VolumePlaneSlicer(GeneratedComponent, ITouchable, IGrabEventReceiver, IWor
 
     @property
     def highlight_range(self) -> primitives.Float | None:
-        """The HighlightRange field value."""
+        """The color highlight range to use. please see Volume Unlit Material Examples section for better info."""
         member = self.get_member("HighlightRange")
         if member is None:
             return None
@@ -91,7 +104,7 @@ class VolumePlaneSlicer(GeneratedComponent, ITouchable, IGrabEventReceiver, IWor
 
     @property
     def color_dialog(self) -> str | None:
-        """Target ID of the _colorDialog reference (targets ColorDialogInterface)."""
+        """The dialog ui currently being used to choose a color to display for the color highlight."""
         member = self.get_member("_colorDialog")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +125,7 @@ class VolumePlaneSlicer(GeneratedComponent, ITouchable, IGrabEventReceiver, IWor
 
     @property
     def grab_grid(self) -> str | None:
-        """Target ID of the _grabGrid reference (targets Slot)."""
+        """The slot to enable when grabbing the slicer to show the grid visual."""
         member = self.get_member("_grabGrid")
         if isinstance(member, members.Reference):
             return member.targetId

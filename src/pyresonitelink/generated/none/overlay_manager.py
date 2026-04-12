@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OverlayManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.OverlayManager.
+    """The OverlayManager component is used to handle the Overlay for edit mode on userspace dash screens.
+
+    Used internally.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OverlayManager"
@@ -27,7 +29,7 @@ class OverlayManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def overlay_root(self) -> str | None:
-        """Target ID of the _overlayRoot reference (targets Slot)."""
+        """The slot that has the Overlay visuals."""
         member = self.get_member("_overlayRoot")
         if isinstance(member, members.Reference):
             return member.targetId

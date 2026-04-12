@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.photo_encode_format import PhotoEncodeFormat
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -22,12 +23,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotoCaptureManager.
+    """The PhotoCaptureManager component is used to manage the finger photo capture ability for users and what settings to use for it.
+
+    Not used directly by the user. auto generated.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotoCaptureManager"
 
-    def __init__(self, finger_gesture_enabled: primitives.Bool | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, min_fov: primitives.Float | None = None, max_fov: primitives.Float | None = None, preview_resolution: primitives.Int2 | None = None, normal_resolution: primitives.Int2 | None = None, timer_resolution: primitives.Int2 | None = None, capture_stereo: primitives.Bool | None = None, stereo_separation: primitives.Float | None = None, timer_seconds: primitives.Float | None = None, hide_all_nameplates: primitives.Bool | None = None, debug_gesture: primitives.Bool | None = None, timer_active: primitives.Bool | None = None, original_parent: str | Slot | None = None, original_position: primitives.Float3 | None = None, original_rotation: primitives.FloatQ | None = None, original_scale: primitives.Float3 | None = None, root: str | Slot | None = None, preview_root: str | Slot | None = None, render_tex: str | RenderTextureProvider | None = None, quad: str | QuadMesh | None = None, frame: str | FrameMesh | None = None, camera_root: str | Slot | None = None, camera_pos: str | IField[primitives.Float3] | None = None, camera_rot: str | IField[primitives.FloatQ] | None = None, camera: str | Camera | None = None, frame_material: str | UnlitMaterial | None = None, timer_text_root: str | Slot | None = None, timer_text: str | TextRenderer | None = None, shutter_clip: str | IAssetProvider[AudioClip] | None = None, timer_start_clip: str | IAssetProvider[AudioClip] | None = None, timer_countdown_slow_player: str | AudioClipPlayer | None = None, timer_countdown_fast_player: str | AudioClipPlayer | None = None, timer_countdown_slow_output: str | AudioOutput | None = None, timer_countdown_fast_output: str | AudioOutput | None = None, timer_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, finger_gesture_enabled: primitives.Bool | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, min_fov: primitives.Float | None = None, max_fov: primitives.Float | None = None, preview_resolution: primitives.Int2 | None = None, normal_resolution: primitives.Int2 | None = None, timer_resolution: primitives.Int2 | None = None, capture_stereo: primitives.Bool | None = None, stereo_separation: primitives.Float | None = None, timer_seconds: primitives.Float | None = None, hide_all_nameplates: primitives.Bool | None = None, encode_format: PhotoEncodeFormat | str | None = None, debug_gesture: primitives.Bool | None = None, timer_active: primitives.Bool | None = None, original_parent: str | Slot | None = None, original_position: primitives.Float3 | None = None, original_rotation: primitives.FloatQ | None = None, original_scale: primitives.Float3 | None = None, root: str | Slot | None = None, preview_root: str | Slot | None = None, render_tex: str | RenderTextureProvider | None = None, quad: str | QuadMesh | None = None, frame: str | FrameMesh | None = None, camera_root: str | Slot | None = None, camera_pos: str | IField[primitives.Float3] | None = None, camera_rot: str | IField[primitives.FloatQ] | None = None, camera: str | Camera | None = None, frame_material: str | UnlitMaterial | None = None, timer_text_root: str | Slot | None = None, timer_text: str | TextRenderer | None = None, shutter_clip: str | IAssetProvider[AudioClip] | None = None, timer_start_clip: str | IAssetProvider[AudioClip] | None = None, timer_countdown_slow_player: str | AudioClipPlayer | None = None, timer_countdown_fast_player: str | AudioClipPlayer | None = None, timer_countdown_slow_output: str | AudioOutput | None = None, timer_countdown_fast_output: str | AudioOutput | None = None, timer_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -43,6 +46,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             stereo_separation: Initial value for StereoSeparation.
             timer_seconds: Initial value for TimerSeconds.
             hide_all_nameplates: Initial value for HideAllNameplates.
+            encode_format: Initial value for EncodeFormat.
             debug_gesture: Initial value for DebugGesture.
             timer_active: Initial value for _timerActive.
             original_parent: Initial value for _originalParent.
@@ -95,6 +99,8 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.timer_seconds = timer_seconds
         if hide_all_nameplates is not None:
             self.hide_all_nameplates = hide_all_nameplates
+        if encode_format is not None:
+            self.encode_format = encode_format
         if debug_gesture is not None:
             self.debug_gesture = debug_gesture
         if timer_active is not None:
@@ -148,7 +154,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def finger_gesture_enabled(self) -> primitives.Bool | None:
-        """The FingerGestureEnabled field value."""
+        """Whether the finger photo gesture can be used or not."""
         member = self.get_member("FingerGestureEnabled")
         if member is None:
             return None
@@ -167,7 +173,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_distance(self) -> primitives.Float | None:
-        """The MinDistance field value."""
+        """The distance from the view to use for minimum FOV point."""
         member = self.get_member("MinDistance")
         if member is None:
             return None
@@ -186,7 +192,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_distance(self) -> primitives.Float | None:
-        """The MaxDistance field value."""
+        """The distance from the view to use for maximum FOV point."""
         member = self.get_member("MaxDistance")
         if member is None:
             return None
@@ -205,7 +211,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min_fov(self) -> primitives.Float | None:
-        """The MinFOV field value."""
+        """The minimum FOV that can be achieved by moving the finger photo closer to the viewpoint."""
         member = self.get_member("MinFOV")
         if member is None:
             return None
@@ -224,7 +230,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_fov(self) -> primitives.Float | None:
-        """The MaxFOV field value."""
+        """The maximum FOV that can be achieved by moving the finger photo further from the viewpoint."""
         member = self.get_member("MaxFOV")
         if member is None:
             return None
@@ -243,7 +249,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def preview_resolution(self) -> primitives.Int2 | None:
-        """The PreviewResolution field value."""
+        """The resolution of the texture shown on the preview graphic."""
         member = self.get_member("PreviewResolution")
         if member is None:
             return None
@@ -262,7 +268,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def normal_resolution(self) -> primitives.Int2 | None:
-        """The NormalResolution field value."""
+        """The resolution of the picture taken normally."""
         member = self.get_member("NormalResolution")
         if member is None:
             return None
@@ -281,7 +287,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timer_resolution(self) -> primitives.Int2 | None:
-        """The TimerResolution field value."""
+        """The resolution of the picture taken via camera."""
         member = self.get_member("TimerResolution")
         if member is None:
             return None
@@ -300,7 +306,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def capture_stereo(self) -> primitives.Bool | None:
-        """The CaptureStereo field value."""
+        """Whether the finger photo should capture a 3D photo."""
         member = self.get_member("CaptureStereo")
         if member is None:
             return None
@@ -319,7 +325,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def stereo_separation(self) -> primitives.Float | None:
-        """The StereoSeparation field value."""
+        """How much to separate the L and R "eye" positions for the camera capture."""
         member = self.get_member("StereoSeparation")
         if member is None:
             return None
@@ -338,7 +344,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timer_seconds(self) -> primitives.Float | None:
-        """The TimerSeconds field value."""
+        """How many seconds the finger photo timer should be."""
         member = self.get_member("TimerSeconds")
         if member is None:
             return None
@@ -357,7 +363,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def hide_all_nameplates(self) -> primitives.Bool | None:
-        """The HideAllNameplates field value."""
+        """Whether to hide all nameplates for taking the photo."""
         member = self.get_member("HideAllNameplates")
         if member is None:
             return None
@@ -375,21 +381,28 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def encode_format(self) -> members.FieldEnum | None:
-        """The EncodeFormat member."""
+    def encode_format(self) -> PhotoEncodeFormat | None:
+        """What format to encode the resulting picture in."""
         member = self.get_member("EncodeFormat")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return PhotoEncodeFormat(member.value)
         return None
 
     @encode_format.setter
-    def encode_format(self, value: members.FieldEnum) -> None:
-        """Set the EncodeFormat member."""
-        self.set_member("EncodeFormat", value)
+    def encode_format(self, value: PhotoEncodeFormat | str) -> None:
+        """Set EncodeFormat. What format to encode the resulting picture in."""
+        member = self.get_member("EncodeFormat")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "EncodeFormat",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def debug_gesture(self) -> primitives.Bool | None:
-        """The DebugGesture field value."""
+        """Whether to debug the user's gesture angles/position for achieving a valid finger photo gesture position."""
         member = self.get_member("DebugGesture")
         if member is None:
             return None
@@ -408,7 +421,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timer_active(self) -> primitives.Bool | None:
-        """The _timerActive field value."""
+        """Whether the timer is currently going or not."""
         member = self.get_member("_timerActive")
         if member is None:
             return None
@@ -427,7 +440,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def original_parent(self) -> str | None:
-        """Target ID of the _originalParent reference (targets Slot)."""
+        """The original parent of this manager."""
         member = self.get_member("_originalParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -448,7 +461,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def original_position(self) -> primitives.Float3 | None:
-        """The _originalPosition field value."""
+        """The original position of this manager."""
         member = self.get_member("_originalPosition")
         if member is None:
             return None
@@ -467,7 +480,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def original_rotation(self) -> primitives.FloatQ | None:
-        """The _originalRotation field value."""
+        """The original rotation of this manager."""
         member = self.get_member("_originalRotation")
         if member is None:
             return None
@@ -486,7 +499,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def original_scale(self) -> primitives.Float3 | None:
-        """The _originalScale field value."""
+        """The original scale of this manager."""
         member = self.get_member("_originalScale")
         if member is None:
             return None
@@ -505,7 +518,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def root(self) -> str | None:
-        """Target ID of the _root reference (targets Slot)."""
+        """The root of this entire finger photo manager."""
         member = self.get_member("_root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -526,7 +539,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def preview_root(self) -> str | None:
-        """Target ID of the _previewRoot reference (targets Slot)."""
+        """The slot that is the root of the preview graphic."""
         member = self.get_member("_previewRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -547,7 +560,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def render_tex(self) -> str | None:
-        """Target ID of the _renderTex reference (targets RenderTextureProvider)."""
+        """The texture being used for the preview render graphic."""
         member = self.get_member("_renderTex")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -568,7 +581,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def quad(self) -> str | None:
-        """Target ID of the _quad reference (targets QuadMesh)."""
+        """The quad to render the preview with."""
         member = self.get_member("_quad")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -589,7 +602,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def frame(self) -> str | None:
-        """Target ID of the _frame reference (targets FrameMesh)."""
+        """The frame mesh being used for the preview graphic."""
         member = self.get_member("_frame")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -610,7 +623,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def camera_root(self) -> str | None:
-        """Target ID of the _cameraRoot reference (targets Slot)."""
+        """The slot being used for the camera's transforms."""
         member = self.get_member("_cameraRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -631,7 +644,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def camera_pos(self) -> str | None:
-        """Target ID of the _cameraPos reference (targets IField[primitives.Float3])."""
+        """The position field of the camera."""
         member = self.get_member("_cameraPos")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -652,7 +665,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def camera_rot(self) -> str | None:
-        """Target ID of the _cameraRot reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of the camera."""
         member = self.get_member("_cameraRot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -673,7 +686,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def camera(self) -> str | None:
-        """Target ID of the _camera reference (targets Camera)."""
+        """The camera component reference itself."""
         member = self.get_member("_camera")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -694,7 +707,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def frame_material(self) -> str | None:
-        """Target ID of the _frameMaterial reference (targets UnlitMaterial)."""
+        """The material being used for the frame visual for the preview graphic."""
         member = self.get_member("_frameMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -715,7 +728,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timer_text_root(self) -> str | None:
-        """Target ID of the _timerTextRoot reference (targets Slot)."""
+        """The root slot of the visual being used for the timer text."""
         member = self.get_member("_timerTextRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -736,7 +749,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timer_text(self) -> str | None:
-        """Target ID of the _timerText reference (targets TextRenderer)."""
+        """The component being used to display the timer text."""
         member = self.get_member("_timerText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -757,7 +770,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def shutter_clip(self) -> str | None:
-        """Target ID of the _shutterClip reference (targets IAssetProvider[AudioClip])."""
+        """The audio to play when a photo is taken."""
         member = self.get_member("_shutterClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -778,7 +791,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timer_start_clip(self) -> str | None:
-        """Target ID of the _timerStartClip reference (targets IAssetProvider[AudioClip])."""
+        """The audio to play when the timer starts."""
         member = self.get_member("_timerStartClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -799,7 +812,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timer_countdown_slow_player(self) -> str | None:
-        """Target ID of the _timerCountdownSlowPlayer reference (targets AudioClipPlayer)."""
+        """The audio to play when the timer has plenty of time left."""
         member = self.get_member("_timerCountdownSlowPlayer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -820,7 +833,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timer_countdown_fast_player(self) -> str | None:
-        """Target ID of the _timerCountdownFastPlayer reference (targets AudioClipPlayer)."""
+        """The audio to play when the timer is close to being finished."""
         member = self.get_member("_timerCountdownFastPlayer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -841,7 +854,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timer_countdown_slow_output(self) -> str | None:
-        """Target ID of the _timerCountdownSlowOutput reference (targets AudioOutput)."""
+        """The audio output component outputting the timer has plenty of time sound."""
         member = self.get_member("_timerCountdownSlowOutput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -862,7 +875,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timer_countdown_fast_output(self) -> str | None:
-        """Target ID of the _timerCountdownFastOutput reference (targets AudioOutput)."""
+        """The audio output component outputting the timer is close to being done sound."""
         member = self.get_member("_timerCountdownFastOutput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -883,7 +896,7 @@ class PhotoCaptureManager(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timer_root(self) -> str | None:
-        """Target ID of the _timerRoot reference (targets Slot)."""
+        """The root slot of the entire timer visual and mechanism."""
         member = self.get_member("_timerRoot")
         if isinstance(member, members.Reference):
             return member.targetId

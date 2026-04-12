@@ -62,7 +62,7 @@ class Wait(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICust
 
     @property
     def on_wait_begin(self) -> str | None:
-        """Target ID of the OnWaitBegin reference (targets INodeOperation)."""
+        """An async impulse that impulses when the node starts waiting."""
         member = self.get_member("OnWaitBegin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class Wait(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICust
 
     @property
     def on_playback_finished(self) -> str | None:
-        """Target ID of the OnPlaybackFinished reference (targets INodeOperation)."""
+        """Sends an impulse after the target finishes playback."""
         member = self.get_member("OnPlaybackFinished")
         if isinstance(member, members.Reference):
             return member.targetId

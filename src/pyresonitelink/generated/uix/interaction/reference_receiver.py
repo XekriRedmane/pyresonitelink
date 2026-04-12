@@ -11,9 +11,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceReceiver(GeneratedComponent, IUIGrabReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.ReferenceReceiver.
+    """The ReferenceReceiver component can receive a reference dropped onto a UIX element Button by a user. The reference dropped is then stored into the field specified by ``TargetReference`` (an example would be to use the ReferenceField). 
+
+}}
 
     Category: UIX/Interaction
+
+    * Letting go when the reference you want to send into the
+    ``TargetReference`` field, is currently the way on how it can trigger. *
+    Combining this with the ReferenceProxySource component is a powerful way
+    of moving references around without the need to open a Scene Inspector.
+    Having a ReferenceField of IWorldElement as the ``TargetReference`` is
+    the most recommended way of successfully transferring a reference this
+    way.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.ReferenceReceiver"
@@ -34,7 +44,7 @@ class ReferenceReceiver(GeneratedComponent, IUIGrabReceiver, IWorldEventReceiver
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets ISyncRef)."""
+        """The target field to fill when a reference is received."""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +65,7 @@ class ReferenceReceiver(GeneratedComponent, IUIGrabReceiver, IWorldEventReceiver
 
     @property
     def undoable(self) -> primitives.Bool | None:
-        """The Undoable field value."""
+        """Whether dropping elements onto this UIX interactable is undoable."""
         member = self.get_member("Undoable")
         if member is None:
             return None

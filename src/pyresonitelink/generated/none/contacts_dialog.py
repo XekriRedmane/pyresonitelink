@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ContactsDialog.
+    """The ContactsDialog component is used in the contacts screen of the Dash Menu to search, view, and talk to contacts.
+
+    Not used by the user. Exists as the dash's Contacts tab.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContactsDialog"
@@ -86,7 +88,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def search_bar(self) -> str | None:
-        """Target ID of the _searchBar reference (targets TextField)."""
+        """The search bar to search for users."""
         member = self.get_member("_searchBar")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +109,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def list_root(self) -> str | None:
-        """Target ID of the _listRoot reference (targets Slot)."""
+        """The list of contacts."""
         member = self.get_member("_listRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -128,7 +130,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sessions_root(self) -> str | None:
-        """Target ID of the _sessionsRoot reference (targets Slot)."""
+        """The slot where the list of sessions from the selected user will be."""
         member = self.get_member("_sessionsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -149,7 +151,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def messages_root(self) -> str | None:
-        """Target ID of the _messagesRoot reference (targets Slot)."""
+        """The slot where the list of messages from the selected user will be."""
         member = self.get_member("_messagesRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -170,7 +172,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def status(self) -> str | None:
-        """Target ID of the _status reference (targets Image)."""
+        """The image icon being used for the selected user's status."""
         member = self.get_member("_status")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -191,7 +193,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar(self) -> str | None:
-        """Target ID of the _avatar reference (targets Image)."""
+        """The image icon being used for the selected user's avatar image."""
         member = self.get_member("_avatar")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -212,7 +214,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def username(self) -> str | None:
-        """Target ID of the _username reference (targets Text)."""
+        """The text for the selected user's username."""
         member = self.get_member("_username")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -233,7 +235,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_actions_root(self) -> str | None:
-        """Target ID of the _userActionsRoot reference (targets Slot)."""
+        """The root slot to store buttons for performing actions on the selected user."""
         member = self.get_member("_userActionsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -254,7 +256,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def send_message_button(self) -> str | None:
-        """Target ID of the _sendMessageButton reference (targets Button)."""
+        """The button for sending the currently typed message to the selected user."""
         member = self.get_member("_sendMessageButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -275,7 +277,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def send_voice_message_button(self) -> str | None:
-        """Target ID of the _sendVoiceMessageButton reference (targets Button)."""
+        """The button for sending a voice message to the currently selected user."""
         member = self.get_member("_sendVoiceMessageButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -296,7 +298,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def send_message_text_field(self) -> str | None:
-        """Target ID of the _sendMessageTextField reference (targets TextField)."""
+        """The text field to type messages to send to users."""
         member = self.get_member("_sendMessageTextField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -317,7 +319,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def messages_scroll_rect(self) -> str | None:
-        """Target ID of the _messagesScrollRect reference (targets ScrollRect)."""
+        """The scroll rectangle component for the scroll area for messages to and from the selected user."""
         member = self.get_member("_messagesScrollRect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -338,7 +340,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def invite_button(self) -> str | None:
-        """Target ID of the _inviteButton reference (targets Button)."""
+        """Invite the selected user to the currently focused session if possible."""
         member = self.get_member("_inviteButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -359,7 +361,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def request_invite_button(self) -> str | None:
-        """Target ID of the _requestInviteButton reference (targets Button)."""
+        """Ask for an invite from the selected user."""
         member = self.get_member("_requestInviteButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -380,7 +382,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ban_all_button(self) -> str | None:
-        """Target ID of the _banAllButton reference (targets Button)."""
+        """Ban the selected user from all sessions that the current local user will host."""
         member = self.get_member("_banAllButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -401,7 +403,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ban_session_button(self) -> str | None:
-        """Target ID of the _banSessionButton reference (targets Button)."""
+        """Ban the selected user from the current focused session."""
         member = self.get_member("_banSessionButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -422,7 +424,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def unblocked_button(self) -> str | None:
-        """Target ID of the _unblockedButton reference (targets Button)."""
+        """The button to unblock the currently selected user."""
         member = self.get_member("_unblockedButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -443,7 +445,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def avatar_block_button(self) -> str | None:
-        """Target ID of the _avatarBlockButton reference (targets Button)."""
+        """The button to block the currently selected user's avatar."""
         member = self.get_member("_avatarBlockButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -464,7 +466,7 @@ class ContactsDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def mutual_block_button(self) -> str | None:
-        """Target ID of the _mutualBlockButton reference (targets Button)."""
+        """The button to do a mutual block with the currently selected user."""
         member = self.get_member("_mutualBlockButton")
         if isinstance(member, members.Reference):
             return member.targetId

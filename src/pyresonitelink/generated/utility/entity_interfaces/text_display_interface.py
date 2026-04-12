@@ -12,9 +12,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextDisplayInterface.
+    """The TextDisplayInterface component is used to specify what the user's favorite display of clipboard contents should be when pasting text not into a text field and the text is not a link.
 
     Category: Utility/Entity Interfaces
+
+    Spawn the default resonite one from resonite essentials and edit it, or
+    attach a new one and create a UI for it yourself. Once done, save to
+    your inventory and set as your text display to make it your active one.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextDisplayInterface"
@@ -50,7 +54,7 @@ class TextDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[primitives.String])."""
+        """The name of this favoritable item."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -71,7 +75,7 @@ class TextDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user(self) -> str | None:
-        """Target ID of the SpawningUser reference (targets UserRef)."""
+        """The user that spawned this favoritable item."""
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +96,7 @@ class TextDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
+        """The field containing the ID of the user that spawned this favoritable item."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -113,7 +117,7 @@ class TextDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def is_instance(self) -> primitives.Bool | None:
-        """The IsInstance field value."""
+        """Whether this item was spawned by the player (false) or was spawned by the game as part of the favorites system (true)."""
         member = self.get_member("IsInstance")
         if member is None:
             return None
@@ -132,7 +136,7 @@ class TextDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def heading(self) -> str | None:
-        """Target ID of the Heading reference (targets IField[primitives.String])."""
+        """The field to fill with what the header text is upon spawn."""
         member = self.get_member("Heading")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -153,7 +157,7 @@ class TextDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IField[primitives.String])."""
+        """The field to fill with what the text the user pasted was upon spawn."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -174,7 +178,7 @@ class TextDisplayInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def rtf(self) -> str | None:
-        """Target ID of the RTF reference (targets IField[primitives.Bool])."""
+        """The field to fill with whether the text should be interpreted as Rich Text Format. This is usually the RTF field on a text rendering Component for the UI."""
         member = self.get_member("RTF")
         if isinstance(member, members.Reference):
             return member.targetId

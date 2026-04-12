@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class BabbleSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.BabbleSettings.
+    """The Babble Settings component is used to adjust settings related to facial tracking settings, and is exposed through the settings menu.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BabbleSettings"
@@ -27,7 +27,7 @@ class BabbleSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def osc_data_port(self) -> primitives.Int | None:
-        """The OSC_DataPort field value."""
+        """The port to listen for Babble Face Data from."""
         member = self.get_member("OSC_DataPort")
         if member is None:
             return None
@@ -45,7 +45,7 @@ class BabbleSettings(GeneratedComponent, ICustomInspector):
             )
 
     async def reset_to_default(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ResetToDefault sync method.
+        """Changes settings back to default settings.
 
         Returns:
             The raw JSON response dict.

@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GeneralHeadset(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The General Headset node takes in a User and returns headset information (if any) that this user has. Since it is generic, there is not much besides whether the headset is active or the battery info that can be returned from this node.
+    """The ``General Headset`` node takes in a User and returns headset information (if any) that this user has. Since it is generic, there is not much besides whether the headset is active or the battery info that can be returned from this node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices
     """
@@ -33,7 +33,7 @@ class GeneralHeadset(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The target user that is using a headset."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -54,7 +54,7 @@ class GeneralHeadset(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def is_active(self) -> members.EmptyElement | None:
-        """The IsActive member."""
+        """Is this headset being used right now."""
         member = self.get_member("IsActive")
         if isinstance(member, members.EmptyElement):
             return member
@@ -62,12 +62,12 @@ class GeneralHeadset(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @is_active.setter
     def is_active(self, value: members.EmptyElement) -> None:
-        """Set the IsActive member."""
+        """Set IsActive. Is this headset being used right now."""
         self.set_member("IsActive", value)
 
     @property
     def battery_level(self) -> members.EmptyElement | None:
-        """The BatteryLevel member."""
+        """The current battery level of this headset."""
         member = self.get_member("BatteryLevel")
         if isinstance(member, members.EmptyElement):
             return member
@@ -75,12 +75,12 @@ class GeneralHeadset(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @battery_level.setter
     def battery_level(self, value: members.EmptyElement) -> None:
-        """Set the BatteryLevel member."""
+        """Set BatteryLevel. The current battery level of this headset."""
         self.set_member("BatteryLevel", value)
 
     @property
     def is_battery_charging(self) -> members.EmptyElement | None:
-        """The IsBatteryCharging member."""
+        """Is this headset's battery charging."""
         member = self.get_member("IsBatteryCharging")
         if isinstance(member, members.EmptyElement):
             return member
@@ -88,6 +88,6 @@ class GeneralHeadset(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @is_battery_charging.setter
     def is_battery_charging(self, value: members.EmptyElement) -> None:
-        """Set the IsBatteryCharging member."""
+        """Set IsBatteryCharging. Is this headset's battery charging."""
         self.set_member("IsBatteryCharging", value)
 

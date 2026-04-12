@@ -41,7 +41,7 @@ class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def animation(self) -> str | None:
-        """Target ID of the Animation reference (targets INodeObjectOutput[Animation])."""
+        """The Animation Asset provided by an IAssetProvider."""
         member = self.get_member("Animation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +62,7 @@ class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeObjectOutput[primitives.String])."""
+        """A String that is usually the name of the slot which has it's property animated. This can vary though, and AnimJ explains this."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +83,7 @@ class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def property(self) -> str | None:
-        """Target ID of the Property reference (targets INodeObjectOutput[primitives.String])."""
+        """A String that is usually the human name of a field. So a floatQ would be Rotation for a Property. This can vary though, and AnimJ explains this."""
         member = self.get_member("Property")
         if isinstance(member, members.Reference):
             return member.targetId

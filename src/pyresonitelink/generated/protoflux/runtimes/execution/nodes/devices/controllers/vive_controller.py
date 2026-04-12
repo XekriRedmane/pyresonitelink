@@ -38,7 +38,7 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting controller information from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[Chirality])."""
+        """The controller side to get information from."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -80,7 +80,7 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def is_active(self) -> members.EmptyElement | None:
-        """The IsActive member."""
+        """Is this controller actively being used right now."""
         member = self.get_member("IsActive")
         if isinstance(member, members.EmptyElement):
             return member
@@ -88,12 +88,12 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @is_active.setter
     def is_active(self, value: members.EmptyElement) -> None:
-        """Set the IsActive member."""
+        """Set IsActive. Is this controller actively being used right now."""
         self.set_member("IsActive", value)
 
     @property
     def type_(self) -> members.EmptyElement | None:
-        """The Type member."""
+        """The controller type being used."""
         member = self.get_member("Type")
         if isinstance(member, members.EmptyElement):
             return member
@@ -101,12 +101,12 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @type_.setter
     def type_(self, value: members.EmptyElement) -> None:
-        """Set the Type member."""
+        """Set Type. The controller type being used."""
         self.set_member("Type", value)
 
     @property
     def battery_level(self) -> members.EmptyElement | None:
-        """The BatteryLevel member."""
+        """The battery level of this controller."""
         member = self.get_member("BatteryLevel")
         if isinstance(member, members.EmptyElement):
             return member
@@ -114,12 +114,12 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @battery_level.setter
     def battery_level(self, value: members.EmptyElement) -> None:
-        """Set the BatteryLevel member."""
+        """Set BatteryLevel. The battery level of this controller."""
         self.set_member("BatteryLevel", value)
 
     @property
     def is_battery_charging(self) -> members.EmptyElement | None:
-        """The IsBatteryCharging member."""
+        """Is this controller currently charging."""
         member = self.get_member("IsBatteryCharging")
         if isinstance(member, members.EmptyElement):
             return member
@@ -127,12 +127,12 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @is_battery_charging.setter
     def is_battery_charging(self, value: members.EmptyElement) -> None:
-        """Set the IsBatteryCharging member."""
+        """Set IsBatteryCharging. Is this controller currently charging."""
         self.set_member("IsBatteryCharging", value)
 
     @property
     def grip(self) -> members.EmptyElement | None:
-        """The Grip member."""
+        """Is the controller's grip clicked down right now."""
         member = self.get_member("Grip")
         if isinstance(member, members.EmptyElement):
             return member
@@ -140,12 +140,12 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @grip.setter
     def grip(self, value: members.EmptyElement) -> None:
-        """Set the Grip member."""
+        """Set Grip. Is the controller's grip clicked down right now."""
         self.set_member("Grip", value)
 
     @property
     def app(self) -> members.EmptyElement | None:
-        """The App member."""
+        """Is the app button pressed right now."""
         member = self.get_member("App")
         if isinstance(member, members.EmptyElement):
             return member
@@ -153,12 +153,12 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @app.setter
     def app(self, value: members.EmptyElement) -> None:
-        """Set the App member."""
+        """Set App. Is the app button pressed right now."""
         self.set_member("App", value)
 
     @property
     def trigger(self) -> members.EmptyElement | None:
-        """The Trigger member."""
+        """The amount of how far this controller's trigger is being pressed down currently."""
         member = self.get_member("Trigger")
         if isinstance(member, members.EmptyElement):
             return member
@@ -166,12 +166,12 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @trigger.setter
     def trigger(self, value: members.EmptyElement) -> None:
-        """Set the Trigger member."""
+        """Set Trigger. The amount of how far this controller's trigger is being pressed down currently."""
         self.set_member("Trigger", value)
 
     @property
     def trigger_hair(self) -> members.EmptyElement | None:
-        """The TriggerHair member."""
+        """Is the controller's trigger hair being used right now."""
         member = self.get_member("TriggerHair")
         if isinstance(member, members.EmptyElement):
             return member
@@ -179,12 +179,12 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @trigger_hair.setter
     def trigger_hair(self, value: members.EmptyElement) -> None:
-        """Set the TriggerHair member."""
+        """Set TriggerHair. Is the controller's trigger hair being used right now."""
         self.set_member("TriggerHair", value)
 
     @property
     def trigger_click(self) -> members.EmptyElement | None:
-        """The TriggerClick member."""
+        """Is the controller's trigger being clicked down right now."""
         member = self.get_member("TriggerClick")
         if isinstance(member, members.EmptyElement):
             return member
@@ -192,12 +192,12 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @trigger_click.setter
     def trigger_click(self, value: members.EmptyElement) -> None:
-        """Set the TriggerClick member."""
+        """Set TriggerClick. Is the controller's trigger being clicked down right now."""
         self.set_member("TriggerClick", value)
 
     @property
     def touchpad(self) -> members.EmptyElement | None:
-        """The Touchpad member."""
+        """The position of this controller's touchpad."""
         member = self.get_member("Touchpad")
         if isinstance(member, members.EmptyElement):
             return member
@@ -205,12 +205,12 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @touchpad.setter
     def touchpad(self, value: members.EmptyElement) -> None:
-        """Set the Touchpad member."""
+        """Set Touchpad. The position of this controller's touchpad."""
         self.set_member("Touchpad", value)
 
     @property
     def touchpad_touch(self) -> members.EmptyElement | None:
-        """The TouchpadTouch member."""
+        """Is the controller's touchpad being touched right now."""
         member = self.get_member("TouchpadTouch")
         if isinstance(member, members.EmptyElement):
             return member
@@ -218,12 +218,12 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @touchpad_touch.setter
     def touchpad_touch(self, value: members.EmptyElement) -> None:
-        """Set the TouchpadTouch member."""
+        """Set TouchpadTouch. Is the controller's touchpad being touched right now."""
         self.set_member("TouchpadTouch", value)
 
     @property
     def touchpad_click(self) -> members.EmptyElement | None:
-        """The TouchpadClick member."""
+        """Is the controller's touchpad clicked down right now."""
         member = self.get_member("TouchpadClick")
         if isinstance(member, members.EmptyElement):
             return member
@@ -231,6 +231,6 @@ class ViveController(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @touchpad_click.setter
     def touchpad_click(self, value: members.EmptyElement) -> None:
-        """Set the TouchpadClick member."""
+        """Set TouchpadClick. Is the controller's touchpad clicked down right now."""
         self.set_member("TouchpadClick", value)
 

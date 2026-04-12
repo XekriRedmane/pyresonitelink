@@ -46,7 +46,7 @@ class AttachAudioClip(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after * (Call) is called and the asset was successfully attached."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +67,7 @@ class AttachAudioClip(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def url(self) -> str | None:
-        """Target ID of the URL reference (targets INodeObjectOutput[str])."""
+        """The URI of the asset you want to attach. Can be a resdb or a local or a website hosted asset."""
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -88,7 +88,7 @@ class AttachAudioClip(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets INodeObjectOutput[Slot])."""
+        """The slot to attach the asset to."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +109,7 @@ class AttachAudioClip(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def get_existing(self) -> str | None:
-        """Target ID of the GetExisting reference (targets INodeValueOutput[primitives.Bool])."""
+        """Get an existing asset on Target (Slot) of the same URL (uri) or attach a new one."""
         member = self.get_member("GetExisting")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -130,7 +130,7 @@ class AttachAudioClip(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @property
     def attached_provider(self) -> members.EmptyElement | None:
-        """The AttachedProvider member."""
+        """The attached provider or an existing one on Target (Slot) if GetExisting (bool) is true."""
         member = self.get_member("AttachedProvider")
         if isinstance(member, members.EmptyElement):
             return member
@@ -138,6 +138,6 @@ class AttachAudioClip(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
 
     @attached_provider.setter
     def attached_provider(self, value: members.EmptyElement) -> None:
-        """Set the AttachedProvider member."""
+        """Set AttachedProvider. The attached provider or an existing one on Target (Slot) if GetExisting (bool) is true."""
         self.set_member("AttachedProvider", value)
 

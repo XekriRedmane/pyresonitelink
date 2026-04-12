@@ -10,7 +10,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HapticManager.
+    """Can be found under each user's User root slot, the HapticManager controls the locally injected haptics for everyone in the session besides yourself if this component is found underneath your own user root slot.
+
+The HapticManager also allows you to locally see the debug visuals of each user in the form of green transparent shapes. However you need to check ShowDebugVisuals then hit Rebuild Injected Sources to see this change reflected, do the inverse to remove the debug visuals.
+
+    Note this component functions locally and does not affect injected
+    haptics on your own avatar, to do that you need to use the
+    AvatarHapticSourceManager to override the injected behavior for your own
+    avatar. If found on other user root slots other than yourself, this
+    component does nothing and won't do any changes. HapticManger can be
+    used to debug weird haptic collisions from other users in the session,
+    or possibly help with the issues where there is "stuck" haptics from
+    touching injected haptic zones by rebuilding the haptic zones. With the
+    help of the ShowDebugVisuals you can see the haptic culling behavior if
+    you step away from another user far enough.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HapticManager"
@@ -46,7 +59,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def injected_body_part_intensity(self) -> primitives.Float | None:
-        """The InjectedBodyPartIntensity field value."""
+        """Adjusts the haptic intensity of bodyparts that aren't the head and hands."""
         member = self.get_member("InjectedBodyPartIntensity")
         if member is None:
             return None
@@ -65,7 +78,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def injected_hand_intensity(self) -> primitives.Float | None:
-        """The InjectedHandIntensity field value."""
+        """Adjusts the haptic intensity of the hands."""
         member = self.get_member("InjectedHandIntensity")
         if member is None:
             return None
@@ -84,7 +97,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def injected_head_intensity(self) -> primitives.Float | None:
-        """The InjectedHeadIntensity field value."""
+        """Adjusts the haptic intensity of the head."""
         member = self.get_member("InjectedHeadIntensity")
         if member is None:
             return None
@@ -103,7 +116,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def injected_radius_start_ratio(self) -> primitives.Float | None:
-        """The InjectedRadiusStartRatio field value."""
+        """Adjusts the start radius of all injected haptics."""
         member = self.get_member("InjectedRadiusStartRatio")
         if member is None:
             return None
@@ -141,7 +154,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def injected_radius_power(self) -> primitives.Float | None:
-        """The InjectedRadiusPower field value."""
+        """Adjusts the overall radius of all injected haptics."""
         member = self.get_member("InjectedRadiusPower")
         if member is None:
             return None
@@ -160,7 +173,7 @@ class HapticManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
 
     @property
     def show_debug_visuals(self) -> primitives.Bool | None:
-        """The ShowDebugVisuals field value."""
+        """Locally shows injected haptics for each user, Rebuild Injected Sources needs to be checked for this to work."""
         member = self.get_member("ShowDebugVisuals")
         if member is None:
             return None

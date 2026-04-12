@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SlideSwapRegion(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.SlideSwapRegion.
+    """The SlideSwapRegion component takes in a RectTransform of a UIX element and uses it for a slide swap. This is an internal component used by the game engine to manage things like the inventory and tutorial pages to name a couple. This isn't usable by the player in any meaningful way because of this.
 
     Category: UIX/Utility
+
+    Not used by the player. used by internal game elements.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.SlideSwapRegion"
@@ -29,7 +31,7 @@ class SlideSwapRegion(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current(self) -> str | None:
-        """Target ID of the _current reference (targets RectTransform)."""
+        """Internal - The RectTransform to swap. This component acting as a controller for what this points to."""
         member = self.get_member("_current")
         if isinstance(member, members.Reference):
             return member.targetId

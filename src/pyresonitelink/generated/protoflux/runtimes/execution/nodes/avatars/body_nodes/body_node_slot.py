@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BodyNodeSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Finds the slot of the specified body node on the provided user.
+    """The BodyNodeSlot node finds the slot that is associated with the specified BodyNode on the provided user. This will usually be a slot representing a bone on a skinned mesh.
+
+This node will first attempt to find a BipedRig component under the user and read the slot associated with the body node from this component. If it can not find the slot in this manner, it will then iterate over every component on the user in an attempt to find an AvatarObjectSlot component of the specified node type.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Body Nodes
     """
@@ -38,7 +40,7 @@ class BodyNodeSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeObjectOutput[User])."""
+        """The user to find a body part slot for."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +61,7 @@ class BodyNodeSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[BodyNode])."""
+        """The body node to find a slot for."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId

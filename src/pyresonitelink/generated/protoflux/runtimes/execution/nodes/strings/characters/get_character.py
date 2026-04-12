@@ -37,7 +37,7 @@ class GetCharacter(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to retrieve a character from."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class GetCharacter(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def index(self) -> str | None:
-        """Target ID of the Index reference (targets INodeValueOutput[primitives.Int])."""
+        """The 0-indexed character to retrieve from ``Str``."""
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,9 +10,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FingerSplayModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FingerSplayModifier.
+    """The FingerSplayModifier takes data from a ``Source``, adding splay data to a copy of that data. The resulting data becomes the pose source data of this component. This component in itself is a IFingerPoseSourceComponent.
+
+For more information on finger pose sources, please see Finger Posing System.
 
     Category: Users/Common Avatar System/Fingers
+
+    Used as a way of modifying Finger pose data to splay the fingers, and
+    itself be used as new finger pose data.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FingerSplayModifier"
@@ -36,7 +41,7 @@ class FingerSplayModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorld
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IFingerPoseSourceComponent)."""
+        """The source data to copy to this component's Finger pose source data."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +62,7 @@ class FingerSplayModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorld
 
     @property
     def left_splay_magnitude(self) -> primitives.Float | None:
-        """The LeftSplayMagnitude field value."""
+        """How much splay data to the left hand to add to the data copied data from ``Source`` during copying."""
         member = self.get_member("LeftSplayMagnitude")
         if member is None:
             return None
@@ -76,7 +81,7 @@ class FingerSplayModifier(GeneratedComponent, IFingerPoseSourceComponent, IWorld
 
     @property
     def right_splay_magnitude(self) -> primitives.Float | None:
-        """The RightSplayMagnitude field value."""
+        """How much splay data on the right hand to add to the data copied data from ``Source`` during copying."""
         member = self.get_member("RightSplayMagnitude")
         if member is None:
             return None

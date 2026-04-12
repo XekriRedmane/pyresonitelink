@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LabelContentDriver.
+    """The LabelContentDriver Component is used to handle driving and updating the visual of labels placed by a Labeler Tool.
+
+    Not used directly by the user. Used in the Labeler Tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LabelContentDriver"
@@ -66,7 +68,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_update(self) -> primitives.Bool | None:
-        """The AutoUpdate field value."""
+        """Automatically update the visual per tick"""
         member = self.get_member("AutoUpdate")
         if member is None:
             return None
@@ -85,7 +87,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def padding(self) -> primitives.Float2 | None:
-        """The Padding field value."""
+        """How much padding this label should have from the label's text content."""
         member = self.get_member("Padding")
         if member is None:
             return None
@@ -104,7 +106,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_width(self) -> primitives.Float | None:
-        """The BaseWidth field value."""
+        """The width of the underline for the text attached to the label."""
         member = self.get_member("BaseWidth")
         if member is None:
             return None
@@ -123,7 +125,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def content_orient_space(self) -> members.SyncObject | None:
-        """The ContentOrientSpace member."""
+        """How to orient the text content of this label."""
         member = self.get_member("ContentOrientSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -131,12 +133,12 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @content_orient_space.setter
     def content_orient_space(self, value: members.SyncObject) -> None:
-        """Set the ContentOrientSpace member."""
+        """Set ContentOrientSpace. How to orient the text content of this label."""
         self.set_member("ContentOrientSpace", value)
 
     @property
     def orient_at_local_user(self) -> primitives.Bool | None:
-        """The OrientAtLocalUser field value."""
+        """Whether to look at the local user (usually true)"""
         member = self.get_member("OrientAtLocalUser")
         if member is None:
             return None
@@ -155,7 +157,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def content_root(self) -> str | None:
-        """Target ID of the _contentRoot reference (targets Slot)."""
+        """The root of the text content for the label this is driving."""
         member = self.get_member("_contentRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -176,7 +178,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_point(self) -> str | None:
-        """Target ID of the _targetPoint reference (targets Slot)."""
+        """The target point of the line coming from the underline for the label this is driving."""
         member = self.get_member("_targetPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -197,7 +199,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def content_rotation(self) -> primitives.FloatQ | None:
-        """The _contentRotation field value."""
+        """The rotation of the content of the label this is driving."""
         member = self.get_member("_contentRotation")
         if member is None:
             return None
@@ -216,7 +218,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def content_rotation_drive(self) -> str | None:
-        """Target ID of the _contentRotationDrive reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of the content."""
         member = self.get_member("_contentRotationDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -237,7 +239,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label_position(self) -> str | None:
-        """Target ID of the _labelPosition reference (targets IField[primitives.Float3])."""
+        """The position field of the label."""
         member = self.get_member("_labelPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -258,7 +260,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label_width(self) -> str | None:
-        """Target ID of the _labelWidth reference (targets IField[primitives.Float])."""
+        """The length field of the label underline."""
         member = self.get_member("_labelWidth")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -279,7 +281,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def line_width(self) -> str | None:
-        """Target ID of the _lineWidth reference (targets IField[primitives.Float])."""
+        """The width field of the line for the label."""
         member = self.get_member("_lineWidth")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -300,7 +302,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label_rotation(self) -> str | None:
-        """Target ID of the _labelRotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of the label."""
         member = self.get_member("_labelRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -321,7 +323,7 @@ class LabelContentDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point_position(self) -> str | None:
-        """Target ID of the _pointPosition reference (targets IField[primitives.Float3])."""
+        """The target point field for what the label is pointing to."""
         member = self.get_member("_pointPosition")
         if isinstance(member, members.Reference):
             return member.targetId

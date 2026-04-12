@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TypeDelta(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Type Delta node returns the new key press this frame. This happens very quickly (within a frame), if you plan on using this data, consider writing this to a variable.
+    """The ``Type Delta`` node returns the new key press this frame. This happens very quickly (within a frame), if you plan on using this data, consider writing this to a variable.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Keyboard
     """

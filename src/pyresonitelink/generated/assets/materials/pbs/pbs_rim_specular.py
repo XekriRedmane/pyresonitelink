@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PBS_RimSpecular.
+    """The PBS_RimSpecular material is used in away materials, and can be used to make a normal PBS material with an emissive rim from camera view.
 
     Category: Assets/Materials/PBS
     """

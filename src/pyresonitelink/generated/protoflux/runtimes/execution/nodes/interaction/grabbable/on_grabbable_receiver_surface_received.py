@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnGrabbableReceiverSurfaceReceived(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Interaction.OnGrabbableReceiverSurfaceReceived.
+    """On Grabbable Receiver Surface Received is a ProtoFlux node that monitors a Reciever for when a grabbable is let go of and is received by the Source (GrabbableReceiverSurface). The node then sends an Impulse.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Interaction/Grabbable
     """
@@ -58,7 +58,7 @@ class OnGrabbableReceiverSurfaceReceived(GeneratedComponent, IExecutionNode, INo
 
     @property
     def on_received(self) -> str | None:
-        """Target ID of the OnReceived reference (targets ISyncNodeOperation)."""
+        """Sends an impulse when Grabbable (IGrabbable) is let go of and is received by the Source (GrabbableReceiverSurface)."""
         member = self.get_member("OnReceived")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +92,7 @@ class OnGrabbableReceiverSurfaceReceived(GeneratedComponent, IExecutionNode, INo
 
     @property
     def from_grabber(self) -> members.EmptyElement | None:
-        """The FromGrabber member."""
+        """The grabber that let go of the RecievedGrabbable (IGrabbable)."""
         member = self.get_member("FromGrabber")
         if isinstance(member, members.EmptyElement):
             return member
@@ -100,6 +100,6 @@ class OnGrabbableReceiverSurfaceReceived(GeneratedComponent, IExecutionNode, INo
 
     @from_grabber.setter
     def from_grabber(self, value: members.EmptyElement) -> None:
-        """Set the FromGrabber member."""
+        """Set FromGrabber. The grabber that let go of the RecievedGrabbable (IGrabbable)."""
         self.set_member("FromGrabber", value)
 

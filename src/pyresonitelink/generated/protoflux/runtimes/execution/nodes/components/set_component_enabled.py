@@ -43,7 +43,7 @@ class SetComponentEnabled(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after * (Call) is called and the Component (IComponent)'s enabled field is set to State (bool)."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class SetComponentEnabled(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def component_(self) -> str | None:
-        """Target ID of the Component reference (targets INodeObjectOutput[IComponent])."""
+        """The IComponent to set the enabled field for."""
         member = self.get_member("Component")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class SetComponentEnabled(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def state(self) -> str | None:
-        """Target ID of the State reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether to turn the Component (IComponent)'s enabled field to true or false."""
         member = self.get_member("State")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SunMover(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SunMover.
+    """The SunMover Tool is a tool that can move the sun by simply pointing at the sky and pressing primary.
 
     Category: Tools
     """

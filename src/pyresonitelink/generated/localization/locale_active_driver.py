@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocaleActiveDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocaleActiveDriver.
+    """The LocaleActiveDriver does a comparison against the local user's locale code and returns if it matches.
 
     Category: Localization
     """
@@ -37,7 +37,7 @@ class LocaleActiveDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether or not ``LocaleCode`` is the local user's active locale code."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class LocaleActiveDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def locale_code(self) -> primitives.String | None:
-        """The LocaleCode field value."""
+        """The locale code to check for ignoring cass."""
         member = self.get_member("LocaleCode")
         if member is None:
             return None
@@ -77,7 +77,7 @@ class LocaleActiveDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def match_main_language(self) -> primitives.Bool | None:
-        """The MatchMainLanguage field value."""
+        """Whether to match to the locale's main language."""
         member = self.get_member("MatchMainLanguage")
         if member is None:
             return None

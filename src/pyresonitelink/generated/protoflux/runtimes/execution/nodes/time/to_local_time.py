@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ToLocalTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The To Local Time node takes in a DateTime and converts it to local time using your local time offset. This is in accordance to Universal Time.
+    """The ``To Local Time`` node takes in a DateTime and converts it to local time using your local time offset. This is in accordance to Universal Time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
     """
@@ -32,7 +32,7 @@ class ToLocalTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def date_time(self) -> str | None:
-        """Target ID of the DateTime reference (targets INodeValueOutput[str])."""
+        """The UTC DateTime we want to convert into local time."""
         member = self.get_member("DateTime")
         if isinstance(member, members.Reference):
             return member.targetId

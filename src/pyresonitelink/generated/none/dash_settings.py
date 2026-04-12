@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class DashSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.DashSettings.
+    """The DashSettings component is part of the Settings menu and is used to change the settings of how the Dash works.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DashSettings"
@@ -33,7 +33,7 @@ class DashSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def dash_curvature(self) -> primitives.Float | None:
-        """The DashCurvature field value."""
+        """How much to curve the dash in VR."""
         member = self.get_member("DashCurvature")
         if member is None:
             return None
@@ -52,7 +52,7 @@ class DashSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def open_close_speed(self) -> primitives.Float | None:
-        """The OpenCloseSpeed field value."""
+        """How fast the animation should play when opening and closing the dash."""
         member = self.get_member("OpenCloseSpeed")
         if member is None:
             return None
@@ -71,7 +71,7 @@ class DashSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def allow_replacing_settings(self) -> primitives.Bool | None:
-        """The AllowReplacingSettings field value."""
+        """Allows you to remove panels from the settings menu, for usage as individual facets."""
         member = self.get_member("AllowReplacingSettings")
         if member is None:
             return None

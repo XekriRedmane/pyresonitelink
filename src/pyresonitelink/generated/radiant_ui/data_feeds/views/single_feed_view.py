@@ -12,9 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SingleFeedView(GeneratedComponent, IDataFeedView, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SingleFeedView.
+    """The SingleFeedView is the simplest and most commonly used data feed viewer used to usually view users in a session from a WorldUsersFeed.
 
     Category: Radiant UI/Data Feeds/Views
+
+    Attach to a slot and provide a ``Feed`` to start mapping information.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SingleFeedView"
@@ -136,7 +138,7 @@ class SingleFeedView(GeneratedComponent, IDataFeedView, IComponent, IWorldEventR
 
     @property
     def items_manager(self) -> members.SyncObject | None:
-        """The ItemsManager member."""
+        """The Mapper to handle showing items within a selected ``Path``, no matter how deep of a ``Path`` this is viewing."""
         member = self.get_member("ItemsManager")
         if isinstance(member, members.SyncObject):
             return member
@@ -144,6 +146,6 @@ class SingleFeedView(GeneratedComponent, IDataFeedView, IComponent, IWorldEventR
 
     @items_manager.setter
     def items_manager(self, value: members.SyncObject) -> None:
-        """Set the ItemsManager member."""
+        """Set ItemsManager. The Mapper to handle showing items within a selected ``Path``, no matter how deep of a ``Path`` this is viewing."""
         self.set_member("ItemsManager", value)
 

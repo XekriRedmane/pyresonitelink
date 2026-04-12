@@ -10,9 +10,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DirectTagHapticSource.
+    """The DirectTagHapticsSource component allows driving haptic sensations for a given haptic point directly, rather than using the haptic volume system.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics
+
+    * works only with tagged haptic points. This component must have a
+    matching Tag to a configured haptic device and must be present under the
+    user to work * It doesn't prevent the haptic volumes from sending
+    haptics - the effects are additive. If you want only this component to
+    control the haptics, do not setup a corresponding tagged haptic point
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DirectTagHapticSource"
@@ -42,7 +50,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
 
     @property
     def haptic_tag(self) -> primitives.String | None:
-        """The HapticTag field value."""
+        """The tag to influence."""
         member = self.get_member("HapticTag")
         if member is None:
             return None
@@ -61,7 +69,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
 
     @property
     def force(self) -> primitives.Float | None:
-        """The Force field value."""
+        """The force addition for haptics with the ``HapticTag`` tag."""
         member = self.get_member("Force")
         if member is None:
             return None
@@ -80,7 +88,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
 
     @property
     def temperature(self) -> primitives.Float | None:
-        """The Temperature field value."""
+        """The temperature addition for haptics with the ``HapticTag`` tag."""
         member = self.get_member("Temperature")
         if member is None:
             return None
@@ -99,7 +107,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
 
     @property
     def pain(self) -> primitives.Float | None:
-        """The Pain field value."""
+        """The pain addition for haptics with the ``HapticTag`` tag."""
         member = self.get_member("Pain")
         if member is None:
             return None
@@ -118,7 +126,7 @@ class DirectTagHapticSource(GeneratedComponent, IDirectHapticSource, IComponent,
 
     @property
     def vibration(self) -> primitives.Float | None:
-        """The Vibration field value."""
+        """The vibration addition for haptics with the ``HapticTag`` tag."""
         member = self.get_member("Vibration")
         if member is None:
             return None

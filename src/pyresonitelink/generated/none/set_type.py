@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.type import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_type import SyncType
@@ -11,16 +12,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SetType(GeneratedComponent, IUndoable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Undo.SetType.
+    """Set type is a component that is part of the undo system. This stores an undo step for setting a type field.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Undo.SetType"
 
-    def __init__(self, target: str | SyncType | None = None, performed: primitives.Bool | None = None, description: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | SyncType | None = None, value_before: Type | str | None = None, value_after: Type | str | None = None, performed: primitives.Bool | None = None, description: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             target: Initial value for Target.
+            value_before: Initial value for ValueBefore.
+            value_after: Initial value for ValueAfter.
             performed: Initial value for _performed.
             description: Initial value for _description.
             component: Existing Component to wrap.
@@ -28,6 +31,10 @@ class SetType(GeneratedComponent, IUndoable, IWorldEventReceiver):
         super().__init__(component)
         if target is not None:
             self.target = target
+        if value_before is not None:
+            self.value_before = value_before
+        if value_after is not None:
+            self.value_after = value_after
         if performed is not None:
             self.performed = performed
         if description is not None:
@@ -35,7 +42,7 @@ class SetType(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncType)."""
+        """The value field for a type value that was changed."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,34 +62,48 @@ class SetType(GeneratedComponent, IUndoable, IWorldEventReceiver):
             )
 
     @property
-    def value_before(self) -> members.FieldEnum | None:
-        """The ValueBefore member."""
+    def value_before(self) -> Type | None:
+        """The value it was before edit."""
         member = self.get_member("ValueBefore")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @value_before.setter
-    def value_before(self, value: members.FieldEnum) -> None:
-        """Set the ValueBefore member."""
-        self.set_member("ValueBefore", value)
+    def value_before(self, value: Type | str) -> None:
+        """Set ValueBefore. The value it was before edit."""
+        member = self.get_member("ValueBefore")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ValueBefore",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def value_after(self) -> members.FieldEnum | None:
-        """The ValueAfter member."""
+    def value_after(self) -> Type | None:
+        """The value it became after edit."""
         member = self.get_member("ValueAfter")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @value_after.setter
-    def value_after(self, value: members.FieldEnum) -> None:
-        """Set the ValueAfter member."""
-        self.set_member("ValueAfter", value)
+    def value_after(self, value: Type | str) -> None:
+        """Set ValueAfter. The value it became after edit."""
+        member = self.get_member("ValueAfter")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ValueAfter",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def performed(self) -> primitives.Bool | None:
-        """The _performed field value."""
+        """Whether this was done (true) or can be redone (false)"""
         member = self.get_member("_performed")
         if member is None:
             return None
@@ -101,7 +122,7 @@ class SetType(GeneratedComponent, IUndoable, IWorldEventReceiver):
 
     @property
     def description(self) -> primitives.String | None:
-        """The _description field value."""
+        """The description of this undo step for changing a type field."""
         member = self.get_member("_description")
         if member is None:
             return None

@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SequenceRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.SequenceRibbonSplitter.
+    """The SequenceRibbonSplitter splits ribbons based on how long they are at random.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SequenceRibbonSplitter"
@@ -32,7 +35,7 @@ class SequenceRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWorldEv
 
     @property
     def min_sequence_count(self) -> primitives.Int | None:
-        """The MinSequenceCount field value."""
+        """The minimum ribbon sequence length a ribbon has to be before it is split."""
         member = self.get_member("MinSequenceCount")
         if member is None:
             return None
@@ -51,7 +54,7 @@ class SequenceRibbonSplitter(GeneratedComponent, IParticleSystemModule, IWorldEv
 
     @property
     def max_sequence_count(self) -> primitives.Int | None:
-        """The MaxSequenceCount field value."""
+        """The maximum ribbon sequence length a ribbon can be before it is split forcibly."""
         member = self.get_member("MaxSequenceCount")
         if member is None:
             return None

@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ContactItem.
+    """The ContactItem component is used in the contacts tab of the Dash Menu to be a contact in the list of contacts on that screen.
+
+    See Dash Menu.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContactItem"
@@ -56,7 +58,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def background(self) -> str | None:
-        """Target ID of the _background reference (targets Image)."""
+        """The background element of the contact item."""
         member = self.get_member("_background")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +79,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def status_indicator(self) -> str | None:
-        """Target ID of the _statusIndicator reference (targets Image)."""
+        """The image used to indicate the user status of the contact item."""
         member = self.get_member("_statusIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -98,7 +100,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def thumbnail(self) -> str | None:
-        """Target ID of the _thumbnail reference (targets Image)."""
+        """The thumbnail Component of that user's profile picture."""
         member = self.get_member("_thumbnail")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -119,7 +121,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def thumbnail_texture(self) -> str | None:
-        """Target ID of the _thumbnailTexture reference (targets StaticTexture2D)."""
+        """The texture being used to show a user's profile picture."""
         member = self.get_member("_thumbnailTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -140,7 +142,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def username(self) -> str | None:
-        """Target ID of the _username reference (targets Text)."""
+        """The text showing the user's username."""
         member = self.get_member("_username")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -161,7 +163,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def status(self) -> str | None:
-        """Target ID of the _status reference (targets Text)."""
+        """The text showing the user's status."""
         member = self.get_member("_status")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -182,7 +184,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def unread_count(self) -> str | None:
-        """Target ID of the _unreadCount reference (targets Text)."""
+        """The text showing the number of unread messages from the user."""
         member = self.get_member("_unreadCount")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -203,7 +205,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def join_button(self) -> str | None:
-        """Target ID of the _joinButton reference (targets Button)."""
+        """The button that can be used to join the user."""
         member = self.get_member("_joinButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -224,7 +226,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def raw_username(self) -> primitives.String | None:
-        """The _rawUsername field value."""
+        """The raw string of the user's username without ignore tags."""
         member = self.get_member("_rawUsername")
         if member is None:
             return None
@@ -243,7 +245,7 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def alternate_names(self) -> members.SyncList | None:
-        """The _alternateNames member."""
+        """A list of names the user may have had before."""
         member = self.get_member("_alternateNames")
         if isinstance(member, members.SyncList):
             return member
@@ -251,6 +253,6 @@ class ContactItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @alternate_names.setter
     def alternate_names(self, value: members.SyncList) -> None:
-        """Set the _alternateNames member."""
+        """Set _alternateNames. A list of names the user may have had before."""
         self.set_member("_alternateNames", value)
 

@@ -1,0 +1,22 @@
+{
+  "description": "See World Text Renderer Wizard.",
+  "category": "Wizards",
+  "fields": {
+    "Root": "The root to do processing for.",
+    "Material": "The material to replace text renderer materials with.",
+    "Font": "The font to override texts with.",
+    "ProcessDisabled": "Whether to process disabled texts or not.",
+    "ProcessStandaloneRenderers": "Whether to process Component:TextRenderers.",
+    "ProcessUIXRenderers": "Whether to process Component:Texts.",
+    "Color": "What color to change the texts to.",
+    "_tag": "Only process texts with this tag."
+  },
+  "methods": {
+    "SetColor": "Handles when the user asks to change the color of all text under the target slot.",
+    "ReplaceFont": "Handles when the user asks to change the font of all text under the target slot.",
+    "ReplaceMaterial": "Handles when the user asks to change the material of all text under the target slot."
+  },
+  "usage": "See World Text Renderer Wizard.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldTextRendererWizard&action=raw"
+}

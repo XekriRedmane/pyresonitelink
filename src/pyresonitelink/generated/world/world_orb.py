@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.visit_state import VisitState
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
@@ -23,19 +24,22 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldOrb.
+    """The WorldOrb component is a Grabbable component that allows users to grab and throw it to open a world.
 
     Category: World
+
+    See World Orb.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldOrb"
 
-    def __init__(self, session_starting_user: str | User | None = None, url: str | None = None, active_users: primitives.Int | None = None, record_state_updated: primitives.Bool | None = None, is_public: primitives.Bool | None = None, can_modify: primitives.Bool | None = None, long_press_indicator_color: primitives.ColorX | None = None, long_press_time: primitives.Float | None = None, long_press_indicator: str | RingMesh | None = None, long_press_indicator_material: str | UnlitMaterial | None = None, last_fetched_url: str | None = None, is_read_only: primitives.Bool | None = None, orb_root: str | Slot | None = None, info_root: str | Slot | None = None, thumb_tex: str | StaticTexture2D | None = None, thumb_material: str | Projection360Material | None = None, shell_material: str | PBS_RimMetallic | None = None, name_text: str | TextRenderer | None = None, creator_text: str | TextRenderer | None = None, visits_text: str | TextRenderer | None = None, users_text: str | TextRenderer | None = None, name_position: str | IField[primitives.Float3] | None = None, creator_position: str | IField[primitives.Float3] | None = None, visits_position: str | IField[primitives.Float3] | None = None, users_position: str | IField[primitives.Float3] | None = None, user_count_text: str | IField[primitives.String] | None = None, size_drive: str | IField[primitives.Float3] | None = None, icon_slot: str | Slot | None = None, icon_texture: str | StaticTexture2D | None = None, icon_material: str | UnlitMaterial | None = None, icon_position: str | IField[primitives.Float3] | None = None, session_start_dialog: str | NewWorldDialog | None = None, last_touch: primitives.Double | None = None, last_flash: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, session_starting_user: str | User | None = None, url: str | None = None, visit: VisitState | str | None = None, active_users: primitives.Int | None = None, record_state_updated: primitives.Bool | None = None, is_public: primitives.Bool | None = None, can_modify: primitives.Bool | None = None, long_press_indicator_color: primitives.ColorX | None = None, long_press_time: primitives.Float | None = None, long_press_indicator: str | RingMesh | None = None, long_press_indicator_material: str | UnlitMaterial | None = None, last_fetched_url: str | None = None, is_read_only: primitives.Bool | None = None, orb_root: str | Slot | None = None, info_root: str | Slot | None = None, thumb_tex: str | StaticTexture2D | None = None, thumb_material: str | Projection360Material | None = None, shell_material: str | PBS_RimMetallic | None = None, name_text: str | TextRenderer | None = None, creator_text: str | TextRenderer | None = None, visits_text: str | TextRenderer | None = None, users_text: str | TextRenderer | None = None, name_position: str | IField[primitives.Float3] | None = None, creator_position: str | IField[primitives.Float3] | None = None, visits_position: str | IField[primitives.Float3] | None = None, users_position: str | IField[primitives.Float3] | None = None, user_count_text: str | IField[primitives.String] | None = None, size_drive: str | IField[primitives.Float3] | None = None, icon_slot: str | Slot | None = None, icon_texture: str | StaticTexture2D | None = None, icon_material: str | UnlitMaterial | None = None, icon_position: str | IField[primitives.Float3] | None = None, session_start_dialog: str | NewWorldDialog | None = None, last_touch: primitives.Double | None = None, last_flash: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             session_starting_user: Initial value for SessionStartingUser.
             url: Initial value for URL.
+            visit: Initial value for Visit.
             active_users: Initial value for ActiveUsers.
             record_state_updated: Initial value for RecordStateUpdated.
             is_public: Initial value for IsPublic.
@@ -75,6 +79,8 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
             self.session_starting_user = session_starting_user
         if url is not None:
             self.url = url
+        if visit is not None:
+            self.visit = visit
         if active_users is not None:
             self.active_users = active_users
         if record_state_updated is not None:
@@ -142,7 +148,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def session_starting_user(self) -> str | None:
-        """Target ID of the SessionStartingUser reference (targets User)."""
+        """The user that started the session if this is a session orb."""
         member = self.get_member("SessionStartingUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -163,7 +169,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The session or world this goes to."""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -182,7 +188,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def active_session_urls(self) -> members.SyncList | None:
-        """The ActiveSessionURLs member."""
+        """A list of currently active sessions for the worldmm."""
         member = self.get_member("ActiveSessionURLs")
         if isinstance(member, members.SyncList):
             return member
@@ -190,25 +196,32 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @active_session_urls.setter
     def active_session_urls(self, value: members.SyncList) -> None:
-        """Set the ActiveSessionURLs member."""
+        """Set ActiveSessionURLs. A list of currently active sessions for the worldmm."""
         self.set_member("ActiveSessionURLs", value)
 
     @property
-    def visit(self) -> members.FieldEnum | None:
-        """The Visit member."""
+    def visit(self) -> VisitState | None:
+        """Whether the local user has visted the target world."""
         member = self.get_member("Visit")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VisitState(member.value)
         return None
 
     @visit.setter
-    def visit(self, value: members.FieldEnum) -> None:
-        """Set the Visit member."""
-        self.set_member("Visit", value)
+    def visit(self, value: VisitState | str) -> None:
+        """Set Visit. Whether the local user has visted the target world."""
+        member = self.get_member("Visit")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Visit",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def active_users(self) -> primitives.Int | None:
-        """The ActiveUsers field value."""
+        """How many active users are in the target world."""
         member = self.get_member("ActiveUsers")
         if member is None:
             return None
@@ -227,7 +240,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def record_state_updated(self) -> primitives.Bool | None:
-        """The RecordStateUpdated field value."""
+        """Whether the world orb has up to date info after spawn."""
         member = self.get_member("RecordStateUpdated")
         if member is None:
             return None
@@ -246,7 +259,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def is_public(self) -> primitives.Bool | None:
-        """The IsPublic field value."""
+        """Whether the world is public."""
         member = self.get_member("IsPublic")
         if member is None:
             return None
@@ -265,7 +278,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def can_modify(self) -> primitives.Bool | None:
-        """The CanModify field value."""
+        """Whether the world can be modified and saved."""
         member = self.get_member("CanModify")
         if member is None:
             return None
@@ -284,7 +297,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def long_press_indicator_color(self) -> primitives.ColorX | None:
-        """The LongPressIndicatorColor field value."""
+        """The color to use when the world orb is long pressed."""
         member = self.get_member("LongPressIndicatorColor")
         if member is None:
             return None
@@ -303,7 +316,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def long_press_time(self) -> primitives.Float | None:
-        """The LongPressTime field value."""
+        """How long the user has to click to trigger a long press."""
         member = self.get_member("LongPressTime")
         if member is None:
             return None
@@ -322,7 +335,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def long_press_indicator(self) -> str | None:
-        """Target ID of the _longPressIndicator reference (targets RingMesh)."""
+        """The mesh that fills a ring indicator when doing a long press."""
         member = self.get_member("_longPressIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -343,7 +356,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def long_press_indicator_material(self) -> str | None:
-        """Target ID of the _longPressIndicatorMaterial reference (targets UnlitMaterial)."""
+        """The material used to indicate a long press."""
         member = self.get_member("_longPressIndicatorMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -364,7 +377,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def last_fetched_url(self) -> str | None:
-        """The _lastFetchedUrl field value."""
+        """The last URL fetched for this world."""
         member = self.get_member("_lastFetchedUrl")
         if member is None:
             return None
@@ -383,7 +396,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def is_read_only(self) -> primitives.Bool | None:
-        """The _isReadOnly field value."""
+        """The target world is a read only world, no saving."""
         member = self.get_member("_isReadOnly")
         if member is None:
             return None
@@ -402,7 +415,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def orb_root(self) -> str | None:
-        """Target ID of the _orbRoot reference (targets Slot)."""
+        """The slot storing the world orb visual."""
         member = self.get_member("_orbRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -423,7 +436,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def info_root(self) -> str | None:
-        """Target ID of the _infoRoot reference (targets Slot)."""
+        """The slot storing the text visual for information about the world."""
         member = self.get_member("_infoRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -444,7 +457,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def thumb_tex(self) -> str | None:
-        """Target ID of the _thumbTex reference (targets StaticTexture2D)."""
+        """The texture being used to store the picture of the 360 session preview"""
         member = self.get_member("_thumbTex")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -465,7 +478,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def thumb_material(self) -> str | None:
-        """Target ID of the _thumbMaterial reference (targets Projection360Material)."""
+        """The material making the inner world preview/session 360 picture."""
         member = self.get_member("_thumbMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -486,7 +499,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def shell_material(self) -> str | None:
-        """Target ID of the _shellMaterial reference (targets PBS_RimMetallic)."""
+        """The material making a rim lighting around the world orb."""
         member = self.get_member("_shellMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -507,7 +520,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def name_text(self) -> str | None:
-        """Target ID of the _nameText reference (targets TextRenderer)."""
+        """The text renderer showing the name of the world."""
         member = self.get_member("_nameText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -528,7 +541,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def creator_text(self) -> str | None:
-        """Target ID of the _creatorText reference (targets TextRenderer)."""
+        """The text renderer showing the name of the creator of the world."""
         member = self.get_member("_creatorText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -549,7 +562,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def visits_text(self) -> str | None:
-        """Target ID of the _visitsText reference (targets TextRenderer)."""
+        """The text renderer showing the current world visits number."""
         member = self.get_member("_visitsText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -570,7 +583,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def users_text(self) -> str | None:
-        """Target ID of the _usersText reference (targets TextRenderer)."""
+        """The text renderer showing the current users number."""
         member = self.get_member("_usersText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -591,7 +604,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def name_position(self) -> str | None:
-        """Target ID of the _namePosition reference (targets IField[primitives.Float3])."""
+        """The field to drive with the position of the world name text."""
         member = self.get_member("_namePosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -612,7 +625,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def creator_position(self) -> str | None:
-        """Target ID of the _creatorPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive with the position of the creator name text."""
         member = self.get_member("_creatorPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -633,7 +646,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def visits_position(self) -> str | None:
-        """Target ID of the _visitsPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive with the position of the visits amount."""
         member = self.get_member("_visitsPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -654,7 +667,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def users_position(self) -> str | None:
-        """Target ID of the _usersPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive with the position of the user count text."""
         member = self.get_member("_usersPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -675,7 +688,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def user_count_text(self) -> str | None:
-        """Target ID of the _userCountText reference (targets IField[primitives.String])."""
+        """The field to drive with the world orb's world user count."""
         member = self.get_member("_userCountText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -696,7 +709,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def size_drive(self) -> str | None:
-        """Target ID of the _sizeDrive reference (targets IField[primitives.Float3])."""
+        """The field to drive with the world orb's scale."""
         member = self.get_member("_sizeDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -717,7 +730,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def icon_slot(self) -> str | None:
-        """Target ID of the _iconSlot reference (targets Slot)."""
+        """The root slot of the icon visual."""
         member = self.get_member("_iconSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -738,7 +751,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def icon_texture(self) -> str | None:
-        """Target ID of the _iconTexture reference (targets StaticTexture2D)."""
+        """The icon texture for this world orb's icon."""
         member = self.get_member("_iconTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -759,7 +772,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def icon_material(self) -> str | None:
-        """Target ID of the _iconMaterial reference (targets UnlitMaterial)."""
+        """The Unlit Material for showing the icon."""
         member = self.get_member("_iconMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -780,7 +793,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def icon_position(self) -> str | None:
-        """Target ID of the _iconPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive with the position of the world icon."""
         member = self.get_member("_iconPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -801,7 +814,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def session_start_dialog(self) -> str | None:
-        """Target ID of the _sessionStartDialog reference (targets NewWorldDialog)."""
+        """The current dialogue for starting a new session"""
         member = self.get_member("_sessionStartDialog")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -822,7 +835,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def last_touch(self) -> primitives.Double | None:
-        """The _lastTouch field value."""
+        """The last time in world time that a user touched the orb."""
         member = self.get_member("_lastTouch")
         if member is None:
             return None
@@ -841,7 +854,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
 
     @property
     def last_flash(self) -> primitives.Double | None:
-        """The _lastFlash field value."""
+        """The last time in world time that a user double clicked the orb."""
         member = self.get_member("_lastFlash")
         if member is None:
             return None

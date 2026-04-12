@@ -6,7 +6,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DeviceIDSettingSwitchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DeviceIDSettingSwitchSource.
+    """The DeviceIDSettingSwitchSource component is used to switch setting sets when a different device is used in conjunction with a DeviceIDSettingSwitch
+
+    Used as part of the settings system. Not usually used directly by the
+    user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DeviceIDSettingSwitchSource"

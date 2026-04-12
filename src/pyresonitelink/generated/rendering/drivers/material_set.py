@@ -13,9 +13,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MaterialSet(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MaterialSet.
+    """Material set allows for switching the list of materials being used on a mesh dynamically at any given moment. It also allows for lengthening or shortening the list in real time, which can be used to material stack (things to avoid).
 
     Category: Rendering/Drivers
+
+    Attach this component to the same slot as a Mesh Renderer or a Skinned
+    Mesh Renderer and hit the ``Setup From Mesh Renderer()`` sync delegate
+    to attach it to the material list. Next add a list
+    (SyncAssetList`1&lt;Material&gt;) of each material list to ``Sets`` you
+    want to switch between. Lastly use ``ActiveSetIndex`` to switch between
+    each list in ``Sets`` for ``Target``.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MaterialSet"
@@ -36,7 +43,7 @@ class MaterialSet(GeneratedComponent, ICustomInspector, IComponent, IWorldEventR
 
     @property
     def active_set_index(self) -> primitives.Int | None:
-        """The ActiveSetIndex field value."""
+        """The index into the Sets list of the materials to apply to the target renderer."""
         member = self.get_member("ActiveSetIndex")
         if member is None:
             return None
@@ -55,7 +62,7 @@ class MaterialSet(GeneratedComponent, ICustomInspector, IComponent, IWorldEventR
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncAssetList[Material])."""
+        """The list of materials in a renderer to swap out."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -76,7 +83,7 @@ class MaterialSet(GeneratedComponent, ICustomInspector, IComponent, IWorldEventR
 
     @property
     def sets(self) -> members.SyncList | None:
-        """The Sets member."""
+        """The list of lists of materials in a renderer to swap out."""
         member = self.get_member("Sets")
         if isinstance(member, members.SyncList):
             return member
@@ -84,6 +91,6 @@ class MaterialSet(GeneratedComponent, ICustomInspector, IComponent, IWorldEventR
 
     @sets.setter
     def sets(self, value: members.SyncList) -> None:
-        """Set the Sets member."""
+        """Set Sets. The list of lists of materials in a renderer to swap out."""
         self.set_member("Sets", value)
 

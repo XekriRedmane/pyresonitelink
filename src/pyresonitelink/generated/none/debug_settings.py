@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class DebugSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugSettings.
+    """The DebugSettings component is a component updated during Resonite updates to contain bleeding edge settings for the game.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugSettings"
@@ -27,7 +27,7 @@ class DebugSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def debug_input_bindings(self) -> primitives.Bool | None:
-        """The DebugInputBindings field value."""
+        """Whether to display the user's controller inputs on their hands in userspace."""
         member = self.get_member("DebugInputBindings")
         if member is None:
             return None

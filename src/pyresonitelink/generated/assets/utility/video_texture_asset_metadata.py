@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VideoTextureAssetMetadata.
+    """The VideoTextureAssetMetadata component turns the data at the bottom of an inspector on a video asset Type component into usable values which can be used elsewhere.
 
     Category: Assets/Utility
+
+    Attach to a slot and provide a ``Texture`` to get information on in
+    order for it to work.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VideoTextureAssetMetadata"
@@ -50,7 +53,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[VideoTexture])."""
+        """The video texture to get information on."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -71,7 +74,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def size(self) -> primitives.Int2 | None:
-        """The Size field value."""
+        """The size of the ``Texture`` in pixels."""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -90,7 +93,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def width(self) -> primitives.Int | None:
-        """The Width field value."""
+        """The width of ``Texture`` in pixels."""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -109,7 +112,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def height(self) -> primitives.Int | None:
-        """The Height field value."""
+        """The height of ``Texture`` in pixels."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -128,7 +131,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def has_alpha(self) -> primitives.Bool | None:
-        """The HasAlpha field value."""
+        """Whether ``Texture`` is transparent."""
         member = self.get_member("HasAlpha")
         if member is None:
             return None
@@ -147,7 +150,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def length(self) -> primitives.Double | None:
-        """The Length field value."""
+        """The duration of ``Texture``."""
         member = self.get_member("Length")
         if member is None:
             return None
@@ -166,7 +169,7 @@ class VideoTextureAssetMetadata(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def playback_engine(self) -> primitives.String | None:
-        """The PlaybackEngine field value."""
+        """The playback engine ``Texture`` is using."""
         member = self.get_member("PlaybackEngine")
         if member is None:
             return None

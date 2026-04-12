@@ -10,7 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BoxMeshGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BoxMeshGizmo.
+    """The BoxMeshGizmo component is used to resize BoxMeshs in a visual manner using the DevTip.
+
+    Used to adjust the size of a box mesh. This can be accessed via the
+    gizmo menu using a dev tip in your context menu. The button to activate
+    it is the box mesh option.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxMeshGizmo"
@@ -31,7 +35,7 @@ class BoxMeshGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets BoxMesh)."""
+        """The box Mesh this component is targeting for editing."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +56,7 @@ class BoxMeshGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def cube_gizmo(self) -> str | None:
-        """Target ID of the _cubeGizmo reference (targets BoxGizmo)."""
+        """The visual for this component which is used to edit ``_target`` in a visual manner."""
         member = self.get_member("_cubeGizmo")
         if isinstance(member, members.Reference):
             return member.targetId

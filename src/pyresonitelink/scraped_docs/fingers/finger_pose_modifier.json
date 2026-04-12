@@ -1,0 +1,13 @@
+{
+  "description": "The FingerPoseModifier component takes a ``Source`` and makes a copy of the finger pose data from it. It then modifies the copied data before making it the finger pose data of this component. This component in itself is a IFingerPoseSourceComponent.\n\nFor more information on finger pose sources, please see Finger Posing System.",
+  "category": "Users:Common Avatar System:Fingers",
+  "fields": {
+    "Source": "The component to take finger pose data from and make a copy to modify and make this component's finger pose data.",
+    "LeftOffsets": "How to modify the left finger pose data before making it this component's finger pose data.",
+    "RightOffsets": "How to modify the right finger pose data before making it this component's finger pose data."
+  },
+  "methods": {},
+  "usage": "Provide the component with data from another IFingerPoseSourceComponent to add extra offsets onto. This component can be used as a IFingerPoseSourceComponent for other components.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FingerPoseModifier&action=raw"
+}

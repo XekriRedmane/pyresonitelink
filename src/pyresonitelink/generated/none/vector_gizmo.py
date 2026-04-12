@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VectorGizmo.
+    """The VectorGizmo component is used to allow editing a gizmo via the Dev tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VectorGizmo"
@@ -86,7 +86,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def target_slot(self) -> str | None:
-        """Target ID of the TargetSlot reference (targets Slot)."""
+        """The slot to influence or a component this is on."""
         member = self.get_member("TargetSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +107,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def auto_position_at_target_slot(self) -> primitives.Bool | None:
-        """The AutoPositionAtTargetSlot field value."""
+        """Whether to position the gizmo at ``TargetSlot``."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
             return None
@@ -126,7 +126,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def interacting_component(self) -> str | None:
-        """Target ID of the _interactingComponent reference (targets Component)."""
+        """The component like a Dev tool that is interacting with this gizmo."""
         member = self.get_member("_interactingComponent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -147,7 +147,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets OverlayFresnelMaterial)."""
+        """The material being used for the gizmo visual."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -168,7 +168,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def tool_point(self) -> str | None:
-        """Target ID of the _toolPoint reference (targets Slot)."""
+        """The slot to position at the interacting tool's tip slot."""
         member = self.get_member("_toolPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -189,7 +189,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def active_point(self) -> str | None:
-        """Target ID of the _activePoint reference (targets Slot)."""
+        """The slot to position at the active point."""
         member = self.get_member("_activePoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -210,7 +210,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def line_root(self) -> str | None:
-        """Target ID of the _lineRoot reference (targets Slot)."""
+        """The slot that stores the line segment for tip based movement rather than projected mode."""
         member = self.get_member("_lineRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -231,7 +231,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def line_segment(self) -> str | None:
-        """Target ID of the _lineSegment reference (targets SegmentMesh)."""
+        """The mesh being used for the line visual to the interacting tool tip."""
         member = self.get_member("_lineSegment")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -252,7 +252,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def snap_highlight(self) -> str | None:
-        """Target ID of the _snapHighlight reference (targets Slot)."""
+        """The slot storing the gizmo snap highlight visual."""
         member = self.get_member("_snapHighlight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -273,7 +273,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def vector_space(self) -> members.SyncObject | None:
-        """The VectorSpace member."""
+        """The space to do edits to the vector in."""
         member = self.get_member("VectorSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -281,12 +281,12 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @vector_space.setter
     def vector_space(self, value: members.SyncObject) -> None:
-        """Set the VectorSpace member."""
+        """Set VectorSpace. The space to do edits to the vector in."""
         self.set_member("VectorSpace", value)
 
     @property
     def target_vector(self) -> str | None:
-        """Target ID of the TargetVector reference (targets IField[primitives.Float3])."""
+        """The target vector field to modify."""
         member = self.get_member("TargetVector")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -307,7 +307,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def target_rotation(self) -> str | None:
-        """Target ID of the TargetRotation reference (targets IField[primitives.FloatQ])."""
+        """The target vector rotation to modify."""
         member = self.get_member("TargetRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -328,7 +328,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def fix_magnitude(self) -> primitives.Bool | None:
-        """The FixMagnitude field value."""
+        """whether to fix a magnitude during/after editing."""
         member = self.get_member("FixMagnitude")
         if member is None:
             return None
@@ -347,7 +347,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def fixed_magnitude(self) -> primitives.Float | None:
-        """The FixedMagnitude field value."""
+        """The value to fix the vector magnitude to if ``FixMagnitude`` is enabled."""
         member = self.get_member("FixedMagnitude")
         if member is None:
             return None
@@ -366,7 +366,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def visual_magnitude_scale(self) -> primitives.Float | None:
-        """The VisualMagnitudeScale field value."""
+        """The magnitude scalar of the vector visual."""
         member = self.get_member("VisualMagnitudeScale")
         if member is None:
             return None
@@ -385,7 +385,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def visual_thickness(self) -> primitives.Float | None:
-        """The VisualThickness field value."""
+        """The thickness of the visual for the vector."""
         member = self.get_member("VisualThickness")
         if member is None:
             return None
@@ -404,7 +404,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def collider_rotation(self) -> str | None:
-        """Target ID of the _colliderRotation reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of the visual collider."""
         member = self.get_member("_colliderRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -425,7 +425,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def collider(self) -> str | None:
-        """Target ID of the _collider reference (targets CylinderCollider)."""
+        """The collider used for the vector."""
         member = self.get_member("_collider")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -446,7 +446,7 @@ class VectorGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the _mesh reference (targets ArrowMesh)."""
+        """The arrow mesh being used to show the vector visual."""
         member = self.get_member("_mesh")
         if isinstance(member, members.Reference):
             return member.targetId

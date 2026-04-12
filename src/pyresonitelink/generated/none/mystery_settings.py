@@ -4,21 +4,26 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.resonite_difficulty import ResoniteDifficulty
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class MysterySettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.MysterySettings.
+    """The Mystery Settings component is a component that is enabled on April 1st, which contains multiple settings that add joke behaviour to Resonite. The component was added in the April Fools update 2025.4.1.438.
+
+    Part of the Settings UI. It shows up during April Fools under the 'Misc'
+    category. MysterySettingsDash.png
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MysterySettings"
 
-    def __init__(self, loooong: primitives.Bool | None = None, the_truth: primitives.Bool | None = None, mirror_mirrors: primitives.Bool | None = None, phantom_sense: primitives.Bool | None = None, expressiveness: primitives.Float | None = None, ghosts: primitives.Bool | None = None, more_fps: primitives.Bool | None = None, precious_toggle: primitives.Bool | None = None, toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, precious_toggle_start: str | None = None, precious_toggle_duration: str | None = None, mysterious_message: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, difficulty: ResoniteDifficulty | str | None = None, loooong: primitives.Bool | None = None, the_truth: primitives.Bool | None = None, mirror_mirrors: primitives.Bool | None = None, phantom_sense: primitives.Bool | None = None, expressiveness: primitives.Float | None = None, ghosts: primitives.Bool | None = None, more_fps: primitives.Bool | None = None, precious_toggle: primitives.Bool | None = None, toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, precious_toggle_start: str | None = None, precious_toggle_duration: str | None = None, mysterious_message: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            difficulty: Initial value for Difficulty.
             loooong: Initial value for Loooong.
             the_truth: Initial value for TheTruth.
             mirror_mirrors: Initial value for MirrorMirrors.
@@ -40,6 +45,8 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if difficulty is not None:
+            self.difficulty = difficulty
         if loooong is not None:
             self.loooong = loooong
         if the_truth is not None:
@@ -78,17 +85,24 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             self.mysterious_message = mysterious_message
 
     @property
-    def difficulty(self) -> members.FieldEnum | None:
-        """The Difficulty member."""
+    def difficulty(self) -> ResoniteDifficulty | None:
+        """This controls Resonite gameplay difficulty. If you want more challenge when playing Resonite, you can turn on the Hard difficulty."""
         member = self.get_member("Difficulty")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ResoniteDifficulty(member.value)
         return None
 
     @difficulty.setter
-    def difficulty(self, value: members.FieldEnum) -> None:
-        """Set the Difficulty member."""
-        self.set_member("Difficulty", value)
+    def difficulty(self, value: ResoniteDifficulty | str) -> None:
+        """Set Difficulty. This controls Resonite gameplay difficulty. If you want more challenge when playing Resonite, you can turn on the Hard difficulty."""
+        member = self.get_member("Difficulty")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Difficulty",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def loooong(self) -> primitives.Bool | None:
@@ -130,7 +144,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def mirror_mirrors(self) -> primitives.Bool | None:
-        """The MirrorMirrors field value."""
+        """When enabled, mirrors are mirrored, so when mirrors mirror the mirroring cancels out and mirrors just become rorrs."""
         member = self.get_member("MirrorMirrors")
         if member is None:
             return None
@@ -301,7 +315,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def toggle_toggle_toggle_toggle_toggle(self) -> primitives.Bool | None:
-        """The ToggleToggleToggleToggleToggle field value."""
+        """Toggled Toggle for Toggle: The toggles keep on toggling toggles ToggleToggleToggleToggleToggleToggle Bool 'Toggle Toggle Toggle Toggle Toggle': When toggles of toggles of toggles are toggled you'll be able to toggle this toggle so you can toggle more toggles. ToggleToggleToggleToggleToggleToggleToggle Bool Penultimate Toggle:"""
         member = self.get_member("ToggleToggleToggleToggleToggle")
         if member is None:
             return None
@@ -396,7 +410,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def precious_toggle_duration(self) -> str | None:
-        """The PreciousToggleDuration field value."""
+        """How long the previous precious little toggle was held."""
         member = self.get_member("PreciousToggleDuration")
         if member is None:
             return None
@@ -415,7 +429,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
 
     @property
     def mysterious_message(self) -> primitives.String | None:
-        """The MysteriousMessage field value."""
+        """Message for posterity: Something will appear here at some point."""
         member = self.get_member("MysteriousMessage")
         if member is None:
             return None

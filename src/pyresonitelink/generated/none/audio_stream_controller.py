@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioStreamController(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioStreamController.
+    """The AudioStreamController component is an old legacy component.
+
+    Legacy.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioStreamController"
@@ -37,7 +39,7 @@ class AudioStreamController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def stream(self) -> str | None:
-        """Target ID of the Stream reference (targets IAudioStream)."""
+        """The audio stream this is controlling."""
         member = self.get_member("Stream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +60,7 @@ class AudioStreamController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def audio_output(self) -> str | None:
-        """Target ID of the AudioOutput reference (targets AudioOutput)."""
+        """The audio output being used to play the stream."""
         member = self.get_member("AudioOutput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +81,7 @@ class AudioStreamController(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def is_playing_for_owner(self) -> primitives.Bool | None:
-        """The IsPlayingForOwner field value."""
+        """Whether the audio stream is playing for the user who spawned it."""
         member = self.get_member("IsPlayingForOwner")
         if member is None:
             return None
@@ -97,7 +99,7 @@ class AudioStreamController(GeneratedComponent, IComponent, IWorldEventReceiver)
             )
 
     async def on_toggle_broadcast(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the OnToggleBroadcast sync method.
+        """Used to change the audio to broadcast.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -113,7 +115,7 @@ class AudioStreamController(GeneratedComponent, IComponent, IWorldEventReceiver)
         )
 
     async def on_toggle_play_for_owner(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the OnTogglePlayForOwner sync method.
+        """Used to make the audio play for the stream owner.
 
         Args:
             resolink: Connected ResoniteLink client.

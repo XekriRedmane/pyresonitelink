@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DuplicateSlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Duplicate Slot node makes a copy of a slot and exposes the duplicated slot with the output called Duplicate which can be used for any nodes that accept the slot type.
+    """The Duplicate Slot node makes a copy of a slot and exposes the duplicated slot with the output called ``Duplicate`` which can be used for any nodes that accept the slot type.
+
+This node can take an overriding parent as an input for the duplicated slot. This acts similarly to the Set Parent node (with ``PreserveGlobalPosition`` enabled, which is default on that node) without needing the extra node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots
     """
@@ -41,7 +43,7 @@ class DuplicateSlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Will fire after Instance (Slot) has been duplicated due to * (Call) being impulsed."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +64,7 @@ class DuplicateSlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def template(self) -> str | None:
-        """Target ID of the Template reference (targets INodeObjectOutput[Slot])."""
+        """The slot to make a duplicate of."""
         member = self.get_member("Template")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -83,7 +85,7 @@ class DuplicateSlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def override_parent(self) -> str | None:
-        """Target ID of the OverrideParent reference (targets INodeObjectOutput[Slot])."""
+        """The slot to place the duplicated slot under."""
         member = self.get_member("OverrideParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -104,7 +106,7 @@ class DuplicateSlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def duplicate(self) -> members.EmptyElement | None:
-        """The Duplicate member."""
+        """The duplicate of Instance (Slot). Will only exist during the Next (Continuation) Impulse context."""
         member = self.get_member("Duplicate")
         if isinstance(member, members.EmptyElement):
             return member
@@ -112,6 +114,6 @@ class DuplicateSlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @duplicate.setter
     def duplicate(self, value: members.EmptyElement) -> None:
-        """Set the Duplicate member."""
+        """Set Duplicate. The duplicate of Instance (Slot). Will only exist during the Next (Continuation) Impulse context."""
         self.set_member("Duplicate", value)
 

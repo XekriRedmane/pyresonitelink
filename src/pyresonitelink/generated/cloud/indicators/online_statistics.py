@@ -10,9 +10,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.OnlineStatistics.
+    """The OnlineStatistics component shows information about current session numbers and the number of users in them.
 
     Category: Cloud/Indicators
+
+    Can be used to get session statistic data or make a hermit counter.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OnlineStatistics"
@@ -96,7 +98,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def timestamp(self) -> str | None:
-        """The Timestamp field value."""
+        """The last time the component got the online statistics successfully."""
         member = self.get_member("Timestamp")
         if member is None:
             return None
@@ -115,7 +117,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def visible_sessions(self) -> members.SyncObject | None:
-        """The VisibleSessions member."""
+        """Statistics of visible sessions."""
         member = self.get_member("VisibleSessions")
         if isinstance(member, members.SyncObject):
             return member
@@ -123,12 +125,12 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @visible_sessions.setter
     def visible_sessions(self, value: members.SyncObject) -> None:
-        """Set the VisibleSessions member."""
+        """Set VisibleSessions. Statistics of visible sessions."""
         self.set_member("VisibleSessions", value)
 
     @property
     def hidden_sessions(self) -> members.SyncObject | None:
-        """The HiddenSessions member."""
+        """Statistics of hidden sessions."""
         member = self.get_member("HiddenSessions")
         if isinstance(member, members.SyncObject):
             return member
@@ -136,12 +138,12 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @hidden_sessions.setter
     def hidden_sessions(self, value: members.SyncObject) -> None:
-        """Set the HiddenSessions member."""
+        """Set HiddenSessions. Statistics of hidden sessions."""
         self.set_member("HiddenSessions", value)
 
     @property
     def active_visible_sessions(self) -> members.SyncObject | None:
-        """The ActiveVisibleSessions member."""
+        """Statistics of visible sessions with users active in them."""
         member = self.get_member("ActiveVisibleSessions")
         if isinstance(member, members.SyncObject):
             return member
@@ -149,12 +151,12 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @active_visible_sessions.setter
     def active_visible_sessions(self, value: members.SyncObject) -> None:
-        """Set the ActiveVisibleSessions member."""
+        """Set ActiveVisibleSessions. Statistics of visible sessions with users active in them."""
         self.set_member("ActiveVisibleSessions", value)
 
     @property
     def active_hidden_sessions(self) -> members.SyncObject | None:
-        """The ActiveHiddenSessions member."""
+        """Statistics of hidden sessions with users active in them."""
         member = self.get_member("ActiveHiddenSessions")
         if isinstance(member, members.SyncObject):
             return member
@@ -162,12 +164,12 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @active_hidden_sessions.setter
     def active_hidden_sessions(self, value: members.SyncObject) -> None:
-        """Set the ActiveHiddenSessions member."""
+        """Set ActiveHiddenSessions. Statistics of hidden sessions with users active in them."""
         self.set_member("ActiveHiddenSessions", value)
 
     @property
     def registered_online_users(self) -> primitives.Int | None:
-        """The RegisteredOnlineUsers field value."""
+        """How many users with a Resonite account are online"""
         member = self.get_member("RegisteredOnlineUsers")
         if member is None:
             return None
@@ -186,7 +188,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def total_online_users(self) -> primitives.Int | None:
-        """The TotalOnlineUsers field value."""
+        """How many users are online in total"""
         member = self.get_member("TotalOnlineUsers")
         if member is None:
             return None
@@ -205,7 +207,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def present_users(self) -> primitives.Int | None:
-        """The PresentUsers field value."""
+        """How many users are at their keyboard or in headset."""
         member = self.get_member("PresentUsers")
         if member is None:
             return None
@@ -224,7 +226,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def away_users(self) -> primitives.Int | None:
-        """The AwayUsers field value."""
+        """How many users have their status set to away?"""
         member = self.get_member("AwayUsers")
         if member is None:
             return None
@@ -243,7 +245,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_vr(self) -> primitives.Int | None:
-        """The UsersInVR field value."""
+        """How many users are in VR?"""
         member = self.get_member("UsersInVR")
         if member is None:
             return None
@@ -262,7 +264,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_screen(self) -> primitives.Int | None:
-        """The UsersInScreen field value."""
+        """How many users are in screen mode?"""
         member = self.get_member("UsersInScreen")
         if member is None:
             return None
@@ -281,7 +283,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_on_desktop(self) -> primitives.Int | None:
-        """The UsersOnDesktop field value."""
+        """How many users are on desktop?"""
         member = self.get_member("UsersOnDesktop")
         if member is None:
             return None
@@ -300,7 +302,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_on_mobile(self) -> primitives.Int | None:
-        """The UsersOnMobile field value."""
+        """How many users are using the mobile binary of the game?"""
         member = self.get_member("UsersOnMobile")
         if member is None:
             return None
@@ -319,7 +321,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_visible_public_sessions(self) -> primitives.Int | None:
-        """The UsersInVisiblePublicSessions field value."""
+        """How many users are in visible sessions?"""
         member = self.get_member("UsersInVisiblePublicSessions")
         if member is None:
             return None
@@ -338,7 +340,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_visible_semi_accessible_sessions(self) -> primitives.Int | None:
-        """The UsersInVisibleSemiAccessibleSessions field value."""
+        """How many users are in semi accessible sessions like contacts or contacts plus?"""
         member = self.get_member("UsersInVisibleSemiAccessibleSessions")
         if member is None:
             return None
@@ -357,7 +359,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_hidden_sessions(self) -> primitives.Int | None:
-        """The UsersInHiddenSessions field value."""
+        """How many users are in hidden sessions"""
         member = self.get_member("UsersInHiddenSessions")
         if member is None:
             return None
@@ -376,7 +378,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_private_sessions(self) -> primitives.Int | None:
-        """The UsersInPrivateSessions field value."""
+        """How many users are in private sessions?"""
         member = self.get_member("UsersInPrivateSessions")
         if member is None:
             return None
@@ -395,7 +397,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_private(self) -> primitives.Int | None:
-        """The UsersInPrivate field value."""
+        """How many users are in private?"""
         member = self.get_member("UsersInPrivate")
         if member is None:
             return None
@@ -414,7 +416,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_lan(self) -> primitives.Int | None:
-        """The UsersInLAN field value."""
+        """How many users are in Local Access Network sessions?"""
         member = self.get_member("UsersInLAN")
         if member is None:
             return None
@@ -433,7 +435,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_contacts(self) -> primitives.Int | None:
-        """The UsersInContacts field value."""
+        """How many users are in contacts sessions?"""
         member = self.get_member("UsersInContacts")
         if member is None:
             return None
@@ -452,7 +454,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_contacts_plus(self) -> primitives.Int | None:
-        """The UsersInContactsPlus field value."""
+        """How many users are in contacts plus sessions?"""
         member = self.get_member("UsersInContactsPlus")
         if member is None:
             return None
@@ -471,7 +473,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_registered(self) -> primitives.Int | None:
-        """The UsersInRegistered field value."""
+        """How many users are in sessions that require a logged in user? (Not nessarily resonite account because SAML)"""
         member = self.get_member("UsersInRegistered")
         if member is None:
             return None
@@ -490,7 +492,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def users_in_public(self) -> primitives.Int | None:
-        """The UsersInPublic field value."""
+        """How many users are currently online in public sessions"""
         member = self.get_member("UsersInPublic")
         if member is None:
             return None
@@ -509,7 +511,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def graphical_client_users(self) -> primitives.Int | None:
-        """The GraphicalClientUsers field value."""
+        """How many users are not headlesses"""
         member = self.get_member("GraphicalClientUsers")
         if member is None:
             return None
@@ -528,7 +530,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def chat_client_users(self) -> primitives.Int | None:
-        """The ChatClientUsers field value."""
+        """How many users are using chat clients? (Like recon)"""
         member = self.get_member("ChatClientUsers")
         if member is None:
             return None
@@ -547,7 +549,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def headless_users(self) -> primitives.Int | None:
-        """The HeadlessUsers field value."""
+        """How many of the online users are Headless Accounts"""
         member = self.get_member("HeadlessUsers")
         if member is None:
             return None
@@ -566,7 +568,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bot_users(self) -> primitives.Int | None:
-        """The BotUsers field value."""
+        """How many users are bot accounts (occasionally 1 when the resonite bot is online)"""
         member = self.get_member("BotUsers")
         if member is None:
             return None

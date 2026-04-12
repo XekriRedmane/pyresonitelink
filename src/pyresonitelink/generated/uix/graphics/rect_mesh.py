@@ -8,9 +8,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RectMesh(GenericComponent[T], IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.RectMesh<>.
+    """The RectMesh component takes in a value (either a dynamic value from an IAudioSource, or a min and max float value) and parameters for the generated rect mesh, then renders it onto the UIX.
+
+}}
 
     Category: UIX/Graphics
+
+    This can be used to make fancy audio visuals from a user's Audio Stream
+    Controller.
 
     Parameterize with a value type::
 
@@ -23,7 +28,7 @@ class RectMesh(GenericComponent[T], IUIComputeComponent, IWorldEventReceiver):
 
     @property
     def mesh(self) -> members.SyncObject | None:
-        """The Mesh member."""
+        """The mesh parameters used to render this rect mesh."""
         member = self.get_member("Mesh")
         if isinstance(member, members.SyncObject):
             return member
@@ -31,12 +36,12 @@ class RectMesh(GenericComponent[T], IUIComputeComponent, IWorldEventReceiver):
 
     @mesh.setter
     def mesh(self, value: members.SyncObject) -> None:
-        """Set the Mesh member."""
+        """Set Mesh. The mesh parameters used to render this rect mesh."""
         self.set_member("Mesh", value)
 
     @property
     def materials(self) -> members.SyncList | None:
-        """The Materials member."""
+        """The material to render for this rect mesh."""
         member = self.get_member("Materials")
         if isinstance(member, members.SyncList):
             return member
@@ -44,6 +49,6 @@ class RectMesh(GenericComponent[T], IUIComputeComponent, IWorldEventReceiver):
 
     @materials.setter
     def materials(self, value: members.SyncList) -> None:
-        """Set the Materials member."""
+        """Set Materials. The material to render for this rect mesh."""
         self.set_member("Materials", value)
 

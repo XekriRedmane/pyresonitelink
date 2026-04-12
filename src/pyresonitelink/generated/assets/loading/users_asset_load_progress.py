@@ -14,9 +14,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UsersAssetLoadProgress<>.
+    """The UsersAssetLoadProgress component is commonly used with ProtoFlux to tell if a particular User has loaded an asset. The node in particular is the Asset Load Progress ProtoFlux node. This component takes any IAsset as the generic argument for the component.
 
     Category: Assets/Loading
+
+    Attach to a slot and provide an asset to ``Asset`` for this component to
+    start working.
 
     Parameterize with a value type::
 
@@ -58,7 +61,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def asset(self) -> str | None:
-        """Target ID of the Asset reference (targets IAssetProvider[A])."""
+        """The Asset to monitor loading progress for."""
         member = self.get_member("Asset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +82,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def progress_info(self) -> members.SyncList | None:
-        """The ProgressInfo member."""
+        """A list of users in the session and their status on loading the specified ``Asset``."""
         member = self.get_member("ProgressInfo")
         if isinstance(member, members.SyncList):
             return member
@@ -87,12 +90,12 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
 
     @progress_info.setter
     def progress_info(self, value: members.SyncList) -> None:
-        """Set the ProgressInfo member."""
+        """Set ProgressInfo. A list of users in the session and their status on loading the specified ``Asset``."""
         self.set_member("ProgressInfo", value)
 
     @property
     def total_users(self) -> primitives.Int | None:
-        """The TotalUsers field value."""
+        """The total users in the session that see ``Asset`` exists?"""
         member = self.get_member("TotalUsers")
         if member is None:
             return None
@@ -111,7 +114,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def users_not_loaded(self) -> primitives.Int | None:
-        """The UsersNotLoaded field value."""
+        """How many users haven't fully loaded ``Asset``?"""
         member = self.get_member("UsersNotLoaded")
         if member is None:
             return None
@@ -130,7 +133,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def users_loading(self) -> primitives.Int | None:
-        """The UsersLoading field value."""
+        """How many users are trying to load ``Asset`` currently?"""
         member = self.get_member("UsersLoading")
         if member is None:
             return None
@@ -149,7 +152,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def users_partially_loaded(self) -> primitives.Int | None:
-        """The UsersPartiallyLoaded field value."""
+        """How many users are currently in the process of downloading ``Asset``?"""
         member = self.get_member("UsersPartiallyLoaded")
         if member is None:
             return None
@@ -168,7 +171,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def users_fully_loaded(self) -> primitives.Int | None:
-        """The UsersFullyLoaded field value."""
+        """How many users have finished loading ``Asset``?"""
         member = self.get_member("UsersFullyLoaded")
         if member is None:
             return None
@@ -187,7 +190,7 @@ class UsersAssetLoadProgress(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def users_failed_to_load(self) -> primitives.Int | None:
-        """The UsersFailedToLoad field value."""
+        """How many users failed to load ``Asset`` due to an error?"""
         member = self.get_member("UsersFailedToLoad")
         if member is None:
             return None

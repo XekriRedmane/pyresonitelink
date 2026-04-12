@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Raw Data Tool Events node takes in a referenced raw data tool, and depending on the actions or inputs from the user, this node will fire specific events. This can let the user make a custom tool to run any custom flux when connected from this node.
+    """The ``Raw Data Tool Events`` node takes in a referenced raw data tool, and depending on the actions or inputs from the user, this node will fire specific events. This can let the user make a custom tool to run any custom flux when connected from this node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Tools
     """
@@ -82,7 +82,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def equipped(self) -> str | None:
-        """Target ID of the Equipped reference (targets ISyncNodeOperation)."""
+        """Fires when the tool is equipped."""
         member = self.get_member("Equipped")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -103,7 +103,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def dequipped(self) -> str | None:
-        """Target ID of the Dequipped reference (targets ISyncNodeOperation)."""
+        """Fires when the tool is dequipped."""
         member = self.get_member("Dequipped")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -124,7 +124,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def tool_update(self) -> str | None:
-        """Target ID of the ToolUpdate reference (targets ISyncNodeOperation)."""
+        """Fires every frame when this tool is equipped on the user."""
         member = self.get_member("ToolUpdate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -145,7 +145,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def primary_pressed(self) -> str | None:
-        """Target ID of the PrimaryPressed reference (targets ISyncNodeOperation)."""
+        """Fires when primary is pressed by the user while this tool is equipped."""
         member = self.get_member("PrimaryPressed")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -166,7 +166,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def primary_held(self) -> str | None:
-        """Target ID of the PrimaryHeld reference (targets ISyncNodeOperation)."""
+        """Fires when primary is held by the user while this tool is equipped."""
         member = self.get_member("PrimaryHeld")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -187,7 +187,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def primary_released(self) -> str | None:
-        """Target ID of the PrimaryReleased reference (targets ISyncNodeOperation)."""
+        """Fires when primary is released by the user while this tool is equipped."""
         member = self.get_member("PrimaryReleased")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -208,7 +208,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def secondary_pressed(self) -> str | None:
-        """Target ID of the SecondaryPressed reference (targets ISyncNodeOperation)."""
+        """Fires when secondary is pressed by the user while this tool is equipped."""
         member = self.get_member("SecondaryPressed")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -229,7 +229,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def secondary_held(self) -> str | None:
-        """Target ID of the SecondaryHeld reference (targets ISyncNodeOperation)."""
+        """Fires when secondary is held by the user while this tool is equipped."""
         member = self.get_member("SecondaryHeld")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -250,7 +250,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
 
     @property
     def secondary_released(self) -> str | None:
-        """Target ID of the SecondaryReleased reference (targets ISyncNodeOperation)."""
+        """Fires when secondary is released by the user while this tool is equipped."""
         member = self.get_member("SecondaryReleased")
         if isinstance(member, members.Reference):
             return member.targetId

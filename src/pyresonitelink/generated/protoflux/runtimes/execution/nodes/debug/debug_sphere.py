@@ -18,6 +18,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class DebugSphere(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Debug Sphere is a ProtoFlux node that when called will make a sphere visual at the global Point (float3) with a radius provided and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.
 
+See also: Coordinate spaces
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Debug
     """
 
@@ -48,7 +50,7 @@ class DebugSphere(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after * (Call) is impulsed and the visual was created successfully."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId

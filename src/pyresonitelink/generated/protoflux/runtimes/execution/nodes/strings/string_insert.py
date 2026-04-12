@@ -40,7 +40,7 @@ class StringInsert(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to be inserted into."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +61,7 @@ class StringInsert(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to insert into Str (String)."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +82,7 @@ class StringInsert(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def start_index(self) -> str | None:
-        """Target ID of the StartIndex reference (targets INodeValueOutput[primitives.Int])."""
+        """The place to insert Value (String) into Str (String)."""
         member = self.get_member("StartIndex")
         if isinstance(member, members.Reference):
             return member.targetId

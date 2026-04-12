@@ -33,7 +33,7 @@ class OtherSide(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[BodyNode])."""
+        """The node to flip to the opposite side."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId

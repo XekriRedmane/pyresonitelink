@@ -1,6 +1,7 @@
 """Generated component: MeshParticleRenderer."""
 
 from pyresonitelink.data import members
+from pyresonitelink.generated._enums.mesh_alignment import MeshAlignment
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -11,19 +12,25 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MeshParticleRenderer(GeneratedComponent, IParticleRenderer, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.MeshParticleRenderer.
+    """The MeshParticleRenderer component is a particle renderer that makes all particle instances in a particle system render as a specific mesh.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Renderers
+
+    Attach to a slot, add to the renderer slot in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.MeshParticleRenderer"
 
-    def __init__(self, material: str | IAssetProvider[Material] | None = None, mesh: str | IAssetProvider[Mesh] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, material: str | IAssetProvider[Material] | None = None, mesh: str | IAssetProvider[Mesh] | None = None, alignment: MeshAlignment | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             material: Initial value for Material.
             mesh: Initial value for Mesh.
+            alignment: Initial value for Alignment.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -31,10 +38,12 @@ class MeshParticleRenderer(GeneratedComponent, IParticleRenderer, IWorldEventRec
             self.material = material
         if mesh is not None:
             self.mesh = mesh
+        if alignment is not None:
+            self.alignment = alignment
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material the particles should have."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +64,7 @@ class MeshParticleRenderer(GeneratedComponent, IParticleRenderer, IWorldEventRec
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the Mesh reference (targets IAssetProvider[Mesh])."""
+        """The mesh object to GPU instance to all particle points and render."""
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -75,15 +84,22 @@ class MeshParticleRenderer(GeneratedComponent, IParticleRenderer, IWorldEventRec
             )
 
     @property
-    def alignment(self) -> members.FieldEnum | None:
-        """The Alignment member."""
+    def alignment(self) -> MeshAlignment | None:
+        """How to align the meshes with the particle transforms."""
         member = self.get_member("Alignment")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MeshAlignment(member.value)
         return None
 
     @alignment.setter
-    def alignment(self, value: members.FieldEnum) -> None:
-        """Set the Alignment member."""
-        self.set_member("Alignment", value)
+    def alignment(self, value: MeshAlignment | str) -> None:
+        """Set Alignment. How to align the meshes with the particle transforms."""
+        member = self.get_member("Alignment")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Alignment",
+                members.FieldEnum(value=str(value)),
+            )
 

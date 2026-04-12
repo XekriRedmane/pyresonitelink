@@ -14,9 +14,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DefaultUserScale(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Default User Scale node takes in a User or Slot that allows you to read a user's default Avatar scale.
+    """This component sets the default scale of the avatar it is attached to, which also affects the scale of the user wearing said avatar.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars
+
+    **Behavior**: The default scale determines what scale the avatar spawns at, as well as what scale it returns to when using the Reset Scale option in the context menu.
     """
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Avatar.DefaultUserScale"

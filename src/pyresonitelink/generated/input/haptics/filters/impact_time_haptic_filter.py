@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ImpactTimeHapticFilter.
+    """The ImpactTimeHapticFilter component is a haptics filter mainly for HapticVolumes change their intensity based on how long the user's hand has been inside of the affecting area.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics/Filters
+
+    Attach to a slot with a valid and working HapticVolume to add to the
+    list of multiplicative haptic filters.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ImpactTimeHapticFilter"
@@ -44,7 +49,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def use_global_time(self) -> primitives.Bool | None:
-        """The UseGlobalTime field value."""
+        """Whether to use global time or local time."""
         member = self.get_member("UseGlobalTime")
         if member is None:
             return None
@@ -63,7 +68,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def start_time(self) -> primitives.Float | None:
-        """The StartTime field value."""
+        """When the user's hand has been here for this amount of time, use ``StartIntensity``."""
         member = self.get_member("StartTime")
         if member is None:
             return None
@@ -82,7 +87,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def end_time(self) -> primitives.Float | None:
-        """The EndTime field value."""
+        """When the user's hand has been here for this amount of time, use ``EndIntensity``."""
         member = self.get_member("EndTime")
         if member is None:
             return None
@@ -101,7 +106,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def start_intensity(self) -> primitives.Float | None:
-        """The StartIntensity field value."""
+        """The intensity to use at the start of the time frame."""
         member = self.get_member("StartIntensity")
         if member is None:
             return None
@@ -120,7 +125,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def end_intensity(self) -> primitives.Float | None:
-        """The EndIntensity field value."""
+        """The intensity to use at the end of the time frame."""
         member = self.get_member("EndIntensity")
         if member is None:
             return None
@@ -139,7 +144,7 @@ class ImpactTimeHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def power(self) -> primitives.Float | None:
-        """The Power field value."""
+        """How much to amplify the overall intensity effect of this component."""
         member = self.get_member("Power")
         if member is None:
             return None

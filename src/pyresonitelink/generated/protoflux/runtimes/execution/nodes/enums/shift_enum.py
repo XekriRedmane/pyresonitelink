@@ -18,6 +18,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ShiftEnum(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """See Enums for a more in depth explaination on what Enums are.
 
+Shift Enum is a ProtoFlux node that when provided an Enum will give an enum with the provided Delta (Int) offset from said enum numerically according to the Enums page. "*" and "Value" will never be different enum types.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Enums
 
     Parameterize with a value type::
@@ -45,7 +47,7 @@ class ShiftEnum(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INo
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[E])."""
+        """The Enum to start at."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +68,7 @@ class ShiftEnum(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INo
 
     @property
     def delta(self) -> str | None:
-        """Target ID of the Delta reference (targets INodeValueOutput[primitives.Int])."""
+        """The offset from Value (Enum Generic) to use for the returned * (Enum Generic)."""
         member = self.get_member("Delta")
         if isinstance(member, members.Reference):
             return member.targetId

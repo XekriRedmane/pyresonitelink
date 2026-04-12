@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractiveCameraControlAnchors(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraControlAnchors.
+    """See Camera.
+
+    See Camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraControlAnchors"
@@ -43,7 +45,7 @@ class InteractiveCameraControlAnchors(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def canvas(self) -> str | None:
-        """Target ID of the _canvas reference (targets Canvas)."""
+        """The canvas being used to show settings."""
         member = self.get_member("_canvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +66,7 @@ class InteractiveCameraControlAnchors(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def panel(self) -> str | None:
-        """Target ID of the _panel reference (targets LegacyPanel)."""
+        """The legacy panel being used as a base to interact with the settings."""
         member = self.get_member("_panel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +87,7 @@ class InteractiveCameraControlAnchors(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def ui_root(self) -> str | None:
-        """Target ID of the _uiRoot reference (targets Slot)."""
+        """The slot to put UI elements for anchors."""
         member = self.get_member("_uiRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +108,7 @@ class InteractiveCameraControlAnchors(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def camera_control(self) -> str | None:
-        """Target ID of the _cameraControl reference (targets InteractiveCameraControl)."""
+        """See Interactive Camera Control."""
         member = self.get_member("_cameraControl")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -127,7 +129,7 @@ class InteractiveCameraControlAnchors(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def no_anchor_message(self) -> str | None:
-        """Target ID of the _noAnchorMessage reference (targets Text)."""
+        """The text to fill with the no anchors message."""
         member = self.get_member("_noAnchorMessage")
         if isinstance(member, members.Reference):
             return member.targetId

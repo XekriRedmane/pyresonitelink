@@ -17,6 +17,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class PreviousValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """See Enums for a more in depth explaination on what Enums are.
 
+Previous Value is a ProtoFlux node that when given an Enum will give the previous enum numerically according to the Enums page. "*" and "Value" will never be different enum types.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Enums
 
     Parameterize with a value type::
@@ -41,7 +43,7 @@ class PreviousValue(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T],
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets INodeValueOutput[E])."""
+        """The Enum to start at."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId

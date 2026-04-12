@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyAudioOutputIgnoreReverbAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyAudioOutputIgnoreReverbAdapter.
+    """The Legacy Audio Output Ignore Reverb Adapter component converts driven data from the old audio system to Awwdio to preserve legacy behavior.
+
+    used only in legacy content.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyAudioOutputIgnoreReverbAdapter"
@@ -35,7 +37,7 @@ class LegacyAudioOutputIgnoreReverbAdapter(GeneratedComponent, IComponent, IWorl
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Bool])."""
+        """The field to drive with the value converted."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +58,7 @@ class LegacyAudioOutputIgnoreReverbAdapter(GeneratedComponent, IComponent, IWorl
 
     @property
     def value(self) -> primitives.Bool | None:
-        """The Value field value."""
+        """The value to convert."""
         member = self.get_member("Value")
         if member is None:
             return None
@@ -75,7 +77,7 @@ class LegacyAudioOutputIgnoreReverbAdapter(GeneratedComponent, IComponent, IWorl
 
     @property
     def spatialize(self) -> str | None:
-        """Target ID of the Spatialize reference (targets IField[primitives.Bool])."""
+        """The field that determined if the audio clip was spatialized in the old system."""
         member = self.get_member("Spatialize")
         if isinstance(member, members.Reference):
             return member.targetId

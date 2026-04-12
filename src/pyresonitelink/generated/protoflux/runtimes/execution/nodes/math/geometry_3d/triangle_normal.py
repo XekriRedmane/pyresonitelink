@@ -39,7 +39,7 @@ class TriangleNormal(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def point0(self) -> str | None:
-        """Target ID of the Point0 reference (targets INodeValueOutput[primitives.Float3])."""
+        """The first point."""
         member = self.get_member("Point0")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class TriangleNormal(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def point1(self) -> str | None:
-        """Target ID of the Point1 reference (targets INodeValueOutput[primitives.Float3])."""
+        """The second point."""
         member = self.get_member("Point1")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +81,7 @@ class TriangleNormal(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def point2(self) -> str | None:
-        """Target ID of the Point2 reference (targets INodeValueOutput[primitives.Float3])."""
+        """The third point."""
         member = self.get_member("Point2")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -102,7 +102,7 @@ class TriangleNormal(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @property
     def normal(self) -> members.EmptyElement | None:
-        """The Normal member."""
+        """Returns the normal from the created triangle of points."""
         member = self.get_member("Normal")
         if isinstance(member, members.EmptyElement):
             return member
@@ -110,12 +110,12 @@ class TriangleNormal(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @normal.setter
     def normal(self, value: members.EmptyElement) -> None:
-        """Set the Normal member."""
+        """Set Normal. Returns the normal from the created triangle of points."""
         self.set_member("Normal", value)
 
     @property
     def is_valid(self) -> members.EmptyElement | None:
-        """The IsValid member."""
+        """Returns if this is a valid triangle."""
         member = self.get_member("IsValid")
         if isinstance(member, members.EmptyElement):
             return member
@@ -123,6 +123,6 @@ class TriangleNormal(GeneratedComponent, IExecutionNode, INode, ICustomInspector
 
     @is_valid.setter
     def is_valid(self, value: members.EmptyElement) -> None:
-        """Set the IsValid member."""
+        """Set IsValid. Returns if this is a valid triangle."""
         self.set_member("IsValid", value)
 

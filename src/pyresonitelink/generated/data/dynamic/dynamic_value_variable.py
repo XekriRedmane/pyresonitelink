@@ -10,9 +10,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicValueVariable(GenericComponent[T], IDynamicVariable[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicValueVariable<>.
+    """A dynamic value variable is a component that allows storing any value Type inside the component. The value is then accessible and changeable via the Dynamic Variables system.
+}}
 
     Category: Data/Dynamic
+
+    This can be used to store values that should be accessible to different
+    things underneath and outside of a system. This is useful if the item
+    needs to be able to have it's color changed, or other properties that
+    need to have quick synchronization and access. For more info see the
+    Dynamic Variables page.
 
     Parameterize with a value type::
 

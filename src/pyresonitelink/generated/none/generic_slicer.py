@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GenericSlicer(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GenericSlicer.
+    """The GenericSlicer component is used to drive and handle the slicing of materials like volumes and PBS Slice.
+
+    See Object Slicer Tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GenericSlicer"
@@ -27,7 +29,7 @@ class GenericSlicer(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver)
 
     @property
     def targets(self) -> members.SyncList | None:
-        """The Targets member."""
+        """The Slicer Fields on materials to drive."""
         member = self.get_member("Targets")
         if isinstance(member, members.SyncList):
             return member
@@ -35,12 +37,12 @@ class GenericSlicer(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver)
 
     @targets.setter
     def targets(self, value: members.SyncList) -> None:
-        """Set the Targets member."""
+        """Set Targets. The Slicer Fields on materials to drive."""
         self.set_member("Targets", value)
 
     @property
     def space(self) -> members.SyncObject | None:
-        """The Space member."""
+        """The transform space to do slicing in."""
         member = self.get_member("Space")
         if isinstance(member, members.SyncObject):
             return member
@@ -48,12 +50,12 @@ class GenericSlicer(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver)
 
     @space.setter
     def space(self, value: members.SyncObject) -> None:
-        """Set the Space member."""
+        """Set Space. The transform space to do slicing in."""
         self.set_member("Space", value)
 
     @property
     def grabbed_visual(self) -> str | None:
-        """Target ID of the _grabbedVisual reference (targets Slot)."""
+        """The visual to show and hide when this Slicer is grabbed."""
         member = self.get_member("_grabbedVisual")
         if isinstance(member, members.Reference):
             return member.targetId

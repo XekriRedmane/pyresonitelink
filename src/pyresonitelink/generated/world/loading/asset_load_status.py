@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AssetLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AssetLoadStatus.
+    """This is a component that tracks the load status of a list of assets locally.
 
     Category: World/Loading
+
+    **Introduction**: This is a component that tracks the load status of a list of assets locally.
+
+    **Behavior**: This component returns a ratio of how many of the given assets are actually loaded.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AssetLoadStatus"
@@ -36,7 +40,7 @@ class AssetLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def assets(self) -> members.SyncList | None:
-        """The Assets member."""
+        """List of assets that the component should listen to for loading status"""
         member = self.get_member("Assets")
         if isinstance(member, members.SyncList):
             return member
@@ -44,12 +48,12 @@ class AssetLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @assets.setter
     def assets(self, value: members.SyncList) -> None:
-        """Set the Assets member."""
+        """Set Assets. List of assets that the component should listen to for loading status"""
         self.set_member("Assets", value)
 
     @property
     def is_loaded(self) -> primitives.Bool | None:
-        """The IsLoaded field value."""
+        """Are all the assets in Assets list loaded?"""
         member = self.get_member("IsLoaded")
         if member is None:
             return None
@@ -68,7 +72,7 @@ class AssetLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def load_progress(self) -> primitives.Float | None:
-        """The LoadProgress field value."""
+        """The ratio of "how many assets are loaded" to the total asset count."""
         member = self.get_member("LoadProgress")
         if member is None:
             return None
@@ -87,7 +91,7 @@ class AssetLoadStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def progress_weight(self) -> primitives.Float | None:
-        """The ProgressWeight field value."""
+        """The total count of assets in ``Assets``."""
         member = self.get_member("ProgressWeight")
         if member is None:
             return None

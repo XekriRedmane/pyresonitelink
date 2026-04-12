@@ -10,6 +10,8 @@ from pyresonitelink.generated._types.sync_ref import SyncRef
 class ReferenceAsVariable(GenericComponent[T]):
     """The Reference As Variable node transforms an SyncRef of the given type into an IVariable that can then be written to with an Indirect Write node.
 
+This node implements IVariable itself. This means that one may drag the output of this node into a normal Write node and write to the given SyncRef. This is actually more performant than using an Indirect Write, as a normal write node does not check if the variable changes every time it is pulsed. However, The performance gain diminishes the more often the input SyncRef changes, being roughly equal if the SyncRef changes at every write call.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
 
     Parameterize with a value type::

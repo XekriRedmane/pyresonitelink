@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.trail_texture_mode import TrailTextureMode
+from pyresonitelink.generated._enums.motion_vector_mode import MotionVectorMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -14,19 +16,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TrailsRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TrailsRenderBufferRenderer.
+    """The TrailsRenderBufferRenderer component is mainly a debug component to show the allocation of rendering buffers for particles in the form of colors. This relies on the specific implementation of Photon Dust.
 
     Category: Rendering
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TrailsRenderBufferRenderer"
 
-    def __init__(self, buffer: str | IAssetProvider[TrailsRenderBuffer] | None = None, material: str | IAssetProvider[Material] | None = None, generate_lighting_data: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, buffer: str | IAssetProvider[TrailsRenderBuffer] | None = None, material: str | IAssetProvider[Material] | None = None, texture_mode: TrailTextureMode | str | None = None, motion_vector_mode: MotionVectorMode | str | None = None, generate_lighting_data: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             buffer: Initial value for Buffer.
             material: Initial value for Material.
+            texture_mode: Initial value for TextureMode.
+            motion_vector_mode: Initial value for MotionVectorMode.
             generate_lighting_data: Initial value for GenerateLightingData.
             component: Existing Component to wrap.
         """
@@ -35,12 +39,16 @@ class TrailsRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponen
             self.buffer = buffer
         if material is not None:
             self.material = material
+        if texture_mode is not None:
+            self.texture_mode = texture_mode
+        if motion_vector_mode is not None:
+            self.motion_vector_mode = motion_vector_mode
         if generate_lighting_data is not None:
             self.generate_lighting_data = generate_lighting_data
 
     @property
     def buffer(self) -> str | None:
-        """Target ID of the Buffer reference (targets IAssetProvider[TrailsRenderBuffer])."""
+        """The trails renderer module to get buffer data from."""
         member = self.get_member("Buffer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +69,7 @@ class TrailsRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponen
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to use for rendering."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,34 +89,48 @@ class TrailsRenderBufferRenderer(GeneratedComponent, ICustomInspector, IComponen
             )
 
     @property
-    def texture_mode(self) -> members.FieldEnum | None:
-        """The TextureMode member."""
+    def texture_mode(self) -> TrailTextureMode | None:
+        """The texture mode to use for rendering."""
         member = self.get_member("TextureMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TrailTextureMode(member.value)
         return None
 
     @texture_mode.setter
-    def texture_mode(self, value: members.FieldEnum) -> None:
-        """Set the TextureMode member."""
-        self.set_member("TextureMode", value)
+    def texture_mode(self, value: TrailTextureMode | str) -> None:
+        """Set TextureMode. The texture mode to use for rendering."""
+        member = self.get_member("TextureMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "TextureMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def motion_vector_mode(self) -> members.FieldEnum | None:
-        """The MotionVectorMode member."""
+    def motion_vector_mode(self) -> MotionVectorMode | None:
+        """The motion vector mode for rendering from a camera."""
         member = self.get_member("MotionVectorMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MotionVectorMode(member.value)
         return None
 
     @motion_vector_mode.setter
-    def motion_vector_mode(self, value: members.FieldEnum) -> None:
-        """Set the MotionVectorMode member."""
-        self.set_member("MotionVectorMode", value)
+    def motion_vector_mode(self, value: MotionVectorMode | str) -> None:
+        """Set MotionVectorMode. The motion vector mode for rendering from a camera."""
+        member = self.get_member("MotionVectorMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MotionVectorMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def generate_lighting_data(self) -> primitives.Bool | None:
-        """The GenerateLightingData field value."""
+        """Whether or not to generate lighting data for trail rendering."""
         member = self.get_member("GenerateLightingData")
         if member is None:
             return None

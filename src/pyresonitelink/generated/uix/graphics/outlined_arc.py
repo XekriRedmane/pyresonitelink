@@ -13,9 +13,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.OutlinedArc.
+    """The OutlinedArc component takes in many parameters to create a circular image or design and can be controlled using those parameters. Then this renders onto the UIX.
+
+}}
 
     Category: UIX/Graphics
+
+    A user could make fancy effects like a loading circular throbber, or
+    menu buttons that arc around.
+
+    **Related Components**: * Context menu components
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.OutlinedArc"
@@ -57,7 +64,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
 
     @property
     def arc(self) -> primitives.Float | None:
-        """The Arc field value."""
+        """The amount to arc around the center."""
         member = self.get_member("Arc")
         if member is None:
             return None
@@ -76,7 +83,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
 
     @property
     def offset(self) -> primitives.Float | None:
-        """The Offset field value."""
+        """The amount to rotate around the center."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -95,7 +102,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
 
     @property
     def outer_radius_ratio(self) -> primitives.Float | None:
-        """The OuterRadiusRatio field value."""
+        """The outer distance for this arc from the center."""
         member = self.get_member("OuterRadiusRatio")
         if member is None:
             return None
@@ -114,7 +121,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
 
     @property
     def inner_radius_ratio(self) -> primitives.Float | None:
-        """The InnerRadiusRatio field value."""
+        """The inner distance for this arc from the center."""
         member = self.get_member("InnerRadiusRatio")
         if member is None:
             return None
@@ -133,7 +140,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
 
     @property
     def rounded_corner_radius(self) -> primitives.Float | None:
-        """The RoundedCornerRadius field value."""
+        """The amount of how rounded the edges of the arc end points are."""
         member = self.get_member("RoundedCornerRadius")
         if member is None:
             return None
@@ -152,7 +159,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
 
     @property
     def fill_color(self) -> primitives.ColorX | None:
-        """The FillColor field value."""
+        """The inner color (filled in color) of this arc."""
         member = self.get_member("FillColor")
         if member is None:
             return None
@@ -171,7 +178,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
 
     @property
     def outline_color(self) -> primitives.ColorX | None:
-        """The OutlineColor field value."""
+        """The outer color (the outline) of this arc."""
         member = self.get_member("OutlineColor")
         if member is None:
             return None
@@ -190,7 +197,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
 
     @property
     def outline_thickness(self) -> primitives.Float | None:
-        """The OutlineThickness field value."""
+        """The amount to thicken for the outline."""
         member = self.get_member("OutlineThickness")
         if member is None:
             return None
@@ -209,7 +216,7 @@ class OutlinedArc(GeneratedComponent, ILayoutElement, IUIComputeComponent, IWorl
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """Uses a material for the arc."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId

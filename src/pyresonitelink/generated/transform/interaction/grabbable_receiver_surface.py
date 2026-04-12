@@ -12,9 +12,48 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbableReparentBlock, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabbableReceiverSurface.
+    """The GrabbableReceiverSurface component allows you to set up an object so that Grabbable objects snap to its surface when a user releases the Grabbable object within range of it. For a volume based alternative, see Grabbable Parenter.
+
+Add Component Path: Transform > Interaction > GrabbableReceiverSurface.
+= Fields =
+}}
+
+= Behavior =
+When a GrabbableReceiverSurface is setup on an object, it will become visible to Grabbable objects when they are released from a user's grab. When this occurs the Surface will carry out some checks and if these pass the object will snap to the GrabbableReceiverSurface. If the ``ParentPlaced`` checkbox is enable the Grabbable will be parented to the surface or the slot specified in ``OverrideParent``
 
     Category: Transform/Interaction
+
+    **Explanation of the Checks**: These are a little complicated but if you want to fully understand what happens it is provided.
+
+When a user is holding a Grabbable object and lets go (releases it):
+# The Grabbable object will look around it in its vicinity using a sphere collider based on the Object's bounding box plus a radius defined on the User's Hand. The hand radius is defined by a sphere made from a Bounding box of all the released objects.
+# If this collider overlaps with any objects which have GrabbableRecieverSurface attached to them then the Grabbable will perform some checks on each surface.
+# First it asks the Surface to check its distance from the Grabbable object.
+## The distance check first calculates if a Raycast from the released object towards the surface would hit in the directions specified in the component. 
+## If the Raycast would hit a distance is then calculated.
+## This distance varies depending on the directions specified in the component's properties.
+##* For example, placing an object on top of a cube from above has a shorter distance to the top of the Cube than the bottom of a cube because the distance from above the cube to the bottom face of the cube is greater.
+# If this distance is to great as specified in the component's properties a second check using the released object's bounding box corners is also computed
+# After both distance checks a final distance value is provided.
+# The Grabbable then selects the surface with the smallest distance and tells the Surface to receive it.
+# The Surface will then position the Grabbable upon the surface using an Animation of a ``Tween Time`` value is set.
+# The Surface will then parent the Grabbable to itself or the ``OverrideParent`` location if the ``ParentPlaced`` checkbox is checked.
+
+= Examples =
+
+ProbablePrime's tutorial on GrabbleReceiverSurface:
+
+9IZI3ui-RLY
+
+= Frequently Asked Questions =
+
+    **Can objects which are not grabbed be received?**: No, this component only works with Grabbable objects which are released by a user.
+
+    **Can this be used with objects that are not Grabbable?**: No, It cannot be used with objects that do not have a Grabbable component.
+
+= See Also =
+* Grabbable for what this receives. 
+* Grabbable Parenter For a volume alternative
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabbableReceiverSurface"
@@ -47,7 +86,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
 
     @property
     def parent_placed(self) -> primitives.Bool | None:
-        """The ParentPlaced field value."""
+        """Whether the Grabbable object gets reparented to this object's Slot or the Slot specified in OverrideParent."""
         member = self.get_member("ParentPlaced")
         if member is None:
             return None
@@ -66,7 +105,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
 
     @property
     def override_parent(self) -> str | None:
-        """Target ID of the OverrideParent reference (targets Slot)."""
+        """If not null, the slot that the Grabbable object gets reparented to, if ParentPlaced is true."""
         member = self.get_member("OverrideParent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +126,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
 
     @property
     def tween_time(self) -> primitives.Float | None:
-        """The TweenTime field value."""
+        """The amount of time in seconds for the animation effect when the object snaps to the surface."""
         member = self.get_member("TweenTime")
         if member is None:
             return None
@@ -106,7 +145,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
 
     @property
     def max_distance(self) -> primitives.Float | None:
-        """The MaxDistance field value."""
+        """How far away in meters something released gets grabbed."""
         member = self.get_member("MaxDistance")
         if member is None:
             return None
@@ -125,7 +164,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
 
     @property
     def offset(self) -> primitives.Float | None:
-        """The Offset field value."""
+        """The distance from the surface that the Grabbable object will stop at."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -144,7 +183,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
 
     @property
     def check_offset(self) -> primitives.Float | None:
-        """The CheckOffset field value."""
+        """How far away from the surface that the object ignores before it starts looking for released objects."""
         member = self.get_member("CheckOffset")
         if member is None:
             return None
@@ -163,7 +202,7 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
 
     @property
     def directions(self) -> members.SyncList | None:
-        """The Directions member."""
+        """List of directions a Grabbable object can be received from."""
         member = self.get_member("Directions")
         if isinstance(member, members.SyncList):
             return member
@@ -171,12 +210,12 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
 
     @directions.setter
     def directions(self, value: members.SyncList) -> None:
-        """Set the Directions member."""
+        """Set Directions. List of directions a Grabbable object can be received from."""
         self.set_member("Directions", value)
 
     @property
     def tag_filter(self) -> members.SyncObject | None:
-        """The TagFilter member."""
+        """A filter that limits what can be picked up by this surface."""
         member = self.get_member("TagFilter")
         if isinstance(member, members.SyncObject):
             return member
@@ -184,6 +223,6 @@ class GrabbableReceiverSurface(GeneratedComponent, IGrabbableReceiver, IGrabbabl
 
     @tag_filter.setter
     def tag_filter(self, value: members.SyncObject) -> None:
-        """Set the TagFilter member."""
+        """Set TagFilter. A filter that limits what can be picked up by this surface."""
         self.set_member("TagFilter", value)
 

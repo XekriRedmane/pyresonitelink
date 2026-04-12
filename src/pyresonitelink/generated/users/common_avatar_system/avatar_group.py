@@ -9,9 +9,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarGroup(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarGroup.
+    """For detailed information on how this functions for mix and match body parts. Please also see Equipping Multiple Avatars.
+
+AvatarGroup is a component commonly found on the root of an avatar. It mostly controls where the avatar should be parented back to when dequipped, and is set by a user's Avatar Manager.
 
     Category: Users/Common Avatar System
+
+    **Behavior**: This component is currently not entirely functioning. see Issue 3076
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarGroup"
@@ -29,7 +33,7 @@ class AvatarGroup(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def original_parent(self) -> str | None:
-        """Target ID of the OriginalParent reference (targets Slot)."""
+        """The slot that this avatar was parented under before being equipped."""
         member = self.get_member("OriginalParent")
         if isinstance(member, members.Reference):
             return member.targetId

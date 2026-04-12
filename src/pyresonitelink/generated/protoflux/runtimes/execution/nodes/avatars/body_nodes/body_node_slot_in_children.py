@@ -38,7 +38,7 @@ class BodyNodeSlotInChildren(GeneratedComponent, INodeObjectOutput, IExecutionNo
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeObjectOutput[Slot])."""
+        """The slot to check all of it's children infinitely far down for the provided Node (BodyNode)."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +59,7 @@ class BodyNodeSlotInChildren(GeneratedComponent, INodeObjectOutput, IExecutionNo
 
     @property
     def node(self) -> str | None:
-        """Target ID of the Node reference (targets INodeValueOutput[BodyNode])."""
+        """The node to check Source (Slot)'s children for."""
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             return member.targetId

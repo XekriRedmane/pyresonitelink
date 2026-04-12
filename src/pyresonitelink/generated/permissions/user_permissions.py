@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserPermissions.
+    """The UserPermissions component is used to control the permissions of users in a world for the selected roles.
 
     Category: Permissions
     """
@@ -48,7 +48,7 @@ class UserPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, 
 
     @property
     def allow_enable_edit_mode(self) -> primitives.Bool | None:
-        """The AllowEnableEditMode field value."""
+        """Whether the selected roles can enable their Edit Mode."""
         member = self.get_member("AllowEnableEditMode")
         if member is None:
             return None
@@ -67,7 +67,7 @@ class UserPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, 
 
     @property
     def allow_respawn(self) -> primitives.Bool | None:
-        """The AllowRespawn field value."""
+        """Whether the selected roles can respawn other users."""
         member = self.get_member("AllowRespawn")
         if member is None:
             return None
@@ -86,7 +86,7 @@ class UserPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, 
 
     @property
     def allow_silence(self) -> primitives.Bool | None:
-        """The AllowSilence field value."""
+        """Whether the selected roles can silence other users."""
         member = self.get_member("AllowSilence")
         if member is None:
             return None
@@ -105,7 +105,7 @@ class UserPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, 
 
     @property
     def allow_kick(self) -> primitives.Bool | None:
-        """The AllowKick field value."""
+        """Whether the selected roles can kick other users from the session."""
         member = self.get_member("AllowKick")
         if member is None:
             return None
@@ -124,7 +124,7 @@ class UserPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, 
 
     @property
     def allow_ban(self) -> primitives.Bool | None:
-        """The AllowBan field value."""
+        """Whether the selected roles can ban other users from this session."""
         member = self.get_member("AllowBan")
         if member is None:
             return None
@@ -143,7 +143,7 @@ class UserPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, 
 
     @property
     def allow_assign_roles(self) -> primitives.Bool | None:
-        """The AllowAssignRoles field value."""
+        """Whether the selected roles can assign roles for other users that have a role less than them."""
         member = self.get_member("AllowAssignRoles")
         if member is None:
             return None
@@ -162,7 +162,7 @@ class UserPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector, 
 
     @property
     def allow_see_other_roles(self) -> primitives.Bool | None:
-        """The AllowSeeOtherRoles field value."""
+        """Whether the selected roles can see what roles other users have."""
         member = self.get_member("AllowSeeOtherRoles")
         if member is None:
             return None

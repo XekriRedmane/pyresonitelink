@@ -38,7 +38,7 @@ class ValueSquare(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], I
 
     @property
     def n(self) -> str | None:
-        """Target ID of the N reference (targets INodeValueOutput[T])."""
+        """The number we want to square."""
         member = self.get_member("N")
         if isinstance(member, members.Reference):
             return member.targetId

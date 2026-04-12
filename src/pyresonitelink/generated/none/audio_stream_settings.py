@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class AudioStreamSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioStreamSettings.
+    """The AudioStreamSettings component is a Legacy component used for the old settings menu.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioStreamSettings"
@@ -30,7 +30,7 @@ class AudioStreamSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def default_bitrate(self) -> primitives.Float | None:
-        """The DefaultBitrate field value."""
+        """The default bit rate for this Audio stream when spawned by the user."""
         member = self.get_member("DefaultBitrate")
         if member is None:
             return None
@@ -49,7 +49,7 @@ class AudioStreamSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def default_device_id(self) -> primitives.String | None:
-        """The DefaultDeviceID field value."""
+        """The default device ID."""
         member = self.get_member("DefaultDeviceID")
         if member is None:
             return None

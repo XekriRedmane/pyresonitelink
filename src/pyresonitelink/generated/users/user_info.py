@@ -7,16 +7,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserInfo.
+    """The UserInfo component handles keeping certain bits of data about a player spawned physically in the world. It's stored under the user root slot.
 
     Category: Users
+
+    Used internally.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserInfo"
 
     @property
     def controllers(self) -> members.SyncList | None:
-        """The Controllers member."""
+        """The slots of the controllers this user is using."""
         member = self.get_member("Controllers")
         if isinstance(member, members.SyncList):
             return member
@@ -24,12 +26,12 @@ class UserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @controllers.setter
     def controllers(self, value: members.SyncList) -> None:
-        """Set the Controllers member."""
+        """Set Controllers. The slots of the controllers this user is using."""
         self.set_member("Controllers", value)
 
     @property
     def hands(self) -> members.SyncList | None:
-        """The Hands member."""
+        """The slots of the hands this user."""
         member = self.get_member("Hands")
         if isinstance(member, members.SyncList):
             return member
@@ -37,6 +39,6 @@ class UserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @hands.setter
     def hands(self, value: members.SyncList) -> None:
-        """Set the Hands member."""
+        """Set Hands. The slots of the hands this user."""
         self.set_member("Hands", value)
 

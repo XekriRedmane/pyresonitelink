@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.asset_tool_replacement_mode import AssetToolReplacementMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -16,14 +17,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MaterialTool.
+    """See Material Tool.
 
     Category: Tools
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MaterialTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, orb_slot: str | Slot | None = None, area_radius: primitives.Float | None = None, area_indicator: str | Slot | None = None, area_indicator_radius: str | IField[primitives.Float] | None = None, area_indicator_offset: str | IField[primitives.Float3] | None = None, area_indicator_active: str | IField[primitives.Bool] | None = None, knob_control_active: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, orb_slot: str | Slot | None = None, replacement_mode: AssetToolReplacementMode | str | None = None, area_radius: primitives.Float | None = None, area_indicator: str | Slot | None = None, area_indicator_radius: str | IField[primitives.Float] | None = None, area_indicator_offset: str | IField[primitives.Float3] | None = None, area_indicator_active: str | IField[primitives.Bool] | None = None, knob_control_active: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,6 +35,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             override_active_tool: Initial value for _overrideActiveTool.
             grip_poses_generated: Initial value for _gripPosesGenerated.
             orb_slot: Initial value for _orbSlot.
+            replacement_mode: Initial value for ReplacementMode.
             area_radius: Initial value for AreaRadius.
             area_indicator: Initial value for _areaIndicator.
             area_indicator_radius: Initial value for _areaIndicatorRadius.
@@ -57,6 +59,8 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             self.grip_poses_generated = grip_poses_generated
         if orb_slot is not None:
             self.orb_slot = orb_slot
+        if replacement_mode is not None:
+            self.replacement_mode = replacement_mode
         if area_radius is not None:
             self.area_radius = area_radius
         if area_indicator is not None:
@@ -203,7 +207,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def orb_slot(self) -> str | None:
-        """Target ID of the _orbSlot reference (targets Slot)."""
+        """The slot to store the material orb when an orb is placed into the tool or picked from an object."""
         member = self.get_member("_orbSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -223,21 +227,28 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             )
 
     @property
-    def replacement_mode(self) -> members.FieldEnum | None:
-        """The ReplacementMode member."""
+    def replacement_mode(self) -> AssetToolReplacementMode | None:
+        """How to replace materials using the tool."""
         member = self.get_member("ReplacementMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return AssetToolReplacementMode(member.value)
         return None
 
     @replacement_mode.setter
-    def replacement_mode(self, value: members.FieldEnum) -> None:
-        """Set the ReplacementMode member."""
-        self.set_member("ReplacementMode", value)
+    def replacement_mode(self, value: AssetToolReplacementMode | str) -> None:
+        """Set ReplacementMode. How to replace materials using the tool."""
+        member = self.get_member("ReplacementMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ReplacementMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def area_radius(self) -> primitives.Float | None:
-        """The AreaRadius field value."""
+        """The radius to use when ``ReplacementMode`` is set to Area."""
         member = self.get_member("AreaRadius")
         if member is None:
             return None
@@ -256,7 +267,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def area_indicator(self) -> str | None:
-        """Target ID of the _areaIndicator reference (targets Slot)."""
+        """The slot that is the root of the area indicator visual."""
         member = self.get_member("_areaIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -277,7 +288,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def area_indicator_radius(self) -> str | None:
-        """Target ID of the _areaIndicatorRadius reference (targets IField[primitives.Float])."""
+        """The area indicator's radius field."""
         member = self.get_member("_areaIndicatorRadius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -298,7 +309,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def area_indicator_offset(self) -> str | None:
-        """Target ID of the _areaIndicatorOffset reference (targets IField[primitives.Float3])."""
+        """The area indicator's offset field."""
         member = self.get_member("_areaIndicatorOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -319,7 +330,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def area_indicator_active(self) -> str | None:
-        """Target ID of the _areaIndicatorActive reference (targets IField[primitives.Bool])."""
+        """The area indicator's active field, used to disable the visual when ``ReplacementMode`` is not set to Area."""
         member = self.get_member("_areaIndicatorActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -340,7 +351,7 @@ class MaterialTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     @property
     def knob_control_active(self) -> str | None:
-        """Target ID of the _knobControlActive reference (targets IField[primitives.Bool])."""
+        """The active field of the knob control visual/control."""
         member = self.get_member("_knobControlActive")
         if isinstance(member, members.Reference):
             return member.targetId

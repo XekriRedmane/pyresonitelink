@@ -11,9 +11,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ValueUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ValueUserOverride<>.
+    """The ValueUserOverride Component allows storing "override" values for each user listed under ``_overrides`` and driving the ``Target`` field with them.
+}}
 
     Category: Transform/Drivers
+
+    **Behavior**: The ``_overrides`` bag contains a list of users and their associated values - whenever the local user matches a user entry in the bag, the associated value is driven to ``Target``. Otherwise, ``Target`` is driven to the value in ``Default``.
+
+``CreateOverrideOnWrite`` allows for new users and values to be added to the bag when the driven value in ``Target`` is directly or indirectly changed by that user. If it is not enabled, the value in ``Target`` is not changeable unless the override is added or changed manually from the inspector panel.
+
+Attempting to write to or otherwise cause a discrete entry to a driven field is known as Hooking it. Any Hook to the ``Target`` value is intercepted by the ValueUserOverride Component and will change the modifying user's entry in the ``_overrides`` bag. If there is no entry for the user and if ``CreateOverrideOnWrite`` is enabled, it will create an entry using the set value.
+
+    **Related Components**: * BooleanUserOverrideGather
+* NumericUserOverrideGather
 
     Parameterize with a value type::
 
@@ -68,7 +78,7 @@ class ValueUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def create_override_on_write(self) -> primitives.Bool | None:
-        """The CreateOverrideOnWrite field value."""
+        """Creates an entry in ``_overrides`` when ``Target`` is written back."""
         member = self.get_member("CreateOverrideOnWrite")
         if member is None:
             return None
@@ -87,7 +97,7 @@ class ValueUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def persistent_overrides(self) -> primitives.Bool | None:
-        """The PersistentOverrides field value."""
+        """Values in ``_overrides`` are stored with the object when it is saved."""
         member = self.get_member("PersistentOverrides")
         if member is None:
             return None
@@ -125,7 +135,7 @@ class ValueUserOverride(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[T])."""
+        """Target field of the specified type, that gets driven to the override value."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

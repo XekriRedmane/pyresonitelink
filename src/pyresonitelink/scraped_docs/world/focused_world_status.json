@@ -1,0 +1,26 @@
+{
+  "description": "FocusedWorldStatus is a component that displays information about the currently focused world. It's used in the session tab in the dash.",
+  "category": "World",
+  "fields": {
+    "WorldName": "The name of the currently focused world.",
+    "RawWorldName": "The raw unfiltered name of the currently focused world.",
+    "SessionId": "The session ID of the currently focused world.",
+    "IsHost": "Whether the user is the host of the focused world.",
+    "CanSave": "Whether the user is allowed to save the focused world.",
+    "ShouldSave": "Whether the focused world has unsaved changes or not.",
+    "CanClose": "Whether the focused world can be closed. False for the Local Home.",
+    "RoleName": "The name of the role that the user currently has in the focused world.",
+    "UserCount": "The amount of users currently in the focused world.",
+    "ActiveUserCount": "How many of the users in the focused world aren't AFK.",
+    "MaxUserCount": "The maximum amount of users that can be in the focused world.",
+    "AccessLevel": "The access level of the focused world.",
+    "HideFromListing": "Whether or not the focused world should not be shown in world listings or shown to other users.",
+    "AwayKickEnabled": "Whether the focused world has AFK kick enabled.",
+    "AwayKickMinutes": "How many minutes a user can be AFK before being kicked from the focused world.",
+    "UnsafeMode": "Whether the focused world is in unsafe mode, which allows for some features to work. Can only be true in private worlds."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FocusedWorldStatus&action=raw"
+}

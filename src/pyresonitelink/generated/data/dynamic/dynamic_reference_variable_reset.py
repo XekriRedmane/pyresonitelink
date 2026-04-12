@@ -10,7 +10,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicReferenceVariableReset(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicReferenceVariableReset<>.
+    """Dynamic Reference Variable Reset is a component that will reset the value for a Dynamic Variable to a specified Reference. This is useful for when you are messing with an item, but you want the values for it to clear themselves with it is saved, loaded, or duplicated. The variable space is determined by the searching algorithm explained on Dynamic Variables page from the slot this is on.
+}}
 
     Category: Data/Dynamic
 
@@ -67,7 +68,7 @@ class DynamicReferenceVariableReset(GenericComponent[T], IComponent, IWorldEvent
 
     @property
     def reset_on_load(self) -> primitives.Bool | None:
-        """The ResetOnLoad field value."""
+        """Reset when this component is loaded with a world."""
         member = self.get_member("ResetOnLoad")
         if member is None:
             return None
@@ -86,7 +87,7 @@ class DynamicReferenceVariableReset(GenericComponent[T], IComponent, IWorldEvent
 
     @property
     def reset_on_duplicate(self) -> primitives.Bool | None:
-        """The ResetOnDuplicate field value."""
+        """Reset when the object this is under is duplicated."""
         member = self.get_member("ResetOnDuplicate")
         if member is None:
             return None
@@ -105,7 +106,7 @@ class DynamicReferenceVariableReset(GenericComponent[T], IComponent, IWorldEvent
 
     @property
     def reset_on_paste(self) -> primitives.Bool | None:
-        """The ResetOnPaste field value."""
+        """Reset when the object this is under is pasted from clipboard."""
         member = self.get_member("ResetOnPaste")
         if member is None:
             return None
@@ -124,7 +125,7 @@ class DynamicReferenceVariableReset(GenericComponent[T], IComponent, IWorldEvent
 
     @property
     def reset_target(self) -> str | None:
-        """Target ID of the ResetTarget reference (targets T)."""
+        """The reference value to reset to when any of the enabled reset events occur."""
         member = self.get_member("ResetTarget")
         if isinstance(member, members.Reference):
             return member.targetId

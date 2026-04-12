@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.texture_format import TextureFormat
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,14 +14,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Texture2DAssetMetadata.
+    """The Texture2DAssetMetadata component converts the metadata often seen on texture components in an inspector into data that can be pulled into other systems as actual numbers and values.
 
     Category: Assets/Utility
+
+    Attach to a slot and provide an asset to ``Texture`` to start getting
+    values and using the component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Texture2DAssetMetadata"
 
-    def __init__(self, texture: str | IAssetProvider[Texture2D] | None = None, size: primitives.Int2 | None = None, width: primitives.Int | None = None, height: primitives.Int | None = None, has_mip_maps: primitives.Bool | None = None, mip_map_count: primitives.Int | None = None, memory_bytes: primitives.Long | None = None, formatted_memory_bytes: primitives.String | None = None, actual_loaded_variant: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture: str | IAssetProvider[Texture2D] | None = None, size: primitives.Int2 | None = None, width: primitives.Int | None = None, height: primitives.Int | None = None, has_mip_maps: primitives.Bool | None = None, mip_map_count: primitives.Int | None = None, memory_bytes: primitives.Long | None = None, formatted_memory_bytes: primitives.String | None = None, format_: TextureFormat | str | None = None, actual_loaded_variant: primitives.String | None = None, profile: ColorProfile | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,7 +36,9 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             mip_map_count: Initial value for MipMapCount.
             memory_bytes: Initial value for MemoryBytes.
             formatted_memory_bytes: Initial value for FormattedMemoryBytes.
+            format_: Initial value for Format.
             actual_loaded_variant: Initial value for ActualLoadedVariant.
+            profile: Initial value for Profile.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -51,12 +58,16 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             self.memory_bytes = memory_bytes
         if formatted_memory_bytes is not None:
             self.formatted_memory_bytes = formatted_memory_bytes
+        if format_ is not None:
+            self.format_ = format_
         if actual_loaded_variant is not None:
             self.actual_loaded_variant = actual_loaded_variant
+        if profile is not None:
+            self.profile = profile
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[Texture2D])."""
+        """The texture to get metadata on."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +88,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def size(self) -> primitives.Int2 | None:
-        """The Size field value."""
+        """How big ``Texture`` is in pixels as a width height pair."""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -96,7 +107,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def width(self) -> primitives.Int | None:
-        """The Width field value."""
+        """How wide ``Texture`` is in pixels."""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -115,7 +126,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def height(self) -> primitives.Int | None:
-        """The Height field value."""
+        """How tall ``Texture`` is in pixels."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -134,7 +145,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def has_mip_maps(self) -> primitives.Bool | None:
-        """The HasMipMaps field value."""
+        """Whether ``Texture`` has mipmaps."""
         member = self.get_member("HasMipMaps")
         if member is None:
             return None
@@ -153,7 +164,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def mip_map_count(self) -> primitives.Int | None:
-        """The MipMapCount field value."""
+        """How many mipmap levels ``Texture`` has."""
         member = self.get_member("MipMapCount")
         if member is None:
             return None
@@ -172,7 +183,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def memory_bytes(self) -> primitives.Long | None:
-        """The MemoryBytes field value."""
+        """How many bytes of memory ``Texture`` takes up."""
         member = self.get_member("MemoryBytes")
         if member is None:
             return None
@@ -191,7 +202,7 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def formatted_memory_bytes(self) -> primitives.String | None:
-        """The FormattedMemoryBytes field value."""
+        """The bytes of memory ``Texture`` takes up formatted into an easy to read format."""
         member = self.get_member("FormattedMemoryBytes")
         if member is None:
             return None
@@ -209,21 +220,28 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def format_(self) -> members.FieldEnum | None:
-        """The Format member."""
+    def format_(self) -> TextureFormat | None:
+        """The format ``Texture`` is encoded in."""
         member = self.get_member("Format")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureFormat(member.value)
         return None
 
     @format_.setter
-    def format_(self, value: members.FieldEnum) -> None:
-        """Set the Format member."""
-        self.set_member("Format", value)
+    def format_(self, value: TextureFormat | str) -> None:
+        """Set Format. The format ``Texture`` is encoded in."""
+        member = self.get_member("Format")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Format",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def actual_loaded_variant(self) -> primitives.String | None:
-        """The ActualLoadedVariant field value."""
+        """The actual variant of ``Texture`` that is loaded on the client."""
         member = self.get_member("ActualLoadedVariant")
         if member is None:
             return None
@@ -241,15 +259,22 @@ class Texture2DAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The color profile ``Texture`` is being rendered in."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set Profile. The color profile ``Texture`` is being rendered in."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 

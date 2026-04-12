@@ -11,9 +11,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BooleanReferenceDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BooleanReferenceDriver<>.
+    """The BooleanReferenceDriver component is used to drive a reference to one value or another, depending on its State field.
 
     Category: Transform/Drivers
+
+    Attach this component to a slot by first choosing what kind of value you
+    want to boolean switch. See Interface on how similar types can be used
+    that are different classes (Like materials for example). Once a type has
+    been chosen, this component can be used to switch the value in a field
+    between two different ones using ``State``
 
     Parameterize with a value type::
 
@@ -46,7 +52,7 @@ class BooleanReferenceDriver(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def state(self) -> primitives.Bool | None:
-        """The State field value."""
+        """Determines whether TargetReference should be driven to TrueTarget or to FalseTarget."""
         member = self.get_member("State")
         if member is None:
             return None
@@ -65,7 +71,7 @@ class BooleanReferenceDriver(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets SyncRef[T])."""
+        """The field that should be driven."""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +92,7 @@ class BooleanReferenceDriver(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def false_target(self) -> str | None:
-        """Target ID of the FalseTarget reference (targets T)."""
+        """The value that the field will be driven to if ``State`` is false."""
         member = self.get_member("FalseTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +113,7 @@ class BooleanReferenceDriver(GenericComponent[T], IComponent, IWorldEventReceive
 
     @property
     def true_target(self) -> str | None:
-        """Target ID of the TrueTarget reference (targets T)."""
+        """The value that the field will be driven to if ``State`` is true."""
         member = self.get_member("TrueTarget")
         if isinstance(member, members.Reference):
             return member.targetId

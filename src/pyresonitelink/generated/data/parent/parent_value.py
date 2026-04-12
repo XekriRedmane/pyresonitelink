@@ -9,9 +9,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParentValue(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ParentValue<>.
+    """The ParentValue&lt;T&gt; component provides a value type for the parent value system.
 
     Category: Data/Parent
+
+    When this component is on a slot, all immediate children are part of its
+    parent value system. Any immediate children of the slot with a
+    ParentValueLink component that matches the type and ``Tag`` of this
+    component will be linked to the ``Value`` provided by this component.
+    This can be especially useful for Snapper/SnapTarget systems.
 
     Parameterize with a value type::
 
@@ -38,7 +44,7 @@ class ParentValue(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def tag(self) -> primitives.String | None:
-        """The Tag field value."""
+        """Tag of the parent value. Compatible ParentValueLink components on the slot's immediate children must have the same tag."""
         member = self.get_member("Tag")
         if member is None:
             return None

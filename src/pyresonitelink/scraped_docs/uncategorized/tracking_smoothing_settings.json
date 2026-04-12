@@ -1,0 +1,16 @@
+{
+  "description": "The TrackingSmoothingSettings component is better explained on the Settings page.",
+  "category": "Uncategorized",
+  "fields": {
+    "HandPositionSmoothing": "How much to smooth hand positioning, if not null.",
+    "HandRotationSmoothing": "How much to smooth hand rotation, if not null.",
+    "FeetPositionSmoothing": "How much to smooth feet positioning, if not null.",
+    "FeetRotationSmoothing": "How much to smooth feet rotation, if not null.",
+    "HipsPositionSmoothing": "How much to smooth hips positioning, if not null.",
+    "HipsRotationSmoothing": "How much to smooth hips rotation, if not null."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TrackingSmoothingSettings&action=raw"
+}

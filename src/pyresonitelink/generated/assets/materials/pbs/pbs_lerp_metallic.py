@@ -3,6 +3,10 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.blend_mode import BlendMode
+from pyresonitelink.generated._enums.zwrite import ZWrite
+from pyresonitelink.generated._enums.ztest import ZTest
+from pyresonitelink.generated._enums.culling import Culling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,14 +17,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PBSLerpMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PBSLerpMetallic.
+    """The PBSLerpMetallic component also known as . Is a material that can switch textures and texture sets.
+
+If you want to switch between more than two sets of textures, please see MultiTextureFader.
+
+To see detailed info on the textures not unique to this material like albedo and metallic, please see PBS_Metallic.
 
     Category: Assets/Materials/PBS
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBSLerpMetallic"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, lerp: primitives.Float | None = None, lerp_texture: str | IAssetProvider[ITexture2D] | None = None, lerp_texture_scale: primitives.Float2 | None = None, lerp_texture_offset: primitives.Float2 | None = None, texture0_scale: primitives.Float2 | None = None, texture0_offset: primitives.Float2 | None = None, texture1_scale: primitives.Float2 | None = None, texture1_offset: primitives.Float2 | None = None, albedo_color0: primitives.ColorX | None = None, albedo_color1: primitives.ColorX | None = None, albedo_texture0: str | IAssetProvider[ITexture2D] | None = None, albedo_texture1: str | IAssetProvider[ITexture2D] | None = None, emissive_color0: primitives.ColorX | None = None, emissive_color1: primitives.ColorX | None = None, emissive_map0: str | IAssetProvider[ITexture2D] | None = None, emissive_map1: str | IAssetProvider[ITexture2D] | None = None, normal_map0: str | IAssetProvider[ITexture2D] | None = None, normal_map1: str | IAssetProvider[ITexture2D] | None = None, normal_scale0: primitives.Float | None = None, normal_scale1: primitives.Float | None = None, multi_value: primitives.Bool | None = None, occlusion_map0: str | IAssetProvider[ITexture2D] | None = None, occlusion_map1: str | IAssetProvider[ITexture2D] | None = None, alpha_cutoff: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic0: primitives.Float | None = None, metallic1: primitives.Float | None = None, smoothness0: primitives.Float | None = None, smoothness1: primitives.Float | None = None, metallic_map0: str | IAssetProvider[ITexture2D] | None = None, metallic_map1: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, lerp: primitives.Float | None = None, lerp_texture: str | IAssetProvider[ITexture2D] | None = None, lerp_texture_scale: primitives.Float2 | None = None, lerp_texture_offset: primitives.Float2 | None = None, texture0_scale: primitives.Float2 | None = None, texture0_offset: primitives.Float2 | None = None, texture1_scale: primitives.Float2 | None = None, texture1_offset: primitives.Float2 | None = None, albedo_color0: primitives.ColorX | None = None, albedo_color1: primitives.ColorX | None = None, albedo_texture0: str | IAssetProvider[ITexture2D] | None = None, albedo_texture1: str | IAssetProvider[ITexture2D] | None = None, emissive_color0: primitives.ColorX | None = None, emissive_color1: primitives.ColorX | None = None, emissive_map0: str | IAssetProvider[ITexture2D] | None = None, emissive_map1: str | IAssetProvider[ITexture2D] | None = None, normal_map0: str | IAssetProvider[ITexture2D] | None = None, normal_map1: str | IAssetProvider[ITexture2D] | None = None, normal_scale0: primitives.Float | None = None, normal_scale1: primitives.Float | None = None, multi_value: primitives.Bool | None = None, occlusion_map0: str | IAssetProvider[ITexture2D] | None = None, occlusion_map1: str | IAssetProvider[ITexture2D] | None = None, blend_mode: BlendMode | str | None = None, alpha_cutoff: primitives.Float | None = None, zwrite: ZWrite | str | None = None, ztest: ZTest | str | None = None, culling: Culling | str | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic0: primitives.Float | None = None, metallic1: primitives.Float | None = None, smoothness0: primitives.Float | None = None, smoothness1: primitives.Float | None = None, metallic_map0: str | IAssetProvider[ITexture2D] | None = None, metallic_map1: str | IAssetProvider[ITexture2D] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -49,7 +57,11 @@ class PBSLerpMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             multi_value: Initial value for MultiValue.
             occlusion_map0: Initial value for OcclusionMap0.
             occlusion_map1: Initial value for OcclusionMap1.
+            blend_mode: Initial value for BlendMode.
             alpha_cutoff: Initial value for AlphaCutoff.
+            zwrite: Initial value for ZWrite.
+            ztest: Initial value for ZTest.
+            culling: Initial value for Culling.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
             render_queue: Initial value for RenderQueue.
@@ -112,8 +124,16 @@ class PBSLerpMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             self.occlusion_map0 = occlusion_map0
         if occlusion_map1 is not None:
             self.occlusion_map1 = occlusion_map1
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
         if alpha_cutoff is not None:
             self.alpha_cutoff = alpha_cutoff
+        if zwrite is not None:
+            self.zwrite = zwrite
+        if ztest is not None:
+            self.ztest = ztest
+        if culling is not None:
+            self.culling = culling
         if offset_factor is not None:
             self.offset_factor = offset_factor
         if offset_units is not None:
@@ -629,17 +649,24 @@ class PBSLerpMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def alpha_cutoff(self) -> primitives.Float | None:
@@ -661,43 +688,64 @@ class PBSLerpMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def ztest(self) -> members.FieldEnum | None:
-        """The ZTest member."""
+    def ztest(self) -> ZTest | None:
+        """The ZTest enum value."""
         member = self.get_member("ZTest")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZTest(member.value)
         return None
 
     @ztest.setter
-    def ztest(self, value: members.FieldEnum) -> None:
-        """Set the ZTest member."""
-        self.set_member("ZTest", value)
+    def ztest(self, value: ZTest | str) -> None:
+        """Set the ZTest enum value."""
+        member = self.get_member("ZTest")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZTest",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def culling(self) -> members.FieldEnum | None:
-        """The Culling member."""
+    def culling(self) -> Culling | None:
+        """The Culling enum value."""
         member = self.get_member("Culling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Culling(member.value)
         return None
 
     @culling.setter
-    def culling(self, value: members.FieldEnum) -> None:
-        """Set the Culling member."""
-        self.set_member("Culling", value)
+    def culling(self, value: Culling | str) -> None:
+        """Set the Culling enum value."""
+        member = self.get_member("Culling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Culling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def offset_factor(self) -> primitives.Float | None:

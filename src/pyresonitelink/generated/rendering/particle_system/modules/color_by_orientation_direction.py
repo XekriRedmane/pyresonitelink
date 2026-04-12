@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorByOrientationDirection(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ColorByOrientationDirection.
+    """The ColorByOrientationDirection component is used to make particles change color depending on their dot product of their orientation to a reference orientation. Dot product essentially means how close in terms of angle is one direction to another. The colors when in-between are lerped.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ColorByOrientationDirection"
@@ -38,7 +43,7 @@ class ColorByOrientationDirection(GeneratedComponent, IParticleSystemModule, IWo
 
     @property
     def reference_direction(self) -> primitives.Float3 | None:
-        """The ReferenceDirection field value."""
+        """The direction in local space that is being used as a reference."""
         member = self.get_member("ReferenceDirection")
         if member is None:
             return None
@@ -57,7 +62,7 @@ class ColorByOrientationDirection(GeneratedComponent, IParticleSystemModule, IWo
 
     @property
     def aligned_color(self) -> primitives.ColorX | None:
-        """The AlignedColor field value."""
+        """The color to use if the particle's orientation is exactly the same direction as ``ReferenceDirection``."""
         member = self.get_member("AlignedColor")
         if member is None:
             return None
@@ -76,7 +81,7 @@ class ColorByOrientationDirection(GeneratedComponent, IParticleSystemModule, IWo
 
     @property
     def orthogonal_color(self) -> primitives.ColorX | None:
-        """The OrthogonalColor field value."""
+        """The color to use if the particle's orientation is exactly 90 degrees to ``ReferenceDirection``. This 90 degrees falls onto any particle direction that is along the surface of a plane facing the same direction as ``ReferenceDirection``."""
         member = self.get_member("OrthogonalColor")
         if member is None:
             return None
@@ -95,7 +100,7 @@ class ColorByOrientationDirection(GeneratedComponent, IParticleSystemModule, IWo
 
     @property
     def opposite_color(self) -> primitives.ColorX | None:
-        """The OppositeColor field value."""
+        """The color if the particle's orientation is exactly opposite of ``ReferenceDirection``."""
         member = self.get_member("OppositeColor")
         if member is None:
             return None

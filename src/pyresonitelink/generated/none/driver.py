@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Driver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.Driver<>.
+    """The Driver component drives a value field via a protoflux output. This is used in ProtoFlux to utilize output calculations.
+
+    Not used by the user directly, but is made by Flux drivers.
 
     Parameterize with a value type::
 
@@ -37,7 +39,7 @@ class Driver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets INodeOutput[T])."""
+        """The node output to get a value from."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +60,7 @@ class Driver(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[T])."""
+        """The value to drive with the output acquired from ``Source``."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

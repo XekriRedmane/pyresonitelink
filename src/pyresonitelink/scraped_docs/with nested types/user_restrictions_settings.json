@@ -1,0 +1,11 @@
+{
+  "description": "The UserRestrictionsSettings component is found in the user space and contains all blocked user entries. this is a good way to handle blocked users until they fix the regression of no longer having a blocked users list introduced in the settings update.",
+  "category": "With Nested Types",
+  "fields": {
+    "Entries": "A list of blocked users."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserRestrictionsSettings&action=raw"
+}

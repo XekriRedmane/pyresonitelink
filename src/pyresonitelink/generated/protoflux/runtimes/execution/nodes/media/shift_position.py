@@ -43,7 +43,7 @@ class ShiftPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse after the initial call."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class ShiftPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INod
 
     @property
     def delta(self) -> str | None:
-        """Target ID of the Delta reference (targets INodeValueOutput[primitives.Float])."""
+        """Set how much the position should be moved. A positive value moves the position forward, while a negative one moves it backwards."""
         member = self.get_member("Delta")
         if isinstance(member, members.Reference):
             return member.targetId

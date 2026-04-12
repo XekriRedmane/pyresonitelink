@@ -33,7 +33,7 @@ class UserRootSlot(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting the root slot from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

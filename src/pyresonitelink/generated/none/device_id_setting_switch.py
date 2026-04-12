@@ -7,7 +7,9 @@ from pyresonitelink.generated._base import GeneratedComponent
 
 
 class DeviceIDSettingSwitch(GeneratedComponent):
-    """Wrapper for [FrooxEngine]FrooxEngine.DeviceIDSettingSwitch.
+    """The DeviceIDSettingSwitch component is used to switch setting sets when a different device is used in conjunction with a DeviceIDSettingSwitchSource
+
+    Used in settings system. Not usually used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DeviceIDSettingSwitch"
@@ -25,7 +27,7 @@ class DeviceIDSettingSwitch(GeneratedComponent):
 
     @property
     def device_id(self) -> primitives.String | None:
-        """The DeviceID field value."""
+        """The device ID currently active for the set of settings for the user."""
         member = self.get_member("DeviceID")
         if member is None:
             return None

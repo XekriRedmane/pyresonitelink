@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ComputeBoundingBox(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Compute Bounding Box node calculates a bounding box for the input Instance slot hierarchy in the input CoordinateSpace with optional filtering for inactive and/or tagged slots.
+    """The Compute Bounding Box node calculates a bounding box for the input Instance slot hierarchy in the input CoordinateSpace with optional filtering for inactive and/or tagged slots. 
+
+Only components which implement the ``IBounded`` interface are used for bounding box calculation. These include: Bounds, MeshRenderers, SkinnedMeshRenderers, TextRenderers, UIX Canvases, CharacterControllers and all Colliders.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Transform/Bounds
     """
@@ -44,7 +46,7 @@ class ComputeBoundingBox(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot for whose hierarchy a bounding box is calculated."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +67,7 @@ class ComputeBoundingBox(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def include_inactive(self) -> str | None:
-        """Target ID of the IncludeInactive reference (targets INodeValueOutput[primitives.Bool])."""
+        """Determines whether inactive parts of the hierarchy are included when calculating the bounding box. Default is False which means that inactive slots and their children are ignored."""
         member = self.get_member("IncludeInactive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +88,7 @@ class ComputeBoundingBox(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def coordinate_space(self) -> str | None:
-        """Target ID of the CoordinateSpace reference (targets INodeObjectOutput[Slot])."""
+        """The slot relative to whose coordinate space the bounding box is calculated. Default is null which results in the bounding box being calculated in global coordinate space."""
         member = self.get_member("CoordinateSpace")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +109,7 @@ class ComputeBoundingBox(GeneratedComponent, INodeValueOutput, IExecutionNode, I
 
     @property
     def only_with_tag(self) -> str | None:
-        """Target ID of the OnlyWithTag reference (targets INodeObjectOutput[primitives.String])."""
+        """If specified, only slots with the given tag are included in the bounding box calculation. Default is null, which results in no filtering by tag. Unlike the handling of IncludeInactive, child slots with a matching tag are included even if their parent slot(s) are not tagged."""
         member = self.get_member("OnlyWithTag")
         if isinstance(member, members.Reference):
             return member.targetId

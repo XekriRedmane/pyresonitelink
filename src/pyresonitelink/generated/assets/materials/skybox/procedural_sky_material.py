@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.sun_type import SunType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -14,19 +15,23 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProceduralSkyMaterial(GeneratedComponent, ISkyboxMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProceduralSkyMaterial.
+    """The Procedural Sky Material component is used to make a on-the-fly generated skybox using a light object and some values for atmosphere and sun size.
 
     Category: Assets/Materials/Skybox
+
+    Used commonly in sky boxes found in grid spaces, and serves as a quick
+    and simple way of making a sky that can be changed on the fly.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProceduralSkyMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, sun_size: primitives.Float | None = None, sun: str | Light | None = None, atmosphere_thickness: primitives.Float | None = None, sky_tint: primitives.ColorX | None = None, ground_color: primitives.ColorX | None = None, exposure: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, sun_quality: SunType | str | None = None, sun_size: primitives.Float | None = None, sun: str | Light | None = None, atmosphere_thickness: primitives.Float | None = None, sky_tint: primitives.ColorX | None = None, ground_color: primitives.ColorX | None = None, exposure: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             shader: Initial value for _shader.
+            sun_quality: Initial value for SunQuality.
             sun_size: Initial value for SunSize.
             sun: Initial value for Sun.
             atmosphere_thickness: Initial value for AtmosphereThickness.
@@ -40,6 +45,8 @@ class ProceduralSkyMaterial(GeneratedComponent, ISkyboxMaterial, ICustomInspecto
             self.high_priority_integration = high_priority_integration
         if shader is not None:
             self.shader = shader
+        if sun_quality is not None:
+            self.sun_quality = sun_quality
         if sun_size is not None:
             self.sun_size = sun_size
         if sun is not None:
@@ -94,17 +101,24 @@ class ProceduralSkyMaterial(GeneratedComponent, ISkyboxMaterial, ICustomInspecto
             )
 
     @property
-    def sun_quality(self) -> members.FieldEnum | None:
-        """The SunQuality member."""
+    def sun_quality(self) -> SunType | None:
+        """The SunQuality enum value."""
         member = self.get_member("SunQuality")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SunType(member.value)
         return None
 
     @sun_quality.setter
-    def sun_quality(self, value: members.FieldEnum) -> None:
-        """Set the SunQuality member."""
-        self.set_member("SunQuality", value)
+    def sun_quality(self, value: SunType | str) -> None:
+        """Set the SunQuality enum value."""
+        member = self.get_member("SunQuality")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SunQuality",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def sun_size(self) -> primitives.Float | None:

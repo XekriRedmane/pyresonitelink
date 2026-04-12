@@ -6,9 +6,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ChildrenSaveBlocker(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ChildrenSaveBlocker.
+    """The ChildrenSaveBlocker component prevents the slot's children from being saved with the slot.
 
     Category: Utility
+
+    When attached to a slot, the children of the slot will not be saved when
+    the slot is part of an item being saved. The slot itself will still be
+    saved.
+
+    **See also**: * GrabbableSaveBlock for blocking saves of grabbable items.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ChildrenSaveBlocker"

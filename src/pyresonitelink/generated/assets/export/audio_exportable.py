@@ -10,9 +10,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioExportable.
+    """The AudioExportable component is used to export an AudioClip as a file for your device.
+
+To export using this component, look at the file browser export section.
 
     Category: Assets/Export
+
+    Is used to make an item export an audio clip when a user tries to export
+    the root object.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioExportable"
@@ -30,7 +35,7 @@ class AudioExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @property
     def audio(self) -> str | None:
-        """Target ID of the Audio reference (targets IAssetProvider[AudioClip])."""
+        """The audio clip to be exported."""
         member = self.get_member("Audio")
         if isinstance(member, members.Reference):
             return member.targetId

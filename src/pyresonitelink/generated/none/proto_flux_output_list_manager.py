@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.type import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.proto_flux_node_visual import ProtoFluxNodeVisual
@@ -14,12 +15,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.Visuals.ProtoFluxOutputListManager.
+    """The ProtoFluxOutputListManager component is used to manage a list of outputs on a ProtoFlux visual.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.Visuals.ProtoFluxOutputListManager"
 
-    def __init__(self, visual: str | ProtoFluxNodeVisual | None = None, list_: str | ISyncList | None = None, min_elements: primitives.Int | None = None, add_button_enabled: str | IField[primitives.Bool] | None = None, remove_button_enabled: str | IField[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, visual: str | ProtoFluxNodeVisual | None = None, list_: str | ISyncList | None = None, min_elements: primitives.Int | None = None, add_button_enabled: str | IField[primitives.Bool] | None = None, remove_button_enabled: str | IField[primitives.Bool] | None = None, output_type: Type | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +29,7 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
             min_elements: Initial value for MinElements.
             add_button_enabled: Initial value for AddButtonEnabled.
             remove_button_enabled: Initial value for RemoveButtonEnabled.
+            output_type: Initial value for OutputType.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -41,10 +43,12 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
             self.add_button_enabled = add_button_enabled
         if remove_button_enabled is not None:
             self.remove_button_enabled = remove_button_enabled
+        if output_type is not None:
+            self.output_type = output_type
 
     @property
     def visual(self) -> str | None:
-        """Target ID of the Visual reference (targets ProtoFluxNodeVisual)."""
+        """The ProtoFlux visual this is a part of."""
         member = self.get_member("Visual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +69,7 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def list_(self) -> str | None:
-        """Target ID of the List reference (targets ISyncList)."""
+        """The list this is a visual for."""
         member = self.get_member("List")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +90,7 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def min_elements(self) -> primitives.Int | None:
-        """The MinElements field value."""
+        """The minimum elements allowed for the list."""
         member = self.get_member("MinElements")
         if member is None:
             return None
@@ -105,7 +109,7 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def add_button_enabled(self) -> str | None:
-        """Target ID of the AddButtonEnabled reference (targets IField[primitives.Bool])."""
+        """The enabled field of the add elements button."""
         member = self.get_member("AddButtonEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +130,7 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def remove_button_enabled(self) -> str | None:
-        """Target ID of the RemoveButtonEnabled reference (targets IField[primitives.Bool])."""
+        """The enabled field of the remove elements button."""
         member = self.get_member("RemoveButtonEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -147,7 +151,7 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def elements(self) -> members.SyncList | None:
-        """The _elements member."""
+        """A list of slots representing the UIX elements of the list of outputs."""
         member = self.get_member("_elements")
         if isinstance(member, members.SyncList):
             return member
@@ -155,24 +159,31 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
 
     @elements.setter
     def elements(self, value: members.SyncList) -> None:
-        """Set the _elements member."""
+        """Set _elements. A list of slots representing the UIX elements of the list of outputs."""
         self.set_member("_elements", value)
 
     @property
-    def output_type(self) -> members.FieldEnum | None:
-        """The OutputType member."""
+    def output_type(self) -> Type | None:
+        """The C# Type of the list of outputs for the list this is managing."""
         member = self.get_member("OutputType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @output_type.setter
-    def output_type(self, value: members.FieldEnum) -> None:
-        """Set the OutputType member."""
-        self.set_member("OutputType", value)
+    def output_type(self, value: Type | str) -> None:
+        """Set OutputType. The C# Type of the list of outputs for the list this is managing."""
+        member = self.get_member("OutputType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OutputType",
+                members.FieldEnum(value=str(value)),
+            )
 
     async def add_element(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the AddElement sync method.
+        """Called when the add element button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -188,7 +199,7 @@ class ProtoFluxOutputListManager(GeneratedComponent, IComponent, IWorldEventRece
         )
 
     async def remove_element(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the RemoveElement sync method.
+        """Called when the remove element button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.

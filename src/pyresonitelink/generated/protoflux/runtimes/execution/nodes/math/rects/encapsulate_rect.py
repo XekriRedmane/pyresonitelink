@@ -36,7 +36,7 @@ class EncapsulateRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def a(self) -> str | None:
-        """Target ID of the A reference (targets INodeValueOutput[primitives.Rect])."""
+        """The first rect."""
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class EncapsulateRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def b(self) -> str | None:
-        """Target ID of the B reference (targets INodeValueOutput[primitives.Rect])."""
+        """The second rect."""
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             return member.targetId

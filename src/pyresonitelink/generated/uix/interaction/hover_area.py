@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HoverArea(GeneratedComponent, IUIHoverable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.HoverArea.
+    """The HoverArea component listens for a user's hover event on a UIX element. This component only works when it has an interactable component on the same Slot, such as a Button.
+
+}}
 
     Category: UIX/Interaction
     """
@@ -29,7 +31,7 @@ class HoverArea(GeneratedComponent, IUIHoverable, IWorldEventReceiver):
 
     @property
     def is_hovering(self) -> primitives.Bool | None:
-        """The IsHovering field value."""
+        """Updates when a user's hover event is detected."""
         member = self.get_member("IsHovering")
         if member is None:
             return None

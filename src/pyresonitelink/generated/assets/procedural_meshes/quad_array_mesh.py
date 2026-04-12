@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class QuadArrayMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.QuadArrayMesh.
+    """Quad array mesh makes a bunch of quads with defined positions, rotations, vertex colors, and UV coordinates which are rendered as one mesh. This is made from Quad brushes which can be found in the resonite essentials folder.
 
     Category: Assets/Procedural Meshes
+
+    This component is not usually used directly
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.QuadArrayMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, colors_profile: ColorProfile | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
+            colors_profile: Initial value for ColorsProfile.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -35,6 +40,10 @@ class QuadArrayMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
+        if colors_profile is not None:
+            self.colors_profile = colors_profile
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -94,17 +103,24 @@ class QuadArrayMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def points(self) -> list[primitives.Float3] | None:
@@ -183,17 +199,24 @@ class QuadArrayMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def colors_profile(self) -> members.FieldEnum | None:
-        """The ColorsProfile member."""
+    def colors_profile(self) -> ColorProfile | None:
+        """The color profile of each quad."""
         member = self.get_member("ColorsProfile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @colors_profile.setter
-    def colors_profile(self, value: members.FieldEnum) -> None:
-        """Set the ColorsProfile member."""
-        self.set_member("ColorsProfile", value)
+    def colors_profile(self, value: ColorProfile | str) -> None:
+        """Set ColorsProfile. The color profile of each quad."""
+        member = self.get_member("ColorsProfile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ColorsProfile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def uvs(self) -> list[primitives.Float4] | None:

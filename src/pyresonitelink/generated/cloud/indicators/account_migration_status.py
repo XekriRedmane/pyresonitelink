@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.migration_state import MigrationState
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -10,14 +11,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AccountMigrationStatus.
+    """This component is able to take a taskID of a migration on the cloud, and is able to display the information about said Migration. This info is grabbed from a AccountMigrationTask object internally which is returned by the SkyFrost API.
 
     Category: Cloud/Indicators
+
+    **Behavior**: does not work outside of user space.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AccountMigrationStatus"
 
-    def __init__(self, task_id: primitives.String | None = None, exists: primitives.Bool | None = None, name: primitives.String | None = None, description: primitives.String | None = None, estimated_queue_position: primitives.Int | None = None, start_count: primitives.Int | None = None, created_on: str | None = None, started_on: str | None = None, completed_on: str | None = None, records_per_minute: primitives.Double | None = None, currently_migrating: primitives.String | None = None, current_item: primitives.String | None = None, total_record_count: primitives.Int | None = None, total_migrated_record_count: primitives.Int | None = None, total_failed_record_count: primitives.Int | None = None, total_migrated_variable_count: primitives.Int | None = None, total_migrated_variable_definition_count: primitives.Int | None = None, total_contact_count: primitives.Int | None = None, migrated_contact_count: primitives.Int | None = None, migrated_message_count: primitives.Int | None = None, total_group_count: primitives.Int | None = None, migrated_group_count: primitives.Int | None = None, total_migrated_member_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, task_id: primitives.String | None = None, exists: primitives.Bool | None = None, name: primitives.String | None = None, description: primitives.String | None = None, state: MigrationState | str | None = None, estimated_queue_position: primitives.Int | None = None, start_count: primitives.Int | None = None, created_on: str | None = None, started_on: str | None = None, completed_on: str | None = None, records_per_minute: primitives.Double | None = None, currently_migrating: primitives.String | None = None, current_item: primitives.String | None = None, total_record_count: primitives.Int | None = None, total_migrated_record_count: primitives.Int | None = None, total_failed_record_count: primitives.Int | None = None, total_migrated_variable_count: primitives.Int | None = None, total_migrated_variable_definition_count: primitives.Int | None = None, total_contact_count: primitives.Int | None = None, migrated_contact_count: primitives.Int | None = None, migrated_message_count: primitives.Int | None = None, total_group_count: primitives.Int | None = None, migrated_group_count: primitives.Int | None = None, total_migrated_member_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,6 +28,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             exists: Initial value for Exists.
             name: Initial value for Name.
             description: Initial value for Description.
+            state: Initial value for State.
             estimated_queue_position: Initial value for EstimatedQueuePosition.
             start_count: Initial value for StartCount.
             created_on: Initial value for CreatedOn.
@@ -55,6 +59,8 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             self.name = name
         if description is not None:
             self.description = description
+        if state is not None:
+            self.state = state
         if estimated_queue_position is not None:
             self.estimated_queue_position = estimated_queue_position
         if start_count is not None:
@@ -96,7 +102,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def task_id(self) -> primitives.String | None:
-        """The TaskId field value."""
+        """A UUID of a task that has been done, waiting, or is being done on the SkyFrost cloud."""
         member = self.get_member("TaskId")
         if member is None:
             return None
@@ -115,7 +121,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def exists(self) -> primitives.Bool | None:
-        """The Exists field value."""
+        """Whether ``TaskId`` is a valid ID for a task on the cloud"""
         member = self.get_member("Exists")
         if member is None:
             return None
@@ -134,7 +140,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def name(self) -> primitives.String | None:
-        """The Name field value."""
+        """The name of the found migration task."""
         member = self.get_member("Name")
         if member is None:
             return None
@@ -153,7 +159,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def description(self) -> primitives.String | None:
-        """The Description field value."""
+        """The description of the task. Usually starts with "Account Migration" or "Favorites migration""""
         member = self.get_member("Description")
         if member is None:
             return None
@@ -171,21 +177,28 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def state(self) -> members.FieldEnum | None:
-        """The State member."""
+    def state(self) -> MigrationState | None:
+        """Also known as "Status", this will show whether the task has started, and if it's done or currently running."""
         member = self.get_member("State")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MigrationState(member.value)
         return None
 
     @state.setter
-    def state(self, value: members.FieldEnum) -> None:
-        """Set the State member."""
-        self.set_member("State", value)
+    def state(self, value: MigrationState | str) -> None:
+        """Set State. Also known as "Status", this will show whether the task has started, and if it's done or currently running."""
+        member = self.get_member("State")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "State",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def estimated_queue_position(self) -> primitives.Int | None:
-        """The EstimatedQueuePosition field value."""
+        """An estimate of the migration task's position on the list of migrations the SkyFrost servers are currently doing. This number can be high if a huge influx of migrations is happening at the current time."""
         member = self.get_member("EstimatedQueuePosition")
         if member is None:
             return None
@@ -204,7 +217,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def start_count(self) -> primitives.Int | None:
-        """The StartCount field value."""
+        """Usually 1 for some reason __TPL__"""
         member = self.get_member("StartCount")
         if member is None:
             return None
@@ -223,7 +236,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def created_on(self) -> str | None:
-        """The CreatedOn field value."""
+        """When the migration task was submitted to the list of migrations to be done on the cloud"""
         member = self.get_member("CreatedOn")
         if member is None:
             return None
@@ -242,7 +255,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def started_on(self) -> str | None:
-        """The StartedOn field value."""
+        """When the cloud started to migrate the items for this task."""
         member = self.get_member("StartedOn")
         if member is None:
             return None
@@ -261,7 +274,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def completed_on(self) -> str | None:
-        """The CompletedOn field value."""
+        """When the Cloud completed this migration task."""
         member = self.get_member("CompletedOn")
         if member is None:
             return None
@@ -280,7 +293,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def records_per_minute(self) -> primitives.Double | None:
-        """The RecordsPerMinute field value."""
+        """A calculation average of how fast the SkyFrost cloud is transfering items from the source platform to Resonite."""
         member = self.get_member("RecordsPerMinute")
         if member is None:
             return None
@@ -299,7 +312,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def currently_migrating(self) -> primitives.String | None:
-        """The CurrentlyMigrating field value."""
+        """What type of thing the cloud is currently migrating?"""
         member = self.get_member("CurrentlyMigrating")
         if member is None:
             return None
@@ -318,7 +331,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def current_item(self) -> primitives.String | None:
-        """The CurrentItem field value."""
+        """What item the cloud is currently migrating for this task."""
         member = self.get_member("CurrentItem")
         if member is None:
             return None
@@ -337,7 +350,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def total_record_count(self) -> primitives.Int | None:
-        """The TotalRecordCount field value."""
+        """How many records this migration task is to migrate in total."""
         member = self.get_member("TotalRecordCount")
         if member is None:
             return None
@@ -356,7 +369,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def total_migrated_record_count(self) -> primitives.Int | None:
-        """The TotalMigratedRecordCount field value."""
+        """How many records this migration has successfully migrated so far."""
         member = self.get_member("TotalMigratedRecordCount")
         if member is None:
             return None
@@ -375,7 +388,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def total_failed_record_count(self) -> primitives.Int | None:
-        """The TotalFailedRecordCount field value."""
+        """How many records this migration failed to migrate."""
         member = self.get_member("TotalFailedRecordCount")
         if member is None:
             return None
@@ -394,7 +407,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def total_migrated_variable_count(self) -> primitives.Int | None:
-        """The TotalMigratedVariableCount field value."""
+        """How many Cloud Variables that the user has created themselves that this migration task has to migrate in total."""
         member = self.get_member("TotalMigratedVariableCount")
         if member is None:
             return None
@@ -413,7 +426,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def total_migrated_variable_definition_count(self) -> primitives.Int | None:
-        """The TotalMigratedVariableDefinitionCount field value."""
+        """How many Cloud Variable Definitions this migration task has to migrate in total."""
         member = self.get_member("TotalMigratedVariableDefinitionCount")
         if member is None:
             return None
@@ -432,7 +445,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def total_contact_count(self) -> primitives.Int | None:
-        """The TotalContactCount field value."""
+        """How many friend connections that this migration task has to migrate in total."""
         member = self.get_member("TotalContactCount")
         if member is None:
             return None
@@ -451,7 +464,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def migrated_contact_count(self) -> primitives.Int | None:
-        """The MigratedContactCount field value."""
+        """How many friend connections that this migration task has migrated so far."""
         member = self.get_member("MigratedContactCount")
         if member is None:
             return None
@@ -470,7 +483,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def migrated_message_count(self) -> primitives.Int | None:
-        """The MigratedMessageCount field value."""
+        """How many messages sent by the user that this migration task has migrated so far."""
         member = self.get_member("MigratedMessageCount")
         if member is None:
             return None
@@ -489,7 +502,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def total_group_count(self) -> primitives.Int | None:
-        """The TotalGroupCount field value."""
+        """How many groups that the user has created that this migration task has to migrate in total."""
         member = self.get_member("TotalGroupCount")
         if member is None:
             return None
@@ -508,7 +521,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def migrated_group_count(self) -> primitives.Int | None:
-        """The MigratedGroupCount field value."""
+        """How many groups that the user has created that the migration task has migrated so far."""
         member = self.get_member("MigratedGroupCount")
         if member is None:
             return None
@@ -527,7 +540,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def total_migrated_member_count(self) -> primitives.Int | None:
-        """The TotalMigratedMemberCount field value."""
+        """How many member names of groups that the user has created has been migrated by the migration task."""
         member = self.get_member("TotalMigratedMemberCount")
         if member is None:
             return None

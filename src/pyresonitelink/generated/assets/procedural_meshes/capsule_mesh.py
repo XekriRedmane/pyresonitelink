@@ -4,6 +4,8 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.shading import Shading
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,24 +14,29 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CapsuleMesh.
+    """Creates a mesh that is a cylinder with rounded ends instead of flat ends.
 
     Category: Assets/Procedural Meshes
+
+    Add this mesh to a mesh renderer component along with a material to view
+    it
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CapsuleMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: primitives.Float | None = None, height: primitives.Float | None = None, segments: primitives.Int | None = None, rings: primitives.Int | None = None, uv_scale: primitives.Float2 | None = None, dual_sided: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, radius: primitives.Float | None = None, height: primitives.Float | None = None, segments: primitives.Int | None = None, rings: primitives.Int | None = None, shading: Shading | str | None = None, uv_scale: primitives.Float2 | None = None, dual_sided: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             radius: Initial value for Radius.
             height: Initial value for Height.
             segments: Initial value for Segments.
             rings: Initial value for Rings.
+            shading: Initial value for Shading.
             uv_scale: Initial value for UVScale.
             dual_sided: Initial value for DualSided.
             component: Existing Component to wrap.
@@ -41,6 +48,8 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if radius is not None:
             self.radius = radius
         if height is not None:
@@ -49,6 +58,8 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             self.segments = segments
         if rings is not None:
             self.rings = rings
+        if shading is not None:
+            self.shading = shading
         if uv_scale is not None:
             self.uv_scale = uv_scale
         if dual_sided is not None:
@@ -112,21 +123,28 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """Determines the roundness of the mesh."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -145,7 +163,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """Determines how tall the mesh is."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -164,7 +182,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
 
     @property
     def segments(self) -> primitives.Int | None:
-        """The Segments field value."""
+        """Determines the smoothness."""
         member = self.get_member("Segments")
         if member is None:
             return None
@@ -183,7 +201,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
 
     @property
     def rings(self) -> primitives.Int | None:
-        """The Rings field value."""
+        """Determines the smoothness of the top & bottom of the mesh."""
         member = self.get_member("Rings")
         if member is None:
             return None
@@ -201,21 +219,28 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
             )
 
     @property
-    def shading(self) -> members.FieldEnum | None:
-        """The Shading member."""
+    def shading(self) -> Shading | None:
+        """Changes the mesh shading."""
         member = self.get_member("Shading")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Shading(member.value)
         return None
 
     @shading.setter
-    def shading(self, value: members.FieldEnum) -> None:
-        """Set the Shading member."""
-        self.set_member("Shading", value)
+    def shading(self, value: Shading | str) -> None:
+        """Set Shading. Changes the mesh shading."""
+        member = self.get_member("Shading")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Shading",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def uv_scale(self) -> primitives.Float2 | None:
-        """The UVScale field value."""
+        """The inverse of the size the material should appear on the surface as."""
         member = self.get_member("UVScale")
         if member is None:
             return None
@@ -234,7 +259,7 @@ class CapsuleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
 
     @property
     def dual_sided(self) -> primitives.Bool | None:
-        """The DualSided field value."""
+        """Makes the mesh dual sided."""
         member = self.get_member("DualSided")
         if member is None:
             return None

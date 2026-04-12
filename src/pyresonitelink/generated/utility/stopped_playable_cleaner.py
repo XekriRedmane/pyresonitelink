@@ -12,9 +12,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StoppedPlayableCleaner(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StoppedPlayableCleaner.
+    """Stopped playable cleaner is used on play one shots in order to delete or clean them once they have finished playing.
 
     Category: Utility
+
+    **Behavior**: This component can stop working if the user is AFK or the slot is disabled, and can cause issues in items like boopers and overload the sound buffer.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StoppedPlayableCleaner"
@@ -38,7 +40,7 @@ class StoppedPlayableCleaner(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def playable(self) -> str | None:
-        """Target ID of the Playable reference (targets IPlayable)."""
+        """the audio player that is playing audio"""
         member = self.get_member("Playable")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -59,7 +61,7 @@ class StoppedPlayableCleaner(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def grace_period(self) -> primitives.Float | None:
-        """The GracePeriod field value."""
+        """How long to wait before deleting the component after it has finished playing."""
         member = self.get_member("GracePeriod")
         if member is None:
             return None
@@ -78,7 +80,7 @@ class StoppedPlayableCleaner(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def checking_user(self) -> str | None:
-        """Target ID of the CheckingUser reference (targets User)."""
+        """The user that is monitoring the ``Playable`` on their machine to check when it has stopped playing"""
         member = self.get_member("CheckingUser")
         if isinstance(member, members.Reference):
             return member.targetId

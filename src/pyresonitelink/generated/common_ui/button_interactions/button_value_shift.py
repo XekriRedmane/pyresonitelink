@@ -11,9 +11,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonValueShift(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonValueShift<>.
+    """The ButtonValueShift component can be used to make an IButton add the ``delta`` amount to a value whenever it is pressed.
 
     Category: Common UI/Button Interactions
+
+    To function, the component simply needs to be attached to a slot that
+    also has a button component attached to it. From then on, pressing that
+    button will activate the ButtonValueShift, making it shift its
+    ``TargetValue`` by its ``Delta``.
+
+    **Related Issues**: It is known that you can go over the maximum by setting the ``delta`` higher than the max or min values, allowing the output to be outside the ranges provided.
 
     Parameterize with a value type::
 
@@ -52,7 +59,7 @@ class ButtonValueShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
 
     @property
     def target_value(self) -> str | None:
-        """Target ID of the TargetValue reference (targets IField[T])."""
+        """The value to shift."""
         member = self.get_member("TargetValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -130,7 +137,7 @@ class ButtonValueShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
 
     @property
     def wrap_around(self) -> primitives.Bool | None:
-        """The WrapAround field value."""
+        """Whether or not the value should wrap around to the other extreme when reaching either ``Min`` or ``Max``."""
         member = self.get_member("WrapAround")
         if member is None:
             return None
@@ -149,7 +156,7 @@ class ButtonValueShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRec
 
     @property
     def max_is_exclusive(self) -> primitives.Bool | None:
-        """The MaxIsExclusive field value."""
+        """When the current amount is at the value before max, it will stop there, unless wrap around is enabled, which then wraps around from the max value - 1."""
         member = self.get_member("MaxIsExclusive")
         if member is None:
             return None

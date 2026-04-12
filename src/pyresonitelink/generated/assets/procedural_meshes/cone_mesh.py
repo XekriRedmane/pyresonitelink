@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ConeMesh.
+    """The ConeMesh component acts as a source of geometry for rendering a cone with x sides with an optionally flat end.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot, and assign to a Mesh Renderer to see what it looks
+    like. Don't forget to use a material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ConeMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, height: primitives.Float | None = None, radius_base: primitives.Float | None = None, radius_top: primitives.Float | None = None, sides: primitives.Int | None = None, caps: primitives.Bool | None = None, flat_shading: primitives.Bool | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, height: primitives.Float | None = None, radius_base: primitives.Float | None = None, radius_top: primitives.Float | None = None, sides: primitives.Int | None = None, caps: primitives.Bool | None = None, flat_shading: primitives.Bool | None = None, uv_scale: primitives.Float2 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             height: Initial value for Height.
             radius_base: Initial value for RadiusBase.
             radius_top: Initial value for RadiusTop.
@@ -42,6 +47,8 @@ class ConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if height is not None:
             self.height = height
         if radius_base is not None:
@@ -115,21 +122,28 @@ class ConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """Determines the height of the cone."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -148,7 +162,7 @@ class ConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def radius_base(self) -> primitives.Float | None:
-        """The RadiusBase field value."""
+        """Determines the width of the cone's base."""
         member = self.get_member("RadiusBase")
         if member is None:
             return None
@@ -167,7 +181,7 @@ class ConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def radius_top(self) -> primitives.Float | None:
-        """The RadiusTop field value."""
+        """Determines the width from the top of the cone."""
         member = self.get_member("RadiusTop")
         if member is None:
             return None
@@ -186,7 +200,7 @@ class ConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def sides(self) -> primitives.Int | None:
-        """The Sides field value."""
+        """How smooth the roundness of the mesh."""
         member = self.get_member("Sides")
         if member is None:
             return None
@@ -205,7 +219,7 @@ class ConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def caps(self) -> primitives.Bool | None:
-        """The Caps field value."""
+        """Whether to cap the ends with geometry or leave them open."""
         member = self.get_member("Caps")
         if member is None:
             return None
@@ -224,7 +238,7 @@ class ConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
 
     @property
     def flat_shading(self) -> primitives.Bool | None:
-        """The FlatShading field value."""
+        """Toggles mesh smooth shading."""
         member = self.get_member("FlatShading")
         if member is None:
             return None

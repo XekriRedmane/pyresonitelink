@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserPrimaryHand(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The User Primary Hand node returns the user's primary/preferred hand as a Chirality value. This gets set when the user makes an account for the first time and gets asked which hand is their primary hand.
+    """The ``User Primary Hand`` node returns the user's primary/preferred hand as a Chirality value. This gets set when the user makes an account for the first time and gets asked which hand is their primary hand.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
     """
@@ -34,7 +34,7 @@ class UserPrimaryHand(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

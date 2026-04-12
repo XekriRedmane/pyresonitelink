@@ -1,0 +1,9 @@
+{
+  "description": "The InteractiveCameraSpawner can receive Button Events, including ones from a button on the same slot. When receiving a pressed event, this component will spawn an InteractiveCamera in the currently focused world.",
+  "category": "Utility:Tools",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraSpawner&action=raw"
+}

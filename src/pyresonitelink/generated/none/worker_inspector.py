@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorkerInspector(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorkerInspector.
+    """A worker inspector (as opposed to Scene Inspector) is an inspector which only shows a single worker such as a component. When you grab a component reference and click Primary it will usually create one of these inspectors. You can grab sub-objects from some components which will create one of these inspectors when clicking Primary. Some workers are only obtainable via Ref Hacking which is one of the Things to Avoid.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorkerInspector"
@@ -30,7 +30,7 @@ class WorkerInspector(GeneratedComponent, IDeveloperInterface, IWorldEventReceiv
 
     @property
     def target_container(self) -> str | None:
-        """Target ID of the _targetContainer reference (targets Worker)."""
+        """The container which holds this component or proto component (FrooxEngine.ComponentBase)."""
         member = self.get_member("_targetContainer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -51,7 +51,7 @@ class WorkerInspector(GeneratedComponent, IDeveloperInterface, IWorldEventReceiv
 
     @property
     def target_worker(self) -> str | None:
-        """Target ID of the _targetWorker reference (targets Worker)."""
+        """The component or proto component (FrooxEngine.ComponentBase) to view."""
         member = self.get_member("_targetWorker")
         if isinstance(member, members.Reference):
             return member.targetId

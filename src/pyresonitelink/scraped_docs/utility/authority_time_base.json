@@ -1,0 +1,13 @@
+{
+  "description": "The AuthorityTimeBase component allows for fine-grained control over the world time with a certain speed and with respect to a given offset.",
+  "category": "Utility",
+  "fields": {
+    "BaseSpeed": "Speed of the time base.",
+    "_actualSpeed": "Actual speed of the time base. Should not be written to or driven.",
+    "_actualOffset": "Offset of the time base from the current world time. Can be written to or driven perfectly fine."
+  },
+  "methods": {},
+  "usage": "The output of the component is the current world time (as a Double) multiplied by the ``BaseSpeed``, minus the ``_actualOffset``.\n\nThe output of the component is accessed by sourcing the component itself. To write to the current time of the component, you write to said source. When writing to the component source, ``_actualOffset`` is automatically updated to reflect the correct time. When writing to ``BaseSpeed``, ``_actualOffset`` is automatically updated to keep the same time. Writing to ``_actualOffset`` does not affect any other fields.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AuthorityTimeBase&action=raw"
+}

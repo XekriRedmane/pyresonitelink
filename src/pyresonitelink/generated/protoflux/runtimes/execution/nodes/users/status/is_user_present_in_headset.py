@@ -14,7 +14,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class IsUserPresentInHeadset(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Is User Present In Headset node returns if the user is present in the headset.
+    """The ``Is User Present In Headset`` node returns if the user is present in the headset or in desktop mode.
+
+It only returns false if the user is in VR mode with the headset display switched off.
+
+TODO: Does this node track across sessions?
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Status
     """
@@ -34,7 +38,7 @@ class IsUserPresentInHeadset(GeneratedComponent, INodeValueOutput, IExecutionNod
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user we are getting info from."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

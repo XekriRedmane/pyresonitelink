@@ -9,9 +9,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterEventTrigger(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CharacterEventTrigger.
+    """The CharacterEventTrigger component invokes Action triggers whenever a user enters or exits an attached collider.
 
     Category: Locomotion/Interaction
+
+    **Behavior**: == Examples ==
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CharacterEventTrigger"
@@ -32,7 +34,7 @@ class CharacterEventTrigger(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def triggers_only(self) -> primitives.Bool | None:
-        """The TriggersOnly field value."""
+        """Whether to only use Trigger type colliders on this hierarchy when detecting character collisions."""
         member = self.get_member("TriggersOnly")
         if member is None:
             return None
@@ -51,7 +53,7 @@ class CharacterEventTrigger(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def ignore_parent_user(self) -> primitives.Bool | None:
-        """The IgnoreParentUser field value."""
+        """If this component is under a user in the hierarchy, events from that user are ignored."""
         member = self.get_member("IgnoreParentUser")
         if member is None:
             return None

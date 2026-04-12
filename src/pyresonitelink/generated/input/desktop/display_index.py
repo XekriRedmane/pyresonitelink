@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DisplayIndex(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DisplayIndex.
+    """The DisplayIndex component when duplicated by a DesktopDisplayLayout by being part of the slot hiearchy specified by that component's ``DisplayTemplate``, this component's ``Index`` field will be filled by the screen number that DesktopDisplayLayout was trying to spawn a template for.
 
     Category: Input/Desktop
     """
@@ -29,7 +29,7 @@ class DisplayIndex(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """See above."""
         member = self.get_member("Index")
         if member is None:
             return None

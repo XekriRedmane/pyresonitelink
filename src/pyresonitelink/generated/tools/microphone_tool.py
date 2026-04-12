@@ -3,6 +3,9 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.record_format import RecordFormat
+from pyresonitelink.generated._enums.record_mode import RecordMode
+from pyresonitelink.generated._enums.data_source import DataSource
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -16,14 +19,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MicrophoneTool.
+    """See Microphone.
 
     Category: Tools
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MicrophoneTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, quality: primitives.Float | None = None, recording_user: str | User | None = None, is_recording: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, format_: RecordFormat | str | None = None, quality: primitives.Float | None = None, mode: RecordMode | str | None = None, source: DataSource | str | None = None, recording_user: str | User | None = None, is_recording: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +36,10 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
             equip_name: Initial value for EquipName.
             override_active_tool: Initial value for _overrideActiveTool.
             grip_poses_generated: Initial value for _gripPosesGenerated.
+            format_: Initial value for Format.
             quality: Initial value for Quality.
+            mode: Initial value for Mode.
+            source: Initial value for Source.
             recording_user: Initial value for RecordingUser.
             is_recording: Initial value for IsRecording.
             component: Existing Component to wrap.
@@ -51,8 +57,14 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
             self.override_active_tool = override_active_tool
         if grip_poses_generated is not None:
             self.grip_poses_generated = grip_poses_generated
+        if format_ is not None:
+            self.format_ = format_
         if quality is not None:
             self.quality = quality
+        if mode is not None:
+            self.mode = mode
+        if source is not None:
+            self.source = source
         if recording_user is not None:
             self.recording_user = recording_user
         if is_recording is not None:
@@ -190,21 +202,28 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
             )
 
     @property
-    def format_(self) -> members.FieldEnum | None:
-        """The Format member."""
+    def format_(self) -> RecordFormat | None:
+        """The type of audio file to make."""
         member = self.get_member("Format")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return RecordFormat(member.value)
         return None
 
     @format_.setter
-    def format_(self, value: members.FieldEnum) -> None:
-        """Set the Format member."""
-        self.set_member("Format", value)
+    def format_(self, value: RecordFormat | str) -> None:
+        """Set Format. The type of audio file to make."""
+        member = self.get_member("Format")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Format",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def quality(self) -> primitives.Float | None:
-        """The Quality field value."""
+        """The quality of the resulting audio clip file."""
         member = self.get_member("Quality")
         if member is None:
             return None
@@ -222,34 +241,48 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> RecordMode | None:
+        """Whether the user has to hold or it's a toggle."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return RecordMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: RecordMode | str) -> None:
+        """Set Mode. Whether the user has to hold or it's a toggle."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def source(self) -> members.FieldEnum | None:
-        """The Source member."""
+    def source(self) -> DataSource | None:
+        """The way to record the audio."""
         member = self.get_member("Source")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return DataSource(member.value)
         return None
 
     @source.setter
-    def source(self, value: members.FieldEnum) -> None:
-        """Set the Source member."""
-        self.set_member("Source", value)
+    def source(self, value: DataSource | str) -> None:
+        """Set Source. The way to record the audio."""
+        member = self.get_member("Source")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Source",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def recording_user(self) -> str | None:
-        """Target ID of the RecordingUser reference (targets User)."""
+        """The user that is currently recording using the Tool."""
         member = self.get_member("RecordingUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -270,7 +303,7 @@ class MicrophoneTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable
 
     @property
     def is_recording(self) -> primitives.Bool | None:
-        """The IsRecording field value."""
+        """Whether the tool is currently being used to record."""
         member = self.get_member("IsRecording")
         if member is None:
             return None

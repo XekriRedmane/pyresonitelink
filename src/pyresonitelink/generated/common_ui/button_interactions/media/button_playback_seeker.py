@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonPlaybackSeeker(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonPlaybackSeeker.
+    """The ButtonPlaybackSeeker component takes in an IPlayable. When a user uses thier laser on an IButton that also has connections to a slider or set of values that allow it to slide, this component will determine how to interpret that interaction to the seek bar of the IPlayable media.
 
     Category: Common UI/Button Interactions/Media
+
+    This just gives extra functionality or options to control your media.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonPlaybackSeeker"
@@ -37,7 +39,7 @@ class ButtonPlaybackSeeker(GeneratedComponent, IButtonPressReceiver, IWorldEvent
 
     @property
     def playback(self) -> str | None:
-        """Target ID of the Playback reference (targets IPlayable)."""
+        """The media to seek through."""
         member = self.get_member("Playback")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +60,7 @@ class ButtonPlaybackSeeker(GeneratedComponent, IButtonPressReceiver, IWorldEvent
 
     @property
     def vertical(self) -> primitives.Bool | None:
-        """The Vertical field value."""
+        """If true, the button will interpret the seek bar as vertical instead of horizontal."""
         member = self.get_member("Vertical")
         if member is None:
             return None
@@ -77,7 +79,7 @@ class ButtonPlaybackSeeker(GeneratedComponent, IButtonPressReceiver, IWorldEvent
 
     @property
     def continuous(self) -> primitives.Bool | None:
-        """The Continuous field value."""
+        """If true, allows the user to hold down the laser on the seek bar button and have it constantly change as the laser moves around."""
         member = self.get_member("Continuous")
         if member is None:
             return None

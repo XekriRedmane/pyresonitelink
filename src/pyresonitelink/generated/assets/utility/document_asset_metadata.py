@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DocumentAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DocumentAssetMetadata.
+    """The DocumentAssetMetadata component gets data about a provided document asset.
 
     Category: Assets/Utility
     """
@@ -35,7 +35,7 @@ class DocumentAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def document(self) -> str | None:
-        """Target ID of the Document reference (targets IAssetProvider[Document])."""
+        """The document (usually PDF) that info is being acquired from."""
         member = self.get_member("Document")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +56,7 @@ class DocumentAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def page_count(self) -> primitives.Int | None:
-        """The PageCount field value."""
+        """The page count of the document."""
         member = self.get_member("PageCount")
         if member is None:
             return None

@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabbableReparentBlock(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabbableReparentBlock.
+    """The GrabbableReparentBlock component makes it so that, if any slot that is a descendant (up to ``MaxDepth`` levels deep) of the current one is grabbed and then let go of, it won't be reparented to this slot.
 
     Category: Transform/Tagging
     """
@@ -32,7 +32,7 @@ class GrabbableReparentBlock(GeneratedComponent, IGrabbableReparentBlock, IWorld
 
     @property
     def dont_reparent(self) -> primitives.Bool | None:
-        """The DontReparent field value."""
+        """Don't allow this slot to be reparented to. Subject to the rules explained in Grabbable - Behavior"""
         member = self.get_member("DontReparent")
         if member is None:
             return None
@@ -51,7 +51,7 @@ class GrabbableReparentBlock(GeneratedComponent, IGrabbableReparentBlock, IWorld
 
     @property
     def max_depth(self) -> primitives.Int | None:
-        """The MaxDepth field value."""
+        """Objects beyond this level in the hierarchy will not be effected. Set to Int MaxValue by default"""
         member = self.get_member("MaxDepth")
         if member is None:
             return None

@@ -1,0 +1,14 @@
+{
+  "description": "Reads the controller FrooxEngine class type and it's model identifier for a User for a hand Side.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "TargetUser": "The user this component is reading controller info from",
+    "ControllerSide": "The side (left or right) controller this component is reading info from.",
+    "ControllerType": "The type of the controller ``TargetUser`` is using on their ``ControllerSide`` hand.",
+    "ControllerDeviceModel": "The device model of the controller ``TargetUser`` is using on their ``ControllerSide`` hand."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarControllerInfo&action=raw"
+}

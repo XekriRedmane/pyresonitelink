@@ -1,0 +1,15 @@
+{
+  "description": "The Hyperlink component allows you to turn an object with a collider into a clickable link that will prompt the user in Userspace to open the provided link in their default web browser.\n\nExample for connecting to the local host of the device: ``http://localhost:5000``|warning}}",
+  "category": "Utility",
+  "fields": {
+    "URL": "The hyperlink to open.",
+    "OpenOnce": "Prevents the user from clicking on the URL more than once and bringing up multiple confirmation dialouges",
+    "Reason": "The reason that the hyperlink is being opened. Displayed to the user when they click it in the security dialog."
+  },
+  "methods": {
+    "Open": "When called, this function will bring up the confirmation dialogue for the user that is executing the function (local user)."
+  },
+  "usage": "It can be triggered or activated in the following ways:\n* Using a collider and physically touching the object to prompt for a connection.\n* Attaching a UIX button component along with this component on the same slot, then clicking on the UIX button will prompt for a connection.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Hyperlink&action=raw"
+}

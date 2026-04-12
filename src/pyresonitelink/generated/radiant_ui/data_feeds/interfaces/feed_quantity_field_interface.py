@@ -19,7 +19,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FeedQuantityFieldInterface<,>.
+    """The FeedQuantityFieldInterface component is used as a template type item in data feed mappers in the Data Feeds system.
 
     Category: Radiant UI/Data Feeds/Interfaces
     """
@@ -392,7 +392,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[T])."""
+        """The field to write to and read the value from the source data feed item for this template."""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -413,7 +413,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def formatting(self) -> str | None:
-        """Target ID of the Formatting reference (targets IField[primitives.String])."""
+        """The field to populate with the format string that should be used when displaying the value."""
         member = self.get_member("Formatting")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -434,7 +434,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def min(self) -> str | None:
-        """Target ID of the Min reference (targets IField[T])."""
+        """The field to fill with the minimum value this quantity can be."""
         member = self.get_member("Min")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -455,7 +455,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def max(self) -> str | None:
-        """Target ID of the Max reference (targets IField[T])."""
+        """The field to fill with the maximum value this quantity can be."""
         member = self.get_member("Max")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -476,7 +476,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def default_unit(self) -> str | None:
-        """Target ID of the DefaultUnit reference (targets IField[primitives.String])."""
+        """The field to fill with the denoter for the default unit for this quantity type."""
         member = self.get_member("DefaultUnit")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -497,7 +497,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def format_unit(self) -> str | None:
-        """Target ID of the FormatUnit reference (targets IField[primitives.String])."""
+        """Usually points to the FormatUnit on a QuantityTextFormatDriver."""
         member = self.get_member("FormatUnit")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -518,7 +518,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def format_number(self) -> str | None:
-        """Target ID of the FormatNumber reference (targets IField[primitives.String])."""
+        """Usually points to the FormatNumber on a QuantityTextFormatDriver."""
         member = self.get_member("FormatNumber")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -539,7 +539,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def compound_format_units(self) -> str | None:
-        """Target ID of the CompoundFormatUnits reference (targets SyncFieldList[primitives.String])."""
+        """Usually points to the CompoundFormatUnits on a QuantityTextFormatDriver."""
         member = self.get_member("CompoundFormatUnits")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -560,7 +560,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def compound_override_names(self) -> str | None:
-        """Target ID of the CompoundOverrideNames reference (targets IField[primitives.Bool])."""
+        """Usually points to the CompoundOverrideNames on a QuantityTextFormatDriver."""
         member = self.get_member("CompoundOverrideNames")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -581,7 +581,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def compound_use_long_names(self) -> str | None:
-        """Target ID of the CompoundUseLongNames reference (targets IField[primitives.Bool])."""
+        """Usually points to the CompoundUseLongNames on a QuantityTextFormatDriver."""
         member = self.get_member("CompoundUseLongNames")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -602,7 +602,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def compound_separator(self) -> str | None:
-        """Target ID of the CompoundSeparator reference (targets IField[primitives.String])."""
+        """Usually points to the CompoundSeparator on a QuantityTextFormatDriver."""
         member = self.get_member("CompoundSeparator")
         if isinstance(member, members.Reference):
             return member.targetId

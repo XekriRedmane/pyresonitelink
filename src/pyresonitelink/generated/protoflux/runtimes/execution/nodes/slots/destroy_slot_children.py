@@ -46,7 +46,7 @@ class DestroySlotChildren(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an Impulse after * (Call) is called and Instance (Slot)'s children has been destroyed. will not fire if Instance (Slot) is null."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +67,7 @@ class DestroySlotChildren(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """The slot to destroy all the children for."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -88,7 +88,7 @@ class DestroySlotChildren(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def preserve_assets(self) -> str | None:
-        """Target ID of the PreserveAssets reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether or not the assets associated with the children of the provided Instance (Slot) should stay or be instantly discarded"""
         member = self.get_member("PreserveAssets")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +109,7 @@ class DestroySlotChildren(GeneratedComponent, ISyncNodeOperation, IExecutionNode
 
     @property
     def send_destroying_event(self) -> str | None:
-        """Target ID of the SendDestroyingEvent reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether or not to send a destroying event of the children slots to other nodes like On Destroying"""
         member = self.get_member("SendDestroyingEvent")
         if isinstance(member, members.Reference):
             return member.targetId

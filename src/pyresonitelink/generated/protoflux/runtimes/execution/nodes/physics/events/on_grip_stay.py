@@ -58,7 +58,7 @@ class OnGripStay(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
 
     @property
     def on_event(self) -> str | None:
-        """Target ID of the OnEvent reference (targets ISyncNodeOperation)."""
+        """Fires when the grip is being used by the user."""
         member = self.get_member("OnEvent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -79,7 +79,7 @@ class OnGripStay(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
 
     @property
     def module(self) -> members.EmptyElement | None:
-        """The Module member."""
+        """Returns the module that is gripping."""
         member = self.get_member("Module")
         if isinstance(member, members.EmptyElement):
             return member
@@ -87,12 +87,12 @@ class OnGripStay(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
 
     @module.setter
     def module(self, value: members.EmptyElement) -> None:
-        """Set the Module member."""
+        """Set Module. Returns the module that is gripping."""
         self.set_member("Module", value)
 
     @property
     def gripping_body_node(self) -> members.EmptyElement | None:
-        """The GrippingBodyNode member."""
+        """Returns the body node that is gripping."""
         member = self.get_member("GrippingBodyNode")
         if isinstance(member, members.EmptyElement):
             return member
@@ -100,6 +100,6 @@ class OnGripStay(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
 
     @gripping_body_node.setter
     def gripping_body_node(self, value: members.EmptyElement) -> None:
-        """Set the GrippingBodyNode member."""
+        """Set GrippingBodyNode. Returns the body node that is gripping."""
         self.set_member("GrippingBodyNode", value)
 

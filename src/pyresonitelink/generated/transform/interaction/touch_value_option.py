@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.vibrate_preset import VibratePreset
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.ifield import IField
@@ -11,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TouchValueOption<>.
+    """The TouchValueOption component allows you to set a field to a value on press, it can drive indicators for Active and Hovering.
 
     Category: Transform/Interaction
+
+    Needs a static collider on the same slot in order to work. Attach to
+    said slot and provide a field for it to set in ``Target``.
 
     Parameterize with a value type::
 
@@ -24,7 +28,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TouchValueOption<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.TouchValueOption<>"
 
-    def __init__(self, target: str | IField[T] | None = None, value: T | None = None, active_indicator: str | IField[primitives.Bool] | None = None, hover_indicator: str | IField[primitives.Bool] | None = None, set_on_touch_begin: primitives.Bool | None = None, set_on_touch_stay: primitives.Bool | None = None, set_on_touch_end: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, edit_mode_only: primitives.Bool | None = None, active_user_root_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | IField[T] | None = None, value: T | None = None, active_indicator: str | IField[primitives.Bool] | None = None, hover_indicator: str | IField[primitives.Bool] | None = None, hover_vibrate: VibratePreset | str | None = None, vibrate: VibratePreset | str | None = None, set_on_touch_begin: primitives.Bool | None = None, set_on_touch_stay: primitives.Bool | None = None, set_on_touch_end: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, edit_mode_only: primitives.Bool | None = None, active_user_root_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,6 +36,8 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
             value: Initial value for Value.
             active_indicator: Initial value for ActiveIndicator.
             hover_indicator: Initial value for HoverIndicator.
+            hover_vibrate: Initial value for HoverVibrate.
+            vibrate: Initial value for Vibrate.
             set_on_touch_begin: Initial value for SetOnTouchBegin.
             set_on_touch_stay: Initial value for SetOnTouchStay.
             set_on_touch_end: Initial value for SetOnTouchEnd.
@@ -51,6 +57,10 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
             self.active_indicator = active_indicator
         if hover_indicator is not None:
             self.hover_indicator = hover_indicator
+        if hover_vibrate is not None:
+            self.hover_vibrate = hover_vibrate
+        if vibrate is not None:
+            self.vibrate = vibrate
         if set_on_touch_begin is not None:
             self.set_on_touch_begin = set_on_touch_begin
         if set_on_touch_stay is not None:
@@ -70,7 +80,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[T])."""
+        """The field to set."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +120,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def active_indicator(self) -> str | None:
-        """Target ID of the ActiveIndicator reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether T in ``Target`` equals ``Value``."""
         member = self.get_member("ActiveIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -131,7 +141,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def hover_indicator(self) -> str | None:
-        """Target ID of the HoverIndicator reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether this button is being hovered over via laser."""
         member = self.get_member("HoverIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -151,34 +161,48 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def hover_vibrate(self) -> members.FieldEnum | None:
-        """The HoverVibrate member."""
+    def hover_vibrate(self) -> VibratePreset | None:
+        """How to vibrate haptics on the hand that is hovering over this option."""
         member = self.get_member("HoverVibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @hover_vibrate.setter
-    def hover_vibrate(self, value: members.FieldEnum) -> None:
-        """Set the HoverVibrate member."""
-        self.set_member("HoverVibrate", value)
+    def hover_vibrate(self, value: VibratePreset | str) -> None:
+        """Set HoverVibrate. How to vibrate haptics on the hand that is hovering over this option."""
+        member = self.get_member("HoverVibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "HoverVibrate",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def vibrate(self) -> members.FieldEnum | None:
-        """The Vibrate member."""
+    def vibrate(self) -> VibratePreset | None:
+        """How to vibrate haptics on the hand that is pressing this option."""
         member = self.get_member("Vibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @vibrate.setter
-    def vibrate(self, value: members.FieldEnum) -> None:
-        """Set the Vibrate member."""
-        self.set_member("Vibrate", value)
+    def vibrate(self, value: VibratePreset | str) -> None:
+        """Set Vibrate. How to vibrate haptics on the hand that is pressing this option."""
+        member = self.get_member("Vibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Vibrate",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def set_on_touch_begin(self) -> primitives.Bool | None:
-        """The SetOnTouchBegin field value."""
+        """Whether to set the T in ``Target`` to ``Value`` upon start touching this component."""
         member = self.get_member("SetOnTouchBegin")
         if member is None:
             return None
@@ -197,7 +221,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def set_on_touch_stay(self) -> primitives.Bool | None:
-        """The SetOnTouchStay field value."""
+        """Whether to set the T in ``Target`` to ``Value`` every frame while keeping touching this component."""
         member = self.get_member("SetOnTouchStay")
         if member is None:
             return None
@@ -216,7 +240,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def set_on_touch_end(self) -> primitives.Bool | None:
-        """The SetOnTouchEnd field value."""
+        """Whether to set the T in ``Target`` to ``Value`` upon end touching this component."""
         member = self.get_member("SetOnTouchEnd")
         if member is None:
             return None
@@ -292,7 +316,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def edit_mode_only(self) -> primitives.Bool | None:
-        """The EditModeOnly field value."""
+        """Whether this component can only be interacted with if the user is in edit mode."""
         member = self.get_member("EditModeOnly")
         if member is None:
             return None
@@ -311,7 +335,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def active_user_root_only(self) -> primitives.Bool | None:
-        """The ActiveUserRootOnly field value."""
+        """Whether only the active user of this component can interact with this component."""
         member = self.get_member("ActiveUserRootOnly")
         if member is None:
             return None

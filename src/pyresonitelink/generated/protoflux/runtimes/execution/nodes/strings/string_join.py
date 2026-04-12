@@ -33,7 +33,7 @@ class StringJoin(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, I
 
     @property
     def inputs(self) -> members.SyncList | None:
-        """The Inputs member."""
+        """The items to join together"""
         member = self.get_member("Inputs")
         if isinstance(member, members.SyncList):
             return member
@@ -41,12 +41,12 @@ class StringJoin(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, I
 
     @inputs.setter
     def inputs(self, value: members.SyncList) -> None:
-        """Set the Inputs member."""
+        """Set Inputs. The items to join together"""
         self.set_member("Inputs", value)
 
     @property
     def separator(self) -> str | None:
-        """Target ID of the Separator reference (targets INodeObjectOutput[primitives.String])."""
+        """The item to separate the Inputs (List of String) when joined."""
         member = self.get_member("Separator")
         if isinstance(member, members.Reference):
             return member.targetId

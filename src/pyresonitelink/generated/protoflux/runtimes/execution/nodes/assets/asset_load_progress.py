@@ -19,6 +19,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class AssetLoadProgress(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Asset Load Progress is a node that allows for the reading on weither or not a user has loaded an asset. This node takes a UsersAssetLoadProgress`1 component and allows for the extraction of the load progress of a certain User.
 
+This can be highly useful in controlling the execution or visibility of content in a world or item. You can use this to control if a user is allowed to continue with something, interact with something, or see something.
+
+The provided Tracker (UsersAssetLoadProgress`1) component is where the asset is referenced.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Assets
 
     Parameterize with a value type::
@@ -46,7 +50,7 @@ class AssetLoadProgress(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
 
     @property
     def tracker(self) -> str | None:
-        """Target ID of the Tracker reference (targets INodeObjectOutput[UsersAssetLoadProgress[A]])."""
+        """The UsersAssetLoadProgress`1 component to use for tracking an asset's load progress"""
         member = self.get_member("Tracker")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +71,7 @@ class AssetLoadProgress(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The User to check loading progress and status on for the provided Tracker (UsersAssetLoadProgress`1)."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -88,7 +92,7 @@ class AssetLoadProgress(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
 
     @property
     def download_progress(self) -> members.EmptyElement | None:
-        """The DownloadProgress member."""
+        """The download progress a User (User) has on the Tracker (UsersAssetLoadProgress`1), or null if they don't exist or they haven't started downloading yet."""
         member = self.get_member("DownloadProgress")
         if isinstance(member, members.EmptyElement):
             return member
@@ -96,12 +100,12 @@ class AssetLoadProgress(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
 
     @download_progress.setter
     def download_progress(self, value: members.EmptyElement) -> None:
-        """Set the DownloadProgress member."""
+        """Set DownloadProgress. The download progress a User (User) has on the Tracker (UsersAssetLoadProgress`1), or null if they don't exist or they haven't started downloading yet."""
         self.set_member("DownloadProgress", value)
 
     @property
     def load_state(self) -> members.EmptyElement | None:
-        """The LoadState member."""
+        """The load state of the Tracker (UsersAssetLoadProgress`1) for the provided User (User)"""
         member = self.get_member("LoadState")
         if isinstance(member, members.EmptyElement):
             return member
@@ -109,6 +113,6 @@ class AssetLoadProgress(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
 
     @load_state.setter
     def load_state(self, value: members.EmptyElement) -> None:
-        """Set the LoadState member."""
+        """Set LoadState. The load state of the Tracker (UsersAssetLoadProgress`1) for the provided User (User)"""
         self.set_member("LoadState", value)
 

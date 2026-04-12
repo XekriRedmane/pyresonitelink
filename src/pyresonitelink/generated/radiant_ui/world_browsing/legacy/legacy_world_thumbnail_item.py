@@ -16,9 +16,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButtonHoverReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyWorldThumbnailItem.
+    """The LegacyWorldThumbnailItem component is used to show worlds in the list of the legacy world facet.
 
     Category: Radiant UI/World Browsing/Legacy
+
+    Don't use.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyWorldThumbnailItem"
@@ -84,7 +86,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def updating_user(self) -> members.SyncObject | None:
-        """The UpdatingUser member."""
+        """The user managing updating this component's functionality."""
         member = self.get_member("UpdatingUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -92,12 +94,12 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @updating_user.setter
     def updating_user(self, value: members.SyncObject) -> None:
-        """Set the UpdatingUser member."""
+        """Set UpdatingUser. The user managing updating this component's functionality."""
         self.set_member("UpdatingUser", value)
 
     @property
     def world_or_session_id(self) -> primitives.String | None:
-        """The WorldOrSessionId field value."""
+        """The world or session ID this component is providing information on."""
         member = self.get_member("WorldOrSessionId")
         if member is None:
             return None
@@ -116,7 +118,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def visited(self) -> primitives.Bool | None:
-        """The _visited field value."""
+        """Whether the World has been visited by ``UpdatingUser``."""
         member = self.get_member("_visited")
         if member is None:
             return None
@@ -135,7 +137,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def total_active_users(self) -> primitives.Int | None:
-        """The _totalActiveUsers field value."""
+        """The total focused and active users in the world."""
         member = self.get_member("_totalActiveUsers")
         if member is None:
             return None
@@ -154,7 +156,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def total_contacts(self) -> primitives.Int | None:
-        """The _totalContacts field value."""
+        """The total amount of users on the world that are contacts of ``UpdatingUser``."""
         member = self.get_member("_totalContacts")
         if member is None:
             return None
@@ -173,7 +175,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def thumbnail_graphic(self) -> str | None:
-        """Target ID of the _thumbnailGraphic reference (targets RawGraphic)."""
+        """The component handling the Thumbnail graphic."""
         member = self.get_member("_thumbnailGraphic")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -194,7 +196,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def thumbnail_texture(self) -> str | None:
-        """Target ID of the _thumbnailTexture reference (targets StaticTexture2D)."""
+        """The component handling the Thumbnail texture."""
         member = self.get_member("_thumbnailTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -215,7 +217,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def name_root(self) -> str | None:
-        """Target ID of the _nameRoot reference (targets RectTransform)."""
+        """The component that is the graphic rectangle handler for the world name."""
         member = self.get_member("_nameRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -236,7 +238,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def detail_root(self) -> str | None:
-        """Target ID of the _detailRoot reference (targets RectTransform)."""
+        """The component that is the graphic rectangle handler for the world details."""
         member = self.get_member("_detailRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -257,7 +259,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def visited_root(self) -> str | None:
-        """Target ID of the _visitedRoot reference (targets RectTransform)."""
+        """The component that is the graphic rectangle handler for the world visited status."""
         member = self.get_member("_visitedRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -278,7 +280,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def counter_root(self) -> str | None:
-        """Target ID of the _counterRoot reference (targets RectTransform)."""
+        """The component that is the graphic rectangle handler for the world active users and contacts amount."""
         member = self.get_member("_counterRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -299,7 +301,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def icons_root(self) -> str | None:
-        """Target ID of the _iconsRoot reference (targets RectTransform)."""
+        """The component that is the graphic rectangle handler for the world icons."""
         member = self.get_member("_iconsRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -320,7 +322,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def close_button(self) -> str | None:
-        """Target ID of the _closeButton reference (targets RectTransform)."""
+        """The component that is the graphic rectangle handler for the world close button."""
         member = self.get_member("_closeButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -341,7 +343,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def name_text(self) -> str | None:
-        """Target ID of the _nameText reference (targets Text)."""
+        """The text showing the world name."""
         member = self.get_member("_nameText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -362,7 +364,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def detail_text(self) -> str | None:
-        """Target ID of the _detailText reference (targets Text)."""
+        """The text showing the world details."""
         member = self.get_member("_detailText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -383,7 +385,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def counter_text(self) -> str | None:
-        """Target ID of the _counterText reference (targets Text)."""
+        """The text showing the world active user/contacts."""
         member = self.get_member("_counterText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -404,7 +406,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def border_overlay(self) -> str | None:
-        """Target ID of the _borderOverlay reference (targets Image)."""
+        """The image UIX component handling the border graphic"""
         member = self.get_member("_borderOverlay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -425,7 +427,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
 
     @property
     def border_color(self) -> primitives.ColorX | None:
-        """The _borderColor field value."""
+        """The color the border should be."""
         member = self.get_member("_borderColor")
         if member is None:
             return None

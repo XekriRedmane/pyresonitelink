@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.legacy_particle_alignment import LegacyParticleAlignment
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.asset_ref import AssetRef
@@ -15,17 +16,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.LegacyAlignmentSizingAdapter.
+    """The LegacyAlignmentSizingAdapter component is used in converted legacy particle systems that were converted to PhotonDust as part of The Performance Updates.
+
+    Not used directly by the user. don't use this to make new content!
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LegacyAlignmentSizingAdapter"
 
-    def __init__(self, length_scale: primitives.Float | None = None, velocity_scale: primitives.Float | None = None, particle_mesh: str | AssetRef[Mesh] | None = None, using_stretch: primitives.Bool | None = None, rotation_simulator: str | IField[primitives.Bool] | None = None, orient_by_velocity: str | IField[primitives.Bool] | None = None, pivot_module: str | IField[primitives.Bool] | None = None, use_local_rotation: str | IField[primitives.Bool] | None = None, size_modifier_enabled: str | IField[primitives.Bool] | None = None, size_offset_byvelocity_enabled: str | IField[primitives.Bool] | None = None, orient_up: str | IField[primitives.Float3] | None = None, length_size_multiplier: str | IField[primitives.Float3] | None = None, velocity_size_multiplier: str | IField[primitives.Float3] | None = None, pivot_multiplier: str | IField[primitives.Float3] | None = None, billboard_alignment: str | IField[BillboardAlignment] | None = None, mesh_alignment: str | IField[MeshAlignment] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, length_scale: primitives.Float | None = None, velocity_scale: primitives.Float | None = None, alignment: LegacyParticleAlignment | str | None = None, particle_mesh: str | AssetRef[Mesh] | None = None, using_stretch: primitives.Bool | None = None, rotation_simulator: str | IField[primitives.Bool] | None = None, orient_by_velocity: str | IField[primitives.Bool] | None = None, pivot_module: str | IField[primitives.Bool] | None = None, use_local_rotation: str | IField[primitives.Bool] | None = None, size_modifier_enabled: str | IField[primitives.Bool] | None = None, size_offset_byvelocity_enabled: str | IField[primitives.Bool] | None = None, orient_up: str | IField[primitives.Float3] | None = None, length_size_multiplier: str | IField[primitives.Float3] | None = None, velocity_size_multiplier: str | IField[primitives.Float3] | None = None, pivot_multiplier: str | IField[primitives.Float3] | None = None, billboard_alignment: str | IField[BillboardAlignment] | None = None, mesh_alignment: str | IField[MeshAlignment] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             length_scale: Initial value for LengthScale.
             velocity_scale: Initial value for VelocityScale.
+            alignment: Initial value for Alignment.
             particle_mesh: Initial value for ParticleMesh.
             using_stretch: Initial value for UsingStretch.
             rotation_simulator: Initial value for RotationSimulator.
@@ -47,6 +51,8 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
             self.length_scale = length_scale
         if velocity_scale is not None:
             self.velocity_scale = velocity_scale
+        if alignment is not None:
+            self.alignment = alignment
         if particle_mesh is not None:
             self.particle_mesh = particle_mesh
         if using_stretch is not None:
@@ -78,7 +84,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def length_scale(self) -> primitives.Float | None:
-        """The LengthScale field value."""
+        """The original length scale from legacy content."""
         member = self.get_member("LengthScale")
         if member is None:
             return None
@@ -97,7 +103,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def velocity_scale(self) -> primitives.Float | None:
-        """The VelocityScale field value."""
+        """The original velocity scale from legacy content."""
         member = self.get_member("VelocityScale")
         if member is None:
             return None
@@ -115,21 +121,28 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
             )
 
     @property
-    def alignment(self) -> members.FieldEnum | None:
-        """The Alignment member."""
+    def alignment(self) -> LegacyParticleAlignment | None:
+        """The original alignment from legacy content."""
         member = self.get_member("Alignment")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return LegacyParticleAlignment(member.value)
         return None
 
     @alignment.setter
-    def alignment(self, value: members.FieldEnum) -> None:
-        """Set the Alignment member."""
-        self.set_member("Alignment", value)
+    def alignment(self, value: LegacyParticleAlignment | str) -> None:
+        """Set Alignment. The original alignment from legacy content."""
+        member = self.get_member("Alignment")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Alignment",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def particle_mesh(self) -> str | None:
-        """Target ID of the ParticleMesh reference (targets AssetRef[Mesh])."""
+        """The particle mesh this is using."""
         member = self.get_member("ParticleMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -150,7 +163,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def using_stretch(self) -> primitives.Bool | None:
-        """The UsingStretch field value."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate this value, and can be used in PhotonDust."""
         member = self.get_member("UsingStretch")
         if member is None:
             return None
@@ -169,7 +182,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def rotation_simulator(self) -> str | None:
-        """Target ID of the RotationSimulator reference (targets IField[primitives.Bool])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("RotationSimulator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -190,7 +203,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def orient_by_velocity(self) -> str | None:
-        """Target ID of the OrientByVelocity reference (targets IField[primitives.Bool])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("OrientByVelocity")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -211,7 +224,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def pivot_module(self) -> str | None:
-        """Target ID of the PivotModule reference (targets IField[primitives.Bool])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("PivotModule")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -232,7 +245,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def use_local_rotation(self) -> str | None:
-        """Target ID of the UseLocalRotation reference (targets IField[primitives.Bool])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("UseLocalRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -253,7 +266,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def size_modifier_enabled(self) -> str | None:
-        """Target ID of the SizeModifierEnabled reference (targets IField[primitives.Bool])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("SizeModifierEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -274,7 +287,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def size_offset_byvelocity_enabled(self) -> str | None:
-        """Target ID of the SizeOffsetByvelocityEnabled reference (targets IField[primitives.Bool])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("SizeOffsetByvelocityEnabled")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -295,7 +308,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def orient_up(self) -> str | None:
-        """Target ID of the OrientUp reference (targets IField[primitives.Float3])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("OrientUp")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -316,7 +329,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def length_size_multiplier(self) -> str | None:
-        """Target ID of the LengthSizeMultiplier reference (targets IField[primitives.Float3])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("LengthSizeMultiplier")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -337,7 +350,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def velocity_size_multiplier(self) -> str | None:
-        """Target ID of the VelocitySizeMultiplier reference (targets IField[primitives.Float3])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("VelocitySizeMultiplier")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -358,7 +371,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def pivot_multiplier(self) -> str | None:
-        """Target ID of the PivotMultiplier reference (targets IField[primitives.Float3])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("PivotMultiplier")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -379,7 +392,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def billboard_alignment(self) -> str | None:
-        """Target ID of the BillboardAlignment reference (targets IField[BillboardAlignment])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("BillboardAlignment")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -400,7 +413,7 @@ class LegacyAlignmentSizingAdapter(GeneratedComponent, IComponent, IWorldEventRe
 
     @property
     def mesh_alignment(self) -> str | None:
-        """Target ID of the MeshAlignment reference (targets IField[MeshAlignment])."""
+        """``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."""
         member = self.get_member("MeshAlignment")
         if isinstance(member, members.Reference):
             return member.targetId

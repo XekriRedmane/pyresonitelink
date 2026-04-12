@@ -1,0 +1,31 @@
+{
+  "description": "Update transform is part of the Undo system, and is used in the Undo Manager to allow undoing and redoing of moving an object.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The slot that was moved.",
+    "RestoreParent": "Whether or not to restore the parent object.",
+    "RestorePosition": "Whether or not to restore the position of the object.",
+    "RestoreRotation": "Whether or not to restore the rotation of the object.",
+    "RestoreScale": "Whether or not to restore the scale of the object.",
+    "ParentBefore": "The parent slot that the object had before the move.",
+    "ParentAfter": "The parent slot the object had after the move.",
+    "LocalPositionBefore": "The Local Position that the object had before the move.",
+    "LocalRotationBefore": "The Local Rotation that the object had before the move.",
+    "LocalScaleBefore": "The Local Scale that the object had before the move.",
+    "GlobalPositionBefore": "The Global Position that the object had before the move.",
+    "GlobalRotationBefore": "The Global Rotation that the object had before the move.",
+    "GlobalScaleBefore": "The Global Scale that the object had before the move.",
+    "LocalPositionAfter": "The Local Position the object had after the move.",
+    "LocalRotationAfter": "The Local Rotation the object had after the move.",
+    "LocalScaleAfter": "The Local Scale the object had after the move.",
+    "GlobalPositionAfter": "The Global Position the object had after the move.",
+    "GlobalRotationAfter": "The Global Rotation the object had after the move.",
+    "GlobalScaleAfter": "The Global Scale the object had after the move.",
+    "_performed": "Whether the action is performed or it is in the future (due to undoing by the user.",
+    "_description": "The description of this move action."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UpdateTransform&action=raw"
+}

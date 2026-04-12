@@ -14,6 +14,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class DivDeltaTime(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """DivDeltaTime is a ProtoFlux node which Divides a value by the amount of time passed since the last local update.
 
+This is mostly used in conjunction with the Delta node to resolve issues created by differing update rates as it scales deltas to be proportional to time instead of the update rate, which varies.
+
+DivDeltaTime is a convenience node which is equivalent to dividing the input value by Delta Time. This saves one additional node and some space.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time
 
     Parameterize with a value type::

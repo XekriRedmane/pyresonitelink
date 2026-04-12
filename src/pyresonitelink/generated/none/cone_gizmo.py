@@ -15,7 +15,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ConeGizmo.
+    """The ConeGizmo component is auto generated for interaction with a ConeMesh or ConeCollider via a Dev Tool.
+
+    Generated automatically.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ConeGizmo"
@@ -108,7 +110,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def target_slot(self) -> str | None:
-        """Target ID of the TargetSlot reference (targets Slot)."""
+        """The slot to translate and edit."""
         member = self.get_member("TargetSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -129,7 +131,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def auto_position_at_target_slot(self) -> primitives.Bool | None:
-        """The AutoPositionAtTargetSlot field value."""
+        """Whether to automatically position this at the target slot."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
             return None
@@ -148,7 +150,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def interacting_component(self) -> str | None:
-        """Target ID of the _interactingComponent reference (targets Component)."""
+        """the component This is interacting with."""
         member = self.get_member("_interactingComponent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -169,7 +171,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets OverlayFresnelMaterial)."""
+        """The material being used for the visual."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -190,7 +192,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def tool_point(self) -> str | None:
-        """Target ID of the _toolPoint reference (targets Slot)."""
+        """The point that follows the interacting tool's tip."""
         member = self.get_member("_toolPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -211,7 +213,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def active_point(self) -> str | None:
-        """Target ID of the _activePoint reference (targets Slot)."""
+        """The point that follows the gizmo visual."""
         member = self.get_member("_activePoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -232,7 +234,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def line_root(self) -> str | None:
-        """Target ID of the _lineRoot reference (targets Slot)."""
+        """the root of the line visual from the gizmo to the interacting tool's tip."""
         member = self.get_member("_lineRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -253,7 +255,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def line_segment(self) -> str | None:
-        """Target ID of the _lineSegment reference (targets SegmentMesh)."""
+        """The segment mesh being used for the line visual."""
         member = self.get_member("_lineSegment")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -274,7 +276,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def snap_highlight(self) -> str | None:
-        """Target ID of the _snapHighlight reference (targets Slot)."""
+        """the root of the snap highlight for snapping."""
         member = self.get_member("_snapHighlight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -295,7 +297,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def target_angle(self) -> str | None:
-        """Target ID of the TargetAngle reference (targets IField[primitives.Float])."""
+        """The field being edited for the angle of the cone."""
         member = self.get_member("TargetAngle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -316,7 +318,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def target_radius(self) -> str | None:
-        """Target ID of the TargetRadius reference (targets IField[primitives.Float])."""
+        """The field being edited for the radius of the cone base."""
         member = self.get_member("TargetRadius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -337,7 +339,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def target_height(self) -> str | None:
-        """Target ID of the TargetHeight reference (targets IField[primitives.Float])."""
+        """The field being edited for the height of the cone."""
         member = self.get_member("TargetHeight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -358,7 +360,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def target_direction(self) -> str | None:
-        """Target ID of the TargetDirection reference (targets IField[primitives.Float3])."""
+        """The field being edited for the cone direction."""
         member = self.get_member("TargetDirection")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -379,7 +381,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def target_rotation(self) -> str | None:
-        """Target ID of the TargetRotation reference (targets IField[primitives.FloatQ])."""
+        """The field being edited for the cone rotation."""
         member = self.get_member("TargetRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -400,7 +402,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def direction_space(self) -> members.SyncObject | None:
-        """The DirectionSpace member."""
+        """The space Transform of ``TargetDirection``."""
         member = self.get_member("DirectionSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -408,12 +410,12 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @direction_space.setter
     def direction_space(self, value: members.SyncObject) -> None:
-        """Set the DirectionSpace member."""
+        """Set DirectionSpace. The space Transform of ``TargetDirection``."""
         self.set_member("DirectionSpace", value)
 
     @property
     def fixed_angle(self) -> primitives.Float | None:
-        """The FixedAngle field value."""
+        """The angle that the cone should be at (shape)."""
         member = self.get_member("FixedAngle")
         if member is None:
             return None
@@ -432,7 +434,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def fixed_height(self) -> primitives.Float | None:
-        """The FixedHeight field value."""
+        """The height that the cone mesh should be."""
         member = self.get_member("FixedHeight")
         if member is None:
             return None
@@ -451,7 +453,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def fixed_direction(self) -> primitives.Float3 | None:
-        """The FixedDirection field value."""
+        """The direction the cone should be facing."""
         member = self.get_member("FixedDirection")
         if member is None:
             return None
@@ -470,7 +472,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def line_thickness(self) -> primitives.Float | None:
-        """The LineThickness field value."""
+        """The thickness of the lines of the visual."""
         member = self.get_member("LineThickness")
         if member is None:
             return None
@@ -489,7 +491,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def min_height(self) -> primitives.Float | None:
-        """The MinHeight field value."""
+        """The minimum height the cone can be set to."""
         member = self.get_member("MinHeight")
         if member is None:
             return None
@@ -508,7 +510,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def max_height(self) -> primitives.Float | None:
-        """The MaxHeight field value."""
+        """The maximum height the cone can be set to."""
         member = self.get_member("MaxHeight")
         if member is None:
             return None
@@ -527,7 +529,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def min_angle(self) -> primitives.Float | None:
-        """The MinAngle field value."""
+        """The minimum tip angle the cone can be set to (shape)."""
         member = self.get_member("MinAngle")
         if member is None:
             return None
@@ -546,7 +548,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def max_angle(self) -> primitives.Float | None:
-        """The MaxAngle field value."""
+        """The maximum tip angle the cone can be set to (shape)."""
         member = self.get_member("MaxAngle")
         if member is None:
             return None
@@ -565,7 +567,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def visual_root(self) -> str | None:
-        """Target ID of the _visualRoot reference (targets Slot)."""
+        """The root slot of the visual for this gizmo."""
         member = self.get_member("_visualRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -586,7 +588,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def visual_rot(self) -> str | None:
-        """Target ID of the _visualRot reference (targets IField[primitives.FloatQ])."""
+        """The rotation field of the ``_visualRoot`` slot."""
         member = self.get_member("_visualRot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -607,7 +609,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def handles(self) -> members.SyncList | None:
-        """The _handles member."""
+        """A list of Handle objects this cone gizmo has."""
         member = self.get_member("_handles")
         if isinstance(member, members.SyncList):
             return member
@@ -615,12 +617,12 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @handles.setter
     def handles(self, value: members.SyncList) -> None:
-        """Set the _handles member."""
+        """Set _handles. A list of Handle objects this cone gizmo has."""
         self.set_member("_handles", value)
 
     @property
     def height_mesh(self) -> str | None:
-        """Target ID of the _heightMesh reference (targets SegmentMesh)."""
+        """The mesh being used to signal the height of the cone."""
         member = self.get_member("_heightMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -641,7 +643,7 @@ class ConeGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def cone_line_mesh(self) -> str | None:
-        """Target ID of the _coneLineMesh reference (targets SegmentMesh)."""
+        """The line segment based mesh that shows the cone itself."""
         member = self.get_member("_coneLineMesh")
         if isinstance(member, members.Reference):
             return member.targetId

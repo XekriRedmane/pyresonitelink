@@ -39,7 +39,7 @@ class UnpackNullable(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
 
     @property
     def nullable(self) -> str | None:
-        """Target ID of the Nullable reference (targets INodeObjectOutput[Nullable[T]])."""
+        """The nullable value."""
         member = self.get_member("Nullable")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class UnpackNullable(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
 
     @property
     def value(self) -> members.EmptyElement | None:
-        """The Value member."""
+        """Returns the value itself."""
         member = self.get_member("Value")
         if isinstance(member, members.EmptyElement):
             return member
@@ -68,12 +68,12 @@ class UnpackNullable(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
 
     @value.setter
     def value(self, value: members.EmptyElement) -> None:
-        """Set the Value member."""
+        """Set Value. Returns the value itself."""
         self.set_member("Value", value)
 
     @property
     def has_value(self) -> members.EmptyElement | None:
-        """The HasValue member."""
+        """Returns if this has a value."""
         member = self.get_member("HasValue")
         if isinstance(member, members.EmptyElement):
             return member
@@ -81,6 +81,6 @@ class UnpackNullable(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
 
     @has_value.setter
     def has_value(self, value: members.EmptyElement) -> None:
-        """Set the HasValue member."""
+        """Set HasValue. Returns if this has a value."""
         self.set_member("HasValue", value)
 

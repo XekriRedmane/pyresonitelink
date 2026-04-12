@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BoxPointGenerator(GeneratedComponent, IPointGenerator, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BoxPointGenerator.
+    """A generator for points arranged in a box with a given length, width, and height.
 
     Category: Transform/Point Generators
+
+    Used in a Common Spawn Area to define in what kind of spawn area shape
+    users should initially spawn into.
+
+    **Related Components**: * CommonSpawnArea
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxPointGenerator"
@@ -32,7 +37,7 @@ class BoxPointGenerator(GeneratedComponent, IPointGenerator, IWorldEventReceiver
 
     @property
     def size(self) -> primitives.Float3 | None:
-        """The Size field value."""
+        """How big the box should be for generating points."""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class BoxPointGenerator(GeneratedComponent, IPointGenerator, IWorldEventReceiver
 
     @property
     def shell(self) -> primitives.Bool | None:
-        """The Shell field value."""
+        """Whether points should only be spawned on the surface of the box or not."""
         member = self.get_member("Shell")
         if member is None:
             return None

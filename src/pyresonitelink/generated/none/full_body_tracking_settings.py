@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class FullBodyTrackingSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.FullBodyTrackingSettings.
+    """The FullBodyTrackingSettings component is used to control full body behavior in the game. It's part of the Settings menu.
+
+    Not used directly by the user, and instead is part of the Settings menu.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FullBodyTrackingSettings"
@@ -27,7 +29,7 @@ class FullBodyTrackingSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def body_horizontal_angle(self) -> primitives.Float | None:
-        """The BodyHorizontalAngle field value."""
+        """The max horizontal angle before the feet no longer attempt to do walking animations."""
         member = self.get_member("BodyHorizontalAngle")
         if member is None:
             return None

@@ -42,7 +42,7 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def center(self) -> str | None:
-        """Target ID of the Center reference (targets INodeValueOutput[primitives.Float3])."""
+        """The center of the sphere."""
         member = self.get_member("Center")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def radius(self) -> str | None:
-        """Target ID of the Radius reference (targets INodeValueOutput[primitives.Float])."""
+        """The radius of the sphere."""
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def ray_origin(self) -> str | None:
-        """Target ID of the RayOrigin reference (targets INodeValueOutput[primitives.Float3])."""
+        """The starting point of this ray."""
         member = self.get_member("RayOrigin")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -105,7 +105,7 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def ray_direction(self) -> str | None:
-        """Target ID of the RayDirection reference (targets INodeValueOutput[primitives.Float3])."""
+        """The direction this ray will aim at."""
         member = self.get_member("RayDirection")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -126,7 +126,7 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @property
     def point(self) -> members.EmptyElement | None:
-        """The Point member."""
+        """Returns the sphere intersection value."""
         member = self.get_member("Point")
         if isinstance(member, members.EmptyElement):
             return member
@@ -134,12 +134,12 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @point.setter
     def point(self, value: members.EmptyElement) -> None:
-        """Set the Point member."""
+        """Set Point. Returns the sphere intersection value."""
         self.set_member("Point", value)
 
     @property
     def is_intersecting(self) -> members.EmptyElement | None:
-        """The IsIntersecting member."""
+        """Returns if this ray is intersecting this sphere."""
         member = self.get_member("IsIntersecting")
         if isinstance(member, members.EmptyElement):
             return member
@@ -147,6 +147,6 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
 
     @is_intersecting.setter
     def is_intersecting(self, value: members.EmptyElement) -> None:
-        """Set the IsIntersecting member."""
+        """Set IsIntersecting. Returns if this ray is intersecting this sphere."""
         self.set_member("IsIntersecting", value)
 

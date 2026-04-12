@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.stereo_layout import StereoLayout
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iitem_metadata_source import IItemMetadataSource
@@ -11,14 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotoMetadata.
+    """The PhotoMetadata component is used to contain the information on a photo usually taken within Resonite. It is automatically attached to every screenshot taken using the finger photo gesture. This component can also be attached to a photo imported with the "import as screenshot" option when importing an image.
 
     Category: Data
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotoMetadata"
 
-    def __init__(self, location_name: primitives.String | None = None, location_url: str | None = None, location_hidden_from_listing: primitives.Bool | None = None, time_taken: str | None = None, taken_global_position: primitives.Float3 | None = None, taken_global_rotation: primitives.FloatQ | None = None, taken_global_scale: primitives.Float3 | None = None, app_version: primitives.String | None = None, camera_manufacturer: primitives.String | None = None, camera_model: primitives.String | None = None, camera_fov: primitives.Float | None = None, is360: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, location_name: primitives.String | None = None, location_url: str | None = None, location_hidden_from_listing: primitives.Bool | None = None, time_taken: str | None = None, taken_global_position: primitives.Float3 | None = None, taken_global_rotation: primitives.FloatQ | None = None, taken_global_scale: primitives.Float3 | None = None, app_version: primitives.String | None = None, camera_manufacturer: primitives.String | None = None, camera_model: primitives.String | None = None, camera_fov: primitives.Float | None = None, is360: primitives.Bool | None = None, stereo_layout: StereoLayout | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,6 +35,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
             camera_model: Initial value for CameraModel.
             camera_fov: Initial value for CameraFOV.
             is360: Initial value for Is360.
+            stereo_layout: Initial value for StereoLayout.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -61,10 +63,12 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
             self.camera_fov = camera_fov
         if is360 is not None:
             self.is360 = is360
+        if stereo_layout is not None:
+            self.stereo_layout = stereo_layout
 
     @property
     def location_name(self) -> primitives.String | None:
-        """The LocationName field value."""
+        """Name of the session the screenshot was taken in."""
         member = self.get_member("LocationName")
         if member is None:
             return None
@@ -83,7 +87,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def location_url(self) -> str | None:
-        """The LocationURL field value."""
+        """The URI of the session's world that the photo was taken in. (basically a world link)"""
         member = self.get_member("LocationURL")
         if member is None:
             return None
@@ -102,7 +106,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def location_host(self) -> members.SyncObject | None:
-        """The LocationHost member."""
+        """Host of the session the screenshot was taken in."""
         member = self.get_member("LocationHost")
         if isinstance(member, members.SyncObject):
             return member
@@ -110,12 +114,12 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @location_host.setter
     def location_host(self, value: members.SyncObject) -> None:
-        """Set the LocationHost member."""
+        """Set LocationHost. Host of the session the screenshot was taken in."""
         self.set_member("LocationHost", value)
 
     @property
     def location_access_level(self) -> members.FieldEnum | None:
-        """The LocationAccessLevel member."""
+        """Access level of the session."""
         member = self.get_member("LocationAccessLevel")
         if isinstance(member, members.FieldEnum):
             return member
@@ -123,12 +127,12 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @location_access_level.setter
     def location_access_level(self, value: members.FieldEnum) -> None:
-        """Set the LocationAccessLevel member."""
+        """Set LocationAccessLevel. Access level of the session."""
         self.set_member("LocationAccessLevel", value)
 
     @property
     def location_hidden_from_listing(self) -> primitives.Bool | None:
-        """The LocationHiddenFromListing field value."""
+        """Whether the location was marked as hidden."""
         member = self.get_member("LocationHiddenFromListing")
         if member is None:
             return None
@@ -147,7 +151,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def time_taken(self) -> str | None:
-        """The TimeTaken field value."""
+        """Exact timestamp that the screenshot was taken."""
         member = self.get_member("TimeTaken")
         if member is None:
             return None
@@ -166,7 +170,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def taken_by(self) -> members.SyncObject | None:
-        """The TakenBy member."""
+        """User who took the screenshot."""
         member = self.get_member("TakenBy")
         if isinstance(member, members.SyncObject):
             return member
@@ -174,12 +178,12 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @taken_by.setter
     def taken_by(self, value: members.SyncObject) -> None:
-        """Set the TakenBy member."""
+        """Set TakenBy. User who took the screenshot."""
         self.set_member("TakenBy", value)
 
     @property
     def taken_global_position(self) -> primitives.Float3 | None:
-        """The TakenGlobalPosition field value."""
+        """The position in global space the camera had when the photo was taken."""
         member = self.get_member("TakenGlobalPosition")
         if member is None:
             return None
@@ -198,7 +202,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def taken_global_rotation(self) -> primitives.FloatQ | None:
-        """The TakenGlobalRotation field value."""
+        """The rotation in global space the camera had when the photo was taken."""
         member = self.get_member("TakenGlobalRotation")
         if member is None:
             return None
@@ -217,7 +221,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def taken_global_scale(self) -> primitives.Float3 | None:
-        """The TakenGlobalScale field value."""
+        """The scale in global space the camera had when the photo was taken."""
         member = self.get_member("TakenGlobalScale")
         if member is None:
             return None
@@ -236,7 +240,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def app_version(self) -> primitives.String | None:
-        """The AppVersion field value."""
+        """Resonite version number of the photographer."""
         member = self.get_member("AppVersion")
         if member is None:
             return None
@@ -255,7 +259,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def user_infos(self) -> members.SyncList | None:
-        """The UserInfos member."""
+        """See UserInfo"""
         member = self.get_member("UserInfos")
         if isinstance(member, members.SyncList):
             return member
@@ -263,12 +267,12 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @user_infos.setter
     def user_infos(self, value: members.SyncList) -> None:
-        """Set the UserInfos member."""
+        """Set UserInfos. See UserInfo"""
         self.set_member("UserInfos", value)
 
     @property
     def legacy_present_users(self) -> members.SyncList | None:
-        """The __legacyPresentUsers member."""
+        """Internal. no longer used."""
         member = self.get_member("__legacyPresentUsers")
         if isinstance(member, members.SyncList):
             return member
@@ -276,12 +280,12 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @legacy_present_users.setter
     def legacy_present_users(self, value: members.SyncList) -> None:
-        """Set the __legacyPresentUsers member."""
+        """Set __legacyPresentUsers. Internal. no longer used."""
         self.set_member("__legacyPresentUsers", value)
 
     @property
     def camera_manufacturer(self) -> primitives.String | None:
-        """The CameraManufacturer field value."""
+        """Manufacturer of the camera."""
         member = self.get_member("CameraManufacturer")
         if member is None:
             return None
@@ -300,7 +304,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def camera_model(self) -> primitives.String | None:
-        """The CameraModel field value."""
+        """Model of the camera."""
         member = self.get_member("CameraModel")
         if member is None:
             return None
@@ -319,7 +323,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def camera_fov(self) -> primitives.Float | None:
-        """The CameraFOV field value."""
+        """FOV of the camera at picture time."""
         member = self.get_member("CameraFOV")
         if member is None:
             return None
@@ -338,7 +342,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     @property
     def is360(self) -> primitives.Bool | None:
-        """The Is360 field value."""
+        """Whether the image is a 360 degree image or not."""
         member = self.get_member("Is360")
         if member is None:
             return None
@@ -356,17 +360,24 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
             )
 
     @property
-    def stereo_layout(self) -> members.FieldEnum | None:
-        """The StereoLayout member."""
+    def stereo_layout(self) -> StereoLayout | None:
+        """The layout of the image's left and right sections if it is a stereoscopic image, also known as a 3D image."""
         member = self.get_member("StereoLayout")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return StereoLayout(member.value)
         return None
 
     @stereo_layout.setter
-    def stereo_layout(self, value: members.FieldEnum) -> None:
-        """Set the StereoLayout member."""
-        self.set_member("StereoLayout", value)
+    def stereo_layout(self, value: StereoLayout | str) -> None:
+        """Set StereoLayout. The layout of the image's left and right sections if it is a stereoscopic image, also known as a 3D image."""
+        member = self.get_member("StereoLayout")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "StereoLayout",
+                members.FieldEnum(value=str(value)),
+            )
 
     async def set_from_current_world(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
         """Call the SetFromCurrentWorld sync method.

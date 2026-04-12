@@ -10,9 +10,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicBonePlayerColliders(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicBonePlayerColliders.
+    """This component is used in the Resonite hair dryer, and allows for dynamic bone colliders specified in the ``Colliders`` list to automatically collide with Dynamic Bone Chains. 
+
+Can also be used in disabling the automatic dynamic bone colliders that Resonite generates incase you want to manually specify them.
 
     Category: Physics/Dynamic Bones
+
+    **Behavior**: Only works while the component has an active user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicBonePlayerColliders"
@@ -42,7 +46,7 @@ class DynamicBonePlayerColliders(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def visualize_colliders(self) -> primitives.Bool | None:
-        """The VisualizeColliders field value."""
+        """Visualize all the colliders in ``Colliders`` that are currently colliding against a Dynamic Bone Chain. Automatically updates the collider visuals every frame server side."""
         member = self.get_member("VisualizeColliders")
         if member is None:
             return None
@@ -61,7 +65,7 @@ class DynamicBonePlayerColliders(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def disable_default_head_colliders(self) -> primitives.Bool | None:
-        """The DisableDefaultHeadColliders field value."""
+        """Whether to not use the default head collider made by the engine."""
         member = self.get_member("DisableDefaultHeadColliders")
         if member is None:
             return None
@@ -80,7 +84,7 @@ class DynamicBonePlayerColliders(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def disable_default_body_colliders(self) -> primitives.Bool | None:
-        """The DisableDefaultBodyColliders field value."""
+        """Whether to not use the body colliders made by the engine."""
         member = self.get_member("DisableDefaultBodyColliders")
         if member is None:
             return None
@@ -99,7 +103,7 @@ class DynamicBonePlayerColliders(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def disable_default_left_hand_colliders(self) -> primitives.Bool | None:
-        """The DisableDefaultLeftHandColliders field value."""
+        """Whether to not use the left hand collider made by the engine."""
         member = self.get_member("DisableDefaultLeftHandColliders")
         if member is None:
             return None
@@ -118,7 +122,7 @@ class DynamicBonePlayerColliders(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def disable_default_right_hand_colliders(self) -> primitives.Bool | None:
-        """The DisableDefaultRightHandColliders field value."""
+        """Whether to not use the right hand collider made by the engine."""
         member = self.get_member("DisableDefaultRightHandColliders")
         if member is None:
             return None
@@ -137,7 +141,7 @@ class DynamicBonePlayerColliders(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def colliders(self) -> members.SyncList | None:
-        """The Colliders member."""
+        """A list of colliders to enable collision for all Dynamic bone chains in a world."""
         member = self.get_member("Colliders")
         if isinstance(member, members.SyncList):
             return member
@@ -145,6 +149,6 @@ class DynamicBonePlayerColliders(GeneratedComponent, IComponent, IWorldEventRece
 
     @colliders.setter
     def colliders(self, value: members.SyncList) -> None:
-        """Set the Colliders member."""
+        """Set Colliders. A list of colliders to enable collision for all Dynamic bone chains in a world."""
         self.set_member("Colliders", value)
 

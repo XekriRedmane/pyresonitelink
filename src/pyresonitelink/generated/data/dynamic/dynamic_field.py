@@ -12,9 +12,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicField(GenericComponent[T], IDynamicVariable[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicField<>.
+    """The DynamicField binds the field pointed to by ``TargetField`` to the dynamic variable referred to by ``VariableName``. The field must be a value type.
 
     Category: Data/Dynamic
+
+    This component works almost exactly like the DynamicValueVariable
+    component, except that the value used for the dynamic variable is
+    sourced from a separate field. This field will be automatically updated
+    with the value of the dynamic variable, and writing to the field will
+    write to the dynamic variable. This can be used to directly bind fields
+    of separate components as a dynamic variable without having to use a
+    DynamicValueVariableDriver or similar setup.
 
     Parameterize with a value type::
 
@@ -44,7 +52,7 @@ class DynamicField(GenericComponent[T], IDynamicVariable[T], IComponent, IWorldE
 
     @property
     def variable_name(self) -> primitives.String | None:
-        """The VariableName field value."""
+        """The name of the dynamic variable to be used"""
         member = self.get_member("VariableName")
         if member is None:
             return None
@@ -63,7 +71,7 @@ class DynamicField(GenericComponent[T], IDynamicVariable[T], IComponent, IWorldE
 
     @property
     def target_field(self) -> str | None:
-        """Target ID of the TargetField reference (targets IField[T])."""
+        """The field that will be used as the dynamic variable's value."""
         member = self.get_member("TargetField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +92,7 @@ class DynamicField(GenericComponent[T], IDynamicVariable[T], IComponent, IWorldE
 
     @property
     def override_on_link(self) -> primitives.Bool | None:
-        """The OverrideOnLink field value."""
+        """If true, the value of the field will be written when this component is moved into a new space"""
         member = self.get_member("OverrideOnLink")
         if member is None:
             return None

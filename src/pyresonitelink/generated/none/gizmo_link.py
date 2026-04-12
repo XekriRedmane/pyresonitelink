@@ -1,6 +1,7 @@
 """Generated component: GizmoLink."""
 
 from pyresonitelink.data import members
+from pyresonitelink.generated._enums.type import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.worker import Worker
@@ -10,17 +11,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GizmoLink(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GizmoLink.
+    """The GizmoLink component handles the Interaction and connection of every Gizmo with their respective target. This is usually invisible to users and their inspectors, but upon opening a new inspector on a target of a Gizmo it appears. It is unknown if this is a bug. This component along with Gizmos do not save with items but Gizmos can save with a world.
+
+    Not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GizmoLink"
 
-    def __init__(self, worker: str | Worker | None = None, gizmo: str | IComponentGizmo | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, worker: str | Worker | None = None, gizmo: str | IComponentGizmo | None = None, type_: Type | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             worker: Initial value for _worker.
             gizmo: Initial value for _gizmo.
+            type_: Initial value for _type.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -28,10 +32,12 @@ class GizmoLink(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.worker = worker
         if gizmo is not None:
             self.gizmo = gizmo
+        if type_ is not None:
+            self.type_ = type_
 
     @property
     def worker(self) -> str | None:
-        """Target ID of the _worker reference (targets Worker)."""
+        """The logic handling this component."""
         member = self.get_member("_worker")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +58,7 @@ class GizmoLink(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def gizmo(self) -> str | None:
-        """Target ID of the _gizmo reference (targets IComponentGizmo)."""
+        """The Gizmo this is making a Link for."""
         member = self.get_member("_gizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -72,15 +78,22 @@ class GizmoLink(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def type_(self) -> members.FieldEnum | None:
-        """The _type member."""
+    def type_(self) -> Type | None:
+        """The C# Type of what this is targeting."""
         member = self.get_member("_type")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @type_.setter
-    def type_(self, value: members.FieldEnum) -> None:
-        """Set the _type member."""
-        self.set_member("_type", value)
+    def type_(self, value: Type | str) -> None:
+        """Set _type. The C# Type of what this is targeting."""
+        member = self.get_member("_type")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "_type",
+                members.FieldEnum(value=str(value)),
+            )
 

@@ -13,7 +13,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SessionItem(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SessionItem.
+    """The SessionItem component is used to handle the session items in a world menu.
+
+    not to be used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SessionItem"
@@ -52,7 +54,7 @@ class SessionItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def background(self) -> str | None:
-        """Target ID of the _background reference (targets Image)."""
+        """The UIX image handling the background for this session item."""
         member = self.get_member("_background")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +75,7 @@ class SessionItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def status_indicator(self) -> str | None:
-        """Target ID of the _statusIndicator reference (targets Image)."""
+        """The UIX image used to handle showing the status for this world like access level."""
         member = self.get_member("_statusIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -94,7 +96,7 @@ class SessionItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def thumbnail(self) -> str | None:
-        """Target ID of the _thumbnail reference (targets Image)."""
+        """The UIX image handling the session preview thumbnail."""
         member = self.get_member("_thumbnail")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -115,7 +117,7 @@ class SessionItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def thumbnail_texture(self) -> str | None:
-        """Target ID of the _thumbnailTexture reference (targets StaticTexture2D)."""
+        """The image handling the session preview thumbnail image data."""
         member = self.get_member("_thumbnailTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -136,7 +138,7 @@ class SessionItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def session_name(self) -> str | None:
-        """Target ID of the _sessionName reference (targets Text)."""
+        """The text visual being used to show the session name."""
         member = self.get_member("_sessionName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -157,7 +159,7 @@ class SessionItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def session_host(self) -> str | None:
-        """Target ID of the _sessionHost reference (targets Text)."""
+        """The text visual being used to show the session host's name."""
         member = self.get_member("_sessionHost")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -178,7 +180,7 @@ class SessionItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_count(self) -> str | None:
-        """Target ID of the _userCount reference (targets Text)."""
+        """The text visual being used to show the session user count."""
         member = self.get_member("_userCount")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -199,7 +201,7 @@ class SessionItem(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def join_button(self) -> str | None:
-        """Target ID of the _joinButton reference (targets Button)."""
+        """The button that can be used to join the specified session."""
         member = self.get_member("_joinButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -219,7 +221,7 @@ class SessionItem(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     async def on_join(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
-        """Call the OnJoin sync method.
+        """Called when the join button is touched.
 
         Args:
             resolink: Connected ResoniteLink client.

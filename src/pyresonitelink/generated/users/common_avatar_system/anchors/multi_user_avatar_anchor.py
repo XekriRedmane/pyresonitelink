@@ -13,7 +13,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.MultiUserAvatarAnchor.
+    """Multi User Avatar anchor allows you to auto generate anchors, but only if you have a collider on the same slot as the multi anchor. It uses an IAvatarAnchor type component as a template, and generates them in a shape based on a Snapper (Snap Circle Component or Snap Sphere Component to name a couple). 
+
+The snapper component determines how the users will be positioned when clicking on the object. If the anchor then anchors the user, and the user position is further determined by the anchor's positioning settings. If the anchor position in global space is too close to another anchor (determined by field MinDistance), then the user will not be anchored.
+
+This component doesn't fall under a IAvatarAnchor type, and as such cannot be referenced by ProtoFlux. This means you can only anchor users with this component if they explicitly click on the anchor. 
+
+It also doesn't give confirmation for clicking actions, which may be a bug.
 
     Category: Users/Common Avatar System/Anchors
     """
@@ -54,7 +60,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
 
     @property
     def anchor_point_snap(self) -> str | None:
-        """Target ID of the AnchorPointSnap reference (targets IPointSnappable)."""
+        """A Snappable from snapping category"""
         member = self.get_member("AnchorPointSnap")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -75,7 +81,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
 
     @property
     def max_users(self) -> primitives.Int | None:
-        """The MaxUsers field value."""
+        """the maximum users that can be in this multi anchor"""
         member = self.get_member("MaxUsers")
         if member is None:
             return None
@@ -94,7 +100,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
 
     @property
     def min_distance(self) -> primitives.Float | None:
-        """The MinDistance field value."""
+        """How close a new anchor can be to another when a user clicks on the anchor before it denies it. The location of the anchor before this check is done is determined by the component in AnchorPointSnap."""
         member = self.get_member("MinDistance")
         if member is None:
             return None
@@ -113,7 +119,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
 
     @property
     def template(self) -> str | None:
-        """Target ID of the Template reference (targets IAvatarAnchor)."""
+        """The IAvatarAnchor to use as a template for making anchors. will duplicate the slot the anchor is on that this is referencing"""
         member = self.get_member("Template")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -134,7 +140,7 @@ class MultiUserAvatarAnchor(GeneratedComponent, ITouchable, IWorldEventReceiver)
 
     @property
     def anchors_root(self) -> str | None:
-        """Target ID of the AnchorsRoot reference (targets Slot)."""
+        """what shape to put the anchors when they are generated. The part of the shape the anchor is placed on is determined by the point the user clicked on. If user clicks on left side of a cube, user is positioned on the left face."""
         member = self.get_member("AnchorsRoot")
         if isinstance(member, members.Reference):
             return member.targetId

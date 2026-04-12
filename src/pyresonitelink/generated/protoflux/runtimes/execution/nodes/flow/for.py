@@ -47,7 +47,7 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
 
     @property
     def count(self) -> str | None:
-        """Target ID of the Count reference (targets INodeValueOutput[primitives.Int])."""
+        """The amount of times to trigger ``LoopIteration``. Will not trigger any iterations if less than 1."""
         member = self.get_member("Count")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
 
     @property
     def reverse(self) -> str | None:
-        """Target ID of the Reverse reference (targets INodeValueOutput[primitives.Bool])."""
+        """If ``True``, the ``Iteration`` output will start at ``Count - 1`` and go down towards ``0``."""
         member = self.get_member("Reverse")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
 
     @property
     def loop_start(self) -> str | None:
-        """Target ID of the LoopStart reference (targets ISyncNodeOperation)."""
+        """Fires after ``*`` is pulsed and before any iterations are done. Will be pulsed even if ``Count < 1``."""
         member = self.get_member("LoopStart")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +110,7 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
 
     @property
     def loop_iteration(self) -> str | None:
-        """Target ID of the LoopIteration reference (targets ISyncNodeOperation)."""
+        """Fires for each iteration of the loop. This impulse is triggered Count amount of times and the next iteration will only be fired once the current iteration's context is finished."""
         member = self.get_member("LoopIteration")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -131,7 +131,7 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
 
     @property
     def loop_end(self) -> str | None:
-        """Target ID of the LoopEnd reference (targets INodeOperation)."""
+        """Fires after the final ``LoopIteration`` completes execution."""
         member = self.get_member("LoopEnd")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -152,7 +152,7 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
 
     @property
     def iteration(self) -> members.EmptyElement | None:
-        """The Iteration member."""
+        """For each ``LoopIteration``, this output is set to be the index of the iteration for said iteration's context. By default, this will start at ``0`` and increment until ``Count - 1`` unless ``Reverse`` is ``True``."""
         member = self.get_member("Iteration")
         if isinstance(member, members.EmptyElement):
             return member
@@ -160,6 +160,6 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
 
     @iteration.setter
     def iteration(self, value: members.EmptyElement) -> None:
-        """Set the Iteration member."""
+        """Set Iteration. For each ``LoopIteration``, this output is set to be the index of the iteration for said iteration's context. By default, this will start at ``0`` and increment until ``Count - 1`` unless ``Reverse`` is ``True``."""
         self.set_member("Iteration", value)
 

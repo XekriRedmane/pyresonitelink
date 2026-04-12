@@ -33,7 +33,7 @@ class RandomBool(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
 
     @property
     def chance(self) -> str | None:
-        """Target ID of the Chance reference (targets INodeValueOutput[primitives.Float])."""
+        """The shift in probability to have a higher chance to get a certain result from this node. The default is ``0.5``."""
         member = self.get_member("Chance")
         if isinstance(member, members.Reference):
             return member.targetId

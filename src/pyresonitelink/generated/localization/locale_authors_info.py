@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LocaleAuthorsInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LocaleAuthorsInfo.
+    """The LocaleAuthorsInfo component gives the credits for a locale. Usually members of the community that helped with translations.
 
     Category: Localization
     """
@@ -35,7 +35,7 @@ class LocaleAuthorsInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def locale(self) -> str | None:
-        """Target ID of the Locale reference (targets IAssetProvider[LocaleResource])."""
+        """The locale source to get the credits for."""
         member = self.get_member("Locale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -56,7 +56,7 @@ class LocaleAuthorsInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def credits_string(self) -> primitives.String | None:
-        """The CreditsString field value."""
+        """The credits for ``Locale``."""
         member = self.get_member("CreditsString")
         if member is None:
             return None

@@ -17,9 +17,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyEnumEditor<>.
+    """The LegacyEnumEditor component is used to cycle between enums. It is Legacy content migrated from other platforms. This should not be used, and replaced whenever possible.
 
     Category: UI/Physical
+
+    When attaching, the component needs an Enum type for E. But just don't
+    use this component for new content at all.
 
     Parameterize with a value type::
 
@@ -189,7 +192,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The color of the UI."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -208,7 +211,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def width(self) -> primitives.Float | None:
-        """The Width field value."""
+        """The width of the UI"""
         member = self.get_member("Width")
         if member is None:
             return None
@@ -227,7 +230,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def height(self) -> primitives.Float | None:
-        """The Height field value."""
+        """The height of the UI."""
         member = self.get_member("Height")
         if member is None:
             return None
@@ -246,7 +249,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def thickness(self) -> primitives.Float | None:
-        """The Thickness field value."""
+        """How thick the UI is."""
         member = self.get_member("Thickness")
         if member is None:
             return None
@@ -265,7 +268,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def slant(self) -> primitives.Float | None:
-        """The Slant field value."""
+        """The beveledness of the UI elements."""
         member = self.get_member("Slant")
         if member is None:
             return None
@@ -284,7 +287,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def text_slot(self) -> str | None:
-        """Target ID of the _textSlot reference (targets Slot)."""
+        """The slot of the text visual for the enum indicator"""
         member = self.get_member("_textSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -305,7 +308,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def text_renderer(self) -> str | None:
-        """Target ID of the _textRenderer reference (targets TextRenderer)."""
+        """The text renderer of the enum indcator."""
         member = self.get_member("_textRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -326,7 +329,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def text_editor(self) -> str | None:
-        """Target ID of the _textEditor reference (targets TextEditor)."""
+        """The text editor for editing the enum text."""
         member = self.get_member("_textEditor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -347,7 +350,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets PBS_RimMetallic)."""
+        """The material of the UI."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -368,7 +371,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def mesh(self) -> str | None:
-        """Target ID of the _mesh reference (targets BevelStripeMesh)."""
+        """The mesh of the ui."""
         member = self.get_member("_mesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -389,7 +392,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def text_bounds(self) -> str | None:
-        """Target ID of the _textBounds reference (targets IField[primitives.Float2])."""
+        """The field that is used to make the UI wrap around the text"""
         member = self.get_member("_textBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -410,7 +413,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def collider_size(self) -> str | None:
-        """Target ID of the _colliderSize reference (targets IField[primitives.Float3])."""
+        """The size of the collider for the UI."""
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -431,7 +434,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def mesh_left(self) -> str | None:
-        """Target ID of the _meshLeft reference (targets BevelStripeMesh)."""
+        """The mesh of the left cycle button"""
         member = self.get_member("_meshLeft")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -452,7 +455,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def mesh_right(self) -> str | None:
-        """Target ID of the _meshRight reference (targets BevelStripeMesh)."""
+        """The mesh of the right cycle button"""
         member = self.get_member("_meshRight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -473,7 +476,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def text_left_bounds(self) -> str | None:
-        """Target ID of the _textLeftBounds reference (targets IField[primitives.Float2])."""
+        """The field to make the UI wrap around the left button text."""
         member = self.get_member("_textLeftBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -494,7 +497,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def text_right_bounds(self) -> str | None:
-        """Target ID of the _textRightBounds reference (targets IField[primitives.Float2])."""
+        """The field to make the UI wrap around the right button text."""
         member = self.get_member("_textRightBounds")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -515,7 +518,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def left_text_renderer(self) -> str | None:
-        """Target ID of the _leftTextRenderer reference (targets TextRenderer)."""
+        """The renderer for the text of the left button."""
         member = self.get_member("_leftTextRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -536,7 +539,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def right_text_renderer(self) -> str | None:
-        """Target ID of the _rightTextRenderer reference (targets TextRenderer)."""
+        """The renderer for the text of the right button."""
         member = self.get_member("_rightTextRenderer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -557,7 +560,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def collider_left_size(self) -> str | None:
-        """Target ID of the _colliderLeftSize reference (targets IField[primitives.Float3])."""
+        """The collider field to drive to make the collider envelop the left UI."""
         member = self.get_member("_colliderLeftSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -578,7 +581,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def collider_right_size(self) -> str | None:
-        """Target ID of the _colliderRightSize reference (targets IField[primitives.Float3])."""
+        """the collider firld to drive to make the collider envelop the right UI."""
         member = self.get_member("_colliderRightSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -599,7 +602,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def left_offset(self) -> str | None:
-        """Target ID of the _leftOffset reference (targets IField[primitives.Float3])."""
+        """The field to drive for the left button offset."""
         member = self.get_member("_leftOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -620,7 +623,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def right_offset(self) -> str | None:
-        """Target ID of the _rightOffset reference (targets IField[primitives.Float3])."""
+        """The field to drive for the right button offset."""
         member = self.get_member("_rightOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -641,7 +644,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def left_text_position(self) -> str | None:
-        """Target ID of the _leftTextPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive for the left text position."""
         member = self.get_member("_leftTextPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -662,7 +665,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def right_text_position(self) -> str | None:
-        """Target ID of the _rightTextPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive for the right text position."""
         member = self.get_member("_rightTextPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -721,7 +724,7 @@ class LegacyEnumEditor(GenericComponent[T], ITouchable, IWorldEventReceiver):
 
     @property
     def text_drive(self) -> str | None:
-        """Target ID of the _textDrive reference (targets IField[primitives.String])."""
+        """The string field to drive with the string version of the selected enum from ``Value``."""
         member = self.get_member("_textDrive")
         if isinstance(member, members.Reference):
             return member.targetId

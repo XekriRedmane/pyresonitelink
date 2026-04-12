@@ -1,6 +1,7 @@
 """Generated component: AvatarUserRootOverrideAssigner."""
 
 from pyresonitelink.data import members
+from pyresonitelink.generated._enums.override_node import OverrideNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -10,30 +11,35 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarUserRootOverrideAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarUserRootOverrideAssigner.
+    """Avatar User Root Override Assigner is a component that allows for changing the user's viewpoint, the user's first person standing location, or the user's ears location. This component works if parented under a user, for that user.
 
     Category: Users/Common Avatar System
+
+    **Behavior**: Needs to be parented under a user to work, and applies to the parent user. The component requires a slot, and an AvatarObjectSlot. The Avatar Object slot does not need an existing one, so best practice is to add a new Avatar Object Slot to the same Slot as this component, then put it into the ``_equippingSlot`` field. Also, adding the slot this component is on to ``Override`` allows for a self contained settup in one slot that fully works when parented to a user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarUserRootOverrideAssigner"
 
-    def __init__(self, override: str | Slot | None = None, equipping_slot: str | AvatarObjectSlot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, override: str | Slot | None = None, node: OverrideNode | str | None = None, equipping_slot: str | AvatarObjectSlot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             override: Initial value for Override.
+            node: Initial value for Node.
             equipping_slot: Initial value for _equippingSlot.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if override is not None:
             self.override = override
+        if node is not None:
+            self.node = node
         if equipping_slot is not None:
             self.equipping_slot = equipping_slot
 
     @property
     def override(self) -> str | None:
-        """Target ID of the Override reference (targets Slot)."""
+        """The slot to relocate the user's eyes or ears to."""
         member = self.get_member("Override")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -53,21 +59,28 @@ class AvatarUserRootOverrideAssigner(GeneratedComponent, IAvatarObjectComponent,
             )
 
     @property
-    def node(self) -> members.FieldEnum | None:
-        """The Node member."""
+    def node(self) -> OverrideNode | None:
+        """Whether to make the user's eyes, Standing position, or ears located at ``Slot`` without changing any slot transforms."""
         member = self.get_member("Node")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return OverrideNode(member.value)
         return None
 
     @node.setter
-    def node(self, value: members.FieldEnum) -> None:
-        """Set the Node member."""
-        self.set_member("Node", value)
+    def node(self, value: OverrideNode | str) -> None:
+        """Set Node. Whether to make the user's eyes, Standing position, or ears located at ``Slot`` without changing any slot transforms."""
+        member = self.get_member("Node")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Node",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def equipping_slot(self) -> str | None:
-        """Target ID of the _equippingSlot reference (targets AvatarObjectSlot)."""
+        """an Avatar Object Slot to use for handling this node."""
         member = self.get_member("_equippingSlot")
         if isinstance(member, members.Reference):
             return member.targetId

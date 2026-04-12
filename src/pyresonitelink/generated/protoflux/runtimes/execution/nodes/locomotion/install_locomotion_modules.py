@@ -20,6 +20,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class InstallLocomotionModules(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Install Locomotion Modules is a ProtoFlux node that takes a slot with a type from the ILocomotionModule interface on it. The locomotion will also need a character controller and a few other components, which should be auto generated when a type from the ILocomotionModule interface component is added.
 
+When called, this node will add the locomotion to the user in question.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Locomotion
     """
 
@@ -47,7 +49,7 @@ class InstallLocomotionModules(GeneratedComponent, ISyncNodeOperation, IExecutio
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse after * (Call) was called and the locomotion(s) are installed to the provided user."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +70,7 @@ class InstallLocomotionModules(GeneratedComponent, ISyncNodeOperation, IExecutio
 
     @property
     def modules_root(self) -> str | None:
-        """Target ID of the ModulesRoot reference (targets INodeObjectOutput[Slot])."""
+        """The module slot itself, or a slot with multiple locomotions under it to install to the target user. each slot to install needs a type from the ILocomotionModule interface on it."""
         member = self.get_member("ModulesRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +91,7 @@ class InstallLocomotionModules(GeneratedComponent, ISyncNodeOperation, IExecutio
 
     @property
     def target_user(self) -> str | None:
-        """Target ID of the TargetUser reference (targets INodeObjectOutput[User])."""
+        """The user to install the provided ModulesRoot (Slot) to."""
         member = self.get_member("TargetUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +112,7 @@ class InstallLocomotionModules(GeneratedComponent, ISyncNodeOperation, IExecutio
 
     @property
     def clear_existing(self) -> str | None:
-        """Target ID of the ClearExisting reference (targets INodeValueOutput[primitives.Bool])."""
+        """Removes all the existing locomotions from the user and replace with the provided ModulesRoot (Slot) locomotion module(s)."""
         member = self.get_member("ClearExisting")
         if isinstance(member, members.Reference):
             return member.targetId

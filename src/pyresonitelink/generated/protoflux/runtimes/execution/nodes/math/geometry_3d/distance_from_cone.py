@@ -45,7 +45,7 @@ class DistanceFromCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def cone_center(self) -> str | None:
-        """Target ID of the ConeCenter reference (targets INodeValueOutput[primitives.Float3])."""
+        """The center of the cone (located at the center of the base of the cone)."""
         member = self.get_member("ConeCenter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +66,7 @@ class DistanceFromCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def cone_orientation(self) -> str | None:
-        """Target ID of the ConeOrientation reference (targets INodeValueOutput[primitives.FloatQ])."""
+        """The rotation of the cone."""
         member = self.get_member("ConeOrientation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +87,7 @@ class DistanceFromCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def cone_height(self) -> str | None:
-        """Target ID of the ConeHeight reference (targets INodeValueOutput[primitives.Float])."""
+        """The height of the cone."""
         member = self.get_member("ConeHeight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +108,7 @@ class DistanceFromCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def cone_base_radius(self) -> str | None:
-        """Target ID of the ConeBaseRadius reference (targets INodeValueOutput[primitives.Float])."""
+        """The size of the cone base's circle radius."""
         member = self.get_member("ConeBaseRadius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -129,7 +129,7 @@ class DistanceFromCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
 
     @property
     def point(self) -> str | None:
-        """Target ID of the Point reference (targets INodeValueOutput[primitives.Float3])."""
+        """The point we are checking."""
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,9 +10,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LinearForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.LinearForce.
+    """The LinearForce component applies force to all particles within a system towards a direction regardless of particle position.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LinearForce"
@@ -30,7 +35,7 @@ class LinearForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver
 
     @property
     def force(self) -> primitives.Float3 | None:
-        """The Force field value."""
+        """The direction to force particles in."""
         member = self.get_member("Force")
         if member is None:
             return None
@@ -49,7 +54,7 @@ class LinearForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver
 
     @property
     def override_force_space(self) -> members.SyncObject | None:
-        """The OverrideForceSpace member."""
+        """What Transform space the force direction is in rather than in the particle system's local space."""
         member = self.get_member("OverrideForceSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -57,6 +62,6 @@ class LinearForce(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver
 
     @override_force_space.setter
     def override_force_space(self, value: members.SyncObject) -> None:
-        """Set the OverrideForceSpace member."""
+        """Set OverrideForceSpace. What Transform space the force direction is in rather than in the particle system's local space."""
         self.set_member("OverrideForceSpace", value)
 

@@ -15,7 +15,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextureRefEditor.
+    """The TextureRefEditor component is commonly used in inspectors for materials and other components that use images/textures.
+
+    Commonly used in inspectors. Using inspector specific components is a
+    common tactic in Ref Hacking.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextureRefEditor"
@@ -57,7 +60,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     @property
     def target_ref(self) -> str | None:
-        """Target ID of the _targetRef reference (targets AssetRef[ITexture2D])."""
+        """The field to make a visual for."""
         member = self.get_member("_targetRef")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -78,7 +81,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     @property
     def drive(self) -> str | None:
-        """Target ID of the _drive reference (targets AssetRef[ITexture2D])."""
+        """The field to drive with the contents of ``_targetRef`` or a placeholder texture if null."""
         member = self.get_member("_drive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -99,7 +102,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     @property
     def clear_reference_button(self) -> str | None:
-        """Target ID of the _clearReferenceButton reference (targets Button)."""
+        """The button used to clear ``_targetRef``"""
         member = self.get_member("_clearReferenceButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -120,7 +123,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     @property
     def open_inspector_button(self) -> str | None:
-        """Target ID of the _openInspectorButton reference (targets Button)."""
+        """The button to open an inspector for ``_targetRef``."""
         member = self.get_member("_openInspectorButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -141,7 +144,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     @property
     def copy_texture_button(self) -> str | None:
-        """Target ID of the _copyTextureButton reference (targets Button)."""
+        """The button to copy the texture in ``_targetRef``."""
         member = self.get_member("_copyTextureButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -162,7 +165,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     @property
     def paste_texture_button(self) -> str | None:
-        """Target ID of the _pasteTextureButton reference (targets Button)."""
+        """The button to paste a texture into ``_targetRef``."""
         member = self.get_member("_pasteTextureButton")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -183,7 +186,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     @property
     def reference_text(self) -> str | None:
-        """Target ID of the _referenceText reference (targets IField[primitives.String])."""
+        """The field to drive with the description of the contents of ``_targetRef``."""
         member = self.get_member("_referenceText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -204,7 +207,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     @property
     def info_text(self) -> str | None:
-        """Target ID of the _infoText reference (targets IField[primitives.String])."""
+        """The field to drive with the info of ``_targetRef``."""
         member = self.get_member("_infoText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -225,7 +228,7 @@ class TextureRefEditor(GeneratedComponent, IUIGrabReceiver, IUIGrabbable, IWorld
 
     @property
     def is_normal_map(self) -> primitives.Bool | None:
-        """The _isNormalMap field value."""
+        """Whether ``_targetRef`` should be interpreted as a normal map."""
         member = self.get_member("_isNormalMap")
         if member is None:
             return None

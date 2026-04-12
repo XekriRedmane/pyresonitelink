@@ -15,7 +15,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ScaleGizmo.
+    """The ScaleGizmo component is used to allow scaling of a slot it is targeting.
+
+See Dev tool.
+
+    See Dev tool.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ScaleGizmo"
@@ -72,7 +76,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def target_slot(self) -> str | None:
-        """Target ID of the TargetSlot reference (targets Slot)."""
+        """The slot this is scaling/targeting."""
         member = self.get_member("TargetSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -93,7 +97,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def auto_position_at_target_slot(self) -> primitives.Bool | None:
-        """The AutoPositionAtTargetSlot field value."""
+        """Whether to auto position this gizmo at ``TargetSlot``"""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
             return None
@@ -112,7 +116,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def interacting_component(self) -> str | None:
-        """Target ID of the _interactingComponent reference (targets Component)."""
+        """The component that is interacting with this component."""
         member = self.get_member("_interactingComponent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -133,7 +137,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets OverlayFresnelMaterial)."""
+        """The material for the gizmo visual."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -154,7 +158,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def tool_point(self) -> str | None:
-        """Target ID of the _toolPoint reference (targets Slot)."""
+        """The slot representing the interacting dev tool's tip."""
         member = self.get_member("_toolPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -175,7 +179,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def active_point(self) -> str | None:
-        """Target ID of the _activePoint reference (targets Slot)."""
+        """The active point of the gizmo"""
         member = self.get_member("_activePoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -196,7 +200,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def line_root(self) -> str | None:
-        """Target ID of the _lineRoot reference (targets Slot)."""
+        """the root of the line visual going back to ``_toolPoint``."""
         member = self.get_member("_lineRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -217,7 +221,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def line_segment(self) -> str | None:
-        """Target ID of the _lineSegment reference (targets SegmentMesh)."""
+        """The line segment for the line from gizmo center to ``_toolPoint``."""
         member = self.get_member("_lineSegment")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -238,7 +242,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def snap_highlight(self) -> str | None:
-        """Target ID of the _snapHighlight reference (targets Slot)."""
+        """The slot for a snap point highlight like a selected cube corner."""
         member = self.get_member("_snapHighlight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -259,7 +263,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def target_scale(self) -> str | None:
-        """Target ID of the TargetScale reference (targets IField[primitives.Float3])."""
+        """The scale field of what this is scaling."""
         member = self.get_member("TargetScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -280,7 +284,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def handle_length(self) -> primitives.Float | None:
-        """The HandleLength field value."""
+        """The length of the scale gizmo handles."""
         member = self.get_member("HandleLength")
         if member is None:
             return None
@@ -299,7 +303,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def x_slot(self) -> str | None:
-        """Target ID of the _xSlot reference (targets Slot)."""
+        """The scale gizmo for the x axis."""
         member = self.get_member("_xSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -320,7 +324,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def y_slot(self) -> str | None:
-        """Target ID of the _ySlot reference (targets Slot)."""
+        """The scale gizmo for the y axis."""
         member = self.get_member("_ySlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -341,7 +345,7 @@ class ScaleGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
 
     @property
     def z_slot(self) -> str | None:
-        """Target ID of the _zSlot reference (targets Slot)."""
+        """The scale gizmo for the z axis."""
         member = self.get_member("_zSlot")
         if isinstance(member, members.Reference):
             return member.targetId

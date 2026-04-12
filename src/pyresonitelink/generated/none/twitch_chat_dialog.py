@@ -20,7 +20,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TwitchChatDialog.
+    """Twitch chat dialogue is a component used to control and manage a live stream of chat messages sent by users at Twitch from a specific channel on Twitch.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TwitchChatDialog"
@@ -71,7 +71,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def canvas(self) -> str | None:
-        """Target ID of the _canvas reference (targets Canvas)."""
+        """The canvas this component generated for a visual twitch chat feed."""
         member = self.get_member("_canvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +92,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def panel(self) -> str | None:
-        """Target ID of the _panel reference (targets LegacyPanel)."""
+        """The panel this component generated for a visual twitch chat feed."""
         member = self.get_member("_panel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -113,7 +113,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_messages(self) -> primitives.Int | None:
-        """The MaxMessages field value."""
+        """The maximum amount of messages to keep in the message feed before deleting old ones."""
         member = self.get_member("MaxMessages")
         if member is None:
             return None
@@ -132,7 +132,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def interface(self) -> str | None:
-        """Target ID of the Interface reference (targets TwitchInterface)."""
+        """The twitch interface that is providing and receiving events to allow this component to function."""
         member = self.get_member("Interface")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -153,7 +153,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def channel_name(self) -> str | None:
-        """Target ID of the _channelName reference (targets TextField)."""
+        """The text field that holds the name of the channel this component is displaying chat messages for."""
         member = self.get_member("_channelName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -174,7 +174,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def viewer_count(self) -> str | None:
-        """Target ID of the _viewerCount reference (targets Text)."""
+        """The text object displaying the amount of users watching ``_channelName``"""
         member = self.get_member("_viewerCount")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -195,7 +195,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def messages_root(self) -> str | None:
-        """Target ID of the _messagesRoot reference (targets Slot)."""
+        """the slot to put UIX text components under which are messages sent into ``_channelName``'s chat."""
         member = self.get_member("_messagesRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -216,7 +216,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def messages_scroll_rect(self) -> str | None:
-        """Target ID of the _messagesScrollRect reference (targets ScrollRect)."""
+        """The scroll rectangle that is controlled to make sure it stays scrolled to the bottom as chat messages appear."""
         member = self.get_member("_messagesScrollRect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -237,7 +237,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def highlight_panel(self) -> str | None:
-        """Target ID of the _highlightPanel reference (targets Image)."""
+        """The image used for when the panel is highlighted."""
         member = self.get_member("_highlightPanel")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -258,7 +258,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def highlight_text(self) -> str | None:
-        """Target ID of the _highlightText reference (targets Text)."""
+        """The text used for when the panel is highlighted."""
         member = self.get_member("_highlightText")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -279,7 +279,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sprite_sheet(self) -> str | None:
-        """Target ID of the _spriteSheet reference (targets DynamicSpriteFont)."""
+        """The dynamically changing sprite font for text characters like custom twitch emojis."""
         member = self.get_member("_spriteSheet")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -300,7 +300,7 @@ class TwitchChatDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def font_collection(self) -> str | None:
-        """Target ID of the _fontCollection reference (targets FontCollection)."""
+        """A list of fonts used by chat messages from twitch."""
         member = self.get_member("_fontCollection")
         if isinstance(member, members.Reference):
             return member.targetId

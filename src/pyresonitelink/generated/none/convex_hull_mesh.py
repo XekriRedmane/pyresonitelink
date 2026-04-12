@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,18 +13,21 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConvexHullMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ConvexHullMesh.
+    """The ConvexHullMesh component is used to generate a Convex Hull Mesh using a series of ``Points`` to wrap around.
+
+The ``Points`` field is not editable currently without Mods.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ConvexHullMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, flat_shading: primitives.Bool | None = None, min_vertex_distance: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, flat_shading: primitives.Bool | None = None, min_vertex_distance: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             flat_shading: Initial value for FlatShading.
             min_vertex_distance: Initial value for MinVertexDistance.
             component: Existing Component to wrap.
@@ -35,6 +39,8 @@ class ConvexHullMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if flat_shading is not None:
             self.flat_shading = flat_shading
         if min_vertex_distance is not None:
@@ -98,17 +104,24 @@ class ConvexHullMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def points(self) -> list[primitives.Float3] | None:
@@ -131,7 +144,7 @@ class ConvexHullMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def flat_shading(self) -> primitives.Bool | None:
-        """The FlatShading field value."""
+        """Whether the geometry should be not smooth."""
         member = self.get_member("FlatShading")
         if member is None:
             return None
@@ -150,7 +163,7 @@ class ConvexHullMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
 
     @property
     def min_vertex_distance(self) -> primitives.Double | None:
-        """The MinVertexDistance field value."""
+        """the distance by minimum 2 ``Points`` can be before they're automatically merged."""
         member = self.get_member("MinVertexDistance")
         if member is None:
             return None

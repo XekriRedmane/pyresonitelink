@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Float4Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Float4Driver.
+    """The Float4Driver component can be used to drive a foat4 value, based on an X, Y, Z and a W value.
 
     Category: Transform/Drivers
     """
@@ -43,7 +43,7 @@ class Float4Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def x(self) -> str | None:
-        """Target ID of the X reference (targets Sync[primitives.Float])."""
+        """The field that holds the X value for the float4. If null, the X component of the float4 will be 0."""
         member = self.get_member("X")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class Float4Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def y(self) -> str | None:
-        """Target ID of the Y reference (targets Sync[primitives.Float])."""
+        """The field that holds the Y value for the float4. If null, the Y component of the float4 will be 0."""
         member = self.get_member("Y")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class Float4Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def z(self) -> str | None:
-        """Target ID of the Z reference (targets Sync[primitives.Float])."""
+        """The field that holds the Z value for the float4. If null, the Z component of the float4 will be 0."""
         member = self.get_member("Z")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -106,7 +106,7 @@ class Float4Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def w(self) -> str | None:
-        """Target ID of the W reference (targets Sync[primitives.Float])."""
+        """The field that holds the W value for the float4. If null, the W component of the float4 will be 0."""
         member = self.get_member("W")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -127,7 +127,7 @@ class Float4Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float4])."""
+        """The field that is driven to the constructed float4."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

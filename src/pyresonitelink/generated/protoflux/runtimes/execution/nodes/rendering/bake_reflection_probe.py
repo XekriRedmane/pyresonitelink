@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Bake Reflection Probe node takes in a Reflection Probe and begins the baking process, then returns the Uri asset that can be used for the world when completed.
+    """The ``Bake Reflection Probe`` node takes in a Reflection Probe and begins the baking process, then returns the Uri asset that can be used for the world when completed.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Rendering
     """
@@ -44,7 +44,7 @@ class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNod
 
     @property
     def probe(self) -> str | None:
-        """Target ID of the Probe reference (targets INodeObjectOutput[ReflectionProbe])."""
+        """The reflection probe to bake."""
         member = self.get_member("Probe")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +65,7 @@ class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNod
 
     @property
     def on_bake_start(self) -> str | None:
-        """Target ID of the OnBakeStart reference (targets INodeOperation)."""
+        """Fires when the bake has started."""
         member = self.get_member("OnBakeStart")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +86,7 @@ class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNod
 
     @property
     def on_bake_fail(self) -> str | None:
-        """Target ID of the OnBakeFail reference (targets INodeOperation)."""
+        """Fires when the bake has failed."""
         member = self.get_member("OnBakeFail")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -107,7 +107,7 @@ class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNod
 
     @property
     def on_bake_complete(self) -> str | None:
-        """Target ID of the OnBakeComplete reference (targets INodeOperation)."""
+        """Fires when the bake has completed."""
         member = self.get_member("OnBakeComplete")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -128,7 +128,7 @@ class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNod
 
     @property
     def baked_cubemap_url(self) -> members.EmptyElement | None:
-        """The BakedCubemapURL member."""
+        """Returns the baked asset URL."""
         member = self.get_member("BakedCubemapURL")
         if isinstance(member, members.EmptyElement):
             return member
@@ -136,6 +136,6 @@ class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNod
 
     @baked_cubemap_url.setter
     def baked_cubemap_url(self, value: members.EmptyElement) -> None:
-        """Set the BakedCubemapURL member."""
+        """Set BakedCubemapURL. Returns the baked asset URL."""
         self.set_member("BakedCubemapURL", value)
 

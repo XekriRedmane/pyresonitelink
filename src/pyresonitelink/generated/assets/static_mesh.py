@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StaticMesh.
+    """The StaticMesh component is used to load a static mesh asset from the Uri specified in `URL`
+
+Generally, you will not need to use this component directly, as it is created automatically when importing a new mesh, or when baking a Procedural Mesh using the Sync Method ``BakeMesh()``
 
     Category: Assets
+
+    Attach to a slot, provide a ``URL`` and insert into a
+    SkinnedMeshRenderer or MeshRenderer. Don't forget the Material(s).
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticMesh"
@@ -34,7 +39,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The Uri pointing to the .meshx asset to be loaded"""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -53,7 +58,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
 
     @property
     def readable(self) -> primitives.Bool | None:
-        """The Readable field value."""
+        """Whether this component's data can be read via protoflux."""
         member = self.get_member("Readable")
         if member is None:
             return None
@@ -71,7 +76,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
             )
 
     async def recalculate_normals(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the RecalculateNormals sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -81,7 +86,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def recalculate_normals_merged(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the RecalculateNormalsMerged sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -91,7 +96,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def recalculate_tangents_simple(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the RecalculateTangentsSimple sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -101,7 +106,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def recalculate_tangents_mikktspace(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the RecalculateTangentsMikktspace sync method.
+        """Recalcates mesh tangents which affect shading. This is Mikkspace which is defined by UnityEngine's definition.
 
         Returns:
             The raw JSON response dict.
@@ -111,7 +116,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def recalculate_blendshape_normals(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the RecalculateBlendshapeNormals sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -121,7 +126,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def recalculate_blendshape_normals_merged(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the RecalculateBlendshapeNormalsMerged sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -131,7 +136,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def recalculate_blendshape_tangents_mikktspace(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the RecalculateBlendshapeTangentsMikktspace sync method.
+        """Recalculate the normals of blendshape data in Mikktspace.
 
         Returns:
             The raw JSON response dict.
@@ -141,7 +146,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def flip_normals(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the FlipNormals sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -151,7 +156,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def reverse_winding(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ReverseWinding sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -161,7 +166,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def make_dual_sided(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the MakeDualSided sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -171,7 +176,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def convert_to_flat_shading(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ConvertToFlatShading sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -181,7 +186,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def merge_doubles(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the MergeDoubles sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -191,7 +196,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def strip_empty_blendshapes(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the StripEmptyBlendshapes sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -201,7 +206,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def merge_blendshapes(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the MergeBlendshapes sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -211,7 +216,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def strip_blendshape_normals(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the StripBlendshapeNormals sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -221,7 +226,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def strip_blendshape_tangents(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the StripBlendshapeTangents sync method.
+        """Use above function instead.
 
         Returns:
             The raw JSON response dict.
@@ -231,7 +236,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def trim_bone_weight_count(self, resolink: protocols.ResoniteLinkClient, max_bone_count: primitives.Int, debug: bool = False) -> dict:
-        """Call the TrimBoneWeightCount sync method.
+        """Use above function instead.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -246,7 +251,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def convert_to_convex_hull(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ConvertToConvexHull sync method.
+        """Converts the mesh to a convex hull.
 
         Returns:
             The raw JSON response dict.
@@ -256,7 +261,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def convert_to_point_cloud(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ConvertToPointCloud sync method.
+        """Converts the mesh to a point cloud.
 
         Returns:
             The raw JSON response dict.
@@ -266,7 +271,7 @@ class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWo
         )
 
     async def translate_uvs(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float4, scale: primitives.Float4, debug: bool = False) -> dict:
-        """Call the TranslateUVs sync method.
+        """Transforms the mesh UVs around.
 
         Args:
             resolink: Connected ResoniteLink client.

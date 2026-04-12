@@ -11,9 +11,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TimeIntDriver.
+    """The TimeIntDriver Component drives the Int value specified in ``Target`` based on the current time, modified by the specified parameters.
 
     Category: Transform/Drivers
+
+    **Related Components**: * AtlasInfo
+* TimeIntDriver
+* UVAtlasAnimator
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TimeIntDriver"
@@ -40,7 +44,7 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def scale(self) -> primitives.Float | None:
-        """The Scale field value."""
+        """Time scale in relation to time in seconds, where 1.0 means ``Target`` will increment once per second."""
         member = self.get_member("Scale")
         if member is None:
             return None
@@ -59,7 +63,7 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def repeat(self) -> primitives.Int | None:
-        """The Repeat field value."""
+        """Once ``Target`` reaches this value, it will reset to 0 and restart."""
         member = self.get_member("Repeat")
         if member is None:
             return None
@@ -78,7 +82,7 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def ping_pong(self) -> primitives.Bool | None:
-        """The PingPong field value."""
+        """Causes ``Target`` to reverse direction when it reaches 0 or the value in ``Repeat``, instead of restarting."""
         member = self.get_member("PingPong")
         if member is None:
             return None
@@ -97,7 +101,7 @@ class TimeIntDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Int])."""
+        """The value to be driven."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

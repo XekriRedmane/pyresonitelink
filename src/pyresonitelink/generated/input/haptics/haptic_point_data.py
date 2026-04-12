@@ -10,9 +10,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.HapticPointData.
+    """The HapticPointData component gets data about a haptics device on a particular user.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics
+
+    Attach to a slot and provide a ``User`` for this component to start
+    giving values.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.HapticPointData"
@@ -45,7 +50,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """The device index to get info on."""
         member = self.get_member("Index")
         if member is None:
             return None
@@ -64,7 +69,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user(self) -> members.SyncObject | None:
-        """The User member."""
+        """The user to get a device of ``Index`` from."""
         member = self.get_member("User")
         if isinstance(member, members.SyncObject):
             return member
@@ -72,12 +77,12 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @user.setter
     def user(self, value: members.SyncObject) -> None:
-        """Set the User member."""
+        """Set User. The user to get a device of ``Index`` from."""
         self.set_member("User", value)
 
     @property
     def force(self) -> primitives.Float | None:
-        """The Force field value."""
+        """The device's perceived force."""
         member = self.get_member("Force")
         if member is None:
             return None
@@ -96,7 +101,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def temperature(self) -> primitives.Float | None:
-        """The Temperature field value."""
+        """The device's perceived temperature."""
         member = self.get_member("Temperature")
         if member is None:
             return None
@@ -115,7 +120,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def pain(self) -> primitives.Float | None:
-        """The Pain field value."""
+        """The device's perceived pain."""
         member = self.get_member("Pain")
         if member is None:
             return None
@@ -134,7 +139,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def vibration(self) -> primitives.Float | None:
-        """The Vibration field value."""
+        """The device's perceived Vibration."""
         member = self.get_member("Vibration")
         if member is None:
             return None
@@ -153,7 +158,7 @@ class HapticPointData(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def total_activation_intensity(self) -> primitives.Float | None:
-        """The TotalActivationIntensity field value."""
+        """The total activation intensity of the haptic's device."""
         member = self.get_member("TotalActivationIntensity")
         if member is None:
             return None

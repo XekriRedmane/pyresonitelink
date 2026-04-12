@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyGlowingSphereToggle.
+    """The Legacy Glowing Sphere Toggle component is a leftover Component from content migrated from other platforms. It should not be used, and should be replaced whenever possible.
+
+    Not to be used, legacy content.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyGlowingSphereToggle"
@@ -56,7 +58,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def target_field(self) -> str | None:
-        """Target ID of the TargetField reference (targets IField[primitives.Bool])."""
+        """The field to toggle."""
         member = self.get_member("TargetField")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -77,7 +79,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def fade_speed(self) -> primitives.Float | None:
-        """The FadeSpeed field value."""
+        """The speed at which the emission fades."""
         member = self.get_member("FadeSpeed")
         if member is None:
             return None
@@ -96,7 +98,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def cooldown_time(self) -> primitives.Float | None:
-        """The CooldownTime field value."""
+        """How long till the toggle can be used again between toggles."""
         member = self.get_member("CooldownTime")
         if member is None:
             return None
@@ -115,7 +117,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the sphere visual."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -134,7 +136,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def glow_color(self) -> primitives.ColorX | None:
-        """The GlowColor field value."""
+        """The color of the glowing sphere visual."""
         member = self.get_member("GlowColor")
         if member is None:
             return None
@@ -153,7 +155,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def emissive_color(self) -> str | None:
-        """Target ID of the _emissiveColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive for the emissive color."""
         member = self.get_member("_emissiveColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -174,7 +176,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def rim_color(self) -> str | None:
-        """Target ID of the _rimColor reference (targets IField[primitives.ColorX])."""
+        """The field to drive for the rim color."""
         member = self.get_member("_rimColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -195,7 +197,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def sphere_radius(self) -> str | None:
-        """Target ID of the _sphereRadius reference (targets IField[primitives.Float])."""
+        """The field to drive for the sphere visual radius."""
         member = self.get_member("_sphereRadius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -216,7 +218,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def sphere_extrude(self) -> str | None:
-        """Target ID of the _sphereExtrude reference (targets IField[primitives.Float])."""
+        """The field to drive for the sphere visual extrude."""
         member = self.get_member("_sphereExtrude")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -237,7 +239,7 @@ class LegacyGlowingSphereToggle(GeneratedComponent, ITouchable, IWorldEventRecei
 
     @property
     def collider_radius(self) -> str | None:
-        """Target ID of the _colliderRadius reference (targets IField[primitives.Float])."""
+        """The field to drive for the collider radius for the visual."""
         member = self.get_member("_colliderRadius")
         if isinstance(member, members.Reference):
             return member.targetId

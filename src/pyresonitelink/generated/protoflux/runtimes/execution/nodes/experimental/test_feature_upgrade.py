@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TestFeatureUpgrade(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Test Feature Upgrade node is a test node that may be removed in the future and is not meant for regular use, not many people know what this node does besides the Resonite Dev Team. As far as what is known about this node, it is used internally for testing purposes, and can be ignored. It makes sense that this node would be in the experimental category for this reason.
+    """The ``Test Feature Upgrade`` node is a test node that may be removed in the future and is not meant for regular use, not many people know what this node does besides the Resonite Dev Team. As far as what is known about this node, it is used internally for testing purposes, and can be ignored. It makes sense that this node would be in the experimental category for this reason.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Experimental
     """

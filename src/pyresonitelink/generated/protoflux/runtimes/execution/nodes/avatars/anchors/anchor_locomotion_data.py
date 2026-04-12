@@ -17,6 +17,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class AnchorLocomotionData(GeneratedComponent, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Anchor Locomotion Data is a ProtoFlux node that checks the button presses for someone in an anchor and returns the values
 
+The values for Anchor Locomotion Data outputs will all be default unless read during the OnLocomotionUpdate (Call) impulse context.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Avatars/Anchors
     """
 
@@ -59,7 +61,7 @@ class AnchorLocomotionData(GeneratedComponent, IMappableNode, IExecutionNode, IN
 
     @property
     def on_locomotion_update(self) -> str | None:
-        """Target ID of the OnLocomotionUpdate reference (targets ISyncNodeOperation)."""
+        """On locomotion update only fires if the user in the anchor is causing changes to any the outputs of this node compared to the previous value."""
         member = self.get_member("OnLocomotionUpdate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -80,7 +82,7 @@ class AnchorLocomotionData(GeneratedComponent, IMappableNode, IExecutionNode, IN
 
     @property
     def has_primary(self) -> members.EmptyElement | None:
-        """The HasPrimary member."""
+        """Whether the user in the anchor has access to a joystick in their dominant hand"""
         member = self.get_member("HasPrimary")
         if isinstance(member, members.EmptyElement):
             return member
@@ -88,12 +90,12 @@ class AnchorLocomotionData(GeneratedComponent, IMappableNode, IExecutionNode, IN
 
     @has_primary.setter
     def has_primary(self, value: members.EmptyElement) -> None:
-        """Set the HasPrimary member."""
+        """Set HasPrimary. Whether the user in the anchor has access to a joystick in their dominant hand"""
         self.set_member("HasPrimary", value)
 
     @property
     def has_secondary(self) -> members.EmptyElement | None:
-        """The HasSecondary member."""
+        """Whether the user in the anchor has access to a joystick in their non dominant hand"""
         member = self.get_member("HasSecondary")
         if isinstance(member, members.EmptyElement):
             return member
@@ -101,12 +103,12 @@ class AnchorLocomotionData(GeneratedComponent, IMappableNode, IExecutionNode, IN
 
     @has_secondary.setter
     def has_secondary(self, value: members.EmptyElement) -> None:
-        """Set the HasSecondary member."""
+        """Set HasSecondary. Whether the user in the anchor has access to a joystick in their non dominant hand"""
         self.set_member("HasSecondary", value)
 
     @property
     def primary_axis(self) -> members.EmptyElement | None:
-        """The PrimaryAxis member."""
+        """The anchored user's joystick direction on the dominant hand."""
         member = self.get_member("PrimaryAxis")
         if isinstance(member, members.EmptyElement):
             return member
@@ -114,12 +116,12 @@ class AnchorLocomotionData(GeneratedComponent, IMappableNode, IExecutionNode, IN
 
     @primary_axis.setter
     def primary_axis(self, value: members.EmptyElement) -> None:
-        """Set the PrimaryAxis member."""
+        """Set PrimaryAxis. The anchored user's joystick direction on the dominant hand."""
         self.set_member("PrimaryAxis", value)
 
     @property
     def secondary_axis(self) -> members.EmptyElement | None:
-        """The SecondaryAxis member."""
+        """The anchored user's joystick direction on the non dominant hand."""
         member = self.get_member("SecondaryAxis")
         if isinstance(member, members.EmptyElement):
             return member
@@ -127,12 +129,12 @@ class AnchorLocomotionData(GeneratedComponent, IMappableNode, IExecutionNode, IN
 
     @secondary_axis.setter
     def secondary_axis(self, value: members.EmptyElement) -> None:
-        """Set the SecondaryAxis member."""
+        """Set SecondaryAxis. The anchored user's joystick direction on the non dominant hand."""
         self.set_member("SecondaryAxis", value)
 
     @property
     def primary_action(self) -> members.EmptyElement | None:
-        """The PrimaryAction member."""
+        """Whether the user in the anchor has pressed in their dominant hand joystick"""
         member = self.get_member("PrimaryAction")
         if isinstance(member, members.EmptyElement):
             return member
@@ -140,12 +142,12 @@ class AnchorLocomotionData(GeneratedComponent, IMappableNode, IExecutionNode, IN
 
     @primary_action.setter
     def primary_action(self, value: members.EmptyElement) -> None:
-        """Set the PrimaryAction member."""
+        """Set PrimaryAction. Whether the user in the anchor has pressed in their dominant hand joystick"""
         self.set_member("PrimaryAction", value)
 
     @property
     def secondary_action(self) -> members.EmptyElement | None:
-        """The SecondaryAction member."""
+        """Whether the user in the anchor has pressed in their non dominant hand joystick"""
         member = self.get_member("SecondaryAction")
         if isinstance(member, members.EmptyElement):
             return member
@@ -153,6 +155,6 @@ class AnchorLocomotionData(GeneratedComponent, IMappableNode, IExecutionNode, IN
 
     @secondary_action.setter
     def secondary_action(self, value: members.EmptyElement) -> None:
-        """Set the SecondaryAction member."""
+        """Set SecondaryAction. Whether the user in the anchor has pressed in their non dominant hand joystick"""
         self.set_member("SecondaryAction", value)
 

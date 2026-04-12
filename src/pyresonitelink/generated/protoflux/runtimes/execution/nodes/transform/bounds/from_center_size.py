@@ -36,7 +36,7 @@ class FromCenterSize(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def center(self) -> str | None:
-        """Target ID of the Center reference (targets INodeValueOutput[primitives.Float3])."""
+        """The center point of the bounding box. Default is [0;0;0]."""
         member = self.get_member("Center")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class FromCenterSize(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     @property
     def size(self) -> str | None:
-        """Target ID of the Size reference (targets INodeValueOutput[primitives.Float3])."""
+        """The size of the bounding box. Default is [0;0;0]"""
         member = self.get_member("Size")
         if isinstance(member, members.Reference):
             return member.targetId

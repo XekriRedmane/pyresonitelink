@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarMouthTrackingInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarMouthTrackingInfo.
+    """The AvatarMouthTrackingInfo is used to override the assigning behavior from a AvatarMouthDataSourceAssigner on the avatar when it assigns a target. or when a AvatarExpressionDriver on the avatar assigns it's own mouth data source.
 
     Category: Users/Common Avatar System/Face
     """
@@ -29,7 +29,7 @@ class AvatarMouthTrackingInfo(GeneratedComponent, IComponent, IWorldEventReceive
 
     @property
     def mouth_data_source(self) -> str | None:
-        """Target ID of the MouthDataSource reference (targets IMouthTrackingSourceComponent)."""
+        """The data source to override the assigning behavior of a Component:AvatarMouthDataSourceAssigner on the avatar with. or to override what a Component:AvatarExpressionDriver on the avatar assigns it's own mouth data source with."""
         member = self.get_member("MouthDataSource")
         if isinstance(member, members.Reference):
             return member.targetId

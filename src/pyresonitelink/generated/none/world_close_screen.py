@@ -17,7 +17,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldCloseScreen.
+    """The World Close Screen component is used in the dash and appears when the user asks to close a world. This acts as a conformation. This is also an internally used component.
+
+    Not used by the user, is an internally used component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldCloseScreen"
@@ -65,7 +67,7 @@ class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def icon(self) -> str | None:
-        """The Icon field value."""
+        """The icon for this dialogue screen."""
         member = self.get_member("Icon")
         if member is None:
             return None
@@ -84,7 +86,7 @@ class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def active_color(self) -> primitives.ColorX | None:
-        """The ActiveColor field value."""
+        """The color when this screen is selected and active."""
         member = self.get_member("ActiveColor")
         if member is None:
             return None
@@ -103,7 +105,7 @@ class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label(self) -> primitives.String | None:
-        """The Label field value."""
+        """The label of this dash screen."""
         member = self.get_member("Label")
         if member is None:
             return None
@@ -122,7 +124,7 @@ class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_enabled(self) -> primitives.Bool | None:
-        """The ScreenEnabled field value."""
+        """Whether this dash screen is enabled or not."""
         member = self.get_member("ScreenEnabled")
         if member is None:
             return None
@@ -141,7 +143,7 @@ class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_resolution(self) -> primitives.Float2 | None:
-        """The BaseResolution field value."""
+        """The resolution this screen renders at."""
         member = self.get_member("BaseResolution")
         if member is None:
             return None
@@ -160,7 +162,7 @@ class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_root(self) -> str | None:
-        """Target ID of the _screenRoot reference (targets Slot)."""
+        """The root slot of this screen's visual elements."""
         member = self.get_member("_screenRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -181,7 +183,7 @@ class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def screen_canvas(self) -> str | None:
-        """Target ID of the _screenCanvas reference (targets Canvas)."""
+        """The canvas Component used to render this dash screen."""
         member = self.get_member("_screenCanvas")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -202,7 +204,7 @@ class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def modal_overlay_manager(self) -> str | None:
-        """Target ID of the _modalOverlayManager reference (targets ModalOverlayManager)."""
+        """This is the Overlay manager that handles editing mode on this screen."""
         member = self.get_member("_modalOverlayManager")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -223,7 +225,7 @@ class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def button(self) -> str | None:
-        """Target ID of the _button reference (targets RadiantDashButton)."""
+        """This is the button to switch to viewing this screen."""
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -244,7 +246,7 @@ class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def icon_texture(self) -> str | None:
-        """Target ID of the _iconTexture reference (targets IAssetProvider[Texture2D])."""
+        """This is the texture Component showing the icon for the tab of this screen."""
         member = self.get_member("_iconTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -265,7 +267,7 @@ class WorldCloseScreen(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def close_dialog(self) -> str | None:
-        """Target ID of the _closeDialog reference (targets WorldCloseDialog)."""
+        """The close dialog this is controlling."""
         member = self.get_member("_closeDialog")
         if isinstance(member, members.Reference):
             return member.targetId

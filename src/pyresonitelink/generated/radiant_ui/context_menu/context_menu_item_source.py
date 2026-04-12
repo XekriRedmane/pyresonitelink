@@ -14,9 +14,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, IButtonHoverReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ContextMenuItemSource.
+    """The ContextMenuItemSource component is used to add additional items to a context menu.
 
     Category: Radiant UI/Context Menu
+
+    Attach to a slot, and provide a name and color. The name and color can
+    also be dynamically driven using a Value Option Description Driver to
+    display what the button does/did. To show up, it needs to be either
+    within a Context Menu Submenu or assigned to a Root Context Menu Item as
+    its Item.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContextMenuItemSource"
@@ -49,7 +55,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
 
     @property
     def label(self) -> primitives.String | None:
-        """The Label field value."""
+        """The text label next to the item."""
         member = self.get_member("Label")
         if member is None:
             return None
@@ -68,7 +74,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The background/border color of the item."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -87,7 +93,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
 
     @property
     def sprite(self) -> str | None:
-        """Target ID of the Sprite reference (targets IAssetProvider[Sprite])."""
+        """The icon that is displayed on the item."""
         member = self.get_member("Sprite")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +114,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
 
     @property
     def button_enabled(self) -> primitives.Bool | None:
-        """The ButtonEnabled field value."""
+        """Whether or not the button is active. If false, it will be greyed out and unclickable."""
         member = self.get_member("ButtonEnabled")
         if member is None:
             return None
@@ -127,7 +133,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
 
     @property
     def allow_drag(self) -> primitives.Bool | None:
-        """The AllowDrag field value."""
+        """Whether or not the user can drag onto the button from the center of the context menu to click it."""
         member = self.get_member("AllowDrag")
         if member is None:
             return None
@@ -146,7 +152,7 @@ class ContextMenuItemSource(GeneratedComponent, IButton, IButtonPressReceiver, I
 
     @property
     def close_menu_on_press(self) -> primitives.Bool | None:
-        """The CloseMenuOnPress field value."""
+        """Whether or not the context menu should be closed after the item is pressed."""
         member = self.get_member("CloseMenuOnPress")
         if member is None:
             return None

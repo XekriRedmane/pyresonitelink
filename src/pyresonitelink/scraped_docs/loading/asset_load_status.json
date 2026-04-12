@@ -1,0 +1,23 @@
+{
+  "description": "This is a component that tracks the load status of a list of assets locally.",
+  "category": "World:Loading",
+  "fields": {
+    "Assets": "List of assets that the component should listen to for loading status",
+    "IsLoaded": "Are all the assets in Assets list loaded?",
+    "LoadProgress": "The ratio of \"how many assets are loaded\" to the total asset count.",
+    "ProgressWeight": "The total count of assets in ``Assets``."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Introduction",
+      "text": "This is a component that tracks the load status of a list of assets locally."
+    },
+    {
+      "title": "Behavior",
+      "text": "This component returns a ratio of how many of the given assets are actually loaded."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AssetLoadStatus&action=raw"
+}

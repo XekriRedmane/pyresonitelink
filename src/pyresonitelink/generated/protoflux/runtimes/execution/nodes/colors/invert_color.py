@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InvertColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Invert Color node takes in a color and mathematically inverts it, returning a new color.
+    """The ``Invert Color`` node takes in a color and mathematically inverts it, returning a new color.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Colors
     """
@@ -33,7 +33,7 @@ class InvertColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
 
     @property
     def color(self) -> str | None:
-        """Target ID of the Color reference (targets INodeValueOutput[primitives.Color])."""
+        """The color we want to invert."""
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             return member.targetId

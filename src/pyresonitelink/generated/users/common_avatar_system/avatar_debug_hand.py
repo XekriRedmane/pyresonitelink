@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarDebugHand(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarDebugHand.
+    """Debug hand is a component that is used to show a debug visual when the Biped Rig Component has its "Debug Hand" sync delegate pressed.
 
     Category: Users/Common Avatar System
     """
@@ -33,7 +33,7 @@ class AvatarDebugHand(GeneratedComponent, IAvatarObjectComponent, IWorldEventRec
 
     @property
     def objects(self) -> members.SyncList | None:
-        """The _objects member."""
+        """The slots of the mesh renderers that are being used to debug the hand."""
         member = self.get_member("_objects")
         if isinstance(member, members.SyncList):
             return member
@@ -41,12 +41,12 @@ class AvatarDebugHand(GeneratedComponent, IAvatarObjectComponent, IWorldEventRec
 
     @objects.setter
     def objects(self, value: members.SyncList) -> None:
-        """Set the _objects member."""
+        """Set _objects. The slots of the mesh renderers that are being used to debug the hand."""
         self.set_member("_objects", value)
 
     @property
     def material_target(self) -> str | None:
-        """Target ID of the _materialTarget reference (targets HierarchyMaterialTarget)."""
+        """The component used as a reference to apply ``_material`` to the debug when ``_material`` changes."""
         member = self.get_member("_materialTarget")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +67,7 @@ class AvatarDebugHand(GeneratedComponent, IAvatarObjectComponent, IWorldEventRec
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets PBS_Metallic)."""
+        """The material this component is using to render the visual"""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId

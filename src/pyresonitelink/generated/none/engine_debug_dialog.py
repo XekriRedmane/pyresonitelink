@@ -1,6 +1,7 @@
 """Generated component: EngineDebugDialog."""
 
 from pyresonitelink.data import members
+from pyresonitelink.generated._enums.mode import Mode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -10,41 +11,51 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EngineDebugDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.EngineDebugDialog.
+    """The EngineDebugDialog component is used in the debug screen of the dash to show debug information about the game at the current moment.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.EngineDebugDialog"
 
-    def __init__(self, content_root: str | Slot | None = None, text: str | Text | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, display_mode: Mode | str | None = None, content_root: str | Slot | None = None, text: str | Text | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            display_mode: Initial value for DisplayMode.
             content_root: Initial value for _contentRoot.
             text: Initial value for _text.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if display_mode is not None:
+            self.display_mode = display_mode
         if content_root is not None:
             self.content_root = content_root
         if text is not None:
             self.text = text
 
     @property
-    def display_mode(self) -> members.FieldEnum | None:
-        """The DisplayMode member."""
+    def display_mode(self) -> Mode | None:
+        """How to display the content."""
         member = self.get_member("DisplayMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Mode(member.value)
         return None
 
     @display_mode.setter
-    def display_mode(self, value: members.FieldEnum) -> None:
-        """Set the DisplayMode member."""
-        self.set_member("DisplayMode", value)
+    def display_mode(self, value: Mode | str) -> None:
+        """Set DisplayMode. How to display the content."""
+        member = self.get_member("DisplayMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DisplayMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def content_root(self) -> str | None:
-        """Target ID of the _contentRoot reference (targets Slot)."""
+        """Content of the debug dialouge."""
         member = self.get_member("_contentRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +76,7 @@ class EngineDebugDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the _text reference (targets Text)."""
+        """The text displaying the engine debug info."""
         member = self.get_member("_text")
         if isinstance(member, members.Reference):
             return member.targetId

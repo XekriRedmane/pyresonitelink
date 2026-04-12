@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GetSlotActiveSelf(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Gets the value of the provided Instance Slot's Active field.
+    """Gets the value of the provided Instance Slot's Active field. 
+
+This Protoflux node does not update by itself on the Active field change. If you need to react to a Slot's activity dynamically, consider sourcing the Slot's Active field instead.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Slots/Info
     """
@@ -34,7 +36,7 @@ class GetSlotActiveSelf(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """Slot to check."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId

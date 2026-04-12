@@ -8,7 +8,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceMultiDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceMultiDriver<>.
+    """The ReferenceMultiDriver`1 component allows you to drive multiple fields from a single reference.
 
     Category: Relations
 
@@ -34,7 +34,7 @@ class ReferenceMultiDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets T)."""
+        """Reference of the specified type, which will be driven to all fields listed in ``Drives``"""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +55,7 @@ class ReferenceMultiDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def drives(self) -> members.SyncList | None:
-        """The Drives member."""
+        """A list of fields to be driven by this component"""
         member = self.get_member("Drives")
         if isinstance(member, members.SyncList):
             return member
@@ -63,6 +63,6 @@ class ReferenceMultiDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @drives.setter
     def drives(self, value: members.SyncList) -> None:
-        """Set the Drives member."""
+        """Set Drives. A list of fields to be driven by this component"""
         self.set_member("Drives", value)
 

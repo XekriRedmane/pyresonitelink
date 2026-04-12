@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScaleObjectManager(GeneratedComponent, ICustomInspector, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ScaleObjectManager.
+    """The ScaleObjectManager component is used to create a field of objects with different relative sizes. This is used most prominently in the "Size of the Universe Adventure" world.
 
     Category: Transform/Scaling
     """

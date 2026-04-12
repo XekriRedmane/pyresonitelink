@@ -36,7 +36,7 @@ class RandomSlerpFloatQ(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def min(self) -> str | None:
-        """Target ID of the Min reference (targets INodeValueOutput[primitives.FloatQ])."""
+        """The minimum this random value can be (exclusive). The default is ``0, 0, 0``."""
         member = self.get_member("Min")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class RandomSlerpFloatQ(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
 
     @property
     def max(self) -> str | None:
-        """Target ID of the Max reference (targets INodeValueOutput[primitives.FloatQ])."""
+        """The maximum this random value can be (exclusive). The default is ``0, 0, 0``."""
         member = self.get_member("Max")
         if isinstance(member, members.Reference):
             return member.targetId

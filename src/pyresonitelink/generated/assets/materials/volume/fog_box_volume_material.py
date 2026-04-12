@@ -3,6 +3,10 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.color import Color
+from pyresonitelink.generated._enums.saturation import Saturation
+from pyresonitelink.generated._enums.accumulation import Accumulation
+from pyresonitelink.generated._enums.blend_mode import BlendMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,14 +16,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FogBoxVolumeMaterial.
+    """The FogBoxVolumeMaterial is a material used to create cube-shaped volumetric fog on a mesh, such as a Texture3D. Using this material on non-cube-like meshes may result in visual artifacts and/or denser fog in places where the corners of the cube would be.
 
     Category: Assets/Materials/Volume
+
+    **Description**: The FogBoxVolumeMaterial is a material used to create cube-shaped volumetric fog on a mesh, such as a Texture3D. Using this material on non-cube-like meshes may result in visual artifacts and/or denser fog in places where the corners of the cube would be. 
+
+Although only cube-shaped meshes are officially supported, users may use the LookAtUser component targeting the local User along with a spherical mesh to create an illusion of a sphere-shaped fog.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FogBoxVolumeMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, base_color: primitives.ColorX | None = None, accumulation_color: primitives.ColorX | None = None, accumulation_color_bottom: primitives.ColorX | None = None, accumulation_color_top: primitives.ColorX | None = None, fog_start: primitives.Float | None = None, fog_end: primitives.Float | None = None, fog_density: primitives.Float | None = None, gamma_curve: primitives.Float | None = None, world_space: primitives.Bool | None = None, accumulation_rate: primitives.Float | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, base_color: primitives.ColorX | None = None, accumulation_color: primitives.ColorX | None = None, accumulation_color_bottom: primitives.ColorX | None = None, accumulation_color_top: primitives.ColorX | None = None, fog_start: primitives.Float | None = None, fog_end: primitives.Float | None = None, fog_density: primitives.Float | None = None, gamma_curve: primitives.Float | None = None, world_space: primitives.Bool | None = None, color_mode: Color | str | None = None, saturation_mode: Saturation | str | None = None, accumulation_mode: Accumulation | str | None = None, accumulation_rate: primitives.Float | None = None, blend_mode: BlendMode | str | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -34,7 +42,11 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             fog_density: Initial value for FogDensity.
             gamma_curve: Initial value for GammaCurve.
             world_space: Initial value for WorldSpace.
+            color_mode: Initial value for ColorMode.
+            saturation_mode: Initial value for SaturationMode.
+            accumulation_mode: Initial value for AccumulationMode.
             accumulation_rate: Initial value for AccumulationRate.
+            blend_mode: Initial value for BlendMode.
             render_queue: Initial value for RenderQueue.
             component: Existing Component to wrap.
         """
@@ -61,8 +73,16 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             self.gamma_curve = gamma_curve
         if world_space is not None:
             self.world_space = world_space
+        if color_mode is not None:
+            self.color_mode = color_mode
+        if saturation_mode is not None:
+            self.saturation_mode = saturation_mode
+        if accumulation_mode is not None:
+            self.accumulation_mode = accumulation_mode
         if accumulation_rate is not None:
             self.accumulation_rate = accumulation_rate
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
         if render_queue is not None:
             self.render_queue = render_queue
 
@@ -278,43 +298,64 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def color_mode(self) -> members.FieldEnum | None:
-        """The ColorMode member."""
+    def color_mode(self) -> Color | None:
+        """The ColorMode enum value."""
         member = self.get_member("ColorMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Color(member.value)
         return None
 
     @color_mode.setter
-    def color_mode(self, value: members.FieldEnum) -> None:
-        """Set the ColorMode member."""
-        self.set_member("ColorMode", value)
+    def color_mode(self, value: Color | str) -> None:
+        """Set the ColorMode enum value."""
+        member = self.get_member("ColorMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ColorMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def saturation_mode(self) -> members.FieldEnum | None:
-        """The SaturationMode member."""
+    def saturation_mode(self) -> Saturation | None:
+        """The SaturationMode enum value."""
         member = self.get_member("SaturationMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Saturation(member.value)
         return None
 
     @saturation_mode.setter
-    def saturation_mode(self, value: members.FieldEnum) -> None:
-        """Set the SaturationMode member."""
-        self.set_member("SaturationMode", value)
+    def saturation_mode(self, value: Saturation | str) -> None:
+        """Set the SaturationMode enum value."""
+        member = self.get_member("SaturationMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SaturationMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def accumulation_mode(self) -> members.FieldEnum | None:
-        """The AccumulationMode member."""
+    def accumulation_mode(self) -> Accumulation | None:
+        """The AccumulationMode enum value."""
         member = self.get_member("AccumulationMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Accumulation(member.value)
         return None
 
     @accumulation_mode.setter
-    def accumulation_mode(self, value: members.FieldEnum) -> None:
-        """Set the AccumulationMode member."""
-        self.set_member("AccumulationMode", value)
+    def accumulation_mode(self, value: Accumulation | str) -> None:
+        """Set the AccumulationMode enum value."""
+        member = self.get_member("AccumulationMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "AccumulationMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def accumulation_rate(self) -> primitives.Float | None:
@@ -336,17 +377,24 @@ class FogBoxVolumeMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
             )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def render_queue(self) -> primitives.Int | None:

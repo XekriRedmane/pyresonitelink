@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StringConcatenationDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StringConcatenationDriver.
+    """The StringConcatenationDriver component constructs a string from the inputted list of strings.
 
     Category: Transform/Drivers
+
+    Attach to a slot and add a list of strings to ``Strings`` and a
+    ``TargetString`` for this to start working.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StringConcatenationDriver"
@@ -37,7 +40,7 @@ class StringConcatenationDriver(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def target_string(self) -> str | None:
-        """Target ID of the TargetString reference (targets IField[primitives.String])."""
+        """The field to drive with the resulting completed string."""
         member = self.get_member("TargetString")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +61,7 @@ class StringConcatenationDriver(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def separator(self) -> primitives.String | None:
-        """The Separator field value."""
+        """What text to put between each pair of strings when building the string. This can be something like a comma, a space, or anything else the user desires."""
         member = self.get_member("Separator")
         if member is None:
             return None
@@ -77,7 +80,7 @@ class StringConcatenationDriver(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def strings(self) -> members.SyncList | None:
-        """The Strings member."""
+        """A list of strings to join together separated by ``Seperator``."""
         member = self.get_member("Strings")
         if isinstance(member, members.SyncList):
             return member
@@ -85,12 +88,12 @@ class StringConcatenationDriver(GeneratedComponent, IComponent, IWorldEventRecei
 
     @strings.setter
     def strings(self, value: members.SyncList) -> None:
-        """Set the Strings member."""
+        """Set Strings. A list of strings to join together separated by ``Seperator``."""
         self.set_member("Strings", value)
 
     @property
     def null_output_when_all_are_null(self) -> primitives.Bool | None:
-        """The NullOutputWhenAllAreNull field value."""
+        """Whether to null the entire string when all ``Strings`` fields are null."""
         member = self.get_member("NullOutputWhenAllAreNull")
         if member is None:
             return None

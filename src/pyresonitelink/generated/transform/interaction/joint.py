@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.active_user_handling import ActiveUserHandling
+from pyresonitelink.generated._enums.vibrate_preset import VibratePreset
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.grabber import Grabber
@@ -13,14 +15,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Joint.
+    """The Joint component allows for a slot or object to rotate around a single point, in any direction, or around an axis. Common uses are doors, helmet tops, and dials.
 
     Category: Transform/Interaction
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Joint"
 
-    def __init__(self, edit_mode_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, drop_on_disable: primitives.Bool | None = None, dont_drive: primitives.Bool | None = None, allow_only_physical_grab: primitives.Bool | None = None, grabber: str | Grabber | None = None, hold_slot: str | Slot | None = None, pos: str | Sync[primitives.Float3] | None = None, rot: str | Sync[primitives.FloatQ] | None = None, scl: str | Sync[primitives.Float3] | None = None, legacy_active_user_root_only: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, max_swing: primitives.Float | None = None, max_twist: primitives.Float | None = None, axis: primitives.Float3 | None = None, twist_reference_axis: primitives.Float3 | None = None, position_twist_threshold_angle: primitives.Float | None = None, vibration_angle: primitives.Float | None = None, snap_increment: primitives.Float | None = None, snap_time: primitives.Float | None = None, snap_on_release: primitives.Bool | None = None, orig_rotation: primitives.FloatQ | None = None, rot_reference: primitives.FloatQ | None = None, dir_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, use_position_twist: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, edit_mode_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, drop_on_disable: primitives.Bool | None = None, dont_drive: primitives.Bool | None = None, allow_only_physical_grab: primitives.Bool | None = None, active_user_filter: ActiveUserHandling | str | None = None, grabber: str | Grabber | None = None, hold_slot: str | Slot | None = None, pos: str | Sync[primitives.Float3] | None = None, rot: str | Sync[primitives.FloatQ] | None = None, scl: str | Sync[primitives.Float3] | None = None, legacy_active_user_root_only: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, max_swing: primitives.Float | None = None, max_twist: primitives.Float | None = None, axis: primitives.Float3 | None = None, twist_reference_axis: primitives.Float3 | None = None, position_twist_threshold_angle: primitives.Float | None = None, vibration_angle: primitives.Float | None = None, vibration_preset: VibratePreset | str | None = None, snap_increment: primitives.Float | None = None, snap_time: primitives.Float | None = None, snap_on_release: primitives.Bool | None = None, orig_rotation: primitives.FloatQ | None = None, rot_reference: primitives.FloatQ | None = None, dir_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, use_position_twist: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,6 +31,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             drop_on_disable: Initial value for DropOnDisable.
             dont_drive: Initial value for DontDrive.
             allow_only_physical_grab: Initial value for AllowOnlyPhysicalGrab.
+            active_user_filter: Initial value for ActiveUserFilter.
             grabber: Initial value for _grabber.
             hold_slot: Initial value for _holdSlot.
             pos: Initial value for _pos.
@@ -42,6 +45,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             twist_reference_axis: Initial value for TwistReferenceAxis.
             position_twist_threshold_angle: Initial value for PositionTwistThresholdAngle.
             vibration_angle: Initial value for VibrationAngle.
+            vibration_preset: Initial value for VibrationPreset.
             snap_increment: Initial value for SnapIncrement.
             snap_time: Initial value for SnapTime.
             snap_on_release: Initial value for SnapOnRelease.
@@ -63,6 +67,8 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             self.dont_drive = dont_drive
         if allow_only_physical_grab is not None:
             self.allow_only_physical_grab = allow_only_physical_grab
+        if active_user_filter is not None:
+            self.active_user_filter = active_user_filter
         if grabber is not None:
             self.grabber = grabber
         if hold_slot is not None:
@@ -89,6 +95,8 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             self.position_twist_threshold_angle = position_twist_threshold_angle
         if vibration_angle is not None:
             self.vibration_angle = vibration_angle
+        if vibration_preset is not None:
+            self.vibration_preset = vibration_preset
         if snap_increment is not None:
             self.snap_increment = snap_increment
         if snap_time is not None:
@@ -108,7 +116,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def edit_mode_only(self) -> primitives.Bool | None:
-        """The EditModeOnly field value."""
+        """User can only interact with the joint in Edit Mode"""
         member = self.get_member("EditModeOnly")
         if member is None:
             return None
@@ -127,7 +135,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def allow_steal(self) -> primitives.Bool | None:
-        """The AllowSteal field value."""
+        """Controls whether other users can steal the grabbable joint from other players"""
         member = self.get_member("AllowSteal")
         if member is None:
             return None
@@ -146,7 +154,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def drop_on_disable(self) -> primitives.Bool | None:
-        """The DropOnDisable field value."""
+        """Controls whether the user drops the joint if the object has been disabled"""
         member = self.get_member("DropOnDisable")
         if member is None:
             return None
@@ -165,7 +173,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def dont_drive(self) -> primitives.Bool | None:
-        """The DontDrive field value."""
+        """Write the transforms every game tick, rather than driving it on the local machine and then sending the final value to the host."""
         member = self.get_member("DontDrive")
         if member is None:
             return None
@@ -184,7 +192,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def allow_only_physical_grab(self) -> primitives.Bool | None:
-        """The AllowOnlyPhysicalGrab field value."""
+        """Only allow grabbing the joint with a physical interaction - remote grabs are not allowed"""
         member = self.get_member("AllowOnlyPhysicalGrab")
         if member is None:
             return None
@@ -202,21 +210,28 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             )
 
     @property
-    def active_user_filter(self) -> members.FieldEnum | None:
-        """The ActiveUserFilter member."""
+    def active_user_filter(self) -> ActiveUserHandling | None:
+        """How to allow or deny users from interacting with this component depending on the active user."""
         member = self.get_member("ActiveUserFilter")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ActiveUserHandling(member.value)
         return None
 
     @active_user_filter.setter
-    def active_user_filter(self, value: members.FieldEnum) -> None:
-        """Set the ActiveUserFilter member."""
-        self.set_member("ActiveUserFilter", value)
+    def active_user_filter(self, value: ActiveUserHandling | str) -> None:
+        """Set ActiveUserFilter. How to allow or deny users from interacting with this component depending on the active user."""
+        member = self.get_member("ActiveUserFilter")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ActiveUserFilter",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def grabber(self) -> str | None:
-        """Target ID of the _grabber reference (targets Grabber)."""
+        """The current Grabber component grabbing this joint."""
         member = self.get_member("_grabber")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -237,7 +252,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def hold_slot(self) -> str | None:
-        """Target ID of the _holdSlot reference (targets Slot)."""
+        """The current slot holding this joint."""
         member = self.get_member("_holdSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -258,7 +273,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def pos(self) -> str | None:
-        """Target ID of the _pos reference (targets Sync[primitives.Float3])."""
+        """The current position field this is driving or influencing."""
         member = self.get_member("_pos")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -279,7 +294,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def rot(self) -> str | None:
-        """Target ID of the _rot reference (targets Sync[primitives.FloatQ])."""
+        """The current rotation field this is driving or influencing."""
         member = self.get_member("_rot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -300,7 +315,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def scl(self) -> str | None:
-        """Target ID of the _scl reference (targets Sync[primitives.Float3])."""
+        """The current scale field this is driving or influencing."""
         member = self.get_member("_scl")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -321,7 +336,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def legacy_active_user_root_only(self) -> primitives.Bool | None:
-        """The __legacyActiveUserRootOnly field value."""
+        """Whether to use the legacy active user root only behavior."""
         member = self.get_member("__legacyActiveUserRootOnly")
         if member is None:
             return None
@@ -359,7 +374,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def max_swing(self) -> primitives.Float | None:
-        """The MaxSwing field value."""
+        """Maximum amount the joint will Twist during rotation."""
         member = self.get_member("MaxSwing")
         if member is None:
             return None
@@ -378,7 +393,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def max_twist(self) -> primitives.Float | None:
-        """The MaxTwist field value."""
+        """Maximum amount the joint will rotate in the given axis"""
         member = self.get_member("MaxTwist")
         if member is None:
             return None
@@ -397,7 +412,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def axis(self) -> primitives.Float3 | None:
-        """The Axis field value."""
+        """Determines which axis the joint rotates on. Is used like a vector."""
         member = self.get_member("Axis")
         if member is None:
             return None
@@ -416,7 +431,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def twist_reference_axis(self) -> primitives.Float3 | None:
-        """The TwistReferenceAxis field value."""
+        """The reference axis (vector) for twisting."""
         member = self.get_member("TwistReferenceAxis")
         if member is None:
             return None
@@ -435,7 +450,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def position_twist_threshold_angle(self) -> primitives.Float | None:
-        """The PositionTwistThresholdAngle field value."""
+        """The angle at which twist will start affecting position of the slot via position twisting."""
         member = self.get_member("PositionTwistThresholdAngle")
         if member is None:
             return None
@@ -454,7 +469,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def vibration_angle(self) -> primitives.Float | None:
-        """The VibrationAngle field value."""
+        """The angle at which to trigger vibration."""
         member = self.get_member("VibrationAngle")
         if member is None:
             return None
@@ -472,21 +487,28 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             )
 
     @property
-    def vibration_preset(self) -> members.FieldEnum | None:
-        """The VibrationPreset member."""
+    def vibration_preset(self) -> VibratePreset | None:
+        """The kind and intensity of vibration to send to the grabbing controller."""
         member = self.get_member("VibrationPreset")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @vibration_preset.setter
-    def vibration_preset(self, value: members.FieldEnum) -> None:
-        """Set the VibrationPreset member."""
-        self.set_member("VibrationPreset", value)
+    def vibration_preset(self, value: VibratePreset | str) -> None:
+        """Set VibrationPreset. The kind and intensity of vibration to send to the grabbing controller."""
+        member = self.get_member("VibrationPreset")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "VibrationPreset",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def snap_increment(self) -> primitives.Float | None:
-        """The SnapIncrement field value."""
+        """Snap the joint to a multiple of this angle during grabbing. Can be used to simulate "detents" on a rotary switch."""
         member = self.get_member("SnapIncrement")
         if member is None:
             return None
@@ -505,7 +527,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def snap_time(self) -> primitives.Float | None:
-        """The SnapTime field value."""
+        """The time it takes for the joint to lerp towards given ``SnapOrientations``. Higher the value the slower it takes"""
         member = self.get_member("SnapTime")
         if member is None:
             return None
@@ -524,7 +546,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def snap_on_release(self) -> primitives.Bool | None:
-        """The SnapOnRelease field value."""
+        """Controls whether the join snaps to given SnapOrientations"""
         member = self.get_member("SnapOnRelease")
         if member is None:
             return None
@@ -543,7 +565,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def snap_orientations(self) -> members.SyncList | None:
-        """The SnapOrientations member."""
+        """A list of snap orientations that the joint can snap to."""
         member = self.get_member("SnapOrientations")
         if isinstance(member, members.SyncList):
             return member
@@ -551,12 +573,12 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @snap_orientations.setter
     def snap_orientations(self, value: members.SyncList) -> None:
-        """Set the SnapOrientations member."""
+        """Set SnapOrientations. A list of snap orientations that the joint can snap to."""
         self.set_member("SnapOrientations", value)
 
     @property
     def orig_rotation(self) -> primitives.FloatQ | None:
-        """The origRotation field value."""
+        """The resting rotation of the joint."""
         member = self.get_member("origRotation")
         if member is None:
             return None
@@ -575,7 +597,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def rot_reference(self) -> primitives.FloatQ | None:
-        """The rotReference field value."""
+        """The reference rotation, which is where the joint started."""
         member = self.get_member("rotReference")
         if member is None:
             return None
@@ -594,7 +616,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def dir_reference(self) -> primitives.Float3 | None:
-        """The dirReference field value."""
+        """The direction the joint started."""
         member = self.get_member("dirReference")
         if member is None:
             return None
@@ -613,7 +635,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def twist_reference(self) -> primitives.Float3 | None:
-        """The twistReference field value."""
+        """The position to use for twist calculations"""
         member = self.get_member("twistReference")
         if member is None:
             return None
@@ -632,7 +654,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     @property
     def use_position_twist(self) -> primitives.Bool | None:
-        """The usePositionTwist field value."""
+        """Whether twist can influence the position of the joint."""
         member = self.get_member("usePositionTwist")
         if member is None:
             return None

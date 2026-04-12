@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class InteractiveCameraAudioSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraAudioSettings.
+    """The Interactive Camera Audio Settings component is part of the settings system for changing audio settings for the streaming camera.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCameraAudioSettings"
@@ -27,7 +27,7 @@ class InteractiveCameraAudioSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def render_own_voice_on_camera(self) -> primitives.Bool | None:
-        """The RenderOwnVoiceOnCamera field value."""
+        """Whether the camera should hear the voice of the user it belongs to"""
         member = self.get_member("RenderOwnVoiceOnCamera")
         if member is None:
             return None
@@ -45,7 +45,7 @@ class InteractiveCameraAudioSettings(GeneratedComponent, ICustomInspector):
             )
 
     async def reset_to_default(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ResetToDefault sync method.
+        """Resets settings back to default.
 
         Returns:
             The raw JSON response dict.

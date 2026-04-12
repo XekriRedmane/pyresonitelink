@@ -7,16 +7,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PlatformColorPalette(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PlatformColorPalette.
+    """The PlatformColorPalette component is a quick way of getting the colors of Resonite's Branding. This also provides you with both the color values in ColorX form and Hex form.
 
     Category: Utility
+
+    Attach to a slot and take any value as a source for a drive to drive a
+    UI with Resonite's branding.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PlatformColorPalette"
 
     @property
     def neutrals(self) -> members.SyncObject | None:
-        """The Neutrals member."""
+        """A list of neutral color and hexes used for UI backgrounds in resonite."""
         member = self.get_member("Neutrals")
         if isinstance(member, members.SyncObject):
             return member
@@ -24,12 +27,12 @@ class PlatformColorPalette(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @neutrals.setter
     def neutrals(self, value: members.SyncObject) -> None:
-        """Set the Neutrals member."""
+        """Set Neutrals. A list of neutral color and hexes used for UI backgrounds in resonite."""
         self.set_member("Neutrals", value)
 
     @property
     def hero(self) -> members.SyncObject | None:
-        """The Hero member."""
+        """A list of color and hexes used for bright colored buttons and text like yellow for selected inspector slots or used in other cases."""
         member = self.get_member("Hero")
         if isinstance(member, members.SyncObject):
             return member
@@ -37,7 +40,7 @@ class PlatformColorPalette(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @hero.setter
     def hero(self, value: members.SyncObject) -> None:
-        """Set the Hero member."""
+        """Set Hero. A list of color and hexes used for bright colored buttons and text like yellow for selected inspector slots or used in other cases."""
         self.set_member("Hero", value)
 
     @property
@@ -55,7 +58,7 @@ class PlatformColorPalette(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def sub(self) -> members.SyncObject | None:
-        """The Sub member."""
+        """A darker color and hexes set used for buttons or UI that are darker due to being selected or used in other cases."""
         member = self.get_member("Sub")
         if isinstance(member, members.SyncObject):
             return member
@@ -63,12 +66,12 @@ class PlatformColorPalette(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @sub.setter
     def sub(self, value: members.SyncObject) -> None:
-        """Set the Sub member."""
+        """Set Sub. A darker color and hexes set used for buttons or UI that are darker due to being selected or used in other cases."""
         self.set_member("Sub", value)
 
     @property
     def dark(self) -> members.SyncObject | None:
-        """The Dark member."""
+        """A dark color and hexes set used for buttons or UI that is disabled or used in other cases."""
         member = self.get_member("Dark")
         if isinstance(member, members.SyncObject):
             return member
@@ -76,6 +79,6 @@ class PlatformColorPalette(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @dark.setter
     def dark(self, value: members.SyncObject) -> None:
-        """Set the Dark member."""
+        """Set Dark. A dark color and hexes set used for buttons or UI that is disabled or used in other cases."""
         self.set_member("Dark", value)
 

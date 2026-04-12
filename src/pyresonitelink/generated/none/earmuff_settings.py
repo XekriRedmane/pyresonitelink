@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class EarmuffSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.EarmuffSettings.
+    """The EarmuffSettings component is used to allow a user to change the settings for the Ear muffs, which reduce the noise outside of a cone emitted from the user's head. This feature is useful in crowds or noisy places
+
+    Is used for the settings earmuffs. Is not used directly by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.EarmuffSettings"
@@ -45,7 +47,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def earmuff_enabled(self) -> primitives.Bool | None:
-        """The EarmuffEnabled field value."""
+        """Whether to have the earmuffs mode enabled for the local user"""
         member = self.get_member("EarmuffEnabled")
         if member is None:
             return None
@@ -64,7 +66,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def volume_attenuation(self) -> primitives.Float | None:
-        """The VolumeAttenuation field value."""
+        """How much to reduce volume based on its distance from the cone."""
         member = self.get_member("VolumeAttenuation")
         if member is None:
             return None
@@ -83,7 +85,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def directionality(self) -> primitives.Float | None:
-        """The Directionality field value."""
+        """How much the audio is affected by how in front the audio is."""
         member = self.get_member("Directionality")
         if member is None:
             return None
@@ -102,7 +104,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def distance(self) -> primitives.Float | None:
-        """The Distance field value."""
+        """How far forward from the user's head the cone should stretch"""
         member = self.get_member("Distance")
         if member is None:
             return None
@@ -121,7 +123,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def angle(self) -> primitives.Float | None:
-        """The Angle field value."""
+        """The angle of the cone."""
         member = self.get_member("Angle")
         if member is None:
             return None
@@ -140,7 +142,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def transition_start(self) -> primitives.Float | None:
-        """The TransitionStart field value."""
+        """The start of audio reducing outside the cone."""
         member = self.get_member("TransitionStart")
         if member is None:
             return None
@@ -159,7 +161,7 @@ class EarmuffSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def transition_length(self) -> primitives.Float | None:
-        """The TransitionLength field value."""
+        """The distance outside the cone that audio becomes quiet over distance from the cone."""
         member = self.get_member("TransitionLength")
         if member is None:
             return None

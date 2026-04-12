@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Float3ToFloatQSwizzleDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Float3ToFloatQSwizzleDriver.
+    """The Float 3To Float QSwizzle Driver component.
 
     Category: Relations/Swizzle Drivers
     """

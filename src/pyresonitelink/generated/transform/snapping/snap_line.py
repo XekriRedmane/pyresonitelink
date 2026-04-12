@@ -11,9 +11,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SnapLine(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SnapLine.
+    """A snap line is a component that is able to generate a point in a line given a point by another component. Usually this is used in components like the Multi User Avatar Anchor Component to determine where to place the anchors upon clicking (click point is used in such case) When provided a point, it finds the closest point on a line and returns that to the component that called it.
+
+The functionality of this component is internal, and cannot be used by ProtoFlux to snap points using in game code.
 
     Category: Transform/Snapping
+
+    Used as an anchor point generator in the Multi User Avatar Anchor
+    Component and drawing tools.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SnapLine"
@@ -43,7 +48,7 @@ class SnapLine(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
 
     @property
     def point0(self) -> primitives.Float3 | None:
-        """The Point0 field value."""
+        """The first point to use to define the line"""
         member = self.get_member("Point0")
         if member is None:
             return None
@@ -62,7 +67,7 @@ class SnapLine(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
 
     @property
     def point1(self) -> primitives.Float3 | None:
-        """The Point1 field value."""
+        """the second point to define the line"""
         member = self.get_member("Point1")
         if member is None:
             return None
@@ -81,7 +86,7 @@ class SnapLine(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
 
     @property
     def anchor0(self) -> str | None:
-        """Target ID of the Anchor0 reference (targets Slot)."""
+        """an override to use instead of Point0 to define the line"""
         member = self.get_member("Anchor0")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -102,7 +107,7 @@ class SnapLine(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
 
     @property
     def anchor1(self) -> str | None:
-        """Target ID of the Anchor1 reference (targets Slot)."""
+        """an override to use instead of Point1 to define the line"""
         member = self.get_member("Anchor1")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -123,7 +128,7 @@ class SnapLine(GeneratedComponent, IPointSnappable, IWorldEventReceiver):
 
     @property
     def snap_parent(self) -> str | None:
-        """Target ID of the SnapParent reference (targets Slot)."""
+        """Where to put slots if the component is being used for slot placement."""
         member = self.get_member("SnapParent")
         if isinstance(member, members.Reference):
             return member.targetId

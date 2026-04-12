@@ -11,9 +11,31 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ActiveUserCloudField<>.
+    """The ActiveUserCloudField Component binds to the field specified by ``Target``. If ``IsLinkedToCloud`` is true, it will write the value of the cloud variable defined by ``Path`` for the active user of the slot it is attached to.
 
     Category: Cloud/Variables
+
+    For this component to function, the cloud variable permissions must be
+    set to something suitably permissive for it to function properly. * If
+    the variable should update on the cloud when a user interacts with the
+    object in some way, Write Permissions should be set to one of the
+    following: ** variable_owner_unsafe **
+    variable_owner_only_contacts_unsafe 1 ** Anyone 2 * If the variable
+    should update on the cloud when a user interacts with the object in some
+    way, Read Permissions should be set to one of the following: **
+    variable_owner_unsafe ** variable_owner_only_contacts_unsafe 3 ** Anyone
+    4 1. This permission results in only contacts of the variable owner
+    being able to change a value. It also allows contacts to change each
+    others values, which may not be desired. 2. This permission is only
+    valid for group variable definitions, and allows anyone to write the
+    value of anyone else, which might have unintended consequences. 3. This
+    permission results in only contacts of the variable owner being able to
+    read a value, however the value is read by the active user and synced
+    normally to everyone else in a session, making this detail irrelevant.
+    4. This permission is only valid for group variable definitions, and
+    allows anyone to read the value of anyone else, however the value is
+    read by the active user and synced normally to everyone else in a
+    session, making this detail irrelevant.
 
     Parameterize with a value type::
 
@@ -49,7 +71,7 @@ class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def path(self) -> primitives.String | None:
-        """The Path field value."""
+        """The path of the variable this component will read, for the current active user"""
         member = self.get_member("Path")
         if member is None:
             return None
@@ -68,7 +90,7 @@ class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def is_linked_to_cloud(self) -> primitives.Bool | None:
-        """The IsLinkedToCloud field value."""
+        """(Read Only)) Indicates whether this field was successfully bound to the target variable."""
         member = self.get_member("IsLinkedToCloud")
         if member is None:
             return None
@@ -87,7 +109,7 @@ class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def update_cloud_variable(self) -> primitives.Bool | None:
-        """The UpdateCloudVariable field value."""
+        """Indicates that this variable should update the value in the cloud when it is written or driven to a different value."""
         member = self.get_member("UpdateCloudVariable")
         if member is None:
             return None
@@ -125,7 +147,7 @@ class ActiveUserCloudField(GenericComponent[T], IComponent, IWorldEventReceiver)
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[T])."""
+        """The target field to which the variable value will be written."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

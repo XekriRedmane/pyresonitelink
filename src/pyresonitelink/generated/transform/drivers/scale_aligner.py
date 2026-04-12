@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ScaleAligner.
+    """The ScaleAligner component scales a list of slots based on bounding box, each one being bigger/smaller than the last.
 
     Category: Transform/Drivers
     """
@@ -42,7 +42,7 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_add_children(self) -> primitives.Bool | None:
-        """The AutoAddChildren field value."""
+        """Controls whether slots below this component's slot in the hierarchy are automatically added to ``_targets``"""
         member = self.get_member("AutoAddChildren")
         if member is None:
             return None
@@ -74,7 +74,7 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def base_size(self) -> primitives.Float3 | None:
-        """The BaseSize field value."""
+        """The size the first item should be in local space based on Bounding box."""
         member = self.get_member("BaseSize")
         if member is None:
             return None
@@ -93,7 +93,7 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def increment(self) -> primitives.Float3 | None:
-        """The Increment field value."""
+        """How much to make the next item in the list bigger/smaller than the last by adding to its Bounding box size."""
         member = self.get_member("Increment")
         if member is None:
             return None
@@ -112,7 +112,7 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def multiplier(self) -> primitives.Float3 | None:
-        """The Multiplier field value."""
+        """How much to make the next item in the list bigger/smaller than the last by multiplying its Bounding box size after adding ``Increment``"""
         member = self.get_member("Multiplier")
         if member is None:
             return None
@@ -131,7 +131,7 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def non_uniform(self) -> primitives.Bool | None:
-        """The NonUniform field value."""
+        """Whether scaling can be non uniform for Bounding box Scale calculations."""
         member = self.get_member("NonUniform")
         if member is None:
             return None
@@ -150,7 +150,7 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def targets(self) -> members.SyncList | None:
-        """The _targets member."""
+        """A list of slots and their scales to influence."""
         member = self.get_member("_targets")
         if isinstance(member, members.SyncList):
             return member
@@ -158,6 +158,6 @@ class ScaleAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @targets.setter
     def targets(self, value: members.SyncList) -> None:
-        """Set the _targets member."""
+        """Set _targets. A list of slots and their scales to influence."""
         self.set_member("_targets", value)
 

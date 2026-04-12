@@ -1,0 +1,13 @@
+{
+  "description": "The Laser component creates a simple red laser when attached that raycasts the enviroment.\n\nWhen added to a slot the Laser component creates a MeshRenderer, a SegmentMesh, a RayDriver, and a red PBS RimMetallic.",
+  "category": "Utility",
+  "fields": {
+    "_material": "The material to use for the laser.",
+    "_rayDriver": "The ray driver driving the generated segment mesh.",
+    "_meshRenderer": "The mesh renderer rendering the segment mesh for this laser pointer type component."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Laser&action=raw"
+}

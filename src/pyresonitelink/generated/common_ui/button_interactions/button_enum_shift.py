@@ -14,9 +14,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonEnumShift(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonEnumShift<>.
+    """The ButtonEnumShift component takes in a target Enum and the amount to shift by (positive numbers are forward, negative numbers are backwards). When an IButton component on the same slot is pressed, this component will shift the enum.
 
     Category: Common UI/Button Interactions
+
+    This is used to shift enums by button press.
 
     Parameterize with a value type::
 
@@ -43,7 +45,7 @@ class ButtonEnumShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRece
 
     @property
     def target_value(self) -> str | None:
-        """Target ID of the TargetValue reference (targets IField[E])."""
+        """The target Enum."""
         member = self.get_member("TargetValue")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +66,7 @@ class ButtonEnumShift(GenericComponent[T], IButtonPressReceiver, IWorldEventRece
 
     @property
     def shift_delta(self) -> primitives.Int | None:
-        """The ShiftDelta field value."""
+        """The amount to shift by."""
         member = self.get_member("ShiftDelta")
         if member is None:
             return None

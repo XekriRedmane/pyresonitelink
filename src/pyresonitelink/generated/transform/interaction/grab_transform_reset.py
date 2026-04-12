@@ -9,9 +9,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GrabTransformReset.
+    """The GrabTransformReset component resets transforms of a grabbable on the same slot upon grab and/or release.
 
     Category: Transform/Interaction
+
+    Attach to the same slot as a grabbable Component to utilize its
+    features.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GrabTransformReset"
@@ -44,7 +47,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
 
     @property
     def reset_position_on_grab(self) -> primitives.Bool | None:
-        """The ResetPositionOnGrab field value."""
+        """Whether to set the grabbable position to 0 on grab."""
         member = self.get_member("ResetPositionOnGrab")
         if member is None:
             return None
@@ -63,7 +66,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
 
     @property
     def reset_rotation_on_grab(self) -> primitives.Bool | None:
-        """The ResetRotationOnGrab field value."""
+        """Whether to set the grabbable rotation to 0 on grab."""
         member = self.get_member("ResetRotationOnGrab")
         if member is None:
             return None
@@ -82,7 +85,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
 
     @property
     def reset_scale_on_grab(self) -> primitives.Bool | None:
-        """The ResetScaleOnGrab field value."""
+        """Whether to set the grabbable scale to 1 on grab."""
         member = self.get_member("ResetScaleOnGrab")
         if member is None:
             return None
@@ -101,7 +104,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
 
     @property
     def reset_position_on_release(self) -> primitives.Bool | None:
-        """The ResetPositionOnRelease field value."""
+        """Whether to set the grabbable position to 0 on release."""
         member = self.get_member("ResetPositionOnRelease")
         if member is None:
             return None
@@ -120,7 +123,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
 
     @property
     def reset_rotation_on_release(self) -> primitives.Bool | None:
-        """The ResetRotationOnRelease field value."""
+        """Whether to set the grabbable rotation to 0 on release."""
         member = self.get_member("ResetRotationOnRelease")
         if member is None:
             return None
@@ -139,7 +142,7 @@ class GrabTransformReset(GeneratedComponent, IGrabEventReceiver, IWorldEventRece
 
     @property
     def reset_scale_on_release(self) -> primitives.Bool | None:
-        """The ResetScaleOnRelease field value."""
+        """Whether to set the grabbable scale to 1 on release."""
         member = self.get_member("ResetScaleOnRelease")
         if member is None:
             return None

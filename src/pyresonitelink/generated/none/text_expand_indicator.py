@@ -12,7 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.TextExpandIndicator.
+    """The TextExpandIndicator component is used in inspectors to show whether or not a section like slots under another slot is expanded out and/or has any children items.
+
+}}
+
+    This component is combined with the Expander component to show the user
+    that the expander has expanded, collapsed, or is empty using symbols.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.TextExpandIndicator"
@@ -45,7 +50,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def text(self) -> str | None:
-        """Target ID of the Text reference (targets IField[primitives.String])."""
+        """The text to drive with the dropdown indication."""
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +71,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def section_root(self) -> str | None:
-        """Target ID of the SectionRoot reference (targets Slot)."""
+        """The slot where children items for a slot is placed for the UI visual."""
         member = self.get_member("SectionRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +92,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def children_root(self) -> str | None:
-        """Target ID of the ChildrenRoot reference (targets Slot)."""
+        """The slot to check for children slots to tell if it has children or not."""
         member = self.get_member("ChildrenRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +113,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def closed(self) -> primitives.String | None:
-        """The Closed field value."""
+        """The string to display when the section is closed."""
         member = self.get_member("Closed")
         if member is None:
             return None
@@ -127,7 +132,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def opened(self) -> primitives.String | None:
-        """The Opened field value."""
+        """The string to display when the section is opened."""
         member = self.get_member("Opened")
         if member is None:
             return None
@@ -146,7 +151,7 @@ class TextExpandIndicator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def empty(self) -> primitives.String | None:
-        """The Empty field value."""
+        """The string to display when ``ChildrenRoot`` is empty."""
         member = self.get_member("Empty")
         if member is None:
             return None

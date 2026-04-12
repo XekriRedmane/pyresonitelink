@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TipTouchSource.
+    """The TipTouchSource component is responsible for interaction with touchable objects like buttons and touch buttons. This component gains functionality after being activated by a AvatarHandDataAssigner upon avatar equip.
 
     Category: Input/Interaction
     """
@@ -52,7 +52,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_update_user(self) -> str | None:
-        """Target ID of the AutoUpdateUser reference (targets User)."""
+        """which user should be updating this component's logic. Defaults to active user if not filled."""
         member = self.get_member("AutoUpdateUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -73,7 +73,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def out_of_sight_angle(self) -> primitives.Float | None:
-        """The OutOfSightAngle field value."""
+        """disables the function of this component if the updating user is looking more than this many degrees away from this component's slot."""
         member = self.get_member("OutOfSightAngle")
         if member is None:
             return None
@@ -92,7 +92,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_touch_penetration_distance(self) -> primitives.Float | None:
-        """The MaxTouchPenetrationDistance field value."""
+        """How far it can go into the touchable's collider before its not considered as touching."""
         member = self.get_member("MaxTouchPenetrationDistance")
         if member is None:
             return None
@@ -111,7 +111,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def use_user_space_for_distance(self) -> primitives.Bool | None:
-        """The UseUserSpaceForDistance field value."""
+        """whether to use local space for distance or use absolute world distance for distance."""
         member = self.get_member("UseUserSpaceForDistance")
         if member is None:
             return None
@@ -130,7 +130,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def touch_distance(self) -> primitives.Float | None:
-        """The TouchDistance field value."""
+        """how far in meters that this can touch things"""
         member = self.get_member("TouchDistance")
         if member is None:
             return None
@@ -149,7 +149,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max_distance(self) -> primitives.Float | None:
-        """The MaxDistance field value."""
+        """the maximum distance before hovering doesn't register"""
         member = self.get_member("MaxDistance")
         if member is None:
             return None
@@ -168,7 +168,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset(self) -> primitives.Float3 | None:
-        """The Offset field value."""
+        """the offset for everything this component does from the slot this component is on."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -187,7 +187,7 @@ class TipTouchSource(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def direction(self) -> primitives.Float3 | None:
-        """The Direction field value."""
+        """the direction this can touch things."""
         member = self.get_member("Direction")
         if member is None:
             return None

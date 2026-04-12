@@ -10,9 +10,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugQuadMeshRenderer(GeneratedComponent, IParticleRenderer, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.DebugQuadMeshRenderer.
+    """The DebugQuadMeshRenderer component renders particles via a QuadArrayMesh.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Renderers
+
+    Attach to a slot, add to the renderer slot in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.DebugQuadMeshRenderer"
@@ -30,7 +35,7 @@ class DebugQuadMeshRenderer(GeneratedComponent, IParticleRenderer, IWorldEventRe
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to use for the mesh."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId

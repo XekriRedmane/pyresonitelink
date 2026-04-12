@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DevModeController(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DevModeController.
+    """The DevModeController component only works in userspace and is used to control the user's current edit mode state.
+
+    Used in settings. Not usually used by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DevModeController"
@@ -27,7 +29,7 @@ class DevModeController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def dev_mode_enabled(self) -> primitives.Bool | None:
-        """The DevModeEnabled field value."""
+        """Whether Edit Mode is enabled."""
         member = self.get_member("DevModeEnabled")
         if member is None:
             return None

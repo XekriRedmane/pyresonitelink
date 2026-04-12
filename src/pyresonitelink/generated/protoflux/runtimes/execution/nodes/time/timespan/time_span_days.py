@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TimeSpanDays(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The TimeSpan Days node takes in a TimeSpan and returns with only the amount of days in that TimeSpan. Anything other than the days will be ignored.
+    """The ``TimeSpan Days`` node takes in a TimeSpan and returns with only the amount of days in that TimeSpan. Anything other than the days will be ignored.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Time/Timespan
     """
@@ -32,7 +32,7 @@ class TimeSpanDays(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     @property
     def time_span(self) -> str | None:
-        """Target ID of the TimeSpan reference (targets INodeValueOutput[str])."""
+        """The TimeSpan we are getting info from."""
         member = self.get_member("TimeSpan")
         if isinstance(member, members.Reference):
             return member.targetId

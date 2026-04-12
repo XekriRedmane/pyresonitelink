@@ -10,7 +10,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BagEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BagEditor.
+    """The BagEditor component is a internal-use component intended to be used to generate UIX for editing an ISyncBag. Some examples of Bags include the UserBag, SlotBag and WorkerBag.
+
+    When ``_targetBag`` receives a reference to a bag, the BagEditor's
+    slot's children will be populated with items in the bag. Each of these
+    child slots will have the name ``Element - IDXXXXXX``, where ``IDXXXXX``
+    is the Reference ID of the element. Each child slot contains a
+    BagEditorItem component with a reference to items in the bag. This
+    component will misbehave when changing the ``_targetBag`` after it
+    already has a reference, as doing so is unintended behavior. This
+    component is frequently used in conjunction with Ref Hacking, as it
+    exposes reference IDs in the element slot names.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BagEditor"
@@ -31,7 +41,7 @@ class BagEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_bag(self) -> str | None:
-        """Target ID of the _targetBag reference (targets ISyncBag)."""
+        """The bag to edit."""
         member = self.get_member("_targetBag")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -52,7 +62,7 @@ class BagEditor(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def add_new_button(self) -> str | None:
-        """Target ID of the _addNewButton reference (targets Button)."""
+        """Button to add a new item to the bag."""
         member = self.get_member("_addNewButton")
         if isinstance(member, members.Reference):
             return member.targetId

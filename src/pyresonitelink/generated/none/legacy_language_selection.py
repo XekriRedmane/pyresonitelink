@@ -6,7 +6,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyLanguageSelection(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyLanguageSelection.
+    """The LegacyLanguageSelection component is a leftover Component from legacy content. It should not be used, and should be replaced whenever possible.
+
+    not to be used.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyLanguageSelection"

@@ -9,7 +9,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EyeRotationDriverGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.EyeRotationDriverGizmo.
+    """The EyeRotationDriverGizmo component is used to edit the Eye forwards of an Eye Rotation Driver.
+
+    Found in the Dev Tool gizmo menu when selecting a slot with a
+    EyeRotationDriver on it.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.EyeRotationDriverGizmo"
@@ -27,7 +30,7 @@ class EyeRotationDriverGizmo(GeneratedComponent, IComponentGizmo, IWorldEventRec
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets EyeRotationDriver)."""
+        """The eye rotation driver we are editing."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -48,7 +51,7 @@ class EyeRotationDriverGizmo(GeneratedComponent, IComponentGizmo, IWorldEventRec
 
     @property
     def vector_gizmos(self) -> members.SyncList | None:
-        """The _vectorGizmos member."""
+        """The forward vectors of the eyes."""
         member = self.get_member("_vectorGizmos")
         if isinstance(member, members.SyncList):
             return member
@@ -56,12 +59,12 @@ class EyeRotationDriverGizmo(GeneratedComponent, IComponentGizmo, IWorldEventRec
 
     @vector_gizmos.setter
     def vector_gizmos(self, value: members.SyncList) -> None:
-        """Set the _vectorGizmos member."""
+        """Set _vectorGizmos. The forward vectors of the eyes."""
         self.set_member("_vectorGizmos", value)
 
     @property
     def cone_gizmos(self) -> members.SyncList | None:
-        """The _coneGizmos member."""
+        """Unused. Possibly a bug."""
         member = self.get_member("_coneGizmos")
         if isinstance(member, members.SyncList):
             return member
@@ -69,6 +72,6 @@ class EyeRotationDriverGizmo(GeneratedComponent, IComponentGizmo, IWorldEventRec
 
     @cone_gizmos.setter
     def cone_gizmos(self, value: members.SyncList) -> None:
-        """Set the _coneGizmos member."""
+        """Set _coneGizmos. Unused. Possibly a bug."""
         self.set_member("_coneGizmos", value)
 

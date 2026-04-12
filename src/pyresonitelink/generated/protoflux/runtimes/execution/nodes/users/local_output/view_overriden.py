@@ -12,6 +12,10 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ViewOverriden(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The View Overriden node returns if the local user's view output is being overridden by something.
 
+When in Desktop Mode or, starting Resonite in VR mode and then hot-swapping to Desktop Mode, this node will return as true.
+
+When changing your view by using a different head proxy, templated head proxy, or something else that moves your view point (such as the AvatarUserRootOverrideAssigner or AvatarObjectSlot components), this node will return as true.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Local Output
     """
 

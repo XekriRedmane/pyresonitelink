@@ -12,7 +12,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyDistributionAdapter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.LegacyDistributionAdapter.
+    """The LegacyDistributionAdapter is used in converted legacy particle systems that were converted to PhotonDust as part of The Performance Updates.
+
+    Not used by the user. auto generated.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.LegacyDistributionAdapter"
@@ -33,7 +35,7 @@ class LegacyDistributionAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def use_random_distribution(self) -> primitives.Bool | None:
-        """The UseRandomDistribution field value."""
+        """The value to convert."""
         member = self.get_member("UseRandomDistribution")
         if member is None:
             return None
@@ -52,7 +54,7 @@ class LegacyDistributionAdapter(GeneratedComponent, IComponent, IWorldEventRecei
 
     @property
     def distribution(self) -> str | None:
-        """Target ID of the Distribution reference (targets IField[ParticleFollowerDistribution])."""
+        """The field to drive with ``UseRandomDistibution`` converted."""
         member = self.get_member("Distribution")
         if isinstance(member, members.Reference):
             return member.targetId

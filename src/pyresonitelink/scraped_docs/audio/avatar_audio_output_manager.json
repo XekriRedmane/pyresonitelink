@@ -1,0 +1,42 @@
+{
+  "description": "Avatar Audio Output Manager is the component that handles changing the audio output values when a user changes their voice mode or mutes.",
+  "category": "Users:Common Avatar System:Audio",
+  "fields": {
+    "AudioOutput": "The audio output this component is controlling and targeting that has the ``_activeUser``'s voice.",
+    "IsViewVoice": "Whether or not this component is the voice of the ``_activeUser``'s head or the ``_activeUser``'s free cam.",
+    "WhisperConfig": "What ``AudioOutput`` should be set to when ``_activeUser`` is in Whisper voice mode.",
+    "NormalConfig": "What ``AudioOutput`` should be set to when ``_activeUser`` is in Normal voice mode.",
+    "ShoutConfig": "What ``AudioOutput`` should be set to when ``_activeUser`` is in Shout voice mode.",
+    "BroadcastConfig": "What ``AudioOutput`` should be set to when the user is in Broadcast mode.",
+    "__legacyWhisperVolume": "Internal.",
+    "__legacyNormalVolume": "Internal.",
+    "__legacyShoutVolume": "Internal.",
+    "__legacyBroadcastVolume": "Internal.",
+    "__legacyNormalDopplerLevel": "Internal.",
+    "__legacyShoutDopplerLevel": "Internal.",
+    "__legacyWhisperRange": "Internal.",
+    "_activeUser": "The user that this component is supposed to be managing an Audio Output Component for.",
+    "_enabled": "The enabled field of the Audio Output Component controlled by this component.",
+    "_volume": "The volume field of the Audio Output Component controlled by this component.",
+    "_doppler": "The doppler field of the Audio Output Component controlled by this component.",
+    "_spatialize": "The spatialize field of the Audio Output Component controlled by this component.",
+    "_spatialBlend": "The spatialBlend field of the Audio Output Component controlled by this component.",
+    "_minDistance": "The minDistance field of the Audio Output Component controlled by this component.",
+    "_maxDistance": "The maxDistance field of the Audio Output Component controlled by this component.",
+    "_rollOffMode": "The rollOffMode field of the Audio Output Component controlled by this component.",
+    "_distanceSpace": "The distance space field of the Audio Output Component controlled by this component.",
+    "_minScale": "The minScale field of the Audio Output Component controlled by this component.",
+    "_maxScale": "The maxScale field of the Audio Output Component controlled by this component.",
+    "_scaleCompensation": "How much to scale up the volume range of the user so a small ``_activeUser`` can still be heard by everyone else.",
+    "_audioConfiguration": "A field automatically filled with an Avatar Audio Configuration when the user spawns with an injected Avatar Audio Configuration courtesy of the world they spawned in. When not null, the specified component overrides ``WhisperConfig``, ``NormalConfig``, ``ShoutConfig``, and ``BroadcastConfig`` voice settings."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* For how to override the user's voice settings in a world, see the Avatar Audio Configuration Component."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarAudioOutputManager&action=raw"
+}

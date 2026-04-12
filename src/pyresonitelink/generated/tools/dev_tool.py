@@ -4,6 +4,8 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.selection import Selection
+from pyresonitelink.generated._enums.interaction import Interaction
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -18,14 +20,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DevTool.
+    """Detailed information can be located at Dev Tool.
 
     Category: Tools
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DevTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, selected_anchor: str | PointAnchor | None = None, selected_anchor_highlight: str | Slot | None = None, material: str | OverlayFresnelMaterial | None = None, current_gizmo: str | Slot | None = None, previous_gizmo: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, selection_mode: Selection | str | None = None, interaction_mode: Interaction | str | None = None, selected_anchor: str | PointAnchor | None = None, selected_anchor_highlight: str | Slot | None = None, material: str | OverlayFresnelMaterial | None = None, current_gizmo: str | Slot | None = None, previous_gizmo: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -35,6 +37,8 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
             equip_name: Initial value for EquipName.
             override_active_tool: Initial value for _overrideActiveTool.
             grip_poses_generated: Initial value for _gripPosesGenerated.
+            selection_mode: Initial value for SelectionMode.
+            interaction_mode: Initial value for InteractionMode.
             selected_anchor: Initial value for _selectedAnchor.
             selected_anchor_highlight: Initial value for _selectedAnchorHighlight.
             material: Initial value for _material.
@@ -55,6 +59,10 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
             self.override_active_tool = override_active_tool
         if grip_poses_generated is not None:
             self.grip_poses_generated = grip_poses_generated
+        if selection_mode is not None:
+            self.selection_mode = selection_mode
+        if interaction_mode is not None:
+            self.interaction_mode = interaction_mode
         if selected_anchor is not None:
             self.selected_anchor = selected_anchor
         if selected_anchor_highlight is not None:
@@ -198,34 +206,48 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
             )
 
     @property
-    def selection_mode(self) -> members.FieldEnum | None:
-        """The SelectionMode member."""
+    def selection_mode(self) -> Selection | None:
+        """See Selection section."""
         member = self.get_member("SelectionMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Selection(member.value)
         return None
 
     @selection_mode.setter
-    def selection_mode(self, value: members.FieldEnum) -> None:
-        """Set the SelectionMode member."""
-        self.set_member("SelectionMode", value)
+    def selection_mode(self, value: Selection | str) -> None:
+        """Set SelectionMode. See Selection section."""
+        member = self.get_member("SelectionMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SelectionMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def interaction_mode(self) -> members.FieldEnum | None:
-        """The InteractionMode member."""
+    def interaction_mode(self) -> Interaction | None:
+        """See Interaction section."""
         member = self.get_member("InteractionMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Interaction(member.value)
         return None
 
     @interaction_mode.setter
-    def interaction_mode(self, value: members.FieldEnum) -> None:
-        """Set the InteractionMode member."""
-        self.set_member("InteractionMode", value)
+    def interaction_mode(self, value: Interaction | str) -> None:
+        """Set InteractionMode. See Interaction section."""
+        member = self.get_member("InteractionMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "InteractionMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def selected_anchor(self) -> str | None:
-        """Target ID of the _selectedAnchor reference (targets PointAnchor)."""
+        """The point anchor which is part of a gizmo this tool is moving currently."""
         member = self.get_member("_selectedAnchor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -246,7 +268,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
 
     @property
     def selected_anchor_highlight(self) -> str | None:
-        """Target ID of the _selectedAnchorHighlight reference (targets Slot)."""
+        """The slot being used to indicate what gizmo is currently being moved. Is an icosphere."""
         member = self.get_member("_selectedAnchorHighlight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -267,7 +289,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets OverlayFresnelMaterial)."""
+        """The visual material used for the default cone mesh."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -288,7 +310,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
 
     @property
     def current_gizmo(self) -> str | None:
-        """Target ID of the _currentGizmo reference (targets Slot)."""
+        """The gizmo that the dev tool is currently targeting for gizmo options."""
         member = self.get_member("_currentGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -309,7 +331,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
 
     @property
     def previous_gizmo(self) -> str | None:
-        """Target ID of the _previousGizmo reference (targets Slot)."""
+        """The previous gizmo that the dev tool targeted for gizmo options."""
         member = self.get_member("_previousGizmo")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -329,7 +351,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
             )
 
     async def select_parent(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SelectParent sync method.
+        """See Dev Tool.
 
         Returns:
             The raw JSON response dict.
@@ -339,7 +361,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
         )
 
     async def toggle_space(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the ToggleSpace sync method.
+        """See Dev Tool.
 
         Returns:
             The raw JSON response dict.
@@ -349,7 +371,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
         )
 
     async def set_translation(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SetTranslation sync method.
+        """See Dev Tool.
 
         Returns:
             The raw JSON response dict.
@@ -359,7 +381,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
         )
 
     async def set_rotation(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SetRotation sync method.
+        """See Dev Tool.
 
         Returns:
             The raw JSON response dict.
@@ -369,7 +391,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
         )
 
     async def set_scale(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SetScale sync method.
+        """See Dev Tool.
 
         Returns:
             The raw JSON response dict.

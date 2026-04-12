@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.session_access_level import SessionAccessLevel
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.idata_feed_component import IDataFeedComponent
@@ -11,14 +12,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldsDataFeed.
+    """The WorldsDataFeed is a data feed that provides a list of worlds or sessions, depending on the settings.
 
     Category: Radiant UI/Data Feeds/Feeds
+
+    Used in the system of Data Feeds. This feed provides
+    MergedWorldDataItemInterface as well as DataFeedEntity and
+    DataFeedEntity as part of its feed.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldsDataFeed"
 
-    def __init__(self, list_opened_worlds: primitives.Bool | None = None, list_sessions: primitives.Bool | None = None, merge_by_world_id: primitives.Bool | None = None, merge_by_session_id: primitives.Bool | None = None, incompatible_sessions: primitives.Bool | None = None, headless_hosts: primitives.Bool | None = None, user_hosts: primitives.Bool | None = None, minimum_total_users: primitives.Int | None = None, minimum_total_contacts: primitives.Int | None = None, min_uptime: primitives.Double | None = None, max_uptime: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, list_opened_worlds: primitives.Bool | None = None, list_sessions: primitives.Bool | None = None, merge_by_world_id: primitives.Bool | None = None, merge_by_session_id: primitives.Bool | None = None, incompatible_sessions: primitives.Bool | None = None, headless_hosts: primitives.Bool | None = None, user_hosts: primitives.Bool | None = None, minimum_total_users: primitives.Int | None = None, minimum_total_contacts: primitives.Int | None = None, min_session_access_level: SessionAccessLevel | str | None = None, max_session_access_level: SessionAccessLevel | str | None = None, min_uptime: primitives.Double | None = None, max_uptime: primitives.Double | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,6 +36,8 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             user_hosts: Initial value for UserHosts.
             minimum_total_users: Initial value for MinimumTotalUsers.
             minimum_total_contacts: Initial value for MinimumTotalContacts.
+            min_session_access_level: Initial value for MinSessionAccessLevel.
+            max_session_access_level: Initial value for MaxSessionAccessLevel.
             min_uptime: Initial value for MinUptime.
             max_uptime: Initial value for MaxUptime.
             component: Existing Component to wrap.
@@ -54,6 +61,10 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             self.minimum_total_users = minimum_total_users
         if minimum_total_contacts is not None:
             self.minimum_total_contacts = minimum_total_contacts
+        if min_session_access_level is not None:
+            self.min_session_access_level = min_session_access_level
+        if max_session_access_level is not None:
+            self.max_session_access_level = max_session_access_level
         if min_uptime is not None:
             self.min_uptime = min_uptime
         if max_uptime is not None:
@@ -61,7 +72,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
 
     @property
     def list_opened_worlds(self) -> primitives.Bool | None:
-        """The ListOpenedWorlds field value."""
+        """Whether to list open worlds."""
         member = self.get_member("ListOpenedWorlds")
         if member is None:
             return None
@@ -80,7 +91,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
 
     @property
     def list_sessions(self) -> primitives.Bool | None:
-        """The ListSessions field value."""
+        """Whether to list sessions of worlds."""
         member = self.get_member("ListSessions")
         if member is None:
             return None
@@ -99,7 +110,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
 
     @property
     def merge_by_world_id(self) -> primitives.Bool | None:
-        """The MergeByWorldId field value."""
+        """Whether to merge by world IDs. Used to make Component:MergedWorldDataItemInterface."""
         member = self.get_member("MergeByWorldId")
         if member is None:
             return None
@@ -118,7 +129,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
 
     @property
     def merge_by_session_id(self) -> primitives.Bool | None:
-        """The MergeBySessionId field value."""
+        """Whether to merge by session IDs. Used to make Component:MergedWorldDataItemInterface"""
         member = self.get_member("MergeBySessionId")
         if member is None:
             return None
@@ -137,7 +148,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
 
     @property
     def incompatible_sessions(self) -> primitives.Bool | None:
-        """The IncompatibleSessions field value."""
+        """Whether to show incompatible sessions due to game version number/plugins."""
         member = self.get_member("IncompatibleSessions")
         if member is None:
             return None
@@ -156,7 +167,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
 
     @property
     def headless_hosts(self) -> primitives.Bool | None:
-        """The HeadlessHosts field value."""
+        """Whether to list headless hosts."""
         member = self.get_member("HeadlessHosts")
         if member is None:
             return None
@@ -175,7 +186,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
 
     @property
     def user_hosts(self) -> primitives.Bool | None:
-        """The UserHosts field value."""
+        """Whether to list normal user hosts."""
         member = self.get_member("UserHosts")
         if member is None:
             return None
@@ -194,7 +205,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
 
     @property
     def minimum_total_users(self) -> primitives.Int | None:
-        """The MinimumTotalUsers field value."""
+        """List sessions that have more than this many users."""
         member = self.get_member("MinimumTotalUsers")
         if member is None:
             return None
@@ -213,7 +224,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
 
     @property
     def minimum_total_contacts(self) -> primitives.Int | None:
-        """The MinimumTotalContacts field value."""
+        """List sessions that have more than this many users that are contacts to the user."""
         member = self.get_member("MinimumTotalContacts")
         if member is None:
             return None
@@ -231,34 +242,48 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
             )
 
     @property
-    def min_session_access_level(self) -> members.FieldEnum | None:
-        """The MinSessionAccessLevel member."""
+    def min_session_access_level(self) -> SessionAccessLevel | None:
+        """List sessions that have a session access greater or equal to this."""
         member = self.get_member("MinSessionAccessLevel")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SessionAccessLevel(member.value)
         return None
 
     @min_session_access_level.setter
-    def min_session_access_level(self, value: members.FieldEnum) -> None:
-        """Set the MinSessionAccessLevel member."""
-        self.set_member("MinSessionAccessLevel", value)
+    def min_session_access_level(self, value: SessionAccessLevel | str) -> None:
+        """Set MinSessionAccessLevel. List sessions that have a session access greater or equal to this."""
+        member = self.get_member("MinSessionAccessLevel")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MinSessionAccessLevel",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def max_session_access_level(self) -> members.FieldEnum | None:
-        """The MaxSessionAccessLevel member."""
+    def max_session_access_level(self) -> SessionAccessLevel | None:
+        """List sessions that have a session access less than or equal to this."""
         member = self.get_member("MaxSessionAccessLevel")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return SessionAccessLevel(member.value)
         return None
 
     @max_session_access_level.setter
-    def max_session_access_level(self, value: members.FieldEnum) -> None:
-        """Set the MaxSessionAccessLevel member."""
-        self.set_member("MaxSessionAccessLevel", value)
+    def max_session_access_level(self, value: SessionAccessLevel | str) -> None:
+        """Set MaxSessionAccessLevel. List sessions that have a session access less than or equal to this."""
+        member = self.get_member("MaxSessionAccessLevel")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MaxSessionAccessLevel",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def min_uptime(self) -> primitives.Double | None:
-        """The MinUptime field value."""
+        """A session has to be open for at least this long to be listed."""
         member = self.get_member("MinUptime")
         if member is None:
             return None
@@ -277,7 +302,7 @@ class WorldsDataFeed(GeneratedComponent, IDataFeedComponent, IComponent, IWorldE
 
     @property
     def max_uptime(self) -> primitives.Double | None:
-        """The MaxUptime field value."""
+        """A session has to be open for less than this long to be listed."""
         member = self.get_member("MaxUptime")
         if member is None:
             return None

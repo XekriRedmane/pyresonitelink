@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConstantLerpValue(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ConstantLerpValue<>.
+    """The ConstantLerpValue component will make the ``Value`` reach ``TargetValue``, making ``Speed`` progress per second. it can also be known as a linear lerp.
 
     Category: Transform/Drivers
 
@@ -65,7 +65,7 @@ class ConstantLerpValue(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def speed(self) -> primitives.Float | None:
-        """The Speed field value."""
+        """The amount to change ``Value`` by per second to reach ``TargetValue``"""
         member = self.get_member("Speed")
         if member is None:
             return None
@@ -84,7 +84,7 @@ class ConstantLerpValue(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """Whether changes to ``Value`` will be written to ``TargetValue``. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None
@@ -103,7 +103,7 @@ class ConstantLerpValue(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def value(self) -> str | None:
-        """Target ID of the Value reference (targets IField[T])."""
+        """The value to constantly progress towards ``TargetValue``"""
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             return member.targetId

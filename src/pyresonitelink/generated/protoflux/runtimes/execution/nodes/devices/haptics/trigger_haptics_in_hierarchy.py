@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TriggerHapticsInHierarchy(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Trigger Haptics In Hierarchy node takes in a Slot hierarchy and will send out haptic pulses through it.
+    """The ``Trigger Haptics In Hierarchy`` node takes in a Slot hierarchy and will send out haptic pulses through it.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Haptics
     """
@@ -44,7 +44,7 @@ class TriggerHapticsInHierarchy(GeneratedComponent, IMappableNode, ISyncNodeOper
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after sending the haptic pulse."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +65,7 @@ class TriggerHapticsInHierarchy(GeneratedComponent, IMappableNode, ISyncNodeOper
 
     @property
     def target_hierarchy(self) -> str | None:
-        """Target ID of the TargetHierarchy reference (targets INodeObjectOutput[Slot])."""
+        """The slot hierarchy that specifically looks for your haptic components."""
         member = self.get_member("TargetHierarchy")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +86,7 @@ class TriggerHapticsInHierarchy(GeneratedComponent, IMappableNode, ISyncNodeOper
 
     @property
     def relative_intensity(self) -> str | None:
-        """Target ID of the RelativeIntensity reference (targets INodeValueOutput[primitives.Float])."""
+        """How much this will notify the user using haptics."""
         member = self.get_member("RelativeIntensity")
         if isinstance(member, members.Reference):
             return member.targetId

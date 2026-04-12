@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioDeviceVolume.
+    """The AudioDeviceVolume component only functions in dash space. If ``AudioDeviceIndex`` is negative, then it uses the user's set default audio device. This component is used to manage the volume of an input device like a microphone for one example. This is a settings component.
 
     Category: Userspace
     """
@@ -41,7 +41,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def audio_device_index(self) -> primitives.Int | None:
-        """The AudioDeviceIndex field value."""
+        """The audio input device by OS audio manager index to modify the volume for."""
         member = self.get_member("AudioDeviceIndex")
         if member is None:
             return None
@@ -60,7 +60,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def volume(self) -> primitives.Float | None:
-        """The Volume field value."""
+        """The volume the input device should have."""
         member = self.get_member("Volume")
         if member is None:
             return None
@@ -79,7 +79,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def normalized_volume(self) -> primitives.Float | None:
-        """The NormalizedVolume field value."""
+        """The component uses this value to boost the output noise to a higher volume when it is too quiet or reduce the volume when it is too loud."""
         member = self.get_member("NormalizedVolume")
         if member is None:
             return None
@@ -98,7 +98,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def smoothing(self) -> primitives.Float | None:
-        """The Smoothing field value."""
+        """How fast to reduce or increase the volume when it gets too loud or quiet"""
         member = self.get_member("Smoothing")
         if member is None:
             return None
@@ -117,7 +117,7 @@ class AudioDeviceVolume(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def power(self) -> primitives.Float | None:
-        """The Power field value."""
+        """The amount to boost the volume overall before normalization."""
         member = self.get_member("Power")
         if member is None:
             return None

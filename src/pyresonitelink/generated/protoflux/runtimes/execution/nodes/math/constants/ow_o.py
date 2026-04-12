@@ -12,6 +12,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class OwO(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """OwO is a node which outputs the string "What's This?"
 
+This node is an easter egg and a reference to a common phrase used by the furry fandomhttps://www.dailydot.com/unclick/what-does-uwu-mean/. It has no practical use in ProtoFlux projects.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Constants
     """
 

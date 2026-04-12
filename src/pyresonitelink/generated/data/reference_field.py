@@ -8,9 +8,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceField(GenericComponent[T], IReferenceSource[T], IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceField<>.
+    """Reference Field is a component that is able to store a reference for later use, as long as the reference still exists by then.
 
     Category: Data
+
+    This can be used in tandem with a Reference Grab Receiver Component as a
+    place to store the value received by said component. This component's
+    ``Reference`` field can be accessed with ProtoFlux. Using this as a Data
+    Model Store is considered bad practice due to it making your code harder
+    to read, use, and transfer.
 
     Parameterize with a value type::
 
@@ -34,7 +40,7 @@ class ReferenceField(GenericComponent[T], IReferenceSource[T], IWorldEventReceiv
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets T)."""
+        """A field that can be used to store any reference type."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId

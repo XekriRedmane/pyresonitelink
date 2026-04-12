@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MiddleMousePressed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Middle Mouse Pressed node returns the local user's middle mouse button being pressed down. This will change within that frame, so combining it with Fire On True is recommended.
+    """The ``Middle Mouse Pressed`` node returns the local user's middle mouse button being pressed down. This will change within that frame, so combining it with Fire On True is recommended.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Devices/Mouse
     """

@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ConfirmationHandler(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ConfirmationHandler.
+    """The ConfirmationHandler component is used to handle confirming an action. (what the actions are is currently not documented)
 
     Category: Common UI/Utility
     """
@@ -40,7 +40,7 @@ class ConfirmationHandler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def label(self) -> str | None:
-        """Target ID of the Label reference (targets IField[primitives.String])."""
+        """The message of the Confirmation box"""
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -61,7 +61,7 @@ class ConfirmationHandler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def color(self) -> str | None:
-        """Target ID of the Color reference (targets IField[primitives.ColorX])."""
+        """The color of the button before confirming is allowed."""
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -82,7 +82,7 @@ class ConfirmationHandler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def original_label(self) -> primitives.String | None:
-        """The OriginalLabel field value."""
+        """The original label of the conformation before allowing the user to continue."""
         member = self.get_member("OriginalLabel")
         if member is None:
             return None
@@ -101,7 +101,7 @@ class ConfirmationHandler(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def original_color(self) -> primitives.ColorX | None:
-        """The OriginalColor field value."""
+        """The original color of the Confirmation before allowing the user to continue."""
         member = self.get_member("OriginalColor")
         if member is None:
             return None

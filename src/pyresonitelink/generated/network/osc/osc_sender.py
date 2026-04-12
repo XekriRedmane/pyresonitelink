@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.osc_send_mode import OSC_SendMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -17,7 +18,7 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OSC_Sender"
 
-    def __init__(self, access_reason: primitives.String | None = None, url: str | None = None, local_port: primitives.Int | None = None, is_sending: primitives.Bool | None = None, auto_resend_interval: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, access_reason: primitives.String | None = None, url: str | None = None, local_port: primitives.Int | None = None, is_sending: primitives.Bool | None = None, send_mode: OSC_SendMode | str | None = None, auto_resend_interval: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -25,6 +26,7 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
             url: Initial value for URL.
             local_port: Initial value for LocalPort.
             is_sending: Initial value for IsSending.
+            send_mode: Initial value for SendMode.
             auto_resend_interval: Initial value for AutoResendInterval.
             component: Existing Component to wrap.
         """
@@ -37,6 +39,8 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.local_port = local_port
         if is_sending is not None:
             self.is_sending = is_sending
+        if send_mode is not None:
+            self.send_mode = send_mode
         if auto_resend_interval is not None:
             self.auto_resend_interval = auto_resend_interval
 
@@ -130,17 +134,24 @@ class OSC_Sender(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def send_mode(self) -> members.FieldEnum | None:
-        """The SendMode member."""
+    def send_mode(self) -> OSC_SendMode | None:
+        """The SendMode enum value."""
         member = self.get_member("SendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return OSC_SendMode(member.value)
         return None
 
     @send_mode.setter
-    def send_mode(self, value: members.FieldEnum) -> None:
-        """Set the SendMode member."""
-        self.set_member("SendMode", value)
+    def send_mode(self, value: OSC_SendMode | str) -> None:
+        """Set the SendMode enum value."""
+        member = self.get_member("SendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def auto_resend_interval(self) -> primitives.Float | None:

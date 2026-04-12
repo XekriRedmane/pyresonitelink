@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FormatLocaleString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Format Locale String node takes in a locale asset (or repository) and a key and it returns the translated string for the user's culture.
+    """The ``Format Locale String`` node takes in a locale asset (or repository) and a key and it returns the translated string for the user's culture.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings/Localization
     """
@@ -37,7 +37,7 @@ class FormatLocaleString(GeneratedComponent, INodeObjectOutput, IExecutionNode, 
 
     @property
     def locale(self) -> str | None:
-        """Target ID of the Locale reference (targets INodeObjectOutput[LocaleResource])."""
+        """The list of translatable strings (the repository or collection of strings)."""
         member = self.get_member("Locale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -58,7 +58,7 @@ class FormatLocaleString(GeneratedComponent, INodeObjectOutput, IExecutionNode, 
 
     @property
     def key(self) -> str | None:
-        """Target ID of the Key reference (targets INodeObjectOutput[primitives.String])."""
+        """The key to search for in the locale resource."""
         member = self.get_member("Key")
         if isinstance(member, members.Reference):
             return member.targetId

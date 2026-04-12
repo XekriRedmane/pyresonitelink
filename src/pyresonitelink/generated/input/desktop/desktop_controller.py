@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DesktopController(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DesktopController.
+    """The DesktopController component is used to control the desktop through the game dash.
 
     Category: Input/Desktop
     """
@@ -59,7 +59,7 @@ class DesktopController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def follow_cursor(self) -> primitives.Bool | None:
-        """The FollowCursor field value."""
+        """whether the desktop cursor should follow the Resonite dash cursor when not clicking."""
         member = self.get_member("FollowCursor")
         if member is None:
             return None
@@ -78,7 +78,7 @@ class DesktopController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def legacy_input_mode(self) -> primitives.Bool | None:
-        """The LegacyInputMode field value."""
+        """Whether to use the legacy input system for desktop interaction."""
         member = self.get_member("LegacyInputMode")
         if member is None:
             return None
@@ -97,7 +97,7 @@ class DesktopController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def brightness(self) -> primitives.Float | None:
-        """The Brightness field value."""
+        """how bright the desktop display should be in the dash."""
         member = self.get_member("Brightness")
         if member is None:
             return None
@@ -116,7 +116,7 @@ class DesktopController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def opacity(self) -> primitives.Float | None:
-        """The Opacity field value."""
+        """how transparent the desktop display should be in the dash."""
         member = self.get_member("Opacity")
         if member is None:
             return None
@@ -135,7 +135,7 @@ class DesktopController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def display_color(self) -> str | None:
-        """Target ID of the _displayColor reference (targets IField[primitives.ColorX])."""
+        """The color of the display texture to drive"""
         member = self.get_member("_displayColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -156,7 +156,7 @@ class DesktopController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def display_rect(self) -> str | None:
-        """Target ID of the _displayRect reference (targets RectTransform)."""
+        """The UIX size rectangle for the display texture."""
         member = self.get_member("_displayRect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -177,7 +177,7 @@ class DesktopController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def desktop_texture(self) -> str | None:
-        """Target ID of the _desktopTexture reference (targets DesktopTextureProvider)."""
+        """The texture displaying the desktop."""
         member = self.get_member("_desktopTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -198,7 +198,7 @@ class DesktopController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def interaction_relay(self) -> str | None:
-        """Target ID of the _interactionRelay reference (targets DesktopInteractionRelay)."""
+        """The relay allowing for system Desktop interaction."""
         member = self.get_member("_interactionRelay")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -219,7 +219,7 @@ class DesktopController(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def current_control(self) -> str | None:
-        """Target ID of the _currentControl reference (targets DesktopControlDialog)."""
+        """The current dialogue being used to change settings for this component."""
         member = self.get_member("_currentControl")
         if isinstance(member, members.Reference):
             return member.targetId

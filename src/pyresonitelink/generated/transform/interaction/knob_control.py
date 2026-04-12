@@ -12,9 +12,19 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.KnobControl.
+    """KnobControl takes the local rotation of its slot around a specified axis and applies it proportionally to a floating point value.
 
     Category: Transform/Interaction
+
+    As the local rotation of this component's slot changes, the knob's value
+    is updated according to how much it has rotated about the RotationAxis.
+    The amount the value changes is determined by the change in rotation
+    (measured in fractions of a full rotation, so for example a change of
+    one degree would be 1/360), multiplied by the Rate. Note that the value
+    field is not driven. This means it is synced to all users, and can be
+    written to at any time. This component is most useful when coupled with
+    a Joint to restrict the slot's rotation to be only around the rotation
+    axis.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.KnobControl"
@@ -53,7 +63,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float])."""
+        """A field to set with the knob's value."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -74,7 +84,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation_axis(self) -> primitives.Float3 | None:
-        """The RotationAxis field value."""
+        """The axis around which to measure the slot's local rotation."""
         member = self.get_member("RotationAxis")
         if member is None:
             return None
@@ -93,7 +103,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rate(self) -> primitives.Float | None:
-        """The Rate field value."""
+        """The proportional effect of the knob, in values per full (360-degree) rotation."""
         member = self.get_member("Rate")
         if member is None:
             return None
@@ -112,7 +122,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def min(self) -> primitives.Float | None:
-        """The Min field value."""
+        """The minimum value for the knob."""
         member = self.get_member("Min")
         if member is None:
             return None
@@ -131,7 +141,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def max(self) -> primitives.Float | None:
-        """The Max field value."""
+        """The maximum value for the knob."""
         member = self.get_member("Max")
         if member is None:
             return None
@@ -150,7 +160,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def last_rotation(self) -> primitives.Float | None:
-        """The _lastRotation field value."""
+        """(internal, read-only) Used in determining the rotational change."""
         member = self.get_member("_lastRotation")
         if member is None:
             return None
@@ -169,7 +179,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def last_axis(self) -> primitives.Float3 | None:
-        """The _lastAxis field value."""
+        """(internal, read-only) Used if the RotationAxis changes."""
         member = self.get_member("_lastAxis")
         if member is None:
             return None
@@ -188,7 +198,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def last_user(self) -> str | None:
-        """Target ID of the _lastUser reference (targets User)."""
+        """(internal, read-only) The user who last rotated the slot."""
         member = self.get_member("_lastUser")
         if isinstance(member, members.Reference):
             return member.targetId

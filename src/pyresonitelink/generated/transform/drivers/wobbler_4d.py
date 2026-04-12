@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Wobbler4D(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.Wobbler4D.
+    """The Wobbler4D component can be used to make a value randomly change in a smooth fashion.
 
     Category: Transform/Drivers
+
+    * Wobble things with the Wobbler by ProbablePrime
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Wobbler4D"
@@ -43,7 +45,7 @@ class Wobbler4D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float4])."""
+        """The field to wobble."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +66,7 @@ class Wobbler4D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset(self) -> primitives.Float4 | None:
-        """The Offset field value."""
+        """The starting point of the wobble."""
         member = self.get_member("Offset")
         if member is None:
             return None
@@ -83,7 +85,7 @@ class Wobbler4D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def speed(self) -> primitives.Float4 | None:
-        """The Speed field value."""
+        """how fast to wobble."""
         member = self.get_member("Speed")
         if member is None:
             return None
@@ -102,7 +104,7 @@ class Wobbler4D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def magnitude(self) -> primitives.Float4 | None:
-        """The Magnitude field value."""
+        """the amount to wobble from ``Offset``"""
         member = self.get_member("Magnitude")
         if member is None:
             return None
@@ -121,7 +123,7 @@ class Wobbler4D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def seed(self) -> primitives.Float4 | None:
-        """The Seed field value."""
+        """the value to use as a seed for the randomness."""
         member = self.get_member("Seed")
         if member is None:
             return None

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.force_mode import ForceMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -19,11 +20,12 @@ class Texture3D_Force(GeneratedComponent, IParticleSystemModule, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.Texture3D_Force"
 
-    def __init__(self, texture_3d: str | IAssetProvider[Texture3D] | None = None, strength: primitives.Float | None = None, scale: primitives.Float3 | None = None, offset: primitives.Float3 | None = None, color_bias: primitives.Float | None = None, color_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, texture_3d: str | IAssetProvider[Texture3D] | None = None, mode: ForceMode | str | None = None, strength: primitives.Float | None = None, scale: primitives.Float3 | None = None, offset: primitives.Float3 | None = None, color_bias: primitives.Float | None = None, color_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             texture_3d: Initial value for Texture3D.
+            mode: Initial value for Mode.
             strength: Initial value for Strength.
             scale: Initial value for Scale.
             offset: Initial value for Offset.
@@ -34,6 +36,8 @@ class Texture3D_Force(GeneratedComponent, IParticleSystemModule, IWorldEventRece
         super().__init__(component)
         if texture_3d is not None:
             self.texture_3d = texture_3d
+        if mode is not None:
+            self.mode = mode
         if strength is not None:
             self.strength = strength
         if scale is not None:
@@ -67,17 +71,24 @@ class Texture3D_Force(GeneratedComponent, IParticleSystemModule, IWorldEventRece
             )
 
     @property
-    def mode(self) -> members.FieldEnum | None:
-        """The Mode member."""
+    def mode(self) -> ForceMode | None:
+        """The Mode enum value."""
         member = self.get_member("Mode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ForceMode(member.value)
         return None
 
     @mode.setter
-    def mode(self, value: members.FieldEnum) -> None:
-        """Set the Mode member."""
-        self.set_member("Mode", value)
+    def mode(self, value: ForceMode | str) -> None:
+        """Set the Mode enum value."""
+        member = self.get_member("Mode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Mode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def strength(self) -> primitives.Float | None:

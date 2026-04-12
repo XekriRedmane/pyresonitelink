@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.vibrate_preset import VibratePreset
+from pyresonitelink.generated._enums.active_user_handling import ActiveUserHandling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -10,14 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TouchableData(GeneratedComponent, ITouchable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TouchableData.
+    """The TouchableData component can be used to create simple touch based interactions.
 
     Category: Transform/Interaction
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TouchableData"
 
-    def __init__(self, hovering: primitives.Bool | None = None, touching: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, edit_mode_only: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, hovering: primitives.Bool | None = None, touching: primitives.Bool | None = None, accept_out_of_sight_touch: primitives.Bool | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, on_hover_start_vibrate: VibratePreset | str | None = None, on_hover_stay_vibrate: VibratePreset | str | None = None, on_hover_end_vibrate: VibratePreset | str | None = None, on_touch_start_vibrate: VibratePreset | str | None = None, on_touch_stay_vibrate: VibratePreset | str | None = None, on_touch_end_vibrate: VibratePreset | str | None = None, edit_mode_only: primitives.Bool | None = None, active_user_filter: ActiveUserHandling | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -26,7 +28,14 @@ class TouchableData(GeneratedComponent, ITouchable, IWorldEventReceiver):
             accept_out_of_sight_touch: Initial value for AcceptOutOfSightTouch.
             accept_physical_touch: Initial value for AcceptPhysicalTouch.
             accept_remote_touch: Initial value for AcceptRemoteTouch.
+            on_hover_start_vibrate: Initial value for OnHoverStartVibrate.
+            on_hover_stay_vibrate: Initial value for OnHoverStayVibrate.
+            on_hover_end_vibrate: Initial value for OnHoverEndVibrate.
+            on_touch_start_vibrate: Initial value for OnTouchStartVibrate.
+            on_touch_stay_vibrate: Initial value for OnTouchStayVibrate.
+            on_touch_end_vibrate: Initial value for OnTouchEndVibrate.
             edit_mode_only: Initial value for EditModeOnly.
+            active_user_filter: Initial value for ActiveUserFilter.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -40,12 +49,26 @@ class TouchableData(GeneratedComponent, ITouchable, IWorldEventReceiver):
             self.accept_physical_touch = accept_physical_touch
         if accept_remote_touch is not None:
             self.accept_remote_touch = accept_remote_touch
+        if on_hover_start_vibrate is not None:
+            self.on_hover_start_vibrate = on_hover_start_vibrate
+        if on_hover_stay_vibrate is not None:
+            self.on_hover_stay_vibrate = on_hover_stay_vibrate
+        if on_hover_end_vibrate is not None:
+            self.on_hover_end_vibrate = on_hover_end_vibrate
+        if on_touch_start_vibrate is not None:
+            self.on_touch_start_vibrate = on_touch_start_vibrate
+        if on_touch_stay_vibrate is not None:
+            self.on_touch_stay_vibrate = on_touch_stay_vibrate
+        if on_touch_end_vibrate is not None:
+            self.on_touch_end_vibrate = on_touch_end_vibrate
         if edit_mode_only is not None:
             self.edit_mode_only = edit_mode_only
+        if active_user_filter is not None:
+            self.active_user_filter = active_user_filter
 
     @property
     def hovering(self) -> primitives.Bool | None:
-        """The Hovering field value."""
+        """Whether a user's laser is hovering over the component's collider"""
         member = self.get_member("Hovering")
         if member is None:
             return None
@@ -64,7 +87,7 @@ class TouchableData(GeneratedComponent, ITouchable, IWorldEventReceiver):
 
     @property
     def touching(self) -> primitives.Bool | None:
-        """The Touching field value."""
+        """Whether a user is clicking on the collider this component is on."""
         member = self.get_member("Touching")
         if member is None:
             return None
@@ -139,86 +162,128 @@ class TouchableData(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def on_hover_start_vibrate(self) -> members.FieldEnum | None:
-        """The OnHoverStartVibrate member."""
+    def on_hover_start_vibrate(self) -> VibratePreset | None:
+        """How to vibrate the user's controller when they started hovering on the component."""
         member = self.get_member("OnHoverStartVibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @on_hover_start_vibrate.setter
-    def on_hover_start_vibrate(self, value: members.FieldEnum) -> None:
-        """Set the OnHoverStartVibrate member."""
-        self.set_member("OnHoverStartVibrate", value)
+    def on_hover_start_vibrate(self, value: VibratePreset | str) -> None:
+        """Set OnHoverStartVibrate. How to vibrate the user's controller when they started hovering on the component."""
+        member = self.get_member("OnHoverStartVibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OnHoverStartVibrate",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def on_hover_stay_vibrate(self) -> members.FieldEnum | None:
-        """The OnHoverStayVibrate member."""
+    def on_hover_stay_vibrate(self) -> VibratePreset | None:
+        """How to vibrate the user's controller every game update when they are hovering on the component."""
         member = self.get_member("OnHoverStayVibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @on_hover_stay_vibrate.setter
-    def on_hover_stay_vibrate(self, value: members.FieldEnum) -> None:
-        """Set the OnHoverStayVibrate member."""
-        self.set_member("OnHoverStayVibrate", value)
+    def on_hover_stay_vibrate(self, value: VibratePreset | str) -> None:
+        """Set OnHoverStayVibrate. How to vibrate the user's controller every game update when they are hovering on the component."""
+        member = self.get_member("OnHoverStayVibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OnHoverStayVibrate",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def on_hover_end_vibrate(self) -> members.FieldEnum | None:
-        """The OnHoverEndVibrate member."""
+    def on_hover_end_vibrate(self) -> VibratePreset | None:
+        """How to vibrate the user's controller when they stopped hovering on the component."""
         member = self.get_member("OnHoverEndVibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @on_hover_end_vibrate.setter
-    def on_hover_end_vibrate(self, value: members.FieldEnum) -> None:
-        """Set the OnHoverEndVibrate member."""
-        self.set_member("OnHoverEndVibrate", value)
+    def on_hover_end_vibrate(self, value: VibratePreset | str) -> None:
+        """Set OnHoverEndVibrate. How to vibrate the user's controller when they stopped hovering on the component."""
+        member = self.get_member("OnHoverEndVibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OnHoverEndVibrate",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def on_touch_start_vibrate(self) -> members.FieldEnum | None:
-        """The OnTouchStartVibrate member."""
+    def on_touch_start_vibrate(self) -> VibratePreset | None:
+        """How to vibrate the user's controller when they started primary pressing on the component."""
         member = self.get_member("OnTouchStartVibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @on_touch_start_vibrate.setter
-    def on_touch_start_vibrate(self, value: members.FieldEnum) -> None:
-        """Set the OnTouchStartVibrate member."""
-        self.set_member("OnTouchStartVibrate", value)
+    def on_touch_start_vibrate(self, value: VibratePreset | str) -> None:
+        """Set OnTouchStartVibrate. How to vibrate the user's controller when they started primary pressing on the component."""
+        member = self.get_member("OnTouchStartVibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OnTouchStartVibrate",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def on_touch_stay_vibrate(self) -> members.FieldEnum | None:
-        """The OnTouchStayVibrate member."""
+    def on_touch_stay_vibrate(self) -> VibratePreset | None:
+        """How to vibrate the user's controller every game update when they hold primary press on the component."""
         member = self.get_member("OnTouchStayVibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @on_touch_stay_vibrate.setter
-    def on_touch_stay_vibrate(self, value: members.FieldEnum) -> None:
-        """Set the OnTouchStayVibrate member."""
-        self.set_member("OnTouchStayVibrate", value)
+    def on_touch_stay_vibrate(self, value: VibratePreset | str) -> None:
+        """Set OnTouchStayVibrate. How to vibrate the user's controller every game update when they hold primary press on the component."""
+        member = self.get_member("OnTouchStayVibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OnTouchStayVibrate",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def on_touch_end_vibrate(self) -> members.FieldEnum | None:
-        """The OnTouchEndVibrate member."""
+    def on_touch_end_vibrate(self) -> VibratePreset | None:
+        """How to vibrate the user's controller when they ended primary pressing on the component."""
         member = self.get_member("OnTouchEndVibrate")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return VibratePreset(member.value)
         return None
 
     @on_touch_end_vibrate.setter
-    def on_touch_end_vibrate(self, value: members.FieldEnum) -> None:
-        """Set the OnTouchEndVibrate member."""
-        self.set_member("OnTouchEndVibrate", value)
+    def on_touch_end_vibrate(self, value: VibratePreset | str) -> None:
+        """Set OnTouchEndVibrate. How to vibrate the user's controller when they ended primary pressing on the component."""
+        member = self.get_member("OnTouchEndVibrate")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OnTouchEndVibrate",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def edit_mode_only(self) -> primitives.Bool | None:
-        """The EditModeOnly field value."""
+        """Whether this component can only be interacted with by users in edit mode."""
         member = self.get_member("EditModeOnly")
         if member is None:
             return None
@@ -236,15 +301,22 @@ class TouchableData(GeneratedComponent, ITouchable, IWorldEventReceiver):
             )
 
     @property
-    def active_user_filter(self) -> members.FieldEnum | None:
-        """The ActiveUserFilter member."""
+    def active_user_filter(self) -> ActiveUserHandling | None:
+        """How to handle which users can use this component based on the current active user."""
         member = self.get_member("ActiveUserFilter")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ActiveUserHandling(member.value)
         return None
 
     @active_user_filter.setter
-    def active_user_filter(self, value: members.FieldEnum) -> None:
-        """Set the ActiveUserFilter member."""
-        self.set_member("ActiveUserFilter", value)
+    def active_user_filter(self, value: ActiveUserHandling | str) -> None:
+        """Set ActiveUserFilter. How to handle which users can use this component based on the current active user."""
+        member = self.get_member("ActiveUserFilter")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ActiveUserFilter",
+                members.FieldEnum(value=str(value)),
+            )
 

@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SpeedRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.SpeedRangeInitializer.
+    """The SpeedRangeInitializer component makes particles in a particle system start with a random speed in a range when initialized.
+
+This component is part of the Photon Dust system made by Frooxius.
 
     Category: Rendering/Particle System/Modules
+
+    Attach to a slot, add to the list of modules in a ParticleSystem, and
+    adjust the values to make the desired effect from this component.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SpeedRangeInitializer"
@@ -32,7 +37,7 @@ class SpeedRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     @property
     def min_value(self) -> primitives.Float | None:
-        """The MinValue field value."""
+        """The minimum speed that particles can start with."""
         member = self.get_member("MinValue")
         if member is None:
             return None
@@ -51,7 +56,7 @@ class SpeedRangeInitializer(GeneratedComponent, IParticleSystemModule, IWorldEve
 
     @property
     def max_value(self) -> primitives.Float | None:
-        """The MaxValue field value."""
+        """The maximum speed that particles can start with."""
         member = self.get_member("MaxValue")
         if member is None:
             return None

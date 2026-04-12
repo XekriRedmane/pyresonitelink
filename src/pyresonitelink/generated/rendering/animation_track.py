@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AnimationTrack<>.
+    """Animation track seems to be a placeholder for future content and is unused. It does not fit into anything in the game internally and it's methods go unused (According to DNSpy 07/26/2024 (mm/dd/yyyy))
 
     Category: Rendering
 
@@ -42,7 +42,7 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
 
     @property
     def node(self) -> primitives.String | None:
-        """The _node field value."""
+        """Designed to be used to specify the object being controlled by the animation. Can be used with the Find Animation Track Index ProtoFlux node."""
         member = self.get_member("_node")
         if member is None:
             return None
@@ -61,7 +61,7 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
 
     @property
     def component_(self) -> primitives.String | None:
-        """The _component field value."""
+        """Designed to be used to specify the field of the object that is being controlled by the animation. Can be used with the Find Animation Track Index ProtoFlux node."""
         member = self.get_member("_component")
         if member is None:
             return None
@@ -80,7 +80,7 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
 
     @property
     def property(self) -> primitives.String | None:
-        """The _property field value."""
+        """The property on an animation asset"""
         member = self.get_member("_property")
         if member is None:
             return None
@@ -99,7 +99,7 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
 
     @property
     def data(self) -> members.Member | None:
-        """The Data member."""
+        """A list of values at specific time intervals to determine what the whole track's value should be at specific times."""
         member = self.get_member("Data")
         if isinstance(member, members.Member):
             return member
@@ -107,6 +107,6 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
 
     @data.setter
     def data(self, value: members.Member) -> None:
-        """Set the Data member."""
+        """Set Data. A list of values at specific time intervals to determine what the whole track's value should be at specific times."""
         self.set_member("Data", value)
 

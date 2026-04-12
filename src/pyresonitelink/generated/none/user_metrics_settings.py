@@ -9,7 +9,9 @@ from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 
 
 class UserMetricsSettings(GeneratedComponent, ICustomInspector):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserMetricsSettings.
+    """See Settings.
+
+    See Settings.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserMetricsSettings"
@@ -27,7 +29,7 @@ class UserMetricsSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def user_height(self) -> primitives.Float | None:
-        """The UserHeight field value."""
+        """The height of the user in meters."""
         member = self.get_member("UserHeight")
         if member is None:
             return None

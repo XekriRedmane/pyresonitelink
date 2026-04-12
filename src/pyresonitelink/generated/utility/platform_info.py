@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PlatformInfo.
+    """The PlatformInfo component is used where data about the platform that FrooxEngine is running under (In this case, Resonite) for the purpose of providing info to users like social links and language like Abbreviations and ways to refer to the platform.
 
     Category: Utility
     """
@@ -74,7 +74,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def platform_name(self) -> primitives.String | None:
-        """The PlatformName field value."""
+        """The name of the platform."""
         member = self.get_member("PlatformName")
         if member is None:
             return None
@@ -93,7 +93,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def short_name_prefix(self) -> primitives.String | None:
-        """The ShortNamePrefix field value."""
+        """The short name of the platform, used in record strings."""
         member = self.get_member("ShortNamePrefix")
         if member is None:
             return None
@@ -112,7 +112,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def abbreviation(self) -> primitives.String | None:
-        """The Abbreviation field value."""
+        """The abreviation of the platform, useful for referring to it in casual conversation."""
         member = self.get_member("Abbreviation")
         if member is None:
             return None
@@ -131,7 +131,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def domain(self) -> primitives.String | None:
-        """The Domain field value."""
+        """The website of the plaform."""
         member = self.get_member("Domain")
         if member is None:
             return None
@@ -150,7 +150,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def email(self) -> primitives.String | None:
-        """The Email field value."""
+        """The platform's email address."""
         member = self.get_member("Email")
         if member is None:
             return None
@@ -169,7 +169,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def discord_invite_url(self) -> primitives.String | None:
-        """The DiscordInviteUrl field value."""
+        """The URL to get to the platform's Discord."""
         member = self.get_member("DiscordInviteUrl")
         if member is None:
             return None
@@ -188,7 +188,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def policies_page(self) -> primitives.String | None:
-        """The PoliciesPage field value."""
+        """The TOS of the platform."""
         member = self.get_member("PoliciesPage")
         if member is None:
             return None
@@ -207,7 +207,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def patreon_url(self) -> primitives.String | None:
-        """The PatreonUrl field value."""
+        """The Patreon URL of the platform."""
         member = self.get_member("PatreonUrl")
         if member is None:
             return None
@@ -226,7 +226,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def git_hub_profile(self) -> primitives.String | None:
-        """The GitHubProfile field value."""
+        """The Github profile of the platform."""
         member = self.get_member("GitHubProfile")
         if member is None:
             return None
@@ -245,7 +245,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def git_hub_issues_repository(self) -> primitives.String | None:
-        """The GitHubIssuesRepository field value."""
+        """The Github issues page of the platform."""
         member = self.get_member("GitHubIssuesRepository")
         if member is None:
             return None
@@ -264,7 +264,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auth_scheme(self) -> primitives.String | None:
-        """The AuthScheme field value."""
+        """The authorization scheme of the platform."""
         member = self.get_member("AuthScheme")
         if member is None:
             return None
@@ -283,7 +283,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def app_scheme(self) -> primitives.String | None:
-        """The AppScheme field value."""
+        """The app scheme of the platform."""
         member = self.get_member("AppScheme")
         if member is None:
             return None
@@ -302,7 +302,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def db_scheme(self) -> primitives.String | None:
-        """The DBScheme field value."""
+        """The data base scheme of the platform. used in asset urls."""
         member = self.get_member("DBScheme")
         if member is None:
             return None
@@ -321,7 +321,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def session_scheme(self) -> primitives.String | None:
-        """The SessionScheme field value."""
+        """The session scheme of the platform. used in session links."""
         member = self.get_member("SessionScheme")
         if member is None:
             return None
@@ -340,7 +340,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def record_scheme(self) -> primitives.String | None:
-        """The RecordScheme field value."""
+        """The record scheme of the platform. used in item link urls."""
         member = self.get_member("RecordScheme")
         if member is None:
             return None
@@ -359,7 +359,7 @@ class PlatformInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def user_session_scheme(self) -> primitives.String | None:
-        """The UserSessionScheme field value."""
+        """The user session scheme of the platform."""
         member = self.get_member("UserSessionScheme")
         if member is None:
             return None

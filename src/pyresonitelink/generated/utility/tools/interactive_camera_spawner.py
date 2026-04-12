@@ -6,7 +6,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractiveCameraSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraSpawner.
+    """The InteractiveCameraSpawner can receive Button Events, including ones from a button on the same slot. When receiving a pressed event, this component will spawn an InteractiveCamera in the currently focused world.
 
     Category: Utility/Tools
     """

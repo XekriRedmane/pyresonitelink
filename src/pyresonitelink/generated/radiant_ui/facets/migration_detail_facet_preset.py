@@ -6,9 +6,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MigrationDetailFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MigrationDetailFacetPreset.
+    """The MigrationDetailFacetPreset component loads the Migration Detail facet when it's not ``_fullyLoaded``. It does this by loading the facet from the cloud, and using that loaded data to make the preset
 
     Category: Radiant UI/Facets
+
+    used in the main dash. no need to be used by the user unless they are
+    missing the Migration Detail facet.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MigrationDetailFacetPreset"

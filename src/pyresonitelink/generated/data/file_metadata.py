@@ -10,9 +10,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class FileMetadata(GeneratedComponent, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.FileMetadata.
+    """File metadata is a component used in RawFile object imports and is often taken advantage of for Cloud Spawning.
+
+This component has two sync delegates which import and export data from a Static Binary Component on the same slot.
 
     Category: Data
+
+    See Cloud Spawning.
+
+    **Related Components**: * Static Binary
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FileMetadata"
@@ -36,7 +42,7 @@ class FileMetadata(GeneratedComponent, ITouchable, IItemMetadataSource, IWorldEv
 
     @property
     def filename(self) -> primitives.String | None:
-        """The Filename field value."""
+        """The name of the file, usually followed by .brson or .7bson"""
         member = self.get_member("Filename")
         if member is None:
             return None
@@ -55,7 +61,7 @@ class FileMetadata(GeneratedComponent, ITouchable, IItemMetadataSource, IWorldEv
 
     @property
     def mime(self) -> primitives.String | None:
-        """The MIME field value."""
+        """see Media Types (MIME)"""
         member = self.get_member("MIME")
         if member is None:
             return None
@@ -74,7 +80,7 @@ class FileMetadata(GeneratedComponent, ITouchable, IItemMetadataSource, IWorldEv
 
     @property
     def is_processing(self) -> primitives.Bool | None:
-        """The IsProcessing field value."""
+        """whether this component is currently processing an import or export action asynchronously."""
         member = self.get_member("IsProcessing")
         if member is None:
             return None

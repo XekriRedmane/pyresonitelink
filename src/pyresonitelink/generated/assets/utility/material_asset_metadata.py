@@ -12,9 +12,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class MaterialAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.MaterialAssetMetadata.
+    """The MaterialAssetMetadata component gives variant info about materials in the form of usable values. These values are usually listed at the bottom of a material inspector but are unusable in that state.
 
     Category: Assets/Utility
+
+    Can be used to get variant info and other info shown at the bottom of a
+    material in the Inspector as actual usable values.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MaterialAssetMetadata"
@@ -47,7 +50,7 @@ class MaterialAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets IAssetProvider[Material])."""
+        """The material to get Metadata on."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +71,7 @@ class MaterialAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def variant_index(self) -> primitives.UInt | None:
-        """The VariantIndex field value."""
+        """The material variant defined by GPU definitions on the shader. For example, a reflection material has a second variant for having a normal map vs without."""
         member = self.get_member("VariantIndex")
         if member is None:
             return None
@@ -87,7 +90,7 @@ class MaterialAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def raw_variant_index(self) -> primitives.UInt | None:
-        """The RawVariantIndex field value."""
+        """The raw version of ``VariantIndex``."""
         member = self.get_member("RawVariantIndex")
         if member is None:
             return None
@@ -106,7 +109,7 @@ class MaterialAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def variant_id(self) -> primitives.String | None:
-        """The VariantID field value."""
+        """The ID of the material variant (can be seen at the bottom of a material in the Inspector too."""
         member = self.get_member("VariantID")
         if member is None:
             return None
@@ -125,7 +128,7 @@ class MaterialAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def raw_variant_id(self) -> primitives.String | None:
-        """The RawVariantID field value."""
+        """The raw version of ``VariantID``."""
         member = self.get_member("RawVariantID")
         if member is None:
             return None
@@ -144,7 +147,7 @@ class MaterialAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     @property
     def waiting_for_apply(self) -> primitives.Bool | None:
-        """The WaitingForApply field value."""
+        """Whether this material is waiting to be applied in the render scene due to missing variants or otherwise."""
         member = self.get_member("WaitingForApply")
         if member is None:
             return None

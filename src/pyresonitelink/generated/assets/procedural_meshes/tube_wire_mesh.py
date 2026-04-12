@@ -4,6 +4,9 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.ends import Ends
+from pyresonitelink.generated._enums.shading import Shading
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +15,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TubeWireMesh.
+    """The TubeWireMesh component acts as a source of procedural Mesh data. This creates a mesh like the StripeWireMesh but is a tube instead.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot, then insert into a MeshRenderer with a material to
+    view what this mesh looks like.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TubeWireMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, point0: primitives.Float3 | None = None, point1: primitives.Float3 | None = None, tangent0: primitives.Float3 | None = None, tangent1: primitives.Float3 | None = None, orientation0: primitives.FloatQ | None = None, orientation1: primitives.FloatQ | None = None, steps: primitives.Int | None = None, exp: primitives.Float | None = None, color0: primitives.ColorX | None = None, color1: primitives.ColorX | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, radius0: primitives.Float | None = None, radius1: primitives.Float | None = None, points: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, point0: primitives.Float3 | None = None, point1: primitives.Float3 | None = None, tangent0: primitives.Float3 | None = None, tangent1: primitives.Float3 | None = None, orientation0: primitives.FloatQ | None = None, orientation1: primitives.FloatQ | None = None, steps: primitives.Int | None = None, exp: primitives.Float | None = None, color0: primitives.ColorX | None = None, color1: primitives.ColorX | None = None, uv_scale: primitives.Float2 | None = None, uv_offset: primitives.Float2 | None = None, radius0: primitives.Float | None = None, radius1: primitives.Float | None = None, ends: Ends | str | None = None, shading: Shading | str | None = None, points: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             point0: Initial value for Point0.
             point1: Initial value for Point1.
             tangent0: Initial value for Tangent0.
@@ -40,6 +47,8 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             uv_offset: Initial value for UVOffset.
             radius0: Initial value for Radius0.
             radius1: Initial value for Radius1.
+            ends: Initial value for Ends.
+            shading: Initial value for Shading.
             points: Initial value for Points.
             component: Existing Component to wrap.
         """
@@ -50,6 +59,8 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if point0 is not None:
             self.point0 = point0
         if point1 is not None:
@@ -78,6 +89,10 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             self.radius0 = radius0
         if radius1 is not None:
             self.radius1 = radius1
+        if ends is not None:
+            self.ends = ends
+        if shading is not None:
+            self.shading = shading
         if points is not None:
             self.points = points
 
@@ -139,21 +154,28 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def point0(self) -> primitives.Float3 | None:
-        """The Point0 field value."""
+        """The starting point for the tube mesh."""
         member = self.get_member("Point0")
         if member is None:
             return None
@@ -172,7 +194,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def point1(self) -> primitives.Float3 | None:
-        """The Point1 field value."""
+        """The ending point for the tube mesh."""
         member = self.get_member("Point1")
         if member is None:
             return None
@@ -191,7 +213,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def tangent0(self) -> primitives.Float3 | None:
-        """The Tangent0 field value."""
+        """The bend towards point at the beginning."""
         member = self.get_member("Tangent0")
         if member is None:
             return None
@@ -210,7 +232,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def tangent1(self) -> primitives.Float3 | None:
-        """The Tangent1 field value."""
+        """The bend towards point at the end."""
         member = self.get_member("Tangent1")
         if member is None:
             return None
@@ -229,7 +251,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def orientation0(self) -> primitives.FloatQ | None:
-        """The Orientation0 field value."""
+        """The rotation of the end cap at the beginning of the tube."""
         member = self.get_member("Orientation0")
         if member is None:
             return None
@@ -248,7 +270,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def orientation1(self) -> primitives.FloatQ | None:
-        """The Orientation1 field value."""
+        """The rotation of the end cap at the end of the tube."""
         member = self.get_member("Orientation1")
         if member is None:
             return None
@@ -267,7 +289,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def steps(self) -> primitives.Int | None:
-        """The Steps field value."""
+        """How many length wise subdivisions there is."""
         member = self.get_member("Steps")
         if member is None:
             return None
@@ -286,7 +308,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def exp(self) -> primitives.Float | None:
-        """The Exp field value."""
+        """How much to stretch mesh geometry towards the tangent points."""
         member = self.get_member("Exp")
         if member is None:
             return None
@@ -305,7 +327,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def color0(self) -> primitives.ColorX | None:
-        """The Color0 field value."""
+        """The color of the vertex colors at the starting point."""
         member = self.get_member("Color0")
         if member is None:
             return None
@@ -324,7 +346,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def color1(self) -> primitives.ColorX | None:
-        """The Color1 field value."""
+        """The color of the vertex colors at the ending point."""
         member = self.get_member("Color1")
         if member is None:
             return None
@@ -343,7 +365,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def uv_scale(self) -> primitives.Float2 | None:
-        """The UVScale field value."""
+        """The scale of the texture detail on this mesh's surface."""
         member = self.get_member("UVScale")
         if member is None:
             return None
@@ -362,7 +384,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def uv_offset(self) -> primitives.Float2 | None:
-        """The UVOffset field value."""
+        """The offset of the texture detail on this mesh's surface."""
         member = self.get_member("UVOffset")
         if member is None:
             return None
@@ -381,7 +403,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def radius0(self) -> primitives.Float | None:
-        """The Radius0 field value."""
+        """The starting radius of the tube."""
         member = self.get_member("Radius0")
         if member is None:
             return None
@@ -400,7 +422,7 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
 
     @property
     def radius1(self) -> primitives.Float | None:
-        """The Radius1 field value."""
+        """The ending radius of the tube."""
         member = self.get_member("Radius1")
         if member is None:
             return None
@@ -418,34 +440,48 @@ class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldE
             )
 
     @property
-    def ends(self) -> members.FieldEnum | None:
-        """The Ends member."""
+    def ends(self) -> Ends | None:
+        """How to seal the ends of the mesh, if at all."""
         member = self.get_member("Ends")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Ends(member.value)
         return None
 
     @ends.setter
-    def ends(self, value: members.FieldEnum) -> None:
-        """Set the Ends member."""
-        self.set_member("Ends", value)
+    def ends(self, value: Ends | str) -> None:
+        """Set Ends. How to seal the ends of the mesh, if at all."""
+        member = self.get_member("Ends")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Ends",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def shading(self) -> members.FieldEnum | None:
-        """The Shading member."""
+    def shading(self) -> Shading | None:
+        """How to shade the tube."""
         member = self.get_member("Shading")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Shading(member.value)
         return None
 
     @shading.setter
-    def shading(self, value: members.FieldEnum) -> None:
-        """Set the Shading member."""
-        self.set_member("Shading", value)
+    def shading(self, value: Shading | str) -> None:
+        """Set Shading. How to shade the tube."""
+        member = self.get_member("Shading")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Shading",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def points(self) -> primitives.Int | None:
-        """The Points field value."""
+        """How many subdivisions circumference wise the tube has."""
         member = self.get_member("Points")
         if member is None:
             return None

@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.BoxGizmo.
+    """The BoxGizmo component is used to make the handles and visual for editing a box mesh or collider, and also handles the interaction with the handles.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxGizmo"
@@ -63,7 +63,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @property
     def target_slot(self) -> str | None:
-        """Target ID of the TargetSlot reference (targets Slot)."""
+        """The slot of the box to edit."""
         member = self.get_member("TargetSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -84,7 +84,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @property
     def box_center_space(self) -> members.SyncObject | None:
-        """The BoxCenterSpace member."""
+        """The coordinate space to transform by when making the result of ``BoxCenter``"""
         member = self.get_member("BoxCenterSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -92,12 +92,12 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @box_center_space.setter
     def box_center_space(self, value: members.SyncObject) -> None:
-        """Set the BoxCenterSpace member."""
+        """Set BoxCenterSpace. The coordinate space to transform by when making the result of ``BoxCenter``"""
         self.set_member("BoxCenterSpace", value)
 
     @property
     def box_size_space(self) -> members.SyncObject | None:
-        """The BoxSizeSpace member."""
+        """The coordinate space to transform by when making the result of ``BoxSize``"""
         member = self.get_member("BoxSizeSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -105,12 +105,12 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @box_size_space.setter
     def box_size_space(self, value: members.SyncObject) -> None:
-        """Set the BoxSizeSpace member."""
+        """Set BoxSizeSpace. The coordinate space to transform by when making the result of ``BoxSize``"""
         self.set_member("BoxSizeSpace", value)
 
     @property
     def box_size(self) -> str | None:
-        """Target ID of the BoxSize reference (targets IField[primitives.Float3])."""
+        """The field to edit for the box size."""
         member = self.get_member("BoxSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -131,7 +131,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @property
     def box_center(self) -> str | None:
-        """Target ID of the BoxCenter reference (targets IField[primitives.Float3])."""
+        """The field to drive for the box center."""
         member = self.get_member("BoxCenter")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -152,7 +152,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @property
     def lock_offset(self) -> primitives.Bool | None:
-        """The LockOffset field value."""
+        """Whether to lock the offset of the box so it's center stays the same."""
         member = self.get_member("LockOffset")
         if member is None:
             return None
@@ -171,7 +171,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @property
     def vertices(self) -> members.SyncList | None:
-        """The _vertices member."""
+        """A list of fields to drive for the vertex positions of the cube gizmo visual."""
         member = self.get_member("_vertices")
         if isinstance(member, members.SyncList):
             return member
@@ -179,12 +179,12 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @vertices.setter
     def vertices(self, value: members.SyncList) -> None:
-        """Set the _vertices member."""
+        """Set _vertices. A list of fields to drive for the vertex positions of the cube gizmo visual."""
         self.set_member("_vertices", value)
 
     @property
     def edges(self) -> members.SyncList | None:
-        """The _edges member."""
+        """A list of fields to drive for the edge positions of the cube gizmo visual."""
         member = self.get_member("_edges")
         if isinstance(member, members.SyncList):
             return member
@@ -192,12 +192,12 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @edges.setter
     def edges(self, value: members.SyncList) -> None:
-        """Set the _edges member."""
+        """Set _edges. A list of fields to drive for the edge positions of the cube gizmo visual."""
         self.set_member("_edges", value)
 
     @property
     def faces(self) -> members.SyncList | None:
-        """The _faces member."""
+        """A list of fields to drive for the face positions of the cube gizmo visual."""
         member = self.get_member("_faces")
         if isinstance(member, members.SyncList):
             return member
@@ -205,12 +205,12 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @faces.setter
     def faces(self, value: members.SyncList) -> None:
-        """Set the _faces member."""
+        """Set _faces. A list of fields to drive for the face positions of the cube gizmo visual."""
         self.set_member("_faces", value)
 
     @property
     def sphere_collider_radii(self) -> members.SyncList | None:
-        """The _sphereColliderRadii member."""
+        """A list of fields to drive for the sphere rotations of the cube gizmo visual."""
         member = self.get_member("_sphereColliderRadii")
         if isinstance(member, members.SyncList):
             return member
@@ -218,12 +218,12 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @sphere_collider_radii.setter
     def sphere_collider_radii(self, value: members.SyncList) -> None:
-        """Set the _sphereColliderRadii member."""
+        """Set _sphereColliderRadii. A list of fields to drive for the sphere rotations of the cube gizmo visual."""
         self.set_member("_sphereColliderRadii", value)
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets OverlayFresnelMaterial)."""
+        """The material being used for the gizmo visual."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -244,7 +244,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @property
     def handle_sphere(self) -> str | None:
-        """Target ID of the _handleSphere reference (targets IcoSphereMesh)."""
+        """The mesh being used for the handles of the gizmo like corners or faces."""
         member = self.get_member("_handleSphere")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -265,7 +265,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @property
     def visual_root(self) -> str | None:
-        """Target ID of the _visualRoot reference (targets Slot)."""
+        """The slot of the visual root."""
         member = self.get_member("_visualRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -286,7 +286,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @property
     def visual_position(self) -> str | None:
-        """Target ID of the _visualPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive for the visual position."""
         member = self.get_member("_visualPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -307,7 +307,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @property
     def visual_rotation(self) -> str | None:
-        """Target ID of the _visualRotation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive for the visual rotation."""
         member = self.get_member("_visualRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -328,7 +328,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @property
     def visual_scale(self) -> str | None:
-        """Target ID of the _visualScale reference (targets IField[primitives.Float3])."""
+        """The field to drive for the visual scale."""
         member = self.get_member("_visualScale")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -349,7 +349,7 @@ class BoxGizmo(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
 
     @property
     def tube_box(self) -> str | None:
-        """Target ID of the _tubeBox reference (targets TubeBoxMesh)."""
+        """The tube box mesh being used for the gizmo visual."""
         member = self.get_member("_tubeBox")
         if isinstance(member, members.Reference):
             return member.targetId

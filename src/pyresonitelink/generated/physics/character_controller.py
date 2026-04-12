@@ -52,8 +52,6 @@ class CharacterController(GeneratedComponent, IBounded, IWorldEventReceiver):
 
 It has many settings and values that can alter the way on how a user can control either their self or another slot (For example: Vehicles). These Settings allow you to control the mass, speed, force, etc. This flexibility also allows for uses far beyond it's original intended design.
 
-
-
 Keep in mind that the character controller under the user root slot is currently useless (as in, not used besides it needing to be there) at this time. And removing it just recreates it back on the user root slot.
 
 For this component, when using some features, you may need to either write/drive the field ``SimulatingUser``. This will activate the character controller on the slot and make it start simulating. Doing this also lets you use some nodes such as Is Character Controller and Is Character On Ground, and without a simulating user, the values from some nodes would not be updated.

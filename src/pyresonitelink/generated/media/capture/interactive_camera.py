@@ -4,6 +4,9 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.mode import Mode
+from pyresonitelink.generated._enums.encode_format import EncodeFormat
+from pyresonitelink.generated._enums.camera_positioning_mode import CameraPositioningMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -26,17 +29,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableReparentBlock, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCamera.
+    """The InteractiveCamera component is used in the resonite default camera and is a way of easily taking pictures.
+
+See Camera for more up to date info.
 
     Category: Media/Capture
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractiveCamera"
 
-    def __init__(self, preview_width: primitives.Int | None = None, preview_height: primitives.Int | None = None, render_width: primitives.Int | None = None, stereo_separation: primitives.Float | None = None, timer_interval: primitives.Float | None = None, timer_enabled: primitives.Bool | None = None, timer_count_indicator: str | IField[primitives.String] | None = None, timer_color_indicator: str | IField[primitives.ColorX] | None = None, timer_user: str | User | None = None, main_camera: str | Camera | None = None, secondary_camera: str | Camera | None = None, preview_texture: str | RenderTextureProvider | None = None, display_material: str | IStereoMaterial | None = None, quality: primitives.Float | None = None, spawn_photo_in_world: primitives.Bool | None = None, photo_spawn_point: str | Slot | None = None, photo_spawn_size: primitives.Float | None = None, panorama_indicator: str | Slot | None = None, panorama_indicator_size: str | IField[primitives.Float3] | None = None, object_target_source: str | Slot | None = None, object_target_source_active: str | IField[primitives.Bool] | None = None, object_auto_pose: primitives.Bool | None = None, hide_lasers_on_capture: primitives.Bool | None = None, capture_sound: str | IAssetProvider[AudioClip] | None = None, timer_start_sound: str | IAssetProvider[AudioClip] | None = None, timer_countdown_slow_player: str | AudioClipPlayer | None = None, timer_countdown_fast_player: str | AudioClipPlayer | None = None, timer_countdown_slow_output: str | AudioOutput | None = None, timer_countdown_fast_output: str | AudioOutput | None = None, preview_scale: primitives.Float2 | None = None, camera_model_override: primitives.String | None = None, frustum_visual: str | CameraFrustumMesh | None = None, default_near_clip: primitives.Float | None = None, default_far_clip: primitives.Float | None = None, frustum_position: str | IField[primitives.Float3] | None = None, frustum_rotation: str | IField[primitives.FloatQ] | None = None, frustum_vertical_fov: str | IField[primitives.Float] | None = None, frustum_horizontal_fov: str | IField[primitives.Float] | None = None, frustum_near: str | IField[primitives.Float] | None = None, frustum_far: str | IField[primitives.Float] | None = None, left_cam_offset: str | IField[primitives.Float3] | None = None, right_cam_offset: str | IField[primitives.Float3] | None = None, left_cam_orientation: str | IField[primitives.FloatQ] | None = None, right_cam_orientation: str | IField[primitives.FloatQ] | None = None, camera_rendering: str | IField[primitives.Bool] | None = None, secondary_camera_rendering: str | IField[primitives.Bool] | None = None, force_visuals_off: primitives.Bool | None = None, auto_hide_proximity: primitives.Float | None = None, active_anchor: str | InteractiveCameraAnchor | None = None, anchor_interpolation_speed: primitives.Float | None = None, anchor_linear_interpolation: primitives.Bool | None = None, head_point_offset: primitives.Float3 | None = None, angle_position: primitives.Float | None = None, distance: primitives.Float | None = None, height_offset: primitives.Float | None = None, first_person_pitch: primitives.Float | None = None, first_person_roll: primitives.Float | None = None, first_person_offset: primitives.Float | None = None, group_include_radius: primitives.Float | None = None, group_exclude_radius: primitives.Float | None = None, position_smooth_speed: primitives.Float | None = None, angle_position_smooth_speed: primitives.Float | None = None, framing_smooth_speed: primitives.Float | None = None, wobble_magnitude: primitives.Float3 | None = None, wobble_seed: primitives.Float3 | None = None, wobble_speed: primitives.Float3 | None = None, framing_viewport_position: primitives.Float2 | None = None, avoid_occlusion: primitives.Bool | None = None, occlusion_include_players: primitives.Bool | None = None, occlusion_include_any_colliders: primitives.Bool | None = None, position_stream: str | ValueStream[primitives.Float3] | None = None, rotation_stream: str | ValueStream[primitives.FloatQ] | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, release_position: primitives.Float3 | None = None, release_rotation: primitives.FloatQ | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, camera_mode: Mode | str | None = None, preview_width: primitives.Int | None = None, preview_height: primitives.Int | None = None, render_width: primitives.Int | None = None, stereo_separation: primitives.Float | None = None, timer_interval: primitives.Float | None = None, timer_enabled: primitives.Bool | None = None, timer_count_indicator: str | IField[primitives.String] | None = None, timer_color_indicator: str | IField[primitives.ColorX] | None = None, timer_user: str | User | None = None, main_camera: str | Camera | None = None, secondary_camera: str | Camera | None = None, preview_texture: str | RenderTextureProvider | None = None, display_material: str | IStereoMaterial | None = None, format_: EncodeFormat | str | None = None, quality: primitives.Float | None = None, spawn_photo_in_world: primitives.Bool | None = None, photo_spawn_point: str | Slot | None = None, photo_spawn_size: primitives.Float | None = None, panorama_indicator: str | Slot | None = None, panorama_indicator_size: str | IField[primitives.Float3] | None = None, object_target_source: str | Slot | None = None, object_target_source_active: str | IField[primitives.Bool] | None = None, object_auto_pose: primitives.Bool | None = None, hide_lasers_on_capture: primitives.Bool | None = None, capture_sound: str | IAssetProvider[AudioClip] | None = None, timer_start_sound: str | IAssetProvider[AudioClip] | None = None, timer_countdown_slow_player: str | AudioClipPlayer | None = None, timer_countdown_fast_player: str | AudioClipPlayer | None = None, timer_countdown_slow_output: str | AudioOutput | None = None, timer_countdown_fast_output: str | AudioOutput | None = None, preview_scale: primitives.Float2 | None = None, camera_model_override: primitives.String | None = None, frustum_visual: str | CameraFrustumMesh | None = None, default_near_clip: primitives.Float | None = None, default_far_clip: primitives.Float | None = None, frustum_position: str | IField[primitives.Float3] | None = None, frustum_rotation: str | IField[primitives.FloatQ] | None = None, frustum_vertical_fov: str | IField[primitives.Float] | None = None, frustum_horizontal_fov: str | IField[primitives.Float] | None = None, frustum_near: str | IField[primitives.Float] | None = None, frustum_far: str | IField[primitives.Float] | None = None, left_cam_offset: str | IField[primitives.Float3] | None = None, right_cam_offset: str | IField[primitives.Float3] | None = None, left_cam_orientation: str | IField[primitives.FloatQ] | None = None, right_cam_orientation: str | IField[primitives.FloatQ] | None = None, camera_rendering: str | IField[primitives.Bool] | None = None, secondary_camera_rendering: str | IField[primitives.Bool] | None = None, force_visuals_off: primitives.Bool | None = None, auto_hide_proximity: primitives.Float | None = None, positioning_mode: CameraPositioningMode | str | None = None, active_anchor: str | InteractiveCameraAnchor | None = None, anchor_interpolation_speed: primitives.Float | None = None, anchor_linear_interpolation: primitives.Bool | None = None, head_point_offset: primitives.Float3 | None = None, angle_position: primitives.Float | None = None, distance: primitives.Float | None = None, height_offset: primitives.Float | None = None, first_person_pitch: primitives.Float | None = None, first_person_roll: primitives.Float | None = None, first_person_offset: primitives.Float | None = None, group_include_radius: primitives.Float | None = None, group_exclude_radius: primitives.Float | None = None, position_smooth_speed: primitives.Float | None = None, angle_position_smooth_speed: primitives.Float | None = None, framing_smooth_speed: primitives.Float | None = None, wobble_magnitude: primitives.Float3 | None = None, wobble_seed: primitives.Float3 | None = None, wobble_speed: primitives.Float3 | None = None, framing_viewport_position: primitives.Float2 | None = None, avoid_occlusion: primitives.Bool | None = None, occlusion_include_players: primitives.Bool | None = None, occlusion_include_any_colliders: primitives.Bool | None = None, position_stream: str | ValueStream[primitives.Float3] | None = None, rotation_stream: str | ValueStream[primitives.FloatQ] | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, release_position: primitives.Float3 | None = None, release_rotation: primitives.FloatQ | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            camera_mode: Initial value for CameraMode.
             preview_width: Initial value for PreviewWidth.
             preview_height: Initial value for PreviewHeight.
             render_width: Initial value for RenderWidth.
@@ -50,6 +56,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             secondary_camera: Initial value for SecondaryCamera.
             preview_texture: Initial value for PreviewTexture.
             display_material: Initial value for DisplayMaterial.
+            format_: Initial value for Format.
             quality: Initial value for Quality.
             spawn_photo_in_world: Initial value for SpawnPhotoInWorld.
             photo_spawn_point: Initial value for PhotoSpawnPoint.
@@ -85,6 +92,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             secondary_camera_rendering: Initial value for _secondaryCameraRendering.
             force_visuals_off: Initial value for ForceVisualsOff.
             auto_hide_proximity: Initial value for AutoHideProximity.
+            positioning_mode: Initial value for PositioningMode.
             active_anchor: Initial value for ActiveAnchor.
             anchor_interpolation_speed: Initial value for AnchorInterpolationSpeed.
             anchor_linear_interpolation: Initial value for AnchorLinearInterpolation.
@@ -116,6 +124,8 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if camera_mode is not None:
+            self.camera_mode = camera_mode
         if preview_width is not None:
             self.preview_width = preview_width
         if preview_height is not None:
@@ -142,6 +152,8 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             self.preview_texture = preview_texture
         if display_material is not None:
             self.display_material = display_material
+        if format_ is not None:
+            self.format_ = format_
         if quality is not None:
             self.quality = quality
         if spawn_photo_in_world is not None:
@@ -212,6 +224,8 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             self.force_visuals_off = force_visuals_off
         if auto_hide_proximity is not None:
             self.auto_hide_proximity = auto_hide_proximity
+        if positioning_mode is not None:
+            self.positioning_mode = positioning_mode
         if active_anchor is not None:
             self.active_anchor = active_anchor
         if anchor_interpolation_speed is not None:
@@ -270,21 +284,28 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             self.release_rotation = release_rotation
 
     @property
-    def camera_mode(self) -> members.FieldEnum | None:
-        """The CameraMode member."""
+    def camera_mode(self) -> Mode | None:
+        """The mode the camera is in for taking pictures."""
         member = self.get_member("CameraMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Mode(member.value)
         return None
 
     @camera_mode.setter
-    def camera_mode(self, value: members.FieldEnum) -> None:
-        """Set the CameraMode member."""
-        self.set_member("CameraMode", value)
+    def camera_mode(self, value: Mode | str) -> None:
+        """Set CameraMode. The mode the camera is in for taking pictures."""
+        member = self.get_member("CameraMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "CameraMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def preview_width(self) -> primitives.Int | None:
-        """The PreviewWidth field value."""
+        """The width in pixels of the preview image on the camera screen."""
         member = self.get_member("PreviewWidth")
         if member is None:
             return None
@@ -303,7 +324,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def preview_height(self) -> primitives.Int | None:
-        """The PreviewHeight field value."""
+        """The height in pixels of the preview image on the camera screen."""
         member = self.get_member("PreviewHeight")
         if member is None:
             return None
@@ -322,7 +343,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def render_width(self) -> primitives.Int | None:
-        """The RenderWidth field value."""
+        """The output width in pixels of the final picture."""
         member = self.get_member("RenderWidth")
         if member is None:
             return None
@@ -341,7 +362,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def stereo_separation(self) -> primitives.Float | None:
-        """The StereoSeparation field value."""
+        """How far apart the left and right eyes should be when taking a stereo picture."""
         member = self.get_member("StereoSeparation")
         if member is None:
             return None
@@ -360,7 +381,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def timer_interval(self) -> primitives.Float | None:
-        """The TimerInterval field value."""
+        """How long the timer should be for taking a photo."""
         member = self.get_member("TimerInterval")
         if member is None:
             return None
@@ -379,7 +400,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def timer_enabled(self) -> primitives.Bool | None:
-        """The TimerEnabled field value."""
+        """Whether the timer mode for taking pictures is enabled."""
         member = self.get_member("TimerEnabled")
         if member is None:
             return None
@@ -398,7 +419,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def timer_count_indicator(self) -> str | None:
-        """Target ID of the TimerCountIndicator reference (targets IField[primitives.String])."""
+        """The string field to drive with the amount of seconds remaining in the current picture countdown indicator."""
         member = self.get_member("TimerCountIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -419,7 +440,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def timer_color_indicator(self) -> str | None:
-        """Target ID of the TimerColorIndicator reference (targets IField[primitives.ColorX])."""
+        """The color field to drive with the indicator color of the current photo countdown timer."""
         member = self.get_member("TimerColorIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -440,7 +461,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def timer_user(self) -> str | None:
-        """Target ID of the _timerUser reference (targets User)."""
+        """The user that is handling taking the photo and doing the timer countdown."""
         member = self.get_member("_timerUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -461,7 +482,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def main_camera(self) -> str | None:
-        """Target ID of the MainCamera reference (targets Camera)."""
+        """The main camera being used to preview photos to the screen and render them."""
         member = self.get_member("MainCamera")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -482,7 +503,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def secondary_camera(self) -> str | None:
-        """Target ID of the SecondaryCamera reference (targets Camera)."""
+        """The secondary alt camera being used to take photos and render them to the screen."""
         member = self.get_member("SecondaryCamera")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -503,7 +524,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def preview_texture(self) -> str | None:
-        """Target ID of the PreviewTexture reference (targets RenderTextureProvider)."""
+        """The texture that is being rendered to for the camera screen preview on the back of the camera."""
         member = self.get_member("PreviewTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -524,7 +545,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def display_material(self) -> str | None:
-        """Target ID of the DisplayMaterial reference (targets IStereoMaterial)."""
+        """The material being used to display the camera preview."""
         member = self.get_member("DisplayMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -544,21 +565,28 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     @property
-    def format_(self) -> members.FieldEnum | None:
-        """The Format member."""
+    def format_(self) -> EncodeFormat | None:
+        """In what image type to take pictures in."""
         member = self.get_member("Format")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return EncodeFormat(member.value)
         return None
 
     @format_.setter
-    def format_(self, value: members.FieldEnum) -> None:
-        """Set the Format member."""
-        self.set_member("Format", value)
+    def format_(self, value: EncodeFormat | str) -> None:
+        """Set Format. In what image type to take pictures in."""
+        member = self.get_member("Format")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Format",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def quality(self) -> primitives.Float | None:
-        """The Quality field value."""
+        """The quality encoding for taken pictures."""
         member = self.get_member("Quality")
         if member is None:
             return None
@@ -577,7 +605,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def spawn_photo_in_world(self) -> primitives.Bool | None:
-        """The SpawnPhotoInWorld field value."""
+        """Whether to spawn taken photos into the world."""
         member = self.get_member("SpawnPhotoInWorld")
         if member is None:
             return None
@@ -596,7 +624,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def photo_spawn_point(self) -> str | None:
-        """Target ID of the PhotoSpawnPoint reference (targets Slot)."""
+        """Where to spawn photos and parent them when they are printed out."""
         member = self.get_member("PhotoSpawnPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -617,7 +645,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def photo_spawn_size(self) -> primitives.Float | None:
-        """The PhotoSpawnSize field value."""
+        """How big to spawn the photos."""
         member = self.get_member("PhotoSpawnSize")
         if member is None:
             return None
@@ -636,7 +664,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def panorama_indicator(self) -> str | None:
-        """Target ID of the PanoramaIndicator reference (targets Slot)."""
+        """the slot that holds the panorama indicator visual."""
         member = self.get_member("PanoramaIndicator")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -657,7 +685,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def panorama_indicator_size(self) -> str | None:
-        """Target ID of the PanoramaIndicatorSize reference (targets IField[primitives.Float3])."""
+        """The field to drive so the camera can change the Panorama indicator visual size."""
         member = self.get_member("PanoramaIndicatorSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -678,7 +706,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def object_target_source(self) -> str | None:
-        """Target ID of the ObjectTargetSource reference (targets Slot)."""
+        """The slot to shoot a raycast from for selective rendering a camera when doing the selective object mode."""
         member = self.get_member("ObjectTargetSource")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -699,7 +727,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def object_target_source_active(self) -> str | None:
-        """Target ID of the ObjectTargetSourceActive reference (targets IField[primitives.Bool])."""
+        """The active field of the object target source Laser visual"""
         member = self.get_member("ObjectTargetSourceActive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -720,7 +748,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def object_auto_pose(self) -> primitives.Bool | None:
-        """The ObjectAutoPose field value."""
+        """Whether to automatically adjust the camera to look at the targeted object."""
         member = self.get_member("ObjectAutoPose")
         if member is None:
             return None
@@ -739,7 +767,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def hide_lasers_on_capture(self) -> primitives.Bool | None:
-        """The HideLasersOnCapture field value."""
+        """Whether to hide user lasers when taking photos."""
         member = self.get_member("HideLasersOnCapture")
         if member is None:
             return None
@@ -758,7 +786,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def capture_sound(self) -> str | None:
-        """Target ID of the CaptureSound reference (targets IAssetProvider[AudioClip])."""
+        """The audio clip to play when taking photos."""
         member = self.get_member("CaptureSound")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -779,7 +807,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def timer_start_sound(self) -> str | None:
-        """Target ID of the TimerStartSound reference (targets IAssetProvider[AudioClip])."""
+        """The audio to play when a photo countdown timer starts."""
         member = self.get_member("TimerStartSound")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -800,7 +828,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def timer_countdown_slow_player(self) -> str | None:
-        """Target ID of the TimerCountdownSlowPlayer reference (targets AudioClipPlayer)."""
+        """The audio to play when the photo countdown timer is just starting and is counting down."""
         member = self.get_member("TimerCountdownSlowPlayer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -821,7 +849,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def timer_countdown_fast_player(self) -> str | None:
-        """Target ID of the TimerCountdownFastPlayer reference (targets AudioClipPlayer)."""
+        """The audio to play as the timer for the photo countdown timer is reaching completion."""
         member = self.get_member("TimerCountdownFastPlayer")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -842,7 +870,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def timer_countdown_slow_output(self) -> str | None:
-        """Target ID of the TimerCountdownSlowOutput reference (targets AudioOutput)."""
+        """The audio output component that plays the ``TimerCountdownSlowPlayer``."""
         member = self.get_member("TimerCountdownSlowOutput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -863,7 +891,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def timer_countdown_fast_output(self) -> str | None:
-        """Target ID of the TimerCountdownFastOutput reference (targets AudioOutput)."""
+        """The audio output component that plays the ``TimerCountdownFastPlayer``."""
         member = self.get_member("TimerCountdownFastOutput")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -884,7 +912,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def preview_scale(self) -> primitives.Float2 | None:
-        """The PreviewScale field value."""
+        """How big the preview display above the camera should be."""
         member = self.get_member("PreviewScale")
         if member is None:
             return None
@@ -903,7 +931,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def camera_model_override(self) -> primitives.String | None:
-        """The CameraModelOverride field value."""
+        """Overrides the text for what kind of camera took a photo generated by this component in the metadata."""
         member = self.get_member("CameraModelOverride")
         if member is None:
             return None
@@ -922,7 +950,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frustum_visual(self) -> str | None:
-        """Target ID of the FrustumVisual reference (targets CameraFrustumMesh)."""
+        """The mesh that is used to show the camera fustrum"""
         member = self.get_member("FrustumVisual")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -943,7 +971,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def default_near_clip(self) -> primitives.Float | None:
-        """The DefaultNearClip field value."""
+        """The default nearclip to be used with the camera."""
         member = self.get_member("DefaultNearClip")
         if member is None:
             return None
@@ -962,7 +990,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def default_far_clip(self) -> primitives.Float | None:
-        """The DefaultFarClip field value."""
+        """The default farclip to be used with the camera."""
         member = self.get_member("DefaultFarClip")
         if member is None:
             return None
@@ -981,7 +1009,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frustum_position(self) -> str | None:
-        """Target ID of the _frustumPosition reference (targets IField[primitives.Float3])."""
+        """The field to drive with position of the fustrum visual."""
         member = self.get_member("_frustumPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1002,7 +1030,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frustum_rotation(self) -> str | None:
-        """Target ID of the _frustumRotation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive with the rotation of the fustrum visual."""
         member = self.get_member("_frustumRotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1023,7 +1051,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frustum_vertical_fov(self) -> str | None:
-        """Target ID of the _frustumVerticalFOV reference (targets IField[primitives.Float])."""
+        """The field to drive with the vertical field view angle of the fustrum mesh."""
         member = self.get_member("_frustumVerticalFOV")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1044,7 +1072,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frustum_horizontal_fov(self) -> str | None:
-        """Target ID of the _frustumHorizontalFOV reference (targets IField[primitives.Float])."""
+        """The field to drive with the horizontal field view angle of the fustrum mesh."""
         member = self.get_member("_frustumHorizontalFOV")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1065,7 +1093,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frustum_near(self) -> str | None:
-        """Target ID of the _frustumNear reference (targets IField[primitives.Float])."""
+        """The field to drive with the nearclip of the fustrum mesh."""
         member = self.get_member("_frustumNear")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1086,7 +1114,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frustum_far(self) -> str | None:
-        """Target ID of the _frustumFar reference (targets IField[primitives.Float])."""
+        """The field to drive with the farclip of the fustrum mesh."""
         member = self.get_member("_frustumFar")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1107,7 +1135,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def left_cam_offset(self) -> str | None:
-        """Target ID of the _leftCamOffset reference (targets IField[primitives.Float3])."""
+        """The field to drive with the offset of the left camera for stero images."""
         member = self.get_member("_leftCamOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1128,7 +1156,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def right_cam_offset(self) -> str | None:
-        """Target ID of the _rightCamOffset reference (targets IField[primitives.Float3])."""
+        """The field to drive with the offset of the right camera for stero images."""
         member = self.get_member("_rightCamOffset")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1149,7 +1177,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def left_cam_orientation(self) -> str | None:
-        """Target ID of the _leftCamOrientation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive with the rotation of the left camera for stero images."""
         member = self.get_member("_leftCamOrientation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1170,7 +1198,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def right_cam_orientation(self) -> str | None:
-        """Target ID of the _rightCamOrientation reference (targets IField[primitives.FloatQ])."""
+        """The field to drive with the rotation of the right camera for stero images."""
         member = self.get_member("_rightCamOrientation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1191,7 +1219,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def camera_rendering(self) -> str | None:
-        """Target ID of the _cameraRendering reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether the main camera should be enabled and rendering."""
         member = self.get_member("_cameraRendering")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1212,7 +1240,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def secondary_camera_rendering(self) -> str | None:
-        """Target ID of the _secondaryCameraRendering reference (targets IField[primitives.Bool])."""
+        """The field to drive with whether the secondary camera should be enabled and rendering."""
         member = self.get_member("_secondaryCameraRendering")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1233,7 +1261,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def exclusive_operators(self) -> members.SyncList | None:
-        """The ExclusiveOperators member."""
+        """The users that should be excluded from taken photos due to their privacy settings."""
         member = self.get_member("ExclusiveOperators")
         if isinstance(member, members.SyncList):
             return member
@@ -1241,12 +1269,12 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @exclusive_operators.setter
     def exclusive_operators(self, value: members.SyncList) -> None:
-        """Set the ExclusiveOperators member."""
+        """Set ExclusiveOperators. The users that should be excluded from taken photos due to their privacy settings."""
         self.set_member("ExclusiveOperators", value)
 
     @property
     def control_active_fields(self) -> members.SyncList | None:
-        """The ControlActiveFields member."""
+        """A list of booleans to drive to whether this camera is being auto moved by control rather than manual positioning."""
         member = self.get_member("ControlActiveFields")
         if isinstance(member, members.SyncList):
             return member
@@ -1254,12 +1282,12 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @control_active_fields.setter
     def control_active_fields(self, value: members.SyncList) -> None:
-        """Set the ControlActiveFields member."""
+        """Set ControlActiveFields. A list of booleans to drive to whether this camera is being auto moved by control rather than manual positioning."""
         self.set_member("ControlActiveFields", value)
 
     @property
     def render_only_for_users(self) -> members.SyncList | None:
-        """The RenderOnlyForUsers member."""
+        """The users that should only appear in the photo and exlude everyone else."""
         member = self.get_member("RenderOnlyForUsers")
         if isinstance(member, members.SyncList):
             return member
@@ -1267,12 +1295,12 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @render_only_for_users.setter
     def render_only_for_users(self, value: members.SyncList) -> None:
-        """Set the RenderOnlyForUsers member."""
+        """Set RenderOnlyForUsers. The users that should only appear in the photo and exlude everyone else."""
         self.set_member("RenderOnlyForUsers", value)
 
     @property
     def force_visuals_off(self) -> primitives.Bool | None:
-        """The ForceVisualsOff field value."""
+        """Whether to force this camera's visuals to off."""
         member = self.get_member("ForceVisualsOff")
         if member is None:
             return None
@@ -1291,7 +1319,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def visual_active_fields(self) -> members.SyncList | None:
-        """The VisualActiveFields member."""
+        """A list of boolean fields to drive for the visuals of this camera."""
         member = self.get_member("VisualActiveFields")
         if isinstance(member, members.SyncList):
             return member
@@ -1299,12 +1327,12 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @visual_active_fields.setter
     def visual_active_fields(self, value: members.SyncList) -> None:
-        """Set the VisualActiveFields member."""
+        """Set VisualActiveFields. A list of boolean fields to drive for the visuals of this camera."""
         self.set_member("VisualActiveFields", value)
 
     @property
     def auto_hide_proximity(self) -> primitives.Float | None:
-        """The AutoHideProximity field value."""
+        """How close the camera can be before it hides itself for the local user."""
         member = self.get_member("AutoHideProximity")
         if member is None:
             return None
@@ -1323,7 +1351,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def force_eye_attention_users(self) -> members.SyncList | None:
-        """The ForceEyeAttentionUsers member."""
+        """The list of users to force their eyes to look at the camera."""
         member = self.get_member("ForceEyeAttentionUsers")
         if isinstance(member, members.SyncList):
             return member
@@ -1331,12 +1359,12 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @force_eye_attention_users.setter
     def force_eye_attention_users(self, value: members.SyncList) -> None:
-        """Set the ForceEyeAttentionUsers member."""
+        """Set ForceEyeAttentionUsers. The list of users to force their eyes to look at the camera."""
         self.set_member("ForceEyeAttentionUsers", value)
 
     @property
     def simulating_user(self) -> members.SyncObject | None:
-        """The SimulatingUser member."""
+        """The user that is handling the processing for this camera."""
         member = self.get_member("SimulatingUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -1344,12 +1372,12 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @simulating_user.setter
     def simulating_user(self, value: members.SyncObject) -> None:
-        """Set the SimulatingUser member."""
+        """Set SimulatingUser. The user that is handling the processing for this camera."""
         self.set_member("SimulatingUser", value)
 
     @property
     def destroy_on_user_leave(self) -> members.SyncObject | None:
-        """The DestroyOnUserLeave member."""
+        """The user that when leaving will trigger the destruction of this camera."""
         member = self.get_member("DestroyOnUserLeave")
         if isinstance(member, members.SyncObject):
             return member
@@ -1357,25 +1385,32 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @destroy_on_user_leave.setter
     def destroy_on_user_leave(self, value: members.SyncObject) -> None:
-        """Set the DestroyOnUserLeave member."""
+        """Set DestroyOnUserLeave. The user that when leaving will trigger the destruction of this camera."""
         self.set_member("DestroyOnUserLeave", value)
 
     @property
-    def positioning_mode(self) -> members.FieldEnum | None:
-        """The PositioningMode member."""
+    def positioning_mode(self) -> CameraPositioningMode | None:
+        """How the camera should position itself."""
         member = self.get_member("PositioningMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CameraPositioningMode(member.value)
         return None
 
     @positioning_mode.setter
-    def positioning_mode(self, value: members.FieldEnum) -> None:
-        """Set the PositioningMode member."""
-        self.set_member("PositioningMode", value)
+    def positioning_mode(self, value: CameraPositioningMode | str) -> None:
+        """Set PositioningMode. How the camera should position itself."""
+        member = self.get_member("PositioningMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "PositioningMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def active_anchor(self) -> str | None:
-        """Target ID of the ActiveAnchor reference (targets InteractiveCameraAnchor)."""
+        """The current camera anchor this camera is on."""
         member = self.get_member("ActiveAnchor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1396,7 +1431,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def anchor_interpolation_speed(self) -> primitives.Float | None:
-        """The AnchorInterpolationSpeed field value."""
+        """How fast to move between anchors."""
         member = self.get_member("AnchorInterpolationSpeed")
         if member is None:
             return None
@@ -1415,7 +1450,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def anchor_linear_interpolation(self) -> primitives.Bool | None:
-        """The AnchorLinearInterpolation field value."""
+        """Whether the camera should move between anchors in a linear speed fashion."""
         member = self.get_member("AnchorLinearInterpolation")
         if member is None:
             return None
@@ -1434,7 +1469,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def frame_target_user(self) -> members.SyncObject | None:
-        """The FrameTargetUser member."""
+        """The user to frame in the shot."""
         member = self.get_member("FrameTargetUser")
         if isinstance(member, members.SyncObject):
             return member
@@ -1442,12 +1477,12 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @frame_target_user.setter
     def frame_target_user(self, value: members.SyncObject) -> None:
-        """Set the FrameTargetUser member."""
+        """Set FrameTargetUser. The user to frame in the shot."""
         self.set_member("FrameTargetUser", value)
 
     @property
     def head_point_offset(self) -> primitives.Float3 | None:
-        """The HeadPointOffset field value."""
+        """How much to add an offset to a user's head when targeting it."""
         member = self.get_member("HeadPointOffset")
         if member is None:
             return None
@@ -1466,7 +1501,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def angle_position(self) -> primitives.Float | None:
-        """The AnglePosition field value."""
+        """tilt of the camera side to side"""
         member = self.get_member("AnglePosition")
         if member is None:
             return None
@@ -1485,7 +1520,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def distance(self) -> primitives.Float | None:
-        """The Distance field value."""
+        """How far away to stay from a subject during auto tracking."""
         member = self.get_member("Distance")
         if member is None:
             return None
@@ -1504,7 +1539,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def height_offset(self) -> primitives.Float | None:
-        """The HeightOffset field value."""
+        """How much offset to add to targeting a user's head vertically."""
         member = self.get_member("HeightOffset")
         if member is None:
             return None
@@ -1523,7 +1558,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def first_person_pitch(self) -> primitives.Float | None:
-        """The FirstPersonPitch field value."""
+        """The current first person rotation transform pitch."""
         member = self.get_member("FirstPersonPitch")
         if member is None:
             return None
@@ -1542,7 +1577,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def first_person_roll(self) -> primitives.Float | None:
-        """The FirstPersonRoll field value."""
+        """The current first person rotation transform roll."""
         member = self.get_member("FirstPersonRoll")
         if member is None:
             return None
@@ -1561,7 +1596,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def first_person_offset(self) -> primitives.Float | None:
-        """The FirstPersonOffset field value."""
+        """The offset forward or backwards in first person currently."""
         member = self.get_member("FirstPersonOffset")
         if member is None:
             return None
@@ -1580,7 +1615,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def group_include_radius(self) -> primitives.Float | None:
-        """The GroupIncludeRadius field value."""
+        """How close a user needs to be to others to be in a group."""
         member = self.get_member("GroupIncludeRadius")
         if member is None:
             return None
@@ -1599,7 +1634,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def group_exclude_radius(self) -> primitives.Float | None:
-        """The GroupExcludeRadius field value."""
+        """How far a user needs to move from a group before they are removed as being part of a group."""
         member = self.get_member("GroupExcludeRadius")
         if member is None:
             return None
@@ -1618,7 +1653,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def force_group_include(self) -> members.SyncList | None:
-        """The ForceGroupInclude member."""
+        """A list of users to force include into the target group."""
         member = self.get_member("ForceGroupInclude")
         if isinstance(member, members.SyncList):
             return member
@@ -1626,12 +1661,12 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @force_group_include.setter
     def force_group_include(self, value: members.SyncList) -> None:
-        """Set the ForceGroupInclude member."""
+        """Set ForceGroupInclude. A list of users to force include into the target group."""
         self.set_member("ForceGroupInclude", value)
 
     @property
     def force_group_exclude(self) -> members.SyncList | None:
-        """The ForceGroupExclude member."""
+        """A list of users to force exclude from the target group."""
         member = self.get_member("ForceGroupExclude")
         if isinstance(member, members.SyncList):
             return member
@@ -1639,12 +1674,12 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @force_group_exclude.setter
     def force_group_exclude(self, value: members.SyncList) -> None:
-        """Set the ForceGroupExclude member."""
+        """Set ForceGroupExclude. A list of users to force exclude from the target group."""
         self.set_member("ForceGroupExclude", value)
 
     @property
     def position_smooth_speed(self) -> primitives.Float | None:
-        """The PositionSmoothSpeed field value."""
+        """The smooth speed of the camera's position during auto tracking."""
         member = self.get_member("PositionSmoothSpeed")
         if member is None:
             return None
@@ -1663,7 +1698,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def angle_position_smooth_speed(self) -> primitives.Float | None:
-        """The AnglePositionSmoothSpeed field value."""
+        """The smooth speed of the camera's angle position during auto tracking."""
         member = self.get_member("AnglePositionSmoothSpeed")
         if member is None:
             return None
@@ -1682,7 +1717,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def framing_smooth_speed(self) -> primitives.Float | None:
-        """The FramingSmoothSpeed field value."""
+        """The smooth speed of the camera's position during auto tracking for framing."""
         member = self.get_member("FramingSmoothSpeed")
         if member is None:
             return None
@@ -1701,7 +1736,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def wobble_magnitude(self) -> primitives.Float3 | None:
-        """The WobbleMagnitude field value."""
+        """How much the camera's position should randomly wobble."""
         member = self.get_member("WobbleMagnitude")
         if member is None:
             return None
@@ -1720,7 +1755,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def wobble_seed(self) -> primitives.Float3 | None:
-        """The WobbleSeed field value."""
+        """The seed of the randomization algorithm of the camera's wobble."""
         member = self.get_member("WobbleSeed")
         if member is None:
             return None
@@ -1739,7 +1774,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def wobble_speed(self) -> primitives.Float3 | None:
-        """The WobbleSpeed field value."""
+        """How fast the camera should randomly wobble."""
         member = self.get_member("WobbleSpeed")
         if member is None:
             return None
@@ -1758,7 +1793,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def framing_viewport_position(self) -> primitives.Float2 | None:
-        """The FramingViewportPosition field value."""
+        """Where to frame the target object in the viewport of the camera rather than the center of the image."""
         member = self.get_member("FramingViewportPosition")
         if member is None:
             return None
@@ -1777,7 +1812,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def avoid_occlusion(self) -> primitives.Bool | None:
-        """The AvoidOcclusion field value."""
+        """Whether to take target player(s) colliders into account when framing users. Can help with clipping off arms or legs."""
         member = self.get_member("AvoidOcclusion")
         if member is None:
             return None
@@ -1796,7 +1831,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def occlusion_include_players(self) -> primitives.Bool | None:
-        """The OcclusionIncludePlayers field value."""
+        """Whether occlusion should try to keep players in view."""
         member = self.get_member("OcclusionIncludePlayers")
         if member is None:
             return None
@@ -1815,7 +1850,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def occlusion_include_any_colliders(self) -> primitives.Bool | None:
-        """The OcclusionIncludeAnyColliders field value."""
+        """Whether the occlusion should include any collider. If false, ignores character colliders."""
         member = self.get_member("OcclusionIncludeAnyColliders")
         if member is None:
             return None
@@ -1834,7 +1869,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def position_stream(self) -> str | None:
-        """Target ID of the _positionStream reference (targets ValueStream[primitives.Float3])."""
+        """The stream of the position data for this camera when auto tracking."""
         member = self.get_member("_positionStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1855,7 +1890,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def rotation_stream(self) -> str | None:
-        """Target ID of the _rotationStream reference (targets ValueStream[primitives.FloatQ])."""
+        """The stream of the rotation data for this camera when auto tracking."""
         member = self.get_member("_rotationStream")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1876,7 +1911,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def position_drive(self) -> str | None:
-        """Target ID of the _positionDrive reference (targets IField[primitives.Float3])."""
+        """The field to drive for the position of the camera when auto tracking."""
         member = self.get_member("_positionDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1897,7 +1932,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def rotation_drive(self) -> str | None:
-        """Target ID of the _rotationDrive reference (targets IField[primitives.FloatQ])."""
+        """The field to drive for the rotation of the camera when auto tracking."""
         member = self.get_member("_rotationDrive")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -1918,7 +1953,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def release_position(self) -> primitives.Float3 | None:
-        """The _releasePosition field value."""
+        """The position at the time ``_positionDrive`` became null."""
         member = self.get_member("_releasePosition")
         if member is None:
             return None
@@ -1937,7 +1972,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
 
     @property
     def release_rotation(self) -> primitives.FloatQ | None:
-        """The _releaseRotation field value."""
+        """The rotation at the time ``_rotationDrive`` became null."""
         member = self.get_member("_releaseRotation")
         if member is None:
             return None
@@ -1955,7 +1990,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
             )
 
     async def trigger(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Trigger sync method.
+        """Tells camera to take photo as if the user pressed the picture button themselves.
 
         Returns:
             The raw JSON response dict.
@@ -1965,7 +2000,7 @@ class InteractiveCamera(GeneratedComponent, ITriggerActionReceiver, IGrabbableRe
         )
 
     async def capture(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Capture sync method.
+        """Tells the camera to instantly take a photo.
 
         Returns:
             The raw JSON response dict.

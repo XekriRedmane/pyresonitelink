@@ -1,0 +1,16 @@
+{
+  "description": "Avatar Mouth Data Source Assigner is a component that is able to assign a mouth tracking source to a field that accepts it.",
+  "category": "Users:Common Avatar System:Face",
+  "fields": {
+    "TargetReference": "A field that accepts a mouth tracking source (like ``DataSource`` on the Avatar Expression Driver Component) to assign a tracking source to."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "This component is triggered when a user equips an avatar that has this component as part of the hierarchy. The user that equipped the avatar needs to have an active mouth data source on their client, such as a Vive facial tracker, or using a mod that creates a source for mouth tracking (like VRCFTReceiver)"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarMouthDataSourceAssigner&action=raw"
+}

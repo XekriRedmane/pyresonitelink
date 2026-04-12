@@ -14,9 +14,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AudioStreamInterface(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AudioStreamInterface.
+    """The AudioStreamInterface component is used on AudioStream objects that are spawned in by the user via the dash to allow the engine to interface with the stored audio stream.
+
+This is a favorite-able item. See Favorites.
 
     Category: Utility/Entity Interfaces
+
+    Can be used to make your own audio stream player interface as an
+    inventory favorite
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioStreamInterface"
@@ -55,7 +60,7 @@ class AudioStreamInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[primitives.String])."""
+        """The name of the stream like Frooxius's Stream"""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -76,7 +81,7 @@ class AudioStreamInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user(self) -> str | None:
-        """Target ID of the SpawningUser reference (targets UserRef)."""
+        """The user that spawned the stream"""
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -97,7 +102,7 @@ class AudioStreamInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
+        """The userid field of the ``SpawningUser``"""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -118,7 +123,7 @@ class AudioStreamInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def is_instance(self) -> primitives.Bool | None:
-        """The IsInstance field value."""
+        """Whether this interface is being edited or is part of a spawned audio stream."""
         member = self.get_member("IsInstance")
         if member is None:
             return None
@@ -137,7 +142,7 @@ class AudioStreamInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets SyncRef[IAudioStream])."""
+        """The audio stream this interfaces with"""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -158,7 +163,7 @@ class AudioStreamInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def bitrate(self) -> str | None:
-        """Target ID of the Bitrate reference (targets IField[primitives.Int])."""
+        """The Bitrate setting of the spawned audiostream interface (like a UIX)"""
         member = self.get_member("Bitrate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -179,7 +184,7 @@ class AudioStreamInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def volume(self) -> str | None:
-        """Target ID of the Volume reference (targets IField[primitives.Float])."""
+        """The Volume slider/setting of the spawned audio stream interface (like a UIX)"""
         member = self.get_member("Volume")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -200,7 +205,7 @@ class AudioStreamInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
 
     @property
     def spatialize(self) -> str | None:
-        """Target ID of the Spatialize reference (targets IField[primitives.Bool])."""
+        """The Spatialize setting of the spawned audio stream interface (like a UIX)"""
         member = self.get_member("Spatialize")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,9 +10,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextureExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextureExportable.
+    """The TextureExportable allows you to make a StaticTexture2D exportable through the files page in the dash menu.
+
+To export using this component, look at the file browser export section.
 
     Category: Assets/Export
+
+    To use this component attach it to an object, than reference a Texture2D
+    in the ``Texture`` field.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextureExportable"
@@ -30,7 +35,7 @@ class TextureExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
 
     @property
     def texture(self) -> str | None:
-        """Target ID of the Texture reference (targets IAssetProvider[Texture2D])."""
+        """The texture to be exported."""
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             return member.targetId

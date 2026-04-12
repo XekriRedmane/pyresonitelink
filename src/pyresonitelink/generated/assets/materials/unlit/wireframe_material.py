@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.zwrite import ZWrite
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -14,14 +15,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WireframeMaterial.
+    """Wireframe material is a material that can be used to see the edges of the polygons in a mesh. This does not show the polygons of a text renderer.
 
     Category: Assets/Materials/Unlit
+
+    This is useful for debugging or making retro scenes. Simply apply this
+    material to any skinned or mesh renderer's material slot to see that
+    material assignment render this material style.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WireframeMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, thickness: primitives.Float | None = None, screen_space: primitives.Bool | None = None, line_color: primitives.ColorX | None = None, fill_color: primitives.ColorX | None = None, inner_line_color: primitives.ColorX | None = None, inner_fill_color: primitives.ColorX | None = None, use_fresnel: primitives.Bool | None = None, line_far_color: primitives.ColorX | None = None, fill_far_color: primitives.ColorX | None = None, inner_line_far_color: primitives.ColorX | None = None, inner_fill_far_color: primitives.ColorX | None = None, exp: primitives.Float | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, double_sided: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, regular: str | IAssetProvider[Shader] | None = None, regular_double_sided: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, thickness: primitives.Float | None = None, screen_space: primitives.Bool | None = None, line_color: primitives.ColorX | None = None, fill_color: primitives.ColorX | None = None, inner_line_color: primitives.ColorX | None = None, inner_fill_color: primitives.ColorX | None = None, use_fresnel: primitives.Bool | None = None, line_far_color: primitives.ColorX | None = None, fill_far_color: primitives.ColorX | None = None, inner_line_far_color: primitives.ColorX | None = None, inner_fill_far_color: primitives.ColorX | None = None, exp: primitives.Float | None = None, texture: str | IAssetProvider[ITexture2D] | None = None, zwrite: ZWrite | str | None = None, double_sided: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, regular: str | IAssetProvider[Shader] | None = None, regular_double_sided: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,6 +44,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
             inner_fill_far_color: Initial value for InnerFillFarColor.
             exp: Initial value for Exp.
             texture: Initial value for Texture.
+            zwrite: Initial value for ZWrite.
             double_sided: Initial value for DoubleSided.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
@@ -76,6 +82,8 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
             self.exp = exp
         if texture is not None:
             self.texture = texture
+        if zwrite is not None:
+            self.zwrite = zwrite
         if double_sided is not None:
             self.double_sided = double_sided
         if offset_factor is not None:
@@ -358,17 +366,24 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
             )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def double_sided(self) -> primitives.Bool | None:

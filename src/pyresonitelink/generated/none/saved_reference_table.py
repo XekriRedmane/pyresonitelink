@@ -7,14 +7,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SavedReferenceTable(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SavedReferenceTable.
+    """Used solely by SpawnOrDestroy to store the data of a destroyed object to restore later.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SavedReferenceTable"
 
     @property
     def table(self) -> members.SyncDictionary | None:
-        """The Table member."""
+        """The table to save destroyed object data."""
         member = self.get_member("Table")
         if isinstance(member, members.SyncDictionary):
             return member
@@ -22,6 +22,6 @@ class SavedReferenceTable(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @table.setter
     def table(self, value: members.SyncDictionary) -> None:
-        """Set the Table member."""
+        """Set Table. The table to save destroyed object data."""
         self.set_member("Table", value)
 

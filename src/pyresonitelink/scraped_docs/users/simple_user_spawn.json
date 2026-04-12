@@ -1,0 +1,14 @@
+{
+  "description": "A SimpleUserSpawn defines a simple spawn point.",
+  "category": "Users",
+  "fields": {},
+  "methods": {},
+  "usage": "A SimpleUserSpawn defines a simple spawn point. New and respawning users will be placed with their avatar as a child of the world's root at ``0,0,0``, facing the Z- direction. The position and rotation of this component's slot have no bearing on the user's position or rotation.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* SpawnArc\n* CommonSpawnArea"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SimpleUserSpawn&action=raw"
+}

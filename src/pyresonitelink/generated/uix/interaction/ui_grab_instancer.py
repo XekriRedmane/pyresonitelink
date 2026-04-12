@@ -11,9 +11,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.UIGrabInstancer.
+    """The UIGrabInstancer component allows users to instance items from UIX elements from a template a user provides.
+
+}}
 
     Category: UIX/Interaction
+
+    Useful for making copies of items you referenced, but specifically from
+    the UIX panels you have.
+
+    **History**: The UIGrabInstancer was added in Beta 2024.4.15.1407.
+
+    **Related Components**: * GrabInstancer is similar to this component, but uses the grab feature in Resonite to make a copy of an item template.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.UIGrabInstancer"
@@ -46,7 +55,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
 
     @property
     def template(self) -> str | None:
-        """Target ID of the Template reference (targets Slot)."""
+        """The slot that gets duplicated and grabbed when the GrabInstancer is grabbed."""
         member = self.get_member("Template")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -67,7 +76,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
 
     @property
     def container_template(self) -> str | None:
-        """Target ID of the ContainerTemplate reference (targets Slot)."""
+        """Helps let you compose the duplicate"""
         member = self.get_member("ContainerTemplate")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -88,7 +97,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
 
     @property
     def container_template_instance_root(self) -> str | None:
-        """Target ID of the ContainerTemplateInstanceRoot reference (targets Slot)."""
+        """Helps let you compose the duplicate"""
         member = self.get_member("ContainerTemplateInstanceRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -109,7 +118,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
 
     @property
     def activate_root(self) -> primitives.Bool | None:
-        """The ActivateRoot field value."""
+        """Whether or not the GrabInstancer should activate the newly duplicated slot."""
         member = self.get_member("ActivateRoot")
         if member is None:
             return None
@@ -128,7 +137,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
 
     @property
     def enable_grabbable(self) -> primitives.Bool | None:
-        """The EnableGrabbable field value."""
+        """Whether or not the GrabInstancer should activate any Grabbable component on the newly duplicated slot."""
         member = self.get_member("EnableGrabbable")
         if member is None:
             return None
@@ -147,7 +156,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
 
     @property
     def set_instance_persistent(self) -> primitives.Bool | None:
-        """The SetInstancePersistent field value."""
+        """Persistence of the instance"""
         member = self.get_member("SetInstancePersistent")
         if member is None:
             return None
@@ -166,7 +175,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
 
     @property
     def excluded_parts(self) -> members.SyncList | None:
-        """The ExcludedParts member."""
+        """Slots will be skipped while duplicating"""
         member = self.get_member("ExcludedParts")
         if isinstance(member, members.SyncList):
             return member
@@ -174,6 +183,6 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
 
     @excluded_parts.setter
     def excluded_parts(self, value: members.SyncList) -> None:
-        """Set the ExcludedParts member."""
+        """Set ExcludedParts. Slots will be skipped while duplicating"""
         self.set_member("ExcludedParts", value)
 

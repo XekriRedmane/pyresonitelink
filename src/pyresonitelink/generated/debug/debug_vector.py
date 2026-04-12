@@ -9,7 +9,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugVector(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugVector.
+    """The DebugVector component shows a vector using a thin line.
 
     Category: Debug
     """
@@ -41,7 +41,7 @@ class DebugVector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def position_offset(self) -> primitives.Float3 | None:
-        """The PositionOffset field value."""
+        """the position offset for the entire Debug visual."""
         member = self.get_member("PositionOffset")
         if member is None:
             return None
@@ -60,7 +60,7 @@ class DebugVector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation_offset(self) -> primitives.FloatQ | None:
-        """The RotationOffset field value."""
+        """The rotation Offset for the entire Debug visual."""
         member = self.get_member("RotationOffset")
         if member is None:
             return None
@@ -79,7 +79,7 @@ class DebugVector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def vector(self) -> primitives.Float3 | None:
-        """The Vector field value."""
+        """the vector to debug."""
         member = self.get_member("Vector")
         if member is None:
             return None
@@ -98,7 +98,7 @@ class DebugVector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def color(self) -> primitives.ColorX | None:
-        """The Color field value."""
+        """The color of the debug vector line."""
         member = self.get_member("Color")
         if member is None:
             return None
@@ -117,7 +117,7 @@ class DebugVector(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def use_global_space(self) -> primitives.Bool | None:
-        """The UseGlobalSpace field value."""
+        """Whether the vector is in global space or not."""
         member = self.get_member("UseGlobalSpace")
         if member is None:
             return None

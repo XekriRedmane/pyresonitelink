@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicReferenceVariableDriver(GenericComponent[T], IDynamicVariable[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicReferenceVariableDriver<>.
+    """The DynamicReferenceVariableDriver component can drive a SyncRef`1 (Reference Holder) to the value assigned to a dynamic variable with the name ``VariableName``. if the specified variable cannot be found, the value will revert to ``DefaultTarget`` how this works is explained on Dynamic Variables page.
 
     Category: Data/Dynamic
 
@@ -63,7 +63,7 @@ class DynamicReferenceVariableDriver(GenericComponent[T], IDynamicVariable[T], I
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets SyncRef[T])."""
+        """The field to drive with the variable definition."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId

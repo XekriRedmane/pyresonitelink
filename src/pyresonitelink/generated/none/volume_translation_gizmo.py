@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VolumeTranslationGizmo.
+    """The VolumeTranslationGizmo component is used to move around and edit a volume object.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VolumeTranslationGizmo"
@@ -78,7 +78,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def target_slot(self) -> str | None:
-        """Target ID of the TargetSlot reference (targets Slot)."""
+        """The slot to influence or a component this is on."""
         member = self.get_member("TargetSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -99,7 +99,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def auto_position_at_target_slot(self) -> primitives.Bool | None:
-        """The AutoPositionAtTargetSlot field value."""
+        """Whether to position the gizmo at ``TargetSlot``."""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
             return None
@@ -118,7 +118,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def interacting_component(self) -> str | None:
-        """Target ID of the _interactingComponent reference (targets Component)."""
+        """The component like a Dev tool that is interacting with this gizmo."""
         member = self.get_member("_interactingComponent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -139,7 +139,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets OverlayFresnelMaterial)."""
+        """The material being used for the gizmo visual."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -160,7 +160,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def tool_point(self) -> str | None:
-        """Target ID of the _toolPoint reference (targets Slot)."""
+        """The slot to position at the interacting tool's tip slot."""
         member = self.get_member("_toolPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -181,7 +181,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def active_point(self) -> str | None:
-        """Target ID of the _activePoint reference (targets Slot)."""
+        """The slot to position at the active point."""
         member = self.get_member("_activePoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -202,7 +202,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def line_root(self) -> str | None:
-        """Target ID of the _lineRoot reference (targets Slot)."""
+        """The slot that stores the line segment for tip based movement rather than projected mode."""
         member = self.get_member("_lineRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -223,7 +223,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def line_segment(self) -> str | None:
-        """Target ID of the _lineSegment reference (targets SegmentMesh)."""
+        """The mesh being used for the line visual to the interacting tool tip."""
         member = self.get_member("_lineSegment")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -244,7 +244,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def snap_highlight(self) -> str | None:
-        """Target ID of the _snapHighlight reference (targets Slot)."""
+        """The slot storing the gizmo snap highlight visual."""
         member = self.get_member("_snapHighlight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -265,7 +265,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def point_space(self) -> members.SyncObject | None:
-        """The PointSpace member."""
+        """The space that the translation point is in."""
         member = self.get_member("PointSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -273,12 +273,12 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @point_space.setter
     def point_space(self, value: members.SyncObject) -> None:
-        """Set the PointSpace member."""
+        """Set PointSpace. The space that the translation point is in."""
         self.set_member("PointSpace", value)
 
     @property
     def target_point(self) -> str | None:
-        """Target ID of the TargetPoint reference (targets IField[primitives.Float3])."""
+        """The field in which to drive for the target point editing."""
         member = self.get_member("TargetPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -299,7 +299,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def use_custom_visual(self) -> primitives.Bool | None:
-        """The UseCustomVisual field value."""
+        """Whether or not to use a custom visual."""
         member = self.get_member("UseCustomVisual")
         if member is None:
             return None
@@ -318,7 +318,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def custom_visual_root(self) -> str | None:
-        """Target ID of the _customVisualRoot reference (targets Slot)."""
+        """The root of the custom visual element."""
         member = self.get_member("_customVisualRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -339,7 +339,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def visual_root(self) -> str | None:
-        """Target ID of the _visualRoot reference (targets Slot)."""
+        """The root of the default visual."""
         member = self.get_member("_visualRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -360,7 +360,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def cube_size(self) -> primitives.Float | None:
-        """The CubeSize field value."""
+        """The size of the visual root."""
         member = self.get_member("CubeSize")
         if member is None:
             return None
@@ -379,7 +379,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def create_undo_steps(self) -> primitives.Bool | None:
-        """The CreateUndoSteps field value."""
+        """Whether or not to create Undo steps for this gizmo."""
         member = self.get_member("CreateUndoSteps")
         if member is None:
             return None
@@ -398,7 +398,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def cube_size(self) -> str | None:
-        """Target ID of the _cubeSize reference (targets IField[primitives.Float3])."""
+        """The field to drive with the cube size."""
         member = self.get_member("_cubeSize")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -419,7 +419,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     @property
     def collider_size(self) -> str | None:
-        """Target ID of the _colliderSize reference (targets IField[primitives.Float3])."""
+        """The field to drive with the collider size."""
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             return member.targetId

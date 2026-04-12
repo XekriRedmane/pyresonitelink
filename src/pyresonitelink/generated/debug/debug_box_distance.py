@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugBoxDistance(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugBoxDistance.
+    """The Debug Box Distance component allows for debugging the distance from a box object, and generates 32 random points on attach to do so.
 
     Category: Debug
     """
@@ -30,7 +30,7 @@ class DebugBoxDistance(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def size(self) -> primitives.Float3 | None:
-        """The Size field value."""
+        """The size of the box to debug"""
         member = self.get_member("Size")
         if member is None:
             return None
@@ -49,7 +49,7 @@ class DebugBoxDistance(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def points(self) -> members.SyncList | None:
-        """The Points member."""
+        """The points to use to visualize the distances from the box."""
         member = self.get_member("Points")
         if isinstance(member, members.SyncList):
             return member
@@ -57,6 +57,6 @@ class DebugBoxDistance(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @points.setter
     def points(self, value: members.SyncList) -> None:
-        """Set the Points member."""
+        """Set Points. The points to use to visualize the distances from the box."""
         self.set_member("Points", value)
 

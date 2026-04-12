@@ -17,7 +17,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SpotLightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SpotLightTool.
+    """The SpotLightTool component is a tool that when pressed primary with turns on and off a spotlight. This tool is best described as a flashlight.
 
     Category: Tools
     """
@@ -189,7 +189,7 @@ class SpotLightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def material(self) -> str | None:
-        """Target ID of the Material reference (targets PBS_Metallic)."""
+        """The material for the default cone visual."""
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -210,7 +210,7 @@ class SpotLightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def light(self) -> str | None:
-        """Target ID of the Light reference (targets Light)."""
+        """The light attached to this tool that turns on and off"""
         member = self.get_member("Light")
         if isinstance(member, members.Reference):
             return member.targetId

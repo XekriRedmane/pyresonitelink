@@ -47,7 +47,7 @@ class ReplaceFirstSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNod
 
     @property
     def str_(self) -> str | None:
-        """Target ID of the Str reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to search for SearchFor (String) in."""
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -68,7 +68,7 @@ class ReplaceFirstSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNod
 
     @property
     def search_for(self) -> str | None:
-        """Target ID of the SearchFor reference (targets INodeObjectOutput[primitives.String])."""
+        """The string to be replacing in Str (String)."""
         member = self.get_member("SearchFor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -89,7 +89,7 @@ class ReplaceFirstSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNod
 
     @property
     def replace_with(self) -> str | None:
-        """Target ID of the ReplaceWith reference (targets INodeObjectOutput[primitives.String])."""
+        """What to replace SearchFor (String) with."""
         member = self.get_member("ReplaceWith")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -110,7 +110,7 @@ class ReplaceFirstSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNod
 
     @property
     def start_index(self) -> str | None:
-        """Target ID of the StartIndex reference (targets INodeValueOutput[primitives.Int])."""
+        """The point in the string to start searching from, rather than from the beginning."""
         member = self.get_member("StartIndex")
         if isinstance(member, members.Reference):
             return member.targetId

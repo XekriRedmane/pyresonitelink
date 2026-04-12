@@ -49,7 +49,7 @@ class NearestUserFoot(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets INodeObjectOutput[Slot])."""
+        """The slot which to use as a point to find the closest foot to."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -70,7 +70,7 @@ class NearestUserFoot(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @property
     def ignore_user(self) -> str | None:
-        """Target ID of the IgnoreUser reference (targets INodeObjectOutput[User])."""
+        """The user to ignore when looking for the nearest foot."""
         member = self.get_member("IgnoreUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -91,7 +91,7 @@ class NearestUserFoot(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @property
     def ignore_afk(self) -> str | None:
-        """Target ID of the IgnoreAFK reference (targets INodeValueOutput[primitives.Bool])."""
+        """Will not return a foot position from a user that is not currently focused into the world."""
         member = self.get_member("IgnoreAFK")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -112,7 +112,7 @@ class NearestUserFoot(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @property
     def slot(self) -> members.EmptyElement | None:
-        """The Slot member."""
+        """The slot of the foot when found."""
         member = self.get_member("Slot")
         if isinstance(member, members.EmptyElement):
             return member
@@ -120,12 +120,12 @@ class NearestUserFoot(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @slot.setter
     def slot(self, value: members.EmptyElement) -> None:
-        """Set the Slot member."""
+        """Set Slot. The slot of the foot when found."""
         self.set_member("Slot", value)
 
     @property
     def user(self) -> members.EmptyElement | None:
-        """The User member."""
+        """The user of the foot that was found."""
         member = self.get_member("User")
         if isinstance(member, members.EmptyElement):
             return member
@@ -133,12 +133,12 @@ class NearestUserFoot(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @user.setter
     def user(self, value: members.EmptyElement) -> None:
-        """Set the User member."""
+        """Set User. The user of the foot that was found."""
         self.set_member("User", value)
 
     @property
     def distance(self) -> members.EmptyElement | None:
-        """The Distance member."""
+        """How far away the found foot was."""
         member = self.get_member("Distance")
         if isinstance(member, members.EmptyElement):
             return member
@@ -146,12 +146,12 @@ class NearestUserFoot(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @distance.setter
     def distance(self, value: members.EmptyElement) -> None:
-        """Set the Distance member."""
+        """Set Distance. How far away the found foot was."""
         self.set_member("Distance", value)
 
     @property
     def get_left(self) -> str | None:
-        """Target ID of the GetLeft reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether to get the left foot if closest, true by default."""
         member = self.get_member("GetLeft")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -172,7 +172,7 @@ class NearestUserFoot(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @property
     def get_right(self) -> str | None:
-        """Target ID of the GetRight reference (targets INodeValueOutput[primitives.Bool])."""
+        """Whether to get the right foot if closest, true by default."""
         member = self.get_member("GetRight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -193,7 +193,7 @@ class NearestUserFoot(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @property
     def chirality(self) -> members.EmptyElement | None:
-        """The Chirality member."""
+        """The side of the foot that was found. Left or Right or -1."""
         member = self.get_member("Chirality")
         if isinstance(member, members.EmptyElement):
             return member
@@ -201,6 +201,6 @@ class NearestUserFoot(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
 
     @chirality.setter
     def chirality(self, value: members.EmptyElement) -> None:
-        """Set the Chirality member."""
+        """Set Chirality. The side of the foot that was found. Left or Right or -1."""
         self.set_member("Chirality", value)
 

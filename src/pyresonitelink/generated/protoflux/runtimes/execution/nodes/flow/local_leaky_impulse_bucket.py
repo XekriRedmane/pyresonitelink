@@ -18,6 +18,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Local Leaky Impulse Bucket is a ProtoFlux node that will count how many impulses have been sent to it through Trigger (Call), and if the capacity goes over MaximumCapacity (int) it will send an impulse. The CurrentCapacity (int) is local for every user.
 
+Note: There is currently a bug with this node where it will send impulses out of Overflow (Continuation) regardless of it's capacity when it should be when it overflows past the number specified in MaximumCapacity (int) issue 145.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
     """
 
@@ -45,7 +47,9 @@ class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode,
 
     @property
     def pulse(self) -> str | None:
-        """Target ID of the Pulse reference (targets ISyncNodeOperation)."""
+        """Fires every time Trigger (Call) is impulsed unless MaximumCapacity (int) is equal to CurrentCapacity (int) locally then it will go out of Overflow (Continuation)***.
+
+***: See note above."""
         member = self.get_member("Pulse")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -66,7 +70,9 @@ class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode,
 
     @property
     def overflow(self) -> str | None:
-        """Target ID of the Overflow reference (targets INodeOperation)."""
+        """this will send an impulse when MaximumCapacity (int) is equal to CurrentCapacity (int) locally and Trigger (Call) is impulsed***.
+
+***: See note above."""
         member = self.get_member("Overflow")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +93,7 @@ class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode,
 
     @property
     def interval(self) -> str | None:
-        """Target ID of the Interval reference (targets INodeValueOutput[primitives.Float])."""
+        """How many seconds that the node will keep impulses for before one """leaks out the bottom of the bucket""", decreasing CurrentCapacity (int) by one for the local user."""
         member = self.get_member("Interval")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -108,7 +114,9 @@ class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode,
 
     @property
     def maximum_capacity(self) -> str | None:
-        """Target ID of the MaximumCapacity reference (targets INodeValueOutput[primitives.Int])."""
+        """The maximum amount of Impulses that this node can store locally till the next impulse would go out of Overflow (Continuation) instead of Pulse (Call)***.
+
+***: See note above."""
         member = self.get_member("MaximumCapacity")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -129,7 +137,7 @@ class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode,
 
     @property
     def current_capacity(self) -> members.EmptyElement | None:
-        """The CurrentCapacity member."""
+        """Will increase by one every time Trigger (Call) is impulsed. it will decrease by one every Interval (float) seconds. It will also reset to 0 when Reset (Call) is impulsed."""
         member = self.get_member("CurrentCapacity")
         if isinstance(member, members.EmptyElement):
             return member
@@ -137,12 +145,12 @@ class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode,
 
     @current_capacity.setter
     def current_capacity(self, value: members.EmptyElement) -> None:
-        """Set the CurrentCapacity member."""
+        """Set CurrentCapacity. Will increase by one every time Trigger (Call) is impulsed. it will decrease by one every Interval (float) seconds. It will also reset to 0 when Reset (Call) is impulsed."""
         self.set_member("CurrentCapacity", value)
 
     @property
     def trigger(self) -> members.EmptyElement | None:
-        """The Trigger member."""
+        """Add one to CurrentCapacity (int) and send an impulse out of Pulse (Call)."""
         member = self.get_member("Trigger")
         if isinstance(member, members.EmptyElement):
             return member
@@ -150,12 +158,12 @@ class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode,
 
     @trigger.setter
     def trigger(self, value: members.EmptyElement) -> None:
-        """Set the Trigger member."""
+        """Set Trigger. Add one to CurrentCapacity (int) and send an impulse out of Pulse (Call)."""
         self.set_member("Trigger", value)
 
     @property
     def reset(self) -> members.EmptyElement | None:
-        """The Reset member."""
+        """Will reset CurrentCapacity (int) for the local user."""
         member = self.get_member("Reset")
         if isinstance(member, members.EmptyElement):
             return member
@@ -163,6 +171,6 @@ class LocalLeakyImpulseBucket(GeneratedComponent, IMappableNode, IExecutionNode,
 
     @reset.setter
     def reset(self, value: members.EmptyElement) -> None:
-        """Set the Reset member."""
+        """Set Reset. Will reset CurrentCapacity (int) for the local user."""
         self.set_member("Reset", value)
 

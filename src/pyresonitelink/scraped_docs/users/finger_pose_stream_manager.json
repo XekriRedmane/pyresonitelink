@@ -1,0 +1,16 @@
+{
+  "description": "The FingerPoseStreamManager component uses streaming data from the ValueStream component (seen in the user Inspector) to control the left and right fingers on a user's avatar. This component in itself is a IFingerPoseSourceComponent.\n\nFor more information on finger pose sources, please see Finger Posing System.",
+  "category": "Users",
+  "fields": {
+    "User": "The referenced user to get tracking data from.",
+    "LeftIsTracking": "The stream data for the left hand.",
+    "RightIsTracking": "The stream data for the right hand.",
+    "Stream": "The stream data from all the tracking.",
+    "TracksMetacarpals": "Should the metacarpals be tracked.",
+    "PoseController": "The pose controller from the user."
+  },
+  "methods": {},
+  "usage": "Used for Finger Posing System.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FingerPoseStreamManager&action=raw"
+}

@@ -43,7 +43,7 @@ class SetSlotOrderOffset(GeneratedComponent, ISyncNodeOperation, IExecutionNode,
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Sends an impulse when Instance (Slot)'s Order Offset is set to OrderOffset (long) when * (Call) is called."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +64,7 @@ class SetSlotOrderOffset(GeneratedComponent, ISyncNodeOperation, IExecutionNode,
 
     @property
     def instance(self) -> str | None:
-        """Target ID of the Instance reference (targets INodeObjectOutput[Slot])."""
+        """Slot to set the property for."""
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -85,7 +85,7 @@ class SetSlotOrderOffset(GeneratedComponent, ISyncNodeOperation, IExecutionNode,
 
     @property
     def order_offset(self) -> str | None:
-        """Target ID of the OrderOffset reference (targets INodeValueOutput[primitives.Long])."""
+        """The value to set Instance (Slot)'s Order Offset to when * (Call) is called."""
         member = self.get_member("OrderOffset")
         if isinstance(member, members.Reference):
             return member.targetId

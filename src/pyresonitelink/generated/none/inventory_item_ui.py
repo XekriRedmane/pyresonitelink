@@ -11,7 +11,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InventoryItemUI(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InventoryItemUI.
+    """The InventoryItemUI component is used to represent an item or folder in the Inventory.
+
+    Not used by the user.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InventoryItemUI"
@@ -41,7 +43,7 @@ class InventoryItemUI(GeneratedComponent, IButtonPressReceiver, IWorldEventRecei
 
     @property
     def browser(self) -> str | None:
-        """Target ID of the Browser reference (targets BrowserDialog)."""
+        """The browser this belongs too."""
         member = self.get_member("Browser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -62,7 +64,7 @@ class InventoryItemUI(GeneratedComponent, IButtonPressReceiver, IWorldEventRecei
 
     @property
     def selected_color(self) -> primitives.ColorX | None:
-        """The SelectedColor field value."""
+        """The color of this item when selected."""
         member = self.get_member("SelectedColor")
         if member is None:
             return None
@@ -81,7 +83,7 @@ class InventoryItemUI(GeneratedComponent, IButtonPressReceiver, IWorldEventRecei
 
     @property
     def selected_text(self) -> primitives.ColorX | None:
-        """The SelectedText field value."""
+        """The text of this item when selected."""
         member = self.get_member("SelectedText")
         if member is None:
             return None
@@ -100,7 +102,7 @@ class InventoryItemUI(GeneratedComponent, IButtonPressReceiver, IWorldEventRecei
 
     @property
     def normal_color(self) -> primitives.ColorX | None:
-        """The NormalColor field value."""
+        """The color of this item when not selected."""
         member = self.get_member("NormalColor")
         if member is None:
             return None
@@ -119,7 +121,7 @@ class InventoryItemUI(GeneratedComponent, IButtonPressReceiver, IWorldEventRecei
 
     @property
     def normal_text(self) -> primitives.ColorX | None:
-        """The NormalText field value."""
+        """The text of this item when not selected."""
         member = self.get_member("NormalText")
         if member is None:
             return None

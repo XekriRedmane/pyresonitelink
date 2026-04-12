@@ -4,6 +4,8 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.point_projection import PointProjection
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -13,22 +15,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ColorDepthGrid.
+    """The Color Depth Grid component.
 
     Category: Assets/Procedural Meshes
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ColorDepthGrid"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, color_texture: str | IAssetProvider[Texture2D] | None = None, depth_texture: str | IAssetProvider[Texture2D] | None = None, horizontal_angle: primitives.Float | None = None, vertical_angle: primitives.Float | None = None, depth_offset: primitives.Float | None = None, depth_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, color_texture: str | IAssetProvider[Texture2D] | None = None, depth_texture: str | IAssetProvider[Texture2D] | None = None, projection: PointProjection | str | None = None, horizontal_angle: primitives.Float | None = None, vertical_angle: primitives.Float | None = None, depth_offset: primitives.Float | None = None, depth_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             color_texture: Initial value for ColorTexture.
             depth_texture: Initial value for DepthTexture.
+            projection: Initial value for Projection.
             horizontal_angle: Initial value for HorizontalAngle.
             vertical_angle: Initial value for VerticalAngle.
             depth_offset: Initial value for DepthOffset.
@@ -42,10 +46,14 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if color_texture is not None:
             self.color_texture = color_texture
         if depth_texture is not None:
             self.depth_texture = depth_texture
+        if projection is not None:
+            self.projection = projection
         if horizontal_angle is not None:
             self.horizontal_angle = horizontal_angle
         if vertical_angle is not None:
@@ -113,17 +121,24 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def color_texture(self) -> str | None:
@@ -168,17 +183,24 @@ class ColorDepthGrid(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
             )
 
     @property
-    def projection(self) -> members.FieldEnum | None:
-        """The Projection member."""
+    def projection(self) -> PointProjection | None:
+        """The Projection enum value."""
         member = self.get_member("Projection")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return PointProjection(member.value)
         return None
 
     @projection.setter
-    def projection(self, value: members.FieldEnum) -> None:
-        """Set the Projection member."""
-        self.set_member("Projection", value)
+    def projection(self, value: PointProjection | str) -> None:
+        """Set the Projection enum value."""
+        member = self.get_member("Projection")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Projection",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def horizontal_angle(self) -> primitives.Float | None:

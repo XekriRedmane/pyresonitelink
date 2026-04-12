@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarEyeDataSourceAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarEyeDataSourceAssigner.
+    """The AvatarEyeDataSourceAssigner component manages assigning eye tracking sources to fields
 
     Category: Users/Common Avatar System/Face
     """
@@ -30,7 +30,7 @@ class AvatarEyeDataSourceAssigner(GeneratedComponent, IAvatarObjectComponent, IW
 
     @property
     def target_reference(self) -> str | None:
-        """Target ID of the TargetReference reference (targets SyncRef[IEyeDataSourceComponent])."""
+        """The field to assign an eye tracking source to, unless it finds a Component:AvatarEyeTrackingInfo first, it assigns from that instead of the user's one."""
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             return member.targetId

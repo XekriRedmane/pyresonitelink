@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AssetOptimizationWizard(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.AssetOptimizationWizard.
+    """The component that drives the Asset Optimization Wizard.
 
     Category: Wizards
     """
@@ -42,7 +42,7 @@ class AssetOptimizationWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def root(self) -> str | None:
-        """Target ID of the Root reference (targets Slot)."""
+        """The slot specified in the generated UI for the wizard. If this is null, the wizard will use the Root slot."""
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -63,7 +63,7 @@ class AssetOptimizationWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def ignore_nonpersistent_users(self) -> primitives.Bool | None:
-        """The IgnoreNonpersistentUsers field value."""
+        """Ignore the contents of the slots of users in the session or not."""
         member = self.get_member("IgnoreNonpersistentUsers")
         if member is None:
             return None
@@ -82,7 +82,7 @@ class AssetOptimizationWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def max_resolution(self) -> str | None:
-        """Target ID of the _maxResolution reference (targets IntTextEditorParser)."""
+        """The max resolution field that's part of the generated UI."""
         member = self.get_member("_maxResolution")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -103,7 +103,7 @@ class AssetOptimizationWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
 
     @property
     def message(self) -> str | None:
-        """Target ID of the _message reference (targets Text)."""
+        """The message for the current progress and statuses of this wizard's work."""
         member = self.get_member("_message")
         if isinstance(member, members.Reference):
             return member.targetId

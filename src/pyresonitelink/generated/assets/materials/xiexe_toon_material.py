@@ -3,6 +3,12 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.generated._enums.blend_mode import BlendMode
+from pyresonitelink.generated._enums.zwrite import ZWrite
+from pyresonitelink.generated._enums.outline_style import OutlineStyle
+from pyresonitelink.generated._enums.culling import Culling
+from pyresonitelink.generated._enums.color_mask import ColorMask
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -15,14 +21,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.XiexeToonMaterial.
+    """The XiexeToonMaterial component was originally made to be a toon material Component, but is widely considered a robust material. It can recreate most effects of the poiyomi toon material when combined with drives, material stacking, and manual packing of texture channels to make the textures compatible.
+
+Decals are also possible via stacking PBS_Metallic layers using extra meshes, then setting them to cutout or alpha with an image set to clamp. The values do not transfer 1:1
+
+TODO: Equation to convert poiyomi decal stuff to Resonite
+
+A Japanese guide with visual examples for using the XiexeToon created by akiRAM can be found at the following link:https://note.com/akiram_vr/n/n5e55290e2cee
+
+It was written for the predecessor to Resonite, however as stated on the page most settings are very similar so is still very relevant.
 
     Category: Assets/Materials
+
+    **OutlineStyle**: Defines the type of outline to show on the material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.XiexeToonMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, main_texture: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, use_vertex_colors: primitives.Bool | None = None, alpha_clip: primitives.Float | None = None, main_texture_scale: primitives.Float2 | None = None, main_texture_offset: primitives.Float2 | None = None, saturation: primitives.Float | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, normal_scale: primitives.Float | None = None, metallic: primitives.Float | None = None, glossiness: primitives.Float | None = None, reflectivity: primitives.Float | None = None, metallic_gloss_map: str | IAssetProvider[ITexture2D] | None = None, metallic_gloss_map_scale: primitives.Float2 | None = None, metallic_gloss_map_offset: primitives.Float2 | None = None, emission_map: str | IAssetProvider[ITexture2D] | None = None, emission_color: primitives.ColorX | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, rim_color: primitives.ColorX | None = None, rim_albedo_tint: primitives.Float | None = None, rim_attenuation_effect: primitives.Float | None = None, rim_intensity: primitives.Float | None = None, rim_range: primitives.Float | None = None, rim_threshold: primitives.Float | None = None, rim_sharpness: primitives.Float | None = None, specular_intensity: primitives.Float | None = None, specular_area: primitives.Float | None = None, matcap: str | IAssetProvider[ITexture2D] | None = None, matcap_tint: primitives.ColorX | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, occlusion_map_scale: primitives.Float2 | None = None, occlusion_map_offset: primitives.Float2 | None = None, occlusion_color: primitives.ColorX | None = None, outline_width: primitives.Float | None = None, outline_color: primitives.ColorX | None = None, outline_albedo_tint: primitives.Bool | None = None, outline_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask_scale: primitives.Float2 | None = None, shadow_ramp_mask_offset: primitives.Float2 | None = None, shadow_rim: primitives.ColorX | None = None, shadow_sharpness: primitives.Float | None = None, shadow_rim_range: primitives.Float | None = None, shadow_rim_threshold: primitives.Float | None = None, shadow_rim_sharpness: primitives.Float | None = None, shadow_rim_albedo_tint: primitives.Float | None = None, thickness_map: str | IAssetProvider[ITexture2D] | None = None, thickness_map_scale: primitives.Float2 | None = None, thickness_map_offset: primitives.Float2 | None = None, subsurface_color: primitives.ColorX | None = None, subsurface_distortion: primitives.Float | None = None, subsurface_power: primitives.Float | None = None, subsurface_scale: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, albedo_uv: primitives.Int | None = None, normal_uv: primitives.Int | None = None, metallic_uv: primitives.Int | None = None, thickness_uv: primitives.Int | None = None, occlusion_uv: primitives.Int | None = None, emission_uv: primitives.Int | None = None, render_queue: primitives.Int | None = None, legacy_cutout: primitives.Bool | None = None, regular: str | IAssetProvider[Shader] | None = None, outline: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, main_texture: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, use_vertex_colors: primitives.Bool | None = None, vertex_color_interpolation_space: ColorProfile | str | None = None, blend_mode: BlendMode | str | None = None, zwrite: ZWrite | str | None = None, alpha_clip: primitives.Float | None = None, main_texture_scale: primitives.Float2 | None = None, main_texture_offset: primitives.Float2 | None = None, saturation: primitives.Float | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, normal_scale: primitives.Float | None = None, metallic: primitives.Float | None = None, glossiness: primitives.Float | None = None, reflectivity: primitives.Float | None = None, metallic_gloss_map: str | IAssetProvider[ITexture2D] | None = None, metallic_gloss_map_scale: primitives.Float2 | None = None, metallic_gloss_map_offset: primitives.Float2 | None = None, emission_map: str | IAssetProvider[ITexture2D] | None = None, emission_color: primitives.ColorX | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, rim_color: primitives.ColorX | None = None, rim_albedo_tint: primitives.Float | None = None, rim_attenuation_effect: primitives.Float | None = None, rim_intensity: primitives.Float | None = None, rim_range: primitives.Float | None = None, rim_threshold: primitives.Float | None = None, rim_sharpness: primitives.Float | None = None, specular_intensity: primitives.Float | None = None, specular_area: primitives.Float | None = None, matcap: str | IAssetProvider[ITexture2D] | None = None, matcap_tint: primitives.ColorX | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, occlusion_map_scale: primitives.Float2 | None = None, occlusion_map_offset: primitives.Float2 | None = None, occlusion_color: primitives.ColorX | None = None, outline: OutlineStyle | str | None = None, outline_width: primitives.Float | None = None, outline_color: primitives.ColorX | None = None, outline_albedo_tint: primitives.Bool | None = None, outline_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask_scale: primitives.Float2 | None = None, shadow_ramp_mask_offset: primitives.Float2 | None = None, shadow_rim: primitives.ColorX | None = None, shadow_sharpness: primitives.Float | None = None, shadow_rim_range: primitives.Float | None = None, shadow_rim_threshold: primitives.Float | None = None, shadow_rim_sharpness: primitives.Float | None = None, shadow_rim_albedo_tint: primitives.Float | None = None, thickness_map: str | IAssetProvider[ITexture2D] | None = None, thickness_map_scale: primitives.Float2 | None = None, thickness_map_offset: primitives.Float2 | None = None, subsurface_color: primitives.ColorX | None = None, subsurface_distortion: primitives.Float | None = None, subsurface_power: primitives.Float | None = None, subsurface_scale: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, culling: Culling | str | None = None, color_mask: ColorMask | str | None = None, albedo_uv: primitives.Int | None = None, normal_uv: primitives.Int | None = None, metallic_uv: primitives.Int | None = None, thickness_uv: primitives.Int | None = None, occlusion_uv: primitives.Int | None = None, emission_uv: primitives.Int | None = None, render_queue: primitives.Int | None = None, legacy_cutout: primitives.Bool | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,6 +46,9 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             main_texture: Initial value for MainTexture.
             color: Initial value for Color.
             use_vertex_colors: Initial value for UseVertexColors.
+            vertex_color_interpolation_space: Initial value for VertexColorInterpolationSpace.
+            blend_mode: Initial value for BlendMode.
+            zwrite: Initial value for ZWrite.
             alpha_clip: Initial value for AlphaClip.
             main_texture_scale: Initial value for MainTextureScale.
             main_texture_offset: Initial value for MainTextureOffset.
@@ -63,6 +82,7 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             occlusion_map_scale: Initial value for OcclusionMapScale.
             occlusion_map_offset: Initial value for OcclusionMapOffset.
             occlusion_color: Initial value for OcclusionColor.
+            outline: Initial value for Outline.
             outline_width: Initial value for OutlineWidth.
             outline_color: Initial value for OutlineColor.
             outline_albedo_tint: Initial value for OutlineAlbedoTint.
@@ -86,6 +106,8 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             subsurface_scale: Initial value for SubsurfaceScale.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
+            culling: Initial value for Culling.
+            color_mask: Initial value for ColorMask.
             albedo_uv: Initial value for AlbedoUV.
             normal_uv: Initial value for NormalUV.
             metallic_uv: Initial value for MetallicUV.
@@ -95,7 +117,6 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             render_queue: Initial value for RenderQueue.
             legacy_cutout: Initial value for __legacyCutout.
             regular: Initial value for _regular.
-            outline: Initial value for _outline.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -107,6 +128,12 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             self.color = color
         if use_vertex_colors is not None:
             self.use_vertex_colors = use_vertex_colors
+        if vertex_color_interpolation_space is not None:
+            self.vertex_color_interpolation_space = vertex_color_interpolation_space
+        if blend_mode is not None:
+            self.blend_mode = blend_mode
+        if zwrite is not None:
+            self.zwrite = zwrite
         if alpha_clip is not None:
             self.alpha_clip = alpha_clip
         if main_texture_scale is not None:
@@ -173,6 +200,8 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             self.occlusion_map_offset = occlusion_map_offset
         if occlusion_color is not None:
             self.occlusion_color = occlusion_color
+        if outline is not None:
+            self.outline = outline
         if outline_width is not None:
             self.outline_width = outline_width
         if outline_color is not None:
@@ -219,6 +248,10 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             self.offset_factor = offset_factor
         if offset_units is not None:
             self.offset_units = offset_units
+        if culling is not None:
+            self.culling = culling
+        if color_mask is not None:
+            self.color_mask = color_mask
         if albedo_uv is not None:
             self.albedo_uv = albedo_uv
         if normal_uv is not None:
@@ -237,8 +270,6 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             self.legacy_cutout = legacy_cutout
         if regular is not None:
             self.regular = regular
-        if outline is not None:
-            self.outline = outline
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -319,43 +350,64 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def vertex_color_interpolation_space(self) -> members.FieldEnum | None:
-        """The VertexColorInterpolationSpace member."""
+    def vertex_color_interpolation_space(self) -> ColorProfile | None:
+        """The VertexColorInterpolationSpace enum value."""
         member = self.get_member("VertexColorInterpolationSpace")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @vertex_color_interpolation_space.setter
-    def vertex_color_interpolation_space(self, value: members.FieldEnum) -> None:
-        """Set the VertexColorInterpolationSpace member."""
-        self.set_member("VertexColorInterpolationSpace", value)
+    def vertex_color_interpolation_space(self, value: ColorProfile | str) -> None:
+        """Set the VertexColorInterpolationSpace enum value."""
+        member = self.get_member("VertexColorInterpolationSpace")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "VertexColorInterpolationSpace",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def blend_mode(self) -> members.FieldEnum | None:
-        """The BlendMode member."""
+    def blend_mode(self) -> BlendMode | None:
+        """The BlendMode enum value."""
         member = self.get_member("BlendMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BlendMode(member.value)
         return None
 
     @blend_mode.setter
-    def blend_mode(self, value: members.FieldEnum) -> None:
-        """Set the BlendMode member."""
-        self.set_member("BlendMode", value)
+    def blend_mode(self, value: BlendMode | str) -> None:
+        """Set the BlendMode enum value."""
+        member = self.get_member("BlendMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "BlendMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def zwrite(self) -> members.FieldEnum | None:
-        """The ZWrite member."""
+    def zwrite(self) -> ZWrite | None:
+        """The ZWrite enum value."""
         member = self.get_member("ZWrite")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ZWrite(member.value)
         return None
 
     @zwrite.setter
-    def zwrite(self, value: members.FieldEnum) -> None:
-        """Set the ZWrite member."""
-        self.set_member("ZWrite", value)
+    def zwrite(self, value: ZWrite | str) -> None:
+        """Set the ZWrite enum value."""
+        member = self.get_member("ZWrite")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ZWrite",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def alpha_clip(self) -> primitives.Float | None:
@@ -995,17 +1047,24 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def outline(self) -> members.FieldEnum | None:
-        """The Outline member."""
+    def outline(self) -> OutlineStyle | None:
+        """The Outline enum value."""
         member = self.get_member("Outline")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return OutlineStyle(member.value)
         return None
 
     @outline.setter
-    def outline(self, value: members.FieldEnum) -> None:
-        """Set the Outline member."""
-        self.set_member("Outline", value)
+    def outline(self, value: OutlineStyle | str) -> None:
+        """Set the Outline enum value."""
+        member = self.get_member("Outline")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Outline",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def outline_width(self) -> primitives.Float | None:
@@ -1453,30 +1512,44 @@ class XiexeToonMaterial(GeneratedComponent, ICommonMaterial, ICullingMaterial, I
             )
 
     @property
-    def culling(self) -> members.FieldEnum | None:
-        """The Culling member."""
+    def culling(self) -> Culling | None:
+        """The Culling enum value."""
         member = self.get_member("Culling")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Culling(member.value)
         return None
 
     @culling.setter
-    def culling(self, value: members.FieldEnum) -> None:
-        """Set the Culling member."""
-        self.set_member("Culling", value)
+    def culling(self, value: Culling | str) -> None:
+        """Set the Culling enum value."""
+        member = self.get_member("Culling")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Culling",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def color_mask(self) -> members.FieldEnum | None:
-        """The ColorMask member."""
+    def color_mask(self) -> ColorMask | None:
+        """The ColorMask enum value."""
         member = self.get_member("ColorMask")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorMask(member.value)
         return None
 
     @color_mask.setter
-    def color_mask(self, value: members.FieldEnum) -> None:
-        """Set the ColorMask member."""
-        self.set_member("ColorMask", value)
+    def color_mask(self, value: ColorMask | str) -> None:
+        """Set the ColorMask enum value."""
+        member = self.get_member("ColorMask")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ColorMask",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def albedo_uv(self) -> primitives.Int | None:

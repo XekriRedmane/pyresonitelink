@@ -10,7 +10,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugHapticPoint(GeneratedComponent, IHapticSource, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugHapticPoint.
+    """The DebugHapticPoint component sends Force sensations to a haptic device as well as gets the name of the haptic device.
+
+This works as part of the game's robust Haptics system.
 
     Category: Debug
     """
@@ -36,7 +38,7 @@ class DebugHapticPoint(GeneratedComponent, IHapticSource, IComponent, IWorldEven
 
     @property
     def intensity(self) -> primitives.Float | None:
-        """The Intensity field value."""
+        """Sends a sensation of force of this intensity to the Haptic device at ``Index``"""
         member = self.get_member("Intensity")
         if member is None:
             return None
@@ -55,7 +57,7 @@ class DebugHapticPoint(GeneratedComponent, IHapticSource, IComponent, IWorldEven
 
     @property
     def index(self) -> primitives.Int | None:
-        """The Index field value."""
+        """The haptic device to send Intensity to and get a name for."""
         member = self.get_member("Index")
         if member is None:
             return None
@@ -74,7 +76,7 @@ class DebugHapticPoint(GeneratedComponent, IHapticSource, IComponent, IWorldEven
 
     @property
     def position(self) -> primitives.String | None:
-        """The Position field value."""
+        """The name of the haptic device at ``Index``"""
         member = self.get_member("Position")
         if member is None:
             return None

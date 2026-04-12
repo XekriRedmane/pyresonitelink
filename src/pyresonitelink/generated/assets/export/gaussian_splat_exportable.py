@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GaussianSplatExportable(GeneratedComponent, IExportable, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.GaussianSplatExportable.
+    """The Gaussian Splat Exportable component allows for making a slot give an option to export as a Gaussian Splat.
 
     Category: Assets/Export
     """
@@ -30,7 +30,7 @@ class GaussianSplatExportable(GeneratedComponent, IExportable, IWorldEventReceiv
 
     @property
     def splat(self) -> str | None:
-        """Target ID of the Splat reference (targets IAssetProvider[GaussianSplat])."""
+        """The splat to add as an option for export."""
         member = self.get_member("Splat")
         if isinstance(member, members.Reference):
             return member.targetId

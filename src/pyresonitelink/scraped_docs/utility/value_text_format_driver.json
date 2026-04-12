@@ -1,0 +1,13 @@
+{
+  "description": "ValueTextFormatDriver applies the value of a single source field to a text format string and drives the target string field. The source field is element 0 in the format string. Elements are defined by putting {} brackets around a number. Although the image shown and the field list below have the source field being a float, this component is generic, so any field type (that can be converted to a string) can be used.",
+  "category": "Utility",
+  "fields": {
+    "Source": "The source field for the value.",
+    "Format": "The string format with \"{0}\" in it somewhere",
+    "Text": "The target field."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a format string and source value in order to drive a string field (possibly text) with the formatted number.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueTextFormatDriver&action=raw"
+}

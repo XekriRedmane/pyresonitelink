@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.position_type import PositionType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -12,14 +13,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LineTransform.
+    """The LineTransform component is a transform driver component used to position an object between two points or slots.
 
     Category: Transform/Drivers
+
+    Can be used to position an object along a track like a slider.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LineTransform"
 
-    def __init__(self, point0: primitives.Float3 | None = None, point1: primitives.Float3 | None = None, point0_anchor: str | Slot | None = None, point1_anchor: str | Slot | None = None, line_point: primitives.Float | None = None, offset_point: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, allow_repositioning: primitives.Bool | None = None, reposition_offset: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, point0: primitives.Float3 | None = None, point1: primitives.Float3 | None = None, point0_anchor: str | Slot | None = None, point1_anchor: str | Slot | None = None, line_position_type: PositionType | str | None = None, plane_position_type: PositionType | str | None = None, line_point: primitives.Float | None = None, offset_point: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, position: str | IField[primitives.Float3] | None = None, rotation: str | IField[primitives.FloatQ] | None = None, allow_repositioning: primitives.Bool | None = None, reposition_offset: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,6 +30,8 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
             point1: Initial value for Point1.
             point0_anchor: Initial value for Point0Anchor.
             point1_anchor: Initial value for Point1Anchor.
+            line_position_type: Initial value for LinePositionType.
+            plane_position_type: Initial value for PlanePositionType.
             line_point: Initial value for LinePoint.
             offset_point: Initial value for OffsetPoint.
             rotation_offset: Initial value for RotationOffset.
@@ -45,6 +50,10 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.point0_anchor = point0_anchor
         if point1_anchor is not None:
             self.point1_anchor = point1_anchor
+        if line_position_type is not None:
+            self.line_position_type = line_position_type
+        if plane_position_type is not None:
+            self.plane_position_type = plane_position_type
         if line_point is not None:
             self.line_point = line_point
         if offset_point is not None:
@@ -62,7 +71,7 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point0(self) -> primitives.Float3 | None:
-        """The Point0 field value."""
+        """The point in local space to transform from."""
         member = self.get_member("Point0")
         if member is None:
             return None
@@ -81,7 +90,7 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point1(self) -> primitives.Float3 | None:
-        """The Point1 field value."""
+        """The point in local space to transform to."""
         member = self.get_member("Point1")
         if member is None:
             return None
@@ -100,7 +109,7 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point0_anchor(self) -> str | None:
-        """Target ID of the Point0Anchor reference (targets Slot)."""
+        """acts as a slot to offset ``Point0`` in global space."""
         member = self.get_member("Point0Anchor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -121,7 +130,7 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def point1_anchor(self) -> str | None:
-        """Target ID of the Point1Anchor reference (targets Slot)."""
+        """acts as a slot to offset ``Point1`` in global space."""
         member = self.get_member("Point1Anchor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -141,34 +150,48 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def line_position_type(self) -> members.FieldEnum | None:
-        """The LinePositionType member."""
+    def line_position_type(self) -> PositionType | None:
+        """How to calculate the position on the line using ``LinePoint`` for the slot this component is on."""
         member = self.get_member("LinePositionType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return PositionType(member.value)
         return None
 
     @line_position_type.setter
-    def line_position_type(self, value: members.FieldEnum) -> None:
-        """Set the LinePositionType member."""
-        self.set_member("LinePositionType", value)
+    def line_position_type(self, value: PositionType | str) -> None:
+        """Set LinePositionType. How to calculate the position on the line using ``LinePoint`` for the slot this component is on."""
+        member = self.get_member("LinePositionType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "LinePositionType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def plane_position_type(self) -> members.FieldEnum | None:
-        """The PlanePositionType member."""
+    def plane_position_type(self) -> PositionType | None:
+        """How to calculate the position on the line using ``LinePoint`` for the slot this component is on."""
         member = self.get_member("PlanePositionType")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return PositionType(member.value)
         return None
 
     @plane_position_type.setter
-    def plane_position_type(self, value: members.FieldEnum) -> None:
-        """Set the PlanePositionType member."""
-        self.set_member("PlanePositionType", value)
+    def plane_position_type(self, value: PositionType | str) -> None:
+        """Set PlanePositionType. How to calculate the position on the line using ``LinePoint`` for the slot this component is on."""
+        member = self.get_member("PlanePositionType")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "PlanePositionType",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def line_point(self) -> primitives.Float | None:
-        """The LinePoint field value."""
+        """Where on the line specified by ``Point0`` and ``Point1`` in percentage or relative distance that the slot this component is on should be positioned."""
         member = self.get_member("LinePoint")
         if member is None:
             return None
@@ -187,7 +210,7 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def offset_point(self) -> primitives.Float3 | None:
-        """The OffsetPoint field value."""
+        """The offset from the point found by ``LinePoint`` slot this component is on should be."""
         member = self.get_member("OffsetPoint")
         if member is None:
             return None
@@ -206,7 +229,7 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation_offset(self) -> primitives.FloatQ | None:
-        """The RotationOffset field value."""
+        """The rotation offset from looking along the line."""
         member = self.get_member("RotationOffset")
         if member is None:
             return None
@@ -225,7 +248,7 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def position(self) -> str | None:
-        """Target ID of the _position reference (targets IField[primitives.Float3])."""
+        """drives the target field with the position found by ``LinePoint`` plus ``OffsetPoint`` rotated by ``RotationOffset`` and "looking down the line rotation" around the point found by ``LinePoint``."""
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -246,7 +269,7 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the _rotation reference (targets IField[primitives.FloatQ])."""
+        """drives the target field with ``RotationOffset`` and "looking down the line rotation""""
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -267,7 +290,7 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def allow_repositioning(self) -> primitives.Bool | None:
-        """The AllowRepositioning field value."""
+        """Allow grabbing of the slot this component is on to move the object and change ``LinePoint``"""
         member = self.get_member("AllowRepositioning")
         if member is None:
             return None
@@ -286,7 +309,7 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def reposition_offset(self) -> primitives.Bool | None:
-        """The RepositionOffset field value."""
+        """Whether grabbing changes ``OffsetPoint`` as well."""
         member = self.get_member("RepositionOffset")
         if member is None:
             return None

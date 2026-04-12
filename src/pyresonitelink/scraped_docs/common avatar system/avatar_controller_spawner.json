@@ -1,0 +1,15 @@
+{
+  "description": "The AvatarControllerSpawner component will spawn the corrosponding controller for the user when placed on an avatar under either the right or left hand.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "SpawnRoot": "Where to spawn the model. (The Component attaches a slot called \"root\" under this when spawning the model, that becomes the model root)",
+    "MaterialOverride": "What material to replace the spawned model's materials with upon spawning.",
+    "ControllerSpawned": "The component calls this method when it has finished spawning the model with the user that has this controller model, and the root slot of the spawned model.",
+    "_sourceControllerInfo": "The controller info this component grabbed in order to find and generate the right model.",
+    "_lastSpawned": "The froox engine type of the last controller type this component generated."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarControllerSpawner&action=raw"
+}

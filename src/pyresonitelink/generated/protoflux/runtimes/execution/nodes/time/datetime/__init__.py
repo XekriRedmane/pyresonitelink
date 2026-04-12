@@ -5,6 +5,7 @@ from .date_time_day import DateTimeDay
 from .date_time_day_of_week import DateTimeDayOfWeek
 from .date_time_day_of_year import DateTimeDayOfYear
 from .date_time_hour import DateTimeHour
+from .date_time_kind import DateTimeKind
 from .date_time_millisecond import DateTimeMillisecond
 from .date_time_minute import DateTimeMinute
 from .date_time_month import DateTimeMonth

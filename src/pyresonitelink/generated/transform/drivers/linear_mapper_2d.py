@@ -12,9 +12,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LinearMapper2D(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LinearMapper2D.
+    """Linear Mapper 2D is a component that draws a line from ``TargetMin`` and ``TargetMax`` and uses a linear range between the two with ``Target`` to map ``Source`` to a range between ``SourceMin`` and ``SourceMax``.
 
     Category: Transform/Drivers
+
+    **Related Components**: * LinearMapper1D
+* LinearMapper2D
+* LinearMapper3D
+* LinearMapper4D
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LinearMapper2D"
@@ -53,7 +58,7 @@ class LinearMapper2D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source(self) -> str | None:
-        """Target ID of the Source reference (targets IValue[primitives.Float])."""
+        """The value to map from ``SourceMin`` to ``SourceMax`` using ``Target``."""
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -74,7 +79,7 @@ class LinearMapper2D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.Float2])."""
+        """The value to map from ``TargetMin`` to ``TargetMax`` using ``Source``."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -95,7 +100,7 @@ class LinearMapper2D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source_min(self) -> primitives.Float | None:
-        """The SourceMin field value."""
+        """The minimum of the range of the ``Source`` value."""
         member = self.get_member("SourceMin")
         if member is None:
             return None
@@ -114,7 +119,7 @@ class LinearMapper2D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def source_max(self) -> primitives.Float | None:
-        """The SourceMax field value."""
+        """The maximum of the range of the ``Source`` value."""
         member = self.get_member("SourceMax")
         if member is None:
             return None
@@ -133,7 +138,7 @@ class LinearMapper2D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_min(self) -> primitives.Float2 | None:
-        """The TargetMin field value."""
+        """The minimum of the range of the ``Target`` value."""
         member = self.get_member("TargetMin")
         if member is None:
             return None
@@ -152,7 +157,7 @@ class LinearMapper2D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def target_max(self) -> primitives.Float2 | None:
-        """The TargetMax field value."""
+        """The maximum of the range of the ``Target`` value."""
         member = self.get_member("TargetMax")
         if member is None:
             return None
@@ -171,7 +176,7 @@ class LinearMapper2D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def allow_reverse_mapping(self) -> primitives.Bool | None:
-        """The AllowReverseMapping field value."""
+        """Allow ``Target`` to map it's value to ``Source``'s ranged value when written to."""
         member = self.get_member("AllowReverseMapping")
         if member is None:
             return None
@@ -190,7 +195,7 @@ class LinearMapper2D(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def clamp(self) -> primitives.Bool | None:
-        """The Clamp field value."""
+        """Whether to prevent ``Source`` and ``Target`` from going outside their defined ranges."""
         member = self.get_member("Clamp")
         if member is None:
             return None

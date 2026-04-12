@@ -12,9 +12,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ViolentAprilFoolsExplosion(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ViolentAprilFoolsExplosion.
+    """The ViolentAprilFoolsExplosion component, when deleted, causes an explosion animation to be played on any mesh below it in the hierarchy.
+
+This component was added as an April Fool's Day joke on April 1st, 2019.
 
     Category: Utility
+
+    **Behavior**: This component causes all MeshRenderers under it in the hierarchy to expand outwards based on the ``BloatMagnitude`` while playing the audio in ``_bloatingClip``, followed by an explosion particle effect, the playing of the audio in ``_explosionClip``, and the deletion of the slot it's attached to.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ViolentAprilFoolsExplosion"
@@ -38,7 +42,7 @@ class ViolentAprilFoolsExplosion(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def bloat_magnitude(self) -> primitives.Float | None:
-        """The BloatMagnitude field value."""
+        """Intensity of the bloat, prior to explosion"""
         member = self.get_member("BloatMagnitude")
         if member is None:
             return None
@@ -57,7 +61,7 @@ class ViolentAprilFoolsExplosion(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def bloating_clip(self) -> str | None:
-        """Target ID of the _bloatingClip reference (targets IAssetProvider[AudioClip])."""
+        """Automatically Assigned"""
         member = self.get_member("_bloatingClip")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -78,7 +82,7 @@ class ViolentAprilFoolsExplosion(GeneratedComponent, IComponent, IWorldEventRece
 
     @property
     def explosion_clip(self) -> str | None:
-        """Target ID of the _explosionClip reference (targets IAssetProvider[AudioClip])."""
+        """Automatically Assigned"""
         member = self.get_member("_explosionClip")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.body_node import BodyNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -11,15 +12,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class AvatarParentNode(GeneratedComponent, IAvatarObject, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.AvatarParentNode.
+    """This component is used to parent and pose the avatar in a certain way. When using this component now, it will attach then remove itself from the slot.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarParentNode"
 
-    def __init__(self, destroy_on_dequip: primitives.Bool | None = None, scale: primitives.Float3 | None = None, equip_order_priority: primitives.Int | None = None, original_parent: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: BodyNode | str | None = None, destroy_on_dequip: primitives.Bool | None = None, scale: primitives.Float3 | None = None, equip_order_priority: primitives.Int | None = None, original_parent: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            node: Initial value for Node.
             destroy_on_dequip: Initial value for DestroyOnDequip.
             scale: Initial value for Scale.
             equip_order_priority: Initial value for EquipOrderPriority.
@@ -27,6 +29,8 @@ class AvatarParentNode(GeneratedComponent, IAvatarObject, IWorldEventReceiver):
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if node is not None:
+            self.node = node
         if destroy_on_dequip is not None:
             self.destroy_on_dequip = destroy_on_dequip
         if scale is not None:
@@ -37,21 +41,28 @@ class AvatarParentNode(GeneratedComponent, IAvatarObject, IWorldEventReceiver):
             self.original_parent = original_parent
 
     @property
-    def node(self) -> members.FieldEnum | None:
-        """The Node member."""
+    def node(self) -> BodyNode | None:
+        """Obsolete"""
         member = self.get_member("Node")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return BodyNode(member.value)
         return None
 
     @node.setter
-    def node(self, value: members.FieldEnum) -> None:
-        """Set the Node member."""
-        self.set_member("Node", value)
+    def node(self, value: BodyNode | str) -> None:
+        """Set Node. Obsolete"""
+        member = self.get_member("Node")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Node",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def destroy_on_dequip(self) -> primitives.Bool | None:
-        """The DestroyOnDequip field value."""
+        """Obsolete"""
         member = self.get_member("DestroyOnDequip")
         if member is None:
             return None
@@ -70,7 +81,7 @@ class AvatarParentNode(GeneratedComponent, IAvatarObject, IWorldEventReceiver):
 
     @property
     def scale(self) -> primitives.Float3 | None:
-        """The Scale field value."""
+        """Obsolete"""
         member = self.get_member("Scale")
         if member is None:
             return None
@@ -89,7 +100,7 @@ class AvatarParentNode(GeneratedComponent, IAvatarObject, IWorldEventReceiver):
 
     @property
     def equip_order_priority(self) -> primitives.Int | None:
-        """The EquipOrderPriority field value."""
+        """Obsolete"""
         member = self.get_member("EquipOrderPriority")
         if member is None:
             return None
@@ -108,7 +119,7 @@ class AvatarParentNode(GeneratedComponent, IAvatarObject, IWorldEventReceiver):
 
     @property
     def original_parent(self) -> str | None:
-        """Target ID of the _originalParent reference (targets Slot)."""
+        """Obsolete"""
         member = self.get_member("_originalParent")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -11,9 +11,16 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CloudValueVariableDriver<>.
+    """The CloudValueVariableDriver component drives the ``Target`` field of type T with the value of the specified cloud variable owned by the local user.
 
     Category: Cloud/Variables
+
+    Upon being given a valid cloud variable ``Path``, the component will
+    drive the value of the ``Target`` with the value of the cloud variable
+    owned by the local user. If ``OverrideOwner`` is specified, the field
+    will only be driven to the value for the user specified in
+    ``OverrideOwner``. Otherwise, the field will take the value of the
+    ``FallbackValue``.
 
     Parameterize with a value type::
 
@@ -52,7 +59,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def path(self) -> primitives.String | None:
-        """The Path field value."""
+        """The path of the variable this component will read."""
         member = self.get_member("Path")
         if member is None:
             return None
@@ -71,7 +78,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[T])."""
+        """The target field to which the variable value will be written."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -92,7 +99,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def is_linked_to_cloud(self) -> primitives.Bool | None:
-        """The IsLinkedToCloud field value."""
+        """(Read Only) Indicates whether this field was successfully bound to the target variable."""
         member = self.get_member("IsLinkedToCloud")
         if member is None:
             return None
@@ -111,7 +118,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def write_back(self) -> primitives.Bool | None:
-        """The WriteBack field value."""
+        """Updates the value in the cloud when the driven field is changed. See write backs."""
         member = self.get_member("WriteBack")
         if member is None:
             return None
@@ -149,7 +156,7 @@ class CloudValueVariableDriver(GenericComponent[T], IComponent, IWorldEventRecei
 
     @property
     def override_owner(self) -> primitives.String | None:
-        """The OverrideOwner field value."""
+        """The UserID of the user that made a definition for the variable specified by ``Path`` or the local user if not specified."""
         member = self.get_member("OverrideOwner")
         if member is None:
             return None

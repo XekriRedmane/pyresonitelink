@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TranslateRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Translate Rect node takes in a rect value and an offset (float2) which corresponds with the X and Y position of the entire rect, and returns a rect that has been translated to its new location.
+    """The Translate Rect node takes in a rect value and an offset (float2) which corresponds with the ``X`` and ``Y`` position of the entire rect, and returns a rect that has been translated to its new location.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Math/Rects
     """
@@ -36,7 +36,7 @@ class TranslateRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def rect(self) -> str | None:
-        """Target ID of the Rect reference (targets INodeValueOutput[primitives.Rect])."""
+        """The rect to offset."""
         member = self.get_member("Rect")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -57,7 +57,7 @@ class TranslateRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
 
     @property
     def offset(self) -> str | None:
-        """Target ID of the Offset reference (targets INodeValueOutput[primitives.Float2])."""
+        """The ``X`` and ``Y`` position to shift the rect in a direction."""
         member = self.get_member("Offset")
         if isinstance(member, members.Reference):
             return member.targetId

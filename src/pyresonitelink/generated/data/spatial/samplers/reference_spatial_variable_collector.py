@@ -11,9 +11,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ReferenceSpatialVariableCollector(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ReferenceSpatialVariableCollector<>.
+    """The Reference Spatial Variable Collector`1 component is specifically for reference types This drives a list of references, filling it with all the found spatial variables. It does this by reading all spatial variables of the reference type matching this one, and in range, and puts them into the referenced list.
 
     Category: Data/Spatial/Samplers
+
+    Attach to a slot which will be used as the point to sample from. give a
+    target list to drive, and the list will populate with found values
 
     Parameterize with a value type::
 
@@ -43,7 +46,7 @@ class ReferenceSpatialVariableCollector(GenericComponent[T], IComponent, IWorldE
 
     @property
     def reference_list(self) -> str | None:
-        """Target ID of the ReferenceList reference (targets ISyncRefList[T])."""
+        """The list to populate with the spatial variables of all spatial fields intersecting the point that is the slot this component is on."""
         member = self.get_member("ReferenceList")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -64,7 +67,7 @@ class ReferenceSpatialVariableCollector(GenericComponent[T], IComponent, IWorldE
 
     @property
     def variable_name(self) -> primitives.String | None:
-        """The VariableName field value."""
+        """The variable to sample for."""
         member = self.get_member("VariableName")
         if member is None:
             return None
@@ -83,7 +86,7 @@ class ReferenceSpatialVariableCollector(GenericComponent[T], IComponent, IWorldE
 
     @property
     def default_target(self) -> str | None:
-        """Target ID of the DefaultTarget reference (targets T)."""
+        """The value to default to when no references can be sampled at all."""
         member = self.get_member("DefaultTarget")
         if isinstance(member, members.Reference):
             return member.targetId

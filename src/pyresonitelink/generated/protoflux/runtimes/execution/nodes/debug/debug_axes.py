@@ -18,6 +18,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Debug Axes is a ProtoFlux node that when called will make a 3 arrows visual similar to a Gizmo at the global coordinates with the arrows having the length provided and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.
 
+See also: Coordinate spaces
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Debug
     """
 
@@ -57,7 +59,7 @@ class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def next(self) -> str | None:
-        """Target ID of the Next reference (targets INodeOperation)."""
+        """Fires after * (Call) is impulsed and the gizmo was created successfully."""
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -78,7 +80,7 @@ class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def position(self) -> str | None:
-        """Target ID of the Position reference (targets INodeValueOutput[primitives.Float3])."""
+        """The position in global space for the debug visual. Default at the node."""
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -99,7 +101,7 @@ class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def rotation(self) -> str | None:
-        """Target ID of the Rotation reference (targets INodeValueOutput[primitives.FloatQ])."""
+        """The Rotation in global space for the debug visual. Default at the node."""
         member = self.get_member("Rotation")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -120,7 +122,7 @@ class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def length(self) -> str | None:
-        """Target ID of the Length reference (targets INodeValueOutput[primitives.Float])."""
+        """The length of the arrows for the debug visual in meters."""
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -141,7 +143,7 @@ class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def right_color(self) -> str | None:
-        """Target ID of the RightColor reference (targets INodeValueOutput[primitives.ColorX])."""
+        """The color for the debug axes in the (1,0,0) direction. Also known as the red arrow on a Gizmo. Defaults to red."""
         member = self.get_member("RightColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -162,7 +164,7 @@ class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def up_color(self) -> str | None:
-        """Target ID of the UpColor reference (targets INodeValueOutput[primitives.ColorX])."""
+        """The color for the debug axes in the (0,1,0) direction. Also known as the green arrow on a Gizmo. Defaults to green."""
         member = self.get_member("UpColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -183,7 +185,7 @@ class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def forward_color(self) -> str | None:
-        """Target ID of the ForwardColor reference (targets INodeValueOutput[primitives.ColorX])."""
+        """The color for the debug axes in the (0,0,1) direction. Also known as the blue arrow on a Gizmo. Defaults to blue."""
         member = self.get_member("ForwardColor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -204,7 +206,7 @@ class DebugAxes(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecutio
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[primitives.Float])."""
+        """How long the debug axes visual appears for in seconds."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,9 +10,17 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SessionCaptureThumbnailSource(GeneratedComponent, ISessionThumbnailSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SessionCaptureThumbnailSource.
+    """The SessionCaptureThumbnailSource component sets the slot it is on as a source for capturing the session thumbnail, or the preview image used for the currently active session.
 
     Category: World
+
+    Place this component on a slot. The slot's position will then be used as
+    the capture source for the session thumbnail. If multiple slots have
+    this component on it, the capture will be taken via a weighted random
+    pick, where slots with a lower average user distance from them will be
+    more likely to be captured.
+
+    **See also**: * WorldCaptureThumbnailSource for capturing the world preview that shows up without an active session.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SessionCaptureThumbnailSource"
@@ -30,7 +38,7 @@ class SessionCaptureThumbnailSource(GeneratedComponent, ISessionThumbnailSource,
 
     @property
     def overlay(self) -> str | None:
-        """Target ID of the Overlay reference (targets IAssetProvider[Texture2D])."""
+        """An overlay image to superimpose over the normal session capture. This image must have an average alpha channel value under 25% or else it will not be applied."""
         member = self.get_member("Overlay")
         if isinstance(member, members.Reference):
             return member.targetId

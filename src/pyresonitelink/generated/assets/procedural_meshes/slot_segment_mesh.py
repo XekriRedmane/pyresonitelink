@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
@@ -13,20 +14,24 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SlotSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SlotSegmentMesh.
+    """The SlotSegmentMesh component generates mesh data of a line between ``PointA`` and ``PointB``. This is to be used with a MeshRenderer.
 
     Category: Assets/Procedural Meshes
+
+    Attach to a slot and then insert into a MeshRenderer. Don't forget to
+    use a Material.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SlotSegmentMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, radius: primitives.Float | None = None, point_a: str | Slot | None = None, point_b: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, radius: primitives.Float | None = None, point_a: str | Slot | None = None, point_b: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             radius: Initial value for Radius.
             point_a: Initial value for PointA.
             point_b: Initial value for PointB.
@@ -39,6 +44,8 @@ class SlotSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if radius is not None:
             self.radius = radius
         if point_a is not None:
@@ -104,21 +111,28 @@ class SlotSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the line from ``PointA`` to ``PointB``"""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -137,7 +151,7 @@ class SlotSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def point_a(self) -> str | None:
-        """Target ID of the PointA reference (targets Slot)."""
+        """The starting point of the generated line."""
         member = self.get_member("PointA")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -158,7 +172,7 @@ class SlotSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     @property
     def point_b(self) -> str | None:
-        """Target ID of the PointB reference (targets Slot)."""
+        """The ending point of the generated line."""
         member = self.get_member("PointB")
         if isinstance(member, members.Reference):
             return member.targetId

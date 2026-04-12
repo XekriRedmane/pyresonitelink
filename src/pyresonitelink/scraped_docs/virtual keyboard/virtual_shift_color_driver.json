@@ -1,0 +1,15 @@
+{
+  "description": "The VirtualShiftColorDriver component is used to change a color field whenever a keyboard specified has its Shift key state changed.",
+  "category": "Userspace:Virtual Keyboard",
+  "fields": {
+    "Keyboard": "The keyboard to monitor the shirt state for.",
+    "ColorTarget": "The field to set the color of depending on keyboard state.",
+    "NormalColor": "The color to set the field in ``ColorTarget`` to when ``Keyboard`` is in default state.",
+    "ShiftColor": "The color to set the field in ``ColorTarget`` to when ``Keyboard``'s Shift key is toggled on like capslock.",
+    "HoldColor": "The color to set the field in ``ColorTarget`` to when ``Keyboard``'s Shift key is being held down."
+  },
+  "methods": {},
+  "usage": "Provide values for all the fields in this component in order for it to start working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VirtualShiftColorDriver&action=raw"
+}

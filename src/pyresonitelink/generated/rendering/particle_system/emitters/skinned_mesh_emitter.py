@@ -3,6 +3,9 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.mesh_emission_source import MeshEmissionSource
+from pyresonitelink.generated._enums.mesh_emitter_direction import MeshEmitterDirection
+from pyresonitelink.generated._enums.wrap_mode import WrapMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.particle_system import ParticleSystem
@@ -13,14 +16,14 @@ from pyresonitelink.generated._types.iparticle_system_emitter import IParticleSy
 
 
 class SkinnedMeshEmitter(GeneratedComponent, IParticleSystemEmitter):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.SkinnedMeshEmitter.
+    """A skinned mesh renderer can be used to emit particles from either the vertices, edges, or faces of a SkinnedMeshRenderer. The colors of the particles can be made to be the colors of certain points of a texture, which is sampled via which point on the skinned mesh renderer the particle is emitted from.
 
     Category: Rendering/Particle System/Emitters
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.SkinnedMeshEmitter"
 
-    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, use_vertex_colors: primitives.Bool | None = None, uniform_distribution: primitives.Bool | None = None, direction: primitives.Float3 | None = None, random_direction_weight: primitives.Float | None = None, color_texture: str | IAssetProvider[Texture2D] | None = None, uv_offset: primitives.Float2 | None = None, uv_scale: primitives.Float2 | None = None, skin: str | SkinnedMeshRenderer | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, emit_from: MeshEmissionSource | str | None = None, use_vertex_colors: primitives.Bool | None = None, uniform_distribution: primitives.Bool | None = None, direction_mode: MeshEmitterDirection | str | None = None, direction: primitives.Float3 | None = None, random_direction_weight: primitives.Float | None = None, color_texture: str | IAssetProvider[Texture2D] | None = None, wrap_mode: WrapMode | str | None = None, uv_offset: primitives.Float2 | None = None, uv_scale: primitives.Float2 | None = None, skin: str | SkinnedMeshRenderer | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -29,11 +32,14 @@ class SkinnedMeshEmitter(GeneratedComponent, IParticleSystemEmitter):
             burst_on_activated_min: Initial value for BurstOnActivatedMin.
             burst_on_activated_max: Initial value for BurstOnActivatedMax.
             burst_on_start: Initial value for BurstOnStart.
+            emit_from: Initial value for EmitFrom.
             use_vertex_colors: Initial value for UseVertexColors.
             uniform_distribution: Initial value for UniformDistribution.
+            direction_mode: Initial value for DirectionMode.
             direction: Initial value for Direction.
             random_direction_weight: Initial value for RandomDirectionWeight.
             color_texture: Initial value for ColorTexture.
+            wrap_mode: Initial value for WrapMode.
             uv_offset: Initial value for UVOffset.
             uv_scale: Initial value for UVScale.
             skin: Initial value for Skin.
@@ -50,16 +56,22 @@ class SkinnedMeshEmitter(GeneratedComponent, IParticleSystemEmitter):
             self.burst_on_activated_max = burst_on_activated_max
         if burst_on_start is not None:
             self.burst_on_start = burst_on_start
+        if emit_from is not None:
+            self.emit_from = emit_from
         if use_vertex_colors is not None:
             self.use_vertex_colors = use_vertex_colors
         if uniform_distribution is not None:
             self.uniform_distribution = uniform_distribution
+        if direction_mode is not None:
+            self.direction_mode = direction_mode
         if direction is not None:
             self.direction = direction
         if random_direction_weight is not None:
             self.random_direction_weight = random_direction_weight
         if color_texture is not None:
             self.color_texture = color_texture
+        if wrap_mode is not None:
+            self.wrap_mode = wrap_mode
         if uv_offset is not None:
             self.uv_offset = uv_offset
         if uv_scale is not None:
@@ -165,21 +177,28 @@ class SkinnedMeshEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def emit_from(self) -> members.FieldEnum | None:
-        """The EmitFrom member."""
+    def emit_from(self) -> MeshEmissionSource | None:
+        """What parts of the mesh to emit from."""
         member = self.get_member("EmitFrom")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MeshEmissionSource(member.value)
         return None
 
     @emit_from.setter
-    def emit_from(self, value: members.FieldEnum) -> None:
-        """Set the EmitFrom member."""
-        self.set_member("EmitFrom", value)
+    def emit_from(self, value: MeshEmissionSource | str) -> None:
+        """Set EmitFrom. What parts of the mesh to emit from."""
+        member = self.get_member("EmitFrom")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "EmitFrom",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def use_vertex_colors(self) -> primitives.Bool | None:
-        """The UseVertexColors field value."""
+        """Whether to use the vertex color data from the mesh for the color of the particles."""
         member = self.get_member("UseVertexColors")
         if member is None:
             return None
@@ -216,17 +235,24 @@ class SkinnedMeshEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def direction_mode(self) -> members.FieldEnum | None:
-        """The DirectionMode member."""
+    def direction_mode(self) -> MeshEmitterDirection | None:
+        """the coordinate direction to use for up."""
         member = self.get_member("DirectionMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MeshEmitterDirection(member.value)
         return None
 
     @direction_mode.setter
-    def direction_mode(self, value: members.FieldEnum) -> None:
-        """Set the DirectionMode member."""
-        self.set_member("DirectionMode", value)
+    def direction_mode(self, value: MeshEmitterDirection | str) -> None:
+        """Set DirectionMode. the coordinate direction to use for up."""
+        member = self.get_member("DirectionMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "DirectionMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def direction(self) -> primitives.Float3 | None:
@@ -268,7 +294,7 @@ class SkinnedMeshEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def color_texture(self) -> str | None:
-        """Target ID of the ColorTexture reference (targets IAssetProvider[Texture2D])."""
+        """The texture to use as the colors of the emitted particles (samples the color of this at the UV position of the mesh section it was emitted from)"""
         member = self.get_member("ColorTexture")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -288,21 +314,28 @@ class SkinnedMeshEmitter(GeneratedComponent, IParticleSystemEmitter):
             )
 
     @property
-    def wrap_mode(self) -> members.FieldEnum | None:
-        """The WrapMode member."""
+    def wrap_mode(self) -> WrapMode | None:
+        """How to wrap the UV sample coordinates of the mesh."""
         member = self.get_member("WrapMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return WrapMode(member.value)
         return None
 
     @wrap_mode.setter
-    def wrap_mode(self, value: members.FieldEnum) -> None:
-        """Set the WrapMode member."""
-        self.set_member("WrapMode", value)
+    def wrap_mode(self, value: WrapMode | str) -> None:
+        """Set WrapMode. How to wrap the UV sample coordinates of the mesh."""
+        member = self.get_member("WrapMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def uv_offset(self) -> primitives.Float2 | None:
-        """The UVOffset field value."""
+        """How much to offset the UV sample position of ``ColorTexture``"""
         member = self.get_member("UVOffset")
         if member is None:
             return None
@@ -321,7 +354,7 @@ class SkinnedMeshEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def uv_scale(self) -> primitives.Float2 | None:
-        """The UVScale field value."""
+        """How much to scale the UV sample position of ``ColorTexture``"""
         member = self.get_member("UVScale")
         if member is None:
             return None
@@ -340,7 +373,7 @@ class SkinnedMeshEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @property
     def clip_rect(self) -> members.FieldEnum | None:
-        """The ClipRect member."""
+        """The rectangle to discard UV coordinates if they end up outside this range. Kind of like a UV discard."""
         member = self.get_member("ClipRect")
         if isinstance(member, members.FieldEnum):
             return member
@@ -348,12 +381,12 @@ class SkinnedMeshEmitter(GeneratedComponent, IParticleSystemEmitter):
 
     @clip_rect.setter
     def clip_rect(self, value: members.FieldEnum) -> None:
-        """Set the ClipRect member."""
+        """Set ClipRect. The rectangle to discard UV coordinates if they end up outside this range. Kind of like a UV discard."""
         self.set_member("ClipRect", value)
 
     @property
     def skin(self) -> str | None:
-        """Target ID of the Skin reference (targets SkinnedMeshRenderer)."""
+        """The skinned mesh renderer to emit from."""
         member = self.get_member("Skin")
         if isinstance(member, members.Reference):
             return member.targetId

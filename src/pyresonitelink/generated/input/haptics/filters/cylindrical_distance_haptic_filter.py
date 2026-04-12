@@ -9,9 +9,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CylindricalDistanceHapticFilter.
+    """The CylindricalDistanceHapticFilter component filters haptic device influences multiplicatively depending on their position within a range of 2 cylinders. One being an inner and one being an outer. Both of them are invisible though. This component works when used with a HapticVolume.
+
+This works as part of the game's robust Haptics system.
 
     Category: Input/Haptics/Filters
+
+    Attach to a slot with a valid and working HapticVolume to add to the
+    list of multiplicative haptic filters.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CylindricalDistanceHapticFilter"
@@ -56,7 +61,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def start_radius(self) -> primitives.Float | None:
-        """The StartRadius field value."""
+        """The starting radius of the intensity gradient based on distance from the cylinders center line from end to end."""
         member = self.get_member("StartRadius")
         if member is None:
             return None
@@ -75,7 +80,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def end_radius(self) -> primitives.Float | None:
-        """The EndRadius field value."""
+        """The ending radius of the intensity gradient based on distance from the cylinders center line from end to end."""
         member = self.get_member("EndRadius")
         if member is None:
             return None
@@ -94,7 +99,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def start_radius_intensity(self) -> primitives.Float | None:
-        """The StartRadiusIntensity field value."""
+        """The starting intensity of the intensity gradient based on distance from the cylinders center line from end to end."""
         member = self.get_member("StartRadiusIntensity")
         if member is None:
             return None
@@ -113,7 +118,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def end_radius_intensity(self) -> primitives.Float | None:
-        """The EndRadiusIntensity field value."""
+        """The ending intensity of the intensity gradient based on distance from the cylinders center line from end to end."""
         member = self.get_member("EndRadiusIntensity")
         if member is None:
             return None
@@ -132,7 +137,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def radius_power(self) -> primitives.Float | None:
-        """The RadiusPower field value."""
+        """The amplification of the intensity gradient based on distance from the cylinders center line from end to end."""
         member = self.get_member("RadiusPower")
         if member is None:
             return None
@@ -151,7 +156,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def start_axis_offset(self) -> primitives.Float | None:
-        """The StartAxisOffset field value."""
+        """Used to define the distance from the cylinder end cap to start the intensity gradient."""
         member = self.get_member("StartAxisOffset")
         if member is None:
             return None
@@ -170,7 +175,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def end_axis_offset(self) -> primitives.Float | None:
-        """The EndAxisOffset field value."""
+        """Used to define the distance from the cylinder end cap to end the intensity gradient."""
         member = self.get_member("EndAxisOffset")
         if member is None:
             return None
@@ -189,7 +194,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def start_axis_intensity(self) -> primitives.Float | None:
-        """The StartAxisIntensity field value."""
+        """The starting intensity value for the intensity gradient based on the distance to the cylinder cap."""
         member = self.get_member("StartAxisIntensity")
         if member is None:
             return None
@@ -208,7 +213,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def end_axis_intensity(self) -> primitives.Float | None:
-        """The EndAxisIntensity field value."""
+        """The ending intensity value for the intensity gradient based on the distance to the cylinder cap."""
         member = self.get_member("EndAxisIntensity")
         if member is None:
             return None
@@ -227,7 +232,7 @@ class CylindricalDistanceHapticFilter(GeneratedComponent, IComponent, IWorldEven
 
     @property
     def axis_power(self) -> primitives.Float | None:
-        """The AxisPower field value."""
+        """How much to amplify the intensity of the intensity gradient based on the distance to the cylinder cap."""
         member = self.get_member("AxisPower")
         if member is None:
             return None

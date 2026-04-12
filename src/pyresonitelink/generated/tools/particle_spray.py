@@ -18,7 +18,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ParticleSpray.
+    """The ParticleSpray component is a tool that shoots particles when the trigger is pulled.
 
     Category: Tools
     """
@@ -205,7 +205,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def rate(self) -> primitives.Float | None:
-        """The Rate field value."""
+        """Ths rate at which the spray tip sprays at max (primary strength is raised to ``RateExp`` first before multiplying with this)"""
         member = self.get_member("Rate")
         if member is None:
             return None
@@ -224,7 +224,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def rate_exp(self) -> primitives.Float | None:
-        """The RateExp field value."""
+        """primary strength of the tool is raised to this number."""
         member = self.get_member("RateExp")
         if member is None:
             return None
@@ -243,7 +243,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def min_speed(self) -> primitives.Float | None:
-        """The MinSpeed field value."""
+        """The min speed the particles travel at."""
         member = self.get_member("MinSpeed")
         if member is None:
             return None
@@ -262,7 +262,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def max_speed(self) -> primitives.Float | None:
-        """The MaxSpeed field value."""
+        """The max speed the particles travel at."""
         member = self.get_member("MaxSpeed")
         if member is None:
             return None
@@ -281,7 +281,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def part_style(self) -> str | None:
-        """Target ID of the partStyle reference (targets ParticleStyle)."""
+        """The style of the particles."""
         member = self.get_member("partStyle")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -302,7 +302,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def part_speed(self) -> str | None:
-        """Target ID of the partSpeed reference (targets SpeedRangeInitializer)."""
+        """The min/max speed the particles travel at, is synced with ``MinSpeed`` and ``MaxSpeed``"""
         member = self.get_member("partSpeed")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -323,7 +323,7 @@ class ParticleSpray(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
 
     @property
     def part_emitter(self) -> str | None:
-        """Target ID of the partEmitter reference (targets ParticleEmitter)."""
+        """the Particle emitter this particle spray is controlling."""
         member = self.get_member("partEmitter")
         if isinstance(member, members.Reference):
             return member.targetId

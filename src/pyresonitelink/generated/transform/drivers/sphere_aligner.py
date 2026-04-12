@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SphereAligner.
+    """Sphere aligner is a component that has a list of child slots under ``Items`` and aligns those items into a spherical shape.
 
     Category: Transform/Drivers
     """
@@ -54,7 +54,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_add_children(self) -> primitives.Bool | None:
-        """The AutoAddChildren field value."""
+        """Controls whether slots below this component's slot in the hierarchy are automatically added to ``_targets``"""
         member = self.get_member("AutoAddChildren")
         if member is None:
             return None
@@ -73,7 +73,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def auto_add_ignore_tags(self) -> members.SyncList | None:
-        """The AutoAddIgnoreTags member."""
+        """Do not add slots to the list of children automatically if it's tag is contained in this list."""
         member = self.get_member("AutoAddIgnoreTags")
         if isinstance(member, members.SyncList):
             return member
@@ -81,12 +81,12 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @auto_add_ignore_tags.setter
     def auto_add_ignore_tags(self, value: members.SyncList) -> None:
-        """Set the AutoAddIgnoreTags member."""
+        """Set AutoAddIgnoreTags. Do not add slots to the list of children automatically if it's tag is contained in this list."""
         self.set_member("AutoAddIgnoreTags", value)
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """The radius of the sphere to align items into"""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -105,7 +105,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def distribution_offset(self) -> primitives.Float | None:
-        """The DistributionOffset field value."""
+        """Shift the positions of the items along the sphere surface, redistributes."""
         member = self.get_member("DistributionOffset")
         if member is None:
             return None
@@ -124,7 +124,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def align_to_normal(self) -> primitives.Bool | None:
-        """The AlignToNormal field value."""
+        """Whether to rotate the items to align them to the surface of the sphere"""
         member = self.get_member("AlignToNormal")
         if member is None:
             return None
@@ -143,7 +143,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation_offset(self) -> primitives.FloatQ | None:
-        """The RotationOffset field value."""
+        """How much to rotate the sphere of aligned items by their individual origins"""
         member = self.get_member("RotationOffset")
         if member is None:
             return None
@@ -162,7 +162,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def normalized_start(self) -> primitives.Float | None:
-        """The NormalizedStart field value."""
+        """What point to start the alignment of items from top to bottom of the sphere."""
         member = self.get_member("NormalizedStart")
         if member is None:
             return None
@@ -181,7 +181,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def normalized_end(self) -> primitives.Float | None:
-        """The NormalizedEnd field value."""
+        """What point to end the alignment of items from top to bottom of the sphere."""
         member = self.get_member("NormalizedEnd")
         if member is None:
             return None
@@ -200,7 +200,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def horizontal_start(self) -> primitives.Float | None:
-        """The HorizontalStart field value."""
+        """What point to start the alignment of items along the equator of the sphere."""
         member = self.get_member("HorizontalStart")
         if member is None:
             return None
@@ -219,7 +219,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def horizontal_end(self) -> primitives.Float | None:
-        """The HorizontalEnd field value."""
+        """What point to end the alignment of items along the equator of the sphere."""
         member = self.get_member("HorizontalEnd")
         if member is None:
             return None
@@ -238,7 +238,7 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def items(self) -> members.SyncList | None:
-        """The Items member."""
+        """A list of items to align into the sphere shape."""
         member = self.get_member("Items")
         if isinstance(member, members.SyncList):
             return member
@@ -246,6 +246,6 @@ class SphereAligner(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @items.setter
     def items(self, value: members.SyncList) -> None:
-        """Set the Items member."""
+        """Set Items. A list of items to align into the sphere shape."""
         self.set_member("Items", value)
 

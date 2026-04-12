@@ -7,7 +7,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserspaceTargettingController(GeneratedComponent, IViewTargettingController, IInputUpdateReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UserspaceTargettingController.
+    """Used as a screen controller component for userspace actions.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UserspaceTargettingController"

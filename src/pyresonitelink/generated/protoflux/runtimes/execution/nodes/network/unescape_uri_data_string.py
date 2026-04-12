@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UnescapeUriDataString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Unescape Uri Data String node takes in an encoded string literal that uses Percent Encoding and converts that string into another string that is human readable. This is used mostly for applications that can read the characters and glyphs that are complex.
+    """The ``Unescape Uri Data String`` node takes in an encoded string literal that uses Percent Encoding and converts that string into another string that is human readable. This is used mostly for applications that can read the characters and glyphs that are complex.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network
     """

@@ -4,6 +4,8 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.texture_wrap_mode import TextureWrapMode
+from pyresonitelink.generated._enums.filtering import Filtering
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
@@ -13,14 +15,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.StaticTexture2D.
+    """The StaticTexture2D Component stores a reference to a static asset representing a 2D Texture.
 
     Category: Assets
+
+    By default ``Filter`` is set to Bilinear Filtering, however Anisotropic
+    Filtering results in a much better appearance at very steep angles, and
+    only has a very minor performance impact. If visual fidelity of your
+    texture is a concern, you should set ``Filter`` to Anisotropic, and
+    ``AnisotropicLevel`` to 4 or 8.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.StaticTexture2D"
 
-    def __init__(self, url: str | None = None, anisotropic_level: primitives.Int | None = None, uncompressed: primitives.Bool | None = None, direct_load: primitives.Bool | None = None, force_exact_variant: primitives.Bool | None = None, mip_map_bias: primitives.Float | None = None, is_normal_map: primitives.Bool | None = None, power_of_two_align_threshold: primitives.Float | None = None, crunch_compressed: primitives.Bool | None = None, min_size: primitives.Int | None = None, max_size: primitives.Int | None = None, mip_maps: primitives.Bool | None = None, keep_original_mip_maps: primitives.Bool | None = None, readable: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, url: str | None = None, anisotropic_level: primitives.Int | None = None, uncompressed: primitives.Bool | None = None, direct_load: primitives.Bool | None = None, force_exact_variant: primitives.Bool | None = None, mip_map_bias: primitives.Float | None = None, is_normal_map: primitives.Bool | None = None, wrap_mode_u: TextureWrapMode | str | None = None, wrap_mode_v: TextureWrapMode | str | None = None, power_of_two_align_threshold: primitives.Float | None = None, crunch_compressed: primitives.Bool | None = None, min_size: primitives.Int | None = None, max_size: primitives.Int | None = None, mip_maps: primitives.Bool | None = None, keep_original_mip_maps: primitives.Bool | None = None, mip_map_filter: Filtering | str | None = None, readable: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,12 +39,15 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             force_exact_variant: Initial value for ForceExactVariant.
             mip_map_bias: Initial value for MipMapBias.
             is_normal_map: Initial value for IsNormalMap.
+            wrap_mode_u: Initial value for WrapModeU.
+            wrap_mode_v: Initial value for WrapModeV.
             power_of_two_align_threshold: Initial value for PowerOfTwoAlignThreshold.
             crunch_compressed: Initial value for CrunchCompressed.
             min_size: Initial value for MinSize.
             max_size: Initial value for MaxSize.
             mip_maps: Initial value for MipMaps.
             keep_original_mip_maps: Initial value for KeepOriginalMipMaps.
+            mip_map_filter: Initial value for MipMapFilter.
             readable: Initial value for Readable.
             component: Existing Component to wrap.
         """
@@ -55,6 +66,10 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             self.mip_map_bias = mip_map_bias
         if is_normal_map is not None:
             self.is_normal_map = is_normal_map
+        if wrap_mode_u is not None:
+            self.wrap_mode_u = wrap_mode_u
+        if wrap_mode_v is not None:
+            self.wrap_mode_v = wrap_mode_v
         if power_of_two_align_threshold is not None:
             self.power_of_two_align_threshold = power_of_two_align_threshold
         if crunch_compressed is not None:
@@ -67,12 +82,14 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             self.mip_maps = mip_maps
         if keep_original_mip_maps is not None:
             self.keep_original_mip_maps = keep_original_mip_maps
+        if mip_map_filter is not None:
+            self.mip_map_filter = mip_map_filter
         if readable is not None:
             self.readable = readable
 
     @property
     def url(self) -> str | None:
-        """The URL field value."""
+        """The Asset URI that references the raw texture data"""
         member = self.get_member("URL")
         if member is None:
             return None
@@ -123,7 +140,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     @property
     def uncompressed(self) -> primitives.Bool | None:
-        """The Uncompressed field value."""
+        """Do not use texture compression"""
         member = self.get_member("Uncompressed")
         if member is None:
             return None
@@ -142,7 +159,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     @property
     def direct_load(self) -> primitives.Bool | None:
-        """The DirectLoad field value."""
+        """Whether to load the image directly from it's URI source and to not cache it locally."""
         member = self.get_member("DirectLoad")
         if member is None:
             return None
@@ -161,7 +178,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     @property
     def force_exact_variant(self) -> primitives.Bool | None:
-        """The ForceExactVariant field value."""
+        """Only allow one variant of the texture to exist, part of Asset Variant System."""
         member = self.get_member("ForceExactVariant")
         if member is None:
             return None
@@ -180,7 +197,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     @property
     def preferred_format(self) -> members.FieldEnum | None:
-        """The PreferredFormat member."""
+        """The format to use for texture compression rather than the auto picked one. See Texture Compression Formats for more details."""
         member = self.get_member("PreferredFormat")
         if isinstance(member, members.FieldEnum):
             return member
@@ -188,12 +205,12 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     @preferred_format.setter
     def preferred_format(self, value: members.FieldEnum) -> None:
-        """Set the PreferredFormat member."""
+        """Set PreferredFormat. The format to use for texture compression rather than the auto picked one. See Texture Compression Formats for more details."""
         self.set_member("PreferredFormat", value)
 
     @property
     def preferred_profile(self) -> members.FieldEnum | None:
-        """The PreferredProfile member."""
+        """The color profile to use rather than the auto picked one. (usually linear)"""
         member = self.get_member("PreferredProfile")
         if isinstance(member, members.FieldEnum):
             return member
@@ -201,7 +218,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     @preferred_profile.setter
     def preferred_profile(self, value: members.FieldEnum) -> None:
-        """Set the PreferredProfile member."""
+        """Set PreferredProfile. The color profile to use rather than the auto picked one. (usually linear)"""
         self.set_member("PreferredProfile", value)
 
     @property
@@ -225,7 +242,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     @property
     def is_normal_map(self) -> primitives.Bool | None:
-        """The IsNormalMap field value."""
+        """This texture should be interpreted as a Normal Map"""
         member = self.get_member("IsNormalMap")
         if member is None:
             return None
@@ -243,34 +260,48 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     @property
-    def wrap_mode_u(self) -> members.FieldEnum | None:
-        """The WrapModeU member."""
+    def wrap_mode_u(self) -> TextureWrapMode | None:
+        """The WrapModeU enum value."""
         member = self.get_member("WrapModeU")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureWrapMode(member.value)
         return None
 
     @wrap_mode_u.setter
-    def wrap_mode_u(self, value: members.FieldEnum) -> None:
-        """Set the WrapModeU member."""
-        self.set_member("WrapModeU", value)
+    def wrap_mode_u(self, value: TextureWrapMode | str) -> None:
+        """Set the WrapModeU enum value."""
+        member = self.get_member("WrapModeU")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapModeU",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def wrap_mode_v(self) -> members.FieldEnum | None:
-        """The WrapModeV member."""
+    def wrap_mode_v(self) -> TextureWrapMode | None:
+        """The WrapModeV enum value."""
         member = self.get_member("WrapModeV")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return TextureWrapMode(member.value)
         return None
 
     @wrap_mode_v.setter
-    def wrap_mode_v(self, value: members.FieldEnum) -> None:
-        """Set the WrapModeV member."""
-        self.set_member("WrapModeV", value)
+    def wrap_mode_v(self, value: TextureWrapMode | str) -> None:
+        """Set the WrapModeV enum value."""
+        member = self.get_member("WrapModeV")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "WrapModeV",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def power_of_two_align_threshold(self) -> primitives.Float | None:
-        """The PowerOfTwoAlignThreshold field value."""
+        """The threshold for pixel count from range [0.0,1.0] before scaling both axes to a power of 2."""
         member = self.get_member("PowerOfTwoAlignThreshold")
         if member is None:
             return None
@@ -289,7 +320,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     @property
     def crunch_compressed(self) -> primitives.Bool | None:
-        """The CrunchCompressed field value."""
+        """Whether the texture should be lossily compressed using Crunch. This goes on top of the compression set in PreferredFormat and doesn't decrease VRAM usage, only download size."""
         member = self.get_member("CrunchCompressed")
         if member is None:
             return None
@@ -308,7 +339,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     @property
     def min_size(self) -> primitives.Int | None:
-        """The MinSize field value."""
+        """The miniumum size to show to the user, which scaled versions are generated by the cloud on the fly from the original and sent as part of the Asset Variant System"""
         member = self.get_member("MinSize")
         if member is None:
             return None
@@ -327,7 +358,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     @property
     def max_size(self) -> primitives.Int | None:
-        """The MaxSize field value."""
+        """The maxiumum size to show to the user, which scaled versions are generated by the cloud on the fly from the original and sent as part of the Asset Variant System"""
         member = self.get_member("MaxSize")
         if member is None:
             return None
@@ -365,7 +396,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
 
     @property
     def keep_original_mip_maps(self) -> primitives.Bool | None:
-        """The KeepOriginalMipMaps field value."""
+        """Whether to use the original mipmaps that came with the image data (yes you could have rainbow mipmaps at further distances) or not."""
         member = self.get_member("KeepOriginalMipMaps")
         if member is None:
             return None
@@ -383,21 +414,28 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     @property
-    def mip_map_filter(self) -> members.FieldEnum | None:
-        """The MipMapFilter member."""
+    def mip_map_filter(self) -> Filtering | None:
+        """How to apply filtering to the image's mipmaps. please see Filtering!"""
         member = self.get_member("MipMapFilter")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Filtering(member.value)
         return None
 
     @mip_map_filter.setter
-    def mip_map_filter(self, value: members.FieldEnum) -> None:
-        """Set the MipMapFilter member."""
-        self.set_member("MipMapFilter", value)
+    def mip_map_filter(self, value: Filtering | str) -> None:
+        """Set MipMapFilter. How to apply filtering to the image's mipmaps. please see Filtering!"""
+        member = self.get_member("MipMapFilter")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "MipMapFilter",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def readable(self) -> primitives.Bool | None:
-        """The Readable field value."""
+        """Whether this can be read per pixel via things like ProtoFlux"""
         member = self.get_member("Readable")
         if member is None:
             return None
@@ -415,7 +453,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             )
 
     async def bleed_color_to_alpha(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the BleedColorToAlpha sync method.
+        """extends the color data of the texture out into transparent areas from non transparent areas.
 
         Returns:
             The raw JSON response dict.
@@ -425,7 +463,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def flip_horizontal(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the FlipHorizontal sync method.
+        """Flips the image horizontal
 
         Returns:
             The raw JSON response dict.
@@ -435,7 +473,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def flip_vertical(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the FlipVertical sync method.
+        """Flips the image vertical
 
         Returns:
             The raw JSON response dict.
@@ -445,7 +483,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def rotate90_cw(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Rotate90CW sync method.
+        """Rotates the image by 90° clockwise
 
         Returns:
             The raw JSON response dict.
@@ -455,7 +493,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def rotate90_ccw(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Rotate90CCW sync method.
+        """Rotates the image by 90° counterclockwise
 
         Returns:
             The raw JSON response dict.
@@ -465,7 +503,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def rotate180(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the Rotate180 sync method.
+        """Rotates the image by 180°
 
         Returns:
             The raw JSON response dict.
@@ -475,7 +513,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def make_square(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the MakeSquare sync method.
+        """Resizes the image to make it square.
 
         Returns:
             The raw JSON response dict.
@@ -485,7 +523,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def tile_loop(self, resolink: protocols.ResoniteLinkClient, transition: primitives.Float2, debug: bool = False) -> dict:
-        """Call the TileLoop sync method.
+        """Tiles the image X times on the width and height directions
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -500,7 +538,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def tile_mirror(self, resolink: protocols.ResoniteLinkClient, transition: primitives.Float2, debug: bool = False) -> dict:
-        """Call the TileMirror sync method.
+        """Tiles the image X times on the width and height directions, mirroring the image every other tiling.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -515,7 +553,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def rescale(self, resolink: protocols.ResoniteLinkClient, size: primitives.Int, filtering: str, debug: bool = False) -> dict:
-        """Call the Rescale sync method.
+        """Resizes the image up or down.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -531,7 +569,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def rescale_2(self, resolink: protocols.ResoniteLinkClient, size: primitives.Int2, filtering: str, debug: bool = False) -> dict:
-        """Call the Rescale sync method.
+        """Resizes the image up or down.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -547,7 +585,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def crop(self, resolink: protocols.ResoniteLinkClient, position: primitives.Int2, size: primitives.Int2, debug: bool = False) -> dict:
-        """Call the Crop sync method.
+        """Crops the image to a new area in pixels.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -563,7 +601,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def trim(self, resolink: protocols.ResoniteLinkClient, color: primitives.Color, debug: bool = False) -> dict:
-        """Call the Trim sync method.
+        """Trims the image from the edges. for example, this can be used to trim a black and white mask image to get rid of extra white around the edges of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -578,7 +616,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def trim_1(self, resolink: protocols.ResoniteLinkClient, color: primitives.Color32, debug: bool = False) -> dict:
-        """Call the Trim sync method.
+        """Trims the image from the edges. for example, this can be used to trim a black and white mask image to get rid of extra white around the edges of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -593,7 +631,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def trim_transparent(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the TrimTransparent sync method.
+        """Trims the transparent areas off of the edges of an image.
 
         Returns:
             The raw JSON response dict.
@@ -603,7 +641,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def trim_by_corner_color(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the TrimByCornerColor sync method.
+        """Stretches the image such that both sides are equal to the longest side
 
         Returns:
             The raw JSON response dict.
@@ -679,7 +717,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def kmeans_cluster(self, resolink: protocols.ResoniteLinkClient, k: primitives.Int, position_weight: primitives.Float, batch_size: primitives.Int, passes_over_data: primitives.Float, debug: bool = False) -> dict:
-        """Call the KMeansCluster sync method.
+        """This can be used to make the image into a vorroni version of it. is used to compress the color usage of an image to make it easily compressable. can also be used for art effects.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -697,7 +735,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def invert_rgb(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the InvertRGB sync method.
+        """Inverts the colors of the image.
 
         Returns:
             The raw JSON response dict.
@@ -707,7 +745,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def invert_r(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the InvertR sync method.
+        """Inverts the red channel of the image.
 
         Returns:
             The raw JSON response dict.
@@ -717,7 +755,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def invert_g(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the InvertG sync method.
+        """Inverts the green channel of the image.
 
         Returns:
             The raw JSON response dict.
@@ -727,7 +765,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def invert_b(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the InvertB sync method.
+        """Inverts the blue channel of the image.
 
         Returns:
             The raw JSON response dict.
@@ -737,7 +775,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def invert_a(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the InvertA sync method.
+        """Inverts the alpha channel of the image.
 
         Returns:
             The raw JSON response dict.
@@ -747,7 +785,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def color_to_alpha(self, resolink: protocols.ResoniteLinkClient, fill_color: primitives.ColorX, debug: bool = False) -> dict:
-        """Call the ColorToAlpha sync method.
+        """Turns the color data of the image into transparency/alpha data.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -762,7 +800,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def alpha_from_intensity(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the AlphaFromIntensity sync method.
+        """Makes alpha/transparency data depending on the color intensity of the image.
 
         Returns:
             The raw JSON response dict.
@@ -772,7 +810,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def alpha_to_mask(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the AlphaToMask sync method.
+        """Turns the alpha of the image into a black and white image.
 
         Returns:
             The raw JSON response dict.
@@ -782,7 +820,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def remove_alpha(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the RemoveAlpha sync method.
+        """Removes the alpha data completely from the image or makes it white.
 
         Returns:
             The raw JSON response dict.
@@ -792,7 +830,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def grayscale_average(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the GrayscaleAverage sync method.
+        """Make grayscale image based on the average values for the colors per pixel.
 
         Returns:
             The raw JSON response dict.
@@ -802,7 +840,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def grayscale_luminance(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the GrayscaleLuminance sync method.
+        """Make grayscale image based on the color luminance per pixel.
 
         Returns:
             The raw JSON response dict.
@@ -812,7 +850,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def swap_rg(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SwapRG sync method.
+        """Swaps the red and green channels on the image
 
         Returns:
             The raw JSON response dict.
@@ -822,7 +860,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def swap_rb(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SwapRB sync method.
+        """Swaps the red and blue channels on the image
 
         Returns:
             The raw JSON response dict.
@@ -832,7 +870,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def swap_ra(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SwapRA sync method.
+        """Swaps the red and alpha channels on the image
 
         Returns:
             The raw JSON response dict.
@@ -842,7 +880,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def swap_gb(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SwapGB sync method.
+        """Swaps the green and blue channels on the image
 
         Returns:
             The raw JSON response dict.
@@ -852,7 +890,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def swap_ga(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SwapGA sync method.
+        """Swaps the green and alpha channels on the image
 
         Returns:
             The raw JSON response dict.
@@ -862,7 +900,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def swap_ba(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
-        """Call the SwapBA sync method.
+        """Swaps the blue and alpha channels on the image
 
         Returns:
             The raw JSON response dict.
@@ -912,7 +950,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def add_background(self, resolink: protocols.ResoniteLinkClient, color: primitives.ColorX, debug: bool = False) -> dict:
-        """Call the AddBackground sync method.
+        """adds a background of a color to a transparent image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -927,7 +965,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def adjust_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: primitives.Float, debug: bool = False) -> dict:
-        """Call the AdjustGamma sync method.
+        """Adjusts the gamma of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -942,7 +980,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def adjust_alpha_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: primitives.Float, debug: bool = False) -> dict:
-        """Call the AdjustAlphaGamma sync method.
+        """Adjusts the gamma of the alpha channel of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -957,7 +995,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def shift_hue(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
-        """Call the ShiftHue sync method.
+        """Shifts the hue of HSV of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -972,7 +1010,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def set_hue(self, resolink: protocols.ResoniteLinkClient, hue: primitives.Float, debug: bool = False) -> dict:
-        """Call the SetHue sync method.
+        """Sets the Hue of HSV of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -987,7 +1025,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def set_saturation(self, resolink: protocols.ResoniteLinkClient, saturation: primitives.Float, debug: bool = False) -> dict:
-        """Call the SetSaturation sync method.
+        """Sets the saturation of HSV of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1002,7 +1040,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def offset_saturation(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
-        """Call the OffsetSaturation sync method.
+        """Adds to the saturation of HSV of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1017,7 +1055,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def mul_saturation(self, resolink: protocols.ResoniteLinkClient, ratio: primitives.Float, debug: bool = False) -> dict:
-        """Call the MulSaturation sync method.
+        """Multiplies the saturation of HSV of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1032,7 +1070,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def set_value(self, resolink: protocols.ResoniteLinkClient, value: primitives.Float, debug: bool = False) -> dict:
-        """Call the SetValue sync method.
+        """Sets the value of HSV of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1047,7 +1085,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def mul_value(self, resolink: protocols.ResoniteLinkClient, ratio: primitives.Float, debug: bool = False) -> dict:
-        """Call the MulValue sync method.
+        """Multiplies the value of HSV of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1062,7 +1100,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def offset_value(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
-        """Call the OffsetValue sync method.
+        """Adds to the value of HSV of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1077,7 +1115,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def offset_alpha(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
-        """Call the OffsetAlpha sync method.
+        """Adds to the alpha of the image.
 
         Args:
             resolink: Connected ResoniteLink client.
@@ -1092,7 +1130,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
         )
 
     async def normalize(self, resolink: protocols.ResoniteLinkClient, rgb_independently: primitives.Bool, normalize_alpha: primitives.Bool, normalize_min_value: primitives.Bool, debug: bool = False) -> dict:
-        """Call the Normalize sync method.
+        """Normalizes the colors of the image, making it have a bigger color range usage.
 
         Args:
             resolink: Connected ResoniteLink client.

@@ -12,6 +12,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class EarsPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Ears Position node returns the local user's audio output (hearing audio) position.
 
+The Camera has the ability to override this position by using the ``Audio from camera viewpoint`` setting, and if true, will return this new position value, otherwise it will use the user's head proxy's position.
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Local Output
     """
 

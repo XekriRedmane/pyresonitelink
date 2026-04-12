@@ -33,7 +33,7 @@ class GetActiveLocomotionModule(GeneratedComponent, INodeObjectOutput, IExecutio
 
     @property
     def user(self) -> str | None:
-        """Target ID of the User reference (targets INodeObjectOutput[User])."""
+        """The user to get the current locomotion they are moving with."""
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -10,9 +10,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ParentReference(GenericComponent[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ParentReference<>.
+    """The ParentReference&lt;T&gt; component provides a reference type for the parent value system.
 
     Category: Data/Parent
+
+    When this component is on a slot, all immediate children are part of its
+    parent value system. Any immediate children of the slot with a
+    ParentReferenceLink component that matches the type and ``Tag`` of this
+    component will be linked to the ``Reference`` provided by this
+    component. This can be especially useful for Snapper/SnapTarget systems.
 
     Parameterize with a value type::
 
@@ -39,7 +45,7 @@ class ParentReference(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def tag(self) -> primitives.String | None:
-        """The Tag field value."""
+        """Tag of the parent value. Compatible ParentReferenceLink components on the slot's immediate children must have the same tag."""
         member = self.get_member("Tag")
         if member is None:
             return None
@@ -58,7 +64,7 @@ class ParentReference(GenericComponent[T], IComponent, IWorldEventReceiver):
 
     @property
     def reference(self) -> str | None:
-        """Target ID of the Reference reference (targets T)."""
+        """The value of the parent value associated with the ``Tag`` and type."""
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -4,6 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,20 +13,27 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CircleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CircleMesh.
+    """The CircleMesh component procedurally generates a circle mesh for use with a MeshRenderer.
 
     Category: Assets/Procedural Meshes
+
+    Attach this component to a slot, and then put it inside of a Mesh
+    Renderer component to view what it looks like. Don't forget to add a
+    material to the mesh renderer.
+
+    **Related Components**: Procedural Meshes
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CircleMesh"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, rotation: primitives.FloatQ | None = None, segments: primitives.Int | None = None, radius: primitives.Float | None = None, arc: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, scale_uv_with_size: primitives.Bool | None = None, triangle_fan: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, rotation: primitives.FloatQ | None = None, segments: primitives.Int | None = None, radius: primitives.Float | None = None, arc: primitives.Float | None = None, uv_scale: primitives.Float2 | None = None, scale_uv_with_size: primitives.Bool | None = None, triangle_fan: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             high_priority_integration: Initial value for HighPriorityIntegration.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
             rotation: Initial value for Rotation.
             segments: Initial value for Segments.
             radius: Initial value for Radius.
@@ -42,6 +50,8 @@ class CircleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
             self.override_bounding_box = override_bounding_box
         if overriden_bounding_box is not None:
             self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
         if rotation is not None:
             self.rotation = rotation
         if segments is not None:
@@ -115,21 +125,28 @@ class CircleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
             )
 
     @property
-    def profile(self) -> members.FieldEnum | None:
-        """The Profile member."""
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
         member = self.get_member("Profile")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
         return None
 
     @profile.setter
-    def profile(self, value: members.FieldEnum) -> None:
-        """Set the Profile member."""
-        self.set_member("Profile", value)
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def rotation(self) -> primitives.FloatQ | None:
-        """The Rotation field value."""
+        """How much to rotate the circle mesh from it's rest position before rendering"""
         member = self.get_member("Rotation")
         if member is None:
             return None
@@ -148,7 +165,7 @@ class CircleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
 
     @property
     def segments(self) -> primitives.Int | None:
-        """The Segments field value."""
+        """How many sides the circle has."""
         member = self.get_member("Segments")
         if member is None:
             return None
@@ -167,7 +184,7 @@ class CircleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
 
     @property
     def radius(self) -> primitives.Float | None:
-        """The Radius field value."""
+        """How big the circle's radius is."""
         member = self.get_member("Radius")
         if member is None:
             return None
@@ -186,7 +203,7 @@ class CircleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
 
     @property
     def arc(self) -> primitives.Float | None:
-        """The Arc field value."""
+        """How much out of 360 degrees the circle should take up of a full circle."""
         member = self.get_member("Arc")
         if member is None:
             return None
@@ -205,7 +222,7 @@ class CircleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
 
     @property
     def uv_scale(self) -> primitives.Float2 | None:
-        """The UVScale field value."""
+        """The scale of the texture detail of the material rendered on this mesh."""
         member = self.get_member("UVScale")
         if member is None:
             return None
@@ -224,7 +241,7 @@ class CircleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
 
     @property
     def scale_uv_with_size(self) -> primitives.Bool | None:
-        """The ScaleUVWithSize field value."""
+        """Whether to make the detail of the material independent of the size of circle in global space."""
         member = self.get_member("ScaleUVWithSize")
         if member is None:
             return None
@@ -243,7 +260,7 @@ class CircleMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEve
 
     @property
     def triangle_fan(self) -> primitives.Bool | None:
-        """The TriangleFan field value."""
+        """Whether to make the circle a bunch of triangles that meet in the middle or not."""
         member = self.get_member("TriangleFan")
         if member is None:
             return None

@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DynamicSpriteFont(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DynamicSpriteFont.
+    """The DynamicSpriteFont component is used to construct a font asset that can be used to create custom fonts character by character.
 
     Category: Assets/Procedural Fonts
+
+    **Glyph Example**: thumb|none|upright=1.7
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicSpriteFont"
@@ -53,7 +55,7 @@ class DynamicSpriteFont(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def max_size(self) -> primitives.Int | None:
-        """The MaxSize field value."""
+        """The max size of a glyph in the font sheet."""
         member = self.get_member("MaxSize")
         if member is None:
             return None
@@ -72,7 +74,7 @@ class DynamicSpriteFont(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @property
     def glyphs(self) -> members.SyncList | None:
-        """The Glyphs member."""
+        """A list of Font characters that should make up this dynamic font."""
         member = self.get_member("Glyphs")
         if isinstance(member, members.SyncList):
             return member
@@ -80,6 +82,6 @@ class DynamicSpriteFont(GeneratedComponent, IAssetProvider, ICustomInspector, IW
 
     @glyphs.setter
     def glyphs(self, value: members.SyncList) -> None:
-        """Set the Glyphs member."""
+        """Set Glyphs. A list of Font characters that should make up this dynamic font."""
         self.set_member("Glyphs", value)
 

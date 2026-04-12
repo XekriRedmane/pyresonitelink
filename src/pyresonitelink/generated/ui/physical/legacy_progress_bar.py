@@ -14,9 +14,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.LegacyProgressBar.
+    """The LegacyProgressBar component was used in old progress bars for importing items or for cloud storage indicators. This should not be used for new content and should be removed when possible.
 
     Category: UI/Physical
+
+    Just dont.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyProgressBar"
@@ -160,7 +162,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def progress(self) -> primitives.Float | None:
-        """The Progress field value."""
+        """How close the item is to being imported."""
         member = self.get_member("Progress")
         if member is None:
             return None
@@ -179,7 +181,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bar_color_field(self) -> primitives.ColorX | None:
-        """The BarColorField field value."""
+        """The color of the loading bar."""
         member = self.get_member("BarColorField")
         if member is None:
             return None
@@ -198,7 +200,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def container_color_field(self) -> primitives.ColorX | None:
-        """The ContainerColorField field value."""
+        """The color of the container of the loading bar."""
         member = self.get_member("ContainerColorField")
         if member is None:
             return None
@@ -217,7 +219,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def width_field(self) -> primitives.Float | None:
-        """The WidthField field value."""
+        """The width of the UI."""
         member = self.get_member("WidthField")
         if member is None:
             return None
@@ -236,7 +238,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def height_field(self) -> primitives.Float | None:
-        """The HeightField field value."""
+        """The height of the UI."""
         member = self.get_member("HeightField")
         if member is None:
             return None
@@ -255,7 +257,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def thickness_field(self) -> primitives.Float | None:
-        """The ThicknessField field value."""
+        """The thickness of the UI."""
         member = self.get_member("ThicknessField")
         if member is None:
             return None
@@ -274,7 +276,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def slant_field(self) -> primitives.Float | None:
-        """The SlantField field value."""
+        """How beveled the UI edges are."""
         member = self.get_member("SlantField")
         if member is None:
             return None
@@ -293,7 +295,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bar_mesh(self) -> str | None:
-        """Target ID of the _barMesh reference (targets BevelStripeMesh)."""
+        """The mesh used for the progress bar."""
         member = self.get_member("_barMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -314,7 +316,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def container_mesh(self) -> str | None:
-        """Target ID of the _containerMesh reference (targets BevelStripeMesh)."""
+        """The mesh used for the UI container."""
         member = self.get_member("_containerMesh")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -335,7 +337,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bar_material(self) -> str | None:
-        """Target ID of the _barMaterial reference (targets PBS_RimMetallic)."""
+        """The material used for the progress bar."""
         member = self.get_member("_barMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -356,7 +358,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def container_material(self) -> str | None:
-        """Target ID of the _containerMaterial reference (targets PBS_RimMetallic)."""
+        """The material used for the UI container."""
         member = self.get_member("_containerMaterial")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -377,7 +379,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def bar_position(self) -> str | None:
-        """Target ID of the _barPosition reference (targets IField[primitives.Float3])."""
+        """The position field of the bar."""
         member = self.get_member("_barPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -398,7 +400,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def collider_size(self) -> str | None:
-        """Target ID of the _colliderSize reference (targets IField[primitives.Float3])."""
+        """The field of the collider size for the UI."""
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             return member.targetId

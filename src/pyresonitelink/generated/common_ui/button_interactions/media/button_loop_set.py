@@ -1,6 +1,7 @@
 """Generated component: ButtonLoopSet."""
 
 from pyresonitelink.data import members
+from pyresonitelink.generated._enums.loop_set_options import LoopSetOptions
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iplayable import IPlayable
@@ -10,27 +11,37 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonLoopSet(GeneratedComponent, IButtonPressReceiver, IButtonHoverReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonLoopSet.
+    """The ButtonLoopSet component takes in an IPlayable. When an IButton is pressed while this component is in the same slot, it will set the loop on this playable media depending on what is set up in this component.
+
+}}
 
     Category: Common UI/Button Interactions/Media
+
+    Basically a loop button that can be setup anywhere.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonLoopSet"
 
-    def __init__(self, playback: str | IPlayable | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, playback: str | IPlayable | None = None, on_press: LoopSetOptions | str | None = None, on_release: LoopSetOptions | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             playback: Initial value for Playback.
+            on_press: Initial value for OnPress.
+            on_release: Initial value for OnRelease.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if playback is not None:
             self.playback = playback
+        if on_press is not None:
+            self.on_press = on_press
+        if on_release is not None:
+            self.on_release = on_release
 
     @property
     def playback(self) -> str | None:
-        """Target ID of the Playback reference (targets IPlayable)."""
+        """The referenced playable media."""
         member = self.get_member("Playback")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -50,28 +61,42 @@ class ButtonLoopSet(GeneratedComponent, IButtonPressReceiver, IButtonHoverReceiv
             )
 
     @property
-    def on_press(self) -> members.FieldEnum | None:
-        """The OnPress member."""
+    def on_press(self) -> LoopSetOptions | None:
+        """Sets the type of loop for this media when pressed."""
         member = self.get_member("OnPress")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return LoopSetOptions(member.value)
         return None
 
     @on_press.setter
-    def on_press(self, value: members.FieldEnum) -> None:
-        """Set the OnPress member."""
-        self.set_member("OnPress", value)
+    def on_press(self, value: LoopSetOptions | str) -> None:
+        """Set OnPress. Sets the type of loop for this media when pressed."""
+        member = self.get_member("OnPress")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OnPress",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
-    def on_release(self) -> members.FieldEnum | None:
-        """The OnRelease member."""
+    def on_release(self) -> LoopSetOptions | None:
+        """Sets the type of loop for this media when released."""
         member = self.get_member("OnRelease")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return LoopSetOptions(member.value)
         return None
 
     @on_release.setter
-    def on_release(self, value: members.FieldEnum) -> None:
-        """Set the OnRelease member."""
-        self.set_member("OnRelease", value)
+    def on_release(self, value: LoopSetOptions | str) -> None:
+        """Set OnRelease. Sets the type of loop for this media when released."""
+        member = self.get_member("OnRelease")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "OnRelease",
+                members.FieldEnum(value=str(value)),
+            )
 

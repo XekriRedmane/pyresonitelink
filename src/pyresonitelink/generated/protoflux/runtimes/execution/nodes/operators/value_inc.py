@@ -14,6 +14,8 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class ValueInc(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Value Inc node takes in a value and returns that value +1.
 
+This node is similar to the Add node, but setting the add node to only add 1. |suggestion}}
+
     Category: ProtoFlux/Runtimes/Execution/Nodes/Operators
 
     Parameterize with a value type::

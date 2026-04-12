@@ -14,7 +14,9 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TwitchSubscriptionEvent(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """This node provides Twitch subscription information from a TwitchInterface.
+    """This node provides Twitch subscription information from a TwitchInterface. 
+
+Note that all outputs are generated on a new Twitch chat message, and will not display any information when connected to a display node.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Network/Twitch
     """

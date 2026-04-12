@@ -14,9 +14,15 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.WorldLoadingProgressInterface.
+    """The WorldLoadingProgressInterface component is the key component in the creation of a user-definable world loading progress bar. See Favorites for favoritable items like this one.
 
     Category: Utility/Entity Interfaces
+
+    Use either the existing Resonite world loading bar under Resonite
+    Essentials or make a UI by attaching the component and making one from
+    scratch. Then save the item with this component to the inventory and
+    favorite it so it becomes the default world load indicator upon
+    restarting.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldLoadingProgressInterface"
@@ -139,7 +145,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def item_name(self) -> str | None:
-        """Target ID of the ItemName reference (targets IField[primitives.String])."""
+        """The name of this favoritable item."""
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -160,7 +166,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def spawning_user(self) -> str | None:
-        """Target ID of the SpawningUser reference (targets UserRef)."""
+        """The user that spawned this favoritable item."""
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -181,7 +187,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def spawning_user_id(self) -> str | None:
-        """Target ID of the SpawningUserID reference (targets IField[primitives.String])."""
+        """The field containing the ID of the user that spawned this favoritable item."""
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -202,7 +208,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def is_instance(self) -> primitives.Bool | None:
-        """The IsInstance field value."""
+        """Whether this item is an instance."""
         member = self.get_member("IsInstance")
         if member is None:
             return None
@@ -221,7 +227,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def progress(self) -> str | None:
-        """Target ID of the Progress reference (targets IField[primitives.Float])."""
+        """Float field where 0.0 - 1.0 progress will be written."""
         member = self.get_member("Progress")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -242,7 +248,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def world_name(self) -> str | None:
-        """Target ID of the WorldName reference (targets IField[primitives.String])."""
+        """String field where the loading world's name will be written."""
         member = self.get_member("WorldName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -263,7 +269,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def stage(self) -> str | None:
-        """Target ID of the Stage reference (targets IField[ProgressStage])."""
+        """The field to write with the current progress stage of the currently loading world. This is written by the world loading main process."""
         member = self.get_member("Stage")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -284,7 +290,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def phase_name(self) -> str | None:
-        """Target ID of the PhaseName reference (targets IField[primitives.String])."""
+        """String field where the current loading phase name will be written."""
         member = self.get_member("PhaseName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -305,7 +311,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def sub_phase_name(self) -> str | None:
-        """Target ID of the SubPhaseName reference (targets IField[primitives.String])."""
+        """String field where the current loading sub-phase name will be written."""
         member = self.get_member("SubPhaseName")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -326,7 +332,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def has_completed(self) -> str | None:
-        """Target ID of the HasCompleted reference (targets IField[primitives.Bool])."""
+        """Boolean field that will be set to true on loading completion."""
         member = self.get_member("HasCompleted")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -347,7 +353,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def has_failed(self) -> str | None:
-        """Target ID of the HasFailed reference (targets IField[primitives.Bool])."""
+        """Boolean field that will be set to true on loading failure."""
         member = self.get_member("HasFailed")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -368,7 +374,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def completion_message(self) -> str | None:
-        """Target ID of the CompletionMessage reference (targets IField[primitives.String])."""
+        """String field where message indicating completion will be written."""
         member = self.get_member("CompletionMessage")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -389,7 +395,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def failure_reason(self) -> str | None:
-        """Target ID of the FailureReason reference (targets IField[primitives.String])."""
+        """String field where message indicating reason for loading failure will be written."""
         member = self.get_member("FailureReason")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -410,7 +416,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def loading_assets(self) -> str | None:
-        """Target ID of the LoadingAssets reference (targets IField[primitives.Bool])."""
+        """Boolean field that is set true while loading assets."""
         member = self.get_member("LoadingAssets")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -431,7 +437,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def loaded_assets(self) -> str | None:
-        """Target ID of the LoadedAssets reference (targets IField[primitives.Int])."""
+        """Integer field counting loaded assets."""
         member = self.get_member("LoadedAssets")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -452,7 +458,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def total_assets(self) -> str | None:
-        """Target ID of the TotalAssets reference (targets IField[primitives.Int])."""
+        """Integer field counting total assets to be loaded."""
         member = self.get_member("TotalAssets")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -473,7 +479,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def loaded_textures_2d(self) -> str | None:
-        """Target ID of the LoadedTextures2D reference (targets IField[primitives.Int])."""
+        """Integer field counting loaded ITexture2D assets."""
         member = self.get_member("LoadedTextures2D")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -494,7 +500,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def total_textures_2d(self) -> str | None:
-        """Target ID of the TotalTextures2D reference (targets IField[primitives.Int])."""
+        """Integer field counting total ITexture2D assets to be loaded."""
         member = self.get_member("TotalTextures2D")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -515,7 +521,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def loaded_textures_3d(self) -> str | None:
-        """Target ID of the LoadedTextures3D reference (targets IField[primitives.Int])."""
+        """Integer field counting loaded ITexture3D assets."""
         member = self.get_member("LoadedTextures3D")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -536,7 +542,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def total_textures_3d(self) -> str | None:
-        """Target ID of the TotalTextures3D reference (targets IField[primitives.Int])."""
+        """Integer field counting total ITexture3D assets to be loaded."""
         member = self.get_member("TotalTextures3D")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -557,7 +563,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def loaded_cubemaps(self) -> str | None:
-        """Target ID of the LoadedCubemaps reference (targets IField[primitives.Int])."""
+        """Integer field counting loaded Cubemap assets."""
         member = self.get_member("LoadedCubemaps")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -578,7 +584,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def total_cubemaps(self) -> str | None:
-        """Target ID of the TotalCubemaps reference (targets IField[primitives.Int])."""
+        """Integer field counting total Cubemap assets to be loaded."""
         member = self.get_member("TotalCubemaps")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -599,7 +605,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def loaded_videos(self) -> str | None:
-        """Target ID of the LoadedVideos reference (targets IField[primitives.Int])."""
+        """Integer field counting loaded Video assets."""
         member = self.get_member("LoadedVideos")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -620,7 +626,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def total_videos(self) -> str | None:
-        """Target ID of the TotalVideos reference (targets IField[primitives.Int])."""
+        """Integer field counting total Video assets to be loaded."""
         member = self.get_member("TotalVideos")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -641,7 +647,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def loaded_meshes(self) -> str | None:
-        """Target ID of the LoadedMeshes reference (targets IField[primitives.Int])."""
+        """Integer field counting loaded Mesh assets."""
         member = self.get_member("LoadedMeshes")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -662,7 +668,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def total_meshes(self) -> str | None:
-        """Target ID of the TotalMeshes reference (targets IField[primitives.Int])."""
+        """Integer field counting total Mesh assets to be loaded."""
         member = self.get_member("TotalMeshes")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -683,7 +689,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def loaded_audio_clips(self) -> str | None:
-        """Target ID of the LoadedAudioClips reference (targets IField[primitives.Int])."""
+        """Integer field counting loaded Audio assets."""
         member = self.get_member("LoadedAudioClips")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -704,7 +710,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def total_audio_clips(self) -> str | None:
-        """Target ID of the TotalAudioClips reference (targets IField[primitives.Int])."""
+        """Integer field counting total Audio assets to be loaded."""
         member = self.get_member("TotalAudioClips")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -725,7 +731,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def loaded_shaders(self) -> str | None:
-        """Target ID of the LoadedShaders reference (targets IField[primitives.Int])."""
+        """Integer field counting loaded Shader assets."""
         member = self.get_member("LoadedShaders")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -746,7 +752,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def total_shaders(self) -> str | None:
-        """Target ID of the TotalShaders reference (targets IField[primitives.Int])."""
+        """Integer field counting total Shader assets to be loaded."""
         member = self.get_member("TotalShaders")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -767,7 +773,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def loaded_fonts(self) -> str | None:
-        """Target ID of the LoadedFonts reference (targets IField[primitives.Int])."""
+        """Integer field counting loaded Font assets."""
         member = self.get_member("LoadedFonts")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -788,7 +794,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def total_fonts(self) -> str | None:
-        """Target ID of the TotalFonts reference (targets IField[primitives.Int])."""
+        """Integer field counting total Font assets to be loaded."""
         member = self.get_member("TotalFonts")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -809,7 +815,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def bytes_downloaded(self) -> str | None:
-        """Target ID of the BytesDownloaded reference (targets IField[primitives.Long])."""
+        """Long field counting total bytes downloaded so far."""
         member = self.get_member("BytesDownloaded")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -830,7 +836,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def total_bytes(self) -> str | None:
-        """Target ID of the TotalBytes reference (targets IField[primitives.Long])."""
+        """Long field count of total bytes expected to be downloaded."""
         member = self.get_member("TotalBytes")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -851,7 +857,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def bytes_per_second(self) -> str | None:
-        """Target ID of the BytesPerSecond reference (targets IField[primitives.Long])."""
+        """Long field indicating current Bytes-per-Second download rate."""
         member = self.get_member("BytesPerSecond")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -872,7 +878,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
 
     @property
     def progress_bar(self) -> str | None:
-        """Target ID of the ProgressBar reference (targets ProgressBarInterface)."""
+        """Reference to a Component:ProgressBarInterface component to use as the progress Bae visual."""
         member = self.get_member("ProgressBar")
         if isinstance(member, members.Reference):
             return member.targetId

@@ -3,6 +3,7 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.mesh_data import MeshData
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
@@ -12,14 +13,14 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.DebugMaterial.
+    """The DebugMaterial component is used to display mesh data in the form of a color map.
 
     Category: Assets/Materials/Special
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, scale: primitives.Float | None = None, offset: primitives.Float3 | None = None, normalize: primitives.Bool | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, scale: primitives.Float | None = None, offset: primitives.Float3 | None = None, visualize: MeshData | str | None = None, normalize: primitives.Bool | None = None, render_queue: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,6 +28,7 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             shader: Initial value for _shader.
             scale: Initial value for Scale.
             offset: Initial value for Offset.
+            visualize: Initial value for Visualize.
             normalize: Initial value for Normalize.
             render_queue: Initial value for RenderQueue.
             component: Existing Component to wrap.
@@ -40,6 +42,8 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             self.scale = scale
         if offset is not None:
             self.offset = offset
+        if visualize is not None:
+            self.visualize = visualize
         if normalize is not None:
             self.normalize = normalize
         if render_queue is not None:
@@ -124,17 +128,24 @@ class DebugMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorld
             )
 
     @property
-    def visualize(self) -> members.FieldEnum | None:
-        """The Visualize member."""
+    def visualize(self) -> MeshData | None:
+        """The Visualize enum value."""
         member = self.get_member("Visualize")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return MeshData(member.value)
         return None
 
     @visualize.setter
-    def visualize(self, value: members.FieldEnum) -> None:
-        """Set the Visualize member."""
-        self.set_member("Visualize", value)
+    def visualize(self, value: MeshData | str) -> None:
+        """Set the Visualize enum value."""
+        member = self.get_member("Visualize")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Visualize",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def normalize(self) -> primitives.Bool | None:

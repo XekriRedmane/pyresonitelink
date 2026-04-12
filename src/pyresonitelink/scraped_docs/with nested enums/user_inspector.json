@@ -1,0 +1,21 @@
+{
+  "description": "The User Inspector component is better described on it's page, User Inspector.",
+  "category": "With Nested Enums",
+  "fields": {
+    "ViewUser": "The user this inspector is currently updating through.",
+    "ViewGroup": "What kind of information group this is inspecting.",
+    "ViewStreamGroup": "The kind of value stream group this is viewing.",
+    "_currentUser": "The current user this is viewing.",
+    "_currentViewGroup": "What kind of information group this is currently inspecting.",
+    "_currentStreamGroup": "The kind of value stream group this is currently viewing.",
+    "_userListContentRoot": "The slot to place user stream/properties content when viewing a user.",
+    "_workersContentRoot": "The slot to place user worker content when viewing a user.",
+    "_userText": "The string field that stores text on the user being viewed."
+  },
+  "methods": {
+    "FilterWorker": "A sync delegate that filters worker C# objects for the use of displaying those objects in this inspector."
+  },
+  "usage": "See User Inspector.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserInspector&action=raw"
+}

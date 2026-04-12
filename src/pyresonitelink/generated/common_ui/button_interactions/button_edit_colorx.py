@@ -12,9 +12,13 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ButtonEditColorX.
+    """The ButtonEditColorX component takes in a ColorX field, and when a button interacts with it, a ColorDialogInterface is created for the user (if the user has Builder).
+
+}}
 
     Category: Common UI/Button Interactions
+
+    This is used to edit colors with a press of a button.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonEditColorX"
@@ -44,7 +48,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
 
     @property
     def target(self) -> str | None:
-        """Target ID of the Target reference (targets IField[primitives.ColorX])."""
+        """The target ColorX."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -65,7 +69,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
 
     @property
     def color_picker(self) -> str | None:
-        """Target ID of the _colorPicker reference (targets ColorDialogInterface)."""
+        """The ColorDialogInterface component."""
         member = self.get_member("_colorPicker")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -86,7 +90,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
 
     @property
     def continuous(self) -> primitives.Bool | None:
-        """The Continuous field value."""
+        """Makes the color editing change continuous."""
         member = self.get_member("Continuous")
         if member is None:
             return None
@@ -105,7 +109,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
 
     @property
     def alpha(self) -> primitives.Bool | None:
-        """The Alpha field value."""
+        """Allows for use of the alpha channel."""
         member = self.get_member("Alpha")
         if member is None:
             return None
@@ -124,7 +128,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
 
     @property
     def hdr(self) -> primitives.Bool | None:
-        """The HDR field value."""
+        """Allows the use for HDR in this color."""
         member = self.get_member("HDR")
         if member is None:
             return None

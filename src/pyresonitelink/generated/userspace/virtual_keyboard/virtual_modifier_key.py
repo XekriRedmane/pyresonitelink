@@ -11,7 +11,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class VirtualModifierKey(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.VirtualModifierKey.
+    """Virtual Modifier Key is a way of making Virtual Keys change what they type when pressed.
 
     Category: Userspace/Virtual Keyboard
     """
@@ -34,7 +34,7 @@ class VirtualModifierKey(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def keyboard(self) -> str | None:
-        """Target ID of the Keyboard reference (targets VirtualKeyboard)."""
+        """The keyboard this key is a part of."""
         member = self.get_member("Keyboard")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -55,7 +55,7 @@ class VirtualModifierKey(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
 
     @property
     def state(self) -> primitives.Bool | None:
-        """The State field value."""
+        """Whether this modifier key is active or not, kind of like if CAPSLOCK was active."""
         member = self.get_member("State")
         if member is None:
             return None

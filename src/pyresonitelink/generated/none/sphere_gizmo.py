@@ -15,7 +15,12 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.SphereGizmo.
+    """The SphereGizmo component is used to control the radius of certain sphere elements.
+
+    Not used directly by the user. May have been one of the first components
+    Frooxius ever made for the game, considering that it doesn't follow some
+    naming conventions that are never broken across all components,
+    especially SphereGizmo.Handle on this page.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SphereGizmo"
@@ -66,7 +71,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def target_slot(self) -> str | None:
-        """Target ID of the TargetSlot reference (targets Slot)."""
+        """The slot this should position at."""
         member = self.get_member("TargetSlot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -87,7 +92,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def auto_position_at_target_slot(self) -> primitives.Bool | None:
-        """The AutoPositionAtTargetSlot field value."""
+        """whether the gizmo should auto position at ``TargetSlot``"""
         member = self.get_member("AutoPositionAtTargetSlot")
         if member is None:
             return None
@@ -106,7 +111,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def interacting_component(self) -> str | None:
-        """Target ID of the _interactingComponent reference (targets Component)."""
+        """the tool interacting with this component."""
         member = self.get_member("_interactingComponent")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -127,7 +132,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def material(self) -> str | None:
-        """Target ID of the _material reference (targets OverlayFresnelMaterial)."""
+        """The material that is being used for the visual."""
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -148,7 +153,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def tool_point(self) -> str | None:
-        """Target ID of the _toolPoint reference (targets Slot)."""
+        """The tool tip that is interacting with."""
         member = self.get_member("_toolPoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -169,7 +174,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def active_point(self) -> str | None:
-        """Target ID of the _activePoint reference (targets Slot)."""
+        """The active point slot for reference to an interacting tool."""
         member = self.get_member("_activePoint")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -190,7 +195,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def line_root(self) -> str | None:
-        """Target ID of the _lineRoot reference (targets Slot)."""
+        """The line root from this gizmo to a tool tip."""
         member = self.get_member("_lineRoot")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -211,7 +216,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def line_segment(self) -> str | None:
-        """Target ID of the _lineSegment reference (targets SegmentMesh)."""
+        """The line mesh from this gizmo to a tool tip."""
         member = self.get_member("_lineSegment")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -232,7 +237,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def snap_highlight(self) -> str | None:
-        """Target ID of the _snapHighlight reference (targets Slot)."""
+        """The slot used for highlighting snap targets."""
         member = self.get_member("_snapHighlight")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -253,7 +258,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def target_radius(self) -> str | None:
-        """Target ID of the TargetRadius reference (targets IField[primitives.Float])."""
+        """The field this gizmo is editing (also known as the radius field)"""
         member = self.get_member("TargetRadius")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -274,7 +279,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def radius_space(self) -> members.SyncObject | None:
-        """The RadiusSpace member."""
+        """The transform space the radius is in."""
         member = self.get_member("RadiusSpace")
         if isinstance(member, members.SyncObject):
             return member
@@ -282,12 +287,12 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @radius_space.setter
     def radius_space(self, value: members.SyncObject) -> None:
-        """Set the RadiusSpace member."""
+        """Set RadiusSpace. The transform space the radius is in."""
         self.set_member("RadiusSpace", value)
 
     @property
     def rim_radius(self) -> primitives.Float | None:
-        """The RimRadius field value."""
+        """The radius of the rim of the target radius."""
         member = self.get_member("RimRadius")
         if member is None:
             return None
@@ -306,7 +311,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def rim_radius_distance_scale(self) -> primitives.Float | None:
-        """The RimRadiusDistanceScale field value."""
+        """How to scale the radius for the rim by distance."""
         member = self.get_member("RimRadiusDistanceScale")
         if member is None:
             return None
@@ -325,7 +330,7 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @property
     def handles(self) -> members.SyncList | None:
-        """The _handles member."""
+        """a list of handles for this gizmo. usually a set of 3 rings."""
         member = self.get_member("_handles")
         if isinstance(member, members.SyncList):
             return member
@@ -333,6 +338,6 @@ class SphereGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEventReceiver)
 
     @handles.setter
     def handles(self, value: members.SyncList) -> None:
-        """Set the _handles member."""
+        """Set _handles. a list of handles for this gizmo. usually a set of 3 rings."""
         self.set_member("_handles", value)
 

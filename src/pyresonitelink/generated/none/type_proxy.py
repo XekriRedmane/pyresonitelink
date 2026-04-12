@@ -1,6 +1,7 @@
 """Generated component: TypeProxy."""
 
 from pyresonitelink.data import members
+from pyresonitelink.generated._enums.type import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iproto_flux_node import IProtoFluxNode
@@ -14,16 +15,19 @@ class TypeProxy(GeneratedComponent, ILastValueProxy, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[ProtoFlux.Nodes.FrooxEngine]ProtoFlux.Runtimes.Execution.Nodes.Actions.TypeProxy"
 
-    def __init__(self, node: str | IProtoFluxNode | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: str | IProtoFluxNode | None = None, last: Type | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             node: Initial value for Node.
+            last: Initial value for Last.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if node is not None:
             self.node = node
+        if last is not None:
+            self.last = last
 
     @property
     def node(self) -> str | None:
@@ -60,15 +64,22 @@ class TypeProxy(GeneratedComponent, ILastValueProxy, IWorldEventReceiver):
         self.set_member("Path", value)
 
     @property
-    def last(self) -> members.FieldEnum | None:
-        """The Last member."""
+    def last(self) -> Type | None:
+        """The Last enum value."""
         member = self.get_member("Last")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @last.setter
-    def last(self, value: members.FieldEnum) -> None:
-        """Set the Last member."""
-        self.set_member("Last", value)
+    def last(self, value: Type | str) -> None:
+        """Set the Last enum value."""
+        member = self.get_member("Last")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Last",
+                members.FieldEnum(value=str(value)),
+            )
 

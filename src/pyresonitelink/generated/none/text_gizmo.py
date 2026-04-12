@@ -12,7 +12,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TextGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.TextGizmo.
+    """The TextGizmo component is commonly found on newly spawned text elements and is used to quickly edit the text of a spawned text element. This component and it's visuals delete themselves after the user selects the text element using a development tip or inspector.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.TextGizmo"
@@ -39,7 +39,7 @@ class TextGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def target(self) -> str | None:
-        """Target ID of the _target reference (targets TextRenderer)."""
+        """The text renderer to edit the text of."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -60,7 +60,7 @@ class TextGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def editor(self) -> str | None:
-        """Target ID of the _editor reference (targets TextEditor)."""
+        """The text editor Component that targets ``_target`` for its editing."""
         member = self.get_member("_editor")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -81,7 +81,7 @@ class TextGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def edit_icon_position(self) -> str | None:
-        """Target ID of the _editIconPosition reference (targets IField[primitives.Float3])."""
+        """The position field of the start editing icon."""
         member = self.get_member("_editIconPosition")
         if isinstance(member, members.Reference):
             return member.targetId
@@ -102,7 +102,7 @@ class TextGizmo(GeneratedComponent, IComponentGizmo, IWorldEventReceiver):
 
     @property
     def edit_icon_scale(self) -> str | None:
-        """Target ID of the _editIconScale reference (targets IField[primitives.Float3])."""
+        """The scale field of the start editing icon."""
         member = self.get_member("_editIconScale")
         if isinstance(member, members.Reference):
             return member.targetId

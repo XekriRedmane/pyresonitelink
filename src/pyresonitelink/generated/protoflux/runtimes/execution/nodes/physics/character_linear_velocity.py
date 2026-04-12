@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class CharacterLinearVelocity(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Character Linear Velocity node takes in a character controller reference and returns the current velocity that it is currently going at over time.
+    """The ``Character Linear Velocity`` node takes in a character controller reference and returns the current velocity that it is currently going at over time.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Physics
     """
@@ -34,7 +34,7 @@ class CharacterLinearVelocity(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     @property
     def character(self) -> str | None:
-        """Target ID of the Character reference (targets INodeObjectOutput[CharacterController])."""
+        """The character controller reference."""
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             return member.targetId

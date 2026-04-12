@@ -8,9 +8,20 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class GlobalValue(GenericComponent[T], IGlobalValueProxy[T], IComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.ProtoFlux.GlobalValue<>.
+    """The GlobalValue&lt;T&gt; component is used by ProtoFlux to define a global of a FrooxEngine value type.
 
     Category: ProtoFlux
+
+    When not using ProtoFlux, this component has no use over more idiomatic
+    components such as a ValueField. When using ProtoFlux, the underlying
+    value can be changed and any node that accepts a global input that
+    references the component will update during execution. This can allow
+    one to dynamically change things like dynamic impulse receiver tags.
+    This component can also simply be used for static global values that
+    need to be referenced in a lot of places for when the overhead of
+    dynamic variables is undesirable. When combined with the Global To
+    Output node, this component also provides more UX than sourcing a
+    ValueField by being able to see the underlying value directly.
 
     Parameterize with a value type::
 

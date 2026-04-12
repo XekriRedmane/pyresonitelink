@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class InteractiveCameraObjectExcludeTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItemMetadataSource, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.InteractiveCameraObjectExcludeTool.
+    """The InteractiveCameraObjectExludeTool component can add or remove objects from the exclude render list of the user's currently active InteractiveCamera.
 
     Category: Tools
     """
@@ -184,7 +184,7 @@ class InteractiveCameraObjectExcludeTool(GeneratedComponent, ITool, IMaterialApp
 
     @property
     def apply_to_object_root(self) -> primitives.Bool | None:
-        """The ApplyToObjectRoot field value."""
+        """Whether to look for the object root of a hit collider before adding it to the exlude list."""
         member = self.get_member("ApplyToObjectRoot")
         if member is None:
             return None
