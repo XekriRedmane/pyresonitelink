@@ -18,10 +18,10 @@ Dergflux lets you write ProtoFlux logic using natural Python syntax::
 
 from pyresonitelink.dergflux._action import ActionDef, InputDef, OutputDef
 from pyresonitelink.dergflux._graph import Graph, Outcome
-from pyresonitelink.dergflux._space import Space, VarDecl
+from pyresonitelink.dergflux._space import ModelVarDecl, Space, VarDecl
 from pyresonitelink.dergflux import _math as math
 
 __all__ = [
     "ActionDef", "InputDef", "OutputDef",
-    "Graph", "Outcome", "Space", "VarDecl", "math",
+    "Graph", "ModelVarDecl", "Outcome", "Space", "VarDecl", "math",
 ]

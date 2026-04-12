@@ -543,6 +543,24 @@ There are three variable scoping levels (see `src/pyresonitelink/protoflux/READM
 - **Store** (`StoredValue<T>`): Global per-user variable, not networked. Each user has their own value. Persists across contexts. Similar to a global variable.
 - **Data Model Store** (`DataModelValueFieldStore<T>`): Global, network-synchronized. Written values propagate to all users. Persists across sessions. Only the final value per impulse chain is synced.
 
+#### Data Model Variables via ResoniteLink
+
+Dynamic variables (`DynamicValueVariable` + `ReadDynamicValueVariable` + `WriteDynamicValueVariable`) suffer from a [binding delay](https://wiki.resonite.com/Dynamic_variables#Binding) requiring 2+ update cycles after space/variable creation. For Dergflux, use `DataModelValueFieldStore<T>` instead:
+
+**Creating**: `DataModelValueFieldStore<T>` auto-generates a `+Store` companion component with a `Value` field for the stored value. Each variable should live on its own named child slot.
+
+**Reading**: the DMVFS component ID is directly usable as `INodeValueOutput<T>`. Other ProtoFlux nodes reference it by component ID (unlike `ReadDynamicValueVariable` which requires member ID wiring).
+
+**Writing**: use `ValueWrite<FrooxEngineContext, T>` (NOT `ValueWrite<T>`). The full component type is:
+```
+[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ValueWrite<[FrooxEngine]FrooxEngine.ProtoFlux.FrooxEngineContext,{wire_type}>
+```
+The `FrooxEngineContext` type parameter makes the write node compatible with DMVFS's `IVariable` interface. `ValueWrite<T>` (single type parameter) fails with "not compatible type" when wired to DMVFS.
+
+**Initial values**: update the `+Store` companion's `Value` field after creation. The `+Store` component type contains `+Store` in its type string and has members `Node` (reference to the DMVFS), `Path` (list), and `Value` (the stored value).
+
+**String variables**: strings are object types in ProtoFlux, so use `DataModelObjectFieldStore<T>` and `ObjectWrite<FrooxEngineContext, T>` instead of the value variants.
+
 #### Execution Context and Node Groups
 
 Impulse chains run within an execution context that carries local variables and action node outputs. Context is preserved within a connected **node group** (all nodes connected by wires or references). Context is **lost** when execution crosses to a disconnected node group (e.g. via dynamic impulses to unconnected nodes).

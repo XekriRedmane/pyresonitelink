@@ -7,9 +7,12 @@ the Resonite server via the ResoniteLink client.
 
 from __future__ import annotations
 
+import asyncio
 import importlib
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any
+
+_BUILD_DELAY = 0.1  # seconds between component creates (temporary)
 
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -435,58 +438,68 @@ class _BuildContext:
         return comp
 
     async def _materialize_var_read(self, node: _expr.VarReadNode) -> Any:
-        """Materialize a variable read as ValueInput driven by a driver.
+        """Materialize a variable read.
 
-        ResoniteLink cannot wire ReadDynamicValueVariable to
-        INodeValueOutput references (type incompatibility). Instead, we
-        create a ValueInput<T> and a DynamicValueVariableDriver<T> (or
-        DynamicReferenceVariableDriver<T> for object types) that
-        continuously syncs the dynamic variable's value into the
-        ValueInput. Other ProtoFlux nodes reference the ValueInput.
+        For model variables (DataModelValueFieldStore), returns the
+        DMVFS component directly — it IS INodeValueOutput<T>.
+
+        For dynamic variables (ReadDynamicValueVariable), returns a
+        stub whose ``.id`` is the ``Value`` member ID, since other
+        nodes must reference the output member, not the component.
         """
         key = (id(node.space), node.var_name)
         if key in self.var_inputs:
             return self.var_inputs[key]
 
-        from pyresonitelink.protoflux.core import ValueInput, ValueObjectInput
-        from pyresonitelink.components.data.dynamic import (
-            DynamicValueVariableDriver,
-        )
-
-        res_type = _resolve_type(node)
         space: _space.Space = node.space
-        vars_dict: dict[str, _space.VarDecl] = object.__getattribute__(
-            space, "_vars",
+        vars_dict: dict[str, _space.VarDecl | _space.ModelVarDecl] = (
+            object.__getattribute__(space, "_vars")
         )
         decl = vars_dict[node.var_name]
 
-        # Create a ValueInput (or ValueObjectInput for object types)
-        if _is_protoflux_object_type(res_type):
-            ConcreteInput = ValueObjectInput[res_type]  # type: ignore[valid-type]
-        else:
-            ConcreteInput = ValueInput[res_type]  # type: ignore[valid-type]
-        vi = ConcreteInput()
-        await vi.add_to_slot(self.resolink, self.slot)
-
-        # Create a driver that syncs the dynamic variable into the
-        # ValueInput's Value field.
-        value_member = vi.get_member("Value")
-        value_member_id = value_member.id if value_member is not None else None
-
-        # Always use DynamicValueVariableDriver — it works for all
-        # types including string.  DynamicReferenceVariableDriver is
-        # for reference types (Slot, Component) only, not strings.
-        ConcreteDriver = DynamicValueVariableDriver[res_type]  # type: ignore[valid-type]
-        driver = ConcreteDriver(variable_name=decl.path)
-        await driver.add_to_slot(self.resolink, self.slot)
-        if value_member_id is not None:
-            await self.resolink.update_references(
-                componentId=driver.id,  # type: ignore[arg-type]
-                references={"Target": value_member_id},
+        # Model variables: DMVFS component is directly INodeValueOutput
+        if isinstance(decl, _space.ModelVarDecl):
+            built_vars: dict[str, Any] = object.__getattribute__(
+                space, "_built_vars",
             )
+            store = built_vars[node.var_name]
+            self.var_inputs[key] = store
+            return store
 
-        self.var_inputs[key] = vi
-        return vi
+        # Dynamic variables: ReadDVV with member ID wiring
+        from pyresonitelink.protoflux.variables.dynamic import (
+            ReadDynamicObjectVariable,
+            ReadDynamicValueVariable,
+        )
+
+        res_type = _resolve_type(node)
+        full_path = _full_var_path(space, decl.path)
+
+        slot_ref = await self.ensure_slot_ref()
+        path_node = await self.ensure_path_node(full_path)
+
+        if _is_protoflux_object_type(res_type):
+            ConcreteRead = ReadDynamicObjectVariable[res_type]  # type: ignore[valid-type]
+        else:
+            ConcreteRead = ReadDynamicValueVariable[res_type]  # type: ignore[valid-type]
+
+        comp = ConcreteRead()
+        await comp.add_to_slot(self.resolink, self.slot)
+        await self.resolink.update_references(
+            componentId=comp.id,  # type: ignore[arg-type]
+            references={
+                "Source": slot_ref.id,  # type: ignore[arg-type]
+                "Path": path_node.id,  # type: ignore[arg-type]
+            },
+        )
+
+        value_member = comp.get_member("Value")
+        assert value_member is not None, (
+            f"ReadDynamicValueVariable {comp.id} has no Value member"
+        )
+        stub = type("_OutputStub", (), {"id": value_member.id})()
+        self.var_inputs[key] = stub
+        return stub
 
     async def _materialize_binop(self, node: _expr.BinaryOpNode) -> Any:
         """Materialize a binary operation."""
@@ -604,7 +617,6 @@ class _BuildContext:
                 self.resolink, self.slot, OpClass,
                 _make_refs(param_names),
             )
-            return comp
 
         raise TypeError(
             f"Unknown math function: {node.func_name}"
@@ -688,6 +700,18 @@ async def _find_existing_variable_component(
     return None
 
 
+def _full_var_path(space: _space.Space, var_path: str) -> str:
+    """Prefix a variable path with the space name if set.
+
+    Resonite dynamic variables require the format ``SpaceName/VarName``
+    when the DynamicVariableSpace has a ``SpaceName``.
+    """
+    space_name: str | None = object.__getattribute__(space, "_space_name")
+    if space_name:
+        return f"{space_name}/{var_path}"
+    return var_path
+
+
 async def _build_space(
     ctx: _BuildContext,
     space: _space.Space,
@@ -701,45 +725,141 @@ async def _build_space(
     slot: workers.Slot = object.__getattribute__(space, "_slot")
     space_name: str | None = object.__getattribute__(space, "_space_name")
 
-    exists = await _find_existing_space(ctx.resolink, slot, space_name)
-    if not exists:
-        dyn_space = DynamicVariableSpace(space_name=space_name)
-        await dyn_space.add_to_slot(ctx.resolink, slot)
-
-    vars_dict: dict[str, _space.VarDecl] = object.__getattribute__(
-        space, "_vars",
+    vars_dict: dict[str, _space.VarDecl | _space.ModelVarDecl] = (
+        object.__getattribute__(space, "_vars")
     )
     built_vars: dict[str, Any] = object.__getattribute__(
         space, "_built_vars",
     )
-    for attr_name, decl in vars_dict.items():
-        var_slot = decl.slot if decl.slot is not None else slot
+    has_dynvars = any(
+        isinstance(d, _space.VarDecl) for d in vars_dict.values()
+    )
 
-        if decl.slot is not None:
-            is_valid = await _is_slot_or_child(
-                ctx.resolink, slot, decl.slot,
+    # Only create DynamicVariableSpace if there are dynamic variables
+    if has_dynvars:
+        exists = await _find_existing_space(ctx.resolink, slot, space_name)
+        if not exists:
+            dyn_space = DynamicVariableSpace(
+                space_name=space_name,
+                only_direct_binding=bool(space_name),
             )
-            if not is_valid:
-                raise ValueError(
-                    f"Variable '{decl.path}' slot {decl.slot.id} is not "
-                    f"equal to or a child of the space's slot {slot.id}."
-                )
+            await dyn_space.add_to_slot(ctx.resolink, slot)
+            await asyncio.sleep(_BUILD_DELAY)
 
-        ConcreteVar = DynamicValueVariable[decl.resonite_type]  # type: ignore[name-defined]
+    from pyresonitelink.protoflux.variables import DataModelValueFieldStore
 
-        # Check if it already exists on the target slot
-        existing_comp = await _find_existing_variable_component(
-            ctx.resolink, var_slot, decl.path, ConcreteVar.COMPONENT_TYPE,
-        )
-        if existing_comp is not None:
-            built_vars[attr_name] = existing_comp
+    for attr_name, decl in vars_dict.items():
+        if isinstance(decl, _space.ModelVarDecl):
+            await _build_model_var(
+                ctx, space, slot, attr_name, decl, built_vars,
+            )
         else:
-            var_comp = ConcreteVar(
-                variable_name=decl.path,
+            await _build_dynvar(
+                ctx, space, slot, attr_name, decl, built_vars,
+                DynamicValueVariable,
+            )
+
+
+async def _build_dynvar(
+    ctx: _BuildContext,
+    space: _space.Space,
+    space_slot: workers.Slot,
+    attr_name: str,
+    decl: _space.VarDecl,
+    built_vars: dict[str, Any],
+    DynamicValueVariable: Any,
+) -> None:
+    """Build a single dynamic variable."""
+    var_slot = decl.slot if decl.slot is not None else space_slot
+
+    if decl.slot is not None:
+        is_valid = await _is_slot_or_child(
+            ctx.resolink, space_slot, decl.slot,
+        )
+        if not is_valid:
+            raise ValueError(
+                f"Variable '{decl.path}' slot {decl.slot.id} is not "
+                f"equal to or a child of the space's slot "
+                f"{space_slot.id}."
+            )
+
+    ConcreteVar = DynamicValueVariable[decl.resonite_type]  # type: ignore[name-defined]
+    full_path = _full_var_path(space, decl.path)
+
+    existing_comp = await _find_existing_variable_component(
+        ctx.resolink, var_slot, full_path, ConcreteVar.COMPONENT_TYPE,
+    )
+    if existing_comp is not None:
+        built_vars[attr_name] = existing_comp
+    else:
+        var_comp = ConcreteVar(
+            variable_name=full_path,
+            value=decl.initial_value,
+        )
+        await var_comp.add_to_slot(ctx.resolink, var_slot)
+        await asyncio.sleep(_BUILD_DELAY)
+        built_vars[attr_name] = var_comp
+
+
+async def _build_model_var(
+    ctx: _BuildContext,
+    space: _space.Space,
+    space_slot: workers.Slot,
+    attr_name: str,
+    decl: _space.ModelVarDecl,
+    built_vars: dict[str, Any],
+) -> None:
+    """Build a model variable (DataModelValueFieldStore on a named slot).
+
+    Creates a child slot named after the variable, adds DMVFS<T>,
+    and sets the initial value on the auto-generated +Store companion.
+    """
+    from pyresonitelink.protoflux.variables import DataModelValueFieldStore
+    from pyresonitelink.data import messages
+
+    # Create named child slot
+    var_slot = await ctx.resolink.add_slot(
+        parent=space_slot, name=decl.path,
+    )
+
+    # Create DMVFS
+    ConcreteStore = DataModelValueFieldStore[decl.resonite_type]  # type: ignore[name-defined]
+    store = ConcreteStore()
+    await store.add_to_slot(ctx.resolink, var_slot)
+
+    # Set initial value on the +Store companion if provided
+    if decl.initial_value is not None:
+        slot_resp: Any = await ctx.resolink.request_json(
+            messages.GetSlot(slotId=var_slot.id, depth=0),
+        )
+        for comp in slot_resp.get("data", {}).get("components", []):
+            ct: str = comp.get("componentType", "")
+            if "+Store" not in ct:
+                continue
+            comp_resp: Any = await ctx.resolink.request_json(
+                messages.GetComponent(componentId=comp["id"]),
+            )
+            comp_data: Any = comp_resp.get("data") or {}
+            val_info: Any = (comp_data.get("members") or {}).get("Value")
+            if val_info is None:
+                break
+            # Build a minimal update with just the Value field
+            from pyresonitelink.generated import _type_map
+            type_info = _type_map.from_python_type(decl.resonite_type)
+            update_member = type_info.field_class(
                 value=decl.initial_value,
             )
-            await var_comp.add_to_slot(ctx.resolink, var_slot)
-            built_vars[attr_name] = var_comp
+            update_member.id = val_info["id"]
+            await ctx.resolink.update_component(
+                data=workers.Component(
+                    id=comp["id"],
+                    componentType=ct,
+                    members={"Value": update_member},
+                ),
+            )
+            break
+
+    built_vars[attr_name] = store
 
 
 # =========================================================================
@@ -923,21 +1043,103 @@ async def _build_while_context(
 async def _build_write_node(
     ctx: _BuildContext,
     stmt: _flow.WriteRecord,
+) -> tuple[Any, str]:
+    """Build a write node for a WriteRecord.
+
+    For model variables: uses ValueWrite<FrooxEngineContext, T>.
+    For dynamic variables: uses WriteDynamicValueVariable<T>.
+
+    Returns:
+        A tuple of (component, tail_output_name) where the output name
+        is ``"OnWritten"`` for model writes or ``"OnSuccess"`` for
+        dynamic variable writes.
+    """
+    expr_comp = await ctx.materialize(stmt.expr._node)
+    space: _space.Space = stmt.space
+    vars_dict: dict[str, _space.VarDecl | _space.ModelVarDecl] = (
+        object.__getattribute__(space, "_vars")
+    )
+    decl = vars_dict[stmt.var_name]
+
+    if isinstance(decl, _space.ModelVarDecl):
+        comp = await _build_model_write_node(
+            ctx, space, decl, expr_comp,
+        )
+        return comp, "OnWritten"
+    comp = await _build_dynvar_write_node(
+        ctx, space, decl, expr_comp,
+    )
+    return comp, "OnSuccess"
+
+
+async def _build_model_write_node(
+    ctx: _BuildContext,
+    space: _space.Space,
+    decl: _space.ModelVarDecl,
+    expr_comp: Any,
 ) -> Any:
-    """Build a single WriteDynamicVariable node for a WriteRecord."""
+    """Build a ValueWrite<FrooxEngineContext, T> for a model variable."""
+    from pyresonitelink.generated import _type_map
+
+    built_vars: dict[str, Any] = object.__getattribute__(
+        space, "_built_vars",
+    )
+    # Find the DMVFS component for this variable
+    store = None
+    for attr_name, d in object.__getattribute__(space, "_vars").items():
+        if d is decl:
+            store = built_vars[attr_name]
+            break
+    assert store is not None, f"Model variable '{decl.path}' not built"
+
+    # Construct ValueWrite<FrooxEngineContext, T> component type
+    type_info = _type_map.from_python_type(decl.resonite_type)
+    wire_type = type_info.resonite_name
+    vw_type = (
+        "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution"
+        ".Nodes.ValueWrite<[FrooxEngine]FrooxEngine.ProtoFlux"
+        f".FrooxEngineContext,{wire_type}>"
+    )
+
+    resp = await ctx.resolink.add_component(
+        containerSlotId=ctx.slot, componentType=vw_type,
+    )
+    assert resp.entityId is not None, (
+        f"Failed to create {vw_type}: {resp.errorInfo}"
+    )
+    write_id = resp.entityId
+
+    wire_resp = await ctx.resolink.update_references(
+        componentId=write_id,
+        references={"Variable": store.id, "Value": expr_comp.id},
+    )
+    if not wire_resp.success:
+        raise RuntimeError(
+            f"Failed to wire ValueWrite {write_id}: {wire_resp.errorInfo}"
+        )
+
+    # Return a stub with the component ID and a compatible interface
+    # for OnWritten chaining (the tail output name)
+    get_resp = await ctx.resolink.get_component(componentId=write_id)
+    assert get_resp.data is not None
+    return get_resp.data
+
+
+async def _build_dynvar_write_node(
+    ctx: _BuildContext,
+    space: _space.Space,
+    decl: _space.VarDecl,
+    expr_comp: Any,
+) -> Any:
+    """Build a WriteDynamicValueVariable<T> for a dynamic variable."""
     from pyresonitelink.protoflux.variables.dynamic import (
         WriteDynamicObjectVariable,
         WriteDynamicValueVariable,
     )
 
     slot_ref = await ctx.ensure_slot_ref()
-    expr_comp = await ctx.materialize(stmt.expr._node)
-    space: _space.Space = stmt.space
-    vars_dict: dict[str, _space.VarDecl] = object.__getattribute__(
-        space, "_vars",
-    )
-    decl = vars_dict[stmt.var_name]
-    path_node = await ctx.ensure_path_node(decl.path)
+    full_path = _full_var_path(space, decl.path)
+    path_node = await ctx.ensure_path_node(full_path)
 
     if _is_protoflux_object_type(decl.resonite_type):
         ConcreteWrite = WriteDynamicObjectVariable[decl.resonite_type]  # type: ignore[name-defined]
@@ -994,9 +1196,9 @@ async def _build_stmt_chain(
 
     for stmt in stmts:
         if isinstance(stmt, _flow.WriteRecord):
-            write_comp = await _build_write_node(ctx, stmt)
+            write_comp, tail_name = await _build_write_node(ctx, stmt)
             results.append(FlowResult(
-                head=write_comp, tails=[_Tail(write_comp)],
+                head=write_comp, tails=[_Tail(write_comp, tail_name)],
             ))
         elif isinstance(stmt, _flow.FlowContext):
             result = await _build_flow_context(ctx, stmt)
@@ -1169,14 +1371,7 @@ async def _build_dynvar_binding(
         space, "_vars",
     )
     decl = vars_dict[bind_rec.dynvar_name]  # type: ignore[index]
-    var_path = decl.path
-
-    # Check if space has a name (for direct binding format)
-    space_name: str | None = object.__getattribute__(space, "_space_name")
-    if space_name:
-        full_path = f"{space_name}/{var_path}"
-    else:
-        full_path = var_path
+    full_path = _full_var_path(space, decl.path)
 
     if _is_reference_type(res_type):
         from pyresonitelink.components.data.dynamic import (

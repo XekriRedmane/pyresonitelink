@@ -285,7 +285,7 @@ class Graph:
         self._flow_stack: list[_flow.FlowContext] = []
         self._under_records: list[_flow.UnderRecord] = []
         self._under_stack: list[_UnderContext] = []
-        self._bindings: list[_flow.DriveRecord] = []
+        self._bindings: list[_flow.BindRecord] = []
 
     # --- Slot / trigger context ---
 
@@ -530,17 +530,31 @@ class Graph:
     def Else(self) -> Iterator[None]:
         """Context manager for the else-branch of the most recent If.
 
+        Works at any nesting depth — finds the last IfContext in the
+        current active flow's statement list (or the Under record if
+        at the top level).
+
         Yields:
             Nothing.  Writes inside the block are recorded as false-branch.
         """
-        under = self._active_under()
-        if under is None or under.record is None or not under.record.statements:
+        # Find the statement list that contains the preceding If.
+        active = self._active_flow()
+        if active is not None:
+            # Nested: look at the active flow's current stmts
+            stmts: list[Any] = active.current_stmts()
+        else:
+            under = self._active_under()
+            if under is None or under.record is None:
+                raise RuntimeError("Else() without a preceding If().")
+            stmts = under.record.statements
+
+        if not stmts or not isinstance(stmts[-1], _flow.IfContext):
             raise RuntimeError("Else() without a preceding If().")
-        last = under.record.statements[-1]
-        if not isinstance(last, _flow.IfContext):
-            raise RuntimeError("Else() without a preceding If().")
+
+        last = stmts[-1]
+        assert isinstance(last, _flow.IfContext)
         # Remove from statements, switch to false phase, re-record when done
-        under.record.statements.pop()
+        stmts.pop()
         last.phase = "false"
         self._flow_stack.append(last)
         try:

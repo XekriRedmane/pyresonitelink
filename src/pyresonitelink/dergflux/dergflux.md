@@ -10,6 +10,7 @@ Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs in
   - [Under](#under)
   - [Space](#space)
   - [Variables](#variables)
+  - [Model Variables](#model-variables)
   - [Expressions](#expressions)
   - [Math Functions](#math-functions)
 - [Flow Control](#flow-control)
@@ -136,6 +137,51 @@ s.x = s.FloatVar("x", slot=child_slot)
 ```
 
 The slot must be equal to or a recursive child of the space's slot (validated at build time). Variables are only created if they don't already exist on the target slot.
+
+### Model Variables
+
+Model variables use `DataModelValueFieldStore<T>` instead of dynamic variables. They avoid the [dynamic variable binding delay](https://wiki.resonite.com/Dynamic_variables#Binding) that requires 2+ update cycles after creating a `DynamicVariableSpace`. Model variables are:
+
+- **Network-synchronized**: changes propagate to all users
+- **Immediately available**: no binding delay after creation
+- **Stored in the data model**: persist across sessions
+- **Named by slot**: each variable lives on its own child slot for clarity
+
+Declare model variables with `*ModelVar` methods:
+
+```python
+s.x = s.FloatModelVar("x")
+s.n = s.IntModelVar("count")
+s.flag = s.BoolModelVar("active")
+s.name = s.StringModelVar("label")
+```
+
+#### How Model Variables Work
+
+Under the hood, each model variable creates:
+
+1. A **child slot** named after the variable (e.g. `"x"`)
+2. A `DataModelValueFieldStore<T>` component on that slot — this is both readable (`INodeValueOutput<T>`) and writable (`IVariable`)
+3. An auto-generated `+Store` companion component with a `Value` field for the actual stored value
+
+**Reading**: other ProtoFlux nodes reference the `DataModelValueFieldStore` component ID directly as `INodeValueOutput<T>`.
+
+**Writing**: uses `ValueWrite<FrooxEngineContext, T>` (not `ValueWrite<T>`). The `FrooxEngineContext` type parameter makes the write compatible with the data model store's `IVariable` interface.
+
+**Initial values**: set via the `+Store` companion's `Value` field.
+
+#### When to Use Model Variables vs Dynamic Variables
+
+| Feature | Dynamic Variables | Model Variables |
+|---------|------------------|-----------------|
+| Binding delay | 2+ frames | None |
+| Networking | Via DynamicVariableSpace | Built-in |
+| ProtoFlux read | `ReadDynamicValueVariable` (member ID wiring) | Direct component ID reference |
+| ProtoFlux write | `WriteDynamicValueVariable` | `ValueWrite<FrooxEngineContext, T>` |
+| Variable path | `SpaceName/VarName` string | Named child slot |
+| Suitable for | Existing dynamic variable systems | New Dergflux graphs |
+
+**Recommendation**: prefer model variables (`*ModelVar`) for new Dergflux graphs. Use dynamic variables (`*Var`) only when interoperating with existing dynamic variable systems.
 
 ### Expressions
 

@@ -37,6 +37,25 @@ class VarDecl:
     initial_value: Any = field(default=None)
 
 
+@dataclass
+class ModelVarDecl:
+    """Declaration of a model variable backed by DataModelValueFieldStore.
+
+    Model variables avoid the dynamic variable binding delay and are
+    network-synchronized.  Each variable is placed on its own named
+    child slot with a ``DataModelValueFieldStore<T>`` component.
+
+    Attributes:
+        path: The variable name (also used as the child slot name).
+        resonite_type: The Resonite primitive type.
+        initial_value: Optional initial value for the variable.
+    """
+
+    path: str
+    resonite_type: type
+    initial_value: Any = field(default=None)
+
+
 # Maps convenience method names to their Resonite primitive types.
 # Used to dynamically generate the Space.*Var() methods.
 _VAR_TYPES: dict[str, type] = {
@@ -107,6 +126,13 @@ _VAR_TYPES: dict[str, type] = {
     # Geometry
     "RectVar": primitives.Rect,
     "BoundingBoxVar": primitives.BoundingBox,
+}
+
+# Maps convenience method names to their Resonite primitive types for
+# model variables (DataModelValueFieldStore-backed).
+_MODEL_VAR_TYPES: dict[str, type] = {
+    name.replace("Var", "ModelVar"): res_type
+    for name, res_type in _VAR_TYPES.items()
 }
 
 
@@ -188,10 +214,10 @@ class Space:
             object.__setattr__(self, name, value)
             return
 
-        if isinstance(value, VarDecl):
-            # Declaration: s.z = s.FloatVar("z")
-            vars_dict: dict[str, VarDecl] = object.__getattribute__(
-                self, "_vars",
+        if isinstance(value, (VarDecl, ModelVarDecl)):
+            # Declaration: s.z = s.FloatVar("z") or s.z = s.FloatModelVar("z")
+            vars_dict: dict[str, VarDecl | ModelVarDecl] = (
+                object.__getattribute__(self, "_vars")
             )
             vars_dict[name] = value
             return
@@ -241,7 +267,18 @@ class Space:
             ) -> VarDecl:
                 return VarDecl(var_name, _rt, slot, value)
             return _var_method
-        vars_dict: dict[str, VarDecl] = object.__getattribute__(self, "_vars")
+        if name in _MODEL_VAR_TYPES:
+            res_type = _MODEL_VAR_TYPES[name]
+            def _model_var_method(
+                var_name: str,
+                value: Any = None,
+                _rt: type = res_type,
+            ) -> ModelVarDecl:
+                return ModelVarDecl(var_name, _rt, value)
+            return _model_var_method
+        vars_dict: dict[str, VarDecl | ModelVarDecl] = (
+            object.__getattribute__(self, "_vars")
+        )
         if name not in vars_dict:
             raise AttributeError(
                 f"Variable '{name}' not declared on this Space. "

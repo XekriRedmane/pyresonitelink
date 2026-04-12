@@ -6,7 +6,7 @@ actual ``Client`` class implements these protocols, but generated
 code depends only on the protocol — not on the concrete class.
 """
 
-from typing import Protocol
+from typing import Any, Protocol
 
 from . import codec
 from . import messages
@@ -29,6 +29,13 @@ class ResoniteLinkClient(Protocol):
         includeComponentData: bool = False,
         debug: bool = False,
     ) -> responses.SlotData: ...
+
+    async def add_slot(
+        self,
+        name: str | None = None,
+        parent: str | workers.Slot | None = None,
+        **kwargs: Any,
+    ) -> workers.Slot: ...
 
     async def add_component(
         self,

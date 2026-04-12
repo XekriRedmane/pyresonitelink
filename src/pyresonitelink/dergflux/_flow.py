@@ -66,6 +66,14 @@ class FlowContext:
         """Record a nested flow context. Override in subclasses."""
         raise NotImplementedError
 
+    def current_stmts(self) -> list[Statement]:
+        """Return the statement list being recorded into.
+
+        Used by ``Else()`` to find the preceding ``IfContext`` at any
+        nesting depth.
+        """
+        raise NotImplementedError
+
 
 @dataclass
 class IfContext(FlowContext):
@@ -96,6 +104,12 @@ class IfContext(FlowContext):
             self.true_stmts.append(ctx)
         else:
             self.false_stmts.append(ctx)
+
+    def current_stmts(self) -> list[Statement]:
+        """Return the active branch's statement list."""
+        if self.phase == "true":
+            return self.true_stmts
+        return self.false_stmts
 
 
 @dataclass
@@ -129,6 +143,12 @@ class ForContext(FlowContext):
             self.start_stmts.append(ctx)
         else:
             self.iteration_stmts.append(ctx)
+
+    def current_stmts(self) -> list[Statement]:
+        """Return the active section's statement list."""
+        if self.phase == "start":
+            return self.start_stmts
+        return self.iteration_stmts
 
 
 @dataclass
@@ -165,6 +185,12 @@ class RangeContext(FlowContext):
         else:
             self.iteration_stmts.append(ctx)
 
+    def current_stmts(self) -> list[Statement]:
+        """Return the active section's statement list."""
+        if self.phase == "start":
+            return self.start_stmts
+        return self.iteration_stmts
+
 
 @dataclass
 class WhileContext(FlowContext):
@@ -185,6 +211,10 @@ class WhileContext(FlowContext):
     def record_nested(self, ctx: FlowContext) -> None:
         """Append a nested flow to the loop body."""
         self.stmts.append(ctx)
+
+    def current_stmts(self) -> list[Statement]:
+        """Return the loop body statement list."""
+        return self.stmts
 
 
 @dataclass
@@ -289,6 +319,10 @@ class BareWriteContext(FlowContext):
     def record_nested(self, ctx: FlowContext) -> None:
         """Append a nested flow."""
         self.stmts.append(ctx)
+
+    def current_stmts(self) -> list[Statement]:
+        """Return the statement list."""
+        return self.stmts
 
 
 @dataclass
