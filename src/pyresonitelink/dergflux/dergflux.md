@@ -495,26 +495,79 @@ Value output: ``e.child`` — the child Slot that was added or removed.
 
 #### Data Source Nodes
 
-Data source nodes provide value outputs without flow. They're created
-with ``g.DataSource()`` or named shortcuts, and return a proxy with
-value output properties usable as expressions.
+Data source nodes are ProtoFlux nodes that provide value outputs
+without any flow (no impulses, no triggers).  They compute values
+on demand — other nodes pull from them.  Unlike action nodes (which
+are context managers with flow branches), data sources are plain
+calls that return a proxy with value output properties.
+
+Data sources use the same ``ActionDef`` system as action nodes, but
+with ``flow_outputs=[]``.  They're created with ``g.DataSource()``
+or named shortcuts.
 
 ```python
 ctrl = g.StandardController(user=user_ref, node=chirality, slot=slot)
 
 # ctrl.primary, ctrl.grab, ctrl.axis etc. are ExprProxy values
+# usable anywhere an expression is expected
 with g.Under(slot):
     with g.FireOnTrue(condition=ctrl.primary) as e:
         with e.on_changed():
             s.log = "primary pressed"
+
+    s.grip_value = ctrl.grab * 100
 ```
 
-Available controllers: ``g.StandardController()``,
-``g.IndexController()``, ``g.TouchController()``,
-``g.ViveController()``.
+**Built-in controller data sources**:
 
-Each exposes device-specific value outputs (buttons, axes, triggers,
-battery level, etc.).
+- ``g.StandardController(user, node)`` — outputs: ``is_active``,
+  ``primary``, ``secondary``, ``grab``, ``menu``, ``strength``,
+  ``axis``, ``battery_level``, ``is_battery_charging``
+- ``g.IndexController(user, node)`` — outputs: ``button_a``,
+  ``button_b``, ``grip``, ``trigger``, ``thumbstick_x/y``,
+  ``trackpad_x/y``, and touch/press variants
+- ``g.TouchController(user, node)`` — similar to Index
+- ``g.ViveController(user, node)`` — outputs: ``grip``, ``trigger``,
+  ``trigger_hair``, ``trigger_click``, ``touchpad`` (float2),
+  ``touchpad_touch``, ``touchpad_click``, ``app``
+
+#### Defining Custom Data Sources
+
+Any ProtoFlux value node can be wrapped as a data source using
+``ActionDef`` with ``flow_outputs=[]``:
+
+```python
+from pyresonitelink.dergflux import ActionDef, InputDef, OutputDef
+from pyresonitelink.data import primitives
+
+MyDataSource = ActionDef(
+    import_path="protoflux.devices.controllers",
+    class_name="StandardController",
+    inputs={
+        "user": InputDef("user"),          # reference input
+        "node": InputDef("node"),          # reference input
+    },
+    flow_outputs=[],                        # no flow — data source only
+    value_outputs={
+        "primary": OutputDef("Primary", primitives.Bool),
+        "grab": OutputDef("Grab", primitives.Float),
+    },
+)
+```
+
+Use it with ``g.DataSource()``:
+
+```python
+src = g.DataSource(MyDataSource, user=user_ref, node=chirality, slot=slot)
+# src.primary and src.grab are ExprProxy values
+```
+
+The key difference from action nodes:
+- **Action nodes** (``flow_outputs`` is non-empty): used as context
+  managers inside ``g.Under()``, with flow branch context managers.
+- **Data source nodes** (``flow_outputs=[]``): used as plain calls,
+  return a proxy with value output properties.  Can be created inside
+  or outside ``g.Under()`` (with an explicit ``slot`` parameter).
 
 #### Indexed Branch Nodes
 
