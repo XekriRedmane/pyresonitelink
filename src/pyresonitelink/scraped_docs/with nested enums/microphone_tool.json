@@ -1,0 +1,17 @@
+{
+  "description": "See Microphone.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Format": "The type of audio file to make.",
+    "Quality": "The quality of the resulting audio clip file.",
+    "Mode": "Whether the user has to hold or it's a toggle.",
+    "Source": "The way to record the audio.",
+    "RecordingUser": "The user that is currently recording using the Tool.",
+    "RecordingStartTime": "The time that the user started recording in world time.",
+    "IsRecording": "Whether the tool is currently being used to record."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MicrophoneTool&action=raw"
+}

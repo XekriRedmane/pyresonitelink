@@ -1,7 +1,11 @@
 {
   "description": "The Not Equals node takes in 2 inputs and returns if the values do not match.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The first value to check.",
+    "B": "The second value to check.",
+    "* ([[Type:bool|bool]])": "Returns if the 2 input values are not equal."
+  },
   "methods": {},
   "usage": "",
   "notes": [
@@ -9,5 +13,6 @@
       "title": "Bugs & Issues",
       "text": "* This node does not correctly return the correct value when using and comparing ``NaN`` values against each other: #1046 & #1244."
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:NotEquals&action=raw"
 }

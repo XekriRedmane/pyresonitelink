@@ -1,0 +1,25 @@
+{
+  "description": "The ObjectGridAligner component aligns objects into a grid of items with x number of items per row.",
+  "category": "With Nested Enums",
+  "fields": {
+    "AutoAddChildren": "Controls whether slots below this component's slot in the hierarchy are automatically added to ``_targets``.",
+    "AutoAddIgnoreTags": "Slots that have these tags are automatically ignored by this component when adding children slots.",
+    "ItemsPerRow": "How many items per row.",
+    "CellSize": "The space between each item.",
+    "LerpSpeed": "How fast the items should move to align themselves in the specified grid arrangement.",
+    "HorizontalAlignment": "How to align the items horizontally.",
+    "VerticalAlignment": "How to align the items vertically.",
+    "RowAxis": "The axis that items should be aligned on for the horizontal axis of the grid.",
+    "ColumnAxis": "The axis that items should be aligned on for the vertical axis of the grid.",
+    "Items": "A list of items who's positions should be driven to place them into a grid alignment using this component's calculations."
+  },
+  "methods": {},
+  "usage": "Can be used for aligning tiles, shelves, boxes, or anything that needs consistent alignment.",
+  "notes": [
+    {
+      "title": "Align",
+      "text": "Controls how the items should align themselves along the axis specified by the component."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ObjectGridAligner&action=raw"
+}

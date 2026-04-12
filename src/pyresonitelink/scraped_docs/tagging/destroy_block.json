@@ -1,0 +1,9 @@
+{
+  "description": "The Destroy Block component blocks destroying a Slot tagged by this component via the Context Menu. Does not block destroying via Scene Inspector or ProtoFlux.",
+  "category": "Transform:Tagging",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DestroyBlock&action=raw"
+}

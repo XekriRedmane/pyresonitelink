@@ -1,0 +1,21 @@
+{
+  "description": "The TouchButton component is used to make a physical button with no press depth that is instantly pressable upon click or touch. For a button with press depth, please see PhysicalButton.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "IsPressed": "Whether the button is pressed or not",
+    "IsHovering": "Whether the button is being pointed at with the laser in the case of a touch button",
+    "EditModeOnly": "Whether this button will only work if the user is in Edit Mode",
+    "ActiveUserFilter": "How to handle user interaction depending on active user.",
+    "Pressed": "The Sync Delegate to call when the button is pressed.",
+    "Pressing": "The Sync Delegate to call when the button is being pressed every game tick.",
+    "Released": "The Sync Delegate to call when the button is released.",
+    "BeginPressVibration": "What vibration to send when this button is starting to be pressed.",
+    "PressVibration": "What vibration to send when this button is pressed.",
+    "HoverVibration": "What vibration to send when this button is hovered over via laser.",
+    "Label": "The field that represents this button's label."
+  },
+  "methods": {},
+  "usage": "Used in boopers and buttons where PhysicalButton is a bad choice because the button press needs to have no press depth. In the case where the user does want press depth, use PhysicalButton.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TouchButton&action=raw"
+}

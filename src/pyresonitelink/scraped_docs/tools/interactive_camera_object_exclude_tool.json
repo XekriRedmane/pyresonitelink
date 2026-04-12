@@ -1,0 +1,11 @@
+{
+  "description": "The InteractiveCameraObjectExludeTool component can add or remove objects from the exclude render list of the user's currently active InteractiveCamera.",
+  "category": "Tools",
+  "fields": {
+    "ApplyToObjectRoot": "Whether to look for the object root of a hit collider before adding it to the exlude list."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraObjectExcludeTool&action=raw"
+}

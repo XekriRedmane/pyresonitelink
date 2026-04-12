@@ -1,0 +1,14 @@
+{
+  "description": "The PlaybackPositionDriver component is used to output and/or influence the playback position of an IPlayable.",
+  "category": "Media:Utility",
+  "fields": {
+    "Target": "The field to drive with the time position of ``Source`` from. If ``UseNormalizedPosition`` is true, this is 01, else it's the amount of seconds from the start.",
+    "Source": "The playable audio to get the time from.",
+    "UseNormalizedPosition": "Whether to output a 01 or an amount of seconds",
+    "WriteBack": "Whether writing to the value of the field specified by ``Target`` will set the playback position. See write backs."
+  },
+  "methods": {},
+  "usage": "Can be used on a timeline to get the amount of time left or played in an audio clip that is playing.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PlaybackPositionDriver&action=raw"
+}

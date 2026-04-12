@@ -1,0 +1,15 @@
+{
+  "description": "The CloudValueVariable component links the ``Value`` of type T on the component to a cloud variable.\n\nFor more info on how Cloud Variables work in general, see Cloud Variables.",
+  "category": "Cloud:Variables",
+  "fields": {
+    "Path": "The path of the variable this component will read.",
+    "IsLinkedToCloud": "(Read Only) Indicates whether this field was successfully bound to the target variable.",
+    "VariableOwnerId": "The UserID of the user that made a definition for the variable specified by ``Path``",
+    "ChangeHandling": "See Cloud Variable Change Mode.",
+    "Value": "The value of the read cloud variable."
+  },
+  "methods": {},
+  "usage": "Upon being given a valid cloud variable ``Path`` and ``VariableOwnerId``, the value in the ``Value`` field will be updated to reflect the value of the cloud variable. Depending on the value of ``ChangeHandling`` and ``VariableOwnerId``, the cloud variable may be updated by writing to the ``Value`` field as well.\n\nThis updates as fast as reading/writing cloud variables permits. All the restrictions that apply to cloud variables apply to this component, including permissions and world contexts.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CloudValueVariable&action=raw"
+}

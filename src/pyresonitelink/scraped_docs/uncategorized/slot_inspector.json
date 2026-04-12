@@ -1,0 +1,19 @@
+{
+  "description": "The Slot Inspector component controls the slot items shown in a Scene Inspector and their drop down menus.",
+  "category": "Uncategorized",
+  "fields": {
+    "_selectionReference": "The slot this points to.",
+    "_rootSlot": "The root of the visual for this item.",
+    "_childContainer": "The container for slot inspectors that are children of this one.",
+    "_depth": "How far down this slot inspector is from the root selected slot inspector in it's parent Scene Inspector.",
+    "_expander": "The component responsible for expanding the children slot inspector hierarchy of this item.",
+    "_expanderIndicator": "The indicator for whether the slot inspector children hierarchy is expanded or not.",
+    "_slotNameText": "The name of the slot this slot inspector is pointing to."
+  },
+  "methods": {
+    "IsTargetEmpty": "When called, returns if the target slot contains no children slots."
+  },
+  "usage": "Not used directly by the user. Used in Scene Inspectors.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SlotInspector&action=raw"
+}

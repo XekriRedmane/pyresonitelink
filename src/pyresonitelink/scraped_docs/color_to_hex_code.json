@@ -1,17 +1,20 @@
 {
   "description": "Color To Hex Code converts a Color to a string hex color code such as \"#FFAABC\".",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Color": "The color to convert. Color components are clamped to the range 0-1.",
+    "ShortForm": "If true, convert to a short form such as \"#FAC\" instead of \"#FFAACC\".",
+    "IncludeAlpha": "If true, include the alpha channel as the last component.",
+    "Prefix": "The string to prefix the color code with. Defaults to \"#\".",
+    "* ([[Type:String|String]])": "The resulting hex code."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "Gallery",
       "text": "File:Protoflux_Color_To_Hex.webp|A simple example of Color To Hex with an input and an output display."
-    },
-    {
-      "title": "References",
-      "text": "ProtoFlux:Colors"
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ColorToHexCode&action=raw"
 }

@@ -1,0 +1,15 @@
+{
+  "description": "The AudioInputDeviceSettings Component is used to set the priority order of input devices for the local user. It also can be used to disable priority and use the system default instead.",
+  "category": "Uncategorized",
+  "fields": {
+    "UseSystemDefault": "Whether or not to use the user's default device on their OS or not.",
+    "DevicePriorities": "A list of devices and their priority which is the order to use them in.",
+    "DevicePrioritiesEnabled": "Whether the \"Use Default Device\" setting is turned on or off"
+  },
+  "methods": {
+    "GetDevice": "This returns a setting with the name specified by the methods ``key`` input."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioInputDeviceSettings&action=raw"
+}

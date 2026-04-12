@@ -1,0 +1,28 @@
+{
+  "description": "The EngineDebugDialog component is used in the debug screen of the dash to show debug information about the game at the current moment.",
+  "category": "With Nested Enums",
+  "fields": {
+    "DisplayMode": "How to display the content.",
+    "_contentRoot": "Content of the debug dialouge.",
+    "_text": "The text displaying the engine debug info."
+  },
+  "methods": {
+    "SwitchToGatherJobs": "Switches the dialog screen to the Gather Jobs one.",
+    "SwitchToWorlds": "Switches the dialog screen to the Worlds one.",
+    "SwitchToLoadedAssets": "Switches the dialog screen to the Loaded Assets one.",
+    "SwitchToSpecial": "Switches the dialog screen to the Special one.",
+    "SwitchToFocusedWorld": "Switches the dialog screen to the Focused World one.",
+    "SwitchToPhysics": "Switches the dialog screen to the Physics one.",
+    "SwitchToBackgroundJobs": "Switches the dialog screen to the Background Jobs one.",
+    "CapturePerformanceStats": "Copies the performance stats to the clipboard.",
+    "UploadCC0Textures": "DEVELOPER TEAM ONLY. DOES NOT DO ANYTHING ON PUBLIC BUILDS!",
+    "CopyBackgroundWorkerSnapshot": "Copies a background worker snapshot to disk.",
+    "StartRecordingPerfMetrics": "Records performance metrics to disk.",
+    "ForceFullGC": "Forces the engine to garbage collect all ram data.",
+    "SaveObjectPoolStats": "Saves object pool stats to disk.",
+    "SwitchToNormalDash": "Closes the dialog."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:EngineDebugDialog&action=raw"
+}

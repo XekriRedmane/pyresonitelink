@@ -1,8 +1,12 @@
 {
   "description": "The Is White Space node takes in a character and returns if that character is whitespace. Whitespace characters are empty spaces in text that separate other characters.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character literal to check.",
+    "* ([[Type:bool|bool]])": "Returns ``true`` if ``Character`` is whitespace, ``false`` otherwise. Whitespace characters recognized by this node have the Unicode property ``White_Space=yes``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsWhiteSpace&action=raw"
 }

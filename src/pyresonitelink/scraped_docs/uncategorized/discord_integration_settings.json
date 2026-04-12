@@ -1,0 +1,11 @@
+{
+  "description": "The DiscordIntegrationSettings component handles discord rich presence info communicated from Resonite. This is interacted with via the Settings system.",
+  "category": "Uncategorized",
+  "fields": {
+    "RichPresence": "The level of information to communicate via discord rich presence."
+  },
+  "methods": {},
+  "usage": "Interacted with via the settings system. Isn't directly interacted with by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DiscordIntegrationSettings&action=raw"
+}

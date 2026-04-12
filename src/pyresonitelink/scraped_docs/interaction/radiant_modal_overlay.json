@@ -1,0 +1,37 @@
+{
+  "description": "The RadiantModalOverlay component is similar to the ModalOverlay, but with the dash menu. This also can be duplicated as a template in the ModalOverlayManager component.",
+  "category": "UIX:Interaction",
+  "fields": {
+    "ShowLerp": "The lerp amount for this modal.",
+    "AnimationTime": "The lerp time for this modal.",
+    "SizeRoot": "The size of this modal.",
+    "ContentRoot": "The center root of this modal.",
+    "CloseOnContextMenuAction": "Closes the modal when the user's context menu closes.",
+    "CloseOnClick": "Closes this modal when it is clicked on.",
+    "BlurSpread": "The blur effect amount.",
+    "BackgroundColor": "The background color of this RadiantModalOverlay.",
+    "ContentAnimationScaleOffset": "Offests the content animation for this RadiantModalOverlay.",
+    "HeaderSize": "The header size of this RadiantModalOverlay.",
+    "Padding": "The padding amount for this RadiantModalOverlay.",
+    "_title": "The title of this RadiantModalOverlay.",
+    "_blur": "The blur of this RadiantModalOverlay.",
+    "_blurGraphic": "The blur graphic of this RadiantModalOverlay.",
+    "_blurSpread": "The blur speed of this RadiantModalOverlay.",
+    "_backgroundColor": "The background color of this RadiantModalOverlay.",
+    "_maskRect": "The mask rect of this RadiantModalOverlay.",
+    "_headerOffsetMin": "The header offset min of this RadiantModalOverlay.",
+    "_headerOffsetMax": "The header offset max of this RadiantModalOverlay.",
+    "_contentOffsetMin": "The content offset min of this RadiantModalOverlay.",
+    "_contentOffsetMax": "The content offset max of this RadiantModalOverlay.",
+    "_titleOffsetMin": "The title offset min of this RadiantModalOverlay.",
+    "_titleOffsetMax": "The title offset max of this RadiantModalOverlay.",
+    "_closeOffsetMin": "The close offset min of this RadiantModalOverlay.",
+    "_closeOffsetMax": "The close offset max of this RadiantModalOverlay."
+  },
+  "methods": {
+    "DoClose": "Called when this UI is closed."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RadiantModalOverlay&action=raw"
+}

@@ -1,0 +1,15 @@
+{
+  "description": "The SupporterCreditList component is used to get a list of supporters currently supporting the game financially.",
+  "category": "Cloud:Indicators",
+  "fields": {
+    "CreditType": "What kind of supporter level/category to get names from.",
+    "Separator": "How to separate the list of names.",
+    "Prefix": "What to put at the beginning of each name (Usually a color tag)",
+    "Suffix": "What to put at the end of each name (Usually a color tag ender.",
+    "FormattedList": "The resulting list."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SupporterCreditList&action=raw"
+}

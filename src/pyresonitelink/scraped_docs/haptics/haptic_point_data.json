@@ -1,0 +1,17 @@
+{
+  "description": "The HapticPointData component gets data about a haptics device on a particular user.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics",
+  "fields": {
+    "Index": "The device index to get info on.",
+    "User": "The user to get a device of ``Index`` from.",
+    "Force": "The device's perceived force.",
+    "Temperature": "The device's perceived temperature.",
+    "Pain": "The device's perceived pain.",
+    "Vibration": "The device's perceived Vibration.",
+    "TotalActivationIntensity": "The total activation intensity of the haptic's device."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a ``User`` for this component to start giving values.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HapticPointData&action=raw"
+}

@@ -1,0 +1,17 @@
+{
+  "description": "The ParticleSystem component acts as the interface between a particle style and one or more particle emitter.",
+  "category": "Rendering:Particle System",
+  "fields": {
+    "Style": "The ParticleStyle component that this component is using.",
+    "SimulationSpace": "The coordinate space the emitted particles will do calculations and physics under. (They are not actually placed under this slot, but they visually behave as though they are)."
+  },
+  "methods": {},
+  "usage": "With a particle system, multiple emitters can use the same source ParticleStyle. Alternatively, multiple ParticleSystems can be used with the same style but different simulation spaces to avoid the need for multiple style components. This is especially handy when properties of the style need to be dynamically changed as it can be done from a centralized location.",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* ParticleStyle\n* PointEmitter\n* CircleEmitter\n* SphereEmitter\n* CylinderEmitter\n* ConeEmitter\n* LineEmitter\n* BoxEmitter\n* SkinnedMeshEmitter\n* MeshEmitter"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ParticleSystem&action=raw"
+}

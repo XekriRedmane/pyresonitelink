@@ -1,0 +1,16 @@
+{
+  "description": "The VelocityHapticFilter component is used to influence the haptics a user feels on a haptics device as the device moves through a HapticVolume at different speeds.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics:Filters",
+  "fields": {
+    "VelocitySmoothTime": "How much to smooth the changes in velocity this component works with.",
+    "StartVelocity": "The velocity to map to ``StartIntensity``.",
+    "EndVelocity": "The velocity to map to ``EndIntensity``.",
+    "StartIntensity": "The intensity to use when a haptics device is moving at ``StartVelocity`` through a valid Component:HapticVolume on the same slot.",
+    "EndIntensity": "The intensity to use when a haptics device is moving at ``EndVelocity`` through a valid Component:HapticVolume on the same slot.",
+    "Power": "The multiplier of the haptics intensity before applying it."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with a valid and working HapticVolume to add to the list of multiplicative haptic filters.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VelocityHapticFilter&action=raw"
+}

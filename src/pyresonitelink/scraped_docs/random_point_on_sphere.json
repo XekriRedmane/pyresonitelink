@@ -1,8 +1,11 @@
 {
   "description": "The Random Point On Sphere node returns a random float3 value of a point on the shell of a unit sphere.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float3|float3]])": "A random point on the unit sphere centered at ``[0; 0; 0]``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomPointOnSphere&action=raw"
 }

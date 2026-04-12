@@ -1,0 +1,13 @@
+{
+  "description": "Listen to events and activate extra affects and behaviors when consuming using Consumable",
+  "category": "",
+  "fields": {
+    "OnConsuming": "Sends an impulse when progress starts.",
+    "StageIndex": "What stage we are at. Taken from the List in Component:Consumable",
+    "NormalizedConsumeProgress": "Time based progression along the event chain."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnConsumableConsuming&action=raw"
+}

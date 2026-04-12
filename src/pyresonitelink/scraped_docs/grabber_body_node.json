@@ -1,8 +1,12 @@
 {
   "description": "Grabber Body Node is a ProtoFlux node that gets the BodyNode that a grabber is on.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Grabber": "A grabbable component on a User.",
+    "* ([[Type:BodyNode|BodyNode]])": "The body node this grabber is on (``LeftHand`` or ``RightHand``)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GrabberBodyNode&action=raw"
 }

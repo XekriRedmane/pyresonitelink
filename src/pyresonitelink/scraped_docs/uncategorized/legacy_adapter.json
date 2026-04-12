@@ -1,0 +1,15 @@
+{
+  "description": "The Legacy Adapter component is used in converted legacy particle systems that were converted to PhotonDust as part of The Performance Updates.",
+  "category": "Uncategorized",
+  "fields": {
+    "ForceDirection": "Whether to use force direction.",
+    "ForcedDirection": "The forced direction.",
+    "DirectionMode": "``ForceDirection`` and ``ForcedDirection`` converted to PhotonDust direction mode.",
+    "Direction0": "``ForceDirection`` and ``ForcedDirection`` converted to PhotonDust direction vector.",
+    "Direction1": "``ForceDirection`` and ``ForcedDirection`` converted to PhotonDust direction vector."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user. part of legacy content.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyAdapter&action=raw"
+}

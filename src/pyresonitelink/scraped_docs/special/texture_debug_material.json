@@ -1,0 +1,9 @@
+{
+  "description": "The TextureDebugMaterial component shows a grayscale of a texture channel. Used for debugging.",
+  "category": "Assets:Materials:Special",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a MeshRenderer or SkinnedMeshRenderer with a mesh to view what this material looks like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextureDebugMaterial&action=raw"
+}

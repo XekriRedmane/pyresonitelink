@@ -1,0 +1,16 @@
+{
+  "description": "The ProtofluxArrowManager component is used to drive and create the visuals for arrows pointing from/to variables and where they are being used.",
+  "category": "Uncategorized",
+  "fields": {
+    "ConnectNode": "The node the arrow should point to.",
+    "TargetSize": "The size field of the target.",
+    "TargetOffset": "The offset field of the target.",
+    "_arrowMesh": "The arrow mesh this is modifying.",
+    "_renderer": "The renderer rendering ``_arrowMesh``",
+    "_targetVector": "The field for the target vector on the arrow mesh."
+  },
+  "methods": {},
+  "usage": "Not usually used by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProtofluxArrowManager&action=raw"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The Sphere Constant Value Spatial Variable`1 component is part of the Spatial variables system.",
+  "category": "Data:Spatial:Sphere Variables",
+  "fields": {
+    "Radius": "The radius of the sphere this makes that samplers can sample this variable's value within."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a radius and variable name in order for this to function.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SphereConstantValueSpatialVariable&action=raw"
+}

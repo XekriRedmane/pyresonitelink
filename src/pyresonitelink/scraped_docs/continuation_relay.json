@@ -1,8 +1,12 @@
 {
-  "description": "alt=A visual image of an Continuation Relay node by itself, connected to nothing.|thumb",
+  "description": "due to wiki limitations, this node does not currently have an HTML rendering of the node.\n\nA Continuation Relay is made by having a ProtoFlux tool equipped, and grabbing onto a ProtoFlux continuation wire with grip with the tool in hand. It will splice the wire and place the node in the middle, acting as a rerouter. It has no behavior, and simply acts as a visual arrangement tool.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Input": "The Continuation to send to the output",
+    "Output": "The Continuation coming from the Input (Call) connector."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ContinuationRelay&action=raw"
 }

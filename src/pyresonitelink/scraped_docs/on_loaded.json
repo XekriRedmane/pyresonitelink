@@ -1,8 +1,11 @@
 {
-  "description": "On Loaded is a Protoflux node that triggers for its allocating user whenever the node is loaded for the first time (not when it's duplicated). This happens on world loads and object loads.",
+  "description": "On Loaded is a Protoflux node that triggers for its allocating user whenever the node is loaded for the first time (not when it's duplicated). This happens on world loads and object loads.\n\nTODO: Does this node fire when the entire node group this is connected to is loaded? or all of them? or just this one node?",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Trigger": "Sends an Impulse when the node is loaded. This Impulse is owned by the allocating user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnLoaded&action=raw"
 }

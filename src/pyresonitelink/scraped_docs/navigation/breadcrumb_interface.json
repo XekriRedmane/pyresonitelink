@@ -1,0 +1,14 @@
+{
+  "description": "The BreadcrumbInterface component is used by data feeds to get the translated name of one directory in a list of directories that makes a path. This is most commonly used in the Settings at the top to show a user where in the settings they are.",
+  "category": "Radiant UI:Navigation",
+  "fields": {
+    "NameConverter": "The path segment converter Sync delegate (Takes a path name and its depth) and returns a localized string.",
+    "ItemName": "The field to drive with the localized string of the path segment (on an OS, this would be like the programmer name of a folder translated to your language)",
+    "PathSegment": "The path segment programmer name to convert to your language.",
+    "ItemDepth": "How many levels down in the path this string element would be."
+  },
+  "methods": {},
+  "usage": "Used with a BreadcrumbManager to generate a list of path elements to show to the user in their language.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BreadcrumbInterface&action=raw"
+}

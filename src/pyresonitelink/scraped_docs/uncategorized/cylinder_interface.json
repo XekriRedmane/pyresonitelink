@@ -1,0 +1,12 @@
+{
+  "description": "The Cylinder Interface component is an abstracted type that doesn't do anything.",
+  "category": "Uncategorized",
+  "fields": {
+    "Radius": "The radius of the cylinder",
+    "Height": "The height of the cylinder"
+  },
+  "methods": {},
+  "usage": "unused.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CylinderInterface&action=raw"
+}

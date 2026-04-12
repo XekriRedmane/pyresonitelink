@@ -1,8 +1,14 @@
 {
-  "description": "The Demultiplex node takes in a value, a default value, and an index to select from a list of outputs. This node sends data through the output from the index of the list. If the value given is not valid, it will use the default value instead of the value provided.",
+  "description": "The ``Demultiplex`` node takes in a value, a default value, and an index to select from a list of outputs. This node sends data through the output from the index of the list. If the value given is not valid, it will use the default value instead of the value provided.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The value to send into a chosen output.",
+    "DefualtValue": "If the value is not valid, it will send this value instead.",
+    "Index": "The index to select from a list of outputs.",
+    "ValueOutputs": "The list of outputs to send the data out from."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Demultiplex&action=raw"
 }

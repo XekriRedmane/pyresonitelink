@@ -1,0 +1,16 @@
+{
+  "description": "The ProgressBar component is used to show the user the normalized input of a float value on the UIX element.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "Progress": "The normalized progression the of value",
+    "AnchorMinOffset": "UIX Anchor minimum offset",
+    "AnchorMaxOffset": "UIX Anchor maximum offset",
+    "AnchorMin": "UIX Anchor minimum offset reference input",
+    "AnchorMax": "UIX Anchor maximum offset reference input",
+    "Power": "Modifies the Power of the progress bar"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProgressBar&action=raw"
+}

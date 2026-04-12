@@ -1,0 +1,13 @@
+{
+  "description": "The GradientStripTexture is a component that generates a texture with a gradient defined by ``Gradient``",
+  "category": "Assets:Procedural Textures",
+  "fields": {
+    "Gradient": "A list of gradients that this texture uses to generate the final result. This requires Mods to edit.",
+    "Exp": "The sharpness of the transition between each ``Gradient``",
+    "_orientation": "The direction to generate the gradient strip towards"
+  },
+  "methods": {},
+  "usage": "Attach to a slot and then insert into a material to view the data. This component currently cannot be used properly until collections are implemented or the user installs Mods.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GradientStripTexture&action=raw"
+}

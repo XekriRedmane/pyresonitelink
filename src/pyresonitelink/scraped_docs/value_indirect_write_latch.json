@@ -1,8 +1,17 @@
 {
-  "description": "Indirect write latches can be commonly found in legacy content that has been migrated from other platforms. Indirect write latches take Variable (Variable) as an input, and the type that Variable wraps will determine what SetValue (Generic) and ResetValue (Generic) will take as a value. The set and reset value inputs will never take different types from each other.",
+  "description": "Indirect write latches can be commonly found in legacy content that has been migrated from other platforms.\nIndirect write latches take Variable (Variable) as an input, and the type that Variable wraps will determine what SetValue (Generic) and ResetValue (Generic) will take as a value. The set and reset value inputs will never take different types from each other.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Reset": "Call this to set the value being wrapped by Variable (Variable Generic) to the ResetValue (Generic) input.",
+    "Set": "Call this to set the value being wrapped by Variable (Variable Generic) to the SetValue (Generic) input.",
+    "Variable": "Value to write to the value wrapped by Variable (Variable Generic) upon calling Set (Call)",
+    "ResetValue": "Value to write to the value wrapped by Variable (Variable Generic) upon calling Reset (Call)",
+    "OnSet": "sends an impulse after SetValue (Call) has been impulsed and the value wrapped by Variable (Variable Generic) has been set to SetValue (Generic).",
+    "OnReset": "sends an impulse after ResetValue (Call) has been impulsed and the value wrapped by Variable (Variable Generic) has been set to ResetValue (Generic).",
+    "OnFail": "sends an impulse after either ResetValue (Call) or SetValue (Call) has been impulsed and the value wasn't able to be written due to a missing target or the variable not wrapping a valid IValue`1"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IndirectWriteLatch&action=raw"
 }

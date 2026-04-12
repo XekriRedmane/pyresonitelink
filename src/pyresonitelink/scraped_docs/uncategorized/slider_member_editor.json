@@ -1,0 +1,16 @@
+{
+  "description": "The SliderMemberEditor is commonly used in inspectors and can be used for Ref hacking.",
+  "category": "Uncategorized",
+  "fields": {
+    "Continuous": "Whether slider values should be constantly changed every frame update.",
+    "_path": "The value underneath the target element to change. path elements are separated by \".\".",
+    "_target": "The target field to change.",
+    "_slider": "The slider to trigger change events this component should use to influence ``_target``",
+    "_sliderValue": "The value to be used for changing ``_target``",
+    "_textEditor": "The text editor to change ``_target`` as a number text field."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SliderMemberEditor&action=raw"
+}

@@ -1,0 +1,19 @@
+{
+  "description": "The TimeIntDriver Component drives the Int value specified in ``Target`` based on the current time, modified by the specified parameters.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Scale": "Time scale in relation to time in seconds, where 1.0 means ``Target`` will increment once per second.",
+    "Repeat": "Once ``Target`` reaches this value, it will reset to 0 and restart.",
+    "PingPong": "Causes ``Target`` to reverse direction when it reaches 0 or the value in ``Repeat``, instead of restarting.",
+    "Target": "The value to be driven."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* AtlasInfo\n* TimeIntDriver\n* UVAtlasAnimator"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TimeIntDriver&action=raw"
+}

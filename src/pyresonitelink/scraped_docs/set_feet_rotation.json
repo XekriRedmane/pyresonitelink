@@ -1,8 +1,14 @@
 {
   "description": "The Set Feet Rotation node takes in a user's UserRoot and the rotation for the feet, then sets the rotation.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to set the feet rotation.",
+    "UserRoot": "The user's user root.",
+    "Rotation": "The rotation to set for the feet.",
+    "Next": "Continues flow execution from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetFeetRotation&action=raw"
 }

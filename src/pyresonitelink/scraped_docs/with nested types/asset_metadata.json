@@ -1,0 +1,28 @@
+{
+  "description": "This component is used as a base component for other components like PhotoMetadata",
+  "category": "With Nested Types",
+  "fields": {
+    "LocationName": "Name of the world the photo was taken in.",
+    "LocationURL": "The url of the world the photo was taken in.",
+    "LocationHost": "The host user of the session the photo was taken in.",
+    "LocationAccessLevel": "The access level of the world the photo was taken in.",
+    "LocationHiddenFromListing": "whether the photo was taken in a hidden world or not.",
+    "TimeTaken": "The time the photo was taken.",
+    "TakenBy": "the user who took the photo.",
+    "TakenGlobalPosition": "The Position the Asset was generated in global space.",
+    "TakenGlobalRotation": "The rotation the Asset was generated in global space.",
+    "TakenGlobalScale": "The scale of the point this Asset was generated in global space.",
+    "AppVersion": "The Version of the game the photo was taken in.",
+    "UserInfos": "A list of users present in the session when the photo was taken.",
+    "__legacyPresentUsers": "A list of users present in the session when the photo was taken. This is internal legacy data."
+  },
+  "methods": {},
+  "usage": "This component is used as a base component for other components like PhotoMetadata",
+  "notes": [
+    {
+      "title": "UserInfo",
+      "text": "See UserInfo."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AssetMetadata&action=raw"
+}

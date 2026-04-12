@@ -1,0 +1,14 @@
+{
+  "description": "The ReferenceEqualityDriver component checks the equality of two objects and says whether they are equal. For objects that define their own behavior for checking Equality (Like Bounding boxes) this will check based on that logic (for Bounding boxes they only need to be numerically equal, like being the same size and center).",
+  "category": "Transform:Drivers",
+  "fields": {
+    "TargetReference": "The reference to check.",
+    "Reference": "The reference to use as a thing to compare against.",
+    "Target": "The boolean field to drive to whether ``TargetReference`` and ``Reference`` are equal. Doesn't always mean they are the exact same object.",
+    "Invert": "Whether to invert the result sent to ``Target``."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a reference object to check against, or provide nothing to check against if null or not null. Then put in a field to check for a reference inside of, and the component will start working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceEqualityDriver&action=raw"
+}

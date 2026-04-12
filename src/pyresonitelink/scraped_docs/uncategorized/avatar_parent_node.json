@@ -1,0 +1,15 @@
+{
+  "description": "This component is used to parent and pose the avatar in a certain way. When using this component now, it will attach then remove itself from the slot.",
+  "category": "Uncategorized",
+  "fields": {
+    "Node": "Obsolete",
+    "DestroyOnDequip": "Obsolete",
+    "Scale": "Obsolete",
+    "EquipOrderPriority": "Obsolete",
+    "_originalParent": "Obsolete"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarParentNode&action=raw"
+}

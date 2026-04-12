@@ -1,0 +1,17 @@
+{
+  "description": "The ListEditor component is a internal-use component intended to be used to generate UIX for editing an ISyncList.",
+  "category": "Uncategorized",
+  "fields": {
+    "_targetList": "The list to edit.",
+    "_addNewButton": "Button to add a new item to the list."
+  },
+  "methods": {
+    "AddNewPressed": "Called when the add new item button is touched.",
+    "MoveUpPressed": "Called when the move item up button is touched.",
+    "MoveDownPressed": "Called when the move item down button is touched.",
+    "RemovePressed": "Called when the remove item button is touched."
+  },
+  "usage": "When ``_targetList`` receives a reference to a list, the ListEditor's slot's children will be populated with items in the list. Each of these child slots will have the name ``Element``. Each slot contains a HorizontalLayout component and RectTransform component.\n\nThis component will misbehave when changing the ``_targetList`` after it already has a reference, as doing so is unintended behavior.\n\nThis component is much less useful than its cousin, BagEditor, as it does not expose any method to reference the list members from in-game. FrooxEngine uses internal code to add references on child slots of the elements when building the Scene Inspector UI.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ListEditor&action=raw"
+}

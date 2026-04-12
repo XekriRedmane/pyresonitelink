@@ -1,0 +1,12 @@
+{
+  "description": "The LegacyDistributionAdapter is used in converted legacy particle systems that were converted to PhotonDust as part of The Performance Updates.",
+  "category": "Uncategorized",
+  "fields": {
+    "UseRandomDistribution": "The value to convert.",
+    "Distribution": "The field to drive with ``UseRandomDistibution`` converted."
+  },
+  "methods": {},
+  "usage": "Not used by the user. auto generated.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyDistributionAdapter&action=raw"
+}

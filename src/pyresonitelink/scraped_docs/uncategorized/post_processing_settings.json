@@ -1,0 +1,15 @@
+{
+  "description": "See Post Processing Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "MotionBlurIntensity": "Controls the strength of motion blur, disabled entirely if set to 0%.",
+    "BloomIntensity": "The Bloom effect causes a glow to appear around bright objects in the scene, disabled entirely if set to 0%.",
+    "AmbientOcclusionIntensity": "Adds shading in corners and area that'd receive less light. Controls the strength of Ambient Occlusion, disabled entirely if set to 0%.",
+    "ScreenSpaceReflections": "When enabled, any parts of the scene currently visible to the camera will reflect off shiny surfaces in realtime.",
+    "Antialiasing": "Smooths out jagged edges on objects. Some may not work or be suitable for VR."
+  },
+  "methods": {},
+  "usage": "See Post Processing Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PostProcessingSettings&action=raw"
+}

@@ -1,0 +1,14 @@
+{
+  "description": "The Color By Velocity Direction component changes the color of a particle depending on the dot product of it's velocity vs a specified axis.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "ReferenceDirection": "The direction to make a dot product with the particle's velocity.",
+    "AlignedColor": "The color the particle should be when it has velocity that gives dot product of 1 with ``ReferenceDirection``.",
+    "OrthogonalColor": "The color the particle should be when it has velocity that gives dot product of 0 with ``ReferenceDirection``.",
+    "OppositeColor": "The color the particle should be when it has velocity that gives dot product of -1 with ``ReferenceDirection``."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorByVelocityDirection&action=raw"
+}

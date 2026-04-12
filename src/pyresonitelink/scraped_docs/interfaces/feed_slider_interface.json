@@ -1,0 +1,16 @@
+{
+  "description": "The FeedSliderInterface component is used as a template type item in data feed mappers in the Data Feeds system. This component in particular is used to make sliders for stuff like volume or motion blur.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "Value": "The field that represents the data that should be read from and written to the source data feed.",
+    "Formatting": "The field to fill with data on how to format the value for displaying it.",
+    "Min": "The value Field to fill with the minimum value this feed number can be.",
+    "Max": "The value Field to fill with the maximum value this feed number can be.",
+    "ReferenceValue": "The default reference value field for this slider (ex: this is a value that the slider should have by default)",
+    "ReferenceValueCleanupRoot": "The slot to delete if a reference value is not needed."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FeedSliderInterface&action=raw"
+}

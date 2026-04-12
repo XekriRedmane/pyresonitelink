@@ -1,0 +1,14 @@
+{
+  "description": "The Color By Speed Texture component samples from the x axis of the UV depending on the min and max speeds being a 0-1 range and values beyond the range being extrapolated.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "MinSpeed": "The speed the particle has to be be traveling at or under to be considered minimum speed.",
+    "MaxSpeed": "The speed the particle has to be be traveling at or above to be considered maximum speed.",
+    "U_WrapMode": "How to wrap around the X axis.",
+    "Texture": "The texture to sample color from."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorBySpeedTexture&action=raw"
+}

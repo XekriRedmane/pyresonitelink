@@ -1,0 +1,11 @@
+{
+  "description": "The DesktopTextureProvider component only works in user space. This component is an ITexture2D and can be used as a texture. This texture is able to display what is on any particular monitor on a user's machine. This component is commonly used in the desktop tab on a user's Dash.",
+  "category": "Assets",
+  "fields": {
+    "DisplayIndex": "What monitor to get image data for."
+  },
+  "methods": {},
+  "usage": "This should not be used by the user, but it could be used to make a special facet. Insert the component into a texture field on a material to display it.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DesktopTextureProvider&action=raw"
+}

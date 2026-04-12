@@ -1,8 +1,13 @@
 {
-  "description": "The Div node takes in 2 inputs and returns the calculated result. The second input (B) will divide the first input (A) into sub sections (mathematically speaking), and the result will show how many of our first value will fit into the second value.",
+  "description": "The Div node takes in 2 inputs and returns the calculated result. The second input (``B``) will divide the first input (``A``) into sub sections (mathematically speaking), and the result will show how many of our first value will fit into the second value.\n\nDivision is non-commutative (known as Anticommutative), which means where you put your inputs matters.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The value we have.",
+    "B": "The value we want to divide from (basically, how many times to cut our first value into to fit these many sub sections).",
+    "* (Pseudo-Generic)": "The new result from this operation."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Div&action=raw"
 }

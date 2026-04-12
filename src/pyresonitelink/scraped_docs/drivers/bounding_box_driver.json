@@ -1,0 +1,15 @@
+{
+  "description": "The BoundingBoxDriver component is commonly used in Basic text objects to size the collider based on the text. This takes any IBounded and turns its Bounding box data into its local space center point and local space size. This is useful for auto generating the size and center of a BoxCollider around a procedural mesh.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "BoundedSource": "The object to get Bounding box data from.",
+    "Size": "The field to drive with the local space size of the bounding box of ``BoundedSource``.",
+    "Center": "The field to drive with the local space center of the bounding box of ``BoundedSource``.",
+    "Padding": "how much to add to the output of ``Size``",
+    "Scale": "how much to multiply the output of ``Size``"
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide ``BoundedSource``. The output fields are best used to drive a BoxCollider.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BoundingBoxDriver&action=raw"
+}

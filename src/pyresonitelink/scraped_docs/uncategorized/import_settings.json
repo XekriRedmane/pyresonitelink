@@ -1,0 +1,13 @@
+{
+  "description": "The Import Settings component handles how world links being pasted into the game should be imported.",
+  "category": "Uncategorized",
+  "fields": {
+    "SessionUrls": "How to handle pasted session URLs.",
+    "WorldUrls": "How to handle pasted world URLs.",
+    "NetworkUrls": "How to handle pasted network URLs."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ImportSettings&action=raw"
+}

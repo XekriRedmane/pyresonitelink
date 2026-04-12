@@ -1,8 +1,12 @@
 {
-  "description": "The Is Surrogate node takes in a char and returns whether that character is a surrogate.",
+  "description": "The Is Surrogate node takes in a char and returns whether that character is a surrogate.\n\nSurrogates are special values in UTF-16 that, in pairs, allows representing characters outside the Basic Multilingual Plane.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character to check.",
+    "* ([[Type:bool|bool]])": "Returns ``true`` if ``Character`` is a surrogate, ``false`` otherwise. Surrogate characters recognized by this node are all characters between ``U+D800`` and ``U+DFFF``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsSurrogate&action=raw"
 }

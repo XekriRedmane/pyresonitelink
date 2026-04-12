@@ -1,0 +1,13 @@
+{
+  "description": "The LocaleActiveDriver does a comparison against the local user's locale code and returns if it matches.",
+  "category": "Localization",
+  "fields": {
+    "Target": "The field to drive with whether or not ``LocaleCode`` is the local user's active locale code.",
+    "LocaleCode": "The locale code to check for ignoring cass.",
+    "MatchMainLanguage": "Whether to match to the locale's main language."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocaleActiveDriver&action=raw"
+}

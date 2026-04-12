@@ -1,0 +1,12 @@
+{
+  "description": "The InteractionBlock component is used to block UIX interaction events from the user. It requires an Image on the same Slot this component is on for this to work.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "TouchExitLock": "Blocks interactions when an interaction ends.",
+    "TouchEnterLock": "Blocks interactions when an interaction starts."
+  },
+  "methods": {},
+  "usage": "Any time you want to stop any UIX element from interacting (like having a popup menu to be on top of your main UIX), you can use this component to make the main UIX elements not respond to the user, making them focus on the newly spawned UIX.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractionBlock&action=raw"
+}

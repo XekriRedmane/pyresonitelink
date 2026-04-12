@@ -1,0 +1,17 @@
+{
+  "description": "The BooleanSwitcher component can be used to enable and disable a list of Slots depending on an index in the list.\nIt does so by driving the Active field of the slots.",
+  "category": "With Nested Enums",
+  "fields": {
+    "AutoAddChildren": "If true, the Targets list will be automatically populated with the child slots of the slot that this component is on.",
+    "AutoAddIgnoreTags": "Don't auto add a child slot to the list if it has a tag that is in this list.",
+    "Targets": "The list of slots of which one will be enabled.",
+    "ActiveIndex": "The index of the currently active slot.",
+    "ActivationMode": "Allows for enabling items in ``Target`` based on ``ActiveIndex`` number."
+  },
+  "methods": {
+    "SetupForChildrenObjects": "Tells the boolean switcher to add all the children slot active fields of it's slot to it's list."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BooleanSwitcher&action=raw"
+}

@@ -1,0 +1,9 @@
+{
+  "description": "The GraphicChunkRoot component is an internal component that is used for graphics, marking them as the root of a graphical image or process on UIX elements. Users don't need to worry as it does not have a clear use at this time (until one is dicovered).\n\n}}",
+  "category": "UIX:Layout",
+  "fields": {},
+  "methods": {},
+  "usage": "No use.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GraphicChunkRoot&action=raw"
+}

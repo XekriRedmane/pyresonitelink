@@ -1,8 +1,11 @@
 {
-  "description": "The Display node takes in an input, but unlike the Input Display node, it will not display out a value onto the node UI, instead this is most likely used for internal use in FrooxEngine.",
+  "description": "The Display node takes in an input, but unlike the Input Display node, it will not display out a value onto the node UI, instead this is most likely used for internal use in FrooxEngine.\n\nIt is theorized that the wording \"External\" (found in the node browser after entering that selection) could be in reference to something that allows FrooxEngine to display the value that was inputted outside of the client/engine. Possibly for a console or receiver that is listening outside the application for debugging purposes. (Sources needed please!)",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* (Generic)": "Takes in a value or reference input type."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Display&action=raw"
 }

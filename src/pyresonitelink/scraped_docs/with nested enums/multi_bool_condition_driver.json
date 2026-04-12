@@ -1,0 +1,18 @@
+{
+  "description": "The MultiBoolConditionDriver drives ``Target`` depending on the state of the ``Conditions`` list, and the ``ConditionMode`` selected.\n\nOne popular use for this component is disabling meshes that need to be turned on or off in conjunction with other meshes.\n\nFor example, disabling fur tufts when clothing is enabled by using Active on each clothing item as a Condition, Mode set to 'None', and Target being Active on the fur tuft.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Target": "The field to drive to true if the bools in ``Conditions`` meet the conditions set by ``ConditionMode``",
+    "Mode": "What state the bools in ``Conditions`` must be in, to drive ``Target`` to true.",
+    "Conditions": "A list of bool fields to compare against the ``ConditionMode``"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Mode can be one of:\n\n* All: Logical AND\n* Any: Logical OR\n* None: Logical NOR"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MultiBoolConditionDriver&action=raw"
+}

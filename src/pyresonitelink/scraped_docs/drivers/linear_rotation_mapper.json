@@ -1,0 +1,18 @@
+{
+  "description": "The LinearRotationMapper component is used to map a float range to a rotation range using lerp.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Source": "The source value field to get the source mapped value from.",
+    "Target": "The rotation to drive with the mapped rotation value.",
+    "SourceMin": "The minimum value for ``Source`` for mapping.",
+    "SourceMax": "The maximum value for ``Source`` for mapping.",
+    "TargetMin": "The minumum rotation value when ``Source`` is at ``SourceMin``'s value.",
+    "TargetMax": "The maximum rotation value when ``Source`` is at ``SourceMax``'s value.",
+    "AllowReverseMapping": "Whether changes to ``Target`` map in the reverse direction and get applied to target. See write backs.",
+    "Clamp": "Whether to allow extrapolation of the lerped data or to keep it within the values specified."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LinearRotationMapper&action=raw"
+}

@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan From Minutes node takes in the amount of minutes and converts it into a TimeSpan that shows the span of time in minutes.",
+  "description": "The ``TimeSpan From Minutes`` node takes in the amount of minutes and converts it into a TimeSpan that shows the span of time in minutes.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The amount of minutes.",
+    "* ([[Type:TimeSpan|TimeSpan]])": "Returns the TimeSpan with the amount of minutes."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanFromMinutes&action=raw"
 }

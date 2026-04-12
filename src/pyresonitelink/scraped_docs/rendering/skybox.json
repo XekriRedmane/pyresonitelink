@@ -1,0 +1,13 @@
+{
+  "description": "Can be used to specify the current material for the skybox and set the current skybox for the current world.",
+  "category": "Rendering",
+  "fields": {
+    "Material": "The material to use for the skybox."
+  },
+  "methods": {
+    "SetActive": "Sets the current skybox for the world to this one."
+  },
+  "usage": "Attach to a slot, put a Projection360Material or a ProceduralSkyMaterial in ``Material`` and hit the \"Set Active Skybox\" button to enable the skybox.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Skybox&action=raw"
+}

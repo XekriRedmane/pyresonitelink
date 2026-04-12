@@ -1,8 +1,12 @@
 {
-  "description": "alt=Relay|thumb|A ProtoFlux Relay.",
+  "description": "The Relay node can be for data or impulses. Relays are commonly used to route wires for an easier time reading ProtoFlux.\n\nThe impulse relays are used to rearrange and combine impulse wires together for managing Protoflux code. Impulse relays can take many inputs connections and can only have one output connection.\n\nThe data relays takes in an input and outputs the same type, carrying the same value or reference from the input. Data relays can only take one input connection and can have many output connections.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* (Generic)": "A value, reference, or impulse to carry across for the output.",
+    "Input": "A value, reference, or impulse from the input."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Relay&action=raw"
 }

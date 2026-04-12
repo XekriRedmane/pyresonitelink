@@ -1,8 +1,12 @@
 {
   "description": "Is Eye is a ProtoFlux node that checks if the provided Node (BodyNode) is equal to \"Left Eye\" or \"Right Eye\".",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Node": "The node to check if it is an eye.",
+    "* ([[Type:Bool|bool]])": "If Node (BodyNode) is equal to \"Left Eye\" or \"Right Eye\"."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsEye&action=raw"
 }

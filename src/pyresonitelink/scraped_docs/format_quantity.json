@@ -1,8 +1,15 @@
 {
-  "description": "The Format Quantity node takes in value as a quantity type, the unit in which the quantity should be displayed as a string, as well as wether to use the unit's long name instead of the short form. It returns a formatted string containing the quantity value in the specified unit.",
+  "description": "The Format Quantity node takes in value as a quantity type, the unit in which the quantity should be displayed as a string, as well as wether to use the unit's long name instead of the short form. It returns a formatted string containing the quantity value in the specified unit.\n\nTo create this node, you need to specify a valid quantity type for its generic parameter. Examples: ``Mass``, ``Time``, and ``Voltage``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The quantity value.",
+    "FormatUnit": "The unit in which the quantity should be displayed.",
+    "FormatNumber": "A format string for the number of the quantity.",
+    "UseLongNames": "Wether to use the unit's long name instead of the short form.",
+    "* ([[Type:double|double]])": "The formatted string of that provided unit type."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FormatQuantity&action=raw"
 }

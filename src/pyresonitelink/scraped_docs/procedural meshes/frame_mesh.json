@@ -1,0 +1,18 @@
+{
+  "description": "The FrameMesh component generates a procedural mesh that is like a flat polygon 2d frame for use with Mesh Renderers.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "ContentSize": "The size of interior object. usually driven by Asset Frames",
+    "Thickness": "How thick the frame should be, expanding outwards from the center content.",
+    "UVScale": "How big the procedural UV map should be, which influences material detail and color map scales."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, and give it ``ContentSize`` and ``Thickness``. Then put into a Mesh Renderer with a material to view it.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* AssetFrameSlot\n* IAsset Type"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FrameMesh&action=raw"
+}

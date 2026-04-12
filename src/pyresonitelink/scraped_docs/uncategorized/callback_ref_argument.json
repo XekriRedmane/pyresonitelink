@@ -1,0 +1,20 @@
+{
+  "description": "Similar to CallbackValueArgument but instead of a value it's a reference for an action.\n\nThere are some Sync Delegates in the game that match this component's requirements, but not many.",
+  "category": "Uncategorized",
+  "fields": {
+    "Reference": "The reference to give to ``Callback``",
+    "Callback": "The Sync Delegate to call and provide ``Reference`` to."
+  },
+  "methods": {
+    "Call": "Call ``Callback`` sync delegate and provide it ``Reference``.",
+    "CallAndDestroy": "Do ``Call()`` and then destroy this component."
+  },
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* CallbackValueArgument"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CallbackRefArgument&action=raw"
+}

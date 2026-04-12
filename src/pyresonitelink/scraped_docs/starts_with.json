@@ -1,8 +1,13 @@
 {
   "description": "Ends With is a ProtoFlux node that checks if Str (String) starts with Substring (String).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to check.",
+    "Substring": "Used to check if Str (String) starts with this.",
+    "* ([[Type:Bool|bool]])": "Returns if Str (String) starts with Substring (String)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:StartsWith&action=raw"
 }

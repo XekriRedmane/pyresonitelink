@@ -1,8 +1,12 @@
 {
-  "description": "See Enums for a more in depth explaination on what Enums are.",
+  "description": "See Enums for a more in depth explaination on what Enums are.\n\nPrevious Value is a ProtoFlux node that when given an Enum will give the previous enum numerically according to the Enums page. \"*\" and \"Value\" will never be different enum types.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The Enum to start at.",
+    "* ([[:Category:Enums|Enum]] Generic)": "The previous Enum before Value (Enum Generic) numerically.\nThis node will wrap around forwards and backwards for the output."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:PreviousValue&action=raw"
 }

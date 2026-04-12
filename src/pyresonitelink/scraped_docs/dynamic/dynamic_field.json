@@ -1,0 +1,13 @@
+{
+  "description": "The DynamicField binds the field pointed to by ``TargetField`` to the dynamic variable referred to by ``VariableName``. The field must be a value type.",
+  "category": "Data:Dynamic",
+  "fields": {
+    "VariableName": "The name of the dynamic variable to be used",
+    "TargetField": "The field that will be used as the dynamic variable's value.",
+    "OverrideOnLink": "If true, the value of the field will be written when this component is moved into a new space"
+  },
+  "methods": {},
+  "usage": "This component works almost exactly like the DynamicValueVariable component, except that the value used for the dynamic variable is sourced from a separate field. This field will be automatically updated with the value of the dynamic variable, and writing to the field will write to the dynamic variable. This can be used to directly bind fields of separate components as a dynamic variable without having to use a DynamicValueVariableDriver or similar setup.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicField&action=raw"
+}

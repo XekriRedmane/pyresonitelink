@@ -1,0 +1,13 @@
+{
+  "description": "Weight list editor is a component that is used within inspectors and shouldn't need to be interacted with by the user. Although, it can be used in very niche circumstances.",
+  "category": "Uncategorized",
+  "fields": {
+    "_targetList": "The list of blendshapes. This can be acquired through grabbing the \"BlendShapes\" title at the beginning of a blendshape list inside of a Skinned Mesh Renderer",
+    "_addNewButton": "The button that when pressed, should add a new blendshape to the end of the ``_targetList``. Whether the new blendshape does anything or not depends on if the ``Mesh`` data inside of ``_targetSkin`` has a blendshape list that reaches as far as the new item.",
+    "_targetSkin": "The skinned Mesh renderer to add a new blendshape item to. Has to be the same component ``_targetList`` comes from."
+  },
+  "methods": {},
+  "usage": "Add component to a slot and fill the fields, with the proper data explained in the table above. Press the button provided to ``_addNewButton`` to add a new blendshape to the targeted skinned Mesh renderer.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BlendshapeWeightListEditor&action=raw"
+}

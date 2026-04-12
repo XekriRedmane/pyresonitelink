@@ -1,0 +1,11 @@
+{
+  "description": "Is a convex hull (a shape closely wrapping the object, but with no indentations) over the mesh of the object.",
+  "category": "Physics:Colliders",
+  "fields": {
+    "Mesh": "The mesh to wrap (kind of like using plastic wrap) and use the wrapped result as the collider this component represents."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConvexHullCollider&action=raw"
+}

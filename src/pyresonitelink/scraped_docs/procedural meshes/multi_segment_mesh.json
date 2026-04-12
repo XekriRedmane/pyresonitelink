@@ -1,0 +1,13 @@
+{
+  "description": "Multi line segment mesh is a component that generates mesh data for use with a SkinnedMeshRenderer. It uses a list of lines to generate lines of geometry with varying thickness.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Sides": "how many faces around each line (circle wise) that the lines have.",
+    "FlipNormalDirection": "Flips the normals on the generated mesh data.",
+    "Segments": "Different lines that make up the mesh."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MultiSegmentMesh&action=raw"
+}

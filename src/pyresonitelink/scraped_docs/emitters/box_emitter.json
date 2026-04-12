@@ -1,0 +1,20 @@
+{
+  "description": "Box emitter is a component that is used in conjunction with Particle System and Particle Style. It allows for adding particles into a Particle system with a rate, and does them inside or along the outside of the box area specified. The particle starting colors are lerped based on what corner of the cube the particle generated is closest to.",
+  "category": "Rendering:Particle System:Emitters",
+  "fields": {
+    "Size": "The size of this box emitter.",
+    "DirectionMode": "What direction to shoot the particles in from the box.",
+    "Color0": "Color of the cube on corner (-x,-z,-y)",
+    "Color1": "Color of the cube on corner (+x,-z,-y)",
+    "Color2": "Color of the cube on corner (+x,+z,-y)",
+    "Color3": "Color of the cube on corner (-x,+z,-y)",
+    "Color4": "Color of the cube on corner (-x,-z,+y)",
+    "Color5": "Color of the cube on corner (+x,-z,+y)",
+    "Color6": "Color of the cube on corner (+x,+z,+y)",
+    "Color7": "Color of the cube on corner (-x,+z,+y)"
+  },
+  "methods": {},
+  "usage": "Used in creations using particle systems as a source of particles.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BoxEmitter&action=raw"
+}

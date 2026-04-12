@@ -1,0 +1,13 @@
+{
+  "description": "The DebugValueStreamRange component is used to debug the range of a Float3 stream for debugging. Like a graph of sorts.",
+  "category": "Uncategorized",
+  "fields": {
+    "Stream": "The stream to debug.",
+    "positionDrive": "The position field to drive with the stream position.",
+    "sizeDrive": "The field to drive with the overall stream range."
+  },
+  "methods": {},
+  "usage": "Not generally useful to the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugValueStreamRange&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The HiearchyHapticsSource component every ``Interval`` seconds triggers a relative intensity haptics signal (Additive) of ``RelativeIntensity``.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics",
+  "fields": {
+    "TargetHierarchy": "The hiearchy of haptics to trigger. If targeting an arm slot on an avatar, triggers all haptics under the arm and hand. For a VR user this would get their controller.",
+    "Interval": "The amount of seconds to wait per trigger. Fires automatically every this many seconds.",
+    "RelativeIntensity": "The relative haptics intensity amount to send each trigger."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a slot to ``TargetHiearchy`` that is under a user to trigger haptics on. Then provide some values to adjust to the desired effect.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HierarchyHapticsSource&action=raw"
+}

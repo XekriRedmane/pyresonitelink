@@ -1,8 +1,12 @@
 {
-  "description": "Get slot active is a ProtoFlux node that will check if Instance (Slot)'s parent hierarchy or Instance (Slot) itself is disabled.",
+  "description": "Get slot active is a ProtoFlux node that will check if Instance (Slot)'s parent hierarchy or Instance (Slot) itself is disabled.\n\nThis Protoflux node does not update by itself on the Active field change. If you need to react to a Slot's activity dynamically, consider sourcing the Active field of the hierarchy's root Slot instead.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "the slot to check for if itself or it's parent hierarchy is disabled.",
+    "* ([[Type:Bool|bool]])": "If Instance (Slot) itself or it's parent hierarchy is disabled."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetSlotActive&action=raw"
 }

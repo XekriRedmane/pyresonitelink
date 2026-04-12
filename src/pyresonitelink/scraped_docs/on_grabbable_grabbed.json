@@ -1,8 +1,11 @@
 {
   "description": "On Grabbable Grabbed is a ProtoFlux node that monitors an IGrabbable for when someone grabs it and sends an Impulse that runs on the grabbing user's client.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnGrabbed": "Sends an impulse when someone starts grabbing Grabbable (IGrabbable)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnGrabbableGrabbed&action=raw"
 }

@@ -1,0 +1,14 @@
+{
+  "description": "The Legacy Tube Spiral Mesh Adapter component is used to convert legacy content for tube spiral meshes into current content.",
+  "category": "Uncategorized",
+  "fields": {
+    "UpwardTrend": "The original float value for UpwardTrend.",
+    "Length": "The original value for Length.",
+    "EndPoint": "The value field for the EndPoint of the Component:TubeSpiralMesh.",
+    "CoilCount": "The value field for the CoilCount of the Component:TubeSpiralMesh."
+  },
+  "methods": {},
+  "usage": "Used in legacy content. do not use in new content.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyTubeSpiralMeshAdapter&action=raw"
+}

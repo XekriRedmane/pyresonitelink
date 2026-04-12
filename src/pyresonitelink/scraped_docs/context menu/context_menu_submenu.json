@@ -1,0 +1,17 @@
+{
+  "description": "The ContextMenuSubmenu component can be used in combination with any button component to make said button open a custom context menu when clicked.",
+  "category": "Radiant UI:Context Menu",
+  "fields": {
+    "ItemsRoot": "All Context Menu Item Sources on slots immediately under this one will be included in the submenu.",
+    "SearchWholeHierarchy": "Display all items under ItemsRoot including sub slots, not just ones immediately under.",
+    "DisableFlick": "Whether to allow opening of the sub menu by clicking on the context menu center and moving it to this component's Context Menu Item Source on the same slot.",
+    "SpeedOverride": "Override the speed at which the new context menu will open.",
+    "CounterClockwise": "Whether the items should be arranged clockwise or counter-clockwise in the submenu.",
+    "KeepPosition": "When set, the context menu will stay in the same place as the submenu opens. Otherwise, the context menu will recenter on the user's laser.",
+    "Hidden": "If set, the submenu is only visible to the user that opened it."
+  },
+  "methods": {},
+  "usage": "Attach this component to a slot and attach a Context Menu Item Source along side it.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ContextMenuSubmenu&action=raw"
+}

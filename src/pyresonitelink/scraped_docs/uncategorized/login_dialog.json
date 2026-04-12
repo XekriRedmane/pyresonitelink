@@ -1,0 +1,41 @@
+{
+  "description": "The LoginDialog component is used in internal systems and may be replaced at any time. It is used to handle the logging in for users and the UI for such interactions.",
+  "category": "Uncategorized",
+  "fields": {
+    "RegisterOnly": "Whether user should just be registered and not log in afterwards.",
+    "_interactionEnabled": "Whether interacting with this component is enabled.",
+    "_swapRegion": "Handles the slide animation as this dialogue changes pages.",
+    "_username": "The field for entering the user's username.",
+    "_email": "The field for entering the user's email address.",
+    "_emailRepeat": "The field to confirm the user's email address.",
+    "_password": "The field for entering the user's password.",
+    "_passwordRepeat": "The field for entering the user's password again for confirmation.",
+    "_recoveryCode": "The field to get a recovery code from in case of account loss.",
+    "_birthMonth": "The field to enter the user's legal birth month MM.",
+    "_birthDay": "The field to enter the user's legal birth day DD.",
+    "_birthYear": "The field to enter the user's legal birth year YYYY.",
+    "_rememberLogin": "Whether to keep an encrypted token on disk using modern security protocols so the user can stay remembered for 30 days since last login, token refreshing every login.",
+    "_resetUserId": "Whether to reset the user ID if they are migrating an account from older platforms.",
+    "_policies": "Whether the player accepts the EULA.",
+    "_registerButton": "The button for registering.",
+    "_loginEmail": "The email used to log in."
+  },
+  "methods": {
+    "OnPolicesClick": "Called when the polices button is touched.",
+    "DoLogin": "Called when the login button is touched.",
+    "DoLoginSaml2": "Called when the login via saml2 button is touched.",
+    "DoRegister": "Called when the register button is touched.",
+    "DoRegisterReserved": "Called when the register reserve claim button is touched.",
+    "RequestRecoveryCode": "Called when the request recovery code button is touched.",
+    "DoResetPassword": "Called when the reset password button is touched.",
+    "OnCancelRegister": "Called when the cancel register button is touched.",
+    "OpenLogin": "Called when the open login button is touched.",
+    "OpenRegister": "Called when the open register button is touched.",
+    "OpenLostPassword": "Called when the open lost password button is touched.",
+    "OnOpenMigration": "Called when the open migration button is touched.",
+    "OnDeclineMigration": "Called when the decline migration button is touched."
+  },
+  "usage": "Not used directly by the user. Used in the dash.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LoginDialog&action=raw"
+}

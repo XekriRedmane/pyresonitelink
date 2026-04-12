@@ -1,8 +1,13 @@
 {
   "description": "The Has Tag node checks if the provided instance slot has a Tag equal to the provided tag (String).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "Slot to check.",
+    "Tag": "The String to check with.",
+    "* ([[Type:Bool|bool]])": "If Instance (Slot)'s tag is equal to Tag (String)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:HasTag&action=raw"
 }

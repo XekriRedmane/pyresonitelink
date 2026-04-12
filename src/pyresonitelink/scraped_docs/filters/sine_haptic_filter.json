@@ -1,0 +1,16 @@
+{
+  "description": "The SineHapticFilter component is used to make haptics triggered by Components on the same slot change in intensity over time like its riding waves.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics:Filters",
+  "fields": {
+    "UseGlobalTime": "Whether to use the global time or the initial local time for initial time when touched.",
+    "DistanceScale": "An optional value on how to add to the offset in time for the waves of intensity based on distance of the haptic device from the slot this component is on.",
+    "AxisScale": "An optional value on how to add to the offset in time for the waves of intensity based on how close it is to a line direction in local space.",
+    "MinIntensity": "The minimum haptics intensity this component will send.",
+    "MaxIntensity": "The maximum haptics intensity this component will send.",
+    "Frequency": "The speed at which the sinewave goes up and down over time."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with a HapticVolume and a collider. This component will then start working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SineHapticFilter&action=raw"
+}

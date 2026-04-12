@@ -1,0 +1,16 @@
+{
+  "description": "The GiggleTechSettings Component is used to control different aspects of giggle pucks for use in Resonite.\n\nSee Settings for information.",
+  "category": "With Nested Types",
+  "fields": {
+    "Devices": "A list of giggle pucks with settings for them.",
+    "GigglePuckIP": "the IP address of the giggle puck.",
+    "IsGigglePuckValid": "Whether the giggle puck is valid and tracking."
+  },
+  "methods": {
+    "RegisterGigglePuck": "Register a gigglepuck to the list",
+    "GetDeviceForSubsetting": "Get one of the ``Devices`` by key."
+  },
+  "usage": "See Settings for information.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GiggleTechSettings&action=raw"
+}

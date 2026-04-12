@@ -1,0 +1,11 @@
+{
+  "description": "The FootstepEventRelay component can be put on a user's feet or an object with a collider to receive footstep events. The events are then sent to another slot or any number of FootstepEvents ProtoFlux nodes.",
+  "category": "Locomotion:Footsteps",
+  "fields": {
+    "Target": "The slot to relay footstep events to."
+  },
+  "methods": {},
+  "usage": "Used to receive and relay footstep events.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FootstepEventRelay&action=raw"
+}

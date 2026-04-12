@@ -1,0 +1,11 @@
+{
+  "description": "The ButtonAudioDeviceSet component sets the audio device a user is using, and can only be used in Userspace, as switching audio devices is a Settings thing. (TODO: double check this)",
+  "category": "Common UI:Button Interactions:Specialized",
+  "fields": {
+    "DeviceIndex": "The device to select."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonAudioDeviceSet&action=raw"
+}

@@ -1,0 +1,10 @@
+{
+  "description": "The Setup2FAFacetPreset component loads the Setup 2FA facet when it's not ``_fullyLoaded``. It does this by loading the facet from the cloud, and using that loaded data to make the preset",
+  "category": "Radiant UI:Facets",
+  "fields": {
+    "_fullyLoaded": "Whether this facet has been fully loaded and ready to use"
+  },
+  "methods": {},
+  "usage": "used in the main dash. no need to be used by the user unless they are missing the Setup 2FA facet.",
+  "notes": []
+}

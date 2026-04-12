@@ -1,0 +1,13 @@
+{
+  "description": "The TrackedHand component controls the grabbing and updating of a hand including camera based hand tracking of a user.",
+  "category": "Input:Controls",
+  "fields": {
+    "User": "The user this tracked hand belongs to.",
+    "HandChirality": "The hand side this tracked hand corresponds to.",
+    "_grabber": "The grabber component this hand is controlling."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TrackedHand&action=raw"
+}

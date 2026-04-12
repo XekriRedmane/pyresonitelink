@@ -1,8 +1,11 @@
 {
-  "description": "The Reference To Output node takes a Global ProtoFlux reference and returns the IVariable that can be used for an Indirect Write.",
+  "description": "The Reference To Output node takes a Global ProtoFlux reference and returns the IVariable that can be used for an Indirect Write.\n\nThis node is automatically created when attaching an applicable node output (Data Model Store, Store, Local, or Source) into an input that requires an IVariable. To create this node from the node menu, one must use the assembly type names for IVariable and ExecutionContent. An example valid type for this node is ``ProtoFlux.Runtimes.Execution.IVariable``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:IVariable`2|IVariable]])": "The IVariable wrapper of ``Reference``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ReferenceToOutput&action=raw"
 }

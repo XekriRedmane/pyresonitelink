@@ -1,0 +1,18 @@
+{
+  "description": "The WorldItemInterface component is used with Data Feeds to show information about a particular world mapped to it. This is used in the worlds menu.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "WorldName": "The name of the world mapped to this template.",
+    "Description": "The description of the world mapped to this template.",
+    "ThumbnailUrl": "The URL of the preview world texture for the world mapped to this template.",
+    "JoinedUsers": "The amount of users currently in the world mapped to this template.",
+    "ActiveUsers": "The amount of focused active users in the world mapped to this template.",
+    "IsHost": "Whether the local user is the host of the world mapped to this template.",
+    "AwayKickEnabled": "Whether away kick is enabled for this world.",
+    "AwayKickInterval": "The interval at which after this amount of time, users should be kicked."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldItemInterface&action=raw"
+}

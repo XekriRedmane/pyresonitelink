@@ -1,0 +1,11 @@
+{
+  "description": "The DisplayIndex component when duplicated by a DesktopDisplayLayout by being part of the slot hiearchy specified by that component's ``DisplayTemplate``, this component's ``Index`` field will be filled by the screen number that DesktopDisplayLayout was trying to spawn a template for.",
+  "category": "Input:Desktop",
+  "fields": {
+    "Index": "See above."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DisplayIndex&action=raw"
+}

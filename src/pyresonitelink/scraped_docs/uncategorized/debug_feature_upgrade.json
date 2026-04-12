@@ -1,0 +1,11 @@
+{
+  "description": "The DebugFeatureUpgrade is used to test upgrading features which is an Elements.Core.dll C# tag function.",
+  "category": "Uncategorized",
+  "fields": {
+    "Test": "The Feature to test upgrade."
+  },
+  "methods": {},
+  "usage": "Debug.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugFeatureUpgrade&action=raw"
+}

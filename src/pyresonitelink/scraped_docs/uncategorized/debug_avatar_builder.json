@@ -1,0 +1,16 @@
+{
+  "description": "* Component:CommonAvatarBuilder",
+  "category": "Uncategorized",
+  "fields": {
+    "SetupServerVoice": "Obsolete.",
+    "SetupClientVoice": "Obsolete.",
+    "SetupServerTools": "Obsolete.",
+    "SetupClientTools": "Obsolete.",
+    "ParentClientsToServer": "Obsolete.",
+    "AlignTracking": "Obsolete."
+  },
+  "methods": {},
+  "usage": "Obsolete.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugAvatarBuilder&action=raw"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "A snap plane is a component that is able to generate a point in a plane shape when given a point by another component. Usually this is used in components like the Multi User Avatar Anchor Component to determine where to place the anchors upon clicking (click point is used in such case). This component will take a given point by another component and find the closest surface point to a plane with a normal + with a center positioned at the slot it is on. This component will then return the point to the component that called it.\n\nThe functionality of this component is internal, and cannot be used by ProtoFlux to snap points using in game code.",
+  "category": "Transform:Snapping",
+  "fields": {
+    "Normal": "Determines which direction the plane is facing",
+    "SnapParent": "Where to put slots if the component is being used for slot placement."
+  },
+  "methods": {},
+  "usage": "Used as an anchor point generator in the Multi User Avatar Anchor Component and drawing tools.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SnapPlane&action=raw"
+}

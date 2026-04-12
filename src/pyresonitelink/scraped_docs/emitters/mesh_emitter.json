@@ -1,0 +1,24 @@
+{
+  "description": "The MeshEmitter component allows for emitting particles from a mesh.\n\nThis is part of the Photon Dust system by Frooxius",
+  "category": "Rendering:Particle System:Emitters",
+  "fields": {
+    "EmitFrom": "What parts of the mesh to emit from for the specified mesh.",
+    "UseVertexColors": "Whether or not to use interpolated vertex colors of the mesh this is emitting from.",
+    "DirectionMode": "How to determine the emission direction of particles emitted from this mesh.",
+    "ColorTexture": "The texture to sample from for the particle starting color, which is sampled from the texture via the uv coordinate of the mesh surface the particle was emitted from.",
+    "WrapMode": "How to wrap the texture sampling for the particle color when the uvs are beyond a 0 to 1 range.",
+    "UVOffset": "How much to offset the UVs before sampling for particle color.",
+    "UVScale": "How much to scale up/down the UVs before sampling for particle color.",
+    "ClipRect": "Particles will only emit if the mesh surface uv is within this clip rectangle.",
+    "Mesh": "The mesh to use for particle emission."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* SkinnedMeshEmitter\n* Photon Dust"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeshEmitter&action=raw"
+}

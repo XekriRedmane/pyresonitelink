@@ -1,0 +1,12 @@
+{
+  "description": "The Float2Driver component can be used to drive a foat2 value, based on an X and a Y value.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "X": "The field that holds the X value for the float2. If null, the X component of the float2 will be 0.",
+    "Y": "The field that holds the Y value for the float2. If null, the Y component of the float2 will be 0.",
+    "Target": "The field that is driven to the constructed float2."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

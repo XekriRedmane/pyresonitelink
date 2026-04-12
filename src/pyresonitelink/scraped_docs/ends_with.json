@@ -1,8 +1,13 @@
 {
   "description": "Ends With is a ProtoFlux node that checks if Str (String) ends with Substring (String).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to check.",
+    "Substring": "Used to check if Str (String) ends with this.",
+    "* ([[Type:Bool|bool]])": "Returns if Str (String) ends with Substring (String)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:EndsWith&action=raw"
 }

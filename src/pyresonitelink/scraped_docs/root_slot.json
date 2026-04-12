@@ -1,8 +1,11 @@
 {
   "description": "Returns the Root Slot of the current World.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Slot|Slot]])": "Returns the Root Slot of the current World."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RootSlot&action=raw"
 }

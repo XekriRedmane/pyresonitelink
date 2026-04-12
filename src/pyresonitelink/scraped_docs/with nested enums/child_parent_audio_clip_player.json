@@ -1,0 +1,19 @@
+{
+  "description": "The ChildParentAudioClipPlayer component plays specified audio clips when it's immediate children are added to or removed from.",
+  "category": "With Nested Enums",
+  "fields": {
+    "ParentUnder": "Where to parent the slots to when playing sounds. (DON'T SET THIS TO THE SLOT THIS COMPONENT IS ON. else it will spam audio every game tick)",
+    "MinDistance": "The override for all ClipDatas Min Distance when they are played.",
+    "MaxDistance": "The override for all ClipDatas Max Distance when they are played.",
+    "RolloffMode": "The override for all ClipDatas Rolloff Mode when they are played.",
+    "PlayPointMode": "Where to position audio clips when they are played.",
+    "ChildLimit": "If the immediate children count of this component's slot is above this amount, it will not play sounds.",
+    "FilterTag": "If an added or removed immediate child has a tag that matches this value, a sound will not be played.",
+    "ParentedClips": "A list of audio clips to play when a slot is added to the immediate children of this component's slot.",
+    "UnparentedClips": "A list of audio clips to play when a slot is removed from the immediate children of this component's slot."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ChildParentAudioClipPlayer&action=raw"
+}

@@ -1,0 +1,15 @@
+{
+  "description": "The BillboardParticleRenderer component is a rendering style component for Particle systems that give them the default square tile based particles.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Renderers",
+  "fields": {
+    "Material": "The material to use to render the particles.",
+    "Alignment": "How to align the particles.",
+    "MinBillboardScreenSize": "The minimum size a particle can be on the screen.",
+    "MaxBillboardScreenSize": "The maximum size a particle can be on the screen.",
+    "MotionVectorMode": "How to handle rendering particles when it comes to their motion vectors."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the renderer slot in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BillboardParticleRenderer&action=raw"
+}

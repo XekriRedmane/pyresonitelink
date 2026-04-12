@@ -1,5 +1,5 @@
 {
-  "description": "This component is used in many places, including: * Primitive Member Editor for directly editing TextFields (and Ref Hacking) * UIX and TextFields * Parsing floats and parsing ints",
+  "description": "The TextEditor component takes in a reference to a Text or TextRenderer, and then outputs the result into that reference along with the parameters given and by what actions it should do so.",
   "category": "With Nested Enums",
   "fields": {
     "Text": "The output of where the text is going to be placed at.",
@@ -16,10 +16,6 @@
   },
   "methods": {},
   "usage": "This component is used in many places, including:\n* Primitive Member Editor for directly editing TextFields (and Ref Hacking)\n* UIX and TextFields\n* Parsing floats and parsing ints",
-  "notes": [
-    {
-      "title": "Related Components",
-      "text": "Text Editor\nText Editor\nText Editor"
-    }
-  ]
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextEditor&action=raw"
 }

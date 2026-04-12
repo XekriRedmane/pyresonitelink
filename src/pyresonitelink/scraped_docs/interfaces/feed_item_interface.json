@@ -1,0 +1,9 @@
+{
+  "description": "The FeedItemInterface component is used as a template type item in data feed mappers in the Data Feeds system.\n\nAll Feed interface types extend from this class, and are listed in the Interfaces category.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FeedItemInterface&action=raw"
+}

@@ -1,8 +1,13 @@
 {
-  "description": "The Multi Lerp node takes in any number of lerp point inputs along with a lerp value of which it lerps linearly towards, then returns the value over time.",
+  "description": "The Multi Lerp node takes in any number of lerp point inputs along with a lerp value of which it lerps linearly towards, then returns the value over time.\n\nThis is clamped, meaning that you are stuck with being in between all lerp input values.\n\nThis node is the multi version of the Value Lerp node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Lerp": "The lerp value between all points.",
+    "Operands": "The lerp value points.",
+    "* (Pseudo-Generic)": "Returns the value currently being lerped."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:MultiLerp&action=raw"
 }

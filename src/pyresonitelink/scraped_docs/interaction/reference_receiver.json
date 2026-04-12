@@ -1,0 +1,12 @@
+{
+  "description": "The ReferenceReceiver component can receive a reference dropped onto a UIX element Button by a user. The reference dropped is then stored into the field specified by ``TargetReference`` (an example would be to use the ReferenceField). \n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "TargetReference": "The target field to fill when a reference is received.",
+    "Undoable": "Whether dropping elements onto this UIX interactable is undoable."
+  },
+  "methods": {},
+  "usage": "* Letting go when the reference you want to send into the ``TargetReference`` field, is currently the way on how it can trigger.\n* Combining this with the ReferenceProxySource component is a powerful way of moving references around without the need to open a Scene Inspector. Having a ReferenceField of IWorldElement as the ``TargetReference`` is the most recommended way of successfully transferring a reference this way.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceReceiver&action=raw"
+}

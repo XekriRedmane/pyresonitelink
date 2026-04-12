@@ -1,0 +1,21 @@
+{
+  "description": "The Invite Request Item component is used to handle the visual and behavior of invite requests received in chats from other users.",
+  "category": "Uncategorized",
+  "fields": {
+    "ContactDialog": "The dialog component that this is under.",
+    "HeaderText": "The text field that makes up the header for this request in the chat.",
+    "InviteButton": "The button to invite the user or forward the invite to the next in command.",
+    "AddContactButton": "The button to add the user who is asking for an invite as a contact."
+  },
+  "methods": {
+    "SendDirectInvite": "Handles sending a direct invite to the asking user.",
+    "ForwardInviteRequestToHost": "Handles forwarding the invite request to the host.",
+    "GrantInvite": "Handles accepting the invite request.",
+    "AddAsContact": "Handles adding the asking user as a contact.",
+    "AddHostAsContact": "Handles adding the host who is receiving the invite as a contact.",
+    "AddAsHeadlessContact": "Handles adding the headless host who is receiving the invite as a contact."
+  },
+  "usage": "Not used directly by the user, but is used in the contacts screen.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InviteRequestItem&action=raw"
+}

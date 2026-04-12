@@ -1,0 +1,13 @@
+{
+  "description": "The FixedRectFitterLayout component attempts to fit child elements into the RectTransform of the FixedRectFitterLayout slot.\n\nTo use a FixedRectFitterLayout at least one child element will need an ``OffsetMax`` value that is not ``[0.0; 0.0]``.\n\n|AllowShrink|Bool|Should the child elements shrink to fit the space if needed.|AllowGrow|Bool|Should the child elements grow to fill the space if needed.}}",
+  "category": "With Nested Enums",
+  "fields": {
+    "VerticalAlign": "The alignment of the content vertically.",
+    "Mode": "How the child elements should attempt to fit into this RectTransform",
+    "AllowShrink": "Should the child elements shrink to fit the space if needed. AllowGrow Bool Should the child elements grow to fill the space if needed."
+  },
+  "methods": {},
+  "usage": "The FixedRectFitterLayout component computes the bounds of child elements using their computed ``OffsetMax`` values and attempts to to fit the child elements into the FixedRectFitterLayout's RectTransform according to the mode.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FixedRectFitterLayout&action=raw"
+}

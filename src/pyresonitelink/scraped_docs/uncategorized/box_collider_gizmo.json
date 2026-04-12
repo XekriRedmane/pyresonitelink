@@ -1,0 +1,12 @@
+{
+  "description": "The BoxColliderGizmo component is used to resize and move BoxColliders in a visual manner using the DevTip.",
+  "category": "Uncategorized",
+  "fields": {
+    "_target": "The box collider this component is currently editing",
+    "_cubeGizmo": "The visual for this component which is used to edit ``_target`` in a visual manner."
+  },
+  "methods": {},
+  "usage": "Used to adjust the size of a box collider. This can be accessed via the gizmo menu using a dev tip in your context menu. The button to activate it is the box collider option.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BoxColliderGizmo&action=raw"
+}

@@ -1,8 +1,13 @@
 {
   "description": "The On Grip Stay node takes in a global reference of a LocomotionGrip, and fires an event when the grip is happening per frame, as well as information of the locomotion module and the body node that is gripping.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnEvent": "Fires when the grip is being used by the user.",
+    "Module": "Returns the module that is gripping.",
+    "GrippingBodyNode": "Returns the body node that is gripping."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnGripStay&action=raw"
 }

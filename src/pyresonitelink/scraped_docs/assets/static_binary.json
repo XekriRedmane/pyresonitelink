@@ -1,0 +1,11 @@
+{
+  "description": "The StaticBinary component is used to take in a URL and treats it like a Binary type, mostly used by other components.",
+  "category": "Assets",
+  "fields": {
+    "URL": "The url to point to as being a binary for this component."
+  },
+  "methods": {},
+  "usage": "This component can be combined with the BinaryExportable component to allow for exporting the Slot as a binary file on your device.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StaticBinary&action=raw"
+}

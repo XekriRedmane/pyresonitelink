@@ -1,0 +1,14 @@
+{
+  "description": "The SessionPermissionController component is used to change the roles or view the roles of a specific user in the current session.",
+  "category": "Uncategorized",
+  "fields": {
+    "_name": "The text element showing the name of the user this belongs to.",
+    "_rolesButtons": "A list of button elements used to assign the user this belongs to to a role."
+  },
+  "methods": {
+    "SetRole": "Called when one of the ``_rolesButtons`` are touched."
+  },
+  "usage": "Not to be used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SessionPermissionController&action=raw"
+}

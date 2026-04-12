@@ -1,0 +1,20 @@
+{
+  "description": "The Texture2DAssetMetadata component converts the metadata often seen on texture components in an inspector into data that can be pulled into other systems as actual numbers and values.",
+  "category": "Assets:Utility",
+  "fields": {
+    "Texture": "The texture to get metadata on.",
+    "Size": "How big ``Texture`` is in pixels as a width height pair.",
+    "Width": "How wide ``Texture`` is in pixels.",
+    "Height": "How tall ``Texture`` is in pixels.",
+    "HasMipMaps": "Whether ``Texture`` has mipmaps.",
+    "MipMapCount": "How many mipmap levels ``Texture`` has.",
+    "MemoryBytes": "How many bytes of memory ``Texture`` takes up.",
+    "FormattedMemoryBytes": "The bytes of memory ``Texture`` takes up formatted into an easy to read format.",
+    "Format": "The format ``Texture`` is encoded in.",
+    "ActualLoadedVariant": "The actual variant of ``Texture`` that is loaded on the client.",
+    "Profile": "The color profile ``Texture`` is being rendered in."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide an asset to ``Texture`` to start getting values and using the component.",
+  "notes": []
+}

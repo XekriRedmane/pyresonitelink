@@ -1,13 +1,17 @@
 {
-  "description": "The FireOnLocalFalse node will listen for changes on its input bool and fire an impulse whenever the input turns from True to False across updates.",
+  "description": "The FireOnLocalFalse node will listen for changes on its input bool and fire an impulse whenever the input turns from ``True`` to ``False`` across updates.\n\nUnlike its non-local equivalent, every user's client will be listening for changes and fire impulses owned by themselves as opposed to only one user. This is useful when a time-sensitive value is already evaluated locally, making this node work without extra network delay.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The bool that should be listened to for changes.",
+    "OnChange": "Fires a single impulse owned by the local user whenever the provided input turns from ``True`` to ``False`` across updates."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "See also",
-      "text": "* FireOnFalse for the non-local equivalent of this node where a user to fire the impulse on can be specified.\n* FireOnLocalTrue\n* FireOnLocalChange\n\nProtoFlux:Flow\nListener nodes"
+      "text": "* FireOnFalse for the non-local equivalent of this node where a user to fire the impulse on can be specified.\n* FireOnLocalTrue\n* FireOnLocalChange"
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FireOnLocalFalse&action=raw"
 }

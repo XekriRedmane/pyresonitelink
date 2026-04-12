@@ -1,0 +1,25 @@
+{
+  "description": "This is a Legacy item and should not be used.",
+  "category": "With Nested Types",
+  "fields": {
+    "ExpandLerp": "How much to expand the mesh outwards",
+    "InnerCircle": "Whether this mesh has an inner circle.",
+    "RadiusStart": "The distance from the inner side of the segments to the center.",
+    "Thickness": "How thick the segments are from the circle center.",
+    "MainSegmentArc": "The main segment arc from the dead platform.",
+    "SeparationAngle": "How far apart the segments should be.",
+    "MenuMainSegmentArc": "How big the main segment should be.",
+    "CircleItemCount": "how many segments there are.",
+    "MenuRadiusStart": "Where the menu starts on a circle in degrees.",
+    "MenuThickness": "How thick the menu items are from circle center.",
+    "FillColor": "what color to fill the segments with.",
+    "OutlineColor": "What color the outline of the segments should be.",
+    "CircleItemOverrides": "Custom list of segments to use.",
+    "IndependentSegments": "Custom list of independent segments to use.",
+    "OutlineWidth": "The width of the item outlines."
+  },
+  "methods": {},
+  "usage": "Just don't.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyCircleSegmentMesh&action=raw"
+}

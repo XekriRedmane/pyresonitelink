@@ -1,8 +1,16 @@
 {
   "description": "The Ray To Line Intersection node determines the point at which a ray defined by an origin and direction intersects a line segment defined by two points.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Origin": "Origin of the ray.",
+    "Direction": "Direction of the ray.",
+    "LinePoint0": "First point of the line segment.",
+    "LinePoint1": "Second point of the line segment.",
+    "Intersection": "The point at which the defined ray intersects with the line segment defined by ``LinePoint0`` and ``LinePoint1``. If the ray does not intersect, the value will be ``[0; 0]``.",
+    "Intersects": "``True`` if the ray intersects with the line segment, ``False`` otherwise. If the defined ray has both the same slope and lies on the line segment, it will not count as intersection. If the ray starts on the line segment and has a distinct slope from the line segment, it will count as intersection, and the intersection point will be ``Origin``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RayToLineIntersection&action=raw"
 }

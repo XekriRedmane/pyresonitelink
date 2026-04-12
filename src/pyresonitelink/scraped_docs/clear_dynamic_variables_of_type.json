@@ -1,8 +1,16 @@
 {
-  "description": "The Clear Dynamic Variables Of Type node takes in a slot hierarchy and a string literal path of the dynamic space name. For more information, see Dynamic Variables. This node then uses the selected type and searches through that hierarchy and only removes the dynamic variables of that matching type.",
+  "description": "The ``Clear Dynamic Variables Of Type`` node takes in a slot hierarchy and a string literal path of the dynamic space name. For more information, see Dynamic Variables. This node then uses the selected type and searches through that hierarchy and only removes the dynamic variables of that matching type.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to clear all dynamic variables of that type from a given dynamic space.",
+    "Target": "The slot hierarchy for this node to look through.",
+    "SpaceName": "The dynamic space name to find and clear out the dynamic variables of declared type from.",
+    "OnNotFound": "Fires when the path is incorrect or there is nothing to find in the given slot hierarchy that matches that type.",
+    "OnCleared": "Fires when the dynamic space name is found and all dynamic variables of that type under that name is removed.",
+    "ClearedCount": "Returns the number of dynamic variables of that type that have been removed by this node."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ClearDynamicVariablesOfType&action=raw"
 }

@@ -1,8 +1,12 @@
 {
-  "description": "The User Time node returns a user's device system time.",
+  "description": "The ``User Time`` node returns a user's device system time.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:DateTime|DateTime]])": "The system time of the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserTime&action=raw"
 }

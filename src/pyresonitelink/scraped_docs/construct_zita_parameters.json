@@ -1,8 +1,22 @@
 {
   "description": "The Construct Zita Parameters node creates ZitaParameters which are used make a reverberation sound effect parameter input object in the Awwdio system, for use in different reverberation sound effect methods like the one for Static Audio Clips.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "InDelay": "The delay time before the reverb starts.",
+    "Crossover": "How much the reverb \"crosses over\" or fades within itself.",
+    "RT60Low": "RT60 refers to the Reverberation Time, which is the time it takes for the sound energy in a room to decay by 60 decibels after the sound source has stopped. (Low End)",
+    "RT60Mid": "RT60 refers to the Reverberation Time, which is the time it takes for the sound energy in a room to decay by 60 decibels after the sound source has stopped. (Mid End)",
+    "HighFrequencyDamping": "The high frequency dampening for the reverb.",
+    "EQ1Frequency": "The equalizer frequency (1) of the reverb.",
+    "EQ1Level": "The equalizer volume (1) of the reverb.",
+    "EQ2Frequency": "The equalizer frequency (2) of the reverb.",
+    "EQ2Level": "The equalizer volume (2) of the reverb.",
+    "Mix": "The amount of audio to mix in the reverb.",
+    "Level": "The overall level (or volume) of the reverb",
+    "* ([[Type:ZitaParameters|ZitaParameters]])": "The constructed zita parameters."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ConstructZitaParameters&action=raw"
 }

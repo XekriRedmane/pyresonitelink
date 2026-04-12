@@ -1,0 +1,17 @@
+{
+  "description": "The GaussianSplatTool component can be applied to a slot to create a Gaussian Splat Tool, used to manipulate a Gaussian Splat in 3D space.",
+  "category": "Tools",
+  "fields": {
+    "Mode": "The selected mode for this Gaussian Splat Tool.",
+    "BoxSelectionTemplate": "The templete used to show the user what is being cropped when using the box.",
+    "SphereSelectionTemplate": "The templete used to show the user what is being cropped when using the sphere.",
+    "CylinderSelectionTemplate": "The templete used to show the user what is being cropped when using the cylinder.",
+    "_activeBox": "Internal - References the active box.",
+    "_activeSphere": "Internal - References the active sphere.",
+    "_activeCylinder": "Internal - References the active cylinder."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GaussianSplatTool&action=raw"
+}

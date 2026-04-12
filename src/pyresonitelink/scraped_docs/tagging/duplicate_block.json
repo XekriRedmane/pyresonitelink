@@ -1,0 +1,9 @@
+{
+  "description": "The Duplicate Block component blocks duplication of a Grabbable slot tagged with this component by using the Context menu, but not via the Scene Inspector or ProtoFlux.",
+  "category": "Transform:Tagging",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DuplicateBlock&action=raw"
+}

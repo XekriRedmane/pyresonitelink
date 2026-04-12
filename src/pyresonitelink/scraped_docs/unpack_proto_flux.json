@@ -1,8 +1,13 @@
 {
-  "description": "The Unpack ProtoFlux node takes in the Slot root (where we want to unpack from), then unpacks them from the provided Slot. Many community-based tools (such as Redprint) use this to unpack nodes into the world.",
+  "description": "The ``Unpack ProtoFlux`` node takes in the Slot root (where we want to unpack from), then unpacks them from the provided Slot. Many community-based tools (such as Redprint) use this to unpack nodes into the world.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to unpack our nodes from a slot.",
+    "Root": "The Slot we want to unpack our nodes from.",
+    "Next": "Continues the code from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UnpackProtoFlux&action=raw"
 }

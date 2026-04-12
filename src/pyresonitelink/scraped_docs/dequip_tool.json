@@ -1,8 +1,16 @@
 {
-  "description": "The Dequip Tool node makes a user take off a tool from their hand of a specific side of that user.",
+  "description": "The ``Dequip Tool`` node makes a user take off a tool from their hand of a specific side of that user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to dequip the tool on one side of the user.",
+    "User": "The user to dequip the tool from.",
+    "Side": "The side to dequip from.",
+    "PopOff": "Should the tool pop off a certain distance from your hand.",
+    "OnDequipped": "Fires when the tool is dequipped.",
+    "OnDequipFail": "Fires when the tool failed to dequip in any way."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DequipTool&action=raw"
 }

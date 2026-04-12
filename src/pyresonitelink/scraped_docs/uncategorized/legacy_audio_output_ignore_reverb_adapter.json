@@ -1,0 +1,13 @@
+{
+  "description": "The Legacy Audio Output Ignore Reverb Adapter component converts driven data from the old audio system to Awwdio to preserve legacy behavior.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The field to drive with the value converted.",
+    "Value": "The value to convert.",
+    "Spatialize": "The field that determined if the audio clip was spatialized in the old system."
+  },
+  "methods": {},
+  "usage": "used only in legacy content.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyAudioOutputIgnoreReverbAdapter&action=raw"
+}

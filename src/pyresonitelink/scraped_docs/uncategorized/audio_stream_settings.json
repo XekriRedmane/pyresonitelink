@@ -1,0 +1,12 @@
+{
+  "description": "The AudioStreamSettings component is a Legacy component used for the old settings menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "DefaultBitrate": "The default bit rate for this Audio stream when spawned by the user.",
+    "DefaultDeviceID": "The default device ID."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioStreamSettings&action=raw"
+}

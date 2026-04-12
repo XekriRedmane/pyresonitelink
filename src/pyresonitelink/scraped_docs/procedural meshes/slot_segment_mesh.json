@@ -1,0 +1,13 @@
+{
+  "description": "The SlotSegmentMesh component generates mesh data of a line between ``PointA`` and ``PointB``. This is to be used with a MeshRenderer.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Radius": "The radius of the line from ``PointA`` to ``PointB``",
+    "PointA": "The starting point of the generated line.",
+    "PointB": "The ending point of the generated line."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and then insert into a MeshRenderer. Don't forget to use a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SlotSegmentMesh&action=raw"
+}

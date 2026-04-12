@@ -1,8 +1,12 @@
 {
-  "description": "The User Platform node returns the user's current platform/operating system they are playing Resonite on.",
+  "description": "The ``User Platform`` node returns the user's current platform/operating system they are playing Resonite on.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:Platform|Platform]])": "The platform the user is currently on."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserPlatform&action=raw"
 }

@@ -1,0 +1,11 @@
+{
+  "description": "The VideoExportable component is used to export a Video Texture as a video file for your device.\n\nTo export using this component, look at the file browser export section.",
+  "category": "Assets:Export",
+  "fields": {
+    "Video": "The video asset to be exported."
+  },
+  "methods": {},
+  "usage": "Using this will allow you to export videos. However, only some types of videos can be exported. Videos that were imported from a computer can be exported (``.mp3`` and ``.mp4`` file types). Videos that seem to fail the exporting process are Youtube videos or streaming videos, as they not only fail to export a video file, they instead export a text file (which seems to be html).",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VideoExportable&action=raw"
+}

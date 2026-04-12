@@ -1,13 +1,16 @@
 {
   "description": "The ToLower node takes in a character or string and outputs it as lowercase. This node takes into account the local user's CultureInfo.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* (Generic)": "The character or string to make lowercase."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "See also",
-      "text": "* ToUpper to turn strings or characters uppercase.\n* Microsoft documentation for the ``String.ToLower() method``, which is used internally.\n\nProtoFlux:Strings:Characters\nProtoFlux:Strings:Formatting"
+      "text": "* ToUpper to turn strings or characters uppercase.\n* Microsoft documentation for the ``String.ToLower() method``, which is used internally."
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ToLower&action=raw"
 }

@@ -1,8 +1,12 @@
 {
   "description": "Is Looped is a ProtoFlux node that returns if an IPlayable is currently set to automatic looping.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Source": "The clip to check if it is set to automatic looping",
+    "* ([[Type:Bool|boolean]])": "Whether the provided Source (IPlayable) is set to automatic looping."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsLooped&action=raw"
 }

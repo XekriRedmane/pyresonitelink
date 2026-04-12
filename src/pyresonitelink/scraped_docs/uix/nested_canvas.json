@@ -1,0 +1,18 @@
+{
+  "description": "The Nested Canvas component takes in a target Canvas to nest as, and then it drives the values to the ``StartingOffset``, ``StartingMaskDepth``, and sets the BoxCollider ``Offset`` and ``Size``, for consistency with the main canvas this component is under.\n\nThis is essentially a component that can nest (or you can think of it as masking) another uix canvas within another canvas, this can be transformed to your liking, which makes it very useful for rotating UIX. Interactions are also communicated as well.\n\n}}",
+  "category": "UIX",
+  "fields": {
+    "TargetCanvas": "The target canvas to nest as",
+    "_renderOffset": "The render offset reference from the target canvas to be applied to the new nested canvas",
+    "_maskDepth": "The mask depth reference from the target canvas to be applied to the new nested canvas"
+  },
+  "methods": {},
+  "usage": "This component is used mainly for consistency with other canvas components, no matter where in the world hierarchy. It does not need to be on the same canvas or panel to work.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "This needs a Canvas component to work."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NestedCanvas&action=raw"
+}

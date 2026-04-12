@@ -1,8 +1,19 @@
 {
-  "description": "The Field Hook node takes in a target field and the source field value, then returns if this field is driving, as well as allowing the user to start and stop driving this field. This node gives the user more control to programmatically drive fields directly using ProtoFlux. This node hooks the given field, so whenever something external tries to write to it, it will receive a pulse from OnHook as well as the value it tried to write from HookedValue.",
+  "description": "The Field Hook node takes in a target field and the source field value, then returns if this field is driving, as well as allowing the user to start and stop driving this field. This node gives the user more control to programmatically drive fields directly using ProtoFlux. This node hooks the given field, so whenever something external tries to write to it, it will receive a pulse from OnHook as well as the value it tried to write from HookedValue.\n\nManually unlinking the drive in an inspector behaves the same as triggering StopDrive.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "StartDrive": "Calls an impulse to start driving the target (hooking into it).",
+    "StopDrive": "Calls an impulse to stop driving the target (unhooking it).",
+    "Target": "The target field to drive.",
+    "Source": "The source to drive Target from. While active this acts like any other drive.",
+    "OnStartDrive": "Fires when we started driving the target field.",
+    "OnStopDrive": "Fires when we stopped driving the target field.",
+    "OnHook": "Fires when something writes to the target field while it is being driven by this node.",
+    "IsDriving": "Returns if the target field is being driven.",
+    "HookedValue": "Returns the value that was written by the OnHook call."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FieldHook&action=raw"
 }

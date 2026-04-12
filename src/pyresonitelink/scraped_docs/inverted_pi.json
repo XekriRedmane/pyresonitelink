@@ -1,8 +1,11 @@
 {
-  "description": "The InvertedPi or 1/π node outputs the value of 1 ÷ π.",
+  "description": "The InvertedPi or 1/\u03c0 node outputs the value of 1 \u00f7 \u03c0.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:Float|float]])": "The value of 1 \u00f7 \u03c0 \u00f7 2, approximately ``0.3183099``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:InvertedPi&action=raw"
 }

@@ -1,8 +1,12 @@
 {
-  "description": "The Get Locomotion Archetype node takes in an ILocomotionModule and returns the Nullable`1LocomotionArchetype that was provided from a user's locomotion module (found in the locomotion modules component category).",
+  "description": "The Get Locomotion Archetype node takes in an ILocomotionModule and returns the Nullable`1&lt;LocomotionArchetype&gt; that was provided from a user's locomotion module (found in the locomotion modules component category).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Module": "The user's locomotion module.",
+    "* ([[Type:Nullable|Nullable`1]]&lt;[[Type:LocomotionArchetype|LocomotionArchetype]]&gt;)": "Returns the (nullable) locomotion archetype."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetLocomotionArchetype&action=raw"
 }

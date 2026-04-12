@@ -1,8 +1,12 @@
 {
   "description": "The Has Local Focus node takes in an IFocusable and returns if that focusable is currently focused by the local user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Target": "The target IFocusable reference to check.",
+    "* ([[Type:bool|bool]])": "Outputs true if the target IFocusable is currently focused by the local user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:HasLocalFocus&action=raw"
 }

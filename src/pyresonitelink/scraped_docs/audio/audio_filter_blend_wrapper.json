@@ -1,0 +1,12 @@
+{
+  "description": "The Audio Filter Blend Wrapper component is used to wrap other filters and provides blending functionality. This is useful for audio reverb zones, allowing each listener with its own blend weight to share the same instance of AudioZitaReverb (and potentially other filters in the future)",
+  "category": "Audio",
+  "fields": {
+    "BlendWeight": "The amount of weight this filter has with other filters.",
+    "NestedFilter": "The filter this wraps around."
+  },
+  "methods": {},
+  "usage": "See AudioListener.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioFilterBlendWrapper&action=raw"
+}

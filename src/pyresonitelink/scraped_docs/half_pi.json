@@ -1,8 +1,11 @@
 {
-  "description": "The HalfPi or π/2node outputs the mathematical constant π divided by 2.",
+  "description": "The HalfPi or \u03c0/2node outputs the mathematical constant \u03c0 divided by 2.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:Float|float]])": "The value of \u03c0 \u00f7 2, approximately ``1.570796``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:HalfPi&action=raw"
 }

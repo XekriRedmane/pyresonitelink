@@ -1,0 +1,18 @@
+{
+  "description": "The LineEmitter component is used with particle systems (see Photon Dust) to create particles from a straight 3d line made from two points.",
+  "category": "Rendering:Particle System:Emitters",
+  "fields": {
+    "Point0": "Point 1 of the line for this Emitter drawn between two points.",
+    "Point1": "Point 2 of the line for this Emitter drawn between two points.",
+    "Color0": "The starting Color multiplier for particles emitted from this Emitter when being emitted nearest to ``Point0``.",
+    "Color1": "The starting Color multiplier for particles emitted from this Emitter when being emitted nearest to ``Point1``.",
+    "DirectionMode": "How to handle the direction when emitting particles from the line.",
+    "Direction0": "The direction particles should go when being emitted nearest to ``Point0``.",
+    "Direction1": "The direction particles should go when being emitted nearest to ``Point1``.",
+    "UpDirection": "The direction that should be considered up for this line."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LineEmitter&action=raw"
+}

@@ -1,0 +1,17 @@
+{
+  "description": "The HyperlinkOpenDialog component shows in user space as a UIX when the user clicks on a HyperLink component.",
+  "category": "Uncategorized",
+  "fields": {
+    "URL": "The url being accessed.",
+    "_hyperlinkText": "The text to fill with what is being accessed.",
+    "_reasonText": "The text to show the reason for the link dialog showing.",
+    "_openButton": "The button to open the link in ``URL`` using the user's OS default browser."
+  },
+  "methods": {
+    "Cancel": "Cancel and don't open the link.",
+    "Open": "Open the requested link."
+  },
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HyperlinkOpenDialog&action=raw"
+}

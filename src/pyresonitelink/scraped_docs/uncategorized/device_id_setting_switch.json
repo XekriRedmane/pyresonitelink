@@ -1,0 +1,10 @@
+{
+  "description": "The DeviceIDSettingSwitch component is used to switch setting sets when a different device is used in conjunction with a DeviceIDSettingSwitchSource",
+  "category": "Uncategorized",
+  "fields": {
+    "DeviceID": "The device ID currently active for the set of settings for the user."
+  },
+  "methods": {},
+  "usage": "Used in settings system. Not usually used directly by the user.",
+  "notes": []
+}

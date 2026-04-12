@@ -1,0 +1,16 @@
+{
+  "description": "The NullableSourceDriver component allows for getting info from a ``Source`` nullable and driving a set of split fields with content from the nullable. Changes to driven fields by this component can also be reverse written back to ``Source``.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Source": "The field to get nullable data from.",
+    "Value": "The field to drive with the value for ``Source`` if it has a value, or instead drive with ``DefaultValue``.",
+    "HasValue": "The field to drive with whether ``Source`` has a value.",
+    "DefaultValue": "The default value if ``Source`` doesn't have a value.",
+    "WriteBack": "Whether writes to the fields driven by this component will update the value of ``Source``. See write backs.",
+    "UpdateDefaultValue": "Whether the default value gets updated when using write back and ``Source`` has no value."
+  },
+  "methods": {},
+  "usage": "Can be used to extract data from nullables or write to them using a component only solution.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NullableSourceDriver&action=raw"
+}

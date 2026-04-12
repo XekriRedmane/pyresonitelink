@@ -1,0 +1,14 @@
+{
+  "description": "The LegacyFeatureSettings component is best described on it's page, Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "UseLegacyGripEquip": "Toggles the ability to quick equip tools.",
+    "UseLegacyWorldSwitcher": "Toggles the old way of switching between sessions.",
+    "UseLegacyInventorySessionShortcuts": "Toggles the Legacy Inventory window. (Use left grip + dash menu button in VR, or use Ctrl + i in Desktop).",
+    "SuppressFeetSimulation": "This is to make certain features like posers that hijack feet proxies work, without having to modify them."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyFeatureSettings&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The DocumentPageMetadata component is used to give Metadata about a particular page on a document (Usually a PDF)",
+  "category": "Assets:Utility",
+  "fields": {
+    "Document": "The document to get Metadata for.",
+    "PageIndex": "The page in ``Document`` to get metadata for.",
+    "ReferenceSize": "The size of the page."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DocumentPageMetadata&action=raw"
+}

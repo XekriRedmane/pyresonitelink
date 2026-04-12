@@ -1,0 +1,20 @@
+{
+  "description": "The ColorWheelTriangleMesh component is used in the old platform's color pickers. Some may call this a \"flower\" or a \"color picker\" visual.",
+  "category": "Uncategorized",
+  "fields": {
+    "Hue": "The Hue the user picked.",
+    "OuterRadius": "The radius of the outer edge of the outer ring of the color circle of hues.",
+    "InnerRadius": "The radius of the inner edge of the outer ring of the color circle of hues.",
+    "RingSegments": "How many ring wise subdivisions of the outer ring of color hues.",
+    "CursorPosition": "The position of the cursor inside of the triangle.",
+    "CursorSegments": "How many ring wise subdivisions of the color picker cursor ring.",
+    "CursorColor": "The color of the cursor for color picking.",
+    "CursorOuterRadius": "The radius of the outer edge of the cursor ring.",
+    "CursorInnerRadius": "The radius of the inner edge of the cursor ring.",
+    "CursorZOffset": "How much to offset the color picker cursor off the surface of the triangle."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a MeshRenderer that supports vertex colors to view what it looks like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorWheelTriangleMesh&action=raw"
+}

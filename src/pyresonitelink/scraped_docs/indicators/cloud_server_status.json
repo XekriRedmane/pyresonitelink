@@ -1,0 +1,15 @@
+{
+  "description": "The CloudServerStatus component gets live data about the Resonite cloud by getting the ping data the game engine is sending and receiving from the cloud.",
+  "category": "Cloud:Indicators",
+  "fields": {
+    "Status": "The current cloud status.",
+    "ResponseTimeMilliseconds": "How long in milliseconds it took for the server to respond to the last ping.",
+    "LastServerUpdateTime": "The last time the server updated",
+    "LastServerStateFetch": "The last time the server status was fetched.",
+    "LastLocalServerResponseTime": "The last time the client got a response from the server."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CloudServerStatus&action=raw"
+}

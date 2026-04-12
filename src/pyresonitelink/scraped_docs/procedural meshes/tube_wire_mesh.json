@@ -1,0 +1,27 @@
+{
+  "description": "The TubeWireMesh component acts as a source of procedural Mesh data. This creates a mesh like the StripeWireMesh but is a tube instead.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Point0": "The starting point for the tube mesh.",
+    "Point1": "The ending point for the tube mesh.",
+    "Tangent0": "The bend towards point at the beginning.",
+    "Tangent1": "The bend towards point at the end.",
+    "Orientation0": "The rotation of the end cap at the beginning of the tube.",
+    "Orientation1": "The rotation of the end cap at the end of the tube.",
+    "Steps": "How many length wise subdivisions there is.",
+    "Exp": "How much to stretch mesh geometry towards the tangent points.",
+    "Color0": "The color of the vertex colors at the starting point.",
+    "Color1": "The color of the vertex colors at the ending point.",
+    "UVScale": "The scale of the texture detail on this mesh's surface.",
+    "UVOffset": "The offset of the texture detail on this mesh's surface.",
+    "Radius0": "The starting radius of the tube.",
+    "Radius1": "The ending radius of the tube.",
+    "Ends": "How to seal the ends of the mesh, if at all.",
+    "Shading": "How to shade the tube.",
+    "Points": "How many subdivisions circumference wise the tube has."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, then insert into a MeshRenderer with a material to view what this mesh looks like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TubeWireMesh&action=raw"
+}

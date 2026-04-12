@@ -1,0 +1,14 @@
+{
+  "description": "The BevelBoxMesh component can be placed in a MeshRenderer to create a box with beveled edges.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Size": "The 3-Dimentional scale of the mesh.",
+    "Bevel": "Size of the rounded edges.",
+    "UVScale": "The inverse of the size the material should appear on the surface as.",
+    "ScaleUVWithSize": "Change uv scale visually with the value of ``Size``"
+  },
+  "methods": {},
+  "usage": "Attach to a slot, and assign to a Mesh Renderer to see what it looks like. Don't forget to use a material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BevelBoxMesh&action=raw"
+}

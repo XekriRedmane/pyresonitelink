@@ -1,0 +1,12 @@
+{
+  "description": "This component represents a pointed circular cone collider given a height and a base radius.",
+  "category": "Physics:Colliders",
+  "fields": {
+    "Height": "The height of the cone collider from base to tip.",
+    "Radius": "The radius of the base of the cone collider."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConeCollider&action=raw"
+}

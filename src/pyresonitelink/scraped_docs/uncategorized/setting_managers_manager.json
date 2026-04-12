@@ -1,0 +1,12 @@
+{
+  "description": "The Setting Managers Manager component is used to manage the changing from cloud to local setting sets.",
+  "category": "Uncategorized",
+  "fields": {
+    "LocalSettings": "The manager handling locally stored settings.",
+    "CloudSettings": "The manager handling cloud stored settings."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SettingManagersManager&action=raw"
+}

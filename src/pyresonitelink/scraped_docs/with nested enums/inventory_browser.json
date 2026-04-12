@@ -1,0 +1,41 @@
+{
+  "description": "The InventoryBrowser Component is the component that handles the Inventory screen.",
+  "category": "With Nested Enums",
+  "fields": {
+    "SelectedItem": "The currently selected item being highlighted.",
+    "_previousSelectedItem": "The item previously highlighted.",
+    "AllowSelect": "Whether this file browser allows selecting item elements.",
+    "ItemSize": "How big the items are on the view.",
+    "_selectedText": "The text to fill with the name of the selected item.",
+    "_pathRoot": "The root of the area being used to display the current path.",
+    "_buttonsRoot": "The root of the area being used to show the different button actions.",
+    "_folderGrid": "The grid layout Component being used to align the folders in the directory.",
+    "_itemGrid": "The grid layout Component being used to align the files in the directory.",
+    "_tabSprite": "The sprite being used to show the tab sprite.",
+    "_loadingIndicator": "The slot that stores the loading indicator for a newly opened directory.",
+    "_swapper": "The component to handle the slide animation when opening a different directory.",
+    "CustomItemSpawn": "The function to use when spawning items instead of the default one.",
+    "_user": "The user this belongs to.",
+    "_autoReinitialize": "Whether to fix issues by auto reinitializing.",
+    "_initFunction": "The function to run when initalizing.",
+    "_currentPath": "The current inventory path this is navigated to.",
+    "_currentOwnerId": "The owner of this inventory screen.",
+    "_addNewButton": "The button for adding new directories.",
+    "_deleteButton": "The button for deleting items and directories.",
+    "_inventoriesButton": "The button to go to the main inventories screen in order to go to the personal inventory or group shared inventories.",
+    "_shareButton": "The button to share folders to the public.",
+    "_unshareButton": "The button to unshare folders to the public.",
+    "_copyLink": "The button to copy the link for an item or folder.",
+    "_addCurrentAvatar": "The button to favorite the currently selected avatar",
+    "_lastSpecialItemType": "The last special item type that was selected in this inventory."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": [
+    {
+      "title": "SpecialItemType",
+      "text": "Every one of these map to their corrosponding favorite item. To see what components map to these enums when saved to inventory, refer to the favorites page."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InventoryBrowser&action=raw"
+}

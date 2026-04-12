@@ -1,8 +1,12 @@
 {
-  "description": "The User Active View Targetting Controller node returns a user's targetting controller. This seems to return a result when a user is in desktop mode, as VR mode returns only null.",
+  "description": "The ``User Active View Targetting Controller`` node returns a user's targetting controller. This seems to return a result when a user is in desktop mode, as VR mode returns only null.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:IViewTargettingController|IViewTargettingController]])": "The targetting controller of the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserActiveViewTargettingController&action=raw"
 }

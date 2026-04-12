@@ -1,0 +1,14 @@
+{
+  "description": "The SineWaveClip component is an audio clip that can be used to get a whistling like tone with a frequency and loudness.",
+  "category": "Assets:Procedural Audio Clips",
+  "fields": {
+    "Frequency": "The pitch of the clip.",
+    "Amplitude": "The loudness of the clip."
+  },
+  "methods": {
+    "BakeClip": "Turns the audio into a StaticAudioClip."
+  },
+  "usage": "Attach to a slot and provide a ``Frequency`` and ``Amplitude``, then insert into a AudioClipPlayer to hear it.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SineWaveClip&action=raw"
+}

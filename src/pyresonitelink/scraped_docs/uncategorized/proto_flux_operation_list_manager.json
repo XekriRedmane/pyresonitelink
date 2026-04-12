@@ -1,0 +1,20 @@
+{
+  "description": "The ProtoFluxOperationListManager component is used for the visuals in the Sequence and Async Sequence nodes.",
+  "category": "Uncategorized",
+  "fields": {
+    "Visual": "The ProtoFlux visual this is a part of.",
+    "List": "The list this is modifying.",
+    "MinElements": "The minimum number of items allowed in the list.",
+    "AddButtonEnabled": "The enabled field of the add element list.",
+    "RemoveButtonEnabled": "The enabled field of the remove element list.",
+    "_elements": "The list of UI elements being used to display the elements in ``List``",
+    "SupportsAsync": "Whether the elements support Async input/output."
+  },
+  "methods": {
+    "AddElement": "Called when the add element button is touched.",
+    "RemoveElement": "Called when the remove element button is touched."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProtoFluxOperationListManager&action=raw"
+}

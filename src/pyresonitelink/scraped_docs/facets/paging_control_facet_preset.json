@@ -1,0 +1,11 @@
+{
+  "description": "The PagingControlFacetPreset component makes a container that stores a PagingControl component on the dash and tells that component to build a UIX for itself inside of this container.",
+  "category": "Radiant UI:Facets",
+  "fields": {
+    "_pagingControl": "The paging control component for this facet"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PagingControlFacetPreset&action=raw"
+}

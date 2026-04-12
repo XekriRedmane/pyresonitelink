@@ -1,8 +1,17 @@
 {
   "description": "PlayBack State is a ProtoFlux node that provides information of a (IPlayable). This can be used to get information of if the a source is playing, the current time position, and the length of the audio source.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Source": "The IPlayable to provide information from.",
+    "IsPlaying": "Tells if the source is playing.",
+    "Loop": "Tells if the source is set to loop.",
+    "Position": "The playing position of the current target in seconds as a float.",
+    "NormalizedPosition": "The playing position of the current target remapped to a float minimum of 0 and maximum of 1. \nThis essentially remaps the song length to 0 being the start and 1 being the end.",
+    "ClipLength": "The target length in seconds, as a float.",
+    "Speed": "The target current playing speed. 1 is equivalent to x1.0."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:PlaybackState&action=raw"
 }

@@ -1,0 +1,16 @@
+{
+  "description": "The CloudValueVariableDriver component drives the ``Target`` field of type T with the value of the specified cloud variable owned by the local user.",
+  "category": "Cloud:Variables",
+  "fields": {
+    "Path": "The path of the variable this component will read.",
+    "Target": "The target field to which the variable value will be written.",
+    "IsLinkedToCloud": "(Read Only) Indicates whether this field was successfully bound to the target variable.",
+    "WriteBack": "Updates the value in the cloud when the driven field is changed. See write backs.",
+    "FallbackValue": "Default value if the local user does not have a definition for the cloud variable or the local user does not match ``OverrideOwner``.",
+    "OverrideOwner": "The UserID of the user that made a definition for the variable specified by ``Path`` or the local user if not specified."
+  },
+  "methods": {},
+  "usage": "Upon being given a valid cloud variable ``Path``, the component will drive the value of the ``Target`` with the value of the cloud variable owned by the local user. If ``OverrideOwner`` is specified, the field will only be driven to the value for the user specified in ``OverrideOwner``. Otherwise, the field will take the value of the ``FallbackValue``.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CloudValueVariableDriver&action=raw"
+}

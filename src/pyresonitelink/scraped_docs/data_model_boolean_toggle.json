@@ -1,8 +1,16 @@
 {
   "description": "The Data Model Boolean Toggle or Boolean Latch is a node that can be pulsed to toggle a Data Model Boolean between true and false.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Set": "Set the state to True.",
+    "Reset": "Set the state to False.",
+    "Toggle": "Toggle the state to the opposite state.",
+    "OnSet": "Fires when Set is pulsed or Toggle has switched the state to True.",
+    "OnReset": "Fires when Reset is pulsed or Toggle has switched the state to False.",
+    "* ([[Types:Bool|bool]])": "The current state."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DataModelBooleanToggle&action=raw"
 }

@@ -1,8 +1,13 @@
 {
-  "description": "The Get Tool node takes in a user and side of that user and returns with the tool reference.",
+  "description": "The ``Get Tool`` node takes in a user and side of that user and returns with the tool reference.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user to check.",
+    "Side": "The side to check on the user.",
+    "* ([[Type:ITool|ITool]])": "The Tool reference."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetTool&action=raw"
 }

@@ -1,0 +1,12 @@
+{
+  "description": "The LinearForce component applies force to all particles within a system towards a direction regardless of particle position.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Force": "The direction to force particles in.",
+    "OverrideForceSpace": "What Transform space the force direction is in rather than in the particle system's local space."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LinearForce&action=raw"
+}

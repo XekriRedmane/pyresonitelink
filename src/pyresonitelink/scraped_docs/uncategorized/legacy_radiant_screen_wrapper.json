@@ -1,0 +1,25 @@
+{
+  "description": "The LegacyRadiantScreenWrapper component was used to handle the old ui when the bottom buttons used to be physical. this should never be used in new content ever.",
+  "category": "Uncategorized",
+  "fields": {
+    "Icon": "The icon of the current screen.",
+    "ActiveColor": "The color of the current screen.",
+    "Label": "The label text of the current screen.",
+    "ScreenEnabled": "The enabled status of the current screen.",
+    "BaseResolution": "The base resolution of the current screen.",
+    "_screenRoot": "The root slot of the current screen.",
+    "_screenCanvas": "The canvas component of the current screen.",
+    "_modalOverlayManager": "The modal overlay manager of the dash this component controls.",
+    "_button": "The button for the current screen.",
+    "_iconTexture": "The icon for the current screen.",
+    "ExtraSidePadding": "How much to pad the current screen",
+    "Background": "The background color of the current screen.",
+    "_initialized": "Whether this component is finished setup.",
+    "InitializeComponent": "A sync delegate to call with an argument of T when this initalizes.",
+    "ButtonGenerated": "A sync delegate to call with an argument of RadiantDashButton to call when this component's button is generated."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyRadiantScreenWrapper&action=raw"
+}

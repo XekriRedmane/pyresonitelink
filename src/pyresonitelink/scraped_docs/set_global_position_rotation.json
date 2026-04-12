@@ -1,8 +1,15 @@
 {
   "description": "The Set Global Position Rotation node sets the input slot's position and rotation to the provided values in global coordinate space.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Sets the Instance slot's global position and rotation when an impulse is received.",
+    "Instance": "The slot whose global position and rotation are set. Default is null, the node does not function without this input.",
+    "Position": "The global position the input Instance slot is set to. Default is [0;0;0].",
+    "Rotation": "The global rotation the input Instance slot is set to. Default is [0;0;0].",
+    "Next": "An impulse is fired whenever the Instance slot's position and rotation are set after the node receives an impulse. No impulse is fired from this output if the Instance input is null."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetGlobalPositionRotation&action=raw"
 }

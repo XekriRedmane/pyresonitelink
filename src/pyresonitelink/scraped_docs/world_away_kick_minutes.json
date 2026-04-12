@@ -1,8 +1,11 @@
 {
-  "description": "The World Away Kick Minutes node returns this world's \"Max AFK Minutes\" setting from the Session tab in the Dash, represented as a float value.",
+  "description": "The ``World Away Kick Minutes`` node returns this world's \"Max AFK Minutes\" setting from the Session tab in the Dash, represented as a float value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float|float]])": "The world's Max AFK Minuets."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldAwayKickMinutes&action=raw"
 }

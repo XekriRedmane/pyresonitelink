@@ -1,0 +1,13 @@
+{
+  "description": "The RotationGizmo component is used by dev tools to allow rotation of slots.\n\nSee Dev tool.",
+  "category": "Uncategorized",
+  "fields": {
+    "_xGizmo": "The rotation gizmo for the x axis.",
+    "_yGizmo": "The rotation gizmo for the y axis.",
+    "_zGizmo": "The rotation gizmo for the z axis."
+  },
+  "methods": {},
+  "usage": "See Dev tool.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RotationGizmo&action=raw"
+}

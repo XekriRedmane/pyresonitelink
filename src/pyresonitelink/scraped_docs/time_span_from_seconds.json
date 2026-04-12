@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan From Seconds node takes in the amount of seconds and converts it into a TimeSpan that shows the span of time in seconds.",
+  "description": "The ``TimeSpan From Seconds`` node takes in the amount of seconds and converts it into a TimeSpan that shows the span of time in seconds.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The amount of seconds.",
+    "* ([[Type:TimeSpan|TimeSpan]])": "Returns the TimeSpan with the amount of seconds."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanFromSeconds&action=raw"
 }

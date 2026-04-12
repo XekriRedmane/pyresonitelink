@@ -1,0 +1,12 @@
+{
+  "description": "Anchor events is a protoflux node that gives changes in an anchor as events without having to use a Fire On Change. It will also tell you the user that fired those events.",
+  "category": "",
+  "fields": {
+    "OnAnchored": "Fires when a user is anchored to Anchor (AvatarAnchor).",
+    "OnReleased": "Fires when a user is unanchored from Anchor (AvatarAnchor)."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AnchorEvents&action=raw"
+}

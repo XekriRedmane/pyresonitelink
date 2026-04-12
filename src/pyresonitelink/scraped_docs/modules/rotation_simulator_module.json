@@ -1,0 +1,9 @@
+{
+  "description": "The RotationSimulatorModule component is the second most essential particle simulator module. Without it, particles will not have orientation, or have Angular velocity.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RotationSimulatorModule&action=raw"
+}

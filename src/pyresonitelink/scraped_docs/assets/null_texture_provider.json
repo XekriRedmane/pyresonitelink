@@ -1,0 +1,9 @@
+{
+  "description": "Null texture providers are automatically added to the Root as a way of telling the render engine of FrooxEngine what to use as a null texture when a material is missing. This texture is a procedural gray and dark gray checkerboard texture.",
+  "category": "Assets",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NullTextureProvider&action=raw"
+}

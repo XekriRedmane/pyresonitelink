@@ -1,0 +1,17 @@
+{
+  "description": "The RenderTextureProvider component is used as a target for rendering Camera or CameraPortal data onto. This component can be used as a texture for any material.",
+  "category": "Assets",
+  "fields": {
+    "Size": "The size the camera renders in ``width`` and ``height``",
+    "Depth": "Precision, in bits, of the depth buffer used for rendering. Possibly values are 0, 16, 24 and 32."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and use as a render texture for any component that accepts it. The texture color data will now exist. Insert into any material to view.",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* Camera\n* CameraPortal"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RenderTextureProvider&action=raw"
+}

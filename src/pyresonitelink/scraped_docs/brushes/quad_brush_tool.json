@@ -1,0 +1,17 @@
+{
+  "description": "The QuadBrushTool component is a tool used to draw clouds of rotated quads.",
+  "category": "Tools:Brushes",
+  "fields": {
+    "Pivot": "the position offset for the rotation Pivot for quads.",
+    "DualSided": "Whether the drawn quads are dual sided.",
+    "MinRotation": "the minimum rotation of a drawn quad.",
+    "MaxRotation": "the maximum rotation of a drawn quad",
+    "RotationSpace": "The transform space to apply rotations on drawn Quads in."
+  },
+  "methods": {
+    "ChangeSize": "Handles changing the size of the brush of a brush tool."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:QuadBrushTool&action=raw"
+}

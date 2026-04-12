@@ -1,5 +1,5 @@
 {
-  "description": "Used for lasers and interactions.",
+  "description": "The InteractionHandlerStreamDriver component uses streaming data from the ValueStream component (seen in the user Inspector) to control the interaction (such as lasers) on a user's avatar or Userspace.\n\n}}",
   "category": "Users",
   "fields": {
     "Side": "The side to get the data.",
@@ -12,10 +12,6 @@
   },
   "methods": {},
   "usage": "Used for lasers and interactions.",
-  "notes": [
-    {
-      "title": "Related Components",
-      "text": "Interaction Handler Stream Driver\nInteraction Handler Stream Driver"
-    }
-  ]
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractionHandlerStreamDriver&action=raw"
 }

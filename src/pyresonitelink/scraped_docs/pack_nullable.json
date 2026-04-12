@@ -1,8 +1,13 @@
 {
   "description": "The Pack Nullable node takes in a value and an input if this value is considered as having a value. This returns a nullable version of this value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The value itself.",
+    "HasValue": "Sets the state of having a value.",
+    "* (Pseudo-Generic)": "Returns the nullable version of this value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:PackNullable&action=raw"
 }

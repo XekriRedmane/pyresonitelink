@@ -1,8 +1,13 @@
 {
-  "description": "The Close Context Menu node takes in a summoner (the thing that opened the context menu), and tells it to close the menu for the user.",
+  "description": "The ``Close Context Menu`` node takes in a summoner (the thing that opened the context menu), and tells it to close the menu for the user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to close the context menu.",
+    "Summoner": "The thing that opened the context menu.",
+    "Next": "Continues execution from this node."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CloseContextMenu&action=raw"
 }

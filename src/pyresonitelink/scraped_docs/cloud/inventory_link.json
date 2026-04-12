@@ -1,0 +1,14 @@
+{
+  "description": "This component overrides the saving behavior of an item being saved to act as an inventory folder. The component will be overridden by another component if it is under another slot on an item with a different export behavior. (Ex: A Texture Exportable Component)",
+  "category": "Cloud",
+  "fields": {
+    "TargetName": "The name of the folder this component is linking to. This will change the display name of the folder when saved, but if shared by the same user again from their inventory, this will become what the cloud says the folder's name is and not the custom name it was when saved.",
+    "Target": "The folder URI link on the cloud that this component represents."
+  },
+  "methods": {
+    "OnCopyLink": "Handles when the user asks to copy the link for this component via their context menu."
+  },
+  "usage": "Attach to a slot and give the component a ``TargetName`` and a URI that links to a folder on the cloud for the ``Target`` saving an item with this component on it will make the item act like a folder link.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InventoryLink&action=raw"
+}

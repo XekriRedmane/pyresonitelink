@@ -1,0 +1,15 @@
+{
+  "description": "The TubeBoxMesh component is used to generate geometry that is used with a MeshRenderer.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Size": "How big the box is.",
+    "TubeRadius": "how big the tube is",
+    "SegmentPoints": "The divisions in geometry/edges in the tube's circular direction.",
+    "UVScale": "The scale of material detail on the mesh.",
+    "UVOffset": "The offset of material detail on the mesh."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a MeshRenderer to view the geometry. Don't forget to use a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TubeBoxMesh&action=raw"
+}

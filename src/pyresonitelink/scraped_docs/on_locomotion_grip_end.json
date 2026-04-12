@@ -1,8 +1,14 @@
 {
   "description": "The On Locomotion Grip End node takes in a global reference from a user's PhysicalLocomotion. And fires when a grip ends that relates to that locomotion along with the data of the slot, position in 3D space, and what side of the user's grip it was.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnEvent": "Fires when a locomotion grip ends.",
+    "GrippedSlot": "The slot that has been gripped.",
+    "GrippedPoint": "The point in 3D space where the grip has ended.",
+    "GrippingHand": "The side that has been gripped from a user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnLocomotionGripEnd&action=raw"
 }

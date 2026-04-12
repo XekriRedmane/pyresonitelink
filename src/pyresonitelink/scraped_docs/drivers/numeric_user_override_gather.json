@@ -1,0 +1,20 @@
+{
+  "description": "The NumericOverrideGather component acts the same as a ValueUserOverride`1 with the key difference being it can get the average, minimum, maximum, and sum of all the values users picked that are still in the session.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Default": "The default value to drive ``Target`` with on the user's local machine if they don't have an override in the list of ``_overrides``.",
+    "CreateOverrideOnWrite": "Whether changes to ``Target`` creates a new override or updates the overrides value for that user.",
+    "PersistentOverrides": "Whether the ``_overrides`` list contents are saved when this component is saved.",
+    "_overrides": "A list of overrides for different users.",
+    "Target": "The field to drive with different values for each user's local machine using the ``_overrides`` list.",
+    "Min": "The minimum value of all the ``_overrides`` for currently in session users. If a user doesnt have an entry, they are considered to have an entry of ``Default``.",
+    "Max": "The maximum value of all the ``_overrides`` for currently in session users. If a user doesnt have an entry, they are considered to have an entry of ``Default``.",
+    "Sum": "The value for if of all the ``_overrides`` were added together for currently in session users. If a user doesnt have an entry, they are considered to have an entry of ``Default``.",
+    "Average": "The average value of all the ``_overrides`` for currently in session users. If a user doesnt have an entry, they are considered to have an entry of ``Default``.",
+    "ExcludeHeadless": "Whether headless client values should be excluded from calculations."
+  },
+  "methods": {},
+  "usage": "Can be used to check if all users are using the same setting (like saying they're ready for a game round to start) or check the average of what people say the number of jellybeans in a jar is (so that someone can guess the average and get the closest to the answer)",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NumericUserOverrideGather&action=raw"
+}

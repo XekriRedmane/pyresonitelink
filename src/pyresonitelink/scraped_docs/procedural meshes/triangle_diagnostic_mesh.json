@@ -1,0 +1,17 @@
+{
+  "description": "The TriangleDiagnosticMeshes component is used to show where a triangle is in the world. This is usually used as a debug tool.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "TriangleIndex": "The index of the triangle on the mesh to make a diagnostic for.",
+    "Vertex0Color": "The vertex color of vertex 0 for this diagnostic mesh.",
+    "Vertex1Color": "The vertex color of vertex 1 for this diagnostic mesh.",
+    "Vertex2Color": "The vertex color of vertex 2 for this diagnostic mesh.",
+    "VertexColorProfile": "The color profile of the input Colors of ``Vertex0Color``, ``Vertex1Color``, and ``Vertex2Color``.",
+    "Displace": "How much to displace the triangle's position by it's normal (front face direction)",
+    "Mesh": "The mesh to make a diagnostic for."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TriangleDiagnosticMesh&action=raw"
+}

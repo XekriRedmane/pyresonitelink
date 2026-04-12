@@ -1,8 +1,11 @@
 {
-  "description": "The View Position node returns the local user's view output position.",
+  "description": "The View Position node returns the local user's view output position.\n\nWhen in Desktop Mode or VR Mode, this node will return the value of where your head proxy is positioned. When an item or object that can override your view is used (such as using a different head proxy, templated head proxy, or something else that moves your view point (such as the AvatarUserRootOverrideAssigner or AvatarObjectSlot components)), this node will return a new position value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float3|float3]])": "Returns the local user's view output position."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ViewPosition&action=raw"
 }

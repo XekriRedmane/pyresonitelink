@@ -1,8 +1,12 @@
 {
-  "description": "The Key Released node returns the local user's keyboard key being released. This will change within that frame, so combining it with Fire On True is recommended.",
+  "description": "The ``Key Released`` node returns the local user's keyboard key being released. This will change within that frame, so combining it with Fire On True is recommended.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Key": "The key to check.",
+    "* ([[Type:bool|bool]])": "The result from the user's keyboard key that just released."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:KeyReleased&action=raw"
 }

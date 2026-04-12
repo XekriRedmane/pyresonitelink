@@ -1,0 +1,14 @@
+{
+  "description": "The SmoothValue component smoothly interpolates a given value towards a target value at a set speed.\nTo do this it drives the value it is interpolating.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "TargetValue": "The value that is being interpolated towards",
+    "Speed": "The speed at which it is interpolated",
+    "WriteBack": "If WriteBack is enabled, writing to the driven value will also set TargetValue. If not, the driven value cannot be written to. See write backs.",
+    "Value": "The value that is being driven"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SmoothValue&action=raw"
+}

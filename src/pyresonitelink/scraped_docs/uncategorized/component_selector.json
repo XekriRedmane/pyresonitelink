@@ -1,0 +1,26 @@
+{
+  "description": "The Component Selector is better understood on its page, Complex Types in Components.",
+  "category": "Uncategorized",
+  "fields": {
+    "ComponentSelected": "The Sync delegate to call when the component is attached.",
+    "ComponentFilter": "The type of Components to show in the attacher.",
+    "GenericArgumentPrefiller": "A sync delegate that fills the list of generic arguments for a selected type so it doesn't only ask for a certain type.",
+    "_uiRoot": "The root slot of the UI.",
+    "_rootPath": "The path that this is navigated to in the component attacher.",
+    "_genericType": "The generic type we are trying to make a generic fill for.",
+    "_customGenericTypeLabel": "The label for the generic type we are attaching.",
+    "_customGenericTypeColor": "The color for the generic type we are attaching.",
+    "_customGenericArguments": "The generic arguments being used for the current Component being attached. See Complex Types in Components."
+  },
+  "methods": {
+    "OnCancelPressed": "Closes the UI and doesn't attach anything.",
+    "OnOpenCategoryPressed": "Opens a category of the path argument given.",
+    "OpenGenericTypesPressed": "Handles loading the menu for selecting a generic argument screen for a component that has a generic argument like , , or to name a few.",
+    "OpenGroupPressed": "Handles bringing up the menu for opening a group of components of the same type (purple buttons).",
+    "OnAddComponentPressed": "Triggers when a component is addrd.",
+    "OnCreateCustomType": "Triggers when a component is made via the attacher with a generic type that isn't in the list of preselected generics."
+  },
+  "usage": "See Complex Types in Components.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ComponentSelector&action=raw"
+}

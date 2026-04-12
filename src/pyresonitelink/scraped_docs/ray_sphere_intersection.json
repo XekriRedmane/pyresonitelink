@@ -1,8 +1,16 @@
 {
   "description": "The Ray Sphere Intersection node takes in ray paremeters and sphere parameters, and finds then returns an intersection at a point as well as if it intersected at all.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Center": "The center of the sphere.",
+    "Radius": "The radius of the sphere.",
+    "RayOrigin": "The starting point of this ray.",
+    "RayDirection": "The direction this ray will aim at.",
+    "Point": "Returns the sphere intersection value.",
+    "IsIntersecting": "Returns if this ray is intersecting this sphere."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RaySphereIntersection&action=raw"
 }

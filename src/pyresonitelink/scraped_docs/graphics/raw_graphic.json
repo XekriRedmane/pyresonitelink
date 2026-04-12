@@ -1,0 +1,26 @@
+{
+  "description": "The RawGraphic component takes in a Material or a Material Property Block component, then shows the raw graphic image onto the UIX.\n\n}}",
+  "category": "UIX:Graphics",
+  "fields": {
+    "Material": "The material to take the raw graphic from.",
+    "PropertyBlock": "The image within a literal image block.",
+    "FillRect": "The filling rect for this image.",
+    "Color": "Changes the color of the image.",
+    "UVRect": "Shifts the UV of the raw image.",
+    "Orientation": "Rotates the raw image and respects aspect ratio.",
+    "Normal": "The normal for this raw graphic.",
+    "Tangent": "The tangent for this raw graphic.",
+    "HideWithNoMaterial": "If there is no material, hid this raw image.",
+    "PreserveUVAspectRatio": "If this raw graphic should preserve its aspect ratio.",
+    "InteractionTarget": "Makes this image as the interaction target for this UIX."
+  },
+  "methods": {},
+  "usage": "Use this component when the Image component does not have what your looking for in your UIX design.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* MainTexturePropertyBlock\n* Projection360PropertyBlock\n* MainAndMaskTexturePropertyBlock"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RawGraphic&action=raw"
+}

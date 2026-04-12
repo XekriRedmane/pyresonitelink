@@ -1,0 +1,17 @@
+{
+  "description": "The LabelPointerMesh component is used by the labeler tool to point to a position and underline some generated text elements.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "LabelPoint": "Where the label should render in local space.",
+    "TargetPoint": "Where the line from the label should point to.",
+    "LabelRotation": "The rotation of the label visual.",
+    "LabelWidth": "The width of the label visual.",
+    "Width": "The width of the line going from the label to ``TargetPoint``",
+    "ExpandLerp": "How long the label underline should be.",
+    "DualSided": "Whether the mesh should have duplicate geometry with the fronts facing the opposite direction."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LabelPointerMesh&action=raw"
+}

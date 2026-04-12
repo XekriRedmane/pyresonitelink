@@ -1,8 +1,14 @@
 {
-  "description": "The If node checks and evaluates the Condition (bool) only when * (Call) is called. After the call and evaluation, it will send a pulse out of OnTrue (Continuation) if Condition (bool) is true or OnFalse (Continuation) if it is false.",
+  "description": "The If node checks and evaluates the Condition (bool) only when * (Call) is called. After the call and evaluation, it will send a pulse out of OnTrue (Continuation) if Condition (bool) is ``true`` or OnFalse (Continuation) if it is ``false``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Triggers this node to check Condition (bool) and send an impulse down OnTrue (Continuation) or OnFalse (Continuation) respectively.",
+    "Condition": "A boolean to check only when * (Call) is impulsed.",
+    "OnTrue": "Sends an impulse when * (Call) is impulsed and Condition (bool) is true.",
+    "OnFalse": "Sends an impulse when * (Call) is impulsed and Condition (bool) is false."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:If&action=raw"
 }

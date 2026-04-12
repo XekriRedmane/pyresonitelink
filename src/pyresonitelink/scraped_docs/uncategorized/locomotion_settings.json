@@ -1,0 +1,13 @@
+{
+  "description": "The LocomotionSettings component is better described on the settings page.",
+  "category": "Uncategorized",
+  "fields": {
+    "LocomotionPreferences": "A list of locomotion entries that the user prefers when entering a world."
+  },
+  "methods": {
+    "GetEntry": "Used to get an entry in the locomotion preference values."
+  },
+  "usage": "see settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocomotionSettings&action=raw"
+}

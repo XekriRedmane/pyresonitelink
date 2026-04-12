@@ -1,0 +1,33 @@
+{
+  "description": "See Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "_canvas": "The canvas being used to show settings.",
+    "_panel": "The legacy panel being used as a base to interact with the settings.",
+    "_currentPanel": "the rectangle transform of the currently viewed panel.",
+    "_container": "The slot to store UI elements.",
+    "CameraControl": "see Interactive Camera Control.",
+    "_connectAddress": "The field to read an OBS websocket connect address from.",
+    "_connectPassword": "The field to read an OBS websocket connect password from.",
+    "_status": "The current status of the OBS connection.",
+    "_active": "Whether the connection is active",
+    "_streamTime": "The text to fill with how long the user has been streaming.",
+    "_bytesPerSec": "The text to fill with how many bytes per second the user is streaming.",
+    "_fps": "The text to fill with how many frames per second the user is streaming.",
+    "_droppedFrames": "The text to fill with how many dropped frames the user has had streaming.",
+    "_streamButton": "the button that will start the streaming process to OBS.",
+    "_recordButton": "the button to start recording using OBS.",
+    "_recordingStarted": "The field to fill with when the user started recording.",
+    "_launchOBSbutton": "the button to boot OBS for the user when pressed.",
+    "_autoMirror": "The button to enable the auto mirror option."
+  },
+  "methods": {
+    "OnReturnToConnect": "A setting changing handler for the panel.",
+    "OnLaunchOBS": "A setting changing handler for the panel.",
+    "OnConnect": "A setting changing handler for the panel.",
+    "OnStream": "A setting changing handler for the panel.",
+    "OnRecord": "A setting changing handler for the panel."
+  },
+  "usage": "See Camera.",
+  "notes": []
+}

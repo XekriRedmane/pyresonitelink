@@ -1,8 +1,12 @@
 {
   "description": "The Is Letter Or Digit node takes in a character literal and returns if that character is a letter or a digit. It is a shorthand of doing an OR Operation on the results of the Is Letter and Is Digit nodes.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character literal to check.",
+    "* ([[Type:bool|bool]])": "Returns ``true`` if ``Character`` is a letter or digit, ``false`` otherwise."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsLetterOrDigit&action=raw"
 }

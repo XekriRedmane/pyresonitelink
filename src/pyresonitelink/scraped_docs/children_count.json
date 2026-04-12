@@ -1,8 +1,12 @@
 {
   "description": "Returns the number of children of a slot.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot for read children count for.",
+    "* ([[Types:Int|Int]])": "The amount of children under the provided Instance ( Slot)"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ChildrenCount&action=raw"
 }

@@ -1,8 +1,13 @@
 {
   "description": "The Set Position node tells a IPlayable to jump to a position upon impulse.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "=== Target (IPlayable) ===\n\nThe IPlayable to set the position on.",
+    "NormalizedPosition": "Set the position of the playback on the target.\nNote this is position, so the value is equivalent to seconds.",
+    "Next": "Sends an impulse after the initial call."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetPosition&action=raw"
 }

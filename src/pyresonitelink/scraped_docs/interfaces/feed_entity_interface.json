@@ -1,0 +1,11 @@
+{
+  "description": "The FeedEntityInterface component is used as a template type item in data feed mappers in the Data Feeds system. This is most commonly used with the WorldUsersFeed feed to template user items from the feed.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "Reference": "The field to fill with the reference value from the source data feed."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FeedEntityInterface&action=raw"
+}

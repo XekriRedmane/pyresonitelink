@@ -1,0 +1,24 @@
+{
+  "description": "The StripeWireMesh component is used primarily in ProtoFlux wires, and generates mesh data for use with a MeshRenderer.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Point0": "The start point in local space for this mesh",
+    "Point1": "The end point for this mesh in local space.",
+    "Tangent0": "the direction the mesh should bend after exiting start point",
+    "Tangent1": "the direction the mesh should bend while entering exit point.",
+    "Orientation0": "How much to rotate the starting point edge by after applying ``Tangent0``",
+    "Orientation1": "How much to rotate the end point edge by after applying ``Tangent1``",
+    "Steps": "how many segments the mesh should have between ``Point0`` and ``Point1``.",
+    "Exp": "how much the mesh should be forced in the direction of the start and end tangents when starting and ending it's path.",
+    "Color0": "The vertex color to give the part of the mesh starting at ``Point0``. Is interpolated along the mesh to ``Point1`` to color ``Color1``",
+    "Color1": "The vertex color for ``Point1`` to interpolate towards.",
+    "UVScale": "the scale of the material detail on the mesh.",
+    "UVOffset": "the offset of the material detail on the mesh.",
+    "Width0": "the width of the mesh in local space at ``Point0`` on the mesh. Is interpolated along the mesh to ``Point1`` to width ``Width1``",
+    "Width1": "The width in local space for ``Point1`` to interpolate towards."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a MeshRenderer to view the geometry generated. Don't forget to add a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StripeWireMesh&action=raw"
+}

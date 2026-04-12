@@ -1,0 +1,14 @@
+{
+  "description": "See Mesh Tool.",
+  "category": "Tools",
+  "fields": {
+    "_orbSlot": "The place to put a grabbed mesh orb."
+  },
+  "methods": {
+    "SnapFilter": "Can be used as a function to filter snappers so they accept only specific snappers. In this case, it will only accept mesh orbs.",
+    "EditMesh": "Called when the edit mesh button is touched."
+  },
+  "usage": "See Mesh Tool.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeshTool&action=raw"
+}

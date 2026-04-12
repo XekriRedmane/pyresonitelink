@@ -1,0 +1,17 @@
+{
+  "description": "The SimplexTexture3D component makes a procedural noise in 3D similar to the StaticTexture3D component, as a Texture3D.",
+  "category": "Assets:Procedural Texture3Ds",
+  "fields": {
+    "Profile": "The color profile the texture pixels are in.",
+    "Size": "The size of the procedural texture in pixels.",
+    "Offset": "How much to shift the texture from 0-1 on each axis.",
+    "Scale": "How much to scale up or down the noise texture.",
+    "Background": "The background color of the noise generation.",
+    "Foreground": "The foreground color of the noise generation.",
+    "Use4D": "Whether or not the noise texture should have a 4 spatial dimension element to it.",
+    "WOffset": "The offset of the texture in the 4th spatial dimension/"
+  },
+  "methods": {},
+  "usage": "Can be used to make clouds or other noisy effects in 3 dimensions using particle systems or volume materials.",
+  "notes": []
+}

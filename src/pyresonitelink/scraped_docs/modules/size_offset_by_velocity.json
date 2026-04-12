@@ -1,0 +1,15 @@
+{
+  "description": "The SizeOffsetByVelocity component changes the size of particles in a particle system based on their velocity.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "VelocityMultiplier": "How much velocity should multiply the size of the particle.",
+    "OffsetClampMin": "The minimum value for the clamping of the offset.",
+    "OffsetClampMax": "The maximum value for the clamping of the offset.",
+    "ResultClampMin": "The minimum value for the clamping of the result.",
+    "ResultClampMax": "The maximum value for the clamping of the result."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SizeOffsetByVelocity&action=raw"
+}

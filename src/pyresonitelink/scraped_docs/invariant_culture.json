@@ -1,8 +1,11 @@
 {
   "description": "The InvariantCulture node returns the invariant culture of the engine.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:CultureInfo|CultureInfo]])": "The invariant culture info."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:InvariantCulture&action=raw"
 }

@@ -1,0 +1,13 @@
+{
+  "description": "The ConstantCharacterController component modifies the properties of a CharacterController that makes contact with a character collider on the same Slot as this component.",
+  "category": "Locomotion:Modifiers",
+  "fields": {
+    "Parameter": "The parameter to modify",
+    "ModificationMode": "How to modify the parameter.",
+    "Value": "the value to use in the modification."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with a collider that is a character collider. Then specify the settings this component should change and how. Then this component will be ready to use.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConstantCharacterControllerModifier&action=raw"
+}

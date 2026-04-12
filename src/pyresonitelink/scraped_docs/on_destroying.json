@@ -1,8 +1,11 @@
 {
   "description": "The On Destroying node sends an impulse out of Trigger whenever the node is marked for destruction. This will not preserve Async tasks, as since those create delays they will be destroyed before execution of the task finishes.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Trigger": "Sends an Impulse when the node is marked for destruction which may include all the rest of the code, but nothing is destroyed yet."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnDestroying&action=raw"
 }

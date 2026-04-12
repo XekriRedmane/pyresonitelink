@@ -1,0 +1,20 @@
+{
+  "description": "The ColorMemberEditor component is used in inspectors and Ref Hacking to edit Color Fields and their elements.",
+  "category": "Uncategorized",
+  "fields": {
+    "Continuous": "Whether updates to the target are continuous.",
+    "_path": "Usually \"r\" \"g\" \"b\" \"a\" to edit parts of the color value.",
+    "_target": "The color to edit.",
+    "Labels": "Whether to show field labels.",
+    "Vertical": "Whether the inspector showing this component is showing it in a vertical fashion.",
+    "_colorDrive": "The field to drive with the color value for the inspector visual.",
+    "_colorDriveNoAlpha": "The field to drive with the color target with no alpha applied for the inspector visual.",
+    "_colorDialog": "The color dialogue currently being used to edit the color."
+  },
+  "methods": {
+    "OpenColorPicker": "Handles opening and spawning the user's favorite color picker for editing the color via a picker."
+  },
+  "usage": "Internal.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorMemberEditor&action=raw"
+}

@@ -1,0 +1,15 @@
+{
+  "description": "The EyeRotationDriver component can control the rotation of slots using the data from an EyeManager.",
+  "category": "Users:Common Avatar System:Face",
+  "fields": {
+    "EyeManager": "The source of the eye rotation data.",
+    "EyeMotionScale": "How much to multiply the target rotation by before applying it to an Eye.",
+    "EyeMotionExp": "The exponent. This makes the eye rotate more or less as it reaches higher rotation target values.",
+    "MaxSwing": "The maximum amount the eyes can rotate in degrees from forward facing.",
+    "Eyes": "A list of eyes to drive the rotation of."
+  },
+  "methods": {},
+  "usage": "Set up automatically on avatars that are made using the Avatar Creator.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:EyeRotationDriver&action=raw"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The VolumeExportable component is used to export 3D textures (or 2D images that a layered on top of each other) as a ``.cube`` file format.",
+  "category": "Assets:Export",
+  "fields": {
+    "Volume": "The 3D Texture to be exported."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VolumeExportable&action=raw"
+}

@@ -1,0 +1,18 @@
+{
+  "description": "The Camera Frustum Mesh is a component that can be used in a Mesh Renderer to visualize the limits and view cone of a Camera",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Orientation": "Direction the mesh is facing.",
+    "Near": "Slices the mesh to demonstrate camera nearclip",
+    "Far": "Expands the mesh to demonstrate camera farclip.",
+    "HorizontalAngle": "The horizontal FOV of the camera represented by this mesh.",
+    "VerticalAngle": "The Vertical FOV of the camera represented by this mesh.",
+    "DualSided": "Enables the mesh to be dual sided.",
+    "NearCap": "Whether or not the end closest to the camera should be capped with a quad.",
+    "FarCap": "Whether or not the end furthest from the camera should be capped with a quad."
+  },
+  "methods": {},
+  "usage": "The CameraFrustumMesh is used alongside the InteractiveCamera to visualize the range of the camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CameraFrustumMesh&action=raw"
+}

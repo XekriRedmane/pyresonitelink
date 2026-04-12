@@ -1,0 +1,9 @@
+{
+  "description": "The IgnoreLayout component makes a UIX element ignore the parent slot's layout component, and then draws over other elements (within that same hierarchy level of slots) inside of the parent's RectTransform.\n\n}}",
+  "category": "UIX:Layout",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot which the elements within should ignore the layout of the parent slot.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:IgnoreLayout&action=raw"
+}

@@ -1,0 +1,37 @@
+{
+  "description": "See Full Body Tracking.",
+  "category": "With Nested Enums",
+  "fields": {
+    "_calibrator": "The current calibrator this dialog is linked to.",
+    "_currentPage": "The current dialog page this is showing.",
+    "_confirmTrackers": "The button to confirm trackers.",
+    "_resetTrackers": "The button to reset tracker mappings.",
+    "_calibrateAvatar": "The button to start avatar calibration",
+    "_heightCompensation": "How much to scale up the avatar to fit the user.",
+    "_useSymmetry": "Whether changes to sided points (left versus right) mirror onto the other side.",
+    "_showBodyOverlay": "Whether to show the invisible person Overlay.",
+    "_showAvatarOverlay": "Whether to show a copy of the avatar on the pedestal.",
+    "_hipsMapping": "The text to indicate if hips are mapped or not.",
+    "_feetMapping": "The text to indicate if feet are mapped or not.",
+    "_chestMapping": "The text to indicate if chest is mapped or not.",
+    "_elbowsMapping": "The text to indicate if elbows are mapped or not.",
+    "_kneesMapping": "The text to indicate if knees are mapped or not.",
+    "_heightField": "The text field that changes your user height setting on the fly.",
+    "_heightWarning": "The text to warn if the height is improper.",
+    "_useImperial": "Whether the height should be interpreted in yee haw (imperal height).",
+    "_swapRegion": "The component that handles transitions from one page to another on the dialog."
+  },
+  "methods": {
+    "OnStartCalibration": "Handles when the user presses start calibration.",
+    "OnResetTrackers": "Handles when the user presses reset trackers.",
+    "OnCalibrateAvatar": "Handles when the user presses calibrate my avatar.",
+    "OnResetAvatarMapping": "Handles when the user presses Reset avatar mapping.",
+    "OnResetAvatarHeightCompensation": "Handles when the user presses Reset avatar height compensation.",
+    "OnFinishAvatarCalibration": "Handles when the user presses Finish avatar calibration.",
+    "OnCloseCalibrator": "Handles when the user closes the calibrator.",
+    "OnReturnToTrackerCalibration": "Handles when the user presses return to tracker calibration."
+  },
+  "usage": "See Full Body Tracking.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FullBodyCalibratorDialog&action=raw"
+}

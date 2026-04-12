@@ -1,0 +1,14 @@
+{
+  "description": "The Teleport Block component is a component that is used to Tag colliders like platforms and walls as a place where a user cannot teleport to via the Teleport Locomotion Mode.",
+  "category": "Transform:Tagging",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "When a user using teleport mode tries to teleport onto or through a collider with this component, it will make the path turn red and deny them from teleporting to the selected point."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TeleportBlock&action=raw"
+}

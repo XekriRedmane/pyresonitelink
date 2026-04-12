@@ -1,8 +1,13 @@
 {
-  "description": "Indirect increments can be commonly found in legacy content that has been migrated from other platforms. Indirect increments take Variable (Variable) as an input, and will increase the value that is wrapped by Variable (Variable) by one.",
+  "description": "Indirect increments can be commonly found in legacy content that has been migrated from other platforms.\nIndirect increments take Variable (Variable) as an input, and will increase the value that is wrapped by Variable (Variable) by one.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to increase the value.",
+    "OnWritten": "sends an impulse after * (Call) has been impulsed and the value has been incremented .",
+    "OnFail": "sends an impulse after * (Call) has been impulsed and the value wasn't able to be incremented due to a missing target or the variable not wrapping a valid IValue`1"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IndirectIncrement&action=raw"
 }

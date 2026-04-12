@@ -1,0 +1,19 @@
+{
+  "description": "See Request Host Access ProtoFlux Node.",
+  "category": "Uncategorized",
+  "fields": {
+    "Host": "The host destination string being accessed.",
+    "Port": "The port being asked for access.",
+    "AccessType": "The access type wanted for the port.",
+    "_hostText": "The text field used to show the server wanting access for.",
+    "_reasonText": "The reason for accessing the server.",
+    "_allowButton": "The button to allow the server to be accessed through your client."
+  },
+  "methods": {
+    "Deny": "Denies the current request.",
+    "Allow": "Accepts the current request."
+  },
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HostAccessDialog&action=raw"
+}

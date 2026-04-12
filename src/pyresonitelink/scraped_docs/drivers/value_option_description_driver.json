@@ -1,0 +1,20 @@
+{
+  "description": "The ValueOptionDescriptionDriver component is used primarily to drive the parts that make up a Context Menu Item Source. This component along with ContextMenuItemSource is used in context menus for toggles where the toggle controls a value.\n\n}}",
+  "category": "Common UI:Drivers",
+  "fields": {
+    "Value": "The value field to compare against.",
+    "ForceDeselected": "Forces any context menu item source to change regardless if it is deselected.",
+    "Label": "The string to set to the chosen label in the list of ``Options``.",
+    "Color": "The color to set to the chosen color in the list of ``Options``",
+    "Sprite": "The Sprite to set to the chosen Sprite in the list of ``Options``.",
+    "SpriteURL": "The sprite url.",
+    "SpriteTint": "The sprite tint.",
+    "DefaultOption": "The option to set ``Label``, ``Color``, and ``Sprite`` to when ``Reference`` doesn't match any ``ReferenceTarget``s under the list of ``Options``.",
+    "Options": "The list to search for a ``ReferenceTarget`` that matches ``Value``. once a match is found, the option's ``Label``, ``Color``, and ``Sprite`` is used to drive this section's drive targets of ``Label``, ``Color``, and ``Sprite``.",
+    "SpriteTintBase": "Tints the entire sprite with a ColorX."
+  },
+  "methods": {},
+  "usage": "This component can be more efficient than using a bunch of Value Equality Drivers and generating a number based on such, or using ProtoFlux for a context menu.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueOptionDescriptionDriver&action=raw"
+}

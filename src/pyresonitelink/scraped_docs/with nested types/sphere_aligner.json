@@ -1,0 +1,21 @@
+{
+  "description": "Sphere aligner is a component that has a list of child slots under ``Items`` and aligns those items into a spherical shape.",
+  "category": "With Nested Types",
+  "fields": {
+    "AutoAddChildren": "Controls whether slots below this component's slot in the hierarchy are automatically added to ``_targets``",
+    "AutoAddIgnoreTags": "Do not add slots to the list of children automatically if it's tag is contained in this list.",
+    "Radius": "The radius of the sphere to align items into",
+    "DistributionOffset": "Shift the positions of the items along the sphere surface, redistributes.",
+    "AlignToNormal": "Whether to rotate the items to align them to the surface of the sphere",
+    "RotationOffset": "How much to rotate the sphere of aligned items by their individual origins",
+    "NormalizedStart": "What point to start the alignment of items from top to bottom of the sphere.",
+    "NormalizedEnd": "What point to end the alignment of items from top to bottom of the sphere.",
+    "HorizontalStart": "What point to start the alignment of items along the equator of the sphere.",
+    "HorizontalEnd": "What point to end the alignment of items along the equator of the sphere.",
+    "Items": "A list of items to align into the sphere shape."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SphereAligner&action=raw"
+}

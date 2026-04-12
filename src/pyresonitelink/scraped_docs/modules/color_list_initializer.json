@@ -1,0 +1,11 @@
+{
+  "description": "The Color List Initializer component makes particles initialize their color in a particle system from a list of colors.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Colors": "A list of colors to use."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorListInitializer&action=raw"
+}

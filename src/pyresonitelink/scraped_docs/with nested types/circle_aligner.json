@@ -1,0 +1,19 @@
+{
+  "description": "The CircleAligner component is used to position a list of slots in a circle.",
+  "category": "With Nested Types",
+  "fields": {
+    "AutoAddChildren": "Controls whether slots below this component's slot in the hierarchy are automatically added to ``Items``",
+    "AutoAddIgnoreTags": "If a slot has a Tag matching one of the tags in this list, it will not be auto added to ``Items``",
+    "Axis": "The axis around which the slots will be aligned.",
+    "Radius": "The radius of the circle that the slots will be positioned on.",
+    "Offset": "Offsets the starting position of the circle.",
+    "Arc": "360 by default. If smaller, the slots will only fill that section of a circle. Likewise, if it is larger than 360, the slots will wrap around the circle multiple times.",
+    "FillWholeArc": "If true, the last slot will be at the very end of the arch, otherwise there will be a gap after the last slots.",
+    "RotationOffset": "An offset, in degrees, that is applied to the rotation of the target slots.",
+    "Items": "The list of slots to be aligned."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CircleAligner&action=raw"
+}

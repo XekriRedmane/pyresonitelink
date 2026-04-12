@@ -1,0 +1,15 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "PerPixelLights": "How many lights can affect a single pixel on screen.",
+    "ShadowCascades": "How many shadows can be affecting an area.",
+    "ShadowResolution": "The max resolution allowed for shadows.",
+    "ShadowDistance": "The max distance to render shadows from the camera.",
+    "SkinWeightMode": "How many skin weights to allow for skinned mesh renderers."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RenderingQualitySettings&action=raw"
+}

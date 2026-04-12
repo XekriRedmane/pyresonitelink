@@ -1,0 +1,17 @@
+{
+  "description": "The RawImage component takes in a ITexture2D and takes in parameters to alter this texture image.\n\n}}",
+  "category": "UIX:Graphics",
+  "fields": {
+    "Texture": "The texture image itself.",
+    "Material": "The material to use as the texture from.",
+    "Tint": "The tint color for this raw image.",
+    "UVRect": "Shifts the UV of the raw image.",
+    "Orientation": "Rotates the raw image and respects aspect ratio.",
+    "PreserveAspect": "If this raw graphic should preserve its aspect ratio.",
+    "InteractionTarget": "Makes this image as the interaction target for this UIX."
+  },
+  "methods": {},
+  "usage": "This component acts more like a holder for a texture image to be used by other components.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RawImage&action=raw"
+}

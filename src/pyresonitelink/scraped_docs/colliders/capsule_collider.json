@@ -1,0 +1,12 @@
+{
+  "description": "The CapsuleCollider component creates a simple capsule collision shape from the defined height and radius.\n\nThe CapsuleCollider is used in Locomotion Modules to represent the player's width and height.",
+  "category": "Physics:Colliders",
+  "fields": {
+    "Height": "The height of the capsule. Does not include the added height from the rounded ends",
+    "Radius": "the radius of the body of the capsule and it's rounded ends."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CapsuleCollider&action=raw"
+}

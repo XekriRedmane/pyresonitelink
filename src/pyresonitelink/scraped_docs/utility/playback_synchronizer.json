@@ -1,0 +1,15 @@
+{
+  "description": "The PlaybackSynchronizer component is used to make two Audio Clips play together in unison, play at the same time, or to synchronize.",
+  "category": "Media:Utility",
+  "fields": {
+    "Target": "The playable to synchronize the playback position with the position of ``Source``.",
+    "Source": "The playable that will drive ``Target``'s playback",
+    "UseNormalizedPosition": "Whether to speed up or slow down the playback of ``Target`` if the duration doesn't match.",
+    "PositionOffset": "How many seconds/normalized position to offset the ``Target``'s synchronization with ``Source``'s position.",
+    "PositionRate": "How much to multiply ``Source``'s position before driving ``Target``'s position with it."
+  },
+  "methods": {},
+  "usage": "This can be used with any playable like an Animator or otherwise with another animator or audio. It can also be used to synchronize Videos with each other. This can be useful when you want animations/videos to sync up with audio, in perfect unison without having to worry about networking.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PlaybackSynchronizer&action=raw"
+}

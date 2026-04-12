@@ -1,0 +1,13 @@
+{
+  "description": "The Float3Driver component can be used to drive a foat3 value, based on an X, Y and a Z value.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "X": "The field that holds the X value for the float3. If null, the X component of the float3 will be 0.",
+    "Y": "The field that holds the Y value for the float3. If null, the Y component of the float3 will be 0.",
+    "Z": "The field that holds the Z value for the float3. If null, the Z component of the float3 will be 0.",
+    "Target": "The field that is driven to the constructed float3."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

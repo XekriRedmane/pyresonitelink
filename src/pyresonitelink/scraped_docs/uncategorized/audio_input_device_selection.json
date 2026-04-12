@@ -1,0 +1,18 @@
+{
+  "description": "The AudioInputDeviceSelection component is a Legacy component part of the old settings UI.",
+  "category": "Uncategorized",
+  "fields": {
+    "SelectedDeviceIndex": "The current selected.",
+    "SelectedDeviceName": "The name of the currently selected device.",
+    "UseFilteredData": "Whether to filter the incoming audio.",
+    "_deviceButtonRoot": "The slot to place device selection buttons.",
+    "_audioStream": "The audio stream of the currently selected audio device.",
+    "_audioOutput": "The audio output being used to preview the audio input device.",
+    "_deviceVolume": "The component being used to analyze the incoming audio of the selected input device and turn it into volume.",
+    "_volumeBar": "The bar being used to preview the input audio device volume."
+  },
+  "methods": {},
+  "usage": "Used in your Local Space settings to select your Audio Input device.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioInputDeviceSelection&action=raw"
+}

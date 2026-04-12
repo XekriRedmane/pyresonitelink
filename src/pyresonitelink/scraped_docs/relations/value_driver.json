@@ -1,0 +1,17 @@
+{
+  "description": "The ValueDriver&lt;T&gt; component continuously copies the value of the source IValue to the target field every update. The source and target types must be value types.",
+  "category": "Relations",
+  "fields": {
+    "ValueSource": "The value field to get a value from.",
+    "DriveTarget": "The value field to set to the value of ``ValueSource``."
+  },
+  "methods": {},
+  "usage": "This component ensures that the value in the ``DriveTarget`` is equal to the value in the ``ValueSource`` field. To do this, it drives the ``DriveTarget`` field to give it exclusive access to the value, then it starts writing the value from the ``ValueSource`` field to the target field every update.\n\nThis is distinct from ValueCopy, as it allows sourcing from IValue elements instead of just IField elements. It also does not have any ``WriteBack`` meachanism of any kind. Generally, ValueCopy should be used whenever possible, as it only updates the target field whenever the source field changes instead of every update.",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* ValueCopy\n* ValueMultiDriver to form this relation to multiple target fields."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueDriver&action=raw"
+}

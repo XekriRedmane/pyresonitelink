@@ -1,8 +1,14 @@
 {
   "description": "The Create Undo Batch node Begins an undo batch, executes the Create call, then ends the undo batch all in one frame.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to create an undo batch.",
+    "Description": "The description for this undo batch. The description will be automatically prepended with \"Undo\" in bigger text in the context menu.",
+    "Create": "The impulse created when the undo batch is started but not ended.",
+    "OnCreated": "The impulse created after the undo batch is ended."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CreateUndoBatch&action=raw"
 }

@@ -1,0 +1,11 @@
+{
+  "description": "The AudioExportable component is used to export an AudioClip as a file for your device.\n\nTo export using this component, look at the file browser export section.",
+  "category": "Assets:Export",
+  "fields": {
+    "Audio": "The audio clip to be exported."
+  },
+  "methods": {},
+  "usage": "Is used to make an item export an audio clip when a user tries to export the root object.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioExportable&action=raw"
+}

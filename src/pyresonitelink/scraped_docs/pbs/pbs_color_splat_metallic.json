@@ -1,0 +1,13 @@
+{
+  "description": "A PBS Color Splat (Metallic & Specular) shader:\n- Supports 4 textures of each and a color map, where each channel represents contribution from each\n- Supports height map blending too for sharper, more defined look\n- Is useful for terrains\n\nSee also: Color Splat Materials",
+  "category": "Assets:Materials:PBS",
+  "fields": {},
+  "methods": {},
+  "usage": "For comprehensive guides see Color Splat Materials.",
+  "notes": [
+    {
+      "title": "Packed Textures Channel Mappings",
+      "text": "PackedEmissionMap is greyscale and uses EmissiveColor0-3 Colors.\n\nEmissiveMap0-3 can be used for RGB Emissive Maps.\n\nReferencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.\n\n; PackedHeightMap:\n: R: HeightMap0 - greyscale \n: G: HeightMap1 - greyscale \n: B: HeightMap2 - greyscale\n: A: HeightMap4 - greyscale\n\n; PackedEmissionMap:\n: R: EmissionMap0 - greyscale\n: G: EmissionMap1 - greyscale\n: B: EmissionMap2 - greyscale\n: A: EmissionMap4 - greyscale\n\n; PackedNormalMap01:\n: R: NormalMap0 - Red\n: G: NormalMap0 - Green\n: B: NormalMap1 - Red\n: A: NormalMap1 - Green\n\n; PackedNormalMap23:\n: R: NormalMap2 - Red\n: G: NormalMap2 - Green\n: B: NormalMap3 - Red\n: A: NormalMap3 - Green\n\n; MetallicMap01:\n: R: MetallicMap0 - Red\n: G: MetallicMap0 - Alpha\n: B: MetallicMap1 - Red\n: A: MetallicMap1 - Alpha\n\n; MetallicMap23:\n: R: MetallicMap2 - Red\n: G: MetallicMap2 - Alpha\n: B: MetallicMap3 - Red\n: A: MetallicMap3 - Alpha"
+    }
+  ]
+}

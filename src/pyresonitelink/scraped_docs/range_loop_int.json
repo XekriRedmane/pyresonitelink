@@ -1,8 +1,18 @@
 {
   "description": "The Range Loop Int node is used to perform looping operations by allowing one to define a range of values and step size for iterations to follow. It is a more flexible version of the For node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:Int|int]])": "Begin the range loop.",
+    "Start": "The number for ``Current`` to start at during execution.",
+    "End": "The number for ``Current`` to iterate towards and compare to during execution. This input is inclusive.",
+    "StepSize": "The value that is added or subtracted to ``Current`` per iteration for the current ``LoopIteration``. The loop will either add or subtract this value depending on whether ``Start`` is less than or greater than ``End``. There will be no iterations if this value is less than ``1``.",
+    "LoopStart": "Fires after ``*`` is pulsed and before any iterations are done. Will be pulsed even if ``StepSize < 1``.",
+    "LoopIteration": "Fires for each iteration of the loop. This impulse is triggered until ``Current`` exceeds ``End`` in the direction of the loop, at which point the iterations will stop.",
+    "LoopEnd": "Fires once the loop has finished.",
+    "Current": "This value will start at ``Start`` for the first iteration, then at each iteration, this value will either increase or decrease by ``StepSize`` depending on whether ``End`` is greater than or less than ``Start``. This value lasts for said iteration's entire context."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RangeLoopInt&action=raw"
 }

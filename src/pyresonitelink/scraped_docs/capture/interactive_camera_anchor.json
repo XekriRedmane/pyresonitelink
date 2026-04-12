@@ -1,0 +1,14 @@
+{
+  "description": "The InteractiveCameraAnchor component acts as a spot to drop or auto transition a streaming or other type of camera or to.\n\nSee Camera Anchors.",
+  "category": "Media:Capture",
+  "fields": {
+    "OverrideRoot": "The place other than under this component's slot to parent the cameta.",
+    "FieldOfView": "What the FOV of a camera anchored to this anchor should be set to.",
+    "Highlighted": "Whether this anchor is being highlighted as part of specifying a camera anchor set/route.",
+    "InUse": "Whether or not the anchor has a camera in it."
+  },
+  "methods": {},
+  "usage": "Attaching this component to a slot creates the visual as well as the default values. Simply dropping a stream camera into the visual will snap the camera to it.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraAnchor&action=raw"
+}

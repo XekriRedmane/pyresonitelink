@@ -1,0 +1,12 @@
+{
+  "description": "The FeedToggleInterface component is used as a template type item in data feed mappers in the Data Feeds system. This component specifically is used for toggle things like check boxes.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "Value": "The field to populate with and update the value from the data feed.",
+    "Formatting": "The field to populate with the format string for the value."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FeedToggleInterface&action=raw"
+}

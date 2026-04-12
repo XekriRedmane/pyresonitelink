@@ -1,8 +1,12 @@
 {
   "description": "Gets the value of the provided Instance Slot's persistent field.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "Slot to check.",
+    "* ([[Type:Bool|bool]])": "Instance (Slot)'s Persistent Field."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetSlotPersistentSelf&action=raw"
 }

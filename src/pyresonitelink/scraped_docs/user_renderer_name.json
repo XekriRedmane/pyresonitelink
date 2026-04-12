@@ -1,8 +1,12 @@
 {
-  "description": "The User Renderer Name node returns a string describing the renderer being used by a user.",
+  "description": "The ``User Renderer Name`` node returns a string describing the renderer being used by a user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:String|String]])": "The renderer in use by the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserRendererName&action=raw"
 }

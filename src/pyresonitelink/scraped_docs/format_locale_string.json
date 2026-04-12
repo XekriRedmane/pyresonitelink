@@ -1,8 +1,13 @@
 {
-  "description": "The Format Locale String node takes in a locale asset (or repository) and a key and it returns the translated string for the user's culture.",
+  "description": "The ``Format Locale String`` node takes in a locale asset (or repository) and a key and it returns the translated string for the user's culture.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Locale": "The list of translatable strings (the repository or collection of strings).",
+    "Key": "The key to search for in the locale resource.",
+    "* ([[String]])": "The translated result."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FormatLocaleString&action=raw"
 }

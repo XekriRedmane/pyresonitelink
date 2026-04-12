@@ -1,0 +1,15 @@
+{
+  "description": "The GaussianSplatRenderer component renders Gaussian Splats into the world.",
+  "category": "Rendering",
+  "fields": {
+    "GaussianSplat": "the splat to render.",
+    "SizeScale": "How much to scale up or down the gaussian splat.",
+    "OpacityScale": "How transparent the Gaussian Splat is.",
+    "MaxSHOrder": "The max Spherical Harmonics level to render with.",
+    "SphericalHarmonicsOnly": "Whether to use only Spherical Harmonics."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GaussianSplatRenderer&action=raw"
+}

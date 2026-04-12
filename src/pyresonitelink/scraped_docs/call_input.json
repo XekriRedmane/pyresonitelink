@@ -1,8 +1,11 @@
 {
-  "description": "alt=A visual image of a Call input node by itself, connected to nothing.|thumb",
+  "description": "due to wiki limitations, this node does not currently have an HTML rendering of the node.\n\nCall Input is a ProtoFlux node that is made by holding primary on a ProtoFlux tool on an call input connector on a protoflux node. Then dragging it out and while holding primary you hit secondary. This node will now be generated at your tool tip end.\n\nThe purpose of this node is for debug purposes while developing to trigger code using a manual button. Be mindful not to use this in your final creations as an input button, since non-builder users will be unable to use it.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Fires when the button on the node visual is pressed."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CallInput&action=raw"
 }

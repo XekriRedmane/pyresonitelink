@@ -1,0 +1,19 @@
+{
+  "description": "The SlicingVolumeVisualizer component is used to visualize the slicer imported with new volumes imported into the game.",
+  "category": "Uncategorized",
+  "fields": {
+    "Material": "The material to be slicing.",
+    "AutoScale": "Whether to auto scale the visual to fit the object it is slicing.",
+    "_renderer": "The renderer component which this is slicing a mesh for.",
+    "_mesh": "The mesh this visual is slicing.",
+    "_collider": "The box collider that is used to interact with the slicer this is attached to.",
+    "_scale": "The scale field of the slicer visual element.",
+    "Slicers": "A list of slicers that are slicing the object.",
+    "_slicePlanes": "A list of slice planes that are slicing the object.",
+    "_highlights": "a list of highlight components for slicing the object."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SlicingVolumeVisualizer&action=raw"
+}

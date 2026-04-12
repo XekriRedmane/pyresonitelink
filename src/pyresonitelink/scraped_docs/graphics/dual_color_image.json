@@ -1,0 +1,21 @@
+{
+  "description": "The DualColorImage component takes in a SpriteProvider or Material and controls the tint and secondary tint of a UIX image. There are optional placement parameters allowing the user to adjust the offset of this image using ``FillRect``.\n\n}}",
+  "category": "UIX:Graphics",
+  "fields": {
+    "Sprite": "The sprite to use as the image.",
+    "Material": "The Material to use as the image.",
+    "PreserveAspect": "Preserves the aspect ratio of this image provided.",
+    "NineSliceSizing": "Tells how the image gets 9-sliced on this UIX.",
+    "FlipHorizontally": "Flips the image horizontally.",
+    "FlipVertically": "Flips the image vertically.",
+    "InteractionTarget": "Makes this image as the interaction target for this UIX.",
+    "FillRect": "The filling rect for this image.",
+    "__legacyZWrite": "The legacy Z writing for this image.",
+    "Tint": "The primary tint color for this image.",
+    "SecondaryTint": "The secondary tint color for this image."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DualColorImage&action=raw"
+}

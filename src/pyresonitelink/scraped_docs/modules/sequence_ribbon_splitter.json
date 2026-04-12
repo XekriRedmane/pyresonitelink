@@ -1,0 +1,12 @@
+{
+  "description": "The SequenceRibbonSplitter splits ribbons based on how long they are at random.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "MinSequenceCount": "The minimum ribbon sequence length a ribbon has to be before it is split.",
+    "MaxSequenceCount": "The maximum ribbon sequence length a ribbon can be before it is split forcibly."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SequenceRibbonSplitter&action=raw"
+}

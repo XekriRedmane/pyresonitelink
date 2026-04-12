@@ -1,8 +1,12 @@
 {
-  "description": "The DateTime Second node takes in a DateTime and returns the second of that DateTime.",
+  "description": "The ``DateTime Second`` node takes in a DateTime and returns the second of that DateTime.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "DateTime": "The DateTime we are getting info from.",
+    "* ([[Type:int|int]])": "The second portion of the DateTime."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DateTimeSecond&action=raw"
 }

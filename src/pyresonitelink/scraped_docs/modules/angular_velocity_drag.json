@@ -1,0 +1,11 @@
+{
+  "description": "The Angular Velocity Drag component reduces the angular momentum of particles in a particle system over time.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Drag": "How much force to apply to slow down. like resistance."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AngularVelocityDrag&action=raw"
+}

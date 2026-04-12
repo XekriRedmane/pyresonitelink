@@ -1,0 +1,21 @@
+{
+  "description": "Character Parenters are a component that allow for parenting or aligning the gravity of a user when they hit a collider.",
+  "category": "Locomotion:Interaction",
+  "fields": {
+    "TriggersOnly": "Whether to only allow trigger colliders that are part of this component's slot hierarchy to activate parenting.",
+    "NestIntoSpace": "Parent the user into the slot ``ParentSpace`` or not.",
+    "MustBeOnGround": "The user must be on the ground according to the character controller before they will be aligned/parented.",
+    "Filters": "What directions a user must be aligned to relative to the slot this component is on for them to get parented.",
+    "IgnoreParentUser": "Ignore the active user of this component when attempting to parent a user.",
+    "ParentSpace": "The coordinate space that calculations should be done in."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Disabling the collider the CharacterParenter is connected to might be preferred compared to disabling the slot or the CharacterParenter's enabled state itself, as disabling the collider will throw a ContactEnd event to the CharacterPareneter and correctly de-parent the user's inside. \n\nDisabling the CharacterParenter itself while users are inside the ParentSpace will mean the component can't de-parent users correctly and might not be wanted behavior."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CharacterParenter&action=raw"
+}

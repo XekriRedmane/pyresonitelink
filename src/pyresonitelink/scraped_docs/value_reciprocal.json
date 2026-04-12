@@ -1,8 +1,12 @@
 {
   "description": "The Value Reciprocal node takes in a value and that will be used to determine the result (or quotient) of a division, where 1 is the dividend, and the value we provide is the divisor.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "N": "The value that will be the divisor of the division.",
+    "* (Pseudo-Generic)": "The result (or quotient) of the division."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueReciprocal&action=raw"
 }

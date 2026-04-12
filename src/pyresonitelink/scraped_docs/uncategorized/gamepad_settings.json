@@ -1,0 +1,13 @@
+{
+  "description": "See GamePad settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "ThumbstickLookSpeed": "How sensitive the thumbstick is when looking around. higher values mean faster look speed with the joystick at max.",
+    "ThumbstickLookExponent": "How much faster the joystick makes the user look around as it approaches the edge, becoming exponentially fast at the very edge. This value increases and can decrease the power of this effect.",
+    "UseGamepadWhenUnfocused": "Whether to allow usage of the connected gamepad when unfocused from the game."
+  },
+  "methods": {},
+  "usage": "See GamePad settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GamepadSettings&action=raw"
+}

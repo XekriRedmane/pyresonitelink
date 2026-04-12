@@ -1,0 +1,16 @@
+{
+  "description": "Triangle collider is a component that acts as a single polygon version of a Mesh Collider",
+  "category": "Physics:Colliders",
+  "fields": {
+    "Offset": "how much to add to points ``A``, ``B``, and ``C``.",
+    "A": "The position of the first vertex of the triangle.",
+    "B": "The position of the second vertex of the triangle.",
+    "C": "The position of the third vertex of the triangle."
+  },
+  "methods": {
+    "ReverseWinding": "Reverses the order of the vertex values so the face direction is flipped."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TriangleCollider&action=raw"
+}

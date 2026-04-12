@@ -1,0 +1,9 @@
+{
+  "description": "Clipboard importer is used by the game as a manager for pasting items and text from the clipboard. Without it, pasting text isn't possible in a world until it is added back to the world.",
+  "category": "Assets:Utility",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ClipboardImporter&action=raw"
+}

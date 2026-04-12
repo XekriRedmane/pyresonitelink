@@ -1,0 +1,31 @@
+{
+  "description": "The StaticAudioClip component is what stores pre recorded audio data for components that play audio like AudioClipPlayer. This component is auto generated when a sound file is imported into the game as part of an audio clip object.",
+  "category": "Assets",
+  "fields": {
+    "URL": "The audio clip data location to load.",
+    "LoadMode": "How and when to load the audio",
+    "SampleRateMode": "How to sample the audio's audio data."
+  },
+  "methods": {
+    "Normalize": "Makes the volume during the audio clip consistent.",
+    "AdjustVolume": "Makes the volume louder or quieter.",
+    "ExtractSides": "Split the audio into two or more clips for different audio tracks.",
+    "Denoise": "Removes noise from the audio clip",
+    "TrimSilence": "removes the silence from the start and end of the audio clip",
+    "TrimStartSilence": "removes the silence from the start of the clip.",
+    "TrimEndSilence": "removes the silence from the end of the clip.",
+    "TrimStart": "cuts off audio data from the start of the audio clip.",
+    "TrimEnd": "cuts off audio data from the end of the audio clip.",
+    "FadeIn": "Makes the audio fade in over x seconds.",
+    "FadeOut": "Makes the audio fade out over x seconds.",
+    "MakeFadeLoop": "Makes the audio loopable, using a cross fade of x seconds.",
+    "ConvertToWAV": "converts the audio clip type to Windows audio vodec.",
+    "ConvertToVorbis": "converts the audio clip type to Vorbis.",
+    "ConvertToFLAC": "Converts the audio clip type to FLAC.",
+    "ApplyZitaReverb": "ZitaParameters]] to create a reverberation sound effect on this audio clip.",
+    "MakeLoopable": "Makes the audio loopable, using a cross fade of x seconds."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StaticAudioClip&action=raw"
+}

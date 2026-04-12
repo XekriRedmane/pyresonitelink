@@ -1,0 +1,16 @@
+{
+  "description": "The Size Multiplier By Velocity component is used in Photon Dust systems to make particles change size on any given axies based on velocity.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "VelocityMultiplier": "The amount to multiply velocity of a particle by before using it as a multiplier.",
+    "VelocityMask": "Which axies should be included in or excluded from this scaling effect.",
+    "MultiplierClampMin": "the minimum value to clamp the current velocity of a particle to before it is used as a scale multiplier.",
+    "MultiplierClampMax": "the maximum value to clamp the current velocity of a particle to before it is used as a scale multiplier.",
+    "ResultClampMin": "the minimum scale the particle is allowed to be as a final scale.",
+    "ResultClampMax": "the maximum scale the particle is allowed to be as a final scale."
+  },
+  "methods": {},
+  "usage": "Used in particle systems to change particle size by velocity.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SizeMultiplierByVelocity&action=raw"
+}

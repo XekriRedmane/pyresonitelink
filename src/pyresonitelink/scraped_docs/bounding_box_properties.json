@@ -1,8 +1,17 @@
 {
   "description": "The Bounding Box Properties node provides several pieces of information about the input bounding box.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Bounds": "Default is a bounding box with center [0;0;0] and size [0;0;0].",
+    "Min": "The minimum position values for the Bounds along each axis.",
+    "Max": "The maximum position values for the Bounds along each axis.",
+    "Center": "The center point of the Bounds.",
+    "Size": "The size of the Bounds along each axis.",
+    "Valid": "Returns whether the Bounds is a valid bounding box.",
+    "Empty": "Returns whether the Bounds is an empty bounding box."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:BoundingBoxProperties&action=raw"
 }

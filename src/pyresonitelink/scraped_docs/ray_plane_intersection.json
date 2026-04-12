@@ -1,8 +1,15 @@
 {
   "description": "The Ray Plane Intersection node takes in ray paremeters and plane parameters, and finds then returns an intersection at a point.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "RayOrigin": "The starting point of this ray.",
+    "RayDirection": "The direction this ray will aim at.",
+    "PlanePoint": "The plane position.",
+    "PlaneNormal": "The plane normal.",
+    "* ([[Type:float3|float3]])": "Returns the plane intersection value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RayPlaneIntersection&action=raw"
 }

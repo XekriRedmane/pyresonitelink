@@ -1,0 +1,21 @@
+{
+  "description": "The Leg Haptic Point Mapper works as part of the game's robust Haptics system to map haptics points in real life for the leg to the in game legs.",
+  "category": "Input:Haptics",
+  "fields": {
+    "Priority": "The priority of this over other haptic elements",
+    "ShowDebugVisuals": "Enables a sphere visual that lights up when touching haptic zones.",
+    "BoneChain": "The list of slots to distribute the haptic points along for the leg.",
+    "NormalizedStart": "The start of where haptics points should be placed based on a normalized position from 01 along the length of the leg, if all the bones were rotated to be along a straight line.",
+    "NormalizedEnd": "The end of where haptics points should be placed based on a normalized position from 01 along the length of the leg, if all the bones were rotated to be along a straight line.",
+    "Side": "Specifies which controller/hand this component gives haptic data to.",
+    "UpAxis": "The axis on the leg which determines which way is up per bone, which is used to map haptic points from real life to in game.",
+    "ForwardAxis": "The axis on the leg which determines which way is forward per bone, which is used to map haptic points from real life to in game.",
+    "UpperLegRadius": "The radius of the upper leg, where haptics points should be placed on the surface, radii is lerped between the upper leg and knee.",
+    "KneeRadius": "The radius of the knee, where haptics points should be placed on the surface, radii is lerped between the upper leg and knee.",
+    "AnkleRadius": "The radius of the upper leg, where haptics points should be placed on the surface, radii is lerped between the knee and ankle."
+  },
+  "methods": {},
+  "usage": "Used in the robust Haptics system to map haptics points in real life for the leg to the in game legs.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegHapticPointMapper&action=raw"
+}

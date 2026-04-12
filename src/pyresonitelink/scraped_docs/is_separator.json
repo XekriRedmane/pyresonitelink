@@ -1,8 +1,12 @@
 {
   "description": "The Is Separator node takes in a character literal and returns if that character is a separator character.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character literal to check.",
+    "* ([[Type:bool|bool]])": "Returns ``true`` if ``Character`` is a separator, ``false`` otherwise. Separator characters recognized by this node are given the Unicode delegation ``Zl``, ``Zp``, or ``Zs``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsSeparator&action=raw"
 }

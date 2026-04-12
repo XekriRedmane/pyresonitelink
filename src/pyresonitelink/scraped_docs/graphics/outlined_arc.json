@@ -1,0 +1,24 @@
+{
+  "description": "The OutlinedArc component takes in many parameters to create a circular image or design and can be controlled using those parameters. Then this renders onto the UIX.\n\n}}",
+  "category": "UIX:Graphics",
+  "fields": {
+    "Arc": "The amount to arc around the center.",
+    "Offset": "The amount to rotate around the center.",
+    "OuterRadiusRatio": "The outer distance for this arc from the center.",
+    "InnerRadiusRatio": "The inner distance for this arc from the center.",
+    "RoundedCornerRadius": "The amount of how rounded the edges of the arc end points are.",
+    "FillColor": "The inner color (filled in color) of this arc.",
+    "OutlineColor": "The outer color (the outline) of this arc.",
+    "OutlineThickness": "The amount to thicken for the outline.",
+    "Material": "Uses a material for the arc."
+  },
+  "methods": {},
+  "usage": "A user could make fancy effects like a loading circular throbber, or menu buttons that arc around.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* Context menu components"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:OutlinedArc&action=raw"
+}

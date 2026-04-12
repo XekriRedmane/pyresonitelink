@@ -1,0 +1,15 @@
+{
+  "description": "The Cloning Reference Spatial Variable Collector`1 component is part of the Spatial variables system. It works similarly to ReferenceSpatialVariableCollector, but specifically for components. For each component it finds at the point, it will create & maintain a duplicate. It can duplicate either just the component itself or the whole Slot it's on. The duplicates can be made Local only (it's your responsibility to make sure that the target list can reference local elements). It will never clone spatial variables present on the slot.",
+  "category": "Data:Spatial:Samplers",
+  "fields": {
+    "CloneParent": "The slot to parent cloned elements to.",
+    "MakeClonesLocal": "Whether cloned items should be on the local machine rather than networked.",
+    "VariableName": "The name of the variable being sampled.",
+    "Mode": "How to clone elements this samples.",
+    "ReferenceList": "The list of references this component has sampled at the point of the slot it is on."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and bring near a set of Spatial variables to get a list of references. don't forget to add a variable name and reference list.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CloningReferenceSpatialVariableCollector&action=raw"
+}

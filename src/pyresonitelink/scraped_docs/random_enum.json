@@ -1,8 +1,11 @@
 {
   "description": "The Random Enum node returns a random Enum value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* (Pseudo-Generic)": "The random result."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomEnum&action=raw"
 }

@@ -1,8 +1,12 @@
 {
   "description": "Is User Anchored is a ProtoFlux node that checks if the provided User (User) is in an anchor or not.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user to check if they are in an anchor or not.",
+    "* ([[Type:Bool|bool]])": "Whether the provided User (User) is in an anchor or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsUserAnchored&action=raw"
 }

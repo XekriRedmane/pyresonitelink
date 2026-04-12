@@ -1,0 +1,17 @@
+{
+  "description": "The ProtoFluxOperationProxy component is used to allow plugging impulse wires into protoflux visuals.",
+  "category": "Uncategorized",
+  "fields": {
+    "Node": "The protoflux node this is pointing to.",
+    "ElementName": "The name of the input this is targeting.",
+    "IsDynamic": "Whether or not this is dynamic.",
+    "Index": "The index from top to bottom of the node's inputs.",
+    "ConnectPoint": "The point the wire should connect to.",
+    "NodeOperation": "The node operation target (impulse target) this is a connector for.",
+    "IsAsync": "Whether the impulse input type is async."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProtoFluxOperationProxy&action=raw"
+}

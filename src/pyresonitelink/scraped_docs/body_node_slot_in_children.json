@@ -1,8 +1,13 @@
 {
   "description": "Body Node Slot In Children is a ProtoFlux node that checks the parent slots of Source (Slot) for a Biped Rig component, and then reads the BipedRig component for the provided Node (BodyNode). If the node's mapped slot is a child of Source (Slot) it returns that mapped slot.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Source": "The slot to check all of it's children infinitely far down for the provided Node (BodyNode).",
+    "Node": "The node to check Source (Slot)'s children for.",
+    "* ([[Slot]])": "The slot under the provided Source (Slot) that has an assignment to the provided Node (BodyNode)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:BodyNodeSlotInChildren&action=raw"
 }

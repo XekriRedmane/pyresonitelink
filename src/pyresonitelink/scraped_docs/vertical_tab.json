@@ -1,8 +1,11 @@
 {
-  "description": "The Vertical Tab node is a character literal constant for the \"Vertical Tab\" character (Unicode: U+000B).",
+  "description": "The ``Vertical Tab`` node is a character literal constant for the \"Vertical Tab\" character (Unicode: U+000B).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:char|char]])": "The character literal constant of the Vertical Tab character."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:VerticalTab&action=raw"
 }

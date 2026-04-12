@@ -1,0 +1,11 @@
+{
+  "description": "The AvatarObjectPermission component is a Permissions component which determines which avatars users are allowed to equip if the avatar is tagged properly.",
+  "category": "Permissions",
+  "fields": {
+    "Tags": "The list of tags and whether they are white listed or black listed"
+  },
+  "methods": {},
+  "usage": "This permission allows or disallows specific avatars to be used. Tags are used to determine to in-/equipability of such tagged avatars.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarObjectPermissions&action=raw"
+}

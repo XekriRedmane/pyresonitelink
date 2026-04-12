@@ -1,0 +1,16 @@
+{
+  "description": "The TriangeMesh component is used to generate mesh data which is a triangle for use with a MeshRenderer.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Vertex0": "The first vertex point of the triangle.",
+    "Vertex1": "The second vertex point of the triangle.",
+    "Vertex2": "The third vertex point of the triangle.",
+    "AutoNormals": "whether to automatically generate the triangle normals",
+    "AutoTangents": "whether to automatically generate the triangle tangents",
+    "DualSided": "whether to make this visible from the back."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert the component into a MeshRenderer to see what the mesh looks like. Don't forget to add a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TriangleMesh&action=raw"
+}

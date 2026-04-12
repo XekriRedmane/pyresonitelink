@@ -1,0 +1,12 @@
+{
+  "description": "Atlas info is used in the UVAtlasAnimator to provide the animator with information on format of an image that is an atlas of all the frames in an animation.",
+  "category": "Rendering",
+  "fields": {
+    "GridSize": "The size of the grid that the image frames take up on the atlas (Ex: 4 by 8 grid of frames for a max of 32 total frames)",
+    "GridFrames": "The amount of frames on the animation atlas image. If the amount of frames is less than the max (the two ``GridSize`` numbers multiplied together) then it will stop on frame ``GridFrames`` when this component is used by UVAtlasAnimator."
+  },
+  "methods": {},
+  "usage": "When used in conjunction with a TimeIntDriver, and a UVAtlasAnimator this can let you animate for example pixel art images (spritesheets, Atlases, etc)\nAtlasInfo by itself dosen't have much use but when placed on a UVAtlasAnimator which is driving the Scale and Offset fields of a Material it will transform the UV of the material so that only one frame of the Texture is visible at a time\n\nTo automate the change of frames over time, you can use a TimeIntDriver and set the repeat to Frames +1\nRepeat field is [0,x) || [0,x]",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AtlasInfo&action=raw"
+}

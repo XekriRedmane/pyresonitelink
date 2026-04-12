@@ -1,8 +1,14 @@
 {
-  "description": "The Trigger Haptics In Hierarchy node takes in a Slot hierarchy and will send out haptic pulses through it.",
+  "description": "The ``Trigger Haptics In Hierarchy`` node takes in a Slot hierarchy and will send out haptic pulses through it.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to send haptic data to the given hierarchy.",
+    "TargetHierarchy": "The slot hierarchy that specifically looks for your haptic components.",
+    "RelativeIntensity": "How much this will notify the user using haptics.",
+    "Next": "Fires after sending the haptic pulse."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TriggerHapticsInHierarchy&action=raw"
 }

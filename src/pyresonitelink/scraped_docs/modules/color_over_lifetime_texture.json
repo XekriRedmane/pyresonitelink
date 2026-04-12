@@ -1,0 +1,11 @@
+{
+  "description": "The ColorOverLifetimeTexture component samples a texture during life time along the X axis to get the color that a Particle should be.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Texture": "The texture to sample along the X axis based on Lifetime normalized to get a color for particles."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorOverLifetimeTexture&action=raw"
+}

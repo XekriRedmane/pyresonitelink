@@ -1,8 +1,15 @@
 {
   "description": "Remove all children of the provided Instance (Slot).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call to destroy the children slots of Instance (Slot)",
+    "Instance": "The slot to destroy all the children for.",
+    "PreserveAssets": "Whether or not the assets associated with the children of the provided Instance (Slot) should stay or be instantly discarded",
+    "SendDestroyingEvent": "Whether or not to send a destroying event of the children slots to other nodes like On Destroying",
+    "Next": "Sends an Impulse after * (Call) is called and Instance (Slot)'s children has been destroyed. will not fire if Instance (Slot) is null."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DestroySlotChildren&action=raw"
 }

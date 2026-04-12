@@ -1,8 +1,13 @@
 {
-  "description": "The Local Screen Point To World node takes in a normalized screen space (0 to 1 along the user's screen in the X and Y position), and converts it to a position in world space. This node just takes where you are looking plus the distance from the local user and makes a value someplace outward from your camera/screen.",
+  "description": "The Local Screen Point To World node takes in a normalized screen space (``0`` to ``1`` along the user's screen in the X and Y position), and converts it to a position in world space. This node just takes where you are looking plus the distance from the local user and makes a value someplace outward from your camera/screen.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "NormalizedScreenPoint": "The screen point from the user's perspective.",
+    "Distance": "The distance from this local user's view point.",
+    "* ([[Type:float3|float3]])": "Returns the position from the local user's point of view into a position value in world space."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalScreenPointToWorld&action=raw"
 }

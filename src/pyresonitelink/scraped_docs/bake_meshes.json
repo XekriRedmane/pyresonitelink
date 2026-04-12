@@ -1,8 +1,21 @@
 {
-  "description": "Bake Meshes is a ProtoFlux node that takes a slot and combines it's meshes and slots into one slot. Allowing for the optimization of content and allowing for packing together objects. For example, many avatar statue makers use this to create statues out of people's avatars with no functionalities. It's a way to make a statue of your favorite contact on your shelf withouut having to have their 10000 ProtoFlux nodes still on it.",
+  "description": "Bake Meshes is a ProtoFlux node that takes a slot and combines it's meshes and slots into one slot. Allowing for the optimization of content and allowing for packing together objects. For example, many avatar statue makers use this to create statues out of people's avatars with no functionalities. It's a way to make a statue of your favorite contact on your shelf withouut having to have their 10000 ProtoFlux nodes still on it.\n\nAvatar Protections in the hierarchy of any slot you try to bake using this node will cause the bake to fail unless the Local User of the * (AsyncCall) Async call is coming from the user that the avatar protections is assigned to. In the case of avatar protections assigned to different users under the entire hiearchy, the bake will fail regardless. Because if one user tries to bake their protections, the other user's protections will prevent the node from working.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses#ASync|AsyncCall]])": "Call this to start the bake.",
+    "Root": "The slot to bake all of it's content for.",
+    "SkinnedMeshMode": "=== IncludeInactive (bool) ===\n\nInclude meshes and objects that currently aren't visible in the final product.",
+    "DestroyOriginal": "Whether to destroy the Root (Slot) when baked. Bad idea with baking statues for players.",
+    "AssetsSlot": "Where to put the assets?",
+    "GrabbableHandling": "What to do with grabbable components under what you're baking.",
+    "ColliderHandling": "What to do with Colliders under what you're baking.",
+    "Undoable": "Weither the action can be undone via the undo keybind of the user that triggered the node.",
+    "OnBakeStarted": "Called immediately after * (AsyncCall) is called and the bake successfully started.",
+    "OnBaked": "Fires some time after * (AsyncCall) is called and the bake successfully finished.",
+    "BakedRoot": "The result of the bake and all of it's contents will be under this slot minus assets. This will only have a value during the OnBaked (Continuation) impulse."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:BakeMeshes&action=raw"
 }

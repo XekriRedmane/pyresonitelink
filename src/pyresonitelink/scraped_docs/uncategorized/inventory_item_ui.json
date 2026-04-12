@@ -1,0 +1,14 @@
+{
+  "description": "The InventoryItemUI component is used to represent an item or folder in the Inventory.",
+  "category": "Uncategorized",
+  "fields": {
+    "Browser": "The browser this belongs too.",
+    "SelectedColor": "The color of this item when selected.",
+    "SelectedText": "The text of this item when selected.",
+    "NormalColor": "The color of this item when not selected.",
+    "NormalText": "The text of this item when not selected."
+  },
+  "methods": {},
+  "usage": "Not used by the user.",
+  "notes": []
+}

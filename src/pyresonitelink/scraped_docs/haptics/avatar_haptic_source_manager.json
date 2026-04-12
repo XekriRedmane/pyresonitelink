@@ -1,0 +1,11 @@
+{
+  "description": "The AvatarHapticSourceManager component allows you to override the injected haptic points that Resonite puts on fullbody avatars and to specify custom Haptic Volumes on your body.\n\nOverriding your injected haptic points can be useful in situations where your avatar's proportions exaggerate the automatic haptic points that other users feel is too large or too small.\n\nRequires the avatar to be equipped again to turn off the injected haptics.\n\nDespite the component asking for the haptic volume active state, it is suggested to instead use the active state of the haptic collider, this allows the Avatar Haptic Source Manager to disable the colliders on the active user and allow culling behavior. The reason for this is that disabling haptic volumes does not disable the haptics itself.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics",
+  "fields": {
+    "HapticVolumeActiveStates": "Drives the boolean field put in the list to be disabled when noclipping usually"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarHapticSourceManager&action=raw"
+}

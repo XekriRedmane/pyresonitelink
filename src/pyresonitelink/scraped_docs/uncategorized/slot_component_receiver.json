@@ -1,0 +1,11 @@
+{
+  "description": "The SlotComponentReceiver component is used in inspectors to allow for recieving components to copy them into a slot.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The slot to copy into."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SlotComponentReceiver&action=raw"
+}

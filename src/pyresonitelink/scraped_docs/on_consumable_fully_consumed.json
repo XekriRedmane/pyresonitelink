@@ -1,8 +1,11 @@
 {
-  "description": "Triggers on the start of a consumion event",
+  "description": "Listen to events and activate extra affects and behaviors when consuming using Consumable",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnConsumed": "Item is fully consumed. Reached end of list."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnConsumableFullyConsumed&action=raw"
 }

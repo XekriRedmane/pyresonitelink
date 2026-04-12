@@ -1,8 +1,12 @@
 {
   "description": "The Right Hand Position node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the right hand position value of the User.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "UserRoot": "The user's user root.",
+    "* ([[Type:float3|float3]])": "Returns the right hand position value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RightHandPosition&action=raw"
 }

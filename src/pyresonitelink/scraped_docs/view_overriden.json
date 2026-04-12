@@ -1,8 +1,11 @@
 {
-  "description": "The View Overriden node returns if the local user's view output is being overridden by something.",
+  "description": "The View Overriden node returns if the local user's view output is being overridden by something.\n\nWhen in Desktop Mode or, starting Resonite in VR mode and then hot-swapping to Desktop Mode, this node will return as true.\n\nWhen changing your view by using a different head proxy, templated head proxy, or something else that moves your view point (such as the AvatarUserRootOverrideAssigner or AvatarObjectSlot components), this node will return as true.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:bool|bool]])": "Returns if the local user's view output has been overridden by something."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ViewOverriden&action=raw"
 }

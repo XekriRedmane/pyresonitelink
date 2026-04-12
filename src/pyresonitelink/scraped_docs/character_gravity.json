@@ -1,8 +1,13 @@
 {
-  "description": "You can use the actual gravity output of this node to control how gravity works for certain character controllers that need to have different values effect them in different ways (using both the user's transform scale and the component's gravity scale).",
+  "description": "The ``Character Gravity`` node returns a referenced character controller gravity. The gravity output is used when you want the character controller's current gravity it is aiming for when simulating. The actual gravity is what the character controller is simulating now, and can be varied when using it dependiong on the settings on the character controller (specifically the gravity scale field).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character controller reference.",
+    "Gravity": "The current gravity from this character controller that it \"should\" try to simulate.",
+    "Actual Gravity ([[Type:float3|float3]])": "The actual gravity this character controller is simulating."
+  },
   "methods": {},
   "usage": "You can use the actual gravity output of this node to control how gravity works for certain character controllers that need to have different values effect them in different ways (using both the user's transform scale and the component's gravity scale). You can set the simulating user's gravity scale to cubic and have their gravity be effected by their size. Using Linear will keep the gravity the same no matter the size of the user. (Tested on users jumping while changing the gravity scale field in the character controller component).",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CharacterGravity&action=raw"
 }

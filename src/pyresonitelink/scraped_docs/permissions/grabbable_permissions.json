@@ -1,0 +1,13 @@
+{
+  "description": "The GrabbablePermissions component is used to control what roles can pick up what items.",
+  "category": "Permissions",
+  "fields": {
+    "Tags": "A tag filter to filter what tags can or can't be grabbed by the selected roles.",
+    "ValidateTypeListMode": "how to use the ``ValidateTypes`` list for the selected roles.",
+    "ValidateTypes": "A list of C# types that will have ``ValidateTypeListMode`` applied to them."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabbablePermissions&action=raw"
+}

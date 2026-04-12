@@ -1,0 +1,9 @@
+{
+  "description": "The NoDestroyUndo component prevents an Undo step from being created when destroying the slot that the component is attached to.",
+  "category": "Transform:Tagging",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to the root slot that will be destroyed. this will prevent the slot from being brought back through undoing after it is destroyed.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NoDestroyUndo&action=raw"
+}

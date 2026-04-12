@@ -1,0 +1,15 @@
+{
+  "description": "The LegacySegmentCircleProgress component was used to handle progress bars on arc circles. Was used in loading progress bars.",
+  "category": "Uncategorized",
+  "fields": {
+    "Stage": "The stage in loading the progress bar is at.",
+    "_progressText": "The progress text indicator visual used to indicate the current progress.",
+    "_detailText": "The detail text indicator visual used to indicate the current progress details.",
+    "_material": "The material used in the visual.",
+    "_tint": "The field to drive with the progress bar tint."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user. Used in legacy content.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacySegmentCircleProgress&action=raw"
+}

@@ -1,0 +1,16 @@
+{
+  "description": "The Static Gaussian Splat component stores data for the Gaussian Splat asset itself.",
+  "category": "Assets",
+  "fields": {
+    "URL": "The location of the Gaussian Splat data."
+  },
+  "methods": {
+    "ClipWithBoundingBox": "Cuts the Gaussian splat using a bounding box with rotation argument.",
+    "ClipWithSphere": "Cuts the Gaussian splat using a sphere argument.",
+    "ColorByIndex": "Colors the Gaussian splat by index.",
+    "ReoderMorton": "Reorders the splats using morton ordering. Which means any splats that are spatially near each other will also be near each other in the data indexes."
+  },
+  "usage": "Used in Gaussian splat rendering components such as the GaussianSplatRenderer component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StaticGaussianSplat&action=raw"
+}

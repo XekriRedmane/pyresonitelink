@@ -1,0 +1,12 @@
+{
+  "description": "The ButtonDestroy component destroys the Target IDestroyable on IButton interaction, such as a slot.\n\n}}",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "Target": "The destroyable slot target.",
+    "FindObjectRoot": "When this is interacted, this component will take the target and go up in the hierarchy and look for the first object root slot, then destroys it."
+  },
+  "methods": {},
+  "usage": "This can be used in projects that need things destroyed by a button press.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonDestroy&action=raw"
+}

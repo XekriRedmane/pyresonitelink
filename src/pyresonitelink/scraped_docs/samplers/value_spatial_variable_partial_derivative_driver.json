@@ -1,0 +1,17 @@
+{
+  "description": "The Value Spatial Variable Driver`1 component samples from Spatial variables intersecting the slot it is on and gets a value.",
+  "category": "Data:Spatial:Samplers",
+  "fields": {
+    "DriveX": "Field X to drive with the sampled variable.",
+    "DriveY": "Field Y to drive with the sampled variable.",
+    "DriveZ": "Field Z to drive with the sampled variable.",
+    "VariableName": "the name of the variable to be sampling for.",
+    "Mode": "How to interpret the sampled values.",
+    "DefaultValue": "The value to default to when no value can be sampled.",
+    "computeInLocalSpace": "If the sampling distance will be scaled to the slots scale or revert to global 1,1,1 scale"
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a fields to drive and a variable name. the slot this component is on acts as the position for sampling variable values and do some math.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueSpatialVariablePartialDerivativeDriver&action=raw"
+}

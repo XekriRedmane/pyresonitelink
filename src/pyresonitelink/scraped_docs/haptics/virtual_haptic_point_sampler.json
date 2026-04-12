@@ -1,0 +1,17 @@
+{
+  "description": "Virtual Haptic Point sampler is a component that is used as a way of picking up haptic sensations from the virtual environment inside Resonite, without needing a haptic device. This can be used as a way of making a device that beeps as it detects vibrations, temperature, pain, and force. It can also be used as a way of relaying vibration sensations via API to vibration devices not supported by Resonite, like speakers with base.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics",
+  "fields": {
+    "Radius": "The radius of the sphere for this.",
+    "ShowDebugVisual": "Whether to show the debug visual for this sampler.",
+    "_debugVisual": "the material on the sphere of the current generated debug visual. Is null when ``ShowDebugVisual`` is false.",
+    "Force": "The force sensations picked up by this haptic point sampler.",
+    "Pain": "The pain sensations picked up by this haptic point sampler.",
+    "Temperature": "The temperature sensations picked up by this haptic point sampler.",
+    "Vibration": "the vibration sensations picked up by this haptic point sampler."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VirtualHapticPointSampler&action=raw"
+}

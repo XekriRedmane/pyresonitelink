@@ -1,0 +1,18 @@
+{
+  "description": "Can be found under each user's User root slot, the HapticManager controls the locally injected haptics for everyone in the session besides yourself if this component is found underneath your own user root slot.\n\nThe HapticManager also allows you to locally see the debug visuals of each user in the form of green transparent shapes. However you need to check ShowDebugVisuals then hit Rebuild Injected Sources to see this change reflected, do the inverse to remove the debug visuals.",
+  "category": "Uncategorized",
+  "fields": {
+    "InjectedBodyPartIntensity": "Adjusts the haptic intensity of bodyparts that aren't the head and hands.",
+    "InjectedHandIntensity": "Adjusts the haptic intensity of the hands.",
+    "InjectedHeadIntensity": "Adjusts the haptic intensity of the head.",
+    "InjectedRadiusStartRatio": "Adjusts the start radius of all injected haptics.",
+    "InjectedRadiusPower": "Adjusts the overall radius of all injected haptics.",
+    "ShowDebugVisuals": "Locally shows injected haptics for each user, Rebuild Injected Sources needs to be checked for this to work."
+  },
+  "methods": {
+    "OnRebuild": "Recreates all the samplers on the user for haptic devices."
+  },
+  "usage": "Note this component functions locally and does not affect injected haptics on your own avatar, to do that you need to use the AvatarHapticSourceManager to override the injected behavior for your own avatar. If found on other user root slots other than yourself, this component does nothing and won't do any changes.\n\nHapticManger can be used to debug weird haptic collisions from other users in the session, or possibly help with the issues where there is \"stuck\" haptics from touching injected haptic zones by rebuilding the haptic zones.\n\nWith the help of the ShowDebugVisuals you can see the haptic culling behavior if you step away from another user far enough.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HapticManager&action=raw"
+}

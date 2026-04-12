@@ -1,8 +1,27 @@
 {
-  "description": "This node provides Twitch chat message information from a TwitchInterface.",
+  "description": "This node provides Twitch chat message information from a TwitchInterface. \n\nNote that all outputs are generated on a new Twitch chat message, and will not display any information when connected to a display node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnMessage": "Fires on receiving a new Twitch chat message.",
+    "Message": "Outputs the contents of the message as a text string.",
+    "UserId": "Outputs the Twitch Channel ID of the message sender.",
+    "DisplayName": "Outputs the Twitch username of the message sender.",
+    "Color": "Outputs the Twitch chat color of the message sender.",
+    "IsHighlighted": "Shows if the chat message is highlighted.",
+    "IsSubscriber": "Shows if the chat message sender is subscribed to the Twitch channel.",
+    "IsModerator": "Shows if the chat message sender is a moderator of the Twitch channel.",
+    "IsBroadcaster": "Shows if the chat message sender is from the Twitch channel, or broadcaster.",
+    "IsTurbo": "Shows if the chat message sender is subscribed to Twitch Turbo.",
+    "IsVIP": "Shows if the chat message sender is a VIP in the Twitch channel.",
+    "CheerBadge": "Shows the current cheer chat badge of the chat message sender.",
+    "CheerAmount": "Shows the cheer amount if the chat message includes any bits.",
+    "Bits": "Shows the bit amount if the chat message includes any.",
+    "BitsDollars": "Shows the bit amount in USD (United States Dollars), as a double value.",
+    "SubscribedMonthCount": "Shows the amount of months the chat message sender is subscribed to the channel.",
+    "CustomRewardId": "If the chat message was sent with a custom reward redeem, shows the ID of the custom reward.\nThis will only output the custom reward ID if the redeem has the \"Require Viewer to Enter Text\" option enabled."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TwitchChatMessageEvent&action=raw"
 }

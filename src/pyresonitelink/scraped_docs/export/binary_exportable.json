@@ -1,0 +1,11 @@
+{
+  "description": "The BinaryExportable component takes in a Binary asset and allows the Slot to be exportable as a binary file on your device.\n\nThis is more of an uncommon way to export your files, but there are a couple of uses that are useful to know.\n\nTo export using this component, look at the file browser export section.",
+  "category": "Assets:Export",
+  "fields": {
+    "Binary": "The binary to be exported."
+  },
+  "methods": {},
+  "usage": "Using this component with the StaticBinary component, allows the user to export a binary file with a provided url.\n\nKeep in mind that exporting a binary file is one-way currently in Resonite (especially if you are thinking about local storage), this is due to the fact that Resonite uses the ``.bin`` as files that it does not recognize. So importing from a binary raw file is not doable.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BinaryExportable&action=raw"
+}

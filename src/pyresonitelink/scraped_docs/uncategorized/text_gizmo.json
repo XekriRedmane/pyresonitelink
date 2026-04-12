@@ -1,0 +1,16 @@
+{
+  "description": "The TextGizmo component is commonly found on newly spawned text elements and is used to quickly edit the text of a spawned text element. This component and it's visuals delete themselves after the user selects the text element using a development tip or inspector.",
+  "category": "Uncategorized",
+  "fields": {
+    "_target": "The text renderer to edit the text of.",
+    "_editor": "The text editor Component that targets ``_target`` for its editing.",
+    "_editIconPosition": "The position field of the start editing icon.",
+    "_editIconScale": "The scale field of the start editing icon."
+  },
+  "methods": {
+    "EditTouched": "Is called when the user wants to start editing ``_target`` via using this gizmo."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextGizmo&action=raw"
+}

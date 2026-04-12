@@ -1,8 +1,14 @@
 {
-  "description": "The Is Child Of node determines if the Instance slot is a descendant of the Other slot. This check is recursive.",
+  "description": "The Is Child Of node determines if the ``Instance`` slot is a descendant of the ``Other`` slot. This check is recursive.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot to test.",
+    "Other": "The potential parent slot of ``Instance``.",
+    "IncludingSelf": "If ``True``, the node will return ``True`` if ``Instance`` is the same slot as ``Other``. Otherwise, the node will return ``False`` in this case.",
+    "* ([[Types:Bool|bool]])": "Returns ``True`` if ``Instance`` is a descendant of the ``Other`` slot. Otherwise, returns ``False``"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsChildOf&action=raw"
 }

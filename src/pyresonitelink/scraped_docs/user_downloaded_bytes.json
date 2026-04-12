@@ -1,8 +1,12 @@
 {
-  "description": "The User Downloaded Bytes node returns a user's total downloaded bytes.",
+  "description": "The ``User Downloaded Bytes`` node returns a user's total downloaded bytes.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:ulong|ulong]])": "The total downloaded bytes of the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserDownloadedBytes&action=raw"
 }

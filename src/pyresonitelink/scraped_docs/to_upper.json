@@ -1,13 +1,16 @@
 {
   "description": "The ToUpper node takes in a character or string and outputs it as uppercase. This node takes into account the local user's CultureInfo.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* (Generic)": "The character or string to make uppercase."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "See also",
-      "text": "* ToLower to turn strings or characters lowercase.\n* Microsoft documentation for the ``String.ToUpper() method``, which is used internally.\n\nProtoFlux:Strings:Characters\nProtoFlux:Strings:Formatting"
+      "text": "* ToLower to turn strings or characters lowercase.\n* Microsoft documentation for the ``String.ToUpper() method``, which is used internally."
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ToUpper&action=raw"
 }

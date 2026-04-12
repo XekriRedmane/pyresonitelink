@@ -1,0 +1,23 @@
+{
+  "description": "The LegacyProgressBar component was used in old progress bars for importing items or for cloud storage indicators. This should not be used for new content and should be removed when possible.",
+  "category": "UI:Physical",
+  "fields": {
+    "Progress": "How close the item is to being imported.",
+    "BarColorField": "The color of the loading bar.",
+    "ContainerColorField": "The color of the container of the loading bar.",
+    "WidthField": "The width of the UI.",
+    "HeightField": "The height of the UI.",
+    "ThicknessField": "The thickness of the UI.",
+    "SlantField": "How beveled the UI edges are.",
+    "_barMesh": "The mesh used for the progress bar.",
+    "_containerMesh": "The mesh used for the UI container.",
+    "_barMaterial": "The material used for the progress bar.",
+    "_containerMaterial": "The material used for the UI container.",
+    "_barPosition": "The position field of the bar.",
+    "_colliderSize": "The field of the collider size for the UI."
+  },
+  "methods": {},
+  "usage": "Just dont.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyProgressBar&action=raw"
+}

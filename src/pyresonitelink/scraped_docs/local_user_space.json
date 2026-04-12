@@ -1,8 +1,11 @@
 {
-  "description": "The Local User Space node returns the parent slot of the user root slot of the local user.",
+  "description": "The ``Local User Space`` node returns the parent slot of the user root slot of the local user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Slot]])": "The parent of the user root slot."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalUserSpace&action=raw"
 }

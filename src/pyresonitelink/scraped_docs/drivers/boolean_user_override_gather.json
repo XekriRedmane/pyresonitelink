@@ -1,0 +1,30 @@
+{
+  "description": "The BooleanUserOverrideGather Component allows storing Boolean \"override\" values for each user listed under ``_overrides`` and driving the ``Target`` field. The behavior is similar to ValueUserOverride&lt;Bool&gt;, except this component also reports aggregate information about the overrides.\n\n}}",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Default": "The default value given to ``Target`` if no suitable override exists in ``_overrides``.",
+    "CreateOverrideOnWrite": "Whether an entry in ``_overrides`` should be created when ``Target`` is written back.",
+    "PersistentOverrides": "Whether values in ``_overrides`` should persist when the component is saved.",
+    "_overrides": "A Bag of the Boolean Overrides and the corresponding UserRef they apply to.",
+    "Target": "Reference to the field that gets driven to the override value.",
+    "Any": "Reports ``true`` when any user in the session would have their override be ``true`` (either from the default value or an override).",
+    "All": "Reports ``true`` when all users in the session would have their override be ``true`` (either from the default value or an override).",
+    "None": "Reports ``true`` when none of the users in the session would have their override be ``true`` (either from the default value or an override).",
+    "TrueCount": "Reports the total count of ``true`` values for all users in the session.",
+    "FalseCount": "Reports the total count of ``false`` values for all users in the session.",
+    "ExcludeHeadless": "Whether to exclude a headless user when doing aggregates and overrides."
+  },
+  "methods": {},
+  "usage": "Note that the reporting fields (Any, All, None, TrueCount and FalseCount) count only the values for users in the sessions (including away users and headless servers), but not all the values in the ``_overrides`` list.",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "The ``_overrides`` bag contains a list of users and their associated Boolean values - whenever the local user matches a user entry in the bag, the associated value is driven to ``Target``. Otherwise, ``Target`` is driven to the value in ``Default``.\n\n``CreateOverrideOnWrite`` allows for new users and values to be added to the bag when the driven value in ``Target`` is directly or indirectly changed by that user. If it is not enabled, the value in ``Target`` is not changeable unless the override is added or changed manually from the inspector panel.\n\nAttempting to write to or otherwise cause a discrete entry to a driven field is known as Hooking it. Any Hook to the ``Target`` value is intercepted by the BooleanUserOverrideGather Component and will change the modifying user's entry in the ``_overrides`` bag. If there is no entry for the user and if ``CreateOverrideOnWrite`` is enabled, it will create an entry using the set value."
+    },
+    {
+      "title": "Related Components",
+      "text": "* ValueUserOverride\n* NumericUserOverrideGather"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BooleanUserOverrideGather&action=raw"
+}

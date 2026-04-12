@@ -1,0 +1,15 @@
+{
+  "description": "The HeadHapticPointMapper component handles mapping haptic points around and to the head area of a user.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics",
+  "fields": {
+    "Priority": "The priority of this Mapper over other mappers.",
+    "ShowDebugVisuals": "Whether to show the area visual of the Mapper and the different haptics mapped to it.",
+    "HeadSize": "How big the head is.",
+    "HeadCenter": "The center offset of the head area compared to the slot this component is on (the head slot)",
+    "_debugVisual": "The root slot of the current Debug visual."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HeadHapticPointMapper&action=raw"
+}

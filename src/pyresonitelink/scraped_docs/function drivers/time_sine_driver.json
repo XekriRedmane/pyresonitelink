@@ -1,0 +1,14 @@
+{
+  "description": "The TimeSineDriver component outputs a value over time that matches a Sine Wave of the provided values.",
+  "category": "Transform:Function Drivers",
+  "fields": {
+    "Target": "The field to drive with a constantly changing Sine wave.",
+    "Speed": "The frequency/speed of the Sine Wave waves.",
+    "Min": "The minimum value to drive ``Target`` to.",
+    "Max": "The maximum value to drive ``Target`` to."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a ``Target`` for it to start working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TimeSineDriver&action=raw"
+}

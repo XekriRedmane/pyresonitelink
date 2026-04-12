@@ -1,0 +1,13 @@
+{
+  "description": "The KeyboardLookSettings component is part of the Settings menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "LookEnabled": "Whether keyboard look is enabled.",
+    "HorizontalSpeed": "The speed of the keyboard looking on the horizontal axis.",
+    "VerticalSpeed": "The speed of the keyboard looking on the vertical axis."
+  },
+  "methods": {},
+  "usage": "Not used by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:KeyboardLookSettings&action=raw"
+}

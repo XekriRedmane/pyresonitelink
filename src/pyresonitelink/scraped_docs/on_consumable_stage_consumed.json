@@ -1,8 +1,12 @@
 {
-  "description": "Triggers on the start of a consumion event",
+  "description": "Listen to events and activate extra affects and behaviors when consuming using Consumable",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnConsumed": "Sends an impulse when stage is complete",
+    "ConsumedStageIndex": "What stage we are at. Taken from the List in Component:Consumable"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnConsumableStageConsumed&action=raw"
 }

@@ -1,0 +1,20 @@
+{
+  "description": "See Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "PositioningMode": "how the camera should position itself.",
+    "FieldOfView": "How wide the view angle is.",
+    "AnglePosition": "tilt of the camera side to side",
+    "Distance": "How far away to stay from a subject during auto tracking.",
+    "HeightOffset": "How much offset to add to targeting a user's head vertically.",
+    "FirstPersonPitch": "The first person rotation transform pitch.",
+    "FirstPersonRoll": "The first person rotation transform roll.",
+    "FirstPersonOffset": "The offset forward or backwards in first person.",
+    "FramingViewportPosition": "Where to frame the target object in the viewport of the camera rather than the center of the image.",
+    "AimInFrontOfHead": "Aim at a spot a little in front of the user's head."
+  },
+  "methods": {},
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraFramingSettings&action=raw"
+}

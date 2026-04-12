@@ -1,0 +1,14 @@
+{
+  "description": "The ``Touchable Events`` node takes in a global Event Source reference and will listen for events from that global reference. When it detects something happening, it will fire events depending on what happens, along with other data.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "ButtonEvents"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TouchableEvents&action=raw"
+}

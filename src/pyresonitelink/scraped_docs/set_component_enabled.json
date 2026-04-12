@@ -1,8 +1,14 @@
 {
   "description": "Get Component Enabled is a ProtoFlux node Takes an IComponent and gets if it's enabled or not.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Impulse this to set Component (IComponent)'s enabled field to State (bool).",
+    "Component": "The IComponent to set the enabled field for.",
+    "State": "Whether to turn the Component (IComponent)'s enabled field to true or false.",
+    "Next": "Fires after * (Call) is called and the Component (IComponent)'s enabled field is set to State (bool)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetComponentEnabled&action=raw"
 }

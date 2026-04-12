@@ -1,0 +1,15 @@
+{
+  "description": "The Wiggler component is used to make a FloatQ rotate randomly. Usually used on a slot's rotation.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "_target": "The field to wiggle.",
+    "_offset": "The base value to \"add\" to when rotating.",
+    "_speed": "How fast to wiggle on each axis.",
+    "_magnitude": "How much to wiggle on each axis",
+    "_seed": "the seed for the randomness of the wiggle."
+  },
+  "methods": {},
+  "usage": "Used in tails, flags, antennas, and much more random wobbly rotating things.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Wiggler&action=raw"
+}

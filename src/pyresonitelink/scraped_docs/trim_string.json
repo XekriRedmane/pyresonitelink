@@ -1,8 +1,12 @@
 {
   "description": "Trim String is a ProtoFlux node that trims a string according to the microsoft implmentation Trim String which removes any white space at the beginning or end of the string including any extra special invisible control characters.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The string to trim.",
+    "* ([[Type:String|String]])": "A (String) that is trimmed according to the microsoft implmentation Trim String."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TrimString&action=raw"
 }

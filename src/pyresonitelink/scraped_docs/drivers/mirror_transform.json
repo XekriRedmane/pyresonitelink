@@ -1,0 +1,17 @@
+{
+  "description": "The Mirror Transform drives the position of the slot to mirror the position of an inputted slot across the normal of a plane.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "MirrorSource": "The slot to get the mirror data from.",
+    "MirrorPlane": "The slot to use as the position to mirror across.",
+    "MirrorOffset": "An offset from the ``MirrorPlane`` to mirror across.",
+    "MirrorNormal": "The direction to mirror from.",
+    "AllowWriteBack": "Whether to allow changing the target fields of ``_position`` or ``_rotation`` to change the position and rotation of ``MirrorSource``.",
+    "_position": "The position field to drive with the mirrored mirror data. Usually the Position field of the slot this component is on.",
+    "_rotation": "The rotation field to drive with the mirrored mirror data. Usually the Rotation field of the slot this component is on."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide ``MirrorSource``, ``MirrorPlane``, and ``MirrorNormal`` for this component to start working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MirrorTransform&action=raw"
+}

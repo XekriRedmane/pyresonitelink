@@ -1,0 +1,11 @@
+{
+  "description": "The MaterialRelay component is used to specify to a Material Tool when hitting a slot tagged with this component what materials to grab/apply to when using the tool.",
+  "category": "Assets:Tagging",
+  "fields": {
+    "MaterialRefs": "A list of material storage fields that a material tool when applying should apply to. The first non null item in the list is the one a material tool will pick up when using the secondary action."
+  },
+  "methods": {},
+  "usage": "Attach to the root of an object and provide a list of material storage fields from, for example, MeshRenderer or SkinnedMeshRenderer to make Relays for.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MaterialRelay&action=raw"
+}

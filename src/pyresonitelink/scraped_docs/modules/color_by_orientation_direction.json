@@ -1,0 +1,14 @@
+{
+  "description": "The ColorByOrientationDirection component is used to make particles change color depending on their dot product of their orientation to a reference orientation. Dot product essentially means how close in terms of angle is one direction to another. The colors when in-between are lerped.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "ReferenceDirection": "The direction in local space that is being used as a reference.",
+    "AlignedColor": "The color to use if the particle's orientation is exactly the same direction as ``ReferenceDirection``.",
+    "OrthogonalColor": "The color to use if the particle's orientation is exactly 90 degrees to ``ReferenceDirection``. This 90 degrees falls onto any particle direction that is along the surface of a plane facing the same direction as ``ReferenceDirection``.",
+    "OppositeColor": "The color if the particle's orientation is exactly opposite of ``ReferenceDirection``."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorByOrientationDirection&action=raw"
+}

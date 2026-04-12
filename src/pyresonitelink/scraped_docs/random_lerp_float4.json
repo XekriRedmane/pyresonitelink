@@ -1,8 +1,13 @@
 {
   "description": "The Random Lerp Float4 node takes in a min and max value and returns a random float4 value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Min": "The minimum this random value can be (exclusive). The default is ``0, 0, 0, 0``.",
+    "Max": "The maximum this random value can be (exclusive). The default is ``1, 1, 1, 1``.",
+    "* ([[Type:float4|float4]])": "The random result."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomLerpFloat4&action=raw"
 }

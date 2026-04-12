@@ -1,0 +1,22 @@
+{
+  "description": "The BrowserCreateDirectoryDialogue component is used mainly in the inventory screen when creating a new directory in the inventory.",
+  "category": "With Nested Types",
+  "fields": {
+    "_browser": "The source browser Component.",
+    "_callback": "A sync delegate to call when the Create Folder dialogue is confirmed.",
+    "_text": "The text for the Create Directory dialouge box.",
+    "_textField": "The text field that is the name of the new directory."
+  },
+  "methods": {
+    "Create": "Handles creating a directory in the current directory.",
+    "Cancel": "Handles canceling creating a directory."
+  },
+  "usage": "Used internally. Don't use it. :)",
+  "notes": [
+    {
+      "title": "CreateHandler",
+      "text": "A sync delegate that takes a name and an \"out string message\" and modifies the message coming in. Returns a boolean."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BrowserCreateDirectoryDialog&action=raw"
+}

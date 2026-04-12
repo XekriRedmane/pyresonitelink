@@ -1,8 +1,18 @@
 {
-  "description": "The Write Text To File node allows you to write files to your device, given if there is a path and proper permissions.",
+  "description": "The ``Write Text To File`` node allows you to write files to your device, given if there is a path and proper permissions.\n\nCurrently at this time, this node is experimental, and thus cannot be used normally without making the world private, setting it to unsafe mode, and then running the node. Please note that making the world in unsafe mode does not allow other users to join under any circumstances.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|IAsyncOperation]])": "Calls from an impulse to write a file on the user's computer.",
+    "String": "The contents for this file.",
+    "FilePath": "The path where the file should be saved/written to.",
+    "Append": "Should add on to the file when writting to it.",
+    "NewLine": "Should make a new line when adding to this file.",
+    "OnWriteStarted": "Fires when the file writing process has started.",
+    "OnWriteFinished": "Fires when the file is written successfully.",
+    "OnWriteFail": "Fires when there is no file to write to or the user did not give/have permission to write a file there."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WriteTextToFile&action=raw"
 }

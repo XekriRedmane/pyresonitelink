@@ -1,8 +1,13 @@
 {
-  "description": "An impulse multiplexer is a ProtoFlux node that takes a * (Call) and an Index (int) and outputs the impulse to a Impulses (Continuation) output with the provided index. This node could commonly be called a switch, switchboard, router, or an impulse array.",
+  "description": "An impulse multiplexer is a ProtoFlux node that takes a * (Call) and an Index (int) and outputs the impulse to a Impulses (Continuation) output with the provided index.\nThis node could commonly be called a switch, switchboard, router, or an impulse array.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Tell this node to send an impulse out an Impulses (Continuation) output with the provided Index (int)",
+    "Index": "Index of the Impulses (Continuation) output to send an impulse out of.",
+    "Impulses": "Sends an impulse out of one of these with the index provided by Index (int) when * (Call) is called"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ImpulseMultiplexer&action=raw"
 }

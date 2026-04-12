@@ -1,0 +1,14 @@
+{
+  "description": "The AudioDeviceIndexFinder component only works in user space, and is used to find an audio device by name.",
+  "category": "Audio:Utility",
+  "fields": {
+    "DeviceIndex": "The device index if found",
+    "DeviceName": "the name to use when looking for a device",
+    "CaseSensitive": "Whether the matching with ``DeviceName`` is case sensitive",
+    "AllowPartialMatch": "Whether the matching with ``DeviceName`` allows a partial match."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioDeviceIndexFinder&action=raw"
+}

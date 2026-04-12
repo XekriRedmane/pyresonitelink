@@ -1,8 +1,12 @@
 {
   "description": "On Activated is a ProtoFlux node that sends an impulse out of Trigger whenever the node's hierarchy is enabled.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnlyHost": "Checks the event on the host rather than on everyone.",
+    "Trigger": "Sends an Impulse when the node's hierarchy is enabled."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnActivated&action=raw"
 }

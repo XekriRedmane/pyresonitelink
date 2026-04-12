@@ -1,8 +1,16 @@
 {
-  "description": "This node provides Twitch raid information from a TwitchInterface.",
+  "description": "This node provides Twitch raid information from a TwitchInterface. \n\nNote that all outputs are generated on a new Twitch raid event, and will not display any information when connected to a display node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnRaid": "Fires on receiving a new Twitch raid.",
+    "UserId": "Outputs the Twitch Channel ID of the raider.",
+    "DisplayName": "Outputs the Twitch username of the raider.",
+    "Color": "Outputs the Twitch chat color of the raider.",
+    "ViewerCount": "Shows the amount of viewers who are raiding with the raider.",
+    "IsSubscriber": "Shows if the raider is subscribed to the Twitch channel."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TwitchRaidEvent&action=raw"
 }

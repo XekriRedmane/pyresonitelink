@@ -1,0 +1,18 @@
+{
+  "description": "The LegacyRadio component was used in old UI mainly in export and import dialogues. This component should not be used in new content and replaced whenever possible.",
+  "category": "UI:Physical",
+  "fields": {
+    "Radius": "The radius of this option sphere.",
+    "Color": "The color of the option.",
+    "Selected": "Whether this option is selected.",
+    "_colliderRadius": "The field to drive for the radius of the collider so it matches the visual.",
+    "_icosphere": "The ico sphere mesh used to make the option click able visual.",
+    "_material": "The material used for this component's visual.",
+    "_group": "The manager for this component as a part of a group of radio options.",
+    "_orderNumber": "Which option in the list this is."
+  },
+  "methods": {},
+  "usage": "Just dont.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyRadio&action=raw"
+}

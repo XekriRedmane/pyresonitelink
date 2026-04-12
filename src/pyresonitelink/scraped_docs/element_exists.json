@@ -1,8 +1,12 @@
 {
-  "description": "The Element Exists node takes in a world element and returns if that element exists in the world currently. This node will not update in the way you think it does, due to the fact that destroying slots in a world does not remove them immediately, instead they are still referenced in the Assets Slot waiting to be garbage collected (and will still say true). Once that slot has been garbage collected, the reference will be removed and this node will say false.",
+  "description": "The ``Element Exists`` node takes in a world element and returns if that element exists in the world currently. This node will not update in the way you think it does, due to the fact that destroying slots in a world does not remove them immediately, instead they are still referenced in the Assets Slot waiting to be garbage collected (and will still say ``true``). Once that slot has been garbage collected, the reference will be removed and this node will say ``false``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Element": "The world element in question.",
+    "* ([[Type:bool|bool]])": "Returns if this element exists in this world."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ElementExists&action=raw"
 }

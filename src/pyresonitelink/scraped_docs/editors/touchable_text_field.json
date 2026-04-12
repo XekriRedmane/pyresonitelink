@@ -1,0 +1,13 @@
+{
+  "description": "The TouchableTextField component, similar to a TextField for UIX, this component when combined with a TextEditor on the same slot, will allow any text in the world to be clicked on to make it become editable.\n\nThis allows the text to be edited in both directions: In the component and in the world directly.",
+  "category": "Common UI:Editors",
+  "fields": {
+    "TextEditor": "The TextField to allow for bi-directional editing.",
+    "EditModeOnly": "Allows for the user to only edit this text in Edit Mode.",
+    "ActiveUserRootOnly": "Allows to only be editable when under the active user."
+  },
+  "methods": {},
+  "usage": "Great for when you don't want to be bound by UIX to make editable texts.\n\nIf the text is not responding or is not editing properly, try adding the BoxCollider component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TouchableTextField&action=raw"
+}

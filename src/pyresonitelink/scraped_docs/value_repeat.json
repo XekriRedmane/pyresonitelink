@@ -1,8 +1,13 @@
 {
-  "description": "The Value Repeat node takes in the number value and the expected length range, then returns a value of the expected placement of that number. This is similar to the Value Mod node.",
+  "description": "The ``Value Repeat`` node takes in the number value and the expected length range, then returns a value of the expected placement of that number. This is similar to the Value Mod node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "N": "The number value we are checking.",
+    "Length": "The expected range for our number to be in. If the number we gave rolls over, it will wrap around this length.",
+    "* (Pseudo-Generic)": "The result of the repeated value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueRepeat&action=raw"
 }

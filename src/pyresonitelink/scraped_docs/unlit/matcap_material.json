@@ -1,0 +1,9 @@
+{
+  "description": "The MatcapMaterial component is used to make fake reflections on a surface using a matcap texture.",
+  "category": "Assets:Materials:Unlit",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot and put into a MeshRenderer or SkinnedMeshRenderer with a mesh to see what the material looks like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MatcapMaterial&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "MediaMetadataOptOut": "Requests for the user to opt out of being in media metadata like photos or microphone recordings when they are captured in world.",
+    "HideInScreenshots": "Requests the user be not rendered in photos when they are taken in world, including world preview thumbnails.",
+    "StripImageFileMetadata": "Strips the metadata from images that the user themselves brings into a scene."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MediaPrivacySettings&action=raw"
+}

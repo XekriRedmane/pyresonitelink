@@ -1,8 +1,12 @@
 {
-  "description": "The Tool Events node takes in a referenced ITool, and fires events if the tool is equipped or dequipped from the user.",
+  "description": "The ``Tool Events`` node takes in a referenced ITool, and fires events if the tool is equipped or dequipped from the user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Equipped": "Fires when the tool is equipped.",
+    "Dequipped": "Fires when the tool is dequipped."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ToolEvents&action=raw"
 }

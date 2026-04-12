@@ -1,8 +1,11 @@
 {
-  "description": "The QuarterPi or π/4 node outputs the mathematical constant π divided by 4.",
+  "description": "The QuarterPi or \u03c0/4 node outputs the mathematical constant \u03c0 divided by 4.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:Float|float]])": "The value of \u03c0 \u00f7 4, approximately ``0.7853982``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:QuarterPi&action=raw"
 }

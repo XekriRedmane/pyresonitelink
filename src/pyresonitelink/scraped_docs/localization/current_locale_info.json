@@ -1,0 +1,14 @@
+{
+  "description": "The CurrentLocaleInfo component gives localized values of the user's current locale.",
+  "category": "Localization",
+  "fields": {
+    "LocaleCode": "The code of the culture of the current locale.",
+    "LanguageCode": "The code of the language of the current locale.",
+    "NativeLocaleName": "The name of the current locale in native language (Ex: \"Espa\u00f1ol\")",
+    "EnglishLocaleName": "The name of the current locale in english (Ex: \"Spanish\")"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CurrentLocaleInfo&action=raw"
+}

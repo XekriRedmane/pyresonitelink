@@ -1,0 +1,14 @@
+{
+  "description": "The AxisMultiViewportPanner component toggles through UIX element's active state, min and max of the RectTransform's anchor. This allows a user to make \"pages\" in UIX.\n\n}}",
+  "category": "With Nested Enums",
+  "fields": {
+    "ViewportIndex": "The current focused viewport UIX element.",
+    "AnimationTime": "The time it takes to pan across to get to the selected viewport index.",
+    "Direction": "The direction this animates to get to the selected viewport index.",
+    "Viewports": "The list of UIX element viewports to pan to."
+  },
+  "methods": {},
+  "usage": "This is useful if you want to make a slideshow, tab pages for UIX, or anything that you want to have pan across for multiple pages in your design.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AxisMultiViewportPanner&action=raw"
+}

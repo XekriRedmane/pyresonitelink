@@ -1,0 +1,12 @@
+{
+  "description": "The Reflection Probe Metadata component provides raw data about a reflection probe, which can often be seen at the bottom of the source component. this exposes them as actual values.",
+  "category": "Rendering:Metadata",
+  "fields": {
+    "Probe": "The probe to read data from.",
+    "OnChangesRenderCount": "The amount of times the probe has had to re-render the enviroment due to changes from it's internal OnChanges list changing."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReflectionProbeMetadata&action=raw"
+}

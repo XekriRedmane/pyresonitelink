@@ -1,0 +1,11 @@
+{
+  "description": "The SelfFootstepEventRelay can be put on a user's feet to recieve foot step events and send them to other slots.",
+  "category": "Locomotion:Footsteps",
+  "fields": {
+    "Target": "The slot to relay foot step events to."
+  },
+  "methods": {},
+  "usage": "Used to recieve and relay foot step events.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SelfFootstepEventRelay&action=raw"
+}

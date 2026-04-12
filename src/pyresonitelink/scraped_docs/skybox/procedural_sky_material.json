@@ -1,0 +1,9 @@
+{
+  "description": "The Procedural Sky Material component is used to make a on-the-fly generated skybox using a light object and some values for atmosphere and sun size.",
+  "category": "Assets:Materials:Skybox",
+  "fields": {},
+  "methods": {},
+  "usage": "Used commonly in sky boxes found in grid spaces, and serves as a quick and simple way of making a sky that can be changed on the fly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProceduralSkyMaterial&action=raw"
+}

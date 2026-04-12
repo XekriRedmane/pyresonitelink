@@ -1,8 +1,12 @@
 {
   "description": "Get active user gets the closest parent User of the provided Instance (Slot)",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot to check for an active user.",
+    "* ([[Type:User|User]])": "The closest parent user in the hierarchy of Instance (Slot)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetActiveUser&action=raw"
 }

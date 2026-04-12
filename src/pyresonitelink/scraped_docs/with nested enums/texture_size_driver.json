@@ -1,0 +1,16 @@
+{
+  "description": "The TextureSizeDriver component drives a field with the size of a texture in pixels.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Texture": "The texture to get a size from.",
+    "Target": "The value field to drive with the final result value.",
+    "DriveMode": "The way of restricting ``Texture`` size values as second step.",
+    "Premultiply": "The value to multiply the ``Texture`` size by as first step.",
+    "Ratio": "The value to multiply the ``Texture`` size by as the third step.",
+    "MaxSize": "The value to restrict the output value to be less than this as the final step."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a ``Texture`` and a ``Target`` to get started.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextureSizeDriver&action=raw"
+}

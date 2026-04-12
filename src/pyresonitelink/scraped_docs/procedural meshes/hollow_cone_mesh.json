@@ -1,0 +1,18 @@
+{
+  "description": "The HollowConeMesh component is used to generate geometry for use with a MeshRenderer. This component generates a cone with a hollow center with internal geometry and a thickness. Similarly to the ConeMesh, the height of this procedural mesh is determined from the center of the object.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Profile": "the profile of the colors of vertices for this mesh.",
+    "Height": "how tall the hollow cone should be starting from the center",
+    "OuterRadiusBase": "the radius of the bottom ring that makes up the outer tube",
+    "InnerRadiusBase": "the radius if the bottom ring that makes up the inner tube",
+    "OuterRadiusTop": "the radius of the top ring that makes up the outer tube",
+    "InnerRadiusTop": "the radius of the top ring that makes up the inner tube",
+    "Segments": "how many faces make up each cylinder for the outside and inside.",
+    "UVScale": "how much to multiply the scale of the UVs for the procedural mesh."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a MeshRenderer to view the geometry. Don't forget to use a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HollowConeMesh&action=raw"
+}

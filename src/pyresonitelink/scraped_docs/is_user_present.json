@@ -1,8 +1,12 @@
 {
-  "description": "The Is User Present node returns if the user is present in the current world. This means if they are on the headset or on desktop and currently focused in the world.",
+  "description": "The ``Is User Present`` node returns if the user is fully present. It effectively functions the same as IsUserPresentInHeadset AND IsUserPresentInWorld.\n\nIt checks if the user is focused in the world and either in desktop mode or in VR mode with the headset display switched on.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:bool|bool]])": "The user being present or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsUserPresent&action=raw"
 }

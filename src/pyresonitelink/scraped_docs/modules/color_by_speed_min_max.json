@@ -1,0 +1,14 @@
+{
+  "description": "The Color By Speed Min Max component makes particles in a particle system change their color based on their speed using a minimum and maximum speed value. Lerps between min and max colors.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "MinSpeed": "The speed the particle has to be be traveling at or under to become ``MinColor``.",
+    "MaxSpeed": "The speed the particle has to be be traveling at or above to become ``MaxColor``.",
+    "MinColor": "The color to display when traveling at or below ``MinSpeed``.",
+    "MaxColor": "The color to display when traveling at or above ``MaxSpeed``."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorBySpeedMinMax&action=raw"
+}

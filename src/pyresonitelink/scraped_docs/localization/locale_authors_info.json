@@ -1,0 +1,12 @@
+{
+  "description": "The LocaleAuthorsInfo component gives the credits for a locale. Usually members of the community that helped with translations.",
+  "category": "Localization",
+  "fields": {
+    "Locale": "The locale source to get the credits for.",
+    "CreditsString": "The credits for ``Locale``."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocaleAuthorsInfo&action=raw"
+}

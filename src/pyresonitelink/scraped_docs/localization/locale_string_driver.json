@@ -1,0 +1,19 @@
+{
+  "description": "The LocaleStringDriver component is used to turn a key into a translated string from a locale, and then fill its value arguments with field contents or values.",
+  "category": "Localization",
+  "fields": {
+    "Target": "The string field to drive with the final locale translation.",
+    "Key": "The locale key to get a translation with.",
+    "Format": "How to format the output.",
+    "Locale": "The locale resource to use ``Key`` on to get the translated string for.",
+    "ArgumentSources": "A list of argument strings in a locale translation and their fields to get the values for them from.",
+    "ArgumentValues": "A list of argument strings in a locale translation and their values."
+  },
+  "methods": {
+    "SetArgumentSource": "Can be called to set the argument source for the locale data.",
+    "SetArgumentValue": "Can be called to set the argument value for the locale data."
+  },
+  "usage": "To use the LocaleStringDriver provide it with locale resource, a string to be driven and the name of the locale key you want to use. A list of all locale keys can be found in the Yellow-Dog-Man/Locale repository.\n\nYou can find a locale resource in the form of the StaticLocaleProvider component on the world Root slot.\n\nIf the locale string has no template arguments (for example \"General.OK\") this is all that you need to do. If it does have template parameters you will need to provide them using the ArgumentSources and ArgumentValues dictionaries. Because Resonite does not support editing Dictionaries through the scene inspector, you will need to use the Sync Delegates that the component exposes.\n\nFor example, if you want to format the \"Dash.Exit.Header\" key which in english has the value \"Exit {appName}\" you would need to provide the \"appName\" parameter using one of the dictionaries. The ArgumentValues dictionary will take priority over the ArgumentSources dictionary.\n\nArgumentSources maps parameter names to fields which will then be read to format the string. To add a parameter pull out the method proxy for SetArgumentSource and plug \"appName\" into Arg0 and a reference to the field you want to use. In this example you might want to use the PlatformName field of the PlatformInfo component.\n\nArgumentValues maps parameter names to values which will be directly used to format the string. To add a parameter pull out the method proxy for SetArgumentValue and plug \"appName\" into Arg0 and a string with the value you'd like into Arg1.\n\nThe Format field on the LocaleStringDriver component can also be used to add some extra text around the translated string, for example putting \"Click here to {0}\" would produce \"Click here to Exit Resonite\" with the above example.\n\n600px",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocaleStringDriver&action=raw"
+}

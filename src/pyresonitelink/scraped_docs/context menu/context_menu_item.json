@@ -1,0 +1,20 @@
+{
+  "description": "A component that is used internally within context menus. If you want to create a custom context menu, you should look at ContextMenuItemSource.",
+  "category": "Radiant UI:Context Menu",
+  "fields": {
+    "Highlight": "Set and unset whether the item is being hovered over and should be highlighted.",
+    "Icon": "The icon of this item.",
+    "Sprite": "The sprite of this item.",
+    "Label": "The label element of this item.",
+    "Color": "The color of this item.",
+    "_menu": "This item's origin context menu.",
+    "_highlighted": "The item is being hovered over.",
+    "_arc": "The arc that makes up this item.",
+    "_outerRadius": "The field that specifies the outer radius of this item.",
+    "_button": "The button that makes up this item."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ContextMenuItem&action=raw"
+}

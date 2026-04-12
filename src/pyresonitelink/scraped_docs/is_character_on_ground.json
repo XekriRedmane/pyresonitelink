@@ -1,8 +1,12 @@
 {
-  "description": "The Is Character On Ground node takes in a character controller reference and returns if that character controller is touching the ground and has a simulating user.",
+  "description": "The ``Is Character On Ground`` node takes in a character controller reference and returns if that character controller is touching the ground and has a simulating user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character controller reference.",
+    "* ([[Type:bool|bool]])": "Returns if this character controller is touching the ground or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsCharacterOnGround&action=raw"
 }

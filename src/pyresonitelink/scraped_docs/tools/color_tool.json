@@ -1,0 +1,16 @@
+{
+  "description": "Color tool is a component that drives the color tool from Tools. Pressing Secondary allows for picking a color via raycast, and hitting Primary allows for setting the color of a material.",
+  "category": "Tools",
+  "fields": {
+    "Color": "The selected color for this tool.",
+    "EnsureUniqueMaterial": "Creates a new material rather than changing the color of the material of a target object when hitting Primary.",
+    "ColorIndicators": "The field to drive to the current picked color. used for an indicator.",
+    "_colorDialog": "The currently open color picker dialogue."
+  },
+  "methods": {
+    "OpenColorDialog": "Handles spawning the user's favorite color picker so they can edit this tool's color."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorTool&action=raw"
+}

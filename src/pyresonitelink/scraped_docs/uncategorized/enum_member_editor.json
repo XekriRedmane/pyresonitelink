@@ -1,0 +1,18 @@
+{
+  "description": "The EnumMemberEditor component is used in inspectors to edit enum values.\n\nCommonly used in Ref Hacking if interacted with directly by the user instead of as part of an inspector visual.",
+  "category": "Uncategorized",
+  "fields": {
+    "Continuous": "Whether changes should be continuous and instant.",
+    "_path": "The sub path of the value type to edit.",
+    "_target": "The field to edit and get info from.",
+    "_textDrive": "The text field to drive with the enum's contents.",
+    "_button": "The button to edit the enum with."
+  },
+  "methods": {
+    "DecrementEnum": "Goes up by 1 in the enum values.",
+    "IncrementEnum": "Goes down by 1 in the enum values."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:EnumMemberEditor&action=raw"
+}

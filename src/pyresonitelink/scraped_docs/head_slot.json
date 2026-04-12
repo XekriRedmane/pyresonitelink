@@ -1,8 +1,12 @@
 {
   "description": "The Head Slot node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the head slot of the User.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "UserRoot": "The user's user root.",
+    "* ([[Slot]])": "Returns the head slot."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:HeadSlot&action=raw"
 }

@@ -1,8 +1,13 @@
 {
   "description": "Contains is a ProtoFlux node that returns if Substring (String) occurs anywhere in Str (String) as a bool.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to search for Substring (String) in.",
+    "Substring": "The string to be searching for.",
+    "* ([[Type:Bool|bool]])": "Whether or not Str (String) contains at least one occurrence of Substring (String)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Contains&action=raw"
 }

@@ -1,0 +1,11 @@
+{
+  "description": "The GrabToolSnapper component snaps a grabbable component's slot on the same slot as this component to the tip of a tool or your tooltip anchor when the Grabbable is grabbed.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "Offset": "How far away from the tool the object should be upon grab."
+  },
+  "methods": {},
+  "usage": "This component is mostly for internal use, it is what is responsible for the ReferenceProxy text that appears when you grab slots and fields in the inspector.\n\nYou can still use it if you would like, please check the behavior section.\n\n= Behavior =\nIf this component is added to a IGrabbable Object, when this object is grabbed it will be positioned at the tip of your Tool plus any offset specified in the offset field. On it's own this is not that usable but this is used internally with some UI Fields and Proxies to provide the blue text as shown above.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabToolSnapper&action=raw"
+}

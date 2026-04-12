@@ -1,0 +1,18 @@
+{
+  "description": "The FileSystemItem component is a type of BrowserItem used for system files or inventory items being viewed on the dash menu.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Browser": "The source browser this item came from.",
+    "SelectedColor": "The color this item's background should be when selected.",
+    "SelectedText": "The color this item's text should be when selected.",
+    "NormalColor": "The color this item's background should be at rest state",
+    "NormalText": "The color this item's text would be at rest state.",
+    "Name": "The name of the",
+    "BasePath": "The base directory of the item.",
+    "Type": "Whether if this is a file or folder."
+  },
+  "methods": {},
+  "usage": "Used internally by the inventory and file system menus. Not used by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FileSystemItem&action=raw"
+}

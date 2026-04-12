@@ -1,0 +1,13 @@
+{
+  "description": "The FolderImportDialog component is used to make and handle the importing of a folder with the specified path. Generates a UIX upon attach.",
+  "category": "Uncategorized",
+  "fields": {
+    "Path": "The folder path to Import the contents of."
+  },
+  "methods": {
+    "RunImport": "Imports the folder with the specified index option."
+  },
+  "usage": "Used to Import folders. Use the version created via the normal Import process instead.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FolderImportDialog&action=raw"
+}

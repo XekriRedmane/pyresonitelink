@@ -1,8 +1,11 @@
 {
   "description": "The Random Point On Circle node returns a random float2 value of a point on the edge of a unit circle.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float2|float2]])": "A random point on the edge of a unit circle."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomPointOnCircle&action=raw"
 }

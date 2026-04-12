@@ -1,0 +1,20 @@
+{
+  "description": "The RandomObjectSpawner component selects a slot from the ``Templates`` list, and spawns it either at this component's parent (in the case of ``Spawn()``), or at the point specified in an argument (in the case of ``SpawnAtPoint()``)",
+  "category": "With Nested Types",
+  "fields": {
+    "Templates": "List of slots to be selected from, when a Trigger is invoked",
+    "SpawnSpace": "The coordinate space in which the template item will be spawned."
+  },
+  "methods": {
+    "Spawn": "Spawns a slot randomly selected from ``Templates``, located at the origin of this component's parent slot.",
+    "SpawnAtPoint": "Spawns a slot randomly selected from ``Templates``, located at the provided point."
+  },
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "When triggered by any event source that accepts an Action (for ``Spawn()``), or Action (for ``SpawnAtPoint()``, this component will spawn a random slot from ``Templates``\n\nPrior to Build 2020.11.8.605, this component would duplicate a random slot from ``Templates`` in-place, without changing its location."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RandomObjectSpawner&action=raw"
+}

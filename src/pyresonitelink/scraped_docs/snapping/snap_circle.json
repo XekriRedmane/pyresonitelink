@@ -1,0 +1,13 @@
+{
+  "description": "A snap circle is a component that is able to generate a point on a circle along a plane given a point by another component. Usually this is used in components like the Multi User Avatar Anchor Component to determine where to place the anchors upon clicking (click point is used in such case) When provided a point, it finds the closest point on a circle and normal and returns that to the component that called it.\n\nThe functionality of this component is internal, and cannot be used by ProtoFlux to snap points using in game code.",
+  "category": "Transform:Snapping",
+  "fields": {
+    "Radius": "How big the circle should be",
+    "Normal": "which direction the circle should face",
+    "SnapParent": "Where to put slots if the component is being used for slot placement."
+  },
+  "methods": {},
+  "usage": "Used as an anchor point generator in the Multi User Avatar Anchor Component and drawing tools.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SnapCircle&action=raw"
+}

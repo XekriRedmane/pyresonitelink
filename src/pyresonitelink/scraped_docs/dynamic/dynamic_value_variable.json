@@ -1,0 +1,11 @@
+{
+  "description": "A dynamic value variable is a component that allows storing any value Type inside the component. The value is then accessible and changeable via the Dynamic Variables system.\n}}",
+  "category": "Data:Dynamic",
+  "fields": {
+    "Value": "The value this variable holds. Can set and be changed by the Dynamic Variables system."
+  },
+  "methods": {},
+  "usage": "This can be used to store values that should be accessible to different things underneath and outside of a system. This is useful if the item needs to be able to have it's color changed, or other properties that need to have quick synchronization and access. For more info see the Dynamic Variables page.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicValueVariable&action=raw"
+}

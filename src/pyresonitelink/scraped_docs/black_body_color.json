@@ -1,8 +1,12 @@
 {
-  "description": "Black Body Color returns a color value of the light emitted by an ideal black body radiator. This can be used to calculate appropriate values for various color temperatures.",
+  "description": "Black Body Color returns a color value of the light emitted by an ideal black body radiator. This can be used to calculate appropriate values for various color temperatures.\n\nThis node can convert color values in the range 1000 - 40000 Kelvin. Values outside this range are clamped.\n\nThe implementation in Resonite appears to use this table as a source of values. For values more granular than 100 Kelvin, the node interpolates linearly between the closest two values.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Temperature": "The temperature, in Kelvin, to calculate the resulting color for.",
+    "* ([[Type:Color|Color]])": "The color value of the given color temperature.\n\nFile:Protoflux_Black_Body_Color_Light_Example.webp|How to use Black Body Color to specify the color temperature of a light source."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:BlackBodyColor&action=raw"
 }

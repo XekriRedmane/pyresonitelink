@@ -1,0 +1,18 @@
+{
+  "description": "The ProtoFluxInputProxy component is used to manage the input sockets of protoflux nodes, making components become the actual visuals the user uses to interact with protoflux with. Otherwise, users would have to use purely the developer tool.",
+  "category": "Uncategorized",
+  "fields": {
+    "Node": "The ProtoFlux component whose input you wish to proxy.",
+    "ElementName": "The name that appears when you hover this input with a Flux Tool.",
+    "IsDynamic": "Whether this input can be converted by inputting a different type.",
+    "Index": "The index in a list if this points to a list of inputs/outputs.",
+    "ConnectPoint": "What Slot a wire visual parents itself under.",
+    "Wire": "The wire Manager handling the visual for the connection to this connector.",
+    "NodeInput": "The field on a protoflux node Component this connector is being used as a way to connect to.",
+    "InputType": "The type of the input this proxy is for."
+  },
+  "methods": {},
+  "usage": "Used to manage the wire visuals and interfacing with protoflux Components and their visuals.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProtoFluxInputProxy&action=raw"
+}

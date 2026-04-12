@@ -1,0 +1,26 @@
+{
+  "description": "The FeedOrderedItemInterface component is used as a template type item in data feed mappers in the Data Feeds system. This acts as an item in a list of items that can be reordered and moved around.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "Value": "The value field of this ordered item. Can write to the original feed valuem",
+    "Formatting": "How to format the value when it is displayed in text.",
+    "IsFirst": "The field to set to whether this item is currently first",
+    "IsLast": "The field to set to whether this item is currently last.",
+    "MoveUpLabel": "The field that represents this item's move up label.",
+    "MoveDownLabel": "The field that represents this item's move down label.",
+    "MakeFirstLabel": "The field that represents this item's make first label.",
+    "MakeLastLabel": "The field that represents this item's make last label.",
+    "MoveUp": "This field is populated with the Action that can be called to move the item up.",
+    "MoveDown": "This field is populated with the Action that can be called to move the item down.",
+    "MakeFirst": "This field is populated with the Action that can be called to make the item first.",
+    "MakeLast": "This field is populated with the Action that can be called to make the item last.",
+    "HasMoveUp": "The field to set to whether this item can currently be moved further up.",
+    "HasMoveDown": "The field to set to whether this item can currently be moved down.",
+    "HasMakeFirst": "The field to set to whether this item can currently be made first.",
+    "HasMakeLast": "The field to set to whether this item can currently be made last."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FeedOrderedItemInterface&action=raw"
+}

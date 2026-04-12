@@ -1,0 +1,9 @@
+{
+  "description": "The FresnelLerpMaterial component is a material that can be used to make a fresnel effect.\n\nFar on this material is the geometry facing away from the camera and near is the geometry facing towards the camera.",
+  "category": "Assets:Materials:Unlit",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot and put into the materials of a renderer like a SkinnedMeshRenderer or a MeshRenderer with a mesh to view what the material looks like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FresnelMaterial&action=raw"
+}

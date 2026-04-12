@@ -1,8 +1,12 @@
 {
   "description": "Gets if the provided Instance Slot's Hierarchy is marked persistent.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "Slot to check.",
+    "* ([[Type:Bool|bool]])": "returns if the Instance (Slot)'s Hierarchy is marked persistent."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetSlotPersistent&action=raw"
 }

@@ -4,10 +4,6 @@
   "fields": {},
   "methods": {},
   "usage": "",
-  "notes": [
-    {
-      "title": "Outputs",
-      "text": "A ulong that does not allow the User to connect to anything. This is a known issue in Resonite.\n\nProtoFlux:Math:Constants"
-    }
-  ]
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Feven&action=raw"
 }

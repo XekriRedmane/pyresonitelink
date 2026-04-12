@@ -1,0 +1,17 @@
+{
+  "description": "The Color By Speed Min Max HSV component changes the HSV values of particles in a particle system depending on their speed.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "MinSpeed": "The speed the particle has to be be traveling at or under to be considered minimum speed.",
+    "MaxSpeed": "The speed the particle has to be be traveling at or above to be considered maximum speed.",
+    "MinHue": "The Hue to display when traveling at or below ``MinSpeed``.",
+    "MaxHue": "The Hue to display when traveling at or above ``MaxSpeed``",
+    "MinSaturation": "The Saturation to display when traveling at or below ``MinSpeed``.",
+    "MaxSaturation": "The Saturation to display when traveling at or above ``MaxSpeed``",
+    "MinValue": "The Value to display when traveling at or below ``MinSpeed``.",
+    "MaxValue": "The Value to display when traveling at or above ``MaxSpeed``"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

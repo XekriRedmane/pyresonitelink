@@ -1,8 +1,12 @@
 {
-  "description": "The Is User In Edit Mode node returns if a user has the special permission of Edit Mode.",
+  "description": "The ``Is User In Edit Mode`` node returns if a user has the special permission of Edit Mode.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:bool|bool]])": "The edit mode permission on this user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsUserInEditMode&action=raw"
 }

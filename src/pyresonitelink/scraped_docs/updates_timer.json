@@ -1,8 +1,12 @@
 {
-  "description": "The Updates Timer node sends a pulse from the UpdatingUser at the specified interval of engine updates from said user.",
+  "description": "The Updates Timer node sends a pulse from the ``UpdatingUser`` at the specified interval of engine updates from said user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Interval": "The interval of engine updates to send pulses at.",
+    "OnUpdate": "Sends a pulse at every ``Interval`` engine updates from the ``UpdatingUser``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UpdatesTimer&action=raw"
 }

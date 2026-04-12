@@ -1,0 +1,19 @@
+{
+  "description": "Audio Clip Asset Metadata is a component that will populate itself with different small bits of information about an audio clip, also known as metadata.\nThe metadata will be the default values until an audio clip is provided, which will then populate the data.",
+  "category": "Assets:Utility",
+  "fields": {
+    "AudioClip": "The audio clip to read metadata from",
+    "SampleRate": "The Hz the audio is sampled at.",
+    "Channels": "The audio channel configuration the audio was recorded in.",
+    "ChannelCount": "How many channels are in the audio recording. usually 1 channel for mono or 2 channels for L and R Stereo.",
+    "SampleCount": "how many total samples the audio clip has",
+    "Duration": "How long the audio clip is in seconds.",
+    "Extension": "the extension of the file type the audio was recorded in.",
+    "CodecInfo": "The codec the audio is written in like WAV or FLAC and the quality of the audio.",
+    "FullyDecoded": "If the audio is loaded or not and decoded (Waveform visible)"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioClipAssetMetadata&action=raw"
+}

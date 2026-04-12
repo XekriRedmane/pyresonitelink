@@ -1,0 +1,14 @@
+{
+  "description": "The Legacy Range Mapper component is used in old legacy content from before the Awwdio system.",
+  "category": "Uncategorized",
+  "fields": {
+    "MinDistance": "The field with the legacy min distance.",
+    "MaxDistance": "The field with the legacy max distance.",
+    "Radius": "The field to drive with ``MinDistance`` and ``MaxDistance`` converted.",
+    "BlendDistance": "The field to drive with ``MinDistance`` and ``MaxDistance`` converted."
+  },
+  "methods": {},
+  "usage": "only used in legacy content from before the Awwdio system.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyRangeMapper&action=raw"
+}

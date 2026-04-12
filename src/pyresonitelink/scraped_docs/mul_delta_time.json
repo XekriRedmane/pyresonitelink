@@ -1,8 +1,12 @@
 {
-  "description": "The Mul Delta Time node takes in a number and returns the value of a delta time that is multiplied by that number. This node makes it super easy to make speed modifiers in code instead of doing it the hard way by using a Delta Time and a Multiply node.",
+  "description": "The ``Mul Delta Time`` node takes in a number and returns the value of a delta time that is multiplied by that number. This node makes it super easy to make speed modifiers in code instead of doing it the hard way by using a Delta Time and a Multiply node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The multiplicative number to adjust the delta time.",
+    "* ([[Type:float|float]])": "The new delta time value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:MulDeltaTime&action=raw"
 }

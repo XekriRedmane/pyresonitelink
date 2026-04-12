@@ -1,0 +1,21 @@
+{
+  "description": "Quad mesh is a component that generates mesh data procedurally that makes a flat 2D square.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Rotation": "How to rotate the quad in local space.",
+    "Size": "The size of the quad in local space.",
+    "UVOffset": "The added offset to the UVs.",
+    "UVScale": "The scale of the UVs from the bottom left.",
+    "ScaleUVWithSize": "Whether to scale uv mapping with ``Size``",
+    "DualSided": "Whether to make a second pair of triangles that are visible from the opposite side.",
+    "UseVertexColors": "Whether to use vertex colors which can be read by materials.",
+    "UpperLeftColor": "Upper left vertex color.",
+    "LowerLeftColor": "Lower left vertex color.",
+    "LowerRightColor": "Lower right vertex color.",
+    "UpperRightColor": "Upper right vertex color."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a Mesh Renderer with a material to view it.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:QuadMesh&action=raw"
+}

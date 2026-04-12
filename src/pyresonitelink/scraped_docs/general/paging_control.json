@@ -1,0 +1,24 @@
+{
+  "description": "The PagingControl component allows for counting up a number of items specified, then outputs it to either a Text or TextRenderer component.",
+  "category": "Common UI:General",
+  "fields": {
+    "ItemsPerPage": "The increment to count up by.",
+    "TotalItems": "The total amount of items.",
+    "HasMoreItems": "Allows to count beyond the max set of items.",
+    "SkipItems": "Skips items that are listed here.",
+    "NoItemsLabel": "Shows the output as this when there are no items.",
+    "PagingInfoLabel": "The structure of how the items will be shown to the user.",
+    "TotalPages": "The total amount of items.",
+    "RemainingItems": "Shows how many items are remaining.",
+    "_label": "The text to output.",
+    "_previousEnabled": "Becomes false if the minimum is currently reached.",
+    "_nextEnabled": "Becomes false if the maximum is currently reached."
+  },
+  "methods": {
+    "NextPage": "Switches to the next page via action.",
+    "PreviousPage": "Switches to the previous page via action."
+  },
+  "usage": "Great for counting items, and for controlling UI that can switch pages.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PagingControl&action=raw"
+}

@@ -1,8 +1,12 @@
 {
-  "description": "The User Download Speed Max node returns a user's maximum download speed in this session.",
+  "description": "The ``User Download Speed Max`` node returns a user's maximum download speed in this session.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:float|float]])": "The max download speed of the user in bytes."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserDownloadSpeedMax&action=raw"
 }

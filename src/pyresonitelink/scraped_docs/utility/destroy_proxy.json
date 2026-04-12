@@ -1,0 +1,11 @@
+{
+  "description": "The DestroyProxy component is used to automatically destroy a specified DestroyTarget when this component itself or it's parent slot is destroyed.",
+  "category": "Transform:Utility",
+  "fields": {
+    "DestroyTarget": "The slot, component (etc) to destroy."
+  },
+  "methods": {},
+  "usage": "The DestroyProxy component is used to automatically destroy a specified ``DestroyTarget`` when this component itself or it's parent slot is destroyed.\n\nImportant to note: If you'd like to remove the component, first unset the ``DestroyTarget`` or else the target IDestroyable object will be destroyed as well.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DestroyProxy&action=raw"
+}

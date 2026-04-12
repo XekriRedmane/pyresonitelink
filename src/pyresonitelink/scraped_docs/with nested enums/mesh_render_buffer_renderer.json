@@ -1,0 +1,14 @@
+{
+  "description": "The MeshRenderBufferRenderer component is used to render point buffers for normal particles as meshes.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Buffer": "The Buffer to render as meshes.",
+    "Material": "The material to render on the meshes.",
+    "Mesh": "The mesh to render.",
+    "Alignment": "How to align the meshes rendered using orientation and camera position."
+  },
+  "methods": {},
+  "usage": "Used with Photon Dust.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeshRenderBufferRenderer&action=raw"
+}

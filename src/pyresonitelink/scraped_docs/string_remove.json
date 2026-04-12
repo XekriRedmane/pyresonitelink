@@ -1,8 +1,14 @@
 {
   "description": "String Remove is a ProtoFlux node that allows you to remove part of a provided Str (String) of a given Length (int) starting at StartIndex (int).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to remove a segment from.",
+    "StartIndex": "The starting point of removal from Str (String).",
+    "Length": "How long of a segment to remove from Str (String).",
+    "* ([[Type:String|String]])": "Str (String) with a segment starting at StartIndex (int) to Length (int) + StartIndex (int) removed."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:StringRemove&action=raw"
 }

@@ -1,8 +1,12 @@
 {
   "description": "Grabbable Grabber is a Protoflux node that takes an IGrabbable (any kind of grabbable) and gets the grabber that is currently grabbing it. usually this will be a limb capable of grasping around an object, and holding it like a hand, or a monkey's foot.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Grabbable": "The grabbable that should be checked for a grabber that is grabbing it.",
+    "* ([[Type:Grabber|Grabber]])": "The Grabber that is currently grabbing Grabbable (IGrabbable)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GrabbableGrabber&action=raw"
 }

@@ -1,0 +1,16 @@
+{
+  "description": "The ScaleAligner component scales a list of slots based on bounding box, each one being bigger/smaller than the last.",
+  "category": "With Nested Types",
+  "fields": {
+    "AutoAddChildren": "Controls whether slots below this component's slot in the hierarchy are automatically added to ``_targets``",
+    "BaseSize": "The size the first item should be in local space based on Bounding box.",
+    "Increment": "How much to make the next item in the list bigger/smaller than the last by adding to its Bounding box size.",
+    "Multiplier": "How much to make the next item in the list bigger/smaller than the last by multiplying its Bounding box size after adding ``Increment``",
+    "NonUniform": "Whether scaling can be non uniform for Bounding box Scale calculations.",
+    "_targets": "A list of slots and their scales to influence."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ScaleAligner&action=raw"
+}

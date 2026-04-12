@@ -1,0 +1,22 @@
+{
+  "description": "The ProtoFluxNodeVisual component is used to manage the visuals and interaction with ProtoFlux nodes when they are unpacked.",
+  "category": "Uncategorized",
+  "fields": {
+    "Node": "The protoflux node this is a visual for.",
+    "IsSelected": "Whether or not this node is selected.",
+    "IsHighlighted": "Whether or not this node is highlighted.",
+    "_nodeHoverArea": "The Hover interaction area for this visual.",
+    "_bgImage": "The background image for tye protoflux visual.",
+    "_inputsRoot": "The root of the different slots for node inputs.",
+    "_outputsRoot": "The root of the different slots for node outputs.",
+    "_referencesRoot": "The slot for references to other nodes like arrows for protoflux variables/globals.",
+    "_overviewVisual": "The field for enabling the overview alt version of this node.",
+    "_overviewBg": "The BG color of the overview version of the visual.",
+    "_labelBg": "The enabled field of the label BG.",
+    "_labelText": "The enabled field of the label text."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProtoFluxNodeVisual&action=raw"
+}

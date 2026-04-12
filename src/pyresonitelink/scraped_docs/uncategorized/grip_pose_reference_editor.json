@@ -1,0 +1,18 @@
+{
+  "description": "The GripPoseReferenceEditor component handles the UI Edit Mode behavior of adjusting Raw Data Tools in the user's hand. See UI Edit Mode for more information.",
+  "category": "Uncategorized",
+  "fields": {
+    "ReferenceRoot": "The root slot of the tool tip holder.",
+    "Item": "The root slot of the tooltip being adjusted.",
+    "Slider": "The slider to use to adjust the tool tip during grabbing.",
+    "PoseReference": "The grip pose reference to be modifying.",
+    "HideVisualOnEnd": "Hide the visual when it's not being grabbed.",
+    "RootPosition": "The root position of the gripping pose reference.",
+    "RootRotation": "The root rotation of the gripping pose reference.",
+    "RootScale": "The root scale of the gripping pose reference."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user. Please see UI Edit Mode.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GripPoseReferenceEditor&action=raw"
+}

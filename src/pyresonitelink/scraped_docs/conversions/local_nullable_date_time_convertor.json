@@ -1,0 +1,12 @@
+{
+  "description": "The NullableLocalDateTimeConvertor converts a nullable inputted time to the user's local timezone.",
+  "category": "Data:Conversions",
+  "fields": {
+    "Source": "The source field holding the date time to convert.",
+    "LocalDateTime": "The value of the field targeted by ``Source`` converted to the local user's datetime."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocalNullableDateTimeConvertor&action=raw"
+}

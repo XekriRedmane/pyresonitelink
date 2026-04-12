@@ -1,0 +1,19 @@
+{
+  "description": "The PointClusterMesh component generates a randomized cluster of points in a cloud. These points can be displayed via a Mesh Renderer using a Unlit Material with at least it's ``UseBillboardGeometry`` field set to true.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Seed": "The number to use to seed the generation of random points.",
+    "Points": "The number of points to generate.",
+    "Scale": "The scale of the generated mesh.",
+    "JitterRange": "The maximum value to randomly offset each point.",
+    "UniformSize": "Whether all points should always be uniformly scaled.",
+    "MinSize": "The minimum size of a point.",
+    "MaxSize": "The maximum size of a point.",
+    "MinRotation": "The minimum rotation of a point.",
+    "MaxRotation": "The maximum rotation of a point."
+  },
+  "methods": {},
+  "usage": "This is used for the colored orbs in the sky of the Resonite Cloud Home.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PointClusterMesh&action=raw"
+}

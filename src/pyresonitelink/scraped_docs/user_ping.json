@@ -1,8 +1,12 @@
 {
-  "description": "The User Ping node returns the user's ping or latency.",
+  "description": "The ``User Ping`` node returns the user's ping or latency.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:int|int]])": "The latency of the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserPing&action=raw"
 }

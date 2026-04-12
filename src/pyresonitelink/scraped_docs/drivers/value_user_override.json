@@ -1,0 +1,24 @@
+{
+  "description": "The ValueUserOverride Component allows storing \"override\" values for each user listed under ``_overrides`` and driving the ``Target`` field with them.\n}}",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Default": "The default value given to ``Target`` if no suitable override exists in ``_overrides``.",
+    "CreateOverrideOnWrite": "Creates an entry in ``_overrides`` when ``Target`` is written back.",
+    "PersistentOverrides": "Values in ``_overrides`` are stored with the object when it is saved.",
+    "_overrides": "A list of Overrides and the corresponding users they apply to.",
+    "Target": "Target field of the specified type, that gets driven to the override value."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "The ``_overrides`` bag contains a list of users and their associated values - whenever the local user matches a user entry in the bag, the associated value is driven to ``Target``. Otherwise, ``Target`` is driven to the value in ``Default``.\n\n``CreateOverrideOnWrite`` allows for new users and values to be added to the bag when the driven value in ``Target`` is directly or indirectly changed by that user. If it is not enabled, the value in ``Target`` is not changeable unless the override is added or changed manually from the inspector panel.\n\nAttempting to write to or otherwise cause a discrete entry to a driven field is known as Hooking it. Any Hook to the ``Target`` value is intercepted by the ValueUserOverride Component and will change the modifying user's entry in the ``_overrides`` bag. If there is no entry for the user and if ``CreateOverrideOnWrite`` is enabled, it will create an entry using the set value."
+    },
+    {
+      "title": "Related Components",
+      "text": "* BooleanUserOverrideGather\n* NumericUserOverrideGather"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueUserOverride&action=raw"
+}

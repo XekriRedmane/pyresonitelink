@@ -1,0 +1,18 @@
+{
+  "description": "Point mesh makes geometry data of a cloud of points that have UVs, scales, colors, and more. These points can be displayed via a Mesh Renderer using a Unlit Material with at least it's ``UseBillboardGeometry`` field set to true.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Points": "The positions of each vertex point.",
+    "Sizes": "The sizes of each vertex point.",
+    "Rotations": "The rotations of each vertex point.",
+    "Colors": "The vertex color of each vertex point.",
+    "ColorsProfile": "The color profile of each vertex point.",
+    "UVs": "The UV center and quad scales of each vertex point.",
+    "Sort": "Enable sorting the mesh vertex indices by distance from ``SortPoint``.",
+    "SortPoint": "The point to sort by distance from."
+  },
+  "methods": {},
+  "usage": "Not usually usable by the user without Mods, as most fields depend on arrays.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PointMesh&action=raw"
+}

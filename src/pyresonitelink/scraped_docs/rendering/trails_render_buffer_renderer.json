@@ -1,0 +1,15 @@
+{
+  "description": "The TrailsRenderBufferRenderer component is mainly a debug component to show the allocation of rendering buffers for particles in the form of colors. This relies on the specific implementation of Photon Dust.",
+  "category": "Rendering",
+  "fields": {
+    "Buffer": "The trails renderer module to get buffer data from.",
+    "Material": "The material to use for rendering.",
+    "TextureMode": "The texture mode to use for rendering.",
+    "MotionVectorMode": "The motion vector mode for rendering from a camera.",
+    "GenerateLightingData": "Whether or not to generate lighting data for trail rendering."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TrailsRenderBufferRenderer&action=raw"
+}

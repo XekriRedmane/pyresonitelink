@@ -1,0 +1,17 @@
+{
+  "description": "The VideoTextureAssetMetadata component turns the data at the bottom of an inspector on a video asset Type component into usable values which can be used elsewhere.",
+  "category": "Assets:Utility",
+  "fields": {
+    "Texture": "The video texture to get information on.",
+    "Size": "The size of the ``Texture`` in pixels.",
+    "Width": "The width of ``Texture`` in pixels.",
+    "Height": "The height of ``Texture`` in pixels.",
+    "HasAlpha": "Whether ``Texture`` is transparent.",
+    "Length": "The duration of ``Texture``.",
+    "PlaybackEngine": "The playback engine ``Texture`` is using."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a ``Texture`` to get information on in order for it to work.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VideoTextureAssetMetadata&action=raw"
+}

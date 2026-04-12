@@ -1,8 +1,20 @@
 {
-  "description": "The Flash Highlight Hierarchy node takes in the target slot hierarchy, what to exclude, if this flash should track the position, how long the flash should be, and what color it should be. Then this node will make that hierarchy flash, also providing the slot of the flash itself.",
+  "description": "The ``Flash Highlight Hierarchy`` node takes in the target slot hierarchy, what to exclude, if this flash should track the position, how long the flash should be, and what color it should be. Then this node will make that hierarchy flash, also providing the slot of the flash itself.\n\nThis could be disastrous if you are not careful!|danger}}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to flash the hierarchy.",
+    "HierarchyRoot": "The target hierarchy to flash",
+    "ExcludeColliders": "Should exclude any colliders for this flash.",
+    "ExcludeMeshes": "Should exclude meshes for this flash.",
+    "ExcludeDisabled": "Should exclude any slots that are not active.",
+    "TrackPosition": "Should this flash be tracking the provided hierarchy.",
+    "Duration": "How long this flash should last for.",
+    "Color": "The flash color.",
+    "Next": "Continues the code from here.",
+    "FlashRoot": "The slot that is the flash itself."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FlashHighlightHierarchy&action=raw"
 }

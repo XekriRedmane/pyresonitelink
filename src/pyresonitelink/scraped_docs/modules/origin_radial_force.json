@@ -1,0 +1,17 @@
+{
+  "description": "The Origin Radial Force component is used with Photon Dust to make particles have force applied on them to make them return to their original starting point over time. This was a personal addition by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Force": "The constant force applied to particles to make them return to where they started.",
+    "Mode": "how the Radial area and effect for this component is defined.",
+    "MinDistance": "The distance from 0 where the minimum force is defined in the force gradient.",
+    "MaxDistance": "The distance from 0 where the maximum force is defined in the force gradient.",
+    "MinForce": "The minimum force value for the gradient.",
+    "MaxForce": "The maximum force value for the gradient.",
+    "OverrideForceSpace": "The space to apply forces for this component in."
+  },
+  "methods": {},
+  "usage": "Used in Photon Dust systems.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:OriginRadialForce&action=raw"
+}

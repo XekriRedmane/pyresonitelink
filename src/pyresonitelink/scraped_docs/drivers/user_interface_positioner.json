@@ -1,0 +1,23 @@
+{
+  "description": "The UserInterfacePositioner component causes the slot to which it is attached to track the user's position and rotation (optionally head). This is a somewhat nicer and cleaner alternative than parenting a slot directly to a user's avatar node.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "TargetUser": "The user to track.",
+    "UseHead": "Whether to track to the user's head.",
+    "RotateVerticalOnly": "Whether to act like the freeform dash or not.",
+    "PositionSpeed": "The speed at which the object will track the user's position.",
+    "RotationSpeed": "The speed at which the object will track the user's rotation.",
+    "ActivationDistance": "The distance from the user to the object at which the object will start tracking the user's position and rotation. Zero means \"always track\".",
+    "ActivationAngle": "The angle between the user and the object at which the object will start tracking the user's position and rotation. Zero means \"always track\".",
+    "DeactivationDistance": "How far away the user has to be from the component for it to to stop following.",
+    "DeactivationAngle": "How much of an angle deviation it has to be for it to stop following.",
+    "TargetPosition": "The target position this UI is lerping to.",
+    "TargetRotation": "The target rotation this UI is lerping to.",
+    "_position": "The field to drive to set the position of this UI.",
+    "_rotation": "The field to drive to set the rotation of this UI."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserInterfacePositioner&action=raw"
+}

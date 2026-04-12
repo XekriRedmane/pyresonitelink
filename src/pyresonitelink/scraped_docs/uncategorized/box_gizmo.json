@@ -1,0 +1,27 @@
+{
+  "description": "The BoxGizmo component is used to make the handles and visual for editing a box mesh or collider, and also handles the interaction with the handles.",
+  "category": "Uncategorized",
+  "fields": {
+    "TargetSlot": "The slot of the box to edit.",
+    "BoxCenterSpace": "The coordinate space to transform by when making the result of ``BoxCenter``",
+    "BoxSizeSpace": "The coordinate space to transform by when making the result of ``BoxSize``",
+    "BoxSize": "The field to edit for the box size.",
+    "BoxCenter": "The field to drive for the box center.",
+    "LockOffset": "Whether to lock the offset of the box so it's center stays the same.",
+    "_vertices": "A list of fields to drive for the vertex positions of the cube gizmo visual.",
+    "_edges": "A list of fields to drive for the edge positions of the cube gizmo visual.",
+    "_faces": "A list of fields to drive for the face positions of the cube gizmo visual.",
+    "_sphereColliderRadii": "A list of fields to drive for the sphere rotations of the cube gizmo visual.",
+    "_material": "The material being used for the gizmo visual.",
+    "_handleSphere": "The mesh being used for the handles of the gizmo like corners or faces.",
+    "_visualRoot": "The slot of the visual root.",
+    "_visualPosition": "The field to drive for the visual position.",
+    "_visualRotation": "The field to drive for the visual rotation.",
+    "_visualScale": "The field to drive for the visual scale.",
+    "_tubeBox": "The tube box mesh being used for the gizmo visual."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BoxGizmo&action=raw"
+}

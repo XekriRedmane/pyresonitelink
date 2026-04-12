@@ -1,8 +1,12 @@
 {
   "description": "Returns the parent of Instance (Slot).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot to get the parent of.",
+    "* ([[Slot|Slot]])": "The parent of Instance (Slot)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetParentSlot&action=raw"
 }

@@ -1,8 +1,12 @@
 {
-  "description": "The Is Removed node takes in a world element and returns if that element was removed from the world. Destruction of the slot prevents the result from changing, as by the time the slot is gone, it is too late. There is however a method to check if something did get removed, see the examples below.",
+  "description": "The ``Is Removed`` node takes in a world element and returns if that element was removed from the world. Destruction of the slot prevents the result from changing, as by the time the slot is gone, it is too late. There is however a method to check if something did get removed, see the examples below.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Element": "The world element in question.",
+    "* ([[Type:bool|bool]])": "Returns if this element was removed in this world."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsRemoved&action=raw"
 }

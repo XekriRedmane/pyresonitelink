@@ -1,0 +1,18 @@
+{
+  "description": "The ResolutionSettings component is a Settings component.",
+  "category": "Uncategorized",
+  "fields": {
+    "Fullscreen": "Whether or not the game should change to fullscreen mode.",
+    "WindowResolution": "The resolution in pixels the main window should render at while in windowed mode.",
+    "FullscreenResolution": "The resolution in pixels the main window should render at while in full screen.",
+    "CommitedWindowResolution": "The resolution in pixels the main window is currently at while in windowed mode.",
+    "CommitedFullscreenResolution": "The resolution in pixels the main window is currently at while in full screen.",
+    "NeedsToApplyResolution": "Whether or not the resolution settings need to be applied."
+  },
+  "methods": {
+    "ApplyResolution": "Applies the currently chosen resolution."
+  },
+  "usage": "See Resolution Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ResolutionSettings&action=raw"
+}

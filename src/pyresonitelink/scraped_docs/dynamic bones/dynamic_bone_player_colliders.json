@@ -1,0 +1,21 @@
+{
+  "description": "This component is used in the Resonite hair dryer, and allows for dynamic bone colliders specified in the ``Colliders`` list to automatically collide with Dynamic Bone Chains. \n\nCan also be used in disabling the automatic dynamic bone colliders that Resonite generates incase you want to manually specify them.",
+  "category": "Physics:Dynamic Bones",
+  "fields": {
+    "VisualizeColliders": "Visualize all the colliders in ``Colliders`` that are currently colliding against a Dynamic Bone Chain. Automatically updates the collider visuals every frame server side.",
+    "DisableDefaultHeadColliders": "Whether to not use the default head collider made by the engine.",
+    "DisableDefaultBodyColliders": "Whether to not use the body colliders made by the engine.",
+    "DisableDefaultLeftHandColliders": "Whether to not use the left hand collider made by the engine.",
+    "DisableDefaultRightHandColliders": "Whether to not use the right hand collider made by the engine.",
+    "Colliders": "A list of colliders to enable collision for all Dynamic bone chains in a world."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Only works while the component has an active user."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicBonePlayerColliders&action=raw"
+}

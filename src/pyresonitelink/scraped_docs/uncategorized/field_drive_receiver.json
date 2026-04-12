@@ -1,0 +1,11 @@
+{
+  "description": "The FieldDriveReceiver component is used to handle the dropping of field names onto other field names in order to drive one with the other in inspectors, otherwise known as Drives. This is used as an interactable UIX element.",
+  "category": "Uncategorized",
+  "fields": {
+    "Field": "The field to expose to dropping other field names onto it for driving."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FieldDriveReceiver&action=raw"
+}

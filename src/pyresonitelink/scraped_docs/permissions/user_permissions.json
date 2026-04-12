@@ -1,0 +1,17 @@
+{
+  "description": "The UserPermissions component is used to control the permissions of users in a world for the selected roles.",
+  "category": "Permissions",
+  "fields": {
+    "AllowEnableEditMode": "Whether the selected roles can enable their Edit Mode.",
+    "AllowRespawn": "Whether the selected roles can respawn other users.",
+    "AllowSilence": "Whether the selected roles can silence other users.",
+    "AllowKick": "Whether the selected roles can kick other users from the session.",
+    "AllowBan": "Whether the selected roles can ban other users from this session.",
+    "AllowAssignRoles": "Whether the selected roles can assign roles for other users that have a role less than them.",
+    "AllowSeeOtherRoles": "Whether the selected roles can see what roles other users have."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserPermissions&action=raw"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "The RectTransformLerp component takes the RectTransform that's on the same slot and lerps the size & scale of the RectTransform.\n\n}}",
+  "category": "UIX:Utility",
+  "fields": {
+    "Lerp": "The amount to lerp by.",
+    "SourceRect": "The RectTransform to lerp."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RectTransformLerp&action=raw"
+}

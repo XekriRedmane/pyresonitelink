@@ -1,8 +1,11 @@
 {
-  "description": "The World User Count node returns this world's current user count in the world now. This will include users that are AFK/focused away from the world.",
+  "description": "The ``World User Count`` node returns this world's current user count in the world now. This will include users that are AFK/focused away from the world.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:int|int]])": "The world's current user count."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldUserCount&action=raw"
 }

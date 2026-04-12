@@ -1,0 +1,12 @@
+{
+  "description": "The Legacy Transform Converter component converts transforms for legacy content to the new Photon Dust system.",
+  "category": "Uncategorized",
+  "fields": {
+    "Transform": "The transform field to drive with a converted value.",
+    "Emitter": "The emitter to make conversions with."
+  },
+  "methods": {},
+  "usage": "Not to be used in new content. Acts as a Legacy content converter.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyTransformConverter&action=raw"
+}

@@ -1,8 +1,14 @@
 {
   "description": "The Set Head Facing Direction node takes in a user's UserRoot and the facing direction for the head, then sets the facing direction.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to set the head facing direction.",
+    "UserRoot": "The user's user root.",
+    "Position": "The facing direction to set for the head.",
+    "Next": "Continues flow execution from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetHeadFacingDirection&action=raw"
 }

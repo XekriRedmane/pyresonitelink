@@ -1,8 +1,13 @@
 {
-  "description": "Decrements take Variable (Variable Pseudo-generic) as a global, and will decrease the value that Variable (Variable Pseudo-generic) points to by 1.",
+  "description": "Decrements take Variable (Variable Pseudo-generic) as a global, and will decrease the value that Variable (Variable Pseudo-generic) points to by 1.\n\nIf you need to subtract more than 1 from your value, use the Sub node instead.|suggestion}}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to write the value.",
+    "OnWritten": "sends an impulse after * (Call) has been impulsed and the value pointed to by Variable (Variable Pseudo-generic) has been decremented.",
+    "OnFail": "sends an impulse after * (Call) has been impulsed and the value wasn't able to be decremented due to a missing target or Variable (Variable Pseudo-generic) not pointing to a valid IValue`1."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Decrement&action=raw"
 }

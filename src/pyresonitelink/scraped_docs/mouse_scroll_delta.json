@@ -1,13 +1,11 @@
 {
-  "description": "Returns the delta of the mouse wheel used for input to Resonite.",
+  "description": "The MouseScrollDelta node returns the scrolling delta of the mouse wheel that is being used for input to Resonite. The faster the mouse is scrolled within a frame, the larger the delta.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float|float]])": "The scroll wheel delta of the mouse for this frame. If the wheel is scrolling up, then this value is positive. If the wheel is scrolling down, this value is negative. Otherwise, it is 0.\n\nThe value of this node is a direct interface to Unity's input system, which itself is a direct interface to the operating system's input handling. If Unity is run in a Windows environment or WINE, the delta will be in increments of 120. This may change with a future renderer or input handler."
+  },
   "methods": {},
   "usage": "",
-  "notes": [
-    {
-      "title": "Notes",
-      "text": "ProtoFlux:Devices:Mouse\nContinuouslyChanging nodes"
-    }
-  ]
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:MouseScrollDelta&action=raw"
 }

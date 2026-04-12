@@ -1,8 +1,15 @@
 {
-  "description": "The Adder node takes in 3 boolean values (A, B, and CarryIn), and returns 2 boolean values (Y and CarryOut). In computing & electronics, this is called an adder, and helps with boolean math.",
+  "description": "The ``Adder`` node takes in 3 boolean values (``A``, ``B``, and ``CarryIn``), and returns 2 boolean values (``Y`` and ``CarryOut``). In computing & electronics, this is called an adder, and helps with boolean math.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The first boolean input value.",
+    "B": "The second boolean input value.",
+    "CarryIn": "The carry in boolean input value.",
+    "Y": "The result boolean output value.",
+    "CarryOut": "The carry out boolean output value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Adder&action=raw"
 }

@@ -1,0 +1,18 @@
+{
+  "description": "The ButtonDynamicImpulseTrigger component sends Dynamic Impulses to flux node receivers. This acts like a combination of Button Events & Dynamic Impulse Trigger ProtoFlux nodes, but as a component instead.\n\n}}",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "Target": "The slot hierarchy to send this impulse through. If this is null, it will pulse through root instead.",
+    "ExcludeDisabled": "If true, this pulse will ignore disabled slots.",
+    "PressedTag": "When the button is pressed, send a pulse for receivers looking for this tag.",
+    "PressingTag": "When the button is pressing, send a pulse for receivers looking for this tag.",
+    "ReleasedTag": "When the button is released, send a pulse for receivers looking for this tag.",
+    "HoverEnterTag": "When the button just began to hover, send a pulse for receivers looking for this tag.",
+    "HoverStayTag": "When the button is hovering, send a pulse for receivers looking for this tag.",
+    "HoverLeaveTag": "When the button has stopped hovering, send a pulse for receivers looking for this tag."
+  },
+  "methods": {},
+  "usage": "Useful for sending dynamic pulses cleanly instead of using flux.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonDynamicImpulseTrigger&action=raw"
+}

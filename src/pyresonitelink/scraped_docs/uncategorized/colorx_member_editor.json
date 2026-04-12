@@ -1,0 +1,19 @@
+{
+  "description": "The ColorXMemberEditor component is used in inspectors and Ref Hacking to edit ColorX Fields and their UIX elements.",
+  "category": "Uncategorized",
+  "fields": {
+    "Continuous": "Whether updates to the target are continuous.",
+    "_path": "Usually \"r\" \"g\" \"b\" \"a\" to edit parts of the colorX value.",
+    "_target": "The colorX to edit.",
+    "Labels": "Whether to show field labels.",
+    "Vertical": "Whether the inspector showing this component is showing it in a vertical fashion.",
+    "_colorDrive": "The field to drive with the colorX color for the inspector visual.",
+    "_colorDriveNoAlpha": "The field to drive with the colorX target with no alpha applied for the inspector visual.",
+    "_colorDialog": "The color dialogue currently being used to edit the color."
+  },
+  "methods": {
+    "OpenColorPicker": "Handles spawning the user's favorite color picker so they can edit this component's target color."
+  },
+  "usage": "Internal.",
+  "notes": []
+}

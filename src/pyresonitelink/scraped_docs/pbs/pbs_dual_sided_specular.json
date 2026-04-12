@@ -1,0 +1,8 @@
+{
+  "description": "Normally, mesh faces are single-sided only, and thus only render on the outside. Applying a dual-sided material will cause both outside and inside faces to be rendered.",
+  "category": "Assets:Materials:PBS",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

@@ -1,0 +1,12 @@
+{
+  "description": "The DebugFieldAdapterTest is used with DebugFieldAdapter to test the accuracy. If set properly, the ``InvertedColor`` should flash between inverted and not inverted every frame.",
+  "category": "Debug",
+  "fields": {
+    "InvertedColor": "``SourceColor`` inverted. Doesn't do this when this component is by itself. Is set to ``SourceColor`` every time this component changes in any way.",
+    "SourceColor": "The source color. Doesn't affect or is changed by anything. Except for sets or drives."
+  },
+  "methods": {},
+  "usage": "Is a test item. Is not needed to be used by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugFieldAdapterTest&action=raw"
+}

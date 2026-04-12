@@ -1,0 +1,21 @@
+{
+  "description": "The DynamicVariableSpace component is used to separate dynamic variables into namespaces. Since dynamic variables are, by default, created on the slot of the nearest parent DynamicVariableSpace, this component provides control over where the root of that space is, as well as part of the path name to be referenced when using a consumer of dynamic variables, such as DynamicValueVariableDriver`1. For more info see Dynamic Variables.",
+  "category": "Data:Dynamic",
+  "fields": {
+    "SpaceName": "The name of the space.",
+    "OnlyDirectBinding": "When enabled, variables won't be bound to this space unless they specify it by name: /."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Introduction",
+      "text": "The DynamicVariableSpace component is used to separate dynamic variables into namespaces.\nSince dynamic variables are, by default, created on the slot of the nearest parent DynamicVariableSpace, this component provides control over where the root of that space is, as well as part of the path name to be referenced when using a consumer of dynamic variables, such as DynamicValueVariableDriver`1. For more info see Dynamic Variables."
+    },
+    {
+      "title": "Behavior",
+      "text": "== Examples ==\nBy default worlds have a DynamicVariableSpace named \"World\" and users have a DynamicVariableSpace named \"User\""
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicVariableSpace&action=raw"
+}

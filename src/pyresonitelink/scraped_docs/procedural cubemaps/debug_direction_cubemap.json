@@ -1,0 +1,11 @@
+{
+  "description": "The Debug Direction Cubemap component allows for diagnosing which direction in the sky a part of a cubemap points to. This component was probably made to diagnose issues during testing for cubemaps between Unity engine and FrooxEngine and was left for users to test with.",
+  "category": "Assets:Procedural Cubemaps",
+  "fields": {
+    "RGB_Mask": "The colors to include or not to include in direction debugging."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugDirectionCubemap&action=raw"
+}

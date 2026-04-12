@@ -1,0 +1,11 @@
+{
+  "description": "The Gaussian Splat Exportable component allows for making a slot give an option to export as a Gaussian Splat.",
+  "category": "Assets:Export",
+  "fields": {
+    "Splat": "The splat to add as an option for export."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GaussianSplatExportable&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The TextureExportable allows you to make a StaticTexture2D exportable through the files page in the dash menu.\n\nTo export using this component, look at the file browser export section.",
+  "category": "Assets:Export",
+  "fields": {
+    "Texture": "The texture to be exported."
+  },
+  "methods": {
+    "CopyImage": "Shows as a button in the user's context menu. Allows copying the image this component points to into the user's clipboard."
+  },
+  "usage": "To use this component attach it to an object, than reference a Texture2D in the ``Texture`` field.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextureExportable&action=raw"
+}

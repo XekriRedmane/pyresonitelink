@@ -1,8 +1,13 @@
 {
-  "description": "The Value Filter Invalid node takes in an expected value and a fallback value. If the expected value is not valid (such as NaN, Infinity, or -Infinity), then the fallback value will be used as the output.",
+  "description": "The Value Filter Invalid node takes in an expected value and a fallback value. If the expected value is not valid (such as ``NaN``, ``Infinity``, or ``-Infinity``), then the fallback value will be used as the output.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The value that may have a chance of being invalid.",
+    "Fallback": "The fallback value if our provided value is invalid (by entering ``NaN``, ``Infinity``, or ``-Infinity``).",
+    "* (Pseudo-Generic)": "Returns a valid value output."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueFilterInvalid&action=raw"
 }

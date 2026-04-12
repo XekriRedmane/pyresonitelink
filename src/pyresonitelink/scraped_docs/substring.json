@@ -1,8 +1,14 @@
 {
   "description": "The Substring node allows one to get an arbitrary portion of a provided string.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to remove a segment from.",
+    "StartIndex": "The 0-indexed starting point of retrieval from ``Str``.",
+    "Length": "Length of the output substring. If no node is connected to this input, the substring will continue until the end of the string.",
+    "* ([[Type:String|String]])": "A segment of ``Str`` starting at ``StartIndex`` with length ``Length``. If the segment goes past the end of ``Str``, the output is truncated at the end of ``Str``. If ``Length`` is less than ``1``, the output will be an Empty String."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Substring&action=raw"
 }

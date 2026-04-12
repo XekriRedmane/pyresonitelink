@@ -1,0 +1,16 @@
+{
+  "description": "The AvatarUserPositioner component is used to position a user to the avatar upon equipping the avatar.",
+  "category": "Uncategorized",
+  "fields": {
+    "PositionNode": "What node to use to match the position of the user.",
+    "RotationNode": "What node to use to match the rotation of the user.",
+    "PositionReference": "The slot to position the user to instead of the slot this component is on when they equip the user.",
+    "RotationReference": "The slot to rotate the user to instead of the slot this component is on when they equip the user.",
+    "PreserveUp": "Whether to upright the user when they equip the avatar, or set them to the rotation this avatar is in when equipping.",
+    "OnManualEquipOnly": "Whether to trigger this positioner only when the user clicks on the avatar to equip it rather than also triggering when the avatar is equipped through flux."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarUserPositioner&action=raw"
+}

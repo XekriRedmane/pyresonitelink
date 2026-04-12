@@ -1,8 +1,22 @@
 {
-  "description": "The Bake Reflection Probes node takes in the root slot holding all your reflection probes, whether or not to bake the inactive reflection probes, the matching tag to bake only those reflection probes, and a delay before starting the baking process. This node will then attempt to bake them all, then returns the focused reflection probe, the index of that reflection probe, and the count of all reflection probes.",
+  "description": "The ``Bake Reflection Probes`` node takes in the root slot holding all your reflection probes, whether or not to bake the inactive reflection probes, the matching tag to bake only those reflection probes, and a delay before starting the baking process. This node will then attempt to bake them all, then returns the focused reflection probe, the index of that reflection probe, and the count of all reflection probes.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|AsyncCall]])": "Calls an impulse to bake all reflection probes with matching parameters.",
+    "Root": "The slot hierarchy that holds the reflection probes.",
+    "BakeInactive": "Should be able to bake reflection probs that are not enabled.",
+    "FilterWithTag": "Bakes the reflection probes that match this tag.",
+    "DelayBeforeBake": "Should wait a certain amount of time before actually beginning the bake.",
+    "OnBakeBatchStart": "Fires when the bake has started.",
+    "OnBeforeProbeBake": "Fires before the probe is being baked.",
+    "OnProbeBaked": "Fires after the probe has been baked.",
+    "OnBakeBatchFinished": "Fires when the batch of probes have finished baking.",
+    "Probe": "The current probe being baked.",
+    "ProbeIndex": "The index number showing which probe is being baked.",
+    "ProbeCount": "The number of probes in this batch."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:BakeReflectionProbes&action=raw"
 }

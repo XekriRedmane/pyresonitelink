@@ -1,8 +1,15 @@
 {
   "description": "The Set Feet Position node takes in a user's UserRoot and the position for the feet, then sets the position.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to set the feet position.",
+    "UserRoot": "The user's user root.",
+    "Position": "The position to set for the feet.",
+    "Next": "Continues flow execution from here.",
+    "Examples": "Using this node to implement Teleport:\n2ETyj7h79cM"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetFeetPosition&action=raw"
 }

@@ -1,0 +1,13 @@
+{
+  "description": "The Sphere Start End Value Spatial Variable`1 component is part of the Spatial variables system. The start value starts at the edge of the shape and goes inwards towards the center, or the other way around depending on provided values.",
+  "category": "Data:Spatial:Sphere Variables",
+  "fields": {
+    "StartDistance": "The distance at which the sampled spatial variable starts at ``StartValue``.",
+    "EndDistance": "The distance at which the sampled spatial variable ends at ``EndValue``.",
+    "Mode": "The mode to use when sampling the values based on distance."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a size and variable name in order for this to function.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SphereStartEndValueSpatialVariable&action=raw"
+}

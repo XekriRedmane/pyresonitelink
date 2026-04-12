@@ -1,0 +1,13 @@
+{
+  "description": "The UVAtlasAnimator component is used primarily to drive texture animations on materials like GIFs. It can also be used as a sprite sheet to animate things like 2D mouths.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "ScaleField": "The texture's ``TextureScale`` field that should be driven",
+    "OffsetField": "The texture's ``TextureOffset`` field that should be driven",
+    "AtlasInfo": "The AtlasInfo component that provides the size and frame amount for the atlas",
+    "Frame": "Which frame of the atlas the texture scale and offset should be driven to"
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide the component with the Scale and Offset fields of any Material. Then, set the material's image to a sprite sheet of a set of animation frames. Then provide a AtlasInfo with the proper data. Finally, use a TimeIntDriver to drive ``Frame`` to animate always, or set/drive ``Frame`` to the frame on the sheet you want in some other way like ProtoFlux.",
+  "notes": []
+}

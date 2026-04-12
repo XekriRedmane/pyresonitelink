@@ -1,13 +1,11 @@
 {
   "description": "The CurrentCulture node outputs the local user's culture.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:CultureInfo|CultureInfo]])": "The local user's current culture."
+  },
   "methods": {},
   "usage": "",
-  "notes": [
-    {
-      "title": "See also",
-      "text": "ProtoFlux:Strings:Localization"
-    }
-  ]
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CurrentCulture&action=raw"
 }

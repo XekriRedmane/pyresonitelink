@@ -1,0 +1,12 @@
+{
+  "description": "The ConvertibleCharDriver component is used to convert a value into a Char using the value's convert to Char method.",
+  "category": "Uncategorized",
+  "fields": {
+    "Source": "The value to convert.",
+    "Target": "The field to drive with ``Source`` converted into a Char."
+  },
+  "methods": {},
+  "usage": "Used to convert values from one type into another via Components rather than ProtoFlux.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConvertibleCharDriver&action=raw"
+}

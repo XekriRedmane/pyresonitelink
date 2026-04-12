@@ -1,0 +1,15 @@
+{
+  "description": "See Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "_canvas": "The canvas being used to show settings.",
+    "_panel": "The legacy panel being used as a base to interact with the settings.",
+    "_uiRoot": "The slot to put UI elements for anchors.",
+    "_cameraControl": "See Interactive Camera Control.",
+    "_noAnchorMessage": "The text to fill with the no anchors message."
+  },
+  "methods": {},
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraControlAnchors&action=raw"
+}

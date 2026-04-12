@@ -1,0 +1,12 @@
+{
+  "description": "The ButtonReferenceSet component takes in a Reference Type and a ``TargetReference``. When an IButton is pressed while this component is on the same slot, this will send the reference to the provided ``TargetReference``.",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "TargetReference": "The target to send the reference outwards.",
+    "SetReference": "The reference to set when the button is pressed."
+  },
+  "methods": {},
+  "usage": "This is similar to the Write ProtoFlux node but as a component instead.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonReferenceSet&action=raw"
+}

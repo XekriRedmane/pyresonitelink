@@ -1,0 +1,29 @@
+{
+  "description": "The LightTool component can be best learned through its page, the Light Tool for non power users.",
+  "category": "With Nested Enums",
+  "fields": {
+    "LightMode": "See Mode.",
+    "Color": "The color to make new lights.",
+    "Intensity": "The intensity to make new lights.",
+    "ShadowType": "The shadow type to make new lights.",
+    "ShadowStrength": "The strength for the shadows new lights should have.",
+    "Range": "The range of new lights.",
+    "SpotAngle": "The spot angle of new lights.",
+    "PointLightVisual": "The current point light visual root.",
+    "SpotlightVisual": "The current spot light visual root.",
+    "DirectionalLightVisual": "The current directional light visual root.",
+    "ColorIndicators": "A list of color fields to drive with the indication color.",
+    "ShowGizmo": "Whether to show the Gizmo of new lights.",
+    "_pointLightItem": "Legacy don't use.",
+    "_spotLightItem": "Legacy don't use.",
+    "_directionalLightItem": "Legacy don't use.",
+    "_shadowsItem": "Legacy don't use.",
+    "_colorPicker": "The current color picker being used to pick the color for ``Color``."
+  },
+  "methods": {
+    "OnChangeColor": "Handles when the user clicks the menu option to change the created light color."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LightTool&action=raw"
+}

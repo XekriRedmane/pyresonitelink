@@ -1,0 +1,14 @@
+{
+  "description": "The ButtonEditColorX component takes in a ColorX field, and when a button interacts with it, a ColorDialogInterface is created for the user (if the user has Builder).\n\n}}",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "Target": "The target ColorX.",
+    "_colorPicker": "The ColorDialogInterface component.",
+    "Continuous": "Makes the color editing change continuous.",
+    "Alpha": "Allows for use of the alpha channel.",
+    "HDR": "Allows the use for HDR in this color."
+  },
+  "methods": {},
+  "usage": "This is used to edit colors with a press of a button.",
+  "notes": []
+}

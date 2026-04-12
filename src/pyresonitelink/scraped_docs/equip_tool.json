@@ -1,8 +1,17 @@
 {
   "description": "The Equip Tool node equips a tool to the user, optionally dequipping an existing tool.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Receives an impulse to equip the tool to a user.",
+    "Tool": "The tool to equip.\n\nIf the tool is null or the tool is already equipped ``OnEquipFail`` will fire.",
+    "User": "The user to equip the tool to.\n\nIf the user is null then the execution context's local user will be used, and if that local user is null then ``OnEquipFail`` will fire.",
+    "Side": "The chirality of the user to equip this tool.\n\nIf an interaction handler for the side can not be found then ``OnEquipFail`` will fire.",
+    "DequipExisting": "Should this tool dequip an already held tool.\n\nIf an another tool is already equipped and ``DequipExisting`` is false then ``OnEquipFail`` will fire.",
+    "OnEquipped": "Fires if the tool successfully equips to a user.",
+    "OnEquipFail": "Fires if the tool fails to equip."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:EquipTool&action=raw"
 }

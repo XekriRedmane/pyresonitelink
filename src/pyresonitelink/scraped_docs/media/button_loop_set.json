@@ -1,0 +1,13 @@
+{
+  "description": "The ButtonLoopSet component takes in an IPlayable. When an IButton is pressed while this component is in the same slot, it will set the loop on this playable media depending on what is set up in this component.\n\n}}",
+  "category": "Common UI:Button Interactions:Media",
+  "fields": {
+    "Playback": "The referenced playable media.",
+    "OnPress": "Sets the type of loop for this media when pressed.",
+    "OnRelease": "Sets the type of loop for this media when released."
+  },
+  "methods": {},
+  "usage": "Basically a loop button that can be setup anywhere.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonLoopSet&action=raw"
+}

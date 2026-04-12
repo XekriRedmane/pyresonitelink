@@ -1,8 +1,13 @@
 {
   "description": "The ValueMod node takes in 2 inputs and returns the remainder value of a division operation. This node goes by names such as \"Modulus\", \"Modulo\", and \"Mod\". (TODO: Does truncation/rounding come into play when using this as an int value compared to float values?)",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "Takes in the value for division, this is your current amount to check against.",
+    "B": "Takes in a value for division, this is your range, or how much you can fill in with your value before it rolls over and starting from 0.",
+    "* (Pseudo-Generic)": "Returns the remainder value of a division operation."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueMod&action=raw"
 }

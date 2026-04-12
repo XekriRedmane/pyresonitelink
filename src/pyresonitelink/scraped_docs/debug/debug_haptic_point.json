@@ -1,0 +1,13 @@
+{
+  "description": "The DebugHapticPoint component sends Force sensations to a haptic device as well as gets the name of the haptic device.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Debug",
+  "fields": {
+    "Intensity": "Sends a sensation of force of this intensity to the Haptic device at ``Index``",
+    "Index": "The haptic device to send Intensity to and get a name for.",
+    "Position": "The name of the haptic device at ``Index``"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugHapticPoint&action=raw"
+}

@@ -1,0 +1,14 @@
+{
+  "description": "The ButtonRefRelay component sends a signal to a button event handler (usually something internal like a Method Proxy).\n\n}}",
+  "category": "Common UI:Events",
+  "fields": {
+    "DoublePressDelay": "how long it takes before it is to late to count as a double press.",
+    "ReleasePressInterval": "The amount of time it takes to release the button.",
+    "Argument": "The reference argument.",
+    "ButtonPressed": "The place to send the signal."
+  },
+  "methods": {},
+  "usage": "This can send a signal internally.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonRefRelay&action=raw"
+}

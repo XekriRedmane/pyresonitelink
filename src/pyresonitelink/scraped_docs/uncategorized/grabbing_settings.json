@@ -1,0 +1,11 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "DefaultHandGrabType": "The hand grabbing mode a use has by default for their hands."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabbingSettings&action=raw"
+}

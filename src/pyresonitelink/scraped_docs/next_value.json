@@ -1,8 +1,12 @@
 {
-  "description": "See Enums for a more in depth explaination on what Enums are.",
+  "description": "See Enums for a more in depth explaination on what Enums are.\n\nNext Value is a ProtoFlux node that when given an Enum will give the next enum numerically according to the Enums page. \"*\" and \"Value\" will never be different enum types.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The Enum to start at.",
+    "* ([[:Category:Enums|Enum]] Generic)": "The next Enum after Value (Enum Generic) numerically. This node will wrap around forwards and backwards for the output."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:NextValue&action=raw"
 }

@@ -1,8 +1,11 @@
 {
-  "description": "alt=A bool input|thumb|A Type:bool|bool input. alt=A float input|thumb|A Type:float|float input. alt=a string input|thumb|A Type:string|string input.",
+  "description": "The Input node holds a value or reference type that can be output to any other input. Unlike variables, these can be directly modified to see instant changes without the need for a write node.\n\nDifferent types may have different UI interfaces to represent the values they contain, such as bool will have a check box, numerical values like an int and float will have a TextField that takes in only numbers, and strings can take multiple characters.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* (Generic)": "The value or reference that will output from this node to be used somewhere else."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Input&action=raw"
 }

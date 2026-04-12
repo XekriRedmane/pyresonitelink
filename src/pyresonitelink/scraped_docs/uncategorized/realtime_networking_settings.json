@@ -1,0 +1,14 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "DisableLAN": "Whether or not to disable LAN",
+    "PreferSteamNetworking": "Prefer steam networking servers/sockets",
+    "PreferTCP": "Prefer tcp over NAT punching",
+    "LNL_WindowSize": "The size of the LNL data stream."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RealtimeNetworkingSettings&action=raw"
+}

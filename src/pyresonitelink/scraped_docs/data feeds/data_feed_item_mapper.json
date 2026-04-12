@@ -1,0 +1,13 @@
+{
+  "description": "The DataFeedItemMapper allows you to define which data feed items map to which UI templates. It does this via the list ``Mappings``, which take classes that extend DataFeedItem and If they match a mapping in the list it Duplicates that item's template and adds it into the list.\n\nFor more info on data feeds, see Data Feeds",
+  "category": "Radiant UI:Data Feeds",
+  "fields": {
+    "Mappings": "A list of item Mappings to map data feed item types to Feed Templates."
+  },
+  "methods": {
+    "OnSetupTemplate": "Set up a basic settup with this component with a bunch of example UIs."
+  },
+  "usage": "This component is to be put into a SingleFeedView or similar so that the component it is specified inside of can use this component to map incoming feed items from the data feed to UI or object templates.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DataFeedItemMapper&action=raw"
+}

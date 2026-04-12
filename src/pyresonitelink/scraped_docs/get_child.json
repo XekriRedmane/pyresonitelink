@@ -1,8 +1,12 @@
 {
   "description": "Returns the children of a slot from its index.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot you want to find the child of.",
+    "* ([[Slot|Slot]])": "The slot found by the node from the index. If no slot is found, it will return null."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetChild&action=raw"
 }

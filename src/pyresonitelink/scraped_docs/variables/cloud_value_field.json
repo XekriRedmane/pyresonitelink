@@ -1,0 +1,15 @@
+{
+  "description": "The CloudValueField component links a field of type T to a cloud variable.\n\nFor more info on how Cloud Variables work in general, see Cloud Variables.",
+  "category": "Cloud:Variables",
+  "fields": {
+    "Path": "The path of the variable this component will read.",
+    "IsLinkedToCloud": "(Read Only) Indicates whether this field was successfully bound to the target variable.",
+    "VariableOwnerId": "The UserID of the user that made a definition for the variable specified by ``Path``",
+    "ChangeHandling": "See Cloud Variable Change Mode.",
+    "Target": "The target field to which the variable value will be written."
+  },
+  "methods": {},
+  "usage": "Put this component on a slot, and give it a valid cloud variable ``Path`` and ``VariableOwnerId``. When given a ``Target``, the contents of the field given to ``Target`` will auto update with the cloud variable value. Depending on the value of ``ChangeHandling`` and ``VariableOwnerId``, the cloud variable may be updated through this component as well.\n\nThis updates as fast as reading/writing cloud variables permits. All the restrictions that apply to cloud variables apply to this component, including permissions and world contexts.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CloudValueField&action=raw"
+}

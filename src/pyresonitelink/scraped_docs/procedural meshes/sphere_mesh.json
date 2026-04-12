@@ -1,0 +1,16 @@
+{
+  "description": "The SphereMesh component generates a sphere mesh for use with a MeshRenderer.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Radius": "The radius of the sphere mesh.",
+    "Segments": "how many vertical lined edges the sphere has",
+    "Rings": "how many horizontal lined edges the sphere has.",
+    "Shading": "Whether to have smooth or flat shading",
+    "UVScale": "the scale of material detail on the surface",
+    "DualSided": "whether to make a second set of polygons that shows the mesh when viewed from the inside."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SphereMesh&action=raw"
+}

@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan Total Milliseconds node takes in a TimeSpan and returns with the amount of milliseconds in that TimeSpan, including the fractional portion of a millisecond, as well as anything longer than a millisecond will be added into the total.",
+  "description": "The ``TimeSpan Total Milliseconds`` node takes in a TimeSpan and returns with the amount of milliseconds in that TimeSpan, including the fractional portion of a millisecond, as well as anything longer than a millisecond will be added into the total.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "TimeSpan": "The TimeSpan we are getting info from.",
+    "* ([[Type:double|double]])": "Returns the amount of milliseconds in this TimeSpan as an double."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanTotalMilliseconds&action=raw"
 }

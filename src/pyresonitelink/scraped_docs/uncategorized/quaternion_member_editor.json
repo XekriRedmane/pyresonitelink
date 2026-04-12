@@ -1,0 +1,28 @@
+{
+  "description": "The QuaternionMemberEditor component is a low-level component for use in editing FloatQ elements as XYZ Euler angles in degrees. It is used, for example, in the ProtoFlux input node for FloatQ values.",
+  "category": "Uncategorized",
+  "fields": {
+    "Continuous": "Whether changes update a value instantly.",
+    "_path": "see Ref Hacking. essentially accesses a member underneath another one. for example, \"x\" will access the x element of a Float3, Float2, Float4, or FloatQ.",
+    "_target": "Target field, which should be a FloatQ.",
+    "Vertical": "Whether the target UI is a vertical layout, as opposed to a horizontal layout.",
+    "_xEditor": "TextEditor for the X field.",
+    "_yEditor": "TextEditor for the Y field.",
+    "_zEditor": "TextEditor for the Z field.",
+    "_xDrive": "Field to be driven by the X angle. Should be the ``Content`` field on the Text component that ``_xEditor`` is pointing to.",
+    "_yDrive": "Field to be driven by the Y angle.",
+    "_zDrive": "Field to be driven by the Z angle.",
+    "_xButton": "Button whose sync delegates are attached to the ``_xEditor``",
+    "_yButton": "Button whose sync delegates are attached to the ``_yEditor``",
+    "_zButton": "Button whose sync delegates are attached to the ``_zEditor``",
+    "_editingValue": "The value that the user is currently entering at it's current editing state. updates continuously."
+  },
+  "methods": {
+    "EditingStarted": "Called when the component has started editing.",
+    "EditingChanged": "Called when the component's editing value changes.",
+    "EditingFinished": "Called when the component finishes editing."
+  },
+  "usage": "This component's behavior is very similar to PrimitiveMemberEditor, but a layer of abstraction exists between the FloatQ field in ``_target`` and the text field being driven for each member. This abstraction layer converts to and from Euler angles and quaterion values, which is then used for building a UI to edit quaternions as Euler angles.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:QuaternionMemberEditor&action=raw"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "The MissingComponent component is used to signify that a component previously saved on a slot no longer exists inside of Resonite. seeing this component is rare due to the backwards compatibility of Resonite. This component does not have any active functionality.",
+  "category": "Uncategorized",
+  "fields": {
+    "Type": "The string version of a Type of the removed or depreciated component.",
+    "Data": "The data of the missing component."
+  },
+  "methods": {},
+  "usage": "This component will appear on content sometimes. Replace the component with an equivalent or more up to date method, then delete this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MissingComponent&action=raw"
+}

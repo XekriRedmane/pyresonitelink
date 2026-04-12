@@ -1,0 +1,20 @@
+{
+  "description": "The LoginScreen component is used to handle the dash screen for logging into the game.",
+  "category": "Uncategorized",
+  "fields": {
+    "Icon": "The icon of the dash menu tab.",
+    "ActiveColor": "The color when this dash menu screen tab is selected.",
+    "Label": "The text for this dash menu Screen tab.",
+    "ScreenEnabled": "Whether the screen is enabled for viewing.",
+    "BaseResolution": "The default resolution of the tab screen.",
+    "_screenRoot": "The root slot of the dash menu tab view.",
+    "_screenCanvas": "The canvas being used for the tab view.",
+    "_modalOverlayManager": "The Overlay manager being used for handling edit mode.",
+    "_button": "The button to select this dash menu screen tab.",
+    "_iconTexture": "The texture being used for the icon of this dash menu tab."
+  },
+  "methods": {},
+  "usage": "Used for logging in.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LoginScreen&action=raw"
+}

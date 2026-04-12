@@ -1,0 +1,13 @@
+{
+  "description": "The ConeEmitter component is used to create particles via a particle system (see Photon Dust). This Emitter does this in a cone shape.",
+  "category": "Rendering:Particle System:Emitters",
+  "fields": {
+    "BaseRadius": "The radius of the cone to emit from.",
+    "Height": "The height of the cone to emit from.",
+    "DirectionMode": "How particles are emitted from the cone."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConeEmitter&action=raw"
+}

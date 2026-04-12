@@ -1,8 +1,12 @@
 {
-  "description": "The User View Reference Active node returns a user's view reference. This is used with the component View Reference Controller.",
+  "description": "The ``User View Reference Active`` node returns a user's view reference. This is used with the component View Reference Controller.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:bool|bool]])": "The view reference of the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserViewReferenceActive&action=raw"
 }

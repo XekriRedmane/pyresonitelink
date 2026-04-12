@@ -1,0 +1,16 @@
+{
+  "description": "The RelativePositioner component puts the slot its attached to in a position based on the Bounding box and position of ``Reference``. Optionally deleting the component on an update when the slot is positioned successfully.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Reference": "The slot to Relative position to.",
+    "ReferenceBoundsSpace": "The space to calculate the Bounding box of ``Reference`` in.",
+    "ReferenceAnchor": "How far away from the center of the ``Reference``'s Bounding box based on size. (1,1,1) puts this slot at the positive corner in global space of ``Reference``'s Bounding box and (0,0,0) put it at ``Reference``'s center Bounding box point.",
+    "ReferenceOffset": "How much to add to the slot position after Bounding box positioning.",
+    "DestroyAfterDone": "Whether to destroy this component after update and positioning was successfully done due to needed fields not being null.",
+    "_target": "The position field of this slot to drive."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a ``Reference`` in order for this component to do a valid position and optionally delete itself within that update.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RelativePositioner&action=raw"
+}

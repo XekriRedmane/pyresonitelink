@@ -1,0 +1,11 @@
+{
+  "description": "Representing a simple box, this collider is the second most performant collider in the game, beaten by Sphere Colliders",
+  "category": "Physics:Colliders",
+  "fields": {
+    "Size": "How big locally this collider is in the x, y, and z directions."
+  },
+  "methods": {},
+  "usage": "This is useful for floors and walls, and can also be set to NoCollide and used as a way to mark an area for a custom culling system.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BoxCollider&action=raw"
+}

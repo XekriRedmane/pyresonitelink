@@ -1,8 +1,12 @@
 {
   "description": "You can use this node for constantly firing a gun, or something where a drive cannot be used and you need to create events every game tick while a value is true.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Condition": "The value that needs to be true for this node to start sending impluses out of OnUpdate.\n\nBy default it will be null, which will allow impulses even if UpdatingUser is null.",
+    "OnUpdate": "Will send impulses at the game tick rate of the user in UpdatingUser only while UpdatingUser sees Condition as true."
+  },
   "methods": {},
   "usage": "You can use this node for constantly firing a gun, or something where a drive cannot be used and you need to create events every game tick while a value is true.",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FireWhileTrue&action=raw"
 }

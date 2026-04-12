@@ -1,0 +1,15 @@
+{
+  "description": "The AudioVolumeSettings is a Legacy component previously used for settings in the game.",
+  "category": "Uncategorized",
+  "fields": {
+    "MasterVolume": "The volume setting for everything in the game.",
+    "SoundEffectVolume": "The volume setting for sound effects in the game.",
+    "MultimediaVolume": "The volume setting for multimedia in the game.",
+    "VoiceVolume": "The volume setting for voices in the game.",
+    "UserInterfaceVolume": "The volume setting for the user interface in the game."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioVolumeSettings&action=raw"
+}

@@ -1,8 +1,14 @@
 {
-  "description": "The Create Spawn Undo Step will create an undo step in the Context Menu of the person who the impulse came from. This node will make the description of the undo step in the context menu the provided Description (String). This does the best when paired with a Duplicate Slot, since the slot is being spawned this node will allow the duplicate to be undo-able by the user.",
+  "description": "The Create Spawn Undo Step will create an undo step in the Context Menu of the person who the impulse came from. This node will make the description of the undo step in the context menu the provided Description (String). This does the best when paired with a Duplicate Slot, since the slot is being spawned this node will allow the duplicate to be undo-able by the user.\n\nwhen this node is paired with an Undo Batch, it's description if has one, will be ignored, and will be part of the Undo Batch's undo step instead.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Input": "Create the undo step and set the object to be despawned upon undoing to the slot provided.",
+    "Description": "The description for the undo step in the user's context menu. Gets overridden if this node is part of a Undo Batch.",
+    "Target": "The Slot to undo for this undo step.",
+    "Output": "Continues to More undo steps, continues to code that eventually ends, or an End Undo Batch that continues to eventually ended code."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CreateSpawnUndoStep&action=raw"
 }

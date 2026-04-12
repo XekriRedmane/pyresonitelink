@@ -1,8 +1,13 @@
 {
-  "description": "The Is Host Access Allowed Url node takes in a host IP address (and optionally accessible port of that address if provided), and the scope of what type of connection this is. When everything is accurate, this node will return if the user has the host access to a service. This relates to the settings in the Dash that a user can look through to see what services they have access to.",
+  "description": "The ``Is Host Access Allowed Url`` node takes in a host IP address (and optionally accessible port of that address if provided), and the scope of what type of connection this is. When everything is accurate, this node will return if the user has the host access to a service. This relates to the settings in the Dash that a user can look through to see what services they have access to.\n\nIf you provide a scheme (also called a protocol) inside the Url, it will be overridden by the scope every time, as the scope takes priority to determine the type of the network connection. A scheme looks like ``https://`` or ``ws://``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Host": "The IP address and Port Number to connect to.",
+    "Scope": "The access type used for this network connection.",
+    "* ([[Type:bool|bool]])": "The result if this local user has access to the service connected using the exact IP address (Host) (with optional Port Number if provided), and correct connection type."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsHostAccessAllowedUrl&action=raw"
 }

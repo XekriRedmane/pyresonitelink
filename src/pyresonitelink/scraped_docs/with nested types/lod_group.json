@@ -1,0 +1,17 @@
+{
+  "description": "A LOD (Level Of Detail) Group allows you to define behaviors to load alternate meshes for objects based on their relative size on a user's screen. This is commonly used to replace complex and finely detailed meshes with simplified versions based on a user's distance from the object.",
+  "category": "With Nested Types",
+  "fields": {
+    "LODs": "A list of different LOD stages with renderers that should appear for each stage.",
+    "CrossFade": "Cross fade on the Unity LOD component.",
+    "AnimateCrossFading": "Animate Cross fade on the Unity LOD component."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "This also influences the images seen of renderers viewed in mirrors. meaning that a renderer specified by this component can look different in the mirror vs if it's right beside you, at the exact same moment.\n\nThis component relies heavily on the behavior of Unity when it's forced to the unity side via Connectors in FrooxEngine."
+    }
+  ]
+}

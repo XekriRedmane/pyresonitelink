@@ -1,0 +1,19 @@
+{
+  "description": "}}\nRemoteConnectionPointDriver allows driving local position, vector, orientation and size from a target Slot. It can be used with TubeWireMesh and StripeWireMesh to drive the other point from another slot.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "FilterThreshold": "The threshold before recalculating the target values.",
+    "TargetPoint": "The slot to target.",
+    "TargetVector": "The target vector as a local transform under ``TargetPoint``",
+    "TargetSize": "The target scale as a local transform offset under ``TargetPoint``",
+    "TargetOrientation": "The target rotation as a local transform offset under ``TargetPoint``",
+    "LocalPoint": "The field to drive with the position of ``TargetPoint`` with an offset of ``TargetVector`` converted to this slot's local space.",
+    "LocalVector": "The field to drive with a vector of ``TargetVector`` in the transform space of ``TargetPoint`` converted to this slot's local space.",
+    "LocalOrientation": "The field to drive with the rotation of ``TargetPoint`` with an offset of ``TargetVector`` converted to this slot's local space.",
+    "LocalSize": "The field to drive with the scale of ``TargetPoint`` with an offset of ``TargetSize`` converted to this slot's local space."
+  },
+  "methods": {},
+  "usage": "* It's not a complete physical rope simulator or anything, but it lets you connect two endpoints using the different wire mesh types.\n* Hyper convenience components that make tube meshes squishy like neurons",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RemoteConnectionPointDriver&action=raw"
+}

@@ -1,8 +1,13 @@
 {
-  "description": "The Has Tool node takes in a user and side of that user and returns if that user has a tool.",
+  "description": "The ``Has Tool`` node takes in a user and side of that user and returns if that user has a tool.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user to check.",
+    "Side": "The side to check on the user.",
+    "* ([[Type:bool|bool]])": "The result if the user has a tool on that side of them."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:HasTool&action=raw"
 }

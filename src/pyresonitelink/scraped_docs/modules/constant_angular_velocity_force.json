@@ -1,0 +1,11 @@
+{
+  "description": "The Constant Angular Velocity Force component applies constant angular velocity in euler angles to all particles in a particle system.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Force": "The euler angles force to apply to particles."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConstantAngularVelocityForce&action=raw"
+}

@@ -1,0 +1,16 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "MouseSensitivity": "How sensitive the game head movement is to mouse movement.",
+    "ScrollWheelGrabMoveSpeed": "How far items move to and from the player while being grabbed and the scroll wheel is moved 1 unit.",
+    "MouseLookSpeed": "How fast the mouse moves the camera.",
+    "MousePanSpeed": "How fast the mouse moves the camera sideways and up/down when focused on an inspector.",
+    "MouseRotateSpeed": "How fast the mouse can be used to rotate objects.",
+    "MouseFreeformRotateSpeed": "How fast the mouse can be used to free form look in 3rd person desktop mode."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MouseSettings&action=raw"
+}

@@ -1,0 +1,27 @@
+{
+  "description": "The VideoTextureProvider component is used to display and play video. This component importantly implements both ITexture2D and IAudioSource which means it can be used as both a texture and a source of audio like a StaticAudioClip",
+  "category": "Assets",
+  "fields": {
+    "Playback": "controls the playback of both the audio and visual elements of this component at the same time.",
+    "URL": "The website or file source of the video. Like a youtube video or a file on a machine.",
+    "Stream": "Whether this video should stream the data or cache it",
+    "Volume": "The volume of the video when being used as an IAudioSource in an audio player.",
+    "ForcePlaybackEngine": "The engine to use for playback like UnityPlaybackEngine or LibVLC.",
+    "ForceVideoStreamingServiceParsing": "Whether to force parsing a streaming service like Twitch.",
+    "VideoTitle": "The field to populate with the name of the video that has been loaded.",
+    "CurrentPlaybackEngine": "The current engine being used for playback",
+    "CurrentClockError": "The amount of seconds the player may have in error due to lag or otherwise.",
+    "AudioTrackIndex": "the audio track that the video player should use to play",
+    "PreferAudioOnly": "whether to parse the video source as audio only rather than video and audio. An example of an audio only is an MP3 file type.",
+    "MaxWidth": "The max pixels on the x axis that will be rendered when using this as a texture.",
+    "MaxHeight": "The max pixels on the y axis that will be rendered when using this as a texture."
+  },
+  "methods": {
+    "UseAutomatic": "Switches the playback engine to automatic.",
+    "UseUnityNative": "Switches the playback engine to Unity's native library for playing videos.",
+    "UseLibVLC": "Switches the playback engine to Library video library codec."
+  },
+  "usage": "This component is often seen with Video Players, as they implement ITexture2D (meaning they are also a texture) and also implement IAudioSource (Which mean that are also like an audio clip) and can be used by users in different ways (i.e. Multiple screens and speakers sharing one Video Player texture).",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VideoTextureProvider&action=raw"
+}

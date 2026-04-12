@@ -1,8 +1,11 @@
 {
-  "description": "The Random Point On Cube node returns a random float3 value of a point on the shell of a unit cube centered at [0; 0; 0].",
+  "description": "The Random Point On Cube node returns a random float3 value of a point on the shell of a unit cube centered at ``[0; 0; 0]``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float3|float3]])": "A random point on the shell of a unit cube. This will be a float3 where one value is ``-0.5`` or ``0.5`` and the other two values are between ``-0.5`` and ``0.5``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomPointOnCube&action=raw"
 }

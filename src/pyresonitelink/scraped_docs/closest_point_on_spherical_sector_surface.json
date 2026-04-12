@@ -1,8 +1,17 @@
 {
   "description": "The Closest Point On Spherical Sector Surface node takes a point in 3D space and computes the closest point on the surface of a spherical sector defined by its center, direction, radius, and angle. Then it returns the closest point on that sphere's surface and if that point is within that sphere's defined parameters.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Center": "The center of the sphere.",
+    "Direction": "The facing direction of the sphere.",
+    "Radius": "The radius of the sphere.",
+    "Angle": "The angle this point and sphere is going to be using for calculations.",
+    "Point": "The point we are checking.",
+    "ClosestPoint": "Returns the point in the sphere's surface compared with the point given.",
+    "IsPointInside": "Returns if the point is within this sphere."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ClosestPointOnSphericalSectorSurface&action=raw"
 }

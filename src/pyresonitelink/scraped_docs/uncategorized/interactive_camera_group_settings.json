@@ -1,0 +1,12 @@
+{
+  "description": "See Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "GroupDetectionRadius": "How close a user needs to be to others to be in a group.",
+    "GroupLeaveBoundary": "How far a user needs to move from a group before they are removed as being part of a group."
+  },
+  "methods": {},
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraGroupSettings&action=raw"
+}

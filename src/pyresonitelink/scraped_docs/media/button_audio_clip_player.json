@@ -1,0 +1,18 @@
+{
+  "description": "The ButtonAudioClipPlayer plays an AudioClip from a list on press, release, and hover.\n\n}}\n\n}}",
+  "category": "Common UI:Button Interactions:Media",
+  "fields": {
+    "ParentUnder": "Parents the one shot sound under the specified slot.",
+    "MinDistance": "The minimum distance for this sound.",
+    "MaxDistance": "The maximum distance for this sound.",
+    "RolloffMode": "The rolloff for this sound.",
+    "PressedClips": "The list of pressed clip sounds.",
+    "ReleasedClips": "The list of released clip sounds.",
+    "HoverEnterClips": "The list of hover enter clip sounds.",
+    "HoverLeaveClips": "The list of hover leave clip sounds."
+  },
+  "methods": {},
+  "usage": "This is a powerful component that allows for customizability for your many sounds in one slot, great for boopers and UIX buttons that need to have a variety of sounds.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonAudioClipPlayer&action=raw"
+}

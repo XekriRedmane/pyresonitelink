@@ -1,8 +1,15 @@
 {
   "description": "The Triangle Normal node takes in 3 points of a triangle and returns the normal direction value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Point0": "The first point.",
+    "Point1": "The second point.",
+    "Point2": "The third point.",
+    "Normal": "Returns the normal from the created triangle of points.",
+    "IsValid": "Returns if this is a valid triangle."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TriangleNormal&action=raw"
 }

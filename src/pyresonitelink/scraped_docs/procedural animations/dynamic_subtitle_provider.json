@@ -1,0 +1,11 @@
+{
+  "description": "The DynamicSubtitleProvider component is used to provide subtitles on videos that are playing in world.",
+  "category": "Assets:Procedural Animations",
+  "fields": {
+    "AssetURL": "The URI to the subtitle file."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicSubtitleProvider&action=raw"
+}

@@ -1,0 +1,9 @@
+{
+  "description": "The DepthMaterial component renders everything behind it in black and white depending on how far away it is from the camera.",
+  "category": "Assets:Materials:Filters",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot and apply to a MeshRenderer or SkinnedMeshRenderer to see the visual effect this component makes.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DepthMaterial&action=raw"
+}

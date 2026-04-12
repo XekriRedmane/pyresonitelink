@@ -1,0 +1,11 @@
+{
+  "description": "The ObjectRoot component marks a slot as the root of an object, where an object is the slot itself plus all of its child slots, recursively.",
+  "category": "Transform",
+  "fields": {},
+  "methods": {
+    "RemoveChildrenObjectRoots": "will recursively delete any ObjectRoot components from this slot's children."
+  },
+  "usage": "Setting a slot as the ObjectRoot helps the Scene Inspector's \"up to object root\" button find the root of the object.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ObjectRoot&action=raw"
+}

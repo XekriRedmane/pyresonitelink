@@ -1,8 +1,12 @@
 {
-  "description": "The Seconds Timer node sends a pulse from the UpdatingUser at the specified interval of seconds.",
+  "description": "The Seconds Timer node sends a pulse from the ``UpdatingUser`` at the specified interval of seconds.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Interval": "The interval in seconds to send pulses at.",
+    "OnUpdate": "Sends a pulse at every ``Interval`` seconds from the ``UpdatingUser``.\n\nThis input can be driven by a Local User node to generate impulses for every user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SecondsTimer&action=raw"
 }

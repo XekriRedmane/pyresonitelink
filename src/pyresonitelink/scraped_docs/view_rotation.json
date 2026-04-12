@@ -1,8 +1,11 @@
 {
-  "description": "The View Rotation node returns the local user's view output rotation.",
+  "description": "The View Rotation node returns the local user's view output rotation.\n\nWhen in Desktop Mode or VR Mode, this node will return the value of where your head proxy is rotated. When an item or object that can override your view is used (such as using a different head proxy, templated head proxy, or something else that moves your view point (such as the AvatarUserRootOverrideAssigner or AvatarObjectSlot components)), this node will return a new rotation value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:floatQ|floatQ]])": "Returns the local user's view output rotation."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ViewRotation&action=raw"
 }

@@ -1,0 +1,18 @@
+{
+  "description": "The GradientSkyMaterial component is used in Skybox to make a gradient type sky for use in worlds.",
+  "category": "Assets:Materials:Skybox",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot and insert into a Skybox component and use the SetCurrentSky() Sync Method to use this component. Don't forget to add some ``_gradients`` to the list.",
+  "notes": [
+    {
+      "title": "Gradient",
+      "text": "Gradient is a nested type used in the ``_gradients`` list."
+    },
+    {
+      "title": "Related Components",
+      "text": "* Skybox"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GradientSkyMaterial&action=raw"
+}

@@ -1,8 +1,12 @@
 {
-  "description": "The Is Character Controller node takes in a reference to an ICollider and returns if that ICollider is labeled as a character controller type and the character controller has a simulating user in the same Slot.",
+  "description": "The ``Is Character Controller`` node takes in a reference to an ICollider and returns if that ICollider is labeled as a character controller type and the character controller has a simulating user in the same Slot.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Collider": "The Collider we want to check if it is a character controller.",
+    "* ([[Type:bool|bool]])": "The result if it is a character controller or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsCharacterController&action=raw"
 }

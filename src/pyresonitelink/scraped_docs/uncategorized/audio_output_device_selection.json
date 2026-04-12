@@ -1,0 +1,13 @@
+{
+  "description": "The AudioOutputDeviceSelection component is a Legacy component that was used to change the audio output settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "SelectedDeviceIndex": "The device index in the list of devices on the user's machine.",
+    "SelectedDeviceName": "The name of the selected device.",
+    "_deviceButtonRoot": "The root of the list of buttons to set an audio output device."
+  },
+  "methods": {},
+  "usage": "Legacy.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioOutputDeviceSelection&action=raw"
+}

@@ -1,8 +1,14 @@
 {
   "description": "The Deny Join node takes in a JoinRequestHandle and a deny reason, and if the world enabled a join verification system using the Verify Join Request node, this node will run and deny the user from joining and gives them a reason why.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to deny the user from joining the world.",
+    "Handle": "The handle for the join verification system.",
+    "DenyReason": "The reason why a user is not allowed to join.",
+    "Next": "Continue the code from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DenyJoin&action=raw"
 }

@@ -1,8 +1,15 @@
 {
   "description": "The Rotation At Target Point node takes a set of parameters that represent a rotation, then returns a rotational value that points in a direction.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Pivot": "The rotational pivot for this value to calculate with.",
+    "Point": "The rotational value that it will calculate from.",
+    "Direction": "The direction to help orientate this rotational value.",
+    "TargetPoint": "The direction this rotational value will look towards.",
+    "* ([[Type:floatQ|floatQ]])": "Returns the rotational value that represents the pointing or facing in a direction."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RotationAtTargetPoint&action=raw"
 }

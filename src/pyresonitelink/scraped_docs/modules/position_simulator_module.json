@@ -1,0 +1,13 @@
+{
+  "description": "The PositionSimulatorModule component is the most essential particle simulator module. Without it, particles will not move, and won't have velocity.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Collisions": "Whether particles should have collisions.",
+    "CollisionLifetimeLossRatio": "How much lifetime percentage from 01 should particles loose when hitting a surface?",
+    "CollisionBounceRatio": "How much velocity should particles retain as a percentage from 01 when bouncing off of a surface?"
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PositionSimulatorModule&action=raw"
+}

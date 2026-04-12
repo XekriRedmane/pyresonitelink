@@ -1,0 +1,16 @@
+{
+  "description": "The BooleanMemberEditor component is commonly used in Scene Inspectors to allow toggling of booleans even if they are a sub property of a type like a Bool3 Using ``_path``. This can be utilized in Ref Hacking.",
+  "category": "Uncategorized",
+  "fields": {
+    "Continuous": "Whether editing of this field instantly updates the ``_target``.",
+    "_path": "The sub path under ``_target``. This can be something like \"x\" to represent the first value of a Bool3 field.",
+    "_target": "The bool field or a field with a toggleable bool subfield.",
+    "_checkBox": "The Checkbox to toggle ``_target``->``_path`` with.",
+    "_stateDrive": "The field to drive with the state of ``_target``->``_path``",
+    "_button": "The button to toggle ``_target``->``_path`` with."
+  },
+  "methods": {},
+  "usage": "Used in Scene Inspectors",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BooleanMemberEditor&action=raw"
+}

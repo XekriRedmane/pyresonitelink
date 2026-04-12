@@ -1,0 +1,19 @@
+{
+  "description": "The DesktopController component is used to control the desktop through the game dash.",
+  "category": "Input:Desktop",
+  "fields": {
+    "FollowCursor": "whether the desktop cursor should follow the Resonite dash cursor when not clicking.",
+    "LegacyInputMode": "Whether to use the legacy input system for desktop interaction.",
+    "Brightness": "how bright the desktop display should be in the dash.",
+    "Opacity": "how transparent the desktop display should be in the dash.",
+    "_displayColor": "The color of the display texture to drive",
+    "_displayRect": "The UIX size rectangle for the display texture.",
+    "_desktopTexture": "The texture displaying the desktop.",
+    "_interactionRelay": "The relay allowing for system Desktop interaction.",
+    "_currentControl": "The current dialogue being used to change settings for this component."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DesktopController&action=raw"
+}

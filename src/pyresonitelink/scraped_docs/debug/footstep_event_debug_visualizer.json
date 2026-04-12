@@ -1,0 +1,16 @@
+{
+  "description": "The FootStepEventDebugVisualizer shows footstep collisions with a collider on the same Slot as the one it's attached on.",
+  "category": "Debug",
+  "fields": {
+    "Duration": "How long the debug step visual should display for in seconds."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Usages",
+      "text": "Used to show footstep events for Debug purposes."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FootstepEventDebugVisualizer&action=raw"
+}

@@ -1,0 +1,17 @@
+{
+  "description": "The RelayTouchSource component is used to handle the interactions of tip touch sources on the user.",
+  "category": "Uncategorized",
+  "fields": {
+    "AutoUpdateUser": "The user handling updates for thus component",
+    "OutOfSightAngle": "Buttons outside this angle from the user's center view are considered out of sight.",
+    "MaxTouchPenetrationDistance": "The max distance of penetration into an item like a physical button before it's not considered pressed anymore.",
+    "TipPositionGetter": "Refers to a InteractionLaser's sync delegate of the same name.",
+    "TipDirectionGetter": "Refers to a InteractionLaser's sync delegate of the same name.",
+    "TouchTypeGetter": "Refers to a InteractionLaser's sync delegate of the same name.",
+    "TouchableGetter": "Refers to a InteractionLaser's sync delegate of the same name."
+  },
+  "methods": {},
+  "usage": "Not usually used by the user. However, a TipTouchSource component is.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RelayTouchSource&action=raw"
+}

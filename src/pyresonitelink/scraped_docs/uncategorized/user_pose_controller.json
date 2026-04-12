@@ -1,0 +1,18 @@
+{
+  "description": "The UserPoseController component is used to control the posing of the user.",
+  "category": "Uncategorized",
+  "fields": {
+    "ScreenController": "the currently used screen controller.",
+    "BodyHorizontalAngle": "The current user body angle.",
+    "RenderDebugVisuals": "Whether or not to render the debug visuals.",
+    "PauseLocomotionAnimation": "Whether or not to pause the current locomotion animation.",
+    "OverrideLocomotionVelocity": "What to override the current locomotion animation with.",
+    "OverrideLocomotionAngularVelocity": "What to override the current locomotion animation angular velocity with.",
+    "SimulationSpeedRatio": "The specified simulation speed ratio.",
+    "_defaultConfig": "What the default locomotion animation for all avatars that don't specify it should be."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserPoseController&action=raw"
+}

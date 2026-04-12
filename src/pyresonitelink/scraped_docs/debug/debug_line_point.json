@@ -1,0 +1,13 @@
+{
+  "description": "The DebugLinePoint component draws a line from ``LinePoint0`` to ``LinePoint1`` which is the central line. When attached, it generates 128 random Float3's which get added to ``Points``. Every point in said list have a line drawn from them to the closest point on the central line.",
+  "category": "Debug",
+  "fields": {
+    "LinePoint0": "The starting point of the central line.",
+    "LinePoint1": "the ending point of the central line.",
+    "Points": "A list of points to draw lines from to the closest point on the central line."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugLinePoint&action=raw"
+}

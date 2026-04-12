@@ -1,8 +1,14 @@
 {
   "description": "This node when provided an Animation Asset sample the given track index for a primitive value at the specified time.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Animation": "The Animation Asset provided by an IAssetProvider.",
+    "TrackIndex": "The track index of the given Animation (Animation Asset) to sample from",
+    "Time": "The time in seconds at which to sample the animation. If between keyframes it will sample based on the AnimJ's interpolation for those frames on the track.",
+    "* (Dummy Pseudo-generic)": "This gives the Primitive for the track index given to TrackIndex (int) at the time given to Time (Float). If between keyframes it will sample based on the AnimJ's interpolation for those frames on the track."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SampleValueAnimationTrack&action=raw"
 }

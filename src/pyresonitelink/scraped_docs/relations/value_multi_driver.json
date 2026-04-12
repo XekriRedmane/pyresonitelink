@@ -1,0 +1,17 @@
+{
+  "description": "The ValueMultiDriver`1 component allows you to drive multiple fields from a single value.",
+  "category": "Relations",
+  "fields": {
+    "Value": "Value of the specified type, which will be driven to all fields listed in ``Drives``",
+    "Drives": "A list of fields to be driven by this component"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "== Examples =="
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueMultiDriver&action=raw"
+}

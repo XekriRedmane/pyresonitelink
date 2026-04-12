@@ -1,8 +1,13 @@
 {
   "description": "The Delay Value node takes in the amount of seconds and the value, then outputs the value at a later time equal to the provided seconds.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "DelaySeconds": "The amount of seconds to delay the data.",
+    "Value": "The value to delay.",
+    "DelayedValue": "The delayed value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DelayValue&action=raw"
 }

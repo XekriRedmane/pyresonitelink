@@ -1,0 +1,22 @@
+{
+  "description": "The SpawnOrDestroy component is part of the Undo system, and handles spawning and destruction of objects in the Undo system.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Target": "The target worker to use when executing.",
+    "TargetParent": "The parent of this object to restore it to.",
+    "_onRestored": "The sync delegate with this compoonent's worker passed as an object to trigger when the object is restored.",
+    "_mode": "What mode to execute.",
+    "_preserveAssets": "Whether the destruction should preserve assets like meshes.",
+    "_sendDestroyingEvents": "Whether to send destruction events when destroying.",
+    "_savedObject": "The URI of the saved object.",
+    "_isComponent": "Whether this is in component form or internal to the engine.",
+    "_referenceTable": "The place to store destroyed object data in order to restore the object later.",
+    "_isSaving": "Whether this component is saving object data.",
+    "_description": "The description of the object.",
+    "_performed": "Whether this component is finished executing it's function."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SpawnOrDestroy&action=raw"
+}

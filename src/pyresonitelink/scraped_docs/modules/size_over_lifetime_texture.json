@@ -1,0 +1,11 @@
+{
+  "description": "The Size Over Lifetime Texture component samples a texture from 0->1 in normalized UV coordinates to figure out how big a particle should be should be in it's lifetime normalized to 0->1.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Texture": "The texture to sample for size over lifetime."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SizeOverLifetimeTexture&action=raw"
+}

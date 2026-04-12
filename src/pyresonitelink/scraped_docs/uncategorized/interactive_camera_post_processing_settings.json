@@ -1,0 +1,12 @@
+{
+  "description": "See Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "MotionBlur": "This enables the camera to have motion blue as it moves.",
+    "ScreenSpaceReflections": "This shows screen space reflection through the preview and pictures."
+  },
+  "methods": {},
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraPostProcessingSettings&action=raw"
+}

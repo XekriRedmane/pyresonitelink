@@ -1,0 +1,16 @@
+{
+  "description": "The WorldLink component is used to set the world information, either to use as a way to jump to different worlds or to pre-load worlds.\n\n}}",
+  "category": "World",
+  "fields": {
+    "URL": "The world to link.",
+    "ActiveSessionURLs": "Used for session orbs.",
+    "CreateIfNotExists": "If the world we are going to does not exist, then make one.",
+    "WorldRelation": "The relation of the world.",
+    "AutoFocus": "After the world loads, focus to this world automatically.",
+    "GetExisting": "If a world we are looking for already exists, then don't make a new one and then optionally focus onto it."
+  },
+  "methods": {},
+  "usage": "* This can be combined with the ButtonWorldLink component to setup a button for loading a world for a user.\n* This can be hooked up into ProtoFlux with the Open World or Focus World nodes to open or jump to another world.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldLink&action=raw"
+}

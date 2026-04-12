@@ -1,0 +1,17 @@
+{
+  "description": "A generator for points arranged in a rectangle with a given length and width.",
+  "category": "Transform:Point Generators",
+  "fields": {
+    "Size": "A flat rectangle size for generating points in",
+    "Shell": "Whether to spawn users on only the perimeter or not."
+  },
+  "methods": {},
+  "usage": "Used in a Common Spawn Area to define in what kind of spawn area shape users should initially spawn into.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* CommonSpawnArea"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SquarePointGenerator&action=raw"
+}

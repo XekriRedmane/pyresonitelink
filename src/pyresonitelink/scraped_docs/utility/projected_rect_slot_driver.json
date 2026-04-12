@@ -1,0 +1,16 @@
+{
+  "description": "The ProjectedRectSlotDriver component takes a Slot in the ``Target`` field and places that slot in the center of where this compoennt's UIX element's transform is. This target slot will be resized to match a pizel scale that the UIX Canvas uses.\n\n}}",
+  "category": "UIX:Utility",
+  "fields": {
+    "_position": "Internal - The position of the target slot.",
+    "Target": "The slot to reposition onto this UIX.",
+    "_rotation": "Internal - The rotation of the target slot.",
+    "_scale": "Internal - The scale of the target slot.",
+    "_originalParent": "Internal - The original parent this slot came from.",
+    "_lastTarget": "Internal - The last known slot target this component used."
+  },
+  "methods": {},
+  "usage": "This can be used if you want to place a slot to where some UIX is at anytime.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProjectedRectSlotDriver&action=raw"
+}

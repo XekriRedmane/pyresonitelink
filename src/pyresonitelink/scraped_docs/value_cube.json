@@ -1,8 +1,12 @@
 {
   "description": "The Value Cube node takes in a value and cubes it, basically returning itself multiplied by itself 3 times.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "N": "The number we want to cube.",
+    "* (Pseudo-Generic)": "Returns the cubed value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueCube&action=raw"
 }

@@ -1,8 +1,13 @@
 {
-  "description": "The Random Point On Cone node returns a random point on the shell of a cone with the given Height and BaseRadius centered at [0; 0; 0].",
+  "description": "The Random Point On Cone node returns a random point on the shell of a cone with the given ``Height`` and ``BaseRadius`` centered at ``[0; 0; 0]``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Height": "The height of the cone.",
+    "BaseRadius": "The radius of the circle base of the cone.",
+    "* ([[Type:float3|float3]])": "A random point on the surface of the specified cone. The center of the cone is at ``[0; 0; 0]``, making the ``y`` field anywhere between ``-BaseHeight/2`` and ``+BaseHeight/2``, where the former is the circle side and the latter is the tip side."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomPointOnCone&action=raw"
 }

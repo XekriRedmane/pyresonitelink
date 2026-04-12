@@ -1,0 +1,10 @@
+{
+  "description": "The OBSSettings component allows for changing settings for OBS. May be legacy.",
+  "category": "Misc",
+  "fields": {
+    "AutoMirror": "Auto Mirror on Record/Stream."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

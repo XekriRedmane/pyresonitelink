@@ -1,0 +1,15 @@
+{
+  "description": "The GridMesh component generates a procedural mesh for use with Mesh Renderers that is like a Quad Mesh but has multiple squares instead of being one big square.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Points": "how many vertex points should be used on each axis to make the grid of quads",
+    "Size": "how big the grid is scale wise.",
+    "FlatShading": "Disable smooth shading",
+    "DisplacementMagnitude": "How far to displace the grid texture using ``DisplacementTexture``",
+    "DisplacementTexture": "The texture to use for displacement. must be set to Uncompressed."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a MeshRenderer to see the geometry. Don't forget to use a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GridMesh&action=raw"
+}

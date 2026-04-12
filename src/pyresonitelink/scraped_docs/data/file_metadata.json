@@ -1,0 +1,21 @@
+{
+  "description": "File metadata is a component used in RawFile object imports and is often taken advantage of for Cloud Spawning.\n\nThis component has two sync delegates which import and export data from a Static Binary Component on the same slot.",
+  "category": "Data",
+  "fields": {
+    "Filename": "The name of the file, usually followed by .brson or .7bson",
+    "MIME": "see Media Types (MIME)",
+    "IsProcessing": "whether this component is currently processing an import or export action asynchronously."
+  },
+  "methods": {
+    "OnImportFile": "See Cloud Spawning.",
+    "OnExportFile": "See Cloud Spawning."
+  },
+  "usage": "See Cloud Spawning.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* Static Binary"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FileMetadata&action=raw"
+}

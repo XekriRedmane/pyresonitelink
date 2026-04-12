@@ -1,8 +1,14 @@
 {
-  "description": "The Release All Grabbed node, when impulsed, makes all slots the provided body node has, to become released. This also has the option to suppress events, useful if the slots were listening using the On Grabbable Released node, preventing a lot of pulses from firing.",
+  "description": "The ``Release All Grabbed`` node, when impulsed, makes all slots the provided body node has, to become released. This also has the option to suppress events, useful if the slots were listening using the On Grabbable Released node, preventing a lot of pulses from firing.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to make the provided Node (BodyNode)'s grabber release everything it is holding.",
+    "Node": "The node to find a grabber for so this node can make it release all that it is holding.",
+    "SuppressEvents": "Tells this node to suppress released events that other nodes or components may be listening to. Doesn't prevent code from running that is listening to the grabber of the released objects, however.",
+    "Next": "Sends an impulse when * (Call) is called and the provided Node (BodyNode) has had it's grabber release everything it was grabbing."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ReleaseAllGrabbed&action=raw"
 }

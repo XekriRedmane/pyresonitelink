@@ -1,13 +1,17 @@
 {
-  "description": "The UnboxT node converts a boxed object back into its underlying value type.",
+  "description": "The Unbox&lt;T&gt; node converts a boxed object back into its underlying value type.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Input": "The object to unbox.",
+    "* (Generic)": "The unboxed value of the object."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "See also",
-      "text": "* Box for boxing value types into objects\n* Microsoft documentation on C# boxing and unboxing\n\nProtoFlux:Core"
+      "text": "* Box for boxing value types into objects\n* Microsoft documentation on C# boxing and unboxing"
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Unbox&action=raw"
 }

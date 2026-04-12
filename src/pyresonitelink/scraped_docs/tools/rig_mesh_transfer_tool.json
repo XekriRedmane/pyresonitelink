@@ -1,0 +1,14 @@
+{
+  "description": "See Rig Mesh Transfer Tool.",
+  "category": "Tools",
+  "fields": {
+    "SourceRig": "The original rig Component to get data from.",
+    "_label": "The indication label for this tool."
+  },
+  "methods": {
+    "OnClearSource": "Called when the clear source button is touched."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RigMeshTransferTool&action=raw"
+}

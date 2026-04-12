@@ -1,0 +1,14 @@
+{
+  "description": "The ScaleElement component scales itself up or down depending on if it is the selected scale element in a Scale Group..",
+  "category": "Transform:Interaction",
+  "fields": {
+    "Group": "The group this belongs to. If there is a group in this component's parents, the group is auto filled into this field on attach.",
+    "RespondToPhysicalTouch": "Whether to make this item selected upon physical touch.",
+    "RespondToRemoteTouch": "Whether to make this item selected upon clicking via laser.",
+    "_scaleTarget": "The field to drive in order to influence the scale of this slot when selecting/deselecting."
+  },
+  "methods": {},
+  "usage": "Used along with a Scale Group to make a list of selectable items via touching them.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ScaleElement&action=raw"
+}

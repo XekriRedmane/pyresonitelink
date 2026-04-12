@@ -1,8 +1,16 @@
 {
-  "description": "The Set User Scale node changes the user scale with the provided inputs. While the user is scaling and the user is in the middle of a scale animation, the user cannot be scaled again until the animation has finished.",
+  "description": "The ``Set User Scale`` node changes the user scale with the provided inputs. While the user is scaling and the user is in the middle of a scale animation, the user cannot be scaled again until the animation has finished.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|AsyncCall]])": "Calls from an impulse to start changing the user's scale.",
+    "UserRoot": "The user root to scale.",
+    "Scale": "The target scale to aim for.",
+    "AnimationTime": "How long this scaling should take.",
+    "OnScaleChangeStart": "Fires when the scaling has started.",
+    "OnAnimationFinished": "Fires when the scaling animation has finished scaling the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetUserScale&action=raw"
 }

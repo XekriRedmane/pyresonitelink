@@ -1,0 +1,12 @@
+{
+  "description": "Attach to a slot and provide the mesh renderers that should have materials applied to them with the material Tool in Renderers.",
+  "category": "Assets:Tagging",
+  "fields": {
+    "Renderers": "The list of renderers to relay to the material tool.",
+    "_renderer": "An extra renderer that's legacy."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide the mesh renderers that should have materials applied to them with the material Tool in ``Renderers``.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeshRendererMaterialRelay&action=raw"
+}

@@ -1,8 +1,12 @@
 {
-  "description": "The User Packet Loss node takes in a user and returns that user's lost packets during this network communication, session, or protocol. If the user is host, then that number is always zero (0).",
+  "description": "The ``User Packet Loss`` node takes in a user and returns that user's lost packets during this network communication, session, or protocol. If the user is host, then that number is always zero (0).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user that we want info from.",
+    "* ([[Type:float|float]])": "Returns the lost packets of that user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserPacketLoss&action=raw"
 }

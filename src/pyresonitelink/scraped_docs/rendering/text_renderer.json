@@ -1,0 +1,38 @@
+{
+  "description": "The TextRenderer component shows Text in the world. An example can be created from the Create New menu, Text, then Basic or Outline.",
+  "category": "Rendering",
+  "fields": {
+    "Font": "The font set to use to render the text. For example, Times new Roman, or Avali Scratch.",
+    "Text": "The text to display. For example, \"Hello world!\"",
+    "ParseRichText": "Whether or not to interpret text formatting tags like \"\" for bold and \"\" for itallic.",
+    "NullText": "the text to display if ``Text`` is null. (Empty text doesn't count)",
+    "Size": "how big to render the text as.",
+    "HorizontalAlign": "How to align the text horizontally.",
+    "VerticalAlign": "how to align the text vertically.",
+    "AlignmentMode": "how to align the text within the bounding box",
+    "Color": "what color to render the text in.",
+    "Materials": "what materials to render the text as. Really only works with Unlit Text Material type.",
+    "LineHeight": "how much space each text line should take up",
+    "Bounded": "whether to restrict the text within a certain area",
+    "BoundsSize": "the area to use if ``Bounded`` is enabled.",
+    "BoundsAlignment": "how to align the text to the bounds and therefore how to handle text that spills out.",
+    "MaskPattern": "a string to replace every character in ``Text`` with when rendering. Useful for password fields.",
+    "HorizontalAutoSize": "whether to scale the text to fit the bounds horizontally",
+    "VerticalAutoSize": "whether to scale the text to fit the bounds vertically",
+    "CaretPosition": "Where the typing cursor position is within the text by character index.",
+    "SelectionStart": "where the selection starts if the text is being edited currently.",
+    "CaretColor": "the color of the typing cursor",
+    "SelectionColor": "the color of the typing selection.",
+    "_legacyFontMaterial": "Internal.",
+    "_legacyAlign": "Internal."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "UIX Text"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextRenderer&action=raw"
+}

@@ -1,8 +1,13 @@
 {
-  "description": "The Notify Modified node takes in an IComponent, and when called will invoke the NotifyModified method on the input Component. Used for components which implement IModifiedEventReceiver like GridContainerPreset and Workspace.",
+  "description": "The ``Notify Modified`` node takes in an IComponent, and when called will invoke the ``NotifyModified`` method on the input Component. Used for components which implement IModifiedEventReceiver like GridContainerPreset and Workspace.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to check if a component was modified.",
+    "ModifiedComponent": "The component to check.",
+    "Next": "Continue the code from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:NotifyModified&action=raw"
 }

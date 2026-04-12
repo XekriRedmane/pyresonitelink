@@ -1,0 +1,14 @@
+{
+  "description": "The FacetAnchorsSettings component is used to control the Settings for facet anchors.",
+  "category": "Uncategorized",
+  "fields": {
+    "UseFacetAnchors": "Whether to allow the use of facet anchors",
+    "FacetAnchorToggle": "which controller to replace the dash open function with the opening facet anchors function.",
+    "AnimationSpeed": "How fast facet anchors open and close.",
+    "ShowContainerBackground": "Whether to show the background visual of facet anchors."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FacetAnchorsSettings&action=raw"
+}

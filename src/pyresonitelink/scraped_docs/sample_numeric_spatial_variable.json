@@ -1,8 +1,15 @@
 {
-  "description": "The Sample Numeric Spatial Variable node takes in a point in 3D space, a name that matches that space, a priority mode, and a default (base) value if that space cannot be found, then returns the (weighted) value found in the space, otherwise it will return the default value.",
+  "description": "The Sample Numeric Spatial Variable node takes in a point in 3D space, a name that matches that space, a priority mode, and a default (base) value if that space cannot be found, then returns the (weighted) value found in the space, otherwise it will return the default value.\n\nThis node works with spatial variable components, and will need a BoxConstantValueSpatialVariable or similar to function as expected.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Point": "The point to check in global 3D space.",
+    "Name": "The named space/area to look for.",
+    "Mode": "The priority mode used to determine the value of this sample. (``HighestPriority``, ``WeightedAverage``, ``PrioritySortedBlend``, or ``Additive``)",
+    "BaseValue": "If a named space cannot be found, use this value.",
+    "* (Pseudo-Generic)": "Returns the value found in this space/area, otherwise return the default (base) value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SampleNumericSpatialVariable&action=raw"
 }

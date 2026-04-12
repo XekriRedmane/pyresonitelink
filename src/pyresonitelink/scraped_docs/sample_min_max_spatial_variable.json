@@ -1,8 +1,15 @@
 {
-  "description": "The Sample Min Max Spatial Variable node takes in a point in 3D space, and a name that matches that space, then returns the values found in the space that defined a min and max range.",
+  "description": "The Sample Min Max Spatial Variable node takes in a point in 3D space, and a name that matches that space, then returns the values found in the space that defined a min and max range.\n\nThis node works with spatial variable components, and will need a BoxConstantValueSpatialVariable or similar to function as expected.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Point": "The point to check in global 3D space.",
+    "Name": "The named space/area to look for.",
+    "Min": "Returns the min value found in this space/area.",
+    "Max": "Returns the max value found in this space/area.",
+    "FoundAny": "Returns if there is a matching space/area at all."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SampleMinMaxSpatialVariable&action=raw"
 }

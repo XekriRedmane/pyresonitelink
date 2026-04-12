@@ -1,0 +1,39 @@
+{
+  "description": "The StaticMesh component is used to load a static mesh asset from the Uri specified in `URL`\n\nGenerally, you will not need to use this component directly, as it is created automatically when importing a new mesh, or when baking a Procedural Mesh using the Sync Method ``BakeMesh()``",
+  "category": "Assets",
+  "fields": {
+    "URL": "The Uri pointing to the .meshx asset to be loaded",
+    "Readable": "Whether this component's data can be read via protoflux."
+  },
+  "methods": {
+    "RecalculateNormals": "Use above function instead.",
+    "RecalculateNormalsMerged": "Use above function instead.",
+    "RecalculateTangentsSimple": "Use above function instead.",
+    "RecalculateTangentsMikktspace": "Recalcates mesh tangents which affect shading. This is Mikkspace which is defined by UnityEngine's definition.",
+    "RecalculateBlendshapeNormals": "Use above function instead.",
+    "RecalculateBlendshapeNormalsMerged": "Use above function instead.",
+    "RecalculateBlendshapeTangentsMikktspace": "Recalculate the normals of blendshape data in Mikktspace.",
+    "FlipNormals": "Use above function instead.",
+    "ReverseWinding": "Use above function instead.",
+    "MakeDualSided": "Use above function instead.",
+    "ConvertToFlatShading": "Use above function instead.",
+    "MergeDoubles": "Use above function instead.",
+    "StripEmptyBlendshapes": "Use above function instead.",
+    "MergeBlendshapes": "Use above function instead.",
+    "StripBlendshapeNormals": "Use above function instead.",
+    "StripBlendshapeTangents": "Use above function instead.",
+    "TrimBoneWeightCount": "Use above function instead.",
+    "ConvertToConvexHull": "Converts the mesh to a convex hull.",
+    "ConvertToPointCloud": "Converts the mesh to a point cloud.",
+    "TranslateUVs": "Transforms the mesh UVs around.",
+    "ResaveMesh": "Resaves the mesh recieved on the client to the cloud. can fix syncing issues with other users.",
+    "RecalculateTangentsMikk": "Use above function instead.",
+    "RecalculateBlendshapeTangentsMikk": "Use above function instead.",
+    "GetBoneList": "Creates a dialog that shows the bone list.",
+    "GetBoneData": "Creates a dialog that shows the bone data.",
+    "ScaleUVs": "Scales the UVs by the recieved size."
+  },
+  "usage": "Attach to a slot, provide a ``URL`` and insert into a SkinnedMeshRenderer or MeshRenderer. Don't forget the Material(s).",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StaticMesh&action=raw"
+}

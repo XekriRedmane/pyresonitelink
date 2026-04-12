@@ -1,0 +1,11 @@
+{
+  "description": "The GlobalValue&lt;T&gt; component is used by ProtoFlux to define a global of a FrooxEngine value type.",
+  "category": "ProtoFlux",
+  "fields": {
+    "Value": "The underlying value of the global."
+  },
+  "methods": {},
+  "usage": "When not using ProtoFlux, this component has no use over more idiomatic components such as a ValueField.\n\nWhen using ProtoFlux, the underlying value can be changed and any node that accepts a global input that references the component will update during execution. This can allow one to dynamically change things like dynamic impulse receiver tags.\n\nThis component can also simply be used for static global values that need to be referenced in a lot of places for when the overhead of dynamic variables is undesirable. When combined with the Global To Output node, this component also provides more UX than sourcing a ValueField by being able to see the underlying value directly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GlobalValue&action=raw"
+}

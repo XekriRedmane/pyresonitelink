@@ -1,0 +1,12 @@
+{
+  "description": "The IsPlayingDriver component checks if a particular SyncPlayback is currently playing, and drives a set of Bool to reflect this status.",
+  "category": "Media:Utility",
+  "fields": {
+    "Playback": "The playback to check if it is playing",
+    "Targets": "The set of booleans to drive to whether or not ``Playback`` is playing or not."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a value for ``Playback`` then any boolean in the list of ``Targets`` will drive to whether or not ``Playback`` is currently playing.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:IsPlayingDriver&action=raw"
+}

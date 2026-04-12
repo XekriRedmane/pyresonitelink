@@ -1,8 +1,11 @@
 {
-  "description": "The Smooth Delta Time node returns the change of time between two world updates, specifically the time between the current update and the one before. This node also does another step and tries to account for lag or stutters, smoothly changing the amount of time to match that change.",
+  "description": "The ``Smooth Delta Time`` node returns the change of time between two world updates, specifically the time between the current update and the one before. This node also does another step and tries to account for lag or stutters, smoothly changing the amount of time to match that change.\n\nThis Unity Documentation about Smooth Delta Time may be relevant in helping understand what this does. And following that, this has an excellent explanation about Time Frame Management, which in general may help with working with this node in your content.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float|float]])": "The smoothed difference in time between this frame and the last frame."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SmoothDeltaTime&action=raw"
 }

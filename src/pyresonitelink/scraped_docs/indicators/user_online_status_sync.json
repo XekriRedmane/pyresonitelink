@@ -1,0 +1,11 @@
+{
+  "description": "The UserOnlineStatusSync component only works in userspace. It provides the online status that your account currently has.",
+  "category": "Cloud:Indicators",
+  "fields": {
+    "OnlineStatus": "The online status of the local user."
+  },
+  "methods": {},
+  "usage": "Attach to a slot that will be in userspace (like a facet) and bring it into userspace in order for it to begin working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserOnlineStatusSync&action=raw"
+}

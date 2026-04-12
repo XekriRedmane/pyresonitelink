@@ -7,5 +7,6 @@
   },
   "methods": {},
   "usage": "Audio Reverb zones and other effects can be dynamically assigned to the list of ``Effects`` using spatial variables. The default variable for such is \"Resonite.Audio.Filters\" of type AudioDSP_Effect. Using SphereConstantReferenceSpatialVariables of the same type can be used to designate areas with reverbs using the Spatial variables system.\n\nFor audio reverb, the AudioDSP_Effect the sphere spatial variable component points to needs to be a AudioFilterBlendWrapper with a AudioZitaReverb in it\n\nThe list of effects on this component can be driven using the ReferenceSpatialVariableDriver and will change depending on what audio effects at it's location it can sample from surrounding SphereConstantReferenceSpatialVariables",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioListener&action=raw"
 }

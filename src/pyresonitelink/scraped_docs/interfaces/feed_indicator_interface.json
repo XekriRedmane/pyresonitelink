@@ -1,0 +1,12 @@
+{
+  "description": "The FeedIndicatorInterface component is used as a template type item in data feed mappers in the Data Feeds system. This works as a value viewing module for Feed items, as well as providing the wanted format for the item.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "Value": "The value field to fill and update from the data feed with.",
+    "Format": "The field to fill with the format string the source data feed has specified should be used with this value when displaying it."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FeedIndicatorInterface&action=raw"
+}

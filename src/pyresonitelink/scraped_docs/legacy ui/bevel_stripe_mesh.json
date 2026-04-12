@@ -1,0 +1,16 @@
+{
+  "description": "Bevel Stripe Mesh is a component that generates Mesh data for cube with a different bevel depth on the top left edge and bottom right edge of the cube. It can also be indented in the middle on two opposite sides.",
+  "category": "Assets:Procedural Meshes:Legacy UI",
+  "fields": {
+    "Width": "The width of the cube",
+    "Height": "the height of the cube",
+    "Thickness": "the length of the cube.",
+    "SlantLeft": "the Bevel angle of the length wise edge on the top left.",
+    "SlantRight": "the Bevel angle of the length wise edge on the bottom right.",
+    "Relief": "Whether to indent the cube in the center."
+  },
+  "methods": {},
+  "usage": "The geometry this generates can be viewed by inserting the component into a Mesh Renderer component. Don't forget to use a material with the mesh renderer.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BevelStripeMesh&action=raw"
+}

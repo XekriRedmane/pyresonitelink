@@ -1,0 +1,20 @@
+{
+  "description": "Root context menu item is a component that makes a new context menu item appear for the active user for when they open their context menu.",
+  "category": "Radiant UI:Context Menu",
+  "fields": {
+    "OnlyForSide": "When set, the item will only be inserted when the context menu is opened on the specified hand.",
+    "ExcludeOnTools": "Determines whether or not the item shows up when opening the context menu while having a tool equipped on the same hand.",
+    "ExcludePrimaryHand": "Makes the item not show up when the context menu is open on the user's primary hand.",
+    "ExcludeSecondaryHand": "Makes the item not show up when the context menu is open on the user's secondary hand.",
+    "Item": "The ContextMenuItemSource that will be inserted into the context menu."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "ContextMenuItemSource"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RootContextMenuItem&action=raw"
+}

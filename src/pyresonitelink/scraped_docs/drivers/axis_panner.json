@@ -1,0 +1,19 @@
+{
+  "description": "The AxisPanner component is used to move an object along a single axis linearly. This component can affect position and scale.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "TimeBase": "Reference to the timebase or \"clock\" that the component will use for moving an object. Possible components that can be used as an input include AuthorityTimeBase.",
+    "Speed": "The speed at which the object will move.",
+    "Range": "How far the object will move.",
+    "Offset": "Where the object starts its move.",
+    "Axis": "The direction that the object will move in.",
+    "ReferenceScale": "Sets the maximum scale that the object will become at the halfway point. Starting at 0 the object will grow to this size and then back to 0.",
+    "FullScaleRangeRatio": "Changes the duration that the object scale will remain at the ReferenceScale size.",
+    "_position": "Reference to the position that is being driven. By default, set the to object that this component is first attached to.",
+    "_scale": "Reference to the scale that is being driven. By default, set to null."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AxisPanner&action=raw"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The DebugSettingSwitchSource component is used to test settings profiles for switching between different profiles like desktop and VR switching.",
+  "category": "Debug",
+  "fields": {
+    "CurrentProfile": "The profile of settings to use."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugSettingSwitchSource&action=raw"
+}

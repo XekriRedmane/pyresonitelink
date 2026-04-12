@@ -1,0 +1,12 @@
+{
+  "description": "The ButtonValueCycle component holds a list of values and takes in a ``TargetValue`` of a provided type. When an IButton is pressed while this component is on it, this will cycle through the listed values and send the data through the ``TargetValue``.\n\n}}",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "TargetValue": "The value data to send outwards.",
+    "Values": "The list of values to cycle through."
+  },
+  "methods": {},
+  "usage": "Useful for needing a way to cycle through values of any type.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonValueCycle&action=raw"
+}

@@ -1,0 +1,18 @@
+{
+  "description": "The ButtonDynamicImpulseTriggerWithValue component sends Dynamic Impulses to flux node receivers with data. This acts like a combination of Button Events & Dynamic Impulse Trigger With Data ProtoFlux nodes, but as a component instead.\n\n}}",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "Target": "The slot to target with impulses specified by ``PressedData``,``PressingData``,``ReleasedData``,``HoverEnterData``,``HoverStayData``,``HoverLeaveData``.",
+    "ExcludeDisabled": "Whether disabled slots and hierarchies should be affected by the dynamic impulses sent.",
+    "PressedData": "What value and tag type dynamic impulse to send when an IButton is pressed on the same slot.",
+    "PressingData": "What value and tag type dynamic impulse to send when an IButton is being pressed on the same slot. Fires every update while the button is being pressed.",
+    "ReleasedData": "What value and tag type dynamic impulse to send when an IButton stops being pressed on the same slot.",
+    "HoverEnterData": "What value and tag type dynamic impulse to send when an IButton starts being pointed at on the same slot.",
+    "HoverStayData": "What value and tag type dynamic impulse to send when an IButton is currently pointed at on the same slot. Fires every update while the button is being hovered over.",
+    "HoverLeaveData": "What value and tag type dynamic impulse to send when an IButton stops being pointed at on the same slot."
+  },
+  "methods": {},
+  "usage": "Useful for sending dynamic pulses cleanly instead of using flux.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonDynamicImpulseTriggerWithValue&action=raw"
+}

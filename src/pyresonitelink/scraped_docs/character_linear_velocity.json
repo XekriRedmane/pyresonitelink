@@ -1,8 +1,12 @@
 {
-  "description": "The Character Linear Velocity node takes in a character controller reference and returns the current velocity that it is currently going at over time.",
+  "description": "The ``Character Linear Velocity`` node takes in a character controller reference and returns the current velocity that it is currently going at over time.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character controller reference.",
+    "* ([[Type:float3|float3]])": "The rate this character controller is moving over time."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CharacterLinearVelocity&action=raw"
 }

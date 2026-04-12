@@ -1,0 +1,12 @@
+{
+  "description": "The Mesh Gizmo component is used to set up and generate the visuals/behavior of mesh orbs which are physical item/references to mesh data.",
+  "category": "Uncategorized",
+  "fields": {
+    "_target": "The static mesh that this is referencing and displaying.",
+    "_inspectorRoot": "The inspector this component generated when it was made."
+  },
+  "methods": {},
+  "usage": "Used in mesh orbs used with the Mesh Tool and with scene inspectors for allowing physical hold able access to meshes for use in static and skinned mesh renderers.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeshGizmo&action=raw"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "The ProtoFluxWireManager component is used to drive the visual elements of protoflux wires which connect protoflux nodes.",
+  "category": "Uncategorized",
+  "fields": {
+    "ConnectPoint": "The point this is supposed to be pointing to.",
+    "Type": "The type of wire this is supposed to be showing.",
+    "Width": "The width this wire should be.",
+    "StartColor": "The color this wire should start at. usually used for async impulse wires.",
+    "EndColor": "The end color this wire should end at. usually used for async impulse wires.",
+    "DeleteHighlight": "Whether to delete the highlight visual.",
+    "_wireMesh": "The stripe mesh this is modifying.",
+    "_renderer": "The renderer of the stripe mesh this is modifying.",
+    "_collider": "The collider of this stripe mesh visual.",
+    "_targetPosition": "The field to drive with the target position for the stripe mesh.",
+    "_targetTangent": "The field to drive with the target tangent for the stripe mesh.",
+    "_targetOrientation": "The field to drive with the target orientation for the stripe mesh.",
+    "_targetWidth": "The field to drive with the target width for the stripe mesh."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProtoFluxWireManager&action=raw"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "The SphereMeshGizmo component is used to adjust the radius of a sphere mesh.",
+  "category": "Uncategorized",
+  "fields": {
+    "_target": "Sphere mesh to modify.",
+    "_sphereGizmo": "The gizmo to use to edit the sphere mesh size."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SphereMeshGizmo&action=raw"
+}

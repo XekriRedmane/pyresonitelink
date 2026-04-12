@@ -1,8 +1,17 @@
 {
-  "description": "The Create Transform Undo Step will create an undo step in the Context Menu of the person who the impulse came from. The node will then send to the UndoManager in the world the slot transforms that the slot provided into Target should revert to. Or in more simpler terms, the current transforms the provided Target (Slot) contains is what it will be reset to when undone via the context menu. Certain transforms will be included or omitted depending on booleans provided into the inputs.",
+  "description": "The Create Transform Undo Step will create an undo step in the Context Menu of the person who the impulse came from. The node will then send to the UndoManager in the world the slot transforms that the slot provided into Target should revert to. Or in more simpler terms, the current transforms the provided Target (Slot) contains is what it will be reset to when undone via the context menu. Certain transforms will be included or omitted depending on booleans provided into the inputs. \n\nwhen this node is paired with an Undo Batch, it's description if has one, will be ignored, and will be part of the Undo Batch's undo step instead.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Input": "Create the undo step and set the object to be despawned upon undoing to the slot provided.",
+    "Target": "The Slot which it's transforms will be undo able for this undo step.",
+    "SaveParent": "Whither to make the Slot's Parent undoable with this undo step.",
+    "SavePosition": "Whither to make the Slot's Position undoable with this undo step.",
+    "SaveRotation": "Whither to make the Slot's Rotation undoable with this undo step.",
+    "SaveScale": "Whither to make the Slot's Scale undoable with this undo step.",
+    "Next": "Continues to More undo steps, continues to code that eventually ends, or an End Undo Batch that continues to eventually ended code."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CreateTransformUndoStep&action=raw"
 }

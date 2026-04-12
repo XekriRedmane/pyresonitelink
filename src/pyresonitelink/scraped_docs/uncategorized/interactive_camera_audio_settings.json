@@ -1,0 +1,13 @@
+{
+  "description": "The Interactive Camera Audio Settings component is part of the settings system for changing audio settings for the streaming camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "RenderOwnVoiceOnCamera": "Whether the camera should hear the voice of the user it belongs to"
+  },
+  "methods": {
+    "ResetToDefault": "Resets settings back to default."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraAudioSettings&action=raw"
+}

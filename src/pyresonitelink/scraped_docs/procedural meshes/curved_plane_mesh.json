@@ -1,0 +1,18 @@
+{
+  "description": "Generates a plane mesh that is curved vertically. A picture in this page of it can be seen.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Size": "How big the curve plane mesh is, mostly a ratio",
+    "Curvature": "How much to bend the curve plane mesh by",
+    "TiltAngle": "How much to \"rotate\" the curve plane mesh length wise.",
+    "AspectRatioCompensation": "How to compensate for stretching due to curving the plane mesh backwards.",
+    "UVScale": "The inverse of the size the material should appear on the surface as.",
+    "UVOffset": "Shift the visual detail of the material around.",
+    "Segments": "How many bends/angles the plane should have in it's curve",
+    "FlatShading": "Turn off smooth shading"
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a MeshRenderer to see the geometry. don't forget to use a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CurvedPlaneMesh&action=raw"
+}

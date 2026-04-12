@@ -1,0 +1,11 @@
+{
+  "description": "The ButtonClipboardCopyText component is triggered on Button Press and copies the text content of a field into the pressing user's clipboard.\n\n}}",
+  "category": "Common UI:Button Interactions:Specialized",
+  "fields": {
+    "Source": "Specifies where the value is copied from."
+  },
+  "methods": {},
+  "usage": "This helps with copying text or to add the functionality for copying text for projects.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonClipboardCopyText&action=raw"
+}

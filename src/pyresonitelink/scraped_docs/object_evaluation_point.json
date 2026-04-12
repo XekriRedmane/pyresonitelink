@@ -1,8 +1,9 @@
 {
-  "description": "The Evaluation Point node does not have a currently known use.",
+  "description": "due to wiki limitations, this node does not currently have an HTML rendering of the node.\n\nThe Evaluation Point node does not have a currently known use. \n\nEvaluation Points are used internally in FrooxEngine as a way to evaluate a chain of ProtoFlux.",
   "category": "",
   "fields": {},
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:EvaluationPoint&action=raw"
 }

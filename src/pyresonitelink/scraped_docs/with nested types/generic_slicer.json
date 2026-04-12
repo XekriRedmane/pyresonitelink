@@ -1,0 +1,13 @@
+{
+  "description": "The GenericSlicer component is used to drive and handle the slicing of materials like volumes and PBS Slice.",
+  "category": "With Nested Types",
+  "fields": {
+    "Targets": "The Slicer Fields on materials to drive.",
+    "Space": "The transform space to do slicing in.",
+    "_grabbedVisual": "The visual to show and hide when this Slicer is grabbed."
+  },
+  "methods": {},
+  "usage": "See Object Slicer Tool.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GenericSlicer&action=raw"
+}

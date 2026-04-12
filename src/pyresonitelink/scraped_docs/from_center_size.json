@@ -1,8 +1,13 @@
 {
   "description": "The From Center Size node outputs a bounding box with the input Center and Size.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Center": "The center point of the bounding box. Default is [0;0;0].",
+    "Size": "The size of the bounding box. Default is [0;0;0]",
+    "* ([[Type:BoundingBox|BoundingBox]])": "The calculated bounding box."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FromCenterSize&action=raw"
 }

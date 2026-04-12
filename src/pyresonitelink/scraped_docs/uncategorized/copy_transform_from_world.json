@@ -1,0 +1,13 @@
+{
+  "description": "The CopyTransformFromWorld component is used by the game to copy transforms from other worlds. This is mainly used by userspace to copy transforms from objects like world orbs when the user highlights them.",
+  "category": "Uncategorized",
+  "fields": {
+    "CopyPosition": "Whether to copy Position.",
+    "CopyRotation": "Whether to copy Rotation.",
+    "CopyScale": "Whether to copy Scale."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CopyTransformFromWorld&action=raw"
+}

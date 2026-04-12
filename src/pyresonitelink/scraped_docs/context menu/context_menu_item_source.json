@@ -1,0 +1,19 @@
+{
+  "description": "The ContextMenuItemSource component is used to add additional items to a context menu.",
+  "category": "Radiant UI:Context Menu",
+  "fields": {
+    "Label": "The text label next to the item.",
+    "Color": "The background/border color of the item.",
+    "Sprite": "The icon that is displayed on the item.",
+    "ButtonEnabled": "Whether or not the button is active. If false, it will be greyed out and unclickable.",
+    "AllowDrag": "Whether or not the user can drag onto the button from the center of the context menu to click it.",
+    "CloseMenuOnPress": "Whether or not the context menu should be closed after the item is pressed.",
+    "Pressed": "See ButtonEvents",
+    "Pressing": "See ButtonEvents",
+    "Released": "See ButtonEvents"
+  },
+  "methods": {},
+  "usage": "Attach to a slot, and provide a name and color. The name and color can also be dynamically driven using a Value Option Description Driver to display what the button does/did.\n\nTo show up, it needs to be either within a Context Menu Submenu or assigned to a Root Context Menu Item as its Item.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ContextMenuItemSource&action=raw"
+}

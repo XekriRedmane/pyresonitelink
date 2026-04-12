@@ -1,0 +1,12 @@
+{
+  "description": "The ButtonValueSet component takes in a Value Type and a ``TargetValue``. When an IButton is pressed while this component is on the same slot, this will send the value to the provided ``TargetValue``.\n\n}}",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "TargetValue": "The target to send the value outwards.",
+    "SetValue": "The value to set when the button is pressed."
+  },
+  "methods": {},
+  "usage": "This is similar to the Write ProtoFlux node but as a component instead.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonValueSet&action=raw"
+}

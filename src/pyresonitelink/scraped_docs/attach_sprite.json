@@ -1,8 +1,16 @@
 {
   "description": "The Attach Sprite node allows one to attach a provided Uri as a new SpriteProvider component and return the SpriteProvider's raw IAsset`1 itself.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call to attach the asset.",
+    "URL": "The URI of the asset you want to attach. Can be a resdb or a local or a website hosted asset.",
+    "Target": "The slot to attach the asset to.",
+    "GetExisting": "Get an existing asset on ``Target`` (Slot) of the same URL (Uri) or attach a new one.",
+    "Next": "Fires after ``*`` (Call) is called and the asset was successfully attached.",
+    "AttachedProvider": "The attached provider or an existing one on ``Target`` (Slot) if ``GetExisting`` (bool) is true."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AttachSprite&action=raw"
 }

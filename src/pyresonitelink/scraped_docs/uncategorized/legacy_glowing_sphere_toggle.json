@@ -1,0 +1,20 @@
+{
+  "description": "The Legacy Glowing Sphere Toggle component is a leftover Component from content migrated from other platforms. It should not be used, and should be replaced whenever possible.",
+  "category": "Uncategorized",
+  "fields": {
+    "TargetField": "The field to toggle.",
+    "FadeSpeed": "The speed at which the emission fades.",
+    "CooldownTime": "How long till the toggle can be used again between toggles.",
+    "Radius": "The radius of the sphere visual.",
+    "GlowColor": "The color of the glowing sphere visual.",
+    "_emissiveColor": "The field to drive for the emissive color.",
+    "_rimColor": "The field to drive for the rim color.",
+    "_sphereRadius": "The field to drive for the sphere visual radius.",
+    "_sphereExtrude": "The field to drive for the sphere visual extrude.",
+    "_colliderRadius": "The field to drive for the collider radius for the visual."
+  },
+  "methods": {},
+  "usage": "Not to be used, legacy content.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyGlowingSphereToggle&action=raw"
+}

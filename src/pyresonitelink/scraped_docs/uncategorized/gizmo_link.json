@@ -1,0 +1,13 @@
+{
+  "description": "The GizmoLink component handles the Interaction and connection of every Gizmo with their respective target. This is usually invisible to users and their inspectors, but upon opening a new inspector on a target of a Gizmo it appears. It is unknown if this is a bug. This component along with Gizmos do not save with items but Gizmos can save with a world.",
+  "category": "Uncategorized",
+  "fields": {
+    "_worker": "The logic handling this component.",
+    "_gizmo": "The Gizmo this is making a Link for.",
+    "_type": "The C# Type of what this is targeting."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GizmoLink&action=raw"
+}

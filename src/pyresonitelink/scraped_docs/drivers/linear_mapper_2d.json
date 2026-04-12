@@ -1,0 +1,22 @@
+{
+  "description": "Linear Mapper 2D is a component that draws a line from ``TargetMin`` and ``TargetMax`` and uses a linear range between the two with ``Target`` to map ``Source`` to a range between ``SourceMin`` and ``SourceMax``.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Source": "The value to map from ``SourceMin`` to ``SourceMax`` using ``Target``.",
+    "Target": "The value to map from ``TargetMin`` to ``TargetMax`` using ``Source``.",
+    "SourceMin": "The minimum of the range of the ``Source`` value.",
+    "SourceMax": "The maximum of the range of the ``Source`` value.",
+    "TargetMin": "The minimum of the range of the ``Target`` value.",
+    "TargetMax": "The maximum of the range of the ``Target`` value.",
+    "AllowReverseMapping": "Allow ``Target`` to map it's value to ``Source``'s ranged value when written to.",
+    "Clamp": "Whether to prevent ``Source`` and ``Target`` from going outside their defined ranges."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* LinearMapper1D\n* LinearMapper2D\n* LinearMapper3D\n* LinearMapper4D"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The ContactLink component allows a slot to be clicked on by a user to open their Dash Menu to the Contacts Menu of a specific user (by using a provided ``UserId``).",
+  "category": "Cloud",
+  "fields": {
+    "UserId": "The User ID of the User whose contact page will be opened upon clicking the object."
+  },
+  "methods": {},
+  "usage": "Add the ContactLink component to an object, clicking on that object will open up the Contacts Menu and will show the User page of the user defined in the ``UserId`` field. When you attach it, your own User ID will be automatically filled in.\n\nFor UIX, a button component is required to click and take the user to that contact page. Otherwise, a collider works just fine without a button for this component to work.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ContactLink&action=raw"
+}

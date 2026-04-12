@@ -1,5 +1,5 @@
 {
-  "description": "The Button Events node takes in a global IButton reference and will listen for events from that global reference. When it detects something happening, it will fire events depending on what happens, along with other data.",
+  "description": "The ``Button Events`` node takes in a global IButton reference and will listen for events from that global reference. When it detects something happening, it will fire events depending on what happens, along with other data.\n\nYou can use this node with UI Buttons, Touch Buttons, Physical Buttons, Context Menu Buttons, or even a custom button you add as a component onto a Slot or object, like a box.",
   "category": "",
   "fields": {},
   "methods": {},
@@ -7,7 +7,8 @@
   "notes": [
     {
       "title": "See also",
-      "text": "TouchableEvents\nProtoFlux:Interaction"
+      "text": "TouchableEvents"
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ButtonEvents&action=raw"
 }

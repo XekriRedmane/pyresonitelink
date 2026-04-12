@@ -1,8 +1,14 @@
 {
   "description": "Release User Is a ProtoFlux node that releases the user currently occupying an anchor.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to release the user in the provided Anchor (IAvatarAnchor).",
+    "Anchor": "The anchor to check for if a user is sitting in it.",
+    "OnReleased": "When the user in the provided anchor is released.",
+    "OnFailure": "When the provided Anchor (IAvatarAnchor) doesn't have a user and the * (Call) is fired, this will send an impulse."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ReleaseUser&action=raw"
 }

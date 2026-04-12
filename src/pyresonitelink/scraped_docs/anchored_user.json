@@ -1,8 +1,12 @@
 {
   "description": "Anchored User is a ProtoFlux node that returns the user that is anchored to the provided Anchor (IAvatarAnchor). This node will return a null user if there is no user anchored to the anchor.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Anchor": "The anchor to check for an anchored user.",
+    "User": "The user that is currently anchored, or null."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AnchoredUser&action=raw"
 }

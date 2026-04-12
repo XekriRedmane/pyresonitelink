@@ -1,0 +1,20 @@
+{
+  "description": "The UserLoginManager component is used to handle the user's login status.",
+  "category": "Cloud",
+  "fields": {
+    "IsLoggedIn": "Whether the current user is logged in or not.",
+    "IsLoggingOut": "Whether the local user is currently logging out or not.",
+    "CurrentUsername": "The username of the local user.",
+    "CurrentUserId": "The user ID of the local user.",
+    "CurrentAccountType": "The account type of the local user (patreon status or team member likewise)",
+    "CurrentAccountColorOverride": "The current user color override of the local user. Like nametag colors.",
+    "CurrentProfileIcon": "The user icon of the local user.",
+    "LoginLogoutButton": "Only works in userspace. Is the button for logging in or out."
+  },
+  "methods": {
+    "DoLoginLogout": "Triggers the login/logout process."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserLoginManager&action=raw"
+}

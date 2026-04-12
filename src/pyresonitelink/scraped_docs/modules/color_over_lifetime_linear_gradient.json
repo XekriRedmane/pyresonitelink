@@ -1,0 +1,16 @@
+{
+  "description": "The ColorOverLifetimeLinearGradient component implements the older color over lifetime system that came from Unity. It allows for particles to change color depending on how long they have existed for.\n\nThis component is part of the Photon Dust system made by Frooxius.\n\nA more modern alternative to this with actual editablilty is the ColorOverLifetimeTexture component.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "ColorOverLifetime": "A Linear Gradient of colors and points to use to give particles color over lifetime."
+  },
+  "methods": {
+    "SetupIntensityFadeInFadeOut": "Changes the intensity gradient to 0% - 10%, 90% - 100%",
+    "SetupIntensityFadeOut": "Changes the intensity gradient to 0% - 10%",
+    "SetupIntensityFadeIn": "Changes the intensity gradient to 90% - 100%",
+    "ClearFadeEffects": "Changes the intensity gradient to have no effect."
+  },
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorOverLifetimeLinearGradient&action=raw"
+}

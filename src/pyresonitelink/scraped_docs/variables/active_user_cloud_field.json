@@ -1,0 +1,15 @@
+{
+  "description": "The ActiveUserCloudField Component binds to the field specified by ``Target``. If ``IsLinkedToCloud`` is true, it will write the value of the cloud variable defined by ``Path`` for the active user of the slot it is attached to.",
+  "category": "Cloud:Variables",
+  "fields": {
+    "Path": "The path of the variable this component will read, for the current active user",
+    "IsLinkedToCloud": "(Read Only)) Indicates whether this field was successfully bound to the target variable.",
+    "UpdateCloudVariable": "Indicates that this variable should update the value in the cloud when it is written or driven to a different value.",
+    "FallbackValue": "Default value if there is no current active user. If the active user's value isn't set, the definition default will be used instead.",
+    "Target": "The target field to which the variable value will be written."
+  },
+  "methods": {},
+  "usage": "For this component to function, the cloud variable permissions must be set to something suitably permissive for it to function properly.\n* If the variable should update on the cloud when a user interacts with the object in some way, Write Permissions should be set to one of the following:\n** variable_owner_unsafe\n** variable_owner_only_contacts_unsafe 1\n** Anyone 2\n\n* If the variable should update on the cloud when a user interacts with the object in some way, Read Permissions should be set to one of the following:\n** variable_owner_unsafe\n** variable_owner_only_contacts_unsafe 3\n** Anyone 4\n\n1. This permission results in only contacts of the variable owner being able to change a value. It also allows contacts to change each others values, which may not be desired.\n \n2. This permission is only valid for group variable definitions, and allows anyone to write the value of anyone else, which might have unintended consequences.\n \n3. This permission results in only contacts of the variable owner being able to read a value, however the value is read by the active user and synced normally to everyone else in a session, making this detail irrelevant.\n \n4. This permission is only valid for group variable definitions, and allows anyone to read the value of anyone else, however the value is read by the active user and synced normally to everyone else in a session, making this detail irrelevant.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ActiveUserCloudField&action=raw"
+}

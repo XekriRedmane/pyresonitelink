@@ -1,0 +1,12 @@
+{
+  "description": "The StaticLocaleProvider component gets the list of locale data for all languages.",
+  "category": "Assets",
+  "fields": {
+    "URL": "The place to get all Locale datas",
+    "OverrideLocale": "The locale to use other than the user selected one."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StaticLocaleProvider&action=raw"
+}

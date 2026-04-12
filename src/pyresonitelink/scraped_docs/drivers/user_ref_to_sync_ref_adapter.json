@@ -1,0 +1,13 @@
+{
+  "description": "The UserRefToSyncRefAdapter component takes a UserRef type and drives a user ref field with what it has inside of it.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "User": "The ref to get a user from.",
+    "TargetReference": "The field to drive with what user ``User`` refers to.",
+    "WriteBack": "Whether changes to the field ``TargetReference`` will update the value of ``User``. See write backs."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide values for all fields in order for this component to work.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserRefToSyncRefAdapter&action=raw"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "Allows the user to set and adjust the asset download settings within dash space.",
+  "category": "Uncategorized",
+  "fields": {
+    "MaxConcurrentAssetTransfers": "How many assets can be sent to or received from other players in parallel for the client",
+    "MaxConcurrentDownloads": "How many assets can be downloaded from the cloud at the same time."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AssetGatherSettings&action=raw"
+}

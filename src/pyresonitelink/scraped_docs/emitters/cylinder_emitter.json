@@ -1,0 +1,17 @@
+{
+  "description": "The CylinderEmitter component is used to emit particles in PhotonDust.",
+  "category": "Rendering:Particle System:Emitters",
+  "fields": {
+    "Radius": "The radius of the emitting cylinder shape",
+    "Height": "The height of the emitting cylinder shape.",
+    "ExcludeCaps": "Whether to exclude the ends of the cylinder when emitting particles.",
+    "DirectionMode": "How to emit particles from the cylinder.",
+    "CapsDirectionMode": "how to emit particles from the cylinder caps.",
+    "DirectionTransformMode": "How to handle the direction when emitting particles.",
+    "DirectionPostTransform": "The direction particles should be when spawned post transform using a matrix."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CylinderEmitter&action=raw"
+}

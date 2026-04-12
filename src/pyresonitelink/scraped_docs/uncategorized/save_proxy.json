@@ -1,0 +1,11 @@
+{
+  "description": "The Save Proxy component saves another slot instead of this one when the slot this component is on is saved.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The slot to save the hiearchy of when the slot this component is on is saved instead of this slot."
+  },
+  "methods": {},
+  "usage": "Can be used to make an item save an external slot or object without having to parent it first.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SaveProxy&action=raw"
+}

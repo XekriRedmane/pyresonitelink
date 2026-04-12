@@ -1,8 +1,16 @@
 {
   "description": "Switch Locomotion Module is a ProtoFlux node that switches a user to a locomotion by name.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to switch the locomotion for the TargetUser (User).",
+    "TargetUser": "The user to switch the locomotion they are using to walk when this node is triggered.",
+    "ModuleName": "the name of the locomotion slot that the user should switch to.\n\nEx: \"Walk/Run (with climbing)\", \"Fly\", \"Noclip\", \"Teleport\", (etc.)",
+    "ExactMatch": "Whether to switch the lomotion if it is a partial match (false) or switch only if the name exactly matches (true).",
+    "OnSwitched": "Sends an impulse after * (Call) was called and a locomotion was successfully found and switched to.",
+    "OnNotFound": "Sends an impulse after * (Call) was called and the specified locomotion was not found."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SwitchLocomotionModule&action=raw"
 }

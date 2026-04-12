@@ -1,0 +1,11 @@
+{
+  "description": "The PackageExportable component takes in any Slot hierarchy as a field, and when the slot that has this exportable component on it gets exported, it will actually save a file on your device of the target slot hierarchy provided (and not the item that your exporting from unless it is also under that hierarchy).",
+  "category": "Assets:Export",
+  "fields": {
+    "Root": "The slot hierarchy to be exported."
+  },
+  "methods": {},
+  "usage": "This can be a better alternative than using the BinaryExportable for storage of assets, items, or worlds.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PackageExportable&action=raw"
+}

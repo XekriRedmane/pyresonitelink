@@ -1,8 +1,14 @@
 {
   "description": "The Set Hips Rotation node takes in a user's UserRoot and the rotation for the hips, then sets the rotation.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to set the hips rotation.",
+    "UserRoot": "The user's user root.",
+    "Rotation": "The rotation to set for the hips.",
+    "Next": "Continues flow execution from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetHipsRotation&action=raw"
 }

@@ -1,0 +1,12 @@
+{
+  "description": "The DynamicBoneSphereColliderGizmo allows for interacting with Dynamic Bone Sphere Colliders via a Sphere Gizmo. these are usually created by activating the gizmo option using the context menu while having a slot with a Dynamic Bone Sphere Collider selected.",
+  "category": "Uncategorized",
+  "fields": {
+    "_target": "The collider to make a visual/gizmo for.",
+    "_sphereGizmo": "The gizmo being used to control ``_target`` through this component."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicBoneSphereColliderGizmo&action=raw"
+}

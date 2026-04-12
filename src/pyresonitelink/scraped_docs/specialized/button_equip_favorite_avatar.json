@@ -1,0 +1,9 @@
+{
+  "description": "The ButtonEquipFavoriteAvatar will equip the current users' favorite avatar when an IButton is pressed with this component is on it. This component only functions while in Userspace.",
+  "category": "Common UI:Button Interactions:Specialized",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a button, when pressed while in Userspace, your current favorite avatar will be equipped.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonEquipFavoriteAvatar&action=raw"
+}

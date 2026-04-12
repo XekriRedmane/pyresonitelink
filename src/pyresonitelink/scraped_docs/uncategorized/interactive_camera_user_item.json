@@ -1,0 +1,32 @@
+{
+  "description": "See Camera.\n\nUsed to handle the items for each user for the interactive camera settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "Control": "The root camera control settings panel.",
+    "_username": "The username of the user this item refers to.",
+    "_voiceDefault": "Capture this user's voice as their default voice setting.",
+    "_voiceMute": "Capture this user's voice as the mute voice setting.",
+    "_voiceShout": "Capture this user's voice as the shout voice setting.",
+    "_voiceBroadcast": "Capture this user's voice as the broadcast voice setting.",
+    "_groupAuto": "Set this user's group inclusion and exclusion modes to default.",
+    "_groupExclude": "Set this user's group inclusion to never.",
+    "_groupInclude": "Set this user's group inclusion to always.",
+    "_cameraOperator": "Make this user able to interact with the camera.",
+    "_framingTarget": "Make this user a framing target when framing the scene.",
+    "_volumeSlider": "The user's voice volume when capturing their voice."
+  },
+  "methods": {
+    "OnVoiceDefault": "A setting changing handler for the panel.",
+    "OnVoiceMute": "A setting changing handler for the panel.",
+    "OnVoiceShout": "A setting changing handler for the panel.",
+    "OnVoiceBroadcast": "A setting changing handler for the panel.",
+    "OnGroupExclude": "A setting changing handler for the panel.",
+    "OnGroupAuto": "A setting changing handler for the panel.",
+    "OnGroupInclude": "A setting changing handler for the panel.",
+    "OnToggleOperator": "A setting changing handler for the panel.",
+    "OnSetFramingTarget": "A setting changing handler for the panel."
+  },
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraUserItem&action=raw"
+}

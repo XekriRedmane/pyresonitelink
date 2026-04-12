@@ -1,0 +1,18 @@
+{
+  "description": "Bezier curve is used along with Bezier Tube Mesh to define the array of curve points that control the mesh's shape. See Bezier Tube Mesh for a full example.",
+  "category": "Uncategorized",
+  "fields": {
+    "Points": "A list of controlling Curve Points.",
+    "CoordinateSpace": "The Coordinate Space in which to do curve calculations in.",
+    "AssignCurveData": "The list to fill with curve data, which is the ``Points`` field of a Bezier Tube Mesh."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* Curve Point\n* Bezier Tube Mesh"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BezierCurve&action=raw"
+}

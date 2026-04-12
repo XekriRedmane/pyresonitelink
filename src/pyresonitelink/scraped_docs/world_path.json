@@ -1,8 +1,11 @@
 {
-  "description": "The World Path node returns a String that is the world path for this world.",
+  "description": "The ``World Path`` node returns a String that is the world path for this world.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:String|String]])": "The world's path."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldPath&action=raw"
 }

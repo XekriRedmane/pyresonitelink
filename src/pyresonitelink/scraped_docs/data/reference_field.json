@@ -1,0 +1,11 @@
+{
+  "description": "Reference Field is a component that is able to store a reference for later use, as long as the reference still exists by then.",
+  "category": "Data",
+  "fields": {
+    "Reference": "A field that can be used to store any reference type."
+  },
+  "methods": {},
+  "usage": "This can be used in tandem with a Reference Grab Receiver Component as a place to store the value received by said component. This component's ``Reference`` field can be accessed with ProtoFlux. \n\nUsing this as a Data Model Store is considered bad practice due to it making your code harder to read, use, and transfer.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceField&action=raw"
+}

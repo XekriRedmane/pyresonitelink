@@ -1,0 +1,27 @@
+{
+  "description": "Audio Stream Metadata is a component that reads the running tallies of the different samples being sent and received by an AudioStream`1.",
+  "category": "Assets:Utility",
+  "fields": {
+    "Stream": "The audio source to get data from",
+    "UnreadSamples": "The amount of samples yet to be played",
+    "TotalMissedSamples": "Samples missed due to lag or other reasons.",
+    "LastMissedSamples": "The last time samples were missed instead of being read from the audio source.",
+    "BufferLength": "How big the sample buffer is.",
+    "AverageReadSamplesPerSecond": "How many samples per second on a running average are being processed.",
+    "AverageWriteSamplesPerSecond": "The many samples per second on a running average are being written to the buffer per second.",
+    "GlobalIndex": "The audio source's index in the pool of audio players playing sounds.",
+    "SamplesAvailableForEncode": "Samples currently ready to be encoded to a format supported by FrooxEngine's audio system.",
+    "FrameSize": "The size of audio data coming in, which is in bytes and is influenced by data and channel count.",
+    "MaxFrameSize": "The max size of audio data coming in, which is in bytes and is influenced by data and channel count.",
+    "EncodedSampleRate": "how fast encoded samples are being processed.",
+    "TotalPacketCount": "How many audio packets have been networked by the audio source so far.",
+    "TotalLostPackets": "How many packets of the network that were not received from the audio source.",
+    "LastLostPackets": "The last time packets were lost by the audio source.",
+    "PacketLossRatio": "On average, the percentage of audio packets from the network that are being lost.",
+    "AverageCodecSamplesPerSecond": "The average amount of samples incoming in encoded form."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioStreamMetadata&action=raw"
+}

@@ -1,0 +1,21 @@
+{
+  "description": "The LocomotionPermissions component allows you to control what locomotions users can use in your world.",
+  "category": "With Nested Types",
+  "fields": {
+    "LocomotionListMode": "Whether to blacklist or whitelist the ``Locomotions``.",
+    "Locomotions": "List of ``Locomotions`` to blacklist/whitelist.",
+    "Scaling": "Whether self scale is Disallowed, Allowed, or Edit Mode Only.",
+    "MinScale": "Minimum scale",
+    "MaxScale": "Maximum scale",
+    "JumpToUser": "Whether jumping to users is Disallowed, Allowed, or Edit Mode Only."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Introduction",
+      "text": "The LocomotionPermissions component allows you to control what locomotions users can use in your world."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocomotionPermissions&action=raw"
+}

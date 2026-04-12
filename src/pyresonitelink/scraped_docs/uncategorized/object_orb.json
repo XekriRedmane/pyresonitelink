@@ -1,0 +1,12 @@
+{
+  "description": "According to Frooxius this was originally made during the infancy stages of FrooxEngine to serve as an item the user would stick into an \"Object Placement Tool\" where users could easily place objects into the world in the form of duplicates and make it easier to create worlds. However this never came to fruition and the concept lives on as this remnant in the game code and Component set. (timestamp) https://www.youtube.com/watch?v=OfriYWXMNjk&t=28m59s",
+  "category": "Uncategorized",
+  "fields": {
+    "PreviewRoot": "The slot storing the preview visual.",
+    "TemplateRoot": "The slot to duplicate when placing the object."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ObjectOrb&action=raw"
+}

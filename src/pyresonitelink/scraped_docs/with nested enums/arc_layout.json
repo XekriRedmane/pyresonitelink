@@ -1,0 +1,21 @@
+{
+  "description": "The ArcLayout is a component primarily used in a user's context menu. It requires a set of slots under the slot the component is attached to, and each slot needs an OutlinedArc Component and an ArcSegmentLayout Component.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Arc": "The amount of the circle in degrees to cover with the arc elements.",
+    "Offset": "the amount to rotate the arc elements around the center in degrees from the default position.",
+    "Separation": "how much to separate the elements from each other.",
+    "CenterAtSeparation": "Centers the separation point of this layout.",
+    "ProportionalSize": "Keep all segments of the arc proportional in size.",
+    "ItemDirection": "How to arrange the elements in order from the initial position."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* ArcSegmentLayout\n* OutlinedArc"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ArcLayout&action=raw"
+}

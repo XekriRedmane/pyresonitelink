@@ -1,8 +1,11 @@
 {
-  "description": "The Bell node is a character literal constant for the \"Bell\" character (Unicode: U+0007).",
+  "description": "The ``Bell`` node is a character literal constant for the \"Bell\" character (Unicode: U+0007).\n\nThe Bell character was used to make a sound or flash the screen to get the attention of operators that were using older computer systems. This is no longer relevant in something like Resonite, but is provided for completeness.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:char|char]])": "The character literal constant of the Bell character."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Bell&action=raw"
 }

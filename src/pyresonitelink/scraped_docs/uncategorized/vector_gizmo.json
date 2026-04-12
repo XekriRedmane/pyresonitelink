@@ -1,0 +1,29 @@
+{
+  "description": "The VectorGizmo component is used to allow editing a gizmo via the Dev tool.",
+  "category": "Uncategorized",
+  "fields": {
+    "TargetSlot": "The slot to influence or a component this is on.",
+    "AutoPositionAtTargetSlot": "Whether to position the gizmo at ``TargetSlot``.",
+    "_interactingComponent": "The component like a Dev tool that is interacting with this gizmo.",
+    "_material": "The material being used for the gizmo visual.",
+    "_toolPoint": "The slot to position at the interacting tool's tip slot.",
+    "_activePoint": "The slot to position at the active point.",
+    "_lineRoot": "The slot that stores the line segment for tip based movement rather than projected mode.",
+    "_lineSegment": "The mesh being used for the line visual to the interacting tool tip.",
+    "_snapHighlight": "The slot storing the gizmo snap highlight visual.",
+    "VectorSpace": "The space to do edits to the vector in.",
+    "TargetVector": "The target vector field to modify.",
+    "TargetRotation": "The target vector rotation to modify.",
+    "FixMagnitude": "whether to fix a magnitude during/after editing.",
+    "FixedMagnitude": "The value to fix the vector magnitude to if ``FixMagnitude`` is enabled.",
+    "VisualMagnitudeScale": "The magnitude scalar of the vector visual.",
+    "VisualThickness": "The thickness of the visual for the vector.",
+    "_colliderRotation": "The rotation field of the visual collider.",
+    "_collider": "The collider used for the vector.",
+    "_mesh": "The arrow mesh being used to show the vector visual."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VectorGizmo&action=raw"
+}

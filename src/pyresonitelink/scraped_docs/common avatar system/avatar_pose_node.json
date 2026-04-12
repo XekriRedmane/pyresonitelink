@@ -1,0 +1,24 @@
+{
+  "description": "For detailed information on how this functions for mix and match body parts. Please also see Equipping Multiple Avatars.\n\nThe AvatarPoseNode component is activated when a user equips an avatar with this component under it. The component drives the transforms of the slot it is on, in order to copy the transforms of an AvatarObjectSlot of the given ``Node``.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "Node": "the node this component is copying.",
+    "EquipOrderPriority": "The priority of this node being updated in the list of Pose Nodes on an Avatar.",
+    "RunAfterInputUpdate": "Whether to run this component's copy Behavior after the engine's input received stage.",
+    "MutuallyExclusiveNodes": "When equipped as part of an avatar, if the user equipping has an AvatarObjectSlot with a BodyNode value from this list, it is forced to dequip the Type:IAvatarObjects bound to it, kicking them off the user.",
+    "IsTracking": "Whether this component is tracking",
+    "SourceIsTracking": "Whether the source ``_objectSlot`` is currently tracking an inputting object like a controller or FBT device",
+    "SourceIsActive": "Whether the source ``_objectSlot`` is active.",
+    "SourceIsSimulated": "Whether the source ``_objectSlot`` is being simulated by the procedural animation system.",
+    "_objectSlot": "The object slot this component is getting pose data and tracking data from.",
+    "_source": "the slot of ``_objectSlot``",
+    "_position": "The position field to drive to the pose data. Usually the position field of the slot this component is on.",
+    "_rotation": "The rotation field to drive to the pose data. Usually the rotation field of the slot this component is on.",
+    "_scale": "The scale to drive to the scale of ``_source`` if drive scale is enabled on the ``_objectSlot``.",
+    "_active": "Whether this component is currently active and setting pose data."
+  },
+  "methods": {},
+  "usage": "This can be used to make avatars, with only single parts like hands or arms and be mixed and matched with other parts.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarPoseNode&action=raw"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "The Generic UI Container is a component that is seen on UIX panels and canvases. It does two primary things, match the title for the panel of a provided text, and flag when it closes and then destroys the provided hierarchy root slot.",
+  "category": "Common UI",
+  "fields": {
+    "Title": "Changes the title for this panel.",
+    "CloseRequest": "Becomes true when this container (UIX panel/canvas) is closing.",
+    "CloseDestroyRoot": "The target slot to destroy."
+  },
+  "methods": {},
+  "usage": "There is no known usage for this component to be used in projects, but only seen on certain panels and canvases.",
+  "notes": []
+}

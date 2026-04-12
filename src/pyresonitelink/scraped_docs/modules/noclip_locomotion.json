@@ -1,0 +1,12 @@
+{
+  "description": "The NoclipLocomotion component when being used as an active locomotion by the user allows for a user to go through walls.\n\nIf all of a user's colliders on their avatar are set up with their VRIKAvatar's collider list, they won't trigger any trigger zones during noclip.",
+  "category": "Locomotion:Modules",
+  "fields": {
+    "MaxSpeed": "How fast the user can go in this mode.",
+    "MinimumFlySpeedRatio": "Unused."
+  },
+  "methods": {},
+  "usage": "When attached to a slot, the component will add the nessary complementary components in order for it to function. When placed under the world lomotions slot, it will be added to every new user's locomotion menu.\n\nThis can also be injected into a user using locomotion injector ProtoFlux.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NoclipLocomotion&action=raw"
+}

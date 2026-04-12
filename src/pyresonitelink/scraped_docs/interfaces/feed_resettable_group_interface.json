@@ -1,0 +1,11 @@
+{
+  "description": "The Feed Resettable Group Interface component is used to act as a button to reset the settings in a settings section.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "ResetAction": "The action that can be used to reset the child settings items."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FeedResettableGroupInterface&action=raw"
+}

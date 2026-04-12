@@ -1,0 +1,25 @@
+{
+  "description": "The Grabbable component allows you to grab any slot it is attached to, provided it has some type of Collider.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "ReparentOnRelease": "The slot is reparented to the value of ``_lastParent``, instead of root when dropped __TPL__",
+    "PreserveUserSpace": "The slot is reparented to Local User Space __TPL__",
+    "DestroyOnRelease": "The slot this component is attached to is destroyed upon release",
+    "GrabPriorityWhenGrabbed": "Optionally changes the grab priority of the object when it is already being grabbed. Useful for different behavior when it can be grab stolen by another player.",
+    "CustomCanGrabCheck": "Not Usable inside Resonite Requires a mod for interacting with Sync Delegates",
+    "EditModeOnly": "Determines if this grabbable is effective only in Edit Mode",
+    "AllowSteal": "Other users can grab the slot this component is attached to. Like a flag in capture the flag.",
+    "DropOnDisable": "The parent slot will be dropped when this component is disabled.",
+    "ActiveUserFilter": "Changes if this component can be grabbed based on who is the active user if any.",
+    "OnlyUsers": "A list of users that are allowed to grab this slot.",
+    "AllowOnlyPhysicalGrab": "Only allow grab an object with a physical interaction - remote grabs are not allowed",
+    "_grabber": "Automatically Assigned, the grabber that is grabbing this component.",
+    "_lastParent": "Automatically Assigned, the last parent this slot had. Is used to parent the slot back (if allowed) when let go of.",
+    "_lastParentIsUserSpace": "Automatically Assigned Whether the last parent slot is the user space slot of the user grabbing this.",
+    "__legacyActiveUserRootOnly": "Automatically Assigned Legacy do not use. Used to handle whether only the active user can grab. Use ``ActiveUserFilter`` instead!"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Grabbable&action=raw"
+}

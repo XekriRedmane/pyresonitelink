@@ -1,0 +1,9 @@
+{
+  "description": "The TrackingOffsetCompensator counteracts changes to tracking offset to all trackers at once, so this one doesn't move when all others do. usually due to a tracking offset component or seated mode.",
+  "category": "Uncategorized",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TrackingOffsetCompensator&action=raw"
+}

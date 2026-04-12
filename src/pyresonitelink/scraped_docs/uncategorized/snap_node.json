@@ -1,0 +1,12 @@
+{
+  "description": "The SnapNode component does nothing.",
+  "category": "Uncategorized",
+  "fields": {
+    "SnapRadius": "Radius.",
+    "_colliderRadius": "Collider radius field to drive."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SnapNode&action=raw"
+}

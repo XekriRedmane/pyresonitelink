@@ -1,0 +1,12 @@
+{
+  "description": "The ``DateTime Kind`` node takes in a DateTime and returns the enum ``Kind`` of that DateTime.",
+  "category": "",
+  "fields": {
+    "DateTime": "The DateTime we are getting info from.",
+    "* ([[Type:DateTimeKind|DateTimeKind]])": "The kind portion of the DateTime (``Unspecified``, ``Utc``, or ``Local``)."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DateTimeKind&action=raw"
+}

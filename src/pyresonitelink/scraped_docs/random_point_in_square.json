@@ -1,8 +1,11 @@
 {
-  "description": "The Random Point In Square node returns a random float2 value of a point within the bounds of a unit square centered at [0; 0].",
+  "description": "The Random Point In Square node returns a random float2 value of a point within the bounds of a unit square centered at ``[0; 0]``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float2|float2]])": "A random point within the unit square centered at ``[0; 0]``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomPointInSquare&action=raw"
 }

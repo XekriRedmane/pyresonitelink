@@ -1,0 +1,17 @@
+{
+  "description": "The DynamicSpriteFont component is used to construct a font asset that can be used to create custom fonts character by character.",
+  "category": "Assets:Procedural Fonts",
+  "fields": {
+    "MaxSize": "The max size of a glyph in the font sheet.",
+    "Glyphs": "A list of Font characters that should make up this dynamic font."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Glyph Example",
+      "text": "thumb|none|upright=1.7"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicSpriteFont&action=raw"
+}

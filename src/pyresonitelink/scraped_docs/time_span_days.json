@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan Days node takes in a TimeSpan and returns with only the amount of days in that TimeSpan. Anything other than the days will be ignored.",
+  "description": "The ``TimeSpan Days`` node takes in a TimeSpan and returns with only the amount of days in that TimeSpan. Anything other than the days will be ignored.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "TimeSpan": "The TimeSpan we are getting info from.",
+    "* ([[Type:int|int]])": "Returns the amount of days in this TimeSpan as an int."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanDays&action=raw"
 }

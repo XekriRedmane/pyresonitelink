@@ -1,0 +1,11 @@
+{
+  "description": "The WorldCloseFacetPreset component loads the World Close facet when it's not ``_fullyLoaded``. It does this by loading the facet from the cloud, and using that loaded data to make the preset",
+  "category": "Radiant UI:Facets",
+  "fields": {
+    "_fullyLoaded": "Whether this facet has been fully loaded and ready to use"
+  },
+  "methods": {},
+  "usage": "used in the main dash. no need to be used by the user unless they are missing the World Close facet.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldCloseFacetPreset&action=raw"
+}

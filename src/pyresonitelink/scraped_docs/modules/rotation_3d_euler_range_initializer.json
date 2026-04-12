@@ -1,0 +1,11 @@
+{
+  "description": "The Rotation3DEulerRangeInitializer component makes particles have a random rotation between a pair of Euler angles.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "MinValue": "The minimum euler angle rotation a particle can have.",
+    "MaxValue": "The maximum euler angle rotation a particle can have."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": []
+}

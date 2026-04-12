@@ -1,8 +1,14 @@
 {
-  "description": "The Set Global Transform Matrix node takes in a slot to transform (position, rotation, and scale) in 3D space along with the matrix value.",
+  "description": "The Set Global Transform Matrix node takes in a slot to transform (position, rotation, and scale) in 3D space along with the matrix value.\n\nTo create a transform matrix, the ProtoFlux Matrix Catagory has many helpful nodes to do this.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to set the the slot position, rotation, and scale of a slot.",
+    "Instance": "The slot to transform.",
+    "Matrix": "The exact value to set the slot's transform.",
+    "Next": "Continues the flow of execution from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetGlobalTransformMatrix&action=raw"
 }

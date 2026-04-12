@@ -9,5 +9,6 @@
     "GetTouchable": "Can be called to get the touchable target object of this component."
   },
   "usage": "Not to be used by the user, is used in internal game behavior.",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PointerInteractionController&action=raw"
 }

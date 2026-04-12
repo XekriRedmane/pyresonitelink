@@ -1,8 +1,9 @@
 {
-  "description": "The Escape String node escapes strings by adding \\ behind special characters. Its intention is for use in an environment with .NET Regular Expressions, but since Resonite does not currently implement any user-facing regex, its usefulness is limited.",
+  "description": "The Escape String node escapes strings by adding ``\\`` behind special characters. Its intention is for use in an environment with .NET Regular Expressions, but since Resonite does not currently implement any user-facing regex, its usefulness is limited.",
   "category": "",
   "fields": {},
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:EscapeString&action=raw"
 }

@@ -1,0 +1,17 @@
+{
+  "description": "The ConvexHullBrushTool component is a tool tip used to draw convex hulls.",
+  "category": "Tools:Brushes",
+  "fields": {
+    "MinHullPointDistance": "The minimum distance between points to be wrapped by a convex hull mesh.",
+    "FlatShading": "Whether the Convex Hull Mesh should be flat shaded.",
+    "PointSpread": "how far apart to spread the convex hull points",
+    "MaterialPreviews": "A list of mesh renderers being used to preview materials for the tool",
+    "_currentHull": "The current convex hull this brush is modifying via drawing."
+  },
+  "methods": {
+    "ChangeSize": "Handles changing the size of the brush of a brush tool."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConvexHullBrushTool&action=raw"
+}

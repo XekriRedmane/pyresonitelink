@@ -1,0 +1,9 @@
+{
+  "description": "The Search Block component, slots tagged with this component can be used to prevent either:\n- A user from grabbing an item from contacting certain colliders.\n- A user from equipping an avatar when clicking on a limb or collider attached to it.\n- A user from equipping a tool tip by clicking on a certain part of it.\n- A user from clicking a physical button when clicking on a collider parented to the physical button further down the hierarchy, or any button type not just physical buttons.",
+  "category": "Transform:Tagging",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SearchBlock&action=raw"
+}

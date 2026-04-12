@@ -1,8 +1,15 @@
 {
   "description": "The Ray Rectangle Intersection node determines the first point at which a ray defined by an origin and direction intersects the bounds of the provided Rect.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Origin": "Origin of the ray.",
+    "Direction": "Direction of the ray.",
+    "Rectangle": "Rectangle to detect intersections with.",
+    "Intersection": "The first point at which the defined ray intersects with the bounds of ``Rectangle``. If the ray does not intersect, the value will be ``[0; 0]``.",
+    "Intersects": "``True`` if the ray intersects with ``Rectangle``, ``False`` otherwise."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RayRectangleIntersection&action=raw"
 }

@@ -1,0 +1,16 @@
+{
+  "description": "The LegacySessionOrbsController component displays session orbs of current sessions into a slot. This component was used in what some players called the \"Session plate\" which would have many world orbs of active sessions.",
+  "category": "Uncategorized",
+  "fields": {
+    "SpawnRadius": "The radius of spawning orbs in a cylinder shape.",
+    "SpawnHeight": "The height of spawning orbs in a cylinder shape.",
+    "SpawnOffset": "The offset of the spawn cylinder shape in local space vs the center on ``_root``",
+    "_root": "Where to place and spawn session orbs.",
+    "MaxOrbs": "How many orbs can be under ``_root`` at any one time.",
+    "ShowHeadless": "Whether to show headless sessions"
+  },
+  "methods": {},
+  "usage": "Used in items that display current sessions in Resonite.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacySessionOrbsController&action=raw"
+}

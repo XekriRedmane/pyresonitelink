@@ -1,0 +1,13 @@
+{
+  "description": "Consumable allows an item to be consumed by bringing it to the avatar's mouth. It was introduced in build 2026.4.1.11\n\nConsumable Allows the item to be consumed by users.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "MustBeHolding": "Only allow component to be triggered when held. Needs to be paired by a grabbable in the same slot."
+  },
+  "methods": {
+    "Visualize": "Visualizes the data for this component."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Consumable&action=raw"
+}

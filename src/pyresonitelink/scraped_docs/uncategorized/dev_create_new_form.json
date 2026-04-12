@@ -1,0 +1,17 @@
+{
+  "description": "See Create New Wizard.",
+  "category": "Uncategorized",
+  "fields": {
+    "OnCreated": "The Sync delegate to call when an item is created.",
+    "CategoryRoot": "The current location in the create menu we are at.",
+    "_contentRoot": "Where to list content like buttons and such."
+  },
+  "methods": {
+    "RunAction": "See Create New Wizard.",
+    "ReturnToCategory": "See Create New Wizard.",
+    "NestIntoCategory": "See Create New Wizard."
+  },
+  "usage": "See Create New Wizard.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DevCreateNewForm&action=raw"
+}

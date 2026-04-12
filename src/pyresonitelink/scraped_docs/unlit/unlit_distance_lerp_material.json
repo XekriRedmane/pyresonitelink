@@ -1,0 +1,9 @@
+{
+  "description": "The UnlitDistanceLerpMaterial component changes it's surface depending on how close the material's surface is to a given ``Point``.",
+  "category": "Assets:Materials:Unlit",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot and use the material Component in the list of materials on a MeshRenderer or a SkinnedMeshRenderer with a mesh to view what this material looks like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UnlitDistanceLerpMaterial&action=raw"
+}

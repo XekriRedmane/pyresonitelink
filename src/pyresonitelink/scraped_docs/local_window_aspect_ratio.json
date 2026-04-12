@@ -1,8 +1,11 @@
 {
-  "description": "The Local Window Aspect Ratio node returns the user's local Resonite application aspect ratio.",
+  "description": "The ``Local Window Aspect Ratio`` node returns the user's local Resonite application aspect ratio.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float|float]])": "The user's local Resonite application aspect ratio."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalWindowAspectRatio&action=raw"
 }

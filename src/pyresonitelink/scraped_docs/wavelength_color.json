@@ -1,8 +1,12 @@
 {
-  "description": "The Wavelength Color node takes in a float number value (in nanometers) and converts that to a visible light spectrum color.",
+  "description": "The Wavelength Color node takes in a float number value (in nanometers) and converts that to a visible light spectrum color.\n\nThe table here shows the wavelength values that correspond to the output color:\n{| class=\"wikitable\"\n|+\n! Color !! Wavelength\n|-\n| Violet || 380\u2013450 nm (688\u2013789 THz frequency)\n|-\n| Blue || 450\u2013495 nm.\n|-\n| Green || 495\u2013570 nm.\n|-\n| Yellow || 570\u2013590 nm.\n|-\n| Orange || 590\u2013620 nm.\n|-\n| Red || 620\u2013750 nm (400\u2013484 THz frequency).\n|-\n|}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Wavelength": "The wavelength value in nanometers.",
+    "* ([[Type:color|Color]])": "The color value of the wavelength."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WavelengthColor&action=raw"
 }

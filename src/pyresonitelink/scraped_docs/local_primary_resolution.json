@@ -1,8 +1,11 @@
 {
-  "description": "The Local Primary Resolution node returns the user's local device's main monitor's resolution.",
+  "description": "The ``Local Primary Resolution`` node returns the user's local device's main monitor's resolution.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:int2|int2]])": "The user's device's main monitor's resolution."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalPrimaryResolution&action=raw"
 }

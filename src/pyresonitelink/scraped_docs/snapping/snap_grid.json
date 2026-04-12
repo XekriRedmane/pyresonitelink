@@ -1,0 +1,13 @@
+{
+  "description": "A snap grid is a component that is able to generate a point in a grid of points given a point by another component. Usually this is used in components like the Multi User Avatar Anchor Component to determine where to place the anchors upon clicking (click point is used in such case). Since this generates a grid of points, it takes the inserted point and rounds it to the nearest grid point, then returns it to the component that called it.\n\nThe functionality of this component is internal, and cannot be used by ProtoFlux to snap points using in game code.",
+  "category": "Transform:Snapping",
+  "fields": {
+    "BoundsSize": "How big the grid is in total, and determines the total size available for grid points to take up",
+    "GridSize": "How big each grid point is, or in other words, how far apart they are.",
+    "SnapParent": "Where to put slots if the component is being used for slot placement."
+  },
+  "methods": {},
+  "usage": "Used as an anchor point generator in the Multi User Avatar Anchor Component and drawing tools.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SnapGrid&action=raw"
+}

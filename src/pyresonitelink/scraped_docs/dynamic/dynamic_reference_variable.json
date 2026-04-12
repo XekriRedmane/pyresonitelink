@@ -1,0 +1,11 @@
+{
+  "description": "A dynamic reference variable is a component that allows storing any reference Type inside the component. The reference is then accessible and changeable via the Dynamic Variables system.\n}}",
+  "category": "Data:Dynamic",
+  "fields": {
+    "Reference": "The reference this variable holds. Can set and be changed by the Dynamic Variables system."
+  },
+  "methods": {},
+  "usage": "This component can be used as an accessory and setter of the Dynamic Variables system. For more info check the Dynamic Variables page.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicReferenceVariable&action=raw"
+}

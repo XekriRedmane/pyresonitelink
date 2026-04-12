@@ -1,0 +1,20 @@
+{
+  "description": "The SyncPlaybackEditor component is used to interact with and modify the playback of a Sync playback like a video, animation, or a sound player.",
+  "category": "Uncategorized",
+  "fields": {
+    "_playback": "The playback to edit and influence with this component.",
+    "_sliderValue": "The field to drive with the current playback of ``_playback``",
+    "_loopToggleSprite": "The sprite URI field of the toggle loop button. Used to switch between a loop and a play once icon URI.",
+    "_speedField": "The field used to change the speed of the playback of ``_playback``",
+    "_slider": "The slider used to change the play head/position of ``_playback``."
+  },
+  "methods": {
+    "Play": "Plays the playback of ``_playback``",
+    "Pause": "Pauses the playback of ``_playback``",
+    "Stop": "Stops the playback of ``_playback``",
+    "ToggleLoop": "Toggles the looping property of the playback of ``_playback``"
+  },
+  "usage": "Used commonly in inspectors and video players to allow interaction with playback fields directly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SyncPlaybackEditor&action=raw"
+}

@@ -1,8 +1,12 @@
 {
-  "description": "The DateTime Hour node takes in a DateTime and returns the hour of that DateTime. This returns the hour as if it were a 24-hour time (if the hour is 3pm, it returns 15).",
+  "description": "The ``DateTime Hour`` node takes in a DateTime and returns the hour of that DateTime. This returns the hour as if it were a 24-hour time (if the hour is 3pm, it returns 15).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "DateTime": "The DateTime we are getting info from.",
+    "* ([[Type:int|int]])": "The hour portion of the DateTime."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DateTimeHour&action=raw"
 }

@@ -1,0 +1,21 @@
+{
+  "description": "The DesktopControlDialog is used to change the settings for what desktop to control and how to control it.",
+  "category": "Input:Desktop",
+  "fields": {
+    "InteractionRelay": "The relay allowing desktop interaction.",
+    "Index": "The display to show in a multi monitor settup.",
+    "FollowCursor": "whether the desktop cursor should follow the Resonite dash cursor when not clicking.",
+    "Brightness": "how bright the desktop display should be in the dash.",
+    "Opacity": "how transparent the desktop display should be in the dash.",
+    "LegacyInputMode": "Whether to use the legacy input system for desktop interaction."
+  },
+  "methods": {
+    "OnDisplayItemGenerated": "DesktopDisplayLayout]].",
+    "OnSwitchDisplay": "handles switching the viewed desktop display for this component.",
+    "OnOpenKeyboard": "Handles the opening of a keyboard and focusing it to the desktop.",
+    "OnOpenStartMenu": "handles opening a computer's start menu."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DesktopControlDialog&action=raw"
+}

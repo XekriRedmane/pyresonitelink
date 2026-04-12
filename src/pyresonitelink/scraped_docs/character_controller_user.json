@@ -1,8 +1,12 @@
 {
-  "description": "The Character Controller User node will get the Simulating User in the character controller reference.",
+  "description": "The ``Character Controller User`` node will get the Simulating User in the character controller reference.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character controller to find the Simulating User.",
+    "* ([[Type:User|User]])": "The Simulating User that is found."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CharacterControllerUser&action=raw"
 }

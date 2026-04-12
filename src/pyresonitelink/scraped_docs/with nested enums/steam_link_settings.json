@@ -1,0 +1,11 @@
+{
+  "description": "See Settings.",
+  "category": "With Nested Enums",
+  "fields": {
+    "OSC_DataPort": "the port to use to communicate steam link info via OSC."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SteamLinkSettings&action=raw"
+}

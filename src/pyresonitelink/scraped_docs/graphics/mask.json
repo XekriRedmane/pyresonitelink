@@ -1,0 +1,11 @@
+{
+  "description": "The Mask component restricts the rendering of anything beneath it. It requires an Image component, text, arc, rectmesh, or anything that displays a graphic on the same slot. Only opaque areas of the graphic on the same slot will render the UIX below. This is also utilized in ScrollRect since it can mask anything outside of the scrolling viewport when using the component.\n\nThere is a UIX Tutorial that use masking and ScrollRects to help you understand how masks work.\n\n|warning}}\n\n}}",
+  "category": "UIX:Graphics",
+  "fields": {
+    "ShowMaskGraphic": "Shows the graphic being used to do the masking for debug purposes."
+  },
+  "methods": {},
+  "usage": "This can be used for fancy cutout effects.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Mask&action=raw"
+}

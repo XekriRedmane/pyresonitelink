@@ -1,8 +1,12 @@
 {
   "description": "The Get Tag node gets the tag value of the provided slot.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "Slot to check.",
+    "* ([[Type:String|String]])": "Instance (Slot)'s Tag field."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetTag&action=raw"
 }

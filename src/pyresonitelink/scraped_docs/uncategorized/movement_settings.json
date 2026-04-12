@@ -1,0 +1,21 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "LeftSidewaysMode": "How the left controller should be used to move the user.",
+    "RightSidewaysMode": "How the right controller should be used to move the user.",
+    "UseHeadDirectionForMovement": "Should head direction or controller direction in VR for movement direction.",
+    "UseSmoothTurn": "Whether smooth turning using joystick should be used.",
+    "SmoothTurnExclusiveMode": "Whether to use only smooth turning in all cases.",
+    "SmoothTurnSpeed": "The smooth turn speed sensitivity.",
+    "SnapTurnAngle": "How many degrees to change by when using snap turn mode.",
+    "NoClipSpeed": "How fast the user's noclip speed should be.",
+    "MovementDeadzone": "Any 0 to 1 value less than this is ignored for movement. (this is 0 to 1 range)",
+    "TurningDeadzone": "Any 0 to 1 value less than this is ignored for turning.(this is 0 to 1 range)",
+    "MovementExponent": "Pushes values from a 0 to 1 linear value to a quick ramp up effect still within a 0 to 1 range for movement speed input on the joysticks."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MovementSettings&action=raw"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The Spatial Variable Blend Driver component combines with the CloningReferenceSpatialVariableCollector component. If this is on a field on a spatial variable component which is driven by this component, the cloned version will be driven with the current blend weight for that clone. This is used for the BlendWeight for the new reverb zones. For more info on making reverb zones, see AudioListener",
+  "category": "Data:Spatial:Samplers",
+  "fields": {
+    "BlendWeight": "used for proportional blending and priority computation"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SpatialVariableBlendDriver&action=raw"
+}

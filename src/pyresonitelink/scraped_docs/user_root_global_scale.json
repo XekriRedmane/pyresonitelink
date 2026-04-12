@@ -1,8 +1,12 @@
 {
   "description": "The User Root Global Scale node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the user's root scale value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "UserRoot": "The user's user root.",
+    "* ([[Type:float|float]])": "Returns the user's root scale value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserRootGlobalScale&action=raw"
 }

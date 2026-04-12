@@ -1,0 +1,14 @@
+{
+  "description": "This component is functionally identical to Boolean Reference Driver. Except it only accepts IAssets and acts as a user for assets in ``FalseTarget`` and ``TrueTarget`` meaning assets assigned to this component won't get cleaned up by the asset optimizer world processes.",
+  "category": "Assets:Utility",
+  "fields": {
+    "State": "Whether to drive ``Target`` to ``TrueTarget`` or ``FalseTarget``",
+    "Target": "The field to drive the value of.",
+    "FalseTarget": "The asset to drive ``Target`` to when ``State`` is false.",
+    "TrueTarget": "The asset to drive ``Target`` to when ``State`` is true."
+  },
+  "methods": {},
+  "usage": "Attach this component to a slot, and (optionally) put an asset into the False and/or True target fields. Then, put a field which you want to change the asset of into ``Target``. now, switching ``State`` will allow switching between the values of ``FalseTarget`` and ``TrueTarget``.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BooleanAssetDriver&action=raw"
+}

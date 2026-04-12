@@ -1,0 +1,11 @@
+{
+  "description": "The CustomizationSettings component adds an option to the Settings menu to enable and disable UI Edit Mode.",
+  "category": "Uncategorized",
+  "fields": {
+    "UserInterfaceEditMode": "Whether UI Edit Mode is enabled or not."
+  },
+  "methods": {},
+  "usage": "Not used by the user directly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CustomizationSettings&action=raw"
+}

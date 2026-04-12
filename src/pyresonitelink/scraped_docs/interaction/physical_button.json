@@ -1,0 +1,38 @@
+{
+  "description": "The PhysicalButton component can be used to create buttons that move inward when pressed by a user, a press depth and threshold can be set to customize the physical feeling of the button.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "PressAxis": "The direction in local space to go when pressing the button",
+    "EditModeOnly": "Whether this button can only be pressed if the user is in Edit Mode",
+    "ActiveUserFilter": "How to filter in or out the active user of this component.",
+    "__legacyActiveUserRootOnly": "Whether to use the legacy active user root only option.",
+    "Pressed": "A sync delegate to call when the button is pressed.",
+    "Pressing": "A sync delegate to call when the button is being pressed. is called every game update while the button is held down.",
+    "Released": "A sync delegate to call when the button is released.",
+    "PressDepth": "The max distance the button can move in ``PressAxis`` direction",
+    "PressThreshold": "If pressed more than this amount, the button is considered pressed.",
+    "ReleaseThreshold": "If pressed less than this amount, the button is considered released.",
+    "IsPressed": "Whether the user has the button pressed.",
+    "IsHovering": "Whether the user is hovering their interaction source at the button (laser or tip touch source)",
+    "IsHolding": "Whether the user is holding the button.",
+    "IsPressedOrHolding": "Whether the button is being held down or being pressed.",
+    "Hold": "Whether the button can be held down.",
+    "HoldDepthRatio": "How far the button has to be pressed before it is considered being held down.",
+    "BeginPressVibration": "How to vibrate a user's hand when they begin to press the button.",
+    "PressVibration": "How to vibrate a user's hand when they press the button.",
+    "HoverVibration": "How to vibrate a user's hand when they point at the button.",
+    "Label": "The field to drive with a label describing this button.",
+    "_currentPressingDepth": "The current amount that the button is being pushed down.",
+    "_buttonOffset": "The initial position of the button's transforms in local space.",
+    "_buttonPosition": "the field to drive to influence the position of the button for pressing."
+  },
+  "methods": {},
+  "usage": "Attach to a slot under another slot. the slot hiearchy this is on should have a collider in order to be able to press the button. Hooking this up to ProtoFlux, or using the Button Events this generates will give this button functionality.",
+  "notes": [
+    {
+      "title": "Miscellaneous Notes",
+      "text": "When adding this component to an object that has the Grabbable component, you will notice that the object may not be grabbable anymore. To remedy this, create a child object on the main object you want to be your button. Then, on that child object, attach this component. You should now have an object that is grabbable and functions as a button."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PhysicalButton&action=raw"
+}

@@ -1,0 +1,15 @@
+{
+  "description": "The TorusMesh component generates procedural geometry that is used with MeshRenderer.\n\nThis mesh resembles a Donut.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "MinorSegments": "The amount of detail/cuts along the circle of the torus. Making this 4 will make the torus a square instead of a circle shape.",
+    "MajorSegments": "The amount of detail/cuts going around and through the center along the outside and inside.",
+    "MajorRadius": "The size of the torus",
+    "MinorRadius": "the fatness/thickness of the torus. If this is too big than the hole in the center will seal up.",
+    "UVScale": "the scale of the material detail on the surface of the torus."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert this component into a MeshRenderer to view its geometry. Don't forget to add a Material",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TorusMesh&action=raw"
+}

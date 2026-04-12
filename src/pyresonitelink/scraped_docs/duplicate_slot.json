@@ -1,8 +1,15 @@
 {
-  "description": "The Duplicate Slot node makes a copy of a slot and exposes the duplicated slot with the output called Duplicate which can be used for any nodes that accept the slot type.",
+  "description": "The Duplicate Slot node makes a copy of a slot and exposes the duplicated slot with the output called ``Duplicate`` which can be used for any nodes that accept the slot type.\n\nThis node can take an overriding parent as an input for the duplicated slot. This acts similarly to the Set Parent node (with ``PreserveGlobalPosition`` enabled, which is default on that node) without needing the extra node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to write the value.",
+    "Template": "The slot to make a duplicate of.",
+    "OverrideParent": "The slot to place the duplicated slot under.",
+    "Next": "Will fire after Instance (Slot) has been duplicated due to * (Call) being impulsed.",
+    "Duplicate": "The duplicate of Instance (Slot). Will only exist during the Next (Continuation) Impulse context."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DuplicateSlot&action=raw"
 }

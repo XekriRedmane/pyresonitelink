@@ -1,8 +1,11 @@
 {
-  "description": "The Pi node outputs the mathematical constant π.",
+  "description": "The Pi node outputs the mathematical constant \u03c0.\n\nApplications this can be used in:\n- Geometry and Circle Calculations\n- Rotations and Angle Calculations\n- Wave Generation (combined with Sin)\n- Physics Simulations (especially when dealing with circular motion, pendulum movements, or orbital mechanics)\n- Procedural Generation (especially curves)\n- Lighting and Shading (used in lighting models to calculate angles and intensities of light, reflections, and refractions)\n- Animation Curves",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:Float|float]])": "The value of \u03c0, approximately ``3.14159274``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Pi&action=raw"
 }

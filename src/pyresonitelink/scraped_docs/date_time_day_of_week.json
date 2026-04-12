@@ -1,8 +1,12 @@
 {
-  "description": "The DateTime Day Of Week node takes in a DateTime and returns the day of the week for that DateTime.",
+  "description": "The ``DateTime Day Of Week`` node takes in a DateTime and returns the day of the week for that DateTime.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "DateTime": "The DateTime we are getting info from.",
+    "* ([[Type:DayOfWeek|DayOfWeek]])": "The day of the week of this DateTime."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DateTimeDayOfWeek&action=raw"
 }

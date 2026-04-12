@@ -1,0 +1,19 @@
+{
+  "description": "The Facet Component is the component that drives every user made facet in the game. This component specifically handles the sizes in which a facet can/can't, and prefers to be placed. It also reports the last size a facet was placed, the aspect ratio sizes it can be placed, and the Canvas that makes up the facet's contents.\n\nWhen being placed into a spot, this facet finds the closest one of ``PreferredSizes`` that can be used while still fitting and automatically makes it the size when dropped in that spot. This only triggers if the user is just dropping it on their dash, as opposed to drag clicking the facet in.",
+  "category": "Radiant UI",
+  "fields": {
+    "MinWidth": "The minimum width this facet can be.",
+    "MaxWidth": "The maximum width this facet can be.",
+    "MinHeight": "The minimum height this facet can be.",
+    "MaxHeight": "The maximum height this facet can be.",
+    "LastPlacedSize": "The last size that this Facet was placed as.",
+    "PreferredSizes": "A list of sizes this canvas prefers to be placed when being dropped onto a facet holder.",
+    "AllowedAspectRatios": "A list of allowed ratios between width and height this facet allows when being placed, lest the placement guide turns red and prevents placement.",
+    "IsStandalone": "Whether this facet has not been placed in a dash or otherwise and is out in free form space.",
+    "Canvas": "The canvas being used for the visuals of this Facet."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Facet&action=raw"
+}

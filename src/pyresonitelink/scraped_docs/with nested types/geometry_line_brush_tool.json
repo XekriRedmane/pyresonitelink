@@ -1,0 +1,19 @@
+{
+  "description": "The GeometryLineBrushTool component is further explained on the \nGeometry Line Brush page.",
+  "category": "With Nested Types",
+  "fields": {
+    "LineStyles": "A list of line styles this tool can possibly draw.",
+    "Profile": "the color profile of lines drawn by this tool.",
+    "UseRelativeMinimumPointDistance": "disable the size of the previous line size affecting minimum point distance.",
+    "RelativeMinimumPointDistanceRatio": "how much size affects the minimum distance allowed between points. Affects how if a segment is bigger, that the next point has a bigger minimum place distance from that point.",
+    "PressureAffectsSize": "Whether tool pressure affects line size.",
+    "MaterialPreviews": "A list of renderers showing previews of materials.",
+    "_sizeKnob": "The slot being used as a size selector knob for this brush."
+  },
+  "methods": {
+    "ChangeSize": "Handles changing the size of the brush of a brush tool."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GeometryLineBrushTool&action=raw"
+}

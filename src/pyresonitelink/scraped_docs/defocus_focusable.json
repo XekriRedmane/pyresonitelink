@@ -1,8 +1,13 @@
 {
-  "description": "The Defocus Focusable node clears the target IFocusable UI from the user.",
+  "description": "The ``Defocus Focusable`` node clears the target IFocusable UI from the user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to clear the target focus of a UI from the user.",
+    "Target": "The target IFocusable reference to defocus from.",
+    "Next": "Fires after the focus has been defocused."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DefocusFocusable&action=raw"
 }

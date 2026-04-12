@@ -1,8 +1,13 @@
 {
   "description": "Color Additive Blend does a \"soft additive\" blend of its two input colors. The result of the color components is destination color + (source color * (1 - destination color)). The alpha component is simply added together and clamped to a maximum of 1.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Source": "The color that is blended \"onto\" the destination.",
+    "Destination": "The destination color that the source is blended \"onto\".",
+    "* ([[Type:Color|Color]])": "The blended color result."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ColorSoftAdditiveBlend&action=raw"
 }

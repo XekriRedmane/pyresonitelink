@@ -1,0 +1,21 @@
+{
+  "description": "BlitToDisplay is a component that is able to make a user's game window display a 2d texture of any kind (including render textures) and is also able to create new game windows to display images as well. \n\nThis component takes no regard for permissions at the time of writing. This component generates new windows without confirmation. New windows generated are created on new monitors or the main monitor, and are made to fit the screen. \n\nCombining this with DisplayInfo allows for getting the size of the user's screen, which can be used to adjust the texture displayed by this component to better fit the generated window.",
+  "category": "Rendering",
+  "fields": {
+    "TargetUser": "The user to display the image on their screen for. Using the local user does work.",
+    "Texture": "The texture to display to the screen. A render texture may be used here.",
+    "DisplayIndex": "which game window to display ``Texture`` to. If the window number doesn't exist, one is created automatically. If 0 is used, the main game window will be used.",
+    "BackgroundColor": "The color to display behind the image.",
+    "FlipHorizontally": "flip the image horizontally before displaying to the screen.",
+    "FlipVertically": "flip the image vertically before displaying to the screen."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Disabling this component does not disable its effects. Setting ``TargetUser`` to null does though. New windows created by this component will close the game if closed. It is unknown if this is a bug. This component can and will blind desktop users if ``DisplayIndex`` is set to 0 and ``TargetUser`` targets a desktop user."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BlitToDisplay&action=raw"
+}

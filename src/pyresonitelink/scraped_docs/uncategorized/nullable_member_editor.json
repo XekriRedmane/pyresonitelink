@@ -1,0 +1,17 @@
+{
+  "description": "The Nullable Member Editor component is commonly used in Ref Hacking and is used to modify nullable values.\n\nPlease look into Flux or component alternatives other than this component to edit nullables.",
+  "category": "Uncategorized",
+  "fields": {
+    "Continuous": "Whether changes should instantly update a target value.",
+    "_path": "The sub element to edit via C# reflection.",
+    "_target": "The value to be modifying.",
+    "NullableBaseType": "The type of the value stored within the nullable (for \"Nullable\" aka \"Float?\" This is \"Float\")",
+    "_checkBox": "Whether the nullable has a value.",
+    "_stateDrive": "The field to drive with whether or not the nullable has a value.",
+    "_button": "The button for editing the nullable."
+  },
+  "methods": {},
+  "usage": "Used in Ref Hacking. Don't use for your creations or they will break at any time.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NullableMemberEditor&action=raw"
+}

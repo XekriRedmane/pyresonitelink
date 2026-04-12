@@ -1,8 +1,15 @@
 {
-  "description": "Anchor User is a ProtoFlux node that attempts to anchor a user to any anchor, which is provided to the node via the IAvatarAnchor type.",
+  "description": "Anchor User is a ProtoFlux node that attempts to anchor a user to any anchor, which is provided to the node via the IAvatarAnchor type.\n\nIf the anchor succeeds, it doesn't nessarily mean the user has stayed in the anchor, and requires checking Anchored User Node A few updates later.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Anchors the User (User) Upon impulse to the provided Anchor (IAvatarAnchor)",
+    "Anchor": "The anchor to put the provided User (User) into.",
+    "User": "The user to put into the provided Anchor (IAvatarAnchor).",
+    "OnAnchored": "Sends an impulse after * (Call) is called and the user was sucessfully anchored.",
+    "OnFail": "Sends an impulse after * (Call) is called and the user was not anchored because the user currently is in another anchor, the provided anchor was null, or the provided anchor already had someone seated in it."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AnchorUser&action=raw"
 }

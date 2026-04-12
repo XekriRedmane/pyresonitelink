@@ -1,0 +1,13 @@
+{
+  "description": "The RectTransformComputedProperties component is used to get the real size of a UIX element that is contained in a slot that has a RectTransform. It takes in the RectTransform reference, and then returns a ``LocalComputerRect``, which is the local bounds of the element, and returns the ``BoundingRect``, which is the bounding rect itself (which can be larger than the local elements from within). Most of the time, both values would be the same, except for some situations.\n\n}}",
+  "category": "Debug",
+  "fields": {
+    "Rect": "The rect transform component to reference from",
+    "LocalComputeRect": "The local bounds of the element",
+    "BoundingRect": "The bounding rect itself"
+  },
+  "methods": {},
+  "usage": "This is used to get the size of the bounds of whatever is inside the RectTransform.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RectTransformComputedProperties&action=raw"
+}

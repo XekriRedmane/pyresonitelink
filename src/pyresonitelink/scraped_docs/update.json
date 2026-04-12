@@ -1,8 +1,11 @@
 {
-  "description": "The Update node sends a pulse at every engine update from the UpdatingUser.",
+  "description": "The Update node sends a pulse at every engine update from the ``UpdatingUser``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnUpdate": "Sends a pulse every engine update from the ``UpdatingUser``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Update&action=raw"
 }

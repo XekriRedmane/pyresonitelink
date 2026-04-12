@@ -1,0 +1,8 @@
+{
+  "description": "The PBSLerpSpecular component also known as . Is a material that can switch textures and texture sets.\n\nIf you want to switch between more than two sets of textures, please see MultiTextureFader.\n\nTo see detailed info on the textures not unique to this material like albedo and specular, please see PBS_Specular.",
+  "category": "Assets:Materials:PBS",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

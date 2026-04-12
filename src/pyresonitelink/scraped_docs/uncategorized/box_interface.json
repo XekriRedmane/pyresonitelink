@@ -1,0 +1,11 @@
+{
+  "description": "The Box Interface component is an abstracted type that doesn't do anything.",
+  "category": "Uncategorized",
+  "fields": {
+    "Size": "The size of the box area."
+  },
+  "methods": {},
+  "usage": "Unused.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BoxInterface&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The TextExportable component allows the user to take a Slot and export it as a text file on their device.\n\nTo export using this component, look at the file browser export section.",
+  "category": "Assets:Export",
+  "fields": {
+    "TextSource": "Anything that is a string, such as textfields, contents, etc.",
+    "Extension": "The file type, defaults to ``.txt``.",
+    "Description": "The description of what this text export is. Will be shown during the export process."
+  },
+  "methods": {},
+  "usage": "This can be used to export anything that is text based, or anything you can fill the ``TextSource`` with such as log information or anything else that you wish to export out.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextExportable&action=raw"
+}

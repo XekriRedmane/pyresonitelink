@@ -1,8 +1,11 @@
 {
   "description": "Null String is a ProtoFlux node that returns a string with no content even white space, so the object is null, but still a String object.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Types:String|String]])": "The string A (String) repeated B (int) times."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:NullString&action=raw"
 }

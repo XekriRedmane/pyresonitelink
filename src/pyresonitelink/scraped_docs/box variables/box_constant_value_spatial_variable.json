@@ -1,0 +1,11 @@
+{
+  "description": "The Box Constant Value Spatial Variable`1 component is a Spatial variables variable where the value is the same throughout the whole volume.",
+  "category": "Data:Spatial:Box Variables",
+  "fields": {
+    "Size": "The size of the cube area to allow sampling within."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a size and variable name in order for this to function.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BoxConstantValueSpatialVariable&action=raw"
+}

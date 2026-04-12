@@ -1,0 +1,17 @@
+{
+  "description": "TODO: instead of being written by me with 2 brain cells of math this should be rewritten with actual math terms.\n\nThe MultiAudioClipPlayer is a component able to make a group of audios play at the exact same time with a timeline. How the math is determined is made by taking each track and checking their play length in seconds. Next a math equation is done to find how much to repeat each Audio Clip by, so they end at the same time. Then it makes this component's playback length where all the audio clips would end. This could be used as a way of doing said math equation.",
+  "category": "With Nested Types",
+  "fields": {
+    "playback": "the position of the multi audio clip player",
+    "Tracks": "the different tracks this Multi Audio Clip is playing."
+  },
+  "methods": {
+    "Play": "Starts playback of the audio clips",
+    "Stop": "Stops playback of the audio clips and sets playhead back to beginning.",
+    "Pause": "Pauses playback of the audio clips.",
+    "Resume": "Resumes playback of the audio clips at current position."
+  },
+  "usage": "Add a group of tracks to the tracks list to make them part of the player. The player can be referenced by IPlayable capable nodes such as Media ProtoFlux Nodes and Components that take such. This component can also be put into an Audio Output Component to be heard by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MultiAudioClipPlayer&action=raw"
+}

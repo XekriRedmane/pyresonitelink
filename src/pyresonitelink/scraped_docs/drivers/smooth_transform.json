@@ -1,0 +1,19 @@
+{
+  "description": "Smooth transform is a component that is used to create a \"lag behind\" or \"trailing\" effect on slots or objects that follow another object. The slot this controls will try to return to it's rest position, iteratively getting closer and closer until in eventuality reaching it's target location at rest.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "InterpolationSpace": "The coordinate space that should be used to check the delta of the transforms in. If set to user space and parented under the user's hand, this slot will only lag behind (or smooth) when the user moves their hand, but not when they walk around. This can also be set to a slot for similar effects without a user.",
+    "TargetPosition": "The local transform position that this slot is trying to get to.",
+    "TargetRotation": "the local transform rotation that this slot is trying to get to.",
+    "TargetScale": "The local transform scale that this slot is trying to get to.",
+    "Position": "The position field to drive with the smoothed value (auto filled with the position field of the slot this is on.",
+    "Rotation": "The rotation field to drive with the smoothed value (auto filled with the rotation field of the slot this is on.",
+    "Scale": "The scale field to drive with the smoothed value (auto filled with the scale field of the slot this is on.",
+    "SmoothSpeed": "How fast or slow this slot is at catching up to it's target location. Not a set number of seconds since this component iteratively smooths.",
+    "_updateIndex": "Whether to do this smooth transform before or after other smooth transforms in the same slot hiearchy."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SmoothTransform&action=raw"
+}

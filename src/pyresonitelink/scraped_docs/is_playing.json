@@ -1,8 +1,12 @@
 {
   "description": "Is Playing is a ProtoFlux node that returns if an IPlayable is currently playing.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Source": "The clip to check if it is playing",
+    "* ([[Type:Bool|boolean]])": "Whether the provided Source (IPlayable) is playing or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsPlaying&action=raw"
 }

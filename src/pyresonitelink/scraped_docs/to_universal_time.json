@@ -1,8 +1,12 @@
 {
-  "description": "The To Universal Time node takes in a DateTime and converts it to universal time using your local time offset. This is in accordance to Universal Time.",
+  "description": "The ``To Universal Time`` node takes in a DateTime and converts it to universal time using your local time offset. This is in accordance to Universal Time.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "DateTime": "The DateTime we want to convert into universal time.",
+    "* ([[Type:DateTime|DateTime]])": "Returns the universal DateTime."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ToUniversalTime&action=raw"
 }

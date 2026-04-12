@@ -1,0 +1,12 @@
+{
+  "description": "Scale Object Creator component as seen in the Scene Inspector",
+  "category": "Transform:Scaling",
+  "fields": {},
+  "methods": {
+    "OnAlign": "Called when the align button is touched.",
+    "OnCreate": "Called when the create item button is touched."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ScaleObjectCreator&action=raw"
+}

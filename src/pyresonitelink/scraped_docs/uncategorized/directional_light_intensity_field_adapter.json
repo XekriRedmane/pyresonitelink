@@ -1,0 +1,13 @@
+{
+  "description": "The DirectionalLightIntensityFieldAdapter component is used to convert intensity in a directional light from the old SRGB color space into linear when converting worlds.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The Float to drive with the converted value.",
+    "Value": "The original value.",
+    "Scale": "How much to multiply ``Value`` by."
+  },
+  "methods": {},
+  "usage": "This is usually auto generated and not used by the user directly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DirectionalLightIntensityFieldAdapter&action=raw"
+}

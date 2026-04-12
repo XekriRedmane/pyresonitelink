@@ -1,8 +1,13 @@
 {
-  "description": "The Less Or Equal node takes in 2 values and returns if the first value is smaller than or equal to the second value.",
+  "description": "The Less Or Equal node takes in 2 values and returns if the first value is smaller than or equal to the second value.\n\n|suggestion}}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The first value.",
+    "B": "The second value.",
+    "* ([[Type:bool|bool]])": "Returns if the first value is smaller than or equal to the second value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LessOrEqual&action=raw"
 }

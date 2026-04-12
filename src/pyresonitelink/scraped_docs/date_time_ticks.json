@@ -1,8 +1,12 @@
 {
-  "description": "The DateTime Ticks node takes in a DateTime and returns the amount of ticks of that DateTime. There is Microsoft documentation about Ticks.",
+  "description": "The ``DateTime Ticks`` node takes in a DateTime and returns the amount of ticks of that DateTime. There is Microsoft documentation about Ticks.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "DateTime": "The DateTime we are getting info from.",
+    "* ([[Type:long|long]])": "The amount of ticks of this DateTime."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DateTimeTicks&action=raw"
 }

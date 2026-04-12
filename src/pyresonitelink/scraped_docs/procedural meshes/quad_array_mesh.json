@@ -1,0 +1,16 @@
+{
+  "description": "Quad array mesh makes a bunch of quads with defined positions, rotations, vertex colors, and UV coordinates which are rendered as one mesh. This is made from Quad brushes which can be found in the resonite essentials folder.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Points": "An array inaccessible without Mods that defines where each quad for this mesh should be in local space.",
+    "Sizes": "An array inaccessible without Mods that defines the scale for each quad for this mesh in local space.",
+    "Rotations": "An array inaccessible without Mods that defines the rotation for each quad for this mesh in local space.",
+    "Colors": "An array inaccessible without Mods that defines the vertex colors for each quad for this mesh.",
+    "ColorsProfile": "The color profile of each quad.",
+    "UVs": "An array inaccessible without Mods xy of each element defines the center of each quad and zw defines the uv scales of each quad on a texture/material."
+  },
+  "methods": {},
+  "usage": "This component is not usually used directly",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:QuadArrayMesh&action=raw"
+}

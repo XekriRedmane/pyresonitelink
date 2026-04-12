@@ -1,5 +1,5 @@
 {
-  "description": "Text can be used to explain something, to be descriptive, to notify, and many other things text can be used for.",
+  "description": "The Text component displays text inside of a UIX element. It also supports text formatting.\n\n}}",
   "category": "UIX:Graphics",
   "fields": {
     "Font": "The font to use",
@@ -28,10 +28,6 @@
   },
   "methods": {},
   "usage": "Text can be used to explain something, to be descriptive, to notify, and many other things text can be used for. When being effective with text, basic graphic design principles apply even to something simple as text.",
-  "notes": [
-    {
-      "title": "Related Components",
-      "text": "Text\nText"
-    }
-  ]
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Text&action=raw"
 }

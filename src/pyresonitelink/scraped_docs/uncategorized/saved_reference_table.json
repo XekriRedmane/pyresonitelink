@@ -1,0 +1,11 @@
+{
+  "description": "Used solely by SpawnOrDestroy to store the data of a destroyed object to restore later.",
+  "category": "Uncategorized",
+  "fields": {
+    "Table": "The table to save destroyed object data."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SavedReferenceTable&action=raw"
+}

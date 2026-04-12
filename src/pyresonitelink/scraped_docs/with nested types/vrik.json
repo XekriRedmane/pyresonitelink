@@ -1,0 +1,27 @@
+{
+  "description": "All weight values are 1-0, excluding clamps which are inverted 0-1.",
+  "category": "With Nested Types",
+  "fields": {
+    "AutoUpdate": "Whether to update the VRIK regardless of whether or not the sync delegates are called by a VRIK avatar or similar sources. this can break systems still using a VRIKAvatar but can fix ones with a lack of such component.",
+    "FixTransformsEnabled": "Clamps IK transforms to reasonable values and Resets IK every update.",
+    "Solver": "The actual solver that contains most of the fields of this component.",
+    "componentInitiated": "Marks this component as fully started and ready to solve IK transforms.",
+    "_drives": "A list of fields to drive with ``defaultLocalPositions`` and ``defaultLocalRotations`` plus transforms solved by the IK using ``defaultLocalPositions`` and ``defaultLocalRotations`` as a basis."
+  },
+  "methods": {},
+  "usage": "All weight values are 1-0, excluding clamps which are inverted 0-1.\nYou can overdrive some of them with interesting results.",
+  "notes": [
+    {
+      "title": "Introduction",
+      "text": "The VRIK component is used to configure Inverse Kinematics on an avatar, for posing joints based on the position of IK Targets such as a VR HMD, hand tracking, or Vive Trackers\n\nThis component is automatically configured when importing a mesh with a detectable humanoid rig, and generally should not be modified unless you know what you are doing.\n\nDocumentation on this component may take some time, as it is very complex, and not commonly used. The basis for this component seems to be the VRIK solver developed by Final IK."
+    },
+    {
+      "title": "IKSolverVR",
+      "text": "Most of the complexity in VRIK is actually stored in the IKSolverVR type. And even this is spread across multiple types."
+    },
+    {
+      "title": "BoneDrive",
+      "text": "Bonedrive fields use a combination of the ``defaultLocalPositions`` and ``defaultLocalRotations`` entries at this element's entry position in the list as well as VRIK position and rotation solved values to determine the final driven value."
+    }
+  ]
+}

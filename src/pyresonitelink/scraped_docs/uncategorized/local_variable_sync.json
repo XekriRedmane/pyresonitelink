@@ -1,0 +1,13 @@
+{
+  "description": "The LocalVariableSync component is used to store a value to the local dB for the user space and load it up again.",
+  "category": "Uncategorized",
+  "fields": {
+    "OwnerUser": "The user that this variable is associated with in the world.",
+    "Value": "The value to Sync with the local DB variable.",
+    "Variable": "The name of the local DB variable."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocalVariableSync&action=raw"
+}

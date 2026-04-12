@@ -1,0 +1,13 @@
+{
+  "description": "The Gaussian Splat Quality Settings component is used to control the quality of Gaussian Splats in a world.",
+  "category": "Uncategorized",
+  "fields": {
+    "QualityPreset": "The preset to use for quality of Gaussian splats.",
+    "MinLocalQuality": "The preset to use for the minimum quality of Gaussian splats.",
+    "SortMegaOperationsPerCamera": "The amount of sorting to do in different cameras rendering Gaussian splats."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GaussianSplatQualitySettings&action=raw"
+}

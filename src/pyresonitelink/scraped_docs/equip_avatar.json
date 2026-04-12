@@ -1,8 +1,15 @@
 {
   "description": "Equip Avatar is a ProtoFlux node that allows for making a User Equip an Avatar. A bit of caution should be used when using this node, since making people equip an avatar against their will without proper forewarning can be considered distasteful at best.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to make the provided User (User) equip the provided AvatarRoot (Slot).",
+    "User": "The user that should equip the provided AvatarRoot (Slot).",
+    "AvatarRoot": "The Avatar the provided User (User) should equip. This slot is usually where the AvatarRoot component would be on an avatar which usually resides with the VRIK.",
+    "DestroyOld": "Whether the avatar the user was previously wearing should be destroyed. Only use this when nessary, because the avatar will be gone forever from the world when deleted.",
+    "Next": "Sends an impulse after * (Call) was called and the provided User (User) has equipped the provided AvatarRoot (Slot)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:EquipAvatar&action=raw"
 }

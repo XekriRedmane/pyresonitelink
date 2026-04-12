@@ -1,0 +1,14 @@
+{
+  "description": "See Settings/Tracker Settings",
+  "category": "With Nested Types",
+  "fields": {
+    "UseTrackers": "If all body trackers should be enabled.",
+    "Trackers": "View all names, assignments, ids, and statuses for previously used trackers."
+  },
+  "methods": {
+    "GetTrackerForSubsetting": "Gets one of the ``Trackers`` by key."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TrackerSettings&action=raw"
+}

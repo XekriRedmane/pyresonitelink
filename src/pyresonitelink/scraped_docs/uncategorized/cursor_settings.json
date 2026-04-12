@@ -1,0 +1,15 @@
+{
+  "description": "The CursorSettings component is used in the settings menu to allow the user to change the size of their cursor when it is under specific circumstances.",
+  "category": "Uncategorized",
+  "fields": {
+    "BaseCursorSize": "The cursor size by default.",
+    "GrabMultiplier": "The amount to multiply the cursor size by when grabbing something",
+    "InteractionMultiplier": "The amount to multiply the cursor size by when pressing a button or interacting with something.",
+    "TextMultiplier": "How much to multiply the cursor size when highlighting an editable text field.",
+    "SliderMultiplier": "The amount to multiply the cursor size when sliding a slider."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CursorSettings&action=raw"
+}

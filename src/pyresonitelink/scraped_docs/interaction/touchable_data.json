@@ -1,0 +1,20 @@
+{
+  "description": "The TouchableData component can be used to create simple touch based interactions.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "Hovering": "Whether a user's laser is hovering over the component's collider",
+    "Touching": "Whether a user is clicking on the collider this component is on.",
+    "OnHoverStartVibrate": "How to vibrate the user's controller when they started hovering on the component.",
+    "OnHoverStayVibrate": "How to vibrate the user's controller every game update when they are hovering on the component.",
+    "OnHoverEndVibrate": "How to vibrate the user's controller when they stopped hovering on the component.",
+    "OnTouchStartVibrate": "How to vibrate the user's controller when they started primary pressing on the component.",
+    "OnTouchStayVibrate": "How to vibrate the user's controller every game update when they hold primary press on the component.",
+    "OnTouchEndVibrate": "How to vibrate the user's controller when they ended primary pressing on the component.",
+    "EditModeOnly": "Whether this component can only be interacted with by users in edit mode.",
+    "ActiveUserFilter": "How to handle which users can use this component based on the current active user."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TouchableData&action=raw"
+}

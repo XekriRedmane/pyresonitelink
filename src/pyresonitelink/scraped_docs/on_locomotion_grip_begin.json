@@ -1,0 +1,14 @@
+{
+  "description": "The On Locomotion Grip Begin node takes in a global reference from a user's PhysicalLocomotion. And fires when a grip happens that relates to that locomotion along with the data of the slot, position in 3D space, and what side of the user's grip it was.",
+  "category": "",
+  "fields": {
+    "OnEvent": "Fires when a locomotion grip happens.",
+    "GrippedSlot": "The slot that is being gripped.",
+    "GrippedPoint": "The point in 3D space where the grip is happening.",
+    "GrippingHand": "The side that is being gripped from a user."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnLocomotionGripBegin&action=raw"
+}

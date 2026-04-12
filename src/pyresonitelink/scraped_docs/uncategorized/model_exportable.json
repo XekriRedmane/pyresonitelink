@@ -1,0 +1,12 @@
+{
+  "description": "The ModelExportable component is used to mark a slot hierarchy as a model that can be exported to a user's local machine. This will export static and skinned meshes, but is subject to the same restrictions normal model exporting has.",
+  "category": "Uncategorized",
+  "fields": {
+    "Root": "The slot to treat as a model that can be exported.",
+    "OnlyComponents": "What components should only be exported, rather than all mesh data components in the hiearchy. If this list is blank, it will not have any affect."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ModelExportable&action=raw"
+}

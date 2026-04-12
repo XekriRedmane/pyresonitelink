@@ -1,0 +1,41 @@
+{
+  "description": "The FileBrowser component is used to show file lists of files on the user's PC in the userspace dash menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "SelectedItem": "The currently selected item being highlighted.",
+    "_previousSelectedItem": "The item previously highlighted.",
+    "AllowSelect": "Whether this file browser allows selecting item elements.",
+    "ItemSize": "How big the items are on the view.",
+    "_selectedText": "The text to fill with the name of the selected item.",
+    "_pathRoot": "The root of the area being used to display the current path.",
+    "_buttonsRoot": "The root of the area being used to show the different button actions.",
+    "_folderGrid": "The grid layout Component being used to align the folders in the directory.",
+    "_itemGrid": "The grid layout Component being used to align the files in the directory.",
+    "_tabSprite": "The sprite being used to show the tab sprite.",
+    "_loadingIndicator": "The slot that stores the loading indicator for a newly opened directory.",
+    "_swapper": "The component to handle the slide animation when opening a different directory.",
+    "CurrentPath": "The current folder path.",
+    "_lastPath": "The last folder path.",
+    "_user": "The user using this file browser.",
+    "_importButton": "The button to import a selected folder or file.",
+    "_rawImportButton": "The button to import a selected file as a raw file object.",
+    "_createNewButton": "The button to create a new file directory.",
+    "_reloadButton": "The button used to refresh the folder and file list."
+  },
+  "methods": {
+    "CreateDirectory": "Called when a directory is created.",
+    "RunImport": "Called when an import needs to be made of a file.",
+    "RunRawImport": "Called when a raw file import needs to be made of a file.",
+    "CreateNew": "Called when a new item needs to be made.",
+    "Reload": "Called when a reload needs to be done.",
+    "OnGoUp": "Called when the user wants to go up in directories."
+  },
+  "usage": "Not used directly by the user.",
+  "notes": [
+    {
+      "title": "CreateHandler",
+      "text": "Handles creation of directories. Is a sync delegate type."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FileBrowser&action=raw"
+}

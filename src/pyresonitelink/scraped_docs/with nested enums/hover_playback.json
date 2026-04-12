@@ -1,0 +1,14 @@
+{
+  "description": "The HoverPlayback component plays or stops a Playable when on the root of a hiearchy that has colliders and is touched/pressed.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Target": "The Playback (timeline/animation) to influence.",
+    "Trigger": "what should trigger the playback.",
+    "FromBeginning": "Whether to play from the beginning or not.",
+    "Loop": "Whether to loop the playback."
+  },
+  "methods": {},
+  "usage": "Attach to a slot or slot hiearchy with colliders, and provide a ``Target``.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HoverPlayback&action=raw"
+}

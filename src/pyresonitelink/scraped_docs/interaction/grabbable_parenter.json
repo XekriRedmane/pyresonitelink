@@ -1,0 +1,17 @@
+{
+  "description": "Grabbable Parenter is a component that when paired with a collider that is not set to a Trigger or StaticTrigger type, it will receive objects that are released within it's collider. This is a volume based alternative to Grabbable Receiver Surface.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "ParentUnder": "The slot to parent objects under instead of the slot this component is on.",
+    "Filter": "A Sync Delegate that takes an IGrabbable and returns a boolean. If a grabbable returns false when fed into this function, that IGrabbable will not be parented by this component."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Unlike Grabbable Receiver Surface, Grabbable objects parented to this Slot will be reparented to it when dropped outside of its collider. This can be prevented with the GrabbableReparentBlock component."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabbableParenter&action=raw"
+}

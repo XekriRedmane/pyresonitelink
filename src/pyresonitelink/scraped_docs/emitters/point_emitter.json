@@ -1,0 +1,11 @@
+{
+  "description": "The PointEmitter component is used to make particles using particle systems (see Photon Dust) from a single point.",
+  "category": "Rendering:Particle System:Emitters",
+  "fields": {
+    "Color": "Color multiplier for starting color of particles emitted from this point."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PointEmitter&action=raw"
+}

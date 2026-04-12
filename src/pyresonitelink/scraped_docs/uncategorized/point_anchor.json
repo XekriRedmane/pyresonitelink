@@ -1,0 +1,12 @@
+{
+  "description": "The PointAnchor component is used so that the dev tool can snap objects to it when they are being moved. Part of the dev tool's snapping functionality.",
+  "category": "Uncategorized",
+  "fields": {
+    "OwnerRoot": "The gizmo this belongs to.",
+    "SnapParent": "The thing objects should snap to when snapping to this point anchor."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PointAnchor&action=raw"
+}

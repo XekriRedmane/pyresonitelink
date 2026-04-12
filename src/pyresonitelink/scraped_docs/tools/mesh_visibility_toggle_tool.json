@@ -1,0 +1,12 @@
+{
+  "description": "See Mesh Visibility Tool.",
+  "category": "Tools",
+  "fields": {
+    "ApplyToObjectRoot": "Whether to search for an object root in order to apply to all meshes under that root.",
+    "SetShadowCastMode": "Whether to set the meshes shadow mode and what to set it to."
+  },
+  "methods": {},
+  "usage": "See Mesh Visibility Tool.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeshVisibilityToggleTool&action=raw"
+}

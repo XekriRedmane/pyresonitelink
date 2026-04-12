@@ -1,0 +1,8 @@
+{
+  "description": "Works on meshes with dense vertices. Can apply tint based on distance to specified points, and also displaces the vertices in the mesh based on distance to specified points (possibly towards/away from the point).",
+  "category": "Assets:Materials:PBS",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

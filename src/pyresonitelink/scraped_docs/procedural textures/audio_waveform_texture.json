@@ -1,0 +1,13 @@
+{
+  "description": "The AudioWaveformTexture component is used to generate a texture of a line with a visual representation of the volume and pitch of an audio over it's duration. For use with a material.",
+  "category": "Assets:Procedural Textures",
+  "fields": {
+    "Clip": "The audio clip to pull data from for generating the wave form.",
+    "BackgroundColor": "The color behind the waveform.",
+    "ForegroundColor": "The color of the waveform itself."
+  },
+  "methods": {},
+  "usage": "Insert into a material to view what the texture looks like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioWaveformTexture&action=raw"
+}

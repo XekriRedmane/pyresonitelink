@@ -1,0 +1,11 @@
+{
+  "description": "The DevModeController component only works in userspace and is used to control the user's current edit mode state.",
+  "category": "Uncategorized",
+  "fields": {
+    "DevModeEnabled": "Whether Edit Mode is enabled."
+  },
+  "methods": {},
+  "usage": "Used in settings. Not usually used by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DevModeController&action=raw"
+}

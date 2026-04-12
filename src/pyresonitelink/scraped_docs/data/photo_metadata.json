@@ -1,0 +1,32 @@
+{
+  "description": "The PhotoMetadata component is used to contain the information on a photo usually taken within Resonite. It is automatically attached to every screenshot taken using the finger photo gesture. This component can also be attached to a photo imported with the \"import as screenshot\" option when importing an image.",
+  "category": "Data",
+  "fields": {
+    "LocationName": "Name of the session the screenshot was taken in.",
+    "LocationURL": "The URI of the session's world that the photo was taken in. (basically a world link)",
+    "LocationHost": "Host of the session the screenshot was taken in.",
+    "LocationAccessLevel": "Access level of the session.",
+    "LocationHiddenFromListing": "Whether the location was marked as hidden.",
+    "TimeTaken": "Exact timestamp that the screenshot was taken.",
+    "TakenBy": "User who took the screenshot.",
+    "TakenGlobalPosition": "The position in global space the camera had when the photo was taken.",
+    "TakenGlobalRotation": "The rotation in global space the camera had when the photo was taken.",
+    "TakenGlobalScale": "The scale in global space the camera had when the photo was taken.",
+    "AppVersion": "Resonite version number of the photographer.",
+    "UserInfos": "See UserInfo",
+    "__legacyPresentUsers": "Internal. no longer used.",
+    "CameraManufacturer": "Manufacturer of the camera.",
+    "CameraModel": "Model of the camera.",
+    "CameraFOV": "FOV of the camera at picture time.",
+    "Is360": "Whether the image is a 360 degree image or not.",
+    "StereoLayout": "The layout of the image's left and right sections if it is a stereoscopic image, also known as a 3D image.",
+    "_exportedUsers": "This is a list of users that exported the screenshot. If this component is part of a saved item, this is the list of users that exported the screenshot before the item was saved to the cloud."
+  },
+  "methods": {
+    "OnSavePhoto": "Called when the save photo button is touched.",
+    "OnExportPhoto": "Called when the export photo button is touched."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PhotoMetadata&action=raw"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The Diagnostic Gaussian Splat component is used to render diagnostic info on Gaussian Splats.",
+  "category": "Assets:Procedural Guassian Splats",
+  "fields": {
+    "Splats": "A list of splats to render diagnostics for."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DiagnosticGaussianSplat&action=raw"
+}

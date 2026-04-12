@@ -1,0 +1,11 @@
+{
+  "description": "The ButtonValueToggle component can be used to make an IButton that switches a boolean value between ``true`` and ``false`` every time the button is pressed.",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "TargetValue": "The boolean to invert whenever the button is pressed."
+  },
+  "methods": {},
+  "usage": "To function, the component simply needs to be attached to a slot that also has a button component attached to it. From then on, pressing that button will activate the ButtonToggle, making it toggle its ``TargetValue`` from true to false or the other way round.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonToggle&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The Checkbox component is a UIX element used with a Button component to provide a toggling state whenever the button is pressed.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "State": "The current state of thie check box.",
+    "TargetState": "The Bool field to drive with the state of the checkbox.",
+    "CheckVisual": "The Bool field controlling visibility of the visual to display when the checkbox is in the checked state."
+  },
+  "methods": {},
+  "usage": "Checkboxes are great for settings and options in your designs.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Checkbox&action=raw"
+}

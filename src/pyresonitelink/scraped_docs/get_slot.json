@@ -1,8 +1,12 @@
 {
   "description": "Returns the slot the specified component is attached on.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Component": "The component you want to find the slot of.",
+    "* [[Slot|Slot]]": "The (Slot) the component is attached to."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetSlot&action=raw"
 }

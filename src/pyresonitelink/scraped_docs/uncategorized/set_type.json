@@ -1,0 +1,15 @@
+{
+  "description": "Set type is a component that is part of the undo system. This stores an undo step for setting a type field.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The value field for a type value that was changed.",
+    "ValueBefore": "The value it was before edit.",
+    "ValueAfter": "The value it became after edit.",
+    "_performed": "Whether this was done (true) or can be redone (false)",
+    "_description": "The description of this undo step for changing a type field."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SetType&action=raw"
+}

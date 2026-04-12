@@ -1,0 +1,19 @@
+{
+  "description": "Bezier tube mesh is a component that allows for making a continuous tube of geometry that is a Bezier curve shape defined by points.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Radius": "The radius of the tube (from center to outside).",
+    "Points": "Curve tangent point/handle array used for the generation of this mesh. Editing this via Mods produces undesirable results where the curve has really sharp bends.",
+    "SegmentPoints": "How many sides the tube mesh has around it's mid section.",
+    "StepsPerUnitLength": "How many bends from point to point the tube should have."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* Curve Point\n* Bezier Curve"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BezierTubeMesh&action=raw"
+}

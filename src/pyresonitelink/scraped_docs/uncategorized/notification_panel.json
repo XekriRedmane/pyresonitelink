@@ -1,0 +1,21 @@
+{
+  "description": "The NotificationPanel component is used in user space to show the User their notifications.",
+  "category": "Uncategorized",
+  "fields": {
+    "DisplayDuration": "How long to show notifications for.",
+    "Dash": "The component for the dash in the same world.",
+    "_canvas": "The canvas Component showing notifications.",
+    "_notificationClip": "The audio to play on a new notification made.",
+    "_contactRequestClip": "The audio to play on a new contact request being made.",
+    "_inviteClip": "The audio to play on an invite clip being made.",
+    "_sociableClip": "The audio to play when a friend goes to social status.",
+    "_userJoinClip": "The audio to play when a user joins.",
+    "_userLeaveClip": "The audio to play when a user leaves."
+  },
+  "methods": {
+    "OnNotificationPressed": "Called when a notification element is touched."
+  },
+  "usage": "Used internally.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NotificationPanel&action=raw"
+}

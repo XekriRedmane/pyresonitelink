@@ -1,0 +1,19 @@
+{
+  "description": "The CubemapAssetMetadata component is used to display info about any particular cube map provided.",
+  "category": "Assets:Utility",
+  "fields": {
+    "Cubemap": "The cubemap to analyse.",
+    "Size": "The size in pixels of the width or height of any 1 of the 6 sides. (The sides are the same size)",
+    "HasMipMaps": "Whether the cubemap has mipmap data.",
+    "MipMapCount": "How many mip map resolution variants the cubemap has.",
+    "MemoryBytes": "How much memory the cubemap takes up.",
+    "FormattedMemoryBytes": "The bytes formatted into a readable string.",
+    "Format": "The texture format of the cube map.",
+    "ActualLoadedVariant": "The Asset variant Type currently loaded.",
+    "Profile": "The color profile being used for this texture when rendering it."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CubemapAssetMetadata&action=raw"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "The TrailColorRangeInitializer component makes trails in a particle system be born or start with a random lerped color in a range when.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "MinValue": "The minimum color a Trail can be born with.",
+    "MaxValue": "The maximum color a Trail can be born with."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TrailColorRangeInitializer&action=raw"
+}

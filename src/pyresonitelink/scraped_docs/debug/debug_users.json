@@ -1,0 +1,11 @@
+{
+  "description": "The DebugUsers component drives get contents of a string field to show statistics of each user in the current world.",
+  "category": "Debug",
+  "fields": {
+    "text": "The field to populate with world users statistics."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugUsers&action=raw"
+}

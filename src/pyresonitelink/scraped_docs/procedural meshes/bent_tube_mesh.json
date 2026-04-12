@@ -1,0 +1,20 @@
+{
+  "description": "Bent tube mesh is a component that makes a tube structure.\n\nWhen calculating the curve, the generator uses a quadratic bezier curve formula. ``StartPoint`` being P0, ``DirectTargetPoint`` being P1, and ``ActualTargetPoint`` being P2.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Radius": "The radius of the tube (from center to outside).",
+    "Sides": "How many sides the tube should have around it",
+    "Segments": "how many bends from end to end the tube should have",
+    "StartPoint": "Where the tube should start at in local space. Also known as P0 on a quadratic bezier curve.",
+    "DirectTargetPoint": "P1 on the quadratic bezier curve in local space.",
+    "ActualTargetPoint": "P2 on the quadratic bezier curve in local space.",
+    "StartPointColor": "What the color of the tube should be at the start if using a material that supports vertex colors.",
+    "EndPointColor": "What the color of the tube should be at the end if using a material that supports vertex colors.",
+    "Ends": "How to handle the geometry of the ends of the tube.",
+    "Shading": "Toggle this mesh being smooth shaded"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BentTubeMesh&action=raw"
+}

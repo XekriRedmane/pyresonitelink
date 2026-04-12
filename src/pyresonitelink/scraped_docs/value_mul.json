@@ -1,8 +1,13 @@
 {
   "description": "Multiply or Mul is a node that allows you to perform multiplication between values (both of same and different types), including complex values like Quaternions or vectors.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "A numeric value to multiply with B.",
+    "B": "A numeric value to multiply with A.",
+    "* (Pseudo-generic)": "The Multiplication of A (Pseudo-generic) and B (Pseudo-generic)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Mul&action=raw"
 }

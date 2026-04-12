@@ -1,8 +1,14 @@
 {
   "description": "The Value Plus Minus node takes in a value and an offset, then returns the plus and minus outputs from the calculated results using the offset.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The starting value.",
+    "Offset": "The offset to add and subtract from the starting value.",
+    "Plus": "Returns the additive offset value.",
+    "Minus": "Returns the subtracted offset value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValuePlusMinus&action=raw"
 }

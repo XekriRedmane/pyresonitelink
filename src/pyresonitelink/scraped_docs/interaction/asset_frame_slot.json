@@ -1,0 +1,19 @@
+{
+  "description": "An asset frame slot is a component that takes any Asset Type as an attach component type argument, and allows for snapping assets to a frame. The asset in the frame can be used as a source to drive a list of asset fields which is defined in Targets.\nOptionally it calls a sync delegate that takes an argument of the chosen asset type for this component.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "FrameSize": "how thick the frame should be.",
+    "FrameAnimSpeed": "how fast the frame should fit to the asset's bounding box in seconds",
+    "SnapAnimTime": "How long the animation should be for the asset going into the frame when snapped in seconds.",
+    "Targets": "The items to drive with the snapped object's asset.",
+    "Callback": "A sync delegate that takes an argument of the chosen asset type for this component. The sync delegate is called when the asset is snapped.",
+    "_current": "The slot of the asset item inside of the frame.",
+    "_currentRatio": "The ratio of the asset's bounding box held in the frame",
+    "_frameSize": "The field to drive with what the size of the frame should be for the held asset's bounding box.",
+    "_collider": "The collider to drive the values of the size of the held asset's bounding box."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AssetFrameSlot&action=raw"
+}

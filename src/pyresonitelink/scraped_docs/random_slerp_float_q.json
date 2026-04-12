@@ -1,8 +1,13 @@
 {
   "description": "The Random Slerp FloatQ node takes in a min and max value and returns a random floatQ value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Min": "The minimum this random value can be (exclusive). The default is ``0, 0, 0``.",
+    "Max": "The maximum this random value can be (exclusive). The default is ``0, 0, 0``.",
+    "* ([[Type:floatQ|floatQ]])": "The random result."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomSlerpFloatQ&action=raw"
 }

@@ -1,0 +1,19 @@
+{
+  "description": "A skinned mesh renderer can be used to emit particles from either the vertices, edges, or faces of a SkinnedMeshRenderer. The colors of the particles can be made to be the colors of certain points of a texture, which is sampled via which point on the skinned mesh renderer the particle is emitted from.",
+  "category": "Rendering:Particle System:Emitters",
+  "fields": {
+    "EmitFrom": "What parts of the mesh to emit from.",
+    "UseVertexColors": "Whether to use the vertex color data from the mesh for the color of the particles.",
+    "DirectionMode": "the coordinate direction to use for up.",
+    "ColorTexture": "The texture to use as the colors of the emitted particles (samples the color of this at the UV position of the mesh section it was emitted from)",
+    "WrapMode": "How to wrap the UV sample coordinates of the mesh.",
+    "UVOffset": "How much to offset the UV sample position of ``ColorTexture``",
+    "UVScale": "How much to scale the UV sample position of ``ColorTexture``",
+    "ClipRect": "The rectangle to discard UV coordinates if they end up outside this range. Kind of like a UV discard.",
+    "Skin": "The skinned mesh renderer to emit from."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SkinnedMeshEmitter&action=raw"
+}

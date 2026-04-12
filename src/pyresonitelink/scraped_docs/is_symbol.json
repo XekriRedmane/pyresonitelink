@@ -1,8 +1,12 @@
 {
   "description": "The Is Symbol node takes in a character literal and returns if that character is a symbol as defined by Unicode.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character literal to check.",
+    "* ([[Type:bool|bool]])": "Returns ``true`` if ``Character`` is a symbol, ``false`` otherwise. Symbol characters recognized by this node are given the unicode delegation ``Sm``, ``Sc``, ``Sk``, or ``So``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsSymbol&action=raw"
 }

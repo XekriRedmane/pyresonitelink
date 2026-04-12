@@ -1,8 +1,13 @@
 {
-  "description": "The Focus Focusable node sets the target IFocusable UI for the user. When the UI is focused (if it was not already focused beforehand), it places your caret at the end of any text input.",
+  "description": "The ``Focus Focusable`` node sets the target IFocusable UI for the user. When the UI is focused (if it was not already focused beforehand), it places your caret at the end of any text input.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to set the target focus of a UI for the user.",
+    "Target": "The target IFocusable reference to focus.",
+    "Next": "Fires after the focus has been focused."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FocusFocusable&action=raw"
 }

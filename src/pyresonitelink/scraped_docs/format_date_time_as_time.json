@@ -1,8 +1,16 @@
 {
-  "description": "The Format Date Time As Time node takes in a DateTime and extra parameters to convert it into a string.",
+  "description": "The ``Format Date Time As Time`` node takes in a DateTime and extra parameters to convert it into a string.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Date": "The DateTime to use for this string.",
+    "Use24HourClock": "The option to make the formatted string have the style of the 24 hour clock.",
+    "ShowSeconds": "Show seconds in this formatted string.",
+    "ShowMilliseconds": "Show milliseconds in this formatted string.",
+    "FormatProvider": "An object that supplies culture-specific formatting information.\n\nNodes that output this type can be found in Strings/Localization",
+    "* ([[String]])": "The string formatted from a DateTime."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FormatDateTimeAsTime&action=raw"
 }

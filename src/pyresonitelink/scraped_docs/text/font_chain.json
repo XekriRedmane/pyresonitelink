@@ -1,0 +1,12 @@
+{
+  "description": "The FontChain component provides an easy way to use \"Fallback\" fonts for a main font, usually in the event that the main font does not contain certain Unicode characters. Any place where a StaticFont can be used, a FontChain can be used.\n\nThe ``MainFont`` defines which font will be primarily used for the text. For any characters of a text that do not exist in the main font, all the ``FallbackFonts`` will be searched through, in order, to find a matching character. Only if all fallback fonts do not contain the character will a \"true fallback\" of a box will appear.",
+  "category": "Rendering:Text",
+  "fields": {
+    "MainFont": "The main font to use.",
+    "FallbackFonts": "The fallback fonts to use."
+  },
+  "methods": {},
+  "usage": "Useful for example for Avali-Scratch, where numbers don't have a character. or for fonts where characters don't exist.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FontChain&action=raw"
+}

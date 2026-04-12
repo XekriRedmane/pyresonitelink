@@ -1,0 +1,23 @@
+{
+  "description": "The LineTransform component is a transform driver component used to position an object between two points or slots.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Point0": "The point in local space to transform from.",
+    "Point1": "The point in local space to transform to.",
+    "Point0Anchor": "acts as a slot to offset ``Point0`` in global space.",
+    "Point1Anchor": "acts as a slot to offset ``Point1`` in global space.",
+    "LinePositionType": "How to calculate the position on the line using ``LinePoint`` for the slot this component is on.",
+    "PlanePositionType": "How to calculate the position on the line using ``LinePoint`` for the slot this component is on.",
+    "LinePoint": "Where on the line specified by ``Point0`` and ``Point1`` in percentage or relative distance that the slot this component is on should be positioned.",
+    "OffsetPoint": "The offset from the point found by ``LinePoint`` slot this component is on should be.",
+    "RotationOffset": "The rotation offset from looking along the line.",
+    "_position": "drives the target field with the position found by ``LinePoint`` plus ``OffsetPoint`` rotated by ``RotationOffset`` and \"looking down the line rotation\" around the point found by ``LinePoint``.",
+    "_rotation": "drives the target field with ``RotationOffset`` and \"looking down the line rotation\"",
+    "AllowRepositioning": "Allow grabbing of the slot this component is on to move the object and change ``LinePoint``",
+    "RepositionOffset": "Whether grabbing changes ``OffsetPoint`` as well."
+  },
+  "methods": {},
+  "usage": "Can be used to position an object along a track like a slider.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LineTransform&action=raw"
+}

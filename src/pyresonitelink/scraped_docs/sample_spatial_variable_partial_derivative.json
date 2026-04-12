@@ -1,8 +1,19 @@
 {
   "description": "The SampleSpatialVariablePartialDerivative node samples a numerical spatial variable and returns the partial derivatives of the variable in the x, y, and z directions according to an orientation. In essence, it computes the numerical gradient of the sampled spatial variable.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Point": "The point at which to sample the spatial variable. This point is in global space.",
+    "Orientation": "The orientation that the partial derivatives will be calculated in. This essentially defines the coordinate space of the calculation.",
+    "Name": "The name of the spatial variable to sample.",
+    "Mode": "If multiple spatial variables of the same name and type exist at the sampled point, this input will determine how the value of the spatial variable will be calculated.",
+    "BaseValue": "If a spatial variable does not exist at the point or at any of the partial derivative calculation points, this value will be substituted instead.",
+    "SamplingDistance": "The length of sample that the partial derivative calculation will use. The calculation will sample the spatial variable at a distance of ``SamplingDistance / 2`` in each direction for each axis.",
+    "X": "The partial derivative in the X direction.",
+    "Y": "The partial derivative in the Y direction.",
+    "Z": "The partial derivative in the Z direction."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SampleSpatialVariablePartialDerivative&action=raw"
 }

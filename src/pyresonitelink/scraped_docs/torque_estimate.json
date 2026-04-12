@@ -1,8 +1,14 @@
 {
   "description": "The Torque Estimate node takes in the initial torque, drag resistance, and the amount of time it is simulating, then returns the torque simulation value (as a floatQ) that object will rotate in.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "InitialTorque": "The amount of push for this torque.",
+    "Drag": "The amount of resistance for this torque.",
+    "Time": "The time in between the initial torque and now.",
+    "* ([[Type:floatQ|floatQ]])": "Returns the estimated torque within that time period."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TorqueEstimate&action=raw"
 }

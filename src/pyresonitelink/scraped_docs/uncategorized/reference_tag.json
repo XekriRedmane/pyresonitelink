@@ -1,0 +1,11 @@
+{
+  "description": "The ReferenceTag component is used to store a reference to something of type T.",
+  "category": "Uncategorized",
+  "fields": {
+    "Reference": "the object to store a reference of."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceTag&action=raw"
+}

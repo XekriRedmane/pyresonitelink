@@ -1,0 +1,11 @@
+{
+  "description": "The MigrationListUI component is used to list previous and current migration tasks.",
+  "category": "Uncategorized",
+  "fields": {
+    "SelectedTaskId": "The task that the user has selected.",
+    "_listRoot": "The place to list migrations."
+  },
+  "methods": {},
+  "usage": "Used internally in the migration screen.",
+  "notes": []
+}

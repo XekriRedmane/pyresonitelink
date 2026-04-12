@@ -1,8 +1,15 @@
 {
-  "description": "The Format Timespan node takes in a TimeSpan and extra parameters to convert it into a string.",
+  "description": "The ``Format Timespan`` node takes in a TimeSpan and extra parameters to convert it into a string.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "TimeSpan": "The TimeSpan to use for this string.",
+    "ShowSeconds": "Show seconds in this formatted string.",
+    "ShowMilliseconds": "Show milliseconds in this formatted string.",
+    "FormatProvider": "An object that supplies culture-specific formatting information.\n\nNodes that output this type can be found in Strings/Localization",
+    "* ([[String]])": "The string formatted from a TimeSpan."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FormatTimespan&action=raw"
 }

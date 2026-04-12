@@ -1,0 +1,27 @@
+{
+  "description": "The LegacyAlignmentSizingAdapter component is used in converted legacy particle systems that were converted to PhotonDust as part of The Performance Updates.",
+  "category": "Uncategorized",
+  "fields": {
+    "LengthScale": "The original length scale from legacy content.",
+    "VelocityScale": "The original velocity scale from legacy content.",
+    "Alignment": "The original alignment from legacy content.",
+    "ParticleMesh": "The particle mesh this is using.",
+    "UsingStretch": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate this value, and can be used in PhotonDust.",
+    "RotationSimulator": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust.",
+    "OrientByVelocity": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust.",
+    "PivotModule": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust.",
+    "UseLocalRotation": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust.",
+    "SizeModifierEnabled": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust.",
+    "SizeOffsetByvelocityEnabled": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust.",
+    "OrientUp": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust.",
+    "LengthSizeMultiplier": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust.",
+    "VelocitySizeMultiplier": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust.",
+    "PivotMultiplier": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust.",
+    "BillboardAlignment": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust.",
+    "MeshAlignment": "``LengthScale``, ``VelocityScale``, and ``Alignment`` are used to generate the drive value for the target field specified in this, and is used to drive a field of the same name on another component in PhotonDust."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user. don't use this to make new content!",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyAlignmentSizingAdapter&action=raw"
+}

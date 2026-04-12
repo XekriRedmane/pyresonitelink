@@ -1,0 +1,16 @@
+{
+  "description": "The BillboardRenderBufferRenderer component is used as a debug component to determine the states of Photon Dust buffers during the simulation process.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Buffer": "The renderer to render point buffers.",
+    "Material": "The material to render this with.",
+    "Alignment": "How to align the particles.",
+    "MotionVectorMode": "How to render the object motion vectors.",
+    "MinBillboardScreenSize": "The minimum size of particles rendered.",
+    "MaxBillboardScreenSize": "The maximum size of particles rendered."
+  },
+  "methods": {},
+  "usage": "Used in debugging Photon Dust",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BillboardRenderBufferRenderer&action=raw"
+}

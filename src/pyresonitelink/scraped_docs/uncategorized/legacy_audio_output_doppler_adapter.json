@@ -1,0 +1,14 @@
+{
+  "description": "The Legacy Audio Output Doppler Adapter component is used to auto convert values from the old unity system for doppler values to the new Awoodio systems added as part of the optimization updates era of Resonite. This is to convert old content to new content, and shouldn't be used in new items, unless being perfectly exact to content ported via the Unity SDK is necessary.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The target to drive with the converted value",
+    "Value": "The value to convert to the new system from the old one.",
+    "SpatialBlend": "The field representing the SpatialBlend value field.",
+    "Spatialize": "The field representing the Spatialize value field."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyAudioOutputDopplerAdapter&action=raw"
+}

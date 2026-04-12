@@ -1,8 +1,16 @@
 {
   "description": "Finds a child object under Instance (Slot) that matches the given arguments",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot to scan for children with.",
+    "Name": "The name to look for under Instance (Slot).",
+    "MatchSubstring": "Whether to search for children under Instance (Slot) that their name contains Name (String) instead of the entire name being equal.",
+    "IgnoreCase": "Whether the capitalization should matter or not when searching for a child under Instance (Slot).",
+    "SearchDepth": "How far to search for a child with the provided search arguments\n\nExamples: 0 > Search immediate children. 1 > Search children of slot including those slot's children. -1 > Search infinitely far down (HEAVY)",
+    "* ([[Slot|Slot]])": "The result of the search."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FindChildByName&action=raw"
 }

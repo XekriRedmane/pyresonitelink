@@ -1,0 +1,11 @@
+{
+  "description": "The FootstepSoundPlayer component triggers a list of IFootstepSoundMaterials when a player walks on a collider on the same slot.",
+  "category": "Locomotion:Footsteps",
+  "fields": {
+    "SoundMaterials": "usually a list of FootstepSoundDefinitions."
+  },
+  "methods": {},
+  "usage": "Used to make an entire collider like a tile floor play sounds when a player walks on it.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FootstepSoundPlayer&action=raw"
+}

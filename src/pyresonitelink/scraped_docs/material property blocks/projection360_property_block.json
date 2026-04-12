@@ -1,0 +1,13 @@
+{
+  "description": "See Material Property Block for a vastly detailed explaination.",
+  "category": "Assets:Material Property Blocks",
+  "fields": {
+    "Texture": "The texture to override the ``Texture`` field of a Projection360Material for a renderer.",
+    "PerspectiveFieldOfView": "The value to override the ``PerspectiveFieldOfView`` field of a Projection360Material for a renderer.",
+    "PerspectiveAngleOffset": "The value to override the ``PerspectiveAngleOffset`` field of a Projection360Material for a renderer."
+  },
+  "methods": {},
+  "usage": "See Material Property Block for a vastly detailed explaination.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Projection360PropertyBlock&action=raw"
+}

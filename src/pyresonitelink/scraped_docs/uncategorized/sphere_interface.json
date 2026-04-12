@@ -1,0 +1,11 @@
+{
+  "description": "The Sphere Interface component is an abstracted type that doesn't do anything.",
+  "category": "Uncategorized",
+  "fields": {
+    "Radius": "The radius of the sphere."
+  },
+  "methods": {},
+  "usage": "No uses.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SphereInterface&action=raw"
+}

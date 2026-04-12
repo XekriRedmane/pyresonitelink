@@ -1,0 +1,20 @@
+{
+  "description": "The SessionItem component is used to handle the session items in a world menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "_background": "The UIX image handling the background for this session item.",
+    "_statusIndicator": "The UIX image used to handle showing the status for this world like access level.",
+    "_thumbnail": "The UIX image handling the session preview thumbnail.",
+    "_thumbnailTexture": "The image handling the session preview thumbnail image data.",
+    "_sessionName": "The text visual being used to show the session name.",
+    "_sessionHost": "The text visual being used to show the session host's name.",
+    "_userCount": "The text visual being used to show the session user count.",
+    "_joinButton": "The button that can be used to join the specified session."
+  },
+  "methods": {
+    "OnJoin": "Called when the join button is touched."
+  },
+  "usage": "not to be used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SessionItem&action=raw"
+}

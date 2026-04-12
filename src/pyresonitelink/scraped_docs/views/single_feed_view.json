@@ -1,0 +1,13 @@
+{
+  "description": "The SingleFeedView is the simplest and most commonly used data feed viewer used to usually view users in a session from a WorldUsersFeed.",
+  "category": "Radiant UI:Data Feeds:Views",
+  "fields": {
+    "ItemsManager": "The Mapper to handle showing items within a selected ``Path``, no matter how deep of a ``Path`` this is viewing."
+  },
+  "methods": {
+    "PathSegmentName": "Converts a path name element and a depth into a corresponding locale string for translation."
+  },
+  "usage": "Attach to a slot and provide a ``Feed`` to start mapping information.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SingleFeedView&action=raw"
+}

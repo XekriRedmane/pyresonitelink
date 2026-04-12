@@ -1,0 +1,22 @@
+{
+  "description": "See World.\n\nThe RecordEditForm component is used to edit the details and info/metadata for a world.",
+  "category": "With Nested Enums",
+  "fields": {
+    "_worldOrb": "The world orb that created this dialog.",
+    "_name": "The field to edit the name of the world.",
+    "_description": "The field to edit the description of the world.",
+    "_path": "The field to edit the path of the world.",
+    "_tags": "The field to edit the tags of the world.",
+    "_publicSetting": "The field to edit the of the world.",
+    "_readonly": "The checkbox to edit the read only property of the world.",
+    "_ownerUser": "The field to show the owner of the world.",
+    "_privateOptionText": "The field to show the private options of the world."
+  },
+  "methods": {
+    "OnCancel": "Called when the cancel button is touched.",
+    "OnSave": "Called when the save button is touched."
+  },
+  "usage": "See World.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RecordEditForm&action=raw"
+}

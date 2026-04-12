@@ -27,5 +27,6 @@
     "Bake": "Creates a static cubemap and inserts it into ``BakedCubemap`` instead of having ``ProbeType`` be set to realtime."
   },
   "usage": "Attach to a slot to start using this component as a point source for reflection map data.",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReflectionProbe&action=raw"
 }

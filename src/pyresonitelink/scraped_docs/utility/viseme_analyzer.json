@@ -1,0 +1,29 @@
+{
+  "description": "The VisemeAnalyzer can be used to analyze the sounds from a user's voice, a video, an audio clip player, or any other sound source. The component does analyzing of audio to discern Viseme sounds.",
+  "category": "Media:Utility",
+  "fields": {
+    "Source": "The audio source to analyze the audio and extract live viseme data for.",
+    "RemoteSource": "An alternative source of raw data for viseme data.",
+    "Smoothing": "How much to smooth lerp all the outputs.",
+    "Silence": "How quiet the audio is in general.",
+    "PP": "Outputs the amount that the source audio is making a \"Puh\" sound.",
+    "FF": "Outputs the amount that the source audio is making a \"efff\" sound.",
+    "TH": "Outputs the amount that the source audio is making a \"thuh\" sound.",
+    "DD": "Outputs the amount that the source audio is making a \"deh\" or \"duh\" sound.",
+    "kk": "Outputs the amount that the source audio is making a \"kay\" sound.",
+    "CH": "Outputs the amount that the source audio is making a \"cuh\" sound.",
+    "SS": "Outputs the amount that the source audio is making a \"ess\" sound.",
+    "nn": "Outputs the amount that the source audio is making a \"enm\" sound.",
+    "RR": "Outputs the amount that the source audio is making a \"erh\" sound.",
+    "aa": "Outputs the amount that the source audio is making a \"ah\" sound.",
+    "E": "Outputs the amount that the source audio is making a \"eee\" sound.",
+    "ih": "Outputs the amount that the source audio is making a \"eh\" sound.",
+    "oh": "Outputs the amount that the source audio is making a \"oah\" sound.",
+    "ou": "Outputs the amount that the source audio is making a \"ooh\" sound.",
+    "LaughterProbability": "How likely it is that the audio source is playing laughter sounds."
+  },
+  "methods": {},
+  "usage": "This should not need to be used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VisemeAnalyzer&action=raw"
+}

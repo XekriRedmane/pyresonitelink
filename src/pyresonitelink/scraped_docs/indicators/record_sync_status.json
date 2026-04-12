@@ -1,0 +1,19 @@
+{
+  "description": "The RecordSyncStatus component reports the current status of syncing items like worlds, avatars, settings, and user generated content when present in the user space world where the dash is.",
+  "category": "Cloud:Indicators",
+  "fields": {
+    "RecordQueueCount": "How many items are left in the queue of items to Sync from the user's machine to the cloud.",
+    "AssetVariantQueueCount": "How many asset variants are left to upload for the items being uploaded to the cloud.",
+    "CurrentTaskProgress": "How far along the Asset uploader is to uploading the current item.",
+    "LastError": "The last error given by the cloud item uploader process.",
+    "StatusMessage": "The status message for the item uploader process.",
+    "FullySyncedColor": "The color the UI should be if it is fully done syncing.",
+    "ErrorColor": "The color the UI should be if there was an error (UH OH!!! Stuck Sync!!!)",
+    "SyncingRecordsColor": "The color the UI should be when the item uploader task is syncing Record items.",
+    "UploadingAssetVariantsColor": "The color the UI should be when the item uploader is uploading Asset variants for things like textures or skyboxes."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RecordSyncStatus&action=raw"
+}

@@ -1,0 +1,16 @@
+{
+  "description": "See World Submitter.",
+  "category": "Cloud",
+  "fields": {
+    "GroupId": "The group ID of the world being submitted.",
+    "Radius": "The radius of the world orb grabbing area.",
+    "Height": "The height of the world orb grabbing area.",
+    "_visual": "The slot of the world orb grabbing visual."
+  },
+  "methods": {
+    "SubmitButtonPressed": "Handles when the submit world button is pressed."
+  },
+  "usage": "See World Submitter.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldSubmitter&action=raw"
+}

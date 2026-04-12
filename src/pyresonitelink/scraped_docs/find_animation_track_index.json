@@ -1,8 +1,14 @@
 {
   "description": "This node when provided an Animation Asset will search the animation's AnimJ data for a field on an object",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Animation": "The Animation Asset provided by an IAssetProvider.",
+    "Node": "A String that is usually the name of the slot which has it's property animated. This can vary though, and AnimJ explains this.",
+    "Property": "A String that is usually the human name of a field. So a floatQ would be Rotation for a Property. This can vary though, and AnimJ explains this.",
+    "* ([[Types:Int|Int]])": "The index in a list of drivers a Animator would have when using the Animation (Animation Asset) provided to this node. The animation would be put into the ``Clip`` Field."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FindAnimationTrackIndex&action=raw"
 }

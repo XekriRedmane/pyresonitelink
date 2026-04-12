@@ -1,0 +1,9 @@
+{
+  "description": "The WorldListFacetPreset component loads the World List facet when it's not ``_fullyLoaded``. It does this by loading the facet from the cloud, and using that loaded data to make the preset",
+  "category": "Radiant UI:Facets",
+  "fields": {},
+  "methods": {},
+  "usage": "used in the main dash. no need to be used by the user unless they are missing the World List facet.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldListFacetPreset&action=raw"
+}

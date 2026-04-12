@@ -1,0 +1,14 @@
+{
+  "description": "This component was added in Beta 2023.12.15.22 to diagnose tangent space on meshes.\n\nIt may be removed at any time in the future.",
+  "category": "Debug",
+  "fields": {
+    "Mesh": "The mesh renderer to Debug tangents for.",
+    "Triangle": "The triangle index to Debug tangents for.",
+    "BaryCoord": "Used as an interpolator for the tangents and normals of the target triangle.",
+    "RadiusRatio": "unused."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugTangentSpace&action=raw"
+}

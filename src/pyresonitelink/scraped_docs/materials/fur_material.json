@@ -1,0 +1,9 @@
+{
+  "description": "The FurMaterial component is used to make multi layered geometry out of a mesh's original geometry that has a specified distance between layers. The number of layers is a constant 20. Combined with a map to create holes in the layers via alpha, this creates the illusion of depth and fur like properties. The geometry layers are instanced on the GPU.\n\nSome players have reported lag when using Fur materials. This is due to either using too large of a texture, or due to an issue called Overdraw.\n\nOverdraw is caused when the GPU generates pixels for a layer for where it appears on the screen in a stage in rendering called \"Rasterization\" when it is done, it renders the next layer, and has to draw that on top of the already drawn layer pixels. The drawing on top for the next 19 layers is called Overdraw.\n\nThis means that if a user looks very closely at a fur shader, or the shader covers their entire screen while all layers are in front of the camera, it will lag intensely. This is because the game is doing 20 drawing cycles on every pixel. Causing significant lag.",
+  "category": "Assets:Materials",
+  "fields": {},
+  "methods": {},
+  "usage": "Insert into a MeshRenderer or SkinnedMeshRenderer with a mesh to view what the material looks like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FurMaterial&action=raw"
+}

@@ -1,0 +1,9 @@
+{
+  "description": "The FontAtlasTexture component makes a GlyphAtlas containing an atlas of Glyphs representing characters into one large texture that can be used. The internal mechanisms of this component are not assignable directly.",
+  "category": "Uncategorized",
+  "fields": {},
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FontAtlasTexture&action=raw"
+}

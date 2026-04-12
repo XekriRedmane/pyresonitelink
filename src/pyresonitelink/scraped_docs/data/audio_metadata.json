@@ -1,0 +1,23 @@
+{
+  "description": "The AudioMetadata component provides information about an audio clip. It is automatically added to audio clips recorded with the Microphone Tool and stores data about when, where, and by whom the audio was recorded.",
+  "category": "Data",
+  "fields": {
+    "LocationName": "Name of the session the audio was recorded in",
+    "LocationURL": "the URI of the world the audio was recorded in",
+    "LocationHost": "Host of the session the audio was recorded in",
+    "LocationAccessLevel": "Access level of the session the audio was recorded in",
+    "LocationHiddenFromListing": "Whether the session was marked as hidden when the audio was recorded.",
+    "TimeTaken": "Exact timestamp that the audio was recorded at",
+    "TakenBy": "The user who recorded the audio",
+    "TakenGlobalPosition": "the position in global space the microphone tip was at the time of recording.",
+    "TakenGlobalRotation": "the rotation in global space the microphone tip was at the time of recording.",
+    "TakenGlobalScale": "the scale in global space the microphone tip was at the time of recording.",
+    "AppVersion": "Resonite version number of the recording user",
+    "UserInfos": "Users present at the time of recording",
+    "__legacyPresentUsers": "legacy list of users present at the time of recording."
+  },
+  "methods": {},
+  "usage": "This component is essentially a bunch of fields with semantic meaning to them. Usage of this component outside of the microphone tool is straightforward--one simply needs to write to the relevant fields the relevant data. It is common convention to place the component on the same slot that the audio clip resides.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioMetadata&action=raw"
+}

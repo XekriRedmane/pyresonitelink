@@ -1,0 +1,30 @@
+{
+  "description": "The SkinnedMeshPositioner component drives a slot's transform so it stays locked to a specific triangle on a SkinnedMeshRenderer.\n\nNormally you can attach things by parenting them to bones, which works okay. But for parts of the skinned mesh that are weighted to multiple bones and/or are affected by blendshapes, this will cause the object to \"drift/slide\" relative to the mesh. This component fixes that by computing the transform from the actual skinned mesh transform!\"Skinned Mesh Positioner - attach objects to a fixed point on triangle!\" - Frooxius on YouTube",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Skin": "The skinned mesh renderer to attach this object to",
+    "TriangleIndex": "The index of the triangle in the mesh to attach this object to",
+    "BarycentricCoordinate": "How close the attachment point should be to each vertex of the triangle (barycentric coordinate system).",
+    "LocalPosition": "An offset to apply to the position of the object",
+    "LocalRotation": "An offset to apply to the rotation of the object",
+    "LocalScale": "A multiplier to apply to the scale of the object",
+    "PositionDrive": "The position field of the slot to be driven with the position of the triangle in the SkinnedMeshRenderer",
+    "RotationDrive": "The rotation field of the slot to be driven with the rotation of the triangle in the SkinnedMeshRenderer",
+    "ScaleDrive": "The scale field of the slot to be driven with the scale of the SkinnedMeshRenderer"
+  },
+  "methods": {
+    "ComputeParameters": "Calculates parameters to position the slot at its current position, rotation & scale, relative to the nearest triangle on the specified SkinnedMeshRenderer"
+  },
+  "usage": "To use this component, you should position a slot so that it is placed where you would like it to be anchored on the SkinnedMeshRenderer, attach this component to that slot, fill in the Skin field with a reference to the SkinnedMeshRenderer and select the Compute Parameters button in the Inspector. Once pressed, Resonite will fill in the TriangleIndex field with the index of the nearest triangle on the SkinnedMeshRenderer to that slot, fill in the BarycentricCoordinate, LocalPosition, LocalRotation & LocalScale fields with the values to keep the slot positioned where it was, relative to the selected triangle, and set the PositionDrive, RotationDrive & ScaleDrive fields to references to the respective slot fields.",
+  "notes": [
+    {
+      "title": "Demo",
+      "text": "Overview and basic usage by Frooxius\ncOuCitJ-ajI"
+    },
+    {
+      "title": "See also",
+      "text": "* SkinnedMeshRenderer"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SkinnedMeshPositioner&action=raw"
+}

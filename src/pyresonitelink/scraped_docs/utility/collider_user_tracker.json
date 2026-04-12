@@ -1,0 +1,15 @@
+{
+  "description": "The ColliderUserTracker keeps track of users who enter and leave a collider. It must be used on a Slot that also has an attached Collider whose type is set to \"Trigger\", unless ``TriggersOnly`` is set to false.\n\nAs this component works using colliders, it cannot detect users in No-Clip.",
+  "category": "Physics:Utility",
+  "fields": {
+    "TriggersOnly": "Whether to only allow use of Triggers or not.",
+    "IsLocalUserInside": "Becomes set for the local user if the local user is within the collider of the object that this component is attached to.",
+    "IsAnyUserInside": "Becomes set for all users if any user is within the collider of the object that this component is attached to.",
+    "NumberOfUsersInside": "Tracks the number of users inside the collider of the object that this component is attached to.",
+    "_usersInside": "Data on the users that are inside the collider of the object that this component is attached to."
+  },
+  "methods": {},
+  "usage": "Attach this component to a slot, and add a Collider to the slot. The component will then start functioning as long as the Collider is a trigger or as long as ``TriggersOnly`` is set to false.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColliderUserTracker&action=raw"
+}

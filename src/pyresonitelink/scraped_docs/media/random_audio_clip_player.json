@@ -1,0 +1,18 @@
+{
+  "description": "The RandomAudioClipPlayer component is able to play a random audio file all the way through from a list of ``Clips`` and parent the resulting one shots under a slot.",
+  "category": "Media",
+  "fields": {
+    "ParentUnder": "The slot to parent the one shot objects under.",
+    "MinDistance": "the distance in meters in the audio's set transform space where the audio's perceived volume stops increasing and stays constant all the way to the center.",
+    "MaxDistance": "the maximum distance in meters in the audio's set transform space in meters before it cannot be heard.",
+    "RolloffMode": "An optional AudioRolloffMode",
+    "Clips": "The list of ClipData to choose from, randomly with weights."
+  },
+  "methods": {
+    "Play": "Plays a random audio clip at it's current position",
+    "PlayAtPoint": "Plays a random audio clip at the provided position."
+  },
+  "usage": "Attach to a slot and give the component some ``Clips`` to play. This component can be trigged via it's sync delegates or by button events",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RandomAudioClipPlayer&action=raw"
+}

@@ -1,0 +1,25 @@
+{
+  "description": "The UIGrabInstancer component allows users to instance items from UIX elements from a template a user provides.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "Template": "The slot that gets duplicated and grabbed when the GrabInstancer is grabbed.",
+    "ContainerTemplate": "Helps let you compose the duplicate",
+    "ContainerTemplateInstanceRoot": "Helps let you compose the duplicate",
+    "ActivateRoot": "Whether or not the GrabInstancer should activate the newly duplicated slot.",
+    "EnableGrabbable": "Whether or not the GrabInstancer should activate any Grabbable component on the newly duplicated slot.",
+    "SetInstancePersistent": "Persistence of the instance",
+    "ExcludedParts": "Slots will be skipped while duplicating"
+  },
+  "methods": {},
+  "usage": "Useful for making copies of items you referenced, but specifically from the UIX panels you have.",
+  "notes": [
+    {
+      "title": "History",
+      "text": "The UIGrabInstancer was added in Beta 2024.4.15.1407."
+    },
+    {
+      "title": "Related Components",
+      "text": "* GrabInstancer is similar to this component, but uses the grab feature in Resonite to make a copy of an item template."
+    }
+  ]
+}

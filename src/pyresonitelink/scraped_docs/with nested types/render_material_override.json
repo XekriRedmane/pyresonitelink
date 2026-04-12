@@ -1,0 +1,13 @@
+{
+  "description": "The RenderMaterialOverride Component allows for overriding materials on a renderer when it is rendered in certain contexts.\n\nNote: This only overrides materials properly if all ``Context``s are used, with a component for each one. This may be a bug.",
+  "category": "With Nested Types",
+  "fields": {
+    "Context": "The context in which to override the materials of ``Renderer`` with the list of ``Overrides``.",
+    "Renderer": "The renderer to override materials for.",
+    "Overrides": "A list of materials to override during rendering in a ``Context`` context."
+  },
+  "methods": {},
+  "usage": "Used to hide materials or change them in a mirror. like showing an evil version of yourself in a mirror, or to hide your head material from your own viewpoint",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RenderMaterialOverride&action=raw"
+}

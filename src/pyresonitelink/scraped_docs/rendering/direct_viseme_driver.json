@@ -1,0 +1,35 @@
+{
+  "description": "The DirectVisemeDriver component takes a viseme analyser source and a few modifying sources in order to drive a list of Visemes.",
+  "category": "Rendering",
+  "fields": {
+    "Source": "The viseme analyser used as a source of data.",
+    "MouthTrackingSource": "A source of mouth tracking that influences final results. Use a Component:AvatarMouthDataSourceAssigner To assign to this automatically.",
+    "StrengthMultiplier": "How much to multiply the values from ``Source`` before sending them to the drives on this component.",
+    "VoiceMouthSupressWeight": "How much visemes should be affected by ``MouthTrackingSource`` if the user is not talking. Lower values mean the affect from ``MouthTrackingSource`` is greater.",
+    "LaughThreshold": "How much probability for laughter is needed before it sends it to ``Laugh``",
+    "LaughBeginSpeed": "How fast ``Laugh`` transitions to 100%.",
+    "LaughEndSpeed": "How fast ``Laugh`` transitions to 0%.",
+    "Silence": "How quiet the source data is overall.",
+    "PP": "The field to drive with ``PP`` from ``Source`` after applying filters from this component.",
+    "FF": "The field to drive with ``FF`` from ``Source`` after applying filters from this component.",
+    "TH": "The field to drive with ``TH`` from ``Source`` after applying filters from this component.",
+    "DD": "The field to drive with ``DD`` from ``Source`` after applying filters from this component.",
+    "kk": "The field to drive with ``kk`` from ``Source`` after applying filters from this component.",
+    "CH": "The field to drive with ``CH`` from ``Source`` after applying filters from this component.",
+    "SS": "The field to drive with ``SS`` from ``Source`` after applying filters from this component.",
+    "nn": "The field to drive with ``nn`` from ``Source`` after applying filters from this component.",
+    "RR": "The field to drive with ``RR`` from ``Source`` after applying filters from this component.",
+    "aa": "The field to drive with ``aa`` from ``Source`` after applying filters from this component.",
+    "E": "The field to drive with ``E`` from ``Source`` after applying filters from this component.",
+    "ih": "The field to drive with ``ih`` from ``Source`` after applying filters from this component.",
+    "oh": "The field to drive with ``oh`` from ``Source`` after applying filters from this component.",
+    "ou": "The field to drive with ``ou`` from ``Source`` after applying filters from this component.",
+    "Laugh": "The field to drive with ``Laugh`` from ``Source`` after applying filters from this component."
+  },
+  "methods": {
+    "AutoAssignTargets": "Assigns the blendshapes from the first SkinnedMeshRenderer based on the matching rules from Visemes to the drive fields of this component."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DirectVisemeDriver&action=raw"
+}

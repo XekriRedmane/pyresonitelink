@@ -1,8 +1,12 @@
 {
-  "description": "The User Head Output Device node shows the given user's display platform or output from Resonite.",
+  "description": "The ``User Head Output Device`` node shows the given user's display platform or output from Resonite.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:HeadOutputDevice|HeadOutputDevice]])": "The Head Output Device of the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserHeadOutputDevice&action=raw"
 }

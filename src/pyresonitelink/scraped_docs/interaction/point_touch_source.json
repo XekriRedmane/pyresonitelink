@@ -1,0 +1,17 @@
+{
+  "description": "A simpler version of TipTouchSource.",
+  "category": "Input:Interaction",
+  "fields": {
+    "AutoUpdateUser": "which user should be updating this component's logic. Defaults to active user if not filled.",
+    "OutOfSightAngle": "disables the function of this component if the updating user is looking more than this many degrees away from this component's slot.",
+    "MaxTouchPenetrationDistance": "How far it can go into the touchable's collider before its not considered as touching.",
+    "CustomFilter": "similar to UVRaycastPortal's ``Filter`` field. Internal.",
+    "Offset": "The offset of where the tip touch sources touch effects start from the slot this component is on.",
+    "Direction": "The direction in which to interact with touchable elements using this component.",
+    "MaxDistance": "the maximum distance before hovering doesn't register"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PointTouchSource&action=raw"
+}

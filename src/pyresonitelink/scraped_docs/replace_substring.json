@@ -1,8 +1,15 @@
 {
   "description": "Replace Substring is a ProtoFlux node that replaces the all occurrences of SearchFor (String) in Str (String) with ReplaceWith (String).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to search for SearchFor (String) in.",
+    "SearchFor": "The string to be replacing in Str (String).",
+    "ReplaceWith": "What to replace SearchFor (String) with.",
+    "ComparasonMode": "The mode used to compare the string before evaluation of the replace.",
+    "* ([[Type:String|String]])": "Returns Str (String) with all occurrences of SearchFor (String) replaced with ReplaceWith (String)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ReplaceSubstring&action=raw"
 }

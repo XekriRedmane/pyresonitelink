@@ -1,8 +1,13 @@
 {
   "description": "The Encapsulate Rect node takes in 2 rect values, and returns a rect that encapsulates both of them into one rect.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The first rect.",
+    "B": "The second rect.",
+    "* ([[Type:Rect|Rect]])": "Returns the encapsulated rect from the 2 provided rects."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:EncapsulateRect&action=raw"
 }

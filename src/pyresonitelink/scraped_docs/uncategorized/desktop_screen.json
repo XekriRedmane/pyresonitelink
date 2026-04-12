@@ -1,0 +1,20 @@
+{
+  "description": "The DesktopScreen component is used to make the behavior of the desktop tab on the Dash Menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "Icon": "The icon of the dash menu tab.",
+    "ActiveColor": "The color when this dash menu screen tab is selected.",
+    "Label": "The text for this dash menu Screen tab.",
+    "ScreenEnabled": "Whether the screen is enabled for viewing.",
+    "BaseResolution": "The default resolution of the tab screen.",
+    "_screenRoot": "The root slot of the desktop screen view.",
+    "_screenCanvas": "The canvas being used for the tab view.",
+    "_modalOverlayManager": "The Overlay manager being used for handling edit mode.",
+    "_button": "The button to select this dash menu screen tab.",
+    "_iconTexture": "The texture being used for the icon of this dash menu tab."
+  },
+  "methods": {},
+  "usage": "Used in the dash menu. Not used by the user directly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DesktopScreen&action=raw"
+}

@@ -1,0 +1,20 @@
+{
+  "description": "Account Migrations List is a component that only works in user space. It checks the current Migrations being ran by the cloud and gives a running count every game update. It shows how many there are total including counts of different statuses the different migrations have.",
+  "category": "Cloud:Indicators",
+  "fields": {
+    "TotalMigrations": "How many total migrations are currently happening on the cloud right now for the current user.",
+    "WaitingMigrations": "How many migrations are currently waiting to start on the cloud right now for the current user.",
+    "RunningMigrations": "How many migrations are currently happening on the cloud right now for the current user.",
+    "CompletedMigrations": "How many completed migrations have happened on the cloud before for the current user.",
+    "MigrationTaskIds": "The task ID's of all the migrations for the current user."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Only works in user space. Updates with migrations automatically."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AccountMigrationsList&action=raw"
+}

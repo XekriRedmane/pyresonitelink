@@ -1,0 +1,17 @@
+{
+  "description": "The TiledRawImage component takes in a ITexture2D and renders it to the UIX, and then tiles it if the image provided is too small. There are parameters to control how the tiling behaves for the UIX element that it is in.\n\n}}",
+  "category": "With Nested Enums",
+  "fields": {
+    "Texture": "The tilable image to use.",
+    "Material": "The material that has a tilable image to use.",
+    "Tint": "The tint color for this image.",
+    "SizeBasis": "Changes how the tiling behaves.",
+    "TileSize": "How large this image is on the ``X`` and ``Y``.",
+    "TileOffset": "How much this image should be moved on the ``X`` and ``Y``.",
+    "InteractionTarget": "Makes this image as the interaction target for this UIX."
+  },
+  "methods": {},
+  "usage": "This can be used to make fancy backgrounds or image effects. And like with other images, this can be layered for even more effects.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TiledRawImage&action=raw"
+}

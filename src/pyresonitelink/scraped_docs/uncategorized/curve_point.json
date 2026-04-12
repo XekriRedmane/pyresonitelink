@@ -1,0 +1,12 @@
+{
+  "description": "Curve point is used by being put into a Bezier Curve component to define the shape of a Bezier Tube Mesh. See Bezier Tube Mesh for a full example.",
+  "category": "Uncategorized",
+  "fields": {
+    "LeftTangentSource": "The left handle of the bezier curve point",
+    "RightTangentSource": "The right handle of the bezier curve point"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CurvePoint&action=raw"
+}

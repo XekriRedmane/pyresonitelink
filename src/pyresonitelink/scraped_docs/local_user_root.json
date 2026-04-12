@@ -1,8 +1,11 @@
 {
   "description": "The Local User Root node gets the User Root of the local user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:UserRoot|UserRoot]])": "The local user root from the local user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalUserRoot&action=raw"
 }

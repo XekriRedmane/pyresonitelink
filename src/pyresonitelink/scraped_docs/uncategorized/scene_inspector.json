@@ -1,0 +1,29 @@
+{
+  "description": "See Scene Inspector!",
+  "category": "Uncategorized",
+  "fields": {
+    "Root": "The root of the view of this inspector's hiearchy.",
+    "ComponentView": "The currently selected slot to view components for.",
+    "_rootText": "The text field for the display of the root hiearchy slot for this inspector's view.",
+    "_componentText": "The text field for the display of the slot for this inspector's component view.",
+    "_hierarchyContentRoot": "The root of the view for slots on the currently viewed slot hiearchy.",
+    "_componentsContentRoot": "The root of the view for components on the currently selected slot.",
+    "_currentComponent": "The current component this is looking at.",
+    "_currentRoot": "The current root this is looking at."
+  },
+  "methods": {
+    "OnRootUpPressed": "Called when the go up in hiearchy button is touched.",
+    "OnObjectRootPressed": "Called when the view slot component list button is touched.",
+    "OnSetRootPressed": "Called when the set root slot view button is touched.",
+    "OnAddChildPressed": "Called when the add child button is touched.",
+    "OnInsertParentPressed": "Called when the insert parent button is touched.",
+    "OnAttachComponentPressed": "Called when the attach component dialog button is touched.",
+    "OnComponentSelected": "Handles when a component selector is told to attach a component to the slot this is on.",
+    "OnDestroyPressed": "Called when the destroy button is touched.",
+    "OnDestroyPreservingAssetsPressed": "Called when the recycle button is touched.",
+    "OnDuplicatePressed": "Called when the button is touched."
+  },
+  "usage": "See Scene Inspector!",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SceneInspector&action=raw"
+}

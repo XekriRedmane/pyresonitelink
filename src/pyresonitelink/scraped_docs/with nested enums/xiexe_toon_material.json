@@ -1,0 +1,14 @@
+{
+  "description": "The XiexeToonMaterial component was originally made to be a toon material Component, but is widely considered a robust material. It can recreate most effects of the poiyomi toon material when combined with drives, material stacking, and manual packing of texture channels to make the textures compatible.\n\nDecals are also possible via stacking PBS_Metallic layers using extra meshes, then setting them to cutout or alpha with an image set to clamp. The values do not transfer 1:1\n\nTODO: Equation to convert poiyomi decal stuff to Resonite\n\nA Japanese guide with visual examples for using the XiexeToon created by akiRAM can be found at the following link:https://note.com/akiram_vr/n/n5e55290e2cee\n\nIt was written for the predecessor to Resonite, however as stated on the page most settings are very similar so is still very relevant.",
+  "category": "With Nested Enums",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "OutlineStyle",
+      "text": "Defines the type of outline to show on the material."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:XiexeToonMaterial&action=raw"
+}

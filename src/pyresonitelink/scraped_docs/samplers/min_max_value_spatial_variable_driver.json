@@ -1,0 +1,13 @@
+{
+  "description": "The Min Max Value Spatial Variable Driver`1 component drives fields with the min and max possible values of the spatial variables it is currently sampling. If there's no spatial variables, Min/Max will be the Max/Min possible values for that datatype",
+  "category": "Data:Spatial:Samplers",
+  "fields": {
+    "MinDrive": "The field to drive with the minimum possible value that could be sampled from all the spatial variables that this sampler is sampling from.",
+    "MaxDrive": "The field to drive with the maximum possible value that could be sampled from all the spatial variables that this sampler is sampling from.",
+    "VariableName": "The variable name to sample for from the point this component's slot is at."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a field to drive and a variable name. the slot this component is on acts as the position for sampling variable values.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MinMaxValueSpatialVariableDriver&action=raw"
+}

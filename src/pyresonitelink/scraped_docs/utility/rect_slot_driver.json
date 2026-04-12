@@ -1,0 +1,11 @@
+{
+  "description": "The RectSlotDriver component, when attached to a UIX element slot, will automatically drive that slot's position and will provide a field ``_position`` for the user to use as a reference.\n\n}}",
+  "category": "UIX:Utility",
+  "fields": {
+    "_position": "Internal - Sets the position of the slot for driving the value."
+  },
+  "methods": {},
+  "usage": "Mostly will be used for reference of a position of a UIX element.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RectSlotDriver&action=raw"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "The CameraControlTool component makes a tool that changes the mode of a DroneCamera when it is fired at one of the colliders that is part of that component's hiearchy.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Mode": "The mode to switch a Component:DroneCamera to when firing at it with Primary.",
+    "_material": "The material to use and update the color of for the tool's cone visual."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CameraControlTool&action=raw"
+}

@@ -1,0 +1,15 @@
+{
+  "description": "The ScaleGroup component is used to make a touchable selection system that can be used to select items like the Steamtm store and big picture menus.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "SelectedElement": "The currently selected element for this group.",
+    "IdleScale": "The scale of elements when they aren't selected.",
+    "BackgroundScale": "The scale of elements when they go into the background.",
+    "SelectedScale": "The scale of any element when it is selected.",
+    "SmoothSpeed": "The speed at which elements change scale when they change state."
+  },
+  "methods": {},
+  "usage": "Used with a Scale Element list to make a list of selectable elements. Using ProtoFlux to get the slot of the ``SelectedElement`` can make this useful for a physical based selection system usable in both VR and Desktop.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ScaleGroup&action=raw"
+}

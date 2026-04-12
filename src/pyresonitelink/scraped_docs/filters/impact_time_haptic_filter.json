@@ -1,0 +1,16 @@
+{
+  "description": "The ImpactTimeHapticFilter component is a haptics filter mainly for HapticVolumes change their intensity based on how long the user's hand has been inside of the affecting area.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics:Filters",
+  "fields": {
+    "UseGlobalTime": "Whether to use global time or local time.",
+    "StartTime": "When the user's hand has been here for this amount of time, use ``StartIntensity``.",
+    "EndTime": "When the user's hand has been here for this amount of time, use ``EndIntensity``.",
+    "StartIntensity": "The intensity to use at the start of the time frame.",
+    "EndIntensity": "The intensity to use at the end of the time frame.",
+    "Power": "How much to amplify the overall intensity effect of this component."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with a valid and working HapticVolume to add to the list of multiplicative haptic filters.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ImpactTimeHapticFilter&action=raw"
+}

@@ -1,8 +1,13 @@
 {
   "description": "The Encapsulate Bounds node extends the input Bounds such that the output fully encapsulates the OtherBounds.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Bounds": "The bounding box to be enlarged. Default value is a bounding box with center [0;0;0] and size [0;0;0].",
+    "OtherBounds": "The bounding box to be encapsulated. Default value is a bounding box with center [0;0;0] and size [0;0;0].",
+    "* ([[Type:BoundingBox|BoundingBox]])": "The Bounds bounding box enlarged to fully encapsulate the OtherBounds. May be identical to Bounds if the OtherBounds is already entirely inside Bounds."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:EncapsulateBounds&action=raw"
 }

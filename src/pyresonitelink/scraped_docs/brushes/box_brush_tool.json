@@ -1,0 +1,28 @@
+{
+  "description": "The BoxBrushTool component is a tool that draws clouds of rotated, scaled, and UV mapped boxes as part of a BoxArrayMesh.",
+  "category": "Tools:Brushes",
+  "fields": {
+    "Pivot": "The offset of the rotation Pivot of each box.",
+    "MinColor": "The min color that each box can be.",
+    "MaxColor": "The max color that each box can be.",
+    "ColorGap": "the bias for the random colors for boxes.",
+    "UniformSize": "Whether all boxes should be the same size always.",
+    "MinSize": "the min size a drawn box can be.",
+    "MaxSize": "the max size a drawn box can be.",
+    "SizeGap": "the bias for the random size for boxes.",
+    "MinRotation": "the minimum rotation of each box.",
+    "MaxRotation": "the maximum rotation of each box.",
+    "MinUVScale": "the minimum UV scale of each box.",
+    "MaxUVScale": "the maximum uv scale of each box.",
+    "UVScaleGap": "the bias of the uv scale of each box.",
+    "RotationSpace": "The transform space that should be used when applying rotation to the boxes.",
+    "UseColor": "Whether the boxes should have vertex colors.",
+    "ScaleUVWithSize": "Whether boxes should have more UV detail the bigger they are."
+  },
+  "methods": {
+    "ChangeSize": "Handles changing the size of the brush of a brush tool."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BoxBrushTool&action=raw"
+}

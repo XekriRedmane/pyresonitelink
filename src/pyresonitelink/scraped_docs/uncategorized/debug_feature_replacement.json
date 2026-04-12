@@ -1,0 +1,12 @@
+{
+  "description": "The DebugFeatureReplacement component is used to test upgrading features which is an Elements.Core.dll C# tag function.",
+  "category": "Uncategorized",
+  "fields": {
+    "Test": "The feature to upgrade.",
+    "Test2": "A test value to replace with."
+  },
+  "methods": {},
+  "usage": "Debug.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugFeatureReplacement&action=raw"
+}

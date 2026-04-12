@@ -1,0 +1,13 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "RichPresence": "The setting to use when doing steam presence.",
+    "SaveScreenshots": "Whether to save screenshots to steam.",
+    "ForceSteamVoiceOnRemotePlay": "Whether steam should force voice on remote playing via internet over connection to a pc remotely."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SteamIntegrationSettings&action=raw"
+}

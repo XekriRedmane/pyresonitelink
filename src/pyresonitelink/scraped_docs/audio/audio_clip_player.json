@@ -12,5 +12,6 @@
     "Resume": "When called, resumes playback for this component."
   },
   "usage": "Add an audio clip to the Clip field by holding a default audio clip player and clicking. then put the Audio Clip Player into an Audio Output and hit play to hear the audio.",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioClipPlayer&action=raw"
 }

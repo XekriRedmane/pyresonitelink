@@ -1,0 +1,14 @@
+{
+  "description": "The ValueGradientDriver component changes the value of the field defined in ``Target`` based on the items in the ``Points`` list and their ``Position`` in relation to the ``Progress`` value.",
+  "category": "With Nested Types",
+  "fields": {
+    "Progress": "Controls which items from the ``Points`` list will be used to drive the value of ``Target``",
+    "Target": "The field that this component will drive the value of",
+    "Interpolate": "Controls whether or not this component will interpolate (or blend) between the nearest two ``Points`` to the current ``Progress`` value.",
+    "Points": "A list of items indicating their ``Position`` (in relation to ``Progress``), and a ``Value``"
+  },
+  "methods": {},
+  "usage": "Each point in the ``Points`` list has a ``Position`` field and ``Value`` field. The ``Position`` field is used for comparison with the component's ``Progress`` field, while the ``Value`` field is the value used for driving the field in ``Target``.\n\nWhen ``Interpolate`` is checked, the value stored in ``Target`` is linearly interpolated between the ``Value``s of the two points surrounding the current ``Progress``. When unchecked, the output value is simply set to the ``Value`` of the closest point before the current ``Progress``. The only exception to this is when no point exists before the current ``Progress``, in which case the first point after the current ``Progress`` is used.\n\nIf two points have the same ``Position``, then the point of greatest index takes priority if the value is not interpolated or if the positions are exactly equal to the current ``Progress``. During interpolation, however, the point of least index takes priority.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueGradientDriver&action=raw"
+}

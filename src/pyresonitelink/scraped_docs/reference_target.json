@@ -1,8 +1,12 @@
 {
-  "description": "The Reference Target node takes in an SyncRef and returns with the Reference Type that was asked for.",
+  "description": "The ``Reference Target`` node takes in an SyncRef and returns with the Reference Type that was asked for.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Reference": "The reference of something.",
+    "* (Generic)": "Returns the reference type associated with that SyncRef."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ReferenceTarget&action=raw"
 }

@@ -1,8 +1,12 @@
 {
-  "description": "The Is Local User node returns if the user is the local user.",
+  "description": "The ``Is Local User`` node returns if the user is the local user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:bool|bool]])": "The user being a local user or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsLocalUser&action=raw"
 }

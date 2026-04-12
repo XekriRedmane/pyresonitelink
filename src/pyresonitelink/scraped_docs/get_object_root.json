@@ -1,8 +1,13 @@
 {
   "description": "Returns the \"root\" slot of an object, from a slot child input.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "A slot within the object you want the root of.",
+    "OnlyExplicit": "If this is true, only slots with an ObjectRoot component will be considered a root. \n\nIf this is false, slots containing a component implementing ``IObjectRoot`` are also considered roots. These are:\n\n* LegacyPanel\n* SceneInspector\n* ObjectRoot\n* Grabbable\n* ProtoFluxNode",
+    "* ([[Slot|Slot]])": "Will return a slot being the root of the object. If no slot was found, the input slot is returned."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetObjectRoot&action=raw"
 }

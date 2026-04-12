@@ -1,0 +1,17 @@
+{
+  "description": "See Audio Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "UseVoiceNormalization": "Whether to normalize the incoming voice data.",
+    "NormalizationThreshold": "When below this volume, boost so the voice is louder.",
+    "UseNoiseSuppression": "Whether to use noise suppression.",
+    "NoiseGateThreshold": "The threshold that audio needs to be above for the voice to get through.",
+    "NoiseGateAttack": "This indicates how fast the noise gate responds to an incoming sound that is louder than the threshold volume. Larger values will result in a slower volume fade in, while smaller ones will make the volume ramp up quicker.",
+    "NoiseGateHold": "This controls how long it takes for the noise gate to begin to close after the microphone input volume falls below the threshold volume.",
+    "NoiseGateRelease": "This setting controls how fast the noise gate closes after the incoming audio has quieted again."
+  },
+  "methods": {},
+  "usage": "See Audio Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioInputFilteringSettings&action=raw"
+}

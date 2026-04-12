@@ -1,8 +1,17 @@
 {
   "description": "The Closest Point On Cone Surface node takes in the cone parameters (size and rotation) and a provided point to check. Then it returns the closest point on that cone's surface and if that point is within that cone's defined parameters.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "ConeCenter": "The center of the cone (located at the center of the base of the cone).",
+    "ConeOrientation": "The rotation of the cone.",
+    "ConeHeight": "The height of the cone.",
+    "ConeBaseRadius": "The size of the cone base's circle radius.",
+    "Point": "The point we are checking.",
+    "ClosestPoint": "Returns the point in the cone's surface compared with the point given.",
+    "IsPointInside": "Returns if the point is within this cone."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ClosestPointOnConeSurface&action=raw"
 }

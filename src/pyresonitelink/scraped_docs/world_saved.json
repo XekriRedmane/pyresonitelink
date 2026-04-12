@@ -1,8 +1,11 @@
 {
-  "description": "The World Saved node is an event that fires when the world has saved.",
+  "description": "The ``World Saved`` node is an event that fires when the world has saved.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnSaved": "Fires when the world has saved."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldSaved&action=raw"
 }

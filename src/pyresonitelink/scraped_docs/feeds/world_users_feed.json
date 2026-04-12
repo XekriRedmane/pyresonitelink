@@ -1,0 +1,9 @@
+{
+  "description": "The WorldUsersFeed can be used to build systems that need a list of users currently in the session.",
+  "category": "Radiant UI:Data Feeds:Feeds",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldUsersFeed&action=raw"
+}

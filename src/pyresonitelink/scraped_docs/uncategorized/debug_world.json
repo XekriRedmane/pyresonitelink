@@ -1,0 +1,11 @@
+{
+  "description": "The DebugWorld component renders out a block of text that displays information about the current world the component is in.",
+  "category": "Uncategorized",
+  "fields": {
+    "text": "The text field to drive with all the debug data in a world."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugWorld&action=raw"
+}

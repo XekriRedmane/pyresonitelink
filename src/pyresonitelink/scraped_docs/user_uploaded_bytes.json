@@ -1,8 +1,12 @@
 {
-  "description": "The User Uploaded Bytes node returns a user's total uploaded bytes.",
+  "description": "The ``User Uploaded Bytes`` node returns a user's total uploaded bytes.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:ulong|ulong]])": "The total uploaded bytes of the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserUploadedBytes&action=raw"
 }

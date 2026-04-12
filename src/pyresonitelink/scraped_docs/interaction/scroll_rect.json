@@ -1,0 +1,20 @@
+{
+  "description": "The ScrollRect component is for making the contents of this Slot (such as child objects with RectTransforms) scrollable.\n\nThe scrollRect will not do any clipping on its own. If it is a child of an object with a Mask component, it effectively becomes a window into the scrolled content.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "NormalizedPosition": "The scroll position between (0,0) and (1,1) with (0,0) being the lower left corner.",
+    "HorizontalAlign": "Aligns the scrollrect's contents horizontal.",
+    "VerticalAlign": "Aligns the scrollrect's contents vertically.",
+    "ViewportOverride": "Overrides the viewport of this scrollrect.",
+    "__legacyContent": "Internal - Used for the content of the scrollrect."
+  },
+  "methods": {
+    "MoveToTop": "Moves the scroll view to the top.",
+    "MoveToBottom": "Mobes the scroll view to the bottom.",
+    "MoveToLeft": "Moves the scroll view to the left.",
+    "MoveToRight": "Moves the scroll view to the right."
+  },
+  "usage": "This is useful when you have a lot of text or other UIX elements that you want to be scrollable, much like how a webpage has a lot of content that can't fit in just one screen.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ScrollRect&action=raw"
+}

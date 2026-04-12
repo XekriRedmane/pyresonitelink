@@ -1,0 +1,9 @@
+{
+  "description": "The FontDataManager component handles the mapping of Font data and parameters to font based materials during rendering.",
+  "category": "Uncategorized",
+  "fields": {},
+  "methods": {},
+  "usage": "Not used by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FontDataManager&action=raw"
+}

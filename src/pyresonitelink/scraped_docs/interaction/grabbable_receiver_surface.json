@@ -1,0 +1,31 @@
+{
+  "description": "The GrabbableReceiverSurface component allows you to set up an object so that Grabbable objects snap to its surface when a user releases the Grabbable object within range of it. For a volume based alternative, see Grabbable Parenter.\n\nAdd Component Path: Transform > Interaction > GrabbableReceiverSurface.\n= Fields =\n}}\n\n= Behavior =\nWhen a GrabbableReceiverSurface is setup on an object, it will become visible to Grabbable objects when they are released from a user's grab. When this occurs the Surface will carry out some checks and if these pass the object will snap to the GrabbableReceiverSurface. If the ``ParentPlaced`` checkbox is enable the Grabbable will be parented to the surface or the slot specified in ``OverrideParent``",
+  "category": "Transform:Interaction",
+  "fields": {
+    "ParentPlaced": "Whether the Grabbable object gets reparented to this object's Slot or the Slot specified in OverrideParent.",
+    "OverrideParent": "If not null, the slot that the Grabbable object gets reparented to, if ParentPlaced is true.",
+    "TweenTime": "The amount of time in seconds for the animation effect when the object snaps to the surface.",
+    "MaxDistance": "How far away in meters something released gets grabbed.",
+    "Offset": "The distance from the surface that the Grabbable object will stop at.",
+    "CheckOffset": "How far away from the surface that the object ignores before it starts looking for released objects.",
+    "Directions": "List of directions a Grabbable object can be received from.",
+    "TagFilter": "A filter that limits what can be picked up by this surface."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Explanation of the Checks",
+      "text": "These are a little complicated but if you want to fully understand what happens it is provided.\n\nWhen a user is holding a Grabbable object and lets go (releases it):\n# The Grabbable object will look around it in its vicinity using a sphere collider based on the Object's bounding box plus a radius defined on the User's Hand. The hand radius is defined by a sphere made from a Bounding box of all the released objects.\n# If this collider overlaps with any objects which have GrabbableRecieverSurface attached to them then the Grabbable will perform some checks on each surface.\n# First it asks the Surface to check its distance from the Grabbable object.\n## The distance check first calculates if a Raycast from the released object towards the surface would hit in the directions specified in the component. \n## If the Raycast would hit a distance is then calculated.\n## This distance varies depending on the directions specified in the component's properties.\n##* For example, placing an object on top of a cube from above has a shorter distance to the top of the Cube than the bottom of a cube because the distance from above the cube to the bottom face of the cube is greater.\n# If this distance is to great as specified in the component's properties a second check using the released object's bounding box corners is also computed\n# After both distance checks a final distance value is provided.\n# The Grabbable then selects the surface with the smallest distance and tells the Surface to receive it.\n# The Surface will then position the Grabbable upon the surface using an Animation of a ``Tween Time`` value is set.\n# The Surface will then parent the Grabbable to itself or the ``OverrideParent`` location if the ``ParentPlaced`` checkbox is checked.\n\n= Examples =\n\nProbablePrime's tutorial on GrabbleReceiverSurface:\n\n9IZI3ui-RLY\n\n= Frequently Asked Questions ="
+    },
+    {
+      "title": "Can objects which are not grabbed be received?",
+      "text": "No, this component only works with Grabbable objects which are released by a user."
+    },
+    {
+      "title": "Can this be used with objects that are not Grabbable?",
+      "text": "No, It cannot be used with objects that do not have a Grabbable component.\n\n= See Also =\n* Grabbable for what this receives. \n* Grabbable Parenter For a volume alternative"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabbableReceiverSurface&action=raw"
+}

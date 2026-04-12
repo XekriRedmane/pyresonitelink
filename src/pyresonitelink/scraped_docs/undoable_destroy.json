@@ -1,8 +1,14 @@
 {
-  "description": "The Undoable Destroy node will create an undo step in the Context Menu of the user who the impulse came from. The destruction of the slot provided in Target (Slot) will be undo-able by the user.",
+  "description": "The Undoable Destroy node will create an undo step in the Context Menu of the user who the impulse came from. The destruction of the slot provided in Target (Slot) will be undo-able by the user.\n\nwhen this node is paired with an Undo Batch, it's description if has one, will be ignored, and will be part of the Undo Batch's undo step instead.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Input": "Create the undo step and set the Slot to be stored in the Undo Manager with references cut for later re-instantiating upon undoing the Slot's destruction. (Basically make the destruction of the slot provided undoable)",
+    "Target": "The Slot to undo destruction for this undo step.",
+    "PreserveAssets": "Whether to keep the assets store able in an Asset Provider associated with this slot or discard them. Discarding them may lead to missing textures or assets.",
+    "Output": "Continues to More undo steps, continues to code that eventually ends, or an End Undo Batch that continues to eventually ended code."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UndoableDestroy&action=raw"
 }

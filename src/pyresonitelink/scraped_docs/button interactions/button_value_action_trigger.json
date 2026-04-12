@@ -1,0 +1,14 @@
+{
+  "description": "The ButtonValueActionTrigger component receives any Button Event and uses it to trigger a Sync Delegate and sends a value to it.",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "OnPressed": "triggers while sending ``Value`` when this component receives a Button Event of type OnPressed.",
+    "OnPressing": "triggers while sending ``Value`` when this component receives a Button Event of type OnPressing.",
+    "OnReleased": "triggers while sending ``Value`` when this component receives a Button Event of type OnReleased.",
+    "Value": "The value to send to any ``OnPressed``, ``OnPressing``, and/or ``OnReleased``."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with a button, or a slot targeted by a ButtonRelay or related. Then, find a Sync Delegate to trigger using this component. Lastly, put the sync delegate into any ``OnPressed``, ``OnPressing``, and/or ``OnReleased``; then provide ``Value``",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonValueActionTrigger&action=raw"
+}

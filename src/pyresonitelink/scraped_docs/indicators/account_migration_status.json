@@ -1,0 +1,39 @@
+{
+  "description": "This component is able to take a taskID of a migration on the cloud, and is able to display the information about said Migration. This info is grabbed from a AccountMigrationTask object internally which is returned by the SkyFrost API.",
+  "category": "Cloud:Indicators",
+  "fields": {
+    "TaskId": "A UUID of a task that has been done, waiting, or is being done on the SkyFrost cloud.",
+    "Exists": "Whether ``TaskId`` is a valid ID for a task on the cloud",
+    "Name": "The name of the found migration task.",
+    "Description": "The description of the task. Usually starts with \"Account Migration\" or \"Favorites migration\"",
+    "State": "Also known as \"Status\", this will show whether the task has started, and if it's done or currently running.",
+    "EstimatedQueuePosition": "An estimate of the migration task's position on the list of migrations the SkyFrost servers are currently doing. This number can be high if a huge influx of migrations is happening at the current time.",
+    "StartCount": "Usually 1 for some reason __TPL__",
+    "CreatedOn": "When the migration task was submitted to the list of migrations to be done on the cloud",
+    "StartedOn": "When the cloud started to migrate the items for this task.",
+    "CompletedOn": "When the Cloud completed this migration task.",
+    "RecordsPerMinute": "A calculation average of how fast the SkyFrost cloud is transfering items from the source platform to Resonite.",
+    "CurrentlyMigrating": "What type of thing the cloud is currently migrating?",
+    "CurrentItem": "What item the cloud is currently migrating for this task.",
+    "TotalRecordCount": "How many records this migration task is to migrate in total.",
+    "TotalMigratedRecordCount": "How many records this migration has successfully migrated so far.",
+    "TotalFailedRecordCount": "How many records this migration failed to migrate.",
+    "TotalMigratedVariableCount": "How many Cloud Variables that the user has created themselves that this migration task has to migrate in total.",
+    "TotalMigratedVariableDefinitionCount": "How many Cloud Variable Definitions this migration task has to migrate in total.",
+    "TotalContactCount": "How many friend connections that this migration task has to migrate in total.",
+    "MigratedContactCount": "How many friend connections that this migration task has migrated so far.",
+    "MigratedMessageCount": "How many messages sent by the user that this migration task has migrated so far.",
+    "TotalGroupCount": "How many groups that the user has created that this migration task has to migrate in total.",
+    "MigratedGroupCount": "How many groups that the user has created that the migration task has migrated so far.",
+    "TotalMigratedMemberCount": "How many member names of groups that the user has created has been migrated by the migration task."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "does not work outside of user space."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AccountMigrationStatus&action=raw"
+}

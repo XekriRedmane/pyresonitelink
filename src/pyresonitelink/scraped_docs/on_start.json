@@ -1,8 +1,12 @@
 {
-  "description": "The On Start ProtoFlux node triggers on the start of that instance of the node's existence for the local user.",
+  "description": "The On Start ProtoFlux node triggers on the start of that instance of the node's existence for the local user.\n\nThis can be thought of as \"On Local Start\". \n\nTo check if a user joined, use User Joined instead of this node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnlyHost": "If enabled, Trigger will only fire for the host.",
+    "Trigger": "Sends a pulse when the node starts, this can be triggered from the node being duplicated, the node being spawned, or a user joining the session."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnStart&action=raw"
 }

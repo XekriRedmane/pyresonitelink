@@ -1,8 +1,16 @@
 {
-  "description": "The Focus World node allows a user to focus on a world by giving it a ressession link as the Url. If the world exists (as in, already opened for the user, or available as a headless) it will work as expected. If there is no world that is open already that the ressession link is referring to, it will fail.",
+  "description": "The ``Focus World`` node allows a user to focus on a world by giving it a ressession link as the Url. If the world exists (as in, already opened for the user, or available as a headless) it will work as expected. If there is no world that is open already that the ressession link is referring to, it will fail.\n\nHeadless worlds would normally have a SessionID that is consistent that you can use to make into a resession link, allowing you to open and join these worlds with ease.\n\nThis node is also useful when making Exit Strategies, as you can set it up to where if the world is valid to focus, you can close the current world, and have the node continue from here to play a particle effect, a sound, and much more.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|AsyncCall]])": "Calls from an impulse to begin focusing a world.",
+    "URL": "The ressession link needed to focus a world.",
+    "WorldLink": "The link to a world (using the WorldLink component). This can be an alternative way of focusing a world.",
+    "CloseCurrent": "Should this node close the current world after we focus to a different world.",
+    "OnNotFound": "Fires when there is no world to focus on or the world link is not valid.",
+    "OnFocused": "Fires when we successfully focus a world (and only fires in that current world, not the world we are focusing to)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FocusWorld&action=raw"
 }

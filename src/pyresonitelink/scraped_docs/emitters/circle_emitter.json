@@ -1,0 +1,14 @@
+{
+  "description": "Circle emitters are used with Particle Systems to emit new particles into the system from a circle shaped source.",
+  "category": "Rendering:Particle System:Emitters",
+  "fields": {
+    "Radius": "How big the circle is.",
+    "Scale": "The size of the circle on the x and y separately. used to make elipses.",
+    "CircleAlignment": "How to align the particles via the circle on start.",
+    "DirectionMode": "How to emit particles from the circle."
+  },
+  "methods": {},
+  "usage": "Used in particle systems to create new particles",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CircleEmitter&action=raw"
+}

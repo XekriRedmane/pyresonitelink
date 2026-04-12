@@ -1,8 +1,14 @@
 {
-  "description": "The Global Transform node outputs the position, rotation and scale of the input slot in global coordinate space, i.e. the slot's transform relative to the world root slot.",
+  "description": "The ``Global Transform`` node outputs the position, rotation and scale of the input slot in global coordinate space, i.e. the slot's transform relative to the world root slot.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Slot]])": "The slot whose global transform is output.",
+    "Position": "The global position of the provided * (Slot).",
+    "Rotation": "The global rotation of the provided * (Slot).",
+    "Scale": "The global scale of the provided * (Slot)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GlobalTransform&action=raw"
 }

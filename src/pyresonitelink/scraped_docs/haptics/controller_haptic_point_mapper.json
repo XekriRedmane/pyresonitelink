@@ -1,0 +1,18 @@
+{
+  "description": "The ControllerHapticPointMapper component allows you to specify a point where you feel your controller haptics, this can be useful in cases where you don't feel touching haptic volumes like objects or other user's avatars line up right.\n\nBy default without this component, the haptic point is located on the upper end of your controller, which may not desired if your avatar's hands are far away from the end point of your controller.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics",
+  "fields": {
+    "Priority": "The priority of this over other haptic elements",
+    "ShowDebugVisuals": "Enables a sphere visual that lights up when touching haptic zones.",
+    "Side": "Specifies which controller/hand this component gives haptic data to."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "The Haptic Point slot from your Controller slot on your Userroot moves underneath the slot where the ControllerHapticPointMapper component is located, which is how this functionality works.\n\nPlacing a slot with ControllerHapticPointMapper underneath a user does this behavior instantly, the user does not need to equip their avatar again or respawn."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ControllerHapticPointMapper&action=raw"
+}

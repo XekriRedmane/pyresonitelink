@@ -1,0 +1,15 @@
+{
+  "description": "The Rig component is used to inform what bones are \"Rig\" bones for components like Dynamic Bone Chains.",
+  "category": "Rendering",
+  "fields": {
+    "Bones": "The bones that are a part of the item this component is on."
+  },
+  "methods": {
+    "CleanupBoneColliders": "Called when the cleanup bone colliders button is touched.",
+    "GenerateDebugVisual": "Called when the generate debug visuals button is touched.",
+    "ClearDebugVisual": "Called when the clear debug visuals button is touched."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Rig&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "See Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "PositionSmoothSpeed": "How fast or slow the camera position movement should be smoothed.",
+    "AngleSmoothSpeed": "The smoothness of how fast this camera turns and rotates to adjust for movement, to focus towards the subject.",
+    "FramingSmoothSpeed": "This is how fast the camera will move in frame towards the subject."
+  },
+  "methods": {},
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraSmoothingSettings&action=raw"
+}

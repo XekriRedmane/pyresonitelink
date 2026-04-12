@@ -1,8 +1,12 @@
 {
-  "description": "The Find Character Controller From Slot node takes in a Slot and tries to find the character controller from the list of components within itself, then returning one when one is found.",
+  "description": "The ``Find Character Controller From Slot`` node takes in a Slot and tries to find the character controller from the list of components within itself, then returning one when one is found.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Source": "The source that we want to try to find the character controller in.",
+    "* ([[Component:CharacterController|Character Controller]])": "The character controller that we found."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FindCharacterControllerFromSlot&action=raw"
 }

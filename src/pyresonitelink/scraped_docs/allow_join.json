@@ -1,8 +1,13 @@
 {
   "description": "The Allow Join node takes in a JoinRequestHandle, and if the world enabled a join verification system using the Verify Join Request node, this node will run and allow the user to join.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to allow the user to join the world.",
+    "Handle": "The handle for the join verification system.",
+    "Next": "Continue the code from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AllowJoin&action=raw"
 }

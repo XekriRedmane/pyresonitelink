@@ -1,0 +1,12 @@
+{
+  "description": "The Box Gradient Value Spatial Variable`1 component is a Spatial variables variable where the value changes from Start to End value along a Direction. This works best when the direction is aligned with one of the cube's axes. Start value starts at the edge of the shape and goes inwards towards the center.",
+  "category": "Data:Spatial:Box Variables",
+  "fields": {
+    "Size": "The size of the cube in which this variable can be sampled from.",
+    "GradientDirection": "The direction the Gradient goes in local space to the Spatial variable."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a size and variable name in order for this to function.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BoxGradientValueSpatialVariable&action=raw"
+}

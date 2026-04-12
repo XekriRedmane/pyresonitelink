@@ -1,8 +1,12 @@
 {
   "description": "This node allows you to send text messages to a WebSocket server via a WebSocketClient.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "An Call to trigger the node.",
+    "OnSendStart": "A continuation impulse triggered when the data is sent successfully."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WebsocketTextMessageSender&action=raw"
 }

@@ -1,0 +1,23 @@
+{
+  "description": "The InspectorMemberActions component is used in inspectors to make the clicking on the left hand side button behavior that brings up a context menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "Member": "The member to bring up a context menu with opens to break drives and a few other things."
+  },
+  "methods": {
+    "ResetField": "Reset the field to the default value.",
+    "BreakLinkDrive": "Set the driver target driving this field from this field to null.",
+    "OpenLinkDriveSource": "Open the component driving this field.",
+    "Normalize": "Normalize this value if it's a set of more than 1 value.",
+    "SetAllToAvg": "Average the components of this value if it's a set of more than 1 value.",
+    "SetAllToComponent": "Set all the components of this value to X component.",
+    "BakeBlendshape": "Bake this blendshape if it's a blendshape.",
+    "RemoveBlendshape": "Remove this blendshape if it's a blendshape.",
+    "SplitBlendshapeX": "Split the blendshape along the X axis.",
+    "SplitBlendshapeY": "Split the blendshape along the Y axis.",
+    "SplitBlendshapeZ": "Split the blendshape along the Z axis."
+  },
+  "usage": "Used possibly in Ref Hacking.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InspectorMemberActions&action=raw"
+}

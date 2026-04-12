@@ -1,0 +1,16 @@
+{
+  "description": "The TextureCharacterControllerModifier component reacts to character controllers that collide with mesh colliders in its children hiearchy. It starts by finding what the contact triangle and point on the mesh collider a character controller hit was. That point is mapped to what part of a texture the character controller hit. Finally, the texture data in ``Texture`` is used to determine what the value should be used for Modifying the character controller that hit that mesh collider.",
+  "category": "Locomotion:Modifiers",
+  "fields": {
+    "Parameter": "The parameter of the contacting character controller to modify.",
+    "ModificationMode": "How to modify the parameter on the contacting character controller.",
+    "MinValue": "When the mapped value on ``Texture`` maps to a value of 0, what should the value be for the character controller modification?",
+    "MaxValue": "When the mapped value on ``Texture`` maps to a value of 100% brightness or 1, what should the value be for the character controller modification?",
+    "Channel": "The channel to use on ``Texture`` when getting a value for UV contact points.",
+    "Texture": "The texture to use for character controller modification data."
+  },
+  "methods": {},
+  "usage": "Attach to the same slot as a mesh collider for best results. A packed texture of RBGA can be used and reused for this component to save on resources and modify 4 different values on 4 different instances of this component to allow for Modifying 4 different character controller properties at the same time.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextureCharacterControllerModifier&action=raw"
+}

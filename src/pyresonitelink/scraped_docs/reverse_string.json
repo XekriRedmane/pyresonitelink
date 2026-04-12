@@ -1,8 +1,12 @@
 {
   "description": "Reverse String is a ProtoFlux node that reverses the order of all the characters in A (String)",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The string to search reverse the characters for.",
+    "* ([[Type:String|String]])": "Returns A (String) with all the characters reversed."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ReverseString&action=raw"
 }

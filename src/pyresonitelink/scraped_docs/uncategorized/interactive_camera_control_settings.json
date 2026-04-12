@@ -1,0 +1,12 @@
+{
+  "description": "The InteractiveCameraControlSettings component allows for changing the settings for the user's Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "_canvas": "The canvas to put data into and show settings",
+    "_panel": "The legacy panel to show the settings on."
+  },
+  "methods": {},
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraControlSettings&action=raw"
+}

@@ -1,13 +1,19 @@
 {
-  "description": "The Multiplex node is a node that changes its output to a specific input based on its index.",
+  "description": "The ``Multiplex`` node is a node that changes its output to a specific input based on its index.\n\nThe node can be used as a fixed-size* array in ProtoFlux or to iterate over multiple values or variables in a For Loop. The size of a multiplex can be near infinite, and can multiplex any Type.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Index": "Selects the input value for the output.",
+    "Inputs": "A fixed-size* array of items with a type that will always match Output's type.",
+    "Output": "Returns the selected value from the selected index.",
+    "InputCount": "The number of inputs in the fixed-size* array of items in Inputs."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "Footnotes",
-      "text": "* It can be made bigger or smaller while editing the flux.\n\nProtoFlux:Utility"
+      "text": "* It can be made bigger or smaller while editing the flux."
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Multiplex&action=raw"
 }

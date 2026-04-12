@@ -1,0 +1,12 @@
+{
+  "description": "Data Preset reference is a component that takes any value type for PresetValue. When this is triggered by a DataPreset, this sets ``TargetField`` to ``PresetValue``.\n}}",
+  "category": "Data:Presets",
+  "fields": {
+    "PresetValue": "The value for the preset. Float is used as an example. Since this is a generic component, it can be used with any value.",
+    "TargetField": "A reference to the field of the same type as PresetValue."
+  },
+  "methods": {},
+  "usage": "See DataPreset for usage.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DataPresetValue&action=raw"
+}

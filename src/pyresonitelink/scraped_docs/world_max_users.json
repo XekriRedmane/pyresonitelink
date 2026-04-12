@@ -1,8 +1,11 @@
 {
-  "description": "The World Max Users node returns this world's \"Maximum Users\" setting from the Session tab in the Dash.",
+  "description": "The ``World Max Users`` node returns this world's \"Maximum Users\" setting from the Session tab in the Dash.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:int|int]])": "The world's max users for this world."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldMaxUsers&action=raw"
 }

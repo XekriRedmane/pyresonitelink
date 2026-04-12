@@ -1,8 +1,17 @@
 {
-  "description": "Debug Box is a ProtoFlux node that when called will make a cube visual at the global coordinates with a size provided and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.",
+  "description": "Debug Box is a ProtoFlux node that when called will make a cube visual at the global coordinates with a size provided and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.\n\nSee also: Coordinate spaces",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to spawn a debug box visual in the root of the world with the provided parameters.",
+    "Position": "The position in global space for the debug visual. Default at the node.",
+    "Size": "The size of the box visual in meters.",
+    "Orientation": "The Rotation in global space for the debug visual. Default 0.",
+    "ForwardColor": "The color for the box visual generated. Defaults to white.",
+    "Duration": "How long the debug box visual appears for in seconds.",
+    "Next": "Fires after * (Call) is impulsed and the visual was created successfully."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DebugBox&action=raw"
 }

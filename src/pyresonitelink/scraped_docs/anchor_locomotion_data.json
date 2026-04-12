@@ -1,8 +1,17 @@
 {
-  "description": "Anchor Locomotion Data is a ProtoFlux node that checks the button presses for someone in an anchor and returns the values",
+  "description": "Anchor Locomotion Data is a ProtoFlux node that checks the button presses for someone in an anchor and returns the values\n\nThe values for Anchor Locomotion Data outputs will all be default unless read during the OnLocomotionUpdate (Call) impulse context.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnLocomotionUpdate": "On locomotion update only fires if the user in the anchor is causing changes to any the outputs of this node compared to the previous value.",
+    "HasPrimary": "Whether the user in the anchor has access to a joystick in their dominant hand",
+    "HasSecondary": "Whether the user in the anchor has access to a joystick in their non dominant hand",
+    "PrimaryAxis": "The anchored user's joystick direction on the dominant hand.",
+    "SecondaryAxis": "The anchored user's joystick direction on the non dominant hand.",
+    "PrimaryAction": "Whether the user in the anchor has pressed in their dominant hand joystick",
+    "SecondaryAction": "Whether the user in the anchor has pressed in their non dominant hand joystick"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AnchorLocomotionData&action=raw"
 }

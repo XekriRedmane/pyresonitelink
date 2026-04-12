@@ -1,8 +1,13 @@
 {
-  "description": "The Greater Than node takes in 2 values and returns if the first value is larger than the second value.",
+  "description": "The Greater Than node takes in 2 values and returns if the first value is larger than the second value.\n\n|suggestion}}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The first value.",
+    "B": "The second value.",
+    "* ([[Type:bool|bool]])": "Returns if the first value is larger than the second value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GreaterThan&action=raw"
 }

@@ -1,0 +1,14 @@
+{
+  "description": "The FeedClampedValueFieldInterface component is used as a template type item in data feed mappers in the Data Feeds system. This component allows for making a UI Template for changing a value with a minimum and maximum value.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "Value": "The field that represents the data that should be read from and written to the source data feed.",
+    "Formatting": "The field to fill with data on how to format the value for displaying it.",
+    "Min": "The value Field to fill with the minimum value this feed number can be.",
+    "Max": "The value field to fill with the maximum value this feed number can be."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FeedClampedValueFieldInterface&action=raw"
+}

@@ -1,0 +1,14 @@
+{
+  "description": "The ParentReferenceLink&lt;T&gt; component drives a field depending on the value of a compatible ParentReference as part of a parent value system.",
+  "category": "Data:Parent",
+  "fields": {
+    "MatchTag": "The tag to search for on the slot's immediate parent. Compatible ParentReference components must have the same ``Tag``.",
+    "Target": "The field to drive using the value of the linked parent.",
+    "WriteBack": "If ``True``, any writes to the driven field will be propagated back to the ``Reference`` provided by the ParentReference. See write backs.",
+    "DefaultReference": "Default value to use if the component can not find a compatible ParentReference."
+  },
+  "methods": {},
+  "usage": "Upon a change of parent, this component will search for ParentReference components on the slot's immediate parent that have a matching type and tag. If it can find such a component and link to it, it will drive the ``Target`` field based on the ``Reference`` of the ParentReference. If it can not find such a component, it will use the ``DefaultReference`` value.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ParentReferenceLink&action=raw"
+}

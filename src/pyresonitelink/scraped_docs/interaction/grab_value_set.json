@@ -1,0 +1,15 @@
+{
+  "description": "The GrabValueSet component has options to set the value within a value field upon release and/or grabbing of a grabbable Component on the same slot.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "Target": "The field to set the contained value of during grabbing events.",
+    "GrabbedValue": "The value to set the contained data of the Field referenced in ``Target`` when the item is grabbed.",
+    "ReleasedValue": "The value to set the contained data of the Field referenced in ``Target`` when the item is let go of.",
+    "SetOnGrabbed": "Whether to set the contained value of the field referenced by ``Target`` on grabbed.",
+    "SetOnReleased": "Whether to set the contained value of the field referenced by ``Target`` on letting go."
+  },
+  "methods": {},
+  "usage": "Can be used to change the color of an item on grab or release, or any other value type.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabValueSet&action=raw"
+}

@@ -1,8 +1,18 @@
 {
-  "description": "The Default User Scale node takes in a User or Slot that allows you to read a user's default Avatar scale.",
-  "category": "",
-  "fields": {},
+  "description": "This component sets the default scale of the avatar it is attached to, which also affects the scale of the user wearing said avatar.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "SetOnEquip": "TBD",
+    "DefaultScale": "The default scale (normal value is 1)",
+    "_activeUser": "Internal"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "The default scale determines what scale the avatar spawns at, as well as what scale it returns to when using the Reset Scale option in the context menu."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DefaultUserScale&action=raw"
 }

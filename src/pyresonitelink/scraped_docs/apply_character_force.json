@@ -1,8 +1,15 @@
 {
-  "description": "The Apply Character Force node takes in a character controller reference and a force, then pushes the character controller in the direction.",
+  "description": "The ``Apply Character Force`` node takes in a character controller reference and a force, then pushes the character controller in the direction.\n\nUnlike Impulse where you send a force once to send the character controller in a direction, this node is made to apply a force in a direction over time.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls to push this character controller.",
+    "Force": "The force to push this character controller.",
+    "Character": "The character controller reference.",
+    "IgnoreMass": "The option to ignore mass in the character controller component when being sent in a direction.",
+    "Next": "Continues execution from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ApplyCharacterForce&action=raw"
 }

@@ -1,0 +1,15 @@
+{
+  "description": "The SettingValueActionProxy component is used to trigger an action while passing a value to it on a subsetting under the component of type S which would be globally registered in the world.",
+  "category": "Uncategorized",
+  "fields": {
+    "ActionName": "The name of the action being triggered.",
+    "SubsettingGetter": "The name of the sync delegate method being triggered.",
+    "SubsettingKey": "The key being used to find the sub setting being triggered."
+  },
+  "methods": {
+    "Trigger": "triggers the target, while passing a value of type T, which the target specified by this component's values and generic typing."
+  },
+  "usage": "Not to be used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SettingValueActionProxy&action=raw"
+}

@@ -1,0 +1,17 @@
+{
+  "description": "The BreadcrumbManager component is used to instantiate BreadcrumbInterfaces and remove them based on the list of path elements on a Data Feed View Type.",
+  "category": "Radiant UI:Navigation",
+  "fields": {
+    "Path": "The path field in a Data Feed View Type component to show in the form of templates.",
+    "UI_Root": "The place to put Breadcrumb path items in.",
+    "BreadcrumbTemplate": "The template to duplicate in order to create UI.",
+    "SeparatorTemplate": "The slot to duplicate and place between elements to make them have slashes or commas between them."
+  },
+  "methods": {
+    "SetDepth": "Takes a number beside a button that when pressed will set the depth of the path.",
+    "SetupTemplate": "Handles setting up a template for this component for a simple settup."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BreadcrumbManager&action=raw"
+}

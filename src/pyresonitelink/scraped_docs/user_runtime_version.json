@@ -1,8 +1,12 @@
 {
-  "description": "The User Runtime Version node returns the runtime version in use, which is typically the version of .NET.",
+  "description": "The ``User Runtime Version`` node returns the runtime version in use, which is typically the version of .NET.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:String|String]])": "The version of .NET being used, such as \"10.0.0\"."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserRuntimeVersion&action=raw"
 }

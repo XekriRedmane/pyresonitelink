@@ -1,0 +1,17 @@
+{
+  "description": "The ProceduralSky texture is used to dynamically create a skybox using a sun rotation and intensity including sun color.",
+  "category": "With Nested Enums",
+  "fields": {
+    "SunQuality": "The quality preset of the sun in the sky.",
+    "SunSize": "size of the sun in the sky",
+    "Sun": "The light to use for rotation, intensity, and color of the sun on this material.",
+    "AtmosphereThickness": "How much the atmosphere will light up the scene. If this is low, the ``SkyTint`` color coming up from the lower region of the world won't make it up to the top of the world as well, and will gradient into black. good for thin atmosphere planets, or 0 for no atmosphere.",
+    "SkyTint": "The tint of the atmosphere of the world.",
+    "GroundColor": "The tint of the sky below the horizon line.",
+    "Exposure": "How much to light up or darken the sky color overall."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProceduralSky&action=raw"
+}

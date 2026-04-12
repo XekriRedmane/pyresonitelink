@@ -1,0 +1,13 @@
+{
+  "description": "The AvatarPoseSmoothLerp component changes the smoothing speed of the position and rotation of a BodyNode.",
+  "category": "Users:Common Avatar System:Pose Filters",
+  "fields": {
+    "PositionSmoothSpeed": "how fast the body node should move. Lower values mean slower speed.",
+    "RotationSmoothSpeed": "how fast the body node should rotate. Lower values mean slower speed.",
+    "SmoothSimulatedPoses": "Whether this filter should smooth limbs affected by the procedural animation system."
+  },
+  "methods": {},
+  "usage": "For use with a AvatarAnchor or a tooltip to smooth the hand movement.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarPoseSmoothLerp&action=raw"
+}

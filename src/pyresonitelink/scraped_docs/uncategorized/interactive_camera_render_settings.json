@@ -1,0 +1,13 @@
+{
+  "description": "See Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "HideAllBadges": "This hides the user's badges (including the nameplate) from the camera preview and any pictures taken.",
+    "HideAllLasers": "This hides the user's lasers from the camera preview and any pictures taken.",
+    "ForceEyesOnCamera": "This makes the user's avatar's eyes lock on to the camera position."
+  },
+  "methods": {},
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraRenderSettings&action=raw"
+}

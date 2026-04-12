@@ -1,0 +1,25 @@
+{
+  "description": "The SessionUserController component is used to control a user in a session granted the local user has the proper permissions.",
+  "category": "Uncategorized",
+  "fields": {
+    "_name": "The name of the target user.",
+    "_slider": "The slider used to change the volume of the target user.",
+    "_mute": "The button used to mute the target user.",
+    "_jump": "The button used to jump to the target user.",
+    "_respawn": "The button used to respawn the target user.",
+    "_silence": "The button used to silence the target user.",
+    "_kick": "The button used to kick the target user.",
+    "_ban": "The button used to ban the target user."
+  },
+  "methods": {
+    "OnMute": "Called when the mute target user button is touched.",
+    "OnJump": "Called when the jump to target user button is touched.",
+    "OnRespawn": "Called when the respawn target user button is touched.",
+    "OnSilence": "Called when the silence target user button is touched.",
+    "OnKick": "Called when the kick target user button is touched.",
+    "OnBan": "Called when the ban target user button is touched."
+  },
+  "usage": "Not to be used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SessionUserController&action=raw"
+}

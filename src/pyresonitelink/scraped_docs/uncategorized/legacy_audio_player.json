@@ -1,0 +1,33 @@
+{
+  "description": "The LegacyAudioPlayer component is a leftover Component from content migrated from other platforms. It should not be used, and should be replaced whenever possible.\n\nFor a replacement see Audio Player.",
+  "category": "Uncategorized",
+  "fields": {
+    "AudioClip": "The audio clip for this audio player.",
+    "_clipPlayer": "The audio clip player that will play the audio clip.",
+    "_audioOutput": "The audio output for the audio clip.",
+    "_waveformMaterial": "The material that is used on the ring visual.",
+    "_playbackMaterial": "The material that is used for the playback visual.",
+    "_waveformRingMesh": "The mesh used for the waveform ring visual.",
+    "_playbackRingMesh": "The mesh used for the playback ring visual.",
+    "_playbackRingArc": "The field to drive to make the visual for the playback ring.",
+    "_volumeRingArc": "The field to drive to make the visual for the audio arc.",
+    "_playbackTimeText": "The field to drive for the playback time text.",
+    "_clipLengthTimeText": "The field to drive for the audio clip length text.",
+    "_iconTextureURL": "The field to drive with the icon texture URI.",
+    "_stopItem": "The item that can be clicked to stop playback.",
+    "_loopItem": "The item that can be clicked to loop playback.",
+    "_spatialItem": "The item that can be clicked to spatialize or unspatialize the audio.",
+    "_loopIconURL": "The field to drive with the loop icon texture URI.",
+    "_spatialIconURL": "The field to drive with the spatialize icon URI.",
+    "_exportable": "The audio exportable component used to handle the export behavior of this audio player.",
+    "_assetProxy": "The asset proxy used to handle dropping this audio player into fields that accept audio clips."
+  },
+  "methods": {
+    "StopPressed": "A sync delegate to call when the stop button is pressed.",
+    "LoopToggle": "A sync delegate to call when the loop button is pressed.",
+    "SpatialToggle": "A sync delegate to call when the spatialize button is pressed."
+  },
+  "usage": "Not to be used.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyAudioPlayer&action=raw"
+}

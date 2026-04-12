@@ -1,8 +1,13 @@
 {
   "description": "Multiply String is a ProtoFlux node that takes an input string A (String) and makes it repeat B (int) times for the output * (String).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The string to repeat B (int) times.",
+    "B": "How many times to repeat A (String).",
+    "* ([[Types:String|String]])": "The string A (String) repeated B (int) times."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:MultiplyString&action=raw"
 }

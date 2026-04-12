@@ -1,8 +1,11 @@
 {
-  "description": "The World Hide From Listing node returns this world's \"Don't show in session lists\" setting from the Session tab in the Dash.",
+  "description": "The ``World Hide From Listing`` node returns this world's \"Don't show in session lists\" setting from the Session tab in the Dash.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:bool|bool]])": "The world's \"Don't show in session lists\" setting."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldHideFromListing&action=raw"
 }

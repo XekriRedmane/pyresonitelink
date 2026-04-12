@@ -1,0 +1,13 @@
+{
+  "description": "The StringQRCodeTexture Component is used to encode string data like URLs and text into a QR code texture.",
+  "category": "Assets:Procedural Textures",
+  "fields": {
+    "Payload": "The string to encode into the QR code.",
+    "ECCLevel": "The level of error correction to encode (for use with a dirty QR code for higher values)",
+    "Color0": "The background color of the QR code",
+    "Color1": "The color of the usually black squares of the QRCode"
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a material to view the result. Don't forget to provide a ``Payload``.",
+  "notes": []
+}

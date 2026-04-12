@@ -1,0 +1,16 @@
+{
+  "description": "The ModalOverlay component is a popup panel that a user can interact with.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "ShowLerp": "The lerp amount for this modal.",
+    "AnimationTime": "The lerp time for this modal.",
+    "SizeRoot": "The size of this modal.",
+    "ContentRoot": "The center root of this modal.",
+    "CloseOnContextMenuAction": "Closes the modal when the user's context menu closes.",
+    "CloseOnClick": "Closes this modal when it is clicked on."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ModalOverlay&action=raw"
+}

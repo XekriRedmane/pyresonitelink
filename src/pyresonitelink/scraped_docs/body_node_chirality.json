@@ -1,8 +1,12 @@
 {
   "description": "Body Node Chirality is a ProtoFlux node that takes a Node (BodyNode) and returns whether it's on the left or right side of the human body, or -1 if it's a \"None\" body node or in the center.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Node": "The body node to check if it is on the left or right side of the body.",
+    "* ([[Type:Chirality|Chirality]])": "Returns if Node (BodyNode) is on the left or right side of a human body. Returns null if the node is in the center of the body or \"None\"."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:BodyNodeChirality&action=raw"
 }

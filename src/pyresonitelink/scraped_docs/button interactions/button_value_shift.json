@@ -1,0 +1,21 @@
+{
+  "description": "The ButtonValueShift component can be used to make an IButton add the ``delta`` amount to a value whenever it is pressed.",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "TargetValue": "The value to shift.",
+    "Delta": "By how much ``TargetValue`` should be shifted on each press.",
+    "Min": "The minimum value that can be shifted to.",
+    "Max": "The maximum value that can be shifted to.",
+    "WrapAround": "Whether or not the value should wrap around to the other extreme when reaching either ``Min`` or ``Max``.",
+    "MaxIsExclusive": "When the current amount is at the value before max, it will stop there, unless wrap around is enabled, which then wraps around from the max value - 1."
+  },
+  "methods": {},
+  "usage": "To function, the component simply needs to be attached to a slot that also has a button component attached to it.\nFrom then on, pressing that button will activate the ButtonValueShift, making it shift its ``TargetValue`` by its ``Delta``.",
+  "notes": [
+    {
+      "title": "Related Issues",
+      "text": "It is known that you can go over the maximum by setting the ``delta`` higher than the max or min values, allowing the output to be outside the ranges provided."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonValueShift&action=raw"
+}

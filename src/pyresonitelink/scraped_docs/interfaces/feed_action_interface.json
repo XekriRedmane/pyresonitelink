@@ -1,0 +1,12 @@
+{
+  "description": "The FeedActionInterface component is used as a template type item in data feed mappers in the Data Feeds system.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "Action": "The field to fill with the Action Sync delegate when this is set up as a template via a data feed.",
+    "Highlight": "The bool to toggle when this item is highlighted."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FeedActionInterface&action=raw"
+}

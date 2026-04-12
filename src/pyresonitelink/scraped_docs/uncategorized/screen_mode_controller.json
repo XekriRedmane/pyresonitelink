@@ -1,0 +1,15 @@
+{
+  "description": "The ScreenModeController component is used to control the interactions of the user within user space also known as the dash world.",
+  "category": "Uncategorized",
+  "fields": {
+    "_dash": "The dash of the dash world.",
+    "_muteSound": "The audio clip to play when the user mutes themselves.",
+    "_unmuteSound": "The audio clip to play when the user unmutes themselves.",
+    "_startTalkSound": "The audio clip to play when the user starts to record a voice message.",
+    "_stopTalkSound": "The audio clip to play when the user stops recording a voice message."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ScreenModeController&action=raw"
+}

@@ -1,8 +1,12 @@
 {
   "description": "The Get User Anchor node is a ProtoFlux node that gets the anchor that a user is currently anchored in.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user to check for what anchor they are sitting in.\n\nIf there is no source input then the local user will be used.",
+    "* ([[Type:IAvatarAnchor|IAvatarAnchor]])": "The anchor that ``User`` is currently anchored to, outputting null if the user is not anchored."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetUserAnchor&action=raw"
 }

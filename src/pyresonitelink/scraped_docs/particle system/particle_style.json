@@ -1,0 +1,15 @@
+{
+  "description": "A Particle Style defines the visual appearance and behavior for a ParticleSystem.",
+  "category": "Rendering:Particle System",
+  "fields": {
+    "Renderer": "How to render the particles for systems this is assigned to.",
+    "Modules": "A list of modules to influence how the particle system looks and behaves.",
+    "UseSystemLocalScale": "Whether particles should rely on the particle system's simulation space for scale.",
+    "ParticleScaleMode": "How to scale particles during simulation for this style.",
+    "UseSystemLocalRotation": "Whether particles should rely on the particle system's simulation space for rotation."
+  },
+  "methods": {},
+  "usage": "Used with a ParticleSystem to create the visuals and behavior for particles. multiple ``Modules`` can be used to make a variety of effects. Ranging from wind, laser dust swirling after firing, beat visualizers, element bending, and even accretion disks from black holes, the possibilities are endless.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ParticleStyle&action=raw"
+}

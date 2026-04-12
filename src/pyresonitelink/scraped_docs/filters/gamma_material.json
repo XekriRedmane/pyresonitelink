@@ -1,0 +1,9 @@
+{
+  "description": "The GammaMaterial material modifies the gamma of colors it renders on top of.",
+  "category": "Assets:Materials:Filters",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GammaMaterial&action=raw"
+}

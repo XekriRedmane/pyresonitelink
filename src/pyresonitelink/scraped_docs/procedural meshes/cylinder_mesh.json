@@ -1,0 +1,16 @@
+{
+  "description": "The CylinderMesh component is used to provide a mesh to render. The mesh that it provides is a procedural 3D cylinder with a number of sides and a radius.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Height": "The height of the cylinder in meters in local space.",
+    "Radius": "The radius of the cylinder in meters in local space.",
+    "Sides": "How many sides the cylinder should have around it's midsection.",
+    "Caps": "Whether the cylinder should be a tube or not.",
+    "FlatShading": "Disable smooth shading.",
+    "UVScale": "The inverse of the size the material should appear on the surface as."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, and assign to a Mesh Renderer to see what it looks like. Don't forget to use a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CylinderMesh&action=raw"
+}

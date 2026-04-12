@@ -1,0 +1,13 @@
+{
+  "description": "See Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "AvoidOcclusion": "When the camera is behind a wall or anything that is collidable, it will zoom the view in front of it to focus on the subject. This will not work in manual mode.",
+    "KeepInWorldSpace": "This keeps the camera in world space.",
+    "MovementWobble": "This makes the camera have gradual movement in different positions around the subject. This only works with Third Person or Group modes."
+  },
+  "methods": {},
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraPositioningSettings&action=raw"
+}

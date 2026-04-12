@@ -1,0 +1,11 @@
+{
+  "description": "The DynamicReference component allows marking of any SyncRef`1 (Reference holder) as part of the Dynamic Variables System. The value inside of the specified SyncRef can change and will be changed by the Dynamic Variables System. The variable name and the type of variable will determine how this will link to and be changed by the Dynamic Variables System. For more info on how Dynamic Variables work please check the Dynamic Variables page.",
+  "category": "Data:Dynamic",
+  "fields": {
+    "TargetReference": "The field to become synced with and be the definition of the reference dynamic variable."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicReference&action=raw"
+}

@@ -1,8 +1,12 @@
 {
   "description": "The Stop node tells a IPlayable to stop playback upon impulse.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "=== Target (IPlayable) ===\n\nThe IPlayable to stop playback on.",
+    "Next": "Sends an impulse after the initial call."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Stop&action=raw"
 }

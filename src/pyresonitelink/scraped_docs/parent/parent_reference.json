@@ -1,0 +1,12 @@
+{
+  "description": "The ParentReference&lt;T&gt; component provides a reference type for the parent value system.",
+  "category": "Data:Parent",
+  "fields": {
+    "Tag": "Tag of the parent value. Compatible ParentReferenceLink components on the slot's immediate children must have the same tag.",
+    "Reference": "The value of the parent value associated with the ``Tag`` and type."
+  },
+  "methods": {},
+  "usage": "When this component is on a slot, all immediate children are part of its parent value system. Any immediate children of the slot with a ParentReferenceLink component that matches the type and ``Tag`` of this component will be linked to the ``Reference`` provided by this component.\n\nThis can be especially useful for Snapper/SnapTarget systems.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ParentReference&action=raw"
+}

@@ -1,0 +1,14 @@
+{
+  "description": "The DocumentPageTexture component generates texture data using a document file like a PDF which can be displayed using a material in a MeshRenderer or UIX.",
+  "category": "Assets:Procedural Textures",
+  "fields": {
+    "Mipmaps": "Whether to use mip maps or not.",
+    "Document": "The document to display using this texture.",
+    "PageIndex": "The page in ``Document`` to display as the texture data.",
+    "PageRegion": "The area of the in ``Document`` to display on page ``PageIndex``"
+  },
+  "methods": {},
+  "usage": "This component is auto generated as part of a document viewer when importing PDF files. Simply import a PDF file into the game to generate a viewer that uses this component as part of how it works.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DocumentPageTexture&action=raw"
+}

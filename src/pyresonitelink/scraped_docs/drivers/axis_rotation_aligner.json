@@ -1,0 +1,15 @@
+{
+  "description": "The AxisRotationAligner can be used to keep a slot facing a direction relative to a space.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "LocalDirection": "A vector direction in this slot's local space to align to ``TargetDirection`` via rotating this slot.",
+    "TargetDirection": "The direction vector to align to.",
+    "DirectionSpace": "The coordinate space that ``TargetDirection`` is in.",
+    "LocalRotation": "A rotation offset to the alignment.",
+    "_rotation": "The rotation field of the slot this component is on. Is driven to do the rotation alignment."
+  },
+  "methods": {},
+  "usage": "The defined ``LocalDirection`` will be rotated to line up with the ``TargetDirection`` inside ``DirectionSpace``'s coordinate space.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AxisRotationAligner&action=raw"
+}

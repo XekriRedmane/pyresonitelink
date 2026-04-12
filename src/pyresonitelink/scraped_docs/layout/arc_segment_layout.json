@@ -1,0 +1,15 @@
+{
+  "description": "The ArcSegmentLayout component is used with ArcLayout, and separates the arc layout into equal segments defined in that component. When using this component, it will be very resistant to change as it is listening on the ArcLayout for the art amount, size, and ratios.\n\n}}",
+  "category": "UIX:Layout",
+  "fields": {
+    "Nested": "The rect transform to hold the segments of the arc layout.",
+    "NestedSizeRatio": "The size ratio for this arc segment.",
+    "Label": "The label text for the arc segment.",
+    "LabelSize": "The label text size for the arc segment.",
+    "LabelDistance": "The label text distance from the arc segment."
+  },
+  "methods": {},
+  "usage": "This is used for the individual arc segment selection of the context menu.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ArcSegmentLayout&action=raw"
+}

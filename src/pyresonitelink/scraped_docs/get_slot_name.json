@@ -1,8 +1,12 @@
 {
   "description": "Gets the value of the provided Instance Slot's name field.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "Slot to check.",
+    "* ([[Type:String|String]])": "Instance (Slot)'s Name field."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetSlotName&action=raw"
 }

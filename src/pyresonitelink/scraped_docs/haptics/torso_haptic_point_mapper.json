@@ -1,0 +1,19 @@
+{
+  "description": "The TorsoHapticPointMapper component is used to tell the game the size of an Avatar's torso and its bones in order for the game to know where to place haptic point samplers so they better match the size and positions of the body.\n\nThe area makes up a 3d trapezoid with thickness, with a parallel front and back, and top and bottom, but a non parallel left and right.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics",
+  "fields": {
+    "Priority": "The priority of this Mapper over other mappers.",
+    "ShowDebugVisuals": "Whether to show the area and haptic point Debug visuals.",
+    "BoneChain": "A list of bones that make up the center spine of the avatar. (Hips, Spine(s), Chest, upper chest)",
+    "NormalizedStart": "Where in the chain does the haptics mapping start?",
+    "NormalizedEnd": "Where in the chain does the haptics mapping end?",
+    "LowerWidth": "The width of the lower spine.",
+    "UpperWidth": "The width of the upper spine.",
+    "FrontOffset": "How far the front side is from the spine bones.",
+    "BackOffset": "How far the back side is from the spine bones."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TorsoHapticPointMapper&action=raw"
+}

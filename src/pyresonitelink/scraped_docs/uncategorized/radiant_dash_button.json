@@ -1,0 +1,22 @@
+{
+  "description": "See Dash menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "Dash": "The dash this is a button to.",
+    "Screen": "The screen this button triggers a switch to for.",
+    "_switchingEnabled": "The field to drive with whether switching is enabled.",
+    "_screenEnabled": "The field to drive with whether the screen is enabled.",
+    "_currentScreen": "The current screen ``Dash`` is on.",
+    "_button": "The button to trigger switching to the target screen.",
+    "_text": "The text for the button.",
+    "_textBg": "The text background element.",
+    "_icon": "The icon for the button.",
+    "_layout": "The layout UIX element of the button.",
+    "_rootRect": "The root Rect UIX element for this button.",
+    "_iconRect": "The root Rect UIX element for the button's icon."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RadiantDashButton&action=raw"
+}

@@ -1,8 +1,11 @@
 {
-  "description": "The World Away Kick Interval node returns this world's \"Max AFK Minutes\" setting from the Session tab in the Dash, represented as a TimeSpan value.",
+  "description": "The ``World Away Kick Interval`` node returns this world's \"Max AFK Minutes\" setting from the Session tab in the Dash, represented as a TimeSpan value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:TimeSpan|TimeSpan]])": "The world's Max AFK Minuets."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldAwayKickInterval&action=raw"
 }

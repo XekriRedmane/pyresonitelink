@@ -1,0 +1,11 @@
+{
+  "description": "The SphereCollider generates a spherical collision shape based on an inputted radius.",
+  "category": "Physics:Colliders",
+  "fields": {
+    "Radius": "How big the sphere is from center to outside edge."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SphereCollider&action=raw"
+}

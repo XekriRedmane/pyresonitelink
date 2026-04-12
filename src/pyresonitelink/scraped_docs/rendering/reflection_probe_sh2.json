@@ -1,0 +1,14 @@
+{
+  "description": "The Reflection Probe SH2 component is used to turn what a ReflectionProbe sees into a spherical harmonic for use in ambient lighting like a AmbientLightSH2 component.",
+  "category": "Rendering",
+  "fields": {
+    "Probe": "The probe to get color data from.",
+    "AmbientLight": "``Probe``'s sampled data as SH2 color data for ambient lighting usage.",
+    "Order0Scale": "The scale factor for Order 0 for the spherical harmonics.",
+    "Order1Scale": "The scale factor for Order 1 for the spherical harmonics.",
+    "Order2Scale": "The scale factor for Order 2 for the spherical harmonics."
+  },
+  "methods": {},
+  "usage": "Can be used to drive a AmbientLightSH2 component via a value copy or by drag and dropping this component's ``AmbientLight`` into that component's value",
+  "notes": []
+}

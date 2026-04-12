@@ -1,0 +1,20 @@
+{
+  "description": "The ParticleLightsModule makes a particle system create lights every so often for emitted particles that follow the particle they're assigned to.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "TemplateLight": "The light to use as a template.",
+    "LightsRatio": "How many lights as a percentage there should be from a 0 to 1 range.",
+    "Distribution": "How to distribute the lights among the particles being emitted.",
+    "MaxLights": "The maximum number of lights that the particle system can have.",
+    "MultiplyColorByParticle": "Whether to multiply the color of the lights by the color of the particle it is attached to.",
+    "MultiplyIntensityByAlpha": "Whether to multiply the intensity of the lights by the alpha channel of the color of the particle it is attached to.",
+    "MultiplyRangeBySize": "Whether to multiply the range of the light based on the size of the particle it is attached to.",
+    "AngleMultiplier": "How to influence the angle of the light based on the angle of the particle it is following.",
+    "RangeMultiplier": "How much to amplify the range of the light.",
+    "IntensityMultiplier": "How much to amplify the intensity of the light."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ParticleLightsModule&action=raw"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The ReferenceProxySource component allows for the user to grab a reference off from a UIX element. This requires a Button component to work.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "Reference": "The reference itself."
+  },
+  "methods": {},
+  "usage": "This is used to carry references to other fields that are looking for it. Using this component along with the ReferenceGrabReceiver and ReferenceField of the type IWorldElement will allow the user to carry the reference from source to receiver directly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceProxySource&action=raw"
+}

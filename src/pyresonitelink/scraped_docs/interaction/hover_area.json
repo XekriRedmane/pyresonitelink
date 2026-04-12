@@ -1,0 +1,11 @@
+{
+  "description": "The HoverArea component listens for a user's hover event on a UIX element. This component only works when it has an interactable component on the same Slot, such as a Button.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "IsHovering": "Updates when a user's hover event is detected."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HoverArea&action=raw"
+}

@@ -1,0 +1,16 @@
+{
+  "description": "The TextureSheetAnimator component makes particles animate their texture over lifetime or duration.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "TileGridSize": "The amount of cells and rows that the texture atlas sheet has.",
+    "AnimationCycleCount": "How many times to cycle the animation during the specified time frame.",
+    "AnimationType": "The animation type to use for the texture sheet animation.",
+    "RowIndex": "The row index to start on.",
+    "UseRandomRow": "Whether to start the texture sheet animation in a random row.",
+    "StartWithRandomOffset": "Start the texture sheet animation in a random column."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextureSheetAnimator&action=raw"
+}

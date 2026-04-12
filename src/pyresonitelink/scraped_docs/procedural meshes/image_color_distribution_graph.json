@@ -1,0 +1,18 @@
+{
+  "description": "The ImageColorDistributionGraph component is used to make mesh data for a set of points with colors and sizes based on a provided image's pixels. The mesh needs to be used with Billboard geometry to be viewed properly.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Texture": "The texture to analyze and use to generate the vertex graph for this mesh.",
+    "ColorSpace": "The color space to use for X, Y, and Z coordinates on the graph for.",
+    "MaxTextureSize": "The max size of the image on one axis that this image will use when making the graph. The image gets resized internally to fit this size.",
+    "BaseSize": "The size of any color point on the graph at minimum.",
+    "AccumulateSize": "How much to add to the size of a graph point if a color is repeated with the same RGB values.",
+    "MaxSize": "The maximum size a color point on the graph can be.",
+    "Scale": "How much to scale the graph up or down.",
+    "AlphaThreshold": "if alpha is below this threshold, then don't add the color to the graph."
+  },
+  "methods": {},
+  "usage": "Attach this component to a slot, and place it into a Mesh Renderer Component with an Unlit Material set to use billboard geometry to view the mesh and its graph points.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ImageColorDistributionGraph&action=raw"
+}

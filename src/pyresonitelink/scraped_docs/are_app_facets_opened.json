@@ -1,8 +1,12 @@
 {
   "description": "The Are App Facets Opened node takes in a user and returns if that user's facet anchors are opened currently.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:User|User]])": "The user to check.",
+    "* ([[Type:bool|bool]])": "Returns if this user's facet anchors are opened currently."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AreAppFacetsOpened&action=raw"
 }

@@ -1,0 +1,12 @@
+{
+  "description": "The DebugSphereRaycast component is used to show the multiple hit normals (1 per collider) of a sweep raycast of a sphere. This essentially acts as a fat raycast, which has thickness. Unfortunately this raycast is only for Debug purposes. Is simulated on the host machine.",
+  "category": "Debug",
+  "fields": {
+    "Direction": "the direction and distance the raycast should go.",
+    "Radius": "How far the raycasts created should go."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugSphereRaycast&action=raw"
+}

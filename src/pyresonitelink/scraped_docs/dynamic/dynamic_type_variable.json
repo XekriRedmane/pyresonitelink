@@ -1,0 +1,13 @@
+{
+  "description": "The DynamicTypeVariable Component is used to define a Type as the value of a dynamic variable.",
+  "category": "Data:Dynamic",
+  "fields": {
+    "VariableName": "The name of the variable.",
+    "Value": "The value of the dynamic variable that keeps in sync with the variable's valye.",
+    "OverrideOnLink": "Whether to write the current value of the dynamic variable in a space when it connects to it with the one this component is storing."
+  },
+  "methods": {},
+  "usage": "For more info on Dynamic Variables and how they work including this type of component, see Dynamic Variables.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicTypeVariable&action=raw"
+}

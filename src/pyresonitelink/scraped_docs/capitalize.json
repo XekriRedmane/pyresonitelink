@@ -1,8 +1,12 @@
 {
-  "description": "The Capitalize node takes in a string and capitalizes the first letter of the string. Having a letter that is not in the first index of the string will not capitalize the string.",
+  "description": "The ``Capitalize`` node takes in a string and capitalizes the first letter of the string. Having a letter that is not in the first index of the string will not capitalize the string.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to capitalize.",
+    "* ([[String]])": "The capitalized string."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Capitalize&action=raw"
 }

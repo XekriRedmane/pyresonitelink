@@ -1,0 +1,16 @@
+{
+  "description": "This component is solely a joke, and is supposed to make a setting that marks U-GlitchFur as cute and cannot be changed. It only appears for that user.",
+  "category": "Uncategorized",
+  "fields": {
+    "AmCute": "An unchangeable bool that stays true for U-GlitchFur. The description reads: \"This setting indicates if the current user is very cute. When this setting is on, the current user makes a legally binding admission of their own cuteness.\""
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "If ``AmCute`` is ever disabled, it is re-enabled automatically within the next 1-10 seconds."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CutenessSettings&action=raw"
+}

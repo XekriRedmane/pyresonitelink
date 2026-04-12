@@ -1,0 +1,13 @@
+{
+  "description": "The LegacyRotation3DAdapter component can be used to convert legacy rotation values to the new particle system values.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The field to drive with the converted value.",
+    "Value": "The original rotation value.",
+    "ParticleMesh": "The mesh particle that was used with the original if any.",
+    "UsingStretch": "Whether or not stretch was used with the particle."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user. Used in legacy content.",
+  "notes": []
+}

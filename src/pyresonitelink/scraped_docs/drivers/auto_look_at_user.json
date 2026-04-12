@@ -1,0 +1,29 @@
+{
+  "description": "The AutoLookAtUser component can be used to make a slot rotate towards a given user or some user that is close to it.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "RetargetDistance": "The distance that the current target needs to be from the slot for it to pick a new target.",
+    "LerpSpeed": "The speed at which the slot rotates towards its target.",
+    "TargetedUser": "The user that the slot is currently looking at.",
+    "AutoTarget": "Whether or not the component should pick its own target.",
+    "ExcludeActiveUser": "If this is true and the slot with this component is parented to a user, it won't look at that user.",
+    "SwingReference": "The first axis in which to restrict rotation essentially.",
+    "TwistReference": "The second axis in which to restrict rotation essentially, for best results, make this axis perpendicular to ``SwingReference``.",
+    "MaxSwing": "How much this can rotate on the ``SwingReference`` axis.",
+    "MaxTwist": "How much this can rotate on the ``TwistReference`` axis.",
+    "_rotation": "The rotation field to drive with this component's calculations. Usually this is the slot that this component is on."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Issues",
+      "text": "None right now."
+    },
+    {
+      "title": "Related Components",
+      "text": "* LookAt"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AutoLookAtUser&action=raw"
+}

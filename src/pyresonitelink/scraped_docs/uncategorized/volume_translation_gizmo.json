@@ -1,0 +1,28 @@
+{
+  "description": "The VolumeTranslationGizmo component is used to move around and edit a volume object.",
+  "category": "Uncategorized",
+  "fields": {
+    "TargetSlot": "The slot to influence or a component this is on.",
+    "AutoPositionAtTargetSlot": "Whether to position the gizmo at ``TargetSlot``.",
+    "_interactingComponent": "The component like a Dev tool that is interacting with this gizmo.",
+    "_material": "The material being used for the gizmo visual.",
+    "_toolPoint": "The slot to position at the interacting tool's tip slot.",
+    "_activePoint": "The slot to position at the active point.",
+    "_lineRoot": "The slot that stores the line segment for tip based movement rather than projected mode.",
+    "_lineSegment": "The mesh being used for the line visual to the interacting tool tip.",
+    "_snapHighlight": "The slot storing the gizmo snap highlight visual.",
+    "PointSpace": "The space that the translation point is in.",
+    "TargetPoint": "The field in which to drive for the target point editing.",
+    "UseCustomVisual": "Whether or not to use a custom visual.",
+    "_customVisualRoot": "The root of the custom visual element.",
+    "_visualRoot": "The root of the default visual.",
+    "CubeSize": "The size of the visual root.",
+    "CreateUndoSteps": "Whether or not to create Undo steps for this gizmo.",
+    "_cubeSize": "The field to drive with the cube size.",
+    "_colliderSize": "The field to drive with the collider size."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VolumeTranslationGizmo&action=raw"
+}

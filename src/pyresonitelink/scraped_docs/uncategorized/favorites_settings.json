@@ -1,0 +1,11 @@
+{
+  "description": "The FavoritesSettings component is used to handle favorite settings in the settings tab inside the Dash Menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "AutoLoadCloudHome": "Whether to automatically load the cloud home the user has set."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FavoritesSettings&action=raw"
+}

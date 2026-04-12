@@ -1,0 +1,18 @@
+{
+  "description": "The CloudUserInfo component can be used to retrieve information about a user from the Resonite cloud, such as their name or profile picture, based on their user ID.",
+  "category": "Cloud:Indicators",
+  "fields": {
+    "UserId": "The ID of the user that this component should display information about",
+    "IsLoaded": "Whether or not the given user's information has been loaded",
+    "Username": "The name of the given user",
+    "RegistrationDate": "The time that the given user registered their account",
+    "OriginalRegistrationDate": "The time that the given user registered their account which they migrated from.",
+    "IconURL": "A URL, pointing to the user's profile picture",
+    "IsContact": "Whether or not this user is one of your contacts (only works in userspace)",
+    "_loadedUserId": "The user ID corresponding to the information this component is currently outputting. This is an internal value and shouldn't be edited manually."
+  },
+  "methods": {},
+  "usage": "To get info about a user, type their user ID into the ``UserId`` field of the component.\n\nYou can get their user ID through multiple ways, for example using the Protoflux node or Resonite's cloud API.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CloudUserInfo&action=raw"
+}

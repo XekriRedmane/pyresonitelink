@@ -1,0 +1,15 @@
+{
+  "description": "The Locale Settings component is part of the Settings system and controls the platform's language.",
+  "category": "Uncategorized",
+  "fields": {
+    "PrimaryInterfaceLocaleCode": "The primary language for the UI.",
+    "CultureLocaleCode": "The locale code for the primary language, Ex: \"en_us\", \"ru\", or \"pl_PL\"",
+    "UseImperialUnits": "Whether to use Imperial or Metric units regardless of language selection."
+  },
+  "methods": {
+    "SetCurrentLocale": "Called when the set current locale button is touched."
+  },
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocaleSettings&action=raw"
+}

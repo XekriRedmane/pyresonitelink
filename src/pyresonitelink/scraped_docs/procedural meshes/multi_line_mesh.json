@@ -1,0 +1,11 @@
+{
+  "description": "The MultiLineMesh component generates geometry for use with a MeshRenderer. For now, this component is unusable without Mods due to having a list type object.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Lines": "A set of lines that make up the source of the data for the geometry of this mesh."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a MeshRenderer to view the generated geometry. Don't forget to use a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MultiLineMesh&action=raw"
+}

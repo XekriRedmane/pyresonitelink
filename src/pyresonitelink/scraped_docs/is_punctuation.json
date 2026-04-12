@@ -1,8 +1,12 @@
 {
   "description": "The Is Punctuation node takes in a character literal and returns if that character is a punctuation character.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character literal to check.",
+    "* ([[Type:bool|bool]])": "Returns ``true`` if ``Character`` is a punctuation character, ``false`` otherwise. Punctuation characters recognized by this node are given the Unicode delegation ``Pc``, ``Pd``, ``Ps``, ``Pe``, ``Pi``, ``Pf``, or ``Po``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsPunctuation&action=raw"
 }

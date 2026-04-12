@@ -1,0 +1,9 @@
+{
+  "description": "Frooxius commented on May 27, 2020\nHmm, this component is technically deprecated with the voice switching system and it will have to be redesigned. It works by modifying the voice AudioOutput on the user, but with the introduction of the voice controls those now control the user's voice.\n\nThis component isn't usable now. and try AudioOutput instead.",
+  "category": "With Nested Enums",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabbableUserVoiceModifier&action=raw"
+}

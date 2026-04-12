@@ -1,8 +1,12 @@
 {
   "description": "Finger Node Index is a node that returns the finger index a BodyNode has, or -1 if it isn't a body node that is part of a finger.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Node": "The node to check for a finger node index for",
+    "* ([[Type:Int|int]])": "The finger segment index of the given Node (BodyNode) or -1 if Node (BodyNode) is not a finger segment. It will return a value from 0 to 23, counting in the order the finger nodes appear on the BodyNode page for the fingers."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FingerNodeIndex&action=raw"
 }

@@ -1,8 +1,14 @@
 {
-  "description": "Sets the offset of the provided Instance (Slot) in the inspector compared to others that have the same immediate parent to Index (Int).",
+  "description": "Sets the offset of the provided Instance (Slot) in the inspector compared to others that have the same immediate parent to Index (Int).\n\nIt should be noted that this node may update the OrderOffset of the other slots with the same parent (ie. siblings) to ensure that the Instance slot gets the correct child index.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call to set the index of Instance (Slot) to Index (Int).",
+    "Instance": "The slot to set the child index of.",
+    "Index": "The child index to set Instance (Slot) to.",
+    "Next": "sends an impulse after * (Call) is called and Instance (Slot) has had it's index set to Index (Int)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetChildIndex&action=raw"
 }

@@ -1,8 +1,12 @@
 {
-  "description": "The Local Screen Point To Direction node takes in a normalized screen space (0 to 1 along the user's screen in the X and Y position), and converts it to a direction in world space. This node just takes where you are looking and points it in the direction outward from your camera/screen.",
+  "description": "The Local Screen Point To Direction node takes in a normalized screen space (``0`` to ``1`` along the user's screen in the X and Y position), and converts it to a direction in world space. This node just takes where you are looking and points it in the direction outward from your camera/screen.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "NormalizedScreenPoint": "The screen point from the user's perspective.",
+    "* ([[Type:float3|float3]])": "Returns the direction from this point."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalScreenPointToDirection&action=raw"
 }

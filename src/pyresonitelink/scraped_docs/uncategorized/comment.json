@@ -1,0 +1,11 @@
+{
+  "description": "Comment is a component that allows you to store text for another person using an inspector, ex: another content creator. This is useful for explaining what a slot is for or does.",
+  "category": "Uncategorized",
+  "fields": {
+    "Text": "The text to store for others to see when in an inspector"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Comment&action=raw"
+}

@@ -1,7 +1,12 @@
 {
-  "description": "Writes takes a Variable as an input and writes Value to the field Variable.",
+  "description": "Writes take Variable (Variable) as an input, and the type that Variable wraps will determine what Value (Generic) will take as a value. The node will then write Value (Generic) to the field Variable (Variable) wraps.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to write the value.",
+    "Value": "Value to write to the value pointed to by Variable (Variable)",
+    "OnWritten": "sends an impulse after * (Call) has been impulsed and the value has been written.",
+    "OnFail": "sends an impulse after * (Call) has been impulsed and the value wasn't able to be written due to a missing target or a missing Variable (Variable) value"
+  },
   "methods": {},
   "usage": "",
   "notes": [
@@ -9,5 +14,6 @@
       "title": "Optimizations",
       "text": "The Write node can also be used to write to a Protoflux Source node instead of writing to a variable that is connected to a Drive node, enabling programs be be written with one less supporting node per Write node"
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Write&action=raw"
 }

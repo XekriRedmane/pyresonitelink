@@ -1,13 +1,16 @@
 {
-  "description": "The Value Field DriveT node creates a drive on a field with the value of its input. The field type must be a ProtoFlux value type.",
+  "description": "due to wiki limitations, this node does not currently have an HTML rendering of the node.\n\nThe Value Field Drive&lt;T&gt; node creates a drive on a field with the value of its input. The field type must be a ProtoFlux value type.\n\nSee ProtoFlux Tool Usage for how to make this node.\n\nThe field that is driven is chosen on the `Proxy` sub-class of the component.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* (Generic)": "A value to drive the internal field with."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "See also",
-      "text": "* Object Field Drive\n\nProtoFlux:Core\nListener nodes"
+      "text": "* Object Field Drive"
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueFieldDrive&action=raw"
 }

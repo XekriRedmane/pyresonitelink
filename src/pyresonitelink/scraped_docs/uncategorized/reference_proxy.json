@@ -1,0 +1,12 @@
+{
+  "description": "The ReferenceProxy component is used to make a grabbed item this is on act as the reference this refers to. This is also generated when a reference in an Scene Inspector is grabbed in the form of a block of text showing the reference and its id.",
+  "category": "Uncategorized",
+  "fields": {
+    "Reference": "The reference this component should point to for grabbable objects, making them like inspector grab cards.",
+    "SpawnInstanceOnTrigger": "Whether to spawn an inspector when clicking primary with the grabbable this is on is being held."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with an IGrabbable to make the grabbable act as the reference value itself.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceProxy&action=raw"
+}

@@ -1,0 +1,16 @@
+{
+  "description": "The AxisDistanceHapticFilter multiplicatively changes the intensity of a HapticVolume depending on the dot product from the vector of the device's position in local space to this component and ``Axis``. Essentially the smaller the angle between the device local position from 0 direction and the ``Axis`` direction the smaller the distance.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics:Filters",
+  "fields": {
+    "Axis": "The axis to check distance from.",
+    "StartDistance": "The starting distance to map to ``StartIntensity`` for the intensity distance range.",
+    "EndDistance": "The ending distance to map to ``EndIntensity`` for the intensity distance range.",
+    "StartIntensity": "When at ``StartDistance`` map the device intensity to this.",
+    "EndIntensity": "When at ``EndDistance`` map the device intensity to this.",
+    "Power": "How much to amplify the haptics effect in general."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with a valid and working HapticVolume to add to the list of multiplicative haptic filters.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AxisDistanceHapticFilter&action=raw"
+}

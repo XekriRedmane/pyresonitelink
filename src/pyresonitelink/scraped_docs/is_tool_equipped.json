@@ -1,8 +1,12 @@
 {
   "description": "The Is Tool Equiped node checks to see if a tool reference is equipped on a user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:ITool|ITool]])": "The tool to check.",
+    "* ([[Type:bool|bool]])": "The result if this tool is equipped."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsToolEquipped&action=raw"
 }

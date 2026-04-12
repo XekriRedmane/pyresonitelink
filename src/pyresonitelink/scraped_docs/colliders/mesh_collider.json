@@ -1,0 +1,16 @@
+{
+  "description": "A mesh collider allows for making a 1:1 collider of the given ``Mesh``.",
+  "category": "Physics:Colliders",
+  "fields": {
+    "Mesh": "The mesh to make a collision shape made of groups of polygons out of.",
+    "Sidedness": "Front or back sided collisions.",
+    "ActualSpeculativeMargin": "Essentially the room for error on the collisions for this collider."
+  },
+  "methods": {
+    "ConvexDecomposition": "Called when the create convex hull decomposition button is touched.",
+    "ReplaceWithBox": "Called when the replace with box collider button is touched."
+  },
+  "usage": "General practice is to use mesh colliders very sparingly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeshCollider&action=raw"
+}

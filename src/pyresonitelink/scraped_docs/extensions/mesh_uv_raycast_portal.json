@@ -1,0 +1,22 @@
+{
+  "description": "This component also known as a raycast portal allows users to interact with objects through a camera.",
+  "category": "Physics:Extensions",
+  "fields": {
+    "Offset": "How far back from the camera's actual view direction to project from",
+    "RayExit": "Usually a camera",
+    "UVOffset": "The added offset to the UV point you hit on the mesh before it's projected out; best to keep this (0,0) unless needed",
+    "UVScale": "The multiplied offset to the UV point you hit on the mesh before it's projected out; best to keep this (1,1) unless needed",
+    "RepeatUV": "Whether to repeat between the 0-1 range when the laser on the source hits a UV beyond 0-1",
+    "OverrideHitTriggers": "Whether to hit colliders, requires Filter to have a sync delegate, but doesn't need to be enabled for this component to work",
+    "Filter": "This is a field usually used by the dash manager in local space. Very hard to use, and is not required at all",
+    "FilterMode": "how to use the ``Filter`` if provided."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "* The camera needs to be in orthographic mode for best results. it still works in perspective but because of perspective warping it only works well in the center. This component is used for the dash, but can be utilized in real world space, allowing for some interesting effects.\n\n* This component only works with mesh colliders. The type of mesh does not matter, since it uses the UVs; the mesh triangles have to determine what point on the camera output to project the raycast out of.\n\n* The mesh collider can only be a front sided collider for this component to work.\n\n* Only user interaction lasers are allowed to pass through, and only press button interactions."
+    }
+  ]
+}

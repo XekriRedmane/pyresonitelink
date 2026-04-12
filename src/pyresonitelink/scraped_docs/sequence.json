@@ -1,8 +1,12 @@
 {
-  "description": "The Sequence node performs each of the provided impulses in order, waiting for the chain of each impulse to finish before executing the next one.",
+  "description": "The Sequence node performs each of the provided impulses in order, waiting for the chain of each impulse to finish before executing the next one.\n\nThis can be useful for organizational purposes or to avoid code duplication if something needs to be performed after a bunch of branching paths.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Start execution of the node.",
+    "Calls": "The list of impulses to fire in order. This node will start at the first impulse, and after the context of the impulse finishes, the next impulse is fired. Repeats until the last impulse finishes."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Sequence&action=raw"
 }

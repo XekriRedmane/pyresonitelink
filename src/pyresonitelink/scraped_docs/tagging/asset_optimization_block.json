@@ -1,0 +1,9 @@
+{
+  "description": "The AssetOptimizationBlock component is used to prevent the asset optimization tasks in the game from slots tagged by this component.\nCurrently according to decompiled code as of 13/10/2024, asset optimization block just prevents materials on the same slot that are the same value wise from being merged.",
+  "category": "Transform:Tagging",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AssetOptimizationBlock&action=raw"
+}

@@ -1,0 +1,16 @@
+{
+  "description": "The Mesh Plane Brush Tool component is used to draw non flat planes where you can cut holes into the mesh with a second brush stroke after the first one that defines the initial plane.",
+  "category": "Tools:Brushes",
+  "fields": {
+    "StrokeGroupActive": "Whether the current stroke group is active",
+    "MaterialPreviews": "the mesh renderers being used to preview the stroke",
+    "_currentMesh": "The current mesh being used to show the brush stroke.",
+    "_currentHole": "The current hole being cut into the constrained delaunay mesh."
+  },
+  "methods": {
+    "ChangeSize": "Used to change the size of the brush."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeshPlaneBrushTool&action=raw"
+}

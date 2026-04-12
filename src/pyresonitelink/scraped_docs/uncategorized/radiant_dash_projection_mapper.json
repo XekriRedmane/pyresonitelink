@@ -1,0 +1,16 @@
+{
+  "description": "See Dash menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "Dash": "The Dash this is pointing to.",
+    "Root": "The root of the thing this is trying to project from.",
+    "Mesh": "The mesh this is trying to project to.",
+    "Camera": "The camera that is rendering ``Root``.",
+    "UVScale": "The scale field to drive in order to do the remapping.",
+    "UVOffset": "The offset field to drive in order to do the remapping."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RadiantDashProjectionMapper&action=raw"
+}

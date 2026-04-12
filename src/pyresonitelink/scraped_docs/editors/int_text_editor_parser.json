@@ -1,0 +1,17 @@
+{
+  "description": "The IntTextEditorParser component takes in a ``ParsedValue`` and if there is a TextEditor on the same slot, it will send the value through the text editor and into either a Text or a TextRenderer component.",
+  "category": "Common UI:Editors",
+  "fields": {
+    "ParseContinuously": "If true, makes the value always update and parse. If false, it only updates when submitted.",
+    "UpdateStringFromValue": "If true, will update the string value from this parsed value.",
+    "ParsedValue": "The value that was read from the text field.",
+    "Min": "The minimum value that can be read.",
+    "Max": "The maximum value that can be read.",
+    "Increments": "The output value will round down to the nearest increment multiple of this value.",
+    "StringFormat": "Lets you format the string for the text output."
+  },
+  "methods": {},
+  "usage": "Place on the same Slot as a TextEditor and anything entered into the text editor will be attempted to be parsed as a Int and output via the ``ParsedValue`` field.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:IntTextEditorParser&action=raw"
+}

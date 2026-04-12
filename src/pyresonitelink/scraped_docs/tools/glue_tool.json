@@ -1,0 +1,13 @@
+{
+  "description": "See Glue Tool.",
+  "category": "Tools",
+  "fields": {
+    "GlueMode": "The mode that newly created Glue spheres should be set to.",
+    "_indicatorColor": "The field to drive with the current indicator color.",
+    "_activeGlues": "List of glue AOE fields to glue when hitting secondary."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GlueTool&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The EnumFeed component acts like a kind of data feed that provides a list of enums that can be further used by feeds with filtering and searching.",
+  "category": "Radiant UI:Data Feeds:Feeds",
+  "fields": {
+    "DisplayOrder": "Whether to feed the enums in order.",
+    "Distinct": "Whether the enums should be distinct when gathering.",
+    "IncludeObsolete": "Whether the enums should be gathered despite being tagged as obsolete."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:EnumFeed&action=raw"
+}

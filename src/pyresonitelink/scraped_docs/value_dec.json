@@ -1,8 +1,12 @@
 {
-  "description": "The Value Dec node takes in a value and returns that value -1.",
+  "description": "The Value Dec node takes in a value and returns that value -1.\n\nThis node is similar to the Sub node, but setting the sub node to only subtract 1. |suggestion}}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "N": "The value to decrement by 1.",
+    "* (Pseudo-Generic)": "Returns the decremented value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueDec&action=raw"
 }

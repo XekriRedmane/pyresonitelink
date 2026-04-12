@@ -1,8 +1,14 @@
 {
   "description": "String Insert is a ProtoFlux node that allows for inserting Value (String) into Str (String) at position StartIndex (int).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to be inserted into.",
+    "Value": "The string to insert into Str (String).",
+    "StartIndex": "The place to insert Value (String) into Str (String).",
+    "* ([[Type:String|String]])": "Returns Str (String) with Value (String) inserted at position StartIndex (int)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:StringInsert&action=raw"
 }

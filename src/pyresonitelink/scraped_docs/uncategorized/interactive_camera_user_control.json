@@ -1,0 +1,14 @@
+{
+  "description": "See Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "_canvas": "The canvas being used to show settings.",
+    "_panel": "The legacy panel being used as a base to interact with the settings.",
+    "Control": "see Interactive Camera Control.",
+    "_uiRoot": "Where to store UI elements."
+  },
+  "methods": {},
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraUserControl&action=raw"
+}

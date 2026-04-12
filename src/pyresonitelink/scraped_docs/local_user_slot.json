@@ -1,8 +1,11 @@
 {
-  "description": "The Local User Slot node gets the local user slot, which is the root of the user.",
+  "description": "The ``Local User Slot`` node gets the local user slot, which is the root of the user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Slot]])": "The local user slot on the local user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalUserSlot&action=raw"
 }

@@ -1,0 +1,14 @@
+{
+  "description": "The LegacyAnimationTypeAdapter component is used in converted legacy particle systems that were converted to PhotonDust as part of The Performance Updates.",
+  "category": "Uncategorized",
+  "fields": {
+    "Source": "The original animation type from legacy content.",
+    "Target": "The target field to drive with the legacy animation values.",
+    "AnimationTiles": "The field to set to the amount of animation tiles.",
+    "AnimationEnabled": "The field to drive with whether animation should be enabled."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user. Don't use this in new content!",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyAnimationTypeAdapter&action=raw"
+}

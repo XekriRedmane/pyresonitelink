@@ -1,0 +1,19 @@
+{
+  "description": "The TouchToggle component acts as a button that works as a check box, and the different Toggle on and off action can be mapped to certain Touch events.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "State": "The checkbox state of this touch toggle.",
+    "EventType": "the type of touch event to listen for different event states from.",
+    "ToggleEvent": "The event state needed when touching to Toggle the ``State`` value.",
+    "OnEvent": "The event state needed when touching to switch to true the ``State`` value.",
+    "OffEvent": "The event state needed when touching to switch to false the ``State`` value.",
+    "Vibrate": "How to vibrate the user's hand when they touch the toggle.",
+    "EditModeOnly": "Whether this is only available in edit mode.",
+    "ActiveUserFilter": "how to filter users in the session who can interact with this component depending on the parent user.",
+    "__legacyActiveUserRootOnly": "Whether to use the legacy active user root. Internal."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TouchToggle&action=raw"
+}

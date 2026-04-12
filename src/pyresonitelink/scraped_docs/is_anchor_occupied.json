@@ -1,8 +1,12 @@
 {
   "description": "Is Anchor Occupied Is a ProtoFlux node that returns whether an anchor has a user in it or not.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Anchor": "The anchor to check for if a user is sitting in it.",
+    "* ([[Type:Bool|bool]])": "Whether Anchor (IAvatarAnchor) has a user in it or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsAnchorOccupied&action=raw"
 }

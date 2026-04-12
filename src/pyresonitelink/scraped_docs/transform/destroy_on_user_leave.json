@@ -1,0 +1,16 @@
+{
+  "description": "The DestroyOnUserLeave component causes the parent slot to be deleted when the user specified in ``User`` leaves the world.",
+  "category": "Transform",
+  "fields": {
+    "TargetUser": "The user that will cause the parent slot to be deleted upon leaving"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "== Examples =="
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DestroyOnUserLeave&action=raw"
+}

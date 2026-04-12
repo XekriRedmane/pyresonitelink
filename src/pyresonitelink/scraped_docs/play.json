@@ -1,8 +1,13 @@
 {
-  "description": "Play is a ProtoFlux node that plays the provided Target (IPlayable) when * (Call) is called. Play doesn't change the current Position Output, it essentially sets Is Playing Output to true.",
+  "description": "Play is a ProtoFlux node that plays the provided Target (IPlayable) when * (Call) is called.\nPlay doesn't change the current Position Output, it essentially sets Is Playing Output to true.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Impulse this to play the provided Target (IPlayable)",
+    "Target": "The IPlayable to play.",
+    "Next": "Sends an impulse after * (Call) was called and it successfully started playing."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Play&action=raw"
 }

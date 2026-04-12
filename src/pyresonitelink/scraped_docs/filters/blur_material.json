@@ -1,0 +1,9 @@
+{
+  "description": "The BlurMaterial Component is used to blur objects rendered behind it, by first rendering everything behind it using z-test and then grabbing the pixels, then creating spread transparent ghost images of the original pixels to give the illusion of blur.",
+  "category": "Assets:Materials:Filters",
+  "fields": {},
+  "methods": {},
+  "usage": "Used to make drunk effects, privacy glass, or magic effects.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BlurMaterial&action=raw"
+}

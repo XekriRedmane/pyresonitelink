@@ -1,8 +1,11 @@
 {
-  "description": "The World Mobile Friendly node returns this world's \"Mobile Friendly\" setting from the Session tab in the Dash.",
+  "description": "The ``World Mobile Friendly`` node returns this world's \"Mobile Friendly\" setting from the Session tab in the Dash.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:bool|bool]])": "The world's mobile friendly setting."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldMobileFriendly&action=raw"
 }

@@ -1,13 +1,18 @@
 {
   "description": "Color From Hex Code is a ProtoFlux node that parses a hex color code such as \"FFAEBB\" into a Color.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "HexCode": "The hex code to turn into a color. Turns this hex code into a color. The code must be a \"#\" followed by 3, 4, 6 or 8 hexadecimal digits. The 4 and 8 digit forms specify an alpha component, if not given the alpha component is taken to be 1.",
+    "Color": "A color made from the provided hex code. This value is not defined and may have nonsense values if parsing failed (Parsed = false).",
+    "Parsed": "True if parsing succeeded."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "Gallery",
-      "text": "File:Protoflux_Color_From_Hex_Code.webp|How to use Color From Hex Code to turn a string hex into a color.\n\nProtoFlux:Colors"
+      "text": "File:Protoflux_Color_From_Hex_Code.webp|How to use Color From Hex Code to turn a string hex into a color."
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ColorFromHexCode&action=raw"
 }

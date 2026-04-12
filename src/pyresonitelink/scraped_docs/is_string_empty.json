@@ -1,8 +1,12 @@
 {
   "description": "Is String Empty is a ProtoFlux node that checks if A (String) is empty, but not null or white space.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The string to check if the string is null.",
+    "* ([[Type:Bool|bool]])": "If A (String) is empty, but not null or white space."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsStringEmpty&action=raw"
 }

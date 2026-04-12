@@ -1,8 +1,12 @@
 {
-  "description": "The Character Ground Collider node takes in a character controller reference and returns an ICollider from what it detects under this slot's character controller component. \"Ground\" refers to your local rotation, so you could be standing on the ceiling and this would detect that the ceiling is your \"ground\".",
+  "description": "The ``Character Ground Collider`` node takes in a character controller reference and returns an ICollider from what it detects under this slot's character controller component. \"Ground\" refers to your local rotation, so you could be standing on the ceiling and this would detect that the ceiling is your \"ground\".",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The Character Controller reference.",
+    "* ([[Type:ICollider|ICollider]])": "The \"ground\" this character controller detects (whatever it thinks ground is, determined by what is under it)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CharacterGroundCollider&action=raw"
 }

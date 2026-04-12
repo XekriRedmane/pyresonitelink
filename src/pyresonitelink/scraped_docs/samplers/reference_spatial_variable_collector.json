@@ -1,0 +1,13 @@
+{
+  "description": "The Reference Spatial Variable Collector`1 component is specifically for reference types This drives a list of references, filling it with all the found spatial variables. It does this by reading all spatial variables of the reference type matching this one, and in range, and puts them into the referenced list.",
+  "category": "Data:Spatial:Samplers",
+  "fields": {
+    "ReferenceList": "The list to populate with the spatial variables of all spatial fields intersecting the point that is the slot this component is on.",
+    "VariableName": "The variable to sample for.",
+    "DefaultTarget": "The value to default to when no references can be sampled at all."
+  },
+  "methods": {},
+  "usage": "Attach to a slot which will be used as the point to sample from. give a target list to drive, and the list will populate with found values",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceSpatialVariableCollector&action=raw"
+}

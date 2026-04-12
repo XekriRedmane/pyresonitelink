@@ -1,8 +1,14 @@
 {
-  "description": "The Value Lerp Unclamped node takes in a starting point and an ending point along with a lerp value of which it lerps linearly towards, then returns the value over time.",
+  "description": "The Value Lerp Unclamped node takes in a starting point and an ending point along with a lerp value of which it lerps linearly towards, then returns the value over time.\n\nThis is unclamped, meaning that you are not stuck with being in between the ``From`` and ``To`` values, which can exceed past those.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "From": "The starting point of this lerp.",
+    "To": "The ending point of this lerp.",
+    "Lerp": "The lerp value between the start and end points.",
+    "* (Pseudo-Generic)": "Returns the value currently being lerped."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueLerpUnclamped&action=raw"
 }

@@ -1,8 +1,12 @@
 {
-  "description": "The Is App Dash Opened node returns if a user's Dash is opened.",
+  "description": "The ``Is App Dash Opened`` node returns if a user's Dash is opened.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:bool|bool]])": "The user's dash being open or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsAppDashOpened&action=raw"
 }

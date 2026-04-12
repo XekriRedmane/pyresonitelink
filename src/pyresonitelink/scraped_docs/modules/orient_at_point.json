@@ -1,0 +1,13 @@
+{
+  "description": "The Orient At Point component makes particles in a particle system orient at a point in a specified transform space.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "PointSpace": "The tranform space ``TargetPoint`` and ``Up`` are in.",
+    "TargetPoint": "The point that particles should point at.",
+    "Up": "The direction that should be up locally for each particle."
+  },
+  "methods": {},
+  "usage": "used with Photon Dust systems.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:OrientAtPoint&action=raw"
+}

@@ -1,0 +1,20 @@
+{
+  "description": "A ray driver is a component that takes a start origin and a direction and drives point A and B via a RayCast, keeping the distance between the two below MaxDistance.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "MaxDistance": "the max distance that A and B can be from each other",
+    "PointA": "what to drive with the local space start position of the Raycast",
+    "PointB": "what to drive with the local space end point of the raycast",
+    "LocalOrigin": "the local space start point of the raycast",
+    "LocalDirection": "the direction in local space to fire the raycast in."
+  },
+  "methods": {},
+  "usage": "* LaserPointer Tool with RayDriver by ProbablePrime",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "RaycastDriver component"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RayDriver&action=raw"
+}

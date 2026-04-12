@@ -1,8 +1,13 @@
 {
-  "description": "The Set DateTime Kind node takes in a DateTime and an enum Kind of DateTime, then returns the new DateTime value.",
+  "description": "The ``Set DateTime Kind`` node takes in a DateTime and an enum Kind of DateTime, then returns the new DateTime value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "DateTime": "The DateTime to change.",
+    "Kind": "The kind to set for this DateTime.",
+    "* ([[Type:DateTime|DateTime]])": "The new DateTime value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetDateTimeKind&action=raw"
 }

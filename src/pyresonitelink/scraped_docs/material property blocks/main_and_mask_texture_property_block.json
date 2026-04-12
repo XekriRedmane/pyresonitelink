@@ -1,0 +1,12 @@
+{
+  "description": "The MainAndMaskTexturePropertyBlock component is used to modify material properties on mesh renderers and skinned mesh renderers as part of their material Property blocks. This is useful in instances where having lots of extra materials is less performant than modifying a material using a Property Block.",
+  "category": "Assets:Material Property Blocks",
+  "fields": {
+    "Texture": "The texture to replace the Main texture on a material with.",
+    "MaskTexture": "The texture to replace the Mask texture on a material with."
+  },
+  "methods": {},
+  "usage": "Can be used to optimize many materials that only differ in main and mask texture properties.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MainAndMaskTexturePropertyBlock&action=raw"
+}

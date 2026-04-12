@@ -1,0 +1,11 @@
+{
+  "description": "The InteractionHandlerRelay component is used internally by the game engine to find the source handler of a tool or slot.",
+  "category": "Uncategorized",
+  "fields": {
+    "CommonTool": "The handler this is a relay for."
+  },
+  "methods": {},
+  "usage": "not used by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractionHandlerRelay&action=raw"
+}

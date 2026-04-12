@@ -1,0 +1,11 @@
+{
+  "description": "A snap point is a component that when called by another component always returns the point of the slot it is on (0,0,0). Usually this is used in components like the Multi User Avatar Anchor Component to determine where to place the anchors upon clicking (click point is used in such case). This component will take a given point by another component and return the position the slot is on, acting as a nullifier of incoming data.\n\nThe functionality of this component is internal, and cannot be used by ProtoFlux to snap points using in game code.",
+  "category": "Transform:Snapping",
+  "fields": {
+    "SnapParent": "Where to put slots if the component is being used for slot placement."
+  },
+  "methods": {},
+  "usage": "Used as an anchor point generator in the Multi User Avatar Anchor Component and drawing tools.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SnapPoint&action=raw"
+}

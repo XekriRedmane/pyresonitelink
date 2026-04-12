@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan Milliseconds node takes in a TimeSpan and returns with only the amount of millisecondsin that TimeSpan. Anything other than the milliseconds will be ignored.",
+  "description": "The ``TimeSpan Milliseconds`` node takes in a TimeSpan and returns with only the amount of millisecondsin that TimeSpan. Anything other than the milliseconds will be ignored.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "TimeSpan": "The TimeSpan we are getting info from.",
+    "* ([[Type:int|int]])": "Returns the amount of millisecondsin this TimeSpan as an int."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanMilliseconds&action=raw"
 }

@@ -1,0 +1,20 @@
+{
+  "description": "The RaycastDriver component drives the position of the Slot it is attached to to the location of the hit point of a raycast and aligns its rotation to the normal of the hit object.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "IgnoreHierarchy": "a hiearchy of slots which to ignore the colliders for",
+    "FilterDistance": "ignore hit detections before this distance.",
+    "Origin": "The slot to start the raycast from.",
+    "Offset": "The offset from ``Origin`` before starting the raycast.",
+    "Direction": "The direction in ``Origin``'s local space to shoot in.",
+    "MaxDistance": "The maximum distance to raycast for.",
+    "NoHitDistance": "How far to raycast shoot for in meters till reporting no hit.",
+    "Filter": "A sync delegate that takes a collider and returns a bool. if a collider returns false from this sync delegate, it is ignored when raycasting for objects.",
+    "_positionDrive": "The position field to drive. This does not actually affect the field that is driven, but if it is not filled, the component will not function.",
+    "_rotationDrive": "The rotation field to drive. This does not actually affect the field that is driven, but if it is not filled, the rotation of the slot is not changed. Aligns itself to the normal of the surface this raycast hit, or ``(0,0,0)``."
+  },
+  "methods": {},
+  "usage": "When placed on a slot, ``_positionDrive`` and ``_rotationDrive`` are automatically filled to the slot's position and rotation. These fields are not actually effective, as this component always writes to the position/rotation of the slot it is on. However, if either of these fields are omitted, the respective functionality of the raycast is not performed.\n\nThe raycast is constructed in the local coordinate space of ``Origin``, where ``Offset`` controls the origin of the ray relative to the origin and ``Direction`` controls the direction of the ray relative to the origin.\n\n``MaxDistance`` controls the maximum distance that the raycast will travel. If a raycast is unable to make contact with a collider within this distance, the position of the slot will be set to ``NoHitDistance`` in the direction of the raycast. These two distances are in global scale, and are not affected by either the slot's local scale or the scale of the ``Origin`` slot.\n\nIf the ray hits a collider, the rotation of the slot will be aligned to the normal of the hit point. This rotation can be transformed into the normal vector by using the Get Forward node on the RaycastDriver slot. If the raycast does not hit a collider, the rotation will be set to ``(0, 0, 0)``.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RaycastDriver&action=raw"
+}

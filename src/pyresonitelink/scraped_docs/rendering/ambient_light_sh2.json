@@ -1,0 +1,12 @@
+{
+  "description": "The Ambient Light SH2 component creates ambient lighting data that creates global colored light using sampling from a Level 2 Spherical Harmonic type ColorX.",
+  "category": "Rendering",
+  "fields": {
+    "AmbientLight": "The spherical harmonic to sample for ambient lighting."
+  },
+  "methods": {
+    "SetActive": "Make this ambient lighting component the current world ambient light."
+  },
+  "usage": "",
+  "notes": []
+}

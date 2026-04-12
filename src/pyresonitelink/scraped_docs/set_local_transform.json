@@ -1,8 +1,16 @@
 {
   "description": "The Set Local Transform node sets the input slot's position, rotation and scale to the provided values in local coordinate space.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Sets the Instance slot's local transform when an impulse is received.",
+    "Instance": "The slot whose local transform is set. Default is null, the node does not function without this input.",
+    "Position": "The local position the input Instance slot is set to. Default is [0;0;0].",
+    "Rotation": "The local rotation the input Instance slot is set to. Default is [0;0;0].",
+    "Scale": "The local scale the input Instance slot is set to. Default is [1;1;1].",
+    "Next": "An impulse is fired whenever the Instance slot's transform is set after the node receives an impulse. No impulse is fired from this output if the Instance input is null."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetLocalTransform&action=raw"
 }

@@ -1,0 +1,15 @@
+{
+  "description": "The AudioDeviceIndexFinder component only works in user space, and is used to find an audio device by name and get info about it.",
+  "category": "Audio:Utility",
+  "fields": {
+    "DeviceIndex": "The device index if found",
+    "DeviceName": "the name to use when looking for a device",
+    "IsAppDefault": "Whether this device is resonite's current default",
+    "IsSystemDefault": "Whether this device is the user's OS current default",
+    "DeviceType": "The type of audio device this is."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioInputDeviceInfo&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The ObjectScroller component acts as a way to scroll a list of items with sizes by offsetting them within a region they should appear within. Objects outside of the region get disabled until the ``Offset`` allows them to appear within it again.",
+  "category": "With Nested Types",
+  "fields": {
+    "Items": "A list of items to move and activate/deactivate if they are within/outside of the ``RegionSize``",
+    "Offset": "How much to offset the positions of ``Items`` in order to scroll them.",
+    "RegionSize": "The size area objects have to be touching from their current position and size after ``Offset`` is applied in order to stay visible."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and add/setup ``Items`` entries to begin use.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ObjectScroller&action=raw"
+}

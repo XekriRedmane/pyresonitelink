@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan Hours node takes in a TimeSpan and returns with only the amount of hours in that TimeSpan. Anything other than the hours will be ignored.",
+  "description": "The ``TimeSpan Hours`` node takes in a TimeSpan and returns with only the amount of hours in that TimeSpan. Anything other than the hours will be ignored.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "TimeSpan": "The TimeSpan we are getting info from.",
+    "* ([[Type:int|int]])": "Returns the amount of hours in this TimeSpan as an int."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanHours&action=raw"
 }

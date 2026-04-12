@@ -1,0 +1,12 @@
+{
+  "description": "Data Preset reference is a component that takes any reference type for PresetReference. When this is triggered by a DataPreset, this sets ``TargetReference`` to ``PresetReference``.\n}}",
+  "category": "Data:Presets",
+  "fields": {
+    "PresetReference": "The field reference for the preset. Since this is a generic component, it can be used with any type of reference.",
+    "TargetReference": "A reference to the reference field of the same type as PresetReference."
+  },
+  "methods": {},
+  "usage": "See DataPreset for usage.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DataPresetReference&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The Type Spatial Variable Driver component is part of the Spatial variables system. It will drive a field with value sampled at the current global position of the slot it's on. The value used is one with highest priority",
+  "category": "Data:Spatial:Samplers",
+  "fields": {
+    "Drive": "The field to drive with the sampled value.",
+    "VariableName": "The variable name to sample for.",
+    "DefaultType": "The value to default to if no variable is found from sampling at the point of the slot this component is on."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a field to drive and a variable name. the slot this component is on acts as the position for sampling variable values.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TypeSpatialVariableDriver&action=raw"
+}

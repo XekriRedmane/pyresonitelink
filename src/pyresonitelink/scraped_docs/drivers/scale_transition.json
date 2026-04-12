@@ -1,0 +1,17 @@
+{
+  "description": "The ScaleTransition component makes a slot scale from one scale state to another, disabling when fully reaching its disabled scale point. The component's scale transition state is controlled via ``ShowField``.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "ShowField": "Whether to be transitioning to hidden (false) or shown (true)",
+    "TransitionTimeField": "How long the transition to shown or hidden should take.",
+    "ShowScaleField": "What scale the object should transition to from ``HiddenScaleField`` when ``ShowField`` is true.",
+    "HiddenScaleField": "What scale the object should transition to from ``ShowScaleField`` when ``ShowField`` is false.",
+    "CurveField": "How the object should transition scale over time.",
+    "_scaleDrive": "The field to drive to make this slot scale up and down. Usually the slot's scale field.",
+    "_enabledDrive": "The field to drive to false when the object is done scaling to hidden and drive to true when transitioning away from hidden."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide values to the proper fields. When ``ShowField`` is toggled, the scale and enabled fields of the component will do a little animation.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ScaleTransition&action=raw"
+}

@@ -1,0 +1,14 @@
+{
+  "description": "The StringConcatenationDriver component constructs a string from the inputted list of strings.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "TargetString": "The field to drive with the resulting completed string.",
+    "Separator": "What text to put between each pair of strings when building the string. This can be something like a comma, a space, or anything else the user desires.",
+    "Strings": "A list of strings to join together separated by ``Seperator``.",
+    "NullOutputWhenAllAreNull": "Whether to null the entire string when all ``Strings`` fields are null."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and add a list of strings to ``Strings`` and a ``TargetString`` for this to start working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StringConcatenationDriver&action=raw"
+}

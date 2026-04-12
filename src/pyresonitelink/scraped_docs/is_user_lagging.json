@@ -1,8 +1,12 @@
 {
-  "description": "The IsUserLagging node was added during the 2025 April Fools' update to detect if a user was \"Lagging\". In reality, this node returns whether the last synchronization message received by the host from the specified User was more than 1.5 seconds ago.",
+  "description": "The IsUserLagging node was added during the 2025 April Fools' update to detect if a user was \"Lagging\". In reality, this node returns whether the last synchronization message received by the host from the specified ``User`` was more than 1.5 seconds ago.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user to check.",
+    "* ([[Type:bool|bool]])": "Returns whether the user is \"lagging\", or if the last synchronization message received by the host from the user was more than 1.5 seconds ago. This output will always be ``False`` for the host user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsUserLagging&action=raw"
 }

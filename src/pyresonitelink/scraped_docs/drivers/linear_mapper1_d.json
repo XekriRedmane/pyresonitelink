@@ -1,0 +1,18 @@
+{
+  "description": "Linear Mapper 1D is a component that live maps one range to another, allowing for a reverse mapping of the target range value back to the source range when it is written to.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Source": "The value to map from ``SourceMin`` to ``SourceMax`` using ``Target``.",
+    "Target": "The value to map from ``TargetMin`` to ``TargetMax`` using ``Source``.",
+    "SourceMin": "The minimum of the range of the ``Source`` value.",
+    "SourceMax": "The maximum of the range of the ``Source`` value.",
+    "TargetMin": "The minimum of the range of the ``Target`` value.",
+    "TargetMax": "The maximum of the range of the ``Target`` value.",
+    "AllowReverseMapping": "Allow ``Target`` to map it's value to ``Source``'s ranged value when written to. See write backs.",
+    "Clamp": "Whether to prevent ``Source`` and ``Target`` from going outside their defined ranges."
+  },
+  "methods": {},
+  "usage": "Can be used to keep the fullness of two different containers the same percentage wise based on purely the stored units and maximum capacity.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LinearMapper1D&action=raw"
+}

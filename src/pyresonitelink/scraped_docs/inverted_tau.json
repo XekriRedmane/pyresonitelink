@@ -1,8 +1,11 @@
 {
-  "description": "The InvertedTau or 1/τ node outputs the value of 1 ÷ τ which is equivalent to 1 ÷ 2π.",
+  "description": "The InvertedTau or 1/\u03c4 node outputs the value of 1 \u00f7 \u03c4 which is equivalent to 1 \u00f7 2\u03c0.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:Float|float]])": "The value of 1 \u00f7 \u03c4, approximately ``0.1591549``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:InvertedTau&action=raw"
 }

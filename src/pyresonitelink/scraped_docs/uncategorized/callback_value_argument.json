@@ -1,0 +1,15 @@
+{
+  "description": "This isn't very often used by the user, since there aren't many Sync Delegates in the game that match this component's requirements.",
+  "category": "Uncategorized",
+  "fields": {
+    "Value": "The value to give ``Callback`` when ``Call()`` or ``CallAndDestroy()`` is called.",
+    "Callback": "The Sync Delegate to call and send a value to."
+  },
+  "methods": {
+    "Call": "Call ``Callback`` sync delegate and provide it ``Value``.",
+    "CallAndDestroy": "Do ``Call()`` and then destroy this component."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CallbackValueArgument&action=raw"
+}

@@ -1,8 +1,12 @@
 {
-  "description": "The Is Tool In Use node takes in a tool reference and checks if a user is currently using it (\"Using it\" counts as the user pressing the primary or secondary buttons while the tool is held).",
+  "description": "The ``Is Tool In Use`` node takes in a tool reference and checks if a user is currently using it (\"Using it\" counts as the user pressing the primary or secondary buttons while the tool is held).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Tool": "The tool reference.",
+    "* ([[Type:bool|bool]])": "The result of the user using the tool or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsToolInUse&action=raw"
 }

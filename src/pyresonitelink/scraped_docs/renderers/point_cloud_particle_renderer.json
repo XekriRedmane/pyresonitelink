@@ -1,0 +1,11 @@
+{
+  "description": "The PointCloudParticleRenderer component is used to render particles as dots with size using a material",
+  "category": "Rendering:Particle System:Renderers",
+  "fields": {
+    "Material": "The material to render with."
+  },
+  "methods": {},
+  "usage": "Used with particle systems.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PointCloudParticleRenderer&action=raw"
+}

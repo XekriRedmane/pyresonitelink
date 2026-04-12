@@ -1,8 +1,14 @@
 {
-  "description": "The Half Adder node takes in 2 boolean values (A and B), and returns 2 boolean values (Y and CarryOut). In computing & electronics, this is called a half adder, and helps with boolean math.",
+  "description": "The ``Half Adder`` node takes in 2 boolean values (``A`` and ``B``), and returns 2 boolean values (``Y`` and ``CarryOut``). In computing & electronics, this is called a half adder, and helps with boolean math.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The first boolean input value.",
+    "B": "The second boolean input value.",
+    "Y": "The result boolean output value.",
+    "CarryOut": "The carry out boolean output value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:HalfAdder&action=raw"
 }

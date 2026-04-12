@@ -1,0 +1,18 @@
+{
+  "description": "The DesktopDisplayLayout component displays a list of display selection buttons for a user's monitor settup. It is used in the dash menu and only works in userspace.",
+  "category": "With Nested Types",
+  "fields": {
+    "User": "The user to get displays for.",
+    "DisplayTemplate": "the template to use when generating display selection buttons.",
+    "ItemGenerated": "usually the OnDisplayItemGenerated() sync delegate from DesktopControlDialog."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "DisplayItemHandler",
+      "text": "A Sync delegate of type Delegate&lt;Display display, Slot itemRoot&gt;"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DesktopDisplayLayout&action=raw"
+}

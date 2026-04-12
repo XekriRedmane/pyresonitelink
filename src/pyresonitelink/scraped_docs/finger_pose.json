@@ -1,8 +1,14 @@
 {
   "description": "Finger Pose is a ProtoFlux node that takes a Pose source and a body node corresponding to a finger on a user's avatar and returns it's rotation and position.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "PoseSource": "A pose source usually obtained using a User Finger Pose Source Node.",
+    "FingerNode": "A finger node as a body node, providing a non finger body node will make the output a default 0.",
+    "Position": "The position of the finger node if PoseSource (IFingerPoseSource) is not null and FingerNode (BodyNode) is a body node that points to a finger.",
+    "Rotation": "The rotation of the finger if PoseSource (IFingerPoseSource) is not null and FingerNode (BodyNode) is a body node that points to a finger."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FingerPose&action=raw"
 }

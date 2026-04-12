@@ -1,0 +1,14 @@
+{
+  "description": "The DynamicVisemeDriver component allows using a viseme analyser to drive Float values. It allows for combinations of visemes with weights to drive a Float, and said Float may be a shapekey.",
+  "category": "With Nested Types",
+  "fields": {
+    "Source": "The analyzer making viseme data.",
+    "MouthTrackingSource": "The source of mouth tracking to influence viseme data.",
+    "VoiceMouthSupressWeight": "How much audio supresses the effect of the ``MouthTrackingSource`` data.",
+    "Drivers": "A list of drivers that use the ``Source`` and ``MouthTrackingSource`` data to drive their targets."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicVisemeDriver&action=raw"
+}

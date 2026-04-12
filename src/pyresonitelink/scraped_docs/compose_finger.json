@@ -1,8 +1,14 @@
 {
   "description": "Compose Finger is a ProtoFlux node that allows you to get a body node enum from a FingerType, FingerSegmentType and a Chirality also known as a side.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Finger": "The finger you want to get a body node enum for.",
+    "Segment": "The segment of the Finger (FingerType) you want to get a body node enum for.",
+    "Chirality": "Which hand, left or right, you want to get a body node for using Finger (FingerType) and Segment (FingerSegmentType).",
+    "* ([[Type:BodyNode|BodyNode]])": "The body node enum that is on the finger: Finger (FingerType), on the segment: Segment (FingerSegmentType) on that finger, on the Chirality (Chirality) side of the body."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ComposeFinger&action=raw"
 }

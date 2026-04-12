@@ -1,8 +1,12 @@
 {
-  "description": "The Tool Equipping Side node takes in a Tools reference and returns with the side it is equipped on.",
+  "description": "The ``Tool Equipping Side`` node takes in a Tools reference and returns with the side it is equipped on.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Side": "The tool reference.",
+    "* ([[Type:Chirality|Chirality]])": "The side this tool is on that is equipped on the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ToolEquippingSide&action=raw"
 }

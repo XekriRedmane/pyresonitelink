@@ -1,0 +1,15 @@
+{
+  "description": "The GridContainerAnimatedEditVisual component is used to handle the animation of turning on and off UI Edit Mode.",
+  "category": "Uncategorized",
+  "fields": {
+    "Grid": "The grid to edit.",
+    "_tiledImage": "The image being used to show the grid alignment.",
+    "_tiling": "The tiling of the grid.",
+    "_offset": "The position shift of the grid from default.",
+    "_tint": "The color tint of the grid."
+  },
+  "methods": {},
+  "usage": "Not used by the user, but used by the game in visuals.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GridContainerAnimatedEditVisual&action=raw"
+}

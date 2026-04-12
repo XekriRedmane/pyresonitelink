@@ -1,0 +1,11 @@
+{
+  "description": "The SolidColorTexture component Creates a Texture2D of a solid color.",
+  "category": "Assets:Procedural Textures",
+  "fields": {
+    "Color": "The solid color to use for the texture."
+  },
+  "methods": {},
+  "usage": "insert into any material to view what the texture would look like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SolidColorTexture&action=raw"
+}

@@ -1,0 +1,20 @@
+{
+  "description": "See Meter Tool.",
+  "category": "With Nested Enums",
+  "fields": {
+    "_indicationColor": "The field to change the color value for when doing status indications.",
+    "MeterMode": "The mode the tool is currently in.",
+    "MeasureInObjectSpace": "If measurements should be done in global space or parent space.",
+    "RaycastIgnoresUsers": "Whether the tool raycast ignores colliders with an active user.",
+    "MultiPoint": "Measure between two points, or any amount of points.",
+    "_lastPoint": "The slot of the last point placed by the tool.",
+    "_currentMeter": "The current object displaying the distance between points.",
+    "_currentLineTransform": "The current line transform object being used to display the distance between points",
+    "FormatNumber": "How to format the numbers.",
+    "FormatUnit": "How to format the units."
+  },
+  "methods": {},
+  "usage": "See Meter Tool.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeterTool&action=raw"
+}

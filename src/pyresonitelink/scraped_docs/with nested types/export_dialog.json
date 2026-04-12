@@ -1,0 +1,21 @@
+{
+  "description": "See Exporting.",
+  "category": "With Nested Types",
+  "fields": {
+    "SelectedExportOption": "What Export Option is selected.",
+    "ExportName": "The name of the Export file.",
+    "_targetFolder": "The target folder location to Export to.",
+    "EditEnabled": "Whether this component is edit enabled.",
+    "_cancel": "The button for canceling the export.",
+    "_export": "The button to start the export.",
+    "_exportOptions": "The kinds of Export options available.",
+    "FileName": "The name of the file when exporting."
+  },
+  "methods": {
+    "ExportPressed": "Exports the specified export option.",
+    "CancelPressed": "Cancels the export."
+  },
+  "usage": "See Exporting.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ExportDialog&action=raw"
+}

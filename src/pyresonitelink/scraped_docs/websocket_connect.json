@@ -1,8 +1,15 @@
 {
   "description": "This node allows you to connect to a websocket server via the WebSocketClient component.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses | Call]])": "An incoming Call that will trigger the node.",
+    "Client": "A WebsocketClient component.",
+    "URL": "An URI to the WebSocket server.",
+    "HandlingUser": "An user that will handle the WebSocket requests.",
+    "Next": "A continuation impulse to trigger the rest of the code."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WebsocketConnect&action=raw"
 }

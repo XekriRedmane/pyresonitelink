@@ -1,8 +1,18 @@
 {
-  "description": "The Request Host Access node takes in a Host IP address, an accessible port of that address, the scope of what type of connection this is, and the reason why this user should connect to this service. When everything is accurate, this node will fire an event depending if this local user has successfully connected to the host service. This relates to the settings in the Dash that a user can look through to see what services they have access to.",
+  "description": "The ``Request Host Access`` node takes in a Host IP address, an accessible port of that address, the scope of what type of connection this is, and the reason why this user should connect to this service. When everything is accurate, this node will fire an event depending if this local user has successfully connected to the host service. This relates to the settings in the Dash that a user can look through to see what services they have access to.\n\nIf you provide a scheme (also called a protocol) inside the host string, it will be overridden by the scope every time, as the scope takes priority to determine the type of the network connection. A scheme looks like ``https://`` or ``ws://``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Async Call]])": "Calls an impulse to request the host's access to a service.",
+    "Host": "The IP address to connect to.",
+    "Port": "The Port Number used to access this IP address.",
+    "Scope": "The access type used for this network connection.",
+    "Reason": "The reason to why this user should allow access to the host's service.",
+    "OnGranted": "Fires when the local user has accepted the host access to the service. This adds to thier list of host accesses in the settings in the Dash.",
+    "OnDenied": "Fires when the local user has declined the host access to the service.",
+    "OnIgnored": "Fires when the local user has clicked the close button on the pop-up dialoge that asks for the host access, or somehow avoided the notification through other means."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RequestHostAccess&action=raw"
 }

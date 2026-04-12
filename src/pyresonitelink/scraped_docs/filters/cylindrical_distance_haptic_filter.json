@@ -1,0 +1,20 @@
+{
+  "description": "The CylindricalDistanceHapticFilter component filters haptic device influences multiplicatively depending on their position within a range of 2 cylinders. One being an inner and one being an outer. Both of them are invisible though. This component works when used with a HapticVolume.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics:Filters",
+  "fields": {
+    "StartRadius": "The starting radius of the intensity gradient based on distance from the cylinders center line from end to end.",
+    "EndRadius": "The ending radius of the intensity gradient based on distance from the cylinders center line from end to end.",
+    "StartRadiusIntensity": "The starting intensity of the intensity gradient based on distance from the cylinders center line from end to end.",
+    "EndRadiusIntensity": "The ending intensity of the intensity gradient based on distance from the cylinders center line from end to end.",
+    "RadiusPower": "The amplification of the intensity gradient based on distance from the cylinders center line from end to end.",
+    "StartAxisOffset": "Used to define the distance from the cylinder end cap to start the intensity gradient.",
+    "EndAxisOffset": "Used to define the distance from the cylinder end cap to end the intensity gradient.",
+    "StartAxisIntensity": "The starting intensity value for the intensity gradient based on the distance to the cylinder cap.",
+    "EndAxisIntensity": "The ending intensity value for the intensity gradient based on the distance to the cylinder cap.",
+    "AxisPower": "How much to amplify the intensity of the intensity gradient based on the distance to the cylinder cap."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with a valid and working HapticVolume to add to the list of multiplicative haptic filters.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CylindricalDistanceHapticFilter&action=raw"
+}

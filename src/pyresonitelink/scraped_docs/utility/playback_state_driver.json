@@ -1,0 +1,15 @@
+{
+  "description": "The PlaybackStateDriver is a component that drives a set of booleans to whether or not certain states are currently active or not for a particular IPlayable.",
+  "category": "Media:Utility",
+  "fields": {
+    "Source": "Playback source - VideoTextureProvider or Playback",
+    "IsPlaying": "Will drive IField to true if playing, false if not playing",
+    "IsNotPlaying": "Will drive IField to true is not playing, false if playing",
+    "IsPaused": "Will drive IField to true if playable is paused",
+    "IsStopped": "Will drive IField to true if playable is stopped"
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide ``Source`` any Bool provided to the other fields will be driven to the status of that field's status check.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PlaybackStateDriver&action=raw"
+}

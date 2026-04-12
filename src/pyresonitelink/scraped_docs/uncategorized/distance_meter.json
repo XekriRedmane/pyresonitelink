@@ -1,0 +1,23 @@
+{
+  "description": "The DistanceMeter component is used by the Meter Tool to display the distance between slots placed by it.",
+  "category": "Uncategorized",
+  "fields": {
+    "Anchors": "List of points being used to measure right now.",
+    "_legacyAnchor0": "Legacy, unused. For when the tool only measured two points.",
+    "_legacyAnchor1": "Legacy, unused. For when the tool only measured two points.",
+    "FormatUnit": "The formatting string to use when formatting the distance number",
+    "FormatNumber": "How to format the distance number",
+    "CompoundFormatUnits": "The format string to format compound measurement units with.",
+    "CompoundUseLongNames": "Whether to use long name of distance (Ex: cm vs Centimeter)",
+    "CompoundOverrideNames": "Whether to use compound measurements or not.",
+    "CompoundDiscardLastFraction": "Whether to discard small distances like Millimeters.",
+    "CompoundSeparator": "What to separate compound measurements with (like spaces or commas)",
+    "CompoundZeroHandling": "How to handle compound measurements (1 meter 1cm 10mm)",
+    "MeasurementSpace": "The transform space to measure in.",
+    "DistanceText": "The field to drive when displaying the total amount of distance."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DistanceMeter&action=raw"
+}

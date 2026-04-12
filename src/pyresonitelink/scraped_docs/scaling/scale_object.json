@@ -1,0 +1,9 @@
+{
+  "description": "The ScaleObject component can be used to position and scale a slot relative to a ScaleObjectManager.",
+  "category": "Transform:Scaling",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ScaleObject&action=raw"
+}

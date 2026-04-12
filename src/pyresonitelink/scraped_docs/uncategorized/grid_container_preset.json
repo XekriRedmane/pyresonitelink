@@ -1,0 +1,13 @@
+{
+  "description": "The GridContainerPreset component generates a GridContainerScreen tab and set it up when not initialized before.",
+  "category": "Uncategorized",
+  "fields": {
+    "_initializer": "The C# Type of the object that initialized this preset.",
+    "_initializedVersion": "The version that this preset initialized. Used to reinitialize the Grid Container Screen if it has new updates.",
+    "_isModified": "Whether the Grid Container Screen has new content like facets."
+  },
+  "methods": {},
+  "usage": "Used to make automatically updating custom screens.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GridContainerPreset&action=raw"
+}

@@ -1,0 +1,32 @@
+{
+  "description": "The UserspaceRadiantDash is better described on the dedicated page, Dash Menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "BlockOpenClose": "Whether to block opening and closing of the dash",
+    "Freeform": "Whether the dash can be grabbed around in freeform style.",
+    "_dash": "The radiant dash component that handles all the dash like behaviors/",
+    "_dashVisualRoot": "The root slot for the visuals of the radiant dash.",
+    "_positioner": "Handles positioning the dash in front of the user while it is in user space.",
+    "_modalOverlay": "Handles managing the different overlays on different screens like the home tab.",
+    "_legacyInventoryPanel": "Legacy. not used in newer versions. From a time before time when UIX didn't exist.",
+    "_legacyInventory": "Legacy. not used in newer versions. From a time before time when UIX didn't exist.",
+    "_slider": "The slider used to move the dash around via grabbing it.",
+    "_lookat": "The lookat component that handles keeping the dash facing the user.",
+    "_uiEditModeToggle": "The slot that appears when the user has the ability to turn off UI edit mode after turning it on.",
+    "_alwaysOnFacetRoot": "This slot stores elements of the dash that were made on a facet that are marked as always on. Things that end up here will have a Always On Facet Module Component so they always stay enabled even when the dash closes.",
+    "_screensWorkspace": "The workspace for screens that should be saved when the user's dash gets saved. helps preserve dash customization between machines.",
+    "_topWorkspace": "The workspace for top area elements that should be saved when the user's dash gets saved. helps preserve dash customization between machines.",
+    "_notifications": "The component that handles notifications for the game for the current session and people coming online.",
+    "_notificationsRoot": "The slot that contains the entirety of the notifications stack and logic.",
+    "_notificationsHolder": "The slot at which notification elements should appear like users joining and role changing."
+  },
+  "methods": {
+    "OnModalOverlayRequested": "handles when the modal overlay request action is made.",
+    "OnTurnOffEditMode": "Handles when the user requests to turn off edit mode via the button at the bottom of the dash.",
+    "SetupDefaultTopBar": "Handles when the dash requests a setup of a fresh new dash topbar.",
+    "OnHide": "Handles hiding of legacy panels on dash elements that still use it."
+  },
+  "usage": "See Dash Menu.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserspaceRadiantDash&action=raw"
+}

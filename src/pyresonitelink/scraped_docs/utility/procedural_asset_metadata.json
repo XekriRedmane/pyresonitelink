@@ -1,0 +1,13 @@
+{
+  "description": "The ProceduralAssetMetadata component is shown in the inspector for procedural meshes and textures.Component was given this functionality in Beta 2024.1.12.1336",
+  "category": "Assets:Utility",
+  "fields": {
+    "Asset": "The procedural asset to get data on.",
+    "UpdateCount": "How many times ``Asset`` has been updated since generation.",
+    "Error": "Whether ``Asset`` ran into an error when generating."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProceduralAssetMetadata&action=raw"
+}

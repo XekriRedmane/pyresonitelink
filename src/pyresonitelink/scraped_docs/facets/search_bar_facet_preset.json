@@ -1,0 +1,11 @@
+{
+  "description": "The SearchBarFacetPreset component is used to control search functions in different parts of the game",
+  "category": "Radiant UI:Facets",
+  "fields": {
+    "_searchBar": "The searching component this should be controlling"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SearchBarFacetPreset&action=raw"
+}

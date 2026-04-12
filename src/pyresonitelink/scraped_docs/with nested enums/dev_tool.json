@@ -1,0 +1,34 @@
+{
+  "description": "Detailed information can be located at Dev Tool.",
+  "category": "With Nested Enums",
+  "fields": {
+    "SelectionMode": "See Selection section.",
+    "InteractionMode": "See Interaction section.",
+    "_selectedAnchor": "The point anchor which is part of a gizmo this tool is moving currently.",
+    "_selectedAnchorHighlight": "The slot being used to indicate what gizmo is currently being moved. Is an icosphere.",
+    "_material": "The visual material used for the default cone mesh.",
+    "_currentGizmo": "The gizmo that the dev tool is currently targeting for gizmo options.",
+    "_previousGizmo": "The previous gizmo that the dev tool targeted for gizmo options."
+  },
+  "methods": {
+    "ToggleDevMode": "See Dev Tool.",
+    "DeselectAll": "See Dev Tool.",
+    "OpenCreate": "See Dev Tool.",
+    "OpenInspector": "See Dev Tool.",
+    "OpenGizmoOptions": "See Dev Tool.",
+    "SelectParent": "See Dev Tool.",
+    "ToggleSpace": "See Dev Tool.",
+    "SetTranslation": "See Dev Tool.",
+    "SetRotation": "See Dev Tool.",
+    "SetScale": "See Dev Tool.",
+    "OnOpenParent": "See Dev Tool.",
+    "ActivateGizmo": "See Dev Tool.",
+    "DestroySelected": "See Dev Tool.",
+    "DestroyConfirm": "See Dev Tool.",
+    "OnCancelMenu": "See Dev Tool.",
+    "OnGizmoReplaced": "See Dev Tool."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DevTool&action=raw"
+}

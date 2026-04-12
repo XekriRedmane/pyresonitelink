@@ -1,0 +1,12 @@
+{
+  "description": "The SphereColliderGizmo component is used to adjust the radius of a sphere collider.",
+  "category": "Uncategorized",
+  "fields": {
+    "_target": "Sphere collider to modify",
+    "_sphereGizmo": "The gizmo to use to edit the sphere collider size."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SphereColliderGizmo&action=raw"
+}

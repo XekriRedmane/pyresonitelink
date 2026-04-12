@@ -1,0 +1,20 @@
+{
+  "description": "The ProtoFluxOutputListManager component is used to manage a list of outputs on a ProtoFlux visual.",
+  "category": "Uncategorized",
+  "fields": {
+    "Visual": "The ProtoFlux visual this is a part of.",
+    "List": "The list this is a visual for.",
+    "MinElements": "The minimum elements allowed for the list.",
+    "AddButtonEnabled": "The enabled field of the add elements button.",
+    "RemoveButtonEnabled": "The enabled field of the remove elements button.",
+    "_elements": "A list of slots representing the UIX elements of the list of outputs.",
+    "OutputType": "The C# Type of the list of outputs for the list this is managing."
+  },
+  "methods": {
+    "AddElement": "Called when the add element button is touched.",
+    "RemoveElement": "Called when the remove element button is touched."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProtoFluxOutputListManager&action=raw"
+}

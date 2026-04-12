@@ -1,8 +1,12 @@
 {
-  "description": "alt=A picture of an object cast. Looks like a square object with one side a different color than the other, with a split down the middle that has a beveled edge. Though it's just an image so you can't actually feel such bevel in game even with detailed haptics.|thumb|An object cast from Type:IWorldElement|IWorldElement to IFieldint.",
+  "description": "HTML Visual replaced by image due to wiki limitations\n\nalt=A picture of an object cast. Looks like a square object with one side a different color than the other, with a split down the middle that has a beveled edge. Though it's just an image so you can't actually feel such bevel in game even with detailed haptics.|thumb|An object cast from IWorldElement|IWorldElement to IField.\n\nThe Object Cast casts any Object type into any other object type.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Input": "The object to cast.",
+    "* (Pseudo-generic)": "The object casted to the resulting type. If the cast can not be done, the resulting object will be ``null``. The exact specifications for what types will be correctly cast to what other types is described by Microsoft's documentation for type-testing operators and cast expressions, since this node is simply a wrapper around the ``as`` keyword."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ObjectCast&action=raw"
 }

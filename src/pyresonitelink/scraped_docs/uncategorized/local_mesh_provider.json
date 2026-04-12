@@ -1,0 +1,9 @@
+{
+  "description": "The Local Mesh Provider is a component that provides a local mesh. This is used internally to render things like UIX and particles.",
+  "category": "Uncategorized",
+  "fields": {},
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocalMeshProvider&action=raw"
+}

@@ -1,0 +1,24 @@
+{
+  "description": "The ScaleGizmo component is used to allow scaling of a slot it is targeting.\n\nSee Dev tool.",
+  "category": "Uncategorized",
+  "fields": {
+    "TargetSlot": "The slot this is scaling/targeting.",
+    "AutoPositionAtTargetSlot": "Whether to auto position this gizmo at ``TargetSlot``",
+    "_interactingComponent": "The component that is interacting with this component.",
+    "_material": "The material for the gizmo visual.",
+    "_toolPoint": "The slot representing the interacting dev tool's tip.",
+    "_activePoint": "The active point of the gizmo",
+    "_lineRoot": "the root of the line visual going back to ``_toolPoint``.",
+    "_lineSegment": "The line segment for the line from gizmo center to ``_toolPoint``.",
+    "_snapHighlight": "The slot for a snap point highlight like a selected cube corner.",
+    "TargetScale": "The scale field of what this is scaling.",
+    "HandleLength": "The length of the scale gizmo handles.",
+    "_xSlot": "The scale gizmo for the x axis.",
+    "_ySlot": "The scale gizmo for the y axis.",
+    "_zSlot": "The scale gizmo for the z axis."
+  },
+  "methods": {},
+  "usage": "See Dev tool.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ScaleGizmo&action=raw"
+}

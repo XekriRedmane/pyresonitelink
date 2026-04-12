@@ -1,0 +1,11 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "DoNotSendReadStatus": "Doesn't tell the cloud whether or not the user has read a message when enabled. Can prevent users from knowing you are online from the act of you reading a message even when appearing as offline."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MessagingPrivacySettings&action=raw"
+}

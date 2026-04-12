@@ -1,0 +1,18 @@
+{
+  "description": "The TextureQualitySettings component is part of the Settings menu and should be interacted with via such menu instead of through this component.",
+  "category": "Uncategorized",
+  "fields": {
+    "TextureSizeRatio": "The ratio at which textures should be loaded locally versus their original size on the cloud.",
+    "TextureSizeLimit": "The maximum Texture Size that textures should be loaded at.",
+    "MinimumTextureSize": "The minimum size textures loaded can be locally.",
+    "DefaultFilterMode": "The default Texture mode that textures will be if they don't manually specify their Texture mode.",
+    "AnisotropicLevel": "The Anisotropic levels textures should have.",
+    "UseAnisotropicLevel": "Whether the Anisotropic levels should be used."
+  },
+  "methods": {
+    "ReloadAllTextures": "Forces a reload of all loaded textures to use curre t Settings (LAGGY)"
+  },
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextureQualitySettings&action=raw"
+}

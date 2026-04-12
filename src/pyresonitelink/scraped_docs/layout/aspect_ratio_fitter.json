@@ -1,0 +1,11 @@
+{
+  "description": "The AspectRatioFitter component makes the contents (child slots) of the RectTransform stay the same dimensions (or the same ratio), even when the canvas or UIX element this component is in changes size.\n\n}}",
+  "category": "UIX:Layout",
+  "fields": {
+    "AspectRatio": "The aspect ratio of this UIX element. ``1`` is a perfect square, less than ``1`` is a vertical ratio, greater than ``1`` is a horizontal ratio."
+  },
+  "methods": {},
+  "usage": "Great for keeping things more uniform by a ratio.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AspectRatioFitter&action=raw"
+}

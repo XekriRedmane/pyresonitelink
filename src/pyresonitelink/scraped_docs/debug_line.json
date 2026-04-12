@@ -1,8 +1,17 @@
 {
-  "description": "Debug Line is a ProtoFlux node that creates a line going between Point0 to Point1 in global space. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.",
+  "description": "Debug Line is a ProtoFlux node that creates a line going between Point0 to Point1 in global space. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.\n\nThis is useful for Vector debugging.\n\nSee also: Coordinate spaces",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Create the Line debug visual with the given parameters.",
+    "Point0": "The first point of the line visual in global space.",
+    "Point1": "The second point of the line visual in global space.",
+    "Color": "The color the visual should be.",
+    "Radius": "The distance from the center line to the outside edge in meters.",
+    "Duration": "How long the visual should appear in seconds.",
+    "Next": "Fires after * (Call) has been called and the visual was created."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DebugLine&action=raw"
 }

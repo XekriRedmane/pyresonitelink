@@ -1,0 +1,17 @@
+{
+  "description": "The ParticleSpray component is a tool that shoots particles when the trigger is pulled.",
+  "category": "Tools",
+  "fields": {
+    "Rate": "Ths rate at which the spray tip sprays at max (primary strength is raised to ``RateExp`` first before multiplying with this)",
+    "RateExp": "primary strength of the tool is raised to this number.",
+    "MinSpeed": "The min speed the particles travel at.",
+    "MaxSpeed": "The max speed the particles travel at.",
+    "partStyle": "The style of the particles.",
+    "partSpeed": "The min/max speed the particles travel at, is synced with ``MinSpeed`` and ``MaxSpeed``",
+    "partEmitter": "the Particle emitter this particle spray is controlling."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ParticleSpray&action=raw"
+}

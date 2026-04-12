@@ -1,0 +1,9 @@
+{
+  "description": "The HiddenLayer component prevents rendering of the hierarchy it is applied to unless disabled or viewed through a camera that is explicitly set to render it. The Hidden Layer component is used for the Dash Menu's curved ui.",
+  "category": "Rendering",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot which components on and below the slot should not render their visuals. The visuals will still render if viewed by a camera instructed to specifically render the hierarchy of the hidden layer.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HiddenLayer&action=raw"
+}

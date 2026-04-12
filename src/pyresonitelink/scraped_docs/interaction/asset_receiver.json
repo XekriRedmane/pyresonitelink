@@ -1,0 +1,12 @@
+{
+  "description": "Asset Receiver is a useful component for getting asset data from a user through a UIX. When this item is placed on a UIX that allows receiving (like a Button) and it's ``Reference`` field is filled, it will be active. When an item is pushed through the canvas where the button is so the interaction laser is hitting it and the item is let go; the value within the field inside of ``Reference`` is set to the first available IAsset which is exposed by an Asset Proxy.",
+  "category": "UIX:Interaction",
+  "fields": {
+    "Reference": "The field to fill with a value when a grabbed item with an Asset Proxy is dropped onto the canvas region with this component.",
+    "Undoable": "Whether to add changes to this value via grab receiving to the undo stack of the user that changed it."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AssetReceiver&action=raw"
+}

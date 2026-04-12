@@ -1,8 +1,13 @@
 {
-  "description": "Finds the slot of the specified body node on the provided user.",
+  "description": "The BodyNodeSlot node finds the slot that is associated with the specified BodyNode on the provided user. This will usually be a slot representing a bone on a skinned mesh.\n\nThis node will first attempt to find a BipedRig component under the user and read the slot associated with the body node from this component. If it can not find the slot in this manner, it will then iterate over every component on the user in an attempt to find an AvatarObjectSlot component of the specified node type.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Source": "The user to find a body part slot for.",
+    "Node": "The body node to find a slot for.",
+    "* ([[Slot]])": "The slot on the user that is associated with the specified ``Node``.\n\n<!--"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:BodyNodeSlot&action=raw"
 }

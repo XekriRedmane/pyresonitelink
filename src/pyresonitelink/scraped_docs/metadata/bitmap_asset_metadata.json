@@ -1,0 +1,23 @@
+{
+  "description": "The BitmapAssetMetadata component is used to get pixel data information on a given image or texture.",
+  "category": "Assets:Metadata",
+  "fields": {
+    "Asset": "The image to get data from.",
+    "Width": "The width of ``Asset``.",
+    "Height": "The height of ``Asset``.",
+    "BaseFormat": "The format of ``Asset``.",
+    "ColorData": "The ColorChannelData for ``Asset``",
+    "AlphaData": "The AlphaChannelData for ``Asset``.",
+    "BitsPerPixel": "How many bits are used per pixel to store color data in ``Asset``.",
+    "ChannelCount": "How many channels ``Asset`` has (RGBA for example is 4, but some images may have more or less.)",
+    "AverageColor": "``Asset``'s average color, visible or not.",
+    "AverageVisibleColor": "``Asset``'s average visible color.",
+    "AverageHSV": "``Asset``'s average HSV color, visible ot not.",
+    "AverageVisibleHSV": "``Asset``'s average visible HSV color.",
+    "InvalidPixelCount": "how many pixels in ``Asset`` that have NAN values in their color values."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BitmapAssetMetadata&action=raw"
+}

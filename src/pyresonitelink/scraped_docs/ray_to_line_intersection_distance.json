@@ -1,8 +1,16 @@
 {
-  "description": "The Ray To Line Intersection Distance node determines the distance from a ray origin to the point at which the ray intersects a line segment defined by two points. This node is functionally equivalent to using the ProtoFlux:Ray To Line Intersection node, then plugging the value used for Origin and the Intersection output into a Distancefloat2 node.",
+  "description": "The Ray To Line Intersection Distance node determines the distance from a ray origin to the point at which the ray intersects a line segment defined by two points. This node is functionally equivalent to using the Ray To Line Intersection node, then plugging the value used for ``Origin`` and the ``Intersection`` output into a Distance node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Origin": "Origin of the ray.",
+    "Direction": "Direction of the ray.",
+    "LinePoint0": "First point of the line segment.",
+    "LinePoint1": "Second point of the line segment.",
+    "Distance": "The Euclidean distance between ``Origin`` and the point at which the defined ray intersects with the line segment with endpoints ``LinePoint0`` and ``LinePoint1``. If the ray does not intersect, the value will be ``0``.",
+    "Intersects": "``True`` if the ray intersects with the line segment, ``False`` otherwise. See Ray To Line Intersection for what counts as intersection."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RayToLineIntersectionDistance&action=raw"
 }

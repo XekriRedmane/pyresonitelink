@@ -1,0 +1,12 @@
+{
+  "description": "A generator for points arranged in a circle with a given radius.",
+  "category": "Transform:Point Generators",
+  "fields": {
+    "Radius": "The distance from center to outside that this point generator should make points.",
+    "Shell": "Generate the points for this generator only along the outside edge."
+  },
+  "methods": {},
+  "usage": "Used in a Common Spawn Area to define in what kind of spawn area shape users should initially spawn into.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CirclePointGenerator&action=raw"
+}

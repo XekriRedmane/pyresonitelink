@@ -1,0 +1,12 @@
+{
+  "description": "The Resonite Link Permissions component Is a permissions type component so it generates a list of users that the restrictions for using ResoniteLink applies to for the settings defined within this component. This component's values can only be changed by the creator of the world if they are hosting it.",
+  "category": "Permissions",
+  "fields": {
+    "AllowReadAccess": "Allows ResoniteLink to read data from the world.",
+    "AllowWriteAccess": "Allows ResoniteLink to write data to the world."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ResoniteLinkPermissions&action=raw"
+}

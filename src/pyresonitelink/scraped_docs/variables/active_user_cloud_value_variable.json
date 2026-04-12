@@ -1,0 +1,15 @@
+{
+  "description": "The ActiveUserCloudValueVariable component provides a field that is synced to a cloud variable, with the user it is parented under being the owner of the value. This node follows the same rules as Cloud Variables except that it caches the quickly made changes and then updates the cloud variable with the cached changes as soon as possible using the cloud.",
+  "category": "Cloud:Variables",
+  "fields": {
+    "Path": "The path of the variable this component will read, for the current active user",
+    "IsLinkedToCloud": "(Read Only) Indicates whether this field was successfully bound to the target variable.",
+    "UpdateCloudVariable": "Indicates that this variable should update the value in the cloud when it is written or driven to a different value.",
+    "FallbackValue": "Default value if there is no current active user. If the active user's value isn't set, the definition default will be used instead.",
+    "Value": "The value from the cloud variable."
+  },
+  "methods": {},
+  "usage": "To use this component, simply add it to a slot underneath a user's hierarchy and set the ``Path`` to the path of a cloud variable. (make sure that the variable and component are of the same type!)\nThe component's ``Value`` field will then be filled with the value from the cloud variable.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ActiveUserCloudValueVariable&action=raw"
+}

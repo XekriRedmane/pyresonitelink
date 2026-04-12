@@ -1,0 +1,31 @@
+{
+  "description": "The LegacyWorldThumbnailItem component is used to show worlds in the list of the legacy world facet.",
+  "category": "Radiant UI:World Browsing:Legacy",
+  "fields": {
+    "UpdatingUser": "The user managing updating this component's functionality.",
+    "WorldOrSessionId": "The world or session ID this component is providing information on.",
+    "_visited": "Whether the World has been visited by ``UpdatingUser``.",
+    "_totalActiveUsers": "The total focused and active users in the world.",
+    "_totalContacts": "The total amount of users on the world that are contacts of ``UpdatingUser``.",
+    "PressAction": "The action to preform when clicking on this item.",
+    "_thumbnailGraphic": "The component handling the Thumbnail graphic.",
+    "_thumbnailTexture": "The component handling the Thumbnail texture.",
+    "_nameRoot": "The component that is the graphic rectangle handler for the world name.",
+    "_detailRoot": "The component that is the graphic rectangle handler for the world details.",
+    "_visitedRoot": "The component that is the graphic rectangle handler for the world visited status.",
+    "_counterRoot": "The component that is the graphic rectangle handler for the world active users and contacts amount.",
+    "_iconsRoot": "The component that is the graphic rectangle handler for the world icons.",
+    "_closeButton": "The component that is the graphic rectangle handler for the world close button.",
+    "_nameText": "The text showing the world name.",
+    "_detailText": "The text showing the world details.",
+    "_counterText": "The text showing the world active user/contacts.",
+    "_borderOverlay": "The image UIX component handling the border graphic",
+    "_borderColor": "The color the border should be."
+  },
+  "methods": {
+    "OnClose": "Called when the close button is touched."
+  },
+  "usage": "Don't use.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyWorldThumbnailItem&action=raw"
+}

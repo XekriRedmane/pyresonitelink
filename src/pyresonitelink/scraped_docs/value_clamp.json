@@ -1,8 +1,14 @@
 {
   "description": "The ValueClamp node will force a value to stay within the defined Min and Max.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The value to clamp.",
+    "Min": "The forced minimum value for the input.",
+    "Max": "The forced maximum value for the input.",
+    "* (Pseudo-generic)": "Returns the result."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueClamp&action=raw"
 }

@@ -1,0 +1,40 @@
+{
+  "description": "For more info on the protoflux tool in general, see ProtoFlux and ProtoFlux Tool.",
+  "category": "Tools",
+  "fields": {
+    "SpawnNodeType": "The type of the ProtoFlux node to spawn.",
+    "WirePoint": "The slot that the tool is currently pulling a wire out of.",
+    "MaxConnectDistance": "The distance this protoflux tool will search for nodes from it's tip before stopping. it's usually 20 meters in local space.",
+    "SelectionProgress": "How far the user is to selecting nodes by holding Secondary",
+    "HoveringElementName": "The name of the protoflux element this tool is currently hovering over",
+    "HoveringElementContentType": "The type of the protoflux element this tool is currently hovering over",
+    "HoveringElementColor": "The color of ``HoveringElementContentType``",
+    "_selectedNodes": "The list of nodes the protoflux nodes that the tool currently has selected.",
+    "_wirePointPosition": "What field to drive on a StripeMesh for a currently pulled wire.",
+    "_text": "The text to drive with information from this tool.",
+    "_currentProxy": "What element the protoflux tool is currently pulling in order to connect to another element via the UI.",
+    "_currentTempWire": "The current wire that this tool is pulling from a protoflux connector.",
+    "_currentCutLine": "The current wire that this tool is trying to cut.",
+    "_cutLineScale": "The current wire that this tool is trying to cut's scale.",
+    "_cutLineOrientation": "The orientation of the current wire that this tool is trying to cut.",
+    "_currentHighlightedNode": "The current node this tool is looking at."
+  },
+  "methods": {
+    "ToggleOverviewMode": "Called when the toggle overview mode button is touched.",
+    "OnPackInPlace": "Called when the pack in place button is touched.",
+    "OnUnpack": "Called when the unpack button is touched.",
+    "OnClearSelection": "Called when the clear selection button is touched.",
+    "OpenNodeBrowser": "Called when the open node browser button is touched.",
+    "OnCreateDrive": "Called when the create drive button is touched.",
+    "OnCreateWrite": "Called when the create write button is touched.",
+    "OnCreateLocal": "Called when the create local button is touched.",
+    "OnCreateStore": "Called when the create store button is touched.",
+    "OnCreateDataModelStore": "Called when the create data model store button is touched.",
+    "OnCreateSource": "Called when the create source button is touched.",
+    "OnCreateReference": "Called when the create reference button is touched.",
+    "OnCreateDelegateProxy": "Called when the create delegate proxy button is touched."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProtoFluxTool&action=raw"
+}

@@ -1,0 +1,9 @@
+{
+  "description": "The DestroyWithoutChildren component is used to make a slot self-destruct when it has no children.",
+  "category": "Transform",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DestroyWithoutChildren&action=raw"
+}

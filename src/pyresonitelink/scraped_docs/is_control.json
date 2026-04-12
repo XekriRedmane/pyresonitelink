@@ -1,8 +1,12 @@
 {
   "description": "The Is Control node takes in a character literal and returns if that character is a control character.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character literal to check.",
+    "* ([[Type:bool|bool]])": "Outputs ``true`` if ``Character`` is a control character, ``false`` otherwise. Control characters recognized by this node are part of the C0 and C1 sets of Unicode."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsControl&action=raw"
 }

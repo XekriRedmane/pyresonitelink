@@ -1,8 +1,12 @@
 {
-  "description": "The Clear Focus node clears the current IFocusable UI from the user.",
+  "description": "The ``Clear Focus`` node clears the current IFocusable UI from the user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to clear the current focus of a UI from the user.",
+    "Next": "Fires after the focus has cleared."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ClearFocus&action=raw"
 }

@@ -1,0 +1,21 @@
+{
+  "description": "See Reflection Probe Wizard for more up to date info",
+  "category": "Uncategorized",
+  "fields": {
+    "Root": "The root slot in which all probes in it's hierarchy should be baked.",
+    "ProcessDisabled": "Whether to bake probes in disabled hierarchies.",
+    "TeleportUserToProbe": "Whether to teleport the user to the probe before baking.",
+    "_tag": "Probes only with this tag will be baked.",
+    "_delayBetweenProbes": "How long to wait between baking probes.",
+    "_bakeCount": "The number of probes baked",
+    "_bakeIndex": "The current probe being baked."
+  },
+  "methods": {
+    "OnShowDebugVisuals": "Called when the show debug visuals button is touched.",
+    "OnHideDebugVisuals": "Called when the hide debug visuals button is touched.",
+    "OnBakeAll": "Called when the bake all button is touched."
+  },
+  "usage": "See Reflection Probe Wizard.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReflectionProbeWizard&action=raw"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The MoveUpDataFeedCategory is a component that receives Button Events and goes to the previous parent path in a Data Feed view.",
+  "category": "Radiant UI:Data Feeds:Interactions",
+  "fields": {
+    "View": "The view to go up in category for."
+  },
+  "methods": {},
+  "usage": "Used to go up one in the category view.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MoveUpDataFeedCategory&action=raw"
+}

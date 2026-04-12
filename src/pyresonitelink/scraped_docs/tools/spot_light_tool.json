@@ -1,0 +1,12 @@
+{
+  "description": "The SpotLightTool component is a tool that when pressed primary with turns on and off a spotlight. This tool is best described as a flashlight.",
+  "category": "Tools",
+  "fields": {
+    "Material": "The material for the default cone visual.",
+    "Light": "The light attached to this tool that turns on and off"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SpotLightTool&action=raw"
+}

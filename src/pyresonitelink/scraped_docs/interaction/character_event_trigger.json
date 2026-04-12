@@ -1,0 +1,19 @@
+{
+  "description": "The CharacterEventTrigger component invokes Action triggers whenever a user enters or exits an attached collider.",
+  "category": "Locomotion:Interaction",
+  "fields": {
+    "TriggersOnly": "Whether to only use Trigger type colliders on this hierarchy when detecting character collisions.",
+    "TriggerEntered": "Triggered when a user enters a collider attached to the parent slot",
+    "TriggerLeft": "Triggered when a user exits a collider attached to the parent slot",
+    "IgnoreParentUser": "If this component is under a user in the hierarchy, events from that user are ignored."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "== Examples =="
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CharacterEventTrigger&action=raw"
+}

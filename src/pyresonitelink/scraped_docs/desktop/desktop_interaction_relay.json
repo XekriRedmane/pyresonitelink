@@ -1,0 +1,12 @@
+{
+  "description": "The DesktopInteractionRelay component only works in user space. When part of a UIX, it sends events from user inputs (the position is determined by the RectTransform) to the desktop display at ``DisplayIndex``",
+  "category": "Input:Desktop",
+  "fields": {
+    "DisplayIndex": "The display to send Interactions to.",
+    "UseLegacyTextInput": "Whether to use the legacy text input system."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DesktopInteractionRelay&action=raw"
+}

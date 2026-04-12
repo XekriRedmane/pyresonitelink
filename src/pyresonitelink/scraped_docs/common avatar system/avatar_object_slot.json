@@ -1,0 +1,21 @@
+{
+  "description": "For detailed information on how this functions for mix and match body parts. Please also see Equipping Multiple Avatars.\n\nAvatar Object slot is a component that is used to move and drive certain parts of the avatar like the head and hand body parts.",
+  "category": "Users:Common Avatar System",
+  "fields": {
+    "Priority": "Whether to do the equip checking on this AvatarObjectSlot before other AvatarObjectSlots",
+    "Equipped": "Usually an Avatar Pose Node that is on one of the proxies on an avatar.",
+    "Node": "the body node of the avatar this component's slot is. Unless already specified by a Biped Rig Component higher up in the hierarchy.",
+    "IsTracking": "Whether this component is currently being simulated by the procedural animation system.",
+    "IsActive": "Whether this component is currently active and controlling an avatar.",
+    "IsSimulated": "Whether this object slot is being controlled by the procedural animation system.",
+    "DriveActive": "Whether to drive the active of this slot when hooked into by an Avatar Pose Node.",
+    "DriveScale": "Whether to drive the scale of this slot when hooked into by an Avatar Pose Node.",
+    "DoNotSimulate": "Whether to not control this with the procedural locomotion system",
+    "Filters": "Filters that are currently effecting this and their priorities. See Avatar Pose Filters",
+    "_autoSmoothing": "The Component currently smoothing the transform changes of this Avatar Object slot."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarObjectSlot&action=raw"
+}

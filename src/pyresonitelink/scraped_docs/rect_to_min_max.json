@@ -1,8 +1,13 @@
 {
-  "description": "The Rect To Min Max node takes in a rect value and returns 2 specific float2 values, showing the minimum size of the rect, usually just at the X and Y position, and also returning the max size of this rect, which is usually X + Width and Y + Height. In contrast to the Rect To Position Size node where it takes the literal position and size to get a rect's bounding data.",
+  "description": "The Rect To Min Max node takes in a rect value and returns 2 specific float2 values, showing the minimum size of the rect, usually just at the ``X`` and ``Y`` position, and also returning the max size of this rect, which is usually ``X`` + ``Width`` and ``Y`` + ``Height``. In contrast to the Rect To Position Size node where it takes the literal position and size to get a rect's bounding data.\n\nIf you need to split a rect into specific and separated outputs, use the Rect To XYWH node instead.|suggestion}}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Rect": "The rect value.",
+    "Min": "Returns the minimum size of this rect (usually returning the ``X`` and ``Y`` position of this rect).",
+    "Max": "Returns the maximum size of this rect (usually returning the ``X`` + ``Width`` and ``Y`` + ``Height`` of this rect)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RectToMinMax&action=raw"
 }

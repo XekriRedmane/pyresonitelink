@@ -1,0 +1,14 @@
+{
+  "description": "The LegacySwapCanvasPanel was used to swap between different panels using some buttons.",
+  "category": "Uncategorized",
+  "fields": {
+    "_canvas": "The canvas that contains the entire swap visual.",
+    "_panel": "The panel that contains the entire swap panel.",
+    "_currentPanel": "The current panel visual this is switched to.",
+    "_container": "The slot that contains the visuals for the swap panel."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacySwapCanvasPanel&action=raw"
+}

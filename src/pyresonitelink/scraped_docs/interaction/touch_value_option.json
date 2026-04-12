@@ -1,0 +1,21 @@
+{
+  "description": "The TouchValueOption component allows you to set a field to a value on press, it can drive indicators for Active and Hovering.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "Target": "The field to set.",
+    "Value": "The value to set ``Target`` to.",
+    "ActiveIndicator": "The field to drive with whether T in ``Target`` equals ``Value``.",
+    "HoverIndicator": "The field to drive with whether this button is being hovered over via laser.",
+    "HoverVibrate": "How to vibrate haptics on the hand that is hovering over this option.",
+    "Vibrate": "How to vibrate haptics on the hand that is pressing this option.",
+    "SetOnTouchBegin": "Whether to set the T in ``Target`` to ``Value`` upon start touching this component.",
+    "SetOnTouchStay": "Whether to set the T in ``Target`` to ``Value`` every frame while keeping touching this component.",
+    "SetOnTouchEnd": "Whether to set the T in ``Target`` to ``Value`` upon end touching this component.",
+    "EditModeOnly": "Whether this component can only be interacted with if the user is in edit mode.",
+    "ActiveUserRootOnly": "Whether only the active user of this component can interact with this component."
+  },
+  "methods": {},
+  "usage": "Needs a static collider on the same slot in order to work. Attach to said slot and provide a field for it to set in ``Target``.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TouchValueOption&action=raw"
+}

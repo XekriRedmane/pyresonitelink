@@ -1,8 +1,12 @@
 {
-  "description": "The To Unix Seconds node takes in a DateTime and returns with the amount of seconds elapsed from that DateTime since January 1st, 1970.",
+  "description": "The ``To Unix Seconds`` node takes in a DateTime and returns with the amount of seconds elapsed from that DateTime since January 1st, 1970.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "DateTime": "The DateTime to compare against the start of Unix time.",
+    "* ([[Type:long|long]])": "Returns the number in seconds between the two points in time (the DateTime provided and the Unix Epoch) represented as a long."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ToUnixSeconds&action=raw"
 }

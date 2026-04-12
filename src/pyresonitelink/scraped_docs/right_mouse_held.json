@@ -1,8 +1,11 @@
 {
-  "description": "The Right Mouse Held node returns the local user's right mouse button being held down.",
+  "description": "The ``Right Mouse Held`` node returns the local user's right mouse button being held down.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:bool|bool]])": "The result from the user's right mouse button being held down currently."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RightMouseHeld&action=raw"
 }

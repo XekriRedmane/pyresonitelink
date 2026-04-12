@@ -1,0 +1,11 @@
+{
+  "description": "The WrapperMesh is a procedural mesh that copies an existing mesh, making it act like a procedural mesh instead through this component.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Mesh": "The mesh to wrap"
+  },
+  "methods": {},
+  "usage": "Can be used to make a static mesh have the function of a procedural mesh for components/functions that require procedural meshes.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WrapperMesh&action=raw"
+}

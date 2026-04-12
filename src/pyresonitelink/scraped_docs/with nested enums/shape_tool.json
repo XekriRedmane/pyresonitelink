@@ -1,0 +1,13 @@
+{
+  "description": "See Shape Tool.",
+  "category": "With Nested Enums",
+  "fields": {
+    "activeShape": "The shape to draw.",
+    "shapes": "A list of shapes to switch between depending on ``activeShape`` for the tool tips visual.",
+    "Material": "The material to use when drawing shapes."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ShapeTool&action=raw"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "The LegacyUIStyle component is used in older content to specify what colors a UI should be depending on where it is. This should not be used in new content, and should be removed/replaced whenever possible.",
+  "category": "Rendering:Visuals",
+  "fields": {
+    "Color": "The normal color.",
+    "UserParentedColor": "The color a UI should have when parented under the user.",
+    "PrivateColor": "The color a UI should have when it's in userspace."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

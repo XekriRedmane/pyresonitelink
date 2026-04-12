@@ -1,0 +1,13 @@
+{
+  "description": "See Host Access Settings.",
+  "category": "With Nested Types",
+  "fields": {
+    "Entries": "A list of allowed and denied IP address locations."
+  },
+  "methods": {
+    "GetEntry": "HostAccessSettings.Entry]] from the list of ``Entries``."
+  },
+  "usage": "See Host Access Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HostAccessSettings&action=raw"
+}

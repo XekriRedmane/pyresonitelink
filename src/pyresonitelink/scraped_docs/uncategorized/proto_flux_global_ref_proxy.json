@@ -1,0 +1,20 @@
+{
+  "description": "The ProtoFluxGlobalRefProxy component allows for a piece of UI to act as a relay for interacting with global value component.",
+  "category": "Uncategorized",
+  "fields": {
+    "Node": "The node that this is on.",
+    "ElementName": "the name of the target component.",
+    "ValueType": "The type of the value being held.",
+    "_label": "The field to drive with global value properties to make a name.",
+    "_proxyVisual": "The Button used for the proxy surrounding visual.",
+    "_refProxySource": "The proxy used to get the global ref.",
+    "TargetGlobalRef": "The target global reference this visual has been made for.",
+    "_currentProxy": "The current proxy this is using."
+  },
+  "methods": {
+    "OnProxyButtonPressed": "Called when the proxy button is touched on the visual."
+  },
+  "usage": "Used in nodes like raw data tool events to show the field for the raw data tool. This is also used to interact with said visual.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProtoFluxGlobalRefProxy&action=raw"
+}

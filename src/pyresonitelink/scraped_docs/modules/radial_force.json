@@ -1,0 +1,18 @@
+{
+  "description": "The RadialForce component makes particles attracted or repelled from a point in 3D space when they get closer or further away. The gradient for the force does not cut off at ``MinDistance`` and/or ``MaxDistance``. instead the gradient continues into infinity at the value it was when it hits these values. The ``Force`` determines the distance truely if ``MinDistance`` is at 0 and ``MaxDistance`` is at infinity.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Force": "How much force this component exerts on particles in a system.",
+    "Mode": "How to determine how the force is calculated.",
+    "MinDistance": "The minimum distance for the force gradient, aka force gradient start point, the gradient does not stop here.",
+    "MaxDistance": "The maximum distance for the force gradient, aka force gradient start point, the gradient does not stop here.",
+    "MinForce": "how much force should be applied at ``MinDistance`` modified by ``Force``.",
+    "MaxForce": "how much force should be applied at ``MaxDistance`` modified by ``Force``.",
+    "OverrideForceSpace": "The space to calculate this component's values in. The values get converted to the particle system's space.",
+    "Center": "The center point of the force point."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RadialForce&action=raw"
+}

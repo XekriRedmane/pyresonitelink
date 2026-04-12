@@ -1,0 +1,21 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "UserOnline": "Whether to show notifications for users coming online.",
+    "UserOnlineOnAnotherBuild": "Whether to show notifications for users coming online while they are on a different version than you.",
+    "UserSociable": "How to handle notifications for users turning to sociable mode.",
+    "Message": "How to handle notifications for messages.",
+    "Invite": "How to handle notifications for invites.",
+    "ContactRequest": "How to handle notifications for contact requests.",
+    "InviteRequest": "How to handle notifications for invite requests.",
+    "ContactSessionStarted": "How to handle notifications for contact session startings.",
+    "PublicSessionStarted": "How to handle notifications for public session startings.",
+    "UserJoinAndLeave": "How to handle notifications for users joining and leaving sessions.",
+    "PermissionChanged": "How to handle notifications for your permissions changing in a world."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NotificationSettings&action=raw"
+}

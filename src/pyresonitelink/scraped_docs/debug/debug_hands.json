@@ -1,0 +1,12 @@
+{
+  "description": "The DebugHands component shows the vector axes and finger axes for a particular hand on a particular user.",
+  "category": "Debug",
+  "fields": {
+    "User": "The user to make the debug for.",
+    "Chirality": "The hand to make the debug visual for."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugHands&action=raw"
+}

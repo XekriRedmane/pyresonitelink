@@ -1,0 +1,40 @@
+{
+  "description": "The LegacyTextField component was used to edit text in old content migrated from other platforms. This component should not be used in new content, and should be replaced whenever possible.",
+  "category": "UI:Physical",
+  "fields": {
+    "Color": "The color of the UI elements.",
+    "Width": "The width of the UI.",
+    "Height": "The height of the UI.",
+    "Thickness": "The thickness of the UI.",
+    "Slant": "How beveled the UI elements should be.",
+    "_textSlot": "The slot of the text visual of this UI element.",
+    "_textRenderer": "The text renderer of this UI element.",
+    "_textEditor": "The text editor that allows direct editing of the value this UI element controls.",
+    "_material": "The material of this UI.",
+    "_mesh": "The mesh of this UI.",
+    "_textBounds": "The field to drive with the bounds of the text to keep the UI around it.",
+    "_colliderSize": "The field to drive with what the size of this UI's collider should be.",
+    "_meshLeft": "The mesh of the left button.",
+    "_meshRight": "The mesh of the right button.",
+    "_textLeftBounds": "The field to drive with the bounds of the text on the left button so the UI stays wrapped around it.",
+    "_textRightBounds": "The field to drive with the bounds of the text on the right button so the UI stays wrapped around it.",
+    "_leftTextRenderer": "The text renderer of the left button.",
+    "_rightTextRenderer": "The text renderer of the right button.",
+    "_colliderLeftSize": "The field to drive with what the size of the left collider should be.",
+    "_colliderRightSize": "The field to drive with what the size of the right collider should be.",
+    "_leftOffset": "The field to drive with what the offset of the left collider should be.",
+    "_rightOffset": "The field to drive with what the offset of the right collider should be.",
+    "_leftTextPosition": "The field to drive wiyh what the position of the text on the left button should be.",
+    "_rightTextPosition": "The field to drive wiyh what the position of the text on the right button should be.",
+    "_hintTextRenderer": "the text renderer of the edit text hint",
+    "_hintTextBounds": "the field to drive with the bounds of the hint text for keeping a UI wrapped around it.",
+    "_hintTextEnabled": "Whether the hint text should be enabled or not."
+  },
+  "methods": {
+    "OnLeftTouched": "Called when the left button is touched.",
+    "OnRightTouched": "Called when the right button is touched."
+  },
+  "usage": "Just dont.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyTextField&action=raw"
+}

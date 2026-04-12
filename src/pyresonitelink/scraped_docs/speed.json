@@ -1,8 +1,12 @@
 {
   "description": "The Speed node tells the speed of the provided IPlayable.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Source": "The IPlayable to get the speed of.",
+    "* ([[Type:Float|Float]])": "Output of the speed from the source."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Speed&action=raw"
 }

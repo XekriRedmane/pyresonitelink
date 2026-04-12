@@ -1,0 +1,23 @@
+{
+  "description": "The ParticleTrailsModule component allows particles to have trails with different properties. This can be added multiple times for different trail types.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Material": "The material the particle trails should have.",
+    "TextureMode": "How to handle the textures on trails.",
+    "MotionVectorMode": "How to handle rendering the trails when it comes to motion vectors.",
+    "GenerateLightingData": "Whether the trails have lighting data.",
+    "TrailsRatio": "How many of the particles as a 01 percentage should have trails",
+    "Distribution": "How to distribute the followers for this module.",
+    "MaxTrails": "The maximum amount of trails the system can have of this particular trail type.",
+    "SimulationSpace": "What Transform space to simulate the trails for this module in?",
+    "MinVertexDistance": "The minimum vertex distance between trail segments when generating trail geometry.",
+    "TrailDiesWithParticle": "Whether the trail disappears instantly when the particle dies or not.",
+    "ParticleColorInheritance": "How the trail inherits the color of the particle it's following.",
+    "ParticleSizeInheritance": "How the trail inherits the size of the particle it's following.",
+    "SizeInheritanceMode": "How the size the trail inherited from the particle it's followinh should be applied."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ParticleTrailsModule&action=raw"
+}

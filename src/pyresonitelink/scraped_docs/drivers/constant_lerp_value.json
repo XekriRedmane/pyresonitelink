@@ -1,0 +1,14 @@
+{
+  "description": "The ConstantLerpValue component will make the ``Value`` reach ``TargetValue``, making ``Speed`` progress per second. it can also be known as a linear lerp.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "TargetValue": "The value to stop at.",
+    "Speed": "The amount to change ``Value`` by per second to reach ``TargetValue``",
+    "WriteBack": "Whether changes to ``Value`` will be written to ``TargetValue``. See write backs.",
+    "Value": "The value to constantly progress towards ``TargetValue``"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConstantLerpValue&action=raw"
+}

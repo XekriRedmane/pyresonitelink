@@ -1,0 +1,11 @@
+{
+  "description": "The DebugTransform component is used to show the parent hiearchy of a slot in the form of text to a specific ``ShowToUser``.",
+  "category": "Debug",
+  "fields": {
+    "ShowToUser": "Shows the debug visual to this user only."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugTransform&action=raw"
+}

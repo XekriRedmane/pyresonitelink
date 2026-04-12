@@ -1,0 +1,12 @@
+{
+  "description": "The ColorFromTexture3D component makes particles sample their color from the color in their same position within a Texture3D.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Texture3D": "The 3D texture to sample from.",
+    "Scale": "How much bias to choose higher axis values. The default is 1 which is no bias.",
+    "Offset": "How much to add to the chosen point in the 3D texture, which can cut off lower or higher values from ever being chosen."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": []
+}

@@ -1,0 +1,9 @@
+{
+  "description": "The RefractMaterial component can be used to create distortion or bending effects on the objects and visuals rendered behind it.",
+  "category": "Assets:Materials:Filters",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot and add to either a MeshRenderer or SkinnedMeshRenderer to view it.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RefractMaterial&action=raw"
+}

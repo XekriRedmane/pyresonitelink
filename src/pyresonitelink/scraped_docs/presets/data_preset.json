@@ -1,0 +1,18 @@
+{
+  "description": "The DataPreset is a component that is useful for switching a list of values to a predetermined set.",
+  "category": "Data:Presets",
+  "fields": {
+    "IsActive": "Indicates that all the presets in Entries have been applied. Cannot be driven.",
+    "Entries": "A list of data preset references and values."
+  },
+  "methods": {
+    "SetActive": "Set all target values targeted by ``Entries`` to their preset values.",
+    "SetValues": "Set all preset values in ``Entries`` to their target values.",
+    "OnSetValues": "Use ``SetValues`` instead.",
+    "OnSetActive": "Use ``SetActive`` instead.",
+    "OnAddAllChildren": "Adds all the children preset components under this slot's hierarchy."
+  },
+  "usage": "Each entry in the list of Entries is a DataPresetReference or a DataPresetValue. These may be added manually, or, if the DataPresetReferences and DataPresetValues are components in this slot or child slots, the Add All Children button will add them for you (replacing any existing list).\n\nEach entry consists of the value or reference, plus a target field.\n\nThe Set Active button applies all values and references to their respective target fields.\n\nThe only way to programmatically apply the preset is to use a ProtoFlux Tool, grab the ``SetActive()`` Delegate, and press the \"Proxy\" button in your Context Menu, then feed a Call into the node.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DataPreset&action=raw"
+}

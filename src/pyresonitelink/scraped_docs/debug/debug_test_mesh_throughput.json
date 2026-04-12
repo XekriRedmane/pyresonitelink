@@ -1,0 +1,13 @@
+{
+  "description": "The DebugTestMeshThroughput component is used in code by parallel jamming quads into a MeshX object via multithreading to test how much can be done at once.\n\nThe mesh generated is a Spiral fan of quads that goes up in a circle pattern.",
+  "category": "Debug",
+  "fields": {
+    "Count": "How many mesh quads to parrallel jam into the meshx data.",
+    "Progress": "How much to offset the quads by in rotation.",
+    "UpdateTime": "How long it took for the Asset to update."
+  },
+  "methods": {},
+  "usage": "Debugging MeshX parallel speed.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugTestMeshThroughput&action=raw"
+}

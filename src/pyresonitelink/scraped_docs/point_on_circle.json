@@ -1,8 +1,13 @@
 {
   "description": "The Point On Circle node returns the point a fractional part of the trace along a circle path of a given radius.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "NormalizedPosition": "Position of the point along the path. Essentially represents an angle of ``2*pi*NormalizedPosition`` radians.",
+    "Radius": "Radius of the circle to trace along.",
+    "* ([[Type:float2|float2]])": "The point that is ``NormalizedPosition`` along the path of the circle, starting at the top point and tracing clockwise. The exact point returned is ``(sin(2 * pi * NormalizedPosition), cos(2 * pi * NormalizedPosition))``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:PointOnCircle&action=raw"
 }

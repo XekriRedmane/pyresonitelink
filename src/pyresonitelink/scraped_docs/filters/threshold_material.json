@@ -1,0 +1,9 @@
+{
+  "description": "The ThresholdMaterial component is a material that shows black and white. Pixels behind need to be above a certain luminance to be white and anything below will show black.",
+  "category": "Assets:Materials:Filters",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot and use the material Component in the list of materials on a MeshRenderer or a SkinnedMeshRenderer with a mesh to view what this material looks like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ThresholdMaterial&action=raw"
+}

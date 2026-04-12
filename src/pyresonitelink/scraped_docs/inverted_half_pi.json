@@ -1,8 +1,11 @@
 {
-  "description": "The HalfPi or 1/(π/2) node outputs the value of 1 ÷ (π ÷ 2).",
+  "description": "The HalfPi or 1/(\u03c0/2) node outputs the value of 1 \u00f7 (\u03c0 \u00f7 2).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:Float|float]])": "The value of 1 \u00f7 (\u03c0 \u00f7 2), approximately ``0.6366197``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:InvertedHalfPi&action=raw"
 }

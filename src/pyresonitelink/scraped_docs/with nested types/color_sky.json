@@ -1,0 +1,12 @@
+{
+  "description": "The ColorSky component creates a skybox with a color. Currently when this component is added to a slot, it will be immediately replaced with a Skybox and a material component automatically. It exists as a stub to maintain compatibility with legacy content.",
+  "category": "With Nested Types",
+  "fields": {
+    "BaseColor": "Internal",
+    "_gradients": "Internal"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorSky&action=raw"
+}

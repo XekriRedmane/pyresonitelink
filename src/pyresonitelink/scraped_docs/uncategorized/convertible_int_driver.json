@@ -1,0 +1,12 @@
+{
+  "description": "The ConvertibleIntDriver component is used to convert a value into a Int using the value's convert to Int method.",
+  "category": "Uncategorized",
+  "fields": {
+    "Source": "The value to convert.",
+    "Target": "The field to drive with ``Source`` converted into a Int."
+  },
+  "methods": {},
+  "usage": "Used to convert values from one type into another via Components rather than ProtoFlux.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConvertibleIntDriver&action=raw"
+}

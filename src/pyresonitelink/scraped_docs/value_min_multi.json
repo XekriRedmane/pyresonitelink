@@ -1,8 +1,12 @@
 {
-  "description": "The ValueMinMulti will take multiple inputs and output the minimum value.",
+  "description": "The ``ValueMinMulti`` will take multiple inputs and output the minimum value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Operands": "One of the values to compare.",
+    "* (Pseudo-generic)": "Returns the lowest value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueMinMulti&action=raw"
 }

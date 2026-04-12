@@ -1,8 +1,12 @@
 {
-  "description": "Get Finger Segment Type is a ProtoFlux node that returns the FingerSegmentType Enum value that describes the provided Node (BodyNode), or -1 if not a finger segment.",
+  "description": "Get Finger Segment Type is a ProtoFlux node that returns the FingerSegmentType Enum value that describes the provided Node (BodyNode), or -1 if not a finger segment.\n\nThis is a simplified node version of taking a BodyNode, using a To String node on it, and checking it's name contents for one of the FingerSegmentType values also fed to a To String",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Node": "The Body node to check for a finger segment",
+    "* ([[Type:FingerSegmentType|FingerSegmentType]])": "The finger segment of the provided Node (BodyNode)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetFingerSegmentType&action=raw"
 }

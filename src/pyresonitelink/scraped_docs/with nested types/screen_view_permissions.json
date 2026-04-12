@@ -1,0 +1,12 @@
+{
+  "description": "The ScreenViewPermissions component is a Permissions type component that can apply rules for what certain roles in a session can do with views like third person, free cam, or UI targetting.",
+  "category": "With Nested Types",
+  "fields": {
+    "ListMode": "How to filter and handle the list of ``ViewFilters`` for the selected roles.",
+    "ViewFilters": "A list of targetting views to check a user with the selected role(s) with and act accordingly on if they are using one in the list."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ScreenViewPermissions&action=raw"
+}

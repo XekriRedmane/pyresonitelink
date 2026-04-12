@@ -1,0 +1,14 @@
+{
+  "description": "Generates points only at a single point which is the position of the slot this component is on.",
+  "category": "Transform:Point Generators",
+  "fields": {},
+  "methods": {},
+  "usage": "Used in a Common Spawn Area to define in what kind of spawn area shape users should initially spawn into. In this case, it spawns them at the exact location of the component's slot.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* CommonSpawnArea"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PointGenerator&action=raw"
+}

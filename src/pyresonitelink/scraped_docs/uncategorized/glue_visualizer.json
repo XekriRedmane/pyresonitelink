@@ -1,0 +1,14 @@
+{
+  "description": "The GlueVisualizer component is used by the Glue Tool to visualize glue objects that are to potentially gluing objects together.",
+  "category": "Uncategorized",
+  "fields": {
+    "Material": "The material being used to visualize the area of effect of ``Glue``.",
+    "Glue": "The Glue component to visualize.",
+    "Scale": "The scale field of the visual so it wobbles.",
+    "BaseScale": "The default or base scale of the visual."
+  },
+  "methods": {},
+  "usage": "See Glue Tool.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GlueVisualizer&action=raw"
+}

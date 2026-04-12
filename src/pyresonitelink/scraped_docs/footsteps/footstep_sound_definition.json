@@ -1,0 +1,15 @@
+{
+  "description": "The FootstepSoundDefinition component can be referenced by other components which can trigger this to play noise during footstep events.",
+  "category": "Locomotion:Footsteps",
+  "fields": {
+    "ParentUnder": "The slot to parent played sounds under.",
+    "MinDistance": "The minimum distance the audio can be heard from before playing at maximum amount.",
+    "MaxDistance": "The max distance before the audio cannot be heard anymore.",
+    "RolloffMode": "How played audio should fall off based on distance.",
+    "Clips": "Different footsteps that can play when this component is triggered"
+  },
+  "methods": {},
+  "usage": "Used to play sound when footsteps happen on surfaces or it receives a footstep event.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FootstepSoundDefinition&action=raw"
+}

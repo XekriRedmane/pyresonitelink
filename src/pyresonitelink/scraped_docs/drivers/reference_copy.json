@@ -1,0 +1,13 @@
+{
+  "description": "The ReferenceCopy component is used to copy one reference to another place, driving the target with an write back option.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Source": "The source to copy the Reference from",
+    "Target": "The target to drive to the value of ``Source``",
+    "WriteBack": "whether to allow changes done to ``Target`` to change ``Source``. See write backs."
+  },
+  "methods": {},
+  "usage": "Drives the target's reference with the source's reference. When using WriteBack, changes made to the Target are local while editing it. When the user is done setting it, it writes via a network sync to change the Source reference. If the Source and Target are the same, the reference will be completely local, and no network sync happens when changing the reference. When using the ReferenceCopy to make fields local like this, joining users will have the host's reference by default.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceCopy&action=raw"
+}

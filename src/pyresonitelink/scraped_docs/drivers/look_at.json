@@ -1,0 +1,22 @@
+{
+  "description": "Look at is a component that is used to make one slot point to look at another slot via a SwingTwist interpolation.\nSwing Twist is a concept that is too complicated to explain on this wiki, but essentially constrains the rotation on two axies when rotating to a point, locking it within a range. kind of like a turret.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Target": "The slot to try to look at.",
+    "TargetPoint": "The 3D point to look at when ``Target`` is not provided.",
+    "TargetPointSpace": "The Coordinate space of ``TargetPoint``",
+    "Up": "The up axis of this slot, usually best to keep at (0,1,0)",
+    "RotationOffset": "How much to rotate the slot by after applying the look at (quaternion multiplying)",
+    "SwingReference": "The axis to apply \"Swing\" rotation to.",
+    "TwistReference": "The axis to apply \"Twist\" rotation to.",
+    "MaxSwing": "The maximum (pos/neg) amount that the slot can rotate on ``SwingReference``",
+    "MaxTwist": "The maximum (pos/neg) amount that the slot can rotate on ``TwistReference``",
+    "_target": "The field to apply the rotation result to."
+  },
+  "methods": {
+    "SetReferenceAxis": "Called when the set reference axis button is touched."
+  },
+  "usage": "Attach the component to a slot and provide a ``Target`` or ``TargetPoint`` to make it look at or point at a position. It is recommended to put a slot under this component's slot to apply offsets to the rotation.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LookAt&action=raw"
+}

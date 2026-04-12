@@ -1,8 +1,11 @@
 {
-  "description": "The World Name node returns this world's \"World Name\" field from the Session tab in the Dash.",
+  "description": "The ``World Name`` node returns this world's \"World Name\" field from the Session tab in the Dash.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:String|String]])": "The world's name."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldName&action=raw"
 }

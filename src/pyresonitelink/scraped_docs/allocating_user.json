@@ -1,8 +1,12 @@
 {
-  "description": "The Allocating User node takes in an IWorldElement and returns with the user that allocated (spawned/created) it.",
+  "description": "The ``Allocating User`` node takes in an IWorldElement and returns with the user that allocated (spawned/created) it.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Element": "The world element that was spawned/created.",
+    "* ([[Type:User|User]])": "Returns the user that spawned out the world element."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AllocatingUser&action=raw"
 }

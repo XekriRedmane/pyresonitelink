@@ -1,0 +1,17 @@
+{
+  "description": "Creates a mesh that is a cylinder with rounded ends instead of flat ends.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Radius": "Determines the roundness of the mesh.",
+    "Height": "Determines how tall the mesh is.",
+    "Segments": "Determines the smoothness.",
+    "Rings": "Determines the smoothness of the top & bottom of the mesh.",
+    "Shading": "Changes the mesh shading.",
+    "UVScale": "The inverse of the size the material should appear on the surface as.",
+    "DualSided": "Makes the mesh dual sided."
+  },
+  "methods": {},
+  "usage": "Add this mesh to a mesh renderer component along with a material to view it",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CapsuleMesh&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The TagHapticPointMapper allows for defining custom mapping on avatars. \n\nThis works as part of the game's robust Haptics system.",
+  "category": "With Nested Types",
+  "fields": {
+    "Priority": "The priority of this Mapper over other mappers.",
+    "ShowDebugVisuals": "Whether to show the haptic points for this haptic mapper.",
+    "HapticPoints": "A list of haptic points with tags and where they go."
+  },
+  "methods": {},
+  "usage": "By frooxius:\n\n* Full body avatars are automatically instrumented with this component\n* You can define list of Slots with associated HapticTag on this component, which determine where will haptic points be mapped to\n* You can specify that haptic devices (e.g. GigglePuck) can be mapped to a specific tag in the settings",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TagHapticPointMapper&action=raw"
+}

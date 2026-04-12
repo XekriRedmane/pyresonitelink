@@ -1,0 +1,21 @@
+{
+  "description": "The Line Segment component is used to create a line between two slots or two local points in space.",
+  "category": "Uncategorized",
+  "fields": {
+    "Radius": "The radius of the generated line",
+    "Sides": "How many sides along the radius circle this cylinder should have.",
+    "Point0": "Point 1 as a number in local space to place point 1 of the line visual.",
+    "Point1": "Point 2 as a number in local space to place point 2 of the line visual.",
+    "Anchor0": "Point 1 as a slot to place point 1 of the line visual.",
+    "Anchor1": "Point 2 as a slot to place point 2 of the line visual.",
+    "_cylinder": "The line visual to control.",
+    "_collider": "The collider for the line visual.",
+    "_offset": "The field to drive for the position of the visual + collider slot.",
+    "_rotation": "The field to drive for the rotation of the visual + collider slot.",
+    "_visualScale": "The field to drive for the scale of the visual + collider slot."
+  },
+  "methods": {},
+  "usage": "Can be used to make a line that connects two points. To use an abitrary point, one can use ProtoFlux or Spatial Variables in order to dynamically set ``Anchor0`` and/or ``Anchor1`` using code or proximity.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LineSegment&action=raw"
+}

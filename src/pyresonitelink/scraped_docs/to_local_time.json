@@ -1,8 +1,12 @@
 {
-  "description": "The To Local Time node takes in a DateTime and converts it to local time using your local time offset. This is in accordance to Universal Time.",
+  "description": "The ``To Local Time`` node takes in a DateTime and converts it to local time using your local time offset. This is in accordance to Universal Time.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "DateTime": "The UTC DateTime we want to convert into local time.",
+    "* ([[Type:DateTime|DateTime]])": "Returns the local DateTime."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ToLocalTime&action=raw"
 }

@@ -1,8 +1,11 @@
 {
   "description": "The Async Dynamic Impulse Receiver node is the recipient of a dynamic impulse within async flow. Its trigger analogue is the Async Dynamic Impulse Trigger node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnTriggered": "Sends an async impulse when the node has received a dynamic impulse with the specified ``Tag``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AsyncDynamicImpulseReceiver&action=raw"
 }

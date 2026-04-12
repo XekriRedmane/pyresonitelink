@@ -1,0 +1,39 @@
+{
+  "description": "The SlotGizmo is used with the Dev tool to interact with slots when they are selected and their sub gizmos. This is rarely interacted directly with by the user, but is a very important component for interacting with the game.",
+  "category": "With Nested Types",
+  "fields": {
+    "GizmoReplaced": "A sync delegate to call when the gizmo is replaced with another one. Usually located on the dev tool that created the gizmo.",
+    "_isFolded": "Whether the gizmo is folded up.",
+    "_activeGizmo": "Which gizmo is being shown right now via tool options.",
+    "_targetSlot": "The slot this is affecting.",
+    "_positionDrive": "The field to drive position with for this visual.",
+    "_scaleDrive": "The field to drive scale with for this visual.",
+    "_boundsMesh": "The mesh to use to show bounds.",
+    "_boundsRoot": "The slot to make bounds for.",
+    "_boundsRotation": "the field to drive for the bounds rotation.",
+    "_boundsOffset": "The field to drive for bounds offset.",
+    "_boundsActive": "The field to drive with whether the bounds are active or not.",
+    "_nameText": "The field to drive with the name of the target slot.",
+    "_nameOffset": "The position offset field for the visual of the name of targeted slot.",
+    "_nameRotation": "The rotation field for the visual of the name of targeted slot.",
+    "_nameActive": "The active field for the visual of the name of targeted slot.",
+    "_xPosSegment": "The segment used for the X position vs this slot's parent slot.",
+    "_yPosSegment": "The segment used for the Y position vs this slot's parent slot.",
+    "_zPosSegment": "The segment used for the Z position vs this slot's parent slot.",
+    "_boundsAnchorPositions": "A list of infos for anchors this slot gizmo has.",
+    "_rootAnchor": "The root point anchor for this gizmo.",
+    "_translationGizmo": "The gizmo used for changing this slot's position.",
+    "_rotationGizmo": "The gizmo used for changing this slot's rotation.",
+    "_scaleGizmo": "The gizmo used for changing this slot's scale.",
+    "IsLocalSpace": "Whether this gizmo is oriented to local space or not."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "SlotGizmoReplacement",
+      "text": "Sync Delegate of identity Func`2&lt;SlotGizmo, SlotGizmo&gt; for replacing the old gimzo (argument 1) with a new one."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SlotGizmo&action=raw"
+}

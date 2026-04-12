@@ -1,0 +1,17 @@
+{
+  "description": "The ContentSizeFitter resizes the slots's RectTransform to fit the minimum or preferred size of its other layout components in width or height. In effect, it \"shrink-wraps\" its contents.\n\nNote that this does not include its children slots, and only works on slots that have a layout component. For working with children, the parent with the ContentSizeFitter needs to also have a HorizontalLayout, VerticalLayout, or GridLayout component. LayoutElement is also a layout component, as is Text and Image.\n\n}}\n\nFit modes are:\n- Disabled: Don't perform any resizing.\n- MinSize: Resize to the minimum size of the content.\n- PreferredSize: Resize to the preferred size of the content.",
+  "category": "UIX:Layout",
+  "fields": {
+    "HorizontalFit": "The fit mode to use to determine the width.",
+    "VerticalFit": "The fit mode to use to determine the height."
+  },
+  "methods": {},
+  "usage": "This is used for a polished look of keeping your contents in the bounds of a UIX element.",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "The ContentSizeFitter functions as a layout controller that controls the size of its own layout component. The size is determined by the minimum or preferred sizes provided by layout components its own slot. Such layout components can be Image or Text components, VerticalLayout, HorizontalLayout, or a LayoutElement component."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ContentSizeFitter&action=raw"
+}

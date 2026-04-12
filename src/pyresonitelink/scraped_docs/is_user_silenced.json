@@ -1,8 +1,12 @@
 {
-  "description": "The Is User Silenced node returns if the user is Silenced. For a user to be Silenced, they would need to have a special setting turned on in the User Inspector.",
+  "description": "The ``Is User Silenced`` node returns if the user is Silenced. For a user to be Silenced, they would need to have a special setting turned on in the User Inspector.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:bool|bool]])": "The user being Silenced or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsUserSilenced&action=raw"
 }

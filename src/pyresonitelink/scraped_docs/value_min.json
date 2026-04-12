@@ -1,8 +1,13 @@
 {
   "description": "The Value Min node takes in two values and returns the lower of the two values.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The first value.",
+    "B": "The second value.",
+    "* (Pseudo-Generic)": "Returns the lower of the two values."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueMin&action=raw"
 }

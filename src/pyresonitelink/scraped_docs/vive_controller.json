@@ -1,8 +1,24 @@
 {
   "description": "This node provides information provided by HTC Vive wand controllers.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting controller information from.",
+    "Node": "The controller side to get information from.",
+    "IsActive": "Is this controller actively being used right now.",
+    "Type": "The controller type being used.",
+    "BatteryLevel": "The battery level of this controller.",
+    "IsBatteryCharging": "Is this controller currently charging.",
+    "Grip": "Is the controller's grip clicked down right now.",
+    "App": "Is the app button pressed right now.",
+    "Trigger": "The amount of how far this controller's trigger is being pressed down currently.",
+    "TriggerHair": "Is the controller's trigger hair being used right now.",
+    "TriggerClick": "Is the controller's trigger being clicked down right now.",
+    "Touchpad": "The position of this controller's touchpad.",
+    "TouchpadTouch": "Is the controller's touchpad being touched right now.",
+    "TouchpadClick": "Is the controller's touchpad clicked down right now."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ViveController&action=raw"
 }

@@ -1,0 +1,14 @@
+{
+  "description": "The GenericModalDialogSpawer component works in world space. The Generic type it takes has to be a component type. This component activates when on the same slot as a button. When activated, this component attaches a new instance of T to the world, triggers ``Initializer`` with the new Component as an argument, and then positions it in front of the user.",
+  "category": "Uncategorized",
+  "fields": {
+    "Initializer": "The Sync delegate to call with a",
+    "Size": "The size of the dialog.",
+    "CloseOnClick": "Whether to close the Dialog on click.",
+    "CloseOnContextMenu": "Whether to close the Dialog when opening the context menu."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GenericModalDialogSpawner&action=raw"
+}

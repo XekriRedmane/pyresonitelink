@@ -1,8 +1,11 @@
 {
   "description": "On Grabbable Released is a ProtoFlux node that monitors an IGrabbable for when something or someone lets go of it and sends an Impulse.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnGrabbed": "Sends an impulse when someone or something lets go of Grabbable (IGrabbable)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnGrabbableReleased&action=raw"
 }

@@ -1,8 +1,12 @@
 {
-  "description": "The User Queued Messages node returns the user's queued messages (also called packets), and shows how behind a user is and how much they need to catch up by.",
+  "description": "The ``User Queued Messages`` node returns the user's queued messages (also called packets), and shows how behind a user is and how much they need to catch up by.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:int|int]])": "The user's queued packets."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserQueuedMessages&action=raw"
 }

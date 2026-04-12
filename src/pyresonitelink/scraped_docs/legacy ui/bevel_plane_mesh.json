@@ -1,0 +1,16 @@
+{
+  "description": "Used in old Legacy content like old inspectors and panels.",
+  "category": "Assets:Procedural Meshes:Legacy UI",
+  "fields": {
+    "Width": "the width of the plane",
+    "Height": "the height of the plane",
+    "Thickness": "How 3D the plane should be, making it more like a box.",
+    "TopLeftCut": "How much to bevel the top left corner.",
+    "BottomRightCut": "How much to bevel the bottom right corner.",
+    "Relief": "indent the center inwards or not."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, and use the ``Settup Renderer`` button to view the mesh.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BevelPlaneMesh&action=raw"
+}

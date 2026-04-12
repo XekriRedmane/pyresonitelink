@@ -1,8 +1,13 @@
 {
-  "description": "The Can Be Grabbed node takes in a slot and a grabber from a user, and checks if this slot can be grabbed using that provided grabber. It will not check if it is being grabbed, only if it could be grabbed.",
+  "description": "The ``Can Be Grabbed`` node takes in a slot and a grabber from a user, and checks if this slot can be grabbed using that provided grabber. It will not check if it is being grabbed, only if it could be grabbed.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Slot": "The Slot to check if it can be grabbed.",
+    "Grabber": "The grabber on a user (``LeftHand`` or ``RightHand``).",
+    "* ([[Type:bool|bool]])": "Returns if this slot can be grabbed with the provided grabber from a user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CanBeGrabbed&action=raw"
 }

@@ -1,0 +1,18 @@
+{
+  "description": "The BoxMesh component procedurally generates a cube mesh for use with a MeshRenderer, according to the parameters provided.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Size": "The size of the mesh",
+    "UVScale": "The inverse of the size the material should appear on the surface as.",
+    "ScaleUVWithSize": "Change uv scale visually with the value of ``Size``"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "== Examples =="
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BoxMesh&action=raw"
+}

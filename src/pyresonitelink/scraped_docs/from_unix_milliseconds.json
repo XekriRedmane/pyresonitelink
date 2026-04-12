@@ -1,8 +1,13 @@
 {
-  "description": "The From Unix Milliseconds node takes in the Unix milliseconds and then converts it into a DateTime, along with an option to offset it to make it a local DateTime (based on your time zone). The amount of milliseconds given will count up from the Unix epoch.",
+  "description": "The ``From Unix Milliseconds`` node takes in the Unix milliseconds and then converts it into a DateTime, along with an option to offset it to make it a local DateTime (based on your time zone). The amount of milliseconds given will count up from the Unix epoch.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "UnixMilliseconds": "The total Unix milliseconds for converting into a DateTime.",
+    "IsLocal": "Should adjust for local time.",
+    "* ([[Type:DateTime|DateTime]])": "Returns the DateTime from the Unix milliseconds."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FromUnixMilliseconds&action=raw"
 }

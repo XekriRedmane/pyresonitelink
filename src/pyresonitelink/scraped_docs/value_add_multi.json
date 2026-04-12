@@ -1,8 +1,12 @@
 {
   "description": "The Value Add Multi node takes in a list of values and adds from the first given value onwards. The first value is always the starting point. Then the second value will add from the first, giving the result for the third input to add from, so on and so fourth. More information can be found on the Add node page.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Inputs": "The numbers to add with, using the first value as a starting point.",
+    "* (Pseudo-Generic)": "The final result of all the addition operations."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueAddMulti&action=raw"
 }

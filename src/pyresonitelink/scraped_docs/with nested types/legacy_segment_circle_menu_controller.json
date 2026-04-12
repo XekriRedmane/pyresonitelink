@@ -1,0 +1,25 @@
+{
+  "description": "This is a Legacy item and should not be used.",
+  "category": "With Nested Types",
+  "fields": {
+    "DefaultFontMaterial": "The default font to use for menu items.",
+    "DisabledOutlineColor": "The outline color menu items should have when disabled.",
+    "DisabledFillColor": "The color menu items should have when disabled.",
+    "LogoCircle": "Whether this is a logo Circle from a long dead platform. he who shall not be named on the holy land that is this wiki - @989onan.",
+    "GenerateColliders": "Whether to generate colliders for menu items.",
+    "HighlightRadiusOffset": "The tolerance for highlighting menu items.",
+    "logoMenuMesh": "The logo mesh from a long dead platform. he who shall not be named on the holy land that is this wiki - @989onan.",
+    "circleMenuItems": "The list of menu items this component is managing.",
+    "independentMenuItems": "The list of independent menu items this list is managing for other tools.",
+    "itemsArcs": "The list of item arcs this component is managing.",
+    "_overridesDrive": "List of menu segments to use as overrides.",
+    "_independentDrive": "List of indepent drives of menu segments.",
+    "menuItemsSlot": "Where to generate and place menu items for this component."
+  },
+  "methods": {
+    "MenuItemTouched": "Called when a menu item is touched."
+  },
+  "usage": "Just don't.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacySegmentCircleMenuController&action=raw"
+}

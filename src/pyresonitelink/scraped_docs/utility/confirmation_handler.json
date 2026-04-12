@@ -1,0 +1,15 @@
+{
+  "description": "The ConfirmationHandler component is used to handle confirming an action. (what the actions are is currently not documented)",
+  "category": "Common UI:Utility",
+  "fields": {
+    "Label": "The message of the Confirmation box",
+    "Color": "The color of the button before confirming is allowed.",
+    "OriginalLabel": "The original label of the conformation before allowing the user to continue.",
+    "OriginalColor": "The original color of the Confirmation before allowing the user to continue.",
+    "RevertTime": "The time to allow the user to click the button."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConfirmationHandler&action=raw"
+}

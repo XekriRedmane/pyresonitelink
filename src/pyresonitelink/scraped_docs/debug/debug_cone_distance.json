@@ -1,0 +1,13 @@
+{
+  "description": "The DebugConeDistance component creates a Debug cone visual that draws lines from the list of ``Points`` to the surface of the cone. If the point is inside the cone, the point visual will be Cyan, if it is outside it will be red. The lines from the point to the cone are Yellow. When attached, the component will add 32 random points to ``Points`` that are 4 units away.",
+  "category": "Debug",
+  "fields": {
+    "Height": "The height of the cone.",
+    "Radius": "The radius of the cone base.",
+    "Points": "Points that the Debug visual will draw lines to from the cone surface to the point."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugConeDistance&action=raw"
+}

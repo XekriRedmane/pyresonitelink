@@ -1,0 +1,19 @@
+{
+  "description": "See Object Slicer Tool.",
+  "category": "Tools",
+  "fields": {
+    "ApplyToObjectRoot": "Whether the slicing material effect should be applied to the nearest object root.",
+    "EdgeColor": "what the edge color for new generated slice materials should be.",
+    "EdgeStart": "The start of the range of the edge color from the slicer.",
+    "EdgeEnd": "The end of the range of the edge color from the slicer.",
+    "_slicers": "The list of slicers this tool has generated and/or is controlling.",
+    "_sliceMaterials": "The list of slice materials this tool has generated and/or is controlling."
+  },
+  "methods": {
+    "CreateSlicer": "Called when the create slicer button is touched.",
+    "ClearSetup": "Called when the clear setup button is touched."
+  },
+  "usage": "See Object Slicer Tool.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ObjectSlicerTool&action=raw"
+}

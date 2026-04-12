@@ -1,8 +1,11 @@
 {
-  "description": "The New Line node is a character literal constant that represents a new line in text. Note that this node comes in two versions: A char version and a String version.",
+  "description": "The ``New Line`` node is a character literal constant that represents a new line in text. Note that this node comes in two versions: A char version and a String version.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:char|char]] or [[Type:String|String]])": "The character literal constant of the New Line character.\n\nFor the char node, this will output ``U+000A``, or a line feed character (``\\n``).\n\nFor the string node, the output will be a Carriage Return (``U+000D``, ``\\r``) followed by a line feed (``\\r\\n``) on Windows (and other non-Unix) platforms, or a singular line feed (``\\n``) on Unix platforms (Linux, MacOS, ...). This is local to each user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:NewLine&action=raw"
 }

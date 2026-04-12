@@ -1,0 +1,12 @@
+{
+  "description": "Repulsion tree item is used along side the Repulsion Tree Simulator Component to make a live repulsion tree simulation. Check the simulator's page for a more detailed explanation.",
+  "category": "Uncategorized",
+  "fields": {
+    "Force": "How much force to apply to other RepulsionTreeItems within range.",
+    "Radius": "The radius of influence this item has when interacting with other items."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RepulsionTreeItem&action=raw"
+}

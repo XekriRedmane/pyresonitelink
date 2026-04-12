@@ -1,0 +1,17 @@
+{
+  "description": "Handles the translation of slots on the X, Y, Z directions or a combination thereof.",
+  "category": "Uncategorized",
+  "fields": {
+    "_xyzGizmo": "The gizmo that allows translations on xyz at the same time.",
+    "_xyGizmo": "The gizmo that allows translations on xy at the same time.",
+    "_xzGizmo": "The gizmo that allows translations on xz at the same time.",
+    "_yzGizmo": "The gizmo that allows translations on yz at the same time.",
+    "_xGizmo": "The gizmo that allows translation on x.",
+    "_yGizmo": "The gizmo that allows translation on y.",
+    "_zGizmo": "The gizmo that allows translation on z."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TranslationGizmo&action=raw"
+}

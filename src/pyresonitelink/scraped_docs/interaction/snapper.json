@@ -1,0 +1,18 @@
+{
+  "description": "The Snapper component allows a slot to parent to Snap Target slots.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "CheckStaticColliders": "Allows the Snapper to look for colliders that are set to Static rather then Trigger.",
+    "SnapTargetWhitelist": "List of Snap Targets that the slot can attach to",
+    "Keywords": "List of keywords to match against a corresponding Snap Targets. Can have multiple keywords to snap to multiple Snap Targets"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Allows the slot in which this component resides in to snap to a Snap Target in another slot. The SnapTargetWhitelist allows you to specify a list of SnapTargets that this component will link to in case you want to limit its snapability. The keywords list allows you to provide a list of words which the Snap Target can use to filter for specific types of snappers.\n\nIt is important to have this in a slot shared with a Grabbable component in the root link of the object you wish to snap. Snapped components will become children of the snap target."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Snapper&action=raw"
+}

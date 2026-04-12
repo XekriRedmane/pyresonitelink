@@ -1,0 +1,22 @@
+{
+  "description": "",
+  "category": "Assets:Materials:Unlit",
+  "fields": {
+    "Texture": "The primary texture to use for the skybox when ``TextureLerp`` is at 0.",
+    "SecondaryTexture": "The secondary texture to use for the skybox when ``TextureLerp`` is at 1.",
+    "Cubemap": "A cubemap override to use to make the skybox when ``TextureLerp`` is at 0.",
+    "SecondaryCubemap": "A cubemap override to use to make the skybox when ``TextureLerp`` is at 1.",
+    "CubemapLOD": "which LOD to use of the Cubemap",
+    "TextureLerp": "How much to lerp between set 1 or 2 for this material.",
+    "Projection": "How to handle projection of the skybox texture for this skybox.",
+    "FieldOfView": "What area of the texture to sample of the skybox in terms of FOV.",
+    "AngleOffset": "how much to shift the skybox sample area by in degrees.",
+    "PerspectiveFieldOfView": "What area of the texture to sample of the skybox in terms of perspective FOV.",
+    "PerspectiveAngleOffset": "how much to shift the skybox sample area by in perspective degrees.",
+    "Tint": "What color to multiply the skybox with."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Projection360Material&action=raw"
+}

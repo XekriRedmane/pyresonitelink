@@ -1,0 +1,13 @@
+{
+  "description": "The ButtonStringAppend component can be used to add a string to the beginning or end of a string whenever an IButton is pressed.",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "TargetString": "The string to which ``AppendString`` will be added.",
+    "AppendString": "The string to add to ``TargetString``.",
+    "AppendInFront": "Whether or not to add ``AppendString`` to the beginning of the string. (This does not reverse ``AppendString``.)"
+  },
+  "methods": {},
+  "usage": "To function, the component simply needs to be attached to a slot that also has a button component attached to it. From then on, pressing that button will activate the ButtonStringAppend, making it append its ``AppendString`` to its ``TargetString``.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonStringAppend&action=raw"
+}

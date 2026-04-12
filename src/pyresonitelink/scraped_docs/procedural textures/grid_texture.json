@@ -1,0 +1,12 @@
+{
+  "description": "The GridTexture component is used to generate a grid of lines with a background color to use in materials.",
+  "category": "Assets:Procedural Textures",
+  "fields": {
+    "BackgroundColor": "The color of the background before ``Grids`` are layered on top.",
+    "Grids": "A list of Grids of lines that get layered on top of each other in order."
+  },
+  "methods": {},
+  "usage": "Attach the component and provide a ``BackgroundColor`` and add some items to ``Grids`` to generate the texture. Then add to any ITexture2D slot like in materials for example.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GridTexture&action=raw"
+}

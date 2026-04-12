@@ -1,8 +1,11 @@
 {
-  "description": "The World Active User Count node returns the amount of active users. Active users are users that are focused into this world currently.",
+  "description": "The ``World Active User Count`` node returns the amount of active users. Active users are users that are focused into this world currently.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:int|int]])": "The amount of actives users in this world."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldActiveUserCount&action=raw"
 }

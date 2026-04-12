@@ -1,0 +1,9 @@
+{
+  "description": "The Pixelate Material component point filters the colors behind it using a spaced out grid of points. It then uses the colors to make a new pixel grid which makes up the pixelated effect it generates.",
+  "category": "Assets:Materials:Filters",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot and then insert into a SkinnedMeshRenderer or MeshRenderer with a mesh to view it.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PixelateMaterial&action=raw"
+}

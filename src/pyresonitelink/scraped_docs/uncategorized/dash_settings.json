@@ -1,0 +1,13 @@
+{
+  "description": "The DashSettings component is part of the Settings menu and is used to change the settings of how the Dash works.",
+  "category": "Uncategorized",
+  "fields": {
+    "DashCurvature": "How much to curve the dash in VR.",
+    "OpenCloseSpeed": "How fast the animation should play when opening and closing the dash.",
+    "AllowReplacingSettings": "Allows you to remove panels from the settings menu, for usage as individual facets."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DashSettings&action=raw"
+}

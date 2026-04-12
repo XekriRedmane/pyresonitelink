@@ -1,0 +1,27 @@
+{
+  "description": "The ballistics path mesh is a component that generates a stripe or tube mesh that traces the future path of a virtual thrown object.\n\nTube mode currently does not work due to a small oversight. See issue 2901",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "InitialPosition": "The initial position of the ballistics path.",
+    "InitialVelocity": "The initial velocity of the ballistics path.",
+    "Gravity": "The gravity affecting the ballistics path (m/s^2)",
+    "Drag": "the resistance through the air of the generated ballistics path",
+    "Mode": "What units ``StepSize`` is in.",
+    "StepSize": "How many units maximum every bend/segment is in length (the last segment may be shorter).",
+    "TotalUnits": "How many segments the path mesh will have give or take 1 or 2.",
+    "Shape": "What shape the arc should be rendered as.",
+    "Size": "How big to scale this ballisitics path",
+    "Points": "how many sides the tube mesh uses. Only accepts values greater than or equal to 3.",
+    "DualSided": "whether the generated mesh should be dual sided.",
+    "Up": "The up direction against gravity for the generated mesh (local space)",
+    "DistanceSizeGrowth": "How much to make the width/radius of the path mesh grow as it progresses along the arc.",
+    "MinGrownSize": "How skinny at minimum the Ballistic Path Mesh will get from applying ``DistanceSizeGrowth``.",
+    "MaxGrownSize": "How wide at maximum the Ballistic Path Mesh will get from applying ``DistanceSizeGrowth``.",
+    "UseLastSegment": "Whether to add one final segment that goes to LastSegmentPosition",
+    "LastSegmentPosition": "The local position to place the end of the last segment at if ``UseLastSegment`` is enabled."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BallisticPathMesh&action=raw"
+}

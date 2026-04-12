@@ -1,8 +1,11 @@
 {
   "description": "The Random Point In Circle node returns a random float2 value of a point within the bounds of a unit circle.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float2|float2]])": "A random point within the unit circle."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomPointInCircle&action=raw"
 }

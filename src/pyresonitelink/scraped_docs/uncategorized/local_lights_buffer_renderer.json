@@ -1,0 +1,18 @@
+{
+  "description": "The Local Lights Buffer Renderer component is used to render the lights for a particle system.",
+  "category": "Uncategorized",
+  "fields": {
+    "LightType": "The kind of light to use.",
+    "ShadowType": "The light's shadow type.",
+    "ShadowStrength": "The light's shadow strength.",
+    "ShadowNearPlane": "The light's near plane.",
+    "ShadowMapResolution": "The light's shadow map resolution.",
+    "ShadowBias": "The light's shadow bias.",
+    "ShadowNormalBias": "The light's normal bias.",
+    "Cookie": "The texture used for the spotlight cutout texture."
+  },
+  "methods": {},
+  "usage": "Used in particle systems.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocalLightsBufferRenderer&action=raw"
+}

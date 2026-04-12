@@ -1,0 +1,9 @@
+{
+  "description": "The Pivot From Velocity Magnitude component is used in Photon Dust to make particles rotate based on their velocity direction on a pivot.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PivotFromVelocityMagnitude&action=raw"
+}

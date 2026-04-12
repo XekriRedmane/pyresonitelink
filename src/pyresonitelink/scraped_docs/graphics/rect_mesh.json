@@ -1,0 +1,12 @@
+{
+  "description": "The RectMesh component takes in a value (either a dynamic value from an IAudioSource, or a min and max float value) and parameters for the generated rect mesh, then renders it onto the UIX.\n\n}}",
+  "category": "UIX:Graphics",
+  "fields": {
+    "Mesh": "The mesh parameters used to render this rect mesh.",
+    "Materials": "The material to render for this rect mesh."
+  },
+  "methods": {},
+  "usage": "This can be used to make fancy audio visuals from a user's Audio Stream Controller.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RectMesh&action=raw"
+}

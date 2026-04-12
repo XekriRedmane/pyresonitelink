@@ -1,0 +1,26 @@
+{
+  "description": "The LegacyCheckbox component is used in old migrated content. This is a Legacy component and should not be used for new content. This should be replaced whenever possible.",
+  "category": "UI:Physical",
+  "fields": {
+    "IsChecked": "Whether the checkbox is checked.",
+    "DriveField": "The field to drive with this checkbooks state.",
+    "AllowWriteBack": "Whether changes to the target value of ``DriveField`` are sent to this component's checked state instead.",
+    "Size": "How big the check box is.",
+    "BevelPercent": "How beveled the check box is.",
+    "Color": "The color of the check box.",
+    "_shellMesh": "The outer shell of the check box.",
+    "_checkMesh": "The inner check box indicator of the check box.",
+    "_titleBar": "unused.",
+    "_shellSize": "The field to drive for the outer shell size mesh.",
+    "_shellBevel": "The field to drive for the outer shell bevel.",
+    "_checkSize": "The field to drive for the check indicator size.",
+    "_checkBevel": "The field to drive for the check indicator bevel.",
+    "_colliderSize": "The field to drive for the collider size.",
+    "_shellMaterial": "The field to drive to set the shell material.",
+    "_checkMaterial": "The field to drive to set the check indicator material."
+  },
+  "methods": {},
+  "usage": "Just dont.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyCheckbox&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The UserLoginStatus component gets the current login status of the local user.",
+  "category": "Cloud:Indicators",
+  "fields": {
+    "IsLoggedIn": "Whether the local user is logged in.",
+    "LoggedUserId": "The userID of the local user if they are logged in.",
+    "LoggedUsername": "The username of the local user if they are logged in."
+  },
+  "methods": {},
+  "usage": "Attach to a Component to instantly get info on the local user's login status.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserLoginStatus&action=raw"
+}

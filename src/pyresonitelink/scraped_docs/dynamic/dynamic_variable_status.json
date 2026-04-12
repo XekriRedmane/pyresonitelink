@@ -1,0 +1,13 @@
+{
+  "description": "Dynamic Variable Status is a component that allows for reading if a certain dynamic variable with a type and name exists and/or is linked to a space. Which space this component reads from is determined by the slot this component is attached to. How a slot finds a dynamic variable space is further explained on the Dynamic Variables page.",
+  "category": "Data:Dynamic",
+  "fields": {
+    "VariableName": "The Variable name to check the status for with the Dynamic Variables System.",
+    "IsLinkedToSpace": "Checks if the variable with the ``VariableName`` and with this component's sub type (the \"\" of this component) is linked to the found variable space. How a slot finds a dynamic variable space is further explained on the Dynamic Variables page.",
+    "VariableExists": "Checks if the variable with the ``VariableName`` and with this component's sub type (the \"\" of this component) exists in the found variable space. How a slot finds a dynamic variable space is further explained on the Dynamic Variables page."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicVariableStatus&action=raw"
+}

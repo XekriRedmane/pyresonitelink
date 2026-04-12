@@ -1,0 +1,13 @@
+{
+  "description": "The DebugDataFeedView component shows the data from a feed including calls to update already provided data from the feed.",
+  "category": "Radiant UI:Data Feeds:Views",
+  "fields": {
+    "TargetOutput": "The field (usually the text on a text renderer) to update with the debug feed data."
+  },
+  "methods": {
+    "PathSegmentName": "Converts a path name element and a depth into a corresponding locale string for translation."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugDataFeedView&action=raw"
+}

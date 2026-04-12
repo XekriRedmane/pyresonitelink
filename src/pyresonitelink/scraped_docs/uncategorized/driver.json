@@ -1,0 +1,12 @@
+{
+  "description": "The Driver component drives a value field via a protoflux output. This is used in ProtoFlux to utilize output calculations.",
+  "category": "Uncategorized",
+  "fields": {
+    "Source": "The node output to get a value from.",
+    "Target": "The value to drive with the output acquired from ``Source``."
+  },
+  "methods": {},
+  "usage": "Not used by the user directly, but is made by Flux drivers.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Driver&action=raw"
+}

@@ -1,0 +1,17 @@
+{
+  "description": "A generator for points arranged in a box with a given length, width, and height.",
+  "category": "Transform:Point Generators",
+  "fields": {
+    "Size": "How big the box should be for generating points.",
+    "Shell": "Whether points should only be spawned on the surface of the box or not."
+  },
+  "methods": {},
+  "usage": "Used in a Common Spawn Area to define in what kind of spawn area shape users should initially spawn into.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* CommonSpawnArea"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BoxPointGenerator&action=raw"
+}

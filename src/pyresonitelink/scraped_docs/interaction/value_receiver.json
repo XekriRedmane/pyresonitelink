@@ -1,0 +1,13 @@
+{
+  "description": "The ValueReceiver component is used in UIX elements to allow dropping a value property into a Button or interactable UIX section to change a value field to the dropped value.",
+  "category": "UIX:Interaction",
+  "fields": {
+    "Field": "The field to drop the value into.",
+    "Undoable": "Whether dropping the value is undo able.",
+    "TryConvertValues": "Tries to change a dropped value which is possibly a string into the proper format by parsing."
+  },
+  "methods": {},
+  "usage": "Attach to a UIX element to allow an interactable to have droppable values into a target value field. Needs to be provided a target ``Field`` in order for it to work.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueReceiver&action=raw"
+}

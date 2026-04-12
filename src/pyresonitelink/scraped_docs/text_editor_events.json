@@ -1,8 +1,14 @@
 {
-  "description": "The Text Editor Events node takes in a global TextEditor reference and will listen for events from that global reference. This node fires events that relate to the TextEditor, and can be useful when you want certain things to happen when things get edited or submitted by the user.",
+  "description": "The ``Text Editor Events`` node takes in a global TextEditor reference and will listen for events from that global reference. This node fires events that relate to the TextEditor, and can be useful when you want certain things to happen when things get edited or submitted by the user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "EditingStarted": "Fires when the editing has started (After the editor is focused).",
+    "EditingChanged": "Fires after every change during the editing.",
+    "EditingFinished": "Fires when the editing finishes (before the editor loses focus).",
+    "SubmitPressed": "Fires When the user submits the changes for the editor (called before ``EditingFinished`` gets fired)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TextEditorEvents&action=raw"
 }

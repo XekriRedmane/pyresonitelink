@@ -1,0 +1,30 @@
+{
+  "description": "The Canvas component is the starting point for anything based on UIX. It provides the bounds of the UI and controls how users can interact with it.\n\n- DefaultCulling: Especially for rendering the back side of the canvas.|warning}}\n\n}}",
+  "category": "UIX",
+  "fields": {
+    "Size": "The dimensions of the canvas. At normal scale, this is equivalent to meters",
+    "EditModeOnly": "This makes this component only editable in Edit Mode",
+    "AcceptExistingTouch": "If this canvas is already being touched (physically or remotely), accept the input",
+    "IgnoreTouchesFromBehind": "Makes the canvas ignore all touches from behind",
+    "BlockAllInteractions": "Prevents any interaction if enabled",
+    "LaserPassThrough": "Allows the laser to go through the canvas",
+    "PixelScale": "Sets the pixel scale for this canvas and its contents",
+    "UnitScale": "Scales the contents of this canvas, higher number makes the contents smaller",
+    "_rootRect": "Internal - The root rect of this canvas",
+    "Collider": "The collider that receives touches from this canvas",
+    "DefaultCulling": "Culling for this canvas",
+    "_colliderSize": "Internal - Takes in a box collider and uses it for the canvas",
+    "_colliderOffset": "Internal - Offsets this box collider for this canvas",
+    "StartingOffset": "The visibility order of rendering this canvas (lower number gets drawn over higher numbers)",
+    "StartingMaskDepth": "Masking layer for the canvas"
+  },
+  "methods": {},
+  "usage": "This component is needed for UIX, without it, your other components that relay on UIX, canvas, elements, and rects will not work as expected. Using a canvas not only organizes your other components, it renders them and makes them usable and interactable.",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* When a child slot is created when under a Slot that has a canvas component, the new child slot will automatically create a RectTransform component."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Canvas&action=raw"
+}

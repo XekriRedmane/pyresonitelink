@@ -1,8 +1,13 @@
 {
   "description": "Get Side is a ProtoFlux node that converts the provided Node (BodyNode) from its current side to the Side (Chirality) provided. If given a node that is in the center of the body, then it will return a \"None\" value. If the Side (Chirality) provided is the current side of the provided Node (BodyNode), no change will occur between the Node (BodyNode) and the * (BodyNode) output.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Node": "The node to convert to the provided Side (Chirality).",
+    "Side": "the side to convert Node (BodyNode) to.",
+    "* ([[Type:BodyNode|BodyNode]])": "The provided Node (BodyNode) converted to the provided Side (Chirality)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetSide&action=raw"
 }

@@ -1,0 +1,16 @@
+{
+  "description": "The ``Get Raw Data Tool Hit`` node creates a raycast from the origin (tip reference slot position and direction?) looking and retrieving for valid hits. This node acts similarly to the Raycaster and Raycast One nodes in functionality.\n\nThis node returns data per frame, and is very useful for debugging and testing hit detection due to its constant updates.\n\nThis node can be combined with the Hit UV Coordinate node to get further data from this hit, such as a 2D location point on the collider for example.",
+  "category": "",
+  "fields": {
+    "* ([[Type:RawDataTool|RawDataTool]])": "The raw data tool to point with using raycasts.",
+    "HitColider": "The collider we hit.",
+    "HitPoint": "The point in 3D space of where we hit.",
+    "HitNormal": "The normal of the collider facing direction.",
+    "HitDistance": "The distance of how far this hit was from the origin of this raycast.",
+    "HitTriangleIndex": "The mesh data number of our hit."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetRawDataToolHit&action=raw"
+}

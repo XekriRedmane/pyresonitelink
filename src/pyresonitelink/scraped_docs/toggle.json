@@ -1,8 +1,12 @@
 {
-  "description": "The Toggle node tells a IPlayable to start or stop playback upon impulse, depending on the current state.",
+  "description": "The Toggle node tells a IPlayable to start or stop playback upon impulse, depending on the current state.\n\nThis will start playback on impulse if it's currently stopped, and vice versa.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "=== Target (IPlayable) ===\n\nThe IPlayable to toggle playback on.",
+    "Next": "Sends an impulse after the initial call."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Toggle&action=raw"
 }

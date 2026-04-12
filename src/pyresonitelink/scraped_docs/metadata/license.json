@@ -1,0 +1,13 @@
+{
+  "description": "License is a legacy component, that has no functionality. We don't recommend using it. There is no standard for the formats, meaning or use of the properties within the component. Due to this different communities have used it for different items and purposes leading to a lot of confusion.",
+  "category": "Metadata",
+  "fields": {
+    "RequireCredit": "There is no common standard for this value's meaning",
+    "CreditString": "There is no common standard for this value's meaning",
+    "CanExport": "There is no common standard for this value's meaning"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:License&action=raw"
+}

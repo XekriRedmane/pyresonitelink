@@ -1,0 +1,25 @@
+{
+  "description": "Storage Usage Status is a component that is used to read how much storage a user has used, total, shared, and that has left to share.",
+  "category": "Cloud:Indicators",
+  "fields": {
+    "OwnerId": "The id of the user this is reading data from",
+    "GroupMemberQuota": "Whether to read group storage limits.",
+    "HasValidData": "Whether this component has successfully grabbed the data.",
+    "StorageBytes": "how many bytes of storage ``OwnerId`` has total",
+    "FullStorageBytes": "how many bytes of storage ``OwnerId`` has used currently.",
+    "ShareableStorageBytes": "How many bytes of storage ``OwnerId`` currently has ready to share.",
+    "SharedStorageBytes": "How many bytes of storage ``OwnerId`` has shared with others currently.",
+    "UsageBytes": "The total amount of bytes being used by ``OwnerId``.",
+    "UsageRatio": "the percentage of how full ``OwnerId``'s storage is from 0->1",
+    "StorageString": "String version with nice formatting applied of how much storage ``OwnerId`` has.",
+    "FullStorageString": "String version with nice formatting applied of",
+    "ShareableStorageString": "String version with nice formatting applied of how much storage ``OwnerId`` has ready to share.",
+    "SharedStorageString": "String version with nice formatting applied of how much storage ``OwnerId`` has shared with others.",
+    "UsageString": "String version with nice formatting applied of how much storage ``OwnerId`` has used.",
+    "RatioString": "String version with nice formatting applied of how full ``OwnerId``'s storage is."
+  },
+  "methods": {},
+  "usage": "Can only be used in user space and your active cloud home.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StorageUsageStatus&action=raw"
+}

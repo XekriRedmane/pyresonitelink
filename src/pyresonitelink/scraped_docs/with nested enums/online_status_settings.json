@@ -1,0 +1,19 @@
+{
+  "description": "The OnlineStatusSettings component is used to define how online status for the user should be handled.\n\nSee Settings.",
+  "category": "With Nested Enums",
+  "fields": {
+    "DefaultStatus": "The default status for the user when they log in.",
+    "RememberMode": "Whether the status the user had when they were last on should be remembered.",
+    "RememberTimespan": "How long to remember the last status from the previous login before setting back to default again.",
+    "InvisibleRememberMode": "How to remember the previous status from the last login.",
+    "InvisibleRememberTimespan": "How long to remember a status if it's set to invisible.",
+    "AutoAwayTimespan": "How long to wait when the user is AFK before enabling Away.",
+    "EnableDefaultStatus": "Whether to enable the default status behavior.",
+    "ShowRememberTimespan": "Whether to show the remember timespan control UI.",
+    "ShowInvisibleRememberTimespan": "Whether to show the remember invisible timespan control UI."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:OnlineStatusSettings&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The ButtonHoverRelay component sends a signal to a button event handler (usually something internal like a Method Proxy).",
+  "category": "Common UI:Events",
+  "fields": {
+    "OnHoverEnter": "Sends a signal when hovering begins.",
+    "OnHoverStay": "Sends a signal when hovering.",
+    "OnHoverLeave": "Sends a signal when hovering ends."
+  },
+  "methods": {},
+  "usage": "This can send a signal internally.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonHoverRelay&action=raw"
+}

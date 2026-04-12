@@ -1,0 +1,9 @@
+{
+  "description": "The HierarchyMaterialTarget component signals that a slot tagged with this component you are hitting with the Material Tool is an appropriate target to look for materials in.",
+  "category": "Assets:Tagging",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HierarchyMaterialTarget&action=raw"
+}

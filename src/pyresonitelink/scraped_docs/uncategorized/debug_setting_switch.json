@@ -1,0 +1,11 @@
+{
+  "description": "The DebugSettingSwitch component is used to Switch profiles as a way of debugging. Same thing switching between VR and desktop does. Only works in user space.",
+  "category": "Uncategorized",
+  "fields": {
+    "TargetProfile": "The profile to Switch to."
+  },
+  "methods": {},
+  "usage": "Debug.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugSettingSwitch&action=raw"
+}

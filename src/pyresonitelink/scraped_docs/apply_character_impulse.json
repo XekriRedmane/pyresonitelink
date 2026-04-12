@@ -1,8 +1,15 @@
 {
-  "description": "Applies a impulse to a character controller, impulses are similar but different from the force node from a physics perspective.",
+  "description": "Applies a impulse to a character controller, impulses are similar but different from the force node from a physics perspective. \n\nImpulse is the change in momentum of an object, or otherwise an \"normalized\" version of force.\n\nIn this case, the impulse node takes Force and applies it across dT, making it framerate independent.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Input": "Calls to trigger the character impulse.",
+    "Impulse": "The direction to send the slot holding the character controller component.",
+    "Character": "The reference itself to be sent in a direction.",
+    "Ignore Mass ([[Type:bool|bool]])": "The option to ignore mass in the character controller component when being sent in a direction.",
+    "Next": "Continues execution from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ApplyCharacterImpulse&action=raw"
 }

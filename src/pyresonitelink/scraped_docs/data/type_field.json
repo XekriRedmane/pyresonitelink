@@ -1,0 +1,11 @@
+{
+  "description": "The TypeField component is used to store a Type which is usually a reference to a C# class.",
+  "category": "Data",
+  "fields": {
+    "Type": "The Type this component is storing."
+  },
+  "methods": {},
+  "usage": "This can be used with ProtoFlux to get the color of a Type or its full name.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TypeField&action=raw"
+}

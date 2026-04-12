@@ -1,8 +1,12 @@
 {
   "description": "Concatenate Multi String is a protoflux node that combines multiple strings in order of the inputs into one combined string",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Inputs": "List of string inputs to combine",
+    "* ([[Type:String|String]])": "All of Inputs (String (List)) combined in order"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ConcatenateMultiString&action=raw"
 }

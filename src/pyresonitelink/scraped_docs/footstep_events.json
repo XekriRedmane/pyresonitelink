@@ -1,8 +1,18 @@
 {
-  "description": "The Footstep Events node takes in the global source of a FootstepEventRelay or SelfFootstepEventRelay component, and returns the values from this user's footstep. The footstep event counts when any proxy on a slot detects the collision and raycast from a user's feet onto that ICollider, as long as that collider does not have the No Collision setting on, and also does not have the Ignore Raycasts setting on.",
+  "description": "The Footstep Events node takes in the global source of a FootstepEventRelay or SelfFootstepEventRelay component, and returns the values from this user's footstep. The footstep event counts when any proxy on a slot detects the collision and raycast from a user's feet onto that ICollider, as long as that collider does not have the ``No Collision`` setting on, and also does not have the ``Ignore Raycasts`` setting on.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Footstep": "Fires when a footstep event happens from a FootstepEventRelay or SelfFootstepEventRelay component.",
+    "Side": "Returns the side of that footstep.",
+    "Position": "Returns the position of that footstep.",
+    "Rotation": "Returns the rotation of that footstep.",
+    "ImpactVelocity": "Returns the impact velocity of that footstep.",
+    "HasLanded": "Returns if this footstep has landed.",
+    "HitCollider": "Returns the collider that this footstep has collided with.",
+    "HitTriangleIndex": "Returns the particular triangle of where this footstep has collided with."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FootstepEvents&action=raw"
 }

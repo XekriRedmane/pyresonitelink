@@ -1,0 +1,17 @@
+{
+  "description": "A FieldEditor component takes an IField of any type and deconstructs it's elements into a list of editor components.",
+  "category": "Uncategorized",
+  "fields": {
+    "_targetField": "The field to generate an editor list for.",
+    "_textEditors": "A list of text editors of the specified ``_targetField``'s components.",
+    "_textDrives": "A list of text value fields to drive with the contents of the components of the specified ``_targetField``."
+  },
+  "methods": {
+    "EditingStarted": "TextEditor]].",
+    "EditingChanged": "TextEditor]].",
+    "EditingFinished": "TextEditor]]."
+  },
+  "usage": "Attach to a slot under a UIX Canvas hiearchy with a RectTransform and then insert an IField into ``_targetField`` to be edited for this component to generate an editor for the elements of the specified ``_targetField``.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FieldEditor&action=raw"
+}

@@ -1,8 +1,12 @@
 {
-  "description": "The User User Root node returns a user's User Root.",
+  "description": "The ``User User Root`` node returns a user's User Root.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting the user root from.",
+    "* ([[Type:UserRoot|UserRoot]])": "The user root of the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserUserRoot&action=raw"
 }

@@ -1,0 +1,12 @@
+{
+  "description": "The DebugFieldAdapter component just Inverts ``Value``'s rgb colors and drives ``Target``'s Target with it. Used with DebugFieldAdapterTest.",
+  "category": "Debug",
+  "fields": {
+    "Target": "The target field is driven to ``Value``'s rgb colors inverted.",
+    "Value": "The value to adapt."
+  },
+  "methods": {},
+  "usage": "No need for the user to use.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugFieldAdapter&action=raw"
+}

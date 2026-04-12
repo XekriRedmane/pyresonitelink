@@ -1,0 +1,11 @@
+{
+  "description": "The SphereConstantReferenceSpatialVariable component is used to define a reference value as part of the Spatial variables system without a gradient.",
+  "category": "Data:Spatial:Sphere Variables",
+  "fields": {
+    "Radius": "How big the sphere is for the area of influence."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SphereConstantReferenceSpatialVariable&action=raw"
+}

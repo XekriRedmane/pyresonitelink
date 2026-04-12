@@ -1,0 +1,12 @@
+{
+  "description": "The GrabbableAvatarPoseFilter Component is used to apply pose filters to the user's hand body node that grabbed the IGrabbable on the same Slot this component is on.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "Filter": "The filter to apply when a user grabs the Type:IGrabbable this component is on.",
+    "Priority": "Whether this pose filter should be applied before other pose filters currently affecting the user."
+  },
+  "methods": {},
+  "usage": "This component assigns a Pose Filter to the hand you have grabbed an object on.\n\nThis can be used on anything with a IGrabbable component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabbableAvatarPoseFilter&action=raw"
+}

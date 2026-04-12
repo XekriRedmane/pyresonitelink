@@ -1,8 +1,12 @@
 {
   "description": "Get active user root gets the closest parent UserRoot of the provided Instance (Slot)",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot to check for an active UserRoot.",
+    "* ([[Type:UserRoot|UserRoot]])": "The closest parent user in the hierarchy of Instance (Slot)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetActiveUserRoot&action=raw"
 }

@@ -1,0 +1,14 @@
+{
+  "description": "The BooleanReferenceDriver component is used to drive a reference to one value or another, depending on its State field.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "State": "Determines whether TargetReference should be driven to TrueTarget or to FalseTarget.",
+    "TargetReference": "The field that should be driven.",
+    "FalseTarget": "The value that the field will be driven to if ``State`` is false.",
+    "TrueTarget": "The value that the field will be driven to if ``State`` is true."
+  },
+  "methods": {},
+  "usage": "Attach this component to a slot by first choosing what kind of value you want to boolean switch. See Interface on how similar types can be used that are different classes (Like materials for example). Once a type has been chosen, this component can be used to switch the value in a field between two different ones using ``State``",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BooleanReferenceDriver&action=raw"
+}

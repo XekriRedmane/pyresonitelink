@@ -1,8 +1,14 @@
 {
   "description": "Contains is a ProtoFlux node that returns the amount of times Search (String) occurs in Str (String) as a int.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to search for Search (String) in.",
+    "Search": "The string to be searching for.",
+    "ComparisonMode": "The search method to use when searching.",
+    "* ([[Type:Int|int]])": "The amount of times Search (String) occurs in Str (String)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CountOccurrences&action=raw"
 }

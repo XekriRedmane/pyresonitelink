@@ -1,8 +1,13 @@
 {
-  "description": "Pause is a ProtoFlux node that pauses the provided Target (IPlayable) when * (Call) is called. Pause doesn't change the current Position Output, it essentially sets Is Playing Output to false.",
+  "description": "Pause is a ProtoFlux node that pauses the provided Target (IPlayable) when * (Call) is called.\nPause doesn't change the current Position Output, it essentially sets Is Playing Output to false.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Impulse this to pause the provided Target (IPlayable)",
+    "Target": "The IPlayable to pause.",
+    "Next": "Sends an impulse after * (Call) was called and it was successfully paused."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Pause&action=raw"
 }

@@ -1,8 +1,11 @@
 {
-  "description": "The Desktop Mouse Position node returns the local user's mouse position from their device. The mouse position calculation starts at the top-left of the main monitor. If you are focused on the Resonite application, the mouse will always be centered in that window while you move the mouse around, giving a consistent result from this node. If you have multiple monitors, it will track the mouse outside of Resonite and calculate accordingly, sometimes returning really large values depending how your system is set up.",
+  "description": "The ``Desktop Mouse Position`` node returns the local user's mouse position from their device. The mouse position calculation starts at the top-left of the main monitor. If you are focused on the Resonite application, the mouse will always be centered in that window while you move the mouse around, giving a consistent result from this node. If you have multiple monitors, it will track the mouse outside of Resonite and calculate accordingly, sometimes returning really large values depending how your system is set up.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float2|float2]])": "The position of the mouse currently."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DesktopMousePosition&action=raw"
 }

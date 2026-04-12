@@ -1,0 +1,12 @@
+{
+  "description": "The LegacyDirectionConverter is used in converted legacy particle systems that were converted to PhotonDust as part of The Performance Updates.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The field to drive with ``Value`` converted.",
+    "Value": "The value to convert."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyDirectionConverter&action=raw"
+}

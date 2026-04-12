@@ -1,0 +1,15 @@
+{
+  "description": "The WorldPermissions component controls various actions the selected roles can do in the world.",
+  "category": "With Nested Enums",
+  "fields": {
+    "AllowSavingItems": "Whether the selected roles can save items.",
+    "AllowTransferingObjectsOut": "Whether the selected roles can smuggle items out.",
+    "AllowSpawningObjects": "Whether the selected roles can spawn objects.",
+    "AllowSwappingAvatars": "Whether the selected roles can swap into a different avatar.",
+    "SaveCopyPermission": "When can the selected roles save the world?"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldPermissions&action=raw"
+}

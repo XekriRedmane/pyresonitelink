@@ -1,8 +1,13 @@
 {
   "description": "The Set Normalized Position node tells a IPlayable to jump to a position upon impulse.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "=== Target (IPlayable) ===\n\nThe IPlayable to set the position on.",
+    "NormalizedPosition": "Set the normalized position of the playback on the target.\nNote this is the normalized position, so the valid range is 0 - 1.",
+    "Next": "Sends an impulse after the initial call."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetNormalizedPosition&action=raw"
 }

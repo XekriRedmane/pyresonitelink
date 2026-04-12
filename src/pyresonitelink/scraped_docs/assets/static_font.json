@@ -1,0 +1,17 @@
+{
+  "description": "This component is auto generated when importing new font files.",
+  "category": "Assets",
+  "fields": {
+    "URL": "The location of where to load the font from.",
+    "Padding": "How many pixels of padding should be used between letters in the font.",
+    "PixelRange": "Sets the distance field range in output pixels.",
+    "GlyphEmSize": "Sets the size of the glyphs in the atlas in pixels per em.",
+    "MipMaps": "Whether to display lower res versions of the font when it is further away to save on performance.",
+    "MipMapFiltering": "How to filter transitions between mipmaps when it is viewed at incremental distances further away.",
+    "LODBias": "Whether to see lower res versions at smaller distances to save performance."
+  },
+  "methods": {},
+  "usage": "This component is auto generated when importing new font files. Simply find a font file (.TTF or similar) and drop it into the Resonite game window or import through the file browser in the dash. The game will then generate this component on a font object, with the ``URL`` field filled with a valid font resource.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StaticFont&action=raw"
+}

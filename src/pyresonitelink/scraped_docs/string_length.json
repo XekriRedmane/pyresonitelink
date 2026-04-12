@@ -1,8 +1,12 @@
 {
   "description": "String Length is a ProtoFlux node that returns the length of A (String) including any white spaces.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The string to check the length for.",
+    "* ([[Type:Int|int]])": "How long A (String) is including any white spaces."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:StringLength&action=raw"
 }

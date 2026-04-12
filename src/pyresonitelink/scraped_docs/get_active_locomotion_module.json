@@ -1,8 +1,12 @@
 {
   "description": "Get Active Locomotion Module is a ProtoFlux node that allows you to get the locomotion component that the User (User) is currently using to move.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user to get the current locomotion they are moving with.",
+    "* ([[Type:ILocomotionModule|ILocomotionModule]])": "The currently locomotion that User (User) is using to move."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetActiveLocomotionModule&action=raw"
 }

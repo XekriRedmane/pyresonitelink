@@ -1,8 +1,11 @@
 {
-  "description": "The Form Feed node is a character literal constant for the \"Form Feed\" character (Unicode: U+000C).",
+  "description": "The ``Form Feed`` node is a character literal constant for the \"Form Feed\" character (Unicode: U+000C).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:char|char]])": "The character literal constant of the Form Feed character."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FormFeed&action=raw"
 }

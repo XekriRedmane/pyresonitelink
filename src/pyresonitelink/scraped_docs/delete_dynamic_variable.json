@@ -1,8 +1,15 @@
 {
-  "description": "The Delete Dynamic Variable node takes in a slot hierarchy and a string literal for the path. This will check for the dynamic variable space, and then the variable within, if one is found, the variable will be removed. For more information, see Dynamic Variables.",
+  "description": "The ``Delete Dynamic Variable`` node takes in a slot hierarchy and a string literal for the path. This will check for the dynamic variable space, and then the variable within, if one is found, the variable will be removed. For more information, see Dynamic Variables.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to find and delete the variable from the given hierarchy and path.",
+    "Target": "This slot hierarchy to search through.",
+    "Path": "The path to find the dynamic variable.",
+    "OnNotFound": "Fires when the path is incorrect or there is nothing to find in the given slot hierarchy.",
+    "OnDeleted": "Fires when a dynamic variable was found and deleted."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DeleteDynamicVariable&action=raw"
 }

@@ -1,0 +1,19 @@
+{
+  "description": "The UnitSystemSwitcher component takes in one quantity type and converts it to another as a string. This is commonly used to make editors easily able to take any unit input and automatically know which one the user is referring to.\n\n}}",
+  "category": "Common UI:Editors:Utility",
+  "fields": {
+    "DefaultUnit": "Changes the default unit to show in the text (especially if the ``FormatUnit`` is incorrect).",
+    "FormatUnit": "The unit to show in the text.",
+    "FormatNumber": "Formats the string.",
+    "CompoundFormatUnits": "Compounds units together (example: feet and inches for height).",
+    "CompoundOverrideNames": "Overrides the names.",
+    "CompoundUseLongNames": "The field to drive with whether to use long names like \"meters\" instead of \"m\".",
+    "CompoundSeparator": "Separates the compound units.",
+    "DefaultPreset": "The default preset.",
+    "ImperialPreset": "The imperial preset."
+  },
+  "methods": {},
+  "usage": "Useful for unit conversions.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UnitSystemSwitcher&action=raw"
+}

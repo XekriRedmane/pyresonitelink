@@ -1,8 +1,11 @@
 {
-  "description": "The Estimated Master Clock Error node returns the clock error in this world. This node shows the deviation between the expected time in the world and what the clock is actually reporting. More specifically, it is the estimated Authority Time error rate. If you are the host of a world, this will show zero (0).",
+  "description": "The ``Estimated Master Clock Error`` node returns the clock error in this world. This node shows the deviation between the expected time in the world and what the clock is actually reporting. More specifically, it is the estimated Authority Time error rate. If you are the host of a world, this will show zero (0).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float|float]])": "Returns the error rate for the master clock in this world."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:EstimatedMasterClockError&action=raw"
 }

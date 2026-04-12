@@ -1,0 +1,16 @@
+{
+  "description": "The SimplexNoiseClip component samples from simplex noise in order to get a pseudo-random frequency chart. Like a constantly random smooth changing whistle pitch.",
+  "category": "Assets:Procedural Audio Clips",
+  "fields": {
+    "Frequency": "The pitch of the clip.",
+    "Amplitude": "The loudness of the clip.",
+    "Duration": "How long the clip is and its duration of how much of simplex noise it samples.",
+    "Offset": "Where in the simplex noise algorithm this clip starts sampling from."
+  },
+  "methods": {
+    "BakeClip": "Turns the audio into a StaticAudioClip."
+  },
+  "usage": "Attach to a slot and provide a ``Frequency`` and ``Amplitude``, then insert into a AudioClipPlayer to hear it.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SimplexNoiseClip&action=raw"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "Static Animation Provider is a Component that is generated when importing AnimJ's or files with animation data. \n}}",
+  "category": "Assets",
+  "fields": {
+    "URL": "an asset URI pointing to a valid Animation file type."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StaticAnimationProvider&action=raw"
+}

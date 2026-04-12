@@ -1,0 +1,12 @@
+{
+  "description": "The LegacyCanvasPanel component was used to control content that used backing panels. It is a leftover component from older content. It should not be used, and should be replaced whenever possible.",
+  "category": "Uncategorized",
+  "fields": {
+    "_canvas": "The canvas component for this backing panel.",
+    "_panel": "The panel being used for this backing panel."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyCanvasPanel&action=raw"
+}

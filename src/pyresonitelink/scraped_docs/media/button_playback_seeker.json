@@ -1,0 +1,13 @@
+{
+  "description": "The ButtonPlaybackSeeker component takes in an IPlayable. When a user uses thier laser on an IButton that also has connections to a slider or set of values that allow it to slide, this component will determine how to interpret that interaction to the seek bar of the IPlayable media.",
+  "category": "Common UI:Button Interactions:Media",
+  "fields": {
+    "Playback": "The media to seek through.",
+    "Vertical": "If true, the button will interpret the seek bar as vertical instead of horizontal.",
+    "Continuous": "If true, allows the user to hold down the laser on the seek bar button and have it constantly change as the laser moves around."
+  },
+  "methods": {},
+  "usage": "This just gives extra functionality or options to control your media.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonPlaybackSeeker&action=raw"
+}

@@ -1,0 +1,17 @@
+{
+  "description": "The LegacyLabel component is a leftover Component from content migrated from other platforms. It should not be used, and should be replaced whenever possible.",
+  "category": "Uncategorized",
+  "fields": {
+    "TextRenderer": "The text renderer for the label visual.",
+    "BaseColor": "The base color of the label visual.",
+    "BaseColorElement": "The UI element for the base color.",
+    "Brightness": "The brightness of the label visual.",
+    "LerpRatio": "A value from 01 to lerp ``BaseColor`` and ``LerpColor`` with.",
+    "LerpColor": "The color to lerp to.",
+    "_textColor": "The field to drive with a color between ``BaseColor`` and ``LerpColor`` using ``LerpRatio`` as the specifier for the in between color."
+  },
+  "methods": {},
+  "usage": "Not to be used by the user, legacy content.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyLabel&action=raw"
+}

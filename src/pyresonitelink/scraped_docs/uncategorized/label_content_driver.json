@@ -1,0 +1,24 @@
+{
+  "description": "The LabelContentDriver Component is used to handle driving and updating the visual of labels placed by a Labeler Tool.",
+  "category": "Uncategorized",
+  "fields": {
+    "AutoUpdate": "Automatically update the visual per tick",
+    "Padding": "How much padding this label should have from the label's text content.",
+    "BaseWidth": "The width of the underline for the text attached to the label.",
+    "ContentOrientSpace": "How to orient the text content of this label.",
+    "OrientAtLocalUser": "Whether to look at the local user (usually true)",
+    "_contentRoot": "The root of the text content for the label this is driving.",
+    "_targetPoint": "The target point of the line coming from the underline for the label this is driving.",
+    "_contentRotation": "The rotation of the content of the label this is driving.",
+    "_contentRotationDrive": "The rotation field of the content.",
+    "_labelPosition": "The position field of the label.",
+    "_labelWidth": "The length field of the label underline.",
+    "_lineWidth": "The width field of the line for the label.",
+    "_labelRotation": "The rotation field of the label.",
+    "_pointPosition": "The target point field for what the label is pointing to."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user. Used in the Labeler Tool.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LabelContentDriver&action=raw"
+}

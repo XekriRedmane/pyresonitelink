@@ -1,0 +1,12 @@
+{
+  "description": "See Settings/Audio Accessibility",
+  "category": "Uncategorized",
+  "fields": {
+    "WhisperVolume": "Controls the volume of sounds outside of your whisper sphere when using whisper mode.",
+    "VoiceMessageVolume": "Controls the volume of sounds while you are recording a voice message."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioAccessibilitySettings&action=raw"
+}

@@ -1,0 +1,28 @@
+{
+  "description": "The TubeSpiralMesh component is a procedural Mesh that looks like a corkscrew often seen on the end of a wine bottle opener.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Steps": "How many length wise subdivisions the tube mesh has.",
+    "MaximumDistanceBetweenRings": "The distance allowed between each segment before the amount of steps are reduced.",
+    "CoilCount": "How many winds around the center the coil should have.",
+    "ScaleCoilCountByLength": "Whether the distance between coils stays consistent as the length grows by adding more coils.",
+    "CoilPhase": "How much to offset the coil starting angle.",
+    "StartPoint": "The center point position of what the Spiral is spiraling around at the beginning.",
+    "StartTangent": "The bend towards bias position of the Spiral at the beginning. Makes the Spiral sheer or warp towards this point at the beginning.",
+    "EndPoint": "The center point position of what the Spiral is spiraling around at the end.",
+    "EndTangent": "The bend towards bias position of the Spiral at the end. Makes the Spiral sheer or warp towards this point at the end. lerps from beginning.",
+    "StartSpiralRadius": "The distance from the center to the Spiral tube center at the beginning.",
+    "EndSpiralRadius": "The distance from the center to the Spiral tube center at the end.",
+    "StartSpiralOrientation": "The rotation of each segment ring at the start.",
+    "EndSpiralOrientation": "The rotation of each segment ring at the end. Lerps from start.",
+    "Ends": "How the ends should be sealed if at all on the corkscrew.",
+    "Shading": "The Shading of the screw geometry.",
+    "StartTubeRadius": "The radius of each segment at the start.",
+    "EndTubeRadius": "The radius of each segment at the end. Lerps from start.",
+    "TubePoints": "How many sides the tube has circumference wise on each segment."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and put into a MeshRenderer with a material to see what it looks like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TubeSpiralMesh&action=raw"
+}

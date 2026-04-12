@@ -1,0 +1,15 @@
+{
+  "description": "This is a component that allows you to locally change a reference on a value. Changing the value locally for yourself or others so that an item or world element is different depending on who's viewing it.\n}}",
+  "category": "With Nested Types",
+  "fields": {
+    "Target": "The value to drive locally for every user",
+    "Default": "The content of this value will be inside of ``Target`` for every user locally unless otherwise specified by an Override inside of the ``_overrides`` bag.",
+    "CreateOverrideOnWrite": "When flux or any other means tries to set the value of target from someone's machine, create an Override for them in ``_overrides`` bag.",
+    "PersistentOverrides": "whether to save the overrides or not when the component is part of a hierarchy being saved. This is useful to turn on when an item should have overrides",
+    "_overrides": "A bag of Overrides that are read to make local changes to the value referenced by ``Target``"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceUserOverride&action=raw"
+}

@@ -1,0 +1,36 @@
+{
+  "description": "The LegacyColorDialog component is used in old Legacy content that was migrated and was used to pick colors for color fields. This component should not be used and should be replaced whenever possible.",
+  "category": "UI:Dialogs",
+  "fields": {
+    "Realtime": "Whether this component should instantly update the value of the target field in ``TargetField``",
+    "TargetField": "The color field this component is editing.",
+    "_originalColor": "The original color value ``TargetField``'s target field had before editing.",
+    "_hue": "The current selected color hue.",
+    "_saturation": "The current selected color saturation.",
+    "_value": "The current selected color value.",
+    "_alpha": "The current selected color transparency.",
+    "_profile": "The current selected color profile.",
+    "_gain": "The current selected color gain.",
+    "_rSlider": "The slider to change the red of the color with.",
+    "_gSlider": "The slider to change the green of the color with.",
+    "_bSlider": "The slider to change the blue of the color with.",
+    "_aSlider": "The slider to change the transparency/alpha of the color with.",
+    "_gainSlider": "The slider to change the gain of the color with.",
+    "_rValue": "The field to drive with the current selected red value.",
+    "_gValue": "The field to drive with the current selected green value.",
+    "_bValue": "The field to drive with the current selected blue value.",
+    "_aValue": "The field to drive with the current selected transparency/alpha value.",
+    "_gainValue": "The field to drive with the current selected gain value.",
+    "_colorWheelMesh": "The triangle color mesh for this UI.",
+    "_okButton": "The button that when pressed applies the selected color and closes the UI.",
+    "_cancelButton": "The button that when pressed reverts the value of the targeted field in ``TargetField`` to ``_originalColor`` and closes the ui."
+  },
+  "methods": {
+    "OnCancelPressed": "Is called when the dialog is canceled.",
+    "OnOKPressed": "Is called when \"OK\" is pressed.",
+    "OnPickerTouched": "Is called when the color triangle picker is clicked."
+  },
+  "usage": "Just don't.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyColorDialog&action=raw"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "The DocumentAssetMetadata component gets data about a provided document asset.",
+  "category": "Assets:Utility",
+  "fields": {
+    "Document": "The document (usually PDF) that info is being acquired from.",
+    "PageCount": "The page count of the document."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DocumentAssetMetadata&action=raw"
+}

@@ -1,0 +1,17 @@
+{
+  "description": "The FlipAtUser component can be used to make an object face towards positive or negative Z, depending on what side of it the local user is.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "UpSpace": "the coordinate space that is used when calculating what is \"up\". If set to local user space, then the up direction of this component is the up direction of the slot the user is parented under, which is usually up for that user. This can be useful if a user is in a gravity direction which doesn't match the world's up direction, and will make this orient to that user's direction for a better reading experience for example.",
+    "_rotation": "The field that is driven to make the object rotate to the user. This is automatically set to the Rotation field of the slot this component is added to."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "Look At User"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FlipAtUser&action=raw"
+}

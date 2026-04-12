@@ -1,0 +1,14 @@
+{
+  "description": "The BooleanValueDriver component drives the Field in ``TargetField`` to the value specified in ``TrueValue`` or ``FalseValue`` based on ``State``.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "State": "The state of this component. Chooses which value to use when driving ``TargetField``",
+    "TargetField": "The Field to drive",
+    "FalseValue": "The value that is used to drive ``TargetField`` when ``State`` is false.",
+    "TrueValue": "The value that is used to drive ``TargetField`` when ``State`` is true."
+  },
+  "methods": {},
+  "usage": "``TargetField`` is the field to drive, and has the same type as specified during component creation. When ``State`` is false, the field pointed to by ``TargetField`` will take the value of ``FalseValue``. When it is true, the field will take the value of ``TrueValue``.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BooleanValueDriver&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "PBS Metallic is a physically-based material that uses a Metallic-Smoothness (MS) map to store data about the metallicity and smoothness of an object. It is based on the Unity 5 Standard PBR Setup.\n\nFor information about the maps and their properties read on!",
+  "category": "Assets:Materials",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Further Reading",
+      "text": "You may be interested in the following other pages:\n* PBS Specular - Documentation on Resonite's PBS Specular Material. This is often paired or compared to PBS Metallic."
+    }
+  ]
+}

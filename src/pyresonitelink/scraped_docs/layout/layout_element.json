@@ -1,0 +1,19 @@
+{
+  "description": "LayoutElement is a component used within UIX, instructing components in slots above it in its hierarchy about how large it would like to be in a variety of dimensions and configurations within the UIX Layout flow. It is often used in combination with various other Layout components such as HorizontalLayout or VerticalLayout. By configuring its various properties, you can achieve a wide variety of effects and layouts.\n\nMany of these values may have unclear meaning, even with the table below. Please see the behavior section for more information.\n}}",
+  "category": "UIX:Layout",
+  "fields": {
+    "MinWidth": "The minimum width for this LayoutElement.",
+    "PreferredWidth": "The preferred width for this LayoutElement.",
+    "FlexibleWidth": "If there is any space left over after layouting, the width is used as a weight to decide what width should given to this LayoutElement.",
+    "MinHeight": "The minimum height for this LayoutElement.",
+    "PreferredHeight": "The preferred height for this LayoutElement.",
+    "FlexibleHeight": "If there is any space left over after layouting, the height is used as a weight to decide what height should be given to this LayoutElement.",
+    "Area": "Currently unused.",
+    "Priority": "The priority for this LayoutElement.",
+    "UseZeroMetrics": "If checked, it allows \"0\" to be used in the other properties within this component."
+  },
+  "methods": {},
+  "usage": "LayoutElement is used to inform UIX Layout Components in the layout containers and slots above it within the hierarchy about what size it should be. This information is then used within the UIX Layout process with any other UIX Elements to determine an overall Layout. \n\nFor Width and Height there are 3 Properties which are used as a sort of negotiation with the UIX layout to determine the final size of an element. Other processes are involved but when it comes to just the layout element, the negotiation uses the following method:\n# Ensure that the element is at least MinWidth/MinHeight in terms of units. If a layout element does not fit inside a parent container/RectTransform it will cause Overflow if these Minimums are too large.\n# If there's enough space, give this element its PreferredWidth/PreferredHeight space in units. If there is not enough space for the \"Preferred\" value it will use a number that is between the \"Min\" value and the \"Preferred\" value.\n# After both 1 and 2, if there is space available and the \"Flexible\" parameter is set it will give this element a weighted value of space by comparing the Flexible values of all other elements in the layout.\n\nIf a parameter should not be used, its value should be set to `-1`. You can also manually specify that it should be 0 by checking the \"UseZeroMetrics\" checkbox. \n\nThe priority parameter determines this layout's priority when compared with other elements within the same hierarchy. The highest priority wins. You usually do not need to touch this.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LayoutElement&action=raw"
+}

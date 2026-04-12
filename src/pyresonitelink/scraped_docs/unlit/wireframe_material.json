@@ -1,0 +1,9 @@
+{
+  "description": "Wireframe material is a material that can be used to see the edges of the polygons in a mesh. This does not show the polygons of a text renderer.",
+  "category": "Assets:Materials:Unlit",
+  "fields": {},
+  "methods": {},
+  "usage": "This is useful for debugging or making retro scenes. Simply apply this material to any skinned or mesh renderer's material slot to see that material assignment render this material style.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WireframeMaterial&action=raw"
+}

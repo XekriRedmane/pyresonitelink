@@ -1,5 +1,5 @@
 {
-  "description": "Put the component onto a slot, and position the slot.",
+  "description": "The Camera component represents a Unity Camera which is centered on the slot and facing in the forward direction.",
   "category": "Rendering",
   "fields": {
     "DoubleBuffered": "Determines if DoubleBuffering is applied or not.",
@@ -27,7 +27,8 @@
   "notes": [
     {
       "title": "See also",
-      "text": "* CameraPortal, which is often used as a mirror.\n\nCamera\nCamera"
+      "text": "* CameraPortal, which is often used as a mirror."
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Camera&action=raw"
 }

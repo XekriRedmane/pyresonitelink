@@ -1,0 +1,12 @@
+{
+  "description": "The Edit Settings component is used to control Development tooling in world.",
+  "category": "Uncategorized",
+  "fields": {
+    "ConfirmComponentDestroy": "Whether the user gets a confirm dialog when destroying a component.",
+    "ConfirmSlotDestroy": "Whether the user gets a confirm dialog when destroying a slot."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:EditSettings&action=raw"
+}

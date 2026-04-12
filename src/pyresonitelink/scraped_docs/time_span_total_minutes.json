@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan Total Minutes node takes in a TimeSpan and returns with the amount of minutes in that TimeSpan, including the fractional portion of a minute, as well as anything longer than a minute will be added into the total.",
+  "description": "The ``TimeSpan Total Minutes`` node takes in a TimeSpan and returns with the amount of minutes in that TimeSpan, including the fractional portion of a minute, as well as anything longer than a minute will be added into the total.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "TimeSpan": "The TimeSpan we are getting info from.",
+    "* ([[Type:double|double]])": "Returns the amount of minutes in this TimeSpan as an double."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanTotalMinutes&action=raw"
 }

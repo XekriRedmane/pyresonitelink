@@ -1,8 +1,23 @@
 {
   "description": "Playback Drive is a node that will take a SyncPlayback and allow you to start or stop driving it to a set of provided playback settings and values. The driving of the SyncPlayback is non networked.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "StartDrive": "Starts driving the Target (SyncPlayback) in a non networked fashion, which essentially makes the provided Target (SyncPlayback) no longer synced until StopDrive (Call) is called.",
+    "StopDrive": "Stop driving the Target (SyncPlayback), making it networked again.",
+    "ForceResync": "When this is impulsed, The node will try to sync the current Target (SyncPlayback) position that the local user sees with everyone else in a session. (See Impulses for what a local user on an Impulse means) If this is called and NormalizedPosition (float) does not have an input, it will do nothing.",
+    "Target": "The Network Synced Playable that will become un-networked via being driven by this node.",
+    "NormalizedPosition": "The position to drive Target (SyncPlayback) to from 0 to 1.",
+    "Maximum Position Error ([[Type:Float|float]])": "The the max amount the position on Target (SyncPlayback) can vary from NormalizedPosition (float).",
+    "Speed": "The a multiplier for the playback speed of Target (SyncPlayback).",
+    "Play": "If the Target (SyncPlayback) should be playing. (default true if normalized position is given and moving)",
+    "Loop": "If the Target (SyncPlayback) should loop. May clash when providing NormalizedPosition (float)",
+    "OnStartDrive": "When StartDrive (Call) is impulsed and it can drive Target (SyncPlayback)",
+    "OnStopDrive": "When StopDrive (Call) is impulsed and this node was driving Target (SyncPlayback)",
+    "OnResync": "sends an impulse when ForceResync (Call) succeeds.",
+    "IsDriving": "If the Target (SyncPlayback) is currently driving. (Aka StartDrive (Call) was called but not StopDrive (Call) yet.)"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:PlaybackDrive&action=raw"
 }

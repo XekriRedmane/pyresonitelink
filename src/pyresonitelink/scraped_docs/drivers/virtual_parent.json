@@ -1,0 +1,22 @@
+{
+  "description": "The Virtual Parent Component is used to make a Slot act as the child of another Slot without needing to be in the normal hierarchy order. This can be useful when you need it to respond in a certain way using transforms of the overriding parent.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "OverrideParent": "If not null, the slot that the object gets reparented to",
+    "_targetPos": "Position to be driven by parent's position.",
+    "_targetRot": "Rotation to be driven by parent's rotation.",
+    "_targetScl": "Scale to be driven by parent's scale.",
+    "LocalPosition": "Object's position relative to parent.",
+    "LocalRotation": "Object's rotation relative to parent.",
+    "LocalScale": "Object's scale relative to parent."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Description",
+      "text": "The Virtual Parent Component is used to make a Slot act as the child of another Slot without needing to be in the normal hierarchy order. This can be useful when you need it to respond in a certain way using transforms of the overriding parent.\n\nThe different ways to force this Slot (that has the Virtual Parent Component on it) to update its own transform, is to move it by grabbing it, using other components to move it, or using Flux.\n\nYou can use the provided local offset fields to then further position this slot from its virtual parent."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VirtualParent&action=raw"
+}

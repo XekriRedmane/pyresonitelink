@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan From Hours node takes in the amount of hours and converts it into a TimeSpan that shows the span of time in hours.",
+  "description": "The ``TimeSpan From Hours`` node takes in the amount of hours and converts it into a TimeSpan that shows the span of time in hours.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The amount of hours.",
+    "* ([[Type:TimeSpan|TimeSpan]])": "Returns the TimeSpan with the amount of hours."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanFromHours&action=raw"
 }

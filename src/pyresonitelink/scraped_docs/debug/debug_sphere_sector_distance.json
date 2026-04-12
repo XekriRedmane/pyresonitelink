@@ -1,0 +1,13 @@
+{
+  "description": "The DebugSphereSectorDistance component makes a bunch of spazzy lines all over the place that vaguely resembles two spheres having a shoot out. This is only used for Debug.",
+  "category": "Debug",
+  "fields": {
+    "Angle": "The angle of the sphere to debug",
+    "Radius": "The radius of the sphere",
+    "Points": "A bunch of random points"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugSphereSectorDistance&action=raw"
+}

@@ -1,8 +1,13 @@
 {
   "description": "Returns the maximum between two values.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "One of the values to compare.",
+    "B": "One of the values to compare.",
+    "* (Pseudo-generic)": "Returns the result."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueMax&action=raw"
 }

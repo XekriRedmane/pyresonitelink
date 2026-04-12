@@ -1,0 +1,24 @@
+{
+  "description": "The RadiantSearchBar component is most commonly used and found in the World Browser.",
+  "category": "Radiant UI:General",
+  "fields": {
+    "SearchTerm": "The term this is searching for.",
+    "IsSearching": "Whether this component is currently searching.",
+    "SearchAnimTileSpeed": "How fast the search animation scrolling speed should be.",
+    "SearchAnimColor": "What the color of the search bar should be while searching.",
+    "_textField": "The text field for entering a search.",
+    "_searchText": "The text UIX Component for searching",
+    "_defaultText": "The text UIX Component that should be visible if a search term has not yet been entered.",
+    "_searchingVisual": "The visual to show while searching",
+    "_cancelButton": "The button that can be used to cancel a currently running search.",
+    "_defaultVisible": "The field to drive with what should be visible by default.",
+    "_searchingAnimationColor": "The field to drive for the color of the searching animation visual.",
+    "_searchingTextureOffset": "The offset field to drive to create the searching animation scrolling visual."
+  },
+  "methods": {
+    "OnCancel": "Called when the cancel button is touched."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RadiantSearchBar&action=raw"
+}

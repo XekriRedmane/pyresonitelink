@@ -1,0 +1,36 @@
+{
+  "description": "See Image Import.",
+  "category": "Uncategorized",
+  "fields": {
+    "_projection": "What image projection to import the image as.",
+    "_layout": "The image stereo layout for left and right to use.",
+    "_screenshot": "whether to import the image as a screenshot.",
+    "_pointFiltering": "Whether to import the image as pixel art or not.",
+    "_uncompressed": "Whether to import the image as uncompressed or not.",
+    "_alphaBleed": "Whether to import the image with alpha bleed reduction or not.",
+    "_lut": "Whether this image is a Look Up Table."
+  },
+  "methods": {
+    "OpenRoot": "Go back to the root screen.",
+    "Preset_Image": "Use the Image preset.",
+    "Preset_Screenshot": "Use the Screenshot preset.",
+    "Preset_PixelArt": "Use the Pixel Art preset.",
+    "Preset_Sprite": "Use the Sprite preset.",
+    "Preset_360": "Use the 360 or skybox preset.",
+    "Preset_StereoImage": "Use the Stereo Image preset.",
+    "Preset_Stereo360": "Use the Stereo 360 or depth skybox preset.",
+    "Preset_180": "Use the 180 preset.",
+    "Preset_Stereo180": "Use the Stereo 180 preset.",
+    "Preset_LUT": "Look Up Table]] preset.",
+    "MenuStereoLayout": "Go to the import image as stereo menu.",
+    "Preset_HorizontalLR": "Use the Horizontal Left Right Stereo image/depth image preset.",
+    "Preset_HorizontalRL": "Use the Horizontal Right Left Stereo image/depth image preset.",
+    "Preset_VerticalLR": "Use the Vertical Left Right Stereo image/depth image preset.",
+    "Preset_VerticalRL": "Use the Vertical Right Left Stereo image/depth image preset.",
+    "AsRawFile": "Import the image as a raw file.",
+    "Return": "Go back in the menus."
+  },
+  "usage": "See Image Import.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ImageImportDialog&action=raw"
+}

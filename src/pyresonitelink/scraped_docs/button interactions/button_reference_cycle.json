@@ -1,0 +1,12 @@
+{
+  "description": "The ButtonReferenceCycle component holds a list of references and takes in a ``TargetReference`` of a provided type. When an IButton is pressed while this component is on it, this will cycle through the listed references and send the data through the ``TargetReference``.",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "TargetReference": "The reference data to send outwards.",
+    "Targets": "The list of references to cycle through."
+  },
+  "methods": {},
+  "usage": "Useful for needing a way to cycle through references of any type.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonReferenceCycle&action=raw"
+}

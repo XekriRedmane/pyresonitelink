@@ -1,0 +1,24 @@
+{
+  "description": "The SphereGizmo component is used to control the radius of certain sphere elements.",
+  "category": "With Nested Types",
+  "fields": {
+    "TargetSlot": "The slot this should position at.",
+    "AutoPositionAtTargetSlot": "whether the gizmo should auto position at ``TargetSlot``",
+    "_interactingComponent": "the tool interacting with this component.",
+    "_material": "The material that is being used for the visual.",
+    "_toolPoint": "The tool tip that is interacting with.",
+    "_activePoint": "The active point slot for reference to an interacting tool.",
+    "_lineRoot": "The line root from this gizmo to a tool tip.",
+    "_lineSegment": "The line mesh from this gizmo to a tool tip.",
+    "_snapHighlight": "The slot used for highlighting snap targets.",
+    "TargetRadius": "The field this gizmo is editing (also known as the radius field)",
+    "RadiusSpace": "The transform space the radius is in.",
+    "RimRadius": "The radius of the rim of the target radius.",
+    "RimRadiusDistanceScale": "How to scale the radius for the rim by distance.",
+    "_handles": "a list of handles for this gizmo. usually a set of 3 rings."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user. May have been one of the first components Frooxius ever made for the game, considering that it doesn't follow some naming conventions that are never broken across all components, especially SphereGizmo.Handle on this page.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SphereGizmo&action=raw"
+}

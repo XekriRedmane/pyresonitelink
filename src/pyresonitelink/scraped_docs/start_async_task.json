@@ -1,8 +1,14 @@
 {
   "description": "The Start Async Task node starts a new ExecutionContext using async flow at the current impulse.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Start the async task.",
+    "TaskStart": "The new ExecutionContext made by the node. This impulse chain is async and will run until it encounters any sort of delay, at which it will continue execution along the ``OnStarted`` chain and follow standard sync/async flow.\n\nThe context made by this node is nested, meaning that any context-specific things, such as locals, are duplicated from the context that ``*`` comes from. Any future changes to context-specific things will not be reflected in the ``OnStarted`` chain and vice versa.",
+    "OnStarted": "Fires once ``TaskStart`` encounters any sort of delay, effectively running at the same time given the now-separate contexts.",
+    "OnFailed": "Fires if the task was unable to be started. This only fires if ``TaskStart`` is not connected to any node."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:StartAsyncTask&action=raw"
 }

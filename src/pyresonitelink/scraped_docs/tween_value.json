@@ -1,8 +1,19 @@
 {
   "description": "Tween Value is a node that allows you to change a Target (Numeric or Enum IField`1) over a Duration (float) from a starting point to an ending point. The different curve presets determine the interpolation used, and when applicable will smoothly change using non whole numbers.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses#Async|AsyncCall]])": "Tells the node to start tweening Target (Numeric or Enum IField`1).",
+    "To": "The value to tween towards over Duration (float)\n\nExamples: Key Enum, Float, Int, etc",
+    "From": "The value to tween away from over Duration (float)\n\nExamples: Key Enum, Float, Int, etc",
+    "Duration": "The duration in seconds that the value should tween for.",
+    "Curve": "The interpolation type to use while tweening.",
+    "ProportionalDuration": "If true, multiplies the duration of the tween by the distance between the two endpoints, making the average speed over the whole tween equal to 1.",
+    "Target": "The value this node should Tween.",
+    "OnStarted": "Sends an Async Impulse once the node starts tweening the Target (Numeric or Enum IField`1).",
+    "OnDone": "Sends an Impulse once the node is done tweening Target (Numeric or Enum IField`1)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TweenValue&action=raw"
 }

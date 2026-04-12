@@ -1,8 +1,12 @@
 {
-  "description": "Color Luminance calculates the relative luminance of an input color. For correct result, the input must be in the Linear color profile, which may be a bug",
+  "description": "Color Luminance calculates the relative luminance of an input color. For correct result, the input must be in the Linear color profile, which may be a bug.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Color": "The color to calculate the relative luminance of.",
+    "* ([[Type:Float|Float]])": "The relative luminance of the input color."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ColorLuminance&action=raw"
 }

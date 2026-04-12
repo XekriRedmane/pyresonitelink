@@ -1,0 +1,33 @@
+{
+  "description": "The RawDataTool component is used in many different tool creations to allow for getting tool related actions on the hand its equipped in. This component has a ProtoFlux node associated with it (RawDataTool Events)",
+  "category": "Tools",
+  "fields": {
+    "LocalTipOffset": "How much to offset the tool and its laser",
+    "LocalTipReference": "The slot to use for the laser source and tip location.",
+    "UseLaser": "Whether to enable the use of and visual of the Laser.",
+    "BlockPrimaryWhenTouching": "blocks use of primary when the tool is touching a wall.",
+    "UseSecondary": "Allow for use of secondary. When disabled on quest this disables the Tank Controls mode which many quest users in the resonite community dislike.",
+    "AllowUseWhenHolding": "Allow use of the tool when the user is holding onto the tool rather than having it equipped.",
+    "Equipped": "Whether the tool is equipped or not. This will still return true if the user is holding onto the tip. Commonly referred to as \"Soft Equipping\" or \"Pseudo Equipping\".",
+    "ControllerType": "The Type (C# class) of the controller holding this tool.",
+    "ControllerSide": "Whether the left, right, or none controller is holding this tool.",
+    "PrimaryStrength": "The live updated value of the user's primary strength on this hand. Applies to VRcontrollers or game pad type controllers.",
+    "SecondaryAxis": "The position of the thumb on the track pad used for secondary on this hand.",
+    "Primary": "Whether the user is pressing primary on this hand. See Controls",
+    "Secondary": "Whether the user is pressing secondary on this hand. See Controls.",
+    "_primaryStrengthStream": "The value stream of the primary strength value. This comes from a user's value streams which can be viewed through a User Inspector.",
+    "_secondaryAxisStream": "The value stream of the secondary strength value. This comes from a user's value streams which can be viewed through a User Inspector.",
+    "_primaryStream": "The value stream of the primary pressed value. This comes from a user's value streams which can be viewed through a User Inspector.",
+    "_secondaryStream": "The value stream of the secondary pressed value. This comes from a user's value streams which can be viewed through a User Inspector.",
+    "_rawStrength": "The Raw unfiltered value of the primary strength value.",
+    "_rawAxis": "the Raw unfiltered value of the secondary axis value.",
+    "_rawPrimary": "the Raw unfiltered value of the primary pressed value.",
+    "_rawSecondary": "the Raw unfiltered value of the secondary pressed value.",
+    "PrimaryActionDescription": "sets the label that tells the user what primary on this tool does.",
+    "SecondaryActionDescription": "sets the label that tells the user what secondary on this tool does."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and this component will generate the needed slots for this tool to work. This component will need a collider in its slot hierarchy so the tool can be grabbed and used. Combining this tool with protoflux or Components is needed to add custom behavior.\nIt's a good idea to keep the tool's visuals in a child slot to allow for later alignment. Note that scale can change between users.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RawDataTool&action=raw"
+}

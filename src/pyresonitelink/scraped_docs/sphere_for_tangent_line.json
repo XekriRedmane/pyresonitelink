@@ -1,8 +1,15 @@
 {
   "description": "The Sphere For Tangent Line node takes a line point for our sphere point, a line in 3D space, and point for the line, creating a sphere in 3D space. Then it returns the point and radius of a sphere, similar to a reversed Tan node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "LinePoint": "The point where the line is.",
+    "LineDirection": "The direction of a line provided.",
+    "SphereCenter": "The sphere point we want to make (in some distance away from the line).",
+    "TangentPoint": "Returns the tangent point where the line and sphere touch.",
+    "Radius": "Returns the radius of the sphere that is created by this calculation."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SphereForTangentLine&action=raw"
 }

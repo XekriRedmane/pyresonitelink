@@ -1,0 +1,14 @@
+{
+  "description": "The RampMesh component procedurally generates mesh data for a ramp shaped mesh.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Length": "How long the ramp is",
+    "Height": "The height of the ramp",
+    "Width": "How wide the ramp is",
+    "UVScale": "Changes the UV scale of the procedural mesh."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a MeshRenderer to view the geometry. Don't forget to use a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RampMesh&action=raw"
+}

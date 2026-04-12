@@ -1,0 +1,12 @@
+{
+  "description": "See General Controls Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "PrimaryHand": "Adapts the game to your dominant hand. Some items and tools will adapt to this.",
+    "DoubleClickInterval": "Used to adjust the time window for any actions which require a double click."
+  },
+  "methods": {},
+  "usage": "See General Controls Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GeneralControlsSettings&action=raw"
+}

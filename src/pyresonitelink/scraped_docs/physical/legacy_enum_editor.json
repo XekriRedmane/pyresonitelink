@@ -1,0 +1,42 @@
+{
+  "description": "The LegacyEnumEditor component is used to cycle between enums. It is Legacy content migrated from other platforms. This should not be used, and replaced whenever possible.",
+  "category": "UI:Physical",
+  "fields": {
+    "Color": "The color of the UI.",
+    "Width": "The width of the UI",
+    "Height": "The height of the UI.",
+    "Thickness": "How thick the UI is.",
+    "Slant": "The beveledness of the UI elements.",
+    "_textSlot": "The slot of the text visual for the enum indicator",
+    "_textRenderer": "The text renderer of the enum indcator.",
+    "_textEditor": "The text editor for editing the enum text.",
+    "_material": "The material of the UI.",
+    "_mesh": "The mesh of the ui.",
+    "_textBounds": "The field that is used to make the UI wrap around the text",
+    "_colliderSize": "The size of the collider for the UI.",
+    "_meshLeft": "The mesh of the left cycle button",
+    "_meshRight": "The mesh of the right cycle button",
+    "_textLeftBounds": "The field to make the UI wrap around the left button text.",
+    "_textRightBounds": "The field to make the UI wrap around the right button text.",
+    "_leftTextRenderer": "The renderer for the text of the left button.",
+    "_rightTextRenderer": "The renderer for the text of the right button.",
+    "_colliderLeftSize": "The collider field to drive to make the collider envelop the left UI.",
+    "_colliderRightSize": "the collider firld to drive to make the collider envelop the right UI.",
+    "_leftOffset": "The field to drive for the left button offset.",
+    "_rightOffset": "The field to drive for the right button offset.",
+    "_leftTextPosition": "The field to drive for the left text position.",
+    "_rightTextPosition": "The field to drive for the right text position.",
+    "Value": "The Enum that this component has selected.",
+    "_textDrive": "The string field to drive with the string version of the selected enum from ``Value``."
+  },
+  "methods": {
+    "EditingStarted": "Called when the enum text field is entered into.",
+    "EditingChanged": "Called when the enum text field is changed.",
+    "EditingFinished": "Called when the enum text field is finished with editing.",
+    "OnLeftTouched": "Called when the left button is touched.",
+    "OnRightTouched": "Called when the right button is touched."
+  },
+  "usage": "When attaching, the component needs an Enum type for E.\nBut just don't use this component for new content at all.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyEnumEditor&action=raw"
+}

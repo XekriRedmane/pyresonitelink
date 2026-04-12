@@ -1,0 +1,12 @@
+{
+  "description": "The ToolAvatarPoseFilter component is used to assign a Pose Filter to the hand you have a Tool equipped on.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "Filter": "The pose filter to apply",
+    "Priority": "Whether this pose filter should be applied before other filters."
+  },
+  "methods": {},
+  "usage": "This can be used on any type of tool.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ToolAvatarPoseFilter&action=raw"
+}

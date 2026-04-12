@@ -1,0 +1,31 @@
+{
+  "description": "The AxisAligner component is used to Align elements along a single line axis in local space under a slot based on their Bounding boxes. It also allows for excluding bounded elements from calculations, and for aligning elements themselves so that they can be centered like varied sized beads on a string or like boxes into the corner edge between a wall and floor. These calculations are heavy, and this component is best used lightly. Remove this component after using it to Align world elements, as it will be constantly active and will behave violently if used to Align shelves for example in a world and left unremoved.",
+  "category": "With Nested Enums",
+  "fields": {
+    "AutoAddChildren": "Controls whether slots below this component's slot in the hierarchy are automatically added to ``_targets``",
+    "AutoAddIgnoreTags": "if ``AutoAddChildren`` is enabled. A slot will not be added to ``_targets`` if it's tag is in this list.",
+    "Direction": "The axis and direction the items will be aligned on",
+    "GlobalAxisXAlign": "Controls how items will be aligned globally, with each other in the X Axis",
+    "GlobalAxisYAlign": "Controls how items will be aligned globally, with each other in the Y Axis",
+    "GlobalAxisZAlign": "Controls how items will be aligned globally, with each other in the Z Axis",
+    "ElementAxisXAlign": "Controls how each item aligns itself, within the align, in the X Axis",
+    "ElementAxisYAlign": "Controls how each item aligns itself, within the align, in the Y Axis",
+    "ElementAxisZAlign": "Controls how each item aligns itself, within the align, in the Z Axis",
+    "Separation": "The spacing between each item in ``_targets`` along the specified axis",
+    "ExcludeList": "A list of Bounded elements under target slots which are excluded from the aligners bounds calculations",
+    "_targets": "A list of slots which will be aligned. This will be automatically generated if ``AutoAddChildren`` is enabled."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Align",
+      "text": "Note: changing the alignment does not change the order of elements. Just how the bounding box for the elements is positioned relative to 0. Basically this acts as a translation alignment, rather than a reordering of elements."
+    },
+    {
+      "title": "Disadvantages and Alternatives",
+      "text": "As the Axis Aligner works off of Bounds Calculations, and runs its calculations under a wide range of criteria, it can quickly become heavy with a doezen slots or so. Its Bounds-based nature alao makes it unsuited for evenly spacing objects with different bounds.\n\nTo mitigate these kinds of issues, one can make their own version of this in Protoflux, by having OnChange or other triggers fire a ForLoop, which iterates through all Slot Children, and gives them an offset based on the Iteration multiplied by a Float3 for the position. To further implement the bounds functionality, one can use a value that increases by the bounds calculation every iteration, instead of a number based on the Iteration itself.\n\nA simple example was used to align the Avatars in Avatar Station, and is available in Nuki's Public Folder."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AxisAligner&action=raw"
+}

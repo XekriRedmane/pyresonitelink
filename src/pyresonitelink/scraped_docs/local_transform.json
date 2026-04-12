@@ -1,8 +1,14 @@
 {
-  "description": "The Local Transform node outputs the position, rotation and scale of the input slot in local coordinate space, i.e. the slot's transform relative to its parent slot.",
+  "description": "The ``Local Transform`` node outputs the position, rotation and scale of the input slot in local coordinate space, i.e. the slot's transform relative to its parent slot.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Slot]])": "The slot whose local transform is output.",
+    "Position": "The local position of the provided * (Slot).",
+    "Rotation": "The local rotation of the provided * (Slot).",
+    "Scale": "The local scale of the provided * (Slot)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalTransform&action=raw"
 }

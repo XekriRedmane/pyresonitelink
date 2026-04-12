@@ -1,8 +1,11 @@
 {
-  "description": "The Host User node gets the host user in this world's session.",
+  "description": "The ``Host User`` node gets the host user in this world's session.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:User|User]])": "The host user in this world's session."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:HostUser&action=raw"
 }

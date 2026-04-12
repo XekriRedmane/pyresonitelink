@@ -1,0 +1,19 @@
+{
+  "description": "The VerticalLayout component is used to layout child UIX element slots in a column, top to bottom.\n\nThe order of the objects depends on each child's OrderOffset property. Normally these are ``0``, but if you change it, the children will be ordered by increasing OrderOffset, with children of equal OrderOffset being ordered by the time they were added to that parent slot.\n\n}}",
+  "category": "UIX:Layout",
+  "fields": {
+    "PaddingTop": "The padding to add, in pixels, at the top of the entire layout.",
+    "PaddingRight": "The padding to add, in pixels, at the right of the entire layout.",
+    "PaddingBottom": "The padding to add, in pixels, at the bottom of the entire layout.",
+    "PaddingLeft": "The padding to add, in pixels, at the left of the entire layout.",
+    "Spacing": "The padding to add, in pixels, between each object.",
+    "HorizontalAlign": "The horizontal alignment to use for the child objects in the layout.",
+    "VerticalAlign": "The vertical alignment to use for the child objects in the layout.",
+    "ForceExpandWidth": "Whether to force the children to expand to fill the available horizontal space.",
+    "ForceExpandHeight": "Whether to force the children to expand to fill the available vertical space."
+  },
+  "methods": {},
+  "usage": "The VerticalLayout component places its child layout elements on top of each other. Their heights are determined by their respective minimum, preferred, and flexible heights according to the following model:\n# The minimum heights of all the child layout elements are added together and the spacing between them plus the top and bottom padding is added as well. The result is the minimum height of the VerticalLayout.\n# The preferred heights of all the child layout elements are added together and the spacing between them plus the top and bottom padding is added as well. The result is the preferred height of the VerticalLayout.\n# If the VerticalLayout is at its minimum height or smaller, all the child layout elements will also have their minimum height.\n# The closer the VerticalLayout is to its preferred height, the closer each child layout element will also get to their preferred height.\n# If the VerticalLayout is taller than its preferred height, it will distribute the extra available space proportionally to the child layout elements according to their respective flexible heights.\n\nFor minimum, preferred, and flexible heights of child slots, use LayoutElement.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VerticalLayout&action=raw"
+}

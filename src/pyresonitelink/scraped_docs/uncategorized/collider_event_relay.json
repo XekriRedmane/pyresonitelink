@@ -1,0 +1,14 @@
+{
+  "description": "The ColliderEventRelay takes a collider to monitor and sends ContactEvent messages when certain collisions happen.",
+  "category": "Uncategorized",
+  "fields": {
+    "Collider": "The collider to monitor events for.",
+    "ContactStart": "The Sync delegate of a certain definition to call when ``Collider`` starts contact with another collider.",
+    "ContactStay": "The Sync delegate of a certain definition to call when ``Collider`` stays in contact with another collider. Is called every frame.",
+    "ContactEnd": "The Sync delegate of a certain definition to call when ``Collider`` ends contact with another collider."
+  },
+  "methods": {},
+  "usage": "Can be used to trigger any other Component with a contact event method when a contact event happens.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColliderEventRelay&action=raw"
+}

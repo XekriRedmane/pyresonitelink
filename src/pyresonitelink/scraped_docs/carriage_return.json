@@ -1,8 +1,11 @@
 {
-  "description": "The Carriage Return node is a character literal constant for the Carriage Return character (Unicode: U+000D).",
+  "description": "The ``Carriage Return`` node is a character literal constant for the Carriage Return character (Unicode: U+000D).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:char|char]])": "The character literal constant of the Carriage Return character."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CarriageReturn&action=raw"
 }

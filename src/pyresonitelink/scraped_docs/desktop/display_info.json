@@ -1,0 +1,17 @@
+{
+  "description": "The DisplayInfo component is used to get information about the local user's display.",
+  "category": "Input:Desktop",
+  "fields": {
+    "DisplayIndex": "The display index to get info on.",
+    "Resolution": "The resolution of display ``DisplayIndex``",
+    "Offset": "The offset of pixels of display ``DisplayIndex``",
+    "DPI": "The Dots Per Inch of display ``DisplayIndex``",
+    "RefreshRate": "The refresh rate in Hertz of ``DisplayIndex``",
+    "Orientation": "The orientation of ``DisplayIndex``.",
+    "IsPrimary": "Whether display ``DisplayIndex`` is the main monitor in the OS."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DisplayInfo&action=raw"
+}

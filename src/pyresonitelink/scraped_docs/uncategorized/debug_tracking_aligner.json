@@ -1,0 +1,9 @@
+{
+  "description": "The DebugTrackingAligner calls the align tracking for all users in the world every 0.5 seconds if they have a slot called \"Bases\" with bases \"Base 0\" and \"Base 1\" under them.",
+  "category": "Uncategorized",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugTrackingAligner&action=raw"
+}

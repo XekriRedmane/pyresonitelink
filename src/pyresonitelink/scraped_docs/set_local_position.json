@@ -1,8 +1,14 @@
 {
   "description": "The Set Local Position node sets the input slot's position to the provided position vector in local coordinate space.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Sets the Instance slot's local position when an impulse is received.",
+    "Instance": "The slot whose local position is set. Default is null, the node does not function without this input.",
+    "Position": "The local position the input Instance slot is set to. Default is [0;0;0].",
+    "Next": "An impulse is fired whenever the Instance slot's position is set after the node receives an impulse. No impulse is fired from this output if the Instance input is null."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetLocalPosition&action=raw"
 }

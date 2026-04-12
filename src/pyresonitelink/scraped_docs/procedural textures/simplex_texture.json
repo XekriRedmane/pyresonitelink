@@ -1,0 +1,16 @@
+{
+  "description": "The SimplexTexture component is used to generate procedural noise to use in any material.",
+  "category": "Assets:Procedural Textures",
+  "fields": {
+    "Offset": "How much to shift the procedural noise.",
+    "Scale": "scales the pattern up or down inside the image.",
+    "Background": "The background color of the noise.",
+    "Foreground": "The color of the noise itself.",
+    "Use3D": "Whether to allow ``ZOffset`` to affect the texture, and generates 3D noise.",
+    "ZOffset": "The offset in the 3D noise, which takes a slice of the 3D noise for the texture."
+  },
+  "methods": {},
+  "usage": "Insert into any material to view what this texture looks like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SimplexTexture&action=raw"
+}

@@ -1,0 +1,15 @@
+{
+  "description": "The DirectTagHapticsSource component allows driving haptic sensations for a given haptic point directly, rather than using the haptic volume system.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics",
+  "fields": {
+    "HapticTag": "The tag to influence.",
+    "Force": "The force addition for haptics with the ``HapticTag`` tag.",
+    "Temperature": "The temperature addition for haptics with the ``HapticTag`` tag.",
+    "Pain": "The pain addition for haptics with the ``HapticTag`` tag.",
+    "Vibration": "The vibration addition for haptics with the ``HapticTag`` tag."
+  },
+  "methods": {},
+  "usage": "* works only with tagged haptic points. This component must have a matching Tag to a configured haptic device and must be present under the user to work\n* It doesn't prevent the haptic volumes from sending haptics - the effects are additive. If you want only this component to control the haptics, do not setup a corresponding tagged haptic point",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DirectTagHapticSource&action=raw"
+}

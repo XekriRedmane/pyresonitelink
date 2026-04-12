@@ -1,8 +1,12 @@
 {
   "description": "Is Grabbable Grabbed is a ProtoFlux node that gets whether or not an IGrabbable is being grabbed by someone or something.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Grabbable": "The grabbable to check is being grabbed.",
+    "* ([[Type:Bool|bool]])": "Whether Grabbable (IGrabbable) is being grabbed or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsGrabbableGrabbed&action=raw"
 }

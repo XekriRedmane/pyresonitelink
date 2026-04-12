@@ -1,8 +1,11 @@
 {
-  "description": "The World Time Double node returns the total world time that this world has been open for.",
+  "description": "The ``World Time Double`` node returns the total world time that this world has been open for.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:double|double]])": "Returns the total world time as a double."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldTimeDouble&action=raw"
 }

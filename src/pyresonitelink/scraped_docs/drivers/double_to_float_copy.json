@@ -1,0 +1,13 @@
+{
+  "description": "The Double To Float Copy component copies a double field to a float field, while casting it down to the lower precision values of a float. this is useful for copying between these slightly incompatible types (not fully incompatible though as seen in flux).",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Source": "The source Double field to copy from.",
+    "Target": "The field to drive with the value of a Float representation of ``Source``",
+    "WriteBack": "Whether changes to ``Target`` get written back to ``Source``"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DoubleToFloatCopy&action=raw"
+}

@@ -1,8 +1,12 @@
 {
-  "description": "The As Character Controller node is used to get the character controller reference using the ICollider from a Slot that associated with that collider, not necessarily what it collides with.",
+  "description": "The ``As Character Controller`` node is used to get the character controller reference using the ICollider from a Slot that associated with that collider, not necessarily what it collides with.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Collider": "The specific collider reference from a slot.",
+    "* ([[Component:CharacterController|CharacterController]])": "The character controller reference we receive from the provided ICollider."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AsCharacterController&action=raw"
 }

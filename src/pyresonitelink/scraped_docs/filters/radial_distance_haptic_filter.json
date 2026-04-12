@@ -1,0 +1,15 @@
+{
+  "description": "The RadialDistanceHapticFilter controls haptic areas on the same slot so that haptics within their range are influenced differently depending on how far away they are from the slot center in local space. The start and end intensities when mapped to the haptic devices Distance from the slot, the power is unclamped.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics:Filters",
+  "fields": {
+    "StartRadius": "The starting radius point (Usually 0 distance). When the haptic device point is this Distance away from the slot this component is on in local space, the haptic gets a signal of ``Power``*``StartIntensity``",
+    "EndRadius": "The ending radius point (Usually 0 distance). When the haptic device point is this Distance away from the slot this component is on in local space, the haptic gets a signal of ``Power``*``StartIntensity``.",
+    "StartIntensity": "The intensity*``Power`` for the haptic device when it is ``StartRadius`` from the slot this component is on.",
+    "EndIntensity": "The intensity*``Power`` for the haptic device when it is ``EndRadius`` from the slot this component is on.",
+    "Power": "How much to amplify the intensity for the haptic device."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with a HapticVolume for the simplest use case. Bringing a user's VR controllers closer or further away changes that device's haptics intensity.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RadialDistanceHapticFilter&action=raw"
+}

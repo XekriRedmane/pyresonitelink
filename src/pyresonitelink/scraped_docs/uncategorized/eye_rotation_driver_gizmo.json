@@ -1,0 +1,13 @@
+{
+  "description": "The EyeRotationDriverGizmo component is used to edit the Eye forwards of an Eye Rotation Driver.",
+  "category": "Uncategorized",
+  "fields": {
+    "_target": "The eye rotation driver we are editing.",
+    "_vectorGizmos": "The forward vectors of the eyes.",
+    "_coneGizmos": "Unused. Possibly a bug."
+  },
+  "methods": {},
+  "usage": "Found in the Dev Tool gizmo menu when selecting a slot with a EyeRotationDriver on it.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:EyeRotationDriverGizmo&action=raw"
+}

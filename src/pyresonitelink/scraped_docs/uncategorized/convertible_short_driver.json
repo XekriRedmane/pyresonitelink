@@ -1,0 +1,12 @@
+{
+  "description": "The ConvertibleShortDriver component is used to convert a value into a Short using the value's convert to Short method.",
+  "category": "Uncategorized",
+  "fields": {
+    "Source": "The value to convert.",
+    "Target": "The field to drive with ``Source`` converted into a Short."
+  },
+  "methods": {},
+  "usage": "Used to convert values from one type into another via Components rather than ProtoFlux.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConvertibleShortDriver&action=raw"
+}

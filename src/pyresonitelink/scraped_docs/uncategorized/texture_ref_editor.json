@@ -1,0 +1,25 @@
+{
+  "description": "The TextureRefEditor component is commonly used in inspectors for materials and other components that use images/textures.",
+  "category": "Uncategorized",
+  "fields": {
+    "_targetRef": "The field to make a visual for.",
+    "_drive": "The field to drive with the contents of ``_targetRef`` or a placeholder texture if null.",
+    "_clearReferenceButton": "The button used to clear ``_targetRef``",
+    "_openInspectorButton": "The button to open an inspector for ``_targetRef``.",
+    "_copyTextureButton": "The button to copy the texture in ``_targetRef``.",
+    "_pasteTextureButton": "The button to paste a texture into ``_targetRef``.",
+    "_referenceText": "The field to drive with the description of the contents of ``_targetRef``.",
+    "_infoText": "The field to drive with the info of ``_targetRef``.",
+    "_isNormalMap": "Whether ``_targetRef`` should be interpreted as a normal map."
+  },
+  "methods": {
+    "ClearReference": "Called when the reference ``_targetRef`` is cleared via the UI button.",
+    "OpenInspectorButton": "Called when an inspector is asked to be opened through this component for ``_targetRef``.",
+    "CopyTexture": "Called when a copy texture is called through this component for ``_targetRef``.",
+    "PasteTexture": "Called when the user asks to paste a texture into ``_targetRef`` through this component.",
+    "SetTexture": "Called when the texture for ``_targetRef`` is set through this component."
+  },
+  "usage": "Commonly used in inspectors. Using inspector specific components is a common tactic in Ref Hacking.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextureRefEditor&action=raw"
+}

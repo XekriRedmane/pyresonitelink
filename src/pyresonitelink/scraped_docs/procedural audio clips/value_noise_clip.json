@@ -1,0 +1,14 @@
+{
+  "description": "The ValueNoiseClip component takes completely random noise and turns it into audio data. The best way to describe the noise would be like TV static.",
+  "category": "Assets:Procedural Audio Clips",
+  "fields": {
+    "Duration": "How long the clip is.",
+    "Seed": "The seed for the random audio noise."
+  },
+  "methods": {
+    "BakeClip": "Turns the audio into a StaticAudioClip."
+  },
+  "usage": "Attach to a slot and provide a ``Frequency`` and ``Amplitude``, then insert into a AudioClipPlayer to hear it.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueNoiseClip&action=raw"
+}

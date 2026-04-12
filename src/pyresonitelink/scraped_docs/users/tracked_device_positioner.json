@@ -1,0 +1,22 @@
+{
+  "description": "The TrackedDevicePositioner component is used to get information from the user's input system to get positioning data for tracked objects like headset, hands, and full body trackers.",
+  "category": "Users",
+  "fields": {
+    "DeviceIndex": "The input Device by index to track.",
+    "CorrespondingBodyNode": "The body node of the found input Device tracker.",
+    "AutoBodyNode": "If present, use this to find the input Device to track rather than ``DeviceIndex``.",
+    "AlwaysRenderModel": "Whether to always render the tracker Debug model regardless of if its mapped to a 3d model.",
+    "ReferenceModel": "The slot of the debug model visual.",
+    "BodyNodeRoot": "acts as an offset for the actual position of a Tracked object.",
+    "ObjectSlot": "The avatar object slot this component is driving.",
+    "IsTracking": "Whether the input Device is tracking or lost its tracking.",
+    "IsActive": "Whether the input Device is enabled.",
+    "IsSimulated": "Whether the device is being simulated instead by the locomotion animation system.",
+    "CreateAvatarObjectSlot": "Whether to create an avatar object slot component on a slot named \"BodyNode\" under this component slot if ``BodyNodeRoot`` is null.",
+    "PoseFilter": "The pose controller for this component to filter its position and movement based on if this component should be filtered."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TrackedDevicePositioner&action=raw"
+}

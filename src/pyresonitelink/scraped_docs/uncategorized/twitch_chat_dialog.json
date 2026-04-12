@@ -1,0 +1,25 @@
+{
+  "description": "Twitch chat dialogue is a component used to control and manage a live stream of chat messages sent by users at Twitch from a specific channel on Twitch.",
+  "category": "Uncategorized",
+  "fields": {
+    "_canvas": "The canvas this component generated for a visual twitch chat feed.",
+    "_panel": "The panel this component generated for a visual twitch chat feed.",
+    "MaxMessages": "The maximum amount of messages to keep in the message feed before deleting old ones.",
+    "Interface": "The twitch interface that is providing and receiving events to allow this component to function.",
+    "_channelName": "The text field that holds the name of the channel this component is displaying chat messages for.",
+    "_viewerCount": "The text object displaying the amount of users watching ``_channelName``",
+    "_messagesRoot": "the slot to put UIX text components under which are messages sent into ``_channelName``'s chat.",
+    "_messagesScrollRect": "The scroll rectangle that is controlled to make sure it stays scrolled to the bottom as chat messages appear.",
+    "_highlightPanel": "The image used for when the panel is highlighted.",
+    "_highlightText": "The text used for when the panel is highlighted.",
+    "_spriteSheet": "The dynamically changing sprite font for text characters like custom twitch emojis.",
+    "_fontCollection": "A list of fonts used by chat messages from twitch."
+  },
+  "methods": {
+    "ChannelEditingStarted": "Handles when the user starts editing the target channel name.",
+    "ChannelEditingFinished": "Handles when the user finishes editing the target channel name."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TwitchChatDialog&action=raw"
+}

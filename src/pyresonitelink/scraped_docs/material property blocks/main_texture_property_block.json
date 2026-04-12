@@ -1,0 +1,11 @@
+{
+  "description": "The MainTexturePropertyBlock component is a Material Property Block for the main texture of a component.",
+  "category": "Assets:Material Property Blocks",
+  "fields": {
+    "Texture": "Texture to swap out the main texture with."
+  },
+  "methods": {},
+  "usage": "This component allows one to swap out what a material considers its main texture, such as the albedo texture, with the given ``Texture``. This property block only applies to materials that contain a ``_MainTex`` material property field. Notably, UnlitMaterial does not support this property block.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MainTexturePropertyBlock&action=raw"
+}

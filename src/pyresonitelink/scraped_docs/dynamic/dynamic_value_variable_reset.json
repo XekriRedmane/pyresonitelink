@@ -1,0 +1,14 @@
+{
+  "description": "Dynamic Value Variable Reset is a component that will reset the value for a Dynamic Variable to a specified Value. This is useful for when you are messing with an item, but you want the values for it to clear themselves with it is saved, loaded, or duplicated. The variable space is determined by the searching algorithm explained on Dynamic Variables page from the slot this is on.\n}}",
+  "category": "Data:Dynamic",
+  "fields": {
+    "ResetOnLoad": "Reset when this component is loaded with a world.",
+    "ResetOnDuplicate": "Reset when the object this is under is duplicated.",
+    "ResetOnPaste": "Reset when the object this is under is pasted from clipboard.",
+    "ResetValue": "The value to reset to when any of the enabled reset events occur."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicValueVariableReset&action=raw"
+}

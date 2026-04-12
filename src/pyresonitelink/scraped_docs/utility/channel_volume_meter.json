@@ -1,0 +1,17 @@
+{
+  "description": "Channel Volume meter is a component that is used to read the volume of an audio source with multiple channels. The amount of channels can vary from 1, 2, and even to beyond 4. Usually this component is used to split the Left and Right audio volumes of an ``.OGG`` clip.",
+  "category": "Media:Utility",
+  "fields": {
+    "Smoothing": "How much to smooth the value changes of the outputs in ``ChannelVolumes``",
+    "Power": "Raise ``ChannelVolumes`` to this exponent. 1 will leave ``ChannelVolumes`` unchanged.",
+    "Method": "Whether the outputted value should be the current volume, or the change in volume over time (delta)",
+    "Source": "The source to read the audio volumes for each channel from.",
+    "CurrentChannels": "How many channels ``Source`` has.",
+    "ChannelVolumes": "The output volumes of each channel ``Source`` has.",
+    "DoNotRemoveExcessFields": "Don't remove excess fields whenever a new audio clip is inserted and the fields are outside the amount of channels the audio clip has."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ChannelVolumeMeter&action=raw"
+}

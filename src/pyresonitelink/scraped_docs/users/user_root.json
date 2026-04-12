@@ -1,5 +1,5 @@
 {
-  "description": "Usually users find the slot containing this component by using the ProtoFlux node User Root Slot.",
+  "description": "The UserRoot component can be found on the top slot of a user, this component references the user's AvatarRenderSettings, ScreenController and any current AvatarUserRootOverrideAssigners.",
   "category": "Users",
   "fields": {
     "RenderSettings": "The user's render settings. Usually part of an avatar.",
@@ -10,5 +10,6 @@
   },
   "methods": {},
   "usage": "Usually users find the slot containing this component by using the ProtoFlux node User Root Slot.",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserRoot&action=raw"
 }

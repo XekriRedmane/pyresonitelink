@@ -1,0 +1,27 @@
+{
+  "description": "See Exit Screen.",
+  "category": "Uncategorized",
+  "fields": {
+    "Icon": "The icon of the dash menu tab.",
+    "ActiveColor": "The color when this dash menu screen tab is selected.",
+    "Label": "The text for this dash menu Screen tab.",
+    "ScreenEnabled": "Whether the screen is enabled for viewing.",
+    "BaseResolution": "The default resolution of the tab screen.",
+    "_screenRoot": "The root slot of the dash menu tab view.",
+    "_screenCanvas": "The canvas being used for the tab view.",
+    "_modalOverlayManager": "The Overlay manager being used for handling edit mode.",
+    "_button": "The button to select this dash menu screen tab.",
+    "_iconTexture": "The texture being used for the icon of this dash menu tab.",
+    "_sponsorName": "The name of a randomly picked sponsor of the game.",
+    "_sponsorIcon": "The profile icon of the sponsor.",
+    "_shoutouts": "Different supporter shoutouts text field.",
+    "_exitMessage": "The randomly chosen exit message fidld."
+  },
+  "methods": {
+    "OnExitAndSave": "Tells the game to exit and save changes to homes and dash.",
+    "OnExitAndDiscard": "Tells the game to exit and discard changes to homes and dash."
+  },
+  "usage": "Not used by the user directly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ExitScreen&action=raw"
+}

@@ -1,8 +1,14 @@
 {
   "description": "The Set Local Scale node sets the input slot's scale to the input value in local coordinate space.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Sets the Instance slot's local scale when an impulse is received.",
+    "Instance": "The slot whose local scale is set. Default is null, the node does not function without this input.",
+    "Scale": "The local scale the input Instance slot is set to. Default is [1;1;1].",
+    "Next": "An impulse is fired whenever the Instance slot's scale is set after the node receives an impulse. No impulse is fired from this output if the Instance input is null."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetLocalScale&action=raw"
 }

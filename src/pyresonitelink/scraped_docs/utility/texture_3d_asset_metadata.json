@@ -1,0 +1,19 @@
+{
+  "description": "The Texture3DAssetMetadata component is able to retrieve the 3D texture data like size, memory, and format usually seen at the bottom of an inspector on a particular component as usable values.",
+  "category": "Assets:Utility",
+  "fields": {
+    "Texture": "The texture to get Asset Metadata for.",
+    "Size": "The size of ``Texture`` in pixels.",
+    "Width": "The width of ``Texture`` in pixels.",
+    "Height": "The height of ``Texture`` in pixels.",
+    "Depth": "The depth or Z of ``Texture`` in pixels.",
+    "MemoryBytes": "How many bytes of memory ``Texture`` takes up.",
+    "FormattedMemoryBytes": "The bytes that ``Texture`` uses in easy to read human format.",
+    "Format": "The format that ``Texture`` is kept in.",
+    "ActualLoadedVariant": "The variant of ``Texture`` that has been loaded, which can be different on a client due to graphics settings or variants are being calculated on the cloud.",
+    "Profile": "The color space ``Texture`` is rendered in."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

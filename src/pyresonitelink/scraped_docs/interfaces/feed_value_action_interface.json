@@ -1,0 +1,13 @@
+{
+  "description": "The FeedValueActionInterface component is used as a template type item in data feed mappers in the Data Feeds system. This component specifically passes a value to an action that requires a value argument to be passed.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "Action": "The field to fill with the Action to be triggered.",
+    "Value": "The field to fill with the value that should be passed.",
+    "Highlight": "Whether this item should be highlighted or is being highlighted."
+  },
+  "methods": {},
+  "usage": "The ``Action`` and ``Value`` fields can be used to fill a CallbackValueArgument which can be triggered via a button.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FeedValueActionInterface&action=raw"
+}

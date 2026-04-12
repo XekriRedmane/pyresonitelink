@@ -1,0 +1,13 @@
+{
+  "description": "The StripeMesh component generates mesh data that is used with a MeshRenderer.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Points": "The points used to generate the geometry for this mesh.",
+    "SegmentPoints": "How many cuts/bends are between each point. Higher means more detail",
+    "DualSided": "Whether this mesh is visible from the back and front."
+  },
+  "methods": {},
+  "usage": "Attach this component to a slot and insert into a MeshRenderer to view the geometry. Don't forget to add a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StripeMesh&action=raw"
+}

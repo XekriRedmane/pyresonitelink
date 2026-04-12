@@ -1,0 +1,17 @@
+{
+  "description": "The Ico Sphere Mesh SH2 component creates Ico Sphere data using Sphercal harmonics.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Radius": "The radius of the ico sphere visual.",
+    "Subdivisions": "How detailed the mesh is.",
+    "FlatShading": "Whether the mesh should be flat shaded.",
+    "FlatFaceExtrude": "How much to puff up the mesh.",
+    "FlatFaceScale": "How much to scale up the faces of the mesh.",
+    "Colors": "The spherical harmonic colors to use.",
+    "RadiusMultiplier": "The spherical harmonics to use to influence the mesh radius at different spots.",
+    "NegativeRadiusInvertsColor": "Whether negative colors invert the mesh geometry."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

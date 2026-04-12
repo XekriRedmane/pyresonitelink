@@ -1,0 +1,16 @@
+{
+  "description": "The LegacyRadioGroup component was used to manage multiple Legacy Radios as part of a list of exclusive options. This component is a part of migrated content and should not be used in new content. This component should be replaced whenever possible.",
+  "category": "UI:Physical",
+  "fields": {
+    "_selectedOption": "The Legacy Radio this component has as the chosen option.",
+    "_choiceVisual": "the slot of the choice check mark.",
+    "_choicePosition": "The field to drive to position the check mark.",
+    "_choiceRotation": "The field to drive for the check mark's rotation.",
+    "_choiceScale": "The field to drive for the check mark's scale.",
+    "_choiceMaterial": "The material of the check mark visual."
+  },
+  "methods": {},
+  "usage": "Just dont.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyRadioGroup&action=raw"
+}

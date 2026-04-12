@@ -1,8 +1,14 @@
 {
-  "description": "The Conditional node changes its output depending on the input Condition.",
+  "description": "The Conditional node changes its output depending on the input ``Condition``.\n\nIf you want to mask different parts of a value, use the Mask node instead.|suggestion}}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnTrue": "The value to output when the Condition is true.",
+    "OnFalse": "The value to output when the Condition is false.",
+    "Condition": "A boolean to decide which input value to output.",
+    "* (Pseudo-Generic)": "Returns the result."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Conditional&action=raw"
 }

@@ -1,0 +1,8 @@
+{
+  "description": "The UI_TextUnlitMaterial component is a material used to render text glyphs on a UIX. It does so via meshes that automatically generates UV maps that map to each character on a font map. Such as Text and TextRenderer.",
+  "category": "Assets:Materials:UI:Text",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

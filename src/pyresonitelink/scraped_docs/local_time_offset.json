@@ -1,8 +1,11 @@
 {
-  "description": "The Local Time Offset node returns a local user's time zone offset. More information about UTC here: https://en.wikipedia.org/wiki/UTC_offset",
+  "description": "The ``Local Time Offset`` node returns a local user's time zone offset. More information about UTC here: [https://en.wikipedia.org/wiki/UTC_offset]",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:TimeSpan|TimeSpan]])": "The local user's timezone offset."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalTimeOffset&action=raw"
 }

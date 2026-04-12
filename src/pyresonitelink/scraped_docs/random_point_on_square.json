@@ -1,8 +1,11 @@
 {
-  "description": "The Random Point On Square node returns a random float2 value of a point on the edge of a unit square centered at [0; 0].",
+  "description": "The Random Point On Square node returns a random float2 value of a point on the edge of a unit square centered at ``[0; 0]``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float2|float2]])": "A random point on the edge of a unit square. This will be a float2 where one value is ``-0.5`` or ``0.5`` and the other value is between ``-0.5`` and ``0.5``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomPointOnSquare&action=raw"
 }

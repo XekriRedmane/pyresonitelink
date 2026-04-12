@@ -1,0 +1,11 @@
+{
+  "description": "The ValueProxySource component allows for the user to grab a value off from a UIX element. This requires a Button component to work.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "Value": "The value itself."
+  },
+  "methods": {},
+  "usage": "This is used to carry values to other UIX elements that are looking for it. Using this component along with the ValueReceiver and ValueField of a value type will allow the user to carry the value from source to receiver directly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueProxySource&action=raw"
+}

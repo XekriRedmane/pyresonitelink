@@ -1,0 +1,16 @@
+{
+  "description": "The DelegateEditor component is used in the Inspector window of Components where there is a field a sync delegate can be dropped into.",
+  "category": "Uncategorized",
+  "fields": {
+    "_targetDelegate": "The Sync delegate to show.",
+    "_textDrive": "The text field to drive with the name of the Sync delegate method.",
+    "_button": "The button to interface with the Sync delegate."
+  },
+  "methods": {
+    "RemovePressed": "Remove the delegate from the delegate holding field.",
+    "OpenInspectorButton": "Opens the inspector to the delegate location in the world if possible."
+  },
+  "usage": "This isn't usually used by the user, and falls into the category of Components used in Ref Hacking.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DelegateEditor&action=raw"
+}

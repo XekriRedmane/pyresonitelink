@@ -1,8 +1,14 @@
 {
   "description": "The Set Head Rotation node takes in a user's UserRoot and the rotation for the head, then sets the rotation.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to set the head rotation.",
+    "UserRoot": "The user's user root.",
+    "Rotation": "The rotation to set for the head.",
+    "Next": "Continues flow execution from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetHeadRotation&action=raw"
 }

@@ -1,0 +1,11 @@
+{
+  "description": "The ReferenceDriveReceiver component is used to allow dropping a reference proxy via the user's hand onto a UIX element to trigger the prompt for driving a reference field. This requires a UIX button to work.",
+  "category": "Uncategorized",
+  "fields": {
+    "Reference": "The field this should allow an option to drive for when a reference is dropped onto the UIX element this is on."
+  },
+  "methods": {},
+  "usage": "Attach to a slot as part of a Canvas hierarchy with a Button in the same slot. Provide a value for ``Reference`` for it to start working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceDriveReceiver&action=raw"
+}

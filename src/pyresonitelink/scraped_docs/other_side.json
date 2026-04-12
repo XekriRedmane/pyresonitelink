@@ -1,8 +1,12 @@
 {
   "description": "Other Side is a ProtoFlux node that returns the opposite side equivalent of the provided Node (BodyNode) on an anthro body.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Node": "The node to flip to the opposite side.",
+    "* ([[Type:BodyNode|BodyNode]])": "Node (BodyNode) but on the opposite side of an anthro body. This value will be \"NONE\" if no such conversion exists (Like spine or head)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OtherSide&action=raw"
 }

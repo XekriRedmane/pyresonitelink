@@ -1,0 +1,18 @@
+{
+  "description": "The IKDraggableOffset component is generated as part of newly imported humanoid avatars. It allows users to grab (meaning it's an IGrabbable) and move parts of a model to test how it moves before making it an avatar.",
+  "category": "Uncategorized",
+  "fields": {
+    "Solver": "The IK solver that this is currently controlling. See IKSolver for what this could be.",
+    "PositionTarget": "The position field to influence when grabbing.",
+    "RotationTarget": "The rotation field to influence when grabbing.",
+    "Weight": "The weight field to influence when grabbing.",
+    "_grabber": "The grabber component currently grabbing this.",
+    "_grabbingUser": "The user currently grabbing this.",
+    "_holdSlot": "The slot currently holding this component's slot for grabbing.",
+    "_posOffset": "The position offset this component is applying to ``Solver``.",
+    "_rotOffset": "The rotation offset this component is applying to ``Solver``."
+  },
+  "methods": {},
+  "usage": "This should not be used by the player, and is generated with newly imported humanoid avatars.",
+  "notes": []
+}

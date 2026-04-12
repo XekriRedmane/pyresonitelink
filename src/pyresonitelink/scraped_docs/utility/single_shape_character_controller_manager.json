@@ -1,0 +1,21 @@
+{
+  "description": "The SingleShapeCharacterControllerManager component is used by locomotions to change the shape of a Capsule Collider based on a user's standing height and current height.",
+  "category": "Physics:Utility",
+  "fields": {
+    "UseUserHeadHeightWhenAvailable": "Whether to use the user's head height to do calculations when possible.",
+    "HeadHeightOffset": "How much to add/subtract from the user's head to make the top of the capsule.",
+    "CrouchTargetWidth": "How wide the capsule should become when crouching.",
+    "CrouchStart": "The maximum height the user's head has to be for them to be crouching.",
+    "CrouchEnd": "The minimum height the user's head has to be for them to be crouching.",
+    "DefaultHeight": "The user's default head height.",
+    "DefaultWidth": "The collider's width when standing.",
+    "RootAtBottom": "Whether the bottom end of the capsule should be at the slot rather than the slot being at the middle.",
+    "TargetHeight": "The slot to drive to influence the capsule collider's height.",
+    "TargetWidth": "The slot to drive to influence the capsule collider's radius.",
+    "TargetOffset": "The slot to drive to influence the capsule collider's center offset."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SingleShapeCharacterControllerManager&action=raw"
+}

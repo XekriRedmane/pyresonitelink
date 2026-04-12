@@ -1,8 +1,11 @@
 {
-  "description": "The View Scale node returns the local user's view output scale in global space.",
+  "description": "The View Scale node returns the local user's view output scale in global space.\n\nWhen in desktop mode or VR mode, this node will return the value of where your head proxy is scaled. When an item or object that can override your view is used (such as using a different head proxy, templated head proxy, or something else that moves your view point), this node will return a new scale value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float3|float3]])": "Returns the local user's view output scale."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ViewScale&action=raw"
 }

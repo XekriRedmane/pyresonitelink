@@ -1,0 +1,45 @@
+{
+  "description": "The SkinnedMeshRenderer component is used for rendering animated/dynamic 3D meshes in the world, and applying materials to that mesh.",
+  "category": "Rendering",
+  "fields": {
+    "Mesh": "The mesh to be rendered. Can be a StaticMesh or a Procedural Mesh",
+    "Materials": "A list of materials to be applied to the mesh",
+    "MaterialPropertyBlocks": "A list of material property blocks to apply to the materials on this mesh. Usually used for performance reasons where using multiple similar materials would take more resources.",
+    "ShadowCastMode": "How this object will cast shadows onto the world, or if it only draws a shadow.",
+    "MotionVectorMode": "See Motion vector mode.",
+    "SortingOrder": "Whether to render this before or after other renderers with geometry in the same location.",
+    "BoundsComputeMethod": "How the bounds of this mesh will be calculated. Should be left as Static if possible, for performance reasons.",
+    "ProxyBoundsSource": "A SkinnedMeshRenderer to use the ``ExplicitLocalBounds`` of rather than the ``ExplicitLocalBounds`` on this component.",
+    "ExplicitLocalBounds": "A box that within view will render the mesh, and when out of view will cull the mesh and stop rendering it. Is used when ``ProxyBoundsSource`` is null.",
+    "Bones": "Automatically Assigned &mdash; List of bones present in this mesh",
+    "BlendShapeWeights": "Automatically Assigned &mdash; List of blendshapes present in this mesh, and their respective weights."
+  },
+  "methods": {
+    "SplitBlenshapeAlongAxis": "Splits a blendshape along a given axis, and returns a task representing if the operation is done yet.",
+    "BakeBlendshape": "bakes a blendshape to make it part of the mesh rest state, and returns a task representing if the operation is done yet.",
+    "RemoveBlendshape": "removes a blendshape from the mesh, and returns a task representing if the operation is done yet.",
+    "VisualizeApproximateBoneBounds": "Makes a series of boxes showing the bounds of the bones in the mesh.",
+    "VisualizeBoneBounds": "Makes a series of boxes showing the bounds of the bones in the mesh.",
+    "ClearBoundsVisuals": "clears bound visuals.",
+    "SeparateOutBlendshapes": "Separates out the blendshape affected mesh parts from the non blendshape affected mesh parts.",
+    "StripEmptyBlendshapes": "Removes blendshapes that don't change anything.",
+    "BakeNonDrivenBlendshapes": "Bakes all blendshapes on the mesh that aren't driven based on their current value, making it part of the rest state.",
+    "BakeToStaticMesh": "Bakes the mesh and makes it a static mesh instead.",
+    "MergeBlendshapes": "Combine all blendshapes in to one blendshape, which interpolates between the source blendshapes like a playback timeline.",
+    "StripEmptyBones": "Gets rid of bones that have no vertices assigned to them.",
+    "ComputeExplicitBoundsFromPose": "Computes the explicit bounds property for the skinned mesh renderer component based on it's current pose of it's bones.",
+    "ExtendExplicitBoundsFromPose": "extends the bounds of the explicit bounds property for the skinned mesh renderer component based on it's current pose of it's bones.",
+    "SortBlendshapesByName": "Sorts blendshapes by name in alphabetical order.",
+    "SortBlendshapesByNameLength": "Sorts blendshapes by how many characters are in a given blendshape name.",
+    "SplitSubmeshes": "Will split this mesh into additional submeshes, each having only one material",
+    "MergeByMaterial": "Will merge all submeshes that use the same material"
+  },
+  "usage": "While it can be used for rendering static meshes, it is not recommended as there is a slight performance penalty for using SkinnedMeshRenderer, even if the animation features aren't used &mdash; Please try to use MeshRenderer where possible.",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* MeshRenderer"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SkinnedMeshRenderer&action=raw"
+}

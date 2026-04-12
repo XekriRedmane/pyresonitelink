@@ -1,8 +1,13 @@
 {
-  "description": "Increments take Variable (Variable Pseudo-generic) as a global, and will increase the value that Variable (Variable Pseudo-generic) points to by 1.",
+  "description": "Increments take Variable (Variable Pseudo-generic) as a global, and will increase the value that Variable (Variable Pseudo-generic) points to by 1.\n\nIf you need to add more than + 1 to your value, use the Add node instead.|suggestion}}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to write the value.",
+    "OnWritten": "sends an impulse after * (Call) has been impulsed and the value pointed to by Variable (Variable Pseudo-generic) has been incremented.",
+    "OnFail": "sends an impulse after * (Call) has been impulsed and the value wasn't able to be incremented due to a missing target or Variable (Variable Pseudo-generic) not pointing to a valid IField`1."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Increment&action=raw"
 }

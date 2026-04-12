@@ -1,0 +1,11 @@
+{
+  "description": "The Legacy Settings Data component was used in the old settings menu before the settings were updated in the settings update series.",
+  "category": "Uncategorized",
+  "fields": {
+    "_settings": "A list of setting keys and their values."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user. Used in legacy content.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacySettingsData&action=raw"
+}

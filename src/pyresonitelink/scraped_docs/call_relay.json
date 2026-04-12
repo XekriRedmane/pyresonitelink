@@ -1,8 +1,12 @@
 {
-  "description": "alt=A visual image of an Call Relay node by itself, connected to nothing.|thumb",
+  "description": "due to wiki limitations, this node does not currently have an HTML rendering of the node.\n\nA Call Relay is a slightly different variation of the Continuation Relay node, It can be found in the node browser under Core, and when connected to itself, or as the last node before recursion in a chain or loop of nodes it will not cause an exception.\n\nThis behaviour can be used to create loops within protoflux, but nodes such as While and For would be more suitable, as they come with built in ways of \"ending\" the loop that needs to be added for protoflux to be safe, and additional outputs for the start, continuation, and end of a loop.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Input": "The Call to send to the output",
+    "Output": "The Call continued from the Input (Call) signal."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CallRelay&action=raw"
 }

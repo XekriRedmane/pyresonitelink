@@ -1,0 +1,8 @@
+{
+  "description": "A PBS Intersect Shader (both metallic & specular variants) renders a glow outline when intersecting with opaque materials (any that write to ZBuffer).",
+  "category": "Assets:Materials:PBS",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

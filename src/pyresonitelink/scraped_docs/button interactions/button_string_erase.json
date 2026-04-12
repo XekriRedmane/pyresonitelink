@@ -1,0 +1,13 @@
+{
+  "description": "The ButtonStringErase component can be used to remove characters from the beginning or end of a string whenever an IButton is pressed.",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "TargetString": "The string from which characters will be removed.",
+    "Count": "How many characters to remove.",
+    "EraseFromBeginning": "Whether or not to remove characters from the beginning of the string."
+  },
+  "methods": {},
+  "usage": "To function, the component simply needs to be attached to a slot that also has a button component attached to it. From then on, pressing that button will activate the ButtonStringErase, making it erase the first or last ``Count`` characters from its ``TargetString``.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonStringErase&action=raw"
+}

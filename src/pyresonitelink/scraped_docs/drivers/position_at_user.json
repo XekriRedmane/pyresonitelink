@@ -1,0 +1,25 @@
+{
+  "description": "The PositionAtUser component drives the values in ``PositionDrive`` and ``RotationDrive`` to match the user's position and rotation as determined by the settings in ``PositionSource`` and ``RotationSource`` respectively.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "TargetUser": "The user that will be used to calculate the parent slot position, unless ``PositionAtLocalUser`` is selected.",
+    "PositionAtLocalUser": "Position the parent slot at the Local User of each client, ignoring the value in ``TargetUser``",
+    "TargetPositionOffset": "Position offset in the user's local space units. Respects the user's current scale and transforms.",
+    "TargetRotationOffset": "Rotation offset in the user's local space unit. Respects the user's current scale and transforms.",
+    "PositionOffset": "Position offset in global space units",
+    "RotationOffset": "Rotation offset in global space units",
+    "PositionSource": "The user node that the position will be calculated from",
+    "RotationSource": "The user node that the rotation will be calculated from",
+    "PositionDrive": "Target Float3 to drive with the calculated position value",
+    "RotationDrive": "Target FloatQ to drive with the calculated rotation value."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "== Examples =="
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PositionAtUser&action=raw"
+}

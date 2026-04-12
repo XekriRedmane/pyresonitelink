@@ -1,0 +1,14 @@
+{
+  "description": "This component takes a float value and a colorX value, and multiplies the float value by the colorX value, and outputs a colorX.",
+  "category": "Uncategorized",
+  "fields": {
+    "Input": "A value that constantly changes to visualize the color for. For example, the ``Volume`` field of a Volume Meter.",
+    "BaseColor": "The original color.",
+    "MaterialColor": "The color to drive with an amplified ``BaseColor`` value based on ``Input``",
+    "LightIntensity": "How bright the output color is beyond 1 gain."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TalkVisualizer&action=raw"
+}

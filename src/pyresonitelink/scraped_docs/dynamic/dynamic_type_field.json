@@ -1,0 +1,13 @@
+{
+  "description": "The DynamicTypeField Component is used to mark a field containing a Type as the value of a dynamic variable.",
+  "category": "Data:Dynamic",
+  "fields": {
+    "VariableName": "The name of the variable.",
+    "TargetField": "The field to stay up to date with and change the value of the dynamic variable's value.",
+    "OverrideOnLink": "Whether to write the current value of the dynamic variable in a space when it connects to it with the one this component is storing."
+  },
+  "methods": {},
+  "usage": "For more info on Dynamic Variables and how they work including this type of component, see Dynamic Variables.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicTypeField&action=raw"
+}

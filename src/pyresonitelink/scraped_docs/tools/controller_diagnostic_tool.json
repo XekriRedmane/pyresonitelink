@@ -1,0 +1,11 @@
+{
+  "description": "The ControllerDiagnosticTool component is a tool that gives information on controller info for the hand its equipped on. For more info see Controller Diagnostic Tool.",
+  "category": "Tools",
+  "fields": {
+    "_text": "The text renderer to fill with controller diagnostic info to display."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ControllerDiagnosticTool&action=raw"
+}

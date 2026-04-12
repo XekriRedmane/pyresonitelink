@@ -1,8 +1,19 @@
 {
-  "description": "The Render To Texture Asset node takes in a provided Camera, resolution, file format, and quality for the texture. Then this node will attempt to render it into a texture, and returns the asset URL for the world to use.",
+  "description": "The ``Render To Texture Asset`` node takes in a provided Camera, resolution, file format, and quality for the texture. Then this node will attempt to render it into a texture, and returns the asset URL for the world to use.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|AsyncCall]])": "Calls an impulse to render a texture.",
+    "Camera": "The camera used to render the texture.",
+    "Resolution": "The resolution for the texture.",
+    "Format": "The texture asset file format (defaults to ``webp``).",
+    "Quality": "The quality of the texture asset (default to ``200``).",
+    "OnRenderStarted": "Fires when this rendering task has started.",
+    "OnRendered": "Fires when this rendering task has finished rendering.",
+    "OnFailed": "Fires when this rendering task has failed.",
+    "RenderedAssetURL": "The Uri asset of the texture."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RenderToTextureAsset&action=raw"
 }

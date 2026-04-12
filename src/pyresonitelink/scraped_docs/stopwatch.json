@@ -1,8 +1,18 @@
 {
   "description": "The Stopwatch node keeps track of time when running. Akin to a real stopwatch, it allows one to start time, stop time, and reset time.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Start": "Starts the stopwatch, putting it in the running state.",
+    "Stop": "Stops the stopwatch, putting it in the stopped state.",
+    "Reset": "Resets the stopwatch time. Does not affect the state of the stopwatch.",
+    "OnStarted": "Sends an impulse when ``Start`` is impulsed. Is not affected by the state of the stopwatch.",
+    "OnStopped": "Sends an impulse when ``Stop`` is impulsed. Is not affected by the state of the stopwatch.",
+    "OnReset": "Sends an impulse when ``Reset`` is impulsed. Is not affected by the state of the stopwatch.",
+    "Time": "The time in seconds stored by the stopwatch. This value increments when in the running state and freezes when in the stopped state. If ``Reset`` is pulsed, this output is set to ``0``, but continues the same behavior of the state the watch is in.\n\nSometimes, it may be desirable to obtain a TimeSpan type from this value. To do so, use a TimeSpan From Seconds node.",
+    "IsRunning": "``True`` if the stopwatch is in a running state, ``False`` otherwise."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Stopwatch&action=raw"
 }

@@ -1,0 +1,18 @@
+{
+  "description": "The TouchEventRelay component is used to relay touch events recieved by a slot to other ITouchables.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "Touched": "The sync delegate to call when this receives a touch event.",
+    "AcceptOutOfSightTouch": "Whether this component allows touch events from a user not looking directly at the slot with this component.",
+    "TouchableTargets": "Target touchable components to send the touch event to."
+  },
+  "methods": {},
+  "usage": "*To trigger a hyperlink component without a touchable/interactable component you can use a TouchEventRelay. You a touch event relay on the collider of your object, then put a hyperlink or other touchables as children (with no colliders on them) then add them to the TouchableTargets list of the TouchEventRelay.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* Touchable Events can be used with TouchEventRelay.\nTouchEventRelay can relay events from a Touchable element to fire another ITouchable component."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TouchEventRelay&action=raw"
+}

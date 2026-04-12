@@ -1,0 +1,14 @@
+{
+  "description": "The Teleport Surface component is a component that is used to mark surfaces on slots tagged with this component in a world as specific spots the user can teleport to via the Teleport Locomotion Mode regardless of the CharacterCollider field on a slot's collider.",
+  "category": "Transform:Tagging",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach this component to the same slot as a collider to mark that collider as a spot a user can specifically teleport to.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* Teleport Passthrough\n* Teleport Block"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TeleportSurface&action=raw"
+}

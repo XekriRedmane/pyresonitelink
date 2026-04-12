@@ -1,8 +1,12 @@
 {
-  "description": "The User Download Speed node returns a user's download speed.",
+  "description": "The ``User Download Speed`` node returns a user's download speed.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:float|float]])": "The download speed of the user in bytes."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserDownloadSpeed&action=raw"
 }

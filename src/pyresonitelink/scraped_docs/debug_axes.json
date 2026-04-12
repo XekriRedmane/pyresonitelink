@@ -1,8 +1,19 @@
 {
-  "description": "Debug Axes is a ProtoFlux node that when called will make a 3 arrows visual similar to a Gizmo at the global coordinates with the arrows having the length provided and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.",
+  "description": "Debug Axes is a ProtoFlux node that when called will make a 3 arrows visual similar to a Gizmo at the global coordinates with the arrows having the length provided and will appear for a duration in seconds. The visual will appear under the Root of a world. In most cases, the debug visuals will be drawn over most materials, letting you see them easily.\n\nSee also: Coordinate spaces",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to spawn a debug axes visual in the root of the world with the provided parameters.",
+    "Position": "The position in global space for the debug visual. Default at the node.",
+    "Rotation": "The Rotation in global space for the debug visual. Default at the node.",
+    "Length": "The length of the arrows for the debug visual in meters.",
+    "RightColor": "The color for the debug axes in the (1,0,0) direction. Also known as the red arrow on a Gizmo. Defaults to red.",
+    "UpColor": "The color for the debug axes in the (0,1,0) direction. Also known as the green arrow on a Gizmo. Defaults to green.",
+    "ForwardColor": "The color for the debug axes in the (0,0,1) direction. Also known as the blue arrow on a Gizmo. Defaults to blue.",
+    "Duration": "How long the debug axes visual appears for in seconds.",
+    "Next": "Fires after * (Call) is impulsed and the gizmo was created successfully."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DebugAxes&action=raw"
 }

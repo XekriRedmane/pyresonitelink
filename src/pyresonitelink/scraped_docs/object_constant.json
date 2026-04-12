@@ -1,8 +1,11 @@
 {
-  "description": "Constant outputs the default value of a Type and is used as a base for classes that output constant values like e or Pi.",
+  "description": "due to wiki limitations, this node does not currently have an HTML rendering of the node.\n\nConstant outputs the default value of a Type and is used as a base for classes that output constant values like e or Pi.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* (Generic)": "outputs the default value of the generic chosen."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Constant&action=raw"
 }

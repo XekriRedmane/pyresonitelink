@@ -1,8 +1,11 @@
 {
-  "description": "The Escape Uri Data String node takes in a string literal and converts that string into another string that uses Percent Encoding. This is used mostly for applications that can only read the ASCII representation of characters.",
+  "description": "The ``Escape Uri Data String`` node takes in a string literal and converts that string into another string that uses Percent Encoding. This is used mostly for applications that can only read the ASCII representation of characters.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:string|string]])": "The string literal that we want to encode."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:EscapeUriDataString&action=raw"
 }

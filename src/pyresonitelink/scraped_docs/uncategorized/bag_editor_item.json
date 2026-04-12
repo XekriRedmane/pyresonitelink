@@ -1,0 +1,11 @@
+{
+  "description": "The BagEditorItem component is used in conjunction with a BagEditor. This is a reference to an item in the bag. For more information, please see the page on BagEditor.",
+  "category": "Uncategorized",
+  "fields": {
+    "Item": "The bag item this is referencing."
+  },
+  "methods": {},
+  "usage": "See BagEditor.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BagEditorItem&action=raw"
+}

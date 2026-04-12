@@ -1,8 +1,14 @@
 {
   "description": "The Set Hips Position node takes in a user's UserRoot and the position for the hips, then sets the position.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to set the hips position.",
+    "UserRoot": "The user's user root.",
+    "Position": "The position to set for the hips.",
+    "Next": "Continues flow execution from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetHipsPosition&action=raw"
 }

@@ -1,8 +1,12 @@
 {
-  "description": "The Locale Message Count node takes in a locale resource asset and returns the number of translatable string keys in this collection or repository.",
+  "description": "The ``Locale Message Count`` node takes in a locale resource asset and returns the number of translatable string keys in this collection or repository.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Locale": "The list of translatable strings (the repository or collection of strings).",
+    "* ([[Type:int|int]])": "The number of translatable locale keys in this collection or repository of strings."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocaleMessageCount&action=raw"
 }

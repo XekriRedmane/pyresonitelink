@@ -1,0 +1,12 @@
+{
+  "description": "The MaterialGizmo component is used to set up and manage Material orbs and their behavior for snapping to snapper components.",
+  "category": "Uncategorized",
+  "fields": {
+    "_target": "The material this Gizmo was made for.",
+    "_inspectorRoot": "The inspector made in order to view ``_target``"
+  },
+  "methods": {},
+  "usage": "Used with the Material Tool and Scene Inspector to manage references to materials as an item that can be held and looked at.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MaterialGizmo&action=raw"
+}

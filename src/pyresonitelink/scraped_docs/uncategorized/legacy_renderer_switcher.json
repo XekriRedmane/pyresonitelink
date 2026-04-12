@@ -1,0 +1,14 @@
+{
+  "description": "The LegacyRendererSwitcher component is used to switch between different rendering types depending on meshes.",
+  "category": "Uncategorized",
+  "fields": {
+    "ParticleMesh": "The particle mesh object when not null will use ``MeshRenderer`` for the renderer.",
+    "BillboardRenderer": "Can be switched to in order to render the particles as squares.",
+    "MeshRenderer": "Can be switched to in order to render the particles as meshes.",
+    "RendererDrive": "Drives the target field with ``BillboardRenderer`` or ``MeshRenderer`` depending on if ``ParticleMesh`` is null."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyRendererSwitcher&action=raw"
+}

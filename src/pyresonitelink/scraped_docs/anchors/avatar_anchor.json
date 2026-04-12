@@ -1,0 +1,39 @@
+{
+  "description": "An anchor allows for an avatar to be attached to a slot. This component can also allow for pinning of a user's limb(s) for posing, and is most commonly used as a seat.",
+  "category": "Users:Common Avatar System:Anchors",
+  "fields": {
+    "Highlight": "Whether a user is pointing at this anchor and it is possible for them to activate the enter dialogue by pressing Primary at this moment.",
+    "ParentSpace": "The coordinate space in which to work with the avatar.",
+    "MinScale": "If an avatar has a scale below the MinScale, it will be scaled up to that size.",
+    "MaxScale": "If an avatar has a scale above the MaxScale, it will be scaled down to that size.",
+    "PositionNode": "Which part of the avatar to use to position the avatar.",
+    "PositionReference": "Where to position the avatar to.",
+    "RotationNode": "Which part of the avatar to use to rotate the avatar.",
+    "RotationReference": "Where to rotate the avatar to.",
+    "PreserveUpOnEnter": "Whether to keep the user's root slot's up direction pointing the same direction it was in global space before entering, or to align them to the up of the slot of the anchor. This is disabled when ``RotationNode`` and ``RotationReference`` are set to not none.",
+    "PreserveUpOnExit": "Whether to keep the user's root slot's up direction pointing the same direction it was in global space before exiting, or to align them to the up of the slot they get parented back under. This is disabled when ``TransformRestoreMode`` and ``RestoreNode`` are set to not none.",
+    "UnparentEverythingOnDestroy": "Unparent all slots under ``ParentSpace``'s Space slot and parent them under the parent of the nearest ObjectRoot (doesn't need an explicit ObjectRoot component). If ``ParentSpace``'s Space slot is null, or the ObjectRoot parent is null, then all children are deleted anyway.",
+    "TransformRestoreMode": "What slot or space to use when setting the user's transforms to what they were before they entered the anchor.",
+    "RestoreNode": "The part of the user's avatar that the transforms should be changed to ``_originalPosition``, ``_originalRotation``, and ``_originalScale`` when the user exits the anchor. Which space the transforms refer to (aka what it would be parented to) depends on what ``TransformRestoreMode`` is set to.",
+    "RestoreReference": "This will be used from when ``TransformRestoreMode`` is set to \"Reference\". The specified ``RestoreNode``'s transform will be set to this slot's space using ``_originalPosition``, ``_originalRotation``, and ``_originalScale``.",
+    "Filters": "A list of pose filters to use. Each one can control the position, rotation, and/or speed of a specific body node",
+    "UserFilters": "Nothing currently implements IAvatarAnchorUserFilter so this currently does nothing.",
+    "UserAnchored": "Internal",
+    "UserStay": "Internal",
+    "UserReleased": "Internal",
+    "_originalSpace": "Internal",
+    "_originalPosition": "Internal",
+    "_originalRotation": "Internal",
+    "_originalScale": "Internal",
+    "_dummyObjectSlots": "Internal"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "By itself, an AvatarAnchor does nothing. It requires either an AvatarAnchorTouchTrigger component or a Anchor User ProtoFlux node to place an avatar into it.\n\nTo exit an anchor, a AvatarAnchorLocomotionRelease component or a Release User ProtoFlux node needs to be used.\n\nWhen a user is anchored to an an anchor, first ``TransformRestoreMode`` takes it's effect on the settings (see above table for any field descriptions). Next the user root slot is parented under ``ParentSpace``. Then ``MinScale`` and ``MaxScale`` are applied to keep the avatar within the right size. After that the global rotation and position of the user's root slot is set to the global position and rotation of the ``PositionReference`` and ``RotationReference`` slots using their specified nodes. Lastly the avatar's filters are applied."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarAnchor&action=raw"
+}

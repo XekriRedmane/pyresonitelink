@@ -1,8 +1,12 @@
 {
-  "description": "Gets the value of the provided Instance Slot's Active field.",
+  "description": "Gets the value of the provided Instance Slot's Active field. \n\nThis Protoflux node does not update by itself on the Active field change. If you need to react to a Slot's activity dynamically, consider sourcing the Slot's Active field instead.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "Slot to check.",
+    "* ([[Type:Bool|bool]])": "Instance (Slot)'s Active field."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetSlotActiveSelf&action=raw"
 }

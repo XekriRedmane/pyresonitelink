@@ -1,8 +1,12 @@
 {
   "description": "Local Fire While True is a ProtoFlux node that will check Condition (bool) is true on the local machine rather on a specific user. Then the node will fire every game tick, sending impulses from OnUpdate (Call) on that specific user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Condition": "The value to check on the local client on if it is true.",
+    "OnUpdate": "Will send an impulse very game tick while Condition (bool) is true on the local client. Will send the impulses from the local client."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalFireWhileTrue&action=raw"
 }

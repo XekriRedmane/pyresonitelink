@@ -1,8 +1,11 @@
 {
   "description": "Empty String is a ProtoFlux node that returns a constant that is a String with no content but is not null.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:String|String]])": "Gives a String with no content but is not null."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:EmptyString&action=raw"
 }

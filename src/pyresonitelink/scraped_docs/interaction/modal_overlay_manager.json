@@ -1,0 +1,15 @@
+{
+  "description": "The ModalOverlayManager component allows for the creation of ModalOverlay slots. Using the ``Template`` field to create Modal Overlays duplicates.",
+  "category": "UIX:Interaction",
+  "fields": {
+    "Template": "The template ModalOverlay slot.",
+    "Constructor": "The constructor to make the ModalOverlay.",
+    "ModalOverlayRequested": "The action of the ModalOverlayManager.",
+    "ModalOverlayGenerated": "The action of the ModalOverlayManager.",
+    "SpawnRoot": "The slot hierarchy to spawn this modal overlay on."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ModalOverlayManager&action=raw"
+}

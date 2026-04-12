@@ -1,8 +1,12 @@
 {
-  "description": "DivDeltaTime is a ProtoFlux node which Divides a value by the amount of time passed since the last local update.",
+  "description": "DivDeltaTime is a ProtoFlux node which Divides a value by the amount of time passed since the last local update.\n\nThis is mostly used in conjunction with the Delta node to resolve issues created by differing update rates as it scales deltas to be proportional to time instead of the update rate, which varies.\n\nDivDeltaTime is a convenience node which is equivalent to dividing the input value by Delta Time. This saves one additional node and some space.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The value to be divided by the time that passed since the last local update.",
+    "* (Pseudo-Generic)": "The value divided by Delta Time."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DivDeltaTime&action=raw"
 }

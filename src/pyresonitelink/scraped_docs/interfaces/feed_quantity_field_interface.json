@@ -1,0 +1,21 @@
+{
+  "description": "The FeedQuantityFieldInterface component is used as a template type item in data feed mappers in the Data Feeds system.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "Value": "The field to write to and read the value from the source data feed item for this template.",
+    "Formatting": "The field to populate with the format string that should be used when displaying the value.",
+    "Min": "The field to fill with the minimum value this quantity can be.",
+    "Max": "The field to fill with the maximum value this quantity can be.",
+    "DefaultUnit": "The field to fill with the denoter for the default unit for this quantity type.",
+    "FormatUnit": "Usually points to the FormatUnit on a QuantityTextFormatDriver.",
+    "FormatNumber": "Usually points to the FormatNumber on a QuantityTextFormatDriver.",
+    "CompoundFormatUnits": "Usually points to the CompoundFormatUnits on a QuantityTextFormatDriver.",
+    "CompoundOverrideNames": "Usually points to the CompoundOverrideNames on a QuantityTextFormatDriver.",
+    "CompoundUseLongNames": "Usually points to the CompoundUseLongNames on a QuantityTextFormatDriver.",
+    "CompoundSeparator": "Usually points to the CompoundSeparator on a QuantityTextFormatDriver."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FeedQuantityFieldInterface&action=raw"
+}

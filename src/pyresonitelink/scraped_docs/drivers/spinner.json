@@ -1,0 +1,14 @@
+{
+  "description": "The Spinner component is used to make something rotate on 1 or more axis at a constant rate.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Range": "how much each axis can go up to from 0 before wrapping around.",
+    "_target": "The rotation field to spin.",
+    "_offset": "the offset rotation to start at world start from.",
+    "_speed": "how fast to rotate on each axis, in Degrees per Second. Negative values go in reverse."
+  },
+  "methods": {},
+  "usage": "Note: While this component works very well for fixed or discrete speed steps, it might not behave as expected when the speed field is continuously changing, even a very small change can cause the component to 'jerk' on each change.\n\nIf you want to make something speed up or slow down smoothly, one option is to use rotational maths to recreate this component in flux, for example using AxisAngle",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Spinner&action=raw"
+}

@@ -1,0 +1,20 @@
+{
+  "description": "The Image component takes in a SpriteProvider or Material and renders it onto the UIX. This can be used to display graphics and produce backgrounds.\n\n}}",
+  "category": "UIX:Graphics",
+  "fields": {
+    "Sprite": "The sprite to render",
+    "Material": "The material to render with. is not required.",
+    "PreserveAspect": "Preserves the aspect ratio of this image provided.",
+    "NineSliceSizing": "Tells how the image gets 9-sliced on this UIX.",
+    "FlipHorizontally": "Flips the image horizontally.",
+    "FlipVertically": "Flips the image vertically.",
+    "InteractionTarget": "Makes this image as the interaction target for this UIX.",
+    "FillRect": "The filling rect for this image.",
+    "__legacyZWrite": "Internal - The legacy Z writing for this image.",
+    "Tint": "A color that is multiplied with the material's color."
+  },
+  "methods": {},
+  "usage": "A user can use this to just display an image with an optional tint color, or have this as a background image for other images to be on top of.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Image&action=raw"
+}

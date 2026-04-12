@@ -1,8 +1,11 @@
 {
   "description": "The Random Rotation node returns a random floatQ value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:floatQ|floatQ]])": "The random result."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomRotation&action=raw"
 }

@@ -1,8 +1,12 @@
 {
   "description": "Is Context Menu Open returns a bool of if the inputted user's context menu is currently opened.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "User to track Context Menu open state of.",
+    "* ([[Type:Bool|bool]])": "If the inputted user's context menu is currently open."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsContextMenuOpen&action=raw"
 }

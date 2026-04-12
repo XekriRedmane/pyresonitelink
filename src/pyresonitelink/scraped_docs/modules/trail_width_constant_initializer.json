@@ -1,0 +1,11 @@
+{
+  "description": "The TrailWidthConstantInitializer component makes all trails have the same width when born in a particle system.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Value": "The trail width all trails should start with."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TrailWidthConstantInitializer&action=raw"
+}

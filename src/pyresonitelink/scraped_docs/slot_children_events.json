@@ -1,8 +1,14 @@
 {
   "description": "Slot Children events is a ProtoFlux node that monitors a given Instance (Slot). It then sends impulses for OnChildAdded (Call) and OnChildRemoved (Call) when children are added or removed. When an event trigger happens, Child (Slot) is available for reading during the impulse.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnUser": "The user that should monitor the given Instance (Slot) for slot events. Only if this user sees a slot change will a call be triggered from this node.\n\nWhen this node is used the user who fires the impulse is determined using the following steps:\n\n1: If null fire the impulse for the user who added/removed the slot. \n\n2: If set to a user, only that user will fire the event.\n\n3: If is connected to a localuser node fire for all users.\n\nNote: unlike fire on true/false/change it does not care if it is under a users avatar, the two above steps are the only ones that exist.",
+    "OnChildAdded": "Sends an impulse when a child is added to Instance (Slot) according to what the user provided to OnUser (User) sees on their client.",
+    "OnChildRemoved": "Sends an impulse when a child is removed from Instance (Slot) according to what the user provided to OnUser (User) sees on their client.",
+    "Child": "The child object that was added or removed from Instance (Slot). This will only have a value during an impulse from OnChildAdded (Call) and OnChildRemoved (Call)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SlotChildrenEvents&action=raw"
 }

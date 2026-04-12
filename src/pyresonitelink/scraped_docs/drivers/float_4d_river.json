@@ -1,0 +1,14 @@
+{
+  "description": "The Float4Driver component can be used to drive a foat4 value, based on an X, Y, Z and a W value.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "X": "The field that holds the X value for the float4. If null, the X component of the float4 will be 0.",
+    "Y": "The field that holds the Y value for the float4. If null, the Y component of the float4 will be 0.",
+    "Z": "The field that holds the Z value for the float4. If null, the Z component of the float4 will be 0.",
+    "W": "The field that holds the W value for the float4. If null, the W component of the float4 will be 0.",
+    "Target": "The field that is driven to the constructed float4."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

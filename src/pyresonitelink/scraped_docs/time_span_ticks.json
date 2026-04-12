@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan Ticks node takes in a TimeSpan and returns with only the amount of ticks in that TimeSpan. Anything other than the ticks will be ignored.",
+  "description": "The ``TimeSpan Ticks`` node takes in a TimeSpan and returns with only the amount of ticks in that TimeSpan. Anything other than the ticks will be ignored.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "TimeSpan": "The TimeSpan we are getting info from.",
+    "* ([[Type:long|Long]])": "Returns the amount of ticks in this TimeSpan as an long."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanTicks&action=raw"
 }

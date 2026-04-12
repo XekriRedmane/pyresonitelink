@@ -1,8 +1,12 @@
 {
-  "description": "This node returns a user object from a username.",
+  "description": "This node returns a user object from a username.\n\nThis will only work for users present in the session.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Username": "The username of the user you need.",
+    "* ([[Type:User |User]])": "A user object that satisfies this node's input requirements."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserFromUsername&action=raw"
 }

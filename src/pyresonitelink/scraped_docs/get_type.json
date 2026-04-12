@@ -1,8 +1,12 @@
 {
-  "description": "The Get Type node takes in an Object, and returns the Type of that object. For example, using a float and connecting it to this node will return System.Single.",
+  "description": "The ``Get Type`` node takes in an Object, and returns the Type of that object. For example, using a float and connecting it to this node will return ``System.Single``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Type": "The Object to get the type from.",
+    "* ([[Type:Type|Type]])": "Returns the long type name."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetType&action=raw"
 }

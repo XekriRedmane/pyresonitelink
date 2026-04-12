@@ -1,0 +1,14 @@
+{
+  "description": "The FogBoxVolumeMaterial is a material used to create cube-shaped volumetric fog on a mesh, such as a Texture3D. Using this material on non-cube-like meshes may result in visual artifacts and/or denser fog in places where the corners of the cube would be.",
+  "category": "Assets:Materials:Volume",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Description",
+      "text": "The FogBoxVolumeMaterial is a material used to create cube-shaped volumetric fog on a mesh, such as a Texture3D. Using this material on non-cube-like meshes may result in visual artifacts and/or denser fog in places where the corners of the cube would be. \n\nAlthough only cube-shaped meshes are officially supported, users may use the LookAtUser component targeting the local User along with a spherical mesh to create an illusion of a sphere-shaped fog."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FogBoxVolumeMaterial&action=raw"
+}

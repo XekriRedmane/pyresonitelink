@@ -1,0 +1,14 @@
+{
+  "description": "The Boolean Spatial Variable Driver component is specifically for boolean values, which combines all the found bool spatial values at given point",
+  "category": "Data:Spatial:Samplers",
+  "fields": {
+    "Drive": "The field to drive with the combined values of all the bools at the sampled slot point.",
+    "VariableName": "The variable name to sample.",
+    "Mode": "How to aggrigate values to determine the final result.",
+    "DefaultValue": "The value to default to when no value can be sampled."
+  },
+  "methods": {},
+  "usage": "attach to a slot for it to use as the sample point. then it will sample spatial areas around it to get it's value.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BooleanSpatialVariableDriver&action=raw"
+}

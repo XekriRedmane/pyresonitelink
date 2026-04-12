@@ -1,0 +1,17 @@
+{
+  "description": "A generator for points arranged in a sphere with a given radius. Used in Common Spawn Areas usually.",
+  "category": "Transform:Point Generators",
+  "fields": {
+    "Radius": "How big the sphere should be for generating points in",
+    "Shell": "Whether or not to generate points on the outside edge rather than inside the sphere too."
+  },
+  "methods": {},
+  "usage": "Used in a Common Spawn Area to define in what kind of spawn area shape users should initially spawn into.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* CommonSpawnArea"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SpherePointGenerator&action=raw"
+}

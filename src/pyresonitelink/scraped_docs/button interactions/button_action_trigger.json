@@ -1,0 +1,13 @@
+{
+  "description": "The ButtonActionTrigger component is used for triggering C# actions (not to be confused with impulses) using the Interface IButton, such as UIX Buttons or Legacy Buttons.\n\nThis component must be on the same slot as the button in order to be bound to it.\n\n}}",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "OnPressed": "Triggered when the button is pressed",
+    "OnPressing": "Triggered when the button is pressed, before the ``OnPressed`` event",
+    "OnReleased": "Triggered when the button is released"
+  },
+  "methods": {},
+  "usage": "This component allows you to trigger actions on some special components, such as the Random Object Spawner component, by dragging the reference to the target action into a trigger slot (such as ``OnPressed``).",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonActionTrigger&action=raw"
+}

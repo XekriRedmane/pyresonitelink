@@ -1,0 +1,12 @@
+{
+  "description": "The LocalAudioDeviceStream component can be used as a source of streamed audio data kind of like a player or a video for use with audio output components. This component Outputs locally the audio for a specified audio input Device by index number.",
+  "category": "Uncategorized",
+  "fields": {
+    "AudioDeviceIndex": "The audio device to gather audio samples from.",
+    "UseFilteredData": "Whether to use raw audio samples or filter them."
+  },
+  "methods": {},
+  "usage": "Can be used to listen to a specified audio device index using an audio output. Can be used in world space and isn't limited to userspace.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LocalAudioDeviceStream&action=raw"
+}

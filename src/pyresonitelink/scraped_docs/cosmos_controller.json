@@ -1,8 +1,27 @@
 {
   "description": "This node provides information provided by HTC Vive Cosmos controllers.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting controller information from.",
+    "Node": "The controller side to get information from.",
+    "IsActive": "Is this controller actively being used right now.",
+    "Type": "The controller type being used.",
+    "BatteryLevel": "The battery level of this controller.",
+    "IsBatteryCharging": "Is this controller currently charging.",
+    "Menu": "Is the menu button pressed right now.",
+    "ButtonBY": "Is the Button BY pressed right now.",
+    "ButtonAX": "Is the Button AX pressed right now.",
+    "GripClick": "Is the controller's grip clicked down right now.",
+    "Bumper": "Is the controller's bumper pressed right now.",
+    "Joystick": "The position of this controller's joystick.",
+    "JoystickTouch": "Is the controller's joystick being touched right now.",
+    "JoystickClick": "Is the controller's joystick clicked down right now.",
+    "Trigger": "The amount of how far this controller's trigger is being pressed down currently.",
+    "TriggerTouch": "Is the controller's trigger being touched right now.",
+    "TriggerClick": "Is the controller's trigger being clicked down right now."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CosmosController&action=raw"
 }

@@ -1,0 +1,15 @@
+{
+  "description": "The Gaussian Splat Asset Metadata component gives statistics on Gaussian Splats seen in inspectors for components that generate or provide such data.",
+  "category": "Assets:Utility",
+  "fields": {
+    "Splat": "The splat to get data on.",
+    "SplatCount": "The number of splats in the Gaussian splat.",
+    "MemoryBytes": "The amount of memory in bytes the Gaussian splat takes up.",
+    "FormattedMemoryBytes": "The amount of memory in bytes the Gaussian splat takes up when formatted.",
+    "ActualLoadedVariant": "The variant of the Gaussian splat that is loaded from the cloud."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GaussianSplatAssetMetadata&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "The Light Orb component is used as a visual for lights created by the Light Tool.",
+  "category": "Uncategorized",
+  "fields": {
+    "FlipOnTouch": "Whether this can be toggled by touching a collider on the same slot.",
+    "Light": "The light to control.",
+    "EmissionColor": "The field to drive to control the emission color of the light."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LightOrb&action=raw"
+}

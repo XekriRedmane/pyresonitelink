@@ -1,0 +1,12 @@
+{
+  "description": "A snap sphere is a component that is able to generate a point in a sphere shape along the outer shell when given a point by another component. Usually this is used in components like the Multi User Avatar Anchor Component to determine where to place the anchors upon clicking (click point is used in such case)\n\nHow the snapper determines a point is as such:\n# the snapper component will reduce the distance from the provided point to the center of the snapper to a distance of 1.\n# It then takes the number and aligns it to the closest point on the shape. since this is a sphere snapper, it doesn't need this step.\n# the snapper will then multiply the normalized point by the snapper's size in all 3 axes, and then return the result.\n\nThe functionality of this component is internal, and cannot be used by ProtoFlux to snap points using in game code.",
+  "category": "Transform:Snapping",
+  "fields": {
+    "Radius": "the radius of the sphere",
+    "SnapParent": "where the objects to be snapped should go, if they are slots."
+  },
+  "methods": {},
+  "usage": "Used as an anchor point generator in the Multi User Avatar Anchor Component and drawing tools.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SnapSphere&action=raw"
+}

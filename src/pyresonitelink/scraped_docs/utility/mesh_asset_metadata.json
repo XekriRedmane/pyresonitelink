@@ -1,0 +1,24 @@
+{
+  "description": "The MeshAssetMetadata component gives info about the data on a mesh component.",
+  "category": "Assets:Utility",
+  "fields": {
+    "Mesh": "The mesh to get meta data on.",
+    "VertexCount": "The amount of vertices in ``Mesh``.",
+    "TriangleCount": "The amount of triangles in ``Mesh``.",
+    "PointCount": "the amount of vertices with no connected faces in ``Mesh``.",
+    "SubmeshCount": "How many sub meshes are in the main ``Mesh``.",
+    "BoneCount": "The amount of bones in ``Mesh``.",
+    "BlendshapeCount": "The amount of blendshapes in ``Mesh``.",
+    "HasNormals": "Whether ``Mesh`` has normal data.",
+    "HasTangents": "Whether ``Mesh`` has tangent data.",
+    "HasVertexColors": "Whether ``Mesh`` has vertex color data.",
+    "HasUV0s": "Whether ``Mesh`` has data for the first UV map.",
+    "HasUV1s": "Whether ``Mesh`` has data for the second UV map.",
+    "HasUV2s": "Whether ``Mesh`` has data for the third UV map.",
+    "HasUV3s": "Whether ``Mesh`` has data for the fourth UV map."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a Mesh to ``Mesh`` to make the component output data.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeshAssetMetadata&action=raw"
+}

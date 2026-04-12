@@ -1,8 +1,12 @@
 {
-  "description": "The Char to String node acts as a cast to turn a character into a string.",
+  "description": "The Char to String node acts as a cast to turn a character into a string.\n\nThis is very useful when working with individual characters and one needs to use string operations, such as concatenation, with said characters.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Input": "The character to turn into a string.",
+    "* ([[Type:string|string]])": "The resulting converted string."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CharToString&action=raw"
 }

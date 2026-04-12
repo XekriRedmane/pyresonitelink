@@ -1,8 +1,12 @@
 {
   "description": "The position node tells a IPlayable's current position in seconds.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Source": "The IPlayable to set the position on.",
+    "* ([[Type:float|float]])": "Returns the position of the playback."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Position&action=raw"
 }

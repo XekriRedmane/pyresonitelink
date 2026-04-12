@@ -1,8 +1,11 @@
 {
-  "description": "The World Time 10 Float node returns the total world time that this world has been open for multiplied by 10.",
+  "description": "The ``World Time 10 Float`` node returns the total world time that this world has been open for multiplied by 10.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float|float]])": "Returns the total world time as a float multiplied by 10."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldTime10Float&action=raw"
 }

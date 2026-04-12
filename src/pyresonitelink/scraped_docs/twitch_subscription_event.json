@@ -1,8 +1,9 @@
 {
-  "description": "This node provides Twitch subscription information from a TwitchInterface.",
+  "description": "This node provides Twitch subscription information from a TwitchInterface. \n\nNote that all outputs are generated on a new Twitch chat message, and will not display any information when connected to a display node.",
   "category": "",
   "fields": {},
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TwitchSubscriptionEvent&action=raw"
 }

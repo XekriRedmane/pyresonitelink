@@ -1,0 +1,14 @@
+{
+  "description": "Animation track seems to be a placeholder for future content and is unused. It does not fit into anything in the game internally and it's methods go unused (According to DNSpy 07/26/2024 (mm/dd/yyyy))",
+  "category": "Rendering",
+  "fields": {
+    "_node": "Designed to be used to specify the object being controlled by the animation. Can be used with the Find Animation Track Index ProtoFlux node.",
+    "_component": "Designed to be used to specify the field of the object that is being controlled by the animation. Can be used with the Find Animation Track Index ProtoFlux node.",
+    "_property": "The property on an animation asset",
+    "Data": "A list of values at specific time intervals to determine what the whole track's value should be at specific times."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AnimationTrack&action=raw"
+}

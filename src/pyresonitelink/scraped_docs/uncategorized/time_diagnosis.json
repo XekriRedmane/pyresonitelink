@@ -1,0 +1,12 @@
+{
+  "description": "The TimeDiagnosis component is used to check diagnostic info for user time.",
+  "category": "Uncategorized",
+  "fields": {
+    "FormatTime": "Whether to format the time shown.",
+    "text": "The text field to drive with time info."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TimeDiagnosis&action=raw"
+}

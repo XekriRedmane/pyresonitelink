@@ -1,0 +1,15 @@
+{
+  "description": "Material set allows for switching the list of materials being used on a mesh dynamically at any given moment. It also allows for lengthening or shortening the list in real time, which can be used to material stack (things to avoid).",
+  "category": "Rendering:Drivers",
+  "fields": {
+    "ActiveSetIndex": "The index into the Sets list of the materials to apply to the target renderer.",
+    "Target": "The list of materials in a renderer to swap out.",
+    "Sets": "The list of lists of materials in a renderer to swap out."
+  },
+  "methods": {
+    "OnSetupFromMeshRenderer": "Called when the setup from mesh renderer button is touched."
+  },
+  "usage": "Attach this component to the same slot as a Mesh Renderer or a Skinned Mesh Renderer and hit the ``Setup From Mesh Renderer()`` sync delegate to attach it to the material list. Next add a list (SyncAssetList`1&lt;Material&gt;) of each material list to ``Sets`` you want to switch between. Lastly use ``ActiveSetIndex`` to switch between each list in ``Sets`` for ``Target``.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MaterialSet&action=raw"
+}

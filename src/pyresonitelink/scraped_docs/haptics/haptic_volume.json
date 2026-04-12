@@ -1,0 +1,13 @@
+{
+  "description": "Haptic Volumes allows a user to feel haptics through a collider set to Haptic Trigger shared on the same slot.\n\nHaptic Volumes can be paired with Haptic Filters placed on the same slot to give more precise control over a user's haptics. Each haptic filter is applied by multiplying each influence together, hence being multiplicative.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics",
+  "fields": {
+    "Sensation": "The type of haptic you want to do, for controllers the haptic types are subtly different variations. Specifying this is useful for haptic suits that have more advanced haptic motors.",
+    "Intensity": "The haptic intensity ranging from zero to one, zero being none one being max that the device allows.",
+    "SensationHints": "Allows triggering specific predefined sensations with certain haptic devices. Only useful for OWO haptic vests currently."
+  },
+  "methods": {},
+  "usage": "When placed on a slot with a collider component, the collider's type automatically switches to haptic trigger.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HapticVolume&action=raw"
+}

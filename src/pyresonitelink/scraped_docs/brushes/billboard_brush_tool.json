@@ -1,0 +1,18 @@
+{
+  "description": "The BillboardBrushTool is a Brush Tool that draws ribbons.",
+  "category": "Tools:Brushes",
+  "fields": {
+    "MinRotation": "the minimum rotation the generated geometry can have.",
+    "MaxRotation": "the maximum rotation the generated geometry can have.",
+    "RotationGap": "the bias of the rotation of generated geometry",
+    "UseRotation": "Whether the generated geometry should use rotation.",
+    "UseSize": "Whether the generated geometry should utilize size arguments.",
+    "UseUV": "Whether the generated geometry should have UVs."
+  },
+  "methods": {
+    "ChangeSize": "Handles changing the size of the brush of a brush tool."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BillboardBrushTool&action=raw"
+}

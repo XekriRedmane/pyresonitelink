@@ -1,0 +1,14 @@
+{
+  "description": "The ColorToColorX component uses data from a Color and a ColorProfile to drive the value of a ColorX field with optional write back.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "SourceColor": "The color to convert into a ColorX for ``Target``",
+    "SourceProfile": "The color profile to use for the resulting ``Target``",
+    "DefaultProfile": "the ColorProfile to use for ``Target`` if ``SourceProfile`` is empty.",
+    "Target": "The field to drive with the converted ``SourceColor``.",
+    "WriteBack": "Whether to allow changes to the field specified by ``Target`` to go backwards and affect ``DefaultProfile`` or ``SourceProfile``, and ``SourceColor``. See write backs."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide ``SourceColor``. Then provide either ``SourceProfile``, or ``DefaultProfile``. The component will then drive a ColorX field through ``Target``.",
+  "notes": []
+}

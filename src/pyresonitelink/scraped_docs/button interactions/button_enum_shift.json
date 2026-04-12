@@ -1,0 +1,12 @@
+{
+  "description": "The ButtonEnumShift component takes in a target Enum and the amount to shift by (positive numbers are forward, negative numbers are backwards). When an IButton component on the same slot is pressed, this component will shift the enum.",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "TargetValue": "The target Enum.",
+    "ShiftDelta": "The amount to shift by."
+  },
+  "methods": {},
+  "usage": "This is used to shift enums by button press.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonEnumShift&action=raw"
+}

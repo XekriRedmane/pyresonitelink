@@ -1,0 +1,13 @@
+{
+  "description": "The MeshParticleRenderer component is a particle renderer that makes all particle instances in a particle system render as a specific mesh.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Renderers",
+  "fields": {
+    "Material": "The material the particles should have.",
+    "Mesh": "The mesh object to GPU instance to all particle points and render.",
+    "Alignment": "How to align the meshes with the particle transforms."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the renderer slot in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeshParticleRenderer&action=raw"
+}

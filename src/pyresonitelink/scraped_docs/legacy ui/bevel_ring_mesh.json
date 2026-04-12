@@ -1,0 +1,17 @@
+{
+  "description": "Bevel Ring Mesh is a component that can create an circle or part of a circle in the form of a 3D strip that can have beveled edges. The geometry made by this component can be viewed by inserting the component into a MeshRenderer.",
+  "category": "Assets:Procedural Meshes:Legacy UI",
+  "fields": {
+    "Arc": "How long the strip continues from the starting point defined by ``ArcOffset``",
+    "ArcOffset": "The degree that the start point of the strip is at.",
+    "Radius": "The distance the middle of the strip is from the curvature center.",
+    "Width": "How wide the curved strip is",
+    "Thickness": "The thickness of the curved strip.",
+    "Tilt": "How much to bend the strip from a flat orientation to inwards/outwards slop from/towards the center. Is in degrees.",
+    "Segments": "how many bends are generated in the curve. Bigger values result in smoother curve in exchange for performance."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BevelRingMesh&action=raw"
+}

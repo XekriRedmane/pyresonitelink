@@ -1,0 +1,16 @@
+{
+  "description": "The DebugLocomotionSimulator component is used to draw Debug visuals for a virtual locomotion simulator that drives the procedural animation system.",
+  "category": "Debug",
+  "fields": {
+    "TrackPosition": "Whether to keep track of this Debug locomotion's progressively moving position.",
+    "State": "The kind of locomotion this is debugging",
+    "MovementSpeed": "How fast the locomotion should be moving.",
+    "AngularSpeed": "How fast this locomotion should be turning.",
+    "RotateDirection": "Whether the locomotion should rotate its movement direction.",
+    "OffsetRoot": "Whether this locomotion should be offsetting from root as a starting position"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugLocomotionSimulator&action=raw"
+}

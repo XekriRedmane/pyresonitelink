@@ -1,0 +1,19 @@
+{
+  "description": "The TipTouchSource component is responsible for interaction with touchable objects like buttons and touch buttons. This component gains functionality after being activated by a AvatarHandDataAssigner upon avatar equip.",
+  "category": "Input:Interaction",
+  "fields": {
+    "AutoUpdateUser": "which user should be updating this component's logic. Defaults to active user if not filled.",
+    "OutOfSightAngle": "disables the function of this component if the updating user is looking more than this many degrees away from this component's slot.",
+    "MaxTouchPenetrationDistance": "How far it can go into the touchable's collider before its not considered as touching.",
+    "CustomFilter": "similar to UVRaycastPortal's ``Filter`` field. Internal.",
+    "UseUserSpaceForDistance": "whether to use local space for distance or use absolute world distance for distance.",
+    "TouchDistance": "how far in meters that this can touch things",
+    "MaxDistance": "the maximum distance before hovering doesn't register",
+    "Offset": "the offset for everything this component does from the slot this component is on.",
+    "Direction": "the direction this can touch things."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TipTouchSource&action=raw"
+}

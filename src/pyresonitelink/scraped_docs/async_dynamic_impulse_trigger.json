@@ -1,8 +1,15 @@
 {
-  "description": "The Async Dynamic Impulse Trigger node sends an async dynamic impulse to all Async Dynamic Impulse Receivers matching the provided Tag under the TargetHierarchy.",
+  "description": "The Async Dynamic Impulse Trigger node sends an async dynamic impulse to all Async Dynamic Impulse Receivers matching the provided ``Tag`` under the ``TargetHierarchy``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|AsyncCall]])": "Trigger an async dynamic impulse with the tag ``Tag`` under ``TargetHierarchy``.",
+    "Tag": "The tag of the dynamic impulse.",
+    "TargetHierarchy": "The slot under which to search for dynamic impulse receivers.",
+    "ExcludeDisabled": "If ``True``, the dynamic impulse will not search for receivers under disabled slots.",
+    "Next": "Triggered once the context of every receiver is completed."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AsyncDynamicImpulseTrigger&action=raw"
 }

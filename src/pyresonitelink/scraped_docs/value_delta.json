@@ -1,13 +1,17 @@
 {
-  "description": "Returns a change in value. The Greek letter Delta (Δ) is commonly being used as a variable or symbol related to change.",
+  "description": "Returns a change in value. The Greek letter Delta (\u0394) is commonly being used as a variable or symbol related to change.\n\nThis node is dependent on your local update rate and its output may differ between users as it is not being synchronized.\n\nThis is best used in conjunction with the DivDeltaTime node such that changes are proportional to time instead of the local update rate.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The value for which a delta should be kept track of.",
+    "* (Pseudo-Generic)": "This is the delta-value, which is the change compared to the last Local Update."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "Implementation Details",
-      "text": "This node can be implemented using other ProtoFlux nodes:\n\nnone\n\nIn this case, the leftmost Input Node represents the node's input and the Display its output. This implementation of an int Delta Node is equivalent to the implementation in the game's code. How exactly the difference to the previous value is calculated depends on the value type.\n\nProtoFlux:Math\nContinuouslyChanging nodes"
+      "text": "This node can be implemented using other ProtoFlux nodes:\n\nnone\n\nIn this case, the leftmost Input Node represents the node's input and the Display its output. This implementation of an int Delta Node is equivalent to the implementation in the game's code. How exactly the difference to the previous value is calculated depends on the value type."
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Delta&action=raw"
 }

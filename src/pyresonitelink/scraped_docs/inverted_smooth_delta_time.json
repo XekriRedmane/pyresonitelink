@@ -1,8 +1,11 @@
 {
-  "description": "The Inverted Smooth Delta Time node returns the frames per second, shown when pulling a display node from it and comparing it to the Dash's FPS counter. This will attempt to adjust to any lag or stutters by smoothing out the differences between the results.",
+  "description": "The ``Inverted Smooth Delta Time`` node returns the frames per second, shown when pulling a display node from it and comparing it to the Dash's FPS counter. This will attempt to adjust to any lag or stutters by smoothing out the differences between the results.\n\nThis is done by taking the reciprocal of delta time: FPS = 1 / dT (+ some smoothing algorithm)",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float|float]])": "Returns the inverted and smoothed delta time (1 / dT), showing the amount of frames in a second."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:InvertedSmoothDeltaTime&action=raw"
 }

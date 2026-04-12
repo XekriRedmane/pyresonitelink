@@ -1,8 +1,11 @@
 {
-  "description": "Called '''Euler's number''', e is approximately equal to 2.71828.",
+  "description": "Called Euler's number, e is approximately equal to 2.71828.\n\nIt is the base of natural logarithms.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float|float]])": "Returns the mathematical constant."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:E&action=raw"
 }

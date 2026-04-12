@@ -1,8 +1,16 @@
 {
   "description": "Finds a parent object above Instance (Slot) that matches the given arguments",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot to scan for parent slots with.",
+    "Name": "The name to look for above Instance (Slot).",
+    "MatchSubstring": "Whether to search for parents above Instance (Slot) that their name contains Name (String) instead of the entire name being equal.",
+    "IgnoreCase": "Whether the capitalization should matter or not when searching for a parent above Instance (Slot).",
+    "SearchDepth": "How far to search for a parent with the provided search arguments\n\nExamples: 0 > Search immediate parent. 1 > Search parent of slot and it's next parent. -1 > Search all the way to Root (CAN BE HEAVY)",
+    "* ([[Slot|Slot]])": "The result of the search."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FindParentByName&action=raw"
 }

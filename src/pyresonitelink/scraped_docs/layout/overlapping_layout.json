@@ -1,0 +1,18 @@
+{
+  "description": "The OverlappingLayout is best explained on the UIX page. The description for such is as follows:\n\nA [Overlapping layout] layout overlaps or places on top of another layout in the same space.",
+  "category": "UIX:Layout",
+  "fields": {
+    "PaddingTop": "The padding from the center content to the top side.",
+    "PaddingRight": "The padding from the center content to the right side.",
+    "PaddingBottom": "The padding from the center content to the bottom side.",
+    "PaddingLeft": "The padding from the center content to the left side.",
+    "HorizontalAlign": "The alignment of the content horizontally.",
+    "VerticalAlign": "The alignment of the content vertically.",
+    "ForceExpandWidth": "Whether content inside this layout going beyond the normal container size of this layout should be forced to go beyond the container so it fits width wise.",
+    "ForceExpandHeight": "Whether content inside this layout going beyond the normal container size of this layout should be forced to go beyond the container so it fits height wise."
+  },
+  "methods": {},
+  "usage": "See UIX.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:OverlappingLayout&action=raw"
+}

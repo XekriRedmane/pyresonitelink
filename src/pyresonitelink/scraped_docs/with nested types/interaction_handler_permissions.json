@@ -1,0 +1,12 @@
+{
+  "description": "The type in each list item corrisponds to a tool in the game.",
+  "category": "With Nested Types",
+  "fields": {
+    "AllowOnlyWhitelistedTools": "Whether only tools which are set to ``Allow`` are are allowed to be equipped.",
+    "ToolRules": "List of ToolRules."
+  },
+  "methods": {},
+  "usage": "The type in each list item corrisponds to a tool in the game. For example, FrooxEngine.ProtoFluxTool is a ProtoFlux Tool\nType in the type's name, and you can choose to allow or deny that kind of tool from being used by the selected roles.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractionHandlerPermissions&action=raw"
+}

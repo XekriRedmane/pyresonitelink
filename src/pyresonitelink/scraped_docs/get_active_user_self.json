@@ -1,8 +1,11 @@
 {
-  "description": "This node gets the active user.",
+  "description": "This node gets the active user.\n\nFor instance, grabbing the node will make you appear as the active user. Packing the node into a slot and parenting said slot under your user will also have the same effect.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:User|User]])": "The closest User in the hierarchy of the code component itself."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetActiveUserSelf&action=raw"
 }

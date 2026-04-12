@@ -1,13 +1,16 @@
 {
-  "description": "Returns the time it took to perform the last update, clamped to a maximum of 0.1 seconds.",
+  "description": "The DeltaTime node returns the time it took to perform the last update in seconds, clamped to a maximum value of 0.1 seconds.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float|float]])": "The time it took to perform the last update. This value is clamped to a maximum of 0.1 seconds."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "See also",
-      "text": "* SmoothDeltaTime tries to smooth out the delta time to minimize interference from stutters.\n* RawDeltaTime returns the raw, unclamped update time.\n\nProtoFlux:Time\nContinuouslyChanging nodes"
+      "text": "* SmoothDeltaTime tries to smooth out the delta time to minimize interference from stutters.\n* RawDeltaTime returns the raw, unclamped update time."
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DeltaTime&action=raw"
 }

@@ -1,0 +1,12 @@
+{
+  "description": "The Submesh Debug component generates a bunch of triangles, each having an offset of ``Offset`` in the Y axis from the previous generated triangle up to ``SubmeshCount`` each being a new submesh. Used for debugging and testing.",
+  "category": "Debug",
+  "fields": {
+    "Offset": "How much to space all the generated triangles.",
+    "SubmeshCount": "How many submesh triangles to generate."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SubmeshDebug&action=raw"
+}

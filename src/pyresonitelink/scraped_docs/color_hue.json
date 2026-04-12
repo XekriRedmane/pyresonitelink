@@ -1,8 +1,12 @@
 {
   "description": "Color Hue returns a color with a given hue value. This is equivalent to using HSV To Color with a value and saturation equal to 1.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Hue": "The hue to get a color for. Values must be in the range [0, 1], values outside this range are wrapped to it. For example a value of 1.5 gives the same result as 0.5.",
+    "* ([[Type:Color|Color]])": "The resulting color.\n\nFile:Protoflux Color Hue.webp|A simple example of a few hue values being ran through the Color Hue node"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ColorHue&action=raw"
 }

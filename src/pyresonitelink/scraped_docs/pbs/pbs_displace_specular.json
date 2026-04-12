@@ -1,0 +1,8 @@
+{
+  "description": "The PBS_DisplaceSpecular component can displace the vertices of a mesh in the direction of the vertex's normal via the VertexDisplaceMap settings and the WorldSpaceVertexOffsetMap.",
+  "category": "Assets:Materials:PBS",
+  "fields": {},
+  "methods": {},
+  "usage": "The PBS Displace Specular shader can displace the vertices of a mesh in the direction of the vertex's normal via the VertexDisplaceMap settings and the WorldSpaceVertexOffsetMap.",
+  "notes": []
+}

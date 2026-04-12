@@ -1,0 +1,15 @@
+{
+  "description": "The TextField component is used in conjunction with a TextEditor, Text, and Button component to provide an editable text field. The Text component stores the text, the TextEditor is the editor for the text, and the Button allows the text editor to appear when then text field is selected.\n\nYou must drag a reference to the Text component into the Text property of the TextEditor in order for the editor to know what text it is editing.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "Editor": "A reference to the text editor component.",
+    "__text": "Internal - The text for this field.",
+    "EditingStarted": "The editing started action.",
+    "EditingChanged": "The editing changed action.",
+    "EditingFinished": "The editing finished action."
+  },
+  "methods": {},
+  "usage": "This component is useful for forms, user input, and other text based projects.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextField&action=raw"
+}

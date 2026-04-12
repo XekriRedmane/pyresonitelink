@@ -1,0 +1,12 @@
+{
+  "description": "The OpenDataFeedCategory component receives Button Events and will open the Category with the path defined by the list ``CategorySubpath``.",
+  "category": "Radiant UI:Data Feeds:Interactions",
+  "fields": {
+    "View": "The view to change the directory for.",
+    "CategorySubpath": "A list of path directories (Like a folder path split by the slashes) to define the category to go to starting from root for ``View``."
+  },
+  "methods": {},
+  "usage": "Add to a slot with a button and provide a path list for this component and it will start working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:OpenDataFeedCategory&action=raw"
+}

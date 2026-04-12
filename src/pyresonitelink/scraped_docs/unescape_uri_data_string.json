@@ -1,8 +1,11 @@
 {
-  "description": "The Unescape Uri Data String node takes in an encoded string literal that uses Percent Encoding and converts that string into another string that is human readable. This is used mostly for applications that can read the characters and glyphs that are complex.",
+  "description": "The ``Unescape Uri Data String`` node takes in an encoded string literal that uses Percent Encoding and converts that string into another string that is human readable. This is used mostly for applications that can read the characters and glyphs that are complex.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:string|string]])": "The string literal that we want to decode."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UnescapeUriDataString&action=raw"
 }

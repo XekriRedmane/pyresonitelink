@@ -1,0 +1,13 @@
+{
+  "description": "The DesktopViewSettings component is used to adjust how viewing the local user's computer screen is done via the Dash Menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "FollowCursor": "Whether the Desktop cursor should follow where the user's in game cursor is on the dash in real time.",
+    "Brightness": "How bright the display of the desktop is on the in game dash menu.",
+    "Opacity": "How transparent the in game view of the desktop is on the dash menu."
+  },
+  "methods": {},
+  "usage": "Used in the dash desktop tab. Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DesktopViewSettings&action=raw"
+}

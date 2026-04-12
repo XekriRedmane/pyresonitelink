@@ -1,5 +1,5 @@
 {
-  "description": "This node provides Twitch reward redeem information from a TwitchInterface.",
+  "description": "This node provides Twitch reward redeem information from a TwitchInterface. \n\nNote that all outputs are generated on a new Twitch reward redeem, and will not display any information when connected to a display node.",
   "category": "",
   "fields": {},
   "methods": {},
@@ -7,7 +7,8 @@
   "notes": [
     {
       "title": "Legacy Twitch API",
-      "text": "Due to the depreciation of the Twitch V5 API that Resonite currently uses, this node will fail to pulse on a redeem event from Twitch. This means currently that this node is inoperable, and should be considered unusable until updated.\n\nThe issue is marked as a bug on the Resonite GitHub under Issue 68.\n\nProtoFlux:Network:Twitch"
+      "text": "Due to the depreciation of the Twitch V5 API that Resonite currently uses, this node will fail to pulse on a redeem event from Twitch. This means currently that this node is inoperable, and should be considered unusable until updated.\n\nThe issue is marked as a bug on the Resonite GitHub under Issue 68."
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TwitchRewardRedeemEvent&action=raw"
 }

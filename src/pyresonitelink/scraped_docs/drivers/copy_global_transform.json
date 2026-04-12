@@ -1,0 +1,13 @@
+{
+  "description": "The CopyGlobalTransform component is used to ensure that one object has the exact same global transform (position and rotation) as another object.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Source": "The object that serves as the transform reference.",
+    "_posDrive": "The field that is driven to match the global position of the source. This automatically gets populated with the position field of the slot that this component is added to.",
+    "_rotDrive": "The field that is driven to match the global rotation of the source. This automatically gets populated with the rotation field of the slot that this component is added to."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CopyGlobalTransform&action=raw"
+}

@@ -1,8 +1,32 @@
 {
   "description": "Play One Shot is a ProtoFlux node that creates a new audio source under the provided Root (Slot) (except when ParentUnderRoot (bool) is enabled) with the provided parameters. It will then wait and fire OnFinishedPlaying (Continuation) when the audio reaches the end.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses#ASync|AsyncCall]])": "Play the audio clip with the provided parameters",
+    "Clip": "The audio clip to play on the newly created sound object",
+    "Volume": "The volume to play the audio at.",
+    "Speed": "The speed to play the audio at.",
+    "Spatialize": "Whether the audio played will have spatialization.",
+    "SpatialBlend": "How spatialized the audio played will be.",
+    "Point": "The point to play the audio if Root (Slot) is not provided.",
+    "Root": "The slot to play the audio under. The audio will not be audible if the slot is part of a disabled hierarchy. If nothing is filled in for this input, the sound will come from the node itself.",
+    "ParentUnderRoot": "Whether to put the audio under the root of the world or not.",
+    "Priority": "How much priority this audio clip has, which can override others when the buffer is too full. So this audio has more priority to be played in such cases.",
+    "Doppler": "Whether the audio clip played should have Doppler. What is Doppler?",
+    "MinDistance": "The distance the audio stops becoming louder when getting closer to the source.",
+    "MaxDistance": "The max distance the audio can be heard from until it is inaudible",
+    "Rolloff": "The AudioRolloffMode the audio created should use.",
+    "DistanceSpace": "The AudioDistanceSpace the audio created should use.",
+    "MinScale": "See Min and Max Scale section on audio output component page.",
+    "MaxScale": "See Min and Max Scale section on audio output component page.",
+    "Group": "What AudioTypeGroup this node is in.",
+    "LocalOnly": "Whether this audio should only play locally for the user that fired the node.",
+    "OnStartedPlaying": "When the audio clip has successfully started playing",
+    "OnFinishedPlaying": "The the audio clip has finished playing",
+    "Audio": "The Audio Output component created to play the audio. The Get Slot node can be used to get the created slot for the one shot. This will only have a value during the OnStartedPlaying (AsyncCall) impulse."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:PlayOneShotAndWait&action=raw"
 }

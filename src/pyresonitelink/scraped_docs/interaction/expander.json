@@ -1,0 +1,11 @@
+{
+  "description": "The Expander component is an intractable UIX element that expands a section called the ``SectionRoot`` under itself. The ``SectionRoot``'s active state will toggle when that expander is triggered, expanding it under the Slot the expander is on. This can be seen on the Scene Inspector.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "SectionRoot": "The slot to expend with, by activating the slot that is referenced when toggled."
+  },
+  "methods": {},
+  "usage": "This component is combined with the Button component to trigger this expander component. This component is also combined with the TextExpandIndicator component to drive the text and show the user that this expander has expanded, collapsed, or is empty.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Expander&action=raw"
+}

@@ -1,8 +1,16 @@
 {
   "description": "The Distance From Cone node takes in the cone parameters (size and rotation) and a provided point to check. Then it returns the distance from that cone and that point.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "ConeCenter": "The center of the cone (located at the center of the base of the cone).",
+    "ConeOrientation": "The rotation of the cone.",
+    "ConeHeight": "The height of the cone.",
+    "ConeBaseRadius": "The size of the cone base's circle radius.",
+    "Point": "The point we are checking.",
+    "* ([[Type:float3|float3]])": "Returns the distance between that cone and the point."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DistanceFromCone&action=raw"
 }

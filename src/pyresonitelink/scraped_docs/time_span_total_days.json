@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan Total Days node takes in a TimeSpan and returns with the amount of days in that TimeSpan, including the fractional portion of a day.",
+  "description": "The ``TimeSpan Total Days`` node takes in a TimeSpan and returns with the amount of days in that TimeSpan, including the fractional portion of a day.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "TimeSpan": "The TimeSpan we are getting info from.",
+    "* ([[Type:double|double]])": "Returns the amount of days in this TimeSpan as an double."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanTotalDays&action=raw"
 }

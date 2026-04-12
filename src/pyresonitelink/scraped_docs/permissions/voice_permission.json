@@ -1,0 +1,12 @@
+{
+  "description": "The VoicePermission component changes the allowed voice modes for users with the selected roles in a world.",
+  "category": "Permissions",
+  "fields": {
+    "MaxAllowedVoiceMode": "The maximum allowed voice mode allowed for the selected roles.",
+    "AllowChangeOtherUsers": "Whether the selected roles are allowed to change the voice mode of other users mainly through the User Inspector."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VoicePermission&action=raw"
+}

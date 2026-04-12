@@ -1,0 +1,11 @@
+{
+  "description": "The FullBodyTrackingSettings component is used to control full body behavior in the game. It's part of the Settings menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "BodyHorizontalAngle": "The max horizontal angle before the feet no longer attempt to do walking animations."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user, and instead is part of the Settings menu.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FullBodyTrackingSettings&action=raw"
+}

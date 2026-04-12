@@ -1,0 +1,10 @@
+{
+  "description": "The AngularVelocity3DRangeInitializer component makes particles have a random starting rotation angular speed along the X, Y, and Z axies.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Value": "The starting rotation speed all particles should have along the X, Y, and Z axies."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": []
+}

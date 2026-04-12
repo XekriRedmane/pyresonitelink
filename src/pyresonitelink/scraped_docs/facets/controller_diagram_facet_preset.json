@@ -1,0 +1,11 @@
+{
+  "description": "The ControllerDiagramFacetPreset component loads the Controller Diagram facet and controls the texture URI of ``_texture``",
+  "category": "Radiant UI:Facets",
+  "fields": {
+    "_texture": "The texture to change the URI to the user's controller scheme (VR controller of their type or desktop controls)"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ControllerDiagramFacetPreset&action=raw"
+}

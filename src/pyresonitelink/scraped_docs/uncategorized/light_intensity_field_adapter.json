@@ -1,0 +1,13 @@
+{
+  "description": "The Light Intensity Field Adapter component is used to convert the light intensity from migrated content to the new color space system.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The light intensity field to drive.",
+    "Value": "The original value in which to convert.",
+    "Profile": "Which color profile to convert to when converting ``Value``."
+  },
+  "methods": {},
+  "usage": "Do not use in new content.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LightIntensityFieldAdapter&action=raw"
+}

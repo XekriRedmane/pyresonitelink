@@ -1,0 +1,27 @@
+{
+  "description": "The Light component is used to illuminate the render scene beyond skybox illumination. This component can be used for suns, spots, and points, but not area lights.",
+  "category": "Rendering",
+  "fields": {
+    "LightType": "The type of light. Can be Point, Directional, or Spot.",
+    "Intensity": "How intense the light is. This is a multiplier.",
+    "Color": "The color of the light this source should project.",
+    "ShadowType": "The type of shadow this light should use. Can be None, Hard, or Soft.",
+    "ShadowStrength": "How dark the shadows are.",
+    "ShadowNearPlane": "How far away shadows will render for this point light.",
+    "ShadowMapResolution": "How detailed the resolution for shadows is in pixels.",
+    "ShadowBias": "added to the distance in the shadow map to ensure that pixels on the borderline definitely pass the comparison as they should.",
+    "ShadowNormalBias": "Makes surrounding lit areas encroach upon the center shadow, making the encroached area lit too.",
+    "Range": "How far for the light to shine in meters, where the range represents the point where the falloff stops.",
+    "SpotAngle": "The angle from 0-180 when on spot light mode to project the light at. 0 is no light, 60 is like car headlights, and 180 is extreme and unrealistic.",
+    "Cookie": "The cookie texture is used to limit the light area to add texture and occlusion."
+  },
+  "methods": {},
+  "usage": "Spot light cookies use the alpha channel of a flat texture. If your texture lacks an alpha channel, you can go into the texture's component and press the Color to Alpha (White) button. The preview image may look incorrect unless you change it to render in Alpha instead of Opaque, but the texture itself will still work as a cookie. \n\nPoint lights use a cube map. You can create a cube map with the wizard in the Create New > Editors menu of a Dev Tool.\n\nFor optimization purposes, shadows are one of the most \"expensive\" rendering costs. This can be mitigated by only allowing specific lights to cast shadows. A point light can be as much as 6x more difficult to render than a spot light, especially with shadows enabled. In any case, limiting the range of lights is one of the greatest ways to improve performance in worlds with multiple lights.",
+  "notes": [
+    {
+      "title": "See also",
+      "text": "* Skybox"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Light&action=raw"
+}

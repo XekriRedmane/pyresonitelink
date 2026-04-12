@@ -1,0 +1,8 @@
+{
+  "description": "The PBS_VertexColorSpecular component is a PBS_Specular component except that it allows for the use of vertex colors as a multiplier for different colors/properties of the material.\n\nFor your meshes to have vertex colors, it needs to be explicitly set to do so under the advanced settings when importing a model before clicking \"run import!\"",
+  "category": "Assets:Materials:PBS",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

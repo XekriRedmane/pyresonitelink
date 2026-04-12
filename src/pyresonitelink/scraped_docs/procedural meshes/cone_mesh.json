@@ -1,0 +1,16 @@
+{
+  "description": "The ConeMesh component acts as a source of geometry for rendering a cone with x sides with an optionally flat end.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Height": "Determines the height of the cone.",
+    "RadiusBase": "Determines the width of the cone's base.",
+    "RadiusTop": "Determines the width from the top of the cone.",
+    "Sides": "How smooth the roundness of the mesh.",
+    "Caps": "Whether to cap the ends with geometry or leave them open.",
+    "FlatShading": "Toggles mesh smooth shading."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, and assign to a Mesh Renderer to see what it looks like. Don't forget to use a material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConeMesh&action=raw"
+}

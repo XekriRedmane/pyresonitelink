@@ -1,8 +1,12 @@
 {
-  "description": "The User Voice Mode node returns a user's current voice mode.",
+  "description": "The ``User Voice Mode`` node returns a user's current voice mode.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:VoiceMode|VoiceMode]])": "The Voice Mode of the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserVoiceMode&action=raw"
 }

@@ -1,0 +1,10 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "UseVRHotswitching": "Whether to allow hot swapping to VR and desktop when taking on or off a VR headset."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": []
+}

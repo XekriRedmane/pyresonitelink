@@ -1,0 +1,17 @@
+{
+  "description": "The EarmuffSettings component is used to allow a user to change the settings for the Ear muffs, which reduce the noise outside of a cone emitted from the user's head. This feature is useful in crowds or noisy places",
+  "category": "Uncategorized",
+  "fields": {
+    "EarmuffEnabled": "Whether to have the earmuffs mode enabled for the local user",
+    "VolumeAttenuation": "How much to reduce volume based on its distance from the cone.",
+    "Directionality": "How much the audio is affected by how in front the audio is.",
+    "Distance": "How far forward from the user's head the cone should stretch",
+    "Angle": "The angle of the cone.",
+    "TransitionStart": "The start of audio reducing outside the cone.",
+    "TransitionLength": "The distance outside the cone that audio becomes quiet over distance from the cone."
+  },
+  "methods": {},
+  "usage": "Is used for the settings earmuffs. Is not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:EarmuffSettings&action=raw"
+}

@@ -1,8 +1,14 @@
 {
-  "description": "This node when provided an Animation Asset sample the given track index for a Reference Type Reference at the specified time.",
+  "description": "This node when provided an Animation Asset sample the given track index for a Reference Type Reference at the specified time.\n\nIt is currently only possible to make use of this node to read Strings from AnimJs. This can be useful to store large amounts or string data, like translations or subtitles driven via animations.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Animation": "The Animation Asset provided by an IAssetProvider.",
+    "TrackIndex": "The track index of the given Animation (Animation Asset) to sample from",
+    "Time": "The time in seconds at which to sample the animation.",
+    "* (Dummy Pseudo-generic)": "This gives the Reference Type for the track index given to TrackIndex (int) at the time given to Time (Float). \n\nThis does not have interpolation"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SampleObjectAnimationTrack&action=raw"
 }

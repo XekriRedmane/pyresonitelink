@@ -1,0 +1,21 @@
+{
+  "description": "The GridLayout component aligns the UIX elements from left to right, top to bottom. This component also comes with controllable parameters that a user can use to adjust the way the grid layout is represented on the Canvas or element slot.\n\n}}",
+  "category": "UIX:Layout",
+  "fields": {
+    "PaddingTop": "Makes padding on the top of this grid, separating it from the top.",
+    "PaddingRight": "Makes padding on the right of this grid, separating it from the right.",
+    "PaddingBottom": "Makes padding on the bottom of this grid, separating it from the bottom.",
+    "PaddingLeft": "Makes padding on the left of this grid, separating it from the left.",
+    "CellSize": "The size of each content cell.",
+    "Spacing": "Makes padding between the content cells of this grid, separating it evenly.",
+    "HorizontalAlign": "how this grid should be aligned horizontally.",
+    "VerticalAlign": "how this grid should be aligned vertically.",
+    "ExpandWidthToFit": "Extends this grid to fit the entire UIX element that it is on.",
+    "PreserveAspectOnExpand": "Preserves the aspect ratio when expanded to fit.",
+    "AlignLastRowIndividually": "Alighns the last row for this grid seprately."
+  },
+  "methods": {},
+  "usage": "This is used to make a nice grid layout of a user's content. The user has a lot of control when it comes to making this kind of layout, especially when it comes to the amount of content cells, expanding and scaling those cells, and alignments.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GridLayout&action=raw"
+}

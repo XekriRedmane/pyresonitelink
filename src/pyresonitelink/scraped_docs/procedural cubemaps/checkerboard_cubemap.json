@@ -1,0 +1,12 @@
+{
+  "description": "The CheckerboardCubemap component procedurally generates a cubemap for Projection 360 Materials that is a checkerboard with different pairs of colors for each of the 6 sides.",
+  "category": "Assets:Procedural Cubemaps",
+  "fields": {
+    "Size": "The size of each side of the cubemap in pixels.",
+    "CheckerSize": "The size in pixels for 1 square of the checkerboard pattern."
+  },
+  "methods": {},
+  "usage": "Put into the ``CubeMap`` field of a Projection 360 Materials to view what the skybox would look like.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CheckerboardCubemap&action=raw"
+}

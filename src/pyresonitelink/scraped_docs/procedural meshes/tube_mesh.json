@@ -1,0 +1,12 @@
+{
+  "description": "The TubeMesh component is used to generate a procedural tube mesh for use with a MeshRenderer.\n\nThe ``Points`` field currently requires Mods to edit.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Points": "A list of points that the tube should follow in order.",
+    "SegmentPoints": "How many cuts/bend points there should be between each TubePoint in ``Points``"
+  },
+  "methods": {},
+  "usage": "Attach the component into a slot and insert it into a MeshRenderer to view the geometry. Don't forget a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TubeMesh&action=raw"
+}

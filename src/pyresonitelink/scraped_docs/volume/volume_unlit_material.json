@@ -1,0 +1,9 @@
+{
+  "description": "The VolumeUnlitMaterial component is used to display 3D Textures like Xrays, sunbeams, MRIs, CT scans, or any other 3D texture in a volumetric 3D cube that can optionally be sliced. Can also be used for volumetric lighting, but high texture resolutions can be large and cause considerable render lag.\n\nThis is a raymarched material, which means that a ray is stepped iteratively closer and closer to the volume in order to determine what is shown or not.",
+  "category": "Assets:Materials:Volume",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VolumeUnlitMaterial&action=raw"
+}

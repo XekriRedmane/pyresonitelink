@@ -1,0 +1,15 @@
+{
+  "description": "The GrabWorldLocomotion component can be used to make a locomotion for a world or injected into a user from an avatar or tooltip.",
+  "category": "Locomotion:Modules",
+  "fields": {
+    "ActivationThreshold": "The primary strength from the user before activation.",
+    "DeactivationThreshold": "The primary strength from the user before deactivation.",
+    "_visual": "the slot of the cross mesh visual used when moving.",
+    "_crossMesh": "The cross mesh that should appear at the user's hand whenever moving with this locomotion.",
+    "_material": "The material applied to the cross mesh visual."
+  },
+  "methods": {},
+  "usage": "Can be used by making this locomotion active via the context menu. When used as a locomotion, it can allow for fine turning by pressing left and right and fine translational precision control by pressing forward on the joystick.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabWorldLocomotion&action=raw"
+}

@@ -1,0 +1,21 @@
+{
+  "description": "The FootstepSoundSplatmapSplitter component plays a different sound player depending on what part of a mesh collider on in the same slot a player walks on.",
+  "category": "Locomotion:Footsteps",
+  "fields": {
+    "SplatMap": "The texture to get channel data from for playing different sound materials.",
+    "R_SoundMaterial": "The sound material to play when the user walks on a part of the mesh collider that maps to the R channel of ``SplatMap``",
+    "G_SoundMaterial": "The sound material to play when the user walks on a part of the mesh collider that maps to the G channel of ``SplatMap``",
+    "B_SoundMaterial": "The sound material to play when the user walks on a part of the mesh collider that maps to the B channel of ``SplatMap``",
+    "A_SoundMaterial": "The sound material to play when the user walks on a part of the mesh collider that maps to the A channel of ``SplatMap``",
+    "BlendSounds": "Whether to blend sounds together based on what mix of channels the user is stepping on.",
+    "MinimumThreshold": "The minimum threshold needed for a channel to be for it to cound for a sound.",
+    "R_Weight": "The strength the sound for the R channel has, which can make it have more importance than other channel sounds on the same pixel.",
+    "G_Weight": "The strength the sound for the G channel has, which can make it have more importance than other channel sounds on the same pixel.",
+    "B_Weight": "The strength the sound for the B channel has, which can make it have more importance than other channel sounds on the same pixel.",
+    "A_Weight": "The strength the sound for the A channel has, which can make it have more importance than other channel sounds on the same pixel."
+  },
+  "methods": {},
+  "usage": "Used to map texture maps for different terrain sections to different noises.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FootstepSoundSplatmapSplitter&action=raw"
+}

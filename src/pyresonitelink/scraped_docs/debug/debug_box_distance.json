@@ -1,0 +1,12 @@
+{
+  "description": "The Debug Box Distance component allows for debugging the distance from a box object, and generates 32 random points on attach to do so.",
+  "category": "Debug",
+  "fields": {
+    "Size": "The size of the box to debug",
+    "Points": "The points to use to visualize the distances from the box."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugBoxDistance&action=raw"
+}

@@ -1,8 +1,24 @@
 {
-  "description": "The Open World node is used to open a world when called, given a valid Url and a set of optional parameters the user can give it to open a world in a certain way. You can chain this node with the Focus World node by using this node's SessionURL connected to the focus world node.",
+  "description": "The ``Open World`` node is used to open a world when called, given a valid Url and a set of optional parameters the user can give it to open a world in a certain way. You can chain this node with the Focus World node by using this node's SessionURL connected to the focus world node.\n\nYou can easily make a custom loading indicator using this node just by turning off the loading indicator and utilizing the OnOpenStart Async Continuation, however there is no way to make a custom loading bar to have an \"accurate\" percentage, thus is a tradeoff.\n\nThis node is also useful when making Exit Strategies, as you can set it up to where if the world is valid to open and using the AutoFocus option, you can jump to the new focused world, and have the node continue from here to play a particle effect, a sound, and much more. Combining it further with the focus world node to close the old world is also an option.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|AsyncCall]])": "Calls from an impulse to open a world with a given URL.",
+    "URL": "The World URL needed to open a world.",
+    "WorldLink": "The link to a world (using the WorldLink component). This can be an alternative way of opening a world.",
+    "Relation": "The relation to a world (Not necessary for opening a world). See the Relation Type for more info.",
+    "GetExisting": "Should this try to get an already opened world first.",
+    "LoadingIndicator": "Should this show a loading indicator to the user that is opening the world.",
+    "AutoFocus": "Should this automatically focus the user to the opened world as soon as it opens.",
+    "MakePrivate": "Should this make the opening world private when opening it.",
+    "OnOpenStart": "Fires when the world has started to open.",
+    "OnOpenDone": "Fires when the world has finished opening.",
+    "OnWorldReady": "Fires when the world has finished opening and is ready to hold users.",
+    "OnOpenFail": "Fires when the world could not be opened or the world URL is not valid.",
+    "SessionID": "The session ID for the opened world and user connection to it.",
+    "SessionURL": "The world URL for the opened session."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OpenWorld&action=raw"
 }

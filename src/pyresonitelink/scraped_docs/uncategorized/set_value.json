@@ -1,0 +1,15 @@
+{
+  "description": "Set Value is a component that is part of the undo system.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The field edited by the user.",
+    "ValueBefore": "The value before it was edited by the user.",
+    "ValueAfter": "The value after it was edited by the user.",
+    "_performed": "Whether this has been done or has been undone instead.",
+    "_description": "The description of this undo step."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SetValue&action=raw"
+}

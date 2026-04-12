@@ -1,8 +1,12 @@
 {
-  "description": "The Base Value node takes in a value as a quantity type and returns the corresponding base value as a double.",
+  "description": "The Base Value node takes in a value as a quantity type and returns the corresponding base value as a double.\n\nTo create this node, you need to specify a valid quantity type for its generic parameter. Examples: ``Mass``, ``Time``, and ``Voltage``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The quantity value.",
+    "* ([[Type:double|double]])": "The base value of the quantity, in the quantity type's base unit. (See Quantity Types for a list of all quantity types and their corresponding base units)"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:BaseValue&action=raw"
 }

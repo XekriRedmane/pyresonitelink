@@ -1,0 +1,21 @@
+{
+  "description": "A ring mesh is a component that generates a ring of quads that has an ``InnerRadius``, ``OuterRadius``, and resolution which is the ``Segments`` field.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Rotation": "Rotate the entire mesh by this.",
+    "Segments": "how sub divisions length wise this ring mesh has (smoothness of the arc)",
+    "Arc": "how much of a circle from 0360 this mesh should take up.",
+    "InnerRadius": "The radius of the inner circle of this ring mesh.",
+    "OuterRadius": "The radius of the outer circle of this ring mesh.",
+    "UVScale": "The scale of material details and colors on the mesh."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* BevelRingMesh"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RingMesh&action=raw"
+}

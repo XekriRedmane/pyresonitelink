@@ -1,0 +1,37 @@
+{
+  "description": "The MigrationDialog component is used to collect information on what migration action should be done for transfering content from other platforms or other Resonite accounts.",
+  "category": "With Nested Enums",
+  "fields": {
+    "_usernameField": "The username of the account to transfer from.",
+    "_passwordField": "The password of the account to transfer from.",
+    "_migrateFavorites": "Whether to migrate favorites from the account or not.",
+    "_overwriteFavorites": "Whether to replace the favorites on the currently logged in account with the transfering from account.",
+    "_preserveOldHome": "Whether to keep the home world setting from the other account or create a new default home.",
+    "_migrateContacts": "Whether to migrate contacts from the account or not.",
+    "_migrateMessageHistory": "Whether to migrate message history from the account or not.",
+    "_migrateRecords": "Whether to migrate items, worlds, avatars, message items, or other objects/data from the account or not.",
+    "_migrateCloudVariables": "Whether to migrate cloud variables made by the account or not.",
+    "_migratedCloudVariableDefinitions": "Whether to migrate values defined for other user's variables from the account or not.",
+    "_migrateGroups": "Whether to migrate groups from the account or not.",
+    "_groupsRoot": "The root of the groups section.",
+    "_groupsMessage": "The text element for groups dialog.",
+    "_loadGroupsButton": "The button for loading groups in.",
+    "CurrentState": "The current state of the migration dialog visual.",
+    "_swapRegion": "Thw region used for animation when switching between different screens in the migration dialog"
+  },
+  "methods": {
+    "SetOverwrite": "Called when the overwrite button is touched.",
+    "SetPreserveHome": "Called when the preserve home button is touched.",
+    "ChooseAllData": "Called when the choose all data button is touched.",
+    "ChangeStep": "Called when the change step button is touched.",
+    "SaveGroupSelectionAndChange": "Called when the save group selection and change button is touched.",
+    "CheckLoginAndNext": "Called when the Check login and next button is touched.",
+    "LoadGroupsPressed": "Called when the load groups button is touched.",
+    "OnSourceSelected": "Called when the source button is touched.",
+    "StartMigrationPressed": "Called when the start migration button is touched.",
+    "CancelPressed": "Called when the cancel button is touched."
+  },
+  "usage": "Use internally, do not use.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MigrationDialog&action=raw"
+}

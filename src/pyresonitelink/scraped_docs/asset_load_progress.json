@@ -1,8 +1,14 @@
 {
-  "description": "Asset Load Progress is a node that allows for the reading on weither or not a user has loaded an asset. This node takes a UsersAssetLoadProgress`1 component and allows for the extraction of the load progress of a certain User.",
+  "description": "Asset Load Progress is a node that allows for the reading on weither or not a user has loaded an asset. This node takes a UsersAssetLoadProgress`1 component and allows for the extraction of the load progress of a certain User.\n\nThis can be highly useful in controlling the execution or visibility of content in a world or item. You can use this to control if a user is allowed to continue with something, interact with something, or see something.\n\nThe provided Tracker (UsersAssetLoadProgress`1) component is where the asset is referenced.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Tracker": "The UsersAssetLoadProgress`1 component to use for tracking an asset's load progress",
+    "User": "The User to check loading progress and status on for the provided Tracker (UsersAssetLoadProgress`1).",
+    "DownloadProgress": "The download progress a User (User) has on the Tracker (UsersAssetLoadProgress`1), or null if they don't exist or they haven't started downloading yet.",
+    "LoadState": "The load state of the Tracker (UsersAssetLoadProgress`1) for the provided User (User)"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:AssetLoadProgress&action=raw"
 }

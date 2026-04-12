@@ -1,0 +1,27 @@
+{
+  "description": "See Material Tool.",
+  "category": "Tools",
+  "fields": {
+    "_orbSlot": "The slot to store the material orb when an orb is placed into the tool or picked from an object.",
+    "ReplacementMode": "How to replace materials using the tool.",
+    "AreaRadius": "The radius to use when ``ReplacementMode`` is set to Area.",
+    "_areaIndicator": "The slot that is the root of the area indicator visual.",
+    "_areaIndicatorRadius": "The area indicator's radius field.",
+    "_areaIndicatorOffset": "The area indicator's offset field.",
+    "_areaIndicatorActive": "The area indicator's active field, used to disable the visual when ``ReplacementMode`` is not set to Area.",
+    "_knobControlActive": "The active field of the knob control visual/control."
+  },
+  "methods": {
+    "SnapFilter": "A function that can be used in a snapper to filter what objects can snap to a snapper (filters to material orbs only).",
+    "EditMaterial": "Called when the edit material button is touched.",
+    "CreateCopy": "Called when the create copy button is touched.",
+    "CreateMaterial": "Called when the create material button is touched.",
+    "ConvertAllMaterials": "Called when the convert all button is touched.",
+    "ConvertMaterial": "Called when the convert button is touched.",
+    "RunConversion": "Called when the convert process is started.",
+    "CanKnobControlInteract": "Can be used to check if a grabber is allowed to interact with a grabber. Can be used to filter the same hand from grabbing an item on this material tip! (possibly only instance of this behavior being possible)"
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MaterialTool&action=raw"
+}

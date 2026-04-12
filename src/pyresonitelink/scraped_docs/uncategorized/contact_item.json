@@ -1,0 +1,22 @@
+{
+  "description": "The ContactItem component is used in the contacts tab of the Dash Menu to be a contact in the list of contacts on that screen.",
+  "category": "Uncategorized",
+  "fields": {
+    "_background": "The background element of the contact item.",
+    "_statusIndicator": "The image used to indicate the user status of the contact item.",
+    "_thumbnail": "The thumbnail Component of that user's profile picture.",
+    "_thumbnailTexture": "The texture being used to show a user's profile picture.",
+    "_username": "The text showing the user's username.",
+    "_status": "The text showing the user's status.",
+    "_unreadCount": "The text showing the number of unread messages from the user.",
+    "_joinButton": "The button that can be used to join the user.",
+    "_rawUsername": "The raw string of the user's username without ignore tags.",
+    "_alternateNames": "A list of names the user may have had before."
+  },
+  "methods": {
+    "OnJoin": "What to run when joining the user that corrosponds to this contact item."
+  },
+  "usage": "See Dash Menu.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ContactItem&action=raw"
+}

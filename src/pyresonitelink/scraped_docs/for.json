@@ -1,8 +1,17 @@
 {
   "description": "The For node is used to perform looping operations by allowing one to fire impulses a set amount of times.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Begin the for loop.",
+    "Count": "The amount of times to trigger ``LoopIteration``. Will not trigger any iterations if less than 1.",
+    "Reverse": "If ``True``, the ``Iteration`` output will start at ``Count - 1`` and go down towards ``0``.",
+    "LoopStart": "Fires after ``*`` is pulsed and before any iterations are done. Will be pulsed even if ``Count < 1``.",
+    "LoopIteration": "Fires for each iteration of the loop. This impulse is triggered Count amount of times and the next iteration will only be fired once the current iteration's context is finished.",
+    "LoopEnd": "Fires after the final ``LoopIteration`` completes execution.",
+    "Iteration": "For each ``LoopIteration``, this output is set to be the index of the iteration for said iteration's context. By default, this will start at ``0`` and increment until ``Count - 1`` unless ``Reverse`` is ``True``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:For&action=raw"
 }

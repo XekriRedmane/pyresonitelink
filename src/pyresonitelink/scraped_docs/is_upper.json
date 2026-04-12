@@ -1,8 +1,12 @@
 {
   "description": "The Is Upper node takes in a character literal and returns if that character is an upper case letter.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character literal to check.",
+    "* ([[Type:bool|bool]])": "Returns ``true`` if ``Character`` is an upper case letter, ``false`` otherwise. Upper case characters recognized by this node are part of the unicode delegation ``Lu``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsUpper&action=raw"
 }

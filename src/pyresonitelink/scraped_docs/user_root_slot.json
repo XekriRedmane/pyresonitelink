@@ -1,8 +1,12 @@
 {
   "description": "The User Root Slot node returns a user's root slot. Slots found by this node will have the UserRoot component.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting the root slot from.",
+    "* ([[Slot]])": "The root slot of the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserRootSlot&action=raw"
 }

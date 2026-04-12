@@ -1,8 +1,14 @@
 {
   "description": "The Transform Bounds node transforms the input bounding box from the local coordinate space of the SourceSpace slot to that of the TargetSpace slot.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Bounds": "The bounding box is to be transformed. Default is a bounding box with center [0;0;0] and size [0;0;0].",
+    "SourceSpace": "The slot in whose local coordinate space the Bounds are interpreted. Default is null, which results in the global coordinate space being used.",
+    "TargetSpace": "The slot in whose local coordinate space the Bounds are transformed. Default is null, which results in the global coordinate space being used.",
+    "* ([[Type:BoundingBox|BoundingBox]])": "The transformed bounding box."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TransformBounds&action=raw"
 }

@@ -1,0 +1,14 @@
+{
+  "description": "The Numeric Value Spatial Variable Driver`1 component works specifically for numeric values and allows for multiple sampling modes.",
+  "category": "Data:Spatial:Samplers",
+  "fields": {
+    "Drive": "The field to drive with the resulting value.",
+    "VariableName": "The variable name to sample for.",
+    "Mode": "How to interpret the sampled values.",
+    "DefaultValue": "The value to default to if no value can be sampled."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide a field to drive and a variable name. the slot this component is on acts as the position for sampling variable values.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NumericValueSpatialVariableDriver&action=raw"
+}

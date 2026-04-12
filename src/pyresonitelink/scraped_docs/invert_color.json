@@ -1,8 +1,12 @@
 {
-  "description": "The Invert Color node takes in a color and mathematically inverts it, returning a new color.",
+  "description": "The ``Invert Color`` node takes in a color and mathematically inverts it, returning a new color.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Color": "The color we want to invert.",
+    "* ([[Type:color|color]])": "Returns the inverted color."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:InvertColor&action=raw"
 }

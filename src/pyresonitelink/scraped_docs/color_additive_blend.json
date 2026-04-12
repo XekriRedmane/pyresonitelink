@@ -1,8 +1,13 @@
 {
-  "description": "Color Additive Blend does an additive blend of its two input colors. The result is the sum of each component between the target and destination.",
+  "description": "Color Additive Blend does an additive blend of its two input colors. The result is the sum of each component between the target and destination.\n\nThis is a symmetric operation, the result is the same with target and destination swapped. Regardless, the \"target\" and \"destination\" terminology is used for consistency with other blend nodes.\n\nAlpha values are clamped to a maximum of 1.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Source": "The color that is blended \"onto\" the destination.",
+    "Destination": "The destination color that the source is blended \"onto\".",
+    "* ([[Type:Color|Color]])": "The blended color result.\n\nFile:Protoflux_Color_Additive_Blend_Simple.webp|A simple example of Color Additive Blend with inputs and an output display."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ColorAdditiveBlend&action=raw"
 }

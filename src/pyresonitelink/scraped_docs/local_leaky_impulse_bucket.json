@@ -1,8 +1,17 @@
 {
-  "description": "Local Leaky Impulse Bucket is a ProtoFlux node that will count how many impulses have been sent to it through Trigger (Call), and if the capacity goes over MaximumCapacity (int) it will send an impulse. The CurrentCapacity (int) is local for every user.",
+  "description": "Local Leaky Impulse Bucket is a ProtoFlux node that will count how many impulses have been sent to it through Trigger (Call), and if the capacity goes over MaximumCapacity (int) it will send an impulse. The CurrentCapacity (int) is local for every user.\n\nNote: There is currently a bug with this node where it will send impulses out of Overflow (Continuation) regardless of it's capacity when it should be when it overflows past the number specified in MaximumCapacity (int) issue 145.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Trigger": "Add one to CurrentCapacity (int) and send an impulse out of Pulse (Call).",
+    "Reset": "Will reset CurrentCapacity (int) for the local user.",
+    "Interval": "How many seconds that the node will keep impulses for before one \"\"\"leaks out the bottom of the bucket\"\"\", decreasing CurrentCapacity (int) by one for the local user.",
+    "MaximumCapacity": "The maximum amount of Impulses that this node can store locally till the next impulse would go out of Overflow (Continuation) instead of Pulse (Call)***.\n\n***: See note above.",
+    "CurrentCapacity": "Will increase by one every time Trigger (Call) is impulsed. it will decrease by one every Interval (float) seconds. It will also reset to 0 when Reset (Call) is impulsed.",
+    "Overflow": "this will send an impulse when MaximumCapacity (int) is equal to CurrentCapacity (int) locally and Trigger (Call) is impulsed***.\n\n***: See note above.",
+    "Pulse": "Fires every time Trigger (Call) is impulsed unless MaximumCapacity (int) is equal to CurrentCapacity (int) locally then it will go out of Overflow (Continuation)***.\n\n***: See note above."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalLeakyImpulseBucket&action=raw"
 }

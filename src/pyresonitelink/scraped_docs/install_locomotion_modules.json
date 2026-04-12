@@ -1,8 +1,15 @@
 {
-  "description": "Install Locomotion Modules is a ProtoFlux node that takes a slot with a type from the ILocomotionModule interface on it. The locomotion will also need a character controller and a few other components, which should be auto generated when a type from the ILocomotionModule interface component is added.",
+  "description": "Install Locomotion Modules is a ProtoFlux node that takes a slot with a type from the ILocomotionModule interface on it. The locomotion will also need a character controller and a few other components, which should be auto generated when a type from the ILocomotionModule interface component is added.\n\nWhen called, this node will add the locomotion to the user in question.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to install the locomotion(s) to the target user.",
+    "ModulesRoot": "The module slot itself, or a slot with multiple locomotions under it to install to the target user. each slot to install needs a type from the ILocomotionModule interface on it.",
+    "TargetUser": "The user to install the provided ModulesRoot (Slot) to.",
+    "ClearExisting": "Removes all the existing locomotions from the user and replace with the provided ModulesRoot (Slot) locomotion module(s).",
+    "Next": "Sends an impulse after * (Call) was called and the locomotion(s) are installed to the provided user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:InstallLocomotionModules&action=raw"
 }

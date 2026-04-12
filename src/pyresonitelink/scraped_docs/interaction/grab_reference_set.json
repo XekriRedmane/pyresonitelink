@@ -1,0 +1,15 @@
+{
+  "description": "The GrabReferenceSet can be used to write a reference to a field on grab and release.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "Target": "The field in which to change on grab and release.",
+    "GrabbedTarget": "The value to set the contained data of the SyncRef referenced in ``Target`` when the item is grabbed.",
+    "ReleasedTarget": "The value to set the contained data of the SyncRef referenced in ``Target`` when the item is released.",
+    "SetOnGrabbed": "Whether to set the contained data of the SyncRef referenced in ``Target`` when the item is grabbed.",
+    "SetOnReleased": "Whether to set the contained data of the SyncRef referenced in ``Target`` when the item is released."
+  },
+  "methods": {},
+  "usage": "While on the same slot as a Grabbable the component can be configured to set a reference on grabbed and on released.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabReferenceSet&action=raw"
+}

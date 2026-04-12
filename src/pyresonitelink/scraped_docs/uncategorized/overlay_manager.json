@@ -1,0 +1,11 @@
+{
+  "description": "The OverlayManager component is used to handle the Overlay for edit mode on userspace dash screens.",
+  "category": "Uncategorized",
+  "fields": {
+    "_overlayRoot": "The slot that has the Overlay visuals."
+  },
+  "methods": {},
+  "usage": "Used internally.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:OverlayManager&action=raw"
+}

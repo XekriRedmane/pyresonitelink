@@ -1,0 +1,24 @@
+{
+  "description": "The ProtoFluxReferenceProxy component is used to usually manage global references like on write node write targets and the monitoring slot on the slot events node.",
+  "category": "Uncategorized",
+  "fields": {
+    "Node": "The node this is making a visual for.",
+    "ElementName": "The element this is pointing to.",
+    "ValueType": "the type of the value input this is pointing to.",
+    "_label": "The text element of the element this is for.",
+    "_proxyVisual": "The button to set the input field value with.",
+    "_refProxySource": "the component that handles grabbing the value of the field this points to via UIX.",
+    "NodeReference": "The node the value field points to, if it should point to a protoflux node like for a write node.",
+    "Arrow": "the arrow pointing to a protoflux node if the value field's value points to a protoflux node.",
+    "ConnectPoint": "The slot that should act as the connector point.",
+    "_currentName": "The field to drive with the current name of the value that this component's value field is pointing to.",
+    "_selfHovering": "The field to drive with whether or not this element is being hovered over.",
+    "_targetHovering": "The field to drive with whether or not the element this is targeting is a node and is being hovered over.",
+    "_arrowManagerEnabled": "The field to drive in order to enable/disable the arrow manager.",
+    "_arrowRendererEnabled": "The field to drive in order to enable/disable the arrow manager's arrow visual."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProtoFluxReferenceProxy&action=raw"
+}

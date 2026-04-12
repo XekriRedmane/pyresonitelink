@@ -1,0 +1,13 @@
+{
+  "description": "The CopyGlobalScale component is used to ensure that one object has the exact same global scale as another object.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Source": "The object that serves as scale reference.",
+    "NonUniform": "If true, non-uniform scale is preserved, otherwise the X scale of the source serves as X, Y and Z of the target.",
+    "_scaleDrive": "The field that is driven to match the global scale of the source. This automatically gets populated with the scale field of the slot that this component is added to."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CopyGlobalScale&action=raw"
+}

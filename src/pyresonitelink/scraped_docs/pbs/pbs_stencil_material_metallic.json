@@ -1,0 +1,8 @@
+{
+  "description": "The PBS_StencilMaterialMetallic component is used as a material for meshes to make them render differently when in front of other stencil materials.\n\nSee Stencils.",
+  "category": "Assets:Materials:PBS",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

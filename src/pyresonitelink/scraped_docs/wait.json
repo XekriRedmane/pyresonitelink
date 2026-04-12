@@ -1,8 +1,13 @@
 {
   "description": "Wait is a ProtoFlux node that waits for the provided Target (IPlayable) to complete playback, and then provides a continuation.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|IAsyncOperation]])": "=== Target (IPlayable) ===\n\nThe IPlayable to wait for.",
+    "OnWaitBegin": "An async impulse that impulses when the node starts waiting.",
+    "OnPlaybackFinished": "Sends an impulse after the target finishes playback."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Wait&action=raw"
 }

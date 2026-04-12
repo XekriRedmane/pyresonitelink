@@ -1,0 +1,33 @@
+{
+  "description": "The LegacyButton component is a leftover Component from content migrated from other platforms. It should not be used, and should be replaced whenever possible.",
+  "category": "UI:Physical",
+  "fields": {
+    "Color": "The color of the button.",
+    "Width": "The width of the button.",
+    "Height": "The height of the button.",
+    "Thickness": "How thick the button is.",
+    "Slant": "How much Bevel the button should have.",
+    "Pressed": "The Sync delegate to call when this button is pressed.",
+    "Pressing": "The Sync delegate to call per engine update as this button is being held down.",
+    "Released": "The Sync delegate to call when this button has stopped being pressed.",
+    "IsPressed": "Whether the button is being pressed currently.",
+    "AcceptOutOfSightTouch": "Whether this button accepts interaction if the user isn't looking at it.",
+    "_textSlot": "The slot of the text visual for this button.",
+    "_textRenderer": "The text renderer for this button.",
+    "_buttonPosition": "The position field for this button for physical pressing.",
+    "_colliderSize": "The collider size field for this button's collider.",
+    "_colliderOffset": "The collider offset field for this button's collider.",
+    "_textPosition": "The text position field for this button's text",
+    "_textBounds": "The 2d bounds of this button's text",
+    "_holderMesh": "The mesh that is containing this button (like a parent UI.",
+    "_buttonMesh": "The Bevel mesh that makes up this button's visual.",
+    "_holderMaterial": "The material of the parent UI mesh.",
+    "_buttonMaterial": "The material of this button's mesh visual",
+    "_pressDepth": "How far the user is currently pressing the button physically",
+    "_flashIndex": "How much to add to the emission of the holder material."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyButton&action=raw"
+}

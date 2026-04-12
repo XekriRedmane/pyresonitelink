@@ -1,0 +1,14 @@
+{
+  "description": "The Funding Statistics component is used to get the different funding values for Resonite in United States Dollars from supporters.",
+  "category": "With Nested Types",
+  "fields": {
+    "Timestamp": "The last time the values were updated as a time stamp.",
+    "Aggregate": "The combination of all support channels.",
+    "Patreon": "The Monetary support from Patreon members.",
+    "Stripe": "The Monetary support from Stripe members."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FundingStatistics&action=raw"
+}

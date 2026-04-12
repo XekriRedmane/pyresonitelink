@@ -1,0 +1,13 @@
+{
+  "description": "The ``Elapsed Time`` node keeps track of how long it has been since the last time it was called. This node starts automatically, and when it is not called, it just uses the world time as the default result. Spawning multiple nodes will show that they keep track of their own individual value.\n\nNodes loaded from a save continue their output from the value they had when they were saved. (A SyncTime is used internally to track how much time has passed.)",
+  "category": "",
+  "fields": {
+    "Reset": "Calls an impulse to reset the elapsed time.",
+    "OnReset": "Fires after this node has reset their elapsed time value.",
+    "* (Pseudo-generic)": "Returns the amount of time it has been since this node has been called."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ElapsedTime&action=raw"
+}

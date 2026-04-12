@@ -1,8 +1,12 @@
 {
   "description": "The Not Null node takes in a reference type and returns if the provided reference is not null.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The reference to check.",
+    "* ([[Types:Bool|bool]])": "Outputs if instance is not null."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:NotNull&action=raw"
 }

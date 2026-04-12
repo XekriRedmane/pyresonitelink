@@ -1,0 +1,24 @@
+{
+  "description": "The GridContainer component allows for placing facets in a grid format and storing them under a container.",
+  "category": "Radiant UI:Containers",
+  "fields": {
+    "EditMode": "Whether this grid container is currently being edited (UI edit mode)",
+    "FacetsRoot": "Where to put facets when they are placed on the grid.",
+    "_background": "The UIX rectangle that specifies what the background is.",
+    "_content": "The UIX rectangle for the content like facets.",
+    "_overlay": "The UIX rectangle for the grid Overlay when editing.",
+    "RecalculateOnSizeChange": "Whether to recalculate the facets on size change of the canvas.",
+    "CellCount": "The forced cell count of this grid container.",
+    "CellSize": "How big each cell is in pixels.",
+    "Padding": "How much padding between facets there should be.",
+    "_lastCalculatedCenteringOffset": "The last centering offset calculated by this component, if at all.",
+    "_lastCalculatedCellSize": "The last cell size calculated by this component, if at all. Created when ``CellCount`` is specified.",
+    "_lastCalculatedPadding": "The last calculated padding between facets if at all."
+  },
+  "methods": {
+    "CopyFacetLayout": "Copies the facet layout to the clipboard for debugging purposes."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GridContainer&action=raw"
+}

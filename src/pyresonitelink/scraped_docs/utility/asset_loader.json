@@ -1,0 +1,11 @@
+{
+  "description": "AssetLoader is a Component that is used to tell the game that an Asset is still being used. This is helpful for when an asset is referenced in a way that deletes it during asset cleanup and saving.",
+  "category": "Assets:Utility",
+  "fields": {
+    "Asset": "The Asset to keep loaded."
+  },
+  "methods": {},
+  "usage": "Set the ``Asset`` field to the asset that should be kept around, afterwards the asset should not be cleaned up as long as it continues to be referenced by the AssetLoader.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AssetLoader&action=raw"
+}

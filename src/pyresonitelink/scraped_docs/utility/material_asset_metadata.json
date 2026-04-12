@@ -1,0 +1,16 @@
+{
+  "description": "The MaterialAssetMetadata component gives variant info about materials in the form of usable values. These values are usually listed at the bottom of a material inspector but are unusable in that state.",
+  "category": "Assets:Utility",
+  "fields": {
+    "Material": "The material to get Metadata on.",
+    "VariantIndex": "The material variant defined by GPU definitions on the shader. For example, a reflection material has a second variant for having a normal map vs without.",
+    "RawVariantIndex": "The raw version of ``VariantIndex``.",
+    "VariantID": "The ID of the material variant (can be seen at the bottom of a material in the Inspector too.",
+    "RawVariantID": "The raw version of ``VariantID``.",
+    "WaitingForApply": "Whether this material is waiting to be applied in the render scene due to missing variants or otherwise."
+  },
+  "methods": {},
+  "usage": "Can be used to get variant info and other info shown at the bottom of a material in the Inspector as actual usable values.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MaterialAssetMetadata&action=raw"
+}

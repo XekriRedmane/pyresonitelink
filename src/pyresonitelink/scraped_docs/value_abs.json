@@ -1,8 +1,12 @@
 {
-  "description": "The Value Abs node takes in a value and returns a value without its sign. Although, it would be truly impossible to have no sign on a value when it needs to be represented and stored in a computer device (and also mathematically sound), so it returns as a positive number (no matter what is provided as a value).",
+  "description": "The Value Abs node takes in a value and returns a value without its sign. Although, it would be truly impossible to have no sign on a value when it needs to be represented and stored in a computer device (and also mathematically sound), so it returns as a positive number (no matter what is provided as a value).\n\nYou can think of using this node as \"the distance from 0\".",
   "category": "",
-  "fields": {},
+  "fields": {
+    "N": "The value we want to become unsigned.",
+    "* (Pseudo-Generic)": "The unsigned value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueAbs&action=raw"
 }

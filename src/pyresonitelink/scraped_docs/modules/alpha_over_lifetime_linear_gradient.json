@@ -1,0 +1,16 @@
+{
+  "description": "The AlphaOverLifetimeLinearGradient component implements the older alpha over lifetime system that came from Unity. It allows for particles to change alpha depending on how long they have existed for.\n\nA more modern alternative to this with actual editablilty is the ColorOverLifetimeTexture component.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "AlphaOverLifetime": "The Linear Gradient of alpha values to use over lifetime."
+  },
+  "methods": {
+    "SetupAlphaFadeInFadeOut": "transition template going from 0% - 10%, 90% - 100%",
+    "SetupAlphaFadeOut": "transition template going from 90% - 100%",
+    "SetupAlphaFadeIn": "transition template going from 0% - 10%",
+    "ClearFadeEffects": "Clear transition template."
+  },
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AlphaOverLifetimeLinearGradient&action=raw"
+}

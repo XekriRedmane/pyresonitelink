@@ -1,0 +1,21 @@
+{
+  "description": "The Legacy Trails Ribbon Adapter component is used to convert legacy content from the old particle system driven by Unity to Photon Dust.",
+  "category": "Uncategorized",
+  "fields": {
+    "TrailsMode": "The enum used to control the conversion from legacy trails to Photon Dust.",
+    "ParticleSizeAffectsTrailWidth": "Whether the particle size should affect the trail width.",
+    "InheritTrailColorFromParticle": "Whether the trail should inherit color from the particle it is following.",
+    "TrailWorldSpace": "Whether the trail is in world or local space.",
+    "TrailsModule": "The enabled field on a trails module to drive.",
+    "RibbonModule": "The enabled field on a ribbons module to drive.",
+    "RibbonUseParticleSize": "The use particle size field to drive on a ribbons module.",
+    "RibbonUseParticleColor": "The use particle color field to drive on a ribbons module.",
+    "TrailSizeInheritance": "The use particle size field to drive on a trails module.",
+    "TrailColorInheritance": "The use particle color field to drive on a trails module.",
+    "TrailsSpace": "The trails space field to drive on a trails module."
+  },
+  "methods": {},
+  "usage": "Used in legacy content. do not use in new content.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyTrailsRibbonAdapter&action=raw"
+}

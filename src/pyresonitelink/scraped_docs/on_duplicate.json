@@ -1,8 +1,11 @@
 {
-  "description": "On Duplicate is a ProtoFlux node that sends an impulse out of Trigger whenever the node is duplicated. This will fire on the duplicate of the code, and not the original copy.",
+  "description": "On Duplicate is a ProtoFlux node that sends an impulse out of Trigger whenever the node is duplicated. This will fire on the duplicate of the code, and not the original copy.\n\nSince this node may send an impulse before the rest of the protoflux is loaded, certain functions such as Smooth Lerp may not work as intended. If you have a use case relying on interpolation, consired adding a small Delay, or using the On Start node instead.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Trigger": "Sends an Impulse when the node is duplicated."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnDuplicate&action=raw"
 }

@@ -1,0 +1,13 @@
+{
+  "description": "The Audio Performance Settings component is part of the Settings that control audio buffers.",
+  "category": "With Nested Enums",
+  "fields": {
+    "MaxVoices": "The maximum voices the user is allowed to hear.",
+    "OutputBufferSize": "The output buffer size in samples.",
+    "SimulationFrameSize": "The simulation buffer size in samples."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioPerformanceSettings&action=raw"
+}

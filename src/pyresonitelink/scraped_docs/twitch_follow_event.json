@@ -1,8 +1,13 @@
 {
-  "description": "This node provides Twitch follow event information from a TwitchInterface.",
+  "description": "This node provides Twitch follow event information from a TwitchInterface. \n\nNote that all outputs are generated on a new Twitch follow, and will not display any information when connected to a display node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnFollow": "Fires on receiving a new Twitch channel follow.",
+    "UserId": "Outputs the Twitch Channel ID of the follower.",
+    "DisplayName": "Outputs the Twitch username of the follower."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TwitchFollowEvent&action=raw"
 }

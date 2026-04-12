@@ -1,0 +1,14 @@
+{
+  "description": "The SlotRaycastTransferPortal acts very similarly to the MeshUVRaycastPortal except that it works on colliders hitting a slot hiearchy to another slot rather than just a mesh and a camera.",
+  "category": "Physics:Extensions",
+  "fields": {
+    "Exit": "The slot to send the raycast through if it hits this slot's hierarchy, converting the hit point / direction in this component slot's local space to the space of the slot specified here.",
+    "OverrideHitTriggers": "Whether to override if a laser coming through will hit triggers and what to override it with.",
+    "Filter": "The filter we should apply if a raycast comes through this portal?",
+    "FilterMode": "If a raycast being transfered has its own filter, how should we combine it with ``Filter`` if it exists?."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SlotRaycastTransferPortal&action=raw"
+}

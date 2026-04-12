@@ -1,8 +1,16 @@
 {
-  "description": "The Bake Reflection Probe node takes in a Reflection Probe and begins the baking process, then returns the Uri asset that can be used for the world when completed.",
+  "description": "The ``Bake Reflection Probe`` node takes in a Reflection Probe and begins the baking process, then returns the Uri asset that can be used for the world when completed.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|AysncCall]])": "Calls an impulse to bake the reflection probe.",
+    "Probe": "The reflection probe to bake.",
+    "OnBakeStart": "Fires when the bake has started.",
+    "OnBakeFail": "Fires when the bake has failed.",
+    "OnBakeComplete": "Fires when the bake has completed.",
+    "BakedCubemapURL": "Returns the baked asset URL."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:BakeReflectionProbe&action=raw"
 }

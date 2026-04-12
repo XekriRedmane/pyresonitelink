@@ -1,0 +1,8 @@
+{
+  "description": "The UVTexture component is used to procedurally generate texture data for a debug uv texture image that is colored red and green based on the x and y coordinates at any given point on an image.",
+  "category": "Assets:Procedural Textures",
+  "fields": {},
+  "methods": {},
+  "usage": "Used for debugging. can be put into any material to view what the texture would look like.",
+  "notes": []
+}

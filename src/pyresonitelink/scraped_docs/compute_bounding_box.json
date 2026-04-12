@@ -1,8 +1,15 @@
 {
-  "description": "The Compute Bounding Box node calculates a bounding box for the input Instance slot hierarchy in the input CoordinateSpace with optional filtering for inactive and/or tagged slots.",
+  "description": "The Compute Bounding Box node calculates a bounding box for the input Instance slot hierarchy in the input CoordinateSpace with optional filtering for inactive and/or tagged slots. \n\nOnly components which implement the ``IBounded`` interface are used for bounding box calculation. These include: Bounds, MeshRenderers, SkinnedMeshRenderers, TextRenderers, UIX Canvases, CharacterControllers and all Colliders.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot for whose hierarchy a bounding box is calculated.",
+    "IncludeInactive": "Determines whether inactive parts of the hierarchy are included when calculating the bounding box. Default is False which means that inactive slots and their children are ignored.",
+    "CoordinateSpace": "The slot relative to whose coordinate space the bounding box is calculated. Default is null which results in the bounding box being calculated in global coordinate space.",
+    "OnlyWithTag": "If specified, only slots with the given tag are included in the bounding box calculation. Default is null, which results in no filtering by tag. Unlike the handling of IncludeInactive, child slots with a matching tag are included even if their parent slot(s) are not tagged.",
+    "* ([[Type:BoundingBox|BoundingBox]])": "The calculated bounding box. Default is an empty bounding box if the Instance input is null or if there are no IBounded components present in it's hierarchy on slots which pass the filtering conditions."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ComputeBoundingBox&action=raw"
 }

@@ -1,0 +1,12 @@
+{
+  "description": "The TouchablePermissions component is used in worlds to manage what certain roles that users get assigned to can and cannot do.",
+  "category": "Permissions",
+  "fields": {
+    "Tags": "Slot tag object to determine the kinds of tags to filter for the selected roles.",
+    "Components": "A component filter that applies to the selected roles."
+  },
+  "methods": {},
+  "usage": "Found in the world permissions slot. When attaching a new one for granular control, make sure to select the roles you want the filters to apply to. Then make the filters and edits you need. Don't forget to save the world!",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TouchablePermissions&action=raw"
+}

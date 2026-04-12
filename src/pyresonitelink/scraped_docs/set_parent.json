@@ -1,13 +1,15 @@
 {
   "description": "Sets the parent of Instance (Slot).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Set the parent of Instance (Slot) to NewParent (Slot)",
+    "Instance": "The slot to set the parent of.",
+    "NewParent": "The slot to set the parent of Instance (Slot) to.",
+    "PreserveGlobalPosition": "Whether or not to keep the values for Instance (Slot)'s local transforms or to keep it in the same place visually.",
+    "Next": "Sends an impulse when Instance (Slot) is sucessfully parented to NewParent (Slot), or if NewParent (Slot) is null it will set it to the Root Slot of the World."
+  },
   "methods": {},
   "usage": "",
-  "notes": [
-    {
-      "title": "Inputs",
-      "text": "=== * (Call) ===\nSet the parent of Instance (Slot) to NewParent (Slot)"
-    }
-  ]
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetParent&action=raw"
 }

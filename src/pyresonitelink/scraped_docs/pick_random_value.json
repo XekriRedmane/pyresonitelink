@@ -1,8 +1,12 @@
 {
-  "description": "The Pick Random Value node takes in a list of value of the same Type and then returns one of them at random. Since this is a data node, displaying the output value will cycle through them randomly once per frame.",
+  "description": "The ``Pick Random Value`` node takes in a list of value of the same Type and then returns one of them at random. Since this is a data node, displaying the output value will cycle through them randomly once per frame.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Operands": "The list of values to randomly pick from.",
+    "* (Generic)": "The randomly picked value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:PickRandomValue&action=raw"
 }

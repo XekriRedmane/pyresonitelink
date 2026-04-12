@@ -1,0 +1,22 @@
+{
+  "description": "The SnapTarget component allows a slot with a Snapper Component to attach to this slot.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "SnapperWhitelist": "List of Snappers that are allowed to attach to this component",
+    "SnapperKeywordWhitelist": "List of keywords to match against a corresponding Snapper",
+    "DirectSnapOnly": "Unused",
+    "MaximumSnapDistance": "The maximum distance the Snapper can snap with the Target. This value drives the SphereCollider radius",
+    "AnimationTime": "The time it takes for the Snapper to lerp to the Target",
+    "_snapColliderRadius": "The radius drive reference of the SphereCollider",
+    "proxySphere": "Reference of the SphereCollider that is added on adding the SnapTarget to a slot"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Allows the slot containing this component to receive slots that contain a Snapper component, the Snapper slot will enter the hierarchy of the SnapTarget slot and get positioned to the center. The SnapperWhitelist allows you to reference specific snappers that you want to allow to link with the SnapTarget. The SnapperKeywordWhitelist allows Snappers with the same keyword to link with the SnapTarget."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SnapTarget&action=raw"
+}

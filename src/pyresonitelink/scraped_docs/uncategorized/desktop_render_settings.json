@@ -1,0 +1,17 @@
+{
+  "description": "The DesktopRenderSettings component is used to set Settings used in Desktop mode.",
+  "category": "Uncategorized",
+  "fields": {
+    "FieldOfView": "The fov of the desktop client.",
+    "SprintFieldOfViewZoom": "Whether to multiply the FOV when sprinting",
+    "VSync": "Whether to use VSync",
+    "LimitFramerateWhenUnfocused": "Whether to limit framerate when the game is unfocused.",
+    "MaximumBackgroundFramerate": "How much to limit the framerate when unfocused and ``LimitFramerateWhenUnfocused`` is true.",
+    "FramePacingOptionsEnabled": "Whether to pace frames due to options like ``MaximumBackgroundFramerate`` is being used.",
+    "BackgroundFramerateEnabled": "Whether to render new frames when in the background."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DesktopRenderSettings&action=raw"
+}

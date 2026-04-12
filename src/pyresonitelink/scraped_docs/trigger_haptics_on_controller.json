@@ -1,8 +1,14 @@
 {
   "description": "The Trigger Haptics On Controller node takes in a side and will send out haptic pulses to the controller on that side.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to send haptic data to one side of the controllers.",
+    "Side": "The side that will trigger the haptics for the controllers.",
+    "RelativeIntensity": "How much this will notify the user using haptics.",
+    "Next": "Fires after sending the haptic pulse."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TriggerHapticsOnController&action=raw"
 }

@@ -1,0 +1,12 @@
+{
+  "description": "The GrabbableReparentBlock component makes it so that, if any slot that is a descendant (up to ``MaxDepth`` levels deep) of the current one is grabbed and then let go of, it won't be reparented to this slot.",
+  "category": "Transform:Tagging",
+  "fields": {
+    "DontReparent": "Don't allow this slot to be reparented to. Subject to the rules explained in Grabbable - Behavior",
+    "MaxDepth": "Objects beyond this level in the hierarchy will not be effected. Set to Int MaxValue by default"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabbableReparentBlock&action=raw"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The Delegate Tag component is used to store a delegate of type T",
+  "category": "Uncategorized",
+  "fields": {
+    "Delegate": "The delegate to store."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DelegateTag&action=raw"
+}

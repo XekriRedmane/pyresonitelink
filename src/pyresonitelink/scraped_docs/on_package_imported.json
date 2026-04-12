@@ -1,8 +1,11 @@
 {
   "description": "On Package Imported is a ProtoFlux node that sends an impulse out of Trigger when it detects that it has been imported as a part of a ResonitePackage.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Trigger": "Sends an Impulse when the node's hierarchy has been imported from a ResonitePackage"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnPackageImported&action=raw"
 }

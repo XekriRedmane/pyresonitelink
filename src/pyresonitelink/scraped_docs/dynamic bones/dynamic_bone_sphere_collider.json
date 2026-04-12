@@ -1,0 +1,11 @@
+{
+  "description": "The dynamic bone sphere collider is a component that allows for making a static sphere collider by adding it to the list of ``StaticColliders`` on a DynamicBoneChain or make it dynamic by making it part of the ``Colliders`` list on a DynamicBonePlayerColliders Component",
+  "category": "Physics:Dynamic Bones",
+  "fields": {
+    "Radius": "The radius of the sphere created by this component in local space of the Slot it is made on."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicBoneSphereCollider&action=raw"
+}

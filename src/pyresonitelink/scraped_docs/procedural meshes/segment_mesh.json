@@ -1,0 +1,16 @@
+{
+  "description": "The SegmentMesh component is an evolved form of SlotSegmentMesh the behavior is identical, except when not provided slots it will use local coordinate points instead.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Radius": "The radius of the line from ``PointA``/``SlotA`` to ``PointB``/``SlotB``",
+    "PointA": "The starting point of the generated line in local space.",
+    "PointB": "The ending point of the generated line in local space.",
+    "SlotA": "The starting point of the generated line. This will be used instead of ``PointA`` if provided.",
+    "SlotB": "The ending point of the generated line. This will be used instead of ``PointB`` if provided.",
+    "Shading": "Whether to use different shading like smooth or flat."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a MeshRenderer to see the geometry. Don't forget to use a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SegmentMesh&action=raw"
+}

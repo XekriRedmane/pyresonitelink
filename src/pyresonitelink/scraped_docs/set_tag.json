@@ -1,8 +1,14 @@
 {
   "description": "The Set Tag node sets the Tag of the provided instance slot upon calling * (Call).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to set the Instance (Slot)'s tag to Tag (String).",
+    "Instance": "Slot to set the property for.",
+    "Tag": "The value to set Instance (Slot)'s Tag field to when * (Call) is called.",
+    "Next": "Sends an impulse when Instance (Slot)'s tag is set to Tag (String) when * (Call) is called."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetTag&action=raw"
 }

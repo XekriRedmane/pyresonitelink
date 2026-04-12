@@ -1,8 +1,11 @@
 {
-  "description": "The Tau node outputs the mathematical constant tau. Tau is a constant that represents 2PI. Tau is the circumference of a circle with a radius of one.",
+  "description": "The Tau node outputs the mathematical constant tau. Tau is a constant that represents 2PI. Tau is the circumference of a circle with a radius of one.\n\nApplications this constant can be used in:\n- Circumference, angular, and rotation measurements\n- Wave Generation (combined with Sin)\n- Shader Programming (usually simplifying/streamlining the code)",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:Float|float]])": "Returns the value constant Tau. Its float value is approximately ``6.28318``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Tau&action=raw"
 }

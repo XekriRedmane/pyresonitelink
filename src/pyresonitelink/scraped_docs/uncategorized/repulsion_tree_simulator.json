@@ -1,0 +1,13 @@
+{
+  "description": "The RepulsionTreeSimulator can be used alongside the RepulsionTreeItem component on it's children slots to create a repulsion tree simulation. A repulsion tree is a simulation that keeps a bunch of RepulsionTreeItems on the outside shell of a sphere. The different slots of the tree will move around as they push or pull each other in real time.",
+  "category": "Uncategorized",
+  "fields": {
+    "FalloffPower": "how quickly the force power diminishes by distance.",
+    "Radius": "The radius of this repulsion tree's sphere.",
+    "Force": "how much to multiply the forces of the children objects."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RepulsionTreeSimulator&action=raw"
+}

@@ -1,13 +1,33 @@
 {
   "description": "This node provides information provided by Index controllers.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user to get controller information from.",
+    "Node": "The controller side to get information from.",
+    "IsActive": "Bool for showing if the device is active. Useful for troubleshooting if your controller is not responding.",
+    "Type": "The controller type being used. (type of IndexController if exists or ``null``)",
+    "BatteryLevel": "The battery level of this controller. (``1``: full, ``0``: empty)",
+    "BatteryCharging": "Shows if the battery is currently charging.",
+    "ButtonA": "Shows if the A button is being pressed.",
+    "ButtonB": "Shows if the B button is being pressed.",
+    "ButtonA_Touch": "Shows if the capacitive touch is being pressed on A button.",
+    "ButtonB_Touch": "Shows if the capacitive touch is being pressed on B button.",
+    "Grip": "Shows the strength of the grip on the device. (from ``0`` to ``1``)",
+    "GripTouch": "Shows if the grip is being touched.",
+    "GripClick": "Shows if the grip is being gripped enough to trigger a grab action.",
+    "Joystick": "The position of this controller's joystick. (``[-1; -1]``: backward left, ``[+1; +1]``: forward right, ``[0; 0]``: resting position)",
+    "JoystickTouch": "Is the controller's joystick being touched right now.",
+    "JoystickClick": "Is the controller's joystick clicked down right now.",
+    "Trigger": "Shows the strength of the trigger while pressed. (from ``0`` to ``1``)",
+    "TriggerTouch": "Shows if the trigger is being touched.",
+    "TriggerClick": "Shows if the trigger is pushed enough to trigger a click action.",
+    "Touchpad": "Shows the X and Y of the area where the Touchpad is touched. (``[-1; -1]``: bottom left, ``[+1; +1]``: top right, ``[0; 0]`` when untouched)",
+    "TouchpadTouch": "Shows if the touchpad being touched.",
+    "TouchpadPress": "Shows if the touchpad being touched enough to trigger a click action.",
+    "TouchpadForce": "Shows the strength of the touch on the touchpad. (from ``0`` to ``1``)"
+  },
   "methods": {},
   "usage": "",
-  "notes": [
-    {
-      "title": "Outputs",
-      "text": "=== IsActive (Bool) ===\n\nBool for showing if the device is active. Useful for troubleshooting if your controller is not responding."
-    }
-  ]
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IndexController&action=raw"
 }

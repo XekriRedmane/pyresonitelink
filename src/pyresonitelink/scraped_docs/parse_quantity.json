@@ -1,8 +1,14 @@
 {
-  "description": "The Parse Quantity node takes in a string containing a written quantity value, along with the string of the default unit to assume if no explicit unit is present as part of the input string. It returns the parsed quantity value as a quantity type and a bool indicating wether it parsed successfully.",
+  "description": "The Parse Quantity node takes in a string containing a written quantity value, along with the string of the default unit to assume if no explicit unit is present as part of the input string. It returns the parsed quantity value as a quantity type and a bool indicating wether it parsed successfully.\n\nTo create this node, you need to specify a valid quantity type for its generic parameter. Examples: ``Mass``, ``Time``, and ``Voltage``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to parse.",
+    "DefaultUnit": "The default unit to assume if no unit is present in the input string.",
+    "Value": "The parsed quantity value.",
+    "IsParsed": "Wether the input string was parsed successfully."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ParseQuantity&action=raw"
 }

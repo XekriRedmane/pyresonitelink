@@ -1,0 +1,16 @@
+{
+  "description": "The Renderer Decoupling Settings component controls how the render engine will decouple from FrooxEngine when FrooxEngine lags to prevent sea-sickness.",
+  "category": "Uncategorized",
+  "fields": {
+    "ActivationFramerate": "How low the framerate from frooxengine needs to be to activate a decoupled frooxengine state",
+    "DeactivationFrames": "How high the framerate from frooxengine needs to be to deactivate a decoupled frooxengine state",
+    "ForceDecouple": "Whether or not to wait for frooxengine at all, and to just runaway render frames.",
+    "AssetProcessingMaxTimeMilliseconds": "How long to wait to process assets before continuing on the next frame anyways."
+  },
+  "methods": {
+    "ResetToDefault": "Reset settings on this component back to their default."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RendererDecouplingSettings&action=raw"
+}

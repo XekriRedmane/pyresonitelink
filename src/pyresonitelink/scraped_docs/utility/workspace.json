@@ -1,0 +1,22 @@
+{
+  "description": "The Workspace component allows for doing work inside of a containerized slot, where the user can add or remove items which gets saved every interval specified. These workspaces can be public or private, and work similarly in concept to Cloud Variables except greatly simplified and store an entire hierarchy instead of a single value. Workspaces have a path to them, which allow for having multiple different workspaces per user. Workspaces take up storage as a saved item would, and automatically synchronize in real time. Multiple users working on workspaces at the same time can cause issues however, since workspaces save their changes before loading from the cloud unless ``ReadOnly`` is enabled.",
+  "category": "Utility",
+  "fields": {
+    "User": "The user to manage reading and writing the contents of this workspace to the cloud for.",
+    "OverrideOwnerId": "The override for the owner of this workspace to read and write the data for, which allows for reading public workspaces from others.",
+    "WorkspacePath": "The path of the workspace on the Cloud. Adding \"public/\" (case ignored) to the start of the path allows for public workspaces anyone can edit. Public workspaces must exist first before another user than the owner can save to them.",
+    "InitializeWorkspace": "A Sync Delegate to call that takes a slot for when this component generates the work space. the slot is the slot this component is on.",
+    "ReadOnly": "Whether to only read the contents of this workspace from the cloud and not save it.",
+    "AutosaveDelay": "How long to wait between save attempts before trying to save again. saves only happen if there have been changes.",
+    "SuspendUpdates": "Whether to pause the loading and saving of this workspace to the cloud.",
+    "_unsavedChanges": "Whether this workspace has changes that should be saved to the cloud upon the next save.",
+    "_lastModification": "The last time the workspace was changed."
+  },
+  "methods": {
+    "OnMarkModified": "Notify Modified]] Node on any element on or under this component's slot.",
+    "OnSaveWorkspace": "Forces the workspace to save it's changes."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Workspace&action=raw"
+}

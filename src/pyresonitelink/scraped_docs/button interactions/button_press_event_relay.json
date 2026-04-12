@@ -1,0 +1,11 @@
+{
+  "description": "The ButtonPressEventRelay component takes in a slot target, and if any IButton press event happens with this component on a slot, will also send a signal to that target slot, and the components on that target slot will trigger with press events (if applicable).",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "Target": "The slot to send the signal to."
+  },
+  "methods": {},
+  "usage": "Useful for sending multiple signals from one press event.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonPressEventRelay&action=raw"
+}

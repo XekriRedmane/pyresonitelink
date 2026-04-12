@@ -1,0 +1,11 @@
+{
+  "description": "The DebugQuadMeshRenderer component renders particles via a QuadArrayMesh.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Renderers",
+  "fields": {
+    "Material": "The material to use for the mesh."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the renderer slot in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugQuadMeshRenderer&action=raw"
+}

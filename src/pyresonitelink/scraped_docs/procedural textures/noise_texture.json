@@ -1,0 +1,17 @@
+{
+  "description": "Noise texture is a component that procedurally generates a 2D texture with a random noise pattern like TV static.",
+  "category": "Assets:Procedural Textures",
+  "fields": {
+    "Seed": "The number to use to seed the generation of the noise for the texture.",
+    "Monochrome": "Whether to make the noise generation use a mix of 2 colors rather than random colors.",
+    "MonochromeMax": "Color 1 to use for the noise texture when ``Monochrome`` is enabled.",
+    "MonochromeMin": "Color 2 to use for the noise texture when ``Monochrome`` is enabled.",
+    "Bias": "The bias to use more of ``MonochromeMax`` or ``MonochromeMin``",
+    "Gain": "How much to brighten the entire texture.",
+    "Clamp": "Whether to keep color ranges for the output from going beyond 1 and causing bloom."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NoiseTexture&action=raw"
+}

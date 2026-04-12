@@ -1,8 +1,14 @@
 {
-  "description": "The Boolean Counter node takes in a list of booleans and counts the number of true and false values, as well as a count of all booleans in the list.",
+  "description": "The ``Boolean Counter`` node takes in a list of booleans and counts the number of true and false values, as well as a count of all booleans in the list.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Booleans": "The list of booleans to be counted.",
+    "TrueCount": "The true count of all booleans in the list.",
+    "FalseCount": "The false count of all booleans in the list.",
+    "TotalCount": "The total count of booleans in this list."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:BooleanCounter&action=raw"
 }

@@ -1,0 +1,12 @@
+{
+  "description": "The RibbonFollowerColorRangeInitializer component gives ribbon followers in a particle system a random color in a range upon start.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "MinValue": "The minimum color a ribbon follower can have.",
+    "MaxValue": "The maximum color a ribbon follower can have."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RibbonFollowerColorRangeInitializer&action=raw"
+}

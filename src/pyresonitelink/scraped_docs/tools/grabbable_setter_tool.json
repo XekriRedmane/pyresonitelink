@@ -1,0 +1,13 @@
+{
+  "description": "See Grabbable Setter Tool.",
+  "category": "Tools",
+  "fields": {
+    "ApplyToObjectRoot": "Whether to search for a root when hitting a collider before applying the grabbable to that slot.",
+    "SetScalable": "Whether the applied grababble should be scalable.",
+    "_indicatorColor": "The color to change for indicating this tool's settings. Used for the default cone model usually."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabbableSetterTool&action=raw"
+}

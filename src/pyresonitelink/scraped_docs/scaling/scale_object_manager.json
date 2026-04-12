@@ -1,0 +1,16 @@
+{
+  "description": "The ScaleObjectManager component is used to create a field of objects with different relative sizes. This is used most prominently in the \"Size of the Universe Adventure\" world.",
+  "category": "Transform:Scaling",
+  "fields": {},
+  "methods": {
+    "OnPlaceAtOptimalDistance": "Called when the Place At Optimal Distance button is touched.",
+    "ResetFarAwayObjects": "Called when the Reset Far Away Objects button is touched.",
+    "OnRandomizeLocations": "Called when the Randomize Locations button is touched.",
+    "AlignAll": "Called when the Align All button is touched.",
+    "OnGenerateTestObjects": "Called when the Generate Test Objects button is touched.",
+    "UpdateAll": "Called when the Update All button is touched."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ScaleObjectManager&action=raw"
+}

@@ -1,0 +1,15 @@
+{
+  "description": "The IcoSphereMesh component procedurally generates a icosahedron mesh for use with a MeshRenderer, according to the parameters provided. \n\nAs of Version 2020.10.25.1103, this value is clamped in the range [0,8] to prevent accidentally creating a mesh with an excessive number of vertices.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Radius": "Radius of the IcoSphere",
+    "Subdivisions": "Number of IcoSphere subdivisions \u2014 Values are clamped in the range [0,8]",
+    "FlatShading": "Use flat/faceted shading instead of smooth shading.",
+    "FlatFaceExtrude": "Distance to extrude faces after being generated. Creates an \"Exploded\" appearance",
+    "FlatFaceScale": "Scale of individual faces, relative to their base size."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a MeshRenderer to view the geometry. Don't forget to use a Material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:IcoSphereMesh&action=raw"
+}

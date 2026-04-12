@@ -1,8 +1,11 @@
 {
   "description": "The Local Update node fires an impulse for every user in the session on every engine update by that respective user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnUpdate": "Pulses for each user in the session on every engine update by said user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalUpdate&action=raw"
 }

@@ -1,0 +1,13 @@
+{
+  "description": "The Camera Permissions component allows you to set up who can use certain camera modes on the streaming camera. Currently, the component allows setting permissions for camera modes per role.",
+  "category": "Permissions",
+  "fields": {
+    "CameraModeFilterMode": "Whether to allow or disallow the ``CameraModes``",
+    "CameraModes": "List of Camera modes which decide how a stream camera can look at users and/or the world.",
+    "AllowFramingOtherUsers": "Determines whether focusing the camera on other user is allowed."
+  },
+  "methods": {},
+  "usage": "First, add an item to the list of camera modes, and select a role at the bottom. Then, use ``CameraModeFilterMode`` to determine if users can use any of the items in the list of camera modes.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CameraPermissions&action=raw"
+}

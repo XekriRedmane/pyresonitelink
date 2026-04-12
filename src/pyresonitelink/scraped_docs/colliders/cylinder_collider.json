@@ -1,0 +1,12 @@
+{
+  "description": "Is like a Capsule Collider except instead of rounded ends the ends are flat.",
+  "category": "Physics:Colliders",
+  "fields": {
+    "Height": "Height of the cylinder shape of the collider",
+    "Radius": "The radius of the cylinder shape of the collider from center to edge."
+  },
+  "methods": {},
+  "usage": "Can be used for a greek pillar in a room.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CylinderCollider&action=raw"
+}

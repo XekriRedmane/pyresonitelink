@@ -1,0 +1,20 @@
+{
+  "description": "See Dash menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "Icon": "The icon for this screen.",
+    "ActiveColor": "The color when this screen is active.",
+    "Label": "The name of this screen.",
+    "ScreenEnabled": "Whether this screen is enabled.",
+    "BaseResolution": "The resolution of this screen.",
+    "_screenRoot": "The root of the elements on this screen.",
+    "_screenCanvas": "The canvas being used to render this screen.",
+    "_modalOverlayManager": "The manager handling edit mode for this screen.",
+    "_button": "The button to select this screen for the dash.",
+    "_iconTexture": "The texture being used for the icon for this screen."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RadiantDashScreen&action=raw"
+}

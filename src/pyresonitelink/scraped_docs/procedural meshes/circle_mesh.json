@@ -1,0 +1,22 @@
+{
+  "description": "The CircleMesh component procedurally generates a circle mesh for use with a MeshRenderer.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Rotation": "How much to rotate the circle mesh from it's rest position before rendering",
+    "Segments": "How many sides the circle has.",
+    "Radius": "How big the circle's radius is.",
+    "Arc": "How much out of 360 degrees the circle should take up of a full circle.",
+    "UVScale": "The scale of the texture detail of the material rendered on this mesh.",
+    "ScaleUVWithSize": "Whether to make the detail of the material independent of the size of circle in global space.",
+    "TriangleFan": "Whether to make the circle a bunch of triangles that meet in the middle or not."
+  },
+  "methods": {},
+  "usage": "Attach this component to a slot, and then put it inside of a Mesh Renderer component to view what it looks like. Don't forget to add a material to the mesh renderer.",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "Procedural Meshes"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CircleMesh&action=raw"
+}

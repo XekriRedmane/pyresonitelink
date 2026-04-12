@@ -1,8 +1,13 @@
 {
-  "description": "The Rect To Position Size node takes in a rect value and returns 2 specific float2 values giving a position of the rect's X and Y position, and giving the size of the rect with the literal Width and Height. In contrast to the Rect To Min Max node where it adds the position and size to get a rect's bounding data.",
+  "description": "The Rect To Position Size node takes in a rect value and returns 2 specific float2 values giving a position of the rect's ``X`` and ``Y`` position, and giving the size of the rect with the literal ``Width`` and ``Height``. In contrast to the Rect To Min Max node where it adds the position and size to get a rect's bounding data.\n\nIf you need to split a rect into specific and separated outputs, use the Rect To XYWH node instead.|suggestion}}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Rect": "The rect value.",
+    "Position": "Returns the ``X`` and ``Y`` position of this rect.",
+    "Size": "Returns the literal ``Width`` and ``Height`` size of this rect."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RectToPositionSize&action=raw"
 }

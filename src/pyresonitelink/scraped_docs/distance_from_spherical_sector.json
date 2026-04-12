@@ -1,8 +1,16 @@
 {
   "description": "The Distance From Spherical Sector node takes a point in 3D space and computes the distance from a spherical sector defined by its center, direction, radius, and angle. Then it returns the distance from that sphere.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Center": "The center of the sphere.",
+    "Direction": "The facing direction of the sphere.",
+    "Radius": "The radius of the sphere.",
+    "Angle": "The angle this point and sphere is going to be using for calculations.",
+    "Point": "The point we are checking.",
+    "* ([[Type:float3|float3]])": "Returns the distance from the point and the sphere compared with the point given."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DistanceFromSphericalSector&action=raw"
 }

@@ -1,0 +1,16 @@
+{
+  "description": "The GrabTransformReset component resets transforms of a grabbable on the same slot upon grab and/or release.",
+  "category": "Transform:Interaction",
+  "fields": {
+    "ResetPositionOnGrab": "Whether to set the grabbable position to 0 on grab.",
+    "ResetRotationOnGrab": "Whether to set the grabbable rotation to 0 on grab.",
+    "ResetScaleOnGrab": "Whether to set the grabbable scale to 1 on grab.",
+    "ResetPositionOnRelease": "Whether to set the grabbable position to 0 on release.",
+    "ResetRotationOnRelease": "Whether to set the grabbable rotation to 0 on release.",
+    "ResetScaleOnRelease": "Whether to set the grabbable scale to 1 on release."
+  },
+  "methods": {},
+  "usage": "Attach to the same slot as a grabbable Component to utilize its features.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GrabTransformReset&action=raw"
+}

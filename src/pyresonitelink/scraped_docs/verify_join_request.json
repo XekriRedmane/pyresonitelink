@@ -1,8 +1,23 @@
 {
-  "description": "The Verify Join Request node listens for join requests when users join a world with an enabled join verification system, firing an event when it happens. This node returns a set of information that contains info of the joining user. This node can be combined with the Allow Join, Deny Join, and Assign Role nodes.",
+  "description": "The Verify Join Request node listens for join requests when users join a world with an enabled join verification system, firing an event when it happens. This node returns a set of information that contains info of the joining user. This node can be combined with the Allow Join, Deny Join, and Assign Role nodes.\n\nTo activate a join verification system, a user needs to open the node in a Scene Inspector and go to the VerifyJoinRequest component. The bottom of the component has a button labeled \"Set as custom join request verifier\" and a warning letting users know that this feature does not prevent tampering of worlds that use this feature.\n\nThe following is the exact warning inside this node:",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Verify": "Fires when a user is wanting to join the world.",
+    "UserID": "The user ID that is wanting to join the world.",
+    "UserSessionID": "The user session ID that the user is coming from.",
+    "MachineID": "The user machine ID that is wanting to join the world.",
+    "Username": "The username that is wanting to join the world.",
+    "HeadOutputDevice": "The joining user's head output device.",
+    "Platform": "The joining user's platform.",
+    "IsInvited": "Returns if this joining user was invited.",
+    "IsContact": "Returns if this joining user is in the host's contacts list.",
+    "IsInKioskMode": "Returns if this joining user is in kiosk mode.",
+    "IsSpectatorBanned": "Returns if this joining user was banned as a spectator.",
+    "IsMuteBanned": "Returns if this joining user was banned and muted.",
+    "Handle": "Returns this join request as a type."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:VerifyJoinRequest&action=raw"
 }

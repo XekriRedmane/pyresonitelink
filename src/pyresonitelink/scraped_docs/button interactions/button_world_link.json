@@ -1,0 +1,12 @@
+{
+  "description": "The ButtonWorldLink component takes in a WorldLink Component. When an IButton is pressed while this component is in the same slot as it, this component will attempt to open a world that is provided from that world link component.\n\n}}",
+  "category": "Common UI:Button Interactions",
+  "fields": {
+    "LastOpened": "Shows the last opened time (not seen in the component).",
+    "WorldLink": "The WorldLink component that contains the world information."
+  },
+  "methods": {},
+  "usage": "This allows a user to make customizable world loading buttons, either as a way to go to another world or to pre-load a world.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonWorldLink&action=raw"
+}

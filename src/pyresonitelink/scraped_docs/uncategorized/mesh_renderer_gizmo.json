@@ -1,0 +1,12 @@
+{
+  "description": "The MeshRenderer Gizmo is used to change the Bounding properties to a mesh object using the dev tool.",
+  "category": "Uncategorized",
+  "fields": {
+    "_target": "The mesh renderer to edit.",
+    "_meshCollider": "The mesh collider to edit along with ``_target``."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MeshRendererGizmo&action=raw"
+}

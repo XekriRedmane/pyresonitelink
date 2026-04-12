@@ -1,0 +1,14 @@
+{
+  "description": "The UniverseStatus component provides information on the current universe.",
+  "category": "Cloud:Indicators",
+  "fields": {
+    "UniverseId": "The ID of the universe current Universe.",
+    "UniverseName": "The universe's name.",
+    "PrimaryGroupId": "The ID of the primary group of the universe.",
+    "InUniverse": "Whether we are in a universe or not."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and it will start giving data on the current universe.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UniverseStatus&action=raw"
+}

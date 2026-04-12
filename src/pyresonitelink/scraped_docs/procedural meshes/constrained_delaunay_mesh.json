@@ -1,0 +1,19 @@
+{
+  "description": "The Constrained Delaunay Mesh component generates geometry for a mesh that is a plane that can have holes cut into it, and can be free drawn.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Vertices": "The vertices that make up the outside edge of the plane.",
+    "Holes": "The holes cut into the main mesh.",
+    "AutoTriangulationPlane": "Whether to auto generate the triangulation plane value.",
+    "TriangulationCenter": "Where to attempt to center the triangulation.",
+    "TriangulationPlaneNormal": "The plane to align the triangulation calculation with for best fit.",
+    "AutoNormals": "Whether to auto generate normals.",
+    "AutoTangents": "Whether to auto generate tangents."
+  },
+  "methods": {
+    "OnAutoComputePlane": "Runs when the plane tries to auto compute the best values for generating the geometry and triangulation."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConstrainedDelaunayMesh&action=raw"
+}

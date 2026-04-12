@@ -1,0 +1,31 @@
+{
+  "description": "This component creates a force field that allows the setting of or applying force to the velocity of Character Controllers.",
+  "category": "Locomotion:Interaction",
+  "fields": {
+    "TriggersOnly": "Whether to only allow trigger colliders attached to character controller objects to activate the force field.",
+    "Force": "force direction and magnitude to apply a character controller within range with.",
+    "ForceMode": "Whether to use impulse, apply, or set velocity using ``Force``",
+    "ForceSpace": "Whether to do the force direction in local or global space (so should ``Force`` be scaled and rotated by the slot this is on or not?)",
+    "RadialForceRadius": "The range of effect this force field has.",
+    "ForceSlotSpace": "Override the transform space for ``Force`` with this if set.",
+    "MinActivationVelocity": "The minimum velocity a character controller has to be going to trigger this force field.",
+    "MaxForceVelocity": "How fast the character controller's velocity can be at max after being affected by this component when the user isn't holding Jump",
+    "HoldJumpMaxForceVelocity": "How fast the character controller's velocity can be at max after being affected by this component when the user is holding Jump",
+    "PreseveDirectionAcrossPlane": "Calculates a plane that is perpendicular to the vector ``Force`` (like a stick stuck into a piece of paper) and maintains the initial direction of the velocity of the character controller in either the forward or backwards facing direction of this plane.",
+    "IgnoreParentUser": "Whether to ignore the active user when finding character controllers within range of ``RadialForceRadius``. This does not ignore character controllers that are simulated by the user.",
+    "NoJumpMultiplier": "How much to multiply the effect of ``Force`` when the user isn't holding Jump",
+    "HoldJumpMultiplier": "How much to multiply the effect of ``Force`` when the user is holding Jump",
+    "MaxCharacterVelocity": "The maximum velocity this component can set a character controller's speed to after setting a force on it.",
+    "MinCharacterVelocity": "The minimum velocity this component can set a character controller's speed to after setting a force on it.",
+    "CharacterVelocityDampeningSpeed": "How fast to slow the user down. this can be used to give the effect of jumping into molasses."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Needs a collider on the same hierarchy to allow triggering this component."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CharacterForceField&action=raw"
+}

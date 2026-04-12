@@ -1,0 +1,15 @@
+{
+  "description": "The RootCategoryView component is commonly used in Settings, and Worlds Menu view to show the list of root view categories while still showing the current ``Path`` like audio device lists, trackers, worlds, or anything else feeds might have.",
+  "category": "Radiant UI:Data Feeds:Views",
+  "fields": {
+    "CategoryManager": "The Mapper to handle showing categories in the root regardless of what ``Path`` is.",
+    "ItemsManager": "The Mapper to handle showing items within a selected ``Path``, no matter how deep of a ``Path`` this is viewing."
+  },
+  "methods": {
+    "OnSetupTemplate": "Called when the setup template button is touched.",
+    "PathSegmentName": "Converts a path name element and a depth into a corresponding locale string for translation."
+  },
+  "usage": "Attach to a slot and provide a Feed, a Item Mapper, and Slots to place items in order for it to work.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RootCategoryView&action=raw"
+}

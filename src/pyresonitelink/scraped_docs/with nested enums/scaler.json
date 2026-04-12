@@ -1,0 +1,16 @@
+{
+  "description": "The Scaler component scales a target scale based on the distance of the slot this component is on from \"\"Point\"\" = (``ScaleOffset`` in ``ScaleSource``'s transform space) with the distance of both points calculated in ``ScaleSpace``.\n\nIf the slots are all under root, the ``scaleTarget`` is targeting the scale of this slot, ``ScaleSource`` is set to root, ``ScaleMode`` is set to 'FullIndependent', ``ScaleOffest`` is set to (0,0,0), ``ScaleMultiplier`` is set to (1,1,1), and the slot this component is on is an unmodified default cube, the edge of at least one part of the cube on this slot will match perfectly to Root.",
+  "category": "With Nested Enums",
+  "fields": {
+    "ScaleOffset": "The offset of point A to ``ScaleSource``.",
+    "ScaleMultiplier": "How much to multiply the strength of the distance from A to B after conversion has on scale.",
+    "ScaleSource": "The source space of point A.",
+    "ScaleMode": "How to restrict the distance calculations for scaling certain axies.",
+    "ScaleSpace": "The space to convert A and B to for distance measurement.",
+    "scaleTarget": "The field to drive to the distance from A to B after conversion to space ``ScaleSpace`` and applying ``ScaleMode`` restrictions, and then muliplying by 2 * ``ScaleMultiplier``."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and fill the fields to start using this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Scaler&action=raw"
+}

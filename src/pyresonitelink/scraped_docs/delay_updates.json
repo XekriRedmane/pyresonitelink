@@ -1,8 +1,14 @@
 {
   "description": "Delay Updates is a ProtoFlux node that will send an impulse out of Next (Continuation) after Updates (int) updates after * (ASync Call) is impulsed.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses#ASync|ASync Call]])": "Call to start the delay.",
+    "Updates": "How many updates to delay for.",
+    "Next": "Fires after Updates (int) updates has passed after an impulse has been sent to * (ASync Call).",
+    "OnTriggered": "fires immediately after * (ASync Call) is called."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DelayUpdates&action=raw"
 }

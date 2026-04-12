@@ -1,0 +1,12 @@
+{
+  "description": "The GravityForce component acts as a global force for particles that makes them fall either up or down along the Up axis.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Gravity": "The force to apply. Negative values are down and positive values are up.",
+    "OverrideForceSpace": "The space to calculate gravity force in. Is converted into the particle system's space."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GravityForce&action=raw"
+}

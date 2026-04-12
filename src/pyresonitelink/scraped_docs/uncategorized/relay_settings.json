@@ -1,0 +1,16 @@
+{
+  "description": "For better info, see Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "AlwaysUseRelay": "Relays are typically used as a fallback when a direct connection to the host cannot be established. By enabling this option, you will force the connection to always happen through a relay. This can be useful in cases of connection issues to particular hosts. It is NOT recommended to have this option permanently on.",
+    "UseClosestAvailableRelay": "When this option is enabled, the closest available relay will be automatically selected. If you want to connect through a specific relay (e.g. in case of long distance connections to avoid packet queuing) you can disable this option and configure the preferred relays below.",
+    "RelayPriorities": "A list of relays to use in order when trying to connect to a host.",
+    "RelayPrioritiesEnabled": "Whether or not to use the relay priorities list."
+  },
+  "methods": {
+    "GetEntry": "Can be used to retrieve an entry from the list of ``RelayPriorities``."
+  },
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RelaySettings&action=raw"
+}

@@ -1,0 +1,13 @@
+{
+  "description": "This component gives the info on the size of a Texture2D.",
+  "category": "Assets:Utility",
+  "fields": {
+    "Texture": "The texture to read data for",
+    "Size": "The size of ``Texture``",
+    "Width": "width of ``Texture``",
+    "Height": "height of ``Texture``"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

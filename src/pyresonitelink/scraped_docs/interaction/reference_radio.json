@@ -1,0 +1,13 @@
+{
+  "description": "The ReferenceRadio component is a listener component that activates or deactivates slots using the ``CheckVisual`` field, based if a ``TargetReference`` matches the ``OptionReference`` field. When a match is found, the ``CheckVisual`` field will be set to true.",
+  "category": "UIX:Interaction",
+  "fields": {
+    "CheckVisual": "The bool that will be set true when there is a match.",
+    "OptionReference": "The reference we are checking a match for, when found, it will trigger this option.",
+    "TargetReference": "The thing we are using to check."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceRadio&action=raw"
+}

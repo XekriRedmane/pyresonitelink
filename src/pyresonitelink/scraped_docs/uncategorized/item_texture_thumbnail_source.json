@@ -1,0 +1,14 @@
+{
+  "description": "The ItemTextureThumbnailSource component can be used to customize the inventory preview of an item, setting it to a texture.",
+  "category": "Uncategorized",
+  "fields": {
+    "Texture": "The texture that should be used as the item's inventory preview. If null, the component will be ignored.",
+    "Crop": "The rectangle that defines what section of the image to use. (Or null to use the entire image)"
+  },
+  "methods": {
+    "OnEnsureSingleThumbnailSource": "All other components of the same type on the hiearchy of this slot will be deleted when this is pressed."
+  },
+  "usage": "To work, the component needs to be attached to the object's root slot and have an image in its ``Texture``. The ``Ensure single thumbnail source`` button can be used to remove all other instances of the component in the item's hierarchy.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ItemTextureThumbnailSource&action=raw"
+}

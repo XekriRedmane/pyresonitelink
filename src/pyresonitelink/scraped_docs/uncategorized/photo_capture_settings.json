@@ -1,0 +1,23 @@
+{
+  "description": "The PhotoCaptureSettings component is used to control the behavior of the PhotoCaptureManager and what it does.\n\nSee Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "FingerGestureEnabled": "Whether the finger photos should even render.",
+    "NormalCaptureResolution": "The resolution of pictures taken without timer.",
+    "TimerCaptureResolution": "The resolution of pictures taken with timer.",
+    "TimerSeconds": "How long the timer should be for timed photos.",
+    "CapturePrivateUI": "Whether finger photos should capture private ui elements like the dash.",
+    "CaptureStereo": "Whether photos should be 3D with a left and right \"eye\".",
+    "StereoSeparation": "how far apart the left and right \"eye\" are when taking stereo photos.",
+    "AlwaysHideNameplates": "Whether to always hide nameplates in taken photos.",
+    "EncodeFormat": "The format taken photos should output as.",
+    "PhotoAutosavePath": "Where to auto save photos in the inventory to.",
+    "AutosaveActive": "Whether to use the auto save photos to inventory feature."
+  },
+  "methods": {
+    "OpenAutosavePath": "Opens the auto save path set in the settings."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PhotoCaptureSettings&action=raw"
+}

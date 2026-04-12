@@ -1,0 +1,11 @@
+{
+  "description": "The DebugSettings component is a component updated during Resonite updates to contain bleeding edge settings for the game.",
+  "category": "",
+  "fields": {
+    "DebugInputBindings": "Whether to display the user's controller inputs on their hands in userspace."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugSettings&action=raw"
+}

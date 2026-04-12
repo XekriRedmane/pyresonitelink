@@ -1,8 +1,13 @@
 {
-  "description": "The Rect From Position Size node takes in 2 specific float2 values, a position of the rect's X and Y position, and the size of the rect with the literal Width and Height, then returns a rect value. In contrast to the Rect From Min Max node where it adds the position and size to get a rect's bounding data.",
+  "description": "The Rect From Position Size node takes in 2 specific float2 values, a position of the rect's ``X`` and ``Y`` position, and the size of the rect with the literal ``Width`` and ``Height``, then returns a rect value. In contrast to the Rect From Min Max node where it adds the position and size to get a rect's bounding data.\n\nIf you want to make a rect using specific and separated inputs, use the Rect From XYWH node instead.|suggestion}}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Position": "The ``X`` and ``Y`` position for this rect.",
+    "Size": "The literal ``Width`` and ``Height`` size for this rect.",
+    "Rect": "Returns the rect value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RectFromPositionSize&action=raw"
 }

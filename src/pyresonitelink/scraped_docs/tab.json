@@ -1,7 +1,9 @@
 {
-  "description": "The Tab node is a character literal constant for the \"Tab\" character (Unicode: U+0009).",
+  "description": "The ``Tab`` node is a character literal constant for the \"Tab\" character (Unicode: U+0009).\n\nThis node is about the text character. Its usage should not be confused with that of keyboard keys used for handling input.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:char|char]])": "The character literal constant of the Tab character."
+  },
   "methods": {},
   "usage": "",
   "notes": [
@@ -9,5 +11,6 @@
       "title": "Bugs",
       "text": "The name of this node currently does not display correctly in-app due to a bug."
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Tab&action=raw"
 }

@@ -1,8 +1,11 @@
 {
-  "description": "See ProtoFlux Tool Usage for how to make this node.",
+  "description": "due to wiki limitations, this node does not currently have an HTML rendering of the node.\n\nSee ProtoFlux Tool Usage for how to make this node.\n\nAllows you to continuously locally write an inputted reference to a variable.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* (Generic)": "A value to drive the internal field with."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ReferenceDrive&action=raw"
 }

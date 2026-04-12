@@ -1,8 +1,11 @@
 {
-  "description": "The Inverted Delta Time node returns the frames per second, shown when pulling a display node from it and comparing it to the Dash's FPS counter.",
+  "description": "The ``Inverted Delta Time`` node returns the frames per second, shown when pulling a display node from it and comparing it to the Dash's FPS counter.\n\nThis is done by taking the reciprocal of delta time: FPS = 1 / dT",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:float|float]])": "Returns the inverted delta time (1 / dT), showing the amount of frames in a second."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:InvertedDeltaTime&action=raw"
 }

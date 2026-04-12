@@ -1,0 +1,23 @@
+{
+  "description": "The GradiantImage component takes in a SpriteProvider or Material and controls the image color using the four corners of the image, then gradients them into the image.\n\n}}",
+  "category": "UIX:Graphics",
+  "fields": {
+    "Sprite": "The sprite to use as the image.",
+    "Material": "The Material to use as the image.",
+    "PreserveAspect": "Preserves the aspect ratio of this image provided.",
+    "NineSliceSizing": "Tells how the image gets 9-sliced on this UIX.",
+    "FlipHorizontally": "Flips the image horizontally (but not the color).",
+    "FlipVertically": "Flips the image vertically (but not the color).",
+    "InteractionTarget": "Makes this image as the interaction target for this UIX.",
+    "FillRect": "The filling rect for this image.",
+    "__legacyZWrite": "The legacy Z writing for this image.",
+    "TintTopLeft": "The color of this top left corner.",
+    "TintTopRight": "The color of this top right corner.",
+    "TintBottomRight": "The color of this bottom right corner.",
+    "TintBottomLeft": "The color of this bottom left corner."
+  },
+  "methods": {},
+  "usage": "You can make fancy effects and icons using this component, especially if your hue shifting the different color corners.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GradientImage&action=raw"
+}

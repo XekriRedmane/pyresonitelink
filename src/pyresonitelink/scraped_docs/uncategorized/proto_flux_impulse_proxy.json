@@ -1,0 +1,18 @@
+{
+  "description": "The ProtoFluxImpulseProxy component interacts with the ProtoFlux tool and ProtoFlux in general to act as the relay for attaching impulses to ProtoFlux nodes.",
+  "category": "Uncategorized",
+  "fields": {
+    "Node": "The node this is proxying an impulse for",
+    "ElementName": "The name of the element that this is attaching an impulse to.",
+    "IsDynamic": "Whether the impulse is dynamic",
+    "Index": "The index of the property to make an impulse for.",
+    "ConnectPoint": "the slot to attach the wire end being connected.",
+    "Wire": "The wire being attached to this impulse proxy",
+    "NodeImpulse": "The impulse value field to target.",
+    "ImpulseType": "the type of impulse this is for."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ProtoFluxImpulseProxy&action=raw"
+}

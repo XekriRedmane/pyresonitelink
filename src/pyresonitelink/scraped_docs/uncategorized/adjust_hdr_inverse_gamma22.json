@@ -1,0 +1,16 @@
+{
+  "description": "Drives a target field by applying a fixed inverse 2.2 HDR gamma from to an input value.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The target field to drive the value of.",
+    "Value": "The value to apply the gamma calculation to."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "This node performs the same calculation as the Apply HDR Inverse Gamma ColorX ProtoFlux node, with a gamma value of 2.2."
+    }
+  ]
+}

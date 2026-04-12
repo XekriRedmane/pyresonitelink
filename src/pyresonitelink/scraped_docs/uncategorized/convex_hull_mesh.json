@@ -1,0 +1,13 @@
+{
+  "description": "The ConvexHullMesh component is used to generate a Convex Hull Mesh using a series of ``Points`` to wrap around.\n\nThe ``Points`` field is not editable currently without Mods.",
+  "category": "Uncategorized",
+  "fields": {
+    "Points": "The points in local space this mesh is trying to shrink wrap around.",
+    "FlatShading": "Whether the geometry should be not smooth.",
+    "MinVertexDistance": "the distance by minimum 2 ``Points`` can be before they're automatically merged."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ConvexHullMesh&action=raw"
+}

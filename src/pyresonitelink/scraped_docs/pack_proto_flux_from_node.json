@@ -1,8 +1,14 @@
 {
-  "description": "The Pack ProtoFlux From Node node takes in a start point for your ProtoFlux code and a target slot to place your code in, and when called, will pack everything in place into that provided slot.",
+  "description": "The ``Pack ProtoFlux From Node`` node takes in a start point for your ProtoFlux code and a target slot to place your code in, and when called, will pack everything in place into that provided slot.\n\nIf you decide to add more nodes and connect them to a node that is under a different slot, the connected nodes will pack correctly and be under the new slot. However, unpacking from the new slot may not completely unpack properly.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to pack our selected nodes.",
+    "StartNode": "The starting point node where we should pack the nodes from.",
+    "Target": "The target slot we want to pack to.",
+    "Next": "Continues the code from here."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:PackProtoFluxFromNode&action=raw"
 }

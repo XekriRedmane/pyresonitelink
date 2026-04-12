@@ -1,8 +1,13 @@
 {
   "description": "The Set Loop node tells a IPlayable to loop or disable loop upon impulse.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "=== Target (IPlayable) ===\n\nThe IPlayable to set loop on.",
+    "Loop": "Set whether the target should loop or not.",
+    "Next": "Sends an impulse after the initial call."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetLoop&action=raw"
 }

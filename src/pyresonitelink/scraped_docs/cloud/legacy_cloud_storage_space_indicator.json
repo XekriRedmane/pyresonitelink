@@ -1,0 +1,23 @@
+{
+  "description": "The LegacyCloudStorageSpaceIndicator component was used in old migrated legacy content that showed the cloud storage usage for a user. This component should not be used in new content and should be replaced when possible.",
+  "category": "Cloud",
+  "fields": {
+    "Source": "The source of the cloud usage data.",
+    "ContainerColor": "The color of the UI container.",
+    "UsedColor": "The normal color when storage has been used.",
+    "LowSpaceColor": "The color to use when space is low.",
+    "CriticalSpaceColor": "The color to use when space is almost filled or beyond filled.",
+    "LowSpaceThreshold": "The percentage 0 to 1 for cloud storage to be considered low space.",
+    "CriticalSpaceThreshold": "The percentage from 0 to 1 for cloud storage to be considered critically full.",
+    "_ownerLabel": "The text renderer that shows the owner of this cloud storage indicator.",
+    "_usageLabel": "The text renderer that shows the usage of the cloud storage for the user.",
+    "_percentLabel": "The text renderer that shows the percentage full for the cloud storage of the user.",
+    "_progressBar": "The UI used to show the amount of storage used as a progress bar.",
+    "__legacyOwnerId": "The legacy owner ID for what user this component was supposed to show the cloud storage for.",
+    "__legacyMemberQuota": "Whether this component was supposed to show the amount of storage a user was using for a group shared storage that they were allocated."
+  },
+  "methods": {},
+  "usage": "Just don't.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyCloudStorageSpaceIndicator&action=raw"
+}

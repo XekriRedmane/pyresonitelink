@@ -1,8 +1,12 @@
 {
   "description": "The Value Square node takes in a value and squares it, basically multiplying itself by 2 and returning that value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "N": "The number we want to square.",
+    "* (Pseudo-Generic)": "Returns the squared value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueSquare&action=raw"
 }

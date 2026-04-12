@@ -1,8 +1,12 @@
 {
-  "description": "The ValueMaxMulti will take multiple inputs and output the maximum value.",
+  "description": "The ``ValueMaxMulti`` will take multiple inputs and output the maximum value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Operands": "One of the values to compare.",
+    "* (Pseudo-generic)": "Returns the highest value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueMaxMulti&action=raw"
 }

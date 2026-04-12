@@ -1,0 +1,13 @@
+{
+  "description": "The Babble Settings component is used to adjust settings related to facial tracking settings, and is exposed through the settings menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "OSC_DataPort": "The port to listen for Babble Face Data from."
+  },
+  "methods": {
+    "ResetToDefault": "Changes settings back to default settings."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BabbleSettings&action=raw"
+}

@@ -1,0 +1,15 @@
+{
+  "description": "The Wobbler1D component can be used to make a value randomly change in a smooth fashion.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Target": "The field to wobble.",
+    "Offset": "The starting point of the wobble.",
+    "Speed": "how fast to wobble.",
+    "Magnitude": "the amount to wobble from ``Offset``",
+    "Seed": "the value to use as a seed for the randomness."
+  },
+  "methods": {},
+  "usage": "* Wobble things with the Wobbler by ProbablePrime",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Wobbler1D&action=raw"
+}

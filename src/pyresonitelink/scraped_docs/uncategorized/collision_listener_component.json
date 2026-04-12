@@ -1,0 +1,11 @@
+{
+  "description": "This component listens to collider events and sends a collider event. See Collider Events for how these work.",
+  "category": "Uncategorized",
+  "fields": {
+    "TriggersOnly": "Whether to listen to events caused by triggers only."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CollisionListenerComponent&action=raw"
+}

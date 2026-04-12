@@ -1,0 +1,12 @@
+{
+  "description": "The ColorOverLifetimeStartEnd component makes particles in a Particle system change color linearly over the duration of their lifetime.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "StartColor": "The color particles should be when emitted.",
+    "EndColor": "The color particles should lerp towards over their lifetime and they will have this color right before they die."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorOverLifetimeStartEnd&action=raw"
+}

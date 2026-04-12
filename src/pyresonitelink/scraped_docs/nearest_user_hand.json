@@ -1,8 +1,19 @@
 {
   "description": "Nearest User Hand is a protoflux node that returns the closest user hand to a slot and the hand's user, or closest to the root if not provided a slot. This will also ignore the user provided to IgnoreUser (User).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Reference": "The slot which to use as a point to find the closest hand to.",
+    "IgnoreUser": "The user to ignore when looking for the nearest hand.",
+    "IgnoreAFK": "Will not return a hand position from a user that is not currently focused into the world.",
+    "GetLeft": "Whether to get the left hand if closest, true by default.",
+    "GetRight": "Whether to get the right hand if closest, true by default.",
+    "Slot": "The slot of the hand when found.",
+    "User": "The user of the hand that was found.",
+    "Distance": "How far away the found hand was.",
+    "Chirality": "The side of the hand that was found. Left or Right or -1."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:NearestUserHand&action=raw"
 }

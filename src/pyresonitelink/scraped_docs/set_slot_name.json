@@ -1,8 +1,14 @@
 {
   "description": "Set's the name of the provided Instance slot upon calling * (Call).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Call this to set the Instance (Slot)'s name to Name (String).",
+    "Instance": "Slot to set the property for.",
+    "Name": "The value to set Instance (Slot)'s name field to when * (Call) is called.",
+    "Next": "sends an impulse when Instance (Slot)'s name field is set to Name (String) when * (Call) is called."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SetSlotName&action=raw"
 }

@@ -1,0 +1,12 @@
+{
+  "description": "The RectSizeDriver component is used to change the size of a RectTransform (or any other float2 value).\n\n}}",
+  "category": "UIX:Utility",
+  "fields": {
+    "TargetSize": "The target to scale using this component.",
+    "Scale": "The scale to adjust."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RectSizeDriver&action=raw"
+}

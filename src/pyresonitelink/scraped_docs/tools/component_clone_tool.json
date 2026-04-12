@@ -1,0 +1,17 @@
+{
+  "description": "See Component Clone Tool",
+  "category": "Tools",
+  "fields": {
+    "ApplyToObjectRoot": "Whether to search for an object root to put the Component onto rather than the hit component or slot.",
+    "EnsureSingleInstance": "Whether the tool should delete existing components of the same type before adding the ones from the template.",
+    "AllowPickup": "Whether the tool can add components to its template list with secondary.",
+    "_label": "The label giving information on this tool.",
+    "_templateRoot": "The slot this tool is using to store its list of components to place onto other slots."
+  },
+  "methods": {
+    "OnClearTemplate": "Handles clearing the components on ``_templateRoot``"
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ComponentCloneTool&action=raw"
+}

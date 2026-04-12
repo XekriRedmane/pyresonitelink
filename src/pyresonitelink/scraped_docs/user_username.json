@@ -1,8 +1,11 @@
 {
   "description": "This node returns a user's username from a user object.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:String|String]])": "The username of the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserUsername&action=raw"
 }

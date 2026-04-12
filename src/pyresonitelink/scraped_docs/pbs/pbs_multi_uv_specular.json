@@ -1,0 +1,8 @@
+{
+  "description": "The PBS_MultiUV_Specular component is used to create a multiple image layered effect (pairs) except for a lack of a second Specular map image. When this material's AlphaHandling mode is set to AlphaBlend, it behaves as if if were Opaque, which is a known bug.https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/825",
+  "category": "Assets:Materials:PBS",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

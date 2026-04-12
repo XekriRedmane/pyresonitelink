@@ -1,0 +1,9 @@
+{
+  "description": "The Null Particle Renderer component is used with Photon Dust to render zero geometry particles.",
+  "category": "Rendering:Particle System:Renderers",
+  "fields": {},
+  "methods": {},
+  "usage": "Used for debugging.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NullParticleRenderer&action=raw"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "Asset Proxy is a component that allows for access to an asset through a slot when being grabbed by the user.",
+  "category": "Uncategorized",
+  "fields": {
+    "AssetReference": "The asset to expose to asset ref fields when grabbing the object root of the slot this component is on."
+  },
+  "methods": {},
+  "usage": "put this component on a slot and fill the ``AssetReference`` with an asset reference to allow access to an asset via holding this slot's object root. The asset will then be available when holding onto the object root of the slot this component is on, and clicking on a UIX field (ex: an inspector field) places the asset type that this component has inside of it into the field.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AssetProxy&action=raw"
+}

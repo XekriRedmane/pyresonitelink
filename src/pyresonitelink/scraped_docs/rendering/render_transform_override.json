@@ -1,0 +1,20 @@
+{
+  "description": "The RenderTransformOverride component is used to transform, rotate or scale a Slot following a specific rendering context. \n\nIt can be used, for instance, to scale a player's head to zero locally to effectively hide it from the user's view while it still being visible in mirrors, cameras and by other players.\n\nThis component is automatically added to all Avatars on the Head BodyNode by the AvatarUserViewHeadOverride component. It will also setup drives for Enabled, PositionOverride, and RotationOverride.",
+  "category": "Rendering",
+  "fields": {
+    "Context": "The Context when rendering from to apply this override.",
+    "PositionOverride": "If not null, will override the position of the slot this component is on.",
+    "RotationOverride": "If not null, will override the rotation of the slot this component is on.",
+    "ScaleOverride": "If not null, will override the scale of the slot this component is on.",
+    "SkinnedMeshRenderers": "List of SkinnedMeshRenderers that need to be recalculated and overridden."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Bugs",
+      "text": "* This component has a very small chance to increase the frequency of crashes.https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/269 \n* This component might not function correctly if there are any Null fields in the SkinnedMeshRenderers list.https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/2474 \n* This component currently has an imprecise understanding of the UserView context and will be active while an item is grabbed or when saving a thumbnail to the inventory.https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/3732 \n* This component will cause motion blur to be very visible on object when looking through a cameras or in a mirror.https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/1654"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RenderTransformOverride&action=raw"
+}

@@ -1,0 +1,21 @@
+{
+  "description": "The GridContainerScreen component can be used to add additional tabs to the dash and is used in some custom tab facets for the Dash Menu.",
+  "category": "Uncategorized",
+  "fields": {
+    "Icon": "The icon of the dash menu tab.",
+    "ActiveColor": "The color when this dash menu screen tab is selected.",
+    "Label": "The text for this dash menu Screen tab.",
+    "ScreenEnabled": "Whether the screen is enabled for viewing.",
+    "BaseResolution": "The default resolution of the tab screen.",
+    "_screenRoot": "The root slot of the screen view.",
+    "_screenCanvas": "The canvas being used for the tab view.",
+    "_modalOverlayManager": "The Overlay manager being used for handling edit mode.",
+    "_button": "The button to select this dash menu screen tab.",
+    "_iconTexture": "The texture being used for the icon of this dash menu tab.",
+    "_gridContainer": "The component handling the alignment of grid items on this screen."
+  },
+  "methods": {},
+  "usage": "Can be used as part of a facet that adds an extra screen to the dash for facet placement or preset facets.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GridContainerScreen&action=raw"
+}

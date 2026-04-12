@@ -1,8 +1,13 @@
 {
-  "description": "The Concatenate Chars node combines two characters into a new string.",
+  "description": "The Concatenate Chars node combines two characters into a new string.\n\nThis is very useful when working with individual characters and need to perform string operations on them, saving a node if one needs to concatenate two as well.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The first character to combine.",
+    "B": "The second character to combine.",
+    "* ([[Type:string|string]])": "``A`` and ``B`` combined into a string."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ConcatenateChars&action=raw"
 }

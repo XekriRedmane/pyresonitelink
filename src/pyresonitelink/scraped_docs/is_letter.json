@@ -1,8 +1,12 @@
 {
   "description": "The Is Letter node takes in a character literal and returns if that character is a letter.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character literal to check.",
+    "* ([[Type:bool|bool]])": "Returns ``true`` if ``Character`` is a letter, ``false`` otherwise. Letters recognized by this node are part of the Unicode delegations ``Lu``, ``Ll``, ``Lt``, ``Lm``, or ``Lo``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsLetter&action=raw"
 }

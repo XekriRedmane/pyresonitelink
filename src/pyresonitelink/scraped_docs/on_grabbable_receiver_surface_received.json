@@ -1,0 +1,13 @@
+{
+  "description": "On Grabbable Receiver Surface Received is a ProtoFlux node that monitors a Reciever for when a grabbable is let go of and is received by the Source (GrabbableReceiverSurface). The node then sends an Impulse.",
+  "category": "",
+  "fields": {
+    "OnReceived": "Sends an impulse when Grabbable (IGrabbable) is let go of and is received by the Source (GrabbableReceiverSurface).",
+    "RecievedGrabbable": "The grabbable that was recieved, only has a value during the OnReceived (Call) impulse.",
+    "FromGrabber": "The grabber that let go of the RecievedGrabbable (IGrabbable)."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:OnGrabbableReceiverSurfaceReceived&action=raw"
+}

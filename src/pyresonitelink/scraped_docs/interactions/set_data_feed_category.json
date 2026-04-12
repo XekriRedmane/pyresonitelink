@@ -1,0 +1,13 @@
+{
+  "description": "The SetDataFeedCategory sets the Path field for ``View`` when it receives a button event from a button on the same slot or somewhere else.",
+  "category": "Radiant UI:Data Feeds:Interactions",
+  "fields": {
+    "View": "The view to change the Path for.",
+    "CategoryPath": "What to set the path to for ``View``",
+    "IsInsideCategoryPath": "Whether the View is already under ``CategoryPath``."
+  },
+  "methods": {},
+  "usage": "Attach to the same slot as an IButton and provide settings for this component in order for it to start working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SetDataFeedCategory&action=raw"
+}

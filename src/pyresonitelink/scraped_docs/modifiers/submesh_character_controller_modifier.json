@@ -1,0 +1,13 @@
+{
+  "description": "The SubmeshCharacterController is a component able to change properties of a Person or NPC locomotion (Character Controller) walking on a mesh based on what submesh of the mesh they are walking on.",
+  "category": "Locomotion:Modifiers",
+  "fields": {
+    "Parameter": "The parameter to modify",
+    "ModificationMode": "How to modify the parameter.",
+    "Values": "What value to use when modifying for each sub mesh. In order of submesh number."
+  },
+  "methods": {},
+  "usage": "Attach to the same slot as a mesh collider with a mesh set to static and IsCharacterCollider in order for this to work.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SubmeshCharacterControllerModifier&action=raw"
+}

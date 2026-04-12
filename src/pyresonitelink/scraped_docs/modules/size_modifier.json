@@ -1,0 +1,14 @@
+{
+  "description": "The SizeModifier component modifies the size of particles as an extra effect on top of existing size modifiers.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Multiplier": "How much to multiply the size of all particles.",
+    "Offset": "How much to add to the size of all particles.",
+    "SizeClampMin": "The minimum size particles can be.",
+    "SizeClampMax": "The maximum size particles can be."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SizeModifier&action=raw"
+}

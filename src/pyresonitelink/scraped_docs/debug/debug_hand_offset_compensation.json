@@ -1,0 +1,14 @@
+{
+  "description": "The DebugHandOffsetCompensation component constantly changes the mapping offsets of the left and right controllers with the values in its fields. These offsets determine how a controller is kept in a consistent orientation to other controllers a user can have.",
+  "category": "Debug",
+  "fields": {
+    "LeftHandPosition": "The position offset of the left hand.",
+    "LeftHandRotation": "The rotation Offset of the left hand.",
+    "RightHandPosition": "The position offset of the right hand.",
+    "RightHandRotation": "The rotation offset of the right hand."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DebugHandOffsetCompensation&action=raw"
+}

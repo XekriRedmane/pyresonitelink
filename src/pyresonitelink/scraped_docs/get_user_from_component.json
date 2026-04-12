@@ -1,13 +1,17 @@
 {
   "description": "Get User From Component is a ProtoFlux node that gets the active user of the slot a component is on.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The IComponent (Any component) to check for an active user.",
+    "* ([[Type:User|User]])": "The active user of the slot Instance (IComponent) is on, or null if there isn't an active user."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "Example",
-      "text": "File:Protoflux_Get_User_From_Component.webp|an example of using Get User From Component to find the active user of a Tool Tip.\n\n\nProtoFlux:Components\nProtoFlux:Users"
+      "text": "File:Protoflux_Get_User_From_Component.webp|an example of using Get User From Component to find the active user of a Tool Tip."
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetUserFromComponent&action=raw"
 }

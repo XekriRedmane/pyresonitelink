@@ -1,0 +1,15 @@
+{
+  "description": "The PositionDeltaDriver component drives a field with a vector drawn from ``Origin`` to ``Target`` in global space transformed (optionally normalized) into space ``VectorSpace``.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Origin": "The Origin starting point for the vector, defaults to root if null.",
+    "Target": "The target for the vector. Defaults to root if null.",
+    "VectorSpace": "The coordinate space to calculate the vector result in for ``Origin`` and ``Target``",
+    "Normalized": "Whether the vector from ``Origin`` to ``Target`` in ``VectorSpace`` should be normalized.",
+    "Vector": "The field to drive with the vector from ``Origin`` to ``Target`` in the coordinate space ``VectorSpace``"
+  },
+  "methods": {},
+  "usage": "Provide at least a ``Target`` slot and a value to drive for ``Vector`` to use this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PositionDeltaDriver&action=raw"
+}

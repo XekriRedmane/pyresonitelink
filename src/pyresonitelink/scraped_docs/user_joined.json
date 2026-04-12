@@ -1,8 +1,13 @@
 {
-  "description": "The User Joined node is an event that fires when a user joins the current world this node is in, as well as providing that user.",
+  "description": "The ``User Joined`` node is an event that fires when a user joins the current world this node is in, as well as providing that user.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnlyHost": "Should this impulse only run on the host. (Default: true) Will run an impulse for all users when set to false.",
+    "OnJoined": "Fires when a user joins the world.",
+    "JoinedUser": "The User that joined the world."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserJoined&action=raw"
 }

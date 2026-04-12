@@ -1,0 +1,12 @@
+{
+  "description": "Not currently usable.",
+  "category": "Assets",
+  "fields": {
+    "URL": "Enter the Uri (e.g. resrec:///) link of the saved object",
+    "PreGather": "Whether to pregather the object's assets or not."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StaticSavedObjectProvider&action=raw"
+}

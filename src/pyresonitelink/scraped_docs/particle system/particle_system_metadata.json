@@ -1,0 +1,20 @@
+{
+  "description": "The Particle System Metadata component gives running status numbers for a given ParticleSystem.",
+  "category": "Rendering:Particle System",
+  "fields": {
+    "System": "the particle system to get data from.",
+    "ParticleCount": "The current particle count of ``System``.",
+    "ParticlesFPS": "The current simulation FPS of ``System``.",
+    "LastSimulationTime": "The seconds needed to do the last simulation of ``System``.",
+    "LastSubmissionTime": "the seconds needed to do the last submission of data to the renderer for ``System``.",
+    "RenderDataReallocationCount": "The amount of reallocation needed for the render data for ``System``.",
+    "TrailCount": "The amount of current trails in ``System``.",
+    "TrailCapacity": "The trail capacity for trail point groups of the current trail buffer pool of ``System``.",
+    "TrailPointCapacity": "The trail capacity for trail points of the current trail buffer pool of ``System``.",
+    "TrailsDataReallocationCount": "The amount of reallocation needed for the render data for trails of ``System``."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ParticleSystemMetadata&action=raw"
+}

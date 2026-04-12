@@ -1,8 +1,12 @@
 {
   "description": "The Head Facing Rotation node takes in a reference of a UserRoot, and if that UserRoot is active or being used, it returns the head facing rotation value of the User.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "UserRoot": "The user's user root.",
+    "* ([[Type:floatQ|floatQ]])": "Returns the head facing rotation value."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:HeadFacingRotation&action=raw"
 }

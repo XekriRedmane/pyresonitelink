@@ -1,0 +1,23 @@
+{
+  "description": "The GripPoseReference component is placed under Tools to tell them how they should be positioned when equipped.",
+  "category": "Interaction",
+  "fields": {
+    "HandSide": "The hand side this grip pose should",
+    "_rootPos": "The root position of the tooltip.",
+    "TipReference": "the slot for the tool tips tip in question.",
+    "ShowVisual": "Whether to show the adjustment visual.",
+    "DisableSlider": "Whether to disable adjusting this grip pose.",
+    "_activeVisual": "The current adjustment visual."
+  },
+  "methods": {
+    "GrabCheck": "The grab check to see if the hand grabbing can grab the grabbable assigned with this. This grab check is the only grab check in the game that can exclude a hand. This is useful for making an item only grabbable with the right or left hand. This is not static, and needs the component. The hand specified in the component is the one \"whitelisted\" in the grab check."
+  },
+  "usage": "To create a simple object using GripPoseReference, add the RawDataTool slot to the root of the object containing the mesh. This will automatically add the GripPoseReference slots. To edit the pose, enter UI Edit Mode with the Left or Right GripPoseReference slot selected in Scene Inspector then adjust the object pose in one hand's grip with your off hand.\n\nWhen the TipReference field is set, equipping the tool will align your tip reference (usually at the tip of your index finger) to the provided slot and ignore the transform of the grip pose. It is recommended to use this for custom tools which are supposed to have similar positioning to most of the default tools such as the Dev Tool.",
+  "notes": [
+    {
+      "title": "Interaction with hand poser",
+      "text": "When grabbing or equipping a tool which defines a GripPoseReference without a set TipReference, the initial location from which the grip pose is applied is interpolated based on the location of the fingers and the HandRoot configured in the corresponding HandPoser.\n\nFor avatars with commonly-shaped hands with at least three fingers, this interpolated pose is usually close enough that, if you position the GripPoseReference correctly for one avatar, it should also be positioned decently well for most other avatars."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GripPoseReference&action=raw"
+}

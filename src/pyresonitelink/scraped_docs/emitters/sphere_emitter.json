@@ -1,0 +1,13 @@
+{
+  "description": "The SphereEmitter component is used to create particles in a particle system (See Photon Dust). This Emitter emits particles from a sphere shape.",
+  "category": "Rendering:Particle System:Emitters",
+  "fields": {
+    "Radius": "The radius of the sphere shape this is emitting from.",
+    "DirectionMode": "How particles should be oriented when emitting from the Sphere shape.",
+    "DirectionReferencePoint": "The point to use as a reference point when orienting particles upon emission."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SphereEmitter&action=raw"
+}

@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan From Ticks node takes in a TimeSpan and returns with the amount of ticks in that TimeSpan. There is Microsoft documentation about Ticks.",
+  "description": "The ``TimeSpan From Ticks`` node takes in a TimeSpan and returns with the amount of ticks in that TimeSpan. There is Microsoft documentation about Ticks.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "TimeSpan": "The TimeSpan we are getting info from.",
+    "* ([[Type:long|long]])": "Returns the amount of ticks in this TimeSpan."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanFromTicks&action=raw"
 }

@@ -1,0 +1,21 @@
+{
+  "description": "The MazeGenerator component generates a maze (with a ton of slots) with given parameters.\n\n}}",
+  "category": "Generators",
+  "fields": {
+    "Seed": "The random seed for generating this maze.",
+    "Cells": "The maze square sections for this generated maze.",
+    "WallSize": "X: how long the walls are, Y: how tall the walls are.",
+    "Point0": "The start position for this maze.",
+    "Point1": "The end position for this maze.",
+    "Material": "The material for the walls of the maze.",
+    "Bake": "Bakes the generated maze."
+  },
+  "methods": {
+    "Generate": "Generate the maze.",
+    "OnRandomizeSeed": "Called when the randomize seed button is touched.",
+    "OnGenerate": "Called when the generate button is touched."
+  },
+  "usage": "Great for prototyping mazes, and can be baked.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MazeGenerator&action=raw"
+}

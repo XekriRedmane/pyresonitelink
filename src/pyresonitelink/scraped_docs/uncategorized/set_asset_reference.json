@@ -1,0 +1,15 @@
+{
+  "description": "The Set Asset Reference component is used to store an undo step for setting a reference field for assets to another asset.",
+  "category": "Uncategorized",
+  "fields": {
+    "Target": "The field that was changed.",
+    "TargetBefore": "The asset value before the change",
+    "TargetAfter": "The asset value after the change.",
+    "_performed": "Whether the undo step was done or undone.",
+    "_description": "The description of the change that was made and what to for the context menu label text when undoing/redoing."
+  },
+  "methods": {},
+  "usage": "Not used directly by the user.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SetAssetReference&action=raw"
+}

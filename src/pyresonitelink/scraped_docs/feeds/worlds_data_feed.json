@@ -1,0 +1,23 @@
+{
+  "description": "The WorldsDataFeed is a data feed that provides a list of worlds or sessions, depending on the settings.",
+  "category": "Radiant UI:Data Feeds:Feeds",
+  "fields": {
+    "ListOpenedWorlds": "Whether to list open worlds.",
+    "ListSessions": "Whether to list sessions of worlds.",
+    "MergeByWorldId": "Whether to merge by world IDs. Used to make Component:MergedWorldDataItemInterface.",
+    "MergeBySessionId": "Whether to merge by session IDs. Used to make Component:MergedWorldDataItemInterface",
+    "IncompatibleSessions": "Whether to show incompatible sessions due to game version number/plugins.",
+    "HeadlessHosts": "Whether to list headless hosts.",
+    "UserHosts": "Whether to list normal user hosts.",
+    "MinimumTotalUsers": "List sessions that have more than this many users.",
+    "MinimumTotalContacts": "List sessions that have more than this many users that are contacts to the user.",
+    "MinSessionAccessLevel": "List sessions that have a session access greater or equal to this.",
+    "MaxSessionAccessLevel": "List sessions that have a session access less than or equal to this.",
+    "MinUptime": "A session has to be open for at least this long to be listed.",
+    "MaxUptime": "A session has to be open for less than this long to be listed."
+  },
+  "methods": {},
+  "usage": "Used in the system of Data Feeds. This feed provides MergedWorldDataItemInterface as well as DataFeedEntity and DataFeedEntity as part of its feed.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:WorldsDataFeed&action=raw"
+}

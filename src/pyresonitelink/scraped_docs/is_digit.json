@@ -1,8 +1,12 @@
 {
   "description": "The Is Digit node takes in a character literal and returns if that character is a digit. Digit characters are numbers that have a numeric value to them and are not a symbol.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Character": "The character literal to check.",
+    "* ([[Type:bool|bool]])": "Returns ``true`` if ``Character`` is a digit, ``false`` otherwise. Digits recognized by this node are given the delegation ``Nd`` in Unicode\n\nAn easy way to remember the difference between this node and the Is Number node is: All digits are numbers, but not all numbers are digits.\n* \u00bd, \u2460, 1, 2, 3 all count as numbers.\n* 1, 2, 3 also count as digits."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsDigit&action=raw"
 }

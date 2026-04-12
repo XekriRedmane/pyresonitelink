@@ -1,13 +1,11 @@
 {
   "description": "The Phi node outputs the Golden Ratio mathematical constant.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:Float|float]])": "The golden ratio. Its float value is approximately ``1.61803401``."
+  },
   "methods": {},
   "usage": "",
-  "notes": [
-    {
-      "title": "Inputs",
-      "text": "None."
-    }
-  ]
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Phi&action=raw"
 }

@@ -1,8 +1,13 @@
 {
   "description": "The Controller Slot node takes in a reference of a UserRoot and a side, and if that UserRoot is active or being used, it returns a Slot reference of the user's controller.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "UserRoot": "The user's user root.",
+    "Side": "The side to use.",
+    "* ([[Type:Slot|Slot]])": "Returns the controller slot under the user."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ControllerSlot&action=raw"
 }

@@ -1,0 +1,21 @@
+{
+  "description": "See Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "_canvas": "The canvas being used to show settings.",
+    "_panel": "The legacy panel being used as a base to interact with the settings.",
+    "_control": "see Interactive Camera Control."
+  },
+  "methods": {
+    "OnResetFieldOfView": "A setting changing handler for the panel.",
+    "OnResetAngleOffset": "A setting changing handler for the panel.",
+    "OnResetDistance": "A setting changing handler for the panel.",
+    "OnResetHeight": "A setting changing handler for the panel.",
+    "OnResetFirstPersonPitch": "A setting changing handler for the panel.",
+    "OnResetFirstPersonRoll": "A setting changing handler for the panel.",
+    "OnResetFirstPersonOffset": "A setting changing handler for the panel."
+  },
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraControlPositioning&action=raw"
+}

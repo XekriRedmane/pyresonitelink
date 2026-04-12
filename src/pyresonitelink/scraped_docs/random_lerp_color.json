@@ -1,8 +1,13 @@
 {
   "description": "The Random Lerp Color node takes in a min and max value and returns a random color value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Min": "The minimum this random value can be (inclusive). The default is ``0, 0, 0, 0``.",
+    "Max": "The maximum this random value can be (exclusive). The default is ``0, 0, 0, 0``.",
+    "* ([[Type:color|color]])": "The random result."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomLerpColor&action=raw"
 }

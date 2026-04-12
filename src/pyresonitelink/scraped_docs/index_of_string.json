@@ -1,8 +1,16 @@
 {
-  "description": "Index Of String is a ProtoFlux node that gives a index of where a string occurs in another string.",
+  "description": "Index Of String is a ProtoFlux node that gives a index of where a string occurs in another string. \n\nThe output is at where it starts.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to search for Part (String) in.",
+    "Part": "The string to look for inside of Str (String). Returns ``-1`` if not found.",
+    "StartIndex": "The position after which to start searching. Default ``0``.",
+    "SearchFromEnd": "Whether this should start searching from the end rather than the beginning after StartIndex (int).",
+    "ComparisonType": "The string comparison to use.",
+    "* ([[Type:Int|int]])": "The index where Part (String) first occurs after StartIndex (int) in Str (String). The number returned is at where the occurrence starts."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IndexOfString&action=raw"
 }

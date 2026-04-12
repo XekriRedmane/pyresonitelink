@@ -1,0 +1,22 @@
+{
+  "description": "The LightingMesh component generates geometry of a procedural lighting bolt for use with a MeshRenderer.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Seed": "Used to generate a pseudo-random variant of a lighting bolt mesh",
+    "Points": "how much detail the lighting bolt's profile should have. (This has minimal effect on 'line' profile, but makes 'circle' more round.) Topology Topology The Topology setting for the lighting bolt profile. Line(a flat mesh) or Circle. Shading Shading The shading for the lighting bolt geometry. Like smooth or flat for example.",
+    "Ends": "how to handle the geometry at the beginning and end of lines in the lighting bolt",
+    "DualSided": "whether the lighting bolt is visible from the inside.",
+    "Point0": "the start point of the lightning bolt",
+    "Point1": "the end point of the lightning bolt",
+    "StrikeLevels": "A list of different branch variants and bends in the lighting bolt."
+  },
+  "methods": {},
+  "usage": "Attach to a slot and insert into a MeshRenderer to view the geometry it generates. Don't forget to use a Material.",
+  "notes": [
+    {
+      "title": "StrikeProperties",
+      "text": "Generates a group of lines that shoot out at random bent angles with multiple segments. The start and end of these forks in the lighting mesh can be controlled via its settings.\n\nThe shape of the bolt is effected by both Offset and Segments, low values of either make for a straighter bolt."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LightningMesh&action=raw"
+}

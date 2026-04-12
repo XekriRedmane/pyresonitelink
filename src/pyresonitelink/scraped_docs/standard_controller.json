@@ -1,8 +1,22 @@
 {
-  "description": "The standard controller node allows one to interact with the players virtual reality controller as well as generic inputs on Desktop mode.",
+  "description": "This node provides information for generic controllers.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user to get controller information from.",
+    "Node": "The controller side to get information from.",
+    "IsActive": "Is this controller actively being used right now.",
+    "Type": "The controller type being used. (a subtype of IStandardController if a controller exists or ``null``)",
+    "BatteryLevel": "The battery level of this controller. (``1``: full, ``0``: empty, ``-1``: battery level not available)",
+    "IsBatteryCharging": "Is this controller currently charging.",
+    "Primary": "Is primary pressed right now.",
+    "Secondary": "Is secondary pressed right now.",
+    "Grab": "Is the controller's grip button pressed right now.",
+    "Menu": "Is the menu button being pressed right now.",
+    "Strength": "How much the trigger is pressed currently. (from ``0`` to ``1``)",
+    "Axis": "The position of this controller's joystick or touchpad depending on controller type. (``[-1; -1]``: bottom left, ``[+1; +1]``: top right, ``[0; 0]`` for touchpads that are untouched)\n\nIndex Controllers have both types of input. ``Axis`` returns the touchpad position."
+  },
   "methods": {},
   "usage": "The standard controller node allows one to interact with the players virtual reality controller as well as generic inputs on Desktop mode.\n\nSay you want to get the user's grip and trigger strength, just feed it a user and a \"Chirality input\" for the left or right controller and volla!\n\nJust pull an output from the grip boolean and the strength float value and now you have the users grip and trigger on/off and strength!",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:StandardController&action=raw"
 }

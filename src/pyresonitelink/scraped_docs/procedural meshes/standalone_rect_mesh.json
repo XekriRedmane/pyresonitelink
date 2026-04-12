@@ -1,0 +1,12 @@
+{
+  "description": "The StandaloneRectMesh is a procedural wrapper to allow mesh renderer usable mesh data of any RectMeshSource. The list of RectMeshSources this component can use for M is generated inside the component selector list when attaching.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Rect": "The part of the generated waveform to render.",
+    "Mesh": "The mesh parameters used to render this rect mesh. Usually takes an audio clip."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StandaloneRectMesh&action=raw"
+}

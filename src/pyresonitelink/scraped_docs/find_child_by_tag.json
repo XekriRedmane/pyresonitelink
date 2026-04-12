@@ -1,8 +1,14 @@
 {
   "description": "The Find Child By Tag node finds a child object below the instance (Slot) that matches the given Tag (String).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot to scan for child slots from.",
+    "Tag": "The tag to look for below Instance (Slot).",
+    "SearchDepth": "How far to search for a child with a tag that matches the given Tag (String).\n\nExamples: 0 > Search immediate children. 1 > Search children of slot including those slot's children. -1 > Search infinitely far down (HEAVY)",
+    "* ([[Slot|Slot]])": "The result of the search."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FindChildByTag&action=raw"
 }

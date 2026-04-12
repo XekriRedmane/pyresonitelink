@@ -1,0 +1,19 @@
+{
+  "description": "The LookAtUser component drives the rotation specified by ``_rotationDrive`` to point towards the user specified in ``TargetUser``, or the Local User if ``TargetAtLocalUser`` is checked.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "TargetUser": "The user to look at, unless TargetAtLocalUser is checked.",
+    "TargetAtLocalUser": "Targets the Local User in each client.",
+    "SourcePositionOffset": "Offset from which to calculate the look vector.",
+    "Invert": "The rotated item faces away from the user, instead of towards.",
+    "RotationOffset": "The degree to which the item is rotated away from the look vector.",
+    "PositionSource": "The UserNode to calculate the look vector from",
+    "AroundAxis": "The rotation is around an arbitrary axis defined in ``Axis``.",
+    "Axis": "A unit vector specifying the arbitrary axis to rotate around",
+    "_rotationDrive": "Automatically Assigned - The FloatQ to be driven by this component."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, and then specify fields. Sometimes the fields like rotation offset and around axis may not adjust orientation as desired. In most cases, simply adding a slot beside the object that should look at another object (EX a piston that is already oriented to look at its target at rest) and then parenting it will achieve the desired effect.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LookAtUser&action=raw"
+}

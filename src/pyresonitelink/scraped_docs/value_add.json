@@ -1,8 +1,13 @@
 {
-  "description": "The Add node takes in 2 inputs and returns the calculated result. The second input (B) will add to the first input (A).",
+  "description": "The Add node takes in 2 inputs and returns the calculated result. The second input (``B``) will add to the first input (``A``).\n\nIf you need to increment a value from an impulse, use the Increment node instead.|suggestion}}",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The value we have.",
+    "B": "The value we want to add.",
+    "* (Pseudo-Generic)": "The new result from this operation."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Add&action=raw"
 }

@@ -1,8 +1,12 @@
 {
   "description": "The Get Component Enabled is a ProtoFlux node that takes an IComponent and gets if it's enabled or not.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Component": "The IComponent to check the enabled field for.",
+    "* ([[Type:Bool|bool]])": "Whether the provided Component (IComponent) is enabled or not."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetComponentEnabled&action=raw"
 }

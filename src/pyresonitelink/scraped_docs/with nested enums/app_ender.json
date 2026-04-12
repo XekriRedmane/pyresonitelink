@@ -1,0 +1,20 @@
+{
+  "description": "AppEnder is used by the local world to handle the logging out or exiting the game of the local user.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Mode": "Whether to exit the game or logout.",
+    "ChangesSaved": "Whether the items saved and dash changes for the current user have been saved",
+    "_text": "the text object that is currently showing the status of the game exiting or logging out",
+    "_textColor": "the color of the text object for this ender.",
+    "_outlineColor": "The outline color of the text object for this ender."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "EndMode",
+      "text": "EndMode"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AppEnder&action=raw"
+}

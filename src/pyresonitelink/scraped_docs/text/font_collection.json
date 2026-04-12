@@ -1,0 +1,11 @@
+{
+  "description": "The FontCollection component acts as a set of fonts that can be used to make one mega font. When a font in the set does not have a character for a unicode point, another font can take over.",
+  "category": "Rendering:Text",
+  "fields": {
+    "FontSets": "The list of fonts to congregate into one huge font."
+  },
+  "methods": {},
+  "usage": "Used to combine fonts",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:FontCollection&action=raw"
+}

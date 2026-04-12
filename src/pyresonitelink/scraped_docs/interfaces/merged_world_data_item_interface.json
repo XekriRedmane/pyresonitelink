@@ -1,0 +1,20 @@
+{
+  "description": "The MergedWorldDataItemInterface component is used to display world details from a WorldsDataFeed.",
+  "category": "Radiant UI:Data Feeds:Interfaces",
+  "fields": {
+    "IsMerged": "The field to drive with whether or not the source data feed item was merged.",
+    "SessionCount": "The field to drive with the amount of sessions in this set of worlds.",
+    "WorldCount": "The field to drive with the amount of Merged worlds into this item.",
+    "MainName": "The field to drive with the main world name of this Merged item.",
+    "MainThumbnail": "The field to drive with the main world's thumbnail of this Merged item.",
+    "WorldOrSessionId": "The field to drive with the main world or session ID of this Merged item.",
+    "TotalAggregateActiveUsers": "The field to drive with the total active users of all the worlds Merged into this item.",
+    "TotalAggregateContacts": "The field to drive with the total users that are contacts in all the worlds Merged into this item.",
+    "Sessions": "The list of item templates to instantiate with session info from this merged item.",
+    "Worlds": "The list of item templates to instantiate with the world data of this merged item."
+  },
+  "methods": {},
+  "usage": "Used in data feed Template generating systems. See Data Feeds.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MergedWorldDataItemInterface&action=raw"
+}

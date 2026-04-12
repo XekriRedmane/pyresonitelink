@@ -1,0 +1,12 @@
+{
+  "description": "The Setting Manager component is internally used by the settings system to handle settings changes.",
+  "category": "Uncategorized",
+  "fields": {
+    "OwnerId": "The owner of the settings that this manages.",
+    "SupressedBy": "Whether changes in this are suppressed by another setting manager."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SettingManager&action=raw"
+}

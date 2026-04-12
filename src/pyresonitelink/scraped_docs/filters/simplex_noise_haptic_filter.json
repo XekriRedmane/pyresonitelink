@@ -1,0 +1,14 @@
+{
+  "description": "The SimplexNoiseHapticFilter makes the space within a collider with haptic volume act like a 3d noise kind of like moving your haptics device through clouds.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics:Filters",
+  "fields": {
+    "NoiseScale": "The scale of the noise.",
+    "NoiseOffset": "The offset of the noise from 0.",
+    "MinValue": "The minimum haptics power the noise can give based on the 3d noise algorithm.",
+    "MaxValue": "The maximum haptics power the noise can give based on the 3d noise algorithm."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with a HapticVolume and a collider. This component will then start working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SimplexNoiseHapticFilter&action=raw"
+}

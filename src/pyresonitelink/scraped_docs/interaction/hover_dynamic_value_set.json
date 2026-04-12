@@ -1,0 +1,15 @@
+{
+  "description": "The HoverDynamicValueSet component listens for a user's hover event on a UIX element and sets a value.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "VariableName": "The dynamic variable name to find these values.",
+    "ValueOnBeginHover": "The value to set when a hover event is detected.",
+    "ValueOnEndHover": "The value to set when a hover event has ended.",
+    "SetValueOnBeginHover": "Sets the value when a hover event is detected.",
+    "SetValueOnEndHover": "Sets the value when a hover event has ended."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HoverDynamicValueSet&action=raw"
+}

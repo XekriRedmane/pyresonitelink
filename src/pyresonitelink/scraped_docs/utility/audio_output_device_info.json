@@ -1,0 +1,12 @@
+{
+  "description": "The AudioOutputDeviceInfo component only works in user space, and is used to find an audio device by name and get info about it.",
+  "category": "Audio:Utility",
+  "fields": {
+    "DeviceIndex": "The device index if found",
+    "DeviceName": "the name to use when looking for a device"
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioOutputDeviceInfo&action=raw"
+}

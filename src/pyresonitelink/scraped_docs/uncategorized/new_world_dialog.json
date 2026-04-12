@@ -1,0 +1,23 @@
+{
+  "description": "The NewWorldDialog component is used internally to control the new world prompt when making a new world in dash space.",
+  "category": "Uncategorized",
+  "fields": {
+    "_worldName": "The field to define the name of the new world.",
+    "_mobileFriendly": "Whether the new world should be mobile friendly.",
+    "_unsafeMode": "Whether the new world is going to be unsafe mode.",
+    "_autoPort": "Whether the new world should boot with auto defined port.",
+    "_port": "The port of the new world.",
+    "_accessLevel": "The access level of the new world.",
+    "CustomStart": "The Sync delegate to call, passing this Dialog upon the world being made.",
+    "_presetIndex": "Which preset to use for the new world.",
+    "_uiBuilt": "Whether the world UI is built.",
+    "_accessLevelRadios": "A list of session access level options for the UI.",
+    "_initialized": "Whether the UI is built and ready."
+  },
+  "methods": {
+    "OnStartSession": "Called when the start session button is touched."
+  },
+  "usage": "Used internally.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NewWorldDialog&action=raw"
+}

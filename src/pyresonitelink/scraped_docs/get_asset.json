@@ -1,8 +1,12 @@
 {
-  "description": "This node when provided an IAssetProviderA will give the raw IAsset provided by the provider.",
+  "description": "This node when provided an IAssetProvider will give the raw IAsset provided by the provider.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Provider": "The IAssetProvider to get an IAsset from.",
+    "* ([[Type:IAsset`1|IAsset]] Generic)": "The asset that is provided by Provider (IAssetProvider Generic)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetAsset&action=raw"
 }

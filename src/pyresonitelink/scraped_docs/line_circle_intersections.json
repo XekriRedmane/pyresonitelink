@@ -1,8 +1,17 @@
 {
   "description": "The Line Circle Intersections node determines how many times a line defined by two points intersects a circle and where said intersections occur.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Center": "Center of the circle.",
+    "Radius": "Radius of the circle.",
+    "LinePoint0": "First point of the line.",
+    "LinePoint1": "Second point of the line.",
+    "IntersectionCount": "The amount of intersections of the defined line and circle. This is at most two.",
+    "Intersection0": "The first point of intersection between the line and circle. This is the point that occurs \"later\" in the intersection when tracing the line from ``LinePoint0`` to ``LinePoint1``. If there does not exist any intersection, this value is ``[NaN; NaN]``.",
+    "Intersection1": "The second point of intersection between the line and circle. This is the point that occurs \"earlier\" in the intersection when tracing the line from ``LinePoint0`` to ``LinePoint1``. If there are fewer than two intersections, this value is ``[NaN; NaN]``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LineCircleIntersections&action=raw"
 }

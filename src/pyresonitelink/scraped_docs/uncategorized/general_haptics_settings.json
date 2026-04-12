@@ -1,0 +1,12 @@
+{
+  "description": "See Haptic Feedback in Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "EnableControllerVibration": "Enables or disables controller vibration as a whole.",
+    "EnableHaptics": "Enables or disables haptic feedback from avatars and items in the world or other haptic devices."
+  },
+  "methods": {},
+  "usage": "See Haptic Feedback in Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:GeneralHapticsSettings&action=raw"
+}

@@ -1,8 +1,13 @@
 {
   "description": "String Join is a protoflux node that can take a Separator (String), and a some Inputs (List of String) and combine them, separating each item with Separator (String), or with nothing if Separator (String) is not provided.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Separator": "The item to separate the Inputs (List of String) when joined.",
+    "Inputs": "The items to join together",
+    "* ([[Type:String|String]])": "Returns all Inputs (List of String) joined together in order while separated by Separator (String)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:StringJoin&action=raw"
 }

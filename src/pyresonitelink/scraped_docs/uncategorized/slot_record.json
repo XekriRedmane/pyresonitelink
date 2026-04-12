@@ -1,0 +1,11 @@
+{
+  "description": "Used solely by the Inspector when regenerating/updating.",
+  "category": "Uncategorized",
+  "fields": {
+    "TargetSlot": "The slot to make a record of."
+  },
+  "methods": {},
+  "usage": "Internal",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SlotRecord&action=raw"
+}

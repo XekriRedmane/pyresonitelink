@@ -1,8 +1,15 @@
 {
   "description": "Replace First Substring is a ProtoFlux node that replaces the first occurrence of SearchFor (String) in Str (String) with ReplaceWith (String). Will only start searching after the provided StartIndex (int).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Str": "The string to search for SearchFor (String) in.",
+    "SearchFor": "The string to be replacing in Str (String).",
+    "ReplaceWith": "What to replace SearchFor (String) with.",
+    "StartIndex": "The point in the string to start searching from, rather than from the beginning.",
+    "* ([[Type:String|String]])": "Returns Str (String) with the first SearchFor (String) occurance replaced with ReplaceWith (String). But only after the point StartIndex (int) was searched after."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ReplaceFirstSubstring&action=raw"
 }

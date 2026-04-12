@@ -1,0 +1,15 @@
+{
+  "description": "The ButtonPlaybackAction component takes in an IPlayable. When an IButton is pressed while this component is in the same slot, it will set the action on this playable media depending on what is set up in this component.",
+  "category": "Common UI:Button Interactions:Media",
+  "fields": {
+    "Playback": "The playable media itself.",
+    "OnHover": "The action to take when the button is hovered over.",
+    "OnLeave": "The action to take when the button is left.",
+    "OnPress": "The action to take when the button is pressed.",
+    "OnRelease": "The action to take when the button is released."
+  },
+  "methods": {},
+  "usage": "Basically your media buttons (``Play``, ``Pause``, ``Resume``, and ``Stop``) that can be setup anywhere.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonPlaybackAction&action=raw"
+}

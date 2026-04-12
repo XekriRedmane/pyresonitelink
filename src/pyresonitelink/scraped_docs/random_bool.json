@@ -1,8 +1,12 @@
 {
   "description": "The Random Bool node takes in an (optional) chance and returns a random bool value.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Chance": "The shift in probability to have a higher chance to get a certain result from this node. The default is ``0.5``.",
+    "* ([[Type:bool|bool]])": "The random result."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RandomBool&action=raw"
 }

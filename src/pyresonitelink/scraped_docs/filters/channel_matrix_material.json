@@ -1,0 +1,9 @@
+{
+  "description": "The ChannelMatrixMaterial component can be used to make meshes render the colors behind them differently by mixing around the color channels of colors behind them.",
+  "category": "Assets:Materials:Filters",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ChannelMatrixMaterial&action=raw"
+}

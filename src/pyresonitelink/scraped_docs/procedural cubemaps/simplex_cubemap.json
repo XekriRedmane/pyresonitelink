@@ -1,0 +1,15 @@
+{
+  "description": "The Simplex Cubemap component creates a cubemap data that looks like a simplex noise texture in 3D.",
+  "category": "Assets:Procedural Cubemaps",
+  "fields": {
+    "Background": "The color for the simplex's background.",
+    "Foreground": "The color for the simplex's foreground.",
+    "Scale": "The scale of the simplex algorithm.",
+    "Use4D": "whether to use 4D to allow animation or shifting of the texture.",
+    "WOffset": "The offset of the texture in 4D."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SimplexCubemap&action=raw"
+}

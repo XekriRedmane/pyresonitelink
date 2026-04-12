@@ -1,0 +1,12 @@
+{
+  "description": "See Settings.",
+  "category": "Uncategorized",
+  "fields": {
+    "NameplateVisibility": "can be used to control what nameplates the user sees.",
+    "UseCustomNameplates": "Whether to render the default nameplates or user made ones."
+  },
+  "methods": {},
+  "usage": "See Settings.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:NamePlateSettings&action=raw"
+}

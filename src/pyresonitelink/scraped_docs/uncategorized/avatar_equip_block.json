@@ -1,0 +1,9 @@
+{
+  "description": "AvatarEquipBlock prevents anyone from equipping an avatar. Place at the avatar's root.\n\nThis works to block both in-world equipping and equipping from inventory.\n\nCAUTION: When attempting to equip from inventory results in user being in no avatar.",
+  "category": "Uncategorized",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AvatarEquipBlock&action=raw"
+}

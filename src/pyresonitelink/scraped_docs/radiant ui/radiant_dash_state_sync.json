@@ -1,0 +1,13 @@
+{
+  "description": "The RadiantDashStateSync component is a userspace component that grabs the current dash component in the userspace world and cross synchronizes its values with the dash.",
+  "category": "Radiant UI",
+  "fields": {
+    "IsFreeform": "Whether the userspace dash is set to freeform movement.",
+    "IsOpen": "Whether the userspace dash is currently open.",
+    "Curvature": "What the curvature of the dash is currently."
+  },
+  "methods": {},
+  "usage": "Best used when attached to an item that will exist on the dash, like a facet.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RadiantDashStateSync&action=raw"
+}

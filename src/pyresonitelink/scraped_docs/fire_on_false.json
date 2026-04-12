@@ -1,13 +1,18 @@
 {
-  "description": "The FireOnFalse node will listen for changes on its input bool and fire an impulse for the specified user whenever the input turns from True to False across updates.",
+  "description": "The FireOnFalse node will listen for changes on its input bool and fire an impulse for the specified user whenever the input turns from ``True`` to ``False`` across updates.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnlyForUser": "The user that will listen to the boolean and fire the impulse.",
+    "Condition": "The bool that should be listened to for changes.",
+    "OnChanged": "Fires a single impulse from the specified user whenever the provided input turns from ``True`` to ``False`` across updates."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "See also",
-      "text": "* FireOnLocalFalse will fire an impulse for every user that detects ``False`` rather than a specific user.\n* FireOnTrue\n* FireOnChange\n\nProtoFlux:Flow\nListener nodes"
+      "text": "* FireOnLocalFalse will fire an impulse for every user that detects ``False`` rather than a specific user.\n* FireOnTrue\n* FireOnChange"
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FireOnFalse&action=raw"
 }

@@ -1,8 +1,12 @@
 {
-  "description": "The TimeSpan From Milliseconds node takes in the amount of milliseconds and converts it into a TimeSpan that shows the span of time in milliseconds. When using a display node, the TimeSpan will show the extra information.",
+  "description": "The ``TimeSpan From Milliseconds`` node takes in the amount of milliseconds and converts it into a TimeSpan that shows the span of time in milliseconds. When using a display node, the TimeSpan will show the extra information.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Value": "The amount of milliseconds.",
+    "* ([[Type:TimeSpan|TimeSpan]])": "Returns the TimeSpan with the amount of milliseconds."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TimeSpanFromMilliseconds&action=raw"
 }

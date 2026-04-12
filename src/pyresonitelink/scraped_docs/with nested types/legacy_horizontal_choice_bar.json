@@ -1,0 +1,27 @@
+{
+  "description": "The LegacyHorizontalChoiceBar component is used in old migrated legacy content. This should not be used in new content, and should be replaced whenever possible. This was primarily used in old Gizmos.",
+  "category": "With Nested Types",
+  "fields": {
+    "_items": "A list of items to be able to press.",
+    "Width": "The width of each item.",
+    "Height": "The height of each item.",
+    "Thickness": "The thickness of each item.",
+    "Spacing": "How far apart the items should be placed.",
+    "Slant": "The Bevel of the meshes of each item.",
+    "Symmetrical": "Whether the Horizontal layout should be symmetrical.",
+    "SegmentTouched": "The Sync delegate to call whenever an item is touched.",
+    "_root": "the place to parent all the items.",
+    "_rootScale": "The scale field of the slot to place the items."
+  },
+  "methods": {
+    "OnSegmentTouched": "Called whenever a segment is touched."
+  },
+  "usage": "Just dont.",
+  "notes": [
+    {
+      "title": "SegmentTouchEvent",
+      "text": "SegmentTouchEvent() is a sync delegate that is the type Delegate&lt;LegacyHorizontalChoiceBar sender, Int itemIndex, TouchEventInfo eventInfo&gt; and can be used to handle the press events of a LegacyHorizontalChoiceBar."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:LegacyHorizontalChoiceBar&action=raw"
+}

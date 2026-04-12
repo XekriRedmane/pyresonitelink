@@ -1,0 +1,16 @@
+{
+  "description": "The MultiBevelStripeMesh component can be used to instanciate multiple BevelStripeMeshs as part of the same geometry.",
+  "category": "Assets:Procedural Meshes:Legacy UI",
+  "fields": {
+    "Stripes": "A list of stripes to render."
+  },
+  "methods": {},
+  "usage": "Can be used to instanciate many Bevel Stripe meshes at once for organization and performance improvement.",
+  "notes": [
+    {
+      "title": "Stripe",
+      "text": "Stripe represents the exact values in a BevelStripeMesh with an added position, rotation, and scale settings."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:MultiBevelStripeMesh&action=raw"
+}

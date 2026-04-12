@@ -1,8 +1,12 @@
 {
-  "description": "The Type Color node takes in a Type, and returns the color associated with that type's class inside the FrooxEngine.",
+  "description": "The ``Type Color`` node takes in a Type, and returns the color associated with that type's class inside the FrooxEngine.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Type": "The type to get the color from.",
+    "* ([[Type:colorX|colorX]])": "The type's specific class color."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:TypeColor&action=raw"
 }

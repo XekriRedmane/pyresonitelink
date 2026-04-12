@@ -1,0 +1,26 @@
+{
+  "description": "This page is missing content because it needs many more examples, since this node is quite a complex topic. TODO: Maybe explain this in reference to variables in programming?\n\nA Store is a variable that is not networked and not part of the data model. Each user can have a unique value for themselves inside of a Store and it is not specific to any context, which means it can be used across many objects and ProtoFlux scripts or even as part of a drive. This is similar to what happens when you use a ValueUserOverride on a field, however it does behave slightly differently: It will not update its value automatically when written to from other sources, and you will usually need to use a Continuous Relay with Stores to make them update in the same way that a data model field would.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Stores as Global Variables",
+      "text": "A store node is a global, mutable reference to a value which is commonly called a variable in programming (internally, the StoredValue/Object node class implements the IVariable interface). Being global means that there is only one variable that exists for the entire lifetime of the program that is represented by this node, and it is accessible from all other parts of the program. In other programming languages this would be achieved with things like the global keyword in Python or static classes in C#. \n\nIn most structured programming, the use of global variables is considered bad design because managing global mutable state adds a lot of complexity and makes it easy to introduce strange bugs. If possible, consider refactoring your algorithms to use immutable values (such as Input) or use scoped variables like Local."
+    },
+    {
+      "title": "Reading",
+      "text": "The store can be read similar to other data outputs because it is data, but be aware of the need to use a Continuous Relay if you want to watch the value to detect changes. Otherwise its value will only be queried when one of the downstream nodes pulls for it (for example an impulse). TODO: validate\n\nTODO: example reading with relay\n\nTODO: example reading without relay"
+    },
+    {
+      "title": "Writing",
+      "text": "Writing to the store can be accomplished with the Write node. \n\nTODO: example with write node"
+    },
+    {
+      "title": "Scoping",
+      "text": "A Store is scoped to the user. This is broader than the Local but narrower than the Data Model Store. Compared to other programming languages, it is most similar to a global variable.\n\nTODO: example of referencing a store from different locations"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Store&action=raw"
+}

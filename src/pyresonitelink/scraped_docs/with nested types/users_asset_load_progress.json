@@ -1,0 +1,18 @@
+{
+  "description": "The UsersAssetLoadProgress component is commonly used with ProtoFlux to tell if a particular User has loaded an asset. The node in particular is the Asset Load Progress ProtoFlux node. This component takes any IAsset as the generic argument for the component.",
+  "category": "With Nested Types",
+  "fields": {
+    "Asset": "The Asset to monitor loading progress for.",
+    "ProgressInfo": "A list of users in the session and their status on loading the specified ``Asset``.",
+    "TotalUsers": "The total users in the session that see ``Asset`` exists?",
+    "UsersNotLoaded": "How many users haven't fully loaded ``Asset``?",
+    "UsersLoading": "How many users are trying to load ``Asset`` currently?",
+    "UsersPartiallyLoaded": "How many users are currently in the process of downloading ``Asset``?",
+    "UsersFullyLoaded": "How many users have finished loading ``Asset``?",
+    "UsersFailedToLoad": "How many users failed to load ``Asset`` due to an error?"
+  },
+  "methods": {},
+  "usage": "Attach to a slot and provide an asset to ``Asset`` for this component to start working.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UsersAssetLoadProgress&action=raw"
+}

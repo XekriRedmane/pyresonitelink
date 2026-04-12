@@ -1,0 +1,18 @@
+{
+  "description": "The CircleSegmentShaderMesh creates a single quad that covers the bounding box area of a flat torus circle defined by the given values. This is used to render the UI_CircleSegment material.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "RadiusStart": "The inner radius of the circle",
+    "Thickness": "How thick the circle is outwards from the inner radius",
+    "AngleStart": "What angle the circle starts at in degrees",
+    "ArcLength": "The amount of degrees of the circle arch",
+    "FillColor": "Used to color the vertices of the mesh (vertex colors)",
+    "BorderColor": "The border color the Component:UI_CircleSegment rendering on this mesh.",
+    "BorderSize": "The border thickness of the Component:UI_CircleSegment rendering on this mesh.",
+    "RoundedCornerRadius": "The radius of the corner rounding of the Component:UI_CircleSegment rendering on this mesh."
+  },
+  "methods": {},
+  "usage": "Used as a mesh to render the UI_CircleSegment material.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CircleSegmentShaderMesh&action=raw"
+}

@@ -1,0 +1,16 @@
+{
+  "description": "The AudioStreamController component is an old legacy component.",
+  "category": "Uncategorized",
+  "fields": {
+    "Stream": "The audio stream this is controlling.",
+    "AudioOutput": "The audio output being used to play the stream.",
+    "IsPlayingForOwner": "Whether the audio stream is playing for the user who spawned it."
+  },
+  "methods": {
+    "OnToggleBroadcast": "Used to change the audio to broadcast.",
+    "OnTogglePlayForOwner": "Used to make the audio play for the stream owner."
+  },
+  "usage": "Legacy.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:AudioStreamController&action=raw"
+}

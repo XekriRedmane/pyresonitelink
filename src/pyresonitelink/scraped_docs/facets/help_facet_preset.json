@@ -1,0 +1,11 @@
+{
+  "description": "The Help Facet Preset component generates the UI for the entire help tab in the dash when attached.",
+  "category": "Radiant UI:Facets",
+  "fields": {
+    "_fullyLoaded": "Whether or not the facet has been fully generated and doesn't need to load again."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:HelpFacetPreset&action=raw"
+}

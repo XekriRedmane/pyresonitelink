@@ -1,0 +1,13 @@
+{
+  "description": "The ReferenceCast component can be used to try to take a type and change it to another type. This performs a C# cast which requires the types to be compatible for casting to make a result.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Source": "The source type to convert",
+    "Target": "The target field. Casts ``Source`` to this fields type, and then uses the result to drive this field.",
+    "WriteBack": "whether to allow changes to the ``Target`` to update ``Source`` instead of discarding the change. See write backs."
+  },
+  "methods": {},
+  "usage": "This is a way of changing a type without using ProtoFlux. Attaching this component can be difficult, so you should be familiar with Complex Types in Components. Keep in mind this does a C# Cast, which does not work with many different conversions.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceCast&action=raw"
+}

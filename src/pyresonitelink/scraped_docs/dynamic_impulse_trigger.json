@@ -1,8 +1,16 @@
 {
-  "description": "The Dynamic Impulse Trigger node sends a dynamic impulse to all Dynamic Impulse Receivers matching the provided Tag under the TargetHierarchy.",
+  "description": "The Dynamic Impulse Trigger node sends a dynamic impulse to all Dynamic Impulse Receivers matching the provided ``Tag`` under the ``TargetHierarchy``.\n\nThis node can be used in an async flow node chain as well, though the node chain for the receiver will not be async.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Impulses|Call]])": "Trigger a dynamic impulse with the tag ``Tag`` under ``TargetHierarchy``.",
+    "Tag": "The tag of the dynamic impulse.",
+    "TargetHierarchy": "The slot under which to search for dynamic impulse receivers.",
+    "ExcludeDisabled": "If ``True``, the dynamic impulse will not search for receivers under disabled slots.",
+    "Next": "Triggered once the context of every receiver is completed.",
+    "TriggeredCount": "Number of receivers that were triggered. Only exists for the current context."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:DynamicImpulseTrigger&action=raw"
 }

@@ -1,0 +1,16 @@
+{
+  "description": "See Character Collider Setter Tool.",
+  "category": "Tools",
+  "fields": {
+    "ApplyToObjectRoot": "whether this should apply to all colliders under a found object root from the hit collider rather than just the hit collider.",
+    "MarkGrippable": "whether to mark it as being able to be climbed."
+  },
+  "methods": {
+    "EnsureWalkRun": "Set the character controller to the walk run preset.",
+    "EnsureZeroG": "Set the character controller to the ZeroG preset.",
+    "EnsurePhysicalFly": "Set the character controller to the PhysicalFly preset."
+  },
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CharacterColliderSetterTool&action=raw"
+}

@@ -1,0 +1,11 @@
+{
+  "description": "The ValueFieldProxySource component allows for the user to grab a value from what is stored in a field off from a UIX element. This requires a Button component to work.\n\n}}",
+  "category": "UIX:Interaction",
+  "fields": {
+    "Field": "The field to grab a value from."
+  },
+  "methods": {},
+  "usage": "This is used to carry values to other UIX elements that are looking for it. Using this component along with the ValueReceiver and ValueField will allow the user to carry the field's value from source to receiver directly.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueFieldProxySource&action=raw"
+}

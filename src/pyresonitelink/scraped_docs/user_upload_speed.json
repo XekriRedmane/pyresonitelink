@@ -1,8 +1,12 @@
 {
-  "description": "The User Upload Speed node returns a user's upload speed in this session.",
+  "description": "The ``User Upload Speed`` node returns a user's upload speed in this session.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "User": "The user we are getting info from.",
+    "* ([[Type:float|float]])": "The upload speed of the user in bytes."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UserUploadSpeed&action=raw"
 }

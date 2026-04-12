@@ -1,0 +1,13 @@
+{
+  "description": "See Camera.",
+  "category": "Uncategorized",
+  "fields": {
+    "InterpolateBetweenAnchors": "This allows the camera to smoothly go between anchor positions and rotations. If this is off, the camera will instantly go to the anchor instead of being smooth.",
+    "AnchorInterpolationSpeed": "The speed of which the camera moves between anchor positions and rotations.",
+    "UseLinearInterpolation": "This moves the camera linearly to the anchor position, without smoothing it."
+  },
+  "methods": {},
+  "usage": "See Camera.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:InteractiveCameraAnchorSettings&action=raw"
+}

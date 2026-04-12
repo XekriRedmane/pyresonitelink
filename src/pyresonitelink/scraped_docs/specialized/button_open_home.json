@@ -1,0 +1,12 @@
+{
+  "description": "The ButtonOpenHome component, when pressed with an IButton, takes the User to their favorite home world (usually the Resonite Cloud Home by default). There is an optional string input for a group home.\n\n}}",
+  "category": "Common UI:Button Interactions:Specialized",
+  "fields": {
+    "LastOpened": "Shows when the world was last opened (not shown in the component).",
+    "GroupOwnerId": "An optional string input for a group home."
+  },
+  "methods": {},
+  "usage": "This is an easy way to set up a way to get to your favorite home faster.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonOpenHome&action=raw"
+}

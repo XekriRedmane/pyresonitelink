@@ -1,0 +1,9 @@
+{
+  "description": "The ColorByThreadDiagnosticModule component makes particles colored based on what the thread is doing and/or what thread they are a part of as part of the Photon Dust Simulation.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {},
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ColorByThreadDiagnosticModule&action=raw"
+}

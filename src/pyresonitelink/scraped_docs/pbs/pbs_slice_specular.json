@@ -1,0 +1,8 @@
+{
+  "description": "A PBS Slice (Metallic & Specular) shader:\n- Supports up to 8 plane slicers, cutting a mesh\n- Supports slice fade effect along the edge (albedo & emissive)\n- Is dual-sided, rendering interior (mesh will look as a shell though)\n- Adds a GenericSlicer component, which allows to set the slicing plane visually. To create/edit the material, click \"Create Slicer\" in the inspector.",
+  "category": "Assets:Materials:PBS",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

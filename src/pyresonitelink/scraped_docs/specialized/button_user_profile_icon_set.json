@@ -1,0 +1,11 @@
+{
+  "description": "The ButtonUserProfileIconSet component only works in Userspace. This is the component that handles the setting of a user profile icon in the game.",
+  "category": "Common UI:Button Interactions:Specialized",
+  "fields": {
+    "IsUpdating": "Whether or not the component is sending to the cloud your new icon url and/or asset."
+  },
+  "methods": {},
+  "usage": "Put this beside a button component on an slot or facet and press the button to set your profile icon via the button.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ButtonUserProfileIconSet&action=raw"
+}

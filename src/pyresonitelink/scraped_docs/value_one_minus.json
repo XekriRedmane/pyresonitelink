@@ -1,8 +1,11 @@
 {
   "description": "The Value One Minus node takes in a value and subtracts it from a starting point of 1. This can be done similarly with the Sub node.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* (Pseudo-Generic)": "Takes in the number we want to use for subtracting from 1."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ValueOneMinus&action=raw"
 }

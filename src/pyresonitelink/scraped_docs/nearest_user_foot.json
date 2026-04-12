@@ -1,8 +1,19 @@
 {
   "description": "Nearest User Foot is a protoflux node that returns the closest user foot to a slot and the foot's user, or closest to the root if not provided a slot. This will also ignore the user provided to IgnoreUser (User).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Reference": "The slot which to use as a point to find the closest foot to.",
+    "IgnoreUser": "The user to ignore when looking for the nearest foot.",
+    "IgnoreAFK": "Will not return a foot position from a user that is not currently focused into the world.",
+    "GetLeft": "Whether to get the left foot if closest, true by default.",
+    "GetRight": "Whether to get the right foot if closest, true by default.",
+    "Slot": "The slot of the foot when found.",
+    "User": "The user of the foot that was found.",
+    "Distance": "How far away the found foot was.",
+    "Chirality": "The side of the foot that was found. Left or Right or -1."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:NearestUserFoot&action=raw"
 }

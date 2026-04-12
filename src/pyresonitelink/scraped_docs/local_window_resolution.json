@@ -1,8 +1,11 @@
 {
-  "description": "The Local Window Resolution node returns the user's local Resonite application resolution.",
+  "description": "The ``Local Window Resolution`` node returns the user's local Resonite application resolution.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:int2|int2]])": "The user's local Resonite application resolution."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:LocalWindowResolution&action=raw"
 }

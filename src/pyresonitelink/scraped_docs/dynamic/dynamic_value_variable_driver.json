@@ -1,0 +1,11 @@
+{
+  "description": "Dynamic Value Variable Driver is a component that can drive a IField`1 (Value Holder) to the value assigned to a dynamic variable with the name ``VariableName``. if the specified variable cannot be found, the value will revert to ``DefaultTarget`` how this works is explained on Dynamic Variables page.",
+  "category": "Data:Dynamic",
+  "fields": {
+    "DefaultValue": "The value to revert to when one doesn't exist."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicValueVariableDriver&action=raw"
+}

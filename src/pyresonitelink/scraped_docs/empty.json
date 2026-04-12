@@ -1,13 +1,16 @@
 {
   "description": "The Empty node outputs an empty bounding box.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:BoundingBox|BoundingBox]])": "An empty bounding box."
+  },
   "methods": {},
   "usage": "",
   "notes": [
     {
       "title": "Issues",
-      "text": "* Currently the empty bounding box is returning really large numbers in opposite directions, and is currently being investigated by Frooxius in this GitHub issue: #2090\n\nProtoFlux:Transform:Bounds"
+      "text": "* Currently the empty bounding box is returning really large numbers in opposite directions, and is currently being investigated by Frooxius in this GitHub issue: #2090"
     }
-  ]
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Empty&action=raw"
 }

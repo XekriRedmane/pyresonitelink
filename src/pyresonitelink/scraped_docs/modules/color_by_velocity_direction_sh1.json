@@ -1,0 +1,10 @@
+{
+  "description": "The Color By Velocity Direction SH1 component samples a ColorX spherical harmonic based on the velocity vector of a particle in it's simulation space. that sampled color becomes the particle's color.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "SH": "The spherical harmonic to sample."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

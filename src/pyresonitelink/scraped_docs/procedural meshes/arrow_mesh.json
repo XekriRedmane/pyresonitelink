@@ -1,0 +1,24 @@
+{
+  "description": "Arrow Mesh is a procedural Asset mesh that generates a cylinder with a cone on the end. Like a 3d arrow. The Arrow Mesh allows for vertex color customization, as well as defining a shape and a direction, aka a Vector.\n}}",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Vector": "the direction in local space of the mesh render rendering this arrow that the arrow should point towards. Also defines the length. For more information on Local Space, see Coordinate Spaces",
+    "Sides": "how many sides the cone and cylinder of this arrow should have.",
+    "BodyRadius": "Determines the thickness of the base under the arrow.",
+    "HeadRadius": "Determines the radius of the arrows head's base.",
+    "HeadLength": "Determines the length of the arrow's head.",
+    "MinimalBodyLength": "Determines the arrow's length at minimum. In case the provided ``Vector``'s magnitude is less than this number.",
+    "SphereOnZero": "whether the arrow should render as a sphere instead when the ``Vector`` is (0,0,0)",
+    "BodyUVScale": "the scale multipler of the uvs on the cylinder body. Uvs of the cylinder is the same as a procedural cylinder.",
+    "BodyUVOffset": "the shifted offset of the uvs for the cylinder body in 2d space",
+    "HeadUVScale": "the scale multiplier of the uvs on the cone head. Uv of the cone is the same as a procedural cone.",
+    "HeadUVOffset": "the shifted offset of the uvs for the cone head in 2d space",
+    "BaseColor": "Color of the vertices of the bottom edge of the arrow.",
+    "TopColor": "Color of the vertices of the top edge of the arrow.",
+    "HeadColor": "Color of the vertices of the head of the arrow."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ArrowMesh&action=raw"
+}

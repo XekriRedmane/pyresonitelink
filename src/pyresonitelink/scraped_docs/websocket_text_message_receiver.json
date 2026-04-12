@@ -1,8 +1,11 @@
 {
   "description": "The Websocket Text Message Receiver node allows you to receive text messages from a WebsocketClient.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "OnReceived": "A Call triggered when a text message is received."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WebsocketTextMessageReceiver&action=raw"
 }

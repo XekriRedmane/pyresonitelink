@@ -1,0 +1,11 @@
+{
+  "description": "The VelocityDrag component makes particles in a particle system slow down towards 0 Velocity when not acted upon as if moving through a substance.\n\nThis component is part of the Photon Dust system made by Frooxius.",
+  "category": "Rendering:Particle System:Modules",
+  "fields": {
+    "Drag": "How much to slow down particles to 0 velocity."
+  },
+  "methods": {},
+  "usage": "Attach to a slot, add to the list of modules in a ParticleSystem, and adjust the values to make the desired effect from this component.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:VelocityDrag&action=raw"
+}

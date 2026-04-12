@@ -1,8 +1,12 @@
 {
   "description": "Returns the offset of the provided Instance ( Slot) in the inspector compared to others that have the same immediate parent.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot to read the child index of.",
+    "* ([[Types:Int|Int]])": "The child index of the provided Instance ( Slot)"
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IndexOfChild&action=raw"
 }

@@ -1,0 +1,15 @@
+{
+  "description": "The SettingActionProxy component is used to trigger an action on a subsetting under the component of type S which would be globally registered in the world.",
+  "category": "Uncategorized",
+  "fields": {
+    "ActionName": "The name of the action being triggered.",
+    "SubsettingGetter": "The name of the sync delegate method being triggered.",
+    "SubsettingKey": "The key being used to find the sub setting being triggered."
+  },
+  "methods": {
+    "Trigger": "triggers the target specified by this component's values and generic typing."
+  },
+  "usage": "Used in the settings menu and only works in user space.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SettingActionProxy&action=raw"
+}

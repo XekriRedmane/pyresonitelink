@@ -1,0 +1,17 @@
+{
+  "description": "The TextExpandIndicator component is used in inspectors to show whether or not a section like slots under another slot is expanded out and/or has any children items.\n\n}}",
+  "category": "Uncategorized",
+  "fields": {
+    "Text": "The text to drive with the dropdown indication.",
+    "SectionRoot": "The slot where children items for a slot is placed for the UI visual.",
+    "ChildrenRoot": "The slot to check for children slots to tell if it has children or not.",
+    "Closed": "The string to display when the section is closed.",
+    "Opened": "The string to display when the section is opened.",
+    "Empty": "The string to display when ``ChildrenRoot`` is empty.",
+    "CustomEmptyCheck": "A custom check sync delegate to use to check if the target is empty."
+  },
+  "methods": {},
+  "usage": "This component is combined with the Expander component to show the user that the expander has expanded, collapsed, or is empty using symbols.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TextExpandIndicator&action=raw"
+}

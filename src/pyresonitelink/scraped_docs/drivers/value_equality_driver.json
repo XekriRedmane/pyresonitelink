@@ -1,0 +1,15 @@
+{
+  "description": "The ValueEqualityDriver component lets you drive a boolean to whether or not one value is equal to another.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "TargetValue": "The value being compared to ``Reference``.",
+    "Reference": "The value that ``TargetValue`` is being compared to.",
+    "Target": "The boolean that is driven to true if ``TargetValue`` is equal to ``Reference`` and false if it isn't.",
+    "Invert": "Whether to invert the result of ``TargetValue``",
+    "UseApproximateComparison": "Whether or not to use approximate comparison for types such as float, where values that seem identical can be very slightly different."
+  },
+  "methods": {},
+  "usage": "Use to drive the target boolean with whether the target's value is equal to the reference value.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueEqualityDriver&action=raw"
+}

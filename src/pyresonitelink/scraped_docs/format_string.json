@@ -1,8 +1,14 @@
 {
-  "description": "This node simply calls the C# String.Format function using the provided parameters. It allows you to take a string like \"I am a {0} who likes to do {1} while {2}\" And populate {0}, {1}, and {2} with values. If you plug any value into the list of inputs for the Parameters, it will auto add a cast node into an object.",
+  "description": "This node simply calls the C# String.Format function using the provided parameters. It allows you to take a string like \"I am a {0} who likes to do {1} while {2}\" And populate {0}, {1}, and {2} with values. If you plug any value into the list of inputs for the Parameters, it will auto add a cast node into an object. \n\nFor example using the string ``\"The number {0} is on the {1} hand and the fact it's enabled is {2}.\"`` for Format. Then Plugging in a float (1.25) for the first input, Then a Chirality (Left) to the second, then a Boolean (True) will result in the output ``\"The number 1.25 is on the Left hand and the fact it's enabled is True.\"``",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Format": "A composite format string.",
+    "FormatProvider": "An object that supplies culture-specific formatting information.\n\nNodes that output this type can be found in Strings/Localization",
+    "Parameters": "A list of object-type parameters that can dynamically change this formatted string of text.",
+    "* ([[Type:String|String]])": "The formatted string."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FormatString&action=raw"
 }

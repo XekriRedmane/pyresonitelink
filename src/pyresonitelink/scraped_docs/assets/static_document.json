@@ -1,0 +1,11 @@
+{
+  "description": "Static document is a component that is used to store the data of a text document (Usually a PDF but never text files) for usage in a document viewer favorite-d by the user.",
+  "category": "Assets",
+  "fields": {
+    "URL": "The document's (Usually PDF) content on the cloud or local machine."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:StaticDocument&action=raw"
+}

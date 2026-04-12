@@ -1,0 +1,8 @@
+{
+  "description": "A triplanar shader generates UVs and samples a texture by projecting in world space. The input texture is sampled 3 times, once in each of the world x, y and z axes, and the resulting information is planar projected onto the model, blended by the normal.\n\nThey are particularly useful for projecting a texture onto a cubical object without causing stretching of the texture.",
+  "category": "Assets:Materials:PBS",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": []
+}

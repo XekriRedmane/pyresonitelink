@@ -1,0 +1,17 @@
+{
+  "description": "A Tool Multiplexer is a key component in almost every multitool to ever exist. It handles the switching and usage of multiple tools, and allows all of them to act as one tool tip the user can equip, making multiple tool usage easier. Multitools can be assigned to the ``Tools`` list of other multitools.",
+  "category": "Tools",
+  "fields": {
+    "ActiveToolIndex": "The tool that this tool tip is currently using",
+    "Tools": "A list of tools that this tool tip is to switch between using ``ActiveToolIndex`` as the one it should be currently using."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "Curiously, the transform position of the slot of a tool listed in the ``Tools`` list and its tip transform position can cause the multitool's laser tip to move if that tool is selected. Putting all the tools used by the multitool under one slot and making sure their tip and tool roots are in the same transform place is the preferred way of making sure your tool tip laser position stays consistent."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ToolMultiplexer&action=raw"
+}

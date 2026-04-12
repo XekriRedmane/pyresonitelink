@@ -1,0 +1,12 @@
+{
+  "description": "The ValueNoiseHapticFilter component makes a random intensity value every update to a device touching a HapticVolume.\n\nThis works as part of the game's robust Haptics system.",
+  "category": "Input:Haptics:Filters",
+  "fields": {
+    "MinValue": "The minimum haptic intensity to output in a game tick.",
+    "MaxValue": "The maximum haptic intensity to output in a game tick."
+  },
+  "methods": {},
+  "usage": "Attach to a slot with a valid and working HapticVolume to add to the list of multiplicative haptic filters.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ValueNoiseHapticFilter&action=raw"
+}

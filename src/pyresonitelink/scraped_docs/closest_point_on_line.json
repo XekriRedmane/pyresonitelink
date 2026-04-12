@@ -1,8 +1,14 @@
 {
   "description": "The Closest Point On Line node takes in the line parameters (2 points in 3D space), and a provided point to check. Then it returns the point that it is closest to on the line, based on the defined parameters.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "LinePoint0": "The first point.",
+    "LinePoint1": "The second point.",
+    "Point": "The point to check.",
+    "* ([[Type:float3|float3]])": "Returns the point on the line compared with the point given."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:ClosestPointOnLine&action=raw"
 }

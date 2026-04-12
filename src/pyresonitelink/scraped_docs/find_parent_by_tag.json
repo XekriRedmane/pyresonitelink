@@ -1,8 +1,14 @@
 {
   "description": "The Find Parent By Tag node finds a parent object above the instance (Slot) that matches the given Tag (String).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot to scan for parent slots from.",
+    "Tag": "The tag to look for above Instance (Slot).",
+    "SearchDepth": "How far to search for a parent with a tag that matches the given Tag (String).\n\nExamples: 0 > Search immediate parent. 1 > Search parent of slot and it's next parent. -1 > Search all the way to Root (CAN BE HEAVY)",
+    "* ([[Slot|Slot]])": "The result of the search."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:FindParentByTag&action=raw"
 }

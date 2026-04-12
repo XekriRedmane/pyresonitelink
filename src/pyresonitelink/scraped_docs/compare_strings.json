@@ -1,8 +1,14 @@
 {
-  "description": "Comapre Strings is a ProtoFlux node that allows you to tell the difference between two different strings as a whole number. The comparison used is based on Comparing Strings Microsoft 4.6.2",
+  "description": "Comapre Strings is a ProtoFlux node that allows you to tell the difference between two different strings as a whole number.\nThe comparison used is based on Comparing Strings Microsoft 4.6.2",
   "category": "",
-  "fields": {},
+  "fields": {
+    "A": "The string to compare from.",
+    "B": "The string to compare to.",
+    "ComparisonType": "The string comparison to use.",
+    "* ([[Type:Int|int]])": "The difference between the strings. can be positive or negative."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CompareStrings&action=raw"
 }

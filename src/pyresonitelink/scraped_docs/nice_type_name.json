@@ -1,8 +1,14 @@
 {
-  "description": "The Nice Type Name node takes in a Type as well as optional open and close symbols, then returns the pretty human readable name of the provided type. For example, using a type that has a float and connecting it to this node, it will return float.",
+  "description": "The ``Nice Type Name`` node takes in a Type as well as optional open and close symbols, then returns the pretty human readable name of the provided type. For example, using a type that has a float and connecting it to this node, it will return ``float``.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Type": "The type we want the nice name of.",
+    "OpenSymbol": "The open symbol from this type (defaults to ``<``).",
+    "CloseSymbol": "The close symbol from this type (defaults to ``>``).",
+    "* ([[Type:String|String]])": "Returns the nice type name."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:NiceTypeName&action=raw"
 }

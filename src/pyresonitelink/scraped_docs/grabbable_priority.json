@@ -1,8 +1,12 @@
 {
-  "description": "Grabbable Priority is a ProtoFlux node that gets the priority of an IGrabbable.",
+  "description": "Grabbable Priority is a ProtoFlux node that gets the priority of an IGrabbable.\n\nGrab Priority",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Grabbable": "The grabbable that should be checked for a grabber that is grabbing it.",
+    "* ([[Type:Grabber|Grabber]])": "The grab priority of the provided Grabbable (IGrabbable)."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GrabbablePriority&action=raw"
 }

@@ -1,0 +1,15 @@
+{
+  "description": "The UserDistanceValueDriver switches or flip flops or flips between two different values like a conditional or ternary operator when a user is close to or far away from the slot this component is on. The switch is local.",
+  "category": "Transform:Drivers",
+  "fields": {
+    "Node": "The user node to check distance from.",
+    "Distance": "The distance to use when checking near vs far.",
+    "TargetField": "The field to drive with either ``NearValue`` or flip to ``FarValue`` depending on distance.",
+    "NearValue": "The value to use to drive ``TargetField`` with when the local user ``Node`` under ``Distance`` away from this component's slot in global space.",
+    "FarValue": "The value to use to drive ``TargetField`` with when the local user ``Node`` over ``Distance`` away from this component's slot in global space."
+  },
+  "methods": {},
+  "usage": "Attach to a slot that a distance to the local user for a particular slot in global space needs to be checked for. Then provide values for all the component's fields in order for it to work.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:UserDistanceValueDriver&action=raw"
+}

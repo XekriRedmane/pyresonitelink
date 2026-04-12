@@ -1,0 +1,11 @@
+{
+  "description": "The DynamicReferenceVariableDriver component can drive a SyncRef`1 (Reference Holder) to the value assigned to a dynamic variable with the name ``VariableName``. if the specified variable cannot be found, the value will revert to ``DefaultTarget`` how this works is explained on Dynamic Variables page.",
+  "category": "Data:Dynamic",
+  "fields": {
+    "Target": "The field to drive with the variable definition."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:DynamicReferenceVariableDriver&action=raw"
+}

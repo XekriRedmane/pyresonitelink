@@ -1,0 +1,23 @@
+{
+  "description": "The CharacterTeleporter sets up a Slot to teleport a character to the associated teleport exit when the Slot's Collider is hit. The Collider must be of type Trigger unless ``TriggersOnly`` is disabled.",
+  "category": "Locomotion:Interaction",
+  "fields": {
+    "TriggersOnly": "Whether to only allow triggers in this component's slot hiearchy to trigger the teleporter.",
+    "Exits": "A list of slot exits to send the user to, which include rotation and individualized data.",
+    "MinimumVelocity": "the minimum velocity the user has to be traveling to enter the teleporter.",
+    "DirectionReference": "Which way is looking forward for this teleporter.",
+    "MaxDirectionAngle": "If the user's velocity direction has an angle greater than this compared to the ``DirectionReference``, then don't teleport the user.",
+    "IgnoreParentUser": "Whether to ignore the active user of this component when finding users that meet the criteria to go through the teleporter.",
+    "TeleportEntered": "Sync Delegates that take Float3 that should be called when the teleporter is entered. For example, RandomAudioClipPlayer and RandomObjectSpawner have sync delegates that can be used here.",
+    "TeleportExited": "Sync Delegates that take Float3 that should be called when the teleporter is exited anywhere. For example, RandomAudioClipPlayer and RandomObjectSpawner have sync delegates that can be used here."
+  },
+  "methods": {},
+  "usage": "Place the component on a slot with a collider that has character collider field enabled. Next, specify slot(s) for the user to exit out of in the ``Exits`` list. Walking into the collider zone will send you and anyone else to the target Exit",
+  "notes": [
+    {
+      "title": "Related Components",
+      "text": "* RandomObjectSpawner"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CharacterTeleporter&action=raw"
+}

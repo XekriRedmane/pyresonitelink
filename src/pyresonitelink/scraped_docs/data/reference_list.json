@@ -1,0 +1,11 @@
+{
+  "description": "The Reference List`1 component acts as a way to store a list of references as a stand alone component. like a ReferenceField, but for a list of items of the same type.\n\nThis component does not provide a way to index through its items. If you need this functionality, consider using a ReferenceMultiplexer Instead.",
+  "category": "Data",
+  "fields": {
+    "References": "The stored reference list."
+  },
+  "methods": {},
+  "usage": "Can be used with Spatial variables.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:ReferenceList&action=raw"
+}

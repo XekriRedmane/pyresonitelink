@@ -1,8 +1,12 @@
 {
-  "description": "Gives the Slot Order Offset field of a slot as an int instead of a long.",
+  "description": "Gives the ``Slot Order Offset`` field of a slot as an int instead of a long.",
   "category": "",
-  "fields": {},
+  "fields": {
+    "Instance": "The slot for read the slot order offset for.",
+    "* ([[Types:Int|Int]])": "The ``Slot Order Offset`` of the provided Instance ( Slot) as an int."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GetSlotOrderOffset&action=raw"
 }

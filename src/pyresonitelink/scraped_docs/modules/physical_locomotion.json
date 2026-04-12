@@ -1,0 +1,46 @@
+{
+  "description": "The PhysicalLocomotion component is a versatile Locomotion Module that can be used for walking, climbing, flying, and Zero-G.\n\n= Fields =\n}}",
+  "category": "Locomotion:Modules",
+  "fields": {
+    "Archetype": "Used to specify what kind of locomotion this is, to help with identification in flux and compatibility with user settings.",
+    "MinInitializationDelay": "The minimum time to wait for the locomotion to allow initalization.",
+    "MaxInitializationDelay": "If the amount of time passed after this component was created is past this value, the locomotion is forced to initialize anyways.",
+    "InitializationColliderRoot": "The slot which a collider in its hiearchy has to be raycastable (From the user's feet downward) in order for this locomotion to initalize.",
+    "UseSpeedFromUserSettings": "Whether to allow the speed in the user settings to influence this locomotion's speed.",
+    "Description": "The description of this locomotion in the context menu.",
+    "Mode": "How the enviroment/user influences how this locomotion can move.",
+    "Gripping": "See #Gripping for more information",
+    "GripOnHold": "See #Gripping for more information",
+    "GripRadius": "See #Gripping for more information",
+    "GripVelocityMultiplier": "See #Gripping for more information",
+    "GripHandRotationMode": "See #Gripping for more information",
+    "GripObjectRotationMode": "See #Gripping for more information",
+    "HandGripRotationSmoothSpeed": "See #Gripping for more information",
+    "FallRespawnPosition": "How far down in global space the user needs to be to respawn.",
+    "MakeGravityCharacterLocal": "Whether the gravity should be based on the user's parent space orientation (true) or global (false)",
+    "AutoAlignVerticalWithGravitySpeed": "How fast to rotate the player to orient them to the direction of gravity.",
+    "ManualAlignVerticalWithGravitySpeed": "How fast the user aligns with gravity if 3 axis rotation is enabled and they're pressing the manual align button.",
+    "AirDecelerationSpeed": "How fast the user is slowed down while in air.",
+    "GripScaleDelay": "How long the user has to wait after gripping a surface in order to be able to scale with both hands in VR.",
+    "AllowCrouch": "Whether this locomotion allows the user to crouch down.",
+    "MaximumNormalizedSpeed": "The fastest speed this locomotion is allowed to travel.",
+    "_defaultIcon": "The default icon url for this kind of locomotion.",
+    "_defaultColor": "The default color for this kind of locomotion.",
+    "_characterController": "The character controller associated with this locomotion component.",
+    "__legacyName": "Internal."
+  },
+  "methods": {
+    "PresetWalkRun": "Called when the Walk run preset button is touched.",
+    "PresetWalkRunGrip": "Called when the walk run and grip preset button is touched.",
+    "PresetZeroG": "Called when the zero gravity preset button is touched.",
+    "PresetPhysicalFly": "Called when the physical fly preset button is touched."
+  },
+  "usage": "",
+  "notes": [
+    {
+      "title": "Gripping",
+      "text": "PhysicalLocomotion has a feature which is unique to it, called Gripping. This feature allows you to grip other objects in the world in order to use them to climb or traverse the world. A good analogy is rock climbing as this is exactly how this feature feels to use. Gripping, only works when allowed by the world author. \n\nThis feature is commonly called \"Climbing\" or \"Physical Grab/Climbing\" or even \"Player Climbing\", the official name \"Gripping\" will be used throughout this page. \n\nAdditionally, this feature is often confused with \"Grabbables\" which refer to any object in that you can move around in the world by grabbing it. These features are independent, for a quick way to remember the difference:\n* Grabbing involves moving an object which you are \"Grabbing\"\n* Gripping involves moving you using an object which you are \"Gripping\"\n\nOr if that doesn't work, its the difference between climbing a ladder and moving that ladder.\n\nWorld authors can configure this feature by changing the properties on the PhysicalLocomotion component. The main property here is \"Gripping\" which has the following settings and meanings:"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:PhysicalLocomotion&action=raw"
+}

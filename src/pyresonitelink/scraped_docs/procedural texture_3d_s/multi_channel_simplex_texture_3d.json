@@ -1,0 +1,21 @@
+{
+  "description": "The MultiChannelSimplexTexture3D component creates a monochrome noise channel for each RGBA channel with their own settings. It is also considered a ITexture3D element.",
+  "category": "Assets:Procedural Texture3Ds",
+  "fields": {
+    "FilterMode": "How to interpolate enlarged pixels when rendering the texture.",
+    "AnisotropicLevel": "Used when the texture is using the Anisotropic filtering render algorithm.",
+    "WrapModeU": "How to handle wrapping for UVW sampling positions beyond the 0 to 1 range for U.",
+    "WrapModeV": "How to handle wrapping for UVW sampling positions beyond the 0 to 1 range for V.",
+    "WrapModeW": "How to handle wrapping for UVW sampling positions beyond the 0 to 1 range for W.",
+    "Profile": "The color space to render the image in.",
+    "Size": "How big the texture is in pixels.",
+    "Format": "What format to show the texture in.",
+    "R": "The settings to use when generating the noise for the red channel.",
+    "G": "The settings to use when generating the noise for the green channel.",
+    "B": "The settings to use when generating the noise for the blue channel.",
+    "A": "The settings to use when generating the noise for the alpha channel."
+  },
+  "methods": {},
+  "usage": "Can be used to make procedural noise 4D textures for use with LUT, and volume.",
+  "notes": []
+}

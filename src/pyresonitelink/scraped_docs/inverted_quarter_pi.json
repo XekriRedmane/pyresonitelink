@@ -1,8 +1,11 @@
 {
-  "description": "The InvertedQuarterPi or 1/(π/4) node outputs the value of 1 ÷ (π ÷ 4).",
+  "description": "The InvertedQuarterPi or 1/(\u03c0/4) node outputs the value of 1 \u00f7 (\u03c0 \u00f7 4).",
   "category": "",
-  "fields": {},
+  "fields": {
+    "* ([[Type:Float|float]])": "The value of 1 \u00f7 (\u03c0 \u00f7 4), approximately ``1.273239``."
+  },
   "methods": {},
   "usage": "",
-  "notes": []
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:InvertedQuarterPi&action=raw"
 }

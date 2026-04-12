@@ -1,0 +1,15 @@
+{
+  "description": "The BagEditor component is a internal-use component intended to be used to generate UIX for editing an ISyncBag. Some examples of Bags include the UserBag, SlotBag and WorkerBag.",
+  "category": "Uncategorized",
+  "fields": {
+    "_targetBag": "The bag to edit.",
+    "_addNewButton": "Button to add a new item to the bag."
+  },
+  "methods": {
+    "AddNewPressed": "Handles adding new items to the bag of items.",
+    "RemovePressed": "Handles removing items from the bag of items."
+  },
+  "usage": "When ``_targetBag`` receives a reference to a bag, the BagEditor's slot's children will be populated with items in the bag. Each of these child slots will have the name ``Element - IDXXXXXX``, where ``IDXXXXX`` is the Reference ID of the element. Each child slot contains a BagEditorItem component with a reference to items in the bag.\n\nThis component will misbehave when changing the ``_targetBag`` after it already has a reference, as doing so is unintended behavior.\n\nThis component is frequently used in conjunction with Ref Hacking, as it exposes reference IDs in the element slot names.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:BagEditor&action=raw"
+}

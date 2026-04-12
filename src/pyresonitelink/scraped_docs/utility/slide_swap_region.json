@@ -1,0 +1,11 @@
+{
+  "description": "The SlideSwapRegion component takes in a RectTransform of a UIX element and uses it for a slide swap. This is an internal component used by the game engine to manage things like the inventory and tutorial pages to name a couple. This isn't usable by the player in any meaningful way because of this.",
+  "category": "UIX:Utility",
+  "fields": {
+    "_current": "Internal - The RectTransform to swap. This component acting as a controller for what this points to."
+  },
+  "methods": {},
+  "usage": "Not used by the player. used by internal game elements.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SlideSwapRegion&action=raw"
+}

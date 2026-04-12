@@ -1,0 +1,19 @@
+{
+  "description": "The Perspective360Panner component allows for moving or panning across 360 degrees around a view, given the parameters of how this panning should work. This is mostly seen in the WorldListFacetPreset component, where each listed item has this component to allow looking around in the world preview thumbnails.",
+  "category": "Common UI:Drivers",
+  "fields": {
+    "IdleFOV": "The field of view used when not looking around.",
+    "HoverFOV": "The field of view used when looking around.",
+    "FOVSpeed": "The field of view speed.",
+    "HorizontalPanningAcceleration": "How fast to pick up speed.",
+    "HorizontalPanningSpeed": "The horizontal panning speed.",
+    "VerticalPanningSpeed": "The vertical panning speed.",
+    "VerticalRange": "The vertical range of this field of view.",
+    "AngleOffset": "The field of view angle offset.",
+    "FOV": "The 2D field of view."
+  },
+  "methods": {},
+  "usage": "Useful as a way of looking around any 360 type of image.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:Perspective360Panner&action=raw"
+}

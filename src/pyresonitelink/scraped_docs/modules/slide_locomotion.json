@@ -1,0 +1,15 @@
+{
+  "description": "The SlideLocomotion component acts the same as a NoclipLocomotion except that this locomotion will attach the user to a raycasted surface below them regardless of collider type. When a surface is not found, Behavior compared to noclip is identical.",
+  "category": "Locomotion:Modules",
+  "fields": {
+    "MaxSpeed": "The fastest speed this locomotion can travel.",
+    "MinimumFlySpeedRatio": "Unused.",
+    "MaxSnapDistance": "The maximum distance to check from the user's feet position plus ``SnapCheckOffset`` downward.",
+    "SnapCheckOffset": "anything from the user's feet within this range downward is not raycasted.",
+    "SnapMinObjectSize": "The minimum size of the object's max dimensions on any axis in global space compared to the user's max size on any axis needed for us to snap to it's surface below us."
+  },
+  "methods": {},
+  "usage": "Can be used for sticky fly locomotion.",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:SlideLocomotion&action=raw"
+}

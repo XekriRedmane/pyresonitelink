@@ -1,0 +1,27 @@
+{
+  "description": "Camera Portal, Also known as: Mirror, Portal, Gateway, Non Euclidean, and Bigger on the inside thing. This component allows for making a flat surface appear to have something on the other side.",
+  "category": "With Nested Enums",
+  "fields": {
+    "Renderer": "The renderer that the geometry is being used for the effect. This really only works best with flat surfaces, so use a quad in the target mesh renderer.",
+    "ReflectionTexture": "The render texture that this component should render what it wants to display to. This texture only works with a Reflection Material that goes on the ``Render``'s mesh.",
+    "PlaneOffset": "How far away from the surface the mirror or portal should render from. This doesn't need to be touched for a mirror, and causes some weird effects.",
+    "PlaneNormal": "Rotates what the mirror is rendering. this can can cause some very strange effects for Mirrors and Portals, and is best understood by playing with it.",
+    "RenderMode": "Whether this CameraPortal should act as a Mirror (Silver mirror) or as a Portal (Gateway, Non Euclidean, Tardis, ETC)",
+    "PortalTarget": "The slot that should be used as a position to render from. When using Mirror ``RenderMode``, keep this as the same slot as ``Renderer``. When using Portal ``RenderMode``, set the slot as the thing you're trying to make a gateway to visually (for a tardis, this would be the interior entrance somewhere else in the world)",
+    "OverrideClear": "The type of color to clear when rendering. Functionally identical to the OverrideClear on a Camera",
+    "ClearColor": "If using \"Color\" for ``OverrideClear`` use this color.",
+    "DisablePerPixelLights": "Disables lighting from points or spots in the projected image, which helps performance.",
+    "DisableShadows": "Disable lights casting shadows in the projected image, which helps performance.",
+    "OverrideFarClip": "Override the default farclip from 4096 to this value when enabled.",
+    "OverrideNearClip": "Override the default nearclip from ~0 to this value when enabled."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Behavior",
+      "text": "This component does not allow for recursion (So you cannot put two mirrors in front and behind and expect them to reflect each other, or portal each other).\n\nCurrently, this component does not support culling of objects via object layers, and captures everything the local user currently can render via their POV. there is no way of changing this at the current moment."
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:CameraPortal&action=raw"
+}
