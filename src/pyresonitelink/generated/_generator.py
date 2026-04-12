@@ -12,6 +12,11 @@ from typing import Any
 _DOCS_DIR = Path(__file__).resolve().parent.parent / "scraped_docs"
 
 
+def _sanitize_docstring(text: str) -> str:
+    """Escape text for safe inclusion in Python triple-quoted docstrings."""
+    return text.replace('"""', '"\\""')
+
+
 def _load_wiki_docs(class_name: str) -> dict[str, Any] | None:
     """Load wiki documentation for a component if available.
 
@@ -894,7 +899,7 @@ def generate_component_source(
     # Class
     lines.append(f"class {class_name}({bases_str}):")
     if wiki_docs and wiki_docs.get("description"):
-        lines.append(f'    """{wiki_docs["description"]}')
+        lines.append(f'    """{_sanitize_docstring(wiki_docs["description"])}')
     else:
         lines.append(f'    """Wrapper for {component_type}.')
     if category:
@@ -903,7 +908,7 @@ def generate_component_source(
     if wiki_docs and wiki_docs.get("usage"):
         lines.append("")
         # Wrap usage text at ~72 chars with 4-space indent
-        usage = wiki_docs["usage"]
+        usage = _sanitize_docstring(wiki_docs["usage"])
         words = usage.split()
         usage_lines: list[str] = []
         current = "    "
@@ -919,7 +924,7 @@ def generate_component_source(
     if wiki_docs and wiki_docs.get("notes"):
         for note in wiki_docs["notes"]:
             lines.append("")
-            lines.append(f"    **{note['title']}**: {note['text']}")
+            lines.append(f"    **{_sanitize_docstring(note['title'])}**: {_sanitize_docstring(note['text'])}")
     if is_generic:
         lines.append("")
         lines.append(f"    Parameterize with a value type::")
@@ -1071,7 +1076,7 @@ def generate_component_source(
                 if wiki_docs else ""
             )
             if field_doc:
-                lines.append(f'        """{field_doc}"""')
+                lines.append(f'        """{_sanitize_docstring(field_doc)}"""')
             else:
                 lines.append(f'        """The {res_name} field value."""')
             lines.append(f'        member = self.get_member("{res_name}")')
@@ -1105,7 +1110,7 @@ def generate_component_source(
                 if wiki_docs else ""
             )
             if field_doc:
-                lines.append(f'        """{field_doc}"""')
+                lines.append(f'        """{_sanitize_docstring(field_doc)}"""')
             else:
                 lines.append(
                     f'        """Target ID of the {res_name} reference '
@@ -1169,7 +1174,7 @@ def generate_component_source(
             lines.append(f"    @property")
             lines.append(f"    def {py_name}(self) -> {enum_cls} | None:")
             if field_doc:
-                lines.append(f'        """{field_doc}"""')
+                lines.append(f'        """{_sanitize_docstring(field_doc)}"""')
             else:
                 lines.append(f'        """The {res_name} enum value."""')
             lines.append(f'        member = self.get_member("{res_name}")')
@@ -1186,7 +1191,7 @@ def generate_component_source(
                 f"(self, value: {enum_cls} | str) -> None:"
             )
             if field_doc:
-                lines.append(f'        """Set {res_name}. {field_doc}"""')
+                lines.append(f'        """Set {res_name}. {_sanitize_docstring(field_doc)}"""')
             else:
                 lines.append(
                     f'        """Set the {res_name} enum value."""'
@@ -1217,7 +1222,7 @@ def generate_component_source(
                 f"    def {py_name}(self) -> {import_mod}.{member_class} | None:"
             )
             if field_doc:
-                lines.append(f'        """{field_doc}"""')
+                lines.append(f'        """{_sanitize_docstring(field_doc)}"""')
             else:
                 lines.append(f'        """The {res_name} member."""')
             lines.append(f'        member = self.get_member("{res_name}")')
@@ -1231,7 +1236,7 @@ def generate_component_source(
                 f"(self, value: {import_mod}.{member_class}) -> None:"
             )
             if field_doc:
-                lines.append(f'        """Set {res_name}. {field_doc}"""')
+                lines.append(f'        """Set {res_name}. {_sanitize_docstring(field_doc)}"""')
             else:
                 lines.append(f'        """Set the {res_name} member."""')
             lines.append(f'        self.set_member("{res_name}", value)')

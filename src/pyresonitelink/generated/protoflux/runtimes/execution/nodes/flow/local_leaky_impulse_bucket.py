@@ -93,7 +93,7 @@ Note: There is currently a bug with this node where it will send impulses out of
 
     @property
     def interval(self) -> str | None:
-        """How many seconds that the node will keep impulses for before one """leaks out the bottom of the bucket""", decreasing CurrentCapacity (int) by one for the local user."""
+        """How many seconds that the node will keep impulses for before one "\""leaks out the bottom of the bucket"\"", decreasing CurrentCapacity (int) by one for the local user."""
         member = self.get_member("Interval")
         if isinstance(member, members.Reference):
             return member.targetId

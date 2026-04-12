@@ -85,6 +85,8 @@ def _clean_text(text: str) -> str:
     # Collapse multiple blank lines
     text = re.sub(r"\n{3,}", "\n\n", text)
     text = text.strip()
+    # Escape triple quotes so scraped text is safe in Python docstrings
+    text = text.replace('"""', '"\\""')
     return text
 
 

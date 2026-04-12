@@ -10,7 +10,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class TestFakeViveTracker(GeneratedComponent, IComponent, IWorldEventReceiver):
-    """The TestFakeViveTracker component simulates a vive Tracker for ``User`` that has the position and rotation of the slot this component is on. This allows for making fake trackers that can be used to control the ``User``'s IK as a real Tracker would. It even """tricks""" the input system into fully seeing this as a Tracker, even generating a visual for the user. The tracker device's position/rotation is based on its position/rotation in global space compared to ``User``'s root slot global position/rotation.
+    """The TestFakeViveTracker component simulates a vive Tracker for ``User`` that has the position and rotation of the slot this component is on. This allows for making fake trackers that can be used to control the ``User``'s IK as a real Tracker would. It even "\""tricks"\"" the input system into fully seeing this as a Tracker, even generating a visual for the user. The tracker device's position/rotation is based on its position/rotation in global space compared to ``User``'s root slot global position/rotation.
 
     Category: Debug
 
