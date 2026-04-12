@@ -12,19 +12,19 @@ Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs in
   - [Variables](#variables)
   - [Expressions](#expressions)
   - [Math Functions](#math-functions)
-  - [Flow Control](#flow-control)
-    - [If / Else](#if--else)
-    - [Continuation after If / Else](#continuation-after-if--else)
-    - [For](#for)
-    - [Range](#range)
-    - [While](#while)
-    - [Action Nodes](#action-nodes)
-    - [Event Source Nodes](#event-source-nodes)
-    - [Data Source Nodes](#data-source-nodes)
-    - [Indexed Branch Nodes](#indexed-branch-nodes)
+- [Flow Control](#flow-control)
+  - [If / Else](#if--else)
+  - [Continuation](#continuation-after-if--else)
+  - [For](#for), [Range](#range), [While](#while)
+- [Bindings](#bindings)
+- [Actions](#actions)
+  - [Action Nodes](#action-nodes)
   - [Defining Custom Actions](#defining-custom-actions)
+- [Data Sources](#data-sources)
+  - [Data Source Nodes](#data-source-nodes)
   - [Defining Custom Data Sources](#defining-custom-data-sources)
-  - [Bindings](#bindings)
+- [Indexed Branch Nodes](#indexed-branch-nodes)
+- [Event Source Nodes](#event-source-nodes)
 - [Triggers](#triggers)
   - [Update (default)](#update-default--fires-every-frame)
   - [Named dynamic impulse](#named-dynamic-impulse--no-argument)
@@ -263,14 +263,14 @@ dm.conditional(s.flag, s.a, s.b)  # if flag then a else b
 
 This is a value-level conditional (like C's ternary `?:`) — it selects between two values based on a `Bool`, without creating an impulse flow.
 
-### Flow Control
+## Flow Control
 
 All flow control must be inside a `g.Under(slot)` block.  Multiple
 flow statements inside a single `Under` block are chained via a
 ProtoFlux `Sequence` node — each runs to completion before the next
 starts.
 
-#### If / Else
+### If / Else
 
 ```python
 with g.Under(slot):
@@ -282,7 +282,7 @@ with g.Under(slot):
 
 Multiple writes per branch are supported. `g.Else()` is optional.
 
-#### Continuation after If / Else
+### Continuation after If / Else
 
 Bare writes after a flow block are continuation statements — they run
 after the preceding flow completes:
@@ -302,7 +302,7 @@ At build time, the `If` and the bare write become two entries in a
 `Sequence` node.  The trigger drives the Sequence, which fires the
 If first, waits for it to complete, then fires the bare write.
 
-#### For
+### For
 
 ```python
 with g.Under(slot):
@@ -336,7 +336,7 @@ with g.Under(slot):
         s.total = s.total * 2
 ```
 
-#### Range
+### Range
 
 ```python
 with g.Under(slot):
@@ -352,7 +352,7 @@ defaults to 1 if omitted.
 
 At build time, creates a ProtoFlux ``RangeLoopInt`` node.
 
-#### While
+### While
 
 ```python
 with g.Under(slot):
@@ -365,11 +365,52 @@ re-evaluated each iteration. Statements go to `loop_iteration`.
 
 Code after the `with g.While()` block continues from `loop_end`.
 
-#### Action Nodes
+## Bindings
+
+``g.Bind()`` permanently binds a value source to a component field.
+The field always reflects the source's current value.  **A field can
+only be bound once** — attempting to rebind raises ``RuntimeError``.
+
+The binding mechanism depends on the source:
+
+- **Dynamic variable** (e.g. ``s.x``): Creates a
+  ``DynamicValueVariableDriver<T>`` (for value types like int, float,
+  Float3) or ``DynamicReferenceVariableDriver<T>`` (for reference
+  types like Slot).  The driver reads the named variable by path and
+  continuously drives the target field.
+- **General expression** (e.g. ``i``, ``s.x + 1``): Creates a
+  ``ValueFieldDrive<T>`` driven by the ProtoFlux expression.
+
+```python
+# Bind a loop counter to a field (uses ValueFieldDrive)
+with g.Under(slot):
+    with g.For(3) as f:
+        with f.OnIterate() as i:
+            g.Bind(i, mux, "Index")
+
+# Bind a dynamic variable to a field (uses DynamicValueVariableDriver)
+g.Bind(s.volume, audio_output, "Volume", slot=slot)
+```
+
+For named spaces, the variable path is automatically prefixed with
+the space name (e.g. ``"Audio/vol"`` for a variable ``vol`` in space
+``Audio``).
+
+Arguments:
+
+- ``expr`` — an ExprProxy or literal value to bind from
+- ``component`` — the target component (a generated component instance)
+- ``member_name`` — the Resonite member name to bind to (e.g. ``"Index"``)
+- ``slot`` — optional; defaults to the active ``Under()`` slot
+
+## Actions
 
 Action nodes are ProtoFlux nodes triggered by an impulse that branch
 into alternate flow paths and optionally produce value outputs.  They
-are accessed as named methods on the Graph.
+are accessed as named methods on the Graph, or via ``g.Action()`` with
+a custom ``ActionDef``.
+
+### Action Nodes
 
 **RaycastOne** — cast a ray with hit/miss branches:
 
@@ -406,126 +447,81 @@ with g.Under(slot):
             s.playing = True
 ```
 
-#### Event Source Nodes
-
-Some nodes fire impulses on their own when events occur, rather than
-being triggered by an impulse.  These don't need an explicit trigger
-(Update, DynamicImpulseReceiver) — the builder skips trigger creation
-automatically.
-
-**Lifecycle events** — fire once on specific lifecycle events:
-
-```python
-with g.Under(slot):
-    with g.OnStart() as e:
-        with e.trigger():
-            s.log = "started"
-
-    with g.OnActivated() as e:
-        with e.trigger():
-            s.log = "activated"
-
-    with g.OnDeactivated() as e:
-        with e.trigger():
-            s.log = "deactivated"
-```
-
-Also: ``OnDestroy``, ``OnDestroying``, ``OnLoaded``, ``OnDuplicate``,
-``OnPaste``, ``OnSaving``, ``OnPackageImported``.
-
-``OnActivated``, ``OnDeactivated``, ``OnStart``, and ``OnDestroy``
-accept an optional ``only_host=True`` to restrict to the host user.
-
-**Condition-based event sources**:
-
-```python
-with g.Under(slot):
-    # Fire once when condition becomes true (rising edge)
-    with g.FireOnTrue(condition=s.flag) as e:
-        with e.on_changed():
-            s.count = s.count + 1
-
-    # Fire once when condition becomes false (falling edge)
-    with g.FireOnFalse(condition=s.flag) as e:
-        with e.on_changed():
-            s.result = s.x
-
-    # Fire every frame while condition is true
-    with g.FireWhileTrue(condition=s.active) as e:
-        with e.on_update():
-            s.elapsed = s.elapsed + 1
-```
-
-Local variants (``FireOnLocalTrue``, ``FireOnLocalFalse``,
-``LocalFireWhileTrue``) only fire for the local user.
-
-**Value-change event sources**:
-
-```python
-with g.Under(slot):
-    with g.FireOnValueChange(value=s.x) as e:
-        with e.on_changed():
-            s.change_count = s.change_count + 1
-```
-
-Also: ``FireOnLocalValueChange``, ``FireOnObjectValueChange``,
-``FireOnLocalObjectChange``, ``FireOnRefChange``, ``FireOnTypeChange``.
-
-**Timer event sources**:
-
-```python
-with g.Under(slot):
-    # Fire every 60 engine updates
-    with g.UpdatesTimer(interval=60) as e:
-        with e.on_update():
-            s.tick = s.tick + 1
-
-    # Fire every 1.0 seconds
-    with g.SecondsTimer(interval=1.0) as e:
-        with e.on_update():
-            s.seconds = s.seconds + 1
-```
-
 **Delay** (async — suspends across frames):
 
 ```python
 with g.Under(slot):
-    # Delay by seconds
     with g.DelaySeconds(duration=2.0) as d:
         with d.next():
             s.state = "waiting"      # fires immediately
         with d.on_triggered():
             s.state = "delayed"      # fires after 2 seconds
 
-    # Delay by engine updates
     with g.DelayUpdates(updates=2) as d:
         with d.on_triggered():
             s.state = "after 2 updates"
 
-    # Delay by updates OR seconds (whichever first)
     with g.DelayUpdatesOrSeconds(updates=60, duration=1.0) as d:
         with d.on_triggered():
             s.state = "after 60 updates or 1 second"
 ```
 
-**SlotChildrenEvents** — fires when children are added/removed:
+**Prebuilt actions** in ``pyresonitelink.dergflux.actions``:
+
+- ``actions.RaycastOne`` — ray cast with on_hit/on_miss
+- ``actions.PlayOneShot`` / ``actions.PlayOneShotAndWait`` — audio
+- ``actions.DelaySecondsFloat/Double/Int`` — time delay
+- ``actions.DelayUpdates`` — update delay
+- ``actions.DelayUpdatesOrSecondsFloat/Double/Int`` — combined delay
+
+### Defining Custom Actions
+
+Any ProtoFlux node with flow outputs can be wrapped as an action using
+``ActionDef`` — no custom proxy or builder code needed:
 
 ```python
-with g.Under(slot):
-    with g.SlotChildrenEvents(instance=watched_slot) as e:
-        with e.on_child_added():
-            s.last_child = e.child
-        with e.on_child_removed():
-            s.removed_child = e.child
+from pyresonitelink.dergflux import ActionDef, InputDef, OutputDef
+from pyresonitelink.data import primitives
+
+MyAction = ActionDef(
+    import_path="protoflux.physics",
+    class_name="RaycastOne",
+    inputs={
+        "origin": InputDef("origin", primitives.Float3),
+        "direction": InputDef("direction", primitives.Float3),
+    },
+    flow_outputs=["on_hit", "on_miss"],   # become context managers
+    value_outputs={                        # become ExprProxy properties
+        "hit_distance": OutputDef("HitDistance", primitives.Float),
+    },
+)
 ```
 
-The ``instance`` input accepts a Slot instance directly — the builder
-auto-creates a ``GlobalReference<Slot>`` bridge (since the node's
-``Instance`` member requires ``IGlobalValueProxy<Slot>``).
+Use it with ``g.Action()``:
 
-Value output: ``e.child`` — the child Slot that was added or removed.
+```python
+with g.Action(MyAction, origin=s.pos, direction=s.dir) as r:
+    with r.on_hit():
+        s.distance = r.hit_distance
+```
 
-#### Data Source Nodes
+Or add a named shortcut method on Graph that delegates to ``g.Action()``.
+
+**InputDef options** for reference inputs:
+
+- ``ref_type="..."`` — auto-creates ``RefObjectInput<type>`` when a
+  component is passed.  Used for ``INodeObjectOutput`` inputs.
+- ``global_type="..."`` — auto-creates ``GlobalReference<type>`` when a
+  component/slot is passed.  Used for ``IGlobalValueProxy`` inputs.
+
+**ActionDef flags**:
+
+- ``is_async=True`` — the node is async; enclosing flow uses async variants
+  and ``StartAsyncTask`` bridge.
+- ``is_event_source=True`` — the node fires its own impulses (no trigger
+  created).  Use for event monitors like ``SlotChildrenEvents``.
+
+## Data Sources
 
 Data source nodes are ProtoFlux nodes that provide value outputs
 without any flow (no impulses, no triggers).  They compute values
@@ -537,11 +533,12 @@ Data sources use the same ``ActionDef`` system as action nodes, but
 with ``flow_outputs=[]``.  They're created with ``g.DataSource()``
 or named shortcuts.
 
+### Data Source Nodes
+
 ```python
 ctrl = g.StandardController(user=user_ref, node=chirality, slot=slot)
 
 # ctrl.primary, ctrl.grab, ctrl.axis etc. are ExprProxy values
-# usable anywhere an expression is expected
 with g.Under(slot):
     with g.FireOnTrue(condition=ctrl.primary) as e:
         with e.on_changed():
@@ -563,7 +560,7 @@ with g.Under(slot):
   ``trigger_hair``, ``trigger_click``, ``touchpad`` (float2),
   ``touchpad_touch``, ``touchpad_click``, ``app``
 
-#### Defining Custom Data Sources
+### Defining Custom Data Sources
 
 Any ProtoFlux value node can be wrapped as a data source using
 ``ActionDef`` with ``flow_outputs=[]``:
@@ -576,8 +573,8 @@ MyDataSource = ActionDef(
     import_path="protoflux.devices.controllers",
     class_name="StandardController",
     inputs={
-        "user": InputDef("user"),          # reference input
-        "node": InputDef("node"),          # reference input
+        "user": InputDef("user"),
+        "node": InputDef("node"),
     },
     flow_outputs=[],                        # no flow — data source only
     value_outputs={
@@ -594,14 +591,7 @@ src = g.DataSource(MyDataSource, user=user_ref, node=chirality, slot=slot)
 # src.primary and src.grab are ExprProxy values
 ```
 
-The key difference from action nodes:
-- **Action nodes** (``flow_outputs`` is non-empty): used as context
-  managers inside ``g.Under()``, with flow branch context managers.
-- **Data source nodes** (``flow_outputs=[]``): used as plain calls,
-  return a proxy with value output properties.  Can be created inside
-  or outside ``g.Under()`` (with an explicit ``slot`` parameter).
-
-#### Indexed Branch Nodes
+## Indexed Branch Nodes
 
 Some nodes route impulses to one of N indexed outputs (via SyncList).
 Use ``proxy[i]`` as context managers to record statements for each
@@ -644,151 +634,95 @@ with g.Under(slot):
 
 The indexed inputs can be wired from external impulse sources.
 
-#### Defining Custom Actions
+## Event Source Nodes
 
-Any ProtoFlux node with flow outputs can be wrapped as an action using
-``ActionDef`` — no custom proxy or builder code needed:
+Event source nodes fire impulses on their own when events occur,
+rather than being triggered by an impulse.  The builder skips trigger
+creation automatically.
 
-```python
-from pyresonitelink.dergflux import ActionDef, InputDef, OutputDef
-from pyresonitelink.data import primitives
-
-MyAction = ActionDef(
-    import_path="protoflux.physics",      # module under pyresonitelink
-    class_name="RaycastOne",              # class to import
-    inputs={
-        "origin": InputDef("origin", primitives.Float3),
-        "direction": InputDef("direction", primitives.Float3),
-    },
-    flow_outputs=["on_hit", "on_miss"],   # become context managers
-    value_outputs={                        # become ExprProxy properties
-        "hit_distance": OutputDef("HitDistance", primitives.Float),
-    },
-)
-```
-
-Use it with ``g.Action()``:
-
-```python
-with g.Action(MyAction, origin=s.pos, direction=s.dir) as r:
-    with r.on_hit():
-        s.distance = r.hit_distance
-```
-
-Or add a named shortcut method on Graph that delegates to ``g.Action()``.
-
-**InputDef options** for reference inputs:
-
-- ``ref_type="..."`` — auto-creates ``RefObjectInput<type>`` when a
-  component is passed.  Used for ``INodeObjectOutput`` inputs.
-- ``global_type="..."`` — auto-creates ``GlobalReference<type>`` when a
-  component/slot is passed.  Used for ``IGlobalValueProxy`` inputs.
-
-**ActionDef flags**:
-
-- ``is_async=True`` — the node is async; enclosing flow uses async variants
-  and ``StartAsyncTask`` bridge.
-- ``is_event_source=True`` — the node fires its own impulses (no trigger
-  created).  Use for event monitors like ``SlotChildrenEvents``.
-
-### Generic Action Nodes
-
-Many ProtoFlux nodes follow a common pattern: they take value inputs,
-have multiple flow outputs (branches), and optionally produce value
-outputs.  Instead of implementing each one as a custom DSL construct,
-define them once with ``ActionDef`` and use them with ``g.Action()``.
-
-#### Defining an action
-
-```python
-from pyresonitelink.dergflux import ActionDef, InputDef, OutputDef
-from pyresonitelink.data import primitives
-
-MyAction = ActionDef(
-    import_path="protoflux.physics",      # module under pyresonitelink
-    class_name="RaycastOne",              # class to import
-    inputs={
-        "origin": InputDef("origin", primitives.Float3),
-        "direction": InputDef("direction", primitives.Float3),
-        "max_distance": InputDef("max_distance", primitives.Float),
-    },
-    flow_outputs=["on_hit", "on_miss"],   # become context managers
-    value_outputs={                        # become ExprProxy properties
-        "hit_point": OutputDef("HitPoint", primitives.Float3),
-        "hit_distance": OutputDef("HitDistance", primitives.Float),
-    },
-)
-```
-
-#### Using an action
+**Lifecycle events** — fire once on specific lifecycle events:
 
 ```python
 with g.Under(slot):
-    with g.Action(MyAction, origin=s.pos, direction=s.dir) as r:
-        with r.on_hit():
-            s.distance = r.hit_distance
-        with r.on_miss():
-            s.distance = -1
+    with g.OnStart() as e:
+        with e.trigger():
+            s.log = "started"
+
+    with g.OnActivated() as e:
+        with e.trigger():
+            s.log = "activated"
+
+    with g.OnDeactivated() as e:
+        with e.trigger():
+            s.log = "deactivated"
 ```
 
-- Flow outputs (``on_hit``, ``on_miss``) are context managers on the proxy.
-- Value outputs (``hit_distance``, ``hit_point``) are ``ExprProxy`` properties.
-- Inputs are passed as keyword arguments matching the keys in ``inputs``.
+Also: ``OnDestroy``, ``OnDestroying``, ``OnLoaded``, ``OnDuplicate``,
+``OnPaste``, ``OnSaving``, ``OnPackageImported``.
 
-#### Prebuilt actions
+``OnActivated``, ``OnDeactivated``, ``OnStart``, and ``OnDestroy``
+accept an optional ``only_host=True`` to restrict to the host user.
 
-``pyresonitelink.dergflux.actions`` provides ready-to-use definitions:
-
-- **``actions.RaycastOne``** — ray cast with on_hit/on_miss and hit result outputs
-- **``actions.PlayOneShot``** — play audio with on_started_playing
-- **``actions.PlayOneShotAndWait``** — play audio with on_started_playing/on_finished_playing
+**Condition-based event sources**:
 
 ```python
-from pyresonitelink.dergflux import actions
-
 with g.Under(slot):
-    with g.Action(actions.RaycastOne, origin=s.pos, direction=s.dir) as r:
-        with r.on_hit():
-            s.hit_pos = r.hit_point
+    with g.FireOnTrue(condition=s.flag) as e:
+        with e.on_changed():
+            s.count = s.count + 1
+
+    with g.FireOnFalse(condition=s.flag) as e:
+        with e.on_changed():
+            s.result = s.x
+
+    with g.FireWhileTrue(condition=s.active) as e:
+        with e.on_update():
+            s.elapsed = s.elapsed + 1
 ```
 
-### Bindings
+Local variants (``FireOnLocalTrue``, ``FireOnLocalFalse``,
+``LocalFireWhileTrue``) only fire for the local user.
 
-``g.Bind()`` permanently binds a value source to a component field.
-The field always reflects the source's current value.  **A field can
-only be bound once** — attempting to rebind raises ``RuntimeError``.
-
-The binding mechanism depends on the source:
-
-- **Dynamic variable** (e.g. ``s.x``): Creates a
-  ``DynamicValueVariableDriver<T>`` (for value types like int, float,
-  Float3) or ``DynamicReferenceVariableDriver<T>`` (for reference
-  types like Slot).  The driver reads the named variable by path and
-  continuously drives the target field.
-- **General expression** (e.g. ``i``, ``s.x + 1``): Creates a
-  ``ValueFieldDrive<T>`` driven by the ProtoFlux expression.
+**Value-change event sources**:
 
 ```python
-# Bind a loop counter to a field (uses ValueFieldDrive)
 with g.Under(slot):
-    with g.For(3) as f:
-        with f.OnIterate() as i:
-            g.Bind(i, mux, "Index")
-
-# Bind a dynamic variable to a field (uses DynamicValueVariableDriver)
-g.Bind(s.volume, audio_output, "Volume", slot=slot)
+    with g.FireOnValueChange(value=s.x) as e:
+        with e.on_changed():
+            s.change_count = s.change_count + 1
 ```
 
-For named spaces, the variable path is automatically prefixed with
-the space name (e.g. ``"Audio/vol"`` for a variable ``vol`` in space
-``Audio``).
+Also: ``FireOnLocalValueChange``, ``FireOnObjectValueChange``,
+``FireOnLocalObjectChange``, ``FireOnRefChange``, ``FireOnTypeChange``.
 
-Arguments:
+**Timer event sources**:
 
-- ``expr`` — an ExprProxy or literal value to bind from
-- ``component`` — the target component (a generated component instance)
-- ``member_name`` — the Resonite member name to bind to (e.g. ``"Index"``)
-- ``slot`` — optional; defaults to the active ``Under()`` slot
+```python
+with g.Under(slot):
+    with g.UpdatesTimer(interval=60) as e:
+        with e.on_update():
+            s.tick = s.tick + 1
+
+    with g.SecondsTimer(interval=1.0) as e:
+        with e.on_update():
+            s.seconds = s.seconds + 1
+```
+
+**SlotChildrenEvents** — fires when children are added/removed:
+
+```python
+with g.Under(slot):
+    with g.SlotChildrenEvents(instance=watched_slot) as e:
+        with e.on_child_added():
+            s.last_child = e.child
+        with e.on_child_removed():
+            s.removed_child = e.child
+```
+
+The ``instance`` input accepts a Slot instance directly — the builder
+auto-creates a ``GlobalReference<Slot>`` bridge.
+
+Value output: ``e.child`` — the child Slot that was added or removed.
 
 ## Triggers
 
