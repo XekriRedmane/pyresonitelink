@@ -1,7 +1,7 @@
 """Generated component: AvatarControllerSpawner."""
 
 from pyresonitelink.data import members
-from pyresonitelink.generated._enums.type import Type
+from pyresonitelink.generated._enums.type_ import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot

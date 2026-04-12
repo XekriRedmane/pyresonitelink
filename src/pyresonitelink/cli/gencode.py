@@ -526,6 +526,8 @@ def _rebuild_init_exports(directory: Path) -> None:
         if py_file.name == "__init__.py":
             continue
         mod_name = py_file.stem
+        if not mod_name.isidentifier():
+            continue
         with open(py_file, encoding="utf-8") as f:
             for line in f:
                 if line.startswith("class "):
@@ -545,6 +547,8 @@ def _rebuild_init_exports(directory: Path) -> None:
             if py_file.name == "__init__.py":
                 continue
             mod_name = py_file.stem
+            if not mod_name.isidentifier():
+                continue
             with open(py_file, encoding="utf-8") as f:
                 for line in f:
                     if line.startswith("class "):

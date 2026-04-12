@@ -7,8 +7,6 @@ from .app_version_driver import AppVersionDriver
 from .asset_gather_settings import AssetGatherSettings
 from .asset_metadata import AssetMetadata
 from .asset_proxy import AssetProxy
-from .async_dynamic_impulse_receiver_with_object+proxy import AsyncDynamicImpulseReceiverWithObject+Proxy
-from .async_dynamic_impulse_receiver_with_value+proxy import AsyncDynamicImpulseReceiverWithValue+Proxy
 from .audio_accessibility_settings import AudioAccessibilitySettings
 from .audio_dsp_effect import AudioDSP_Effect
 from .audio_input_device_selection import AudioInputDeviceSelection
@@ -20,7 +18,6 @@ from .audio_performance_settings import AudioPerformanceSettings
 from .audio_stream_controller import AudioStreamController
 from .audio_stream_settings import AudioStreamSettings
 from .audio_volume_settings import AudioVolumeSettings
-from .audio_zita_reverb+legacy_range_mapper import AudioZitaReverb+LegacyRangeMapper
 from .avatar_creator import AvatarCreator
 from .avatar_equip_block import AvatarEquipBlock
 from .avatar_parent_node import AvatarParentNode
@@ -74,13 +71,7 @@ from .cursor_settings import CursorSettings
 from .curve_point import CurvePoint
 from .customization_settings import CustomizationSettings
 from .cuteness_settings import CutenessSettings
-from .cylinder_emitter+legacy_direction_adapter import CylinderEmitter+LegacyDirectionAdapter
 from .dash_settings import DashSettings
-from .data_model_object_asset_ref_store+store import DataModelObjectAssetRefStore+Store
-from .data_model_object_field_store+store import DataModelObjectFieldStore+Store
-from .data_model_object_ref_store+store import DataModelObjectRefStore+Store
-from .data_model_user_ref_store+store import DataModelUserRefStore+Store
-from .data_model_value_field_store+store import DataModelValueFieldStore+Store
 from .debug_avatar_builder import DebugAvatarBuilder
 from .debug_feature_replacement import DebugFeatureReplacement
 from .debug_feature_upgrade import DebugFeatureUpgrade
@@ -106,12 +97,9 @@ from .discord_integration_settings import DiscordIntegrationSettings
 from .distance_meter import DistanceMeter
 from .driver import Driver
 from .dynamic_bone_sphere_collider_gizmo import DynamicBoneSphereColliderGizmo
-from .dynamic_impulse_receiver_with_object+proxy import DynamicImpulseReceiverWithObject+Proxy
-from .dynamic_impulse_receiver_with_value+proxy import DynamicImpulseReceiverWithValue+Proxy
 from .dynamic_variable_input_proxy import DynamicVariableInputProxy
 from .earmuff_settings import EarmuffSettings
 from .edit_settings import EditSettings
-from .elapsed_time+proxy import ElapsedTime+Proxy
 from .engine_debug_dialog import EngineDebugDialog
 from .enum_member_editor import EnumMemberEditor
 from .exit_screen import ExitScreen
@@ -119,10 +107,8 @@ from .export_dialog import ExportDialog
 from .eye_rotation_driver_gizmo import EyeRotationDriverGizmo
 from .facet_anchors_settings import FacetAnchorsSettings
 from .favorites_settings import FavoritesSettings
-from .field_drive_base+proxy import FieldDriveBase+Proxy
 from .field_drive_receiver import FieldDriveReceiver
 from .field_editor import FieldEditor
-from .field_hook_base+proxy import FieldHookBase+Proxy
 from .file_browser import FileBrowser
 from .file_system_item import FileSystemItem
 from .first_person_targetting_controller import FirstPersonTargettingController
@@ -137,9 +123,6 @@ from .full_body_calibrator_dialog import FullBodyCalibratorDialog
 from .full_body_tracking_settings import FullBodyTrackingSettings
 from .gamepad_settings import GamepadSettings
 from .gaussian_splat_quality_settings import GaussianSplatQualitySettings
-from .gaussian_splat_tool+box_interface import GaussianSplatTool+BoxInterface
-from .gaussian_splat_tool+cylinder_interface import GaussianSplatTool+CylinderInterface
-from .gaussian_splat_tool+sphere_interface import GaussianSplatTool+SphereInterface
 from .general_controls_settings import GeneralControlsSettings
 from .general_haptics_settings import GeneralHapticsSettings
 from .general_vr_settings import GeneralVRSettings
@@ -231,7 +214,6 @@ from .legacy_video_player import LegacyVideoPlayer
 from .light_gizmo import LightGizmo
 from .light_intensity_field_adapter import LightIntensityFieldAdapter
 from .light_orb import LightOrb
-from .line_emitter+legacy_adapter import LineEmitter+LegacyAdapter
 from .line_segment import LineSegment
 from .list_editor import ListEditor
 from .loading_sphere_thumbnail import LoadingSphereThumbnail
@@ -274,7 +256,6 @@ from .photo_capture_manager import PhotoCaptureManager
 from .photo_capture_settings import PhotoCaptureSettings
 from .plane_translation_gizmo import PlaneTranslationGizmo
 from .point_anchor import PointAnchor
-from .point_emitter+legacy_direction_converter import PointEmitter+LegacyDirectionConverter
 from .pointer_interaction_controller import PointerInteractionController
 from .post_processing_settings import PostProcessingSettings
 from .primitive_member_editor import PrimitiveMemberEditor
@@ -303,7 +284,6 @@ from .realtime_networking_settings import RealtimeNetworkingSettings
 from .record_edit_form import RecordEditForm
 from .ref_editor import RefEditor
 from .ref_proxy import RefProxy
-from .reference_drive+proxy import ReferenceDrive+Proxy
 from .reference_drive_receiver import ReferenceDriveReceiver
 from .reference_proxy import ReferenceProxy
 from .reference_tag import ReferenceTag
@@ -345,7 +325,6 @@ from .slot_record import SlotRecord
 from .snap_node import SnapNode
 from .spawn_or_destroy import SpawnOrDestroy
 from .sphere_collider_gizmo import SphereColliderGizmo
-from .sphere_emitter+legacy_transform_converter import SphereEmitter+LegacyTransformConverter
 from .sphere_gizmo import SphereGizmo
 from .sphere_mesh_gizmo import SphereMeshGizmo
 from .steam_integration_settings import SteamIntegrationSettings
@@ -378,7 +357,6 @@ from .unresolved_references import UnresolvedReferences
 from .update_transform import UpdateTransform
 from .user_inspector import UserInspector
 from .user_inspector_item import UserInspectorItem
-from .user_left+proxy import UserLeft+Proxy
 from .user_metrics_settings import UserMetricsSettings
 from .user_pose_controller import UserPoseController
 from .user_restrictions_settings import UserRestrictionsSettings

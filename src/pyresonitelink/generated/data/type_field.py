@@ -1,7 +1,8 @@
 """Generated component: TypeField."""
 
 from pyresonitelink.data import members
-from pyresonitelink.generated._enums.type import Type
+from pyresonitelink.data import workers
+from pyresonitelink.generated._enums.type_ import Type
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver

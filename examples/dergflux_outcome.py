@@ -1,9 +1,16 @@
-"""Example: Imperative if-else using the Dergflux DSL.
+"""Example: Using Outcome to label and react to flow paths.
 
-Implements: if (x < 3) z = x + 3; else z = x - 3; z += 1;
+Implements:
+  if (x < 3) tmp = x + 3, outcome="high"
+  else       tmp = x - 3, outcome="low"
+  z = tmp + 1
+
+  on outcome change:
+    if outcome == "high": log = "high path"
+    if outcome == "low":  log = "low path"
 
 Usage:
-    python examples/dergflux_if_else.py <port>
+    python examples/dergflux_outcome.py <port>
 """
 
 import asyncio
@@ -17,8 +24,8 @@ from pyresonitelink.dergflux import Graph
 
 async def verify_connections(
     resolink: client.Client, slot_id: str,
-) -> None:
-    """Dump all components and flag missing references."""
+) -> bool:
+    """Dump components and flag missing references."""
     resp = await resolink.request_json(
         messages.GetSlot(slotId=slot_id, depth=0),
     )
@@ -31,7 +38,6 @@ async def verify_connections(
         data = full.get("data", {})
         ct = (data.get("componentType") or "?").rsplit(".", 1)[-1]
         line = f"  {cid}: {ct}"
-        issues: list[str] = []
         for mname, mval in (data.get("members") or {}).items():
             if not isinstance(mval, dict):
                 continue
@@ -43,72 +49,76 @@ async def verify_connections(
             elif val is not None:
                 line += f"\n    {mname} = {val}"
             elif dtype == "reference":
-                # Only flag if the member is an input (not an optional output)
                 if mname not in (
                     "OnNotFound", "OnFailed", "OnFalse",
                     "UpdatingUser", "SkipIfNull",
                 ):
-                    issues.append(mname)
                     line += f"\n    {mname} -> (null)  *** MISSING ***"
+                    ok = False
         print(line)
-        if issues:
-            ok = False
-    if not ok:
-        print("\n*** Some references are missing! ***")
     return ok
 
 
 async def main(port: int) -> None:
-    """Build an if-else graph using Dergflux and test it."""
+    """Build an outcome-based graph and test it."""
     resolink = client.Client()
     await resolink.connect(port)
     print("Connected.\n")
 
-    old = await resolink.find_slot("Root", name="Dergflux If-Else")
+    old = await resolink.find_slot("Root", name="Outcome Test")
     if old is not None:
         await resolink.remove_slot(slot=old)
 
-    slot = await resolink.add_slot(name="Dergflux If-Else")
-    print(f"Created slot: {slot.id}\n")
+    slot = await resolink.add_slot(name="Outcome Test")
+    print(f"Slot: {slot.id}\n")
 
     g = Graph()
     s = g.Space(slot)
     s.x = s.FloatVar("x")
     s.z = s.FloatVar("z")
     s.tmp = s.FloatVar("tmp")
+    s.log = s.StringVar("log", value="none")
+
+    outcome = g.Outcome(s, "result")
 
     with g.Under(slot):
         with g.If(s.x < 3):
             s.tmp = s.x + 3
+            outcome.set("high")
         with g.Else():
             s.tmp = s.x - 3
+            outcome.set("low")
         s.z = s.tmp + 1
 
-    print("Building graph...")
+        with outcome.on_changed() as oc:
+            with g.If(oc == "high"):
+                s.log = "high path"
+            with g.If(oc == "low"):
+                s.log = "low path"
+
+    print("Building...")
     await g.build(resolink)
-    print("Graph built.\n")
+    print("Built.\n")
 
-    print("Verifying connections:")
-    await verify_connections(resolink, slot.id)
+    print("Connections:")
+    ok = await verify_connections(resolink, slot.id)
+    if not ok:
+        print("\n*** Missing connections! ***")
 
-    print("\nRunning tests...")
-    x_var = s.x
-    z_var = s.z
+    # Test
+    async def run_test(x_val: float) -> None:
+        """Set x, wait, read results."""
+        s.x.value = primitives.Float(x_val)
+        await s.x.update(resolink)
+        time.sleep(1.0)
+        await s.z.refresh(resolink)
+        await s.log.refresh(resolink)
+        print(f"  x={x_val}: z={s.z.value}, log={s.log.value!r}")
 
-    async def run_test(x_val: float) -> object:
-        """Set x, wait, return z."""
-        x_var.value = primitives.Float(x_val)
-        await x_var.update(resolink)
-        time.sleep(0.5)
-        await z_var.refresh(resolink)
-        return z_var.value
-
-    z1 = await run_test(2.0)
-    print(f"Test 1: x=2, z={z1} (expected 6.0)")
-    z2 = await run_test(5.0)
-    print(f"Test 2: x=5, z={z2} (expected 3.0)")
-    z3 = await run_test(3.0)
-    print(f"Test 3: x=3, z={z3} (expected 1.0)")
+    print("\nTests:")
+    await run_test(2.0)   # < 3: z=(2+3)+1=6, log="high path"
+    await run_test(5.0)   # >= 3: z=(5-3)+1=3, log="low path"
+    await run_test(3.0)   # >= 3: z=(3-3)+1=1, log="low path"
 
     print(f"\nSlot kept: {slot.id}")
     await resolink.close()

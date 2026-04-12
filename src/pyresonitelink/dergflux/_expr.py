@@ -195,16 +195,25 @@ def _binop(op: BinOp, left: ExprProxy, right: Any) -> ExprProxy:
     right_proxy = _coerce(right)
     from pyresonitelink.dergflux import _types
 
+    # Propagate type from typed operand to untyped constant.
+    # e.g. FloatVar + 1 -> the ConstNode(1) gets Float type.
+    left_node = left._node
+    right_node = right_proxy._node
+    if isinstance(right_node, ConstNode) and right_node._type is None:
+        right_node._type = left_node._type
+    elif isinstance(left_node, ConstNode) and left_node._type is None:
+        left_node._type = right_node._type
+
     result_type: type | None
     if op in _COMPARISON_OPS:
         from pyresonitelink.data import primitives
         result_type = primitives.Bool
     else:
         result_type = _types.infer_result_type(
-            left._node._type, right_proxy._node._type,
+            left_node._type, right_node._type,
         )
     return ExprProxy(
-        BinaryOpNode(op, left._node, right_proxy._node, result_type),
+        BinaryOpNode(op, left_node, right_node, result_type),
     )
 
 

@@ -116,7 +116,7 @@ See World for more info about worlds.
 
     @property
     def cancel_item(self) -> str | None:
-        """The context menu item used to trigger "Cancel""""
+        """The context menu item used to trigger "Cancel"."""
         member = self.get_member("cancelItem")
         if isinstance(member, members.Reference):
             return member.targetId

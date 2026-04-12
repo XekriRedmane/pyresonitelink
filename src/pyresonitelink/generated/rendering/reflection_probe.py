@@ -338,7 +338,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
 
     @property
     def background_color(self) -> primitives.ColorX | None:
-        """The color to clear with when ``ClearFlags`` is set to "Color""""
+        """The color to clear with when ``ClearFlags`` is set to "Color"."""
         member = self.get_member("BackgroundColor")
         if member is None:
             return None

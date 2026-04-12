@@ -13,8 +13,16 @@ _DOCS_DIR = Path(__file__).resolve().parent.parent / "scraped_docs"
 
 
 def _sanitize_docstring(text: str) -> str:
-    """Escape text for safe inclusion in Python triple-quoted docstrings."""
-    return text.replace('"""', '"\\""')
+    """Escape text for safe inclusion in Python triple-quoted docstrings.
+
+    Handles both embedded triple-quotes and trailing quotes that would
+    merge with the closing triple-quote delimiter.
+    """
+    text = text.replace('"""', '"\\""')
+    # A trailing " or "" would merge with the closing """ delimiter.
+    if text.endswith('"'):
+        text = text[:-1] + '\\"'
+    return text
 
 
 def _load_wiki_docs(class_name: str) -> dict[str, Any] | None:
@@ -370,7 +378,11 @@ def _to_module_path(component_type: str) -> str:
     if len(parts) > 1:
         parts = parts[1:]
     dirs = [_to_snake_case(p) for p in parts[:-1]]
-    filename = _to_snake_case(parts[-1]) + ".py"
+    # C# nested type separator: "Outer+Inner" → use full name with + as _
+    last = parts[-1]
+    if "+" in last:
+        last = last.replace("+", "_")
+    filename = _to_snake_case(last) + ".py"
     if dirs:
         return "/".join(dirs) + "/" + filename
     return filename

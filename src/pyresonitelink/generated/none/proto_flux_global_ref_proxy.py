@@ -4,7 +4,7 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
-from pyresonitelink.generated._enums.type import Type
+from pyresonitelink.generated._enums.type_ import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.proto_flux_node import ProtoFluxNode

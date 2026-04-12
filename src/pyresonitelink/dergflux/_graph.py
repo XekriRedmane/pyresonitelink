@@ -159,6 +159,100 @@ class ForProxy:
             self._graph._flow_stack.pop()
 
 
+class Outcome:
+    """A named flow outcome that can be set in branches and reacted to.
+
+    An Outcome maps string labels to integers internally (since
+    ``FireOnValueChange`` only works with value types, not strings).
+    Use ``outcome.set("label")`` inside flow branches and
+    ``outcome.on_changed()`` to react when the label changes.
+
+    The reaction fires via ``FireOnValueChange`` at an **undefined
+    time** relative to other flows — it may fire in the same frame
+    or the next.  Do not rely on ordering between the reaction and
+    other ``Update``-driven flows.
+
+    Usage::
+
+        outcome = g.Outcome(s, "result")
+
+        with g.Under(slot):
+            with g.If(s.x < 3):
+                s.z = s.x + 3
+                outcome.set("high")
+            with g.Else():
+                s.z = s.x - 3
+                outcome.set("low")
+
+            with outcome.on_changed() as label:
+                with g.If(label == "high"):
+                    s.log = "high path"
+                with g.If(label == "low"):
+                    s.log = "low path"
+    """
+
+    def __init__(
+        self, graph: Graph, space: _space.Space, name: str,
+    ) -> None:
+        self._graph = graph
+        self._space = space
+        self._name = name
+        self._labels: dict[str, int] = {}
+        self._next_id = 1  # 0 = unset
+        # Declare an int variable on the space
+        self._var_decl = space.IntVar(name)
+        setattr(space, name, self._var_decl)
+
+    def _label_id(self, label: str) -> int:
+        """Get or assign a stable integer ID for a label."""
+        if label not in self._labels:
+            self._labels[label] = self._next_id
+            self._next_id += 1
+        return self._labels[label]
+
+    def set(self, label: str) -> None:
+        """Write a label to the outcome variable.
+
+        Must be called inside a flow context (If, For, etc.).
+
+        Args:
+            label: The outcome label string.
+        """
+        label_id = self._label_id(label)
+        setattr(self._space, self._name, _expr._coerce(label_id))
+
+    @contextmanager
+    def on_changed(self) -> Iterator[Outcome]:
+        """React when the outcome value changes.
+
+        Wraps ``FireOnValueChange`` on the outcome variable.
+        Yields this ``Outcome`` instance — use ``g.If(label == "x")``
+        where ``label`` is the yielded value.
+
+        The reaction fires at an **undefined time** — it may be
+        the same frame or the next.  Do not rely on ordering with
+        other flows.
+        """
+        var_proxy = getattr(self._space, self._name)
+        with self._graph.FireOnValueChange(value=var_proxy) as e:
+            with e.on_changed():
+                yield self
+
+    def __eq__(self, other: object) -> _expr.ExprProxy:  # type: ignore[override]
+        """Compare the outcome to a label string.
+
+        Returns an ExprProxy (bool) for use in ``g.If(outcome == "label")``.
+        """
+        if not isinstance(other, str):
+            return NotImplemented
+        label_id = self._label_id(other)
+        var_proxy = getattr(self._space, self._name)
+        return var_proxy == label_id
+
+    def __hash__(self) -> int:
+        return id(self)
+
+
 class Graph:
     """Top-level Dergflux API for building ProtoFlux graphs.
 
@@ -370,6 +464,37 @@ class Graph:
         space = _space.Space(self, slot, space_name=name)
         self._spaces.append(space)
         return space
+
+    def Outcome(self, space: _space.Space, name: str) -> Outcome:
+        """Create a named flow outcome on a Space.
+
+        An Outcome is a string variable that labels which flow path
+        was taken.  Use ``outcome.set("label")`` inside branches and
+        ``outcome.on_changed()`` to react when the label changes.
+
+        The reaction fires via ``FireOnValueChange`` at an undefined
+        time — it may be the same frame or the next.
+
+        Args:
+            space: The Space to declare the outcome variable on.
+            name: Variable name for the outcome.
+
+        Returns:
+            An Outcome object.
+
+        Usage::
+
+            outcome = g.Outcome(s, "result")
+            with g.Under(slot):
+                with g.If(s.x < 3):
+                    outcome.set("high")
+                with g.Else():
+                    outcome.set("low")
+                with outcome.on_changed() as label:
+                    with g.If(label == "high"):
+                        s.log = "high path"
+        """
+        return Outcome(self, space, name)
 
     # --- Flow control ---
 
