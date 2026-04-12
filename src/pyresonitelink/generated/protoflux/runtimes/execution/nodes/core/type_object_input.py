@@ -1,7 +1,8 @@
 """Generated component: TypeObjectInput."""
 
 from pyresonitelink.data import members
-from pyresonitelink.generated._enums.type import Type
+from pyresonitelink.data import workers
+from pyresonitelink.generated._enums.type_ import Type
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iinput import IInput
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput

@@ -210,6 +210,7 @@ from .topology import Topology
 from .touch_event_type import TouchEventType
 from .trail_particle_inheritance import TrailParticleInheritance
 from .trail_texture_mode import TrailTextureMode
+from .type_ import Type
 from .uniform_size_mode import UniformSizeMode
 from .unlit_texture_mode import UnlitTextureMode
 from .user_node import UserNode

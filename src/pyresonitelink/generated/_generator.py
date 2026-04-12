@@ -971,6 +971,19 @@ def generate_component_source(
             deduped_params.append((pname, ptype, rname))
     init_params = deduped_params
 
+    # Ensure workers import is present when __init__ is generated.
+    # The needs_workers check (above) may have missed enum-only
+    # components where the init params come from FieldEnum members.
+    if init_params and not needs_workers:
+        # Insert the workers import after the members import
+        workers_import = "from pyresonitelink.data import workers"
+        if workers_import not in lines:
+            # Find where to insert (after the last data import)
+            for idx, line in enumerate(lines):
+                if line.startswith("from pyresonitelink.data import"):
+                    insert_pos = idx + 1
+            lines.insert(insert_pos, workers_import)
+
     if init_params:
         # Build signature
         param_strs = [
@@ -1840,13 +1853,19 @@ def generate_enum_source(enum_definition: dict[str, Any]) -> str:
 def get_enum_module_name(resonite_type: str) -> str:
     """Get the module filename for an enum type.
 
+    Appends ``_`` to names that conflict with Python keywords or
+    builtins (e.g. ``Type`` → ``type_``).
+
     Args:
         resonite_type: Full Resonite enum type string.
 
     Returns:
         Snake_case module name (without .py).
     """
-    return _to_snake_case(_simple_class_name(resonite_type))
+    name = _to_snake_case(_simple_class_name(resonite_type))
+    if name in _PYTHON_KEYWORDS:
+        return name + "_"
+    return name
 
 
 def get_reference_target_types(
