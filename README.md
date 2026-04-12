@@ -138,7 +138,9 @@ await value_field.refresh(resolink)
 
 ## Generated Components
 
-Components were generated from a live ResoniteLink server; they do not need to be regenerated since they are part of the release. The generator produces typed Python wrapper classes with properties, `__init__` parameters, and interface inheritance for type-safe wiring.
+Components are generated from a live ResoniteLink server. The generator produces typed Python wrapper classes with properties, `__init__` parameters, and interface inheritance for type-safe wiring. Documentation from the [Resonite Wiki](https://wiki.resonite.com) is automatically scraped and merged into the generated class docstrings, so `help()` and IDE hover tooltips show descriptions for each component, its fields, inputs, and outputs.
+
+All ~4800 components are pre-generated and included in the release. They do not need to be regenerated unless you want to pick up new Resonite components or updated wiki documentation.
 
 ### Generating Components
 
@@ -147,11 +149,14 @@ Components were generated from a live ResoniteLink server; they do not need to b
 python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.ValueField<>"
 python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.AudioClipPlayer"
 
+# Regenerate ALL components (discovers all types from the server)
+python -m pyresonitelink.cli.gencode <port> --all
+
 # Preview without writing
 python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.ValueField<>" --dry-run
 ```
 
-All 4807 components are pre-generated across every Resonite category (ProtoFlux nodes, Assets, Audio, Data, Rendering, Transform, UIX, etc.). The generator automatically rebuilds `__init__.py` re-exports so new components are immediately importable via the short paths. Internal ProtoFlux proxy types (3066 CoreNodes) are skipped automatically.
+The `--all` flag recursively walks every component category on the server, scrapes wiki documentation for each component, and regenerates all wrapper classes. Internal ProtoFlux proxy types (~3066 CoreNodes) are skipped automatically. The generator rebuilds `__init__.py` re-exports so new components are immediately importable via the short paths.
 
 ### Using Generated Components
 

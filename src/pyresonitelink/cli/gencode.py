@@ -631,6 +631,85 @@ async def generate(
     await resolink.close()
 
 
+async def generate_all(
+    port: int,
+    host: str,
+    dry_run: bool,
+) -> None:
+    """Connect to Resonite and regenerate all components.
+
+    Recursively walks all component categories on the server and
+    generates wrapper classes for every component found.
+
+    Args:
+        port: ResoniteLink server port.
+        host: ResoniteLink server host.
+        dry_run: If True, print generated source without writing.
+    """
+    resolink = client.Client()
+    await resolink.connect(port, host)
+    print(f"Connected to ws://{host}:{port}")
+
+    generated: set[str] = set()
+    all_type_defs: dict[str, dict[str, Any]] = {}
+    type_def_cache: dict[str, dict[str, Any] | None] = {}
+    _interface_cache.clear()
+
+    # Recursively walk categories to find all component types
+    async def walk_category(category_path: str) -> list[str]:
+        """Return all component type names under a category."""
+        resp = await resolink.request_json(
+            messages.GetComponentTypeList(categoryPath=category_path),
+        )
+        types: list[str] = []
+        for ct in (resp.get("componentTypes") or []):
+            types.append(ct)
+        for sub in (resp.get("subcategories") or []):
+            sub_path = f"{category_path}/{sub}" if category_path else f"/{sub}"
+            types.extend(await walk_category(sub_path))
+        return types
+
+    print("Discovering component types...")
+    all_types = await walk_category("")
+    print(f"Found {len(all_types)} component types")
+
+    errors = 0
+    for i, comp_type in enumerate(all_types):
+        try:
+            await _generate_component(
+                resolink, comp_type, generated,
+                all_type_defs, dry_run,
+                type_def_cache,
+            )
+        except Exception as e:
+            errors += 1
+            if errors <= 10:
+                print(f"  Error generating {comp_type}: {e}")
+            elif errors == 11:
+                print("  (suppressing further errors)")
+        if (i + 1) % 100 == 0:
+            print(f"  Progress: {i + 1}/{len(all_types)} "
+                  f"({len(generated)} generated, {errors} errors)")
+
+    print(f"\nDone: {len(generated)} generated, {errors} errors")
+
+    if not dry_run:
+        # Rebuild __init__.py re-exports
+        nodes_dir = _GENERATED_DIR / "protoflux" / "runtimes" / "execution" / "nodes"
+        if nodes_dir.is_dir():
+            for cat_dir in sorted(nodes_dir.iterdir()):
+                if cat_dir.is_dir() and not cat_dir.name.startswith("_"):
+                    _rebuild_init_exports(cat_dir)
+        data_dir = _GENERATED_DIR / "data"
+        if data_dir.is_dir():
+            _rebuild_init_exports(data_dir)
+        enums_dir = _GENERATED_DIR / "_enums"
+        if enums_dir.is_dir():
+            _rebuild_init_exports(enums_dir)
+
+    await resolink.close()
+
+
 def main() -> None:
     """Run the gencode CLI tool."""
     parser = argparse.ArgumentParser(
@@ -645,9 +724,12 @@ def main() -> None:
     parser.add_argument(
         "component",
         type=str,
+        nargs="?",
+        default=None,
         help=(
             "Fully qualified component type name, e.g. "
-            '"[FrooxEngine]FrooxEngine.ValueField<>"'
+            '"[FrooxEngine]FrooxEngine.ValueField<>". '
+            "Omit when using --all."
         ),
     )
     parser.add_argument(
@@ -658,12 +740,24 @@ def main() -> None:
         action="store_true",
         help="Print generated source without writing to disk",
     )
+    parser.add_argument(
+        "--all",
+        action="store_true",
+        help="Regenerate all components from the server",
+    )
 
     args = parser.parse_args()
 
-    asyncio.run(
-        generate(args.port, args.host, args.component, args.dry_run)
-    )
+    if args.all:
+        asyncio.run(
+            generate_all(args.port, args.host, args.dry_run)
+        )
+    elif args.component:
+        asyncio.run(
+            generate(args.port, args.host, args.component, args.dry_run)
+        )
+    else:
+        parser.error("Either provide a component name or use --all")
 
 
 if __name__ == "__main__":

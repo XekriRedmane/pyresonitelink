@@ -58,6 +58,7 @@ python -m pyresonitelink.cli.get_components <port>          # List component typ
 python -m pyresonitelink.cli.get_components <port> --component "[FrooxEngine]FrooxEngine.WorldLink"
 python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.ValueField<>"
 python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.AudioClipPlayer"
+python -m pyresonitelink.cli.gencode <port> --all                       # Regenerate ALL components
 ```
 
 ## Architecture
