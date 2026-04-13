@@ -382,7 +382,7 @@ class _BuildContext:
         if isinstance(node, _expr.ComponentOutputNode):
             return self._materialize_component_output(node)
         if isinstance(node, _expr.LoopIndexNode):
-            return self._materialize_loop_index(node)
+            return await self._materialize_loop_index(node)
         if isinstance(node, _expr.BinaryOpNode):
             return await self._materialize_binop(node)
         if isinstance(node, _expr.UnaryOpNode):
@@ -398,7 +398,9 @@ class _BuildContext:
                 "TriggerValueNode used but no trigger receiver was created. "
                 "This is a bug in the Dergflux builder."
             )
-        return self.trigger_receiver
+        # ReceiverWithValue.Value is the output
+        val_member = self.trigger_receiver.get_member("Value")
+        return type("_OutputStub", (), {"id": val_member.id})()
 
     def _materialize_component_output(
         self, node: _expr.ComponentOutputNode,
@@ -415,9 +417,11 @@ class _BuildContext:
                 f"tag '{node.component_tag}' but no component was registered. "
                 "This is a bug in the Dergflux builder."
             )
-        return comp
+        # ComponentOutputNode always references a specific member ID
+        val_member = comp.get_member(node.output_name)
+        return type("_OutputStub", (), {"id": val_member.id})()
 
-    def _materialize_loop_index(self, node: _expr.LoopIndexNode) -> Any:
+    async def _materialize_loop_index(self, node: _expr.LoopIndexNode) -> Any:
         """Return the For loop node for a LoopIndexNode.
 
         The For node's Iteration output provides the current index.
@@ -429,7 +433,29 @@ class _BuildContext:
                 "LoopIndexNode used but no For loop node was created. "
                 "This is a bug in the Dergflux builder."
             )
-        return self.loop_node
+        # Try Iteration (For) or Current (RangeLoop)
+        val_member = self.loop_node.get_member("Iteration") or self.loop_node.get_member("Current")
+        
+        # If member is missing, try one last re-fetch from server
+        if val_member is None:
+            await asyncio.sleep(0.1)
+            get_resp = await self.resolink.get_component(componentId=self.loop_node.id)
+            if get_resp.data:
+                # Update loop_node instance with full server data
+                from pyresonitelink.protoflux.flow import For, RangeLoopInt
+                if "RangeLoop" in get_resp.data.componentType:
+                    self.loop_node = RangeLoopInt(component=get_resp.data)
+                else:
+                    self.loop_node = For(component=get_resp.data)
+                val_member = self.loop_node.get_member("Iteration") or self.loop_node.get_member("Current")
+
+        if val_member is None:
+            raise RuntimeError(
+                f"Loop node {self.loop_node.id} ({type(self.loop_node).__name__}) is missing output member. "
+                "The server may not have finished processing the component."
+            )
+            
+        return type("_OutputStub", (), {"id": val_member.id})()
 
     async def _materialize_const(self, node: _expr.ConstNode) -> Any:
         """Materialize a constant as a ValueInput<T> or ValueObjectInput<T>.
@@ -1065,6 +1091,12 @@ async def _build_for_context(
     )
     await for_node.add_to_slot(ctx.resolink, ctx.slot)
 
+    # RE-FETCH component to get member data assigned by server
+    get_resp = await ctx.resolink.get_component(componentId=for_node.id)
+    if get_resp.data:
+        # Update for_node instance with full server data
+        for_node = ForClass(component=get_resp.data)
+
     # Set loop_node so LoopIndexNode materialization can find it
     ctx.loop_node = for_node
 
@@ -1114,6 +1146,12 @@ async def _build_range_context(
         step_size=step_comp.id if step_comp else None,
     )
     await range_node.add_to_slot(ctx.resolink, ctx.slot)
+
+    # RE-FETCH component to get member data assigned by server
+    get_resp = await ctx.resolink.get_component(componentId=range_node.id)
+    if get_resp.data:
+        # Update range_node instance with full server data
+        range_node = RangeClass(component=get_resp.data)
 
     # Set loop_node so LoopIndexNode materialization can find it
     ctx.loop_node = range_node
@@ -1204,7 +1242,7 @@ async def _build_model_write_node(
     decl: _space.ModelVarDecl,
     expr_comp: Any,
 ) -> Any:
-    """Build a ValueWrite<FrooxEngineContext, T> for a model variable."""
+    """Build a ValueWrite<T> for a model variable."""
     from pyresonitelink.generated import _type_map
 
     built_vars: dict[str, Any] = object.__getattribute__(
@@ -1220,21 +1258,57 @@ async def _build_model_write_node(
     # stub might be a _ComponentStub or the actual component instance
     store_id = stub.id if hasattr(stub, "id") else stub["id"]
 
-    # Construct ValueWrite<FrooxEngineContext, T> component type
+    # Construct ValueWrite<T> or ObjectWrite<T> component type
     from pyresonitelink.generated import _type_map
     type_info = _type_map.from_python_type(decl.resonite_type)
-    wire_type = type_info.resonite_name
-    vw_type = (
-        "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution"
-        ".Nodes.ValueWrite<[FrooxEngine]FrooxEngine.ProtoFlux"
-        f".FrooxEngineContext,{wire_type}>"
-    )
-
-    resp = await ctx.resolink.add_component(
-        containerSlotId=ctx.slot, componentType=vw_type,
-    )
-    assert resp.entityId is not None, (
-        f"Failed to create {vw_type}: {resp.errorInfo}"
+    
+    _PF_TYPE_MAP = {
+        "int": "System.Int32",
+        "uint": "System.UInt32",
+        "long": "System.Int64",
+        "ulong": "System.UInt64",
+        "float": "System.Single",
+        "double": "System.Double",
+        "bool": "System.Boolean",
+        "string": "System.String",
+    }
+    
+    base_type = "ObjectWrite" if _is_protoflux_object_type(decl.resonite_type) else "ValueWrite"
+    
+    # Try multiple combinations of namespace and type name
+    wire_types = [type_info.resonite_name]
+    if type_info.resonite_name in _PF_TYPE_MAP:
+        wire_types.append(_PF_TYPE_MAP[type_info.resonite_name])
+    
+    # Some nodes are in Nodes.Actions, others just Nodes
+    namespaces = ["Actions.", ""]
+    
+    # Some nodes need FrooxEngineContext as the first parameter to be 
+    # compatible with DMVFS variables.
+    contexts = ["[FrooxEngine]FrooxEngine.ProtoFlux.FrooxEngineContext,", ""]
+    
+    resp = None
+    last_type = ""
+    for wt in wire_types:
+        for ns in namespaces:
+            for ctx_prefix in contexts:
+                vw_type = (
+                    "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution"
+                    f".Nodes.{ns}{base_type}<{ctx_prefix}{wt}>"
+                )
+                last_type = vw_type
+                resp = await ctx.resolink.add_component(
+                    containerSlotId=ctx.slot, componentType=vw_type,
+                )
+                if resp.entityId is not None:
+                    break
+            if resp and resp.entityId is not None:
+                break
+        if resp and resp.entityId is not None:
+            break
+            
+    assert resp is not None and resp.entityId is not None, (
+        f"Failed to create {base_type} with any variant. Last tried: {last_type}: {resp.errorInfo if resp else 'No response'}"
     )
     write_id = resp.entityId
 
@@ -1253,7 +1327,6 @@ async def _build_model_write_node(
     # Return a stub with the component ID and a compatible interface
     # for OnWritten chaining (the tail output name)
     return type("_NodeStub", (), {"id": write_id})()
-
 
 async def _build_dynvar_write_node(
     ctx: _BuildContext,
@@ -1910,12 +1983,16 @@ async def _build_flow_context(
     # These nodes handle their own internal flow (loops, actions) and
     # the node itself is both the entry and the tail.
     node: Any | None = None
+    tail_name = "OnSuccess"
     if isinstance(flow_ctx, _flow.ForContext):
         node = await _build_for_context(ctx, flow_ctx)
+        tail_name = "LoopEnd"
     elif isinstance(flow_ctx, _flow.RangeContext):
         node = await _build_range_context(ctx, flow_ctx)
+        tail_name = "LoopEnd"
     elif isinstance(flow_ctx, _flow.WhileContext):
         node = await _build_while_context(ctx, flow_ctx)
+        tail_name = "LoopEnd"
     elif isinstance(flow_ctx, _flow.RaycastOneContext):
         node = await _build_raycast_one_context(ctx, flow_ctx)
     else:
@@ -1930,7 +2007,7 @@ async def _build_flow_context(
             )
     if node is None:
         return None
-    return FlowResult(head=node, tails=[_Tail(node)])
+    return FlowResult(head=node, tails=[_Tail(node, tail_name)])
 
 
 async def build_graph(

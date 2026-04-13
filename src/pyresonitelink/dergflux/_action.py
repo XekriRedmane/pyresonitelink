@@ -154,6 +154,10 @@ class ActionContext(_flow.FlowContext):
         """Append a nested flow to the currently active branch."""
         self.branch_stmts[self._require_branch()].append(ctx)
 
+    def current_stmts(self) -> list[_flow.Statement]:
+        """Return the statement list for the currently active branch."""
+        return self.branch_stmts[self._require_branch()]
+
 
 class ActionProxy:
     """Proxy returned by ``g.Action()`` for accessing branches and outputs.

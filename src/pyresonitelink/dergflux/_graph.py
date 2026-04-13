@@ -200,7 +200,7 @@ class Outcome:
         self._labels: dict[str, int] = {}
         self._next_id = 1  # 0 = unset
         # Declare an int variable on the space
-        self._var_decl = space.IntDynVar(name)
+        self._var_decl = space.IntModelVar(name)
         setattr(space, name, self._var_decl)
 
     def _label_id(self, label: str) -> int:
