@@ -258,8 +258,8 @@ from pyresonitelink.dergflux import Graph
 
 g = Graph()
 s = g.Space(slot)
-s.x = s.FloatVar("x")
-s.z = s.FloatVar("z")
+s.x = s.FloatDynVar("x")
+s.z = s.FloatDynVar("z")
 
 with g.Under(slot):
     with g.If(s.x < 3):

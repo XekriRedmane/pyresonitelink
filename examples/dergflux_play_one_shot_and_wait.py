@@ -46,7 +46,7 @@ async def main(port: int) -> None:
     g = Graph()
 
     s = g.Space(slot)
-    s.state = s.StringVar("state")
+    s.state = s.StringDynVar("state")
 
     with g.Under(slot, trigger="play_sound"):
         # Set state before playing — this bare write runs first in

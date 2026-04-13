@@ -54,8 +54,8 @@ async def main(port: int) -> None:
     # -- Build --
     g = Graph()
     s = g.Space(slot)
-    s.counter = s.FloatVar("counter")
-    s.ran = s.BoolVar("ran")
+    s.counter = s.FloatDynVar("counter")
+    s.ran = s.BoolDynVar("ran")
 
     with g.Under(slot):
         with g.If(s.ran == False):  # noqa: E712

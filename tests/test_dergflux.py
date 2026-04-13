@@ -323,7 +323,7 @@ class TestSpace:
 
     def test_declare_float_var(self) -> None:
         g, s = self._make_graph_and_space()
-        s.x = s.FloatVar("x")
+        s.x = s.FloatDynVar("x")
         vars_dict = object.__getattribute__(s, "_vars")
         assert "x" in vars_dict
         assert vars_dict["x"].resonite_type is primitives.Float
@@ -337,13 +337,13 @@ class TestSpace:
     def test_declare_with_slot(self) -> None:
         g, s = self._make_graph_and_space()
         child = workers.Slot(id="child-slot")
-        s.x = s.FloatVar("x", slot=child)
+        s.x = s.FloatDynVar("x", slot=child)
         vars_dict = object.__getattribute__(s, "_vars")
         assert vars_dict["x"].slot is child
 
     def test_declare_with_initial_value(self) -> None:
         g, s = self._make_graph_and_space()
-        s.state = s.StringVar("state", value="waiting")
+        s.state = s.StringDynVar("state", value="waiting")
         vars_dict = object.__getattribute__(s, "_vars")
         assert vars_dict["state"].initial_value == "waiting"
 
@@ -355,13 +355,13 @@ class TestSpace:
 
     def test_declare_default_no_initial_value(self) -> None:
         g, s = self._make_graph_and_space()
-        s.x = s.FloatVar("x")
+        s.x = s.FloatDynVar("x")
         vars_dict = object.__getattribute__(s, "_vars")
         assert vars_dict["x"].initial_value is None
 
     def test_read_declared_variable(self) -> None:
         g, s = self._make_graph_and_space()
-        s.x = s.FloatVar("x")
+        s.x = s.FloatDynVar("x")
         proxy = s.x
         assert isinstance(proxy, _expr.ExprProxy)
         assert isinstance(proxy._node, _expr.VarReadNode)
@@ -374,14 +374,14 @@ class TestSpace:
 
     def test_write_outside_flow_and_under_raises(self) -> None:
         g, s = self._make_graph_and_space()
-        s.z = s.FloatVar("z")
+        s.z = s.FloatDynVar("z")
         with pytest.raises(RuntimeError, match="Cannot assign"):
             s.z = s.z + 1
 
     def test_write_inside_if_records(self) -> None:
         g, s = self._make_graph_and_space()
-        s.x = s.FloatVar("x")
-        s.z = s.FloatVar("z")
+        s.x = s.FloatDynVar("x")
+        s.z = s.FloatDynVar("z")
         slot = object.__getattribute__(s, "_slot")
         with g.Under(slot):
             with g.If(s.x < 3):
@@ -393,7 +393,7 @@ class TestSpace:
 
     def test_bare_write_inside_under(self) -> None:
         g, s = self._make_graph_and_space()
-        s.z = s.FloatVar("z")
+        s.z = s.FloatDynVar("z")
         slot = object.__getattribute__(s, "_slot")
         with g.Under(slot):
             s.z = s.z + 1
@@ -428,8 +428,8 @@ class TestFlowControl:
         g = _graph.Graph()
         slot = workers.Slot(id="test-slot")
         s = g.Space(slot)
-        s.x = s.FloatVar("x")
-        s.z = s.FloatVar("z")
+        s.x = s.FloatDynVar("x")
+        s.z = s.FloatDynVar("z")
         return g, s, slot
 
     def test_if_records_condition(self) -> None:
@@ -488,7 +488,7 @@ class TestFlowControl:
 
     def test_multiple_ifs_in_sequence(self) -> None:
         g, s, slot = self._setup()
-        s.y = s.FloatVar("y")
+        s.y = s.FloatDynVar("y")
         with g.Under(slot):
             with g.If(s.x < 3):
                 s.z = s.x + 3
@@ -515,7 +515,7 @@ class TestFlowControl:
 
     def test_multiple_writes_in_branch(self) -> None:
         g, s, slot = self._setup()
-        s.y = s.FloatVar("y")
+        s.y = s.FloatDynVar("y")
         with g.Under(slot):
             with g.If(s.x < 3):
                 s.z = s.x + 3
@@ -538,7 +538,7 @@ class TestForLoop:
         g = _graph.Graph()
         slot = workers.Slot(id="test-slot")
         s = g.Space(slot)
-        s.total = s.FloatVar("total")
+        s.total = s.FloatDynVar("total")
         return g, s, slot
 
     def test_for_yields_for_proxy(self) -> None:
@@ -651,7 +651,7 @@ class TestRangeLoop:
         g = _graph.Graph()
         slot = workers.Slot(id="test-slot")
         s = g.Space(slot)
-        s.total = s.FloatVar("total")
+        s.total = s.FloatDynVar("total")
         return g, s, slot
 
     def test_range_yields_for_proxy(self) -> None:
@@ -734,7 +734,7 @@ class TestRangeLoop:
 
     def test_range_with_expr_bounds(self) -> None:
         g, s, slot = self._setup()
-        s.n = s.IntVar("n")
+        s.n = s.IntDynVar("n")
         with g.Under(slot):
             with g.Range(0, s.n) as f:
                 with f.OnIterate() as i:
@@ -752,7 +752,7 @@ class TestWhileLoop:
         g = _graph.Graph()
         slot = workers.Slot(id="test-slot")
         s = g.Space(slot)
-        s.x = s.FloatVar("x")
+        s.x = s.FloatDynVar("x")
         return g, s, slot
 
     def test_while_records_context(self) -> None:
@@ -815,10 +815,10 @@ class TestRaycastOne:
         g = _graph.Graph()
         slot = workers.Slot(id="test-slot")
         s = g.Space(slot)
-        s.pos = s.Float3Var("pos")
-        s.dir = s.Float3Var("dir")
-        s.distance = s.FloatVar("distance")
-        s.hit_pos = s.Float3Var("hit_pos")
+        s.pos = s.Float3DynVar("pos")
+        s.dir = s.Float3DynVar("dir")
+        s.distance = s.FloatDynVar("distance")
+        s.hit_pos = s.Float3DynVar("hit_pos")
         return g, s, slot
 
     def test_raycast_yields_action_proxy(self) -> None:
@@ -911,9 +911,9 @@ class TestGenericAction:
         g = _graph.Graph()
         slot = workers.Slot(id="test-slot")
         s = g.Space(slot)
-        s.pos = s.Float3Var("pos")
-        s.dir = s.Float3Var("dir")
-        s.distance = s.FloatVar("distance")
+        s.pos = s.Float3DynVar("pos")
+        s.dir = s.Float3DynVar("dir")
+        s.distance = s.FloatDynVar("distance")
         return g, s, slot
 
     def test_action_yields_proxy(self) -> None:
@@ -1018,7 +1018,7 @@ class TestGenericAction:
         from pyresonitelink.dergflux import _action
         from pyresonitelink.dergflux import actions
         g, s, slot = self._setup()
-        s.vol = s.FloatVar("vol")
+        s.vol = s.FloatDynVar("vol")
         with g.Under(slot):
             with g.Action(actions.PlayOneShot, volume=s.vol) as r:
                 with r.on_started_playing():
@@ -1042,7 +1042,7 @@ class TestBind:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.idx = s.IntVar("idx")
+        s.idx = s.IntDynVar("idx")
 
         # Create a fake component with an Index member
         comp = GeneratedComponent()
@@ -1061,7 +1061,7 @@ class TestBind:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.idx = s.IntVar("idx")
+        s.idx = s.IntDynVar("idx")
 
         comp = GeneratedComponent()
         comp._component.members["Index"] = fields.FieldInt(value=0)
@@ -1077,7 +1077,7 @@ class TestBind:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.idx = s.IntVar("idx")
+        s.idx = s.IntDynVar("idx")
 
         comp = GeneratedComponent()
         comp._component.members["Index"] = fields.FieldInt(value=0)
@@ -1090,7 +1090,7 @@ class TestBind:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.idx = s.IntVar("idx")
+        s.idx = s.IntDynVar("idx")
 
         comp = GeneratedComponent()
 
@@ -1103,8 +1103,8 @@ class TestBind:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.x = s.IntVar("x")
-        s.y = s.IntVar("y")
+        s.x = s.IntDynVar("x")
+        s.y = s.IntDynVar("y")
 
         comp = GeneratedComponent()
         comp._component.members["Index"] = fields.FieldInt(value=0)
@@ -1120,7 +1120,7 @@ class TestBind:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.x = s.FloatVar("x")
+        s.x = s.FloatDynVar("x")
 
         comp = GeneratedComponent()
         comp._component.members["Volume"] = fields.FieldFloat(value=0.0)
@@ -1137,7 +1137,7 @@ class TestBind:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.x = s.FloatVar("x")
+        s.x = s.FloatDynVar("x")
 
         comp = GeneratedComponent()
         comp._component.members["Volume"] = fields.FieldFloat(value=0.0)
@@ -1154,7 +1154,7 @@ class TestBind:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot, name="Audio")
-        s.vol = s.FloatVar("vol")
+        s.vol = s.FloatDynVar("vol")
 
         comp = GeneratedComponent()
         comp._component.members["Volume"] = fields.FieldFloat(value=0.0)
@@ -1277,8 +1277,8 @@ class TestGraph:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.x = s.FloatVar("x")
-        s.z = s.FloatVar("z")
+        s.x = s.FloatDynVar("x")
+        s.z = s.FloatDynVar("z")
         with g.Under(slot, trigger="MyImpulse"):
             with g.If(s.x < 3):
                 s.z = s.x + 3
@@ -1290,8 +1290,8 @@ class TestGraph:
         slot = workers.Slot(id="test-slot")
         with g.Under(slot):
             s = g.Space()
-            s.x = s.FloatVar("x")
-            s.z = s.FloatVar("z")
+            s.x = s.FloatDynVar("x")
+            s.z = s.FloatDynVar("z")
             with g.If(s.x < 3):
                 s.z = s.x + 3
             with g.Else():
@@ -1309,8 +1309,8 @@ class TestGraph:
         g = _graph.Graph()
         slot = workers.Slot(id="test-slot")
         s = g.Space(slot)
-        s.x = s.FloatVar("x")
-        s.z = s.FloatVar("z")
+        s.x = s.FloatDynVar("x")
+        s.z = s.FloatDynVar("z")
         with g.Under(slot):
             with g.If(s.x < 3):
                 s.z = s.x + 3
@@ -1325,7 +1325,7 @@ class TestGraph:
         g = _graph.Graph()
         slot = workers.Slot(id="test-slot")
         s = g.Space(slot)
-        s.total = s.FloatVar("total")
+        s.total = s.FloatDynVar("total")
         with g.Under(slot):
             with g.For(10) as f:
                 with f.OnStart():
@@ -1346,8 +1346,8 @@ class TestGraph:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.x = s.FloatVar("x")
-        s.z = s.FloatVar("z")
+        s.x = s.FloatDynVar("x")
+        s.z = s.FloatDynVar("z")
         with g.Under(slot):
             with g.If(s.x < 3):
                 s.z = s.x + 3
@@ -1359,7 +1359,7 @@ class TestGraph:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.state = s.StringVar("state")
+        s.state = s.StringDynVar("state")
         with g.Under(slot, trigger="play"):
             with g.PlayOneShotAndWait(volume=1.0) as r:
                 with r.on_started_playing():
@@ -1372,7 +1372,7 @@ class TestGraph:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.state = s.StringVar("state")
+        s.state = s.StringDynVar("state")
         with g.Under(slot, trigger="play"):
             with g.For(3) as f:
                 with f.OnIterate() as i:
@@ -1387,7 +1387,7 @@ class TestGraph:
         g = _graph.Graph()
         slot = workers.Slot(id="s")
         s = g.Space(slot)
-        s.state = s.StringVar("state")
+        s.state = s.StringDynVar("state")
         with g.Under(slot, trigger="play"):
             with g.For(3) as f:
                 with f.OnIterate() as i:

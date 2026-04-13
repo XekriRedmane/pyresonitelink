@@ -73,9 +73,9 @@ async def main(port: int) -> None:
 
     g = Graph()
     s = g.Space(slot)
-    s.x = s.FloatVar("x")
-    s.z = s.FloatVar("z")
-    s.tmp = s.FloatVar("tmp")
+    s.x = s.FloatDynVar("x")
+    s.z = s.FloatDynVar("z")
+    s.tmp = s.FloatDynVar("tmp")
 
     with g.Under(slot):
         with g.If(s.x < 3):

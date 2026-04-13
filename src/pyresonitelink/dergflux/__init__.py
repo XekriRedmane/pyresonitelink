@@ -5,8 +5,8 @@ Dergflux lets you write ProtoFlux logic using natural Python syntax::
     g = Graph()
     with g.Under(slot):
         s = g.Space()
-        s.x = s.FloatVar("x")
-        s.z = s.FloatVar("z")
+        s.x = s.FloatDynVar("x")
+        s.z = s.FloatDynVar("z")
 
         with g.If(s.x < 3):
             s.z = s.x + 3

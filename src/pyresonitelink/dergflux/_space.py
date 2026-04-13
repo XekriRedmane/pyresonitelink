@@ -57,81 +57,81 @@ class ModelVarDecl:
 
 
 # Maps convenience method names to their Resonite primitive types.
-# Used to dynamically generate the Space.*Var() methods.
+# Used to dynamically generate the Space.*DynVar() methods.
 _VAR_TYPES: dict[str, type] = {
     # Scalars
-    "BoolVar": primitives.Bool,
-    "ByteVar": primitives.Byte,
-    "SByteVar": primitives.SByte,
-    "ShortVar": primitives.Short,
-    "UShortVar": primitives.UShort,
-    "IntVar": primitives.Int,
-    "UIntVar": primitives.UInt,
-    "LongVar": primitives.Long,
-    "ULongVar": primitives.ULong,
-    "FloatVar": primitives.Float,
-    "DoubleVar": primitives.Double,
-    "StringVar": primitives.String,
-    "CharVar": primitives.Char,
+    "BoolDynVar": primitives.Bool,
+    "ByteDynVar": primitives.Byte,
+    "SByteDynVar": primitives.SByte,
+    "ShortDynVar": primitives.Short,
+    "UShortDynVar": primitives.UShort,
+    "IntDynVar": primitives.Int,
+    "UIntDynVar": primitives.UInt,
+    "LongDynVar": primitives.Long,
+    "ULongDynVar": primitives.ULong,
+    "FloatDynVar": primitives.Float,
+    "DoubleDynVar": primitives.Double,
+    "StringDynVar": primitives.String,
+    "CharDynVar": primitives.Char,
     # Colors
-    "ColorVar": primitives.Color,
-    "ColorXVar": primitives.ColorX,
-    "Color32Var": primitives.Color32,
+    "ColorDynVar": primitives.Color,
+    "ColorXDynVar": primitives.ColorX,
+    "Color32DynVar": primitives.Color32,
     # 2D vectors
-    "Float2Var": primitives.Float2,
-    "Double2Var": primitives.Double2,
-    "Int2Var": primitives.Int2,
-    "UInt2Var": primitives.UInt2,
-    "Long2Var": primitives.Long2,
-    "ULong2Var": primitives.ULong2,
-    "Short2Var": primitives.Short2,
-    "UShort2Var": primitives.UShort2,
-    "Byte2Var": primitives.Byte2,
-    "SByte2Var": primitives.SByte2,
-    "Bool2Var": primitives.Bool2,
+    "Float2DynVar": primitives.Float2,
+    "Double2DynVar": primitives.Double2,
+    "Int2DynVar": primitives.Int2,
+    "UInt2DynVar": primitives.UInt2,
+    "Long2DynVar": primitives.Long2,
+    "ULong2DynVar": primitives.ULong2,
+    "Short2DynVar": primitives.Short2,
+    "UShort2DynVar": primitives.UShort2,
+    "Byte2DynVar": primitives.Byte2,
+    "SByte2DynVar": primitives.SByte2,
+    "Bool2DynVar": primitives.Bool2,
     # 3D vectors
-    "Float3Var": primitives.Float3,
-    "Double3Var": primitives.Double3,
-    "Int3Var": primitives.Int3,
-    "UInt3Var": primitives.UInt3,
-    "Long3Var": primitives.Long3,
-    "ULong3Var": primitives.ULong3,
-    "Short3Var": primitives.Short3,
-    "UShort3Var": primitives.UShort3,
-    "Byte3Var": primitives.Byte3,
-    "SByte3Var": primitives.SByte3,
-    "Bool3Var": primitives.Bool3,
+    "Float3DynVar": primitives.Float3,
+    "Double3DynVar": primitives.Double3,
+    "Int3DynVar": primitives.Int3,
+    "UInt3DynVar": primitives.UInt3,
+    "Long3DynVar": primitives.Long3,
+    "ULong3DynVar": primitives.ULong3,
+    "Short3DynVar": primitives.Short3,
+    "UShort3DynVar": primitives.UShort3,
+    "Byte3DynVar": primitives.Byte3,
+    "SByte3DynVar": primitives.SByte3,
+    "Bool3DynVar": primitives.Bool3,
     # 4D vectors
-    "Float4Var": primitives.Float4,
-    "Double4Var": primitives.Double4,
-    "Int4Var": primitives.Int4,
-    "UInt4Var": primitives.UInt4,
-    "Long4Var": primitives.Long4,
-    "ULong4Var": primitives.ULong4,
-    "Short4Var": primitives.Short4,
-    "UShort4Var": primitives.UShort4,
-    "Byte4Var": primitives.Byte4,
-    "SByte4Var": primitives.SByte4,
-    "Bool4Var": primitives.Bool4,
+    "Float4DynVar": primitives.Float4,
+    "Double4DynVar": primitives.Double4,
+    "Int4DynVar": primitives.Int4,
+    "UInt4DynVar": primitives.UInt4,
+    "Long4DynVar": primitives.Long4,
+    "ULong4DynVar": primitives.ULong4,
+    "Short4DynVar": primitives.Short4,
+    "UShort4DynVar": primitives.UShort4,
+    "Byte4DynVar": primitives.Byte4,
+    "SByte4DynVar": primitives.SByte4,
+    "Bool4DynVar": primitives.Bool4,
     # Quaternions
-    "FloatQVar": primitives.FloatQ,
-    "DoubleQVar": primitives.DoubleQ,
+    "FloatQDynVar": primitives.FloatQ,
+    "DoubleQDynVar": primitives.DoubleQ,
     # Matrices
-    "Float2x2Var": primitives.Float2x2,
-    "Double2x2Var": primitives.Double2x2,
-    "Float3x3Var": primitives.Float3x3,
-    "Double3x3Var": primitives.Double3x3,
-    "Float4x4Var": primitives.Float4x4,
-    "Double4x4Var": primitives.Double4x4,
+    "Float2x2DynVar": primitives.Float2x2,
+    "Double2x2DynVar": primitives.Double2x2,
+    "Float3x3DynVar": primitives.Float3x3,
+    "Double3x3DynVar": primitives.Double3x3,
+    "Float4x4DynVar": primitives.Float4x4,
+    "Double4x4DynVar": primitives.Double4x4,
     # Geometry
-    "RectVar": primitives.Rect,
-    "BoundingBoxVar": primitives.BoundingBox,
+    "RectDynVar": primitives.Rect,
+    "BoundingBoxDynVar": primitives.BoundingBox,
 }
 
 # Maps convenience method names to their Resonite primitive types for
 # model variables (DataModelValueFieldStore-backed).
 _MODEL_VAR_TYPES: dict[str, type] = {
-    name.replace("Var", "ModelVar"): res_type
+    name.replace("DynVar", "ModelVar"): res_type
     for name, res_type in _VAR_TYPES.items()
 }
 
@@ -140,7 +140,7 @@ class Space:
     """Proxy for a DynamicVariableSpace on a slot.
 
     Attribute access builds expression trees:
-    - ``s.x = s.FloatVar("x")`` declares variable *x* as a float.
+    - ``s.x = s.FloatDynVar("x")`` declares variable *x* as a float.
     - ``s.x`` reads variable *x*, returning an ExprProxy.
     - ``s.z = s.x + 3`` records a write on the active flow context.
 
@@ -151,15 +151,15 @@ class Space:
     Usage::
 
         s = g.Space(slot)
-        s.x = s.FloatVar("x")                        # on space's slot
-        s.z = s.FloatVar("z", slot=child_slot)        # on a child slot
-        s.pos = s.Float3Var("pos")                    # 3D vector
-        s.col = s.ColorXVar("col")                    # color
+        s.x = s.FloatDynVar("x")                        # on space's slot
+        s.z = s.FloatDynVar("z", slot=child_slot)        # on a child slot
+        s.pos = s.Float3DynVar("pos")                    # 3D vector
+        s.col = s.ColorXDynVar("col")                    # color
         s.custom = s.Var("custom", primitives.Double)  # explicit type
 
     Every primitive type in ``pyresonitelink.data.primitives`` has a
-    corresponding convenience method (e.g. ``IntVar``, ``BoolVar``,
-    ``DoubleQVar``, ``Float4x4Var``, ``RectVar``, ``BoundingBoxVar``).
+    corresponding convenience method (e.g. ``IntDynVar``, ``BoolDynVar``,
+    ``DoubleQDynVar``, ``Float4x4DynVar``, ``RectDynVar``, ``BoundingBoxDynVar``).
 
     If a ``slot`` is given, it must be equal to or a recursive child of
     the space's slot (validated at build time). Variables are only
@@ -215,7 +215,7 @@ class Space:
             return
 
         if isinstance(value, (VarDecl, ModelVarDecl)):
-            # Declaration: s.z = s.FloatVar("z") or s.z = s.FloatModelVar("z")
+            # Declaration: s.z = s.FloatDynVar("z") or s.z = s.FloatModelVar("z")
             vars_dict: dict[str, VarDecl | ModelVarDecl] = (
                 object.__getattribute__(self, "_vars")
             )
@@ -282,7 +282,7 @@ class Space:
         if name not in vars_dict:
             raise AttributeError(
                 f"Variable '{name}' not declared on this Space. "
-                f"Declare it first with s.{name} = s.FloatVar(\"{name}\")."
+                f"Declare it first with s.{name} = s.FloatDynVar(\"{name}\")."
             )
         # After build, return the built component for direct access
         built: dict[str, Any] = object.__getattribute__(self, "_built_vars")

@@ -37,7 +37,7 @@ async def main(port: int) -> None:
     g = Graph()
 
     s = g.Space(slot)
-    s.total = s.FloatVar("total")
+    s.total = s.FloatDynVar("total")
 
     with g.Under(slot):
         # g.For(count) yields a ForProxy `f` with two sections:

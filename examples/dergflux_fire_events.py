@@ -45,10 +45,10 @@ async def main(port: int) -> None:
     g = Graph()
 
     s = g.Space(slot)
-    s.x = s.FloatVar("x", value=0.0)
-    s.flag = s.BoolVar("flag", value=False)
-    s.log = s.StringVar("log", value="waiting")
-    s.change_count = s.IntVar("change_count", value=0)
+    s.x = s.FloatDynVar("x", value=0.0)
+    s.flag = s.BoolDynVar("flag", value=False)
+    s.log = s.StringDynVar("log", value="waiting")
+    s.change_count = s.IntDynVar("change_count", value=0)
 
     with g.Under(slot):
         # FireOnTrue: fires once when flag transitions from false to true

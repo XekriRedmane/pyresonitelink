@@ -188,7 +188,8 @@ class TestBareWrite:
             parent=dergflux_slot, name="bare_write",
         )
         g = Graph()
-        s = g.Space(slot, name="bare_write")
+        s = g.Space(slot, space_name=
+"bare_write")
         s.x = s.FloatModelVar("x", value=2.0)
         s.z = s.FloatModelVar("z")
         s.ran = s.BoolModelVar("ran")
@@ -217,7 +218,8 @@ class TestArithmetic:
             parent=dergflux_slot, name="arith_add",
         )
         g = Graph()
-        s = g.Space(slot, name="arith_add")
+        s = g.Space(slot, space_name=
+"arith_add")
         s.x = s.FloatModelVar("x", value=3.0)
         s.y = s.FloatModelVar("y", value=4.0)
         s.z = s.FloatModelVar("z")
@@ -246,7 +248,8 @@ class TestArithmetic:
             parent=dergflux_slot, name="arith_sub",
         )
         g = Graph()
-        s = g.Space(slot, name="arith_sub")
+        s = g.Space(slot, space_name=
+"arith_sub")
         s.x = s.FloatModelVar("x", value=10.0)
         s.y = s.FloatModelVar("y", value=3.0)
         s.z = s.FloatModelVar("z")
@@ -275,7 +278,8 @@ class TestArithmetic:
             parent=dergflux_slot, name="arith_mul",
         )
         g = Graph()
-        s = g.Space(slot, name="arith_mul")
+        s = g.Space(slot, space_name=
+"arith_mul")
         s.x = s.FloatModelVar("x", value=3.0)
         s.y = s.FloatModelVar("y", value=5.0)
         s.z = s.FloatModelVar("z")
@@ -304,7 +308,8 @@ class TestArithmetic:
             parent=dergflux_slot, name="arith_div",
         )
         g = Graph()
-        s = g.Space(slot, name="arith_div")
+        s = g.Space(slot, space_name=
+"arith_div")
         s.x = s.FloatModelVar("x", value=15.0)
         s.y = s.FloatModelVar("y", value=3.0)
         s.z = s.FloatModelVar("z")
@@ -333,7 +338,8 @@ class TestArithmetic:
             parent=dergflux_slot, name="arith_mod",
         )
         g = Graph()
-        s = g.Space(slot, name="arith_mod")
+        s = g.Space(slot, space_name=
+"arith_mod")
         s.x = s.FloatModelVar("x", value=17.0)
         s.y = s.FloatModelVar("y", value=5.0)
         s.z = s.FloatModelVar("z")
@@ -362,7 +368,8 @@ class TestArithmetic:
             parent=dergflux_slot, name="arith_neg",
         )
         g = Graph()
-        s = g.Space(slot, name="arith_neg")
+        s = g.Space(slot, space_name=
+"arith_neg")
         s.x = s.FloatModelVar("x", value=7.0)
         s.z = s.FloatModelVar("z")
         s.ran = s.BoolModelVar("ran")
@@ -390,7 +397,8 @@ class TestArithmetic:
             parent=dergflux_slot, name="arith_coerce",
         )
         g = Graph()
-        s = g.Space(slot, name="arith_coerce")
+        s = g.Space(slot, space_name=
+"arith_coerce")
         s.x = s.FloatModelVar("x", value=5.0)
         s.z = s.FloatModelVar("z")
         s.ran = s.BoolModelVar("ran")
@@ -418,7 +426,8 @@ class TestArithmetic:
             parent=dergflux_slot, name="arith_chain",
         )
         g = Graph()
-        s = g.Space(slot, name="arith_chain")
+        s = g.Space(slot, space_name=
+"arith_chain")
         s.x = s.FloatModelVar("x", value=4.0)
         s.z = s.FloatModelVar("z")
         s.ran = s.BoolModelVar("ran")
@@ -450,7 +459,8 @@ class TestIfElse:
             parent=dergflux_slot, name="if_true",
         )
         g = Graph()
-        s = g.Space(slot, name="if_true")
+        s = g.Space(slot, space_name=
+"if_true")
         s.x = s.FloatModelVar("x", value=1.0)
         s.z = s.FloatModelVar("z")
         s.ran = s.BoolModelVar("ran")
@@ -481,7 +491,8 @@ class TestIfElse:
             parent=dergflux_slot, name="if_false",
         )
         g = Graph()
-        s = g.Space(slot, name="if_false")
+        s = g.Space(slot, space_name=
+"if_false")
         s.x = s.FloatModelVar("x", value=5.0)
         s.z = s.FloatModelVar("z")
         s.ran = s.BoolModelVar("ran")
@@ -512,7 +523,8 @@ class TestIfElse:
             parent=dergflux_slot, name="if_cont",
         )
         g = Graph()
-        s = g.Space(slot, name="if_cont")
+        s = g.Space(slot, space_name=
+"if_cont")
         s.x = s.FloatModelVar("x", value=2.0)
         s.z = s.FloatModelVar("z")
         s.tmp = s.FloatModelVar("tmp")
@@ -545,7 +557,8 @@ class TestIfElse:
             parent=dergflux_slot, name="if_no_else",
         )
         g = Graph()
-        s = g.Space(slot, name="if_no_else")
+        s = g.Space(slot, space_name=
+"if_no_else")
         s.x = s.FloatModelVar("x", value=1.0)
         s.z = s.FloatModelVar("z")
         s.w = s.FloatModelVar("w")
@@ -581,7 +594,8 @@ class TestMultipleWrites:
             parent=dergflux_slot, name="seq_writes",
         )
         g = Graph()
-        s = g.Space(slot, name="seq_writes")
+        s = g.Space(slot, space_name=
+"seq_writes")
         s.a = s.FloatModelVar("a")
         s.b = s.FloatModelVar("b")
         s.c = s.FloatModelVar("c")
@@ -618,7 +632,8 @@ class TestIntVariables:
             parent=dergflux_slot, name="int_arith",
         )
         g = Graph()
-        s = g.Space(slot, name="int_arith")
+        s = g.Space(slot, space_name=
+"int_arith")
         s.x = s.IntModelVar("x", value=3)
         s.y = s.IntModelVar("y", value=4)
         s.z = s.IntModelVar("z")
@@ -651,7 +666,8 @@ class TestComparison:
             parent=dergflux_slot, name="cmp_lt",
         )
         g = Graph()
-        s = g.Space(slot, name="cmp_lt")
+        s = g.Space(slot, space_name=
+"cmp_lt")
         s.x = s.FloatModelVar("x", value=5.0)
         s.z = s.FloatModelVar("z")
         s.ran = s.BoolModelVar("ran")
@@ -682,7 +698,8 @@ class TestComparison:
             parent=dergflux_slot, name="cmp_gt",
         )
         g = Graph()
-        s = g.Space(slot, name="cmp_gt")
+        s = g.Space(slot, space_name=
+"cmp_gt")
         s.x = s.FloatModelVar("x", value=5.0)
         s.z = s.FloatModelVar("z")
         s.ran = s.BoolModelVar("ran")
@@ -713,7 +730,8 @@ class TestComparison:
             parent=dergflux_slot, name="cmp_eq",
         )
         g = Graph()
-        s = g.Space(slot, name="cmp_eq")
+        s = g.Space(slot, space_name=
+"cmp_eq")
         s.x = s.FloatModelVar("x", value=5.0)
         s.z = s.FloatModelVar("z")
         s.ran = s.BoolModelVar("ran")
@@ -744,7 +762,8 @@ class TestComparison:
             parent=dergflux_slot, name="cmp_ne",
         )
         g = Graph()
-        s = g.Space(slot, name="cmp_ne")
+        s = g.Space(slot, space_name=
+"cmp_ne")
         s.x = s.FloatModelVar("x", value=3.0)
         s.z = s.FloatModelVar("z")
         s.ran = s.BoolModelVar("ran")

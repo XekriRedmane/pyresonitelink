@@ -200,7 +200,7 @@ class Outcome:
         self._labels: dict[str, int] = {}
         self._next_id = 1  # 0 = unset
         # Declare an int variable on the space
-        self._var_decl = space.IntVar(name)
+        self._var_decl = space.IntDynVar(name)
         setattr(space, name, self._var_decl)
 
     def _label_id(self, label: str) -> int:
@@ -265,8 +265,8 @@ class Graph:
         g = Graph()
 
         s = g.Space(slot)
-        s.x = s.FloatVar("x")
-        s.z = s.FloatVar("z")
+        s.x = s.FloatDynVar("x")
+        s.z = s.FloatDynVar("z")
 
         with g.Under(slot):
             with g.If(s.x < 3):
@@ -436,7 +436,7 @@ class Graph:
     def Space(
         self,
         slot: workers.Slot | None = None,
-        name: str | None = None,
+        space_name: str | None = None,
     ) -> _space.Space:
         """Create a Space bound to a slot.
 
@@ -444,7 +444,7 @@ class Graph:
             slot: The Resonite slot for the DynamicVariableSpace. If
                 omitted, uses the slot from the enclosing ``Under()``
                 context.
-            name: Optional space name. If a DynamicVariableSpace with
+            space_name: Optional space name. If a DynamicVariableSpace with
                 this name already exists on the slot, it is reused.
 
         Returns:
@@ -461,7 +461,7 @@ class Graph:
                 "Space() requires a slot. Either pass one explicitly "
                 "or use inside g.Under(slot)."
             )
-        space = _space.Space(self, slot, space_name=name)
+        space = _space.Space(self, slot, space_name=space_name)
         self._spaces.append(space)
         return space
 

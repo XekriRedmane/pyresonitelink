@@ -62,7 +62,7 @@ async def main(port: int) -> None:
     g = Graph()
 
     s = g.Space(slot)
-    s.state = s.StringVar("state", value="waiting")
+    s.state = s.StringDynVar("state", value="waiting")
 
     with g.Under(slot, trigger="play_all"):
         # g.For(count) yields a ForProxy with OnStart/OnIterate.

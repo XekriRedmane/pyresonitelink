@@ -50,8 +50,8 @@ slot = workers.Slot(id=slot_id)
 g = Graph()
 
 s = g.Space(slot)
-s.x = s.FloatVar("x")
-s.z = s.FloatVar("z")
+s.x = s.FloatDynVar("x")
+s.z = s.FloatDynVar("z")
 
 with g.Under(slot):
     with g.If(s.x < 3):
@@ -112,13 +112,13 @@ If a `DynamicVariableSpace` with the given name already exists on the slot, it i
 Variables are declared on a `Space` using factory methods. Every primitive type in `pyresonitelink.data.primitives` has a corresponding method:
 
 ```python
-s.x = s.FloatVar("x")         # float
-s.n = s.IntVar("count")       # int
-s.flag = s.BoolVar("active")  # bool
-s.name = s.StringVar("label") # string
-s.pos = s.Float3Var("pos")    # Float3 vector
-s.col = s.ColorXVar("tint")   # ColorX
-s.rot = s.FloatQVar("rot")    # quaternion
+s.x = s.FloatDynVar("x")         # float
+s.n = s.IntDynVar("count")       # int
+s.flag = s.BoolDynVar("active")  # bool
+s.name = s.StringDynVar("label") # string
+s.pos = s.Float3DynVar("pos")    # Float3 vector
+s.col = s.ColorXDynVar("tint")   # ColorX
+s.rot = s.FloatQDynVar("rot")    # quaternion
 ```
 
 For the full list, see the `_VAR_TYPES` dict in `_space.py`. You can also use the generic `Var` method with an explicit type:
@@ -133,7 +133,7 @@ s.d = s.Var("d", primitives.Double)
 By default, the `DynamicValueVariable` component is created on the space's slot. You can place it on a child slot instead:
 
 ```python
-s.x = s.FloatVar("x", slot=child_slot)
+s.x = s.FloatDynVar("x", slot=child_slot)
 ```
 
 The slot must be equal to or a recursive child of the space's slot (validated at build time). Variables are only created if they don't already exist on the target slot.

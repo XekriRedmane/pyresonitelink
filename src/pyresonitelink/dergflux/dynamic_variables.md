@@ -20,7 +20,7 @@ There are three component types for creating variables:
 - **`DynamicReferenceVariable<T>`** — for reference types (Slot, User, etc.)
 - **`DynamicTypeVariable`** — for the Type type
 
-In Dergflux, `s.FloatVar("x")` creates a `DynamicValueVariable<float>`.
+In Dergflux, `s.FloatDynVar("x")` creates a `DynamicValueVariable<float>`.
 
 ## Value Types vs Object Types
 
@@ -105,14 +105,14 @@ In Dergflux, when a Space has a name, variables use direct binding:
 
 ```python
 s = g.Space(slot, name="Audio")
-s.vol = s.FloatVar("vol")   # variable path: "Audio/vol"
+s.vol = s.FloatDynVar("vol")   # variable path: "Audio/vol"
 ```
 
 Without a name, variables use indirect binding:
 
 ```python
 s = g.Space(slot)
-s.vol = s.FloatVar("vol")   # variable path: "vol"
+s.vol = s.FloatDynVar("vol")   # variable path: "vol"
 ```
 
 ## Driving Fields from Dynamic Variables

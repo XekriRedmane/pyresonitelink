@@ -81,10 +81,10 @@ async def main(port: int) -> None:
 
     g = Graph()
     s = g.Space(slot)
-    s.counter = s.FloatVar("counter")
-    s.detected = s.FloatVar("detected")
-    s.order = s.StringVar("order", value="none")
-    s.ran = s.BoolVar("ran")
+    s.counter = s.FloatDynVar("counter")
+    s.detected = s.FloatDynVar("detected")
+    s.order = s.StringDynVar("order", value="none")
+    s.ran = s.BoolDynVar("ran")
 
     with g.Under(slot):
         # Gated update: runs once then stops

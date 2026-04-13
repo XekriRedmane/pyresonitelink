@@ -663,12 +663,9 @@ async def _find_existing_space(
     for comp in slot_data.data.components:
         if comp.componentType != DynamicVariableSpace.COMPONENT_TYPE:
             continue
-        existing = DynamicVariableSpace(component=comp)
-        existing_name = existing.space_name
-        if space_name is None and not existing_name:
-            return True
-        if existing_name == space_name:
-            return True
+        # If any space exists, consider it a match for now to avoid duplicates.
+        # In the future we may want to check SpaceName more carefully.
+        return True
     return False
 
 
@@ -762,9 +759,10 @@ async def _build_space(
         if not exists:
             dyn_space = DynamicVariableSpace(
                 space_name=space_name,
-                only_direct_binding=bool(space_name),
+                only_direct_binding=False,
             )
             await dyn_space.add_to_slot(ctx.resolink, slot)
+
             await asyncio.sleep(_BUILD_DELAY)
 
     from pyresonitelink.protoflux.variables import DataModelValueFieldStore
@@ -777,7 +775,6 @@ async def _build_space(
         else:
             await _build_dynvar(
                 ctx, space, slot, attr_name, decl, built_vars,
-                DynamicValueVariable,
             )
 
 
@@ -788,9 +785,13 @@ async def _build_dynvar(
     attr_name: str,
     decl: _space.VarDecl,
     built_vars: dict[str, Any],
-    DynamicValueVariable: Any,
 ) -> None:
     """Build a single dynamic variable."""
+    from pyresonitelink.components.data.dynamic import (
+        DynamicValueVariable,
+        DynamicReferenceVariable,
+    )
+
     var_slot = decl.slot if decl.slot is not None else space_slot
 
     if decl.slot is not None:
@@ -804,22 +805,32 @@ async def _build_dynvar(
                 f"{space_slot.id}."
             )
 
-    ConcreteVar = DynamicValueVariable[decl.resonite_type]  # type: ignore[name-defined]
+    res_type = decl.resonite_type
+    if _is_protoflux_object_type(res_type):
+        ConcreteVar = DynamicReferenceVariable[res_type]  # type: ignore[valid-type]
+    else:
+        ConcreteVar = DynamicValueVariable[res_type]  # type: ignore[valid-type]
+
     full_path = _full_var_path(space, decl.path)
 
     existing_comp = await _find_existing_variable_component(
         ctx.resolink, var_slot, full_path, ConcreteVar.COMPONENT_TYPE,
     )
     if existing_comp is not None:
-        built_vars[attr_name] = existing_comp
+        var_comp = existing_comp
+        # Ensure initial value is set even if reused
+        if decl.initial_value is not None:
+            var_comp.value = decl.initial_value
+            await var_comp.update(ctx.resolink)
     else:
         var_comp = ConcreteVar(
             variable_name=full_path,
             value=decl.initial_value,
         )
         await var_comp.add_to_slot(ctx.resolink, var_slot)
-        await asyncio.sleep(_BUILD_DELAY)
-        built_vars[attr_name] = var_comp
+    
+    await asyncio.sleep(_BUILD_DELAY)
+    built_vars[attr_name] = var_comp
 
 
 async def _build_model_var(

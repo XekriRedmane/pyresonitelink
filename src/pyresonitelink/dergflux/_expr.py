@@ -196,7 +196,7 @@ def _binop(op: BinOp, left: ExprProxy, right: Any) -> ExprProxy:
     from pyresonitelink.dergflux import _types
 
     # Propagate type from typed operand to untyped constant.
-    # e.g. FloatVar + 1 -> the ConstNode(1) gets Float type.
+    # e.g. FloatDynVar + 1 -> the ConstNode(1) gets Float type.
     left_node = left._node
     right_node = right_proxy._node
     if isinstance(right_node, ConstNode) and right_node._type is None:
