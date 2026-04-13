@@ -268,7 +268,7 @@ FireOnObjectValueChange = ActionDef(
     import_path="protoflux.flow",
     class_name="FireOnObjectValueChange",
     inputs={
-        "value": InputDef("value"),  # reference — pass component ID
+        "value": InputDef("value", object),
     },
     flow_outputs=["on_changed"],
     is_event_source=True,
@@ -278,7 +278,7 @@ FireOnLocalObjectChange = ActionDef(
     import_path="protoflux.flow",
     class_name="FireOnLocalObjectChange",
     inputs={
-        "value": InputDef("value"),  # reference — pass component ID
+        "value": InputDef("value", object),
     },
     flow_outputs=["on_change"],
     is_event_source=True,
@@ -288,7 +288,7 @@ FireOnRefChange = ActionDef(
     import_path="protoflux.flow",
     class_name="FireOnRefChange",
     inputs={
-        "value": InputDef("value"),  # reference — pass component ID
+        "value": InputDef("value", object),
     },
     flow_outputs=["on_changed"],
     is_event_source=True,
@@ -298,7 +298,7 @@ FireOnTypeChange = ActionDef(
     import_path="protoflux.flow",
     class_name="FireOnTypeChange",
     inputs={
-        "value": InputDef("value"),  # reference — pass component ID
+        "value": InputDef("value", object),
     },
     flow_outputs=["on_changed"],
     is_event_source=True,

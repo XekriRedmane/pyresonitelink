@@ -844,8 +844,16 @@ async def _build_model_var(
         parent=space_slot, name=decl.path,
     )
 
-    # Create DMVFS
-    ConcreteStore = DataModelValueFieldStore[decl.resonite_type]  # type: ignore[name-defined]
+    # Create DMVFS or DMOFS
+    from pyresonitelink.protoflux.variables import (
+        DataModelValueFieldStore,
+        DataModelObjectFieldStore,
+    )
+    if _is_protoflux_object_type(decl.resonite_type):
+        ConcreteStore = DataModelObjectFieldStore[decl.resonite_type]  # type: ignore[valid-type]
+    else:
+        ConcreteStore = DataModelValueFieldStore[decl.resonite_type]  # type: ignore[valid-type]
+    
     store = ConcreteStore()
     await store.add_to_slot(ctx.resolink, var_slot)
 
