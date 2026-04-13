@@ -78,6 +78,13 @@ class FieldEnum(Member):
 
 
 @dataclass
+class Type(Member):
+    """A field containing a Resonite type value (assembly-qualified name)."""
+
+    value: str | None = None
+
+
+@dataclass
 class SyncPlayback(Member):
     """A playback state member with transport controls."""
 

@@ -402,6 +402,18 @@ Testing complex ProtoFlux graphs against a live server is prone to race conditio
 4. **Post-Signal Buffer**: Even after a completion signal is received, add a small additional delay (`asyncio.sleep(0.5)`) to ensure the server has finished writing all other variables in the same impulse before asserting results.
 5. **Aligned Loop Scopes**: Ensure all fixtures and tests share the same `loop_scope` (typically `"session"`) to prevent "attached to a different loop" errors.
 
+#### Dynamic Variable Stability
+
+Dynamic variables (`*DynVar`) are more complex to test than model variables because they are not directly visible in the data model. Follow these rules:
+
+1. **`OnlyDirectBinding=False`**: ALWAYS set `OnlyDirectBinding` to `False` on the `DynamicVariableSpace` component (the Dergflux builder does this by default). If `True`, nodes on child slots (like temporary readers) will fail to bind to the variable.
+2. **Value vs. Reference Dispatch**: 
+   - Primitive types (`bool`, `int`, `float`, etc.) use `DynamicValueVariable<T>`.
+   - Object types (including **`string`**) use `DynamicReferenceVariable<T>`.
+   The Dergflux builder handles this dispatch automatically based on the Resonite type.
+3. **Binding Latency**: Dynamic variables require 1-2 engine updates to bind to their space. ALWAYS use a "gate" variable (like `ran`) and poll it to ensure the entire impulse has finished before checking results.
+4. **Reader Type Strings**: `ReadDynamicValueVariable<T>` is extremely sensitive to assembly qualification. Some versions of this node in Resonite require a double-qualified name: `[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.ReadDynamicValueVariable<T>`.
+
 ### Reflection API
 
 The server provides two levels of type introspection:

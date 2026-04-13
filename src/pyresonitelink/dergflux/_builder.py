@@ -492,6 +492,7 @@ class _BuildContext:
             ReadDynamicObjectVariable,
             ReadDynamicValueVariable,
         )
+        from pyresonitelink.generated import _type_map
 
         res_type = _resolve_type(node)
         full_path = _full_var_path(space, decl.path)
@@ -500,23 +501,35 @@ class _BuildContext:
         path_node = await self.ensure_path_node(full_path)
 
         if _is_protoflux_object_type(res_type):
-            ConcreteRead = ReadDynamicObjectVariable[res_type]  # type: ignore[valid-type]
+            type_info = _type_map.from_python_type(res_type)
+            tn = type_info.resonite_name
+            ConcreteRead_type = f"[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Variables.ReadDynamicObjectVariable<{tn}>"
+            comp = type("ReadDynamicObjectVariable_Stub", (), {"COMPONENT_TYPE": ConcreteRead_type, "add_to_slot": None, "id": None, "members": {}})
+            # We must manually use add_component because our stub doesn't have the full machinery
+            resp = await self.resolink.add_component(containerSlotId=self.slot.id, componentType=ConcreteRead_type)
+            if resp.entityId is None:
+                raise RuntimeError(f"Failed to create {ConcreteRead_type}: {resp.errorInfo}")
+            comp_id = resp.entityId
         else:
             ConcreteRead = ReadDynamicValueVariable[res_type]  # type: ignore[valid-type]
+            comp_obj = ConcreteRead()
+            await comp_obj.add_to_slot(self.resolink, self.slot)
+            comp_id = comp_obj.id
 
-        comp = ConcreteRead()
-        await comp.add_to_slot(self.resolink, self.slot)
         await self.resolink.update_references(
-            componentId=comp.id,  # type: ignore[arg-type]
+            componentId=comp_id,  # type: ignore[arg-type]
             references={
                 "Source": slot_ref.id,  # type: ignore[arg-type]
                 "Path": path_node.id,  # type: ignore[arg-type]
             },
         )
 
-        value_member = comp.get_member("Value")
+        # Re-fetch or get member ID
+        get_resp = await self.resolink.get_component(componentId=comp_id)
+        assert get_resp.data is not None
+        value_member = get_resp.data.members.get("Value")
         assert value_member is not None, (
-            f"ReadDynamicValueVariable {comp.id} has no Value member"
+            f"ReadDynamicVariable {comp_id} has no Value member"
         )
         stub = type("_OutputStub", (), {"id": value_member.id})()
         self.var_inputs[key] = stub
@@ -777,7 +790,6 @@ async def _build_space(
                 ctx, space, slot, attr_name, decl, built_vars,
             )
 
-
 async def _build_dynvar(
     ctx: _BuildContext,
     space: _space.Space,
@@ -790,6 +802,7 @@ async def _build_dynvar(
     from pyresonitelink.components.data.dynamic import (
         DynamicValueVariable,
         DynamicReferenceVariable,
+        DynamicTypeVariable,
     )
 
     var_slot = decl.slot if decl.slot is not None else space_slot
@@ -806,7 +819,9 @@ async def _build_dynvar(
             )
 
     res_type = decl.resonite_type
-    if _is_protoflux_object_type(res_type):
+    if res_type is type:
+        ConcreteVar = DynamicTypeVariable
+    elif _is_protoflux_object_type(res_type):
         ConcreteVar = DynamicReferenceVariable[res_type]  # type: ignore[valid-type]
     else:
         ConcreteVar = DynamicValueVariable[res_type]  # type: ignore[valid-type]
@@ -820,13 +835,45 @@ async def _build_dynvar(
         var_comp = existing_comp
         # Ensure initial value is set even if reused
         if decl.initial_value is not None:
-            var_comp.value = decl.initial_value
+            if ConcreteVar is DynamicTypeVariable:
+                val = decl.initial_value
+                if isinstance(val, type):
+                    from pyresonitelink.generated import _type_map
+                    val = _type_map.from_python_type(val).resonite_name
+                var_comp.value = val
+            elif hasattr(var_comp, "reference"):
+                # Reference variable
+                val = decl.initial_value
+                if hasattr(val, "id"):
+                    val = val.id
+                elif isinstance(val, type):
+                    from pyresonitelink.generated import _type_map
+                    val = _type_map.from_python_type(val).resonite_name
+                var_comp.reference = val
+            else:
+                # Value variable
+                var_comp.value = decl.initial_value
             await var_comp.update(ctx.resolink)
     else:
-        var_comp = ConcreteVar(
-            variable_name=full_path,
-            value=decl.initial_value,
-        )
+        # Construct arguments
+        kwargs = {"variable_name": full_path}
+        if decl.initial_value is not None:
+            val = decl.initial_value
+            if hasattr(val, "id"):
+                val = val.id
+            elif isinstance(val, type):
+                from pyresonitelink.generated import _type_map
+                val = _type_map.from_python_type(val).resonite_name
+            
+            # Dispatch based on component type
+            if ConcreteVar is DynamicTypeVariable:
+                kwargs["value"] = val
+            elif "Reference" in ConcreteVar.COMPONENT_TYPE:
+                kwargs["reference"] = val
+            else:
+                kwargs["value"] = val
+        
+        var_comp = ConcreteVar(**kwargs)
         await var_comp.add_to_slot(ctx.resolink, var_slot)
     
     await asyncio.sleep(_BUILD_DELAY)

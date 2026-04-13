@@ -10,11 +10,10 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any
 
-from pyresonitelink.data import primitives
+from pyresonitelink.data import primitives, workers
 from pyresonitelink.dergflux import _expr
 
 if TYPE_CHECKING:
-    from pyresonitelink.data import workers
     from pyresonitelink.dergflux import _graph
 
 
@@ -126,6 +125,9 @@ _VAR_TYPES: dict[str, type] = {
     # Geometry
     "RectDynVar": primitives.Rect,
     "BoundingBoxDynVar": primitives.BoundingBox,
+    # References and Types
+    "RefDynVar": workers.Slot,
+    "TypeDynVar": type,
 }
 
 # Maps convenience method names to their Resonite primitive types for
@@ -134,6 +136,8 @@ _MODEL_VAR_TYPES: dict[str, type] = {
     name.replace("DynVar", "ModelVar"): res_type
     for name, res_type in _VAR_TYPES.items()
 }
+_MODEL_VAR_TYPES["RefModelVar"] = workers.Slot
+_MODEL_VAR_TYPES["TypeModelVar"] = type
 
 
 class Space:

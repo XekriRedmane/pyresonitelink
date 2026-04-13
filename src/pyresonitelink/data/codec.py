@@ -405,6 +405,7 @@ def _init_type_registry() -> None:
     _register_type("empty", member_types.EmptyElement)
     _register_type("enum", member_types.FieldEnum)
     _register_type("enum?", member_types.FieldEnum)
+    _register_type("type", member_types.Type)
     _register_type("playback", member_types.SyncPlayback)
     _register_type("dictionary<enum>", member_types.SyncDictionary)
 

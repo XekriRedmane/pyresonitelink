@@ -126,6 +126,7 @@ _TYPE_INFOS: list[TypeInfo] = [
         workers.Component,
         "[FrooxEngine]FrooxEngine.Component",
     ),
+    TypeInfo(type, "type"),
 ]
 
 # Lookup by Python type → TypeInfo (first match wins for duplicates)

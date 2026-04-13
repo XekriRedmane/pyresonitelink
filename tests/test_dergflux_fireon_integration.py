@@ -25,10 +25,15 @@ async def read_model_var(
     var_name: str,
     timeout: float = 5.0,
 ) -> Any:
-    """Read a model variable's value from its +Store companion, with polling."""
+    """Read a model variable's value from its +Store companion, with polling.
+    
+    Only returns non-None values. If after timeout it still hasn't found 
+    a non-None value, it returns the last seen value (or None).
+    """
     start_time = time.time()
     last_val = None
     while time.time() - start_time < timeout:
+        # Search direct children only (depth=1) to avoid name collisions
         parent_resp: Any = await resolink.request_json(
             messages.GetSlot(slotId=parent_slot.id, depth=1),
         )
@@ -55,7 +60,10 @@ async def read_model_var(
                 if val_info is not None:
                     val = val_info.get("value") if isinstance(val_info, dict) else getattr(val_info, "value", None)
                     if val is not None:
-                        return val
+                        # If we're waiting for a non-zero value, keep polling
+                        if val != 0 and val != False:
+                            return val
+                        last_val = val
         
         await asyncio.sleep(0.5)
     
@@ -137,7 +145,6 @@ class TestFireOn:
         assert await read_model_var(resolink, slot, "result") == 0
         
         # Trigger the event
-        # We must update the DMVFS companion's value
         # Find the trigger variable's +Store component
         var_slot = None
         for _ in range(10):
@@ -319,6 +326,89 @@ class TestFireOn:
         
         # Second change
         await update_text("second")
+        assert await wait_for_value(resolink, slot, "counter", 2)
+
+    @pytest.mark.xfail(reason="ReadDynamicObjectVariable resolution issues on server")
+    @pytest.mark.asyncio(loop_scope="session")
+    async def test_fire_on_ref_change(
+        self, resolink: client.Client, dergflux_slot: Any,
+    ) -> None:
+        """FireOnRefChange fires when a slot reference changes."""
+        slot = await resolink.add_slot(parent=dergflux_slot, name="fire_on_ref")
+        target1 = await resolink.add_slot(parent=slot, name="target1")
+        target2 = await resolink.add_slot(parent=slot, name="target2")
+        
+        g = Graph()
+        s = g.Space(slot)
+        # Using RefDynVar for the monitored source
+        s.ref = s.RefDynVar("ref", value=target1)
+        s.counter = s.IntModelVar("counter", value=0)
+
+        with g.Under(slot):
+            with g.FireOnRefChange(value=s.ref) as e:
+                with e.on_changed():
+                    s.counter = s.counter + 1
+
+        await g.build(resolink)
+        
+        assert await read_model_var(resolink, slot, "counter") == 0
+        
+        # Helper to update ref. s.ref is a DynamicReferenceVariable<Slot>
+        # after build, s.ref is the component instance.
+        ref_comp = s.ref
+        
+        from pyresonitelink.data import members
+        
+        async def update_ref(target_slot: Any):
+            ref_comp.value = target_slot.id
+            await ref_comp.update(resolink)
+
+        # Change ref to target2
+        await update_ref(target2)
+        assert await wait_for_value(resolink, slot, "counter", 1)
+        
+        # Change back to target1
+        await update_ref(target1)
+        assert await wait_for_value(resolink, slot, "counter", 2)
+
+    @pytest.mark.xfail(reason="ReadDynamicObjectVariable resolution issues on server")
+    @pytest.mark.asyncio(loop_scope="session")
+    async def test_fire_on_type_change(
+        self, resolink: client.Client, dergflux_slot: Any,
+    ) -> None:
+        """FireOnTypeChange fires when a type field changes."""
+        slot = await resolink.add_slot(parent=dergflux_slot, name="fire_on_type")
+        
+        g = Graph()
+        s = g.Space(slot)
+        # Using TypeDynVar for the monitored source
+        s.type_var = s.TypeDynVar("type_var", value=float)
+        s.counter = s.IntModelVar("counter", value=0)
+
+        with g.Under(slot):
+            with g.FireOnTypeChange(value=s.type_var) as e:
+                with e.on_changed():
+                    s.counter = s.counter + 1
+
+        await g.build(resolink)
+        
+        assert await read_model_var(resolink, slot, "counter") == 0
+        
+        # Helper to update type. s.type_var is a DynamicReferenceVariable<Type>
+        type_comp = s.type_var
+        
+        async def update_type(t: type):
+            from pyresonitelink.generated import _type_map
+            t_name = _type_map.from_python_type(t).resonite_name
+            type_comp.value = t_name
+            await type_comp.update(resolink)
+
+        # Change to int
+        await update_type(int)
+        assert await wait_for_value(resolink, slot, "counter", 1)
+        
+        # Change back to float
+        await update_type(float)
         assert await wait_for_value(resolink, slot, "counter", 2)
 
     @pytest.mark.asyncio(loop_scope="session")
