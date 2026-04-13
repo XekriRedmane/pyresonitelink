@@ -4,7 +4,7 @@ from enum import StrEnum
 
 
 class SunType(StrEnum):
-    """Enum: [FrooxEngine]FrooxEngine.ProceduralSkyMaterial+SunType."""
+    """Enum: [FrooxEngine]FrooxEngine.ProceduralSky+SunType."""
 
     none = "None"
     simple = "Simple"

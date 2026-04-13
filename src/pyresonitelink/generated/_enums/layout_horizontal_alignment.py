@@ -7,7 +7,7 @@ class LayoutHorizontalAlignment(StrEnum):
     """Enum: [FrooxEngine]FrooxEngine.UIX.LayoutHorizontalAlignment."""
 
     left = "Left"
-    center = "Center"
+    center_ = "Center"
     right = "Right"
     justify = "Justify"
 

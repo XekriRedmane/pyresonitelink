@@ -25,7 +25,7 @@ They are particularly useful for projecting a texture onto a cubical object with
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_TriplanarSpecular"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, triplanar_blend_power: primitives.Float | None = None, object_space: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, culling: Culling | str | None = None, transparent: primitives.Bool | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, triplanar_blend_power: primitives.Float | None = None, object_space: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, culling: Culling | str | None = None, transparent_field: primitives.Bool | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent_ref: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -44,11 +44,12 @@ They are particularly useful for projecting a texture onto a cubical object with
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
             culling: Initial value for Culling.
-            transparent: Initial value for Transparent.
+            transparent_field: Initial value for Transparent.
             render_queue: Initial value for RenderQueue.
             specular_color: Initial value for SpecularColor.
             specular_map: Initial value for SpecularMap.
             regular: Initial value for _regular.
+            transparent_ref: Initial value for _transparent.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -82,8 +83,8 @@ They are particularly useful for projecting a texture onto a cubical object with
             self.offset_units = offset_units
         if culling is not None:
             self.culling = culling
-        if transparent is not None:
-            self.transparent = transparent
+        if transparent_field is not None:
+            self.transparent_field = transparent_field
         if render_queue is not None:
             self.render_queue = render_queue
         if specular_color is not None:
@@ -92,6 +93,8 @@ They are particularly useful for projecting a texture onto a cubical object with
             self.specular_map = specular_map
         if regular is not None:
             self.regular = regular
+        if transparent_ref is not None:
+            self.transparent_ref = transparent_ref
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -388,15 +391,15 @@ They are particularly useful for projecting a texture onto a cubical object with
             )
 
     @property
-    def transparent(self) -> primitives.Bool | None:
+    def transparent_field(self) -> primitives.Bool | None:
         """The Transparent field value."""
         member = self.get_member("Transparent")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @transparent.setter
-    def transparent(self, value: primitives.Bool) -> None:
+    @transparent_field.setter
+    def transparent_field(self, value: primitives.Bool) -> None:
         """Set the Transparent field value."""
         member = self.get_member("Transparent")
         if member is not None:
@@ -487,15 +490,15 @@ They are particularly useful for projecting a texture onto a cubical object with
             )
 
     @property
-    def transparent(self) -> str | None:
+    def transparent_ref(self) -> str | None:
         """Target ID of the _transparent reference (targets IAssetProvider[Shader])."""
         member = self.get_member("_transparent")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @transparent.setter
-    def transparent(self, target: str | IAssetProvider[Shader] | None) -> None:
+    @transparent_ref.setter
+    def transparent_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _transparent reference by target ID or IAssetProvider[Shader] instance."""
         target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
         member = self.get_member("_transparent")

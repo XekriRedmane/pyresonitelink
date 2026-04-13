@@ -4,7 +4,7 @@ from enum import StrEnum
 
 
 class Align(StrEnum):
-    """Enum: [FrooxEngine]FrooxEngine.AxisAligner+Align."""
+    """Enum: [FrooxEngine]FrooxEngine.ObjectGridAligner+Align."""
 
     neg = "Neg"
     mid = "Mid"

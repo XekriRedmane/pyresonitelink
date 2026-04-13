@@ -20,7 +20,7 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_RimSpecular"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, rim_color: primitives.ColorX | None = None, rim_power: primitives.Float | None = None, gamma_curve: primitives.Float | None = None, transparent: primitives.Bool | None = None, force_zwrite: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, albedo_color: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, rim_color: primitives.ColorX | None = None, rim_power: primitives.Float | None = None, gamma_curve: primitives.Float | None = None, transparent_field: primitives.Bool | None = None, force_zwrite: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, specular_color: primitives.ColorX | None = None, specular_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent_ref: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,7 +37,7 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             rim_color: Initial value for RimColor.
             rim_power: Initial value for RimPower.
             gamma_curve: Initial value for GammaCurve.
-            transparent: Initial value for Transparent.
+            transparent_field: Initial value for Transparent.
             force_zwrite: Initial value for ForceZWrite.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
@@ -45,6 +45,7 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             specular_color: Initial value for SpecularColor.
             specular_map: Initial value for SpecularMap.
             regular: Initial value for _regular.
+            transparent_ref: Initial value for _transparent.
             zwrite: Initial value for _zwrite.
             component: Existing Component to wrap.
         """
@@ -75,8 +76,8 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             self.rim_power = rim_power
         if gamma_curve is not None:
             self.gamma_curve = gamma_curve
-        if transparent is not None:
-            self.transparent = transparent
+        if transparent_field is not None:
+            self.transparent_field = transparent_field
         if force_zwrite is not None:
             self.force_zwrite = force_zwrite
         if offset_factor is not None:
@@ -91,6 +92,8 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             self.specular_map = specular_map
         if regular is not None:
             self.regular = regular
+        if transparent_ref is not None:
+            self.transparent_ref = transparent_ref
         if zwrite is not None:
             self.zwrite = zwrite
 
@@ -350,15 +353,15 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def transparent(self) -> primitives.Bool | None:
+    def transparent_field(self) -> primitives.Bool | None:
         """The Transparent field value."""
         member = self.get_member("Transparent")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @transparent.setter
-    def transparent(self, value: primitives.Bool) -> None:
+    @transparent_field.setter
+    def transparent_field(self, value: primitives.Bool) -> None:
         """Set the Transparent field value."""
         member = self.get_member("Transparent")
         if member is not None:
@@ -506,15 +509,15 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
             )
 
     @property
-    def transparent(self) -> str | None:
+    def transparent_ref(self) -> str | None:
         """Target ID of the _transparent reference (targets IAssetProvider[Shader])."""
         member = self.get_member("_transparent")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @transparent.setter
-    def transparent(self, target: str | IAssetProvider[Shader] | None) -> None:
+    @transparent_ref.setter
+    def transparent_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _transparent reference by target ID or IAssetProvider[Shader] instance."""
         target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
         member = self.get_member("_transparent")

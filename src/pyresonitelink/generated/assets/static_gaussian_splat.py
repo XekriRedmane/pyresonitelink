@@ -82,12 +82,12 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
             resolink, "ClipWithBoundingBox", {"bounds": bounds, "boundsOrientation": bounds_orientation}, debug,
         )
 
-    async def clip_with_sphere(self, resolink: protocols.ResoniteLinkClient, center: primitives.Float3, radius: primitives.Float, debug: bool = False) -> dict:
+    async def clip_with_sphere(self, resolink: protocols.ResoniteLinkClient, center_: primitives.Float3, radius: primitives.Float, debug: bool = False) -> dict:
         """Cuts the Gaussian splat using a sphere argument.
 
         Args:
             resolink: Connected ResoniteLink client.
-            center: The center parameter.
+            center_: The center parameter.
             radius: The radius parameter.
             debug: Print request/response JSON.
 
@@ -95,15 +95,15 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "ClipWithSphere", {"center": center, "radius": radius}, debug,
+            resolink, "ClipWithSphere", {"center": center_, "radius": radius}, debug,
         )
 
-    async def clip_with_cylinder(self, resolink: protocols.ResoniteLinkClient, center: primitives.Float3, radius: primitives.Float, height: primitives.Float, orientation: primitives.FloatQ, debug: bool = False) -> dict:
+    async def clip_with_cylinder(self, resolink: protocols.ResoniteLinkClient, center_: primitives.Float3, radius: primitives.Float, height: primitives.Float, orientation: primitives.FloatQ, debug: bool = False) -> dict:
         """Call the ClipWithCylinder sync method.
 
         Args:
             resolink: Connected ResoniteLink client.
-            center: The center parameter.
+            center_: The center parameter.
             radius: The radius parameter.
             height: The height parameter.
             orientation: The orientation parameter.
@@ -113,6 +113,6 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "ClipWithCylinder", {"center": center, "radius": radius, "height": height, "orientation": orientation}, debug,
+            resolink, "ClipWithCylinder", {"center": center_, "radius": radius, "height": height, "orientation": orientation}, debug,
         )
 

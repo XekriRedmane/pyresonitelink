@@ -4,9 +4,9 @@ from enum import StrEnum
 
 
 class ColorTarget(StrEnum):
-    """Enum: [FrooxEngine]FrooxEngine.PBS_VertexColorMetallic+ColorTarget."""
+    """Enum: [FrooxEngine]FrooxEngine.PBS_VertexColorSpecular+ColorTarget."""
 
     albedo = "Albedo"
     emissive = "Emissive"
-    metallic = "Metallic"
+    specular = "Specular"
 

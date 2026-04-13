@@ -4,9 +4,9 @@ from enum import StrEnum
 
 
 class OutlineStyle(StrEnum):
-    """Enum: [FrooxEngine]FrooxEngine.XiexeToonMaterial+OutlineStyle."""
+    """Enum: [FrooxEngine]FrooxEngine.FlatLitToonMaterial+OutlineStyle."""
 
     none = "None"
-    lit = "Lit"
-    emissive = "Emissive"
+    tinted = "Tinted"
+    colored = "Colored"
 

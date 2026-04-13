@@ -30,16 +30,16 @@ The node can be used as a fixed-size* array in ProtoFlux or to iterate over mult
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ObjectMultiplex<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ObjectMultiplex<>"
 
-    def __init__(self, index: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, index_: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
-            index: Initial value for Index.
+            index_: Initial value for Index.
             component: Existing Component to wrap.
         """
         super().__init__(component)
-        if index is not None:
-            self.index = index
+        if index_ is not None:
+            self.index_ = index_
 
     @property
     def inputs(self) -> members.SyncList | None:
@@ -55,15 +55,15 @@ The node can be used as a fixed-size* array in ProtoFlux or to iterate over mult
         self.set_member("Inputs", value)
 
     @property
-    def index(self) -> str | None:
+    def index_(self) -> str | None:
         """Selects the input value for the output."""
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @index.setter
-    def index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+    @index_.setter
+    def index_(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Index reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Index")

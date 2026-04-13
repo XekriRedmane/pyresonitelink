@@ -159,7 +159,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     @property
     def description(self) -> primitives.String | None:
-        """The description of the task. Usually starts with "Account Migration" or "Favorites migration"."""
+        """The description of the task. Usually starts with "Account Migration" or "Favorites migration\""""
         member = self.get_member("Description")
         if member is None:
             return None

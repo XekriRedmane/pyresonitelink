@@ -4,14 +4,15 @@ from __future__ import annotations
 
 import asyncio
 import time
-from typing import Any
+from typing import Any, cast
 
 import pytest
 import pytest_asyncio
 
 from pyresonitelink import client
-from pyresonitelink.data import messages, workers
+from pyresonitelink.data import messages, workers, fields
 from pyresonitelink.dergflux import Graph
+from pyresonitelink.dergflux._builder import _find_store_companion
 
 
 # =========================================================================
@@ -154,10 +155,11 @@ class TestFireOn:
             await asyncio.sleep(0.5)
         assert var_slot is not None
         
-        # Use helper to find the +Store companion and its member ID
-        from pyresonitelink.dergflux._builder import _find_store_companion
-        store_id, store_ct, val_id = await _find_store_companion(resolink, var_slot.id)
-        
+        assert var_slot.id is not None
+        store_id, store_ct, val_id = cast(tuple[str, str, str], await _find_store_companion(resolink, var_slot.id))
+        assert store_id is not None
+        assert val_id is not None
+        assert store_ct is not None
         from pyresonitelink.data import fields
         update_member = fields.FieldBool(value=True)
         update_member.id = val_id
@@ -202,8 +204,11 @@ class TestFireOn:
             await asyncio.sleep(0.5)
         assert var_slot is not None
         
-        from pyresonitelink.dergflux._builder import _find_store_companion
-        store_id, store_ct, val_id = await _find_store_companion(resolink, var_slot.id)
+        assert var_slot.id is not None
+        store_id, store_ct, val_id = cast(tuple[str, str, str], await _find_store_companion(resolink, var_slot.id))
+        assert store_id is not None
+        assert val_id is not None
+        assert store_ct is not None
         
         from pyresonitelink.data import fields
         update_member = fields.FieldBool(value=False)
@@ -249,8 +254,11 @@ class TestFireOn:
             await asyncio.sleep(0.5)
         assert var_slot is not None
         
-        from pyresonitelink.dergflux._builder import _find_store_companion
-        store_id, store_ct, val_id = await _find_store_companion(resolink, var_slot.id)
+        assert var_slot.id is not None
+        store_id, store_ct, val_id = cast(tuple[str, str, str], await _find_store_companion(resolink, var_slot.id))
+        assert store_id is not None
+        assert val_id is not None
+        assert store_ct is not None
         
         from pyresonitelink.data import fields
         
@@ -304,8 +312,11 @@ class TestFireOn:
             await asyncio.sleep(0.5)
         assert var_slot is not None
         
-        from pyresonitelink.dergflux._builder import _find_store_companion
-        store_id, store_ct, val_id = await _find_store_companion(resolink, var_slot.id)
+        assert var_slot.id is not None
+        store_id, store_ct, val_id = cast(tuple[str, str, str], await _find_store_companion(resolink, var_slot.id))
+        assert store_id is not None
+        assert val_id is not None
+        assert store_ct is not None
         
         from pyresonitelink.data import fields
         
@@ -442,8 +453,11 @@ class TestFireOn:
             await asyncio.sleep(0.5)
         assert var_slot is not None
         
-        from pyresonitelink.dergflux._builder import _find_store_companion
-        store_id, store_ct, val_id = await _find_store_companion(resolink, var_slot.id)
+        assert var_slot.id is not None
+        store_id, store_ct, val_id = cast(tuple[str, str, str], await _find_store_companion(resolink, var_slot.id))
+        assert store_id is not None
+        assert val_id is not None
+        assert store_ct is not None
         
         from pyresonitelink.data import fields
         

@@ -22,13 +22,13 @@ class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoundingBoxDriver"
 
-    def __init__(self, bounded_source: str | IBounded | None = None, size: str | IField[primitives.Float3] | None = None, center: str | IField[primitives.Float3] | None = None, padding: primitives.Float3 | None = None, scale: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, bounded_source: str | IBounded | None = None, size: str | IField[primitives.Float3] | None = None, center_: str | IField[primitives.Float3] | None = None, padding: primitives.Float3 | None = None, scale: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             bounded_source: Initial value for BoundedSource.
             size: Initial value for Size.
-            center: Initial value for Center.
+            center_: Initial value for Center.
             padding: Initial value for Padding.
             scale: Initial value for Scale.
             component: Existing Component to wrap.
@@ -38,8 +38,8 @@ class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.bounded_source = bounded_source
         if size is not None:
             self.size = size
-        if center is not None:
-            self.center = center
+        if center_ is not None:
+            self.center_ = center_
         if padding is not None:
             self.padding = padding
         if scale is not None:
@@ -88,15 +88,15 @@ class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def center(self) -> str | None:
+    def center_(self) -> str | None:
         """The field to drive with the local space center of the bounding box of ``BoundedSource``."""
         member = self.get_member("Center")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @center.setter
-    def center(self, target: str | IField[primitives.Float3] | None) -> None:
+    @center_.setter
+    def center_(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the Center reference by target ID or IField[primitives.Float3] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Center")

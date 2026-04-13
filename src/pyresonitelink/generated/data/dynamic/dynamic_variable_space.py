@@ -17,7 +17,7 @@ class DynamicVariableSpace(GeneratedComponent, IComponent, IWorldEventReceiver):
 Since dynamic variables are, by default, created on the slot of the nearest parent DynamicVariableSpace, this component provides control over where the root of that space is, as well as part of the path name to be referenced when using a consumer of dynamic variables, such as DynamicValueVariableDriver`1. For more info see Dynamic Variables.
 
     **Behavior**: == Examples ==
-By default worlds have a DynamicVariableSpace named "World" and users have a DynamicVariableSpace named "User"
+By default worlds have a DynamicVariableSpace named "World" and users have a DynamicVariableSpace named "User\"
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DynamicVariableSpace"

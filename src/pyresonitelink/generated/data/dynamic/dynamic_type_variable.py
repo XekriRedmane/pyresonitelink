@@ -59,28 +59,23 @@ class DynamicTypeVariable(GeneratedComponent, IDynamicVariable, IComponent, IWor
             )
 
     @property
-    def value(self) -> str | None:
-        """The value of the dynamic variable."""
+    def value(self) -> Type | None:
+        """The value of the dynamic variable that keeps in sync with the variable's valye."""
         member = self.get_member("Value")
-        if isinstance(member, members.Type):
-            return member.value
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Type(member.value)
         return None
 
     @value.setter
-    def value(self, value: str | type) -> None:
-        """Set Value."""
-        val_str = value
-        if isinstance(value, type):
-            from pyresonitelink.generated import _type_map
-            val_str = _type_map.from_python_type(value).resonite_name
-        
+    def value(self, value: Type | str) -> None:
+        """Set Value. The value of the dynamic variable that keeps in sync with the variable's valye."""
         member = self.get_member("Value")
-        if isinstance(member, members.Type):
-            member.value = str(val_str)
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
         else:
             self.set_member(
                 "Value",
-                members.Type(value=str(val_str)),
+                members.FieldEnum(value=str(value)),
             )
 
     @property

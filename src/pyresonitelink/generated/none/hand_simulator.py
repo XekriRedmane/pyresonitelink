@@ -1,6 +1,7 @@
 """Generated component: HandSimulator."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._enums.chirality import Chirality
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent

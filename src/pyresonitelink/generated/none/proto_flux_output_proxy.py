@@ -19,14 +19,14 @@ class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.ProtoFluxOutputProxy"
 
-    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: primitives.String | None = None, is_dynamic: primitives.Bool | None = None, index: primitives.Int | None = None, connect_point: str | Slot | None = None, node_output: str | INodeOutput | None = None, output_type: Type | str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: str | ProtoFluxNode | None = None, element_name: primitives.String | None = None, is_dynamic: primitives.Bool | None = None, index_: primitives.Int | None = None, connect_point: str | Slot | None = None, node_output: str | INodeOutput | None = None, output_type: Type | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             node: Initial value for Node.
             element_name: Initial value for ElementName.
             is_dynamic: Initial value for IsDynamic.
-            index: Initial value for Index.
+            index_: Initial value for Index.
             connect_point: Initial value for ConnectPoint.
             node_output: Initial value for NodeOutput.
             output_type: Initial value for OutputType.
@@ -39,8 +39,8 @@ class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.element_name = element_name
         if is_dynamic is not None:
             self.is_dynamic = is_dynamic
-        if index is not None:
-            self.index = index
+        if index_ is not None:
+            self.index_ = index_
         if connect_point is not None:
             self.connect_point = connect_point
         if node_output is not None:
@@ -108,15 +108,15 @@ class ProtoFluxOutputProxy(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def index(self) -> primitives.Int | None:
+    def index_(self) -> primitives.Int | None:
         """The index in a list if this points to a list of outputs."""
         member = self.get_member("Index")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @index.setter
-    def index(self, value: primitives.Int) -> None:
+    @index_.setter
+    def index_(self, value: primitives.Int) -> None:
         """Set the Index field value."""
         member = self.get_member("Index")
         if member is not None:

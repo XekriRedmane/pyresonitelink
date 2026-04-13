@@ -34,13 +34,13 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContextMenu"
 
-    def __init__(self, owner: str | User | None = None, pointer: str | Slot | None = None, separation: primitives.Float | None = None, label_size: primitives.Float2 | None = None, radius_ratio: primitives.Float | None = None, current_summoner: str | IWorldElement | None = None, canvas: str | Canvas | None = None, arc_layout: str | ArcLayout | None = None, canvas_active: str | IField[primitives.Bool] | None = None, collider_enabled: str | IField[primitives.Bool] | None = None, icon_image: str | Image | None = None, offset_min: str | IField[primitives.Float2] | None = None, offset_max: str | IField[primitives.Float2] | None = None, inner_circle: str | OutlinedArc | None = None, inner_circle_button: str | Button | None = None, inner_circle_anchor_min: str | IField[primitives.Float2] | None = None, inner_circle_anchor_max: str | IField[primitives.Float2] | None = None, items_root: str | Slot | None = None, arc_material: str | UI_CircleSegment | None = None, font_material: str | UI_TextUnlitMaterial | None = None, sprite_material: str | UI_UnlitMaterial | None = None, arc_overlay: str | IField[primitives.Bool] | None = None, font_overlay: str | IField[primitives.Bool] | None = None, sprite_overlay: str | IField[primitives.Bool] | None = None, arc_ztest: str | IField[ZTest] | None = None, font_ztest: str | IField[ZTest] | None = None, sprite_ztest: str | IField[ZTest] | None = None, zwrite_arc: str | IField[ZWrite] | None = None, zwrite_text: str | IField[ZWrite] | None = None, arc_render_queue: str | IField[primitives.Int] | None = None, font_render_queue: str | IField[primitives.Int] | None = None, sprite_render_queue: str | IField[primitives.Int] | None = None, canvas_offset: str | IField[primitives.Int] | None = None, fill_fade: str | IField[primitives.ColorX] | None = None, outline_fade: str | IField[primitives.ColorX] | None = None, text_fade: str | IField[primitives.ColorX] | None = None, icon_fade: str | IField[primitives.ColorX] | None = None, lerp: primitives.Float | None = None, state: State | str | None = None, flick_mode_active: primitives.Bool | None = None, flick_enabled: primitives.Bool | None = None, hidden: primitives.Bool | None = None, selected_item: str | ContextMenuItem | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, owner: str | User | None = None, pointer: str | Slot | None = None, separation_field: primitives.Float | None = None, label_size: primitives.Float2 | None = None, radius_ratio: primitives.Float | None = None, current_summoner: str | IWorldElement | None = None, canvas: str | Canvas | None = None, arc_layout: str | ArcLayout | None = None, canvas_active: str | IField[primitives.Bool] | None = None, collider_enabled: str | IField[primitives.Bool] | None = None, icon_image: str | Image | None = None, separation_ref: str | IField[primitives.Float] | None = None, offset_min: str | IField[primitives.Float2] | None = None, offset_max: str | IField[primitives.Float2] | None = None, inner_circle: str | OutlinedArc | None = None, inner_circle_button: str | Button | None = None, inner_circle_anchor_min: str | IField[primitives.Float2] | None = None, inner_circle_anchor_max: str | IField[primitives.Float2] | None = None, items_root: str | Slot | None = None, arc_material: str | UI_CircleSegment | None = None, font_material: str | UI_TextUnlitMaterial | None = None, sprite_material: str | UI_UnlitMaterial | None = None, arc_overlay: str | IField[primitives.Bool] | None = None, font_overlay: str | IField[primitives.Bool] | None = None, sprite_overlay: str | IField[primitives.Bool] | None = None, arc_ztest: str | IField[ZTest] | None = None, font_ztest: str | IField[ZTest] | None = None, sprite_ztest: str | IField[ZTest] | None = None, zwrite_arc: str | IField[ZWrite] | None = None, zwrite_text: str | IField[ZWrite] | None = None, arc_render_queue: str | IField[primitives.Int] | None = None, font_render_queue: str | IField[primitives.Int] | None = None, sprite_render_queue: str | IField[primitives.Int] | None = None, canvas_offset: str | IField[primitives.Int] | None = None, fill_fade: str | IField[primitives.ColorX] | None = None, outline_fade: str | IField[primitives.ColorX] | None = None, text_fade: str | IField[primitives.ColorX] | None = None, icon_fade: str | IField[primitives.ColorX] | None = None, lerp: primitives.Float | None = None, state: State | str | None = None, flick_mode_active: primitives.Bool | None = None, flick_enabled: primitives.Bool | None = None, hidden: primitives.Bool | None = None, selected_item: str | ContextMenuItem | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             owner: Initial value for Owner.
             pointer: Initial value for Pointer.
-            separation: Initial value for Separation.
+            separation_field: Initial value for Separation.
             label_size: Initial value for LabelSize.
             radius_ratio: Initial value for RadiusRatio.
             current_summoner: Initial value for _currentSummoner.
@@ -49,6 +49,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             canvas_active: Initial value for _canvasActive.
             collider_enabled: Initial value for _colliderEnabled.
             icon_image: Initial value for _iconImage.
+            separation_ref: Initial value for _separation.
             offset_min: Initial value for _offsetMin.
             offset_max: Initial value for _offsetMax.
             inner_circle: Initial value for _innerCircle.
@@ -88,8 +89,8 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.owner = owner
         if pointer is not None:
             self.pointer = pointer
-        if separation is not None:
-            self.separation = separation
+        if separation_field is not None:
+            self.separation_field = separation_field
         if label_size is not None:
             self.label_size = label_size
         if radius_ratio is not None:
@@ -106,6 +107,8 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.collider_enabled = collider_enabled
         if icon_image is not None:
             self.icon_image = icon_image
+        if separation_ref is not None:
+            self.separation_ref = separation_ref
         if offset_min is not None:
             self.offset_min = offset_min
         if offset_max is not None:
@@ -214,15 +217,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def separation(self) -> primitives.Float | None:
+    def separation_field(self) -> primitives.Float | None:
         """How many degrees of separation each arc button has."""
         member = self.get_member("Separation")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @separation.setter
-    def separation(self, value: primitives.Float) -> None:
+    @separation_field.setter
+    def separation_field(self, value: primitives.Float) -> None:
         """Set the Separation field value."""
         member = self.get_member("Separation")
         if member is not None:
@@ -397,15 +400,15 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def separation(self) -> str | None:
+    def separation_ref(self) -> str | None:
         """The field used to control the separation of button options in the context menu."""
         member = self.get_member("_separation")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @separation.setter
-    def separation(self, target: str | IField[primitives.Float] | None) -> None:
+    @separation_ref.setter
+    def separation_ref(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _separation reference by target ID or IField[primitives.Float] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_separation")

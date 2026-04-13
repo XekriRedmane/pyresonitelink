@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import time
-from typing import Any
+from typing import Any, cast
 
 import pytest
 import pytest_asyncio
@@ -12,6 +12,7 @@ import pytest_asyncio
 from pyresonitelink import client
 from pyresonitelink.data import messages, workers, primitives, fields
 from pyresonitelink.dergflux import Graph
+from pyresonitelink.dergflux._builder import _find_store_companion
 
 
 # =========================================================================
@@ -85,8 +86,11 @@ async def trigger_go(resolink: client.Client, slot: Any):
     go_slot = await resolink.find_slot(slot, name="go")
     assert go_slot is not None
     
-    from pyresonitelink.dergflux._builder import _find_store_companion
-    store_id, store_ct, val_id = await _find_store_companion(resolink, go_slot.id)
+    assert go_slot.id is not None
+    store_id, store_ct, val_id = cast(tuple[str, str, str], await _find_store_companion(resolink, go_slot.id))
+    assert store_id is not None
+    assert val_id is not None
+    assert store_ct is not None
     
     update_member = fields.FieldBool(value=True)
     update_member.id = val_id

@@ -79,15 +79,15 @@ class BoundingBoxProperties(GeneratedComponent, IExecutionNode, INode, ICustomIn
         self.set_member("Max", value)
 
     @property
-    def center(self) -> members.EmptyElement | None:
+    def center_(self) -> members.EmptyElement | None:
         """The center point of the Bounds."""
         member = self.get_member("Center")
         if isinstance(member, members.EmptyElement):
             return member
         return None
 
-    @center.setter
-    def center(self, value: members.EmptyElement) -> None:
+    @center_.setter
+    def center_(self, value: members.EmptyElement) -> None:
         """Set Center. The center point of the Bounds."""
         self.set_member("Center", value)
 

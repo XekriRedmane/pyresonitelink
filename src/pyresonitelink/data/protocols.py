@@ -19,13 +19,19 @@ class ResoniteLinkClient(Protocol):
         self,
         slot: str | workers.Slot,
         depth: int = 0,
+        includeComponentData: bool = False,
         debug: bool = False,
     ) -> responses.SlotData: ...
 
     async def find_slot(
         self,
         parent: str | workers.Slot,
-        name: str,
+        *,
+        name: str | None = None,
+        tag: str | None = None,
+        depth: int = -1,
+        match_substring: bool = False,
+        ignore_case: bool = False,
         debug: bool = False,
     ) -> workers.Slot | None: ...
 
@@ -41,13 +47,31 @@ class ResoniteLinkClient(Protocol):
         debug: bool = False,
     ) -> responses.SlotData: ...
 
-    async def add_slot(self, **kwargs: Any) -> workers.Slot: ...
+    async def add_slot(
+        self,
+        *,
+        parent: str | workers.Slot | None = None,
+        name: fields.FieldString | str | None = None,
+        position: Any | None = None,
+        rotation: Any | None = None,
+        scale: Any | None = None,
+        isActive: fields.FieldBool | bool | None = None,
+        isPersistent: fields.FieldBool | bool | None = None,
+        tag: fields.FieldString | str | None = None,
+        orderOffset: fields.FieldLong | int | None = None,
+        components: list[workers.Component] | None = None,
+        children: list[workers.Slot] | None = None,
+        id: str | None = None,
+        debug: bool = False,
+    ) -> workers.Slot: ...
 
     async def add_component(
         self,
-        containerSlotId: str,
+        containerSlotId: str | workers.Slot,
+        *,
+        data: workers.Component | None = None,
         componentType: str | None = None,
-        references: dict[str, str | members.Reference] | None = None,
+        references: dict[str, str] | None = None,
         debug: bool = False,
     ) -> responses.NewEntityId: ...
 

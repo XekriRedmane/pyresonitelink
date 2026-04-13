@@ -19,20 +19,20 @@ This works as part of the game's robust Haptics system.
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugHapticPoint"
 
-    def __init__(self, intensity: primitives.Float | None = None, index: primitives.Int | None = None, position: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, intensity: primitives.Float | None = None, index_: primitives.Int | None = None, position: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             intensity: Initial value for Intensity.
-            index: Initial value for Index.
+            index_: Initial value for Index.
             position: Initial value for Position.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if intensity is not None:
             self.intensity = intensity
-        if index is not None:
-            self.index = index
+        if index_ is not None:
+            self.index_ = index_
         if position is not None:
             self.position = position
 
@@ -56,15 +56,15 @@ This works as part of the game's robust Haptics system.
             )
 
     @property
-    def index(self) -> primitives.Int | None:
+    def index_(self) -> primitives.Int | None:
         """The haptic device to send Intensity to and get a name for."""
         member = self.get_member("Index")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @index.setter
-    def index(self, value: primitives.Int) -> None:
+    @index_.setter
+    def index_(self, value: primitives.Int) -> None:
         """Set the Index field value."""
         member = self.get_member("Index")
         if member is not None:

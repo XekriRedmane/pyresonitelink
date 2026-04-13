@@ -54,7 +54,7 @@ class LocaleSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def culture_locale_code(self) -> primitives.String | None:
-        """The locale code for the primary language, Ex: "en_us", "ru", or "pl_PL"."""
+        """The locale code for the primary language, Ex: "en_us", "ru", or "pl_PL\""""
         member = self.get_member("CultureLocaleCode")
         if member is None:
             return None

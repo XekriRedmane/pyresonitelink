@@ -21,19 +21,19 @@ class GetCharacter(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.Characters.GetCharacter"
 
-    def __init__(self, str_: str | INodeObjectOutput[primitives.String] | None = None, index: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, str_: str | INodeObjectOutput[primitives.String] | None = None, index_: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             str_: Initial value for Str.
-            index: Initial value for Index.
+            index_: Initial value for Index.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if str_ is not None:
             self.str_ = str_
-        if index is not None:
-            self.index = index
+        if index_ is not None:
+            self.index_ = index_
 
     @property
     def str_(self) -> str | None:
@@ -57,15 +57,15 @@ class GetCharacter(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
             )
 
     @property
-    def index(self) -> str | None:
+    def index_(self) -> str | None:
         """The 0-indexed character to retrieve from ``Str``."""
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @index.setter
-    def index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+    @index_.setter
+    def index_(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Index reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Index")

@@ -217,7 +217,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
 
     @property
     def text(self) -> primitives.String | None:
-        """The text to display. For example, "Hello world!"."""
+        """The text to display. For example, "Hello world!\""""
         member = self.get_member("Text")
         if member is None:
             return None

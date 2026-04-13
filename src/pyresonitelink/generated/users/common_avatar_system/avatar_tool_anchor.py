@@ -1,6 +1,7 @@
 """Generated component: AvatarToolAnchor."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._enums.point import Point
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iavatar_object_component import IAvatarObjectComponent

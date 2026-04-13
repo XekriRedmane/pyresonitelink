@@ -21,7 +21,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class PBS_VertexColorMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICustomInspector, IWorldEventReceiver):
     """The PBS_VertexColorMetallic component is a PBS_Metallic component except that it allows for the use of vertex colors as a multiplier for different colors/properties of the material.
 
-For your meshes to have vertex colors, it needs to be explicitly set to do so under the advanced settings when importing a model before clicking "run import!"
+For your meshes to have vertex colors, it needs to be explicitly set to do so under the advanced settings when importing a model before clicking "run import!\"
 
     Category: Assets/Materials/PBS
     """

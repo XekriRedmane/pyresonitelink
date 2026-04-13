@@ -20,30 +20,30 @@ class FromCenterSize(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Math.Bounds.FromCenterSize"
 
-    def __init__(self, center: str | INodeValueOutput[primitives.Float3] | None = None, size: str | INodeValueOutput[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, center_: str | INodeValueOutput[primitives.Float3] | None = None, size: str | INodeValueOutput[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
-            center: Initial value for Center.
+            center_: Initial value for Center.
             size: Initial value for Size.
             component: Existing Component to wrap.
         """
         super().__init__(component)
-        if center is not None:
-            self.center = center
+        if center_ is not None:
+            self.center_ = center_
         if size is not None:
             self.size = size
 
     @property
-    def center(self) -> str | None:
+    def center_(self) -> str | None:
         """The center point of the bounding box. Default is [0;0;0]."""
         member = self.get_member("Center")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @center.setter
-    def center(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
+    @center_.setter
+    def center_(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Center reference by target ID or INodeValueOutput[primitives.Float3] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Center")

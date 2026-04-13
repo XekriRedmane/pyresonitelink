@@ -71,15 +71,15 @@ class IndexOfFirstValueMatch(GenericComponent[T], IExecutionNode[T], INode, ICus
         self.set_member("Values", value)
 
     @property
-    def index(self) -> members.EmptyElement | None:
+    def index_(self) -> members.EmptyElement | None:
         """The Index member."""
         member = self.get_member("Index")
         if isinstance(member, members.EmptyElement):
             return member
         return None
 
-    @index.setter
-    def index(self, value: members.EmptyElement) -> None:
+    @index_.setter
+    def index_(self, value: members.EmptyElement) -> None:
         """Set the Index member."""
         self.set_member("Index", value)
 

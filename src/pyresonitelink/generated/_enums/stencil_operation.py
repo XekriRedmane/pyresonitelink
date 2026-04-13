@@ -8,7 +8,7 @@ class StencilOperation(StrEnum):
 
     keep = "Keep"
     zero = "Zero"
-    replace = "Replace"
+    replace_ = "Replace"
     increment_saturate = "IncrementSaturate"
     decrement_saturate = "DecrementSaturate"
     invert = "Invert"

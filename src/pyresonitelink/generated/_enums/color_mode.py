@@ -4,9 +4,10 @@ from enum import StrEnum
 
 
 class ColorMode(StrEnum):
-    """Enum: [FrooxEngine]FrooxEngine.PointClusterMesh+ColorMode."""
+    """Enum: [FrooxEngine]FrooxEngine.UIX.InteractionElement+ColorMode."""
 
-    solid_color = "SolidColor"
-    per_particle = "PerParticle"
-    simplex_noise = "SimplexNoise"
+    explicit = "Explicit"
+    multiply = "Multiply"
+    additive = "Additive"
+    direct = "Direct"
 

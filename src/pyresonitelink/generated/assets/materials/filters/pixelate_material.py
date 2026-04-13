@@ -31,7 +31,7 @@ class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWor
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PixelateMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, color_mask: ColorMask | str | None = None, stencil_comparison: StencilComparison | str | None = None, stencil_operation: StencilOperation | str | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, per_object: primitives.Bool | None = None, resolution: primitives.Float2 | None = None, resolution_magnitude_texture: str | IAssetProvider[ITexture2D] | None = None, resolution_texture_scale: primitives.Float2 | None = None, resolution_texture_offset: primitives.Float2 | None = None, blend_mode: BlendMode | str | None = None, sidedness: Sidedness | str | None = None, zwrite: ZWrite | str | None = None, ztest: ZTest | str | None = None, global_: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, color_mask: ColorMask | str | None = None, stencil_comparison: StencilComparison | str | None = None, stencil_operation: StencilOperation | str | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, per_object_field: primitives.Bool | None = None, resolution: primitives.Float2 | None = None, resolution_magnitude_texture: str | IAssetProvider[ITexture2D] | None = None, resolution_texture_scale: primitives.Float2 | None = None, resolution_texture_offset: primitives.Float2 | None = None, blend_mode: BlendMode | str | None = None, sidedness: Sidedness | str | None = None, zwrite: ZWrite | str | None = None, ztest: ZTest | str | None = None, global_: str | IAssetProvider[Shader] | None = None, per_object_ref: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -45,7 +45,7 @@ class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWor
             stencil_write_mask: Initial value for StencilWriteMask.
             stencil_read_mask: Initial value for StencilReadMask.
             render_queue: Initial value for RenderQueue.
-            per_object: Initial value for PerObject.
+            per_object_field: Initial value for PerObject.
             resolution: Initial value for Resolution.
             resolution_magnitude_texture: Initial value for ResolutionMagnitudeTexture.
             resolution_texture_scale: Initial value for ResolutionTextureScale.
@@ -55,6 +55,7 @@ class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWor
             zwrite: Initial value for ZWrite.
             ztest: Initial value for ZTest.
             global_: Initial value for _global.
+            per_object_ref: Initial value for _perObject.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -78,8 +79,8 @@ class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWor
             self.stencil_read_mask = stencil_read_mask
         if render_queue is not None:
             self.render_queue = render_queue
-        if per_object is not None:
-            self.per_object = per_object
+        if per_object_field is not None:
+            self.per_object_field = per_object_field
         if resolution is not None:
             self.resolution = resolution
         if resolution_magnitude_texture is not None:
@@ -98,6 +99,8 @@ class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWor
             self.ztest = ztest
         if global_ is not None:
             self.global_ = global_
+        if per_object_ref is not None:
+            self.per_object_ref = per_object_ref
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -293,15 +296,15 @@ class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWor
             )
 
     @property
-    def per_object(self) -> primitives.Bool | None:
+    def per_object_field(self) -> primitives.Bool | None:
         """The PerObject field value."""
         member = self.get_member("PerObject")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @per_object.setter
-    def per_object(self, value: primitives.Bool) -> None:
+    @per_object_field.setter
+    def per_object_field(self, value: primitives.Bool) -> None:
         """Set the PerObject field value."""
         member = self.get_member("PerObject")
         if member is not None:
@@ -491,15 +494,15 @@ class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWor
             )
 
     @property
-    def per_object(self) -> str | None:
+    def per_object_ref(self) -> str | None:
         """Target ID of the _perObject reference (targets IAssetProvider[Shader])."""
         member = self.get_member("_perObject")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @per_object.setter
-    def per_object(self, target: str | IAssetProvider[Shader] | None) -> None:
+    @per_object_ref.setter
+    def per_object_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _perObject reference by target ID or IAssetProvider[Shader] instance."""
         target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
         member = self.get_member("_perObject")

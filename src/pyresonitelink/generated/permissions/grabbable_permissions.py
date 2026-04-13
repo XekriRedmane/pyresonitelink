@@ -1,6 +1,7 @@
 """Generated component: GrabbablePermissions."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._enums.list_filter_mode import ListFilterMode
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iworker_permissions import IWorkerPermissions

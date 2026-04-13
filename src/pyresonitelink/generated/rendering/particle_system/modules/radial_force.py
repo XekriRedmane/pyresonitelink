@@ -23,7 +23,7 @@ This component is part of the Photon Dust system made by Frooxius.
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.RadialForce"
 
-    def __init__(self, force: primitives.Float | None = None, mode: RadialForceMode | str | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, min_force: primitives.Float | None = None, max_force: primitives.Float | None = None, center: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, force: primitives.Float | None = None, mode: RadialForceMode | str | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, min_force: primitives.Float | None = None, max_force: primitives.Float | None = None, center_: primitives.Float3 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,7 +33,7 @@ This component is part of the Photon Dust system made by Frooxius.
             max_distance: Initial value for MaxDistance.
             min_force: Initial value for MinForce.
             max_force: Initial value for MaxForce.
-            center: Initial value for Center.
+            center_: Initial value for Center.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -49,8 +49,8 @@ This component is part of the Photon Dust system made by Frooxius.
             self.min_force = min_force
         if max_force is not None:
             self.max_force = max_force
-        if center is not None:
-            self.center = center
+        if center_ is not None:
+            self.center_ = center_
 
     @property
     def force(self) -> primitives.Float | None:
@@ -181,15 +181,15 @@ This component is part of the Photon Dust system made by Frooxius.
         self.set_member("OverrideForceSpace", value)
 
     @property
-    def center(self) -> primitives.Float3 | None:
+    def center_(self) -> primitives.Float3 | None:
         """The center point of the force point."""
         member = self.get_member("Center")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @center.setter
-    def center(self, value: primitives.Float3) -> None:
+    @center_.setter
+    def center_(self, value: primitives.Float3) -> None:
         """Set the Center field value."""
         member = self.get_member("Center")
         if member is not None:

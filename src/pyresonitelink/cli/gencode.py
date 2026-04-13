@@ -450,7 +450,7 @@ async def _generate_component(
                     enum_cls = _simple_class_name(vt_name)
                     enum_mod = get_enum_module_name(vt_name)
                     enum_path = _GENERATED_DIR / "_enums" / f"{enum_mod}.py"
-                    if not enum_path.exists() and not dry_run:
+                    if not dry_run:
                         enum_resp = await resolink.request_json(
                             messages.GetEnumDefinition(type=vt_name)
                         )

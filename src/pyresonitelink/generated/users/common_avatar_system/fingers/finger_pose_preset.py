@@ -1,6 +1,7 @@
 """Generated component: FingerPosePreset."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._enums.preset import Preset
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifinger_pose_source_component import IFingerPoseSourceComponent

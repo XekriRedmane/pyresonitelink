@@ -20,7 +20,7 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VolumeTranslationGizmo"
 
-    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: primitives.Bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_point: str | IField[primitives.Float3] | None = None, use_custom_visual: primitives.Bool | None = None, custom_visual_root: str | Slot | None = None, visual_root: str | Slot | None = None, cube_size: primitives.Float | None = None, create_undo_steps: primitives.Bool | None = None, collider_size: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_slot: str | Slot | None = None, auto_position_at_target_slot: primitives.Bool | None = None, interacting_component: str | Component | None = None, material: str | OverlayFresnelMaterial | None = None, tool_point: str | Slot | None = None, active_point: str | Slot | None = None, line_root: str | Slot | None = None, line_segment: str | SegmentMesh | None = None, snap_highlight: str | Slot | None = None, target_point: str | IField[primitives.Float3] | None = None, use_custom_visual: primitives.Bool | None = None, custom_visual_root: str | Slot | None = None, visual_root: str | Slot | None = None, cube_size_field: primitives.Float | None = None, create_undo_steps: primitives.Bool | None = None, cube_size_ref: str | IField[primitives.Float3] | None = None, collider_size: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,8 +37,9 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
             use_custom_visual: Initial value for UseCustomVisual.
             custom_visual_root: Initial value for _customVisualRoot.
             visual_root: Initial value for _visualRoot.
-            cube_size: Initial value for CubeSize.
+            cube_size_field: Initial value for CubeSize.
             create_undo_steps: Initial value for CreateUndoSteps.
+            cube_size_ref: Initial value for _cubeSize.
             collider_size: Initial value for _colliderSize.
             component: Existing Component to wrap.
         """
@@ -69,10 +70,12 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
             self.custom_visual_root = custom_visual_root
         if visual_root is not None:
             self.visual_root = visual_root
-        if cube_size is not None:
-            self.cube_size = cube_size
+        if cube_size_field is not None:
+            self.cube_size_field = cube_size_field
         if create_undo_steps is not None:
             self.create_undo_steps = create_undo_steps
+        if cube_size_ref is not None:
+            self.cube_size_ref = cube_size_ref
         if collider_size is not None:
             self.collider_size = collider_size
 
@@ -359,15 +362,15 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
             )
 
     @property
-    def cube_size(self) -> primitives.Float | None:
+    def cube_size_field(self) -> primitives.Float | None:
         """The size of the visual root."""
         member = self.get_member("CubeSize")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @cube_size.setter
-    def cube_size(self, value: primitives.Float) -> None:
+    @cube_size_field.setter
+    def cube_size_field(self, value: primitives.Float) -> None:
         """Set the CubeSize field value."""
         member = self.get_member("CubeSize")
         if member is not None:
@@ -397,15 +400,15 @@ class VolumeTranslationGizmo(GeneratedComponent, IMaterialApplyPolicy, IWorldEve
             )
 
     @property
-    def cube_size(self) -> str | None:
+    def cube_size_ref(self) -> str | None:
         """The field to drive with the cube size."""
         member = self.get_member("_cubeSize")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @cube_size.setter
-    def cube_size(self, target: str | IField[primitives.Float3] | None) -> None:
+    @cube_size_ref.setter
+    def cube_size_ref(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _cubeSize reference by target ID or IField[primitives.Float3] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_cubeSize")

@@ -1,6 +1,7 @@
 """Generated component: SubmeshCharacterControllerModifier."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._enums.character_controller_parameter import CharacterControllerParameter
 from pyresonitelink.generated._enums.mode import Mode
 from pyresonitelink.generated._base import GeneratedComponent

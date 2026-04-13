@@ -1,6 +1,7 @@
 """Generated component: UserOnlineStatusSync."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._enums.online_status import OnlineStatus
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent

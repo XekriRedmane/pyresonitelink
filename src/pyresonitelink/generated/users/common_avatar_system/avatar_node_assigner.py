@@ -1,6 +1,7 @@
 """Generated component: AvatarNodeAssigner."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._enums.body_node import BodyNode
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iavatar_object_component import IAvatarObjectComponent

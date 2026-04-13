@@ -22,33 +22,33 @@ class GenericUIContainer(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.GenericUIContainer"
 
-    def __init__(self, title: str | IField[primitives.String] | None = None, close_request: primitives.Bool | None = None, close_destroy_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, title_: str | IField[primitives.String] | None = None, close_request: primitives.Bool | None = None, close_destroy_root: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
-            title: Initial value for Title.
+            title_: Initial value for Title.
             close_request: Initial value for CloseRequest.
             close_destroy_root: Initial value for CloseDestroyRoot.
             component: Existing Component to wrap.
         """
         super().__init__(component)
-        if title is not None:
-            self.title = title
+        if title_ is not None:
+            self.title_ = title_
         if close_request is not None:
             self.close_request = close_request
         if close_destroy_root is not None:
             self.close_destroy_root = close_destroy_root
 
     @property
-    def title(self) -> str | None:
+    def title_(self) -> str | None:
         """Changes the title for this panel."""
         member = self.get_member("Title")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @title.setter
-    def title(self, target: str | IField[primitives.String] | None) -> None:
+    @title_.setter
+    def title_(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Title reference by target ID or IField[primitives.String] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("Title")

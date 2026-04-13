@@ -16,27 +16,27 @@ class DisplayIndex(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DisplayIndex"
 
-    def __init__(self, index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, index_: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
-            index: Initial value for Index.
+            index_: Initial value for Index.
             component: Existing Component to wrap.
         """
         super().__init__(component)
-        if index is not None:
-            self.index = index
+        if index_ is not None:
+            self.index_ = index_
 
     @property
-    def index(self) -> primitives.Int | None:
+    def index_(self) -> primitives.Int | None:
         """See above."""
         member = self.get_member("Index")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @index.setter
-    def index(self, value: primitives.Int) -> None:
+    @index_.setter
+    def index_(self, value: primitives.Int) -> None:
         """Set the Index field value."""
         member = self.get_member("Index")
         if member is not None:

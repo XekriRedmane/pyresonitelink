@@ -33,7 +33,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 class InteractionHandler(GeneratedComponent, IVibrationDeviceComponent, ILocomotionReference, IInputUpdateReceiver, IHandTargetInfoSource, IWorldEventReceiver):
     """The Interaction Handler component is used to control and handle the user interactions like grabbing, tooltips, and all general controls for the user regarding their hands.
 
-    **HandGrabType**: used when InteractionHandler.GrabType is set to "Hand"
+    **HandGrabType**: used when InteractionHandler.GrabType is set to "Hand\"
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.InteractionHandler"

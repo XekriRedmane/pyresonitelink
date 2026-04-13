@@ -31,7 +31,7 @@ class RefractMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RefractMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, color_mask: ColorMask | str | None = None, stencil_comparison: StencilComparison | str | None = None, stencil_operation: StencilOperation | str | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, refraction_strength: primitives.Float | None = None, depth_bias: primitives.Float | None = None, depth_fade_divisor: primitives.Float | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_texture_scale: primitives.Float2 | None = None, normal_texture_offset: primitives.Float2 | None = None, per_object: primitives.Bool | None = None, blend_mode: BlendMode | str | None = None, sidedness: Sidedness | str | None = None, zwrite: ZWrite | str | None = None, ztest: ZTest | str | None = None, global_: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, rect: primitives.Rect | None = None, rect_clip: primitives.Bool | None = None, color_mask: ColorMask | str | None = None, stencil_comparison: StencilComparison | str | None = None, stencil_operation: StencilOperation | str | None = None, stencil_id: primitives.Byte | None = None, stencil_write_mask: primitives.Byte | None = None, stencil_read_mask: primitives.Byte | None = None, render_queue: primitives.Int | None = None, refraction_strength: primitives.Float | None = None, depth_bias: primitives.Float | None = None, depth_fade_divisor: primitives.Float | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_texture_scale: primitives.Float2 | None = None, normal_texture_offset: primitives.Float2 | None = None, per_object_field: primitives.Bool | None = None, blend_mode: BlendMode | str | None = None, sidedness: Sidedness | str | None = None, zwrite: ZWrite | str | None = None, ztest: ZTest | str | None = None, global_: str | IAssetProvider[Shader] | None = None, per_object_ref: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -51,12 +51,13 @@ class RefractMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorl
             normal_map: Initial value for NormalMap.
             normal_texture_scale: Initial value for NormalTextureScale.
             normal_texture_offset: Initial value for NormalTextureOffset.
-            per_object: Initial value for PerObject.
+            per_object_field: Initial value for PerObject.
             blend_mode: Initial value for BlendMode.
             sidedness: Initial value for Sidedness.
             zwrite: Initial value for ZWrite.
             ztest: Initial value for ZTest.
             global_: Initial value for _global.
+            per_object_ref: Initial value for _perObject.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -92,8 +93,8 @@ class RefractMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorl
             self.normal_texture_scale = normal_texture_scale
         if normal_texture_offset is not None:
             self.normal_texture_offset = normal_texture_offset
-        if per_object is not None:
-            self.per_object = per_object
+        if per_object_field is not None:
+            self.per_object_field = per_object_field
         if blend_mode is not None:
             self.blend_mode = blend_mode
         if sidedness is not None:
@@ -104,6 +105,8 @@ class RefractMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorl
             self.ztest = ztest
         if global_ is not None:
             self.global_ = global_
+        if per_object_ref is not None:
+            self.per_object_ref = per_object_ref
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -415,15 +418,15 @@ class RefractMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorl
             )
 
     @property
-    def per_object(self) -> primitives.Bool | None:
+    def per_object_field(self) -> primitives.Bool | None:
         """The PerObject field value."""
         member = self.get_member("PerObject")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @per_object.setter
-    def per_object(self, value: primitives.Bool) -> None:
+    @per_object_field.setter
+    def per_object_field(self, value: primitives.Bool) -> None:
         """Set the PerObject field value."""
         member = self.get_member("PerObject")
         if member is not None:
@@ -535,15 +538,15 @@ class RefractMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorl
             )
 
     @property
-    def per_object(self) -> str | None:
+    def per_object_ref(self) -> str | None:
         """Target ID of the _perObject reference (targets IAssetProvider[Shader])."""
         member = self.get_member("_perObject")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @per_object.setter
-    def per_object(self, target: str | IAssetProvider[Shader] | None) -> None:
+    @per_object_ref.setter
+    def per_object_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _perObject reference by target ID or IAssetProvider[Shader] instance."""
         target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
         member = self.get_member("_perObject")

@@ -263,6 +263,22 @@ class Client:
             responses.SlotData, debug,
         )
 
+    async def get_slot_data(
+        self,
+        slotId: str,
+        debug: bool = False,
+    ) -> responses.SlotData:
+        """Fetch slot data by ID.
+
+        Args:
+            slotId: ID of the slot.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.GetSlot(slotId=slotId),
+            responses.SlotData, debug,
+        )
+
     async def add_slot(
         self,
         *,
@@ -317,6 +333,7 @@ class Client:
         Raises:
             RuntimeError: If the server rejects the request.
         """
+        parent_ref: members.Reference
         if parent is None:
             parent_ref = members.Reference(
                 targetId=workers.Slot.ROOT_SLOT_ID,

@@ -186,7 +186,7 @@ def from_python_type(python_type: Any) -> TypeInfo:
         return result
 
     # 3. Check for RESONITE_TYPE attribute (generated _types/ stubs)
-    resonite_name = getattr(python_type, "RESONITE_TYPE", None)
+    resonite_name: str | None = getattr(python_type, "RESONITE_TYPE", None)
     if resonite_name is not None:
         result = TypeInfo(python_type, resonite_name)
         # Cache for future lookups

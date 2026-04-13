@@ -26,11 +26,11 @@ Swing Twist is a concept that is too complicated to explain on this wiki, but es
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LookAt"
 
-    def __init__(self, target: str | Slot | None = None, target_point: primitives.Float3 | None = None, up: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, swing_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, max_swing: primitives.Float | None = None, max_twist: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_ref: str | Slot | None = None, target_point: primitives.Float3 | None = None, up: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, swing_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, max_swing: primitives.Float | None = None, max_twist: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
-            target: Initial value for Target.
+            target_ref: Initial value for Target.
             target_point: Initial value for TargetPoint.
             up: Initial value for Up.
             rotation_offset: Initial value for RotationOffset.
@@ -41,8 +41,8 @@ Swing Twist is a concept that is too complicated to explain on this wiki, but es
             component: Existing Component to wrap.
         """
         super().__init__(component)
-        if target is not None:
-            self.target = target
+        if target_ref is not None:
+            self.target_ref = target_ref
         if target_point is not None:
             self.target_point = target_point
         if up is not None:
@@ -59,15 +59,15 @@ Swing Twist is a concept that is too complicated to explain on this wiki, but es
             self.max_twist = max_twist
 
     @property
-    def target(self) -> str | None:
+    def target_ref(self) -> str | None:
         """The slot to try to look at."""
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @target.setter
-    def target(self, target: str | Slot | None) -> None:
+    @target_ref.setter
+    def target_ref(self, target: str | Slot | None) -> None:
         """Set the Target reference by target ID or Slot instance."""
         target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
         member = self.get_member("Target")
@@ -226,15 +226,15 @@ Swing Twist is a concept that is too complicated to explain on this wiki, but es
             )
 
     @property
-    def target(self) -> str | None:
+    def target_ref(self) -> str | None:
         """The field to apply the rotation result to."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @target.setter
-    def target(self, target: str | IField[primitives.FloatQ] | None) -> None:
+    @target_ref.setter
+    def target_ref(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _target reference by target ID or IField[primitives.FloatQ] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_target")

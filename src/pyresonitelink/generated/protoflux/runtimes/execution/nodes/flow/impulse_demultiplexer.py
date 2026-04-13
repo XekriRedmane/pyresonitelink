@@ -67,7 +67,7 @@ This node could commonly be called a switch, switchboard, router, or an impulse 
             )
 
     @property
-    def index(self) -> members.EmptyElement | None:
+    def index_(self) -> members.EmptyElement | None:
         """The position of the Impulse on the list of Operations (List of Impulses) that was called starting at 0 for the first one.
 
 Only exists during OnTriggered (Continuation)"""
@@ -76,8 +76,8 @@ Only exists during OnTriggered (Continuation)"""
             return member
         return None
 
-    @index.setter
-    def index(self, value: members.EmptyElement) -> None:
+    @index_.setter
+    def index_(self, value: members.EmptyElement) -> None:
         """Set Index. The position of the Impulse on the list of Operations (List of Impulses) that was called starting at 0 for the first one.
 
 Only exists during OnTriggered (Continuation)"""

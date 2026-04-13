@@ -23,20 +23,20 @@ class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ButtonStringErase"
 
-    def __init__(self, target_string: str | IField[primitives.String] | None = None, count: primitives.Int | None = None, erase_from_beginning: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_string: str | IField[primitives.String] | None = None, count_: primitives.Int | None = None, erase_from_beginning: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             target_string: Initial value for TargetString.
-            count: Initial value for Count.
+            count_: Initial value for Count.
             erase_from_beginning: Initial value for EraseFromBeginning.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if target_string is not None:
             self.target_string = target_string
-        if count is not None:
-            self.count = count
+        if count_ is not None:
+            self.count_ = count_
         if erase_from_beginning is not None:
             self.erase_from_beginning = erase_from_beginning
 
@@ -62,15 +62,15 @@ class ButtonStringErase(GeneratedComponent, IButtonPressReceiver, IWorldEventRec
             )
 
     @property
-    def count(self) -> primitives.Int | None:
+    def count_(self) -> primitives.Int | None:
         """How many characters to remove."""
         member = self.get_member("Count")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @count.setter
-    def count(self, value: primitives.Int) -> None:
+    @count_.setter
+    def count_(self, value: primitives.Int) -> None:
         """Set the Count field value."""
         member = self.get_member("Count")
         if member is not None:

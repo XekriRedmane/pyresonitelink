@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import members
 from pyresonitelink.data import protocols
+from pyresonitelink.data import workers
 from pyresonitelink.generated._enums.hand_grab_type import HandGrabType
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector

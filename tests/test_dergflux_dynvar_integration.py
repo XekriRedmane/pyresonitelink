@@ -34,6 +34,7 @@ async def read_dynvar(
     
     async def add_comp_robust(ctype: str, refs: dict[str, str | members.Reference] | None = None) -> str:
         for _ in range(5):
+            assert reader_slot.id is not None
             resp = await resolink.add_component(containerSlotId=reader_slot.id, componentType=ctype)
             if resp.entityId is not None:
                 if refs:

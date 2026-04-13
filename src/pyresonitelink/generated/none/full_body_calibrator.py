@@ -28,7 +28,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FullBodyCalibrator"
 
-    def __init__(self, target_user: str | User | None = None, use_symmetry_for_trackers: primitives.Bool | None = None, use_symmetry_for_avatar: primitives.Bool | None = None, show_body_overlay: primitives.Bool | None = None, show_avatar_overlay: primitives.Bool | None = None, height_compensation: primitives.Float | None = None, avatar_height_compensation: primitives.Float | None = None, calibrating_pose: primitives.Bool | None = None, space_offset: primitives.Float3 | None = None, grabbable: str | Grabbable | None = None, head_reference: str | Slot | None = None, left_hand_reference: str | Slot | None = None, right_hand_reference: str | Slot | None = None, hips_source: str | TrackedDevicePositioner | None = None, chest_source: str | TrackedDevicePositioner | None = None, left_foot_source: str | TrackedDevicePositioner | None = None, right_foot_source: str | TrackedDevicePositioner | None = None, left_elbow_source: str | TrackedDevicePositioner | None = None, right_elbow_source: str | TrackedDevicePositioner | None = None, left_knee_source: str | TrackedDevicePositioner | None = None, right_knee_source: str | TrackedDevicePositioner | None = None, dialog: str | FullBodyCalibratorDialog | None = None, left_hand_override: str | Slot | None = None, right_hand_override: str | Slot | None = None, target_custom_avatar: str | VRIKAvatar | None = None, avatar_hips_offset: str | Slot | None = None, avatar_left_foot_offset: str | Slot | None = None, avatar_right_foot_offset: str | Slot | None = None, avatar_left_knee_default_offset: str | Slot | None = None, avatar_right_knee_default_offset: str | Slot | None = None, avatar_hip_handle: str | Slot | None = None, avatar_left_foot_handle: str | Slot | None = None, avatar_right_foot_handle: str | Slot | None = None, avatar_left_knee_handle: str | Slot | None = None, avatar_right_knee_handle: str | Slot | None = None, avatar_left_knee_offset: str | IField[primitives.Float3] | None = None, avatar_right_knee_offset: str | IField[primitives.Float3] | None = None, ground: str | Slot | None = None, visualization_root: str | Slot | None = None, body_node_material: str | FresnelMaterial | None = None, calibration_reference_material: str | OverlayFresnelMaterial | None = None, left_hand_override_material: str | OverlayFresnelMaterial | None = None, right_hand_override_material: str | OverlayFresnelMaterial | None = None, left_hand_override_front_color: str | IField[primitives.ColorX] | None = None, left_hand_override_behind_color: str | IField[primitives.ColorX] | None = None, right_hand_override_front_color: str | IField[primitives.ColorX] | None = None, right_hand_override_behind_color: str | IField[primitives.ColorX] | None = None, pattern_tex: str | StaticTexture2D | None = None, title: str | TextRenderer | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_user: str | User | None = None, use_symmetry_for_trackers: primitives.Bool | None = None, use_symmetry_for_avatar: primitives.Bool | None = None, show_body_overlay: primitives.Bool | None = None, show_avatar_overlay: primitives.Bool | None = None, height_compensation: primitives.Float | None = None, avatar_height_compensation: primitives.Float | None = None, calibrating_pose: primitives.Bool | None = None, space_offset: primitives.Float3 | None = None, grabbable: str | Grabbable | None = None, head_reference: str | Slot | None = None, left_hand_reference: str | Slot | None = None, right_hand_reference: str | Slot | None = None, hips_source: str | TrackedDevicePositioner | None = None, chest_source: str | TrackedDevicePositioner | None = None, left_foot_source: str | TrackedDevicePositioner | None = None, right_foot_source: str | TrackedDevicePositioner | None = None, left_elbow_source: str | TrackedDevicePositioner | None = None, right_elbow_source: str | TrackedDevicePositioner | None = None, left_knee_source: str | TrackedDevicePositioner | None = None, right_knee_source: str | TrackedDevicePositioner | None = None, dialog: str | FullBodyCalibratorDialog | None = None, left_hand_override: str | Slot | None = None, right_hand_override: str | Slot | None = None, target_custom_avatar: str | VRIKAvatar | None = None, avatar_hips_offset: str | Slot | None = None, avatar_left_foot_offset: str | Slot | None = None, avatar_right_foot_offset: str | Slot | None = None, avatar_left_knee_default_offset: str | Slot | None = None, avatar_right_knee_default_offset: str | Slot | None = None, avatar_hip_handle: str | Slot | None = None, avatar_left_foot_handle: str | Slot | None = None, avatar_right_foot_handle: str | Slot | None = None, avatar_left_knee_handle: str | Slot | None = None, avatar_right_knee_handle: str | Slot | None = None, avatar_left_knee_offset: str | IField[primitives.Float3] | None = None, avatar_right_knee_offset: str | IField[primitives.Float3] | None = None, ground: str | Slot | None = None, visualization_root: str | Slot | None = None, body_node_material: str | FresnelMaterial | None = None, calibration_reference_material: str | OverlayFresnelMaterial | None = None, left_hand_override_material: str | OverlayFresnelMaterial | None = None, right_hand_override_material: str | OverlayFresnelMaterial | None = None, left_hand_override_front_color: str | IField[primitives.ColorX] | None = None, left_hand_override_behind_color: str | IField[primitives.ColorX] | None = None, right_hand_override_front_color: str | IField[primitives.ColorX] | None = None, right_hand_override_behind_color: str | IField[primitives.ColorX] | None = None, pattern_tex: str | StaticTexture2D | None = None, title_: str | TextRenderer | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -80,7 +80,7 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
             right_hand_override_front_color: Initial value for _rightHandOverrideFrontColor.
             right_hand_override_behind_color: Initial value for _rightHandOverrideBehindColor.
             pattern_tex: Initial value for _patternTex.
-            title: Initial value for _title.
+            title_: Initial value for _title.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -180,8 +180,8 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.right_hand_override_behind_color = right_hand_override_behind_color
         if pattern_tex is not None:
             self.pattern_tex = pattern_tex
-        if title is not None:
-            self.title = title
+        if title_ is not None:
+            self.title_ = title_
 
     @property
     def target_user(self) -> str | None:
@@ -1241,15 +1241,15 @@ class FullBodyCalibrator(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def title(self) -> str | None:
+    def title_(self) -> str | None:
         """The title visual of the calibrator pedestal."""
         member = self.get_member("_title")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @title.setter
-    def title(self, target: str | TextRenderer | None) -> None:
+    @title_.setter
+    def title_(self, target: str | TextRenderer | None) -> None:
         """Set the _title reference by target ID or TextRenderer instance."""
         target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
         member = self.get_member("_title")

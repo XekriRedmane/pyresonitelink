@@ -30,20 +30,20 @@ Unlike ValueMultiplexers they don't implement IValue and therefore can't be acce
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReferenceMultiplexer<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ReferenceMultiplexer<>"
 
-    def __init__(self, target: str | SyncRef[T] | None = None, index: primitives.Int | None = None, allow_write_back: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | SyncRef[T] | None = None, index_: primitives.Int | None = None, allow_write_back: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             target: Initial value for Target.
-            index: Initial value for Index.
+            index_: Initial value for Index.
             allow_write_back: Initial value for AllowWriteBack.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if target is not None:
             self.target = target
-        if index is not None:
-            self.index = index
+        if index_ is not None:
+            self.index_ = index_
         if allow_write_back is not None:
             self.allow_write_back = allow_write_back
 
@@ -69,15 +69,15 @@ Unlike ValueMultiplexers they don't implement IValue and therefore can't be acce
             )
 
     @property
-    def index(self) -> primitives.Int | None:
+    def index_(self) -> primitives.Int | None:
         """0-based index that determines which reference of ``References`` has been selected; values outside the range ``[0;length-1]`` are wrapped around internally."""
         member = self.get_member("Index")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @index.setter
-    def index(self, value: primitives.Int) -> None:
+    @index_.setter
+    def index_(self, value: primitives.Int) -> None:
         """Set the Index field value."""
         member = self.get_member("Index")
         if member is not None:

@@ -29,7 +29,7 @@ class CutenessSettings(GeneratedComponent, ICustomInspector):
 
     @property
     def am_cute(self) -> primitives.Bool | None:
-        """An unchangeable bool that stays true for U-GlitchFur. The description reads: "This setting indicates if the current user is very cute. When this setting is on, the current user makes a legally binding admission of their own cuteness."."""
+        """An unchangeable bool that stays true for U-GlitchFur. The description reads: "This setting indicates if the current user is very cute. When this setting is on, the current user makes a legally binding admission of their own cuteness.\""""
         member = self.get_member("AmCute")
         if member is None:
             return None

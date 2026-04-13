@@ -26,7 +26,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyPanel"
 
-    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, show_header: primitives.Bool | None = None, show_handle: primitives.Bool | None = None, padding: primitives.Float | None = None, zpadding: primitives.Float | None = None, thickness: primitives.Float | None = None, color: primitives.ColorX | None = None, material: str | PBS_RimMetallic | None = None, panel_mesh: str | BevelPlaneMesh | None = None, panel_pos: str | IField[primitives.Float3] | None = None, handle_active: str | IField[primitives.Bool] | None = None, header_active: str | IField[primitives.Bool] | None = None, handle_mesh: str | BevelStripeMesh | None = None, handle_pos: str | IField[primitives.Float3] | None = None, handle_collider_size: str | IField[primitives.Float3] | None = None, header_title_mesh: str | BevelStripeMesh | None = None, header_button_mesh: str | BevelStripeMesh | None = None, header_collider: str | IField[primitives.Float3] | None = None, header_pos: str | IField[primitives.Float3] | None = None, header_title_pos: str | IField[primitives.Float3] | None = None, title: primitives.String | None = None, title_text: str | TextRenderer | None = None, indicate_private: primitives.Bool | None = None, title_pos: str | IField[primitives.Float3] | None = None, title_bounds: str | IField[primitives.Float2] | None = None, content_slot: str | Slot | None = None, header_root: str | Slot | None = None, handle_anchor_point: str | Slot | None = None, handle_anchor_point_position: str | IField[primitives.Float3] | None = None, highlighted_button: str | TitleButton | None = None, pin_button: str | TitleButton | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, style: str | LegacyUIStyle | None = None, accept_physical_touch: primitives.Bool | None = None, accept_remote_touch: primitives.Bool | None = None, show_header: primitives.Bool | None = None, show_handle: primitives.Bool | None = None, padding: primitives.Float | None = None, zpadding: primitives.Float | None = None, thickness: primitives.Float | None = None, color: primitives.ColorX | None = None, material: str | PBS_RimMetallic | None = None, panel_mesh: str | BevelPlaneMesh | None = None, panel_pos: str | IField[primitives.Float3] | None = None, handle_active: str | IField[primitives.Bool] | None = None, header_active: str | IField[primitives.Bool] | None = None, handle_mesh: str | BevelStripeMesh | None = None, handle_pos: str | IField[primitives.Float3] | None = None, handle_collider_size: str | IField[primitives.Float3] | None = None, header_title_mesh: str | BevelStripeMesh | None = None, header_button_mesh: str | BevelStripeMesh | None = None, header_collider: str | IField[primitives.Float3] | None = None, header_pos: str | IField[primitives.Float3] | None = None, header_title_pos: str | IField[primitives.Float3] | None = None, title_: primitives.String | None = None, title_text: str | TextRenderer | None = None, indicate_private: primitives.Bool | None = None, title_pos: str | IField[primitives.Float3] | None = None, title_bounds: str | IField[primitives.Float2] | None = None, content_slot: str | Slot | None = None, header_root: str | Slot | None = None, handle_anchor_point: str | Slot | None = None, handle_anchor_point_position: str | IField[primitives.Float3] | None = None, highlighted_button: str | TitleButton | None = None, pin_button: str | TitleButton | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -52,7 +52,7 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             header_collider: Initial value for _headerCollider.
             header_pos: Initial value for _headerPos.
             header_title_pos: Initial value for _headerTitlePos.
-            title: Initial value for _title.
+            title_: Initial value for _title.
             title_text: Initial value for _titleText.
             indicate_private: Initial value for _indicatePrivate.
             title_pos: Initial value for _titlePos.
@@ -110,8 +110,8 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             self.header_pos = header_pos
         if header_title_pos is not None:
             self.header_title_pos = header_title_pos
-        if title is not None:
-            self.title = title
+        if title_ is not None:
+            self.title_ = title_
         if title_text is not None:
             self.title_text = title_text
         if indicate_private is not None:
@@ -606,15 +606,15 @@ class LegacyPanel(GeneratedComponent, IObjectRoot, IUIInterface, IWorldEventRece
             )
 
     @property
-    def title(self) -> primitives.String | None:
+    def title_(self) -> primitives.String | None:
         """The title name of this panel."""
         member = self.get_member("_title")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @title.setter
-    def title(self, value: primitives.String) -> None:
+    @title_.setter
+    def title_(self, value: primitives.String) -> None:
         """Set the _title field value."""
         member = self.get_member("_title")
         if member is not None:

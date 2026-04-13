@@ -1,6 +1,7 @@
 """Generated component: ContentSizeFitter."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._enums.size_fit import SizeFit
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ilayout_element import ILayoutElement

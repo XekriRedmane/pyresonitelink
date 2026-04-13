@@ -27,13 +27,13 @@ class ObjectDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ObjectDemultiplex<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ObjectDemultiplex<>"
 
-    def __init__(self, value: str | INodeObjectOutput[T] | None = None, default_value: str | INodeObjectOutput[T] | None = None, index: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, value: str | INodeObjectOutput[T] | None = None, default_value: str | INodeObjectOutput[T] | None = None, index_: str | INodeValueOutput[primitives.Int] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             value: Initial value for Value.
             default_value: Initial value for DefaultValue.
-            index: Initial value for Index.
+            index_: Initial value for Index.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -41,8 +41,8 @@ class ObjectDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
             self.value = value
         if default_value is not None:
             self.default_value = default_value
-        if index is not None:
-            self.index = index
+        if index_ is not None:
+            self.index_ = index_
 
     @property
     def value(self) -> str | None:
@@ -87,15 +87,15 @@ class ObjectDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
             )
 
     @property
-    def index(self) -> str | None:
+    def index_(self) -> str | None:
         """The index to select from a list of outputs."""
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @index.setter
-    def index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+    @index_.setter
+    def index_(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Index reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Index")

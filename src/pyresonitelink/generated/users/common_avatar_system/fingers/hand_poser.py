@@ -226,15 +226,15 @@ Due to this pattern, the intermediate bone of the thumb should never be bound as
         self.set_member("Thumb", value)
 
     @property
-    def index(self) -> members.SyncObject | None:
+    def index_(self) -> members.SyncObject | None:
         """The Index on an anthro hand."""
         member = self.get_member("Index")
         if isinstance(member, members.SyncObject):
             return member
         return None
 
-    @index.setter
-    def index(self, value: members.SyncObject) -> None:
+    @index_.setter
+    def index_(self, value: members.SyncObject) -> None:
         """Set Index. The Index on an anthro hand."""
         self.set_member("Index", value)
 

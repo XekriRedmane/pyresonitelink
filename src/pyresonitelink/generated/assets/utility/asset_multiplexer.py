@@ -35,19 +35,19 @@ class AssetMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver):
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AssetMultiplexer<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.AssetMultiplexer<>"
 
-    def __init__(self, target: str | AssetRef[A] | None = None, index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target: str | AssetRef[A] | None = None, index_: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             target: Initial value for Target.
-            index: Initial value for Index.
+            index_: Initial value for Index.
             component: Existing Component to wrap.
         """
         super().__init__(component)
         if target is not None:
             self.target = target
-        if index is not None:
-            self.index = index
+        if index_ is not None:
+            self.index_ = index_
 
     @property
     def target(self) -> str | None:
@@ -71,15 +71,15 @@ class AssetMultiplexer(GenericComponent[T], IComponent, IWorldEventReceiver):
             )
 
     @property
-    def index(self) -> primitives.Int | None:
+    def index_(self) -> primitives.Int | None:
         """Which element in ``Assets`` to drive to ``Target``"""
         member = self.get_member("Index")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @index.setter
-    def index(self, value: primitives.Int) -> None:
+    @index_.setter
+    def index_(self, value: primitives.Int) -> None:
         """Set the Index field value."""
         member = self.get_member("Index")
         if member is not None:

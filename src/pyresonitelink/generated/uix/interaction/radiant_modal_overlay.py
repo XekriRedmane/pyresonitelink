@@ -23,7 +23,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RadiantModalOverlay"
 
-    def __init__(self, show_lerp: primitives.Float | None = None, animation_time: primitives.Float | None = None, size_root: str | RectTransform | None = None, content_root: str | RectTransform | None = None, close_on_context_menu_action: primitives.Bool | None = None, close_on_click: primitives.Bool | None = None, blur_spread: primitives.Float | None = None, background_color: primitives.ColorX | None = None, content_animation_scale_offset: primitives.Float | None = None, header_size: primitives.Float | None = None, padding: primitives.Float | None = None, title: str | Text | None = None, blur: str | BlurMaterial | None = None, blur_graphic: str | RawGraphic | None = None, mask_rect: str | IField[primitives.Rect] | None = None, header_offset_min: str | IField[primitives.Float2] | None = None, header_offset_max: str | IField[primitives.Float2] | None = None, content_offset_min: str | IField[primitives.Float2] | None = None, content_offset_max: str | IField[primitives.Float2] | None = None, title_offset_min: str | IField[primitives.Float2] | None = None, title_offset_max: str | IField[primitives.Float2] | None = None, close_offset_min: str | IField[primitives.Float2] | None = None, close_offset_max: str | IField[primitives.Float2] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, show_lerp: primitives.Float | None = None, animation_time: primitives.Float | None = None, size_root: str | RectTransform | None = None, content_root: str | RectTransform | None = None, close_on_context_menu_action: primitives.Bool | None = None, close_on_click: primitives.Bool | None = None, blur_spread_field: primitives.Float | None = None, background_color_field: primitives.ColorX | None = None, content_animation_scale_offset: primitives.Float | None = None, header_size: primitives.Float | None = None, padding: primitives.Float | None = None, title_: str | Text | None = None, blur: str | BlurMaterial | None = None, blur_graphic: str | RawGraphic | None = None, blur_spread_ref: str | IField[primitives.Float2] | None = None, background_color_ref: str | IField[primitives.ColorX] | None = None, mask_rect: str | IField[primitives.Rect] | None = None, header_offset_min: str | IField[primitives.Float2] | None = None, header_offset_max: str | IField[primitives.Float2] | None = None, content_offset_min: str | IField[primitives.Float2] | None = None, content_offset_max: str | IField[primitives.Float2] | None = None, title_offset_min: str | IField[primitives.Float2] | None = None, title_offset_max: str | IField[primitives.Float2] | None = None, close_offset_min: str | IField[primitives.Float2] | None = None, close_offset_max: str | IField[primitives.Float2] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,14 +33,16 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             content_root: Initial value for ContentRoot.
             close_on_context_menu_action: Initial value for CloseOnContextMenuAction.
             close_on_click: Initial value for CloseOnClick.
-            blur_spread: Initial value for BlurSpread.
-            background_color: Initial value for BackgroundColor.
+            blur_spread_field: Initial value for BlurSpread.
+            background_color_field: Initial value for BackgroundColor.
             content_animation_scale_offset: Initial value for ContentAnimationScaleOffset.
             header_size: Initial value for HeaderSize.
             padding: Initial value for Padding.
-            title: Initial value for _title.
+            title_: Initial value for _title.
             blur: Initial value for _blur.
             blur_graphic: Initial value for _blurGraphic.
+            blur_spread_ref: Initial value for _blurSpread.
+            background_color_ref: Initial value for _backgroundColor.
             mask_rect: Initial value for _maskRect.
             header_offset_min: Initial value for _headerOffsetMin.
             header_offset_max: Initial value for _headerOffsetMax.
@@ -65,22 +67,26 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             self.close_on_context_menu_action = close_on_context_menu_action
         if close_on_click is not None:
             self.close_on_click = close_on_click
-        if blur_spread is not None:
-            self.blur_spread = blur_spread
-        if background_color is not None:
-            self.background_color = background_color
+        if blur_spread_field is not None:
+            self.blur_spread_field = blur_spread_field
+        if background_color_field is not None:
+            self.background_color_field = background_color_field
         if content_animation_scale_offset is not None:
             self.content_animation_scale_offset = content_animation_scale_offset
         if header_size is not None:
             self.header_size = header_size
         if padding is not None:
             self.padding = padding
-        if title is not None:
-            self.title = title
+        if title_ is not None:
+            self.title_ = title_
         if blur is not None:
             self.blur = blur
         if blur_graphic is not None:
             self.blur_graphic = blur_graphic
+        if blur_spread_ref is not None:
+            self.blur_spread_ref = blur_spread_ref
+        if background_color_ref is not None:
+            self.background_color_ref = background_color_ref
         if mask_rect is not None:
             self.mask_rect = mask_rect
         if header_offset_min is not None:
@@ -219,15 +225,15 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def blur_spread(self) -> primitives.Float | None:
+    def blur_spread_field(self) -> primitives.Float | None:
         """The blur effect amount."""
         member = self.get_member("BlurSpread")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @blur_spread.setter
-    def blur_spread(self, value: primitives.Float) -> None:
+    @blur_spread_field.setter
+    def blur_spread_field(self, value: primitives.Float) -> None:
         """Set the BlurSpread field value."""
         member = self.get_member("BlurSpread")
         if member is not None:
@@ -238,15 +244,15 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def background_color(self) -> primitives.ColorX | None:
+    def background_color_field(self) -> primitives.ColorX | None:
         """The background color of this RadiantModalOverlay."""
         member = self.get_member("BackgroundColor")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @background_color.setter
-    def background_color(self, value: primitives.ColorX) -> None:
+    @background_color_field.setter
+    def background_color_field(self, value: primitives.ColorX) -> None:
         """Set the BackgroundColor field value."""
         member = self.get_member("BackgroundColor")
         if member is not None:
@@ -314,15 +320,15 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def title(self) -> str | None:
+    def title_(self) -> str | None:
         """The title of this RadiantModalOverlay."""
         member = self.get_member("_title")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @title.setter
-    def title(self, target: str | Text | None) -> None:
+    @title_.setter
+    def title_(self, target: str | Text | None) -> None:
         """Set the _title reference by target ID or Text instance."""
         target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
         member = self.get_member("_title")
@@ -377,15 +383,15 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def blur_spread(self) -> str | None:
+    def blur_spread_ref(self) -> str | None:
         """The blur speed of this RadiantModalOverlay."""
         member = self.get_member("_blurSpread")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @blur_spread.setter
-    def blur_spread(self, target: str | IField[primitives.Float2] | None) -> None:
+    @blur_spread_ref.setter
+    def blur_spread_ref(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _blurSpread reference by target ID or IField[primitives.Float2] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_blurSpread")
@@ -398,15 +404,15 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             )
 
     @property
-    def background_color(self) -> str | None:
+    def background_color_ref(self) -> str | None:
         """The background color of this RadiantModalOverlay."""
         member = self.get_member("_backgroundColor")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @background_color.setter
-    def background_color(self, target: str | IField[primitives.ColorX] | None) -> None:
+    @background_color_ref.setter
+    def background_color_ref(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the _backgroundColor reference by target ID or IField[primitives.ColorX] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_backgroundColor")

@@ -25,7 +25,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PBS_ColorMaskMetallic"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, color_mask_scale: primitives.Float2 | None = None, color_mask_offset: primitives.Float2 | None = None, color_mask: str | IAssetProvider[ITexture2D] | None = None, albedo_color0: primitives.ColorX | None = None, albedo_color1: primitives.ColorX | None = None, albedo_color2: primitives.ColorX | None = None, albedo_color3: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color0: primitives.ColorX | None = None, emissive_color1: primitives.ColorX | None = None, emissive_color2: primitives.ColorX | None = None, emissive_color3: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, transparent: primitives.Bool | None = None, force_zwrite: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, shader: str | IAssetProvider[Shader] | None = None, texture_scale: primitives.Float2 | None = None, texture_offset: primitives.Float2 | None = None, color_mask_scale: primitives.Float2 | None = None, color_mask_offset: primitives.Float2 | None = None, color_mask: str | IAssetProvider[ITexture2D] | None = None, albedo_color0: primitives.ColorX | None = None, albedo_color1: primitives.ColorX | None = None, albedo_color2: primitives.ColorX | None = None, albedo_color3: primitives.ColorX | None = None, albedo_texture: str | IAssetProvider[ITexture2D] | None = None, emissive_color0: primitives.ColorX | None = None, emissive_color1: primitives.ColorX | None = None, emissive_color2: primitives.ColorX | None = None, emissive_color3: primitives.ColorX | None = None, emissive_map: str | IAssetProvider[ITexture2D] | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_scale: primitives.Float | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, transparent_field: primitives.Bool | None = None, force_zwrite: primitives.Bool | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, render_queue: primitives.Int | None = None, metallic: primitives.Float | None = None, smoothness: primitives.Float | None = None, metallic_map: str | IAssetProvider[ITexture2D] | None = None, regular: str | IAssetProvider[Shader] | None = None, transparent_ref: str | IAssetProvider[Shader] | None = None, zwrite: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -49,7 +49,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             normal_map: Initial value for NormalMap.
             normal_scale: Initial value for NormalScale.
             occlusion_map: Initial value for OcclusionMap.
-            transparent: Initial value for Transparent.
+            transparent_field: Initial value for Transparent.
             force_zwrite: Initial value for ForceZWrite.
             offset_factor: Initial value for OffsetFactor.
             offset_units: Initial value for OffsetUnits.
@@ -58,6 +58,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             smoothness: Initial value for Smoothness.
             metallic_map: Initial value for MetallicMap.
             regular: Initial value for _regular.
+            transparent_ref: Initial value for _transparent.
             zwrite: Initial value for _zwrite.
             component: Existing Component to wrap.
         """
@@ -102,8 +103,8 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             self.normal_scale = normal_scale
         if occlusion_map is not None:
             self.occlusion_map = occlusion_map
-        if transparent is not None:
-            self.transparent = transparent
+        if transparent_field is not None:
+            self.transparent_field = transparent_field
         if force_zwrite is not None:
             self.force_zwrite = force_zwrite
         if offset_factor is not None:
@@ -120,6 +121,8 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             self.metallic_map = metallic_map
         if regular is not None:
             self.regular = regular
+        if transparent_ref is not None:
+            self.transparent_ref = transparent_ref
         if zwrite is not None:
             self.zwrite = zwrite
 
@@ -516,15 +519,15 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             )
 
     @property
-    def transparent(self) -> primitives.Bool | None:
+    def transparent_field(self) -> primitives.Bool | None:
         """The Transparent field value."""
         member = self.get_member("Transparent")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @transparent.setter
-    def transparent(self, value: primitives.Bool) -> None:
+    @transparent_field.setter
+    def transparent_field(self, value: primitives.Bool) -> None:
         """Set the Transparent field value."""
         member = self.get_member("Transparent")
         if member is not None:
@@ -691,15 +694,15 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
             )
 
     @property
-    def transparent(self) -> str | None:
+    def transparent_ref(self) -> str | None:
         """Target ID of the _transparent reference (targets IAssetProvider[Shader])."""
         member = self.get_member("_transparent")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @transparent.setter
-    def transparent(self, target: str | IAssetProvider[Shader] | None) -> None:
+    @transparent_ref.setter
+    def transparent_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _transparent reference by target ID or IAssetProvider[Shader] instance."""
         target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
         member = self.get_member("_transparent")

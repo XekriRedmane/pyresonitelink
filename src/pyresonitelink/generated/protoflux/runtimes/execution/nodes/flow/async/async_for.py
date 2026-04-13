@@ -22,11 +22,11 @@ class AsyncFor(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, I
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.AsyncFor"
 
-    def __init__(self, count: str | INodeValueOutput[primitives.Int] | None = None, reverse: str | INodeValueOutput[primitives.Bool] | None = None, loop_start: str | INodeOperation | None = None, loop_iteration: str | INodeOperation | None = None, loop_end: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, count_: str | INodeValueOutput[primitives.Int] | None = None, reverse: str | INodeValueOutput[primitives.Bool] | None = None, loop_start: str | INodeOperation | None = None, loop_iteration: str | INodeOperation | None = None, loop_end: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
-            count: Initial value for Count.
+            count_: Initial value for Count.
             reverse: Initial value for Reverse.
             loop_start: Initial value for LoopStart.
             loop_iteration: Initial value for LoopIteration.
@@ -34,8 +34,8 @@ class AsyncFor(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, I
             component: Existing Component to wrap.
         """
         super().__init__(component)
-        if count is not None:
-            self.count = count
+        if count_ is not None:
+            self.count_ = count_
         if reverse is not None:
             self.reverse = reverse
         if loop_start is not None:
@@ -46,15 +46,15 @@ class AsyncFor(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, I
             self.loop_end = loop_end
 
     @property
-    def count(self) -> str | None:
+    def count_(self) -> str | None:
         """The amount of times to trigger ``LoopIteration``. Will not trigger any iterations if less than 1."""
         member = self.get_member("Count")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @count.setter
-    def count(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
+    @count_.setter
+    def count_(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Count reference by target ID or INodeValueOutput[primitives.Int] instance."""
         target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
         member = self.get_member("Count")

@@ -256,14 +256,14 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
         """Set BlendShapeWeights. Automatically Assigned &mdash; List of blendshapes present in this mesh, and their respective weights."""
         self.set_member("BlendShapeWeights", value)
 
-    async def split_blenshape_along_axis(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, axis: str, center: primitives.Float, transition: primitives.Float, negative_suffix: primitives.String, positive_suffix: primitives.String, debug: bool = False) -> dict:
+    async def split_blenshape_along_axis(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, axis: str, center_: primitives.Float, transition: primitives.Float, negative_suffix: primitives.String, positive_suffix: primitives.String, debug: bool = False) -> dict:
         """Splits a blendshape along a given axis, and returns a task representing if the operation is done yet.
 
         Args:
             resolink: Connected ResoniteLink client.
             blendshape_index: The blendshapeIndex parameter.
             axis: The axis parameter.
-            center: The center parameter.
+            center_: The center parameter.
             transition: The transition parameter.
             negative_suffix: The negativeSuffix parameter.
             positive_suffix: The positiveSuffix parameter.
@@ -273,7 +273,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "SplitBlenshapeAlongAxis", {"blendshapeIndex": blendshape_index, "axis": axis, "center": center, "transition": transition, "negativeSuffix": negative_suffix, "positiveSuffix": positive_suffix}, debug,
+            resolink, "SplitBlenshapeAlongAxis", {"blendshapeIndex": blendshape_index, "axis": axis, "center": center_, "transition": transition, "negativeSuffix": negative_suffix, "positiveSuffix": positive_suffix}, debug,
         )
 
     async def bake_blendshape(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, debug: bool = False) -> dict:

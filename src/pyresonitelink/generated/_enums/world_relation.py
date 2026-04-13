@@ -8,5 +8,5 @@ class WorldRelation(StrEnum):
 
     independent = "Independent"
     nest = "Nest"
-    replace = "Replace"
+    replace_ = "Replace"
 

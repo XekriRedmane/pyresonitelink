@@ -24,7 +24,7 @@ The mesh generated is a Spiral fan of quads that goes up in a circle pattern.
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DebugTestMeshThroughput"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, count: primitives.Int | None = None, progress: primitives.Float | None = None, update_time: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, count_: primitives.Int | None = None, progress: primitives.Float | None = None, update_time: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -32,7 +32,7 @@ The mesh generated is a Spiral fan of quads that goes up in a circle pattern.
             override_bounding_box: Initial value for OverrideBoundingBox.
             overriden_bounding_box: Initial value for OverridenBoundingBox.
             profile: Initial value for Profile.
-            count: Initial value for Count.
+            count_: Initial value for Count.
             progress: Initial value for Progress.
             update_time: Initial value for UpdateTime.
             component: Existing Component to wrap.
@@ -46,8 +46,8 @@ The mesh generated is a Spiral fan of quads that goes up in a circle pattern.
             self.overriden_bounding_box = overriden_bounding_box
         if profile is not None:
             self.profile = profile
-        if count is not None:
-            self.count = count
+        if count_ is not None:
+            self.count_ = count_
         if progress is not None:
             self.progress = progress
         if update_time is not None:
@@ -131,15 +131,15 @@ The mesh generated is a Spiral fan of quads that goes up in a circle pattern.
             )
 
     @property
-    def count(self) -> primitives.Int | None:
+    def count_(self) -> primitives.Int | None:
         """How many mesh quads to parrallel jam into the meshx data."""
         member = self.get_member("Count")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @count.setter
-    def count(self, value: primitives.Int) -> None:
+    @count_.setter
+    def count_(self, value: primitives.Int) -> None:
         """Set the Count field value."""
         member = self.get_member("Count")
         if member is not None:

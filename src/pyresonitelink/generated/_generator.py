@@ -258,6 +258,16 @@ _PYTHON_KEYWORDS = frozenset({
     "id", "input", "hash", "range", "slice", "format", "object",
     # Base class attribute that must not be overridden as a property
     "component",
+    # str methods (to avoid shadowing in StrEnum)
+    "capitalize", "casefold", "center", "count", "encode", "endswith",
+    "expandtabs", "find", "format", "format_map", "index", "isalnum",
+    "isalpha", "isascii", "isdecimal", "isdigit", "isidentifier",
+    "islower", "isnumeric", "isprintable", "isspace", "istitle",
+    "isupper", "join", "ljust", "lower", "lstrip", "maketrans",
+    "partition", "removeprefix", "removesuffix", "replace", "rfind",
+    "rindex", "rjust", "rpartition", "rsplit", "rstrip", "split",
+    "splitlines", "startswith", "strip", "swapcase", "title",
+    "translate", "upper", "zfill",
 })
 
 # Base component members present on every component — skip in generated code
@@ -327,10 +337,10 @@ def _safe_python_name(name: str) -> str:
         A valid snake_case Python identifier.
     """
     py = _to_snake_case(name)
-    if py in _PYTHON_KEYWORDS:
-        py += "_"
     # Avoid double-underscore prefix (triggers Python name mangling)
     py = py.lstrip("_")
+    if py in _PYTHON_KEYWORDS:
+        py += "_"
     if not py:
         py = "field"
     # Names can't start with a digit
@@ -620,7 +630,7 @@ def generate_component_source(
                 generic_members.add(name)
 
     # Resolve each member
-    # (resonite_name, python_name, python_type, member_class, import_module,
+    # (resonite_name, py_name, python_type, member_class, import_module,
     #  is_generic_param, is_array)
     member_infos: list[tuple[str, str, str, str, str, bool, bool]] = []
     imports_needed: set[str] = set()
@@ -643,6 +653,9 @@ def generate_component_source(
                 ):
                     enum_types[name] = vt_name
 
+    raw_member_infos: list[tuple[str, str, str, str, str, bool, bool]] = []
+    py_name_counts: dict[str, int] = {}
+
     for member_name in all_member_names:
         if member_name in _BASE_MEMBERS:
             continue
@@ -652,9 +665,10 @@ def generate_component_source(
         if is_gp:
             # Generic parameter member — resolved at runtime via _type_info
             py_name = _safe_python_name(member_name)
-            member_infos.append(
+            raw_member_infos.append(
                 (member_name, py_name, "", "", "", True, False)
             )
+            py_name_counts[py_name] = py_name_counts.get(py_name, 0) + 1
             continue
 
         if member_name in data_members:
@@ -666,10 +680,11 @@ def generate_component_source(
 
         py_type, member_class, import_mod, is_arr = info
         py_name = _safe_python_name(member_name)
-        member_infos.append(
+        raw_member_infos.append(
             (member_name, py_name, py_type, member_class, import_mod, False,
              is_arr)
         )
+        py_name_counts[py_name] = py_name_counts.get(py_name, 0) + 1
         imports_needed.add(import_mod)
 
         # Extract targetType for reference members
@@ -679,6 +694,22 @@ def generate_component_source(
             )
             if tt:
                 ref_target_types[member_name] = tt
+
+    # Pass 2: Deduplicate py_names
+    for (res_name, py_name, py_type, member_class, import_mod,
+         is_gp, is_arr) in raw_member_infos:
+        if py_name_counts[py_name] > 1:
+            if is_gp or member_class.startswith("Field") or member_class == "FieldEnum":
+                py_name += "_field"
+            elif member_class == "Reference":
+                py_name += "_ref"
+            else:
+                # Fallback for other members (lists, etc.)
+                py_name += "_" + member_class.lower()
+
+        member_infos.append(
+            (res_name, py_name, py_type, member_class, import_mod, is_gp, is_arr)
+        )
 
     has_generic_members = any(gp for _, _, _, _, _, gp, _ in member_infos)
 

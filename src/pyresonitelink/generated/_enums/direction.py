@@ -4,8 +4,8 @@ from enum import StrEnum
 
 
 class Direction(StrEnum):
-    """Enum: [FrooxEngine]FrooxEngine.UIX.ArcLayout+Direction."""
+    """Enum: [FrooxEngine]FrooxEngine.ItemShelf+Direction."""
 
-    clockwise = "Clockwise"
-    counter_clockwise = "CounterClockwise"
+    left = "Left"
+    right = "Right"
 

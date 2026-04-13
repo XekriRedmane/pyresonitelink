@@ -7,7 +7,7 @@ class TextHorizontalAlignment(StrEnum):
     """Enum: [Elements.Assets]Elements.Assets.TextHorizontalAlignment."""
 
     left = "Left"
-    center = "Center"
+    center_ = "Center"
     right = "Right"
     justify = "Justify"
 

@@ -8,5 +8,5 @@ class FilterCombineMode(StrEnum):
 
     combine_and = "CombineAND"
     combine_or = "CombineOR"
-    replace = "Replace"
+    replace_ = "Replace"
 

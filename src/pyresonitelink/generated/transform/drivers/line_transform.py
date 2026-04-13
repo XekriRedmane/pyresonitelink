@@ -269,7 +269,7 @@ class LineTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     @property
     def rotation(self) -> str | None:
-        """drives the target field with ``RotationOffset`` and "looking down the line rotation"."""
+        """drives the target field with ``RotationOffset`` and "looking down the line rotation\""""
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             return member.targetId

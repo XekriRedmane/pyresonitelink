@@ -28,21 +28,22 @@ Optionally it calls a sync delegate that takes an argument of the chosen asset t
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AssetFrameSlot<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.AssetFrameSlot<>"
 
-    def __init__(self, frame_size: primitives.Float | None = None, frame_anim_speed: primitives.Float | None = None, snap_anim_time: primitives.Float | None = None, current: str | Slot | None = None, current_ratio: primitives.Float2 | None = None, collider: str | BoxCollider | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, frame_size_field: primitives.Float | None = None, frame_anim_speed: primitives.Float | None = None, snap_anim_time: primitives.Float | None = None, current: str | Slot | None = None, current_ratio: primitives.Float2 | None = None, frame_size_ref: str | IField[primitives.Float2] | None = None, collider: str | BoxCollider | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
-            frame_size: Initial value for FrameSize.
+            frame_size_field: Initial value for FrameSize.
             frame_anim_speed: Initial value for FrameAnimSpeed.
             snap_anim_time: Initial value for SnapAnimTime.
             current: Initial value for _current.
             current_ratio: Initial value for _currentRatio.
+            frame_size_ref: Initial value for _frameSize.
             collider: Initial value for _collider.
             component: Existing Component to wrap.
         """
         super().__init__(component)
-        if frame_size is not None:
-            self.frame_size = frame_size
+        if frame_size_field is not None:
+            self.frame_size_field = frame_size_field
         if frame_anim_speed is not None:
             self.frame_anim_speed = frame_anim_speed
         if snap_anim_time is not None:
@@ -51,19 +52,21 @@ Optionally it calls a sync delegate that takes an argument of the chosen asset t
             self.current = current
         if current_ratio is not None:
             self.current_ratio = current_ratio
+        if frame_size_ref is not None:
+            self.frame_size_ref = frame_size_ref
         if collider is not None:
             self.collider = collider
 
     @property
-    def frame_size(self) -> primitives.Float | None:
+    def frame_size_field(self) -> primitives.Float | None:
         """how thick the frame should be."""
         member = self.get_member("FrameSize")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @frame_size.setter
-    def frame_size(self, value: primitives.Float) -> None:
+    @frame_size_field.setter
+    def frame_size_field(self, value: primitives.Float) -> None:
         """Set the FrameSize field value."""
         member = self.get_member("FrameSize")
         if member is not None:
@@ -165,15 +168,15 @@ Optionally it calls a sync delegate that takes an argument of the chosen asset t
             )
 
     @property
-    def frame_size(self) -> str | None:
+    def frame_size_ref(self) -> str | None:
         """The field to drive with what the size of the frame should be for the held asset's bounding box."""
         member = self.get_member("_frameSize")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @frame_size.setter
-    def frame_size(self, target: str | IField[primitives.Float2] | None) -> None:
+    @frame_size_ref.setter
+    def frame_size_ref(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _frameSize reference by target ID or IField[primitives.Float2] instance."""
         target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
         member = self.get_member("_frameSize")

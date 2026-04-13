@@ -38,7 +38,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.XiexeToonMaterial"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, main_texture: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, use_vertex_colors: primitives.Bool | None = None, vertex_color_interpolation_space: ColorProfile | str | None = None, blend_mode: BlendMode | str | None = None, zwrite: ZWrite | str | None = None, alpha_clip: primitives.Float | None = None, main_texture_scale: primitives.Float2 | None = None, main_texture_offset: primitives.Float2 | None = None, saturation: primitives.Float | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, normal_scale: primitives.Float | None = None, metallic: primitives.Float | None = None, glossiness: primitives.Float | None = None, reflectivity: primitives.Float | None = None, metallic_gloss_map: str | IAssetProvider[ITexture2D] | None = None, metallic_gloss_map_scale: primitives.Float2 | None = None, metallic_gloss_map_offset: primitives.Float2 | None = None, emission_map: str | IAssetProvider[ITexture2D] | None = None, emission_color: primitives.ColorX | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, rim_color: primitives.ColorX | None = None, rim_albedo_tint: primitives.Float | None = None, rim_attenuation_effect: primitives.Float | None = None, rim_intensity: primitives.Float | None = None, rim_range: primitives.Float | None = None, rim_threshold: primitives.Float | None = None, rim_sharpness: primitives.Float | None = None, specular_intensity: primitives.Float | None = None, specular_area: primitives.Float | None = None, matcap: str | IAssetProvider[ITexture2D] | None = None, matcap_tint: primitives.ColorX | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, occlusion_map_scale: primitives.Float2 | None = None, occlusion_map_offset: primitives.Float2 | None = None, occlusion_color: primitives.ColorX | None = None, outline: OutlineStyle | str | None = None, outline_width: primitives.Float | None = None, outline_color: primitives.ColorX | None = None, outline_albedo_tint: primitives.Bool | None = None, outline_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask_scale: primitives.Float2 | None = None, shadow_ramp_mask_offset: primitives.Float2 | None = None, shadow_rim: primitives.ColorX | None = None, shadow_sharpness: primitives.Float | None = None, shadow_rim_range: primitives.Float | None = None, shadow_rim_threshold: primitives.Float | None = None, shadow_rim_sharpness: primitives.Float | None = None, shadow_rim_albedo_tint: primitives.Float | None = None, thickness_map: str | IAssetProvider[ITexture2D] | None = None, thickness_map_scale: primitives.Float2 | None = None, thickness_map_offset: primitives.Float2 | None = None, subsurface_color: primitives.ColorX | None = None, subsurface_distortion: primitives.Float | None = None, subsurface_power: primitives.Float | None = None, subsurface_scale: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, culling: Culling | str | None = None, color_mask: ColorMask | str | None = None, albedo_uv: primitives.Int | None = None, normal_uv: primitives.Int | None = None, metallic_uv: primitives.Int | None = None, thickness_uv: primitives.Int | None = None, occlusion_uv: primitives.Int | None = None, emission_uv: primitives.Int | None = None, render_queue: primitives.Int | None = None, legacy_cutout: primitives.Bool | None = None, regular: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, main_texture: str | IAssetProvider[ITexture2D] | None = None, color: primitives.ColorX | None = None, use_vertex_colors: primitives.Bool | None = None, vertex_color_interpolation_space: ColorProfile | str | None = None, blend_mode: BlendMode | str | None = None, zwrite: ZWrite | str | None = None, alpha_clip: primitives.Float | None = None, main_texture_scale: primitives.Float2 | None = None, main_texture_offset: primitives.Float2 | None = None, saturation: primitives.Float | None = None, normal_map: str | IAssetProvider[ITexture2D] | None = None, normal_map_scale: primitives.Float2 | None = None, normal_map_offset: primitives.Float2 | None = None, normal_scale: primitives.Float | None = None, metallic: primitives.Float | None = None, glossiness: primitives.Float | None = None, reflectivity: primitives.Float | None = None, metallic_gloss_map: str | IAssetProvider[ITexture2D] | None = None, metallic_gloss_map_scale: primitives.Float2 | None = None, metallic_gloss_map_offset: primitives.Float2 | None = None, emission_map: str | IAssetProvider[ITexture2D] | None = None, emission_color: primitives.ColorX | None = None, emission_map_scale: primitives.Float2 | None = None, emission_map_offset: primitives.Float2 | None = None, rim_color: primitives.ColorX | None = None, rim_albedo_tint: primitives.Float | None = None, rim_attenuation_effect: primitives.Float | None = None, rim_intensity: primitives.Float | None = None, rim_range: primitives.Float | None = None, rim_threshold: primitives.Float | None = None, rim_sharpness: primitives.Float | None = None, specular_intensity: primitives.Float | None = None, specular_area: primitives.Float | None = None, matcap: str | IAssetProvider[ITexture2D] | None = None, matcap_tint: primitives.ColorX | None = None, occlusion_map: str | IAssetProvider[ITexture2D] | None = None, occlusion_map_scale: primitives.Float2 | None = None, occlusion_map_offset: primitives.Float2 | None = None, occlusion_color: primitives.ColorX | None = None, outline_field: OutlineStyle | str | None = None, outline_width: primitives.Float | None = None, outline_color: primitives.ColorX | None = None, outline_albedo_tint: primitives.Bool | None = None, outline_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask: str | IAssetProvider[ITexture2D] | None = None, shadow_ramp_mask_scale: primitives.Float2 | None = None, shadow_ramp_mask_offset: primitives.Float2 | None = None, shadow_rim: primitives.ColorX | None = None, shadow_sharpness: primitives.Float | None = None, shadow_rim_range: primitives.Float | None = None, shadow_rim_threshold: primitives.Float | None = None, shadow_rim_sharpness: primitives.Float | None = None, shadow_rim_albedo_tint: primitives.Float | None = None, thickness_map: str | IAssetProvider[ITexture2D] | None = None, thickness_map_scale: primitives.Float2 | None = None, thickness_map_offset: primitives.Float2 | None = None, subsurface_color: primitives.ColorX | None = None, subsurface_distortion: primitives.Float | None = None, subsurface_power: primitives.Float | None = None, subsurface_scale: primitives.Float | None = None, offset_factor: primitives.Float | None = None, offset_units: primitives.Float | None = None, culling: Culling | str | None = None, color_mask: ColorMask | str | None = None, albedo_uv: primitives.Int | None = None, normal_uv: primitives.Int | None = None, metallic_uv: primitives.Int | None = None, thickness_uv: primitives.Int | None = None, occlusion_uv: primitives.Int | None = None, emission_uv: primitives.Int | None = None, render_queue: primitives.Int | None = None, legacy_cutout: primitives.Bool | None = None, regular: str | IAssetProvider[Shader] | None = None, outline_ref: str | IAssetProvider[Shader] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -82,7 +82,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
             occlusion_map_scale: Initial value for OcclusionMapScale.
             occlusion_map_offset: Initial value for OcclusionMapOffset.
             occlusion_color: Initial value for OcclusionColor.
-            outline: Initial value for Outline.
+            outline_field: Initial value for Outline.
             outline_width: Initial value for OutlineWidth.
             outline_color: Initial value for OutlineColor.
             outline_albedo_tint: Initial value for OutlineAlbedoTint.
@@ -117,6 +117,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
             render_queue: Initial value for RenderQueue.
             legacy_cutout: Initial value for __legacyCutout.
             regular: Initial value for _regular.
+            outline_ref: Initial value for _outline.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -200,8 +201,8 @@ It was written for the predecessor to Resonite, however as stated on the page mo
             self.occlusion_map_offset = occlusion_map_offset
         if occlusion_color is not None:
             self.occlusion_color = occlusion_color
-        if outline is not None:
-            self.outline = outline
+        if outline_field is not None:
+            self.outline_field = outline_field
         if outline_width is not None:
             self.outline_width = outline_width
         if outline_color is not None:
@@ -270,6 +271,8 @@ It was written for the predecessor to Resonite, however as stated on the page mo
             self.legacy_cutout = legacy_cutout
         if regular is not None:
             self.regular = regular
+        if outline_ref is not None:
+            self.outline_ref = outline_ref
 
     @property
     def high_priority_integration(self) -> primitives.Bool | None:
@@ -1047,15 +1050,15 @@ It was written for the predecessor to Resonite, however as stated on the page mo
             )
 
     @property
-    def outline(self) -> OutlineStyle | None:
+    def outline_field(self) -> OutlineStyle | None:
         """The Outline enum value."""
         member = self.get_member("Outline")
         if isinstance(member, members.FieldEnum) and member.value is not None:
             return OutlineStyle(member.value)
         return None
 
-    @outline.setter
-    def outline(self, value: OutlineStyle | str) -> None:
+    @outline_field.setter
+    def outline_field(self, value: OutlineStyle | str) -> None:
         """Set the Outline enum value."""
         member = self.get_member("Outline")
         if isinstance(member, members.FieldEnum):
@@ -1725,15 +1728,15 @@ It was written for the predecessor to Resonite, however as stated on the page mo
             )
 
     @property
-    def outline(self) -> str | None:
+    def outline_ref(self) -> str | None:
         """Target ID of the _outline reference (targets IAssetProvider[Shader])."""
         member = self.get_member("_outline")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @outline.setter
-    def outline(self, target: str | IAssetProvider[Shader] | None) -> None:
+    @outline_ref.setter
+    def outline_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _outline reference by target ID or IAssetProvider[Shader] instance."""
         target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
         member = self.get_member("_outline")

@@ -1,6 +1,7 @@
 """Generated component: ColorByVelocityDirectionSH4."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import workers
 from pyresonitelink.generated._enums.spherical_harmonics_l4 import SphericalHarmonicsL4
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
