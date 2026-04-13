@@ -392,6 +392,16 @@ Key points:
 - `add_to_slot` automatically refreshes from the server to get member IDs
 - ALWAYS delete test slots when done
 
+#### Integration Testing Stability
+
+Testing complex ProtoFlux graphs against a live server is prone to race conditions. Follow these rules for robust integration tests:
+
+1. **Unique Slot Names**: ALWAYS use unique slot names for every test (e.g. `__test_{test_name}__`) to avoid name collisions and race conditions between concurrent or sequential test runs.
+2. **NEVER use `time.sleep()`**: In async tests, `time.sleep()` blocks the event loop and prevents the WebSocket from processing incoming messages. ALWAYS use `await asyncio.sleep()`.
+3. **Poll for Completion**: Don't rely on fixed delays. Use a "gate variable" pattern (e.g. a `ran` Boolean variable) and poll it until it becomes True.
+4. **Post-Signal Buffer**: Even after a completion signal is received, add a small additional delay (`asyncio.sleep(0.5)`) to ensure the server has finished writing all other variables in the same impulse before asserting results.
+5. **Aligned Loop Scopes**: Ensure all fixtures and tests share the same `loop_scope` (typically `"session"`) to prevent "attached to a different loop" errors.
+
 ### Reflection API
 
 The server provides two levels of type introspection:
@@ -495,6 +505,15 @@ Some ProtoFlux nodes have reference members targeting `IGlobalValueProxy<T>` ins
 - `INodeValueOutput<T>` references → use `ValueInput<T>` or `ValueObjectInput<T>`
 
 The type mismatch error is: "Reference target ... is not compatible type". When wiring references via `update_references`, ALWAYS check the `targetType` of the reference member to determine which source component to use. Constructor-based wiring (passing IDs in `__init__`) also fails silently for incompatible types — the component is created but the reference stays null.
+
+#### Integration Stability: "Create Then Wire" Pattern
+
+ProtoFlux nodes are highly sensitive to component creation order and timing. For maximum stability:
+
+1. **ALWAYS use "Create Then Wire"**: Add components to the slot empty (or with scalar fields only) using `add_to_slot()`, then use `update_references()` to wire them together. constructor-based wiring frequently fails or triggers server-side type validation errors.
+2. **Explicit Target Types**: When calling `update_references()`, use `members.Reference` objects with an explicit `targetType` (e.g. `'[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<T>'`) instead of raw ID strings. This helps Resonite's strict type system resolve generic interface compatibility.
+3. **Strategic Delays**: Add small `asyncio.sleep(0.05)` delays between component creation and reference updates. Rapid-fire requests can sometimes lead to race conditions where the server hasn't fully registered a component before a reference to it arrives.
+4. **Statement Ordering**: In impulse chains, the execution order is guaranteed by the wiring. ALWAYS ensure that "completion signals" (like setting a `ran` variable to True) are wired as the ABSOLUTE LAST statement in a chain to prevent tests from seeing partial results.
 
 #### Sync vs Async Impulse Flow
 

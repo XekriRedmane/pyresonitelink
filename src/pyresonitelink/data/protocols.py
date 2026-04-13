@@ -1,49 +1,53 @@
-"""Protocol interfaces for breaking circular imports.
+"""Protocol definitions for ResoniteLink client components."""
 
-This module defines Protocol classes that describe the interfaces
-used by generated components to communicate with the server. The
-actual ``Client`` class implements these protocols, but generated
-code depends only on the protocol — not on the concrete class.
-"""
+from __future__ import annotations
 
-from typing import Any, Protocol
+from typing import Any, Protocol, TYPE_CHECKING
 
-from . import codec
-from . import messages
-from . import responses
-from . import workers
+if TYPE_CHECKING:
+    from pyresonitelink.data import codec
+    from pyresonitelink.data import messages
+    from pyresonitelink.data import responses
+    from pyresonitelink.data import workers
+    from pyresonitelink.data import members
 
 
 class ResoniteLinkClient(Protocol):
-    """Protocol describing the client interface used by generated components.
-
-    The concrete ``pyresonitelink.client.Client`` class satisfies this
-    protocol.  Generated component code (``_base.py``, generated method
-    wrappers) depends only on this protocol, avoiding circular imports.
-    """
+    """Protocol for a ResoniteLink client."""
 
     async def get_slot(
         self,
         slot: str | workers.Slot,
         depth: int = 0,
-        includeComponentData: bool = False,
         debug: bool = False,
     ) -> responses.SlotData: ...
 
-    async def add_slot(
+    async def find_slot(
         self,
-        name: str | None = None,
-        parent: str | workers.Slot | None = None,
-        **kwargs: Any,
-    ) -> workers.Slot: ...
+        parent: str | workers.Slot,
+        name: str,
+        debug: bool = False,
+    ) -> workers.Slot | None: ...
+
+    async def remove_slot(
+        self,
+        slot: str | workers.Slot,
+        debug: bool = False,
+    ) -> responses.Response: ...
+
+    async def get_slot_data(
+        self,
+        slotId: str,
+        debug: bool = False,
+    ) -> responses.SlotData: ...
+
+    async def add_slot(self, **kwargs: Any) -> workers.Slot: ...
 
     async def add_component(
         self,
-        containerSlotId: str | workers.Slot,
-        *,
-        data: workers.Component | None = None,
+        containerSlotId: str,
         componentType: str | None = None,
-        references: dict[str, str] | None = None,
+        references: dict[str, str | members.Reference] | None = None,
         debug: bool = False,
     ) -> responses.NewEntityId: ...
 
@@ -62,7 +66,7 @@ class ResoniteLinkClient(Protocol):
     async def update_references(
         self,
         componentId: str,
-        references: dict[str, str],
+        references: dict[str, str | members.Reference],
         debug: bool = False,
     ) -> responses.Response: ...
 

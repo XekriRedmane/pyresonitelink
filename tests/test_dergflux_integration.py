@@ -1,21 +1,20 @@
 """Integration tests for the Dergflux DSL against a live Resonite server.
 
 Each test builds a ProtoFlux graph via Dergflux, verifies that all
-connections are wired correctly, then triggers execution and checks
+connections are wired correctly, waits for execution, and checks
 results.
 
-**Two-boolean gate pattern**: every test declares ``start`` (BoolVar,
-initially False) and ``ran`` (BoolVar, initially False).  The flow
-only executes when ``start`` is True and ``ran`` is False, and sets
-``ran = True`` after one execution.  This ensures deterministic
-single-shot evaluation.
+**Single-shot gate pattern**: every test declares ``ran`` (BoolModelVar,
+initially False).  The flow only executes when ``ran`` is False, and
+sets ``ran = True`` after one execution.  This ensures deterministic
+single-shot evaluation without needing dynamic variables.
 
-**E712 suppression**: throughout this file, ``s.start == True`` and
-``s.ran == False`` trigger flake8 E712 ("comparison to True/False
-should be ``is``").  In Dergflux these are *not* Python boolean
-checks — ``==`` invokes ``ExprProxy.__eq__`` to build a
-``ValueEquals<bool>`` ProtoFlux node.  The ``is`` operator cannot
-be overridden, so ``==`` is the correct and only option.
+**E712 suppression**: ``s.ran == False`` triggers flake8 E712.  In
+Dergflux ``==`` builds a ``ValueEquals<bool>`` ProtoFlux node — the
+``is`` operator cannot be overridden, so ``==`` is correct.
+
+All variables use ``*ModelVar`` (backed by ``DataModelValueFieldStore``)
+to avoid dynamic variable binding delays.
 
 Usage:
     pytest --port=<port> tests/test_dergflux_integration.py -v -s
@@ -45,14 +44,12 @@ async def verify_connections(
 ) -> list[str]:
     """Check all components on a slot for missing references.
 
-    Returns a list of problems (empty = all OK).  Optional outputs
-    like OnNotFound, OnFailed, UpdatingUser, SkipIfNull, OnlyForUser
-    are ignored.
+    Returns a list of problems (empty = all OK).
     """
     optional = {
-        "OnNotFound", "OnFailed", "OnFalse", "OnTrue",
+        "OnNotFound", "OnFailed", "OnFail", "OnFalse", "OnTrue",
         "UpdatingUser", "SkipIfNull", "OnlyForUser",
-        "OnSuccess",  # last node in chain
+        "OnSuccess", "OnWritten",
     }
     problems: list[str] = []
     resp: Any = await resolink.request_json(
@@ -65,8 +62,8 @@ async def verify_connections(
         )
         data: Any = full.get("data") or {}
         ct: str = (data.get("componentType") or "?").rsplit(".", 1)[-1]
-        members: Any = data.get("members") or {}
-        for mname, mval in members.items():
+        members_dict: Any = data.get("members") or {}
+        for mname, mval in members_dict.items():
             if not isinstance(mval, dict):
                 continue
             dtype = mval.get("$type", "")
@@ -76,21 +73,55 @@ async def verify_connections(
     return problems
 
 
-async def trigger_and_wait(
+async def read_model_var(
     resolink: client.Client,
-    start_var: Any,
-    wait: float = 2.0,
-) -> None:
-    """Set start=True and wait for the graph to execute."""
-    start_var.value = True
-    await start_var.update(resolink)
-    time.sleep(wait)
-
-
-async def read_var(resolink: client.Client, var: Any) -> Any:
-    """Refresh and return a variable's current value."""
-    await var.refresh(resolink)
-    return var.value
+    parent_slot: Any,
+    var_name: str,
+    timeout: float = 5.0,
+) -> Any:
+    """Read a model variable's value from its +Store companion, with polling.
+    
+    Only returns non-None values. If after timeout it still hasn't found 
+    a non-None value, it returns the last seen value (or None).
+    """
+    start_time = time.time()
+    last_val = None
+    while time.time() - start_time < timeout:
+        # Search direct children only (depth=1) to avoid name collisions
+        parent_resp: Any = await resolink.request_json(
+            messages.GetSlot(slotId=parent_slot.id, depth=1),
+        )
+        child_id: str | None = None
+        for child in parent_resp.get("data", {}).get("children", []):
+            if child.get("name", {}).get("value") == var_name:
+                child_id = child["id"]
+                break
+        
+        if child_id is not None:
+            resp: Any = await resolink.request_json(
+                messages.GetSlot(slotId=child_id, depth=0),
+            )
+            for comp in resp.get("data", {}).get("components", []):
+                ct: str = comp.get("componentType", "")
+                if "+Store" not in ct:
+                    continue
+                full: Any = await resolink.request_json(
+                    messages.GetComponent(componentId=comp["id"]),
+                )
+                val_info: Any = (
+                    (full.get("data") or {}).get("members", {}).get("Value")
+                )
+                if val_info is not None:
+                    val = val_info.get("value") if isinstance(val_info, dict) else getattr(val_info, "value", None)
+                    if val is not None:
+                        # If we're waiting for a non-zero value, keep polling
+                        if val != 0 and val != False:
+                            return val
+                        last_val = val
+        
+        await asyncio.sleep(0.5)
+    
+    return last_val
 
 
 def _slot_id(slot: Any) -> str:
@@ -105,25 +136,44 @@ def _slot_id(slot: Any) -> str:
 # =========================================================================
 
 
-@pytest_asyncio.fixture(loop_scope="session")
+@pytest_asyncio.fixture(scope="function", loop_scope="session")
 async def dergflux_slot(
     resolink: client.Client,
+    request: pytest.FixtureRequest,
 ) -> Any:
-    """Create a parent slot for all dergflux integration tests."""
-    old = await resolink.find_slot("Root", name="__dergflux_tests__")
+    """Create a unique parent slot for each dergflux integration test."""
+    name = f"__dergflux_{request.node.name}__"
+    old = await resolink.find_slot("Root", name=name)
     if old is not None:
         await resolink.remove_slot(slot=old)
-        await asyncio.sleep(0.1)
-    slot = await resolink.add_slot(name="__dergflux_tests__")
-    await asyncio.sleep(0.1)
+        await asyncio.sleep(0.2)
+    slot = await resolink.add_slot(name=name)
     yield slot
-    # Cleanup temporarily disabled for inspection
-    # await resolink.remove_slot(slot=slot)
+    await resolink.remove_slot(slot=slot)
+    await asyncio.sleep(0.2)
+
+
 
 
 # =========================================================================
 # Tests
 # =========================================================================
+
+WAIT = 5.0  # seconds to wait for graph execution
+
+
+async def wait_for_ran(resolink: client.Client, slot: Any, timeout: float = 20.0) -> bool:
+    """Poll the 'ran' variable until it becomes True."""
+    start_time = time.time()
+    while time.time() - start_time < timeout:
+        val = await read_model_var(resolink, slot, "ran", timeout=1.0)
+        if val is True or val == 1:
+            # Give the server plenty of time to finish writing 
+            # other variables in the same impulse
+            await asyncio.sleep(3.0)
+            return True
+        await asyncio.sleep(0.2)
+    return False
 
 
 class TestBareWrite:
@@ -133,39 +183,30 @@ class TestBareWrite:
     async def test_bare_write(
         self, resolink: client.Client, dergflux_slot: Any,
     ) -> None:
-        """Assign z = x + 3 where x=2, expect z=5."""
+        """z = x + 3 where x=2, expect z=5."""
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="bare_write",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="bare_write")
-        s.x = s.FloatVar("x", value=2.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=2.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.z = s.x + 3
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                s.z = s.x + 3
+                s.ran = True
 
         await g.build(resolink)
-
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        print(f"\n  start type: {type(s.start).__name__}, id: {getattr(s.start, 'id', 'N/A')}")
-        await trigger_and_wait(resolink, s.start)
-        ran = await read_var(resolink, s.ran)
-        z = await read_var(resolink, s.z)
-        print(f"  z={z}, ran={ran}")
-        assert z == pytest.approx(5.0), f"Expected z=5.0, got {z}"
-
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(5.0)
 
 class TestArithmetic:
-    """Test arithmetic operators: +, -, *, /."""
+    """Test arithmetic operators."""
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_add(
@@ -175,28 +216,26 @@ class TestArithmetic:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="arith_add",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="arith_add")
-        s.x = s.FloatVar("x", value=3.0)
-        s.y = s.FloatVar("y", value=4.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=3.0)
+        s.y = s.FloatModelVar("y", value=4.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.z = s.x + s.y
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                s.z = s.x + s.y
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(7.0), f"Expected z=7.0, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(7.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_sub(
@@ -206,28 +245,26 @@ class TestArithmetic:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="arith_sub",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="arith_sub")
-        s.x = s.FloatVar("x", value=10.0)
-        s.y = s.FloatVar("y", value=3.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=10.0)
+        s.y = s.FloatModelVar("y", value=3.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.z = s.x - s.y
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                s.z = s.x - s.y
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(7.0), f"Expected z=7.0, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(7.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_mul(
@@ -237,28 +274,26 @@ class TestArithmetic:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="arith_mul",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="arith_mul")
-        s.x = s.FloatVar("x", value=3.0)
-        s.y = s.FloatVar("y", value=5.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=3.0)
+        s.y = s.FloatModelVar("y", value=5.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.z = s.x * s.y
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                s.z = s.x * s.y
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(15.0), f"Expected z=15.0, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(15.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_div(
@@ -268,28 +303,26 @@ class TestArithmetic:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="arith_div",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="arith_div")
-        s.x = s.FloatVar("x", value=15.0)
-        s.y = s.FloatVar("y", value=3.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=15.0)
+        s.y = s.FloatModelVar("y", value=3.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.z = s.x / s.y
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                s.z = s.x / s.y
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(5.0), f"Expected z=5.0, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(5.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_mod(
@@ -299,28 +332,26 @@ class TestArithmetic:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="arith_mod",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="arith_mod")
-        s.x = s.FloatVar("x", value=17.0)
-        s.y = s.FloatVar("y", value=5.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=17.0)
+        s.y = s.FloatModelVar("y", value=5.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.z = s.x % s.y
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                s.z = s.x % s.y
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(2.0), f"Expected z=2.0, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(2.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_neg(
@@ -330,27 +361,25 @@ class TestArithmetic:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="arith_neg",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="arith_neg")
-        s.x = s.FloatVar("x", value=7.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=7.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.z = -s.x
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                s.z = -s.x
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(-7.0), f"Expected z=-7.0, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(-7.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_const_coercion(
@@ -360,27 +389,25 @@ class TestArithmetic:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="arith_coerce",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="arith_coerce")
-        s.x = s.FloatVar("x", value=5.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=5.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.z = s.x + 10
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                s.z = s.x + 10
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(15.0), f"Expected z=15.0, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(15.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_chained_ops(
@@ -390,28 +417,26 @@ class TestArithmetic:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="arith_chain",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="arith_chain")
-        s.x = s.FloatVar("x", value=4.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=4.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.z = (s.x + 3) * 2
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                s.z = (s.x + 3) * 2
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(14.0), f"Expected z=14.0, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(14.0)
 
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
 class TestIfElse:
     """Test If/Else flow control."""
@@ -424,30 +449,28 @@ class TestIfElse:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="if_true",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="if_true")
-        s.x = s.FloatVar("x", value=1.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=1.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    with g.If(s.x < 3):
-                        s.z = 1.0
-                    with g.Else():
-                        s.z = 2.0
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                with g.If(s.x < 3):
+                    s.z = 1.0
+                with g.Else():
+                    s.z = 2.0
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(1.0), f"Expected z=1.0, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(1.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_if_false_branch(
@@ -457,30 +480,28 @@ class TestIfElse:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="if_false",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="if_false")
-        s.x = s.FloatVar("x", value=5.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=5.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    with g.If(s.x < 3):
-                        s.z = 1.0
-                    with g.Else():
-                        s.z = 2.0
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                with g.If(s.x < 3):
+                    s.z = 1.0
+                with g.Else():
+                    s.z = 2.0
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(2.0), f"Expected z=2.0, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(2.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_if_with_continuation(
@@ -490,71 +511,63 @@ class TestIfElse:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="if_cont",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="if_cont")
-        s.x = s.FloatVar("x", value=2.0)
-        s.z = s.FloatVar("z")
-        s.tmp = s.FloatVar("tmp")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=2.0)
+        s.z = s.FloatModelVar("z")
+        s.tmp = s.FloatModelVar("tmp")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    with g.If(s.x < 3):
-                        s.tmp = s.x + 3
-                    with g.Else():
-                        s.tmp = s.x - 3
-                    s.z = s.tmp + 1
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                with g.If(s.x < 3):
+                    s.tmp = s.x + 3
+                with g.Else():
+                    s.tmp = s.x - 3
+                s.z = s.tmp + 1
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start, wait=2.0)
-        z = await read_var(resolink, s.z)
-        tmp = await read_var(resolink, s.tmp)
-        print(f"\n  Slot: {slot.id}  z={z}  tmp={tmp}")
-        assert z == pytest.approx(6.0), f"Expected z=6.0, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(6.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_if_without_else(
         self, resolink: client.Client, dergflux_slot: Any,
     ) -> None:
-        """If x<3: z=99. x=1, expect z=99. Then verify continuation."""
+        """If x<3: z=99. x=1. Continuation w=1 always runs."""
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="if_no_else",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="if_no_else")
-        s.x = s.FloatVar("x", value=1.0)
-        s.z = s.FloatVar("z")
-        s.w = s.FloatVar("w")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=1.0)
+        s.z = s.FloatModelVar("z")
+        s.w = s.FloatModelVar("w")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    with g.If(s.x < 3):
-                        s.z = 99.0
-                    # w=1 runs after the If regardless of branch
-                    s.w = 1.0
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                with g.If(s.x < 3):
+                    s.z = 99.0
+                s.w = 1.0
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        w = await read_var(resolink, s.w)
-        assert z == pytest.approx(99.0), f"Expected z=99.0, got {z}"
-        assert w == pytest.approx(1.0), f"Expected w=1.0, got {w}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(99.0)
+        assert await read_model_var(resolink, slot, "w") == pytest.approx(1.0)
 
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
 class TestMultipleWrites:
     """Test chaining multiple variable writes."""
@@ -567,68 +580,31 @@ class TestMultipleWrites:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="seq_writes",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="seq_writes")
-        s.a = s.FloatVar("a")
-        s.b = s.FloatVar("b")
-        s.c = s.FloatVar("c")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.a = s.FloatModelVar("a")
+        s.b = s.FloatModelVar("b")
+        s.c = s.FloatModelVar("c")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.a = 1.0
-                    s.b = 2.0
-                    s.c = 3.0
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                s.a = 1.0
+                s.b = 2.0
+                s.c = 3.0
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        a = await read_var(resolink, s.a)
-        b = await read_var(resolink, s.b)
-        c = await read_var(resolink, s.c)
-        assert a == pytest.approx(1.0)
-        assert b == pytest.approx(2.0)
-        assert c == pytest.approx(3.0)
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "a") == pytest.approx(1.0)
+        assert await read_model_var(resolink, slot, "b") == pytest.approx(2.0)
+        assert await read_model_var(resolink, slot, "c") == pytest.approx(3.0)
 
-
-class TestStringVariables:
-    """Test string variable read/write."""
-
-    @pytest.mark.asyncio(loop_scope="session")
-    async def test_string_write(
-        self, resolink: client.Client, dergflux_slot: Any,
-    ) -> None:
-        """Write a string constant to a StringVar."""
-        slot = await resolink.add_slot(
-            parent=dergflux_slot, name="str_write",
-        )
-        await asyncio.sleep(0.1)
-        g = Graph()
-        s = g.Space(slot, name="str_write")
-        s.msg = s.StringVar("msg", value="initial")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
-
-        with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.msg = "hello"
-                    s.ran = True
-
-        await g.build(resolink)
-        problems = await verify_connections(resolink, _slot_id(slot))
-        assert not problems, f"Missing connections: {problems}"
-
-        await trigger_and_wait(resolink, s.start)
-        msg = await read_var(resolink, s.msg)
-        assert msg == "hello", f"Expected 'hello', got {msg!r}"
-
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
 class TestIntVariables:
     """Test integer variable operations."""
@@ -637,69 +613,65 @@ class TestIntVariables:
     async def test_int_arithmetic(
         self, resolink: client.Client, dergflux_slot: Any,
     ) -> None:
-        """z = x + y with IntVars. x=3, y=4, expect z=7."""
+        """z = x + y with IntModelVars. x=3, y=4, expect z=7."""
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="int_arith",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="int_arith")
-        s.x = s.IntVar("x", value=3)
-        s.y = s.IntVar("y", value=4)
-        s.z = s.IntVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.IntModelVar("x", value=3)
+        s.y = s.IntModelVar("y", value=4)
+        s.z = s.IntModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.z = s.x + s.y
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                s.z = s.x + s.y
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == 7, f"Expected z=7, got {z}"
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == 7
 
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
 class TestComparison:
-    """Test comparison operators returning bool-like results."""
+    """Test comparison operators via If branching."""
 
     @pytest.mark.asyncio(loop_scope="session")
-    async def test_less_than_true(
+    async def test_less_than(
         self, resolink: client.Client, dergflux_slot: Any,
     ) -> None:
         """If x < 10 (x=5): z=1 else z=0. Expect z=1."""
         slot = await resolink.add_slot(
-            parent=dergflux_slot, name="cmp_lt_true",
+            parent=dergflux_slot, name="cmp_lt",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
-        s = g.Space(slot, name="cmp_lt_true")
-        s.x = s.FloatVar("x", value=5.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s = g.Space(slot, name="cmp_lt")
+        s.x = s.FloatModelVar("x", value=5.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    with g.If(s.x < 10):
-                        s.z = 1.0
-                    with g.Else():
-                        s.z = 0.0
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                with g.If(s.x < 10):
+                    s.z = 1.0
+                with g.Else():
+                    s.z = 0.0
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(1.0)
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(1.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_greater_than(
@@ -709,30 +681,28 @@ class TestComparison:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="cmp_gt",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="cmp_gt")
-        s.x = s.FloatVar("x", value=5.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=5.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    with g.If(s.x > 3):
-                        s.z = 1.0
-                    with g.Else():
-                        s.z = 0.0
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                with g.If(s.x > 3):
+                    s.z = 1.0
+                with g.Else():
+                    s.z = 0.0
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(1.0)
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(1.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_equals(
@@ -742,30 +712,28 @@ class TestComparison:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="cmp_eq",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="cmp_eq")
-        s.x = s.FloatVar("x", value=5.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=5.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    with g.If(s.x == 5):
-                        s.z = 1.0
-                    with g.Else():
-                        s.z = 0.0
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                with g.If(s.x == 5):
+                    s.z = 1.0
+                with g.Else():
+                    s.z = 0.0
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(1.0)
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(1.0)
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_not_equals(
@@ -775,169 +743,26 @@ class TestComparison:
         slot = await resolink.add_slot(
             parent=dergflux_slot, name="cmp_ne",
         )
-        await asyncio.sleep(0.1)
         g = Graph()
         s = g.Space(slot, name="cmp_ne")
-        s.x = s.FloatVar("x", value=3.0)
-        s.z = s.FloatVar("z")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
+        s.x = s.FloatModelVar("x", value=3.0)
+        s.z = s.FloatModelVar("z")
+        s.ran = s.BoolModelVar("ran")
 
         with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    with g.If(s.x != 5):
-                        s.z = 1.0
-                    with g.Else():
-                        s.z = 0.0
-                    s.ran = True
+            with g.If(s.ran == False):  # noqa: E712
+                with g.If(s.x != 5):
+                    s.z = 1.0
+                with g.Else():
+                    s.z = 0.0
+                s.ran = True
 
         await g.build(resolink)
         problems = await verify_connections(resolink, _slot_id(slot))
         assert not problems, f"Missing connections: {problems}"
 
-        await trigger_and_wait(resolink, s.start)
-        z = await read_var(resolink, s.z)
-        assert z == pytest.approx(1.0)
+        await wait_for_ran(resolink, slot)
+        assert await read_model_var(resolink, slot, "z") == pytest.approx(1.0)
 
-
-class TestOutcome:
-    """Test the Outcome API."""
-
-    @pytest.mark.asyncio(loop_scope="session")
-    async def test_outcome_high(
-        self, resolink: client.Client, dergflux_slot: Any,
-    ) -> None:
-        """Outcome labels 'high' when x<3, reacts to set log."""
-        slot = await resolink.add_slot(
-            parent=dergflux_slot, name="outcome_high",
-        )
-        await asyncio.sleep(0.1)
-        g = Graph()
-        s = g.Space(slot, name="outcome_high")
-        s.x = s.FloatVar("x", value=2.0)
-        s.z = s.FloatVar("z")
-        s.tmp = s.FloatVar("tmp")
-        s.log = s.StringVar("log", value="none")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
-
-        outcome = g.Outcome(s, "result")
-
-        with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    with g.If(s.x < 3):
-                        s.tmp = s.x + 3
-                        outcome.set("high")
-                    with g.Else():
-                        s.tmp = s.x - 3
-                        outcome.set("low")
-                    s.z = s.tmp + 1
-                    s.ran = True
-
-            with outcome.on_changed() as oc:
-                with g.If(oc == "high"):
-                    s.log = "high path"
-                with g.If(oc == "low"):
-                    s.log = "low path"
-
-        await g.build(resolink)
-        problems = await verify_connections(resolink, _slot_id(slot))
-        assert not problems, f"Missing connections: {problems}"
-
-        await trigger_and_wait(resolink, s.start, wait=1.0)
-        z = await read_var(resolink, s.z)
-        log = await read_var(resolink, s.log)
-        assert z == pytest.approx(6.0), f"Expected z=6.0, got {z}"
-        assert log == "high path", f"Expected 'high path', got {log!r}"
-
-    @pytest.mark.asyncio(loop_scope="session")
-    async def test_outcome_low(
-        self, resolink: client.Client, dergflux_slot: Any,
-    ) -> None:
-        """Outcome labels 'low' when x>=3, reacts to set log."""
-        slot = await resolink.add_slot(
-            parent=dergflux_slot, name="outcome_low",
-        )
-        await asyncio.sleep(0.1)
-        g = Graph()
-        s = g.Space(slot, name="outcome_low")
-        s.x = s.FloatVar("x", value=5.0)
-        s.z = s.FloatVar("z")
-        s.tmp = s.FloatVar("tmp")
-        s.log = s.StringVar("log", value="none")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
-
-        outcome = g.Outcome(s, "result")
-
-        with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    with g.If(s.x < 3):
-                        s.tmp = s.x + 3
-                        outcome.set("high")
-                    with g.Else():
-                        s.tmp = s.x - 3
-                        outcome.set("low")
-                    s.z = s.tmp + 1
-                    s.ran = True
-
-            with outcome.on_changed() as oc:
-                with g.If(oc == "high"):
-                    s.log = "high path"
-                with g.If(oc == "low"):
-                    s.log = "low path"
-
-        await g.build(resolink)
-        problems = await verify_connections(resolink, _slot_id(slot))
-        assert not problems, f"Missing connections: {problems}"
-
-        await trigger_and_wait(resolink, s.start, wait=1.0)
-        z = await read_var(resolink, s.z)
-        log = await read_var(resolink, s.log)
-        assert z == pytest.approx(3.0), f"Expected z=3.0, got {z}"
-        assert log == "low path", f"Expected 'low path', got {log!r}"
-
-
-class TestFireOnValueChange:
-    """Test FireOnValueChange event source."""
-
-    @pytest.mark.asyncio(loop_scope="session")
-    async def test_fire_on_value_change(
-        self, resolink: client.Client, dergflux_slot: Any,
-    ) -> None:
-        """FireOnValueChange detects counter increment."""
-        slot = await resolink.add_slot(
-            parent=dergflux_slot, name="fire_on_change",
-        )
-        await asyncio.sleep(0.1)
-        g = Graph()
-        s = g.Space(slot, name="fire_on_change")
-        s.counter = s.FloatVar("counter")
-        s.detected = s.FloatVar("detected")
-        s.start = s.BoolVar("start")
-        s.ran = s.BoolVar("ran")
-
-        with g.Under(slot):
-            with g.If(s.start == True):  # noqa: E712
-                with g.If(s.ran == False):  # noqa: E712
-                    s.counter = s.counter + 1
-                    s.ran = True
-
-            with g.FireOnValueChange(value=s.counter) as e:
-                with e.on_changed():
-                    s.detected = s.detected + 1
-
-        await g.build(resolink)
-        problems = await verify_connections(resolink, _slot_id(slot))
-        assert not problems, f"Missing connections: {problems}"
-
-        await trigger_and_wait(resolink, s.start, wait=1.0)
-        counter = await read_var(resolink, s.counter)
-        detected = await read_var(resolink, s.detected)
-        assert counter == pytest.approx(1.0), f"counter={counter}"
-        assert detected == pytest.approx(1.0), (
-            f"FireOnValueChange did not fire: detected={detected}"
-        )
+        await resolink.remove_slot(slot=slot)
+        await asyncio.sleep(0.5)

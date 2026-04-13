@@ -509,7 +509,7 @@ class Client:
     async def update_references(
         self,
         componentId: str,
-        references: dict[str, str],
+        references: dict[str, str | members.Reference],
         debug: bool = False,
     ) -> responses.Response:
         """Wire reference members on an existing component.
@@ -526,7 +526,7 @@ class Client:
 
         Args:
             componentId: ID of the component to update.
-            references: Mapping of member name to target ID.
+            references: Mapping of member name to target ID or Reference.
             debug: Print request/response JSON.
         """
         get_resp = await self.get_component(
@@ -534,19 +534,26 @@ class Client:
         )
         assert get_resp.data is not None
         update_members: dict[str, members.Member] = {}
-        for name, target_id in references.items():
+        for name, ref_val in references.items():
             existing = get_resp.data.members.get(name)
-            if existing is not None:
-                update_members[name] = members.Reference(
-                    id=existing.id, targetId=target_id,
-                )
+            if isinstance(ref_val, members.Reference):
+                new_ref = ref_val
+                if existing is not None:
+                    new_ref.id = existing.id
+                update_members[name] = new_ref
             else:
-                # Member not on the component data (e.g. proxy members
-                # like _value on ValueFieldDrive). Send with a fresh ID
-                # and let the server resolve it.
-                update_members[name] = members.Reference(
-                    targetId=target_id,
-                )
+                target_id = ref_val
+                if existing is not None:
+                    update_members[name] = members.Reference(
+                        id=existing.id, targetId=target_id,
+                    )
+                else:
+                    # Member not on the component data (e.g. proxy members
+                    # like _value on ValueFieldDrive). Send with a fresh ID
+                    # and let the server resolve it.
+                    update_members[name] = members.Reference(
+                        targetId=target_id,
+                    )
         return await self.update_component(
             data=workers.Component(
                 id=componentId,
