@@ -12,6 +12,8 @@ import importlib
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any
 
+import numpy as np
+
 _BUILD_DELAY = 0.1  # seconds between component creates (temporary)
 
 from pyresonitelink.data import primitives
@@ -253,6 +255,7 @@ async def _create_and_wire(
     slot: workers.Slot,
     component_class: Any,
     references: dict[str, str],
+    debug: bool = False,
 ) -> Any:
     """Create a component empty and wire references via update_references.
 
@@ -260,18 +263,12 @@ async def _create_and_wire(
     reference members are set via constructor data in add_component.
     ProtoFlux nodes often fail constructor-based wiring because the
     server's type check is stricter than ProtoFlux's runtime system.
-
-    Args:
-        resolink: Connected client.
-        slot: Slot to add the component to.
-        component_class: The (possibly parameterized) component class.
-        references: Mapping of member name to target component ID.
-
-    Returns:
-        The created component instance with server-assigned IDs.
     """
+    if debug:
+        print(f"Creating component: {component_class.__name__} on slot {slot.id}")
+
     comp = component_class()
-    await comp.add_to_slot(resolink, slot)
+    await comp.add_to_slot(resolink, slot, debug=debug)
     # Small delay to let the server process the new component before wiring
     await asyncio.sleep(0.05)
     
@@ -281,8 +278,21 @@ async def _create_and_wire(
         typed_refs = {}
         for k, v in references.items():
             target_id = v.id if hasattr(v, "id") else v
-            # Use INodeValueOutput<T> as a safe default for ProtoFlux nodes
+            
+            # Use specific targetType hints for certain non-generic nodes
+            # that are sensitive to the interface name.
             target_type = '[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<T>'
+            cls_name = component_class.__name__
+            if "TimeSpanFrom" in cls_name and cls_name != "TimeSpanFromTicks":
+                target_type = '[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<double>'
+            elif cls_name == "TimeSpanFromTicks":
+                target_type = '[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<long>'
+            elif "DateTime" in cls_name:
+                target_type = '[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<DateTime>'
+            
+            if debug:
+                print(f"  Wiring reference '{k}': target={target_id}, type={target_type}")
+
             typed_refs[k] = members.Reference(
                 targetId=target_id,
                 targetType=target_type,
@@ -290,6 +300,7 @@ async def _create_and_wire(
         resp = await resolink.update_references(
             componentId=comp.id,
             references=typed_refs,
+            debug=debug,
         )
         if not resp.success:
             raise RuntimeError(
@@ -305,6 +316,7 @@ class _BuildContext:
     Attributes:
         resolink: The connected client.
         slot: The target slot for all components.
+        debug: Whether to print request/response JSON.
         node_cache: Maps ExprNode id() to the component instance,
             so shared sub-expressions are materialized only once.
         var_inputs: Maps (space_id, var_name) to the ValueInput component
@@ -319,9 +331,11 @@ class _BuildContext:
         self,
         resolink: protocols.ResoniteLinkClient,
         slot: workers.Slot,
+        debug: bool = False,
     ) -> None:
         self.resolink = resolink
         self.slot = slot
+        self.debug = debug
         self.node_cache: dict[int, Any] = {}
         self.var_inputs: dict[tuple[int, str], Any] = {}
         self.slot_ref: Any = None
@@ -340,7 +354,7 @@ class _BuildContext:
 
         SlotRef = RefObjectInput[workers.Slot]
         ref = SlotRef(target=self.slot)
-        await ref.add_to_slot(self.resolink, self.slot)
+        await ref.add_to_slot(self.resolink, self.slot, debug=self.debug)
         self.slot_ref = ref
         return ref
 
@@ -353,7 +367,7 @@ class _BuildContext:
 
         StringInput = ValueObjectInput[primitives.String]
         node = StringInput(value=path)
-        await node.add_to_slot(self.resolink, self.slot)
+        await node.add_to_slot(self.resolink, self.slot, debug=self.debug)
         self.path_nodes[path] = node
         return node
 
@@ -373,6 +387,12 @@ class _BuildContext:
 
     async def _materialize_uncached(self, node: _expr.ExprNode) -> Any:
         """Materialize a single node without caching."""
+        if self.debug:
+            print(f"Materializing node: {type(node).__name__} (type={getattr(node, '_type', 'N/A')})")
+        
+        if type(node) is _expr.ExprNode:
+            # Special core nodes that use the base ExprNode class
+            return await self._materialize_core_node(node)
         if isinstance(node, _expr.ConstNode):
             return await self._materialize_const(node)
         if isinstance(node, _expr.VarReadNode):
@@ -389,7 +409,46 @@ class _BuildContext:
             return await self._materialize_unop(node)
         if isinstance(node, _expr.MathCallNode):
             return await self._materialize_math_call(node)
+        if isinstance(node, _expr.MemberAccessNode):
+            return await self._materialize_member_access(node)
         raise TypeError(f"Unknown node type: {type(node).__name__}")
+
+    async def _materialize_member_access(
+        self, node: _expr.MemberAccessNode,
+    ) -> Any:
+        """Materialize a member access (property) node.
+
+        Maps properties like DateTime.hour to ProtoFlux nodes like
+        DateTime_Hour.
+        """
+        expr_comp = await self.materialize(node.expr)
+        from pyresonitelink.data import primitives
+
+        if node.expr._type == primitives.DateTime:
+            # Map snake_case to PascalCase for the ProtoFlux node name
+            # e.g. day_of_week -> DateTimeDayOfWeek
+            prop = "".join(w.capitalize() for w in node.member_name.split("_"))
+            from pyresonitelink.protoflux.time import datetime as dt_mod
+            Class = getattr(dt_mod, f"DateTime{prop}")
+            return await _create_and_wire(
+                self.resolink, self.slot, Class, {"DateTime": expr_comp.id},
+                debug=self.debug,
+            )
+
+        if node.expr._type == primitives.TimeSpan:
+            # TimeSpan properties use different prefixes:
+            # days -> TimeSpanDays, total_days -> TimeSpanTotalDays
+            prop = "".join(w.capitalize() for w in node.member_name.split("_"))
+            from pyresonitelink.protoflux.time import timespan as ts_mod
+            Class = getattr(ts_mod, f"TimeSpan{prop}")
+            return await _create_and_wire(
+                self.resolink, self.slot, Class, {"TimeSpan": expr_comp.id},
+                debug=self.debug,
+            )
+
+        raise TypeError(
+            f"Member access not supported for type {node.expr._type}"
+        )
 
     def _materialize_trigger_value(self, node: _expr.TriggerValueNode) -> Any:
         """Return the trigger receiver component for a TriggerValueNode."""
@@ -457,6 +516,29 @@ class _BuildContext:
             
         return type("_OutputStub", (), {"id": val_member.id})()
 
+    async def _materialize_core_node(self, node: _expr.ExprNode) -> Any:
+        """Materialize a core node (base ExprNode class with a specific type)."""
+        from pyresonitelink.data import primitives
+
+        if node._type == primitives.DateTime:
+            # utc_now()
+            from pyresonitelink.protoflux.time import UtcNow
+            comp = UtcNow()
+            await comp.add_to_slot(self.resolink, self.slot)
+            return comp
+
+        if node._type == primitives.Float:
+            # delta_time variants
+            # We don't store the func name in ExprNode yet, so we have to
+            # rely on some other way to distinguish them if there were many.
+            # For now, base Float ExprNode is always delta_time().
+            from pyresonitelink.protoflux.time import DeltaTime
+            comp = DeltaTime()
+            await comp.add_to_slot(self.resolink, self.slot)
+            return comp
+
+        raise TypeError(f"Core node with type {node._type} not supported")
+
     async def _materialize_const(self, node: _expr.ConstNode) -> Any:
         """Materialize a constant as a ValueInput<T> or ValueObjectInput<T>.
 
@@ -467,20 +549,40 @@ class _BuildContext:
         from pyresonitelink.protoflux.core import ValueInput, ValueObjectInput
 
         res_type = _types.resolve_const_type(node.value, node._type)
+        
+        # Coerce Python float/int to the specific Resonite primitive type
+        # if the node has one set.
+        val = node.value
+        if res_type is primitives.Float:
+            val = np.float32(val)
+        elif res_type is primitives.Double:
+            val = np.float64(val)
+        elif res_type is primitives.Int:
+            val = np.int32(val)
+        elif res_type is primitives.Long:
+            val = np.int64(val)
+        elif res_type is primitives.DateTime or res_type is primitives.TimeSpan:
+            # DateTime/TimeSpan are stored as int64 (ticks)
+            val = np.int64(val)
+
         # Strings are object types in ProtoFlux
         if res_type is str or res_type is primitives.String:
             ConcreteInput = ValueObjectInput[res_type]  # type: ignore[valid-type]
             comp = ConcreteInput(value=node.value)
         else:
             ConcreteInput = ValueInput[res_type]  # type: ignore[valid-type]
-            # Ensure value is cast to the correct primitive type
-            try:
-                val = res_type(node.value)
-            except (TypeError, ValueError):
-                val = node.value
             comp = ConcreteInput(value=val)
-        await comp.add_to_slot(self.resolink, self.slot)
-        return comp
+        await comp.add_to_slot(self.resolink, self.slot, debug=self.debug)
+
+        # ProtoFlux nodes often must reference the output member, not the component root.
+        # For ValueInput<T> and ValueObjectInput<T>, the output is the 'Value' member.
+        get_resp = await self.resolink.get_component(componentId=comp.id, debug=self.debug)
+        assert get_resp.data is not None
+        value_member = get_resp.data.members.get("Value")
+        assert value_member is not None, f"ValueInput {comp.id} has no Value member"
+        
+        # Return a stub with the member ID so it can be wired as an input
+        return type("_OutputStub", (), {"id": value_member.id})()
 
     async def _materialize_var_read(self, node: _expr.VarReadNode) -> Any:
         """Materialize a variable read.
@@ -575,7 +677,9 @@ class _BuildContext:
                 refs = {"A": left_comp.id, "Shift": right_comp.id}
             else:
                 refs = {"A": left_comp.id, "B": right_comp.id}
-            return await _create_and_wire(self.resolink, self.slot, OpClass, refs)
+            return await _create_and_wire(
+                self.resolink, self.slot, OpClass, refs, debug=self.debug,
+            )
 
         # Check if this is pow (typed, not generic)
         if node.op is _expr.BinOp.POW:
@@ -584,6 +688,7 @@ class _BuildContext:
             return await _create_and_wire(
                 self.resolink, self.slot, OpClass,
                 {"N": left_comp.id, "Power": right_comp.id},
+                debug=self.debug,
             )
 
         # Generic binary op
@@ -594,6 +699,7 @@ class _BuildContext:
         return await _create_and_wire(
             self.resolink, self.slot, ConcreteOp,
             {"A": left_comp.id, "B": right_comp.id},
+            debug=self.debug,
         )
 
     async def _materialize_unop(self, node: _expr.UnaryOpNode) -> Any:
@@ -607,7 +713,7 @@ class _BuildContext:
             OpClass = _get_typed_class(subpath, prefix, res_type)
             return await _create_and_wire(
                 self.resolink, self.slot, OpClass,
-                {"A": operand_comp.id},
+                {"A": operand_comp.id}, debug=self.debug,
             )
 
         # ABS uses generic ValueAbs
@@ -616,7 +722,7 @@ class _BuildContext:
             ConcreteOp = ValueAbs[res_type]  # type: ignore[valid-type]
             return await _create_and_wire(
                 self.resolink, self.slot, ConcreteOp,
-                {"N": operand_comp.id},
+                {"N": operand_comp.id}, debug=self.debug,
             )
 
         # NEG uses generic ValueNegate
@@ -625,7 +731,7 @@ class _BuildContext:
             ConcreteOp = operators.ValueNegate[res_type]  # type: ignore[valid-type]
             return await _create_and_wire(
                 self.resolink, self.slot, ConcreteOp,
-                {"N": operand_comp.id},
+                {"N": operand_comp.id}, debug=self.debug,
             )
 
         raise TypeError(f"Unknown unary op: {node.op}")
@@ -655,7 +761,7 @@ class _BuildContext:
             ConcreteClass = GenericClass[res_type]  # type: ignore[valid-type]
             return await _create_and_wire(
                 self.resolink, self.slot, ConcreteClass,
-                _make_refs(param_names),
+                _make_refs(param_names), debug=self.debug,
             )
 
         # Check for generic math in operators
@@ -666,7 +772,66 @@ class _BuildContext:
             ConcreteClass = GenericClass[res_type]  # type: ignore[valid-type]
             return await _create_and_wire(
                 self.resolink, self.slot, ConcreteClass,
-                _make_refs(param_names),
+                _make_refs(param_names), debug=self.debug,
+            )
+
+        # Core time nodes
+        if node.func_name == "utc_now":
+            from pyresonitelink.protoflux.time import UtcNow
+            return await _create_and_wire(self.resolink, self.slot, UtcNow, {}, debug=self.debug)
+        if node.func_name == "delta_time":
+            from pyresonitelink.protoflux.time import DeltaTime
+            return await _create_and_wire(self.resolink, self.slot, DeltaTime, {}, debug=self.debug)
+        if node.func_name == "smooth_delta_time":
+            from pyresonitelink.protoflux.time import SmoothDeltaTime
+            return await _create_and_wire(self.resolink, self.slot, SmoothDeltaTime, {}, debug=self.debug)
+        if node.func_name == "raw_delta_time":
+            from pyresonitelink.protoflux.time import RawDeltaTime
+            return await _create_and_wire(self.resolink, self.slot, RawDeltaTime, {}, debug=self.debug)
+        if node.func_name == "inverted_delta_time":
+            from pyresonitelink.protoflux.time import InvertedDeltaTime
+            return await _create_and_wire(self.resolink, self.slot, InvertedDeltaTime, {}, debug=self.debug)
+        if node.func_name == "inverted_smooth_delta_time":
+            from pyresonitelink.protoflux.time import InvertedSmoothDeltaTime
+            return await _create_and_wire(self.resolink, self.slot, InvertedSmoothDeltaTime, {}, debug=self.debug)
+        if node.func_name == "inverted_raw_delta_time":
+            from pyresonitelink.protoflux.time import InvertedRawDeltaTime
+            return await _create_and_wire(self.resolink, self.slot, InvertedRawDeltaTime, {}, debug=self.debug)
+
+        # TimeSpan factories
+        if node.func_name.startswith("time_span_from_"):
+            prop = "".join(w.capitalize() for w in node.func_name.split("_")[3:])
+            from pyresonitelink.protoflux.time import timespan as ts_mod
+            Class = getattr(ts_mod, f"TimeSpanFrom{prop}")
+            return await _create_and_wire(
+                self.resolink, self.slot, Class, {"Value": arg_comps[0].id},
+                debug=self.debug,
+            )
+
+        # Unix time conversion
+        if node.func_name == "from_unix_seconds":
+            from pyresonitelink.protoflux.time import FromUnixSeconds
+            return await _create_and_wire(
+                self.resolink, self.slot, FromUnixSeconds, {"Seconds": arg_comps[0].id},
+                debug=self.debug,
+            )
+        if node.func_name == "from_unix_milliseconds":
+            from pyresonitelink.protoflux.time import FromUnixMilliseconds
+            return await _create_and_wire(
+                self.resolink, self.slot, FromUnixMilliseconds, {"Milliseconds": arg_comps[0].id},
+                debug=self.debug,
+            )
+        if node.func_name == "to_unix_seconds":
+            from pyresonitelink.protoflux.time import ToUnixSeconds
+            return await _create_and_wire(
+                self.resolink, self.slot, ToUnixSeconds, {"DateTime": arg_comps[0].id},
+                debug=self.debug,
+            )
+        if node.func_name == "to_unix_milliseconds":
+            from pyresonitelink.protoflux.time import ToUnixMilliseconds
+            return await _create_and_wire(
+                self.resolink, self.slot, ToUnixMilliseconds, {"DateTime": arg_comps[0].id},
+                debug=self.debug,
             )
 
         # Typed math function
@@ -675,7 +840,7 @@ class _BuildContext:
             OpClass = _get_typed_class(subpath, prefix, res_type)
             return await _create_and_wire(
                 self.resolink, self.slot, OpClass,
-                _make_refs(param_names),
+                _make_refs(param_names), debug=self.debug,
             )
 
         raise TypeError(
@@ -1086,7 +1251,7 @@ async def _build_for_context(
         from pyresonitelink.protoflux.flow import For as ForClass
 
     for_node = ForClass(
-        count=count_comp.id,
+        count_=count_comp.id,
         reverse=reverse_comp.id if reverse_comp else None,
     )
     await for_node.add_to_slot(ctx.resolink, ctx.slot)
@@ -2013,13 +2178,14 @@ async def _build_flow_context(
 async def build_graph(
     graph: _graph.Graph,
     resolink: protocols.ResoniteLinkClient,
+    debug: bool = False,
 ) -> None:
     """Materialize the entire Graph as ProtoFlux components."""
 
     # Build spaces and their variables
     for space in graph._spaces:
         space_slot: workers.Slot = object.__getattribute__(space, "_slot")
-        ctx = _BuildContext(resolink, space_slot)
+        ctx = _BuildContext(resolink, space_slot, debug=debug)
         await _build_space(ctx, space)
 
     # Give the server a moment to settle after space building
@@ -2032,7 +2198,7 @@ async def build_graph(
     # Save contexts keyed by slot ID so bindings can reuse them.
     under_contexts: dict[str, _BuildContext] = {}
     for under_rec in graph._under_records:
-        ctx = _BuildContext(resolink, under_rec.slot)
+        ctx = _BuildContext(resolink, under_rec.slot, debug=debug)
         ctx.is_async = under_rec.is_async
         trigger = under_rec.trigger
         under_contexts[under_rec.slot.id] = ctx
