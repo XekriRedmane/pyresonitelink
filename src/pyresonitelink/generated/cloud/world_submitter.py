@@ -108,7 +108,7 @@ class WorldSubmitter(GeneratedComponent, IComponent, IWorldEventReceiver):
     @visual.setter
     def visual(self, target: str | Slot | None) -> None:
         """Set the _visual reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_visual")
         if isinstance(member, members.Reference):
             member.targetId = target_id

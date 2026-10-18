@@ -10,10 +10,11 @@ from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class MatcapMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class MatcapMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The MatcapMaterial component is used to make fake reflections on a surface using a matcap texture.
 
     Category: Assets/Materials/Unlit
@@ -80,7 +81,7 @@ class MatcapMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -101,7 +102,7 @@ class MatcapMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
     @matcap.setter
     def matcap(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Matcap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Matcap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -122,7 +123,7 @@ class MatcapMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorl
     @normal_map.setter
     def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id

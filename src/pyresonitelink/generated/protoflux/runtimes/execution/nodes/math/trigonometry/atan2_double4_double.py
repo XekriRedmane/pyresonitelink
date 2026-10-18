@@ -45,7 +45,7 @@ class Atan2_Double4_Double(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @y.setter
     def y(self, target: str | INodeValueOutput[primitives.Double4] | None) -> None:
         """Set the Y reference by target ID or INodeValueOutput[primitives.Double4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Y")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class Atan2_Double4_Double(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @x.setter
     def x(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the X reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("X")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -55,7 +55,7 @@ class ReferenceSpatialVariableCollector(GenericComponent[T], IComponent, IWorldE
     @reference_list.setter
     def reference_list(self, target: str | ISyncRefList[T] | None) -> None:
         """Set the ReferenceList reference by target ID or ISyncRefList[T] instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncRefList) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ReferenceList")
         if isinstance(member, members.Reference):
             member.targetId = target_id

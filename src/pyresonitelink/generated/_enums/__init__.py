@@ -14,6 +14,7 @@ from .angle_multiplier import AngleMultiplier
 from .anti_aliasing_method import AntiAliasingMethod
 from .asset_tool_replacement_mode import AssetToolReplacementMode
 from .audio_distance_space import AudioDistanceSpace
+from .audio_frame_count import AudioFrameCount
 from .audio_frame_size import AudioFrameSize
 from .audio_input_type import AudioInputType
 from .audio_load_mode import AudioLoadMode
@@ -50,6 +51,7 @@ from .compound_zero_handling import CompoundZeroHandling
 from .condition_mode import ConditionMode
 from .cone_emitter_direction import ConeEmitterDirection
 from .cookies_browser import CookiesBrowser
+from .corner import Corner
 from .credit_type import CreditType
 from .culling import Culling
 from .curvature_aspect_ratio_compensation import CurvatureAspectRatioCompensation
@@ -143,6 +145,7 @@ from .point import Point
 from .point_mode import PointMode
 from .point_projection import PointProjection
 from .position_type import PositionType
+from .preferred_video_resolution import PreferredVideoResolution
 from .preset import Preset
 from .progress_stage import ProgressStage
 from .public_setting import PublicSetting
@@ -179,6 +182,7 @@ from .sideways_movement_mode import SidewaysMovementMode
 from .size_fit import SizeFit
 from .skin_weight_mode import SkinWeightMode
 from .skinned_bounds import SkinnedBounds
+from .slider import Slider
 from .space import Space
 from .spatial_variable_blend_distance_mode import SpatialVariableBlendDistanceMode
 from .spatial_variable_distance_mode import SpatialVariableDistanceMode

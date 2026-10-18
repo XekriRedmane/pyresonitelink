@@ -8,10 +8,11 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.font import Font
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class FontChain(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class FontChain(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The FontChain component provides an easy way to use "Fallback" fonts for a main font, usually in the event that the main font does not contain certain Unicode characters. Any place where a StaticFont can be used, a FontChain can be used.
 
 The ``MainFont`` defines which font will be primarily used for the text. For any characters of a text that do not exist in the main font, all the ``FallbackFonts`` will be searched through, in order, to find a matching character. Only if all fallback fonts do not contain the character will a "true fallback" of a box will appear.
@@ -68,7 +69,7 @@ The ``MainFont`` defines which font will be primarily used for the text. For any
     @main_font.setter
     def main_font(self, target: str | IAssetProvider[Font] | None) -> None:
         """Set the MainFont reference by target ID or IAssetProvider[Font] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MainFont")
         if isinstance(member, members.Reference):
             member.targetId = target_id

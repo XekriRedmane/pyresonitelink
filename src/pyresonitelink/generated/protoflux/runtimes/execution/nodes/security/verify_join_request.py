@@ -47,7 +47,7 @@ The following is the exact warning inside this node:
     @verify.setter
     def verify(self, target: str | INodeOperation | None) -> None:
         """Set the Verify reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Verify")
         if isinstance(member, members.Reference):
             member.targetId = target_id

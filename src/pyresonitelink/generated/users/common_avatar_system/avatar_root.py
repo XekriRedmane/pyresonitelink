@@ -67,7 +67,7 @@ class AvatarRoot(GeneratedComponent, IAvatarObject, ITouchable, IWorldEventRecei
     @original_parent.setter
     def original_parent(self, target: str | Slot | None) -> None:
         """Set the _originalParent reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_originalParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id

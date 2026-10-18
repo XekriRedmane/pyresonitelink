@@ -52,7 +52,7 @@ To create this node, you need to specify a valid quantity type for its generic p
     @value.setter
     def value(self, target: str | INodeValueOutput[U] | None) -> None:
         """Set the Value reference by target ID or INodeValueOutput[U] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id

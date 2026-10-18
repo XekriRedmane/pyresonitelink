@@ -72,7 +72,7 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
     @drive_x.setter
     def drive_x(self, target: str | IField[T] | None) -> None:
         """Set the DriveX reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DriveX")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +93,7 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
     @drive_y.setter
     def drive_y(self, target: str | IField[T] | None) -> None:
         """Set the DriveY reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DriveY")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -114,7 +114,7 @@ class ValueSpatialVariablePartialDerivativeDriver(GenericComponent[T], IComponen
     @drive_z.setter
     def drive_z(self, target: str | IField[T] | None) -> None:
         """Set the DriveZ reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DriveZ")
         if isinstance(member, members.Reference):
             member.targetId = target_id

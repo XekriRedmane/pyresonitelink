@@ -69,7 +69,7 @@ It also doesn't give confirmation for clicking actions, which may be a bug.
     @anchor_point_snap.setter
     def anchor_point_snap(self, target: str | IPointSnappable | None) -> None:
         """Set the AnchorPointSnap reference by target ID or IPointSnappable instance."""
-        target_id: str | None = target.id if isinstance(target, IPointSnappable) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AnchorPointSnap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -128,7 +128,7 @@ It also doesn't give confirmation for clicking actions, which may be a bug.
     @template.setter
     def template(self, target: str | IAvatarAnchor | None) -> None:
         """Set the Template reference by target ID or IAvatarAnchor instance."""
-        target_id: str | None = target.id if isinstance(target, IAvatarAnchor) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Template")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -149,7 +149,7 @@ It also doesn't give confirmation for clicking actions, which may be a bug.
     @anchors_root.setter
     def anchors_root(self, target: str | Slot | None) -> None:
         """Set the AnchorsRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AnchorsRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id

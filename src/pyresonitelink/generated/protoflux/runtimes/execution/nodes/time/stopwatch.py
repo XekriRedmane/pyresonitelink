@@ -118,7 +118,7 @@ Sometimes, it may be desirable to obtain a TimeSpan type from this value. To do 
     @on_start.setter
     def on_start(self, target: str | INodeOperation | None) -> None:
         """Set the OnStart reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnStart")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -139,7 +139,7 @@ Sometimes, it may be desirable to obtain a TimeSpan type from this value. To do 
     @on_stop.setter
     def on_stop(self, target: str | INodeOperation | None) -> None:
         """Set the OnStop reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnStop")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -160,7 +160,7 @@ Sometimes, it may be desirable to obtain a TimeSpan type from this value. To do 
     @on_reset.setter
     def on_reset(self, target: str | INodeOperation | None) -> None:
         """Set the OnReset reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnReset")
         if isinstance(member, members.Reference):
             member.targetId = target_id

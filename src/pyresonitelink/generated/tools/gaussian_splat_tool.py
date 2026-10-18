@@ -1,5 +1,8 @@
 """Generated component: GaussianSplatTool."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,10 +10,12 @@ from pyresonitelink.generated._enums.operation_mode import OperationMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.interaction_handler import InteractionHandler
-from pyresonitelink.generated._types.box_interface import BoxInterface
-from pyresonitelink.generated._types.sphere_interface import SphereInterface
-from pyresonitelink.generated._types.cylinder_interface import CylinderInterface
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.interaction.handlers.interaction_handler import InteractionHandler
+    from pyresonitelink.generated.tools.tool_interfaces.gaussian_splat_tool.gaussian_splat_tool_box_interface import GaussianSplatToolBoxInterface as BoxInterface
+    from pyresonitelink.generated.tools.tool_interfaces.gaussian_splat_tool.gaussian_splat_tool_sphere_interface import GaussianSplatToolSphereInterface as SphereInterface
+    from pyresonitelink.generated.tools.tool_interfaces.gaussian_splat_tool.gaussian_splat_tool_cylinder_interface import GaussianSplatToolCylinderInterface as CylinderInterface
 from pyresonitelink.generated._types.itool import ITool
 from pyresonitelink.generated._types.imaterial_apply_policy import IMaterialApplyPolicy
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -97,7 +102,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
     @tip_reference.setter
     def tip_reference(self, target: str | Slot | None) -> None:
         """Set the TipReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TipReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -175,7 +180,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
     @override_active_tool.setter
     def override_active_tool(self, target: str | InteractionHandler | None) -> None:
         """Set the _overrideActiveTool reference by target ID or InteractionHandler instance."""
-        target_id: str | None = target.id if isinstance(target, InteractionHandler) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_overrideActiveTool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -235,7 +240,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
     @box_selection_template.setter
     def box_selection_template(self, target: str | BoxInterface | None) -> None:
         """Set the BoxSelectionTemplate reference by target ID or BoxInterface instance."""
-        target_id: str | None = target.id if isinstance(target, BoxInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("BoxSelectionTemplate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -256,7 +261,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
     @sphere_selection_template.setter
     def sphere_selection_template(self, target: str | SphereInterface | None) -> None:
         """Set the SphereSelectionTemplate reference by target ID or SphereInterface instance."""
-        target_id: str | None = target.id if isinstance(target, SphereInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SphereSelectionTemplate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -277,7 +282,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
     @cylinder_selection_template.setter
     def cylinder_selection_template(self, target: str | CylinderInterface | None) -> None:
         """Set the CylinderSelectionTemplate reference by target ID or CylinderInterface instance."""
-        target_id: str | None = target.id if isinstance(target, CylinderInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CylinderSelectionTemplate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -298,7 +303,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
     @active_box.setter
     def active_box(self, target: str | BoxInterface | None) -> None:
         """Set the _activeBox reference by target ID or BoxInterface instance."""
-        target_id: str | None = target.id if isinstance(target, BoxInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_activeBox")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -319,7 +324,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
     @active_sphere.setter
     def active_sphere(self, target: str | SphereInterface | None) -> None:
         """Set the _activeSphere reference by target ID or SphereInterface instance."""
-        target_id: str | None = target.id if isinstance(target, SphereInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_activeSphere")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -340,7 +345,7 @@ class GaussianSplatTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
     @active_cylinder.setter
     def active_cylinder(self, target: str | CylinderInterface | None) -> None:
         """Set the _activeCylinder reference by target ID or CylinderInterface instance."""
-        target_id: str | None = target.id if isinstance(target, CylinderInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_activeCylinder")
         if isinstance(member, members.Reference):
             member.targetId = target_id

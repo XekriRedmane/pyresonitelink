@@ -7,10 +7,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
+class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The Static Gaussian Splat component stores data for the Gaussian Splat asset itself.
 
     Category: Assets
@@ -63,7 +64,7 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "ClipWithBoundingBox", {"bounds": bounds}, debug,
+            resolink, "ClipWithBoundingBox", {"bounds": fields.FieldBoundingBox(value=bounds)}, debug,
         )
 
     async def clip_with_bounding_box_2(self, resolink: protocols.ResoniteLinkClient, bounds: primitives.BoundingBox, bounds_orientation: primitives.FloatQ, debug: bool = False) -> dict:
@@ -79,7 +80,7 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "ClipWithBoundingBox", {"bounds": bounds, "boundsOrientation": bounds_orientation}, debug,
+            resolink, "ClipWithBoundingBox", {"bounds": fields.FieldBoundingBox(value=bounds), "boundsOrientation": fields.FieldFloatQ(value=bounds_orientation)}, debug,
         )
 
     async def clip_with_sphere(self, resolink: protocols.ResoniteLinkClient, center_: primitives.Float3, radius: primitives.Float, debug: bool = False) -> dict:
@@ -95,7 +96,7 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "ClipWithSphere", {"center": center_, "radius": radius}, debug,
+            resolink, "ClipWithSphere", {"center": fields.FieldFloat3(value=center_), "radius": fields.FieldFloat(value=radius)}, debug,
         )
 
     async def clip_with_cylinder(self, resolink: protocols.ResoniteLinkClient, center_: primitives.Float3, radius: primitives.Float, height: primitives.Float, orientation: primitives.FloatQ, debug: bool = False) -> dict:
@@ -113,6 +114,6 @@ class StaticGaussianSplat(GeneratedComponent, IStaticAssetProvider, ICustomInspe
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "ClipWithCylinder", {"center": center_, "radius": radius, "height": height, "orientation": orientation}, debug,
+            resolink, "ClipWithCylinder", {"center": fields.FieldFloat3(value=center_), "radius": fields.FieldFloat(value=radius), "height": fields.FieldFloat(value=height), "orientation": fields.FieldFloatQ(value=orientation)}, debug,
         )
 

@@ -48,7 +48,7 @@ class HSV_ToColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
     @h.setter
     def h(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the H reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("H")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class HSV_ToColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
     @s.setter
     def s(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the S reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("S")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ class HSV_ToColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
     @v.setter
     def v(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the V reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("V")
         if isinstance(member, members.Reference):
             member.targetId = target_id

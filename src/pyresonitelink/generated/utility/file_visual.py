@@ -1,11 +1,16 @@
 """Generated component: FileVisual."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.file_metadata import FileMetadata
-from pyresonitelink.generated._types.text_renderer import TextRenderer
-from pyresonitelink.generated._types.pbs_dual_sided_metallic import PBS_DualSidedMetallic
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.data.file_metadata import FileMetadata
+    from pyresonitelink.generated.rendering.text_renderer import TextRenderer
+    from pyresonitelink.generated.assets.materials.pbs.pbs_dual_sided_metallic import PBS_DualSidedMetallic
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -58,7 +63,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
     @metadata_source.setter
     def metadata_source(self, target: str | FileMetadata | None) -> None:
         """Set the MetadataSource reference by target ID or FileMetadata instance."""
-        target_id: str | None = target.id if isinstance(target, FileMetadata) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MetadataSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -79,7 +84,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
     @type_label.setter
     def type_label(self, target: str | TextRenderer | None) -> None:
         """Set the TypeLabel reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TypeLabel")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +105,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
     @name_label.setter
     def name_label(self, target: str | TextRenderer | None) -> None:
         """Set the NameLabel reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NameLabel")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -121,7 +126,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
     @fill_material.setter
     def fill_material(self, target: str | PBS_DualSidedMetallic | None) -> None:
         """Set the FillMaterial reference by target ID or PBS_DualSidedMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_DualSidedMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FillMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -142,7 +147,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
     @outline_material.setter
     def outline_material(self, target: str | PBS_DualSidedMetallic | None) -> None:
         """Set the OutlineMaterial reference by target ID or PBS_DualSidedMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_DualSidedMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OutlineMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -163,7 +168,7 @@ class FileVisual(GeneratedComponent, IComponent, IWorldEventReceiver):
     @type_material.setter
     def type_material(self, target: str | PBS_DualSidedMetallic | None) -> None:
         """Set the TypeMaterial reference by target ID or PBS_DualSidedMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_DualSidedMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TypeMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id

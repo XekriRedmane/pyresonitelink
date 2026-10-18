@@ -12,10 +12,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWorldEventReceiver):
+class SimplexTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The SimplexTexture component is used to generate procedural noise to use in any material.
 
     Category: Assets/Procedural Textures

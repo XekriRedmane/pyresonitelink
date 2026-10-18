@@ -1,0 +1,11 @@
+{
+  "description": "The Users node gives a Collection of users in the current world session.",
+  "category": "",
+  "fields": {
+    "* ([[Type:IReadOnlyCollection|IReadOnlyCollection<User>]])": "A list of users in the current world session as a collection."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Users&action=raw"
+}

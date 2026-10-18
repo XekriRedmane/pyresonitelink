@@ -1,15 +1,20 @@
 """Generated component: LegacyCheckbox."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.legacy_ui_style import LegacyUIStyle
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.bevel_box_mesh import BevelBoxMesh
-from pyresonitelink.generated._types.legacy_horizontal_choice_bar import LegacyHorizontalChoiceBar
-from pyresonitelink.generated._types.pbs_rim_metallic import PBS_RimMetallic
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.visuals.legacy_ui_style import LegacyUIStyle
+    from pyresonitelink.generated.assets.procedural_meshes.bevel_box_mesh import BevelBoxMesh
+    from pyresonitelink.generated.ui.physical.legacy_horizontal_choice_bar import LegacyHorizontalChoiceBar
+    from pyresonitelink.generated.assets.materials.pbs.pbs_rim_metallic import PBS_RimMetallic
 from pyresonitelink.generated._types.icheckbox import ICheckbox
 from pyresonitelink.generated._types.itouchable import ITouchable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -104,7 +109,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @style.setter
     def style(self, target: str | LegacyUIStyle | None) -> None:
         """Set the Style reference by target ID or LegacyUIStyle instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyUIStyle) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Style")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -201,7 +206,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @drive_field.setter
     def drive_field(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the DriveField reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DriveField")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -298,7 +303,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @shell_mesh.setter
     def shell_mesh(self, target: str | BevelBoxMesh | None) -> None:
         """Set the _shellMesh reference by target ID or BevelBoxMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BevelBoxMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shellMesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -319,7 +324,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @check_mesh.setter
     def check_mesh(self, target: str | BevelBoxMesh | None) -> None:
         """Set the _checkMesh reference by target ID or BevelBoxMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BevelBoxMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_checkMesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -340,7 +345,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @title_bar.setter
     def title_bar(self, target: str | LegacyHorizontalChoiceBar | None) -> None:
         """Set the _titleBar reference by target ID or LegacyHorizontalChoiceBar instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyHorizontalChoiceBar) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_titleBar")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -361,7 +366,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @shell_size.setter
     def shell_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _shellSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shellSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -382,7 +387,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @shell_bevel.setter
     def shell_bevel(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _shellBevel reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shellBevel")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -403,7 +408,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @check_size.setter
     def check_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _checkSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_checkSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -424,7 +429,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @check_bevel.setter
     def check_bevel(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _checkBevel reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_checkBevel")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -445,7 +450,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @collider_size.setter
     def collider_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _colliderSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -466,7 +471,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @shell_material.setter
     def shell_material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _shellMaterial reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shellMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -487,7 +492,7 @@ class LegacyCheckbox(GeneratedComponent, ICheckbox, ITouchable, IWorldEventRecei
     @check_material.setter
     def check_material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _checkMaterial reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_checkMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id

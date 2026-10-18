@@ -1,5 +1,9 @@
 """Generated component: BreadcrumbManager."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
@@ -7,7 +11,9 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_field_list import SyncFieldList
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.breadcrumb_interface import BreadcrumbInterface
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.radiant_ui.navigation.breadcrumb_interface import BreadcrumbInterface
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -52,7 +58,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
     @path.setter
     def path(self, target: str | SyncFieldList[primitives.String] | None) -> None:
         """Set the Path reference by target ID or SyncFieldList[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncFieldList) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +79,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
     @ui_root.setter
     def ui_root(self, target: str | Slot | None) -> None:
         """Set the UI_Root reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UI_Root")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -94,7 +100,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
     @breadcrumb_template.setter
     def breadcrumb_template(self, target: str | BreadcrumbInterface | None) -> None:
         """Set the BreadcrumbTemplate reference by target ID or BreadcrumbInterface instance."""
-        target_id: str | None = target.id if isinstance(target, BreadcrumbInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("BreadcrumbTemplate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -115,7 +121,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
     @separator_template.setter
     def separator_template(self, target: str | Slot | None) -> None:
         """Set the SeparatorTemplate reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SeparatorTemplate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -125,7 +131,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
             )
 
-    async def set_depth(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, depth: primitives.Int, debug: bool = False) -> dict:
+    async def set_depth(self, resolink: protocols.ResoniteLinkClient, button: str | workers.Worker | GeneratedComponent, event_data: str | workers.Worker | GeneratedComponent, depth: primitives.Int, debug: bool = False) -> dict:
         """Takes a number beside a button that when pressed will set the depth of the path.
 
         Args:
@@ -139,7 +145,7 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "SetDepth", {"button": button, "eventData": event_data, "depth": depth}, debug,
+            resolink, "SetDepth", {"button": members.DataReference(targetID=button) if isinstance(button, str) else button, "eventData": members.DataReference(targetID=event_data) if isinstance(event_data, str) else event_data, "depth": fields.FieldInt(value=depth)}, debug,
         )
 
     async def set_depth_1(self, resolink: protocols.ResoniteLinkClient, depth: primitives.Int, debug: bool = False) -> dict:
@@ -154,6 +160,6 @@ class BreadcrumbManager(GeneratedComponent, ICustomInspector, IComponent, IWorld
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "SetDepth", {"depth": depth}, debug,
+            resolink, "SetDepth", {"depth": fields.FieldInt(value=depth)}, debug,
         )
 

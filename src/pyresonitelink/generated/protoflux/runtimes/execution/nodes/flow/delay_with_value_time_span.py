@@ -58,7 +58,7 @@ class DelayWithValueTimeSpan(GenericComponent[T], IAsyncNodeOperation, IExecutio
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -79,7 +79,7 @@ class DelayWithValueTimeSpan(GenericComponent[T], IAsyncNodeOperation, IExecutio
     @on_triggered.setter
     def on_triggered(self, target: str | INodeOperation | None) -> None:
         """Set the OnTriggered reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnTriggered")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +100,7 @@ class DelayWithValueTimeSpan(GenericComponent[T], IAsyncNodeOperation, IExecutio
     @value.setter
     def value(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the Value reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -134,7 +134,7 @@ class DelayWithValueTimeSpan(GenericComponent[T], IAsyncNodeOperation, IExecutio
     @duration.setter
     def duration(self, target: str | INodeValueOutput[str] | None) -> None:
         """Set the Duration reference by target ID or INodeValueOutput[str] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             member.targetId = target_id

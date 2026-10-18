@@ -48,7 +48,7 @@ class Mask_Float4(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
     @on_true.setter
     def on_true(self, target: str | INodeValueOutput[primitives.Float4] | None) -> None:
         """Set the OnTrue reference by target ID or INodeValueOutput[primitives.Float4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnTrue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class Mask_Float4(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
     @on_false.setter
     def on_false(self, target: str | INodeValueOutput[primitives.Float4] | None) -> None:
         """Set the OnFalse reference by target ID or INodeValueOutput[primitives.Float4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFalse")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ class Mask_Float4(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
     @mask.setter
     def mask(self, target: str | INodeValueOutput[primitives.Bool4] | None) -> None:
         """Set the Mask reference by target ID or INodeValueOutput[primitives.Bool4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Mask")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -52,7 +52,7 @@ class SetNormalizedPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNo
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +73,7 @@ class SetNormalizedPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNo
     @target.setter
     def target(self, target: str | INodeObjectOutput[IPlayable] | None) -> None:
         """Set the Target reference by target ID or INodeObjectOutput[IPlayable] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -95,7 +95,7 @@ Note this is the normalized position, so the valid range is 0 - 1."""
     @normalized_position.setter
     def normalized_position(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the NormalizedPosition reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalizedPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id

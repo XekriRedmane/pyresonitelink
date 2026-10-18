@@ -1,0 +1,12 @@
+{
+  "description": "The Chars To Strings node takes in a Collection of Chars and converts it into a string.",
+  "category": "",
+  "fields": {
+    "Values": "The list of characters to form into a string.",
+    "* ([[Type:String|String]])": "The resulting string from the collection."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:CharsToString&action=raw"
+}

@@ -7,10 +7,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class SineWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class SineWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The SineWaveClip component is an audio clip that can be used to get a whistling like tone with a frequency and loudness.
 
     Category: Assets/Procedural Audio Clips

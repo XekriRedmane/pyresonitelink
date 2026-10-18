@@ -48,7 +48,7 @@ class InverseLerp_ColorX(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @from_.setter
     def from_(self, target: str | INodeValueOutput[primitives.ColorX] | None) -> None:
         """Set the From reference by target ID or INodeValueOutput[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("From")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class InverseLerp_ColorX(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @to.setter
     def to(self, target: str | INodeValueOutput[primitives.ColorX] | None) -> None:
         """Set the To reference by target ID or INodeValueOutput[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("To")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ class InverseLerp_ColorX(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @value.setter
     def value(self, target: str | INodeValueOutput[primitives.ColorX] | None) -> None:
         """Set the Value reference by target ID or INodeValueOutput[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id

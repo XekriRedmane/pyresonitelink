@@ -105,7 +105,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
     @rtexture.setter
     def rtexture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the RTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -184,7 +184,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
     @gtexture.setter
     def gtexture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the GTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("GTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -263,7 +263,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
     @btexture.setter
     def btexture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the BTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("BTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -342,7 +342,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
     @atexture.setter
     def atexture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the ATexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ATexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -492,7 +492,7 @@ class TexturePackingWizard(GeneratedComponent, IDeveloperInterface, ICustomInspe
     @output_texture.setter
     def output_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OutputTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OutputTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id

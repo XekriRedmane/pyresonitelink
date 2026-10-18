@@ -1,13 +1,18 @@
 """Generated component: LegacyHorizontalChoiceBar."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.legacy_ui_style import LegacyUIStyle
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.visuals.legacy_ui_style import LegacyUIStyle
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -76,7 +81,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
     @style.setter
     def style(self, target: str | LegacyUIStyle | None) -> None:
         """Set the Style reference by target ID or LegacyUIStyle instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyUIStyle) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Style")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -262,7 +267,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
     @root.setter
     def root(self, target: str | Slot | None) -> None:
         """Set the _root reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_root")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -283,7 +288,7 @@ class LegacyHorizontalChoiceBar(GeneratedComponent, IComponent, IWorldEventRecei
     @root_scale.setter
     def root_scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _rootScale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rootScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -1,11 +1,16 @@
 """Generated component: VirtualKeyTextDrive."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.virtual_key import VirtualKey
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.userspace.virtual_keyboard.virtual_key import VirtualKey
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -43,7 +48,7 @@ class VirtualKeyTextDrive(GeneratedComponent, IComponent, IWorldEventReceiver):
     @key.setter
     def key(self, target: str | VirtualKey | None) -> None:
         """Set the Key reference by target ID or VirtualKey instance."""
-        target_id: str | None = target.id if isinstance(target, VirtualKey) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Key")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -64,7 +69,7 @@ class VirtualKeyTextDrive(GeneratedComponent, IComponent, IWorldEventReceiver):
     @text.setter
     def text(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Text reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             member.targetId = target_id

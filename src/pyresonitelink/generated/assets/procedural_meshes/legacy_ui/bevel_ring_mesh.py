@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class BevelRingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class BevelRingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """Bevel Ring Mesh is a component that can create an circle or part of a circle in the form of a 3D strip that can have beveled edges. The geometry made by this component can be viewed by inserting the component into a MeshRenderer.
 
     Category: Assets/Procedural Meshes/Legacy UI

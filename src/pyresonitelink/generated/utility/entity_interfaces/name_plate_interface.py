@@ -73,7 +73,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
     @item_name.setter
     def item_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -94,7 +94,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
     @spawning_user.setter
     def spawning_user(self, target: str | UserRef | None) -> None:
         """Set the SpawningUser reference by target ID or UserRef instance."""
-        target_id: str | None = target.id if isinstance(target, UserRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -115,7 +115,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
     @spawning_user_id.setter
     def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -155,7 +155,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
     @username.setter
     def username(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Username reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Username")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -176,7 +176,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
     @user_id.setter
     def user_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the UserID reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UserID")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -197,7 +197,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
     @icon_url.setter
     def icon_url(self, target: str | IField[str] | None) -> None:
         """Set the IconURL reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IconURL")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -218,7 +218,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
     @target_user.setter
     def target_user(self, target: str | SyncRef[User] | None) -> None:
         """Set the TargetUser reference by target ID or SyncRef[User] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -239,7 +239,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
     @target_user_ref.setter
     def target_user_ref(self, target: str | UserRef | None) -> None:
         """Set the TargetUserRef reference by target ID or UserRef instance."""
-        target_id: str | None = target.id if isinstance(target, UserRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetUserRef")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -260,7 +260,7 @@ class NamePlateInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRec
     @voice_stream.setter
     def voice_stream(self, target: str | SyncRef[IWorldAudioDataSource] | None) -> None:
         """Set the VoiceStream reference by target ID or SyncRef[IWorldAudioDataSource] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("VoiceStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id

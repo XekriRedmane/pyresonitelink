@@ -1,5 +1,8 @@
 """Generated component: AvatarObjectSlot."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,7 +10,9 @@ from pyresonitelink.generated._enums.body_node import BodyNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iavatar_object import IAvatarObject
-from pyresonitelink.generated._types.avatar_pose_smooth_lerp import AvatarPoseSmoothLerp
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.pose_filters.avatar_pose_smooth_lerp import AvatarPoseSmoothLerp
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -90,7 +95,7 @@ Avatar Object slot is a component that is used to move and drive certain parts o
     @equipped.setter
     def equipped(self, target: str | IAvatarObject | None) -> None:
         """Set the Equipped reference by target ID or IAvatarObject instance."""
-        target_id: str | None = target.id if isinstance(target, IAvatarObject) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Equipped")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -258,7 +263,7 @@ Avatar Object slot is a component that is used to move and drive certain parts o
     @auto_smoothing.setter
     def auto_smoothing(self, target: str | AvatarPoseSmoothLerp | None) -> None:
         """Set the _autoSmoothing reference by target ID or AvatarPoseSmoothLerp instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarPoseSmoothLerp) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_autoSmoothing")
         if isinstance(member, members.Reference):
             member.targetId = target_id

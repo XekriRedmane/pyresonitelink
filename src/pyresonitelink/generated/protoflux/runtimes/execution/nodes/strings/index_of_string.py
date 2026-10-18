@@ -58,7 +58,7 @@ The output is at where it starts.
     @str_.setter
     def str_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Str reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -79,7 +79,7 @@ The output is at where it starts.
     @part.setter
     def part(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Part reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Part")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +100,7 @@ The output is at where it starts.
     @start_index.setter
     def start_index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the StartIndex reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("StartIndex")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -121,7 +121,7 @@ The output is at where it starts.
     @search_from_end.setter
     def search_from_end(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the SearchFromEnd reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SearchFromEnd")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -142,7 +142,7 @@ The output is at where it starts.
     @comparison_mode.setter
     def comparison_mode(self, target: str | INodeValueOutput[StringComparison] | None) -> None:
         """Set the ComparisonMode reference by target ID or INodeValueOutput[StringComparison] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ComparisonMode")
         if isinstance(member, members.Reference):
             member.targetId = target_id

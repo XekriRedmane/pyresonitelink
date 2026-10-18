@@ -57,7 +57,7 @@ If ``DoNotRestoreOriginalTransform`` is enabled, it will parent the slot back wh
     @target_slot.setter
     def target_slot(self, target: str | Slot | None) -> None:
         """Set the TargetSlot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetSlot")
         if isinstance(member, members.Reference):
             member.targetId = target_id

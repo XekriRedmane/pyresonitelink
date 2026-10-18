@@ -39,7 +39,7 @@ class SpatialVariableBlendDriver(GeneratedComponent, IComponent, IWorldEventRece
     @blend_weight.setter
     def blend_weight(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the BlendWeight reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("BlendWeight")
         if isinstance(member, members.Reference):
             member.targetId = target_id

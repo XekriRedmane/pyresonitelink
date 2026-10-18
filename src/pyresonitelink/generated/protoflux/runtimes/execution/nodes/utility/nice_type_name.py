@@ -49,7 +49,7 @@ class NiceTypeName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
     @type_.setter
     def type_(self, target: str | INodeObjectOutput[Type] | None) -> None:
         """Set the Type reference by target ID or INodeObjectOutput[Type] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Type")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -70,7 +70,7 @@ class NiceTypeName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
     @open_symbol.setter
     def open_symbol(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the OpenSymbol reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OpenSymbol")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -91,7 +91,7 @@ class NiceTypeName(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
     @close_symbol.setter
     def close_symbol(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the CloseSymbol reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CloseSymbol")
         if isinstance(member, members.Reference):
             member.targetId = target_id

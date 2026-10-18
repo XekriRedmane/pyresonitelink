@@ -51,7 +51,7 @@ class TrajectoryPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @initial_velocity.setter
     def initial_velocity(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the InitialVelocity reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("InitialVelocity")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +72,7 @@ class TrajectoryPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @gravity.setter
     def gravity(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Gravity reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Gravity")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +93,7 @@ class TrajectoryPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @drag.setter
     def drag(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Drag reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Drag")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -114,7 +114,7 @@ class TrajectoryPosition(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @time.setter
     def time(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Time reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             member.targetId = target_id

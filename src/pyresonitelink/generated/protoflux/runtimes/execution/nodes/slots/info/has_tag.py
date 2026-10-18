@@ -47,7 +47,7 @@ class HasTag(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICusto
     @instance.setter
     def instance(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Instance reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -68,7 +68,7 @@ class HasTag(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICusto
     @tag.setter
     def tag(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Tag reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Tag")
         if isinstance(member, members.Reference):
             member.targetId = target_id

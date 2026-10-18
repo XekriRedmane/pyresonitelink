@@ -79,7 +79,7 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
     @pos_x.setter
     def pos_x(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the PosX reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PosX")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +100,7 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
     @neg_x.setter
     def neg_x(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the NegX reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NegX")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -121,7 +121,7 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
     @pos_y.setter
     def pos_y(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the PosY reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PosY")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -142,7 +142,7 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
     @neg_y.setter
     def neg_y(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the NegY reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NegY")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -163,7 +163,7 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
     @pos_z.setter
     def pos_z(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the PosZ reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PosZ")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -184,7 +184,7 @@ class CubemapCreator(GeneratedComponent, ICustomInspector, IDeveloperInterface, 
     @neg_z.setter
     def neg_z(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the NegZ reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NegZ")
         if isinstance(member, members.Reference):
             member.targetId = target_id

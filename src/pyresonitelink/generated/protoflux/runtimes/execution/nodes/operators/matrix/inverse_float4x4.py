@@ -42,7 +42,7 @@ class Inverse_Float4x4(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
     @a.setter
     def a(self, target: str | INodeValueOutput[primitives.Float4x4] | None) -> None:
         """Set the A reference by target ID or INodeValueOutput[primitives.Float4x4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             member.targetId = target_id

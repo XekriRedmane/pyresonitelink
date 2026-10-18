@@ -1,10 +1,15 @@
 """Generated component: GrabberBodyNode."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.grabber import Grabber
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.grabber import Grabber
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -43,7 +48,7 @@ class GrabberBodyNode(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @grabber.setter
     def grabber(self, target: str | INodeObjectOutput[Grabber] | None) -> None:
         """Set the Grabber reference by target ID or INodeObjectOutput[Grabber] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Grabber")
         if isinstance(member, members.Reference):
             member.targetId = target_id

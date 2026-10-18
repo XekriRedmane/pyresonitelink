@@ -55,7 +55,7 @@ class ValueWrite(GenericComponent[T]):
     @on_written.setter
     def on_written(self, target: str | INodeOperation | None) -> None:
         """Set the OnWritten reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnWritten")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -76,7 +76,7 @@ class ValueWrite(GenericComponent[T]):
     @on_fail.setter
     def on_fail(self, target: str | INodeOperation | None) -> None:
         """Set the OnFail reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFail")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -97,7 +97,7 @@ class ValueWrite(GenericComponent[T]):
     @variable.setter
     def variable(self, target: str | IVariable | None) -> None:
         """Set the Variable reference by target ID or IVariable instance."""
-        target_id: str | None = target.id if isinstance(target, IVariable) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Variable")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -118,7 +118,7 @@ class ValueWrite(GenericComponent[T]):
     @value.setter
     def value(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the Value reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id

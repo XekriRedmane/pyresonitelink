@@ -1,11 +1,16 @@
 """Generated component: Facet."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.canvas import Canvas
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.canvas import Canvas
 from pyresonitelink.generated._types.igrab_event_receiver import IGrabEventReceiver
 from pyresonitelink.generated._types.iitem_metadata_source import IItemMetadataSource
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -201,7 +206,7 @@ When being placed into a spot, this facet finds the closest one of ``PreferredSi
     @canvas.setter
     def canvas(self, target: str | Canvas | None) -> None:
         """Set the Canvas reference by target ID or Canvas instance."""
-        target_id: str | None = target.id if isinstance(target, Canvas) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Canvas")
         if isinstance(member, members.Reference):
             member.targetId = target_id

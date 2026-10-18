@@ -1,13 +1,18 @@
 """Generated component: SetUserScale."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.user_root import UserRoot
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
 from pyresonitelink.generated._types.inode_operation import INodeOperation
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.user_root import UserRoot
 from pyresonitelink.generated._types.iasync_node_operation import IAsyncNodeOperation
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -58,7 +63,7 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @user_root.setter
     def user_root(self, target: str | INodeObjectOutput[UserRoot] | None) -> None:
         """Set the UserRoot reference by target ID or INodeObjectOutput[UserRoot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UserRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -79,7 +84,7 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @scale.setter
     def scale(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Scale reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +105,7 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @animation_time.setter
     def animation_time(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the AnimationTime reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AnimationTime")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -121,7 +126,7 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @on_scale_change_start.setter
     def on_scale_change_start(self, target: str | INodeOperation | None) -> None:
         """Set the OnScaleChangeStart reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnScaleChangeStart")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -142,7 +147,7 @@ class SetUserScale(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @on_animation_finished.setter
     def on_animation_finished(self, target: str | INodeOperation | None) -> None:
         """Set the OnAnimationFinished reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnAnimationFinished")
         if isinstance(member, members.Reference):
             member.targetId = target_id

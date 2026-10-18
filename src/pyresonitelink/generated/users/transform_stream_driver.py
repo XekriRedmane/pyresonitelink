@@ -79,7 +79,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
     @position_stream.setter
     def position_stream(self, target: str | ValueStream[primitives.Float3] | None) -> None:
         """Set the PositionStream reference by target ID or ValueStream[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PositionStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +100,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
     @rotation_stream.setter
     def rotation_stream(self, target: str | ValueStream[primitives.FloatQ] | None) -> None:
         """Set the RotationStream reference by target ID or ValueStream[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RotationStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -121,7 +121,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
     @scale_stream.setter
     def scale_stream(self, target: str | ValueStream[primitives.Float3] | None) -> None:
         """Set the ScaleStream reference by target ID or ValueStream[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ScaleStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -142,7 +142,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
     @root_space_stream.setter
     def root_space_stream(self, target: str | ReferenceStream[Slot] | None) -> None:
         """Set the RootSpaceStream reference by target ID or ReferenceStream[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, ReferenceStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RootSpaceStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -163,7 +163,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
     @position.setter
     def position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the Position reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -184,7 +184,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
     @rotation.setter
     def rotation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the Rotation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Rotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -205,7 +205,7 @@ class TransformStreamDriver(GeneratedComponent, IComponent, IWorldEventReceiver)
     @scale.setter
     def scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the Scale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
             member.targetId = target_id

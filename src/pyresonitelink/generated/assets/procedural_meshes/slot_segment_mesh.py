@@ -10,10 +10,11 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class SlotSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class SlotSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The SlotSegmentMesh component generates mesh data of a line between ``PointA`` and ``PointB``. This is to be used with a MeshRenderer.
 
     Category: Assets/Procedural Meshes
@@ -160,7 +161,7 @@ class SlotSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
     @point_a.setter
     def point_a(self, target: str | Slot | None) -> None:
         """Set the PointA reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PointA")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -181,7 +182,7 @@ class SlotSegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
     @point_b.setter
     def point_b(self, target: str | Slot | None) -> None:
         """Set the PointB reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PointB")
         if isinstance(member, members.Reference):
             member.targetId = target_id

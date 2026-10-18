@@ -4,8 +4,8 @@ from enum import StrEnum
 
 
 class Mode(StrEnum):
-    """Enum: [FrooxEngine]FrooxEngine.CommonAvatar.AvatarUserReferenceAssigner+Mode."""
+    """Enum: [FrooxEngine]FrooxEngine.Undo.SpawnOrDestroy+Mode."""
 
-    whitelist = "Whitelist"
-    autoscan_with_blacklist = "AutoscanWithBlacklist"
+    spawn = "Spawn"
+    destroy = "Destroy"
 

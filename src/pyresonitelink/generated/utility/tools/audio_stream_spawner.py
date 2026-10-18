@@ -1,6 +1,7 @@
 """Generated component: AudioStreamSpawner."""
 
 from pyresonitelink.data import fields
+from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
@@ -91,7 +92,7 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
                 "_bitrateString", fields.FieldString(value=value)
             )
 
-    async def on_start_streaming(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
+    async def on_start_streaming(self, resolink: protocols.ResoniteLinkClient, button: str | workers.Worker | GeneratedComponent, event_data: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Triggered by a button in order to spawn the stream in the world.
 
         Args:
@@ -104,6 +105,6 @@ class AudioStreamSpawner(GeneratedComponent, IButtonPressReceiver, IWorldEventRe
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "OnStartStreaming", {"button": button, "eventData": event_data}, debug,
+            resolink, "OnStartStreaming", {"button": members.DataReference(targetID=button) if isinstance(button, str) else button, "eventData": members.DataReference(targetID=event_data) if isinstance(event_data, str) else event_data}, debug,
         )
 

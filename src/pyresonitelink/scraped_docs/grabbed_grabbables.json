@@ -1,0 +1,12 @@
+{
+  "description": "The Grabbed Grabbables node takes in a Grabber, and returns a Collection of grabbed Slots.",
+  "category": "",
+  "fields": {
+    "* ([[Type:Grabber|Grabber]])": "The grabber reference.",
+    "* ([[IReadOnlyList|IReadOnlyList<IGrabbable>]])": "The collection of grabbed slots from the grabber."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:GrabbedGrabbables&action=raw"
+}

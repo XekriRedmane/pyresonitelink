@@ -51,7 +51,7 @@ class Parse_Double4(GeneratedComponent, IExecutionNode, INode, ICustomInspector,
     @str_.setter
     def str_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Str reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +72,7 @@ class Parse_Double4(GeneratedComponent, IExecutionNode, INode, ICustomInspector,
     @number_style.setter
     def number_style(self, target: str | INodeValueOutput[NumberStyles] | None) -> None:
         """Set the NumberStyle reference by target ID or INodeValueOutput[NumberStyles] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NumberStyle")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +93,7 @@ class Parse_Double4(GeneratedComponent, IExecutionNode, INode, ICustomInspector,
     @format_provider.setter
     def format_provider(self, target: str | INodeObjectOutput[IFormatProvider] | None) -> None:
         """Set the FormatProvider reference by target ID or INodeObjectOutput[IFormatProvider] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FormatProvider")
         if isinstance(member, members.Reference):
             member.targetId = target_id

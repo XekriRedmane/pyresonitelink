@@ -23,7 +23,7 @@ class DebugVector(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging.DebugVector"
 
-    def __init__(self, next: str | INodeOperation | None = None, position: str | INodeValueOutput[primitives.Float3] | None = None, vector: str | INodeValueOutput[primitives.Float3] | None = None, color: str | INodeValueOutput[primitives.ColorX] | None = None, radius_ratio: str | INodeValueOutput[primitives.Float] | None = None, duration: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, position: str | INodeValueOutput[primitives.Float3] | None = None, vector: str | INodeValueOutput[primitives.Float3] | None = None, color: str | INodeValueOutput[primitives.ColorX] | None = None, radius_ratio: str | INodeValueOutput[primitives.Float] | None = None, duration: str | INodeValueOutput[primitives.Float] | None = None, local: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,6 +33,7 @@ class DebugVector(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
             color: Initial value for Color.
             radius_ratio: Initial value for RadiusRatio.
             duration: Initial value for Duration.
+            local: Initial value for Local.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -48,6 +49,8 @@ class DebugVector(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
             self.radius_ratio = radius_ratio
         if duration is not None:
             self.duration = duration
+        if local is not None:
+            self.local = local
 
     @property
     def next(self) -> str | None:
@@ -173,5 +176,26 @@ class DebugVector(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
             self.set_member(
                 "Duration",
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<float>'),
+            )
+
+    @property
+    def local(self) -> str | None:
+        """Target ID of the Local reference (targets INodeValueOutput[primitives.Bool])."""
+        member = self.get_member("Local")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @local.setter
+    def local(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the Local reference by target ID or INodeValueOutput[primitives.Bool] instance."""
+        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        member = self.get_member("Local")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Local",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<bool>'),
             )
 

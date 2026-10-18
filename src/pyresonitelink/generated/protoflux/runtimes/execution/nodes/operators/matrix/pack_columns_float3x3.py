@@ -48,7 +48,7 @@ class PackColumns_Float3x3(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @column0.setter
     def column0(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Column0 reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Column0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class PackColumns_Float3x3(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @column1.setter
     def column1(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Column1 reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Column1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ class PackColumns_Float3x3(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @column2.setter
     def column2(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Column2 reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Column2")
         if isinstance(member, members.Reference):
             member.targetId = target_id

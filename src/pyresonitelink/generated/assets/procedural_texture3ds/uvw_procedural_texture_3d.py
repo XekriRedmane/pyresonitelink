@@ -11,10 +11,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_provider import ITextureProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspector, IWorldEventReceiver):
+class UVW_ProceduralTexture3D(GeneratedComponent, ITextureProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """Wrapper for [FrooxEngine]FrooxEngine.UVW_ProceduralTexture3D.
 
     Category: Assets/Procedural Texture3Ds

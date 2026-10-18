@@ -47,7 +47,7 @@ class SampleTexture3D_UVW(GeneratedComponent, INodeValueOutput, IExecutionNode, 
     @texture.setter
     def texture(self, target: str | INodeObjectOutput[Texture3D] | None) -> None:
         """Set the Texture reference by target ID or INodeObjectOutput[Texture3D] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -68,7 +68,7 @@ class SampleTexture3D_UVW(GeneratedComponent, INodeValueOutput, IExecutionNode, 
     @uvw.setter
     def uvw(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the UVW reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UVW")
         if isinstance(member, members.Reference):
             member.targetId = target_id

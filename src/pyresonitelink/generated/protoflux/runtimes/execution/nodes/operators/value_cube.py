@@ -47,7 +47,7 @@ class ValueCube(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INo
     @n.setter
     def n(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the N reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("N")
         if isinstance(member, members.Reference):
             member.targetId = target_id

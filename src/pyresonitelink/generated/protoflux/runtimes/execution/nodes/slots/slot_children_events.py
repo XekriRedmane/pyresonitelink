@@ -54,7 +54,7 @@ class SlotChildrenEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspe
     @instance.setter
     def instance(self, target: str | IGlobalValueProxy[Slot] | None) -> None:
         """Set the Instance reference by target ID or IGlobalValueProxy[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -85,7 +85,7 @@ Note: unlike fire on true/false/change it does not care if it is under a users a
     @on_user.setter
     def on_user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the OnUser reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -106,7 +106,7 @@ Note: unlike fire on true/false/change it does not care if it is under a users a
     @on_child_added.setter
     def on_child_added(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnChildAdded reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnChildAdded")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -127,7 +127,7 @@ Note: unlike fire on true/false/change it does not care if it is under a users a
     @on_child_removed.setter
     def on_child_removed(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnChildRemoved reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnChildRemoved")
         if isinstance(member, members.Reference):
             member.targetId = target_id

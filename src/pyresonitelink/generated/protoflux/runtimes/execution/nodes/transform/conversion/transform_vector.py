@@ -50,7 +50,7 @@ class TransformVector(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @from_space.setter
     def from_space(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the FromSpace reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FromSpace")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ class TransformVector(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @to_space.setter
     def to_space(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the ToSpace reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ToSpace")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -92,7 +92,7 @@ class TransformVector(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @source_vector.setter
     def source_vector(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the SourceVector reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SourceVector")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -5,8 +5,8 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.iglobal_value_proxy import IGlobalValueProxy
 from pyresonitelink.generated._types.ivalue import IValue
-from pyresonitelink.generated._types.ivariable import IVariable
 from pyresonitelink.generated._types.isource import ISource
+from pyresonitelink.generated._types.ivariable import IVariable
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iobject_root import IObjectRoot
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class ValueSource(GenericComponent[T], IVariable, ISource, INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
+class ValueSource(GenericComponent[T], ISource, IVariable, INodeValueOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """HTML Visual unavailable due to wiki limitations
 
 thumb|right|alt=Six source nodes of type string, string, bool, float3, floatQ, and int all outputting to display nodes.|Source nodes for the base fields of an empty slot being outputted to display nodes.
@@ -57,7 +57,7 @@ To access the underlying value that any arbitrary IValue contains, one can spawn
     @source.setter
     def source(self, target: str | IGlobalValueProxy[IValue[T]] | None) -> None:
         """Set the Source reference by target ID or IGlobalValueProxy[IValue[T]] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id

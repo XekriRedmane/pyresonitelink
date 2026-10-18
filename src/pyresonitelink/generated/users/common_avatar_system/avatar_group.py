@@ -42,7 +42,7 @@ AvatarGroup is a component commonly found on the root of an avatar. It mostly co
     @original_parent.setter
     def original_parent(self, target: str | Slot | None) -> None:
         """Set the OriginalParent reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OriginalParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -1,5 +1,8 @@
 """Generated component: DevTool."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -9,9 +12,11 @@ from pyresonitelink.generated._enums.interaction import Interaction
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.interaction_handler import InteractionHandler
-from pyresonitelink.generated._types.point_anchor import PointAnchor
-from pyresonitelink.generated._types.overlay_fresnel_material import OverlayFresnelMaterial
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.interaction.handlers.interaction_handler import InteractionHandler
+    from pyresonitelink.generated.hidden.point_anchor import PointAnchor
+    from pyresonitelink.generated.assets.materials.unlit.overlay_fresnel_material import OverlayFresnelMaterial
 from pyresonitelink.generated._types.itool import ITool
 from pyresonitelink.generated._types.imaterial_apply_policy import IMaterialApplyPolicy
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -98,7 +103,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
     @tip_reference.setter
     def tip_reference(self, target: str | Slot | None) -> None:
         """Set the TipReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TipReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -176,7 +181,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
     @override_active_tool.setter
     def override_active_tool(self, target: str | InteractionHandler | None) -> None:
         """Set the _overrideActiveTool reference by target ID or InteractionHandler instance."""
-        target_id: str | None = target.id if isinstance(target, InteractionHandler) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_overrideActiveTool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -256,7 +261,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
     @selected_anchor.setter
     def selected_anchor(self, target: str | PointAnchor | None) -> None:
         """Set the _selectedAnchor reference by target ID or PointAnchor instance."""
-        target_id: str | None = target.id if isinstance(target, PointAnchor) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_selectedAnchor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -277,7 +282,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
     @selected_anchor_highlight.setter
     def selected_anchor_highlight(self, target: str | Slot | None) -> None:
         """Set the _selectedAnchorHighlight reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_selectedAnchorHighlight")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -298,7 +303,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
     @material.setter
     def material(self, target: str | OverlayFresnelMaterial | None) -> None:
         """Set the _material reference by target ID or OverlayFresnelMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, OverlayFresnelMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -319,7 +324,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
     @current_gizmo.setter
     def current_gizmo(self, target: str | Slot | None) -> None:
         """Set the _currentGizmo reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_currentGizmo")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -340,7 +345,7 @@ class DevTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IItem
     @previous_gizmo.setter
     def previous_gizmo(self, target: str | Slot | None) -> None:
         """Set the _previousGizmo reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_previousGizmo")
         if isinstance(member, members.Reference):
             member.targetId = target_id

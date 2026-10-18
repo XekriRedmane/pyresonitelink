@@ -304,7 +304,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @main_texture.setter
     def main_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the MainTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MainTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -499,7 +499,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @normal_map.setter
     def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -634,7 +634,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @metallic_gloss_map.setter
     def metallic_gloss_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the MetallicGlossMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MetallicGlossMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -693,7 +693,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @emission_map.setter
     def emission_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissionMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissionMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -942,7 +942,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @matcap.setter
     def matcap(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Matcap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Matcap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -982,7 +982,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @occlusion_map.setter
     def occlusion_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OcclusionMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OcclusionMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1137,7 +1137,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @outline_mask.setter
     def outline_mask(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OutlineMask reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OutlineMask")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1158,7 +1158,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @shadow_ramp.setter
     def shadow_ramp(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the ShadowRamp reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ShadowRamp")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1179,7 +1179,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @shadow_ramp_mask.setter
     def shadow_ramp_mask(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the ShadowRampMask reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ShadowRampMask")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1352,7 +1352,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @thickness_map.setter
     def thickness_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the ThicknessMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ThicknessMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1717,7 +1717,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @regular.setter
     def regular(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _regular reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_regular")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1738,7 +1738,7 @@ It was written for the predecessor to Resonite, however as stated on the page mo
     @outline_ref.setter
     def outline_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _outline reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_outline")
         if isinstance(member, members.Reference):
             member.targetId = target_id

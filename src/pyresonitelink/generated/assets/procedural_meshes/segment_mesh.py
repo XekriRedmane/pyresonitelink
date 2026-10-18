@@ -11,10 +11,11 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class SegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class SegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The SegmentMesh component is an evolved form of SlotSegmentMesh the behavior is identical, except when not provided slots it will use local coordinate points instead.
 
     Category: Assets/Procedural Meshes
@@ -208,7 +209,7 @@ class SegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
     @slot_a.setter
     def slot_a(self, target: str | Slot | None) -> None:
         """Set the SlotA reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SlotA")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -229,7 +230,7 @@ class SegmentMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEv
     @slot_b.setter
     def slot_b(self, target: str | Slot | None) -> None:
         """Set the SlotB reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SlotB")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -1,15 +1,20 @@
 """Generated component: ScaleObjectCreator."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.scale_object_manager import ScaleObjectManager
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.quantity_text_editor_parser import QuantityTextEditorParser
 from pyresonitelink.generated._types.distance import Distance
-from pyresonitelink.generated._types.fresnel_material import FresnelMaterial
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.transform.scaling.scale_object_manager import ScaleObjectManager
+    from pyresonitelink.generated.common_ui.editors.quantity_text_editor_parser import QuantityTextEditorParser
+    from pyresonitelink.generated.assets.materials.unlit.fresnel_material import FresnelMaterial
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -59,7 +64,7 @@ class ScaleObjectCreator(GeneratedComponent, IComponent, IWorldEventReceiver):
     @manager.setter
     def manager(self, target: str | ScaleObjectManager | None) -> None:
         """Set the Manager reference by target ID or ScaleObjectManager instance."""
-        target_id: str | None = target.id if isinstance(target, ScaleObjectManager) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Manager")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -80,7 +85,7 @@ class ScaleObjectCreator(GeneratedComponent, IComponent, IWorldEventReceiver):
     @template.setter
     def template(self, target: str | Slot | None) -> None:
         """Set the Template reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Template")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -101,7 +106,7 @@ class ScaleObjectCreator(GeneratedComponent, IComponent, IWorldEventReceiver):
     @template_name_field.setter
     def template_name_field(self, target: str | IField[primitives.String] | None) -> None:
         """Set the TemplateNameField reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TemplateNameField")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -122,7 +127,7 @@ class ScaleObjectCreator(GeneratedComponent, IComponent, IWorldEventReceiver):
     @template_size_field.setter
     def template_size_field(self, target: str | IField[primitives.Double] | None) -> None:
         """Set the TemplateSizeField reference by target ID or IField[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TemplateSizeField")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -143,7 +148,7 @@ class ScaleObjectCreator(GeneratedComponent, IComponent, IWorldEventReceiver):
     @size_parser.setter
     def size_parser(self, target: str | QuantityTextEditorParser[Distance] | None) -> None:
         """Set the _sizeParser reference by target ID or QuantityTextEditorParser[Distance] instance."""
-        target_id: str | None = target.id if isinstance(target, QuantityTextEditorParser) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_sizeParser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -164,7 +169,7 @@ class ScaleObjectCreator(GeneratedComponent, IComponent, IWorldEventReceiver):
     @material.setter
     def material(self, target: str | FresnelMaterial | None) -> None:
         """Set the _material reference by target ID or FresnelMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, FresnelMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             member.targetId = target_id

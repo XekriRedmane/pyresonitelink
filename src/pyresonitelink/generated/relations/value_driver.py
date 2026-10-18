@@ -61,7 +61,7 @@ class ValueDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
     @value_source.setter
     def value_source(self, target: str | IValue[T] | None) -> None:
         """Set the ValueSource reference by target ID or IValue[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IValue) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ValueSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -82,7 +82,7 @@ class ValueDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
     @drive_target.setter
     def drive_target(self, target: str | IField[T] | None) -> None:
         """Set the DriveTarget reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DriveTarget")
         if isinstance(member, members.Reference):
             member.targetId = target_id

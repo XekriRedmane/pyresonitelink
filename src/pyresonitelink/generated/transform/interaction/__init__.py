@@ -16,6 +16,7 @@ from .knob_control import KnobControl
 from .physical_button import PhysicalButton
 from .scale_element import ScaleElement
 from .scale_group import ScaleGroup
+from .slider import Slider
 from .snap_target import SnapTarget
 from .snapper import Snapper
 from .tool_avatar_pose_filter import ToolAvatarPoseFilter

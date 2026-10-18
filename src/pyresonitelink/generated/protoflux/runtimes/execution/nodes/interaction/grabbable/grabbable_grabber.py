@@ -42,7 +42,7 @@ class GrabbableGrabber(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
     @grabbable.setter
     def grabbable(self, target: str | INodeObjectOutput[IGrabbable] | None) -> None:
         """Set the Grabbable reference by target ID or INodeObjectOutput[IGrabbable] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Grabbable")
         if isinstance(member, members.Reference):
             member.targetId = target_id

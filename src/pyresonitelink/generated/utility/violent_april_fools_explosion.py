@@ -70,7 +70,7 @@ This component was added as an April Fool's Day joke on April 1st, 2019.
     @bloating_clip.setter
     def bloating_clip(self, target: str | IAssetProvider[AudioClip] | None) -> None:
         """Set the _bloatingClip reference by target ID or IAssetProvider[AudioClip] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_bloatingClip")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -91,7 +91,7 @@ This component was added as an April Fool's Day joke on April 1st, 2019.
     @explosion_clip.setter
     def explosion_clip(self, target: str | IAssetProvider[AudioClip] | None) -> None:
         """Set the _explosionClip reference by target ID or IAssetProvider[AudioClip] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_explosionClip")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -75,7 +75,7 @@ class RayDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @point_a.setter
     def point_a(self, target: str | Sync[primitives.Float3] | None) -> None:
         """Set the PointA reference by target ID or Sync[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PointA")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -96,7 +96,7 @@ class RayDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @point_b.setter
     def point_b(self, target: str | Sync[primitives.Float3] | None) -> None:
         """Set the PointB reference by target ID or Sync[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PointB")
         if isinstance(member, members.Reference):
             member.targetId = target_id

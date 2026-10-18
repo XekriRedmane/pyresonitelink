@@ -101,7 +101,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
     @source.setter
     def source(self, target: str | IWorldAudioDataSource | None) -> None:
         """Set the Source reference by target ID or IWorldAudioDataSource instance."""
-        target_id: str | None = target.id if isinstance(target, IWorldAudioDataSource) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -122,7 +122,7 @@ class VisemeAnalyzer(GeneratedComponent, IComponent, IWorldEventReceiver):
     @remote_source.setter
     def remote_source(self, target: str | MultiValueStream[primitives.Float] | None) -> None:
         """Set the RemoteSource reference by target ID or MultiValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, MultiValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RemoteSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id

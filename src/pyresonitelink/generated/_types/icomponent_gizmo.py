@@ -1,9 +1,9 @@
 """Generated type: IComponentGizmo."""
 
-from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.igizmo import IGizmo
 
 
-class IComponentGizmo(IComponent):
+class IComponentGizmo(IGizmo):
     """Interface: [FrooxEngine]FrooxEngine.IComponentGizmo."""
 
     RESONITE_TYPE: str = "[FrooxEngine]FrooxEngine.IComponentGizmo"

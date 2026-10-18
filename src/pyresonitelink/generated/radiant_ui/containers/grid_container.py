@@ -1,12 +1,17 @@
 """Generated component: GridContainer."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.rect_transform import RectTransform
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.rect_transform import RectTransform
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.iui_preprocess_interactable import IUIPreprocessInteractable
 from pyresonitelink.generated._types.iui_grabbable import IUIGrabbable
@@ -94,7 +99,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
     @facets_root.setter
     def facets_root(self, target: str | Slot | None) -> None:
         """Set the FacetsRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FacetsRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -115,7 +120,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
     @background.setter
     def background(self, target: str | RectTransform | None) -> None:
         """Set the _background reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_background")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -136,7 +141,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
     @content.setter
     def content(self, target: str | RectTransform | None) -> None:
         """Set the _content reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_content")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -157,7 +162,7 @@ class GridContainer(GeneratedComponent, ICustomInspector, IUIPreprocessInteracta
     @overlay.setter
     def overlay(self, target: str | RectTransform | None) -> None:
         """Set the _overlay reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_overlay")
         if isinstance(member, members.Reference):
             member.targetId = target_id

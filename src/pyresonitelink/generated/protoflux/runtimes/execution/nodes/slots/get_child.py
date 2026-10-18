@@ -47,7 +47,7 @@ class GetChild(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICu
     @instance.setter
     def instance(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Instance reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -68,7 +68,7 @@ class GetChild(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICu
     @child_index.setter
     def child_index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the ChildIndex reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ChildIndex")
         if isinstance(member, members.Reference):
             member.targetId = target_id

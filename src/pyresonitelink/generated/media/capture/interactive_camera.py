@@ -1,5 +1,8 @@
 """Generated component: InteractiveCamera."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -11,17 +14,19 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
 from pyresonitelink.generated._types.user import User
-from pyresonitelink.generated._types.camera import Camera
-from pyresonitelink.generated._types.render_texture_provider import RenderTextureProvider
 from pyresonitelink.generated._types.istereo_material import IStereoMaterial
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.audio_clip import AudioClip
-from pyresonitelink.generated._types.audio_clip_player import AudioClipPlayer
-from pyresonitelink.generated._types.audio_output import AudioOutput
-from pyresonitelink.generated._types.camera_frustum_mesh import CameraFrustumMesh
-from pyresonitelink.generated._types.interactive_camera_anchor import InteractiveCameraAnchor
 from pyresonitelink.generated._types.value_stream import ValueStream
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.camera import Camera
+    from pyresonitelink.generated.assets.render_texture_provider import RenderTextureProvider
+    from pyresonitelink.generated.audio.audio_clip_player import AudioClipPlayer
+    from pyresonitelink.generated.audio.audio_output import AudioOutput
+    from pyresonitelink.generated.assets.procedural_meshes.camera_frustum_mesh import CameraFrustumMesh
+    from pyresonitelink.generated.media.capture.interactive_camera_anchor import InteractiveCameraAnchor
 from pyresonitelink.generated._types.itrigger_action_receiver import ITriggerActionReceiver
 from pyresonitelink.generated._types.igrabbable_reparent_block import IGrabbableReparentBlock
 from pyresonitelink.generated._types.iitem_metadata_source import IItemMetadataSource
@@ -428,7 +433,7 @@ See Camera for more up to date info.
     @timer_count_indicator.setter
     def timer_count_indicator(self, target: str | IField[primitives.String] | None) -> None:
         """Set the TimerCountIndicator reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TimerCountIndicator")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -449,7 +454,7 @@ See Camera for more up to date info.
     @timer_color_indicator.setter
     def timer_color_indicator(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the TimerColorIndicator reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TimerColorIndicator")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -470,7 +475,7 @@ See Camera for more up to date info.
     @timer_user.setter
     def timer_user(self, target: str | User | None) -> None:
         """Set the _timerUser reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_timerUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -491,7 +496,7 @@ See Camera for more up to date info.
     @main_camera.setter
     def main_camera(self, target: str | Camera | None) -> None:
         """Set the MainCamera reference by target ID or Camera instance."""
-        target_id: str | None = target.id if isinstance(target, Camera) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MainCamera")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -512,7 +517,7 @@ See Camera for more up to date info.
     @secondary_camera.setter
     def secondary_camera(self, target: str | Camera | None) -> None:
         """Set the SecondaryCamera reference by target ID or Camera instance."""
-        target_id: str | None = target.id if isinstance(target, Camera) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SecondaryCamera")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -533,7 +538,7 @@ See Camera for more up to date info.
     @preview_texture.setter
     def preview_texture(self, target: str | RenderTextureProvider | None) -> None:
         """Set the PreviewTexture reference by target ID or RenderTextureProvider instance."""
-        target_id: str | None = target.id if isinstance(target, RenderTextureProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PreviewTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -554,7 +559,7 @@ See Camera for more up to date info.
     @display_material.setter
     def display_material(self, target: str | IStereoMaterial | None) -> None:
         """Set the DisplayMaterial reference by target ID or IStereoMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, IStereoMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DisplayMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -633,7 +638,7 @@ See Camera for more up to date info.
     @photo_spawn_point.setter
     def photo_spawn_point(self, target: str | Slot | None) -> None:
         """Set the PhotoSpawnPoint reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PhotoSpawnPoint")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -673,7 +678,7 @@ See Camera for more up to date info.
     @panorama_indicator.setter
     def panorama_indicator(self, target: str | Slot | None) -> None:
         """Set the PanoramaIndicator reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PanoramaIndicator")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -694,7 +699,7 @@ See Camera for more up to date info.
     @panorama_indicator_size.setter
     def panorama_indicator_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the PanoramaIndicatorSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PanoramaIndicatorSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -715,7 +720,7 @@ See Camera for more up to date info.
     @object_target_source.setter
     def object_target_source(self, target: str | Slot | None) -> None:
         """Set the ObjectTargetSource reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ObjectTargetSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -736,7 +741,7 @@ See Camera for more up to date info.
     @object_target_source_active.setter
     def object_target_source_active(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the ObjectTargetSourceActive reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ObjectTargetSourceActive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -795,7 +800,7 @@ See Camera for more up to date info.
     @capture_sound.setter
     def capture_sound(self, target: str | IAssetProvider[AudioClip] | None) -> None:
         """Set the CaptureSound reference by target ID or IAssetProvider[AudioClip] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CaptureSound")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -816,7 +821,7 @@ See Camera for more up to date info.
     @timer_start_sound.setter
     def timer_start_sound(self, target: str | IAssetProvider[AudioClip] | None) -> None:
         """Set the TimerStartSound reference by target ID or IAssetProvider[AudioClip] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TimerStartSound")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -837,7 +842,7 @@ See Camera for more up to date info.
     @timer_countdown_slow_player.setter
     def timer_countdown_slow_player(self, target: str | AudioClipPlayer | None) -> None:
         """Set the TimerCountdownSlowPlayer reference by target ID or AudioClipPlayer instance."""
-        target_id: str | None = target.id if isinstance(target, AudioClipPlayer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TimerCountdownSlowPlayer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -858,7 +863,7 @@ See Camera for more up to date info.
     @timer_countdown_fast_player.setter
     def timer_countdown_fast_player(self, target: str | AudioClipPlayer | None) -> None:
         """Set the TimerCountdownFastPlayer reference by target ID or AudioClipPlayer instance."""
-        target_id: str | None = target.id if isinstance(target, AudioClipPlayer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TimerCountdownFastPlayer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -879,7 +884,7 @@ See Camera for more up to date info.
     @timer_countdown_slow_output.setter
     def timer_countdown_slow_output(self, target: str | AudioOutput | None) -> None:
         """Set the TimerCountdownSlowOutput reference by target ID or AudioOutput instance."""
-        target_id: str | None = target.id if isinstance(target, AudioOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TimerCountdownSlowOutput")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -900,7 +905,7 @@ See Camera for more up to date info.
     @timer_countdown_fast_output.setter
     def timer_countdown_fast_output(self, target: str | AudioOutput | None) -> None:
         """Set the TimerCountdownFastOutput reference by target ID or AudioOutput instance."""
-        target_id: str | None = target.id if isinstance(target, AudioOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TimerCountdownFastOutput")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -959,7 +964,7 @@ See Camera for more up to date info.
     @frustum_visual.setter
     def frustum_visual(self, target: str | CameraFrustumMesh | None) -> None:
         """Set the FrustumVisual reference by target ID or CameraFrustumMesh instance."""
-        target_id: str | None = target.id if isinstance(target, CameraFrustumMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FrustumVisual")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1018,7 +1023,7 @@ See Camera for more up to date info.
     @frustum_position.setter
     def frustum_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _frustumPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_frustumPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1039,7 +1044,7 @@ See Camera for more up to date info.
     @frustum_rotation.setter
     def frustum_rotation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _frustumRotation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_frustumRotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1060,7 +1065,7 @@ See Camera for more up to date info.
     @frustum_vertical_fov.setter
     def frustum_vertical_fov(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _frustumVerticalFOV reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_frustumVerticalFOV")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1081,7 +1086,7 @@ See Camera for more up to date info.
     @frustum_horizontal_fov.setter
     def frustum_horizontal_fov(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _frustumHorizontalFOV reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_frustumHorizontalFOV")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1102,7 +1107,7 @@ See Camera for more up to date info.
     @frustum_near.setter
     def frustum_near(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _frustumNear reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_frustumNear")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1123,7 +1128,7 @@ See Camera for more up to date info.
     @frustum_far.setter
     def frustum_far(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _frustumFar reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_frustumFar")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1144,7 +1149,7 @@ See Camera for more up to date info.
     @left_cam_offset.setter
     def left_cam_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _leftCamOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_leftCamOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1165,7 +1170,7 @@ See Camera for more up to date info.
     @right_cam_offset.setter
     def right_cam_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _rightCamOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rightCamOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1186,7 +1191,7 @@ See Camera for more up to date info.
     @left_cam_orientation.setter
     def left_cam_orientation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _leftCamOrientation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_leftCamOrientation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1207,7 +1212,7 @@ See Camera for more up to date info.
     @right_cam_orientation.setter
     def right_cam_orientation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _rightCamOrientation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rightCamOrientation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1228,7 +1233,7 @@ See Camera for more up to date info.
     @camera_rendering.setter
     def camera_rendering(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _cameraRendering reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cameraRendering")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1249,7 +1254,7 @@ See Camera for more up to date info.
     @secondary_camera_rendering.setter
     def secondary_camera_rendering(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _secondaryCameraRendering reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_secondaryCameraRendering")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1419,7 +1424,7 @@ See Camera for more up to date info.
     @active_anchor.setter
     def active_anchor(self, target: str | InteractiveCameraAnchor | None) -> None:
         """Set the ActiveAnchor reference by target ID or InteractiveCameraAnchor instance."""
-        target_id: str | None = target.id if isinstance(target, InteractiveCameraAnchor) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ActiveAnchor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1878,7 +1883,7 @@ See Camera for more up to date info.
     @position_stream.setter
     def position_stream(self, target: str | ValueStream[primitives.Float3] | None) -> None:
         """Set the _positionStream reference by target ID or ValueStream[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_positionStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1899,7 +1904,7 @@ See Camera for more up to date info.
     @rotation_stream.setter
     def rotation_stream(self, target: str | ValueStream[primitives.FloatQ] | None) -> None:
         """Set the _rotationStream reference by target ID or ValueStream[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rotationStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1920,7 +1925,7 @@ See Camera for more up to date info.
     @position_drive.setter
     def position_drive(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _positionDrive reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_positionDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1941,7 +1946,7 @@ See Camera for more up to date info.
     @rotation_drive.setter
     def rotation_drive(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _rotationDrive reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rotationDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id

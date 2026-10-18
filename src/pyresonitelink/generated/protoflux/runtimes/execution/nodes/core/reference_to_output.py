@@ -50,7 +50,7 @@ This node is automatically created when attaching an applicable node output (Dat
     @reference.setter
     def reference(self, target: str | IProtoFluxNode[T] | None) -> None:
         """Set the Reference reference by target ID or IProtoFluxNode[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IProtoFluxNode) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             member.targetId = target_id

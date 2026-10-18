@@ -1,5 +1,8 @@
 """Generated component: LegacyColorDialog."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,10 +10,12 @@ from pyresonitelink.generated._enums.color_profile import ColorProfile
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.legacy_slider import LegacySlider
-from pyresonitelink.generated._types.color_wheel_triangle_mesh import ColorWheelTriangleMesh
-from pyresonitelink.generated._types.legacy_button import LegacyButton
-from pyresonitelink.generated._types.legacy_ui_style import LegacyUIStyle
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.ui.physical.legacy_slider import LegacySlider
+    from pyresonitelink.generated.assets.procedural_meshes.color_wheel_triangle_mesh import ColorWheelTriangleMesh
+    from pyresonitelink.generated.ui.physical.legacy_button import LegacyButton
+    from pyresonitelink.generated.rendering.visuals.legacy_ui_style import LegacyUIStyle
 from pyresonitelink.generated._types.ivalue_source import IValueSource
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -132,7 +137,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @target_field.setter
     def target_field(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the TargetField reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetField")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -287,7 +292,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @r_slider.setter
     def r_slider(self, target: str | LegacySlider | None) -> None:
         """Set the _rSlider reference by target ID or LegacySlider instance."""
-        target_id: str | None = target.id if isinstance(target, LegacySlider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rSlider")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -308,7 +313,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @g_slider.setter
     def g_slider(self, target: str | LegacySlider | None) -> None:
         """Set the _gSlider reference by target ID or LegacySlider instance."""
-        target_id: str | None = target.id if isinstance(target, LegacySlider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_gSlider")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -329,7 +334,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @b_slider.setter
     def b_slider(self, target: str | LegacySlider | None) -> None:
         """Set the _bSlider reference by target ID or LegacySlider instance."""
-        target_id: str | None = target.id if isinstance(target, LegacySlider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_bSlider")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -350,7 +355,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @a_slider.setter
     def a_slider(self, target: str | LegacySlider | None) -> None:
         """Set the _aSlider reference by target ID or LegacySlider instance."""
-        target_id: str | None = target.id if isinstance(target, LegacySlider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_aSlider")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -371,7 +376,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @gain_slider.setter
     def gain_slider(self, target: str | LegacySlider | None) -> None:
         """Set the _gainSlider reference by target ID or LegacySlider instance."""
-        target_id: str | None = target.id if isinstance(target, LegacySlider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_gainSlider")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -392,7 +397,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @r_value.setter
     def r_value(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _rValue reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -413,7 +418,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @g_value.setter
     def g_value(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _gValue reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_gValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -434,7 +439,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @b_value.setter
     def b_value(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _bValue reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_bValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -455,7 +460,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @a_value.setter
     def a_value(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _aValue reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_aValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -476,7 +481,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @gain_value.setter
     def gain_value(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _gainValue reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_gainValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -497,7 +502,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @color_wheel_mesh.setter
     def color_wheel_mesh(self, target: str | ColorWheelTriangleMesh | None) -> None:
         """Set the _colorWheelMesh reference by target ID or ColorWheelTriangleMesh instance."""
-        target_id: str | None = target.id if isinstance(target, ColorWheelTriangleMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colorWheelMesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -518,7 +523,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @ok_button.setter
     def ok_button(self, target: str | LegacyButton | None) -> None:
         """Set the _okButton reference by target ID or LegacyButton instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyButton) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_okButton")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -539,7 +544,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @cancel_button.setter
     def cancel_button(self, target: str | LegacyButton | None) -> None:
         """Set the _cancelButton reference by target ID or LegacyButton instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyButton) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cancelButton")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -560,7 +565,7 @@ class LegacyColorDialog(GeneratedComponent, IValueSource, IWorldEventReceiver):
     @style.setter
     def style(self, target: str | LegacyUIStyle | None) -> None:
         """Set the _style reference by target ID or LegacyUIStyle instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyUIStyle) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_style")
         if isinstance(member, members.Reference):
             member.targetId = target_id

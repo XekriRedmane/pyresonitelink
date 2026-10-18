@@ -45,7 +45,7 @@ class FromUnixMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @unix_miliseconds.setter
     def unix_miliseconds(self, target: str | INodeValueOutput[primitives.Long] | None) -> None:
         """Set the UnixMiliseconds reference by target ID or INodeValueOutput[primitives.Long] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UnixMiliseconds")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class FromUnixMilliseconds(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @is_local.setter
     def is_local(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the IsLocal reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IsLocal")
         if isinstance(member, members.Reference):
             member.targetId = target_id

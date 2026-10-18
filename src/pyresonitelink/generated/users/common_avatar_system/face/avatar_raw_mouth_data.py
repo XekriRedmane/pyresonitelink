@@ -168,7 +168,7 @@ This is useful for doing debugging or Debug on face or mouth tracking.
     @data_source.setter
     def data_source(self, target: str | IMouthTrackingSourceComponent | None) -> None:
         """Set the DataSource reference by target ID or IMouthTrackingSourceComponent instance."""
-        target_id: str | None = target.id if isinstance(target, IMouthTrackingSourceComponent) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DataSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id

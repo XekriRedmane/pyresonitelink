@@ -10,10 +10,11 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.mesh import Mesh
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The TriangleDiagnosticMeshes component is used to show where a triangle is in the world. This is usually used as a debug tool.
 
     Category: Assets/Procedural Meshes
@@ -265,7 +266,7 @@ class TriangleDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspecto
     @mesh.setter
     def mesh(self, target: str | IAssetProvider[Mesh] | None) -> None:
         """Set the Mesh reference by target ID or IAssetProvider[Mesh] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id

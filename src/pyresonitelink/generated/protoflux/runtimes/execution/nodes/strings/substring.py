@@ -49,7 +49,7 @@ class Substring(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, IC
     @str_.setter
     def str_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Str reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -70,7 +70,7 @@ class Substring(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, IC
     @start_index.setter
     def start_index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the StartIndex reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("StartIndex")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -91,7 +91,7 @@ class Substring(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, IC
     @length.setter
     def length(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Length reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
             member.targetId = target_id

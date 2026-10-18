@@ -54,7 +54,7 @@ To create a transform matrix, the ProtoFlux Matrix Catagory has many helpful nod
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -75,7 +75,7 @@ To create a transform matrix, the ProtoFlux Matrix Catagory has many helpful nod
     @instance.setter
     def instance(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Instance reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -96,7 +96,7 @@ To create a transform matrix, the ProtoFlux Matrix Catagory has many helpful nod
     @matrix.setter
     def matrix(self, target: str | INodeValueOutput[primitives.Float4x4] | None) -> None:
         """Set the Matrix reference by target ID or INodeValueOutput[primitives.Float4x4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Matrix")
         if isinstance(member, members.Reference):
             member.targetId = target_id

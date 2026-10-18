@@ -1,5 +1,8 @@
 """Generated component: RawDataTool."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -8,8 +11,10 @@ from pyresonitelink.generated._enums.chirality import Chirality
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.interaction_handler import InteractionHandler
 from pyresonitelink.generated._types.value_stream import ValueStream
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.interaction.handlers.interaction_handler import InteractionHandler
 from pyresonitelink.generated._types.itool import ITool
 from pyresonitelink.generated._types.imaterial_apply_policy import IMaterialApplyPolicy
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -151,7 +156,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
     @tip_reference.setter
     def tip_reference(self, target: str | Slot | None) -> None:
         """Set the TipReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TipReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -229,7 +234,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
     @override_active_tool.setter
     def override_active_tool(self, target: str | InteractionHandler | None) -> None:
         """Set the _overrideActiveTool reference by target ID or InteractionHandler instance."""
-        target_id: str | None = target.id if isinstance(target, InteractionHandler) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_overrideActiveTool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -288,7 +293,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
     @local_tip_reference.setter
     def local_tip_reference(self, target: str | Slot | None) -> None:
         """Set the LocalTipReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LocalTipReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -520,7 +525,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
     @primary_strength_stream.setter
     def primary_strength_stream(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the _primaryStrengthStream reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_primaryStrengthStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -541,7 +546,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
     @secondary_axis_stream.setter
     def secondary_axis_stream(self, target: str | ValueStream[primitives.Float2] | None) -> None:
         """Set the _secondaryAxisStream reference by target ID or ValueStream[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_secondaryAxisStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -562,7 +567,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
     @primary_stream.setter
     def primary_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the _primaryStream reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_primaryStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -583,7 +588,7 @@ class RawDataTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, I
     @secondary_stream.setter
     def secondary_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the _secondaryStream reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_secondaryStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -1,11 +1,16 @@
 """Generated component: NestedCanvas."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.canvas import Canvas
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.canvas import Canvas
 from pyresonitelink.generated._types.iui_interactable import IUIInteractable
 from pyresonitelink.generated._types.iui_compute_component import IUIComputeComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -57,7 +62,7 @@ This is essentially a component that can nest (or you can think of it as masking
     @target_canvas.setter
     def target_canvas(self, target: str | Canvas | None) -> None:
         """Set the TargetCanvas reference by target ID or Canvas instance."""
-        target_id: str | None = target.id if isinstance(target, Canvas) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetCanvas")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -78,7 +83,7 @@ This is essentially a component that can nest (or you can think of it as masking
     @render_offset.setter
     def render_offset(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the _renderOffset reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_renderOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -99,7 +104,7 @@ This is essentially a component that can nest (or you can think of it as masking
     @mask_depth.setter
     def mask_depth(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the _maskDepth reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_maskDepth")
         if isinstance(member, members.Reference):
             member.targetId = target_id

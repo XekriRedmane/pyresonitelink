@@ -6,10 +6,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class DesktopTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWorldEventReceiver):
+class DesktopTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The DesktopTextureProvider component only works in user space. This component is an ITexture2D and can be used as a texture. This texture is able to display what is on any particular monitor on a user's machine. This component is commonly used in the desktop tab on a user's Dash.
 
     Category: Assets

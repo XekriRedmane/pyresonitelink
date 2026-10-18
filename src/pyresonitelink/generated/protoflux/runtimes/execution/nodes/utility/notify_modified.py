@@ -47,7 +47,7 @@ class NotifyModified(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INo
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -68,7 +68,7 @@ class NotifyModified(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INo
     @modified_component.setter
     def modified_component(self, target: str | INodeObjectOutput[IComponent] | None) -> None:
         """Set the ModifiedComponent reference by target ID or INodeObjectOutput[IComponent] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ModifiedComponent")
         if isinstance(member, members.Reference):
             member.targetId = target_id

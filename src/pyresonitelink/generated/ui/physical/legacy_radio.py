@@ -1,15 +1,20 @@
 """Generated component: LegacyRadio."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.legacy_ui_style import LegacyUIStyle
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.ico_sphere_mesh import IcoSphereMesh
-from pyresonitelink.generated._types.pbs_rim_metallic import PBS_RimMetallic
-from pyresonitelink.generated._types.legacy_radio_group import LegacyRadioGroup
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.visuals.legacy_ui_style import LegacyUIStyle
+    from pyresonitelink.generated.assets.procedural_meshes.ico_sphere_mesh import IcoSphereMesh
+    from pyresonitelink.generated.assets.materials.pbs.pbs_rim_metallic import PBS_RimMetallic
+    from pyresonitelink.generated.ui.physical.legacy_radio_group import LegacyRadioGroup
 from pyresonitelink.generated._types.iradio import IRadio
 from pyresonitelink.generated._types.itouchable import ITouchable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -80,7 +85,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
     @style.setter
     def style(self, target: str | LegacyUIStyle | None) -> None:
         """Set the Style reference by target ID or LegacyUIStyle instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyUIStyle) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Style")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -215,7 +220,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
     @collider_radius.setter
     def collider_radius(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _colliderRadius reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colliderRadius")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -236,7 +241,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
     @icosphere.setter
     def icosphere(self, target: str | IcoSphereMesh | None) -> None:
         """Set the _icosphere reference by target ID or IcoSphereMesh instance."""
-        target_id: str | None = target.id if isinstance(target, IcoSphereMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_icosphere")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -257,7 +262,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
     @material.setter
     def material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _material reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -278,7 +283,7 @@ class LegacyRadio(GeneratedComponent, IRadio, ITouchable, IWorldEventReceiver):
     @group.setter
     def group(self, target: str | LegacyRadioGroup | None) -> None:
         """Set the _group reference by target ID or LegacyRadioGroup instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyRadioGroup) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_group")
         if isinstance(member, members.Reference):
             member.targetId = target_id

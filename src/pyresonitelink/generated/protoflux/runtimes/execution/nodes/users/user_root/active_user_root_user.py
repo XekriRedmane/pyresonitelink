@@ -1,10 +1,15 @@
 """Generated component: ActiveUserRootUser."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.user_root import UserRoot
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.user_root import UserRoot
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -42,7 +47,7 @@ class ActiveUserRootUser(GeneratedComponent, INodeObjectOutput, IExecutionNode, 
     @user_root.setter
     def user_root(self, target: str | INodeObjectOutput[UserRoot] | None) -> None:
         """Set the UserRoot reference by target ID or INodeObjectOutput[UserRoot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UserRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id

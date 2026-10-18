@@ -60,7 +60,7 @@ class FireWhileTrue(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode,
     @updating_user.setter
     def updating_user(self, target: str | IGlobalValueProxy[User] | None) -> None:
         """Set the UpdatingUser reference by target ID or IGlobalValueProxy[User] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UpdatingUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -81,7 +81,7 @@ class FireWhileTrue(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode,
     @skip_if_null.setter
     def skip_if_null(self, target: str | IGlobalValueProxy[primitives.Bool] | None) -> None:
         """Set the SkipIfNull reference by target ID or IGlobalValueProxy[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SkipIfNull")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -102,7 +102,7 @@ class FireWhileTrue(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode,
     @on_update.setter
     def on_update(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnUpdate reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnUpdate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -125,7 +125,7 @@ By default it will be null, which will allow impulses even if UpdatingUser is nu
     @condition.setter
     def condition(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Condition reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):
             member.targetId = target_id

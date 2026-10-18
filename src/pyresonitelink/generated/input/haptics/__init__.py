@@ -4,6 +4,7 @@ from .arm_haptic_point_mapper import ArmHapticPointMapper
 from .avatar_haptic_source_manager import AvatarHapticSourceManager
 from .controller_haptic_point_mapper import ControllerHapticPointMapper
 from .direct_tag_haptic_source import DirectTagHapticSource
+from .haptic_manager import HapticManager
 from .haptic_point_data import HapticPointData
 from .haptic_point_sampler import HapticPointSampler
 from .haptic_volume import HapticVolume

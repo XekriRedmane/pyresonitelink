@@ -46,7 +46,7 @@ class ColorXHue(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
     @hue.setter
     def hue(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Hue reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Hue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -67,7 +67,7 @@ class ColorXHue(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
     @target_profile.setter
     def target_profile(self, target: str | INodeValueOutput[ColorProfile] | None) -> None:
         """Set the TargetProfile reference by target ID or INodeValueOutput[ColorProfile] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetProfile")
         if isinstance(member, members.Reference):
             member.targetId = target_id

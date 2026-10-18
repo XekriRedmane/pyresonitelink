@@ -44,7 +44,7 @@ class ColorXFromHexCode(GeneratedComponent, IExecutionNode, INode, ICustomInspec
     @hex_code.setter
     def hex_code(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the HexCode reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HexCode")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -1,0 +1,11 @@
+{
+  "description": "The EnumValues node returns the specified Enum Collection.",
+  "category": "",
+  "fields": {
+    "* (Generic)": "The collection of the specified enum."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:EnumValues&action=raw"
+}

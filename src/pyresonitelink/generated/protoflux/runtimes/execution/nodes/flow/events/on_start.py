@@ -52,7 +52,7 @@ To check if a user joined, use User Joined instead of this node.
     @trigger.setter
     def trigger(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the Trigger reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Trigger")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +73,7 @@ To check if a user joined, use User Joined instead of this node.
     @only_host.setter
     def only_host(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the OnlyHost reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnlyHost")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -64,7 +64,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
     @template.setter
     def template(self, target: str | Slot | None) -> None:
         """Set the Template reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Template")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -85,7 +85,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
     @container_template.setter
     def container_template(self, target: str | Slot | None) -> None:
         """Set the ContainerTemplate reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ContainerTemplate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -106,7 +106,7 @@ class UIGrabInstancer(GeneratedComponent, IUIGrabbable, IWorldEventReceiver):
     @container_template_instance_root.setter
     def container_template_instance_root(self, target: str | Slot | None) -> None:
         """Set the ContainerTemplateInstanceRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ContainerTemplateInstanceRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id

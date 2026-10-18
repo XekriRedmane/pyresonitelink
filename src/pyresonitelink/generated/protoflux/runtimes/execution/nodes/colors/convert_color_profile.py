@@ -46,7 +46,7 @@ class ConvertColorProfile(GeneratedComponent, INodeValueOutput, IExecutionNode, 
     @color.setter
     def color(self, target: str | INodeValueOutput[primitives.ColorX] | None) -> None:
         """Set the Color reference by target ID or INodeValueOutput[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -67,7 +67,7 @@ class ConvertColorProfile(GeneratedComponent, INodeValueOutput, IExecutionNode, 
     @target_profile.setter
     def target_profile(self, target: str | INodeValueOutput[ColorProfile] | None) -> None:
         """Set the TargetProfile reference by target ID or INodeValueOutput[ColorProfile] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetProfile")
         if isinstance(member, members.Reference):
             member.targetId = target_id

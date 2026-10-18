@@ -11,10 +11,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class BentTubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """Bent tube mesh is a component that makes a tube structure.
 
 When calculating the curve, the generator uses a quadratic bezier curve formula. ``StartPoint`` being P0, ``DirectTargetPoint`` being P1, and ``ActualTargetPoint`` being P2.

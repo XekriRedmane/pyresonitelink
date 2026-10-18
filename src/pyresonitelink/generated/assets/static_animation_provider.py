@@ -5,10 +5,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class StaticAnimationProvider(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
+class StaticAnimationProvider(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """Static Animation Provider is a Component that is generated when importing AnimJ's or files with animation data. 
 }}
 

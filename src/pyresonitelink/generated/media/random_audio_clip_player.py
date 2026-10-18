@@ -22,13 +22,14 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.RandomAudioClipPlayer"
 
-    def __init__(self, parent_under: str | Slot | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, ignore_audio_effects: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, parent_under: str | Slot | None = None, min_distance: primitives.Float | None = None, max_distance: primitives.Float | None = None, doppler_level: primitives.Float | None = None, ignore_audio_effects: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             parent_under: Initial value for ParentUnder.
             min_distance: Initial value for MinDistance.
             max_distance: Initial value for MaxDistance.
+            doppler_level: Initial value for DopplerLevel.
             ignore_audio_effects: Initial value for IgnoreAudioEffects.
             component: Existing Component to wrap.
         """
@@ -39,6 +40,8 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
             self.min_distance = min_distance
         if max_distance is not None:
             self.max_distance = max_distance
+        if doppler_level is not None:
+            self.doppler_level = doppler_level
         if ignore_audio_effects is not None:
             self.ignore_audio_effects = ignore_audio_effects
 
@@ -53,7 +56,7 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
     @parent_under.setter
     def parent_under(self, target: str | Slot | None) -> None:
         """Set the ParentUnder reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ParentUnder")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -115,6 +118,25 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
         self.set_member("RolloffMode", value)
 
     @property
+    def doppler_level(self) -> primitives.Float | None:
+        """The DopplerLevel field value."""
+        member = self.get_member("DopplerLevel")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @doppler_level.setter
+    def doppler_level(self, value: primitives.Float) -> None:
+        """Set the DopplerLevel field value."""
+        member = self.get_member("DopplerLevel")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "DopplerLevel", fields.FieldNullableFloat(value=value)
+            )
+
+    @property
     def ignore_audio_effects(self) -> primitives.Bool | None:
         """The IgnoreAudioEffects field value."""
         member = self.get_member("IgnoreAudioEffects")
@@ -168,6 +190,6 @@ class RandomAudioClipPlayer(GeneratedComponent, IComponent, IWorldEventReceiver)
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "PlayAtPoint", {"point": point}, debug,
+            resolink, "PlayAtPoint", {"point": fields.FieldFloat3(value=point)}, debug,
         )
 

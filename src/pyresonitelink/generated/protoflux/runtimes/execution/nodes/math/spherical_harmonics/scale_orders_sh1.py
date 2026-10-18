@@ -55,7 +55,7 @@ class ScaleOrdersSH1(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T]
     @sh.setter
     def sh(self, target: str | INodeValueOutput[SphericalHarmonicsL1[T]] | None) -> None:
         """Set the SH reference by target ID or INodeValueOutput[SphericalHarmonicsL1[T]] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -76,7 +76,7 @@ class ScaleOrdersSH1(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T]
     @order0.setter
     def order0(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Order0 reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Order0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -97,7 +97,7 @@ class ScaleOrdersSH1(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T]
     @order1.setter
     def order1(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Order1 reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Order1")
         if isinstance(member, members.Reference):
             member.targetId = target_id

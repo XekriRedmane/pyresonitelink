@@ -86,7 +86,7 @@ class MeshUVRaycastPortal(GeneratedComponent, IRaycastPortal, IWorldEventReceive
     @ray_exit.setter
     def ray_exit(self, target: str | IUVToRayConverter | None) -> None:
         """Set the RayExit reference by target ID or IUVToRayConverter instance."""
-        target_id: str | None = target.id if isinstance(target, IUVToRayConverter) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RayExit")
         if isinstance(member, members.Reference):
             member.targetId = target_id

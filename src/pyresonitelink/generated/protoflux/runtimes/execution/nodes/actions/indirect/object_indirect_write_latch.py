@@ -60,7 +60,7 @@ Indirect write latches take Variable (Variable) as an input, and the type that V
     @on_set.setter
     def on_set(self, target: str | INodeOperation | None) -> None:
         """Set the OnSet reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSet")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -81,7 +81,7 @@ Indirect write latches take Variable (Variable) as an input, and the type that V
     @on_reset.setter
     def on_reset(self, target: str | INodeOperation | None) -> None:
         """Set the OnReset reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnReset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -102,7 +102,7 @@ Indirect write latches take Variable (Variable) as an input, and the type that V
     @on_fail.setter
     def on_fail(self, target: str | INodeOperation | None) -> None:
         """Set the OnFail reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFail")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -149,7 +149,7 @@ Indirect write latches take Variable (Variable) as an input, and the type that V
     @variable.setter
     def variable(self, target: str | INodeObjectOutput[IVariable] | None) -> None:
         """Set the Variable reference by target ID or INodeObjectOutput[IVariable] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Variable")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -170,7 +170,7 @@ Indirect write latches take Variable (Variable) as an input, and the type that V
     @set_value.setter
     def set_value(self, target: str | INodeObjectOutput[T] | None) -> None:
         """Set the SetValue reference by target ID or INodeObjectOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SetValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -191,7 +191,7 @@ Indirect write latches take Variable (Variable) as an input, and the type that V
     @reset_value.setter
     def reset_value(self, target: str | INodeObjectOutput[T] | None) -> None:
         """Set the ResetValue reference by target ID or INodeObjectOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ResetValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -1,14 +1,19 @@
 """Generated component: AvatarPoseNode."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.generated._enums.body_node import BodyNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.avatar_object_slot import AvatarObjectSlot
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.avatar_object_slot import AvatarObjectSlot
 from pyresonitelink.generated._types.iavatar_object import IAvatarObject
 from pyresonitelink.generated._types.iinput_update_receiver import IInputUpdateReceiver
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -232,7 +237,7 @@ The AvatarPoseNode component is activated when a user equips an avatar with this
     @object_slot.setter
     def object_slot(self, target: str | AvatarObjectSlot | None) -> None:
         """Set the _objectSlot reference by target ID or AvatarObjectSlot instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarObjectSlot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_objectSlot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -253,7 +258,7 @@ The AvatarPoseNode component is activated when a user equips an avatar with this
     @source.setter
     def source(self, target: str | Slot | None) -> None:
         """Set the _source reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_source")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -274,7 +279,7 @@ The AvatarPoseNode component is activated when a user equips an avatar with this
     @position.setter
     def position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _position reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -295,7 +300,7 @@ The AvatarPoseNode component is activated when a user equips an avatar with this
     @rotation.setter
     def rotation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _rotation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -316,7 +321,7 @@ The AvatarPoseNode component is activated when a user equips an avatar with this
     @scale.setter
     def scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _scale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_scale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -337,7 +342,7 @@ The AvatarPoseNode component is activated when a user equips an avatar with this
     @active.setter
     def active(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _active reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_active")
         if isinstance(member, members.Reference):
             member.targetId = target_id

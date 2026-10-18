@@ -19,7 +19,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotoMetadata"
 
-    def __init__(self, location_name: primitives.String | None = None, location_url: str | None = None, location_hidden_from_listing: primitives.Bool | None = None, time_taken: str | None = None, taken_global_position: primitives.Float3 | None = None, taken_global_rotation: primitives.FloatQ | None = None, taken_global_scale: primitives.Float3 | None = None, app_version: primitives.String | None = None, camera_manufacturer: primitives.String | None = None, camera_model: primitives.String | None = None, camera_fov: primitives.Float | None = None, is360: primitives.Bool | None = None, stereo_layout: StereoLayout | str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, location_name: primitives.String | None = None, location_url: str | None = None, location_hidden_from_listing: primitives.Bool | None = None, time_taken: str | None = None, taken_global_position: primitives.Float3 | None = None, taken_global_rotation: primitives.FloatQ | None = None, taken_global_scale: primitives.Float3 | None = None, app_version: primitives.String | None = None, renderer_name: primitives.String | None = None, camera_manufacturer: primitives.String | None = None, camera_model: primitives.String | None = None, camera_fov: primitives.Float | None = None, is360: primitives.Bool | None = None, stereo_layout: StereoLayout | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -31,6 +31,7 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
             taken_global_rotation: Initial value for TakenGlobalRotation.
             taken_global_scale: Initial value for TakenGlobalScale.
             app_version: Initial value for AppVersion.
+            renderer_name: Initial value for RendererName.
             camera_manufacturer: Initial value for CameraManufacturer.
             camera_model: Initial value for CameraModel.
             camera_fov: Initial value for CameraFOV.
@@ -55,6 +56,8 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
             self.taken_global_scale = taken_global_scale
         if app_version is not None:
             self.app_version = app_version
+        if renderer_name is not None:
+            self.renderer_name = renderer_name
         if camera_manufacturer is not None:
             self.camera_manufacturer = camera_manufacturer
         if camera_model is not None:
@@ -255,6 +258,25 @@ class PhotoMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
         else:
             self.set_member(
                 "AppVersion", fields.FieldString(value=value)
+            )
+
+    @property
+    def renderer_name(self) -> primitives.String | None:
+        """The RendererName field value."""
+        member = self.get_member("RendererName")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @renderer_name.setter
+    def renderer_name(self, value: primitives.String) -> None:
+        """Set the RendererName field value."""
+        member = self.get_member("RendererName")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "RendererName", fields.FieldString(value=value)
             )
 
     @property

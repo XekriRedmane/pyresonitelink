@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class StandaloneRectMesh(GenericComponent[T], IAssetProvider[T], ICustomInspector, IWorldEventReceiver):
+class StandaloneRectMesh(GenericComponent[T], IAssetProvider[T], ICustomInspector, IComponent, IWorldEventReceiver):
     """The StandaloneRectMesh is a procedural wrapper to allow mesh renderer usable mesh data of any RectMeshSource. The list of RectMeshSources this component can use for M is generated inside the component selector list when attaching.
 
     Category: Assets/Procedural Meshes

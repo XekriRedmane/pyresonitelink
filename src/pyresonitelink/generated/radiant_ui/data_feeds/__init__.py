@@ -2,6 +2,7 @@
 
 from .data_feed_item_mapper import DataFeedItemMapper
 from .feeds.enum_feed import EnumFeed
+from .feeds.settings_data_feed import SettingsDataFeed
 from .feeds.world_users_feed import WorldUsersFeed
 from .feeds.worlds_data_feed import WorldsDataFeed
 from .interactions.move_up_data_feed_category import MoveUpDataFeedCategory

@@ -55,7 +55,7 @@ class DestroySlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -76,7 +76,7 @@ class DestroySlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
     @instance.setter
     def instance(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Instance reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -97,7 +97,7 @@ class DestroySlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
     @preserve_assets.setter
     def preserve_assets(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the PreserveAssets reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PreserveAssets")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -118,7 +118,7 @@ class DestroySlot(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
     @send_destroying_event.setter
     def send_destroying_event(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the SendDestroyingEvent reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SendDestroyingEvent")
         if isinstance(member, members.Reference):
             member.targetId = target_id

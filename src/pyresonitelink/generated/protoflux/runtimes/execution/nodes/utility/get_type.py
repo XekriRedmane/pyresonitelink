@@ -42,7 +42,7 @@ class GetType(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICus
     @object_.setter
     def object_(self, target: str | INodeObjectOutput[object] | None) -> None:
         """Set the Object reference by target ID or INodeObjectOutput[object] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Object")
         if isinstance(member, members.Reference):
             member.targetId = target_id

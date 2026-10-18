@@ -66,7 +66,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
     @year.setter
     def year(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Year reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Year")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -87,7 +87,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
     @month.setter
     def month(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Month reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Month")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -108,7 +108,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
     @day.setter
     def day(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Day reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Day")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -129,7 +129,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
     @hour.setter
     def hour(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Hour reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Hour")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -150,7 +150,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
     @minute.setter
     def minute(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Minute reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Minute")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -171,7 +171,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
     @second.setter
     def second(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Second reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Second")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -192,7 +192,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
     @millisecond.setter
     def millisecond(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Millisecond reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Millisecond")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -213,7 +213,7 @@ class ConstructDateTime(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
     @kind.setter
     def kind(self, target: str | INodeValueOutput[DateTimeKind] | None) -> None:
         """Set the Kind reference by target ID or INodeValueOutput[DateTimeKind] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Kind")
         if isinstance(member, members.Reference):
             member.targetId = target_id

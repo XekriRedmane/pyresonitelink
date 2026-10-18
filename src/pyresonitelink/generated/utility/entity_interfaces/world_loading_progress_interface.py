@@ -1,5 +1,8 @@
 """Generated component: WorldLoadingProgressInterface."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -8,7 +11,9 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
 from pyresonitelink.generated._types.user_ref import UserRef
 from pyresonitelink.generated._types.progress_stage import ProgressStage
-from pyresonitelink.generated._types.progress_bar_interface import ProgressBarInterface
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.utility.entity_interfaces.progress_bar_interface import ProgressBarInterface
 from pyresonitelink.generated._types.iitem_metadata_source import IItemMetadataSource
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -154,7 +159,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @item_name.setter
     def item_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -175,7 +180,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @spawning_user.setter
     def spawning_user(self, target: str | UserRef | None) -> None:
         """Set the SpawningUser reference by target ID or UserRef instance."""
-        target_id: str | None = target.id if isinstance(target, UserRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -196,7 +201,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @spawning_user_id.setter
     def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -236,7 +241,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @progress.setter
     def progress(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the Progress reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Progress")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -257,7 +262,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @world_name.setter
     def world_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the WorldName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("WorldName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -278,7 +283,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @stage.setter
     def stage(self, target: str | IField[ProgressStage] | None) -> None:
         """Set the Stage reference by target ID or IField[ProgressStage] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Stage")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -299,7 +304,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @phase_name.setter
     def phase_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the PhaseName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PhaseName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -320,7 +325,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @sub_phase_name.setter
     def sub_phase_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the SubPhaseName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SubPhaseName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -341,7 +346,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @has_completed.setter
     def has_completed(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HasCompleted reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HasCompleted")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -362,7 +367,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @has_failed.setter
     def has_failed(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HasFailed reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HasFailed")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -383,7 +388,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @completion_message.setter
     def completion_message(self, target: str | IField[primitives.String] | None) -> None:
         """Set the CompletionMessage reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CompletionMessage")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -404,7 +409,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @failure_reason.setter
     def failure_reason(self, target: str | IField[primitives.String] | None) -> None:
         """Set the FailureReason reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FailureReason")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -425,7 +430,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @loading_assets.setter
     def loading_assets(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the LoadingAssets reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoadingAssets")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -446,7 +451,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @loaded_assets.setter
     def loaded_assets(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the LoadedAssets reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoadedAssets")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -467,7 +472,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @total_assets.setter
     def total_assets(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalAssets reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalAssets")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -488,7 +493,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @loaded_textures_2d.setter
     def loaded_textures_2d(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the LoadedTextures2D reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoadedTextures2D")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -509,7 +514,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @total_textures_2d.setter
     def total_textures_2d(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalTextures2D reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalTextures2D")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -530,7 +535,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @loaded_textures_3d.setter
     def loaded_textures_3d(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the LoadedTextures3D reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoadedTextures3D")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -551,7 +556,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @total_textures_3d.setter
     def total_textures_3d(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalTextures3D reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalTextures3D")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -572,7 +577,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @loaded_cubemaps.setter
     def loaded_cubemaps(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the LoadedCubemaps reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoadedCubemaps")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -593,7 +598,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @total_cubemaps.setter
     def total_cubemaps(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalCubemaps reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalCubemaps")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -614,7 +619,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @loaded_videos.setter
     def loaded_videos(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the LoadedVideos reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoadedVideos")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -635,7 +640,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @total_videos.setter
     def total_videos(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalVideos reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalVideos")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -656,7 +661,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @loaded_meshes.setter
     def loaded_meshes(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the LoadedMeshes reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoadedMeshes")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -677,7 +682,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @total_meshes.setter
     def total_meshes(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalMeshes reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalMeshes")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -698,7 +703,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @loaded_audio_clips.setter
     def loaded_audio_clips(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the LoadedAudioClips reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoadedAudioClips")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -719,7 +724,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @total_audio_clips.setter
     def total_audio_clips(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalAudioClips reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalAudioClips")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -740,7 +745,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @loaded_shaders.setter
     def loaded_shaders(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the LoadedShaders reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoadedShaders")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -761,7 +766,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @total_shaders.setter
     def total_shaders(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalShaders reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalShaders")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -782,7 +787,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @loaded_fonts.setter
     def loaded_fonts(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the LoadedFonts reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoadedFonts")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -803,7 +808,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @total_fonts.setter
     def total_fonts(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalFonts reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalFonts")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -824,7 +829,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @bytes_downloaded.setter
     def bytes_downloaded(self, target: str | IField[primitives.Long] | None) -> None:
         """Set the BytesDownloaded reference by target ID or IField[primitives.Long] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("BytesDownloaded")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -845,7 +850,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @total_bytes.setter
     def total_bytes(self, target: str | IField[primitives.Long] | None) -> None:
         """Set the TotalBytes reference by target ID or IField[primitives.Long] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalBytes")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -866,7 +871,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @bytes_per_second.setter
     def bytes_per_second(self, target: str | IField[primitives.Long] | None) -> None:
         """Set the BytesPerSecond reference by target ID or IField[primitives.Long] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("BytesPerSecond")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -887,7 +892,7 @@ class WorldLoadingProgressInterface(GeneratedComponent, IItemMetadataSource, IWo
     @progress_bar.setter
     def progress_bar(self, target: str | ProgressBarInterface | None) -> None:
         """Set the ProgressBar reference by target ID or ProgressBarInterface instance."""
-        target_id: str | None = target.id if isinstance(target, ProgressBarInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ProgressBar")
         if isinstance(member, members.Reference):
             member.targetId = target_id

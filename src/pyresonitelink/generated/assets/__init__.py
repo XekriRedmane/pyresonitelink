@@ -1,6 +1,7 @@
 """Generated assets components."""
 
 from .desktop_texture_provider import DesktopTextureProvider
+from .item_texture_thumbnail_source import ItemTextureThumbnailSource
 from .null_texture_provider import NullTextureProvider
 from .render_texture_provider import RenderTextureProvider
 from .sprite_provider import SpriteProvider
@@ -21,6 +22,7 @@ from .video_texture_provider import VideoTextureProvider
 from .export.audio_exportable import AudioExportable
 from .export.binary_exportable import BinaryExportable
 from .export.gaussian_splat_exportable import GaussianSplatExportable
+from .export.model_exportable import ModelExportable
 from .export.package_exportable import PackageExportable
 from .export.text_exportable import TextExportable
 from .export.texture_exportable import TextureExportable
@@ -34,6 +36,7 @@ from .materials.fur_material import FurMaterial
 from .materials.pbs_metallic import PBS_Metallic
 from .materials.pbs_specular import PBS_Specular
 from .materials.xiexe_toon_material import XiexeToonMaterial
+from .metadata.asset_metadata import AssetMetadata
 from .metadata.bitmap_asset_metadata import BitmapAssetMetadata
 from .procedural_animations.dynamic_subtitle_provider import DynamicSubtitleProvider
 from .procedural_audio_clips.sawtooth_wave_clip import SawtoothWaveClip
@@ -51,7 +54,9 @@ from .procedural_meshes.arrow_mesh import ArrowMesh
 from .procedural_meshes.ballistic_path_mesh import BallisticPathMesh
 from .procedural_meshes.bent_tube_mesh import BentTubeMesh
 from .procedural_meshes.bevel_box_mesh import BevelBoxMesh
+from .procedural_meshes.bezier_curve import BezierCurve
 from .procedural_meshes.bezier_tube_mesh import BezierTubeMesh
+from .procedural_meshes.bone_weight_diagnostic_mesh import BoneWeightDiagnosticMesh
 from .procedural_meshes.box_array_mesh import BoxArrayMesh
 from .procedural_meshes.box_mesh import BoxMesh
 from .procedural_meshes.camera_frustum_mesh import CameraFrustumMesh
@@ -60,9 +65,12 @@ from .procedural_meshes.circle_mesh import CircleMesh
 from .procedural_meshes.circle_segment_shader_mesh import CircleSegmentShaderMesh
 from .procedural_meshes.color_depth_grid import ColorDepthGrid
 from .procedural_meshes.color_depth_point_cloud import ColorDepthPointCloud
+from .procedural_meshes.color_wheel_triangle_mesh import ColorWheelTriangleMesh
 from .procedural_meshes.cone_mesh import ConeMesh
 from .procedural_meshes.constrained_delaunay_mesh import ConstrainedDelaunayMesh
+from .procedural_meshes.convex_hull_mesh import ConvexHullMesh
 from .procedural_meshes.cross_mesh import CrossMesh
+from .procedural_meshes.curve_point import CurvePoint
 from .procedural_meshes.curved_plane_mesh import CurvedPlaneMesh
 from .procedural_meshes.cylinder_mesh import CylinderMesh
 from .procedural_meshes.frame_mesh import FrameMesh
@@ -83,6 +91,8 @@ from .procedural_meshes.point_mesh import PointMesh
 from .procedural_meshes.quad_array_mesh import QuadArrayMesh
 from .procedural_meshes.quad_mesh import QuadMesh
 from .procedural_meshes.ramp_mesh import RampMesh
+from .procedural_meshes.raw_mesh import RawMesh
+from .procedural_meshes.rig_bone_mesh import RigBoneMesh
 from .procedural_meshes.ring_mesh import RingMesh
 from .procedural_meshes.segment_mesh import SegmentMesh
 from .procedural_meshes.slot_segment_mesh import SlotSegmentMesh

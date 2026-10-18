@@ -13,10 +13,11 @@ from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The UnlitDistanceLerpMaterial component changes it's surface depending on how close the material's surface is to a given ``Point``.
 
     Category: Assets/Materials/Unlit
@@ -135,7 +136,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -232,7 +233,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
     @near_texture.setter
     def near_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NearTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NearTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -253,7 +254,7 @@ class UnlitDistanceLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspe
     @far_texture.setter
     def far_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the FarTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FarTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class ConstrainedDelaunayMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The Constrained Delaunay Mesh component generates geometry for a mesh that is a plane that can have holes cut into it, and can be free drawn.
 
     Category: Assets/Procedural Meshes

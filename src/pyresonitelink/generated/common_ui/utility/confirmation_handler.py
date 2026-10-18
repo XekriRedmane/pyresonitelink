@@ -49,7 +49,7 @@ class ConfirmationHandler(GeneratedComponent, IComponent, IWorldEventReceiver):
     @label.setter
     def label(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Label reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -70,7 +70,7 @@ class ConfirmationHandler(GeneratedComponent, IComponent, IWorldEventReceiver):
     @color.setter
     def color(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the Color reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             member.targetId = target_id

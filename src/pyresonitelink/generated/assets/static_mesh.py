@@ -7,10 +7,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
+class StaticMesh(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The StaticMesh component is used to load a static mesh asset from the Uri specified in `URL`
 
 Generally, you will not need to use this component directly, as it is created automatically when importing a new mesh, or when baking a Procedural Mesh using the Sync Method ``BakeMesh()``
@@ -247,7 +248,7 @@ Generally, you will not need to use this component directly, as it is created au
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "TrimBoneWeightCount", {"maxBoneCount": max_bone_count}, debug,
+            resolink, "TrimBoneWeightCount", {"maxBoneCount": fields.FieldInt(value=max_bone_count)}, debug,
         )
 
     async def convert_to_convex_hull(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
@@ -283,6 +284,6 @@ Generally, you will not need to use this component directly, as it is created au
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "TranslateUVs", {"offset": offset, "scale": scale}, debug,
+            resolink, "TranslateUVs", {"offset": fields.FieldFloat4(value=offset), "scale": fields.FieldFloat4(value=scale)}, debug,
         )
 

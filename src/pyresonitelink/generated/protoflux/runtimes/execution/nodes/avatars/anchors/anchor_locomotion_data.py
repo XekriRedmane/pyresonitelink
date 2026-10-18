@@ -1,11 +1,16 @@
 """Generated component: AnchorLocomotionData."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iglobal_value_proxy import IGlobalValueProxy
-from pyresonitelink.generated._types.avatar_anchor import AvatarAnchor
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.anchors.avatar_anchor import AvatarAnchor
 from pyresonitelink.generated._types.imappable_node import IMappableNode
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -49,7 +54,7 @@ The values for Anchor Locomotion Data outputs will all be default unless read du
     @anchor.setter
     def anchor(self, target: str | IGlobalValueProxy[AvatarAnchor] | None) -> None:
         """Set the Anchor reference by target ID or IGlobalValueProxy[AvatarAnchor] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Anchor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -70,7 +75,7 @@ The values for Anchor Locomotion Data outputs will all be default unless read du
     @on_locomotion_update.setter
     def on_locomotion_update(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnLocomotionUpdate reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnLocomotionUpdate")
         if isinstance(member, members.Reference):
             member.targetId = target_id

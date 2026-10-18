@@ -1,0 +1,16 @@
+{
+  "description": "The Unpack Raycast Hit node takes in a RaycastHit and gives the separate components of that hit. One source of this data is RaycastAll.",
+  "category": "",
+  "fields": {
+    "Hit": "The hit to be separated.",
+    "HitCollider": "The valid hit collider.",
+    "HitDistance": "The distance from the Origin to the hit point in global coordinate space.",
+    "HitPoint": "The global position at which the ray hit the collider.",
+    "HitNormal": "The facing normal direction of the hit collider at the hit point.",
+    "HitTriangleIndex": "The triangle index on the mesh corresponding to the hit collider. This value is 0 unless the HitCollider is a MeshCollider."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:UnpackRaycastHit&action=raw"
+}

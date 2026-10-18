@@ -1,12 +1,17 @@
 """Generated component: UserLoginManager."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.button import Button
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.interaction.button import Button
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -195,7 +200,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
     @login_logout_button.setter
     def login_logout_button(self, target: str | Button | None) -> None:
         """Set the LoginLogoutButton reference by target ID or Button instance."""
-        target_id: str | None = target.id if isinstance(target, Button) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoginLogoutButton")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -205,7 +210,7 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.UIX.Button'),
             )
 
-    async def do_login_logout(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
+    async def do_login_logout(self, resolink: protocols.ResoniteLinkClient, button: str | workers.Worker | GeneratedComponent, event_data: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Triggers the login/logout process.
 
         Args:
@@ -218,6 +223,6 @@ class UserLoginManager(GeneratedComponent, IComponent, IWorldEventReceiver):
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "DoLoginLogout", {"button": button, "eventData": event_data}, debug,
+            resolink, "DoLoginLogout", {"button": members.DataReference(targetID=button) if isinstance(button, str) else button, "eventData": members.DataReference(targetID=event_data) if isinstance(event_data, str) else event_data}, debug,
         )
 

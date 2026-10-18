@@ -50,7 +50,7 @@ class LessOrEqual_String(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @a.setter
     def a(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the A reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ class LessOrEqual_String(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @b.setter
     def b(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the B reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -92,7 +92,7 @@ class LessOrEqual_String(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @comparison_type.setter
     def comparison_type(self, target: str | INodeValueOutput[StringComparison] | None) -> None:
         """Set the ComparisonType reference by target ID or INodeValueOutput[StringComparison] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ComparisonType")
         if isinstance(member, members.Reference):
             member.targetId = target_id

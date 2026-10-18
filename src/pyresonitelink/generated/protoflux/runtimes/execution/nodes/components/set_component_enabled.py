@@ -52,7 +52,7 @@ class SetComponentEnabled(GeneratedComponent, ISyncNodeOperation, IExecutionNode
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +73,7 @@ class SetComponentEnabled(GeneratedComponent, ISyncNodeOperation, IExecutionNode
     @component_.setter
     def component_(self, target: str | INodeObjectOutput[IComponent] | None) -> None:
         """Set the Component reference by target ID or INodeObjectOutput[IComponent] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Component")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -94,7 +94,7 @@ class SetComponentEnabled(GeneratedComponent, ISyncNodeOperation, IExecutionNode
     @state.setter
     def state(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the State reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("State")
         if isinstance(member, members.Reference):
             member.targetId = target_id

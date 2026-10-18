@@ -1,14 +1,19 @@
 """Generated component: AvatarVoiceRangeVisualizer."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.audio_output import AudioOutput
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.user import User
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.audio.audio_output import AudioOutput
 from pyresonitelink.generated._types.iavatar_object_component import IAvatarObjectComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -67,7 +72,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
     @volume_source.setter
     def volume_source(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the VolumeSource reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("VolumeSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -88,7 +93,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
     @audio_output.setter
     def audio_output(self, target: str | AudioOutput | None) -> None:
         """Set the AudioOutput reference by target ID or AudioOutput instance."""
-        target_id: str | None = target.id if isinstance(target, AudioOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AudioOutput")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -166,7 +171,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
     @visual_root.setter
     def visual_root(self, target: str | Slot | None) -> None:
         """Set the VisualRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("VisualRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -187,7 +192,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
     @active_user.setter
     def active_user(self, target: str | User | None) -> None:
         """Set the _activeUser reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_activeUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -208,7 +213,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
     @visual_size.setter
     def visual_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _visualSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_visualSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -229,7 +234,7 @@ class AvatarVoiceRangeVisualizer(GeneratedComponent, IAvatarObjectComponent, IWo
     @visual_color.setter
     def visual_color(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the _visualColor reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_visualColor")
         if isinstance(member, members.Reference):
             member.targetId = target_id

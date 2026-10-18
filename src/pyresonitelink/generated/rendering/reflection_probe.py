@@ -216,7 +216,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
     @baked_cubemap.setter
     def baked_cubemap(self, target: str | IAssetProvider[Cubemap] | None) -> None:
         """Set the BakedCubemap reference by target ID or IAssetProvider[Cubemap] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("BakedCubemap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -442,7 +442,7 @@ class ReflectionProbe(GeneratedComponent, ICustomInspector, IComponent, IWorldEv
     @debug_visual.setter
     def debug_visual(self, target: str | Slot | None) -> None:
         """Set the _debugVisual reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_debugVisual")
         if isinstance(member, members.Reference):
             member.targetId = target_id

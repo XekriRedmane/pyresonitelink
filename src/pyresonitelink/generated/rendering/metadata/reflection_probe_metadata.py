@@ -1,11 +1,16 @@
 """Generated component: ReflectionProbeMetadata."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.reflection_probe import ReflectionProbe
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.reflection_probe import ReflectionProbe
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -43,7 +48,7 @@ class ReflectionProbeMetadata(GeneratedComponent, IComponent, IWorldEventReceive
     @probe.setter
     def probe(self, target: str | ReflectionProbe | None) -> None:
         """Set the Probe reference by target ID or ReflectionProbe instance."""
-        target_id: str | None = target.id if isinstance(target, ReflectionProbe) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Probe")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -43,7 +43,7 @@ class Link(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectR
     @a.setter
     def a(self, target: str | INode | None) -> None:
         """Set the A reference by target ID or INode instance."""
-        target_id: str | None = target.id if isinstance(target, INode) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -64,7 +64,7 @@ class Link(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObjectR
     @b.setter
     def b(self, target: str | INode | None) -> None:
         """Set the B reference by target ID or INode instance."""
-        target_id: str | None = target.id if isinstance(target, INode) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             member.targetId = target_id

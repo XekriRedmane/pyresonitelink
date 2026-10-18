@@ -7,11 +7,13 @@ from .atlas_info import AtlasInfo
 from .billboard_render_buffer_renderer import BillboardRenderBufferRenderer
 from .biped_rig import BipedRig
 from .blit_to_display import BlitToDisplay
+from .bounds import Bounds
 from .camera import Camera
 from .camera_portal import CameraPortal
 from .direct_viseme_driver import DirectVisemeDriver
 from .dynamic_viseme_driver import DynamicVisemeDriver
 from .gaussian_splat_renderer import GaussianSplatRenderer
+from .generic_slicer import GenericSlicer
 from .hidden_layer import HiddenLayer
 from .light import Light
 from .lod_group import LODGroup
@@ -24,6 +26,7 @@ from .render_transform_override import RenderTransformOverride
 from .rig import Rig
 from .skinned_mesh_renderer import SkinnedMeshRenderer
 from .skybox import Skybox
+from .talk_visualizer import TalkVisualizer
 from .text_renderer import TextRenderer
 from .trails_render_buffer_renderer import TrailsRenderBufferRenderer
 from .drivers.material_set import MaterialSet
@@ -33,5 +36,9 @@ from .particle_system.particle_system import ParticleSystem
 from .particle_system.particle_system_metadata import ParticleSystemMetadata
 from .text.font_chain import FontChain
 from .text.font_collection import FontCollection
+from .visuals.glue_visualizer import GlueVisualizer
 from .visuals.legacy_glow_circle import LegacyGlowCircle
 from .visuals.legacy_ui_style import LegacyUIStyle
+from .visuals.light_orb import LightOrb
+from .visuals.slicing_volume_visualizer import SlicingVolumeVisualizer
+from .visuals.volume_plane_slicer import VolumePlaneSlicer

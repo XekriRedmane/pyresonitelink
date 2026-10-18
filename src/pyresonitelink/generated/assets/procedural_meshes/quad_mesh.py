@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class QuadMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """Quad mesh is a component that generates mesh data procedurally that makes a flat 2D square.
 
     Category: Assets/Procedural Meshes

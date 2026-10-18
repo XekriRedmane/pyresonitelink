@@ -4,8 +4,8 @@ from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
-from pyresonitelink.generated._types.ivariable import IVariable
 from pyresonitelink.generated._types.idata_model_store import IDataModelStore
+from pyresonitelink.generated._types.ivariable import IVariable
 from pyresonitelink.generated._types.iproto_flux_engine_proxy_node import IProtoFluxEngineProxyNode
 from pyresonitelink.generated._types.imappable_node import IMappableNode
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -16,7 +16,7 @@ from pyresonitelink.generated._types.iobject_root import IObjectRoot
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class DataModelBooleanToggle(GeneratedComponent, IVariable, IDataModelStore, IProtoFluxEngineProxyNode, IMappableNode, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
+class DataModelBooleanToggle(GeneratedComponent, IDataModelStore, IVariable, IProtoFluxEngineProxyNode, IMappableNode, INodeValueOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The Data Model Boolean Toggle or Boolean Latch is a node that can be pulsed to toggle a Data Model Boolean between true and false.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Flow
@@ -88,7 +88,7 @@ class DataModelBooleanToggle(GeneratedComponent, IVariable, IDataModelStore, IPr
     @on_set.setter
     def on_set(self, target: str | INodeOperation | None) -> None:
         """Set the OnSet reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSet")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -109,7 +109,7 @@ class DataModelBooleanToggle(GeneratedComponent, IVariable, IDataModelStore, IPr
     @on_reset.setter
     def on_reset(self, target: str | INodeOperation | None) -> None:
         """Set the OnReset reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnReset")
         if isinstance(member, members.Reference):
             member.targetId = target_id

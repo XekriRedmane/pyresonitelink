@@ -1,12 +1,21 @@
 """Generated data components."""
 
 from .audio_metadata import AudioMetadata
+from .delegate_tag import DelegateTag
 from .file_metadata import FileMetadata
 from .photo_metadata import PhotoMetadata
+from .reference_dictionary import ReferenceDictionary
 from .reference_field import ReferenceField
 from .reference_list import ReferenceList
+from .reference_tag import ReferenceTag
+from .type_dictionary import TypeDictionary
 from .type_field import TypeField
+from .type_list import TypeList
+from .value_array import ValueArray
+from .value_dictionary import ValueDictionary
 from .value_field import ValueField
+from .value_list import ValueList
+from .value_tag import ValueTag
 from .conversions.local_date_time_convertor import LocalDateTimeConvertor
 from .conversions.local_nullable_date_time_convertor import LocalNullableDateTimeConvertor
 from .dynamic.dynamic_field import DynamicField

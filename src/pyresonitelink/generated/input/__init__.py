@@ -1,8 +1,8 @@
 """Generated input components."""
 
+from .vibration_device_relay import VibrationDeviceRelay
 from .controls.tracked_hand import TrackedHand
 from .desktop.desktop_control_dialog import DesktopControlDialog
-from .desktop.desktop_controller import DesktopController
 from .desktop.desktop_display_layout import DesktopDisplayLayout
 from .desktop.desktop_interaction_relay import DesktopInteractionRelay
 from .desktop.display_index import DisplayIndex
@@ -11,6 +11,7 @@ from .haptics.arm_haptic_point_mapper import ArmHapticPointMapper
 from .haptics.avatar_haptic_source_manager import AvatarHapticSourceManager
 from .haptics.controller_haptic_point_mapper import ControllerHapticPointMapper
 from .haptics.direct_tag_haptic_source import DirectTagHapticSource
+from .haptics.haptic_manager import HapticManager
 from .haptics.haptic_point_data import HapticPointData
 from .haptics.haptic_point_sampler import HapticPointSampler
 from .haptics.haptic_volume import HapticVolume

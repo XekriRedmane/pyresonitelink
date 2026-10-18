@@ -1,5 +1,8 @@
 """Generated component: WorldOrb."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,15 +10,17 @@ from pyresonitelink.generated._enums.visit_state import VisitState
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
-from pyresonitelink.generated._types.ring_mesh import RingMesh
-from pyresonitelink.generated._types.unlit_material import UnlitMaterial
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.static_texture_2d import StaticTexture2D
-from pyresonitelink.generated._types.projection360_material import Projection360Material
-from pyresonitelink.generated._types.pbs_rim_metallic import PBS_RimMetallic
-from pyresonitelink.generated._types.text_renderer import TextRenderer
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.new_world_dialog import NewWorldDialog
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.assets.procedural_meshes.ring_mesh import RingMesh
+    from pyresonitelink.generated.assets.materials.unlit.unlit_material import UnlitMaterial
+    from pyresonitelink.generated.assets.static_texture_2d import StaticTexture2D
+    from pyresonitelink.generated.assets.materials.unlit.projection360_material import Projection360Material
+    from pyresonitelink.generated.assets.materials.pbs.pbs_rim_metallic import PBS_RimMetallic
+    from pyresonitelink.generated.rendering.text_renderer import TextRenderer
+    from pyresonitelink.generated.hidden.new_world_dialog import NewWorldDialog
 from pyresonitelink.generated._types.itouchable import ITouchable
 from pyresonitelink.generated._types.iworld_link import IWorldLink
 from pyresonitelink.generated._types.imaterial_apply_policy import IMaterialApplyPolicy
@@ -157,7 +162,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @session_starting_user.setter
     def session_starting_user(self, target: str | User | None) -> None:
         """Set the SessionStartingUser reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SessionStartingUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -344,7 +349,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @long_press_indicator.setter
     def long_press_indicator(self, target: str | RingMesh | None) -> None:
         """Set the _longPressIndicator reference by target ID or RingMesh instance."""
-        target_id: str | None = target.id if isinstance(target, RingMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_longPressIndicator")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -365,7 +370,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @long_press_indicator_material.setter
     def long_press_indicator_material(self, target: str | UnlitMaterial | None) -> None:
         """Set the _longPressIndicatorMaterial reference by target ID or UnlitMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, UnlitMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_longPressIndicatorMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -424,7 +429,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @orb_root.setter
     def orb_root(self, target: str | Slot | None) -> None:
         """Set the _orbRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_orbRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -445,7 +450,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @info_root.setter
     def info_root(self, target: str | Slot | None) -> None:
         """Set the _infoRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_infoRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -466,7 +471,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @thumb_tex.setter
     def thumb_tex(self, target: str | StaticTexture2D | None) -> None:
         """Set the _thumbTex reference by target ID or StaticTexture2D instance."""
-        target_id: str | None = target.id if isinstance(target, StaticTexture2D) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_thumbTex")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -487,7 +492,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @thumb_material.setter
     def thumb_material(self, target: str | Projection360Material | None) -> None:
         """Set the _thumbMaterial reference by target ID or Projection360Material instance."""
-        target_id: str | None = target.id if isinstance(target, Projection360Material) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_thumbMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -508,7 +513,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @shell_material.setter
     def shell_material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _shellMaterial reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shellMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -529,7 +534,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @name_text.setter
     def name_text(self, target: str | TextRenderer | None) -> None:
         """Set the _nameText reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_nameText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -550,7 +555,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @creator_text.setter
     def creator_text(self, target: str | TextRenderer | None) -> None:
         """Set the _creatorText reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_creatorText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -571,7 +576,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @visits_text.setter
     def visits_text(self, target: str | TextRenderer | None) -> None:
         """Set the _visitsText reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_visitsText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -592,7 +597,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @users_text.setter
     def users_text(self, target: str | TextRenderer | None) -> None:
         """Set the _usersText reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_usersText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -613,7 +618,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @name_position.setter
     def name_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _namePosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_namePosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -634,7 +639,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @creator_position.setter
     def creator_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _creatorPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_creatorPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -655,7 +660,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @visits_position.setter
     def visits_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _visitsPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_visitsPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -676,7 +681,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @users_position.setter
     def users_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _usersPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_usersPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -697,7 +702,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @user_count_text.setter
     def user_count_text(self, target: str | IField[primitives.String] | None) -> None:
         """Set the _userCountText reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_userCountText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -718,7 +723,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @size_drive.setter
     def size_drive(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _sizeDrive reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_sizeDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -739,7 +744,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @icon_slot.setter
     def icon_slot(self, target: str | Slot | None) -> None:
         """Set the _iconSlot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_iconSlot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -760,7 +765,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @icon_texture.setter
     def icon_texture(self, target: str | StaticTexture2D | None) -> None:
         """Set the _iconTexture reference by target ID or StaticTexture2D instance."""
-        target_id: str | None = target.id if isinstance(target, StaticTexture2D) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_iconTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -781,7 +786,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @icon_material.setter
     def icon_material(self, target: str | UnlitMaterial | None) -> None:
         """Set the _iconMaterial reference by target ID or UnlitMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, UnlitMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_iconMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -802,7 +807,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @icon_position.setter
     def icon_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _iconPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_iconPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -823,7 +828,7 @@ class WorldOrb(GeneratedComponent, ITouchable, IWorldLink, IMaterialApplyPolicy,
     @session_start_dialog.setter
     def session_start_dialog(self, target: str | NewWorldDialog | None) -> None:
         """Set the _sessionStartDialog reference by target ID or NewWorldDialog instance."""
-        target_id: str | None = target.id if isinstance(target, NewWorldDialog) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_sessionStartDialog")
         if isinstance(member, members.Reference):
             member.targetId = target_id

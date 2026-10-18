@@ -50,7 +50,7 @@ class ToString_Double2x2(GeneratedComponent, INodeObjectOutput, IExecutionNode, 
     @v.setter
     def v(self, target: str | INodeValueOutput[primitives.Double2x2] | None) -> None:
         """Set the V reference by target ID or INodeValueOutput[primitives.Double2x2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("V")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ class ToString_Double2x2(GeneratedComponent, INodeObjectOutput, IExecutionNode, 
     @format_.setter
     def format_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Format reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Format")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -92,7 +92,7 @@ class ToString_Double2x2(GeneratedComponent, INodeObjectOutput, IExecutionNode, 
     @format_provider.setter
     def format_provider(self, target: str | INodeObjectOutput[IFormatProvider] | None) -> None:
         """Set the FormatProvider reference by target ID or INodeObjectOutput[IFormatProvider] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FormatProvider")
         if isinstance(member, members.Reference):
             member.targetId = target_id

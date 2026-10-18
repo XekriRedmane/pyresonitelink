@@ -23,28 +23,49 @@ class VolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.VolumeMeter"
 
-    def __init__(self, smoothing: primitives.Float | None = None, power: primitives.Float | None = None, method: VolumeMeterMethod | str | None = None, source: str | IWorldAudioDataSource | None = None, volume: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IWorldAudioDataSource | None = None, smoothing: primitives.Float | None = None, power: primitives.Float | None = None, method: VolumeMeterMethod | str | None = None, volume: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
+            source: Initial value for Source.
             smoothing: Initial value for Smoothing.
             power: Initial value for Power.
             method: Initial value for Method.
-            source: Initial value for Source.
             volume: Initial value for Volume.
             component: Existing Component to wrap.
         """
         super().__init__(component)
+        if source is not None:
+            self.source = source
         if smoothing is not None:
             self.smoothing = smoothing
         if power is not None:
             self.power = power
         if method is not None:
             self.method = method
-        if source is not None:
-            self.source = source
         if volume is not None:
             self.volume = volume
+
+    @property
+    def source(self) -> str | None:
+        """The audio source to read the volume of (as long as it's streaming or playing)."""
+        member = self.get_member("Source")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @source.setter
+    def source(self, target: str | IWorldAudioDataSource | None) -> None:
+        """Set the Source reference by target ID or IWorldAudioDataSource instance."""
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
+        member = self.get_member("Source")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Source",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IWorldAudioDataSource'),
+            )
 
     @property
     def smoothing(self) -> primitives.Float | None:
@@ -102,27 +123,6 @@ class VolumeMeter(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.set_member(
                 "Method",
                 members.FieldEnum(value=str(value)),
-            )
-
-    @property
-    def source(self) -> str | None:
-        """The audio source to read the volume of (as long as it's streaming or playing)."""
-        member = self.get_member("Source")
-        if isinstance(member, members.Reference):
-            return member.targetId
-        return None
-
-    @source.setter
-    def source(self, target: str | IWorldAudioDataSource | None) -> None:
-        """Set the Source reference by target ID or IWorldAudioDataSource instance."""
-        target_id: str | None = target.id if isinstance(target, IWorldAudioDataSource) else target  # type: ignore[assignment]
-        member = self.get_member("Source")
-        if isinstance(member, members.Reference):
-            member.targetId = target_id
-        else:
-            self.set_member(
-                "Source",
-                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IWorldAudioDataSource'),
             )
 
     @property

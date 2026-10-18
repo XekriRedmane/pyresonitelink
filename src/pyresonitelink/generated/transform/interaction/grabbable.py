@@ -1,5 +1,8 @@
 """Generated component: Grabbable."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,8 +10,10 @@ from pyresonitelink.data import protocols
 from pyresonitelink.generated._enums.active_user_handling import ActiveUserHandling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.grabber import Grabber
 from pyresonitelink.generated._types.slot import Slot
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.grabber import Grabber
 from pyresonitelink.generated._types.igrabbable import IGrabbable
 from pyresonitelink.generated._types.iobject_root import IObjectRoot
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -331,7 +336,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
     @grabber.setter
     def grabber(self, target: str | Grabber | None) -> None:
         """Set the _grabber reference by target ID or Grabber instance."""
-        target_id: str | None = target.id if isinstance(target, Grabber) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_grabber")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -352,7 +357,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
     @last_parent.setter
     def last_parent(self, target: str | Slot | None) -> None:
         """Set the _lastParent reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_lastParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -400,7 +405,7 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
                 "__legacyActiveUserRootOnly", fields.FieldBool(value=value)
             )
 
-    async def user_root_grab_check(self, resolink: protocols.ResoniteLinkClient, grabbable: str, grabber: str, debug: bool = False) -> dict:
+    async def user_root_grab_check(self, resolink: protocols.ResoniteLinkClient, grabbable: str | workers.Worker | GeneratedComponent, grabber: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Call the UserRootGrabCheck sync method.
 
         Args:
@@ -413,6 +418,6 @@ class Grabbable(GeneratedComponent, IGrabbable, IObjectRoot, IWorldEventReceiver
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "UserRootGrabCheck", {"grabbable": grabbable, "grabber": grabber}, debug,
+            resolink, "UserRootGrabCheck", {"grabbable": members.DataReference(targetID=grabbable) if isinstance(grabbable, str) else grabbable, "grabber": members.DataReference(targetID=grabber) if isinstance(grabber, str) else grabber}, debug,
         )
 

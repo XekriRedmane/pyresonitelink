@@ -45,7 +45,7 @@ class RotateLeft_Uint(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @a.setter
     def a(self, target: str | INodeValueOutput[primitives.UInt] | None) -> None:
         """Set the A reference by target ID or INodeValueOutput[primitives.UInt] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class RotateLeft_Uint(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @rotate.setter
     def rotate(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Rotate reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Rotate")
         if isinstance(member, members.Reference):
             member.targetId = target_id

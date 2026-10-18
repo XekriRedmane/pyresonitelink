@@ -48,7 +48,7 @@ class UnpackSH3(GenericComponent[T], IExecutionNode[T], INode, ICustomInspector,
     @sh.setter
     def sh(self, target: str | INodeValueOutput[SphericalHarmonicsL3[T]] | None) -> None:
         """Set the SH reference by target ID or INodeValueOutput[SphericalHarmonicsL3[T]] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH")
         if isinstance(member, members.Reference):
             member.targetId = target_id

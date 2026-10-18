@@ -1,12 +1,17 @@
 """Generated component: VirtualShiftColorDriver."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.virtual_keyboard import VirtualKeyboard
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.userspace.virtual_keyboard.virtual_keyboard import VirtualKeyboard
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -56,7 +61,7 @@ class VirtualShiftColorDriver(GeneratedComponent, IComponent, IWorldEventReceive
     @keyboard.setter
     def keyboard(self, target: str | VirtualKeyboard | None) -> None:
         """Set the Keyboard reference by target ID or VirtualKeyboard instance."""
-        target_id: str | None = target.id if isinstance(target, VirtualKeyboard) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Keyboard")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -77,7 +82,7 @@ class VirtualShiftColorDriver(GeneratedComponent, IComponent, IWorldEventReceive
     @color_target.setter
     def color_target(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the ColorTarget reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ColorTarget")
         if isinstance(member, members.Reference):
             member.targetId = target_id

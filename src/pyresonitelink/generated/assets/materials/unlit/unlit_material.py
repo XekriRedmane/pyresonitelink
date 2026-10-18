@@ -196,7 +196,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
     @texture.setter
     def texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Texture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -255,7 +255,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
     @mask_texture.setter
     def mask_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the MaskTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MaskTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -452,7 +452,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
     @offset_texture.setter
     def offset_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OffsetTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OffsetTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -796,7 +796,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
     @unlit.setter
     def unlit(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _unlit reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_unlit")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -817,7 +817,7 @@ class UnlitMaterial(GeneratedComponent, ICommonMaterial, IStereoMaterial, IBillb
     @unlit_billboard.setter
     def unlit_billboard(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _unlitBillboard reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_unlitBillboard")
         if isinstance(member, members.Reference):
             member.targetId = target_id

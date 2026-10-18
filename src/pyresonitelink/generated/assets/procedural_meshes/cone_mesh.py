@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class ConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class ConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The ConeMesh component acts as a source of geometry for rendering a cone with x sides with an optionally flat end.
 
     Category: Assets/Procedural Meshes

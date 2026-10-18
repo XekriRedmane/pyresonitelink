@@ -55,7 +55,7 @@ class ObjectDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
     @value.setter
     def value(self, target: str | INodeObjectOutput[T] | None) -> None:
         """Set the Value reference by target ID or INodeObjectOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -76,7 +76,7 @@ class ObjectDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
     @default_value.setter
     def default_value(self, target: str | INodeObjectOutput[T] | None) -> None:
         """Set the DefaultValue reference by target ID or INodeObjectOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DefaultValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -97,7 +97,7 @@ class ObjectDemultiplex(GenericComponent[T], IExecutionNode[T], INode, ICustomIn
     @index_.setter
     def index_(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Index reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             member.targetId = target_id

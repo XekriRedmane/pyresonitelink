@@ -11,10 +11,11 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.texture_2d import Texture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The ImageColorDistributionGraph component is used to make mesh data for a set of points with colors and sizes based on a provided image's pixels. The mesh needs to be used with Billboard geometry to be viewed properly.
 
     Category: Assets/Procedural Meshes
@@ -158,7 +159,7 @@ class ImageColorDistributionGraph(GeneratedComponent, IAssetProvider, ICustomIns
     @texture.setter
     def texture(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the Texture reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             member.targetId = target_id

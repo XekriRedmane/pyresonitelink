@@ -95,7 +95,7 @@ The functionality of this component is internal, and cannot be used by ProtoFlux
     @anchor0.setter
     def anchor0(self, target: str | Slot | None) -> None:
         """Set the Anchor0 reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Anchor0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -116,7 +116,7 @@ The functionality of this component is internal, and cannot be used by ProtoFlux
     @anchor1.setter
     def anchor1(self, target: str | Slot | None) -> None:
         """Set the Anchor1 reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Anchor1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -137,7 +137,7 @@ The functionality of this component is internal, and cannot be used by ProtoFlux
     @snap_parent.setter
     def snap_parent(self, target: str | Slot | None) -> None:
         """Set the SnapParent reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SnapParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id

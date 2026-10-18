@@ -1,13 +1,18 @@
 """Generated component: AssetOptimizationWizard."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.int_text_editor_parser import IntTextEditorParser
-from pyresonitelink.generated._types.text import Text
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.common_ui.editors.int_text_editor_parser import IntTextEditorParser
+    from pyresonitelink.generated.uix.graphics.text import Text
 from pyresonitelink.generated._types.ideveloper_interface import IDeveloperInterface
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -51,7 +56,7 @@ class AssetOptimizationWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
     @root.setter
     def root(self, target: str | Slot | None) -> None:
         """Set the Root reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -91,7 +96,7 @@ class AssetOptimizationWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
     @max_resolution.setter
     def max_resolution(self, target: str | IntTextEditorParser | None) -> None:
         """Set the _maxResolution reference by target ID or IntTextEditorParser instance."""
-        target_id: str | None = target.id if isinstance(target, IntTextEditorParser) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_maxResolution")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -112,7 +117,7 @@ class AssetOptimizationWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
     @message.setter
     def message(self, target: str | Text | None) -> None:
         """Set the _message reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_message")
         if isinstance(member, members.Reference):
             member.targetId = target_id

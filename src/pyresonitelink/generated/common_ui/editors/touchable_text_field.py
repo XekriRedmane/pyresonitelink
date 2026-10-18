@@ -1,11 +1,16 @@
 """Generated component: TouchableTextField."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.text_editor import TextEditor
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.common_ui.editors.text_editor import TextEditor
 from pyresonitelink.generated._types.itouchable import ITouchable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -61,7 +66,7 @@ This allows the text to be edited in both directions: In the component and in th
     @text_editor.setter
     def text_editor(self, target: str | TextEditor | None) -> None:
         """Set the TextEditor reference by target ID or TextEditor instance."""
-        target_id: str | None = target.id if isinstance(target, TextEditor) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TextEditor")
         if isinstance(member, members.Reference):
             member.targetId = target_id

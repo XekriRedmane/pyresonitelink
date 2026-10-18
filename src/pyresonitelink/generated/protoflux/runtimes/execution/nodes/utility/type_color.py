@@ -43,7 +43,7 @@ class TypeColor(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
     @type_.setter
     def type_(self, target: str | INodeObjectOutput[Type] | None) -> None:
         """Set the Type reference by target ID or INodeObjectOutput[Type] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Type")
         if isinstance(member, members.Reference):
             member.targetId = target_id

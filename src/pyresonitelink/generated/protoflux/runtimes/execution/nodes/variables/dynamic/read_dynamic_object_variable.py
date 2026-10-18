@@ -53,7 +53,7 @@ class ReadDynamicObjectVariable(GenericComponent[T], IMappableNode, IExecutionNo
     @source.setter
     def source(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Source reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -74,7 +74,7 @@ class ReadDynamicObjectVariable(GenericComponent[T], IMappableNode, IExecutionNo
     @path.setter
     def path(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Path reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
             member.targetId = target_id

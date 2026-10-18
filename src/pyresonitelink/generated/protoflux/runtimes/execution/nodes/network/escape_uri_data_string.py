@@ -42,7 +42,7 @@ class EscapeUriDataString(GeneratedComponent, INodeObjectOutput, IExecutionNode,
     @string.setter
     def string(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the String reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("String")
         if isinstance(member, members.Reference):
             member.targetId = target_id

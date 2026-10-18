@@ -12,10 +12,11 @@ from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class FresnelLerpMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The FresnelLerpMaterial component is a material that can be used to make a fresnel effect that can be lerped between two different preset frensel settings.
 
 Far on this material is the geometry facing away from the camera and near is the geometry facing towards the camera.
@@ -148,7 +149,7 @@ Far on this material is the geometry facing away from the camera and near is the
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -188,7 +189,7 @@ Far on this material is the geometry facing away from the camera and near is the
     @lerp_texture.setter
     def lerp_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the LerpTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LerpTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -418,7 +419,7 @@ Far on this material is the geometry facing away from the camera and near is the
     @far_texture0.setter
     def far_texture0(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the FarTexture0 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FarTexture0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -439,7 +440,7 @@ Far on this material is the geometry facing away from the camera and near is the
     @near_texture0.setter
     def near_texture0(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NearTexture0 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NearTexture0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -460,7 +461,7 @@ Far on this material is the geometry facing away from the camera and near is the
     @far_texture1.setter
     def far_texture1(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the FarTexture1 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FarTexture1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -481,7 +482,7 @@ Far on this material is the geometry facing away from the camera and near is the
     @near_texture1.setter
     def near_texture1(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NearTexture1 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NearTexture1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -502,7 +503,7 @@ Far on this material is the geometry facing away from the camera and near is the
     @normal_map0.setter
     def normal_map0(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap0 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -523,7 +524,7 @@ Far on this material is the geometry facing away from the camera and near is the
     @normal_map1.setter
     def normal_map1(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap1 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap1")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -48,7 +48,7 @@ class UnpackNullable(GenericComponent[T], IExecutionNode[T], INode, ICustomInspe
     @nullable.setter
     def nullable(self, target: str | INodeObjectOutput[Nullable[T]] | None) -> None:
         """Set the Nullable reference by target ID or INodeObjectOutput[Nullable[T]] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Nullable")
         if isinstance(member, members.Reference):
             member.targetId = target_id

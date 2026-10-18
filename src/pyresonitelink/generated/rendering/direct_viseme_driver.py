@@ -1,13 +1,18 @@
 """Generated component: DirectVisemeDriver."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.viseme_analyzer import VisemeAnalyzer
 from pyresonitelink.generated._types.imouth_tracking_source_component import IMouthTrackingSourceComponent
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.media.utility.viseme_analyzer import VisemeAnalyzer
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -109,7 +114,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @source.setter
     def source(self, target: str | VisemeAnalyzer | None) -> None:
         """Set the Source reference by target ID or VisemeAnalyzer instance."""
-        target_id: str | None = target.id if isinstance(target, VisemeAnalyzer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -130,7 +135,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @mouth_tracking_source.setter
     def mouth_tracking_source(self, target: str | IMouthTrackingSourceComponent | None) -> None:
         """Set the MouthTrackingSource reference by target ID or IMouthTrackingSourceComponent instance."""
-        target_id: str | None = target.id if isinstance(target, IMouthTrackingSourceComponent) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MouthTrackingSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -246,7 +251,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @silence.setter
     def silence(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the Silence reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Silence")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -267,7 +272,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @pp.setter
     def pp(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the PP reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PP")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -288,7 +293,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @ff.setter
     def ff(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the FF reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FF")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -309,7 +314,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @th.setter
     def th(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the TH reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TH")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -330,7 +335,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @dd.setter
     def dd(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the DD reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DD")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -351,7 +356,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @kk.setter
     def kk(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the kk reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("kk")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -372,7 +377,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @ch.setter
     def ch(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the CH reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CH")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -393,7 +398,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @ss.setter
     def ss(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the SS reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SS")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -414,7 +419,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @nn.setter
     def nn(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the nn reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("nn")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -435,7 +440,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @rr.setter
     def rr(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the RR reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RR")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -456,7 +461,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @aa.setter
     def aa(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the aa reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("aa")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -477,7 +482,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @e.setter
     def e(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the E reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("E")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -498,7 +503,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @ih.setter
     def ih(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the ih reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ih")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -519,7 +524,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @oh.setter
     def oh(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the oh reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("oh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -540,7 +545,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @ou.setter
     def ou(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the ou reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ou")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -561,7 +566,7 @@ class DirectVisemeDriver(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @laugh.setter
     def laugh(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the Laugh reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Laugh")
         if isinstance(member, members.Reference):
             member.targetId = target_id

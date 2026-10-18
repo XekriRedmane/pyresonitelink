@@ -1,12 +1,17 @@
 """Generated component: SnapTarget."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.sphere_collider import SphereCollider
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.physics.colliders.sphere_collider import SphereCollider
 from pyresonitelink.generated._types.igrabbable_reparent_block import IGrabbableReparentBlock
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -182,7 +187,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
     @snap_collider_radius.setter
     def snap_collider_radius(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _snapColliderRadius reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_snapColliderRadius")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -203,7 +208,7 @@ class SnapTarget(GeneratedComponent, IGrabbableReparentBlock, IWorldEventReceive
     @proxy_sphere.setter
     def proxy_sphere(self, target: str | SphereCollider | None) -> None:
         """Set the proxySphere reference by target ID or SphereCollider instance."""
-        target_id: str | None = target.id if isinstance(target, SphereCollider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("proxySphere")
         if isinstance(member, members.Reference):
             member.targetId = target_id

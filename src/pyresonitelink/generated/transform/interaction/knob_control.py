@@ -72,7 +72,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
     @target.setter
     def target(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the Target reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -207,7 +207,7 @@ class KnobControl(GeneratedComponent, IComponent, IWorldEventReceiver):
     @last_user.setter
     def last_user(self, target: str | User | None) -> None:
         """Set the _lastUser reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_lastUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id

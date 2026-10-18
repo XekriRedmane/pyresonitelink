@@ -1,15 +1,20 @@
 """Generated component: RadiantSearchBar."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.text_field import TextField
-from pyresonitelink.generated._types.text import Text
-from pyresonitelink.generated._types.tiled_raw_image import TiledRawImage
-from pyresonitelink.generated._types.button import Button
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.interaction.text_field import TextField
+    from pyresonitelink.generated.uix.graphics.text import Text
+    from pyresonitelink.generated.uix.graphics.tiled_raw_image import TiledRawImage
+    from pyresonitelink.generated.uix.interaction.button import Button
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -153,7 +158,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @text_field.setter
     def text_field(self, target: str | TextField | None) -> None:
         """Set the _textField reference by target ID or TextField instance."""
-        target_id: str | None = target.id if isinstance(target, TextField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_textField")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -174,7 +179,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @search_text.setter
     def search_text(self, target: str | Text | None) -> None:
         """Set the _searchText reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_searchText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -195,7 +200,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @default_text.setter
     def default_text(self, target: str | Text | None) -> None:
         """Set the _defaultText reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_defaultText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -216,7 +221,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @searching_visual.setter
     def searching_visual(self, target: str | TiledRawImage | None) -> None:
         """Set the _searchingVisual reference by target ID or TiledRawImage instance."""
-        target_id: str | None = target.id if isinstance(target, TiledRawImage) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_searchingVisual")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -237,7 +242,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @cancel_button.setter
     def cancel_button(self, target: str | Button | None) -> None:
         """Set the _cancelButton reference by target ID or Button instance."""
-        target_id: str | None = target.id if isinstance(target, Button) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cancelButton")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -258,7 +263,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @default_visible.setter
     def default_visible(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _defaultVisible reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_defaultVisible")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -279,7 +284,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @searching_animation_color.setter
     def searching_animation_color(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the _searchingAnimationColor reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_searchingAnimationColor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -300,7 +305,7 @@ class RadiantSearchBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @searching_texture_offset.setter
     def searching_texture_offset(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _searchingTextureOffset reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_searchingTextureOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id

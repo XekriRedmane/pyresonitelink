@@ -51,7 +51,7 @@ For more information on finger pose sources, please see Finger Posing System.
     @a.setter
     def a(self, target: str | IFingerPoseSourceComponent | None) -> None:
         """Set the A reference by target ID or IFingerPoseSourceComponent instance."""
-        target_id: str | None = target.id if isinstance(target, IFingerPoseSourceComponent) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +72,7 @@ For more information on finger pose sources, please see Finger Posing System.
     @b.setter
     def b(self, target: str | IFingerPoseSourceComponent | None) -> None:
         """Set the B reference by target ID or IFingerPoseSourceComponent instance."""
-        target_id: str | None = target.id if isinstance(target, IFingerPoseSourceComponent) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             member.targetId = target_id

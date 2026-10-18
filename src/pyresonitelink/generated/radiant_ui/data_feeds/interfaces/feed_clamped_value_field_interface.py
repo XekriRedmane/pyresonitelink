@@ -1,5 +1,8 @@
 """Generated component: FeedClampedValueFieldInterface."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -9,7 +12,9 @@ from pyresonitelink.generated._types.ifield import IField
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.sync_ref import SyncRef
 from pyresonitelink.generated._types.idata_feed_view import IDataFeedView
-from pyresonitelink.generated._types.feed_item_interface import FeedItemInterface
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.radiant_ui.data_feeds.interfaces.feed_item_interface import FeedItemInterface
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -117,7 +122,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @item_name.setter
     def item_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -138,7 +143,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @item_key.setter
     def item_key(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemKey reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemKey")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -159,7 +164,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @item_description.setter
     def item_description(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemDescription reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemDescription")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -180,7 +185,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @has_description.setter
     def has_description(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HasDescription reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HasDescription")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -201,7 +206,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @description_cleanup.setter
     def description_cleanup(self, target: str | Slot | None) -> None:
         """Set the DescriptionCleanup reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DescriptionCleanup")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -222,7 +227,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @item_icon.setter
     def item_icon(self, target: str | IField[str] | None) -> None:
         """Set the ItemIcon reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemIcon")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -243,7 +248,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @has_icon.setter
     def has_icon(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HasIcon reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HasIcon")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -264,7 +269,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @icon_cleanup.setter
     def icon_cleanup(self, target: str | Slot | None) -> None:
         """Set the IconCleanup reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IconCleanup")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -285,7 +290,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @view.setter
     def view(self, target: str | SyncRef[IDataFeedView] | None) -> None:
         """Set the View reference by target ID or SyncRef[IDataFeedView] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("View")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -306,7 +311,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @parent_container.setter
     def parent_container(self, target: str | FeedItemInterface | None) -> None:
         """Set the ParentContainer reference by target ID or FeedItemInterface instance."""
-        target_id: str | None = target.id if isinstance(target, FeedItemInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ParentContainer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -327,7 +332,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @child_container.setter
     def child_container(self, target: str | Slot | None) -> None:
         """Set the ChildContainer reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ChildContainer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -361,7 +366,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @enabled_state.setter
     def enabled_state(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the EnabledState reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EnabledState")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -382,7 +387,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @value.setter
     def value(self, target: str | IField[T] | None) -> None:
         """Set the Value reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -403,7 +408,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @formatting.setter
     def formatting(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Formatting reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Formatting")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -424,7 +429,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @min.setter
     def min(self, target: str | IField[T] | None) -> None:
         """Set the Min reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Min")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -445,7 +450,7 @@ class FeedClampedValueFieldInterface(GenericComponent[T], IComponent, IWorldEven
     @max.setter
     def max(self, target: str | IField[T] | None) -> None:
         """Set the Max reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Max")
         if isinstance(member, members.Reference):
             member.targetId = target_id

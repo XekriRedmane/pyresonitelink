@@ -1,14 +1,19 @@
 """Generated component: AvatarHandDataAssigner."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.generated._enums.chirality import Chirality
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.sync_ref import SyncRef
 from pyresonitelink.generated._types.ifinger_pose_source_component import IFingerPoseSourceComponent
-from pyresonitelink.generated._types.tip_touch_source import TipTouchSource
-from pyresonitelink.generated._types.vibration_device_relay import VibrationDeviceRelay
-from pyresonitelink.generated._types.avatar_object_slot import AvatarObjectSlot
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.input.interaction.tip_touch_source import TipTouchSource
+    from pyresonitelink.generated.input.vibration_device_relay import VibrationDeviceRelay
+    from pyresonitelink.generated.users.common_avatar_system.avatar_object_slot import AvatarObjectSlot
 from pyresonitelink.generated._types.iavatar_object_component import IAvatarObjectComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -58,7 +63,7 @@ class AvatarHandDataAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldE
     @target_reference.setter
     def target_reference(self, target: str | SyncRef[IFingerPoseSourceComponent] | None) -> None:
         """Set the TargetReference reference by target ID or SyncRef[IFingerPoseSourceComponent] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -79,7 +84,7 @@ class AvatarHandDataAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldE
     @touch_source.setter
     def touch_source(self, target: str | TipTouchSource | None) -> None:
         """Set the TouchSource reference by target ID or TipTouchSource instance."""
-        target_id: str | None = target.id if isinstance(target, TipTouchSource) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TouchSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +105,7 @@ class AvatarHandDataAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldE
     @vibration_relay.setter
     def vibration_relay(self, target: str | VibrationDeviceRelay | None) -> None:
         """Set the VibrationRelay reference by target ID or VibrationDeviceRelay instance."""
-        target_id: str | None = target.id if isinstance(target, VibrationDeviceRelay) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("VibrationRelay")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -141,7 +146,7 @@ class AvatarHandDataAssigner(GeneratedComponent, IAvatarObjectComponent, IWorldE
     @equipping_slot.setter
     def equipping_slot(self, target: str | AvatarObjectSlot | None) -> None:
         """Set the _equippingSlot reference by target ID or AvatarObjectSlot instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarObjectSlot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_equippingSlot")
         if isinstance(member, members.Reference):
             member.targetId = target_id

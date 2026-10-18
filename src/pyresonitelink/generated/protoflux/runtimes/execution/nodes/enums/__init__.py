@@ -9,6 +9,7 @@ from .enum_to_short import EnumToShort
 from .enum_to_uint import EnumToUint
 from .enum_to_ulong import EnumToUlong
 from .enum_to_ushort import EnumToUshort
+from .enum_values import EnumValues
 from .int_to_enum import IntToEnum
 from .long_to_enum import LongToEnum
 from .next_value import NextValue

@@ -110,7 +110,7 @@ For avatars with commonly-shaped hands with at least three fingers, this interpo
     @tip_reference.setter
     def tip_reference(self, target: str | Slot | None) -> None:
         """Set the TipReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TipReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -169,7 +169,7 @@ For avatars with commonly-shaped hands with at least three fingers, this interpo
     @active_visual.setter
     def active_visual(self, target: str | Slot | None) -> None:
         """Set the _activeVisual reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_activeVisual")
         if isinstance(member, members.Reference):
             member.targetId = target_id

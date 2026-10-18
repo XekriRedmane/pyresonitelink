@@ -8,10 +8,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
+class StaticFont(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """This component is auto generated when importing new font files.
 
     Category: Assets

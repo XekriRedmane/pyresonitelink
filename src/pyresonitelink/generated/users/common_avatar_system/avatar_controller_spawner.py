@@ -1,5 +1,8 @@
 """Generated component: AvatarControllerSpawner."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.generated._enums.type_ import Type
 from pyresonitelink.data import workers
@@ -7,7 +10,9 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.material import Material
-from pyresonitelink.generated._types.avatar_controller_info import AvatarControllerInfo
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.avatar_controller_info import AvatarControllerInfo
 from pyresonitelink.generated._types.iavatar_object_component import IAvatarObjectComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -51,7 +56,7 @@ class AvatarControllerSpawner(GeneratedComponent, IAvatarObjectComponent, IWorld
     @spawn_root.setter
     def spawn_root(self, target: str | Slot | None) -> None:
         """Set the SpawnRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawnRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +77,7 @@ class AvatarControllerSpawner(GeneratedComponent, IAvatarObjectComponent, IWorld
     @material_override.setter
     def material_override(self, target: str | IAssetProvider[Material] | None) -> None:
         """Set the MaterialOverride reference by target ID or IAssetProvider[Material] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MaterialOverride")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +98,7 @@ class AvatarControllerSpawner(GeneratedComponent, IAvatarObjectComponent, IWorld
     @source_controller_info.setter
     def source_controller_info(self, target: str | AvatarControllerInfo | None) -> None:
         """Set the _sourceControllerInfo reference by target ID or AvatarControllerInfo instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarControllerInfo) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_sourceControllerInfo")
         if isinstance(member, members.Reference):
             member.targetId = target_id

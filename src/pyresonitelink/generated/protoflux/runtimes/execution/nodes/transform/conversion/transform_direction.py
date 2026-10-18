@@ -50,7 +50,7 @@ class TransformDirection(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @from_space.setter
     def from_space(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the FromSpace reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FromSpace")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ class TransformDirection(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @to_space.setter
     def to_space(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the ToSpace reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ToSpace")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -92,7 +92,7 @@ class TransformDirection(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @source_direction.setter
     def source_direction(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the SourceDirection reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SourceDirection")
         if isinstance(member, members.Reference):
             member.targetId = target_id

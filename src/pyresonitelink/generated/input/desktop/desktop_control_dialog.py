@@ -1,11 +1,18 @@
 """Generated component: DesktopControlDialog."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.corner import Corner
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.desktop_interaction_relay import DesktopInteractionRelay
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.input.desktop.desktop_interaction_relay import DesktopInteractionRelay
+    from pyresonitelink.generated.uix.interaction.button import Button
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -18,7 +25,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.DesktopControlDialog"
 
-    def __init__(self, interaction_relay: str | DesktopInteractionRelay | None = None, index_: primitives.Int | None = None, follow_cursor: primitives.Bool | None = None, brightness: primitives.Float | None = None, opacity: primitives.Float | None = None, legacy_input_mode: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, interaction_relay: str | DesktopInteractionRelay | None = None, index_: primitives.Int | None = None, follow_cursor: primitives.Bool | None = None, brightness: primitives.Float | None = None, opacity: primitives.Float | None = None, legacy_input_mode: primitives.Bool | None = None, button_corner: Corner | str | None = None, stream_button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +35,8 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             brightness: Initial value for Brightness.
             opacity: Initial value for Opacity.
             legacy_input_mode: Initial value for LegacyInputMode.
+            button_corner: Initial value for ButtonCorner.
+            stream_button: Initial value for _streamButton.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -43,6 +52,10 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.opacity = opacity
         if legacy_input_mode is not None:
             self.legacy_input_mode = legacy_input_mode
+        if button_corner is not None:
+            self.button_corner = button_corner
+        if stream_button is not None:
+            self.stream_button = stream_button
 
     @property
     def interaction_relay(self) -> str | None:
@@ -55,7 +68,7 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
     @interaction_relay.setter
     def interaction_relay(self, target: str | DesktopInteractionRelay | None) -> None:
         """Set the InteractionRelay reference by target ID or DesktopInteractionRelay instance."""
-        target_id: str | None = target.id if isinstance(target, DesktopInteractionRelay) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("InteractionRelay")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -158,5 +171,46 @@ class DesktopControlDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
         else:
             self.set_member(
                 "LegacyInputMode", fields.FieldBool(value=value)
+            )
+
+    @property
+    def button_corner(self) -> Corner | None:
+        """The ButtonCorner enum value."""
+        member = self.get_member("ButtonCorner")
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Corner(member.value)
+        return None
+
+    @button_corner.setter
+    def button_corner(self, value: Corner | str) -> None:
+        """Set the ButtonCorner enum value."""
+        member = self.get_member("ButtonCorner")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "ButtonCorner",
+                members.FieldEnum(value=str(value)),
+            )
+
+    @property
+    def stream_button(self) -> str | None:
+        """Target ID of the _streamButton reference (targets Button)."""
+        member = self.get_member("_streamButton")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @stream_button.setter
+    def stream_button(self, target: str | Button | None) -> None:
+        """Set the _streamButton reference by target ID or Button instance."""
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
+        member = self.get_member("_streamButton")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_streamButton",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.UIX.Button'),
             )
 

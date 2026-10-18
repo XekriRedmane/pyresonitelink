@@ -1,5 +1,6 @@
 """Generated strings components."""
 
+from .chars_to_string import CharsToString
 from .compare_strings import CompareStrings
 from .concatenate_char_string import ConcatenateCharString
 from .concatenate_multi_string import ConcatenateMultiString
@@ -14,6 +15,7 @@ from .greater_or_equal_string import GreaterOrEqual_String
 from .greater_than_string import GreaterThan_String
 from .index_of_string import IndexOfString
 from .is_string_empty import IsStringEmpty
+from .join_string import JoinString
 from .less_or_equal_string import LessOrEqual_String
 from .less_than_string import LessThan_String
 from .multiply_string import MultiplyString
@@ -21,6 +23,7 @@ from .null_string import NullString
 from .replace_first_substring import ReplaceFirstSubstring
 from .replace_substring import ReplaceSubstring
 from .reverse_string import ReverseString
+from .split_string import SplitString
 from .starts_with import StartsWith
 from .string_insert import StringInsert
 from .string_join import StringJoin

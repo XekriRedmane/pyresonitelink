@@ -14,7 +14,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class UserObjectNetworkStatistic(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """Wrapper for [ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Users.UserObjectNetworkStatistic<>.
+    """#REDIRECT UserNetworkStatistic
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Users/Info
 
@@ -52,7 +52,7 @@ class UserObjectNetworkStatistic(GenericComponent[T], INodeObjectOutput[T], IExe
     @name.setter
     def name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Name reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +73,7 @@ class UserObjectNetworkStatistic(GenericComponent[T], INodeObjectOutput[T], IExe
     @user.setter
     def user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the User reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             member.targetId = target_id

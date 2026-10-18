@@ -20,10 +20,11 @@ from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.icommon_material import ICommonMaterial
 from pyresonitelink.generated._types.i_uix_material import IUIX_Material
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICustomInspector, IWorldEventReceiver):
+class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICustomInspector, IComponent, IWorldEventReceiver):
     """The UI_UnlitMaterial component is used to show UIX. This material works best when rendered on a base, which the sample UIX made through the dev create new menu has by default.
 
     Category: Assets/Materials/UI
@@ -333,7 +334,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -354,7 +355,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
     @texture.setter
     def texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Texture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -528,7 +529,7 @@ class UI_UnlitMaterial(GeneratedComponent, ICommonMaterial, IUIX_Material, ICust
     @mask_texture.setter
     def mask_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the MaskTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MaskTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id

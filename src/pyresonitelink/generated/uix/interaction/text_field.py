@@ -1,10 +1,15 @@
 """Generated component: TextField."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.text_editor import TextEditor
-from pyresonitelink.generated._types.text import Text
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.common_ui.editors.text_editor import TextEditor
+    from pyresonitelink.generated.uix.graphics.text import Text
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
 from pyresonitelink.generated._types.iui_grabbable import IUIGrabbable
 from pyresonitelink.generated._types.iui_grab_receiver import IUIGrabReceiver
@@ -51,7 +56,7 @@ You must drag a reference to the Text component into the Text property of the Te
     @editor.setter
     def editor(self, target: str | TextEditor | None) -> None:
         """Set the Editor reference by target ID or TextEditor instance."""
-        target_id: str | None = target.id if isinstance(target, TextEditor) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Editor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +77,7 @@ You must drag a reference to the Text component into the Text property of the Te
     @text.setter
     def text(self, target: str | Text | None) -> None:
         """Set the __text reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("__text")
         if isinstance(member, members.Reference):
             member.targetId = target_id

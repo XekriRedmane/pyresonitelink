@@ -45,7 +45,7 @@ class AngularVelocityDelta_floatQ(GeneratedComponent, INodeValueOutput, IExecuti
     @angular_velocity.setter
     def angular_velocity(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the AngularVelocity reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AngularVelocity")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class AngularVelocityDelta_floatQ(GeneratedComponent, INodeValueOutput, IExecuti
     @delta_time.setter
     def delta_time(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the DeltaTime reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DeltaTime")
         if isinstance(member, members.Reference):
             member.targetId = target_id

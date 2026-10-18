@@ -74,7 +74,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
     @splat_map.setter
     def splat_map(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the SplatMap reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SplatMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -95,7 +95,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
     @r_sound_material.setter
     def r_sound_material(self, target: str | IFootstepSoundMaterial | None) -> None:
         """Set the R_SoundMaterial reference by target ID or IFootstepSoundMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, IFootstepSoundMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("R_SoundMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -116,7 +116,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
     @g_sound_material.setter
     def g_sound_material(self, target: str | IFootstepSoundMaterial | None) -> None:
         """Set the G_SoundMaterial reference by target ID or IFootstepSoundMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, IFootstepSoundMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("G_SoundMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -137,7 +137,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
     @b_sound_material.setter
     def b_sound_material(self, target: str | IFootstepSoundMaterial | None) -> None:
         """Set the B_SoundMaterial reference by target ID or IFootstepSoundMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, IFootstepSoundMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("B_SoundMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -158,7 +158,7 @@ class FootstepSoundSplatmapSplitter(GeneratedComponent, IFootstepSoundMaterial, 
     @a_sound_material.setter
     def a_sound_material(self, target: str | IFootstepSoundMaterial | None) -> None:
         """Set the A_SoundMaterial reference by target ID or IFootstepSoundMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, IFootstepSoundMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("A_SoundMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id

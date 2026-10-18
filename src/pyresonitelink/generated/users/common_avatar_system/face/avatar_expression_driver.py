@@ -55,7 +55,7 @@ This list is ever constantly expanding, and as such will be incomplete for vast 
     @data_source.setter
     def data_source(self, target: str | IMouthTrackingSourceComponent | None) -> None:
         """Set the DataSource reference by target ID or IMouthTrackingSourceComponent instance."""
-        target_id: str | None = target.id if isinstance(target, IMouthTrackingSourceComponent) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DataSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -95,7 +95,7 @@ This list is ever constantly expanding, and as such will be incomplete for vast 
     @volume_source.setter
     def volume_source(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the VolumeSource reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("VolumeSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -116,7 +116,7 @@ This list is ever constantly expanding, and as such will be incomplete for vast 
     @silence_source.setter
     def silence_source(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the SilenceSource reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SilenceSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id

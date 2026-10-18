@@ -1,17 +1,22 @@
 """Generated component: LegacyTextField."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.legacy_ui_style import LegacyUIStyle
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.text_renderer import TextRenderer
-from pyresonitelink.generated._types.text_editor import TextEditor
-from pyresonitelink.generated._types.pbs_rim_metallic import PBS_RimMetallic
-from pyresonitelink.generated._types.bevel_stripe_mesh import BevelStripeMesh
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.visuals.legacy_ui_style import LegacyUIStyle
+    from pyresonitelink.generated.rendering.text_renderer import TextRenderer
+    from pyresonitelink.generated.common_ui.editors.text_editor import TextEditor
+    from pyresonitelink.generated.assets.materials.pbs.pbs_rim_metallic import PBS_RimMetallic
+    from pyresonitelink.generated.assets.procedural_meshes.legacy_ui.bevel_stripe_mesh import BevelStripeMesh
 from pyresonitelink.generated._types.itext_field import ITextField
 from pyresonitelink.generated._types.itouchable import ITouchable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -139,7 +144,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @style.setter
     def style(self, target: str | LegacyUIStyle | None) -> None:
         """Set the Style reference by target ID or LegacyUIStyle instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyUIStyle) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Style")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -293,7 +298,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @text_slot.setter
     def text_slot(self, target: str | Slot | None) -> None:
         """Set the _textSlot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_textSlot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -314,7 +319,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @text_renderer.setter
     def text_renderer(self, target: str | TextRenderer | None) -> None:
         """Set the _textRenderer reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_textRenderer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -335,7 +340,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @text_editor.setter
     def text_editor(self, target: str | TextEditor | None) -> None:
         """Set the _textEditor reference by target ID or TextEditor instance."""
-        target_id: str | None = target.id if isinstance(target, TextEditor) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_textEditor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -356,7 +361,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @material.setter
     def material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _material reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -377,7 +382,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @mesh.setter
     def mesh(self, target: str | BevelStripeMesh | None) -> None:
         """Set the _mesh reference by target ID or BevelStripeMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BevelStripeMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_mesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -398,7 +403,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @text_bounds.setter
     def text_bounds(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _textBounds reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_textBounds")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -419,7 +424,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @collider_size.setter
     def collider_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _colliderSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -440,7 +445,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @mesh_left.setter
     def mesh_left(self, target: str | BevelStripeMesh | None) -> None:
         """Set the _meshLeft reference by target ID or BevelStripeMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BevelStripeMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_meshLeft")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -461,7 +466,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @mesh_right.setter
     def mesh_right(self, target: str | BevelStripeMesh | None) -> None:
         """Set the _meshRight reference by target ID or BevelStripeMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BevelStripeMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_meshRight")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -482,7 +487,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @text_left_bounds.setter
     def text_left_bounds(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _textLeftBounds reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_textLeftBounds")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -503,7 +508,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @text_right_bounds.setter
     def text_right_bounds(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _textRightBounds reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_textRightBounds")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -524,7 +529,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @left_text_renderer.setter
     def left_text_renderer(self, target: str | TextRenderer | None) -> None:
         """Set the _leftTextRenderer reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_leftTextRenderer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -545,7 +550,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @right_text_renderer.setter
     def right_text_renderer(self, target: str | TextRenderer | None) -> None:
         """Set the _rightTextRenderer reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rightTextRenderer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -566,7 +571,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @collider_left_size.setter
     def collider_left_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _colliderLeftSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colliderLeftSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -587,7 +592,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @collider_right_size.setter
     def collider_right_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _colliderRightSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colliderRightSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -608,7 +613,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @left_offset.setter
     def left_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _leftOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_leftOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -629,7 +634,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @right_offset.setter
     def right_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _rightOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rightOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -650,7 +655,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @left_text_position.setter
     def left_text_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _leftTextPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_leftTextPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -671,7 +676,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @right_text_position.setter
     def right_text_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _rightTextPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rightTextPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -711,7 +716,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @hint_text_renderer.setter
     def hint_text_renderer(self, target: str | TextRenderer | None) -> None:
         """Set the _hintTextRenderer reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_hintTextRenderer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -732,7 +737,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @hint_text_bounds.setter
     def hint_text_bounds(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _hintTextBounds reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_hintTextBounds")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -753,7 +758,7 @@ class LegacyTextField(GeneratedComponent, ITextField, ITouchable, IWorldEventRec
     @hint_text_enabled.setter
     def hint_text_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _hintTextEnabled reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_hintTextEnabled")
         if isinstance(member, members.Reference):
             member.targetId = target_id

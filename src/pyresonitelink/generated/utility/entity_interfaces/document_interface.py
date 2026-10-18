@@ -56,7 +56,7 @@ class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRece
     @item_name.setter
     def item_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -77,7 +77,7 @@ class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRece
     @spawning_user.setter
     def spawning_user(self, target: str | UserRef | None) -> None:
         """Set the SpawningUser reference by target ID or UserRef instance."""
-        target_id: str | None = target.id if isinstance(target, UserRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -98,7 +98,7 @@ class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRece
     @spawning_user_id.setter
     def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -138,7 +138,7 @@ class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRece
     @url.setter
     def url(self, target: str | IField[str] | None) -> None:
         """Set the URL reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -159,7 +159,7 @@ class DocumentInterface(GeneratedComponent, IItemMetadataSource, IWorldEventRece
     @page.setter
     def page(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the Page reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Page")
         if isinstance(member, members.Reference):
             member.targetId = target_id

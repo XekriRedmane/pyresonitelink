@@ -1,0 +1,177 @@
+"""Generated component: BoneWeightDiagnosticMesh."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import protocols
+from pyresonitelink.generated._enums.color_profile import ColorProfile
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.iasset_provider import IAssetProvider
+from pyresonitelink.generated._types.mesh import Mesh
+from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class BoneWeightDiagnosticMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
+    """WIP, shows bone weights on a skinned mesh.
+
+    Category: Assets/Procedural Meshes
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoneWeightDiagnosticMesh"
+
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, mesh: str | IAssetProvider[Mesh] | None = None, bone_index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            high_priority_integration: Initial value for HighPriorityIntegration.
+            override_bounding_box: Initial value for OverrideBoundingBox.
+            overriden_bounding_box: Initial value for OverridenBoundingBox.
+            profile: Initial value for Profile.
+            mesh: Initial value for Mesh.
+            bone_index: Initial value for BoneIndex.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if high_priority_integration is not None:
+            self.high_priority_integration = high_priority_integration
+        if override_bounding_box is not None:
+            self.override_bounding_box = override_bounding_box
+        if overriden_bounding_box is not None:
+            self.overriden_bounding_box = overriden_bounding_box
+        if profile is not None:
+            self.profile = profile
+        if mesh is not None:
+            self.mesh = mesh
+        if bone_index is not None:
+            self.bone_index = bone_index
+
+    @property
+    def high_priority_integration(self) -> primitives.Bool | None:
+        """The HighPriorityIntegration field value."""
+        member = self.get_member("HighPriorityIntegration")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @high_priority_integration.setter
+    def high_priority_integration(self, value: primitives.Bool) -> None:
+        """Set the HighPriorityIntegration field value."""
+        member = self.get_member("HighPriorityIntegration")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "HighPriorityIntegration", fields.FieldBool(value=value)
+            )
+
+    @property
+    def override_bounding_box(self) -> primitives.Bool | None:
+        """The OverrideBoundingBox field value."""
+        member = self.get_member("OverrideBoundingBox")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @override_bounding_box.setter
+    def override_bounding_box(self, value: primitives.Bool) -> None:
+        """Set the OverrideBoundingBox field value."""
+        member = self.get_member("OverrideBoundingBox")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "OverrideBoundingBox", fields.FieldBool(value=value)
+            )
+
+    @property
+    def overriden_bounding_box(self) -> primitives.BoundingBox | None:
+        """The OverridenBoundingBox field value."""
+        member = self.get_member("OverridenBoundingBox")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @overriden_bounding_box.setter
+    def overriden_bounding_box(self, value: primitives.BoundingBox) -> None:
+        """Set the OverridenBoundingBox field value."""
+        member = self.get_member("OverridenBoundingBox")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "OverridenBoundingBox", fields.FieldBoundingBox(value=value)
+            )
+
+    @property
+    def profile(self) -> ColorProfile | None:
+        """The Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorProfile(member.value)
+        return None
+
+    @profile.setter
+    def profile(self, value: ColorProfile | str) -> None:
+        """Set the Profile enum value."""
+        member = self.get_member("Profile")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "Profile",
+                members.FieldEnum(value=str(value)),
+            )
+
+    @property
+    def mesh(self) -> str | None:
+        """Target ID of the Mesh reference (targets IAssetProvider[Mesh])."""
+        member = self.get_member("Mesh")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @mesh.setter
+    def mesh(self, target: str | IAssetProvider[Mesh] | None) -> None:
+        """Set the Mesh reference by target ID or IAssetProvider[Mesh] instance."""
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
+        member = self.get_member("Mesh")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Mesh",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IAssetProvider<[FrooxEngine]FrooxEngine.Mesh>'),
+            )
+
+    @property
+    def bone_index(self) -> primitives.Int | None:
+        """The BoneIndex field value."""
+        member = self.get_member("BoneIndex")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @bone_index.setter
+    def bone_index(self, value: primitives.Int) -> None:
+        """Set the BoneIndex field value."""
+        member = self.get_member("BoneIndex")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "BoneIndex", fields.FieldInt(value=value)
+            )
+
+    async def bake_mesh(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the BakeMesh sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "BakeMesh", {}, debug,
+        )
+

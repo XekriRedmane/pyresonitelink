@@ -86,7 +86,7 @@ class RandomEventGenerator(GeneratedComponent, IComponent, IWorldEventReceiver):
     @random_point_generator.setter
     def random_point_generator(self, target: str | IPointGenerator | None) -> None:
         """Set the RandomPointGenerator reference by target ID or IPointGenerator instance."""
-        target_id: str | None = target.id if isinstance(target, IPointGenerator) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RandomPointGenerator")
         if isinstance(member, members.Reference):
             member.targetId = target_id

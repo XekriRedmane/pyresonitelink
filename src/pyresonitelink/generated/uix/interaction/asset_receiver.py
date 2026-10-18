@@ -52,7 +52,7 @@ class AssetReceiver(GenericComponent[T], IUIGrabReceiver, IWorldEventReceiver):
     @reference.setter
     def reference(self, target: str | AssetRef[A] | None) -> None:
         """Set the Reference reference by target ID or AssetRef[A] instance."""
-        target_id: str | None = target.id if isinstance(target, AssetRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             member.targetId = target_id

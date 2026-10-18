@@ -1,11 +1,16 @@
 """Generated component: OnLocomotionGripEnd."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iglobal_value_proxy import IGlobalValueProxy
-from pyresonitelink.generated._types.physical_locomotion import PhysicalLocomotion
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.locomotion.modules.physical_locomotion import PhysicalLocomotion
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -46,7 +51,7 @@ class OnLocomotionGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInsp
     @locomotion.setter
     def locomotion(self, target: str | IGlobalValueProxy[PhysicalLocomotion] | None) -> None:
         """Set the Locomotion reference by target ID or IGlobalValueProxy[PhysicalLocomotion] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Locomotion")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -67,7 +72,7 @@ class OnLocomotionGripEnd(GeneratedComponent, IExecutionNode, INode, ICustomInsp
     @on_event.setter
     def on_event(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnEvent reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnEvent")
         if isinstance(member, members.Reference):
             member.targetId = target_id

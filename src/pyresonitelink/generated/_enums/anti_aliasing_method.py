@@ -8,7 +8,6 @@ class AntiAliasingMethod(StrEnum):
 
     off = "Off"
     fxaa = "FXAA"
-    ctaa = "CTAA"
     smaa = "SMAA"
     taa = "TAA"
 

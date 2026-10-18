@@ -1,5 +1,8 @@
 """Generated component: ParticleLightsModule."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,7 +10,9 @@ from pyresonitelink.generated._enums.particle_follower_distribution import Parti
 from pyresonitelink.generated._enums.angle_multiplier import AngleMultiplier
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.light import Light
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.light import Light
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
 from pyresonitelink.generated._types.iparticle_renderer import IParticleRenderer
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -75,7 +80,7 @@ This component is part of the Photon Dust system made by Frooxius.
     @template_light.setter
     def template_light(self, target: str | Light | None) -> None:
         """Set the TemplateLight reference by target ID or Light instance."""
-        target_id: str | None = target.id if isinstance(target, Light) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TemplateLight")
         if isinstance(member, members.Reference):
             member.targetId = target_id

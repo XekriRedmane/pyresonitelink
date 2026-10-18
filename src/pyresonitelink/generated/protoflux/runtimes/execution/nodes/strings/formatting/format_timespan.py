@@ -53,7 +53,7 @@ class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
     @time_span.setter
     def time_span(self, target: str | INodeValueOutput[str] | None) -> None:
         """Set the TimeSpan reference by target ID or INodeValueOutput[str] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TimeSpan")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -74,7 +74,7 @@ class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
     @show_seconds.setter
     def show_seconds(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the ShowSeconds reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ShowSeconds")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -95,7 +95,7 @@ class FormatTimespan(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
     @show_milliseconds.setter
     def show_milliseconds(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the ShowMilliseconds reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ShowMilliseconds")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -118,7 +118,7 @@ Nodes that output this type can be found in Strings/Localization"""
     @format_provider.setter
     def format_provider(self, target: str | INodeObjectOutput[IFormatProvider] | None) -> None:
         """Set the FormatProvider reference by target ID or INodeObjectOutput[IFormatProvider] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FormatProvider")
         if isinstance(member, members.Reference):
             member.targetId = target_id

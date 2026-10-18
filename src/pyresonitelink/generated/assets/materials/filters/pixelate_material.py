@@ -17,10 +17,11 @@ from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.i_uix_material import IUIX_Material
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEventReceiver):
+class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IComponent, IWorldEventReceiver):
     """The Pixelate Material component point filters the colors behind it using a spaced out grid of points. It then uses the colors to make a new pixel grid which makes up the pixelated effect it generates.
 
     Category: Assets/Materials/Filters
@@ -344,7 +345,7 @@ class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWor
     @resolution_magnitude_texture.setter
     def resolution_magnitude_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the ResolutionMagnitudeTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ResolutionMagnitudeTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -483,7 +484,7 @@ class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWor
     @global_.setter
     def global_(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _global reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_global")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -504,7 +505,7 @@ class PixelateMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWor
     @per_object_ref.setter
     def per_object_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _perObject reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_perObject")
         if isinstance(member, members.Reference):
             member.targetId = target_id

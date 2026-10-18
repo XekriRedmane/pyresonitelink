@@ -1,11 +1,16 @@
 """Generated component: DebugTangentSpace."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.mesh_renderer import MeshRenderer
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.mesh_renderer import MeshRenderer
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -51,7 +56,7 @@ It may be removed at any time in the future.
     @mesh.setter
     def mesh(self, target: str | MeshRenderer | None) -> None:
         """Set the Mesh reference by target ID or MeshRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, MeshRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id

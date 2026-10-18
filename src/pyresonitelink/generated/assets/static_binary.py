@@ -5,10 +5,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class StaticBinary(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
+class StaticBinary(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The StaticBinary component is used to take in a URL and treats it like a Binary type, mostly used by other components.
 
     Category: Assets

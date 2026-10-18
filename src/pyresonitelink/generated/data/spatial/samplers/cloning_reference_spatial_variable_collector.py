@@ -61,7 +61,7 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
     @clone_parent.setter
     def clone_parent(self, target: str | Slot | None) -> None:
         """Set the CloneParent reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CloneParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -140,7 +140,7 @@ class CloningReferenceSpatialVariableCollector(GenericComponent[T]):
     @reference_list.setter
     def reference_list(self, target: str | ISyncRefList[T] | None) -> None:
         """Set the ReferenceList reference by target ID or ISyncRefList[T] instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncRefList) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ReferenceList")
         if isinstance(member, members.Reference):
             member.targetId = target_id

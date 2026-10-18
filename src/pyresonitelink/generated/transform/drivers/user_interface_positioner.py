@@ -276,7 +276,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
     @position.setter
     def position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _position reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -297,7 +297,7 @@ class UserInterfacePositioner(GeneratedComponent, IComponent, IWorldEventReceive
     @rotation.setter
     def rotation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _rotation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id

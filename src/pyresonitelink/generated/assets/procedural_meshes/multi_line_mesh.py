@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class MultiLineMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class MultiLineMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The MultiLineMesh component generates geometry for use with a MeshRenderer. For now, this component is unusable without Mods due to having a list type object.
 
     Category: Assets/Procedural Meshes

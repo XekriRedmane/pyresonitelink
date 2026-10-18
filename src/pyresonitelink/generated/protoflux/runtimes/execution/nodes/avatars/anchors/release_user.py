@@ -50,7 +50,7 @@ class ReleaseUser(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
     @anchor.setter
     def anchor(self, target: str | INodeObjectOutput[IAvatarAnchor] | None) -> None:
         """Set the Anchor reference by target ID or INodeObjectOutput[IAvatarAnchor] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Anchor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ class ReleaseUser(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
     @on_released.setter
     def on_released(self, target: str | INodeOperation | None) -> None:
         """Set the OnReleased reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnReleased")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -92,7 +92,7 @@ class ReleaseUser(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
     @on_failure.setter
     def on_failure(self, target: str | INodeOperation | None) -> None:
         """Set the OnFailure reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFailure")
         if isinstance(member, members.Reference):
             member.targetId = target_id

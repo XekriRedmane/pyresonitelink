@@ -24,6 +24,7 @@ from .particle_spray import ParticleSpray
 from .proto_flux_tool import ProtoFluxTool
 from .raw_data_tool import RawDataTool
 from .rig_mesh_transfer_tool import RigMeshTransferTool
+from .rig_tool import RigTool
 from .shape_tool import ShapeTool
 from .spot_light_tool import SpotLightTool
 from .sun_mover import SunMover
@@ -35,3 +36,4 @@ from .brushes.convex_hull_brush_tool import ConvexHullBrushTool
 from .brushes.geometry_line_brush_tool import GeometryLineBrushTool
 from .brushes.mesh_plane_brush_tool import MeshPlaneBrushTool
 from .brushes.quad_brush_tool import QuadBrushTool
+from .userspace.userspace_pointer import UserspacePointer

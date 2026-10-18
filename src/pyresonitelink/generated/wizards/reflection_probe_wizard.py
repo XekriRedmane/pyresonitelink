@@ -1,0 +1,197 @@
+"""Generated component: ReflectionProbeWizard."""
+
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
+from pyresonitelink.data import fields
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.slot import Slot
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.interaction.text_field import TextField
+    from pyresonitelink.generated.common_ui.editors.float_text_editor_parser import FloatTextEditorParser
+from pyresonitelink.generated._types.ideveloper_interface import IDeveloperInterface
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class ReflectionProbeWizard(GeneratedComponent, IDeveloperInterface, IWorldEventReceiver):
+    """See Reflection Probe Wizard for more up to date info
+
+    Category: Wizards
+
+    See Reflection Probe Wizard.
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReflectionProbeWizard"
+
+    def __init__(self, root: str | Slot | None = None, process_disabled: primitives.Bool | None = None, teleport_user_to_probe: primitives.Bool | None = None, tag: str | TextField | None = None, delay_between_probes: str | FloatTextEditorParser | None = None, bake_count: primitives.Int | None = None, bake_index: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            root: Initial value for Root.
+            process_disabled: Initial value for ProcessDisabled.
+            teleport_user_to_probe: Initial value for TeleportUserToProbe.
+            tag: Initial value for _tag.
+            delay_between_probes: Initial value for _delayBetweenProbes.
+            bake_count: Initial value for _bakeCount.
+            bake_index: Initial value for _bakeIndex.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if root is not None:
+            self.root = root
+        if process_disabled is not None:
+            self.process_disabled = process_disabled
+        if teleport_user_to_probe is not None:
+            self.teleport_user_to_probe = teleport_user_to_probe
+        if tag is not None:
+            self.tag = tag
+        if delay_between_probes is not None:
+            self.delay_between_probes = delay_between_probes
+        if bake_count is not None:
+            self.bake_count = bake_count
+        if bake_index is not None:
+            self.bake_index = bake_index
+
+    @property
+    def root(self) -> str | None:
+        """The root slot in which all probes in it's hierarchy should be baked."""
+        member = self.get_member("Root")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @root.setter
+    def root(self, target: str | Slot | None) -> None:
+        """Set the Root reference by target ID or Slot instance."""
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
+        member = self.get_member("Root")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Root",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
+            )
+
+    @property
+    def process_disabled(self) -> primitives.Bool | None:
+        """Whether to bake probes in disabled hierarchies."""
+        member = self.get_member("ProcessDisabled")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @process_disabled.setter
+    def process_disabled(self, value: primitives.Bool) -> None:
+        """Set the ProcessDisabled field value."""
+        member = self.get_member("ProcessDisabled")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ProcessDisabled", fields.FieldBool(value=value)
+            )
+
+    @property
+    def teleport_user_to_probe(self) -> primitives.Bool | None:
+        """Whether to teleport the user to the probe before baking."""
+        member = self.get_member("TeleportUserToProbe")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @teleport_user_to_probe.setter
+    def teleport_user_to_probe(self, value: primitives.Bool) -> None:
+        """Set the TeleportUserToProbe field value."""
+        member = self.get_member("TeleportUserToProbe")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "TeleportUserToProbe", fields.FieldBool(value=value)
+            )
+
+    @property
+    def tag(self) -> str | None:
+        """Probes only with this tag will be baked."""
+        member = self.get_member("_tag")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @tag.setter
+    def tag(self, target: str | TextField | None) -> None:
+        """Set the _tag reference by target ID or TextField instance."""
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
+        member = self.get_member("_tag")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_tag",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.UIX.TextField'),
+            )
+
+    @property
+    def delay_between_probes(self) -> str | None:
+        """How long to wait between baking probes."""
+        member = self.get_member("_delayBetweenProbes")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @delay_between_probes.setter
+    def delay_between_probes(self, target: str | FloatTextEditorParser | None) -> None:
+        """Set the _delayBetweenProbes reference by target ID or FloatTextEditorParser instance."""
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
+        member = self.get_member("_delayBetweenProbes")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "_delayBetweenProbes",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.FloatTextEditorParser'),
+            )
+
+    @property
+    def bake_count(self) -> primitives.Int | None:
+        """The number of probes baked"""
+        member = self.get_member("_bakeCount")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @bake_count.setter
+    def bake_count(self, value: primitives.Int) -> None:
+        """Set the _bakeCount field value."""
+        member = self.get_member("_bakeCount")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "_bakeCount", fields.FieldInt(value=value)
+            )
+
+    @property
+    def bake_index(self) -> primitives.Int | None:
+        """The current probe being baked."""
+        member = self.get_member("_bakeIndex")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @bake_index.setter
+    def bake_index(self, value: primitives.Int) -> None:
+        """Set the _bakeIndex field value."""
+        member = self.get_member("_bakeIndex")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "_bakeIndex", fields.FieldInt(value=value)
+            )
+

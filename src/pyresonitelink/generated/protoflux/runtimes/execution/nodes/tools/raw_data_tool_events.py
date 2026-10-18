@@ -1,11 +1,16 @@
 """Generated component: RawDataToolEvents."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iglobal_value_proxy import IGlobalValueProxy
-from pyresonitelink.generated._types.raw_data_tool import RawDataTool
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.tools.raw_data_tool import RawDataTool
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -70,7 +75,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
     @tool.setter
     def tool(self, target: str | IGlobalValueProxy[RawDataTool] | None) -> None:
         """Set the Tool reference by target ID or IGlobalValueProxy[RawDataTool] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Tool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -91,7 +96,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
     @equipped.setter
     def equipped(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the Equipped reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Equipped")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -112,7 +117,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
     @dequipped.setter
     def dequipped(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the Dequipped reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Dequipped")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -133,7 +138,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
     @tool_update.setter
     def tool_update(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the ToolUpdate reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ToolUpdate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -154,7 +159,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
     @primary_pressed.setter
     def primary_pressed(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the PrimaryPressed reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PrimaryPressed")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -175,7 +180,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
     @primary_held.setter
     def primary_held(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the PrimaryHeld reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PrimaryHeld")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -196,7 +201,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
     @primary_released.setter
     def primary_released(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the PrimaryReleased reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PrimaryReleased")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -217,7 +222,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
     @secondary_pressed.setter
     def secondary_pressed(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the SecondaryPressed reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SecondaryPressed")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -238,7 +243,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
     @secondary_held.setter
     def secondary_held(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the SecondaryHeld reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SecondaryHeld")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -259,7 +264,7 @@ class RawDataToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspec
     @secondary_released.setter
     def secondary_released(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the SecondaryReleased reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SecondaryReleased")
         if isinstance(member, members.Reference):
             member.targetId = target_id

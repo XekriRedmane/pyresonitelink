@@ -1,12 +1,17 @@
 """Generated component: ButtonEditColorX."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.color_dialog_interface import ColorDialogInterface
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.utility.entity_interfaces.color_dialog_interface import ColorDialogInterface
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -57,7 +62,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
     @target.setter
     def target(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the Target reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -78,7 +83,7 @@ class ButtonEditColorX(GeneratedComponent, IButtonPressReceiver, IWorldEventRece
     @color_picker.setter
     def color_picker(self, target: str | ColorDialogInterface | None) -> None:
         """Set the _colorPicker reference by target ID or ColorDialogInterface instance."""
-        target_id: str | None = target.id if isinstance(target, ColorDialogInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colorPicker")
         if isinstance(member, members.Reference):
             member.targetId = target_id

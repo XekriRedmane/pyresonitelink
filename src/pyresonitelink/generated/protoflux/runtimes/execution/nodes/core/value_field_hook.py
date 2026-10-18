@@ -67,7 +67,7 @@ Manually unlinking the drive in an inspector behaves the same as triggering Stop
     @target.setter
     def target(self, target: str | INodeObjectOutput[IField[T]] | None) -> None:
         """Set the Target reference by target ID or INodeObjectOutput[IField[T]] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -127,7 +127,7 @@ Manually unlinking the drive in an inspector behaves the same as triggering Stop
     @on_start_drive.setter
     def on_start_drive(self, target: str | INodeOperation | None) -> None:
         """Set the OnStartDrive reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnStartDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -148,7 +148,7 @@ Manually unlinking the drive in an inspector behaves the same as triggering Stop
     @on_stop_drive.setter
     def on_stop_drive(self, target: str | INodeOperation | None) -> None:
         """Set the OnStopDrive reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnStopDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -169,7 +169,7 @@ Manually unlinking the drive in an inspector behaves the same as triggering Stop
     @on_hook.setter
     def on_hook(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnHook reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnHook")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -190,7 +190,7 @@ Manually unlinking the drive in an inspector behaves the same as triggering Stop
     @source.setter
     def source(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the Source reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id

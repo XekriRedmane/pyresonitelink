@@ -1,5 +1,8 @@
 """Generated component: CameraControlTool."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,8 +10,10 @@ from pyresonitelink.generated._enums.camera_mode import CameraMode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.interaction_handler import InteractionHandler
-from pyresonitelink.generated._types.fresnel_material import FresnelMaterial
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.interaction.handlers.interaction_handler import InteractionHandler
+    from pyresonitelink.generated.assets.materials.unlit.fresnel_material import FresnelMaterial
 from pyresonitelink.generated._types.itool import ITool
 from pyresonitelink.generated._types.imaterial_apply_policy import IMaterialApplyPolicy
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -80,7 +85,7 @@ class CameraControlTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
     @tip_reference.setter
     def tip_reference(self, target: str | Slot | None) -> None:
         """Set the TipReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TipReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -158,7 +163,7 @@ class CameraControlTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
     @override_active_tool.setter
     def override_active_tool(self, target: str | InteractionHandler | None) -> None:
         """Set the _overrideActiveTool reference by target ID or InteractionHandler instance."""
-        target_id: str | None = target.id if isinstance(target, InteractionHandler) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_overrideActiveTool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -218,7 +223,7 @@ class CameraControlTool(GeneratedComponent, ITool, IMaterialApplyPolicy, IToucha
     @material.setter
     def material(self, target: str | FresnelMaterial | None) -> None:
         """Set the _material reference by target ID or FresnelMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, FresnelMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             member.targetId = target_id

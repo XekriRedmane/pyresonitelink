@@ -64,7 +64,7 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
     @first_texture.setter
     def first_texture(self, target: str | AssetRef[A] | None) -> None:
         """Set the FirstTexture reference by target ID or AssetRef[A] instance."""
-        target_id: str | None = target.id if isinstance(target, AssetRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FirstTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -85,7 +85,7 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
     @second_texture.setter
     def second_texture(self, target: str | AssetRef[A] | None) -> None:
         """Set the SecondTexture reference by target ID or AssetRef[A] instance."""
-        target_id: str | None = target.id if isinstance(target, AssetRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SecondTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -106,7 +106,7 @@ class MultiTextureFader(GenericComponent[T], IComponent, IWorldEventReceiver):
     @lerp.setter
     def lerp(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the Lerp reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Lerp")
         if isinstance(member, members.Reference):
             member.targetId = target_id

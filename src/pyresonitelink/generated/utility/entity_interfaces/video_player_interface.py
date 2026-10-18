@@ -115,7 +115,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @item_name.setter
     def item_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -136,7 +136,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @spawning_user.setter
     def spawning_user(self, target: str | UserRef | None) -> None:
         """Set the SpawningUser reference by target ID or UserRef instance."""
-        target_id: str | None = target.id if isinstance(target, UserRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -157,7 +157,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @spawning_user_id.setter
     def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -197,7 +197,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @url.setter
     def url(self, target: str | IField[str] | None) -> None:
         """Set the URL reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -218,7 +218,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @stream.setter
     def stream(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the Stream reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Stream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -239,7 +239,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @video_clip.setter
     def video_clip(self, target: str | AssetRef[VideoTexture] | None) -> None:
         """Set the VideoClip reference by target ID or AssetRef[VideoTexture] instance."""
-        target_id: str | None = target.id if isinstance(target, AssetRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("VideoClip")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -260,7 +260,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @video_clip_texture.setter
     def video_clip_texture(self, target: str | AssetRef[ITexture2D] | None) -> None:
         """Set the VideoClipTexture reference by target ID or AssetRef[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, AssetRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("VideoClipTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -281,7 +281,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @aspect_ratio.setter
     def aspect_ratio(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the AspectRatio reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AspectRatio")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -302,7 +302,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @default_video_clip.setter
     def default_video_clip(self, target: str | IAssetProvider[VideoTexture] | None) -> None:
         """Set the DefaultVideoClip reference by target ID or IAssetProvider[VideoTexture] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DefaultVideoClip")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -323,7 +323,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @stereo_rendering_enabled.setter
     def stereo_rendering_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the StereoRenderingEnabled reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("StereoRenderingEnabled")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -344,7 +344,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @stereo_layout.setter
     def stereo_layout(self, target: str | IField[StereoLayout] | None) -> None:
         """Set the StereoLayout reference by target ID or IField[StereoLayout] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("StereoLayout")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -365,7 +365,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @stereo_transform_left.setter
     def stereo_transform_left(self, target: str | IField[primitives.Float4] | None) -> None:
         """Set the StereoTransformLeft reference by target ID or IField[primitives.Float4] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("StereoTransformLeft")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -386,7 +386,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @stereo_transform_right.setter
     def stereo_transform_right(self, target: str | IField[primitives.Float4] | None) -> None:
         """Set the StereoTransformRight reference by target ID or IField[primitives.Float4] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("StereoTransformRight")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -407,7 +407,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @stereo_transform_scale_left.setter
     def stereo_transform_scale_left(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the StereoTransformScaleLeft reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("StereoTransformScaleLeft")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -428,7 +428,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @stereo_transform_offset_left.setter
     def stereo_transform_offset_left(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the StereoTransformOffsetLeft reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("StereoTransformOffsetLeft")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -449,7 +449,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @stereo_transform_scale_right.setter
     def stereo_transform_scale_right(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the StereoTransformScaleRight reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("StereoTransformScaleRight")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -470,7 +470,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @stereo_transform_offset_right.setter
     def stereo_transform_offset_right(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the StereoTransformOffsetRight reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("StereoTransformOffsetRight")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -491,7 +491,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @panoramic_rendering_enabled.setter
     def panoramic_rendering_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the PanoramicRenderingEnabled reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PanoramicRenderingEnabled")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -512,7 +512,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @panoramic_horizontal_fov.setter
     def panoramic_horizontal_fov(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the PanoramicHorizontalFOV reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PanoramicHorizontalFOV")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -533,7 +533,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @panoramic_vertical_fov.setter
     def panoramic_vertical_fov(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the PanoramicVerticalFOV reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PanoramicVerticalFOV")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -554,7 +554,7 @@ class VideoPlayerInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @panoramic_projection.setter
     def panoramic_projection(self, target: str | IField[PanoramicProjection] | None) -> None:
         """Set the PanoramicProjection reference by target ID or IField[PanoramicProjection] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PanoramicProjection")
         if isinstance(member, members.Reference):
             member.targetId = target_id

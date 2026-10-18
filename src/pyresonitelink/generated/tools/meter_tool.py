@@ -1,5 +1,8 @@
 """Generated component: MeterTool."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -8,10 +11,12 @@ from pyresonitelink.generated._enums.mode import Mode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.interaction_handler import InteractionHandler
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.distance_meter import DistanceMeter
-from pyresonitelink.generated._types.line_transform import LineTransform
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.interaction.handlers.interaction_handler import InteractionHandler
+    from pyresonitelink.generated.transform.drivers.distance_meter import DistanceMeter
+    from pyresonitelink.generated.transform.drivers.line_transform import LineTransform
 from pyresonitelink.generated._types.itool import ITool
 from pyresonitelink.generated._types.imaterial_apply_policy import IMaterialApplyPolicy
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -109,7 +114,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @tip_reference.setter
     def tip_reference(self, target: str | Slot | None) -> None:
         """Set the TipReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TipReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -187,7 +192,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @override_active_tool.setter
     def override_active_tool(self, target: str | InteractionHandler | None) -> None:
         """Set the _overrideActiveTool reference by target ID or InteractionHandler instance."""
-        target_id: str | None = target.id if isinstance(target, InteractionHandler) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_overrideActiveTool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -227,7 +232,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @indication_color.setter
     def indication_color(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the _indicationColor reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_indicationColor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -325,7 +330,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @last_point.setter
     def last_point(self, target: str | Slot | None) -> None:
         """Set the _lastPoint reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_lastPoint")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -346,7 +351,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @current_meter.setter
     def current_meter(self, target: str | DistanceMeter | None) -> None:
         """Set the _currentMeter reference by target ID or DistanceMeter instance."""
-        target_id: str | None = target.id if isinstance(target, DistanceMeter) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_currentMeter")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -367,7 +372,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @current_line_transform.setter
     def current_line_transform(self, target: str | LineTransform | None) -> None:
         """Set the _currentLineTransform reference by target ID or LineTransform instance."""
-        target_id: str | None = target.id if isinstance(target, LineTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_currentLineTransform")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -415,7 +420,7 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
                 "FormatUnit", fields.FieldString(value=value)
             )
 
-    async def filter_users(self, resolink: protocols.ResoniteLinkClient, collider: str, debug: bool = False) -> dict:
+    async def filter_users(self, resolink: protocols.ResoniteLinkClient, collider: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Call the FilterUsers sync method.
 
         Args:
@@ -427,6 +432,6 @@ class MeterTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "FilterUsers", {"collider": collider}, debug,
+            resolink, "FilterUsers", {"collider": members.DataReference(targetID=collider) if isinstance(collider, str) else collider}, debug,
         )
 

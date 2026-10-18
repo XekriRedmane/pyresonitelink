@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class QuadArrayMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class QuadArrayMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """Quad array mesh makes a bunch of quads with defined positions, rotations, vertex colors, and UV coordinates which are rendered as one mesh. This is made from Quad brushes which can be found in the resonite essentials folder.
 
     Category: Assets/Procedural Meshes

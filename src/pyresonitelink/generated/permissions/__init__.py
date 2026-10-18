@@ -10,4 +10,5 @@ from .screen_view_permissions import ScreenViewPermissions
 from .touchable_permissions import TouchablePermissions
 from .user_permissions import UserPermissions
 from .voice_permission import VoicePermission
+from .world_configuration_permissions import WorldConfigurationPermissions
 from .world_permissions import WorldPermissions

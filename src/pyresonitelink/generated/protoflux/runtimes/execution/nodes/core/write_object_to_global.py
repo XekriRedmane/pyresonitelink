@@ -57,7 +57,7 @@ class WriteObjectToGlobal(GeneratedComponent, IGlobalRefWrite, ISyncNodeOperatio
     @global_.setter
     def global_(self, target: str | IGlobalValueProxy[T] | None) -> None:
         """Set the Global reference by target ID or IGlobalValueProxy[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Global")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -78,7 +78,7 @@ class WriteObjectToGlobal(GeneratedComponent, IGlobalRefWrite, ISyncNodeOperatio
     @value.setter
     def value(self, target: str | INodeObjectOutput[T] | None) -> None:
         """Set the Value reference by target ID or INodeObjectOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -99,7 +99,7 @@ class WriteObjectToGlobal(GeneratedComponent, IGlobalRefWrite, ISyncNodeOperatio
     @on_written.setter
     def on_written(self, target: str | INodeOperation | None) -> None:
         """Set the OnWritten reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnWritten")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -120,7 +120,7 @@ class WriteObjectToGlobal(GeneratedComponent, IGlobalRefWrite, ISyncNodeOperatio
     @on_fail.setter
     def on_fail(self, target: str | INodeOperation | None) -> None:
         """Set the OnFail reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFail")
         if isinstance(member, members.Reference):
             member.targetId = target_id

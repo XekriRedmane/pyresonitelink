@@ -1,12 +1,17 @@
 """Generated component: AvatarAnchorTouchTrigger."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.generated._enums.vibrate_preset import VibratePreset
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.avatar_anchor import AvatarAnchor
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.anchors.avatar_anchor import AvatarAnchor
 from pyresonitelink.generated._types.itouchable import ITouchable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -67,7 +72,7 @@ class AvatarAnchorTouchTrigger(GeneratedComponent, ITouchable, IWorldEventReceiv
     @anchor.setter
     def anchor(self, target: str | AvatarAnchor | None) -> None:
         """Set the Anchor reference by target ID or AvatarAnchor instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarAnchor) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Anchor")
         if isinstance(member, members.Reference):
             member.targetId = target_id

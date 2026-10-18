@@ -1,5 +1,8 @@
 """Generated component: FingerPoseStreamManager."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -8,7 +11,9 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
 from pyresonitelink.generated._types.value_stream import ValueStream
 from pyresonitelink.generated._types.multi_value_stream import MultiValueStream
-from pyresonitelink.generated._types.user_pose_controller import UserPoseController
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.controllers.user_pose_controller import UserPoseController
 from pyresonitelink.generated._types.ifinger_pose_source_component import IFingerPoseSourceComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -62,7 +67,7 @@ For more information on finger pose sources, please see Finger Posing System.
     @user.setter
     def user(self, target: str | User | None) -> None:
         """Set the User reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -83,7 +88,7 @@ For more information on finger pose sources, please see Finger Posing System.
     @left_is_tracking.setter
     def left_is_tracking(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the LeftIsTracking reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LeftIsTracking")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -104,7 +109,7 @@ For more information on finger pose sources, please see Finger Posing System.
     @right_is_tracking.setter
     def right_is_tracking(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the RightIsTracking reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RightIsTracking")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -125,7 +130,7 @@ For more information on finger pose sources, please see Finger Posing System.
     @stream.setter
     def stream(self, target: str | MultiValueStream[primitives.FloatQ] | None) -> None:
         """Set the Stream reference by target ID or MultiValueStream[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, MultiValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Stream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -165,7 +170,7 @@ For more information on finger pose sources, please see Finger Posing System.
     @pose_controller.setter
     def pose_controller(self, target: str | UserPoseController | None) -> None:
         """Set the PoseController reference by target ID or UserPoseController instance."""
-        target_id: str | None = target.id if isinstance(target, UserPoseController) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PoseController")
         if isinstance(member, members.Reference):
             member.targetId = target_id

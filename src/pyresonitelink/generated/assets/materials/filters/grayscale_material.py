@@ -17,10 +17,11 @@ from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.i_uix_material import IUIX_Material
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class GrayscaleMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEventReceiver):
+class GrayscaleMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IComponent, IWorldEventReceiver):
     """The GrayscaleMaterial component is a material that allows the mapping of grayscale values from 0 to 1 to any other value. This is analogous to the Color Ramp node in Blender. A common misconception is that this can only produce black and white values, however that is only the default gradient, and a user-provided Gradient texture allows for various colored effects.
 
     Category: Assets/Materials/Filters
@@ -308,7 +309,7 @@ The Lerp field allows you to transition between having the filter off (0) and fu
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -405,7 +406,7 @@ The Lerp field allows you to transition between having the filter off (0) and fu
     @gradient.setter
     def gradient(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Gradient reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Gradient")
         if isinstance(member, members.Reference):
             member.targetId = target_id

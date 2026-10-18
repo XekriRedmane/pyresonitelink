@@ -52,7 +52,7 @@ This node can take an overriding parent as an input for the duplicated slot. Thi
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +73,7 @@ This node can take an overriding parent as an input for the duplicated slot. Thi
     @template.setter
     def template(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Template reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Template")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -94,7 +94,7 @@ This node can take an overriding parent as an input for the duplicated slot. Thi
     @override_parent.setter
     def override_parent(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the OverrideParent reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OverrideParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id

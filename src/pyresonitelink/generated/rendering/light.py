@@ -303,7 +303,7 @@ class Light(GeneratedComponent, IRenderable, ICustomInspector, IWorldEventReceiv
     @cookie.setter
     def cookie(self, target: str | IAssetProvider[ITexture] | None) -> None:
         """Set the Cookie reference by target ID or IAssetProvider[ITexture] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Cookie")
         if isinstance(member, members.Reference):
             member.targetId = target_id

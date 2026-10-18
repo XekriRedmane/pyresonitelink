@@ -1,0 +1,12 @@
+{
+  "description": "The IsEmpty node takes in a Collection and returns if the collection has no elements or all elements are null.",
+  "category": "",
+  "fields": {
+    "Collection": "The collection to check.",
+    "* ([[Type:Bool|Bool]])": "Returns if the collection has no elements or all elements are null."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsEmpty&action=raw"
+}

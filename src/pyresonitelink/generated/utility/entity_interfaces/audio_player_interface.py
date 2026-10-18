@@ -81,7 +81,7 @@ This is a favorite-able item. See Favorites.
     @item_name.setter
     def item_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -102,7 +102,7 @@ This is a favorite-able item. See Favorites.
     @spawning_user.setter
     def spawning_user(self, target: str | UserRef | None) -> None:
         """Set the SpawningUser reference by target ID or UserRef instance."""
-        target_id: str | None = target.id if isinstance(target, UserRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -123,7 +123,7 @@ This is a favorite-able item. See Favorites.
     @spawning_user_id.setter
     def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -163,7 +163,7 @@ This is a favorite-able item. See Favorites.
     @url.setter
     def url(self, target: str | IField[str] | None) -> None:
         """Set the URL reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -184,7 +184,7 @@ This is a favorite-able item. See Favorites.
     @clip.setter
     def clip(self, target: str | AssetRef[AudioClip] | None) -> None:
         """Set the Clip reference by target ID or AssetRef[AudioClip] instance."""
-        target_id: str | None = target.id if isinstance(target, AssetRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Clip")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -205,7 +205,7 @@ This is a favorite-able item. See Favorites.
     @group.setter
     def group(self, target: str | IField[AudioTypeGroup] | None) -> None:
         """Set the Group reference by target ID or IField[AudioTypeGroup] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Group")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -226,7 +226,7 @@ This is a favorite-able item. See Favorites.
     @volume.setter
     def volume(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the Volume reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Volume")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -247,7 +247,7 @@ This is a favorite-able item. See Favorites.
     @spatialize.setter
     def spatialize(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the Spatialize reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Spatialize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -268,7 +268,7 @@ This is a favorite-able item. See Favorites.
     @doppler.setter
     def doppler(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the Doppler reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Doppler")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -289,7 +289,7 @@ This is a favorite-able item. See Favorites.
     @default_audio_clip.setter
     def default_audio_clip(self, target: str | IAssetProvider[AudioClip] | None) -> None:
         """Set the DefaultAudioClip reference by target ID or IAssetProvider[AudioClip] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DefaultAudioClip")
         if isinstance(member, members.Reference):
             member.targetId = target_id

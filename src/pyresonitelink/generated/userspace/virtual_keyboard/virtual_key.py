@@ -1,13 +1,18 @@
 """Generated component: VirtualKey."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.generated._enums.key import Key
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.virtual_modifier_key import VirtualModifierKey
-from pyresonitelink.generated._types.virtual_keyboard import VirtualKeyboard
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.userspace.virtual_keyboard.virtual_modifier_key import VirtualModifierKey
+    from pyresonitelink.generated.userspace.virtual_keyboard.virtual_keyboard import VirtualKeyboard
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -167,7 +172,7 @@ This cannot be used to send key presses outside of Resonite to control the exter
     @modifier_key.setter
     def modifier_key(self, target: str | VirtualModifierKey | None) -> None:
         """Set the ModifierKey reference by target ID or VirtualModifierKey instance."""
-        target_id: str | None = target.id if isinstance(target, VirtualModifierKey) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ModifierKey")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -227,7 +232,7 @@ This cannot be used to send key presses outside of Resonite to control the exter
     @keyboard.setter
     def keyboard(self, target: str | VirtualKeyboard | None) -> None:
         """Set the Keyboard reference by target ID or VirtualKeyboard instance."""
-        target_id: str | None = target.id if isinstance(target, VirtualKeyboard) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Keyboard")
         if isinstance(member, members.Reference):
             member.targetId = target_id

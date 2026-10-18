@@ -1,11 +1,16 @@
 """Generated component: AvatarUserRootOverrideAssigner."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.generated._enums.override_node import OverrideNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.avatar_object_slot import AvatarObjectSlot
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.avatar_object_slot import AvatarObjectSlot
 from pyresonitelink.generated._types.iavatar_object_component import IAvatarObjectComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -48,7 +53,7 @@ class AvatarUserRootOverrideAssigner(GeneratedComponent, IAvatarObjectComponent,
     @override.setter
     def override(self, target: str | Slot | None) -> None:
         """Set the Override reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Override")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -89,7 +94,7 @@ class AvatarUserRootOverrideAssigner(GeneratedComponent, IAvatarObjectComponent,
     @equipping_slot.setter
     def equipping_slot(self, target: str | AvatarObjectSlot | None) -> None:
         """Set the _equippingSlot reference by target ID or AvatarObjectSlot instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarObjectSlot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_equippingSlot")
         if isinstance(member, members.Reference):
             member.targetId = target_id

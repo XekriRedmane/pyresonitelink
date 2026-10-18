@@ -1,5 +1,8 @@
 """Generated component: LightTool."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -8,9 +11,11 @@ from pyresonitelink.generated._enums.shadow_type import ShadowType
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.interaction_handler import InteractionHandler
 from pyresonitelink.generated._types.item import Item
-from pyresonitelink.generated._types.color_dialog_interface import ColorDialogInterface
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.interaction.handlers.interaction_handler import InteractionHandler
+    from pyresonitelink.generated.utility.entity_interfaces.color_dialog_interface import ColorDialogInterface
 from pyresonitelink.generated._types.itool import ITool
 from pyresonitelink.generated._types.imaterial_apply_policy import IMaterialApplyPolicy
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -124,7 +129,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @tip_reference.setter
     def tip_reference(self, target: str | Slot | None) -> None:
         """Set the TipReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TipReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -202,7 +207,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @override_active_tool.setter
     def override_active_tool(self, target: str | InteractionHandler | None) -> None:
         """Set the _overrideActiveTool reference by target ID or InteractionHandler instance."""
-        target_id: str | None = target.id if isinstance(target, InteractionHandler) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_overrideActiveTool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -377,7 +382,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @point_light_visual.setter
     def point_light_visual(self, target: str | Slot | None) -> None:
         """Set the PointLightVisual reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PointLightVisual")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -398,7 +403,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @spotlight_visual.setter
     def spotlight_visual(self, target: str | Slot | None) -> None:
         """Set the SpotlightVisual reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpotlightVisual")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -419,7 +424,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @directional_light_visual.setter
     def directional_light_visual(self, target: str | Slot | None) -> None:
         """Set the DirectionalLightVisual reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DirectionalLightVisual")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -472,7 +477,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @point_light_item.setter
     def point_light_item(self, target: str | Item | None) -> None:
         """Set the _pointLightItem reference by target ID or Item instance."""
-        target_id: str | None = target.id if isinstance(target, Item) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_pointLightItem")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -493,7 +498,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @spot_light_item.setter
     def spot_light_item(self, target: str | Item | None) -> None:
         """Set the _spotLightItem reference by target ID or Item instance."""
-        target_id: str | None = target.id if isinstance(target, Item) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_spotLightItem")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -514,7 +519,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @directional_light_item.setter
     def directional_light_item(self, target: str | Item | None) -> None:
         """Set the _directionalLightItem reference by target ID or Item instance."""
-        target_id: str | None = target.id if isinstance(target, Item) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_directionalLightItem")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -535,7 +540,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @shadows_item.setter
     def shadows_item(self, target: str | Item | None) -> None:
         """Set the _shadowsItem reference by target ID or Item instance."""
-        target_id: str | None = target.id if isinstance(target, Item) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shadowsItem")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -556,7 +561,7 @@ class LightTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, IIt
     @color_picker.setter
     def color_picker(self, target: str | ColorDialogInterface | None) -> None:
         """Set the _colorPicker reference by target ID or ColorDialogInterface instance."""
-        target_id: str | None = target.id if isinstance(target, ColorDialogInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colorPicker")
         if isinstance(member, members.Reference):
             member.targetId = target_id

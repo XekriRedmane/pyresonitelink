@@ -1,13 +1,18 @@
 """Generated component: RenderToTextureAsset."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.camera import Camera
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
 from pyresonitelink.generated._types.inode_operation import INodeOperation
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.camera import Camera
 from pyresonitelink.generated._types.iasync_node_operation import IAsyncNodeOperation
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -64,7 +69,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @camera.setter
     def camera(self, target: str | INodeObjectOutput[Camera] | None) -> None:
         """Set the Camera reference by target ID or INodeObjectOutput[Camera] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Camera")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -85,7 +90,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @resolution.setter
     def resolution(self, target: str | INodeValueOutput[primitives.Int2] | None) -> None:
         """Set the Resolution reference by target ID or INodeValueOutput[primitives.Int2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Resolution")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -106,7 +111,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @format_.setter
     def format_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Format reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Format")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -127,7 +132,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @quality.setter
     def quality(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Quality reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Quality")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -148,7 +153,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @on_render_started.setter
     def on_render_started(self, target: str | INodeOperation | None) -> None:
         """Set the OnRenderStarted reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnRenderStarted")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -169,7 +174,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @on_rendered.setter
     def on_rendered(self, target: str | INodeOperation | None) -> None:
         """Set the OnRendered reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnRendered")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -190,7 +195,7 @@ class RenderToTextureAsset(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @on_failed.setter
     def on_failed(self, target: str | INodeOperation | None) -> None:
         """Set the OnFailed reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFailed")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -1,11 +1,16 @@
 """Generated component: BakeReflectionProbe."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.reflection_probe import ReflectionProbe
 from pyresonitelink.generated._types.inode_operation import INodeOperation
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.reflection_probe import ReflectionProbe
 from pyresonitelink.generated._types.iasync_node_operation import IAsyncNodeOperation
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -53,7 +58,7 @@ class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNod
     @probe.setter
     def probe(self, target: str | INodeObjectOutput[ReflectionProbe] | None) -> None:
         """Set the Probe reference by target ID or INodeObjectOutput[ReflectionProbe] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Probe")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -74,7 +79,7 @@ class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNod
     @on_bake_start.setter
     def on_bake_start(self, target: str | INodeOperation | None) -> None:
         """Set the OnBakeStart reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnBakeStart")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -95,7 +100,7 @@ class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNod
     @on_bake_fail.setter
     def on_bake_fail(self, target: str | INodeOperation | None) -> None:
         """Set the OnBakeFail reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnBakeFail")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -116,7 +121,7 @@ class BakeReflectionProbe(GeneratedComponent, IAsyncNodeOperation, IExecutionNod
     @on_bake_complete.setter
     def on_bake_complete(self, target: str | INodeOperation | None) -> None:
         """Set the OnBakeComplete reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnBakeComplete")
         if isinstance(member, members.Reference):
             member.targetId = target_id

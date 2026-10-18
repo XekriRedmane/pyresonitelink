@@ -113,7 +113,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @clip.setter
     def clip(self, target: str | INodeObjectOutput[IAssetProvider[AudioClip]] | None) -> None:
         """Set the Clip reference by target ID or INodeObjectOutput[IAssetProvider[AudioClip]] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Clip")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -134,7 +134,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @volume.setter
     def volume(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Volume reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Volume")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -155,7 +155,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @speed.setter
     def speed(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Speed reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Speed")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -176,7 +176,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @spatialize.setter
     def spatialize(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Spatialize reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Spatialize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -197,7 +197,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @spatial_blend.setter
     def spatial_blend(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the SpatialBlend reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpatialBlend")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -218,7 +218,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @global_.setter
     def global_(self, target: str | INodeObjectOutput[Nullable[primitives.Bool]] | None) -> None:
         """Set the Global reference by target ID or INodeObjectOutput[Nullable[primitives.Bool]] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Global")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -239,7 +239,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @point.setter
     def point(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Point reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -260,7 +260,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @root.setter
     def root(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Root reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -281,7 +281,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @parent_under_root.setter
     def parent_under_root(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the ParentUnderRoot reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ParentUnderRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -302,7 +302,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @priority.setter
     def priority(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Priority reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Priority")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -323,7 +323,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @doppler.setter
     def doppler(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Doppler reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Doppler")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -344,7 +344,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @min_distance.setter
     def min_distance(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the MinDistance reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MinDistance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -365,7 +365,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @max_distance.setter
     def max_distance(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the MaxDistance reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MaxDistance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -386,7 +386,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @rolloff.setter
     def rolloff(self, target: str | INodeValueOutput[AudioRolloffCurve] | None) -> None:
         """Set the Rolloff reference by target ID or INodeValueOutput[AudioRolloffCurve] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Rolloff")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -407,7 +407,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @distance_space.setter
     def distance_space(self, target: str | INodeValueOutput[AudioDistanceSpace] | None) -> None:
         """Set the DistanceSpace reference by target ID or INodeValueOutput[AudioDistanceSpace] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DistanceSpace")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -428,7 +428,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @min_scale.setter
     def min_scale(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the MinScale reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MinScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -449,7 +449,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @max_scale.setter
     def max_scale(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the MaxScale reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MaxScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -470,7 +470,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @group.setter
     def group(self, target: str | INodeValueOutput[AudioTypeGroup] | None) -> None:
         """Set the Group reference by target ID or INodeValueOutput[AudioTypeGroup] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Group")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -491,7 +491,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @ignore_audio_effects.setter
     def ignore_audio_effects(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the IgnoreAudioEffects reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IgnoreAudioEffects")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -512,7 +512,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @local_only.setter
     def local_only(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the LocalOnly reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LocalOnly")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -546,7 +546,7 @@ class PlayOneShot(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @on_started_playing.setter
     def on_started_playing(self, target: str | INodeOperation | None) -> None:
         """Set the OnStartedPlaying reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnStartedPlaying")
         if isinstance(member, members.Reference):
             member.targetId = target_id

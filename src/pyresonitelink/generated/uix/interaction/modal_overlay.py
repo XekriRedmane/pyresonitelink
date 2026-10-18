@@ -1,11 +1,16 @@
 """Generated component: ModalOverlay."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.rect_transform import RectTransform
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.rect_transform import RectTransform
 from pyresonitelink.generated._types.iui_interactable import IUIInteractable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -95,7 +100,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
     @size_root.setter
     def size_root(self, target: str | RectTransform | None) -> None:
         """Set the SizeRoot reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SizeRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -116,7 +121,7 @@ class ModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiver):
     @content_root.setter
     def content_root(self, target: str | RectTransform | None) -> None:
         """Set the ContentRoot reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ContentRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id

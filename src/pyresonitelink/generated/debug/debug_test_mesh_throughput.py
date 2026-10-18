@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class DebugTestMeshThroughput(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class DebugTestMeshThroughput(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The DebugTestMeshThroughput component is used in code by parallel jamming quads into a MeshX object via multithreading to test how much can be done at once.
 
 The mesh generated is a Spiral fan of quads that goes up in a circle pattern.

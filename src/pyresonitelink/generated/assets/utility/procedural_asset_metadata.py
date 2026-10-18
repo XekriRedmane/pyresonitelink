@@ -55,7 +55,7 @@ class ProceduralAssetMetadata(GenericComponent[T], IComponent, IWorldEventReceiv
     @asset.setter
     def asset(self, target: str | ProceduralAssetProvider[A] | None) -> None:
         """Set the Asset reference by target ID or ProceduralAssetProvider[A] instance."""
-        target_id: str | None = target.id if isinstance(target, ProceduralAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Asset")
         if isinstance(member, members.Reference):
             member.targetId = target_id

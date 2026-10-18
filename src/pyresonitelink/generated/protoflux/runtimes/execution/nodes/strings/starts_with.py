@@ -46,7 +46,7 @@ class StartsWith(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
     @str_.setter
     def str_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Str reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -67,7 +67,7 @@ class StartsWith(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
     @substring.setter
     def substring(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Substring reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Substring")
         if isinstance(member, members.Reference):
             member.targetId = target_id

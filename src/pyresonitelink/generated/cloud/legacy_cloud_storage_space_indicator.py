@@ -1,13 +1,18 @@
 """Generated component: LegacyCloudStorageSpaceIndicator."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.storage_usage_status import StorageUsageStatus
-from pyresonitelink.generated._types.text_renderer import TextRenderer
-from pyresonitelink.generated._types.legacy_progress_bar import LegacyProgressBar
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.cloud.indicators.storage_usage_status import StorageUsageStatus
+    from pyresonitelink.generated.rendering.text_renderer import TextRenderer
+    from pyresonitelink.generated.ui.physical.legacy_progress_bar import LegacyProgressBar
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -80,7 +85,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
     @source.setter
     def source(self, target: str | StorageUsageStatus | None) -> None:
         """Set the Source reference by target ID or StorageUsageStatus instance."""
-        target_id: str | None = target.id if isinstance(target, StorageUsageStatus) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -215,7 +220,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
     @owner_label.setter
     def owner_label(self, target: str | TextRenderer | None) -> None:
         """Set the _ownerLabel reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_ownerLabel")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -236,7 +241,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
     @usage_label.setter
     def usage_label(self, target: str | TextRenderer | None) -> None:
         """Set the _usageLabel reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_usageLabel")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -257,7 +262,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
     @percent_label.setter
     def percent_label(self, target: str | TextRenderer | None) -> None:
         """Set the _percentLabel reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_percentLabel")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -278,7 +283,7 @@ class LegacyCloudStorageSpaceIndicator(GeneratedComponent, IComponent, IWorldEve
     @progress_bar.setter
     def progress_bar(self, target: str | LegacyProgressBar | None) -> None:
         """Set the _progressBar reference by target ID or LegacyProgressBar instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyProgressBar) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_progressBar")
         if isinstance(member, members.Reference):
             member.targetId = target_id

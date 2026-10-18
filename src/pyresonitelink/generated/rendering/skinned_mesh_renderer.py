@@ -1,5 +1,7 @@
 """Generated component: SkinnedMeshRenderer."""
 
+from __future__ import annotations
+
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -11,7 +13,6 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.mesh import Mesh
-from pyresonitelink.generated._types.skinned_mesh_renderer import SkinnedMeshRenderer
 from pyresonitelink.generated._types.icustom_member_name_source import ICustomMemberNameSource
 from pyresonitelink.generated._types.ibounded import IBounded
 from pyresonitelink.generated._types.ihighlightable import IHighlightable
@@ -75,7 +76,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
     @mesh.setter
     def mesh(self, target: str | IAssetProvider[Mesh] | None) -> None:
         """Set the Mesh reference by target ID or IAssetProvider[Mesh] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -201,7 +202,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
     @proxy_bounds_source.setter
     def proxy_bounds_source(self, target: str | SkinnedMeshRenderer | None) -> None:
         """Set the ProxyBoundsSource reference by target ID or SkinnedMeshRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, SkinnedMeshRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ProxyBoundsSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -256,7 +257,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
         """Set BlendShapeWeights. Automatically Assigned &mdash; List of blendshapes present in this mesh, and their respective weights."""
         self.set_member("BlendShapeWeights", value)
 
-    async def split_blenshape_along_axis(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, axis: str, center_: primitives.Float, transition: primitives.Float, negative_suffix: primitives.String, positive_suffix: primitives.String, debug: bool = False) -> dict:
+    async def split_blenshape_along_axis(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, axis: str | workers.Worker | GeneratedComponent, center_: primitives.Float, transition: primitives.Float, negative_suffix: primitives.String, positive_suffix: primitives.String, debug: bool = False) -> dict:
         """Splits a blendshape along a given axis, and returns a task representing if the operation is done yet.
 
         Args:
@@ -273,7 +274,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "SplitBlenshapeAlongAxis", {"blendshapeIndex": blendshape_index, "axis": axis, "center": center_, "transition": transition, "negativeSuffix": negative_suffix, "positiveSuffix": positive_suffix}, debug,
+            resolink, "SplitBlenshapeAlongAxis", {"blendshapeIndex": fields.FieldInt(value=blendshape_index), "axis": members.DataReference(targetID=axis) if isinstance(axis, str) else axis, "center": fields.FieldFloat(value=center_), "transition": fields.FieldFloat(value=transition), "negativeSuffix": fields.FieldString(value=negative_suffix), "positiveSuffix": fields.FieldString(value=positive_suffix)}, debug,
         )
 
     async def bake_blendshape(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, debug: bool = False) -> dict:
@@ -288,7 +289,7 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "BakeBlendshape", {"blendshapeIndex": blendshape_index}, debug,
+            resolink, "BakeBlendshape", {"blendshapeIndex": fields.FieldInt(value=blendshape_index)}, debug,
         )
 
     async def remove_blendshape(self, resolink: protocols.ResoniteLinkClient, blendshape_index: primitives.Int, debug: bool = False) -> dict:
@@ -303,7 +304,22 @@ class SkinnedMeshRenderer(GeneratedComponent, ICustomMemberNameSource, IBounded,
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "RemoveBlendshape", {"blendshapeIndex": blendshape_index}, debug,
+            resolink, "RemoveBlendshape", {"blendshapeIndex": fields.FieldInt(value=blendshape_index)}, debug,
+        )
+
+    async def auto_rig(self, resolink: protocols.ResoniteLinkClient, rig: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
+        """Call the AutoRig sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            rig: The rig parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "AutoRig", {"rig": members.DataReference(targetID=rig) if isinstance(rig, str) else rig}, debug,
         )
 
     async def split_submeshes(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:

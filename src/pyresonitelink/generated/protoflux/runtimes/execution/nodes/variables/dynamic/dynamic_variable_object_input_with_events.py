@@ -62,7 +62,7 @@ class DynamicVariableObjectInputWithEvents(GenericComponent[T], IProtoFluxEngine
     @variable_name.setter
     def variable_name(self, target: str | IGlobalValueProxy[primitives.String] | None) -> None:
         """Set the VariableName reference by target ID or IGlobalValueProxy[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("VariableName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -83,7 +83,7 @@ class DynamicVariableObjectInputWithEvents(GenericComponent[T], IProtoFluxEngine
     @detecting_user.setter
     def detecting_user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the DetectingUser reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DetectingUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -104,7 +104,7 @@ class DynamicVariableObjectInputWithEvents(GenericComponent[T], IProtoFluxEngine
     @on_space_linked.setter
     def on_space_linked(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnSpaceLinked reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSpaceLinked")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -125,7 +125,7 @@ class DynamicVariableObjectInputWithEvents(GenericComponent[T], IProtoFluxEngine
     @on_space_unlinked.setter
     def on_space_unlinked(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnSpaceUnlinked reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSpaceUnlinked")
         if isinstance(member, members.Reference):
             member.targetId = target_id

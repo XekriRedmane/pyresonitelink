@@ -59,6 +59,32 @@ When an avatar is dequipped the DequippedLabel contents will be written to the L
         self.set_member("UserIdTargets", value)
 
     @property
+    def pronouns_targets(self) -> members.SyncList | None:
+        """The PronounsTargets member."""
+        member = self.get_member("PronounsTargets")
+        if isinstance(member, members.SyncList):
+            return member
+        return None
+
+    @pronouns_targets.setter
+    def pronouns_targets(self, value: members.SyncList) -> None:
+        """Set the PronounsTargets member."""
+        self.set_member("PronounsTargets", value)
+
+    @property
+    def username_targets(self) -> members.SyncList | None:
+        """The UsernameTargets member."""
+        member = self.get_member("UsernameTargets")
+        if isinstance(member, members.SyncList):
+            return member
+        return None
+
+    @username_targets.setter
+    def username_targets(self, value: members.SyncList) -> None:
+        """Set the UsernameTargets member."""
+        self.set_member("UsernameTargets", value)
+
+    @property
     def color_targets(self) -> members.SyncList | None:
         """A list of colorX fields that should be set to the user's special color when this component is under an avatar and the avatar is equipped. Supporters, Staff, Mentors, and Moderators are some of the many users that get custom name plate colors through this component."""
         member = self.get_member("ColorTargets")

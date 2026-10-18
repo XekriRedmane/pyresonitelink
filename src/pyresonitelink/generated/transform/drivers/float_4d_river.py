@@ -52,7 +52,7 @@ class Float4Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @x.setter
     def x(self, target: str | Sync[primitives.Float] | None) -> None:
         """Set the X reference by target ID or Sync[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("X")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +73,7 @@ class Float4Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @y.setter
     def y(self, target: str | Sync[primitives.Float] | None) -> None:
         """Set the Y reference by target ID or Sync[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Y")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -94,7 +94,7 @@ class Float4Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @z.setter
     def z(self, target: str | Sync[primitives.Float] | None) -> None:
         """Set the Z reference by target ID or Sync[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Z")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -115,7 +115,7 @@ class Float4Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @w.setter
     def w(self, target: str | Sync[primitives.Float] | None) -> None:
         """Set the W reference by target ID or Sync[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("W")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -136,7 +136,7 @@ class Float4Driver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @target.setter
     def target(self, target: str | IField[primitives.Float4] | None) -> None:
         """Set the Target reference by target ID or IField[primitives.Float4] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id

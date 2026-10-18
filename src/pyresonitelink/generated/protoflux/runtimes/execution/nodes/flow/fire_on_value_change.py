@@ -58,7 +58,7 @@ class FireOnValueChange(GenericComponent[T], IProtoFluxEngineProxyNode, IMappabl
     @only_for_user.setter
     def only_for_user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the OnlyForUser reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnlyForUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -79,7 +79,7 @@ class FireOnValueChange(GenericComponent[T], IProtoFluxEngineProxyNode, IMappabl
     @on_changed.setter
     def on_changed(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnChanged reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnChanged")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +100,7 @@ class FireOnValueChange(GenericComponent[T], IProtoFluxEngineProxyNode, IMappabl
     @value.setter
     def value(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the Value reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id

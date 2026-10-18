@@ -1,16 +1,21 @@
 """Generated component: AvatarAudioOutputManager."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.audio_output import AudioOutput
 from pyresonitelink.generated._types.user import User
 from pyresonitelink.generated._types.ifield import IField
 from pyresonitelink.generated._types.audio_rolloff_curve import AudioRolloffCurve
 from pyresonitelink.generated._types.audio_distance_space import AudioDistanceSpace
-from pyresonitelink.generated._types.avatar_audio_configuration import AvatarAudioConfiguration
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.audio.audio_output import AudioOutput
+    from pyresonitelink.generated.users.common_avatar_system.audio.avatar_audio_configuration import AvatarAudioConfiguration
 from pyresonitelink.generated._types.iavatar_object_component import IAvatarObjectComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -116,7 +121,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @audio_output.setter
     def audio_output(self, target: str | AudioOutput | None) -> None:
         """Set the AudioOutput reference by target ID or AudioOutput instance."""
-        target_id: str | None = target.id if isinstance(target, AudioOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AudioOutput")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -341,7 +346,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @active_user.setter
     def active_user(self, target: str | User | None) -> None:
         """Set the _activeUser reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_activeUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -362,7 +367,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @enabled.setter
     def enabled(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _enabled reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_enabled")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -383,7 +388,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @volume.setter
     def volume(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _volume reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_volume")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -404,7 +409,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @doppler.setter
     def doppler(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _doppler reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_doppler")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -425,7 +430,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @spatialize.setter
     def spatialize(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _spatialize reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_spatialize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -446,7 +451,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @spatial_blend.setter
     def spatial_blend(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _spatialBlend reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_spatialBlend")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -467,7 +472,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @ignore_audio_effects.setter
     def ignore_audio_effects(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _ignoreAudioEffects reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_ignoreAudioEffects")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -488,7 +493,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @min_distance.setter
     def min_distance(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _minDistance reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_minDistance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -509,7 +514,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @max_distance.setter
     def max_distance(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _maxDistance reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_maxDistance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -530,7 +535,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @roll_off_mode.setter
     def roll_off_mode(self, target: str | IField[AudioRolloffCurve] | None) -> None:
         """Set the _rollOffMode reference by target ID or IField[AudioRolloffCurve] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rollOffMode")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -551,7 +556,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @distance_space.setter
     def distance_space(self, target: str | IField[AudioDistanceSpace] | None) -> None:
         """Set the _distanceSpace reference by target ID or IField[AudioDistanceSpace] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_distanceSpace")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -572,7 +577,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @min_scale.setter
     def min_scale(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _minScale reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_minScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -593,7 +598,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @max_scale.setter
     def max_scale(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _maxScale reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_maxScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -633,7 +638,7 @@ class AvatarAudioOutputManager(GeneratedComponent, IAvatarObjectComponent, IWorl
     @audio_configuration.setter
     def audio_configuration(self, target: str | AvatarAudioConfiguration | None) -> None:
         """Set the _audioConfiguration reference by target ID or AvatarAudioConfiguration instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarAudioConfiguration) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_audioConfiguration")
         if isinstance(member, members.Reference):
             member.targetId = target_id

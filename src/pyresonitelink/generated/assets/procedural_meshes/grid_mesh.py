@@ -10,10 +10,11 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.texture_2d import Texture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The GridMesh component generates a procedural mesh for use with Mesh Renderers that is like a Quad Mesh but has multiple squares instead of being one big square.
 
     Category: Assets/Procedural Meshes
@@ -289,7 +290,7 @@ class GridMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEvent
     @displacement_texture.setter
     def displacement_texture(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the DisplacementTexture reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DisplacementTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id

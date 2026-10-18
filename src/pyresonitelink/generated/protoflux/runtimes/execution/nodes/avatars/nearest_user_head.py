@@ -52,7 +52,7 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
     @reference.setter
     def reference(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Reference reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +73,7 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
     @ignore_user.setter
     def ignore_user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the IgnoreUser reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IgnoreUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -94,7 +94,7 @@ class NearestUserHead(GeneratedComponent, IMappableNode, IExecutionNode, INode, 
     @ignore_afk.setter
     def ignore_afk(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the IgnoreAFK reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IgnoreAFK")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -81,7 +81,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @url.setter
     def url(self, target: str | INodeObjectOutput[str] | None) -> None:
         """Set the URL reference by target ID or INodeObjectOutput[str] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -102,7 +102,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @world_link.setter
     def world_link(self, target: str | INodeObjectOutput[IWorldLink] | None) -> None:
         """Set the WorldLink reference by target ID or INodeObjectOutput[IWorldLink] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("WorldLink")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -123,7 +123,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @relation.setter
     def relation(self, target: str | INodeValueOutput[WorldRelation] | None) -> None:
         """Set the Relation reference by target ID or INodeValueOutput[WorldRelation] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Relation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -144,7 +144,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @get_existing.setter
     def get_existing(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the GetExisting reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("GetExisting")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -165,7 +165,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @loading_indicator.setter
     def loading_indicator(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the LoadingIndicator reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoadingIndicator")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -186,7 +186,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @auto_focus.setter
     def auto_focus(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the AutoFocus reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AutoFocus")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -207,7 +207,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @make_private.setter
     def make_private(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the MakePrivate reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MakePrivate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -254,7 +254,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @on_open_start.setter
     def on_open_start(self, target: str | INodeOperation | None) -> None:
         """Set the OnOpenStart reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnOpenStart")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -275,7 +275,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @on_open_done.setter
     def on_open_done(self, target: str | INodeOperation | None) -> None:
         """Set the OnOpenDone reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnOpenDone")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -296,7 +296,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @on_world_ready.setter
     def on_world_ready(self, target: str | INodeOperation | None) -> None:
         """Set the OnWorldReady reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnWorldReady")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -317,7 +317,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @on_open_fail.setter
     def on_open_fail(self, target: str | INodeOperation | None) -> None:
         """Set the OnOpenFail reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnOpenFail")
         if isinstance(member, members.Reference):
             member.targetId = target_id

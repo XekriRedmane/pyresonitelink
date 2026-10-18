@@ -104,7 +104,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
     @source_value.setter
     def source_value(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the SourceValue reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SourceValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -163,7 +163,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
     @target_array.setter
     def target_array(self, target: str | SyncArray[primitives.Float] | None) -> None:
         """Set the TargetArray reference by target ID or SyncArray[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncArray) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetArray")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -184,7 +184,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
     @target_array_offset.setter
     def target_array_offset(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TargetArrayOffset reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetArrayOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -281,7 +281,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
     @range_min.setter
     def range_min(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the RangeMin reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RangeMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -302,7 +302,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
     @range_max.setter
     def range_max(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the RangeMax reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RangeMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -342,7 +342,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
     @array_drive.setter
     def array_drive(self, target: str | SyncArray[primitives.Float] | None) -> None:
         """Set the _arrayDrive reference by target ID or SyncArray[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncArray) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_arrayDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -363,7 +363,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
     @array_offset_drive.setter
     def array_offset_drive(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the _arrayOffsetDrive reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_arrayOffsetDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -384,7 +384,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
     @range_min_drive.setter
     def range_min_drive(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _rangeMinDrive reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rangeMinDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -405,7 +405,7 @@ class ValueGraphRecorder(GeneratedComponent, IComponent, IWorldEventReceiver):
     @range_max_drive.setter
     def range_max_drive(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _rangeMaxDrive reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rangeMaxDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id

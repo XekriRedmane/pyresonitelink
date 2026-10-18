@@ -47,7 +47,7 @@ class GetUserGrabber(GeneratedComponent, INodeObjectOutput, IExecutionNode, INod
     @user.setter
     def user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the User reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -70,7 +70,7 @@ Examples: ``LeftHand`` or ``RightHand``"""
     @node.setter
     def node(self, target: str | INodeValueOutput[BodyNode] | None) -> None:
         """Set the Node reference by target ID or INodeValueOutput[BodyNode] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             member.targetId = target_id

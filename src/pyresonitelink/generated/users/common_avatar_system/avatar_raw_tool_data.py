@@ -190,7 +190,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
     @active_user.setter
     def active_user(self, target: str | User | None) -> None:
         """Set the _activeUser reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_activeUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -211,7 +211,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
     @strength_stream.setter
     def strength_stream(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the _strengthStream reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_strengthStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -232,7 +232,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
     @axis_stream.setter
     def axis_stream(self, target: str | ValueStream[primitives.Float2] | None) -> None:
         """Set the _axisStream reference by target ID or ValueStream[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_axisStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -253,7 +253,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
     @primary_stream.setter
     def primary_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the _primaryStream reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_primaryStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -274,7 +274,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
     @secondary_stream.setter
     def secondary_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the _secondaryStream reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_secondaryStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -295,7 +295,7 @@ class AvatarRawToolData(GeneratedComponent, IAvatarObjectComponent, IWorldEventR
     @grab_stream.setter
     def grab_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the _grabStream reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_grabStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id

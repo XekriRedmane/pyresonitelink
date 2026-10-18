@@ -50,7 +50,7 @@ class ComposeFinger(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
     @finger.setter
     def finger(self, target: str | INodeValueOutput[FingerType] | None) -> None:
         """Set the Finger reference by target ID or INodeValueOutput[FingerType] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Finger")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ class ComposeFinger(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
     @segment.setter
     def segment(self, target: str | INodeValueOutput[FingerSegmentType] | None) -> None:
         """Set the Segment reference by target ID or INodeValueOutput[FingerSegmentType] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Segment")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -92,7 +92,7 @@ class ComposeFinger(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
     @chirality.setter
     def chirality(self, target: str | INodeValueOutput[Chirality] | None) -> None:
         """Set the Chirality reference by target ID or INodeValueOutput[Chirality] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Chirality")
         if isinstance(member, members.Reference):
             member.targetId = target_id

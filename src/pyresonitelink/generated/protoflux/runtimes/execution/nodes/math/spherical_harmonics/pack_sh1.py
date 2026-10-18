@@ -56,7 +56,7 @@ class PackSH1(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh0.setter
     def sh0(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH0 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -77,7 +77,7 @@ class PackSH1(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh1.setter
     def sh1(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH1 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -98,7 +98,7 @@ class PackSH1(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh2.setter
     def sh2(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH2 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH2")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -119,7 +119,7 @@ class PackSH1(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh3.setter
     def sh3(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH3 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH3")
         if isinstance(member, members.Reference):
             member.targetId = target_id

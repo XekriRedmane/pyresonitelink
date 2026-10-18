@@ -1,9 +1,14 @@
 """Generated component: PagingControlFacetPreset."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.paging_control import PagingControl
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.common_ui.general.paging_control import PagingControl
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -38,7 +43,7 @@ class PagingControlFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiv
     @paging_control.setter
     def paging_control(self, target: str | PagingControl | None) -> None:
         """Set the _pagingControl reference by target ID or PagingControl instance."""
-        target_id: str | None = target.id if isinstance(target, PagingControl) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_pagingControl")
         if isinstance(member, members.Reference):
             member.targetId = target_id

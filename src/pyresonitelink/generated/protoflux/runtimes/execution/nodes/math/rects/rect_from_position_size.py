@@ -47,7 +47,7 @@ If you want to make a rect using specific and separated inputs, use the Rect Fro
     @position.setter
     def position(self, target: str | INodeValueOutput[primitives.Float2] | None) -> None:
         """Set the Position reference by target ID or INodeValueOutput[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -68,7 +68,7 @@ If you want to make a rect using specific and separated inputs, use the Rect Fro
     @size.setter
     def size(self, target: str | INodeValueOutput[primitives.Float2] | None) -> None:
         """Set the Size reference by target ID or INodeValueOutput[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Size")
         if isinstance(member, members.Reference):
             member.targetId = target_id

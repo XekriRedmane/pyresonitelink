@@ -1,0 +1,15 @@
+{
+  "description": "The Split String node takes in a string and a separator, along with options on how you want to handle empty entries. The node then returns a Collection of that string.",
+  "category": "",
+  "fields": {
+    "String": "The provided string used to turn into a collection.",
+    "Separator": "The string separator used to chop up the provided string for the array.",
+    "RemoveEmptyEntries": "If true, will remove any empty entries found in the provided string.",
+    "TrimEntries": "If true, will remove any empty entries found around the start and end of the provided string.",
+    "* ([[Type:String|String]])": "Returns a collection of the string."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:SplitString&action=raw"
+}

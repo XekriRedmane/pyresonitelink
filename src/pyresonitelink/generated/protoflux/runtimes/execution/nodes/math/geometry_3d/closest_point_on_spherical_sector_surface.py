@@ -54,7 +54,7 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
     @center_.setter
     def center_(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Center reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Center")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -75,7 +75,7 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
     @direction.setter
     def direction(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Direction reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -96,7 +96,7 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
     @radius.setter
     def radius(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Radius reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -117,7 +117,7 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
     @angle.setter
     def angle(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Angle reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Angle")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -138,7 +138,7 @@ class ClosestPointOnSphericalSectorSurface(GeneratedComponent, IExecutionNode, I
     @point.setter
     def point(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Point reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             member.targetId = target_id

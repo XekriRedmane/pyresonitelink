@@ -77,7 +77,7 @@ class WriteOrCreateDynamicObjectVariable(GenericComponent[T], IMappableNode, ISy
     @target.setter
     def target(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Target reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -98,7 +98,7 @@ class WriteOrCreateDynamicObjectVariable(GenericComponent[T], IMappableNode, ISy
     @path.setter
     def path(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Path reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -119,7 +119,7 @@ class WriteOrCreateDynamicObjectVariable(GenericComponent[T], IMappableNode, ISy
     @on_not_found.setter
     def on_not_found(self, target: str | INodeOperation | None) -> None:
         """Set the OnNotFound reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnNotFound")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -140,7 +140,7 @@ class WriteOrCreateDynamicObjectVariable(GenericComponent[T], IMappableNode, ISy
     @on_created.setter
     def on_created(self, target: str | INodeOperation | None) -> None:
         """Set the OnCreated reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnCreated")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -161,7 +161,7 @@ class WriteOrCreateDynamicObjectVariable(GenericComponent[T], IMappableNode, ISy
     @on_written.setter
     def on_written(self, target: str | INodeOperation | None) -> None:
         """Set the OnWritten reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnWritten")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -182,7 +182,7 @@ class WriteOrCreateDynamicObjectVariable(GenericComponent[T], IMappableNode, ISy
     @on_failed.setter
     def on_failed(self, target: str | INodeOperation | None) -> None:
         """Set the OnFailed reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFailed")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -203,7 +203,7 @@ class WriteOrCreateDynamicObjectVariable(GenericComponent[T], IMappableNode, ISy
     @create_directly_on_target.setter
     def create_directly_on_target(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the CreateDirectlyOnTarget reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CreateDirectlyOnTarget")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -224,7 +224,7 @@ class WriteOrCreateDynamicObjectVariable(GenericComponent[T], IMappableNode, ISy
     @create_non_persistent.setter
     def create_non_persistent(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the CreateNonPersistent reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CreateNonPersistent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -245,7 +245,7 @@ class WriteOrCreateDynamicObjectVariable(GenericComponent[T], IMappableNode, ISy
     @value.setter
     def value(self, target: str | INodeObjectOutput[T] | None) -> None:
         """Set the Value reference by target ID or INodeObjectOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id

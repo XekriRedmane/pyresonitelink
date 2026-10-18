@@ -46,7 +46,7 @@ class OnContactStay(GeneratedComponent, IExecutionNode, INode, ICustomInspector,
     @collider.setter
     def collider(self, target: str | IGlobalValueProxy[ICollider] | None) -> None:
         """Set the Collider reference by target ID or IGlobalValueProxy[ICollider] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Collider")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -67,7 +67,7 @@ class OnContactStay(GeneratedComponent, IExecutionNode, INode, ICustomInspector,
     @on_event.setter
     def on_event(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnEvent reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnEvent")
         if isinstance(member, members.Reference):
             member.targetId = target_id

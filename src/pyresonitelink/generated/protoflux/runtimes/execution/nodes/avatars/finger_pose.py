@@ -47,7 +47,7 @@ class FingerPose(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
     @pose_source.setter
     def pose_source(self, target: str | INodeObjectOutput[IFingerPoseSourceComponent] | None) -> None:
         """Set the PoseSource reference by target ID or INodeObjectOutput[IFingerPoseSourceComponent] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PoseSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -68,7 +68,7 @@ class FingerPose(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
     @finger_node.setter
     def finger_node(self, target: str | INodeValueOutput[BodyNode] | None) -> None:
         """Set the FingerNode reference by target ID or INodeValueOutput[BodyNode] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FingerNode")
         if isinstance(member, members.Reference):
             member.targetId = target_id

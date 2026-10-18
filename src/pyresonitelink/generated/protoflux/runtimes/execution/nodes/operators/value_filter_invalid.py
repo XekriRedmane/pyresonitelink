@@ -50,7 +50,7 @@ class ValueFilterInvalid(GenericComponent[T], INodeValueOutput[T], IExecutionNod
     @value.setter
     def value(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the Value reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ class ValueFilterInvalid(GenericComponent[T], INodeValueOutput[T], IExecutionNod
     @fallback.setter
     def fallback(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the Fallback reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Fallback")
         if isinstance(member, members.Reference):
             member.targetId = target_id

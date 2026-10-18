@@ -1,0 +1,12 @@
+{
+  "description": "The Children node takes in an instance Slot and returns the list of children as a Collection.",
+  "category": "",
+  "fields": {
+    "Instance": "The slot to get the children collection from.",
+    "* ([[Type:IReadOnlyList|IReadOnlyList]])": "The collection of children slots from the provided slot instance."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Children&action=raw"
+}

@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import members
 from pyresonitelink.data import protocols
+from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -35,7 +36,7 @@ For more info on data feeds, see Data Feeds
         """Set Mappings. A list of item Mappings to map data feed item types to Feed Templates."""
         self.set_member("Mappings", value)
 
-    async def on_setup_template(self, resolink: protocols.ResoniteLinkClient, button: str, data: str, debug: bool = False) -> dict:
+    async def on_setup_template(self, resolink: protocols.ResoniteLinkClient, button: str | workers.Worker | GeneratedComponent, data: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Set up a basic settup with this component with a bunch of example UIs.
 
         Args:
@@ -48,6 +49,6 @@ For more info on data feeds, see Data Feeds
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "OnSetupTemplate", {"button": button, "data": data}, debug,
+            resolink, "OnSetupTemplate", {"button": members.DataReference(targetID=button) if isinstance(button, str) else button, "data": members.DataReference(targetID=data) if isinstance(data, str) else data}, debug,
         )
 

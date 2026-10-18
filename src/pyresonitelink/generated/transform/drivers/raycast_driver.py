@@ -84,7 +84,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @ignore_hierarchy.setter
     def ignore_hierarchy(self, target: str | Slot | None) -> None:
         """Set the IgnoreHierarchy reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IgnoreHierarchy")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -124,7 +124,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @origin.setter
     def origin(self, target: str | Slot | None) -> None:
         """Set the Origin reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Origin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -221,7 +221,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @position_drive.setter
     def position_drive(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _positionDrive reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_positionDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -242,7 +242,7 @@ class RaycastDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @rotation_drive.setter
     def rotation_drive(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _rotationDrive reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rotationDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id

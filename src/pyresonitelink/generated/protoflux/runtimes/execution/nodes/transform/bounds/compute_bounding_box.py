@@ -55,7 +55,7 @@ Only components which implement the ``IBounded`` interface are used for bounding
     @instance.setter
     def instance(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Instance reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -76,7 +76,7 @@ Only components which implement the ``IBounded`` interface are used for bounding
     @include_inactive.setter
     def include_inactive(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the IncludeInactive reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IncludeInactive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -97,7 +97,7 @@ Only components which implement the ``IBounded`` interface are used for bounding
     @coordinate_space.setter
     def coordinate_space(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the CoordinateSpace reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CoordinateSpace")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -118,7 +118,7 @@ Only components which implement the ``IBounded`` interface are used for bounding
     @only_with_tag.setter
     def only_with_tag(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the OnlyWithTag reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnlyWithTag")
         if isinstance(member, members.Reference):
             member.targetId = target_id

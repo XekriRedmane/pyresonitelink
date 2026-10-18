@@ -42,7 +42,7 @@ class ZeroOneInt(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
     @boolean.setter
     def boolean(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Boolean reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Boolean")
         if isinstance(member, members.Reference):
             member.targetId = target_id

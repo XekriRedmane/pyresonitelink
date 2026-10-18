@@ -1,11 +1,16 @@
 """Generated component: TextEditorEvents."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iglobal_value_proxy import IGlobalValueProxy
-from pyresonitelink.generated._types.text_editor import TextEditor
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.common_ui.editors.text_editor import TextEditor
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -55,7 +60,7 @@ class TextEditorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspect
     @editor.setter
     def editor(self, target: str | IGlobalValueProxy[TextEditor] | None) -> None:
         """Set the Editor reference by target ID or IGlobalValueProxy[TextEditor] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Editor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -76,7 +81,7 @@ class TextEditorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspect
     @editing_started.setter
     def editing_started(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the EditingStarted reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EditingStarted")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -97,7 +102,7 @@ class TextEditorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspect
     @editing_changed.setter
     def editing_changed(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the EditingChanged reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EditingChanged")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -118,7 +123,7 @@ class TextEditorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspect
     @editing_finished.setter
     def editing_finished(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the EditingFinished reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EditingFinished")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -139,7 +144,7 @@ class TextEditorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspect
     @submit_pressed.setter
     def submit_pressed(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the SubmitPressed reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SubmitPressed")
         if isinstance(member, members.Reference):
             member.targetId = target_id

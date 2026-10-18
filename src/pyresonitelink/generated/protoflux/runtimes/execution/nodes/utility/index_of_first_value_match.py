@@ -47,7 +47,7 @@ class IndexOfFirstValueMatch(GenericComponent[T], IExecutionNode[T], INode, ICus
     @match.setter
     def match(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the Match reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Match")
         if isinstance(member, members.Reference):
             member.targetId = target_id

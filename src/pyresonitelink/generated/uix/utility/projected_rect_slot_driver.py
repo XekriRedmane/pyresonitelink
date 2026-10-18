@@ -60,7 +60,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
     @position.setter
     def position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _position reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -81,7 +81,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
     @target.setter
     def target(self, target: str | Slot | None) -> None:
         """Set the Target reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -102,7 +102,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
     @rotation.setter
     def rotation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _rotation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -123,7 +123,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
     @scale.setter
     def scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _scale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_scale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -144,7 +144,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
     @original_parent.setter
     def original_parent(self, target: str | Slot | None) -> None:
         """Set the _originalParent reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_originalParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -165,7 +165,7 @@ class ProjectedRectSlotDriver(GeneratedComponent, IUIComputeComponent, IWorldEve
     @last_target.setter
     def last_target(self, target: str | Slot | None) -> None:
         """Set the _lastTarget reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_lastTarget")
         if isinstance(member, members.Reference):
             member.targetId = target_id

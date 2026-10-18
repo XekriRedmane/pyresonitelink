@@ -1,0 +1,13 @@
+{
+  "description": "Added in Beta_2026.5.27.1300 to create the visuals for the Rig Tool, this procedural mesh generates a typical rig bone visual used in 3D software. It does not include the bone sphere at the base, for this use SphereMesh. \n\nThe mesh's center(pivot) is the bottom(widest default) end allowing the narrow end it to be rotated to point as required.\n\nFor other uses, changing NormalizedSplitPosition closer to 0.5 a more symmetric crystal shape can be created going from a tetrahedron to a octahedron.\n\nthumb|Example visuals. One with debug texture and other with wireframe texture.",
+  "category": "Assets:Procedural Meshes",
+  "fields": {
+    "Length": "Determines the total length of the shape.",
+    "Width": "Determines the width of the widest point.",
+    "NormalizedSplitPosition": "How close to the 'bottom' the widest point of the shape is. 0.2 is default."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:RigBoneMesh&action=raw"
+}

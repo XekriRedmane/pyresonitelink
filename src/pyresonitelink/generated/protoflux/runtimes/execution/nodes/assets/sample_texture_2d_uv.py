@@ -51,7 +51,7 @@ class SampleTexture2D_UV(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @texture.setter
     def texture(self, target: str | INodeObjectOutput[Texture2D] | None) -> None:
         """Set the Texture reference by target ID or INodeObjectOutput[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +72,7 @@ class SampleTexture2D_UV(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @uv.setter
     def uv(self, target: str | INodeValueOutput[primitives.Float2] | None) -> None:
         """Set the UV reference by target ID or INodeValueOutput[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UV")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +93,7 @@ class SampleTexture2D_UV(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @wrap_mode.setter
     def wrap_mode(self, target: str | INodeValueOutput[WrapMode] | None) -> None:
         """Set the WrapMode reference by target ID or INodeValueOutput[WrapMode] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("WrapMode")
         if isinstance(member, members.Reference):
             member.targetId = target_id

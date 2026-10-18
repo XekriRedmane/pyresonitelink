@@ -10,10 +10,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_provider import ITextureProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class DebugDirectionCubemap(GeneratedComponent, ITextureProvider, ICustomInspector, IWorldEventReceiver):
+class DebugDirectionCubemap(GeneratedComponent, ITextureProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The Debug Direction Cubemap component allows for diagnosing which direction in the sky a part of a cubemap points to. This component was probably made to diagnose issues during testing for cubemaps between Unity engine and FrooxEngine and was left for users to test with.
 
     Category: Assets/Procedural Cubemaps

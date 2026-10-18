@@ -12,10 +12,11 @@ from pyresonitelink.generated._types.iplayable import IPlayable
 from pyresonitelink.generated._types.iworld_audio_data_source import IWorldAudioDataSource
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IWorldAudioDataSource, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
+class VideoTextureProvider(GeneratedComponent, ITexture2DProvider, IPlayable, IWorldAudioDataSource, IStaticAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The VideoTextureProvider component is used to display and play video. This component importantly implements both ITexture2D and IAudioSource which means it can be used as both a texture and a source of audio like a StaticAudioClip
 
     Category: Assets

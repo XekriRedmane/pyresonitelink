@@ -42,7 +42,7 @@ class Texture2D_Format(GeneratedComponent, IExecutionNode, INode, ICustomInspect
     @texture.setter
     def texture(self, target: str | INodeObjectOutput[Texture2D] | None) -> None:
         """Set the Texture reference by target ID or INodeObjectOutput[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             member.targetId = target_id

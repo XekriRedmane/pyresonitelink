@@ -65,7 +65,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
     @time_base.setter
     def time_base(self, target: str | IValue[primitives.Double] | None) -> None:
         """Set the TimeBase reference by target ID or IValue[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, IValue) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TimeBase")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -200,7 +200,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
     @position.setter
     def position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _position reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -221,7 +221,7 @@ class AxisPanner(GeneratedComponent, IComponent, IWorldEventReceiver):
     @scale.setter
     def scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _scale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_scale")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -55,7 +55,7 @@ class SetParent(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -76,7 +76,7 @@ class SetParent(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
     @instance.setter
     def instance(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Instance reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -97,7 +97,7 @@ class SetParent(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
     @new_parent.setter
     def new_parent(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the NewParent reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NewParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -118,7 +118,7 @@ class SetParent(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, I
     @preserve_global_position.setter
     def preserve_global_position(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the PreserveGlobalPosition reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PreserveGlobalPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id

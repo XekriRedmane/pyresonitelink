@@ -65,7 +65,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
     @source.setter
     def source(self, target: str | IField[Nullable[T]] | None) -> None:
         """Set the Source reference by target ID or IField[Nullable[T]] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -86,7 +86,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
     @value.setter
     def value(self, target: str | IField[T] | None) -> None:
         """Set the Value reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -107,7 +107,7 @@ class NullableSourceDriver(GenericComponent[T], IComponent, IWorldEventReceiver)
     @has_value.setter
     def has_value(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HasValue reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HasValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id

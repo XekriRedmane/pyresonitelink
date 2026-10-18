@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class TubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class TubeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The TubeMesh component is used to generate a procedural tube mesh for use with a MeshRenderer.
 
 The ``Points`` field currently requires Mods to edit.

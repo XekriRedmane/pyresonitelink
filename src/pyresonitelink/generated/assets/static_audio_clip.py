@@ -10,10 +10,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
+class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The StaticAudioClip component is what stores pre recorded audio data for components that play audio like AudioClipPlayer. This component is auto generated when a sound file is imported into the game as part of an audio clip object.
 
     Category: Assets
@@ -119,7 +120,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "AdjustVolume", {"ratio": ratio}, debug,
+            resolink, "AdjustVolume", {"ratio": fields.FieldFloat(value=ratio)}, debug,
         )
 
     async def extract_sides(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
@@ -184,7 +185,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "TrimStart", {"duration": duration}, debug,
+            resolink, "TrimStart", {"duration": fields.FieldFloat(value=duration)}, debug,
         )
 
     async def trim_end(self, resolink: protocols.ResoniteLinkClient, duration: primitives.Float, debug: bool = False) -> dict:
@@ -199,7 +200,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "TrimEnd", {"duration": duration}, debug,
+            resolink, "TrimEnd", {"duration": fields.FieldFloat(value=duration)}, debug,
         )
 
     async def fade_in(self, resolink: protocols.ResoniteLinkClient, duration: primitives.Float, debug: bool = False) -> dict:
@@ -214,7 +215,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "FadeIn", {"duration": duration}, debug,
+            resolink, "FadeIn", {"duration": fields.FieldFloat(value=duration)}, debug,
         )
 
     async def fade_out(self, resolink: protocols.ResoniteLinkClient, duration: primitives.Float, debug: bool = False) -> dict:
@@ -229,7 +230,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "FadeOut", {"duration": duration}, debug,
+            resolink, "FadeOut", {"duration": fields.FieldFloat(value=duration)}, debug,
         )
 
     async def make_fade_loop(self, resolink: protocols.ResoniteLinkClient, duration: primitives.Float, debug: bool = False) -> dict:
@@ -244,7 +245,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "MakeFadeLoop", {"duration": duration}, debug,
+            resolink, "MakeFadeLoop", {"duration": fields.FieldFloat(value=duration)}, debug,
         )
 
     async def convert_to_wav(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
@@ -277,7 +278,7 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             resolink, "ConvertToFLAC", {}, debug,
         )
 
-    async def apply_zita_reverb(self, resolink: protocols.ResoniteLinkClient, filter: str, debug: bool = False) -> dict:
+    async def apply_zita_reverb(self, resolink: protocols.ResoniteLinkClient, filter: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """ZitaParameters]] to create a reverberation sound effect on this audio clip.
 
         Args:
@@ -289,6 +290,6 @@ class StaticAudioClip(GeneratedComponent, IStaticAssetProvider, ICustomInspector
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "ApplyZitaReverb", {"filter": filter}, debug,
+            resolink, "ApplyZitaReverb", {"filter": members.DataReference(targetID=filter) if isinstance(filter, str) else filter}, debug,
         )
 

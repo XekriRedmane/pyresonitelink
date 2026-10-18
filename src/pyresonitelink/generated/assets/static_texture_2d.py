@@ -11,10 +11,11 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
 from pyresonitelink.generated._types.istatic_asset_provider import IStaticAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvider, ICustomInspector, IWorldEventReceiver):
+class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The StaticTexture2D Component stores a reference to a static asset representing a 2D Texture.
 
     Category: Assets
@@ -534,7 +535,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "TileLoop", {"transition": transition}, debug,
+            resolink, "TileLoop", {"transition": fields.FieldFloat2(value=transition)}, debug,
         )
 
     async def tile_mirror(self, resolink: protocols.ResoniteLinkClient, transition: primitives.Float2, debug: bool = False) -> dict:
@@ -549,10 +550,10 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "TileMirror", {"transition": transition}, debug,
+            resolink, "TileMirror", {"transition": fields.FieldFloat2(value=transition)}, debug,
         )
 
-    async def rescale(self, resolink: protocols.ResoniteLinkClient, size: primitives.Int, filtering: str, debug: bool = False) -> dict:
+    async def rescale(self, resolink: protocols.ResoniteLinkClient, size: primitives.Int, filtering: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Resizes the image up or down.
 
         Args:
@@ -565,10 +566,10 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "Rescale", {"size": size, "filtering": filtering}, debug,
+            resolink, "Rescale", {"size": fields.FieldInt(value=size), "filtering": members.DataReference(targetID=filtering) if isinstance(filtering, str) else filtering}, debug,
         )
 
-    async def rescale_2(self, resolink: protocols.ResoniteLinkClient, size: primitives.Int2, filtering: str, debug: bool = False) -> dict:
+    async def rescale_2(self, resolink: protocols.ResoniteLinkClient, size: primitives.Int2, filtering: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Resizes the image up or down.
 
         Args:
@@ -581,7 +582,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "Rescale", {"size": size, "filtering": filtering}, debug,
+            resolink, "Rescale", {"size": fields.FieldInt2(value=size), "filtering": members.DataReference(targetID=filtering) if isinstance(filtering, str) else filtering}, debug,
         )
 
     async def crop(self, resolink: protocols.ResoniteLinkClient, position: primitives.Int2, size: primitives.Int2, debug: bool = False) -> dict:
@@ -597,7 +598,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "Crop", {"position": position, "size": size}, debug,
+            resolink, "Crop", {"position": fields.FieldInt2(value=position), "size": fields.FieldInt2(value=size)}, debug,
         )
 
     async def trim(self, resolink: protocols.ResoniteLinkClient, color: primitives.Color, debug: bool = False) -> dict:
@@ -612,7 +613,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "Trim", {"color": color}, debug,
+            resolink, "Trim", {"color": fields.FieldColor(value=color)}, debug,
         )
 
     async def trim_1(self, resolink: protocols.ResoniteLinkClient, color: primitives.Color32, debug: bool = False) -> dict:
@@ -627,7 +628,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "Trim", {"color": color}, debug,
+            resolink, "Trim", {"color": fields.FieldColor32(value=color)}, debug,
         )
 
     async def trim_transparent(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
@@ -662,7 +663,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "LuminanceThreshold", {"threshold": threshold}, debug,
+            resolink, "LuminanceThreshold", {"threshold": fields.FieldFloat(value=threshold)}, debug,
         )
 
     async def luminance_threshold_3(self, resolink: protocols.ResoniteLinkClient, threshold: primitives.Float, above: primitives.Color, below: primitives.Color, debug: bool = False) -> dict:
@@ -679,7 +680,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "LuminanceThreshold", {"threshold": threshold, "above": above, "below": below}, debug,
+            resolink, "LuminanceThreshold", {"threshold": fields.FieldFloat(value=threshold), "above": fields.FieldColor(value=above), "below": fields.FieldColor(value=below)}, debug,
         )
 
     async def localized_luminance_threshold(self, resolink: protocols.ResoniteLinkClient, threshold: primitives.Float, range_: primitives.Int, debug: bool = False) -> dict:
@@ -695,7 +696,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "LocalizedLuminanceThreshold", {"threshold": threshold, "range": range_}, debug,
+            resolink, "LocalizedLuminanceThreshold", {"threshold": fields.FieldFloat(value=threshold), "range": fields.FieldInt(value=range_)}, debug,
         )
 
     async def localized_luminance_threshold_4(self, resolink: protocols.ResoniteLinkClient, threshold: primitives.Float, range_: primitives.Int, above: primitives.Color, below: primitives.Color, debug: bool = False) -> dict:
@@ -713,7 +714,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "LocalizedLuminanceThreshold", {"threshold": threshold, "range": range_, "above": above, "below": below}, debug,
+            resolink, "LocalizedLuminanceThreshold", {"threshold": fields.FieldFloat(value=threshold), "range": fields.FieldInt(value=range_), "above": fields.FieldColor(value=above), "below": fields.FieldColor(value=below)}, debug,
         )
 
     async def kmeans_cluster(self, resolink: protocols.ResoniteLinkClient, k: primitives.Int, position_weight: primitives.Float, batch_size: primitives.Int, passes_over_data: primitives.Float, debug: bool = False) -> dict:
@@ -731,7 +732,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "KMeansCluster", {"k": k, "positionWeight": position_weight, "batchSize": batch_size, "passesOverData": passes_over_data}, debug,
+            resolink, "KMeansCluster", {"k": fields.FieldInt(value=k), "positionWeight": fields.FieldFloat(value=position_weight), "batchSize": fields.FieldInt(value=batch_size), "passesOverData": fields.FieldFloat(value=passes_over_data)}, debug,
         )
 
     async def invert_rgb(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
@@ -796,7 +797,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "ColorToAlpha", {"fillColor": fill_color}, debug,
+            resolink, "ColorToAlpha", {"fillColor": fields.FieldColorX(value=fill_color)}, debug,
         )
 
     async def alpha_from_intensity(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
@@ -961,7 +962,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "AddBackground", {"color": color}, debug,
+            resolink, "AddBackground", {"color": fields.FieldColorX(value=color)}, debug,
         )
 
     async def adjust_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: primitives.Float, debug: bool = False) -> dict:
@@ -976,7 +977,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "AdjustGamma", {"gamma": gamma}, debug,
+            resolink, "AdjustGamma", {"gamma": fields.FieldFloat(value=gamma)}, debug,
         )
 
     async def adjust_alpha_gamma(self, resolink: protocols.ResoniteLinkClient, gamma: primitives.Float, debug: bool = False) -> dict:
@@ -991,7 +992,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "AdjustAlphaGamma", {"gamma": gamma}, debug,
+            resolink, "AdjustAlphaGamma", {"gamma": fields.FieldFloat(value=gamma)}, debug,
         )
 
     async def shift_hue(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
@@ -1006,7 +1007,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "ShiftHue", {"offset": offset}, debug,
+            resolink, "ShiftHue", {"offset": fields.FieldFloat(value=offset)}, debug,
         )
 
     async def set_hue(self, resolink: protocols.ResoniteLinkClient, hue: primitives.Float, debug: bool = False) -> dict:
@@ -1021,7 +1022,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "SetHue", {"hue": hue}, debug,
+            resolink, "SetHue", {"hue": fields.FieldFloat(value=hue)}, debug,
         )
 
     async def set_saturation(self, resolink: protocols.ResoniteLinkClient, saturation: primitives.Float, debug: bool = False) -> dict:
@@ -1036,7 +1037,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "SetSaturation", {"saturation": saturation}, debug,
+            resolink, "SetSaturation", {"saturation": fields.FieldFloat(value=saturation)}, debug,
         )
 
     async def offset_saturation(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
@@ -1051,7 +1052,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "OffsetSaturation", {"offset": offset}, debug,
+            resolink, "OffsetSaturation", {"offset": fields.FieldFloat(value=offset)}, debug,
         )
 
     async def mul_saturation(self, resolink: protocols.ResoniteLinkClient, ratio: primitives.Float, debug: bool = False) -> dict:
@@ -1066,7 +1067,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "MulSaturation", {"ratio": ratio}, debug,
+            resolink, "MulSaturation", {"ratio": fields.FieldFloat(value=ratio)}, debug,
         )
 
     async def set_value(self, resolink: protocols.ResoniteLinkClient, value: primitives.Float, debug: bool = False) -> dict:
@@ -1081,7 +1082,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "SetValue", {"value": value}, debug,
+            resolink, "SetValue", {"value": fields.FieldFloat(value=value)}, debug,
         )
 
     async def mul_value(self, resolink: protocols.ResoniteLinkClient, ratio: primitives.Float, debug: bool = False) -> dict:
@@ -1096,7 +1097,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "MulValue", {"ratio": ratio}, debug,
+            resolink, "MulValue", {"ratio": fields.FieldFloat(value=ratio)}, debug,
         )
 
     async def offset_value(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
@@ -1111,7 +1112,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "OffsetValue", {"offset": offset}, debug,
+            resolink, "OffsetValue", {"offset": fields.FieldFloat(value=offset)}, debug,
         )
 
     async def offset_alpha(self, resolink: protocols.ResoniteLinkClient, offset: primitives.Float, debug: bool = False) -> dict:
@@ -1126,7 +1127,7 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "OffsetAlpha", {"offset": offset}, debug,
+            resolink, "OffsetAlpha", {"offset": fields.FieldFloat(value=offset)}, debug,
         )
 
     async def normalize(self, resolink: protocols.ResoniteLinkClient, rgb_independently: primitives.Bool, normalize_alpha: primitives.Bool, normalize_min_value: primitives.Bool, debug: bool = False) -> dict:
@@ -1143,6 +1144,21 @@ class StaticTexture2D(GeneratedComponent, ITexture2DProvider, IStaticAssetProvid
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "Normalize", {"rgbIndependently": rgb_independently, "normalizeAlpha": normalize_alpha, "normalizeMinValue": normalize_min_value}, debug,
+            resolink, "Normalize", {"rgbIndependently": fields.FieldBool(value=rgb_independently), "normalizeAlpha": fields.FieldBool(value=normalize_alpha), "normalizeMinValue": fields.FieldBool(value=normalize_min_value)}, debug,
+        )
+
+    async def multiply(self, resolink: protocols.ResoniteLinkClient, color: primitives.ColorX, debug: bool = False) -> dict:
+        """Call the Multiply sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            color: The color parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "Multiply", {"color": fields.FieldColorX(value=color)}, debug,
         )
 

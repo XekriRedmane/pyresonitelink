@@ -50,7 +50,7 @@ class TransformBounds(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bounds.setter
     def bounds(self, target: str | INodeValueOutput[primitives.BoundingBox] | None) -> None:
         """Set the Bounds reference by target ID or INodeValueOutput[primitives.BoundingBox] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bounds")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ class TransformBounds(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @source_space.setter
     def source_space(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the SourceSpace reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SourceSpace")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -92,7 +92,7 @@ class TransformBounds(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @target_space.setter
     def target_space(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the TargetSpace reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetSpace")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -76,7 +76,7 @@ Avatar Protections in the hierarchy of any slot you try to bake using this node 
     @root.setter
     def root(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Root reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -99,7 +99,7 @@ Include meshes and objects that currently aren't visible in the final product.""
     @skinned_mesh_mode.setter
     def skinned_mesh_mode(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the SkinnedMeshMode reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SkinnedMeshMode")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -120,7 +120,7 @@ Include meshes and objects that currently aren't visible in the final product.""
     @include_inactive.setter
     def include_inactive(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the IncludeInactive reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IncludeInactive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -141,7 +141,7 @@ Include meshes and objects that currently aren't visible in the final product.""
     @destroy_original.setter
     def destroy_original(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the DestroyOriginal reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DestroyOriginal")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -162,7 +162,7 @@ Include meshes and objects that currently aren't visible in the final product.""
     @assets_slot.setter
     def assets_slot(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the AssetsSlot reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AssetsSlot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -183,7 +183,7 @@ Include meshes and objects that currently aren't visible in the final product.""
     @grabbable_handling.setter
     def grabbable_handling(self, target: str | INodeValueOutput[ComponentHandling] | None) -> None:
         """Set the GrabbableHandling reference by target ID or INodeValueOutput[ComponentHandling] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("GrabbableHandling")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -204,7 +204,7 @@ Include meshes and objects that currently aren't visible in the final product.""
     @collider_handling.setter
     def collider_handling(self, target: str | INodeValueOutput[ComponentHandling] | None) -> None:
         """Set the ColliderHandling reference by target ID or INodeValueOutput[ComponentHandling] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ColliderHandling")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -225,7 +225,7 @@ Include meshes and objects that currently aren't visible in the final product.""
     @undoable.setter
     def undoable(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Undoable reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Undoable")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -259,7 +259,7 @@ Include meshes and objects that currently aren't visible in the final product.""
     @on_bake_started.setter
     def on_bake_started(self, target: str | INodeOperation | None) -> None:
         """Set the OnBakeStarted reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnBakeStarted")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -280,7 +280,7 @@ Include meshes and objects that currently aren't visible in the final product.""
     @on_baked.setter
     def on_baked(self, target: str | INodeOperation | None) -> None:
         """Set the OnBaked reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnBaked")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -5,8 +5,8 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.iglobal_value_proxy import IGlobalValueProxy
 from pyresonitelink.generated._types.sync_ref import SyncRef
-from pyresonitelink.generated._types.ivariable import IVariable
 from pyresonitelink.generated._types.isource import ISource
+from pyresonitelink.generated._types.ivariable import IVariable
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iobject_root import IObjectRoot
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class ReferenceSource(GenericComponent[T], IVariable, ISource, INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
+class ReferenceSource(GenericComponent[T], ISource, IVariable, INodeObjectOutput[T], IExecutionNode[T], INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """due to wiki limitations, this node does not currently have an HTML rendering of the node.
 
 See ProtoFlux Tool Usage for how to make this node.
@@ -55,7 +55,7 @@ Allows you to read a value from an internal specified field.
     @source.setter
     def source(self, target: str | IGlobalValueProxy[SyncRef[T]] | None) -> None:
         """Set the Source reference by target ID or IGlobalValueProxy[SyncRef[T]] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id

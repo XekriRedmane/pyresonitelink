@@ -45,7 +45,7 @@ class ClipRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
     @rect.setter
     def rect(self, target: str | INodeValueOutput[primitives.Rect] | None) -> None:
         """Set the Rect reference by target ID or INodeValueOutput[primitives.Rect] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Rect")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class ClipRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
     @mask.setter
     def mask(self, target: str | INodeValueOutput[primitives.Rect] | None) -> None:
         """Set the Mask reference by target ID or INodeValueOutput[primitives.Rect] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Mask")
         if isinstance(member, members.Reference):
             member.targetId = target_id

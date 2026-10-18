@@ -13,10 +13,11 @@ from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.i_uix_material import IUIX_Material
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEventReceiver):
+class PBS_StencilMaterialSpecular(GeneratedComponent, IUIX_Material, ICustomInspector, IComponent, IWorldEventReceiver):
     """The PBS_StencilMaterialSpecular component is used as a material for meshes to make them render differently when in front of other stencil materials.
 
 See Stencils.
@@ -193,7 +194,7 @@ See Stencils.
     @albedo_texture.setter
     def albedo_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -233,7 +234,7 @@ See Stencils.
     @emissive_map.setter
     def emissive_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -254,7 +255,7 @@ See Stencils.
     @normal_map.setter
     def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -294,7 +295,7 @@ See Stencils.
     @occlusion_map.setter
     def occlusion_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OcclusionMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OcclusionMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -546,7 +547,7 @@ See Stencils.
     @specular_map.setter
     def specular_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the SpecularMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpecularMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -567,7 +568,7 @@ See Stencils.
     @regular.setter
     def regular(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _regular reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_regular")
         if isinstance(member, members.Reference):
             member.targetId = target_id

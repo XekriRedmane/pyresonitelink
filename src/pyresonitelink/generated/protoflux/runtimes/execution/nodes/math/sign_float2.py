@@ -42,7 +42,7 @@ class Sign_Float2(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
     @n.setter
     def n(self, target: str | INodeValueOutput[primitives.Float2] | None) -> None:
         """Set the N reference by target ID or INodeValueOutput[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("N")
         if isinstance(member, members.Reference):
             member.targetId = target_id

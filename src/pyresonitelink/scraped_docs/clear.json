@@ -1,0 +1,14 @@
+{
+  "description": "The Clear node takes in a Collection and removes all elements from the collection when called.\n\nKnown compatible types: any collection that is not read only\n\nKnown incompatible types: any collection that is read only",
+  "category": "",
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to remove all elements from the collection.",
+    "* ([[Type:IList|IList]])": "The collection to remove all elements from.",
+    "OnCleared": "Fires when successfully clearing out the collection.",
+    "OnFail": "Fires when the collection could not be cleared."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Clear&action=raw"
+}

@@ -185,7 +185,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -567,7 +567,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
     @albedo_texture.setter
     def albedo_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -607,7 +607,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
     @emissive_map.setter
     def emissive_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -628,7 +628,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
     @normal_map.setter
     def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -668,7 +668,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
     @occlusion_map.setter
     def occlusion_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OcclusionMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OcclusionMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -689,7 +689,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
     @secondary_albedo_texture.setter
     def secondary_albedo_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the SecondaryAlbedoTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SecondaryAlbedoTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -729,7 +729,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
     @secondary_emissive_map.setter
     def secondary_emissive_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the SecondaryEmissiveMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SecondaryEmissiveMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -885,7 +885,7 @@ class PBS_MultiUV_Specular(GeneratedComponent, IPBS_Specular, ICullingMaterial, 
     @specular_map.setter
     def specular_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the SpecularMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpecularMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id

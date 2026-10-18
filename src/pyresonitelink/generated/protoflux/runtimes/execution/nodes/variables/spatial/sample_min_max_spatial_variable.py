@@ -54,7 +54,7 @@ This node works with spatial variable components, and will need a BoxConstantVal
     @point.setter
     def point(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Point reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -75,7 +75,7 @@ This node works with spatial variable components, and will need a BoxConstantVal
     @name.setter
     def name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Name reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             member.targetId = target_id

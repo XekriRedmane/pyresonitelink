@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class SubmeshDebug(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The Submesh Debug component generates a bunch of triangles, each having an offset of ``Offset`` in the Y axis from the previous generated triangle up to ``SubmeshCount`` each being a new submesh. Used for debugging and testing.
 
     Category: Debug

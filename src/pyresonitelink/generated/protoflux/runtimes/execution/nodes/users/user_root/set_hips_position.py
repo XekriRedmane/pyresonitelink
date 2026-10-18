@@ -1,13 +1,18 @@
 """Generated component: SetHipsPosition."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.user_root import UserRoot
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.user_root import UserRoot
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -52,7 +57,7 @@ class SetHipsPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +78,7 @@ class SetHipsPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
     @user_root.setter
     def user_root(self, target: str | INodeObjectOutput[UserRoot] | None) -> None:
         """Set the UserRoot reference by target ID or INodeObjectOutput[UserRoot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UserRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -94,7 +99,7 @@ class SetHipsPosition(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
     @position.setter
     def position(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Position reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             member.targetId = target_id

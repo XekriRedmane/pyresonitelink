@@ -1,11 +1,16 @@
 """Generated component: AnchorEvents."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iglobal_value_proxy import IGlobalValueProxy
-from pyresonitelink.generated._types.avatar_anchor import AvatarAnchor
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.anchors.avatar_anchor import AvatarAnchor
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -49,7 +54,7 @@ class AnchorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, 
     @anchor.setter
     def anchor(self, target: str | IGlobalValueProxy[AvatarAnchor] | None) -> None:
         """Set the Anchor reference by target ID or IGlobalValueProxy[AvatarAnchor] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Anchor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -70,7 +75,7 @@ class AnchorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, 
     @on_anchored.setter
     def on_anchored(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnAnchored reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnAnchored")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -91,7 +96,7 @@ class AnchorEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, 
     @on_released.setter
     def on_released(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnReleased reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnReleased")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -76,7 +76,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
     @value.setter
     def value(self, target: str | IField[T] | None) -> None:
         """Set the Value reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -116,7 +116,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
     @label.setter
     def label(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Label reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -137,7 +137,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
     @color.setter
     def color(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the Color reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -158,7 +158,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
     @sprite.setter
     def sprite(self, target: str | SyncRef[IAssetProvider[Sprite]] | None) -> None:
         """Set the Sprite reference by target ID or SyncRef[IAssetProvider[Sprite]] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Sprite")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -179,7 +179,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
     @sprite_url.setter
     def sprite_url(self, target: str | IField[str] | None) -> None:
         """Set the SpriteURL reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpriteURL")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -200,7 +200,7 @@ class ValueOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEventR
     @sprite_tint.setter
     def sprite_tint(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the SpriteTint reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpriteTint")
         if isinstance(member, members.Reference):
             member.targetId = target_id

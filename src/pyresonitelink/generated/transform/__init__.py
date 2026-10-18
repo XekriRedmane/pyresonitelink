@@ -18,12 +18,17 @@ from .drivers.color_to_colorx import ColorToColorX
 from .drivers.constant_lerp_value import ConstantLerpValue
 from .drivers.copy_global_scale import CopyGlobalScale
 from .drivers.copy_global_transform import CopyGlobalTransform
+from .drivers.copy_transform_from_world import CopyTransformFromWorld
+from .drivers.distance_meter import DistanceMeter
 from .drivers.double_to_float_copy import DoubleToFloatCopy
 from .drivers.dynamic_blend_shape_driver import DynamicBlendShapeDriver
 from .drivers.flip_at_user import FlipAtUser
 from .drivers.float_2d_river import Float2Driver
 from .drivers.float_3d_river import Float3Driver
 from .drivers.float_4d_river import Float4Driver
+from .drivers.glue import Glue
+from .drivers.label_content_driver import LabelContentDriver
+from .drivers.line_segment import LineSegment
 from .drivers.line_transform import LineTransform
 from .drivers.linear_angle_mapper import LinearAngleMapper
 from .drivers.linear_color_mapper import LinearColorMapper
@@ -60,6 +65,7 @@ from .drivers.scaler import Scaler
 from .drivers.skinned_mesh_positioner import SkinnedMeshPositioner
 from .drivers.smooth_transform import SmoothTransform
 from .drivers.smooth_value import SmoothValue
+from .drivers.snap_node import SnapNode
 from .drivers.sphere_aligner import SphereAligner
 from .drivers.spinner import Spinner
 from .drivers.string_concatenation_driver import StringConcatenationDriver
@@ -97,6 +103,7 @@ from .interaction.knob_control import KnobControl
 from .interaction.physical_button import PhysicalButton
 from .interaction.scale_element import ScaleElement
 from .interaction.scale_group import ScaleGroup
+from .interaction.slider import Slider
 from .interaction.snap_target import SnapTarget
 from .interaction.snapper import Snapper
 from .interaction.tool_avatar_pose_filter import ToolAvatarPoseFilter
@@ -105,6 +112,8 @@ from .interaction.touch_event_relay import TouchEventRelay
 from .interaction.touch_toggle import TouchToggle
 from .interaction.touch_value_option import TouchValueOption
 from .interaction.touchable_data import TouchableData
+from .inverse_kinematics.fabrik_chain import FABRIK_Chain
+from .inverse_kinematics.trigonometric_ik import TrigonometricIK
 from .point_generators.box_point_generator import BoxPointGenerator
 from .point_generators.circle_point_generator import CirclePointGenerator
 from .point_generators.point_generator import PointGenerator
@@ -121,6 +130,7 @@ from .snapping.snap_point import SnapPoint
 from .snapping.snap_sphere import SnapSphere
 from .tagging.ai_generated_content import AI_GeneratedContent
 from .tagging.asset_optimization_block import AssetOptimizationBlock
+from .tagging.avatar_equip_block import AvatarEquipBlock
 from .tagging.destroy_block import DestroyBlock
 from .tagging.destroy_root import DestroyRoot
 from .tagging.duplicate_block import DuplicateBlock

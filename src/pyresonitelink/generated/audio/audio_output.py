@@ -123,7 +123,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
     @source.setter
     def source(self, target: str | IWorldAudioDataSource | None) -> None:
         """Set the Source reference by target ID or IWorldAudioDataSource instance."""
-        target_id: str | None = target.id if isinstance(target, IWorldAudioDataSource) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -466,7 +466,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
         """Set excludedUsers. User references placed in here will be excluded from hearing the audio."""
         self.set_member("excludedUsers", value)
 
-    async def exlude_user(self, resolink: protocols.ResoniteLinkClient, user: str, debug: bool = False) -> dict:
+    async def exlude_user(self, resolink: protocols.ResoniteLinkClient, user: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Excludes the User provided to it, so that user cannot hear this audio output.
 
         Args:
@@ -478,7 +478,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "ExludeUser", {"user": user}, debug,
+            resolink, "ExludeUser", {"user": members.DataReference(targetID=user) if isinstance(user, str) else user}, debug,
         )
 
     async def exlude_local_user(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
@@ -501,7 +501,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             resolink, "RemoveLocalExcludedUser", {}, debug,
         )
 
-    async def remove_exluded_user(self, resolink: protocols.ResoniteLinkClient, user: str, debug: bool = False) -> dict:
+    async def remove_exluded_user(self, resolink: protocols.ResoniteLinkClient, user: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """If provided user is currently excluded, makes it so that the provided user is no longer excluded from hearing this audio output.
 
         Args:
@@ -513,7 +513,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "RemoveExludedUser", {"user": user}, debug,
+            resolink, "RemoveExludedUser", {"user": members.DataReference(targetID=user) if isinstance(user, str) else user}, debug,
         )
 
     async def clear_exluded_users(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
@@ -526,7 +526,7 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             resolink, "ClearExludedUsers", {}, debug,
         )
 
-    async def is_user_exluded(self, resolink: protocols.ResoniteLinkClient, user: str, debug: bool = False) -> dict:
+    async def is_user_exluded(self, resolink: protocols.ResoniteLinkClient, user: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """When provided a user, this function returns whether or not that user is excluded from hearing this audio clip.
 
         Args:
@@ -538,6 +538,6 @@ class AudioOutput(GeneratedComponent, IComponent, IWorldEventReceiver):
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "IsUserExluded", {"user": user}, debug,
+            resolink, "IsUserExluded", {"user": members.DataReference(targetID=user) if isinstance(user, str) else user}, debug,
         )
 

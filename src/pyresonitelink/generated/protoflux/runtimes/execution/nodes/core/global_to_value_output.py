@@ -49,7 +49,7 @@ class GlobalToValueOutput(GenericComponent[T], IVariable, INodeValueOutput[T], I
     @global_.setter
     def global_(self, target: str | IGlobalValueProxy[T] | None) -> None:
         """Set the Global reference by target ID or IGlobalValueProxy[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Global")
         if isinstance(member, members.Reference):
             member.targetId = target_id

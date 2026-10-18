@@ -1,16 +1,21 @@
 """Generated component: RadiantModalOverlay."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.rect_transform import RectTransform
-from pyresonitelink.generated._types.text import Text
-from pyresonitelink.generated._types.blur_material import BlurMaterial
-from pyresonitelink.generated._types.raw_graphic import RawGraphic
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.rect_transform import RectTransform
+    from pyresonitelink.generated.uix.graphics.text import Text
+    from pyresonitelink.generated.assets.materials.filters.blur_material import BlurMaterial
+    from pyresonitelink.generated.uix.graphics.raw_graphic import RawGraphic
 from pyresonitelink.generated._types.iui_interactable import IUIInteractable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -155,7 +160,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @size_root.setter
     def size_root(self, target: str | RectTransform | None) -> None:
         """Set the SizeRoot reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SizeRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -176,7 +181,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @content_root.setter
     def content_root(self, target: str | RectTransform | None) -> None:
         """Set the ContentRoot reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ContentRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -330,7 +335,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @title_.setter
     def title_(self, target: str | Text | None) -> None:
         """Set the _title reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_title")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -351,7 +356,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @blur.setter
     def blur(self, target: str | BlurMaterial | None) -> None:
         """Set the _blur reference by target ID or BlurMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, BlurMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_blur")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -372,7 +377,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @blur_graphic.setter
     def blur_graphic(self, target: str | RawGraphic | None) -> None:
         """Set the _blurGraphic reference by target ID or RawGraphic instance."""
-        target_id: str | None = target.id if isinstance(target, RawGraphic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_blurGraphic")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -393,7 +398,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @blur_spread_ref.setter
     def blur_spread_ref(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _blurSpread reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_blurSpread")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -414,7 +419,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @background_color_ref.setter
     def background_color_ref(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the _backgroundColor reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_backgroundColor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -435,7 +440,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @mask_rect.setter
     def mask_rect(self, target: str | IField[primitives.Rect] | None) -> None:
         """Set the _maskRect reference by target ID or IField[primitives.Rect] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_maskRect")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -456,7 +461,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @header_offset_min.setter
     def header_offset_min(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _headerOffsetMin reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_headerOffsetMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -477,7 +482,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @header_offset_max.setter
     def header_offset_max(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _headerOffsetMax reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_headerOffsetMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -498,7 +503,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @content_offset_min.setter
     def content_offset_min(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _contentOffsetMin reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_contentOffsetMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -519,7 +524,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @content_offset_max.setter
     def content_offset_max(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _contentOffsetMax reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_contentOffsetMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -540,7 +545,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @title_offset_min.setter
     def title_offset_min(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _titleOffsetMin reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_titleOffsetMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -561,7 +566,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @title_offset_max.setter
     def title_offset_max(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _titleOffsetMax reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_titleOffsetMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -582,7 +587,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @close_offset_min.setter
     def close_offset_min(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _closeOffsetMin reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_closeOffsetMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -603,7 +608,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
     @close_offset_max.setter
     def close_offset_max(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _closeOffsetMax reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_closeOffsetMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -613,7 +618,7 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<float2>'),
             )
 
-    async def construct(self, resolink: protocols.ResoniteLinkClient, slot: str, debug: bool = False) -> dict:
+    async def construct(self, resolink: protocols.ResoniteLinkClient, slot: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Call the Construct sync method.
 
         Args:
@@ -625,6 +630,6 @@ class RadiantModalOverlay(GeneratedComponent, IUIInteractable, IWorldEventReceiv
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "Construct", {"slot": slot}, debug,
+            resolink, "Construct", {"slot": members.DataReference(targetID=slot) if isinstance(slot, str) else slot}, debug,
         )
 

@@ -17,10 +17,11 @@ from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.i_uix_material import IUIX_Material
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class RefractMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEventReceiver):
+class RefractMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IComponent, IWorldEventReceiver):
     """The RefractMaterial component can be used to create distortion or bending effects on the objects and visuals rendered behind it.
 
     Category: Assets/Materials/Filters
@@ -369,7 +370,7 @@ class RefractMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorl
     @normal_map.setter
     def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -527,7 +528,7 @@ class RefractMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorl
     @global_.setter
     def global_(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _global reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_global")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -548,7 +549,7 @@ class RefractMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorl
     @per_object_ref.setter
     def per_object_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _perObject reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_perObject")
         if isinstance(member, members.Reference):
             member.targetId = target_id

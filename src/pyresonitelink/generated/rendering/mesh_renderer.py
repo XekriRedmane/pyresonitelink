@@ -58,7 +58,7 @@ class MeshRenderer(GeneratedComponent, IBounded, IHighlightable, IRenderable, IC
     @mesh.setter
     def mesh(self, target: str | IAssetProvider[Mesh] | None) -> None:
         """Set the Mesh reference by target ID or IAssetProvider[Mesh] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -152,6 +152,21 @@ class MeshRenderer(GeneratedComponent, IBounded, IHighlightable, IRenderable, IC
             self.set_member(
                 "SortingOrder", fields.FieldInt(value=value)
             )
+
+    async def auto_rig(self, resolink: protocols.ResoniteLinkClient, rig: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
+        """Call the AutoRig sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            rig: The rig parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "AutoRig", {"rig": members.DataReference(targetID=rig) if isinstance(rig, str) else rig}, debug,
+        )
 
     async def split_submeshes(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
         """Called when the split submeshes button is touched.

@@ -1,5 +1,8 @@
 """Generated component: AssetLoadProgress."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from typing import Any
 
 A = Any
@@ -7,8 +10,10 @@ from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.users_asset_load_progress import UsersAssetLoadProgress
 from pyresonitelink.generated._types.user import User
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.assets.loading.users_asset_load_progress import UsersAssetLoadProgress
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -59,7 +64,7 @@ The provided Tracker (UsersAssetLoadProgress`1) component is where the asset is 
     @tracker.setter
     def tracker(self, target: str | INodeObjectOutput[UsersAssetLoadProgress[A]] | None) -> None:
         """Set the Tracker reference by target ID or INodeObjectOutput[UsersAssetLoadProgress[A]] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Tracker")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -80,7 +85,7 @@ The provided Tracker (UsersAssetLoadProgress`1) component is where the asset is 
     @user.setter
     def user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the User reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             member.targetId = target_id

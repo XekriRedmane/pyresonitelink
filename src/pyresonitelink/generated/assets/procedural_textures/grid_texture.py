@@ -12,10 +12,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class GridTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWorldEventReceiver):
+class GridTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The GridTexture component is used to generate a grid of lines with a background color to use in materials.
 
     Category: Assets/Procedural Textures

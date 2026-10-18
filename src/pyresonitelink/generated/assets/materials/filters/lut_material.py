@@ -17,10 +17,11 @@ from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.texture_3d import Texture3D
 from pyresonitelink.generated._types.i_uix_material import IUIX_Material
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class LUT_Material(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEventReceiver):
+class LUT_Material(GeneratedComponent, IUIX_Material, ICustomInspector, IComponent, IWorldEventReceiver):
     """Wrapper for [FrooxEngine]FrooxEngine.LUT_Material.
 
     Category: Assets/Materials/Filters
@@ -297,7 +298,7 @@ class LUT_Material(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -318,7 +319,7 @@ class LUT_Material(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
     @lut.setter
     def lut(self, target: str | IAssetProvider[Texture3D] | None) -> None:
         """Set the LUT reference by target ID or IAssetProvider[Texture3D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LUT")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -339,7 +340,7 @@ class LUT_Material(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
     @secondary_lut.setter
     def secondary_lut(self, target: str | IAssetProvider[Texture3D] | None) -> None:
         """Set the SecondaryLUT reference by target ID or IAssetProvider[Texture3D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SecondaryLUT")
         if isinstance(member, members.Reference):
             member.targetId = target_id

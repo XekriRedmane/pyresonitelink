@@ -85,7 +85,7 @@ If there is no CommonSpawnArea in the World, the user will spawn at the coordina
     @spawn_point_generator.setter
     def spawn_point_generator(self, target: str | IPointGenerator | None) -> None:
         """Set the SpawnPointGenerator reference by target ID or IPointGenerator instance."""
-        target_id: str | None = target.id if isinstance(target, IPointGenerator) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawnPointGenerator")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -279,7 +279,7 @@ If there is no CommonSpawnArea in the World, the user will spawn at the coordina
     @parent_override.setter
     def parent_override(self, target: str | Slot | None) -> None:
         """Set the ParentOverride reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ParentOverride")
         if isinstance(member, members.Reference):
             member.targetId = target_id

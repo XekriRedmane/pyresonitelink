@@ -49,7 +49,7 @@ class SingleFeedView(GeneratedComponent, IDataFeedView, IComponent, IWorldEventR
     @feed.setter
     def feed(self, target: str | IDataFeedComponent | None) -> None:
         """Set the Feed reference by target ID or IDataFeedComponent instance."""
-        target_id: str | None = target.id if isinstance(target, IDataFeedComponent) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Feed")
         if isinstance(member, members.Reference):
             member.targetId = target_id

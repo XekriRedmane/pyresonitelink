@@ -41,7 +41,7 @@ class ToLocalTime(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
     @date_time.setter
     def date_time(self, target: str | INodeValueOutput[str] | None) -> None:
         """Set the DateTime reference by target ID or INodeValueOutput[str] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DateTime")
         if isinstance(member, members.Reference):
             member.targetId = target_id

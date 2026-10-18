@@ -1,5 +1,6 @@
 """Generated slots components."""
 
+from .children import Children
 from .children_count import ChildrenCount
 from .destroy_slot import DestroySlot
 from .destroy_slot_children import DestroySlotChildren

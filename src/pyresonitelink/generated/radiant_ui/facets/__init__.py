@@ -25,6 +25,7 @@ from .setup2_fa_facet_preset import Setup2FAFacetPreset
 from .simple_profile_facet_preset import SimpleProfileFacetPreset
 from .storage_indicator_facet_preset import StorageIndicatorFacetPreset
 from .stream_audio_facet_preset import StreamAudioFacetPreset
+from .stream_video_facet_preset import StreamVideoFacetPreset
 from .streaming_camera_facet_preset import StreamingCameraFacetPreset
 from .sync_status_facet_preset import SyncStatusFacetPreset
 from .time_facet_preset import TimeFacetPreset

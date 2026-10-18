@@ -10,10 +10,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_provider import ITextureProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector, IWorldEventReceiver):
+class CheckerboardCubemap(GeneratedComponent, ITextureProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The CheckerboardCubemap component procedurally generates a cubemap for Projection 360 Materials that is a checkerboard with different pairs of colors for each of the 6 sides.
 
     Category: Assets/Procedural Cubemaps

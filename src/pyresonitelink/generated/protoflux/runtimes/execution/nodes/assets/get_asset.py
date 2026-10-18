@@ -51,7 +51,7 @@ class GetAsset(GenericComponent[T], INodeObjectOutput[T], IExecutionNode[T], INo
     @provider.setter
     def provider(self, target: str | INodeObjectOutput[IAssetProvider[A]] | None) -> None:
         """Set the Provider reference by target ID or INodeObjectOutput[IAssetProvider[A]] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Provider")
         if isinstance(member, members.Reference):
             member.targetId = target_id

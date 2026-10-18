@@ -55,7 +55,7 @@ class SampleObjectSpatialVariable(GenericComponent[T], INodeObjectOutput[T], IEx
     @point.setter
     def point(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Point reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -76,7 +76,7 @@ class SampleObjectSpatialVariable(GenericComponent[T], INodeObjectOutput[T], IEx
     @name.setter
     def name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Name reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Name")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -97,7 +97,7 @@ class SampleObjectSpatialVariable(GenericComponent[T], INodeObjectOutput[T], IEx
     @default_value.setter
     def default_value(self, target: str | INodeObjectOutput[T] | None) -> None:
         """Set the DefaultValue reference by target ID or INodeObjectOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DefaultValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id

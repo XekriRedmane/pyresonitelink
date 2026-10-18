@@ -49,7 +49,7 @@ class StoppedPlayableCleaner(GeneratedComponent, IComponent, IWorldEventReceiver
     @playable.setter
     def playable(self, target: str | IPlayable | None) -> None:
         """Set the Playable reference by target ID or IPlayable instance."""
-        target_id: str | None = target.id if isinstance(target, IPlayable) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Playable")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -89,7 +89,7 @@ class StoppedPlayableCleaner(GeneratedComponent, IComponent, IWorldEventReceiver
     @checking_user.setter
     def checking_user(self, target: str | User | None) -> None:
         """Set the CheckingUser reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CheckingUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id

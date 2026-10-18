@@ -11,9 +11,11 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class DefaultUserScale(GeneratedComponent, IAvatarObjectComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.CommonAvatar.DefaultUserScale.
+    """This component sets the default scale of the avatar it is attached to, which also affects the scale of the user wearing said avatar.
 
     Category: Users/Common Avatar System
+
+    **Behavior**: The default scale determines what scale the avatar spawns at, as well as what scale it returns to when using the Reset Scale option in the context menu.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.DefaultUserScale"
@@ -37,7 +39,7 @@ class DefaultUserScale(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
 
     @property
     def set_on_equip(self) -> primitives.Bool | None:
-        """The SetOnEquip field value."""
+        """TBD"""
         member = self.get_member("SetOnEquip")
         if member is None:
             return None
@@ -56,7 +58,7 @@ class DefaultUserScale(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
 
     @property
     def default_scale(self) -> primitives.Float | None:
-        """The DefaultScale field value."""
+        """The default scale (normal value is 1)"""
         member = self.get_member("DefaultScale")
         if member is None:
             return None
@@ -75,7 +77,7 @@ class DefaultUserScale(GeneratedComponent, IAvatarObjectComponent, IWorldEventRe
 
     @property
     def active_user(self) -> str | None:
-        """Target ID of the _activeUser reference (targets User)."""
+        """Internal"""
         member = self.get_member("_activeUser")
         if isinstance(member, members.Reference):
             return member.targetId

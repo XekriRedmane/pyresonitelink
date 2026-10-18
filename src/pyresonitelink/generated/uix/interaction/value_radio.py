@@ -62,7 +62,7 @@ class ValueRadio(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver)
     @check_visual.setter
     def check_visual(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the CheckVisual reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CheckVisual")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -102,7 +102,7 @@ class ValueRadio(GenericComponent[T], IButtonPressReceiver, IWorldEventReceiver)
     @target_value.setter
     def target_value(self, target: str | IField[T] | None) -> None:
         """Set the TargetValue reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetValue")
         if isinstance(member, members.Reference):
             member.targetId = target_id

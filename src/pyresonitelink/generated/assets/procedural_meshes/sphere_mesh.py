@@ -10,10 +10,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class SphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class SphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The SphereMesh component generates a sphere mesh for use with a MeshRenderer.
 
     Category: Assets/Procedural Meshes

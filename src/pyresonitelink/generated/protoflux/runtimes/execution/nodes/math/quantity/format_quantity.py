@@ -63,7 +63,7 @@ To create this node, you need to specify a valid quantity type for its generic p
     @value.setter
     def value(self, target: str | INodeValueOutput[U] | None) -> None:
         """Set the Value reference by target ID or INodeValueOutput[U] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -84,7 +84,7 @@ To create this node, you need to specify a valid quantity type for its generic p
     @format_unit.setter
     def format_unit(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the FormatUnit reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FormatUnit")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -105,7 +105,7 @@ To create this node, you need to specify a valid quantity type for its generic p
     @format_number.setter
     def format_number(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the FormatNumber reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FormatNumber")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -126,7 +126,7 @@ To create this node, you need to specify a valid quantity type for its generic p
     @use_long_names.setter
     def use_long_names(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the UseLongNames reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UseLongNames")
         if isinstance(member, members.Reference):
             member.targetId = target_id

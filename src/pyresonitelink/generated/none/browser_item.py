@@ -1,11 +1,16 @@
 """Generated component: BrowserItem."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.browser_dialog import BrowserDialog
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.none.browser_dialog import BrowserDialog
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -50,7 +55,7 @@ class BrowserItem(GeneratedComponent, IButtonPressReceiver, IWorldEventReceiver)
     @browser.setter
     def browser(self, target: str | BrowserDialog | None) -> None:
         """Set the Browser reference by target ID or BrowserDialog instance."""
-        target_id: str | None = target.id if isinstance(target, BrowserDialog) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Browser")
         if isinstance(member, members.Reference):
             member.targetId = target_id

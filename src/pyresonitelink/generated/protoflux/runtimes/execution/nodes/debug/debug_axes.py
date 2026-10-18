@@ -25,7 +25,7 @@ See also: Coordinate spaces
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging.DebugAxes"
 
-    def __init__(self, next: str | INodeOperation | None = None, position: str | INodeValueOutput[primitives.Float3] | None = None, rotation: str | INodeValueOutput[primitives.FloatQ] | None = None, length: str | INodeValueOutput[primitives.Float] | None = None, right_color: str | INodeValueOutput[primitives.ColorX] | None = None, up_color: str | INodeValueOutput[primitives.ColorX] | None = None, forward_color: str | INodeValueOutput[primitives.ColorX] | None = None, duration: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, position: str | INodeValueOutput[primitives.Float3] | None = None, rotation: str | INodeValueOutput[primitives.FloatQ] | None = None, length: str | INodeValueOutput[primitives.Float] | None = None, right_color: str | INodeValueOutput[primitives.ColorX] | None = None, up_color: str | INodeValueOutput[primitives.ColorX] | None = None, forward_color: str | INodeValueOutput[primitives.ColorX] | None = None, duration: str | INodeValueOutput[primitives.Float] | None = None, local: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,6 +37,7 @@ See also: Coordinate spaces
             up_color: Initial value for UpColor.
             forward_color: Initial value for ForwardColor.
             duration: Initial value for Duration.
+            local: Initial value for Local.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -56,6 +57,8 @@ See also: Coordinate spaces
             self.forward_color = forward_color
         if duration is not None:
             self.duration = duration
+        if local is not None:
+            self.local = local
 
     @property
     def next(self) -> str | None:
@@ -68,7 +71,7 @@ See also: Coordinate spaces
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -89,7 +92,7 @@ See also: Coordinate spaces
     @position.setter
     def position(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Position reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -110,7 +113,7 @@ See also: Coordinate spaces
     @rotation.setter
     def rotation(self, target: str | INodeValueOutput[primitives.FloatQ] | None) -> None:
         """Set the Rotation reference by target ID or INodeValueOutput[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Rotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -131,7 +134,7 @@ See also: Coordinate spaces
     @length.setter
     def length(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Length reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -152,7 +155,7 @@ See also: Coordinate spaces
     @right_color.setter
     def right_color(self, target: str | INodeValueOutput[primitives.ColorX] | None) -> None:
         """Set the RightColor reference by target ID or INodeValueOutput[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RightColor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -173,7 +176,7 @@ See also: Coordinate spaces
     @up_color.setter
     def up_color(self, target: str | INodeValueOutput[primitives.ColorX] | None) -> None:
         """Set the UpColor reference by target ID or INodeValueOutput[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UpColor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -194,7 +197,7 @@ See also: Coordinate spaces
     @forward_color.setter
     def forward_color(self, target: str | INodeValueOutput[primitives.ColorX] | None) -> None:
         """Set the ForwardColor reference by target ID or INodeValueOutput[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ForwardColor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -215,7 +218,7 @@ See also: Coordinate spaces
     @duration.setter
     def duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Duration reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -223,5 +226,26 @@ See also: Coordinate spaces
             self.set_member(
                 "Duration",
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<float>'),
+            )
+
+    @property
+    def local(self) -> str | None:
+        """Target ID of the Local reference (targets INodeValueOutput[primitives.Bool])."""
+        member = self.get_member("Local")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @local.setter
+    def local(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the Local reference by target ID or INodeValueOutput[primitives.Bool] instance."""
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
+        member = self.get_member("Local")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Local",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<bool>'),
             )
 

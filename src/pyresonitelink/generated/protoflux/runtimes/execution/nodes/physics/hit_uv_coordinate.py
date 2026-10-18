@@ -54,7 +54,7 @@ class HitUVCoordinate(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
     @hit_collider.setter
     def hit_collider(self, target: str | INodeObjectOutput[ICollider] | None) -> None:
         """Set the HitCollider reference by target ID or INodeObjectOutput[ICollider] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HitCollider")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -75,7 +75,7 @@ class HitUVCoordinate(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
     @hit_triangle_index.setter
     def hit_triangle_index(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the HitTriangleIndex reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HitTriangleIndex")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -96,7 +96,7 @@ class HitUVCoordinate(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
     @hit_point.setter
     def hit_point(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the HitPoint reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HitPoint")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -118,6 +118,19 @@ class HitUVCoordinate(GeneratedComponent, IExecutionNode, INode, ICustomInspecto
     def uv(self, value: members.EmptyElement) -> None:
         """Set the UV member."""
         self.set_member("UV", value)
+
+    @property
+    def submesh_index(self) -> members.EmptyElement | None:
+        """The SubmeshIndex member."""
+        member = self.get_member("SubmeshIndex")
+        if isinstance(member, members.EmptyElement):
+            return member
+        return None
+
+    @submesh_index.setter
+    def submesh_index(self, value: members.EmptyElement) -> None:
+        """Set the SubmeshIndex member."""
+        self.set_member("SubmeshIndex", value)
 
     @property
     def is_valid_uv(self) -> members.EmptyElement | None:

@@ -67,7 +67,7 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @item_name.setter
     def item_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -88,7 +88,7 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @spawning_user.setter
     def spawning_user(self, target: str | UserRef | None) -> None:
         """Set the SpawningUser reference by target ID or UserRef instance."""
-        target_id: str | None = target.id if isinstance(target, UserRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -109,7 +109,7 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @spawning_user_id.setter
     def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -149,7 +149,7 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @target_color.setter
     def target_color(self, target: str | SyncRef[IField[primitives.ColorX]] | None) -> None:
         """Set the TargetColor reference by target ID or SyncRef[IField[primitives.ColorX]] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetColor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -170,7 +170,7 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @continuous.setter
     def continuous(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the Continuous reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Continuous")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -191,7 +191,7 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @allow_alpha.setter
     def allow_alpha(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the AllowAlpha reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AllowAlpha")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -212,7 +212,7 @@ class ColorDialogInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @allow_hdr.setter
     def allow_hdr(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the AllowHDR reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AllowHDR")
         if isinstance(member, members.Reference):
             member.targetId = target_id

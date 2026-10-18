@@ -56,7 +56,7 @@ class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @bounded_source.setter
     def bounded_source(self, target: str | IBounded | None) -> None:
         """Set the BoundedSource reference by target ID or IBounded instance."""
-        target_id: str | None = target.id if isinstance(target, IBounded) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("BoundedSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -77,7 +77,7 @@ class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @size.setter
     def size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the Size reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Size")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -98,7 +98,7 @@ class BoundingBoxDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @center_.setter
     def center_(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the Center reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Center")
         if isinstance(member, members.Reference):
             member.targetId = target_id

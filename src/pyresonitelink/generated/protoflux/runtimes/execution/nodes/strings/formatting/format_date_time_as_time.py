@@ -56,7 +56,7 @@ class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode
     @date.setter
     def date(self, target: str | INodeValueOutput[str] | None) -> None:
         """Set the Date reference by target ID or INodeValueOutput[str] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Date")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -77,7 +77,7 @@ class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode
     @use24_hour_clock.setter
     def use24_hour_clock(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Use24HourClock reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Use24HourClock")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -98,7 +98,7 @@ class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode
     @show_seconds.setter
     def show_seconds(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the ShowSeconds reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ShowSeconds")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -119,7 +119,7 @@ class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode
     @show_milliseconds.setter
     def show_milliseconds(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the ShowMilliseconds reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ShowMilliseconds")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -142,7 +142,7 @@ Nodes that output this type can be found in Strings/Localization"""
     @format_provider.setter
     def format_provider(self, target: str | INodeObjectOutput[IFormatProvider] | None) -> None:
         """Set the FormatProvider reference by target ID or INodeObjectOutput[IFormatProvider] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FormatProvider")
         if isinstance(member, members.Reference):
             member.targetId = target_id

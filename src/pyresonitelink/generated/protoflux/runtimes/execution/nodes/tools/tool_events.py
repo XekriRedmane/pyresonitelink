@@ -49,7 +49,7 @@ class ToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
     @tool.setter
     def tool(self, target: str | IGlobalValueProxy[ITool] | None) -> None:
         """Set the Tool reference by target ID or IGlobalValueProxy[ITool] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Tool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -70,7 +70,7 @@ class ToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
     @equipped.setter
     def equipped(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the Equipped reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Equipped")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -91,7 +91,7 @@ class ToolEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IO
     @dequipped.setter
     def dequipped(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the Dequipped reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Dequipped")
         if isinstance(member, members.Reference):
             member.targetId = target_id

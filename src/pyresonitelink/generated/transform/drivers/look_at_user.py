@@ -72,7 +72,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
     @target_user.setter
     def target_user(self, target: str | User | None) -> None:
         """Set the TargetUser reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -227,7 +227,7 @@ class LookAtUser(GeneratedComponent, IComponent, IWorldEventReceiver):
     @rotation_drive.setter
     def rotation_drive(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _rotationDrive reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rotationDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id

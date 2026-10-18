@@ -89,7 +89,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
     @target.setter
     def target(self, target: str | IField[T] | None) -> None:
         """Set the Target reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -129,7 +129,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
     @active_indicator.setter
     def active_indicator(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the ActiveIndicator reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ActiveIndicator")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -150,7 +150,7 @@ class TouchValueOption(GenericComponent[T], ITouchable, IWorldEventReceiver):
     @hover_indicator.setter
     def hover_indicator(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HoverIndicator reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HoverIndicator")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -3,6 +3,8 @@
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.generated._enums.color_mode import ColorMode
+from pyresonitelink.generated._enums.slider import Slider
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -12,14 +14,18 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.UIX.Slider.
+    """The Slider component allows for an object to be grabbed and moved. See Usage for more information.
 
     Category: UIX/Interaction
+
+    This can be used for NPC pickups, grabbing objects and moving them
+    without parenting under a user, or for sliding doors. this can also be
+    used for physical sliders like on audio boards like mixers.
     """
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.UIX.Slider"
 
-    def __init__(self, base_color: primitives.ColorX | None = None, legacy_normal_color: primitives.ColorX | None = None, legacy_highlight_color: primitives.ColorX | None = None, legacy_press_color: primitives.ColorX | None = None, legacy_disabled_color: primitives.ColorX | None = None, legacy_color_drive: str | IField[primitives.ColorX] | None = None, is_pressed: primitives.Bool | None = None, is_hovering: primitives.Bool | None = None, value: primitives.Float | None = None, min: primitives.Float | None = None, max: primitives.Float | None = None, integers: primitives.Bool | None = None, max_is_exclusive: primitives.Bool | None = None, power: primitives.Float | None = None, clamp: primitives.Bool | None = None, vibration_threshold: primitives.Float | None = None, anchor_offset: primitives.Float2 | None = None, handle_anchor_min_drive: str | IField[primitives.Float2] | None = None, handle_anchor_max_drive: str | IField[primitives.Float2] | None = None, fill_line_drive: str | IField[primitives.Float2] | None = None, require_lock_in_to_interact: primitives.Bool | None = None, require_initial_press: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, base_color: primitives.ColorX | None = None, legacy_normal_color: primitives.ColorX | None = None, legacy_highlight_color: primitives.ColorX | None = None, legacy_press_color: primitives.ColorX | None = None, legacy_disabled_color: primitives.ColorX | None = None, legacy_tint_color_mode: ColorMode | str | None = None, legacy_color_drive: str | IField[primitives.ColorX] | None = None, is_pressed: primitives.Bool | None = None, is_hovering: primitives.Bool | None = None, value: primitives.Float | None = None, min: primitives.Float | None = None, max: primitives.Float | None = None, integers: primitives.Bool | None = None, max_is_exclusive: primitives.Bool | None = None, power: primitives.Float | None = None, clamp: primitives.Bool | None = None, vibration_threshold: primitives.Float | None = None, slide_direction: Slider | str | None = None, anchor_offset: primitives.Float2 | None = None, handle_anchor_min_drive: str | IField[primitives.Float2] | None = None, handle_anchor_max_drive: str | IField[primitives.Float2] | None = None, fill_line_drive: str | IField[primitives.Float2] | None = None, require_lock_in_to_interact: primitives.Bool | None = None, require_initial_press: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,6 +34,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             legacy_highlight_color: Initial value for __legacy_HighlightColor.
             legacy_press_color: Initial value for __legacy_PressColor.
             legacy_disabled_color: Initial value for __legacy_DisabledColor.
+            legacy_tint_color_mode: Initial value for __legacy_TintColorMode.
             legacy_color_drive: Initial value for __legacy_ColorDrive.
             is_pressed: Initial value for IsPressed.
             is_hovering: Initial value for IsHovering.
@@ -39,6 +46,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             power: Initial value for Power.
             clamp: Initial value for Clamp.
             vibration_threshold: Initial value for VibrationThreshold.
+            slide_direction: Initial value for SlideDirection.
             anchor_offset: Initial value for AnchorOffset.
             handle_anchor_min_drive: Initial value for HandleAnchorMinDrive.
             handle_anchor_max_drive: Initial value for HandleAnchorMaxDrive.
@@ -58,6 +66,8 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             self.legacy_press_color = legacy_press_color
         if legacy_disabled_color is not None:
             self.legacy_disabled_color = legacy_disabled_color
+        if legacy_tint_color_mode is not None:
+            self.legacy_tint_color_mode = legacy_tint_color_mode
         if legacy_color_drive is not None:
             self.legacy_color_drive = legacy_color_drive
         if is_pressed is not None:
@@ -80,6 +90,8 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             self.clamp = clamp
         if vibration_threshold is not None:
             self.vibration_threshold = vibration_threshold
+        if slide_direction is not None:
+            self.slide_direction = slide_direction
         if anchor_offset is not None:
             self.anchor_offset = anchor_offset
         if handle_anchor_min_drive is not None:
@@ -202,17 +214,24 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def legacy_tint_color_mode(self) -> members.FieldEnum | None:
-        """The __legacy_TintColorMode member."""
+    def legacy_tint_color_mode(self) -> ColorMode | None:
+        """The __legacy_TintColorMode enum value."""
         member = self.get_member("__legacy_TintColorMode")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return ColorMode(member.value)
         return None
 
     @legacy_tint_color_mode.setter
-    def legacy_tint_color_mode(self, value: members.FieldEnum) -> None:
-        """Set the __legacy_TintColorMode member."""
-        self.set_member("__legacy_TintColorMode", value)
+    def legacy_tint_color_mode(self, value: ColorMode | str) -> None:
+        """Set the __legacy_TintColorMode enum value."""
+        member = self.get_member("__legacy_TintColorMode")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "__legacy_TintColorMode",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def legacy_color_drive(self) -> str | None:
@@ -225,7 +244,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
     @legacy_color_drive.setter
     def legacy_color_drive(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the __legacy_ColorDrive reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("__legacy_ColorDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -426,17 +445,24 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
             )
 
     @property
-    def slide_direction(self) -> members.FieldEnum | None:
-        """The SlideDirection member."""
+    def slide_direction(self) -> Slider | None:
+        """The SlideDirection enum value."""
         member = self.get_member("SlideDirection")
-        if isinstance(member, members.FieldEnum):
-            return member
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return Slider(member.value)
         return None
 
     @slide_direction.setter
-    def slide_direction(self, value: members.FieldEnum) -> None:
-        """Set the SlideDirection member."""
-        self.set_member("SlideDirection", value)
+    def slide_direction(self, value: Slider | str) -> None:
+        """Set the SlideDirection enum value."""
+        member = self.get_member("SlideDirection")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SlideDirection",
+                members.FieldEnum(value=str(value)),
+            )
 
     @property
     def anchor_offset(self) -> primitives.Float2 | None:
@@ -468,7 +494,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
     @handle_anchor_min_drive.setter
     def handle_anchor_min_drive(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the HandleAnchorMinDrive reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HandleAnchorMinDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -489,7 +515,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
     @handle_anchor_max_drive.setter
     def handle_anchor_max_drive(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the HandleAnchorMaxDrive reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HandleAnchorMaxDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -510,7 +536,7 @@ class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEve
     @fill_line_drive.setter
     def fill_line_drive(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the FillLineDrive reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FillLineDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id

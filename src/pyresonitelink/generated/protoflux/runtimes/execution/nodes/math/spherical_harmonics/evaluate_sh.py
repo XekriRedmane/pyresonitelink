@@ -48,7 +48,7 @@ class EvaluateSH(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
     @sh.setter
     def sh(self, target: str | INodeValueOutput[S] | None) -> None:
         """Set the SH reference by target ID or INodeValueOutput[S] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class EvaluateSH(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
     @direction.setter
     def direction(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Direction reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             member.targetId = target_id

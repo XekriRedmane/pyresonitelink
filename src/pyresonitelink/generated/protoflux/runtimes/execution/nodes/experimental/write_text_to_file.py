@@ -65,7 +65,7 @@ Currently at this time, this node is experimental, and thus cannot be used norma
     @string.setter
     def string(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the String reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("String")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -86,7 +86,7 @@ Currently at this time, this node is experimental, and thus cannot be used norma
     @file_path.setter
     def file_path(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the FilePath reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FilePath")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -107,7 +107,7 @@ Currently at this time, this node is experimental, and thus cannot be used norma
     @append.setter
     def append(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Append reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Append")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -128,7 +128,7 @@ Currently at this time, this node is experimental, and thus cannot be used norma
     @new_line.setter
     def new_line(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the NewLine reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NewLine")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -149,7 +149,7 @@ Currently at this time, this node is experimental, and thus cannot be used norma
     @on_write_started.setter
     def on_write_started(self, target: str | INodeOperation | None) -> None:
         """Set the OnWriteStarted reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnWriteStarted")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -170,7 +170,7 @@ Currently at this time, this node is experimental, and thus cannot be used norma
     @on_write_finished.setter
     def on_write_finished(self, target: str | INodeOperation | None) -> None:
         """Set the OnWriteFinished reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnWriteFinished")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -191,7 +191,7 @@ Currently at this time, this node is experimental, and thus cannot be used norma
     @on_write_fail.setter
     def on_write_fail(self, target: str | INodeOperation | None) -> None:
         """Set the OnWriteFail reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnWriteFail")
         if isinstance(member, members.Reference):
             member.targetId = target_id

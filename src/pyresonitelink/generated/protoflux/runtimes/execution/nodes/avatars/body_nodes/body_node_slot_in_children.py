@@ -47,7 +47,7 @@ class BodyNodeSlotInChildren(GeneratedComponent, INodeObjectOutput, IExecutionNo
     @source.setter
     def source(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Source reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -68,7 +68,7 @@ class BodyNodeSlotInChildren(GeneratedComponent, INodeObjectOutput, IExecutionNo
     @node.setter
     def node(self, target: str | INodeValueOutput[BodyNode] | None) -> None:
         """Set the Node reference by target ID or INodeValueOutput[BodyNode] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             member.targetId = target_id

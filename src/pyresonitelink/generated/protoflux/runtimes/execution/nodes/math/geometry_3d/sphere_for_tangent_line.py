@@ -48,7 +48,7 @@ class SphereForTangentLine(GeneratedComponent, IExecutionNode, INode, ICustomIns
     @line_point.setter
     def line_point(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the LinePoint reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LinePoint")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class SphereForTangentLine(GeneratedComponent, IExecutionNode, INode, ICustomIns
     @line_direction.setter
     def line_direction(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the LineDirection reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LineDirection")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ class SphereForTangentLine(GeneratedComponent, IExecutionNode, INode, ICustomIns
     @sphere_center.setter
     def sphere_center(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the SphereCenter reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SphereCenter")
         if isinstance(member, members.Reference):
             member.targetId = target_id

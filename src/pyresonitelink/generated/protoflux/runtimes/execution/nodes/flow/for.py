@@ -56,7 +56,7 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
     @count_.setter
     def count_(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Count reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Count")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -77,7 +77,7 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
     @reverse.setter
     def reverse(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Reverse reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Reverse")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -98,7 +98,7 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
     @loop_start.setter
     def loop_start(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the LoopStart reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoopStart")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -119,7 +119,7 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
     @loop_iteration.setter
     def loop_iteration(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the LoopIteration reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoopIteration")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -140,7 +140,7 @@ class For(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, ICustom
     @loop_end.setter
     def loop_end(self, target: str | INodeOperation | None) -> None:
         """Set the LoopEnd reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LoopEnd")
         if isinstance(member, members.Reference):
             member.targetId = target_id

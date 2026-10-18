@@ -65,7 +65,7 @@ You can use this node with UI Buttons, Touch Buttons, Physical Buttons, Context 
     @button.setter
     def button(self, target: str | IGlobalValueProxy[IButton] | None) -> None:
         """Set the Button reference by target ID or IGlobalValueProxy[IButton] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Button")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -86,7 +86,7 @@ You can use this node with UI Buttons, Touch Buttons, Physical Buttons, Context 
     @pressed.setter
     def pressed(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the Pressed reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Pressed")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -107,7 +107,7 @@ You can use this node with UI Buttons, Touch Buttons, Physical Buttons, Context 
     @pressing.setter
     def pressing(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the Pressing reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Pressing")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -128,7 +128,7 @@ You can use this node with UI Buttons, Touch Buttons, Physical Buttons, Context 
     @released.setter
     def released(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the Released reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Released")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -149,7 +149,7 @@ You can use this node with UI Buttons, Touch Buttons, Physical Buttons, Context 
     @hover_enter.setter
     def hover_enter(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the HoverEnter reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HoverEnter")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -170,7 +170,7 @@ You can use this node with UI Buttons, Touch Buttons, Physical Buttons, Context 
     @hover_stay.setter
     def hover_stay(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the HoverStay reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HoverStay")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -191,7 +191,7 @@ You can use this node with UI Buttons, Touch Buttons, Physical Buttons, Context 
     @hover_leave.setter
     def hover_leave(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the HoverLeave reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HoverLeave")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -6,11 +6,8 @@ from enum import StrEnum
 class AudioFrameSize(StrEnum):
     """Enum: [FrooxEngine]FrooxEngine.AudioPerformanceSettings+AudioFrameSize."""
 
-    very_low256 = "VeryLow256"
-    low512 = "Low512"
-    medium1024 = "Medium1024"
-    large2048 = "Large2048"
-    very_large4096 = "VeryLarge4096"
-    extremely_large8192 = "ExtremelyLarge8192"
-    testing_one_second = "TestingOneSecond"
+    low2x_buffer = "Low2xBuffer"
+    medium4x_buffer = "Medium4xBuffer"
+    large8x_buffer = "Large8xBuffer"
+    huge16x_buffer = "Huge16xBuffer"
 

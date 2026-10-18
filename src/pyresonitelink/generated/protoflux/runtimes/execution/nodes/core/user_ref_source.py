@@ -5,8 +5,8 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iglobal_value_proxy import IGlobalValueProxy
 from pyresonitelink.generated._types.user_ref import UserRef
-from pyresonitelink.generated._types.ivariable import IVariable
 from pyresonitelink.generated._types.isource import ISource
+from pyresonitelink.generated._types.ivariable import IVariable
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -15,7 +15,7 @@ from pyresonitelink.generated._types.iobject_root import IObjectRoot
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class UserRefSource(GeneratedComponent, IVariable, ISource, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
+class UserRefSource(GeneratedComponent, ISource, IVariable, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """Wrapper for [ProtoFluxBindings]FrooxEngine.FrooxEngine.ProtoFlux.CoreNodes.UserRefSource.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Core
@@ -45,7 +45,7 @@ class UserRefSource(GeneratedComponent, IVariable, ISource, INodeObjectOutput, I
     @source.setter
     def source(self, target: str | IGlobalValueProxy[UserRef] | None) -> None:
         """Set the Source reference by target ID or IGlobalValueProxy[UserRef] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id

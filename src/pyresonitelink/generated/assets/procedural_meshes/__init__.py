@@ -4,7 +4,9 @@ from .arrow_mesh import ArrowMesh
 from .ballistic_path_mesh import BallisticPathMesh
 from .bent_tube_mesh import BentTubeMesh
 from .bevel_box_mesh import BevelBoxMesh
+from .bezier_curve import BezierCurve
 from .bezier_tube_mesh import BezierTubeMesh
+from .bone_weight_diagnostic_mesh import BoneWeightDiagnosticMesh
 from .box_array_mesh import BoxArrayMesh
 from .box_mesh import BoxMesh
 from .camera_frustum_mesh import CameraFrustumMesh
@@ -13,9 +15,12 @@ from .circle_mesh import CircleMesh
 from .circle_segment_shader_mesh import CircleSegmentShaderMesh
 from .color_depth_grid import ColorDepthGrid
 from .color_depth_point_cloud import ColorDepthPointCloud
+from .color_wheel_triangle_mesh import ColorWheelTriangleMesh
 from .cone_mesh import ConeMesh
 from .constrained_delaunay_mesh import ConstrainedDelaunayMesh
+from .convex_hull_mesh import ConvexHullMesh
 from .cross_mesh import CrossMesh
+from .curve_point import CurvePoint
 from .curved_plane_mesh import CurvedPlaneMesh
 from .cylinder_mesh import CylinderMesh
 from .frame_mesh import FrameMesh
@@ -36,6 +41,8 @@ from .point_mesh import PointMesh
 from .quad_array_mesh import QuadArrayMesh
 from .quad_mesh import QuadMesh
 from .ramp_mesh import RampMesh
+from .raw_mesh import RawMesh
+from .rig_bone_mesh import RigBoneMesh
 from .ring_mesh import RingMesh
 from .segment_mesh import SegmentMesh
 from .slot_segment_mesh import SlotSegmentMesh

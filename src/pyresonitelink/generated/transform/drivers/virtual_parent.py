@@ -65,7 +65,7 @@ You can use the provided local offset fields to then further position this slot 
     @override_parent.setter
     def override_parent(self, target: str | Slot | None) -> None:
         """Set the OverrideParent reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OverrideParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -86,7 +86,7 @@ You can use the provided local offset fields to then further position this slot 
     @target_pos.setter
     def target_pos(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _targetPos reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_targetPos")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -107,7 +107,7 @@ You can use the provided local offset fields to then further position this slot 
     @target_rot.setter
     def target_rot(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _targetRot reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_targetRot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -128,7 +128,7 @@ You can use the provided local offset fields to then further position this slot 
     @target_scl.setter
     def target_scl(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _targetScl reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_targetScl")
         if isinstance(member, members.Reference):
             member.targetId = target_id

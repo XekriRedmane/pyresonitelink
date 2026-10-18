@@ -23,10 +23,11 @@ from pyresonitelink.generated._types.istereo_material import IStereoMaterial
 from pyresonitelink.generated._types.iskybox_material import ISkyboxMaterial
 from pyresonitelink.generated._types.i_uix_material import IUIX_Material
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial, IUIX_Material, ICustomInspector, IWorldEventReceiver):
+class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial, IUIX_Material, ICustomInspector, IComponent, IWorldEventReceiver):
     """Wrapper for [FrooxEngine]FrooxEngine.Projection360Material.
 
     Category: Assets/Materials/Unlit
@@ -222,7 +223,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -243,7 +244,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
     @texture.setter
     def texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Texture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -264,7 +265,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
     @secondary_texture.setter
     def secondary_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the SecondaryTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SecondaryTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -285,7 +286,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
     @cubemap.setter
     def cubemap(self, target: str | IAssetProvider[Cubemap] | None) -> None:
         """Set the Cubemap reference by target ID or IAssetProvider[Cubemap] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Cubemap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -306,7 +307,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
     @secondary_cubemap.setter
     def secondary_cubemap(self, target: str | IAssetProvider[Cubemap] | None) -> None:
         """Set the SecondaryCubemap reference by target ID or IAssetProvider[Cubemap] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SecondaryCubemap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -518,7 +519,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
     @tint_texture.setter
     def tint_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the TintTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TintTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -964,7 +965,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
     @offset_texture.setter
     def offset_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OffsetTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OffsetTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -985,7 +986,7 @@ class Projection360Material(GeneratedComponent, IStereoMaterial, ISkyboxMaterial
     @offset_mask.setter
     def offset_mask(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OffsetMask reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OffsetMask")
         if isinstance(member, members.Reference):
             member.targetId = target_id

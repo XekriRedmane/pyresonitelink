@@ -1,16 +1,21 @@
 """Generated component: ContextMenuItem."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.image import Image
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.sprite import Sprite
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.context_menu import ContextMenu
-from pyresonitelink.generated._types.button import Button
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.graphics.image import Image
+    from pyresonitelink.generated.radiant_ui.context_menu.context_menu import ContextMenu
+    from pyresonitelink.generated.uix.interaction.button import Button
 from pyresonitelink.generated._types.ibutton_hover_receiver import IButtonHoverReceiver
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -24,7 +29,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ContextMenuItem"
 
-    def __init__(self, highlight: primitives.Bool | None = None, icon: str | Image | None = None, sprite: str | IAssetProvider[Sprite] | None = None, label: str | IField[primitives.String] | None = None, color: primitives.ColorX | None = None, menu: str | ContextMenu | None = None, highlighted: primitives.Bool | None = None, arc: str | IField[primitives.Float] | None = None, outer_radius: str | IField[primitives.Float] | None = None, button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, highlight: primitives.Bool | None = None, icon: str | Image | None = None, sprite: str | IAssetProvider[Sprite] | None = None, label: str | IField[primitives.String] | None = None, color: primitives.ColorX | None = None, auto_close: primitives.Bool | None = None, menu: str | ContextMenu | None = None, highlighted: primitives.Bool | None = None, arc: str | IField[primitives.Float] | None = None, outer_radius: str | IField[primitives.Float] | None = None, button: str | Button | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -33,6 +38,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
             sprite: Initial value for Sprite.
             label: Initial value for Label.
             color: Initial value for Color.
+            auto_close: Initial value for AutoClose.
             menu: Initial value for _menu.
             highlighted: Initial value for _highlighted.
             arc: Initial value for _arc.
@@ -51,6 +57,8 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
             self.label = label
         if color is not None:
             self.color = color
+        if auto_close is not None:
+            self.auto_close = auto_close
         if menu is not None:
             self.menu = menu
         if highlighted is not None:
@@ -92,7 +100,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
     @icon.setter
     def icon(self, target: str | Image | None) -> None:
         """Set the Icon reference by target ID or Image instance."""
-        target_id: str | None = target.id if isinstance(target, Image) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Icon")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -113,7 +121,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
     @sprite.setter
     def sprite(self, target: str | IAssetProvider[Sprite] | None) -> None:
         """Set the Sprite reference by target ID or IAssetProvider[Sprite] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Sprite")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -134,7 +142,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
     @label.setter
     def label(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Label reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -164,6 +172,25 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
             )
 
     @property
+    def auto_close(self) -> primitives.Bool | None:
+        """The AutoClose field value."""
+        member = self.get_member("AutoClose")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @auto_close.setter
+    def auto_close(self, value: primitives.Bool) -> None:
+        """Set the AutoClose field value."""
+        member = self.get_member("AutoClose")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AutoClose", fields.FieldBool(value=value)
+            )
+
+    @property
     def menu(self) -> str | None:
         """This item's origin context menu."""
         member = self.get_member("_menu")
@@ -174,7 +201,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
     @menu.setter
     def menu(self, target: str | ContextMenu | None) -> None:
         """Set the _menu reference by target ID or ContextMenu instance."""
-        target_id: str | None = target.id if isinstance(target, ContextMenu) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_menu")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -214,7 +241,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
     @arc.setter
     def arc(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _arc reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_arc")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -235,7 +262,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
     @outer_radius.setter
     def outer_radius(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _outerRadius reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_outerRadius")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -256,7 +283,7 @@ class ContextMenuItem(GeneratedComponent, IButtonHoverReceiver, IButtonPressRece
     @button.setter
     def button(self, target: str | Button | None) -> None:
         """Set the _button reference by target ID or Button instance."""
-        target_id: str | None = target.id if isinstance(target, Button) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_button")
         if isinstance(member, members.Reference):
             member.targetId = target_id

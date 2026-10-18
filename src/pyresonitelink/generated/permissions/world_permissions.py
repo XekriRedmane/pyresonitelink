@@ -19,7 +19,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldPermissions"
 
-    def __init__(self, allow_saving_items: primitives.Bool | None = None, allow_transfering_objects_out: primitives.Bool | None = None, allow_spawning_objects: primitives.Bool | None = None, allow_swapping_avatars: primitives.Bool | None = None, save_copy_permission: SavePermission | str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, allow_saving_items: primitives.Bool | None = None, allow_transfering_objects_out: primitives.Bool | None = None, allow_spawning_objects: primitives.Bool | None = None, allow_swapping_avatars: primitives.Bool | None = None, allow_video_streaming: primitives.Bool | None = None, save_copy_permission: SavePermission | str | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -27,6 +27,7 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
             allow_transfering_objects_out: Initial value for AllowTransferingObjectsOut.
             allow_spawning_objects: Initial value for AllowSpawningObjects.
             allow_swapping_avatars: Initial value for AllowSwappingAvatars.
+            allow_video_streaming: Initial value for AllowVideoStreaming.
             save_copy_permission: Initial value for SaveCopyPermission.
             component: Existing Component to wrap.
         """
@@ -39,6 +40,8 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
             self.allow_spawning_objects = allow_spawning_objects
         if allow_swapping_avatars is not None:
             self.allow_swapping_avatars = allow_swapping_avatars
+        if allow_video_streaming is not None:
+            self.allow_video_streaming = allow_video_streaming
         if save_copy_permission is not None:
             self.save_copy_permission = save_copy_permission
 
@@ -116,6 +119,25 @@ class WorldPermissions(GeneratedComponent, IWorkerPermissions, ICustomInspector,
         else:
             self.set_member(
                 "AllowSwappingAvatars", fields.FieldBool(value=value)
+            )
+
+    @property
+    def allow_video_streaming(self) -> primitives.Bool | None:
+        """The AllowVideoStreaming field value."""
+        member = self.get_member("AllowVideoStreaming")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @allow_video_streaming.setter
+    def allow_video_streaming(self, value: primitives.Bool) -> None:
+        """Set the AllowVideoStreaming field value."""
+        member = self.get_member("AllowVideoStreaming")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AllowVideoStreaming", fields.FieldBool(value=value)
             )
 
     @property

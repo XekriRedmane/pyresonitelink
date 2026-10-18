@@ -42,7 +42,7 @@ class KeyHeld(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICust
     @key.setter
     def key(self, target: str | INodeValueOutput[Key] | None) -> None:
         """Set the Key reference by target ID or INodeValueOutput[Key] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Key")
         if isinstance(member, members.Reference):
             member.targetId = target_id

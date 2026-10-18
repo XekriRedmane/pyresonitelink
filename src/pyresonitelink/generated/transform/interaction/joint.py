@@ -1,15 +1,21 @@
 """Generated component: Joint."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.generated._enums.active_user_handling import ActiveUserHandling
 from pyresonitelink.generated._enums.vibrate_preset import VibratePreset
+from pyresonitelink.generated._enums.curve_preset import CurvePreset
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.grabber import Grabber
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.sync import Sync
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.grabber import Grabber
 from pyresonitelink.generated._types.igrabbable import IGrabbable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -22,7 +28,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Joint"
 
-    def __init__(self, edit_mode_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, drop_on_disable: primitives.Bool | None = None, dont_drive: primitives.Bool | None = None, allow_only_physical_grab: primitives.Bool | None = None, active_user_filter: ActiveUserHandling | str | None = None, grabber: str | Grabber | None = None, hold_slot: str | Slot | None = None, pos: str | Sync[primitives.Float3] | None = None, rot: str | Sync[primitives.FloatQ] | None = None, scl: str | Sync[primitives.Float3] | None = None, legacy_active_user_root_only: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, max_swing: primitives.Float | None = None, max_twist: primitives.Float | None = None, axis: primitives.Float3 | None = None, twist_reference_axis: primitives.Float3 | None = None, position_twist_threshold_angle: primitives.Float | None = None, vibration_angle: primitives.Float | None = None, vibration_preset: VibratePreset | str | None = None, snap_increment: primitives.Float | None = None, snap_time: primitives.Float | None = None, snap_on_release: primitives.Bool | None = None, orig_rotation: primitives.FloatQ | None = None, rot_reference: primitives.FloatQ | None = None, dir_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, use_position_twist: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, edit_mode_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, drop_on_disable: primitives.Bool | None = None, dont_drive: primitives.Bool | None = None, allow_only_physical_grab: primitives.Bool | None = None, active_user_filter: ActiveUserHandling | str | None = None, grabber: str | Grabber | None = None, hold_slot: str | Slot | None = None, pos: str | Sync[primitives.Float3] | None = None, rot: str | Sync[primitives.FloatQ] | None = None, scl: str | Sync[primitives.Float3] | None = None, legacy_active_user_root_only: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, max_swing: primitives.Float | None = None, max_twist: primitives.Float | None = None, axis: primitives.Float3 | None = None, twist_reference_axis: primitives.Float3 | None = None, position_twist_threshold_angle: primitives.Float | None = None, vibration_angle: primitives.Float | None = None, vibration_preset: VibratePreset | str | None = None, snap_increment: primitives.Float | None = None, snap_time: primitives.Float | None = None, snap_on_release: primitives.Bool | None = None, snap_interpolation_curve: CurvePreset | str | None = None, orig_rotation: primitives.FloatQ | None = None, rot_reference: primitives.FloatQ | None = None, dir_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, use_position_twist: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -49,6 +55,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             snap_increment: Initial value for SnapIncrement.
             snap_time: Initial value for SnapTime.
             snap_on_release: Initial value for SnapOnRelease.
+            snap_interpolation_curve: Initial value for SnapInterpolationCurve.
             orig_rotation: Initial value for origRotation.
             rot_reference: Initial value for rotReference.
             dir_reference: Initial value for dirReference.
@@ -103,6 +110,8 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             self.snap_time = snap_time
         if snap_on_release is not None:
             self.snap_on_release = snap_on_release
+        if snap_interpolation_curve is not None:
+            self.snap_interpolation_curve = snap_interpolation_curve
         if orig_rotation is not None:
             self.orig_rotation = orig_rotation
         if rot_reference is not None:
@@ -240,7 +249,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     @grabber.setter
     def grabber(self, target: str | Grabber | None) -> None:
         """Set the _grabber reference by target ID or Grabber instance."""
-        target_id: str | None = target.id if isinstance(target, Grabber) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_grabber")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -261,7 +270,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     @hold_slot.setter
     def hold_slot(self, target: str | Slot | None) -> None:
         """Set the _holdSlot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_holdSlot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -282,7 +291,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     @pos.setter
     def pos(self, target: str | Sync[primitives.Float3] | None) -> None:
         """Set the _pos reference by target ID or Sync[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_pos")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -303,7 +312,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     @rot.setter
     def rot(self, target: str | Sync[primitives.FloatQ] | None) -> None:
         """Set the _rot reference by target ID or Sync[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -324,7 +333,7 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     @scl.setter
     def scl(self, target: str | Sync[primitives.Float3] | None) -> None:
         """Set the _scl reference by target ID or Sync[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_scl")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -561,6 +570,26 @@ class Joint(GeneratedComponent, IGrabbable, IWorldEventReceiver):
         else:
             self.set_member(
                 "SnapOnRelease", fields.FieldBool(value=value)
+            )
+
+    @property
+    def snap_interpolation_curve(self) -> CurvePreset | None:
+        """The SnapInterpolationCurve enum value."""
+        member = self.get_member("SnapInterpolationCurve")
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CurvePreset(member.value)
+        return None
+
+    @snap_interpolation_curve.setter
+    def snap_interpolation_curve(self, value: CurvePreset | str) -> None:
+        """Set the SnapInterpolationCurve enum value."""
+        member = self.get_member("SnapInterpolationCurve")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SnapInterpolationCurve",
+                members.FieldEnum(value=str(value)),
             )
 
     @property

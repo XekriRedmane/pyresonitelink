@@ -1,10 +1,15 @@
 """Generated component: GetRawDataToolHit."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.raw_data_tool import RawDataTool
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.tools.raw_data_tool import RawDataTool
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -46,7 +51,7 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
     @tool.setter
     def tool(self, target: str | INodeObjectOutput[RawDataTool] | None) -> None:
         """Set the Tool reference by target ID or INodeObjectOutput[RawDataTool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Tool")
         if isinstance(member, members.Reference):
             member.targetId = target_id

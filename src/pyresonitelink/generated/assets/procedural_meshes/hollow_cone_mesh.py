@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class HollowConeMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The HollowConeMesh component is used to generate geometry for use with a MeshRenderer. This component generates a cone with a hollow center with internal geometry and a thickness. Similarly to the ConeMesh, the height of this procedural mesh is determined from the center of the object.
 
     Category: Assets/Procedural Meshes

@@ -1,12 +1,17 @@
 """Generated component: WebsocketConnect."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.websocket_client import WebsocketClient
 from pyresonitelink.generated._types.user import User
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.network.websocket_client import WebsocketClient
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -54,7 +59,7 @@ class WebsocketConnect(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -75,7 +80,7 @@ class WebsocketConnect(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
     @client.setter
     def client(self, target: str | INodeObjectOutput[WebsocketClient] | None) -> None:
         """Set the Client reference by target ID or INodeObjectOutput[WebsocketClient] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Client")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -96,7 +101,7 @@ class WebsocketConnect(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
     @url.setter
     def url(self, target: str | INodeObjectOutput[str] | None) -> None:
         """Set the URL reference by target ID or INodeObjectOutput[str] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -117,7 +122,7 @@ class WebsocketConnect(GeneratedComponent, ISyncNodeOperation, IExecutionNode, I
     @handling_user.setter
     def handling_user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the HandlingUser reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HandlingUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id

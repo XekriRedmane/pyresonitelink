@@ -54,7 +54,7 @@ class DelayObject(GenericComponent[T], IExecutionUpdateReceiver[T], IMappableNod
     @delay_seconds.setter
     def delay_seconds(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the DelaySeconds reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DelaySeconds")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -75,7 +75,7 @@ class DelayObject(GenericComponent[T], IExecutionUpdateReceiver[T], IMappableNod
     @value.setter
     def value(self, target: str | INodeObjectOutput[T] | None) -> None:
         """Set the Value reference by target ID or INodeObjectOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id

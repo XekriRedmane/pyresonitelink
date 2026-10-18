@@ -13,10 +13,11 @@ from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class PBSLerpSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The PBSLerpSpecular component also known as . Is a material that can switch textures and texture sets.
 
 If you want to switch between more than two sets of textures, please see MultiTextureFader.
@@ -177,7 +178,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -217,7 +218,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @lerp_texture.setter
     def lerp_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the LerpTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LerpTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -390,7 +391,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @albedo_texture0.setter
     def albedo_texture0(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture0 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -411,7 +412,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @albedo_texture1.setter
     def albedo_texture1(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture1 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -470,7 +471,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @emissive_map0.setter
     def emissive_map0(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap0 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -491,7 +492,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @emissive_map1.setter
     def emissive_map1(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap1 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -512,7 +513,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @normal_map0.setter
     def normal_map0(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap0 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -533,7 +534,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @normal_map1.setter
     def normal_map1(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap1 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -611,7 +612,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @occlusion_map0.setter
     def occlusion_map0(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OcclusionMap0 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OcclusionMap0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -632,7 +633,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @occlusion_map1.setter
     def occlusion_map1(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OcclusionMap1 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OcclusionMap1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -847,7 +848,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @specular_map0.setter
     def specular_map0(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the SpecularMap0 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpecularMap0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -868,7 +869,7 @@ To see detailed info on the textures not unique to this material like albedo and
     @specular_map1.setter
     def specular_map1(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the SpecularMap1 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpecularMap1")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -67,7 +67,7 @@ class CubemapAssetMetadata(GeneratedComponent, IComponent, IWorldEventReceiver):
     @cubemap.setter
     def cubemap(self, target: str | IAssetProvider[Cubemap] | None) -> None:
         """Set the Cubemap reference by target ID or IAssetProvider[Cubemap] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Cubemap")
         if isinstance(member, members.Reference):
             member.targetId = target_id

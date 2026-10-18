@@ -1,11 +1,16 @@
 """Generated component: ParticleEmitter."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.particle_system import ParticleSystem
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.particle_system.particle_system import ParticleSystem
 from pyresonitelink.generated._types.iparticle_system_subsystem import IParticleSystemSubsystem
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -52,7 +57,7 @@ class ParticleEmitter(GeneratedComponent, IParticleSystemSubsystem, IWorldEventR
     @system.setter
     def system(self, target: str | ParticleSystem | None) -> None:
         """Set the System reference by target ID or ParticleSystem instance."""
-        target_id: str | None = target.id if isinstance(target, ParticleSystem) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("System")
         if isinstance(member, members.Reference):
             member.targetId = target_id

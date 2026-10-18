@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class PointMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """Point mesh makes geometry data of a cloud of points that have UVs, scales, colors, and more. These points can be displayed via a Mesh Renderer using a Unlit Material with at least it's ``UseBillboardGeometry`` field set to true.
 
     Category: Assets/Procedural Meshes

@@ -1,13 +1,18 @@
 """Generated component: AvatarManager."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.avatar_anchor import AvatarAnchor
 from pyresonitelink.generated._types.iempty_avatar_slot_handler import IEmptyAvatarSlotHandler
 from pyresonitelink.generated._types.slot import Slot
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.anchors.avatar_anchor import AvatarAnchor
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -27,7 +32,7 @@ The AvatarManager component is found on User root slots and is used to manage av
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CommonAvatar.AvatarManager"
 
-    def __init__(self, current_anchor: str | AvatarAnchor | None = None, auto_add_name_badge: primitives.Bool | None = None, auto_add_icon_badge: primitives.Bool | None = None, auto_add_live_indicator: primitives.Bool | None = None, empty_slot_handler: str | IEmptyAvatarSlotHandler | None = None, default_scale: primitives.Float | None = None, name_tag_text: primitives.String | None = None, name_tag_color: primitives.ColorX | None = None, name_tag_outline: primitives.ColorX | None = None, name_tag_background: primitives.ColorX | None = None, badge_templates: str | Slot | None = None, auto_name_badge: str | Slot | None = None, auto_icon_badge: str | Slot | None = None, auto_live_indicator: str | Slot | None = None, update_version: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, current_anchor: str | AvatarAnchor | None = None, auto_add_name_badge: primitives.Bool | None = None, auto_add_icon_badge: primitives.Bool | None = None, auto_add_live_indicator: primitives.Bool | None = None, empty_slot_handler: str | IEmptyAvatarSlotHandler | None = None, default_scale: primitives.Float | None = None, name_tag_text: primitives.String | None = None, name_tag_pronouns: primitives.String | None = None, name_tag_color: primitives.ColorX | None = None, name_tag_outline: primitives.ColorX | None = None, name_tag_background: primitives.ColorX | None = None, badge_templates: str | Slot | None = None, auto_name_badge: str | Slot | None = None, auto_icon_badge: str | Slot | None = None, auto_live_indicator: str | Slot | None = None, update_version: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,6 +43,7 @@ The AvatarManager component is found on User root slots and is used to manage av
             empty_slot_handler: Initial value for EmptySlotHandler.
             default_scale: Initial value for DefaultScale.
             name_tag_text: Initial value for NameTagText.
+            name_tag_pronouns: Initial value for NameTagPronouns.
             name_tag_color: Initial value for NameTagColor.
             name_tag_outline: Initial value for NameTagOutline.
             name_tag_background: Initial value for NameTagBackground.
@@ -63,6 +69,8 @@ The AvatarManager component is found on User root slots and is used to manage av
             self.default_scale = default_scale
         if name_tag_text is not None:
             self.name_tag_text = name_tag_text
+        if name_tag_pronouns is not None:
+            self.name_tag_pronouns = name_tag_pronouns
         if name_tag_color is not None:
             self.name_tag_color = name_tag_color
         if name_tag_outline is not None:
@@ -104,7 +112,7 @@ The AvatarManager component is found on User root slots and is used to manage av
     @current_anchor.setter
     def current_anchor(self, target: str | AvatarAnchor | None) -> None:
         """Set the _currentAnchor reference by target ID or AvatarAnchor instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarAnchor) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_currentAnchor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -182,7 +190,7 @@ The AvatarManager component is found on User root slots and is used to manage av
     @empty_slot_handler.setter
     def empty_slot_handler(self, target: str | IEmptyAvatarSlotHandler | None) -> None:
         """Set the EmptySlotHandler reference by target ID or IEmptyAvatarSlotHandler instance."""
-        target_id: str | None = target.id if isinstance(target, IEmptyAvatarSlotHandler) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmptySlotHandler")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -228,6 +236,25 @@ The AvatarManager component is found on User root slots and is used to manage av
         else:
             self.set_member(
                 "NameTagText", fields.FieldString(value=value)
+            )
+
+    @property
+    def name_tag_pronouns(self) -> primitives.String | None:
+        """The NameTagPronouns field value."""
+        member = self.get_member("NameTagPronouns")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @name_tag_pronouns.setter
+    def name_tag_pronouns(self, value: primitives.String) -> None:
+        """Set the NameTagPronouns field value."""
+        member = self.get_member("NameTagPronouns")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "NameTagPronouns", fields.FieldString(value=value)
             )
 
     @property
@@ -298,7 +325,7 @@ The AvatarManager component is found on User root slots and is used to manage av
     @badge_templates.setter
     def badge_templates(self, target: str | Slot | None) -> None:
         """Set the _badgeTemplates reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_badgeTemplates")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -319,7 +346,7 @@ The AvatarManager component is found on User root slots and is used to manage av
     @auto_name_badge.setter
     def auto_name_badge(self, target: str | Slot | None) -> None:
         """Set the _autoNameBadge reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_autoNameBadge")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -340,7 +367,7 @@ The AvatarManager component is found on User root slots and is used to manage av
     @auto_icon_badge.setter
     def auto_icon_badge(self, target: str | Slot | None) -> None:
         """Set the _autoIconBadge reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_autoIconBadge")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -361,7 +388,7 @@ The AvatarManager component is found on User root slots and is used to manage av
     @auto_live_indicator.setter
     def auto_live_indicator(self, target: str | Slot | None) -> None:
         """Set the _autoLiveIndicator reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_autoLiveIndicator")
         if isinstance(member, members.Reference):
             member.targetId = target_id

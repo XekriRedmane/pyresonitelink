@@ -1,0 +1,11 @@
+{
+  "description": "The IsBlackHistoryMonthUK node returns if it's October as a bool.",
+  "category": "",
+  "fields": {
+    "* ([[Type:bool|bool]])": "``true`` if it's October, ``false`` otherwise."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsBlackHistoryMonthUK&action=raw"
+}

@@ -222,7 +222,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
     @target_height.setter
     def target_height(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the TargetHeight reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetHeight")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -243,7 +243,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
     @target_width.setter
     def target_width(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the TargetWidth reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetWidth")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -264,7 +264,7 @@ class SingleShapeCharacterControllerManager(GeneratedComponent, IComponent, IWor
     @target_offset.setter
     def target_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the TargetOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id

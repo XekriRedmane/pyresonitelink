@@ -53,7 +53,7 @@ class ValueConstantLerp(GenericComponent[T], INodeValueOutput[T], IExecutionUpda
     @input_.setter
     def input_(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the Input reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -74,7 +74,7 @@ class ValueConstantLerp(GenericComponent[T], INodeValueOutput[T], IExecutionUpda
     @speed.setter
     def speed(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Speed reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Speed")
         if isinstance(member, members.Reference):
             member.targetId = target_id

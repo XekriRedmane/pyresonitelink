@@ -1,0 +1,11 @@
+{
+  "description": "The IsPrideMonth node returns if it's June as a bool.",
+  "category": "",
+  "fields": {
+    "* ([[Type:bool|bool]])": "``true`` if it's June, ``false`` otherwise."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsPrideMonth&action=raw"
+}

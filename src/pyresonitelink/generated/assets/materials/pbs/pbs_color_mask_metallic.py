@@ -9,10 +9,11 @@ from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The PBS_ColorMaskMetallic material is a metallic material that allows for four distinct colors to be used separately or mixed in on different areas of the surface based on an image map.
 
     Category: Assets/Materials/PBS
@@ -156,7 +157,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -253,7 +254,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
     @color_mask.setter
     def color_mask(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the ColorMask reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ColorMask")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -350,7 +351,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
     @albedo_texture.setter
     def albedo_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -447,7 +448,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
     @emissive_map.setter
     def emissive_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -468,7 +469,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
     @normal_map.setter
     def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -508,7 +509,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
     @occlusion_map.setter
     def occlusion_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OcclusionMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OcclusionMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -662,7 +663,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
     @metallic_map.setter
     def metallic_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the MetallicMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MetallicMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -683,7 +684,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
     @regular.setter
     def regular(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _regular reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_regular")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -704,7 +705,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
     @transparent_ref.setter
     def transparent_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _transparent reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_transparent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -725,7 +726,7 @@ class PBS_ColorMaskMetallic(GeneratedComponent, IAssetProvider, ICustomInspector
     @zwrite.setter
     def zwrite(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _zwrite reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_zwrite")
         if isinstance(member, members.Reference):
             member.targetId = target_id

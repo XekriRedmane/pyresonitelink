@@ -21,11 +21,13 @@ from .avatar_slot_equipped_toggle import AvatarSlotEquippedToggle
 from .avatar_tool_anchor import AvatarToolAnchor
 from .avatar_tracking_offset import AvatarTrackingOffset
 from .avatar_user_mesh_hider import AvatarUserMeshHider
+from .avatar_user_positioner import AvatarUserPositioner
 from .avatar_user_reference_assigner import AvatarUserReferenceAssigner
 from .avatar_user_root_override_assigner import AvatarUserRootOverrideAssigner
 from .avatar_user_view_head_override import AvatarUserViewHeadOverride
 from .common_avatar_builder import CommonAvatarBuilder
 from .default_user_scale import DefaultUserScale
+from .grabber import Grabber
 from .simple_avatar_protection import SimpleAvatarProtection
 from .anchors.avatar_anchor import AvatarAnchor
 from .anchors.avatar_anchor_destroy_on_release import AvatarAnchorDestroyOnRelease

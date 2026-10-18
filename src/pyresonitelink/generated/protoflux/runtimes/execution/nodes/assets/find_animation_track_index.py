@@ -22,13 +22,13 @@ class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNo
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Assets.FindAnimationTrackIndex"
 
-    def __init__(self, animation: str | INodeObjectOutput[Animation] | None = None, node: str | INodeObjectOutput[primitives.String] | None = None, property: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, animation: str | INodeObjectOutput[Animation] | None = None, node: str | INodeObjectOutput[primitives.String] | None = None, property_: str | INodeObjectOutput[primitives.String] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             animation: Initial value for Animation.
             node: Initial value for Node.
-            property: Initial value for Property.
+            property_: Initial value for Property.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -36,8 +36,8 @@ class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNo
             self.animation = animation
         if node is not None:
             self.node = node
-        if property is not None:
-            self.property = property
+        if property_ is not None:
+            self.property_ = property_
 
     @property
     def animation(self) -> str | None:
@@ -50,7 +50,7 @@ class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNo
     @animation.setter
     def animation(self, target: str | INodeObjectOutput[Animation] | None) -> None:
         """Set the Animation reference by target ID or INodeObjectOutput[Animation] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Animation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNo
     @node.setter
     def node(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Node reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -82,17 +82,17 @@ class FindAnimationTrackIndex(GeneratedComponent, INodeValueOutput, IExecutionNo
             )
 
     @property
-    def property(self) -> str | None:
+    def property_(self) -> str | None:
         """A String that is usually the human name of a field. So a floatQ would be Rotation for a Property. This can vary though, and AnimJ explains this."""
         member = self.get_member("Property")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @property.setter
-    def property(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
+    @property_.setter
+    def property_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Property reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Property")
         if isinstance(member, members.Reference):
             member.targetId = target_id

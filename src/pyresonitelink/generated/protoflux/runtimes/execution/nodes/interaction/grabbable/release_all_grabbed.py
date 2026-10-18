@@ -51,7 +51,7 @@ class ReleaseAllGrabbed(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +72,7 @@ class ReleaseAllGrabbed(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
     @node.setter
     def node(self, target: str | INodeValueOutput[BodyNode] | None) -> None:
         """Set the Node reference by target ID or INodeValueOutput[BodyNode] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +93,7 @@ class ReleaseAllGrabbed(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
     @supress_events.setter
     def supress_events(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the SupressEvents reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SupressEvents")
         if isinstance(member, members.Reference):
             member.targetId = target_id

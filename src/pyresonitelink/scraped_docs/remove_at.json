@@ -1,0 +1,15 @@
+{
+  "description": "The RemoveAt node takes in a Collection and the index to remove an element from that list.",
+  "category": "",
+  "fields": {
+    "* ([[Impulses|Call]])": "Calls an impulse to remove the element at the preferred index or position from the list.",
+    "Index": "The index or position of the element we want to remove from the list. (min: 0, max: Count of collection minus 1)",
+    "Collection": "The collection to remove the element form.",
+    "OnRemove": "Fires when successfully removing the element from the list.",
+    "OnFail": "Fires if unable to remove the element from the list or if the index is out of bounds of the collection."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:RemoveAt&action=raw"
+}

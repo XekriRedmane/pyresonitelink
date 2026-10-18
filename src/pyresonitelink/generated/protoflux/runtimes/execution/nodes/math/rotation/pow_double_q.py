@@ -45,7 +45,7 @@ class Pow_doubleQ(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
     @q.setter
     def q(self, target: str | INodeValueOutput[primitives.DoubleQ] | None) -> None:
         """Set the Q reference by target ID or INodeValueOutput[primitives.DoubleQ] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Q")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class Pow_doubleQ(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, I
     @pow.setter
     def pow(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the Pow reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Pow")
         if isinstance(member, members.Reference):
             member.targetId = target_id

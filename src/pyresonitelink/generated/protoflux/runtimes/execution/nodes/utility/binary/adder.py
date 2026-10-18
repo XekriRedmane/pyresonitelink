@@ -48,7 +48,7 @@ class Adder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObject
     @a.setter
     def a(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the A reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class Adder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObject
     @b.setter
     def b(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the B reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ class Adder(GeneratedComponent, IExecutionNode, INode, ICustomInspector, IObject
     @carry_in.setter
     def carry_in(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the CarryIn reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CarryIn")
         if isinstance(member, members.Reference):
             member.targetId = target_id

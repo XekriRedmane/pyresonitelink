@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class RenderTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWorldEventReceiver):
+class RenderTextureProvider(GeneratedComponent, ITexture2DProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The RenderTextureProvider component is used as a target for rendering Camera or CameraPortal data onto. This component can be used as a texture for any material.
 
     Category: Assets

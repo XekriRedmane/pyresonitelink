@@ -1,0 +1,11 @@
+{
+  "description": "The IsHalloween node returns if it's Halloween (October 31st) as a bool.",
+  "category": "",
+  "fields": {
+    "* ([[Type:bool|bool]])": "``true`` if it's Halloween (October 31st), ``false`` otherwise."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsHalloween&action=raw"
+}

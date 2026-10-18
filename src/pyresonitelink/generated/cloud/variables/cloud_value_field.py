@@ -147,7 +147,7 @@ For more info on how Cloud Variables work in general, see Cloud Variables.
     @target.setter
     def target(self, target: str | IField[T] | None) -> None:
         """Set the Target reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id

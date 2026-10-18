@@ -56,7 +56,7 @@ class MinMaxValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEv
     @min_drive.setter
     def min_drive(self, target: str | IField[T] | None) -> None:
         """Set the MinDrive reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MinDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -77,7 +77,7 @@ class MinMaxValueSpatialVariableDriver(GenericComponent[T], IComponent, IWorldEv
     @max_drive.setter
     def max_drive(self, target: str | IField[T] | None) -> None:
         """Set the MaxDrive reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MaxDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id

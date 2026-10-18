@@ -46,7 +46,7 @@ class CopyGlobalTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
     @source.setter
     def source(self, target: str | Slot | None) -> None:
         """Set the Source reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -67,7 +67,7 @@ class CopyGlobalTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
     @pos_drive.setter
     def pos_drive(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _posDrive reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_posDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -88,7 +88,7 @@ class CopyGlobalTransform(GeneratedComponent, IComponent, IWorldEventReceiver):
     @rot_drive.setter
     def rot_drive(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _rotDrive reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rotDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id

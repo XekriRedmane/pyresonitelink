@@ -59,7 +59,7 @@ class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
     @user.setter
     def user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the User reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -80,7 +80,7 @@ class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
     @side.setter
     def side(self, target: str | INodeValueOutput[Chirality] | None) -> None:
         """Set the Side reference by target ID or INodeValueOutput[Chirality] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Side")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -101,7 +101,7 @@ class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
     @pop_off.setter
     def pop_off(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the PopOff reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PopOff")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -122,7 +122,7 @@ class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
     @on_dequipped.setter
     def on_dequipped(self, target: str | INodeOperation | None) -> None:
         """Set the OnDequipped reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnDequipped")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -143,7 +143,7 @@ class DequipTool(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
     @on_dequip_fail.setter
     def on_dequip_fail(self, target: str | INodeOperation | None) -> None:
         """Set the OnDequipFail reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnDequipFail")
         if isinstance(member, members.Reference):
             member.targetId = target_id

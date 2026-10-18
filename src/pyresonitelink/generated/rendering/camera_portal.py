@@ -1,15 +1,20 @@
 """Generated component: CameraPortal."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.generated._enums.mode import Mode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.mesh_renderer import MeshRenderer
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.render_texture import RenderTexture
 from pyresonitelink.generated._types.slot import Slot
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.mesh_renderer import MeshRenderer
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -79,7 +84,7 @@ Currently, this component does not support culling of objects via object layers,
     @renderer.setter
     def renderer(self, target: str | MeshRenderer | None) -> None:
         """Set the Renderer reference by target ID or MeshRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, MeshRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Renderer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +105,7 @@ Currently, this component does not support culling of objects via object layers,
     @reflection_texture.setter
     def reflection_texture(self, target: str | IAssetProvider[RenderTexture] | None) -> None:
         """Set the ReflectionTexture reference by target ID or IAssetProvider[RenderTexture] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ReflectionTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -179,7 +184,7 @@ Currently, this component does not support culling of objects via object layers,
     @portal_target.setter
     def portal_target(self, target: str | Slot | None) -> None:
         """Set the PortalTarget reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PortalTarget")
         if isinstance(member, members.Reference):
             member.targetId = target_id

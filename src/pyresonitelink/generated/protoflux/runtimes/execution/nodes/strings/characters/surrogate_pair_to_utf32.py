@@ -45,7 +45,7 @@ class SurrogatePairToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @high_surrogate.setter
     def high_surrogate(self, target: str | INodeValueOutput[primitives.Char] | None) -> None:
         """Set the HighSurrogate reference by target ID or INodeValueOutput[primitives.Char] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HighSurrogate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class SurrogatePairToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @low_surrogate.setter
     def low_surrogate(self, target: str | INodeValueOutput[primitives.Char] | None) -> None:
         """Set the LowSurrogate reference by target ID or INodeValueOutput[primitives.Char] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LowSurrogate")
         if isinstance(member, members.Reference):
             member.targetId = target_id

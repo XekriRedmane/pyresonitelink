@@ -48,7 +48,7 @@ class RayRectangleIntersection(GeneratedComponent, IExecutionNode, INode, ICusto
     @origin.setter
     def origin(self, target: str | INodeValueOutput[primitives.Float2] | None) -> None:
         """Set the Origin reference by target ID or INodeValueOutput[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Origin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class RayRectangleIntersection(GeneratedComponent, IExecutionNode, INode, ICusto
     @direction.setter
     def direction(self, target: str | INodeValueOutput[primitives.Float2] | None) -> None:
         """Set the Direction reference by target ID or INodeValueOutput[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ class RayRectangleIntersection(GeneratedComponent, IExecutionNode, INode, ICusto
     @rectangle.setter
     def rectangle(self, target: str | INodeValueOutput[primitives.Rect] | None) -> None:
         """Set the Rectangle reference by target ID or INodeValueOutput[primitives.Rect] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Rectangle")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -1,10 +1,15 @@
 """Generated component: CharacterGravity."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.character_controller import CharacterController
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.physics.character_controller import CharacterController
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -51,7 +56,7 @@ class CharacterGravity(GeneratedComponent, IExecutionNode, INode, ICustomInspect
     @character.setter
     def character(self, target: str | INodeObjectOutput[CharacterController] | None) -> None:
         """Set the Character reference by target ID or INodeObjectOutput[CharacterController] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -65,7 +65,7 @@ class ReferenceOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEv
     @reference.setter
     def reference(self, target: str | SyncRef[T] | None) -> None:
         """Set the Reference reference by target ID or SyncRef[T] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -105,7 +105,7 @@ class ReferenceOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEv
     @label.setter
     def label(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Label reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -126,7 +126,7 @@ class ReferenceOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEv
     @color.setter
     def color(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the Color reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -147,7 +147,7 @@ class ReferenceOptionDescriptionDriver(GenericComponent[T], IComponent, IWorldEv
     @sprite.setter
     def sprite(self, target: str | SyncRef[IAssetProvider[Sprite]] | None) -> None:
         """Set the Sprite reference by target ID or SyncRef[IAssetProvider[Sprite]] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Sprite")
         if isinstance(member, members.Reference):
             member.targetId = target_id

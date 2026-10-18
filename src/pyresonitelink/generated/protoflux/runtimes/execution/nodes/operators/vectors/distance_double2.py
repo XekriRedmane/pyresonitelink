@@ -45,7 +45,7 @@ class Distance_Double2(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
     @a.setter
     def a(self, target: str | INodeValueOutput[primitives.Double2] | None) -> None:
         """Set the A reference by target ID or INodeValueOutput[primitives.Double2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class Distance_Double2(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
     @b.setter
     def b(self, target: str | INodeValueOutput[primitives.Double2] | None) -> None:
         """Set the B reference by target ID or INodeValueOutput[primitives.Double2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             member.targetId = target_id

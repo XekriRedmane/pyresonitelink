@@ -79,7 +79,7 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @target.setter
     def target(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Target reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -138,7 +138,7 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
     @locale.setter
     def locale(self, target: str | IAssetProvider[LocaleResource] | None) -> None:
         """Set the Locale reference by target ID or IAssetProvider[LocaleResource] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Locale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -161,7 +161,7 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
         """Set ArgumentSources. A list of argument strings in a locale translation and their fields to get the values for them from."""
         self.set_member("ArgumentSources", value)
 
-    async def set_argument_source(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, field: str, debug: bool = False) -> dict:
+    async def set_argument_source(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, field: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Can be called to set the argument source for the locale data.
 
         Args:
@@ -174,10 +174,10 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "SetArgumentSource", {"key": key, "field": field}, debug,
+            resolink, "SetArgumentSource", {"key": fields.FieldString(value=key), "field": members.DataReference(targetID=field) if isinstance(field, str) else field}, debug,
         )
 
-    async def set_argument_value(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, value: str, debug: bool = False) -> dict:
+    async def set_argument_value(self, resolink: protocols.ResoniteLinkClient, key: primitives.String, value: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Can be called to set the argument value for the locale data.
 
         Args:
@@ -190,6 +190,6 @@ class LocaleStringDriver(GeneratedComponent, IComponent, IWorldEventReceiver):
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "SetArgumentValue", {"key": key, "value": value}, debug,
+            resolink, "SetArgumentValue", {"key": fields.FieldString(value=key), "value": members.DataReference(targetID=value) if isinstance(value, str) else value}, debug,
         )
 

@@ -10,10 +10,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_provider import ITextureProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class SimplexCubemap(GeneratedComponent, ITextureProvider, ICustomInspector, IWorldEventReceiver):
+class SimplexCubemap(GeneratedComponent, ITextureProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The Simplex Cubemap component creates a cubemap data that looks like a simplex noise texture in 3D.
 
     Category: Assets/Procedural Cubemaps

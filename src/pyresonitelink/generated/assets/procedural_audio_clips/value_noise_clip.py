@@ -7,10 +7,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class ValueNoiseClip(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The ValueNoiseClip component takes completely random noise and turns it into audio data. The best way to describe the noise would be like TV static.
 
     Category: Assets/Procedural Audio Clips

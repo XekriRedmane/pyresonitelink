@@ -11,10 +11,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class TubeWireMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The TubeWireMesh component acts as a source of procedural Mesh data. This creates a mesh like the StripeWireMesh but is a tube instead.
 
     Category: Assets/Procedural Meshes

@@ -75,7 +75,7 @@ class MultiValueTextFormatDriver(GeneratedComponent, IComponent, IWorldEventRece
     @text.setter
     def text(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Text reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Text")
         if isinstance(member, members.Reference):
             member.targetId = target_id

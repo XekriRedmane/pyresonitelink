@@ -1,5 +1,8 @@
 """Generated component: ContextMenu."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -10,18 +13,20 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.user import User
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.iworld_element import IWorldElement
-from pyresonitelink.generated._types.canvas import Canvas
-from pyresonitelink.generated._types.arc_layout import ArcLayout
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.image import Image
-from pyresonitelink.generated._types.outlined_arc import OutlinedArc
-from pyresonitelink.generated._types.button import Button
-from pyresonitelink.generated._types.ui_circle_segment import UI_CircleSegment
-from pyresonitelink.generated._types.ui_text_unlit_material import UI_TextUnlitMaterial
-from pyresonitelink.generated._types.ui_unlit_material import UI_UnlitMaterial
 from pyresonitelink.generated._types.ztest import ZTest
 from pyresonitelink.generated._types.zwrite import ZWrite
-from pyresonitelink.generated._types.context_menu_item import ContextMenuItem
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.canvas import Canvas
+    from pyresonitelink.generated.uix.layout.arc_layout import ArcLayout
+    from pyresonitelink.generated.uix.graphics.image import Image
+    from pyresonitelink.generated.uix.graphics.outlined_arc import OutlinedArc
+    from pyresonitelink.generated.uix.interaction.button import Button
+    from pyresonitelink.generated.assets.materials.ui.circle_segment.ui_circle_segment import UI_CircleSegment
+    from pyresonitelink.generated.assets.materials.ui.text.ui_text_unlit_material import UI_TextUnlitMaterial
+    from pyresonitelink.generated.assets.materials.ui.ui_unlit_material import UI_UnlitMaterial
+    from pyresonitelink.generated.radiant_ui.context_menu.context_menu_item import ContextMenuItem
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -185,7 +190,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @owner.setter
     def owner(self, target: str | User | None) -> None:
         """Set the Owner reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Owner")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -206,7 +211,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @pointer.setter
     def pointer(self, target: str | Slot | None) -> None:
         """Set the Pointer reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Pointer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -284,7 +289,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @current_summoner.setter
     def current_summoner(self, target: str | IWorldElement | None) -> None:
         """Set the _currentSummoner reference by target ID or IWorldElement instance."""
-        target_id: str | None = target.id if isinstance(target, IWorldElement) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_currentSummoner")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -305,7 +310,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @canvas.setter
     def canvas(self, target: str | Canvas | None) -> None:
         """Set the _canvas reference by target ID or Canvas instance."""
-        target_id: str | None = target.id if isinstance(target, Canvas) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_canvas")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -326,7 +331,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @arc_layout.setter
     def arc_layout(self, target: str | ArcLayout | None) -> None:
         """Set the _arcLayout reference by target ID or ArcLayout instance."""
-        target_id: str | None = target.id if isinstance(target, ArcLayout) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_arcLayout")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -347,7 +352,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @canvas_active.setter
     def canvas_active(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _canvasActive reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_canvasActive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -368,7 +373,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @collider_enabled.setter
     def collider_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _colliderEnabled reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colliderEnabled")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -389,7 +394,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @icon_image.setter
     def icon_image(self, target: str | Image | None) -> None:
         """Set the _iconImage reference by target ID or Image instance."""
-        target_id: str | None = target.id if isinstance(target, Image) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_iconImage")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -410,7 +415,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @separation_ref.setter
     def separation_ref(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _separation reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_separation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -431,7 +436,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @offset_min.setter
     def offset_min(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _offsetMin reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_offsetMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -452,7 +457,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @offset_max.setter
     def offset_max(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _offsetMax reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_offsetMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -473,7 +478,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @inner_circle.setter
     def inner_circle(self, target: str | OutlinedArc | None) -> None:
         """Set the _innerCircle reference by target ID or OutlinedArc instance."""
-        target_id: str | None = target.id if isinstance(target, OutlinedArc) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_innerCircle")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -494,7 +499,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @inner_circle_button.setter
     def inner_circle_button(self, target: str | Button | None) -> None:
         """Set the _innerCircleButton reference by target ID or Button instance."""
-        target_id: str | None = target.id if isinstance(target, Button) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_innerCircleButton")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -515,7 +520,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @inner_circle_anchor_min.setter
     def inner_circle_anchor_min(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _innerCircleAnchorMin reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_innerCircleAnchorMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -536,7 +541,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @inner_circle_anchor_max.setter
     def inner_circle_anchor_max(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _innerCircleAnchorMax reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_innerCircleAnchorMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -557,7 +562,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @items_root.setter
     def items_root(self, target: str | Slot | None) -> None:
         """Set the _itemsRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_itemsRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -578,7 +583,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @arc_material.setter
     def arc_material(self, target: str | UI_CircleSegment | None) -> None:
         """Set the _arcMaterial reference by target ID or UI_CircleSegment instance."""
-        target_id: str | None = target.id if isinstance(target, UI_CircleSegment) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_arcMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -599,7 +604,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @font_material.setter
     def font_material(self, target: str | UI_TextUnlitMaterial | None) -> None:
         """Set the _fontMaterial reference by target ID or UI_TextUnlitMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, UI_TextUnlitMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_fontMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -620,7 +625,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @sprite_material.setter
     def sprite_material(self, target: str | UI_UnlitMaterial | None) -> None:
         """Set the _spriteMaterial reference by target ID or UI_UnlitMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, UI_UnlitMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_spriteMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -641,7 +646,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @arc_overlay.setter
     def arc_overlay(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _arcOverlay reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_arcOverlay")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -662,7 +667,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @font_overlay.setter
     def font_overlay(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _fontOverlay reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_fontOverlay")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -683,7 +688,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @sprite_overlay.setter
     def sprite_overlay(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _spriteOverlay reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_spriteOverlay")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -704,7 +709,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @arc_ztest.setter
     def arc_ztest(self, target: str | IField[ZTest] | None) -> None:
         """Set the _arcZTest reference by target ID or IField[ZTest] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_arcZTest")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -725,7 +730,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @font_ztest.setter
     def font_ztest(self, target: str | IField[ZTest] | None) -> None:
         """Set the _fontZTest reference by target ID or IField[ZTest] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_fontZTest")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -746,7 +751,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @sprite_ztest.setter
     def sprite_ztest(self, target: str | IField[ZTest] | None) -> None:
         """Set the _spriteZTest reference by target ID or IField[ZTest] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_spriteZTest")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -767,7 +772,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @zwrite_arc.setter
     def zwrite_arc(self, target: str | IField[ZWrite] | None) -> None:
         """Set the _zwriteArc reference by target ID or IField[ZWrite] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_zwriteArc")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -788,7 +793,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @zwrite_text.setter
     def zwrite_text(self, target: str | IField[ZWrite] | None) -> None:
         """Set the _zwriteText reference by target ID or IField[ZWrite] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_zwriteText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -809,7 +814,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @arc_render_queue.setter
     def arc_render_queue(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the _arcRenderQueue reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_arcRenderQueue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -830,7 +835,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @font_render_queue.setter
     def font_render_queue(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the _fontRenderQueue reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_fontRenderQueue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -851,7 +856,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @sprite_render_queue.setter
     def sprite_render_queue(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the _spriteRenderQueue reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_spriteRenderQueue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -872,7 +877,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @canvas_offset.setter
     def canvas_offset(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the _canvasOffset reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_canvasOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -893,7 +898,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @fill_fade.setter
     def fill_fade(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the _fillFade reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_fillFade")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -914,7 +919,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @outline_fade.setter
     def outline_fade(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the _outlineFade reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_outlineFade")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -935,7 +940,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @text_fade.setter
     def text_fade(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the _textFade reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_textFade")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -956,7 +961,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @icon_fade.setter
     def icon_fade(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the _iconFade reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_iconFade")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1073,7 +1078,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
     @selected_item.setter
     def selected_item(self, target: str | ContextMenuItem | None) -> None:
         """Set the _selectedItem reference by target ID or ContextMenuItem instance."""
-        target_id: str | None = target.id if isinstance(target, ContextMenuItem) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_selectedItem")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1083,7 +1088,7 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ContextMenuItem'),
             )
 
-    async def close_menu(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
+    async def close_menu(self, resolink: protocols.ResoniteLinkClient, button: str | workers.Worker | GeneratedComponent, event_data: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Closes the menu if it is currently open.
 
         Args:
@@ -1096,6 +1101,6 @@ class ContextMenu(GeneratedComponent, IComponent, IWorldEventReceiver):
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "CloseMenu", {"button": button, "eventData": event_data}, debug,
+            resolink, "CloseMenu", {"button": members.DataReference(targetID=button) if isinstance(button, str) else button, "eventData": members.DataReference(targetID=event_data) if isinstance(event_data, str) else event_data}, debug,
         )
 

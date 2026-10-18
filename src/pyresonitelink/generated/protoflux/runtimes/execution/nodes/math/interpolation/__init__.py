@@ -100,6 +100,8 @@ from .slerp_float2 import Slerp_Float2
 from .slerp_float3 import Slerp_Float3
 from .slerp_float4 import Slerp_Float4
 from .slerp_float_q import Slerp_floatQ
+from .slerp_unclamped_double_q import SlerpUnclamped_doubleQ
+from .slerp_unclamped_float_q import SlerpUnclamped_floatQ
 from .slerp_with_magnitude_color import SlerpWithMagnitude_Color
 from .slerp_with_magnitude_colorx import SlerpWithMagnitude_ColorX
 from .slerp_with_magnitude_double2 import SlerpWithMagnitude_Double2

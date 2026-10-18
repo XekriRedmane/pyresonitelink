@@ -1,9 +1,14 @@
 """Generated component: SlideSwapRegion."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.rect_transform import RectTransform
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.rect_transform import RectTransform
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -40,7 +45,7 @@ class SlideSwapRegion(GeneratedComponent, IComponent, IWorldEventReceiver):
     @current.setter
     def current(self, target: str | RectTransform | None) -> None:
         """Set the _current reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_current")
         if isinstance(member, members.Reference):
             member.targetId = target_id

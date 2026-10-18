@@ -62,7 +62,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
     @default_unit.setter
     def default_unit(self, target: str | IField[primitives.String] | None) -> None:
         """Set the DefaultUnit reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DefaultUnit")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -83,7 +83,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
     @format_unit.setter
     def format_unit(self, target: str | IField[primitives.String] | None) -> None:
         """Set the FormatUnit reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FormatUnit")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -104,7 +104,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
     @format_number.setter
     def format_number(self, target: str | IField[primitives.String] | None) -> None:
         """Set the FormatNumber reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FormatNumber")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -125,7 +125,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compound_format_units.setter
     def compound_format_units(self, target: str | SyncFieldList[primitives.String] | None) -> None:
         """Set the CompoundFormatUnits reference by target ID or SyncFieldList[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncFieldList) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CompoundFormatUnits")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -146,7 +146,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compound_override_names.setter
     def compound_override_names(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the CompoundOverrideNames reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CompoundOverrideNames")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -167,7 +167,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compound_use_long_names.setter
     def compound_use_long_names(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the CompoundUseLongNames reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CompoundUseLongNames")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -188,7 +188,7 @@ class UnitSystemSwitcher(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compound_separator.setter
     def compound_separator(self, target: str | IField[primitives.String] | None) -> None:
         """Set the CompoundSeparator reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CompoundSeparator")
         if isinstance(member, members.Reference):
             member.targetId = target_id

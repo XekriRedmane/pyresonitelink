@@ -1,5 +1,8 @@
 """Generated component: PointClusterMesh."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -12,12 +15,15 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.itexture import ITexture
 from pyresonitelink.generated._types.texture_2d import Texture2D
-from pyresonitelink.generated._types.atlas_info import AtlasInfo
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.atlas_info import AtlasInfo
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The PointClusterMesh component generates a randomized cluster of points in a cloud. These points can be displayed via a Mesh Renderer using a Unlit Material with at least it's ``UseBillboardGeometry`` field set to true.
 
     Category: Assets/Procedural Meshes
@@ -250,7 +256,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
     @texture_color_source.setter
     def texture_color_source(self, target: str | IAssetProvider[ITexture] | None) -> None:
         """Set the TextureColorSource reference by target ID or IAssetProvider[ITexture] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TextureColorSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -271,7 +277,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
     @height_scale_source.setter
     def height_scale_source(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the HeightScaleSource reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HeightScaleSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -406,7 +412,7 @@ class PointClusterMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
     @atlas.setter
     def atlas(self, target: str | AtlasInfo | None) -> None:
         """Set the Atlas reference by target ID or AtlasInfo instance."""
-        target_id: str | None = target.id if isinstance(target, AtlasInfo) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Atlas")
         if isinstance(member, members.Reference):
             member.targetId = target_id

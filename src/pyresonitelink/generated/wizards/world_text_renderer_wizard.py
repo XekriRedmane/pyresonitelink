@@ -1,5 +1,8 @@
 """Generated component: WorldTextRendererWizard."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -9,7 +12,9 @@ from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.material import Material
 from pyresonitelink.generated._types.font_set import FontSet
-from pyresonitelink.generated._types.text_field import TextField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.interaction.text_field import TextField
 from pyresonitelink.generated._types.ideveloper_interface import IDeveloperInterface
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -67,7 +72,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
     @root.setter
     def root(self, target: str | Slot | None) -> None:
         """Set the Root reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -88,7 +93,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
     @material.setter
     def material(self, target: str | IAssetProvider[Material] | None) -> None:
         """Set the Material reference by target ID or IAssetProvider[Material] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -109,7 +114,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
     @font.setter
     def font(self, target: str | IAssetProvider[FontSet] | None) -> None:
         """Set the Font reference by target ID or IAssetProvider[FontSet] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Font")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -206,7 +211,7 @@ class WorldTextRendererWizard(GeneratedComponent, IDeveloperInterface, IWorldEve
     @tag.setter
     def tag(self, target: str | TextField | None) -> None:
         """Set the _tag reference by target ID or TextField instance."""
-        target_id: str | None = target.id if isinstance(target, TextField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_tag")
         if isinstance(member, members.Reference):
             member.targetId = target_id

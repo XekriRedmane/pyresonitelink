@@ -50,7 +50,7 @@ class CreateUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
     @description.setter
     def description(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Description reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Description")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ class CreateUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
     @create.setter
     def create(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the Create reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Create")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -92,7 +92,7 @@ class CreateUndoBatch(GeneratedComponent, ISyncNodeOperation, IExecutionNode, IN
     @on_created.setter
     def on_created(self, target: str | INodeOperation | None) -> None:
         """Set the OnCreated reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnCreated")
         if isinstance(member, members.Reference):
             member.targetId = target_id

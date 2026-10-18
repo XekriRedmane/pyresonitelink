@@ -45,7 +45,7 @@ class EaseInOutReboundDouble(GeneratedComponent, INodeValueOutput, IExecutionNod
     @time.setter
     def time(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the Time reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Time")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class EaseInOutReboundDouble(GeneratedComponent, INodeValueOutput, IExecutionNod
     @rebound_amplitude.setter
     def rebound_amplitude(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the ReboundAmplitude reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ReboundAmplitude")
         if isinstance(member, members.Reference):
             member.targetId = target_id

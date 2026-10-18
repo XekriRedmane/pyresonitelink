@@ -46,7 +46,7 @@ class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector
     @source.setter
     def source(self, target: str | IGlobalValueProxy[IFootstepEventRelay] | None) -> None:
         """Set the Source reference by target ID or IGlobalValueProxy[IFootstepEventRelay] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -67,7 +67,7 @@ class FootstepEvents(GeneratedComponent, IExecutionNode, INode, ICustomInspector
     @footstep.setter
     def footstep(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the Footstep reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Footstep")
         if isinstance(member, members.Reference):
             member.targetId = target_id

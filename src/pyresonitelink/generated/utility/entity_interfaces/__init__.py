@@ -10,4 +10,5 @@ from .notice_display_interface import NoticeDisplayInterface
 from .progress_bar_interface import ProgressBarInterface
 from .text_display_interface import TextDisplayInterface
 from .video_player_interface import VideoPlayerInterface
+from .video_stream_interface import VideoStreamInterface
 from .world_loading_progress_interface import WorldLoadingProgressInterface

@@ -65,7 +65,7 @@ The node can be used as a fixed-size* array in ProtoFlux or to iterate over mult
     @index_.setter
     def index_(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Index reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             member.targetId = target_id

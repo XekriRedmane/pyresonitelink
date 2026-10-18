@@ -51,7 +51,7 @@ class ClosestPointsBetweenLines(GeneratedComponent, IExecutionNode, INode, ICust
     @line_point0.setter
     def line_point0(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the LinePoint0 reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LinePoint0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +72,7 @@ class ClosestPointsBetweenLines(GeneratedComponent, IExecutionNode, INode, ICust
     @line_dir0.setter
     def line_dir0(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the LineDir0 reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LineDir0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +93,7 @@ class ClosestPointsBetweenLines(GeneratedComponent, IExecutionNode, INode, ICust
     @line_point1.setter
     def line_point1(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the LinePoint1 reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LinePoint1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -114,7 +114,7 @@ class ClosestPointsBetweenLines(GeneratedComponent, IExecutionNode, INode, ICust
     @line_dir1.setter
     def line_dir1(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the LineDir1 reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LineDir1")
         if isinstance(member, members.Reference):
             member.targetId = target_id

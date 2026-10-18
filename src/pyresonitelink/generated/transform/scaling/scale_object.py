@@ -1,12 +1,17 @@
 """Generated component: ScaleObject."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.scale_object_manager import ScaleObjectManager
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.transform.scaling.scale_object_manager import ScaleObjectManager
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -65,7 +70,7 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
     @manager.setter
     def manager(self, target: str | ScaleObjectManager | None) -> None:
         """Set the Manager reference by target ID or ScaleObjectManager instance."""
-        target_id: str | None = target.id if isinstance(target, ScaleObjectManager) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Manager")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -181,7 +186,7 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
     @active.setter
     def active(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _active reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_active")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -202,7 +207,7 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
     @position.setter
     def position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _position reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_position")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -223,7 +228,7 @@ class ScaleObject(GeneratedComponent, IComponent, IWorldEventReceiver):
     @scale.setter
     def scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _scale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_scale")
         if isinstance(member, members.Reference):
             member.targetId = target_id

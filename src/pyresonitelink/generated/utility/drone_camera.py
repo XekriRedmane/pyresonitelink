@@ -305,7 +305,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
     @field_of_view_source.setter
     def field_of_view_source(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the FieldOfViewSource reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FieldOfViewSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -345,7 +345,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
     @aspect_ratio_source.setter
     def aspect_ratio_source(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the AspectRatioSource reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AspectRatioSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -385,7 +385,7 @@ class DroneCamera(GeneratedComponent, IComponent, IWorldEventReceiver):
     @follow_user.setter
     def follow_user(self, target: str | User | None) -> None:
         """Set the FollowUser reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FollowUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -8,10 +8,11 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class SpriteProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class SpriteProvider(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """A SpriteProvider defines a slice of a Texture2D as a Sprite that may be used by other components e.g. UIX Images to display graphics or produce backgrounds.
 
     Category: Assets
@@ -89,7 +90,7 @@ See attached example diagram for help.
     @texture.setter
     def texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Texture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             member.targetId = target_id

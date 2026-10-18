@@ -1,5 +1,8 @@
 """Generated component: ApplyCharacterForce."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
@@ -7,7 +10,9 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.character_controller import CharacterController
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.physics.character_controller import CharacterController
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -57,7 +62,7 @@ Unlike Impulse where you send a force once to send the character controller in a
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -78,7 +83,7 @@ Unlike Impulse where you send a force once to send the character controller in a
     @force.setter
     def force(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Force reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Force")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -99,7 +104,7 @@ Unlike Impulse where you send a force once to send the character controller in a
     @character.setter
     def character(self, target: str | INodeObjectOutput[CharacterController] | None) -> None:
         """Set the Character reference by target ID or INodeObjectOutput[CharacterController] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Character")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -120,7 +125,7 @@ Unlike Impulse where you send a force once to send the character controller in a
     @ignore_mass.setter
     def ignore_mass(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the IgnoreMass reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IgnoreMass")
         if isinstance(member, members.Reference):
             member.targetId = target_id

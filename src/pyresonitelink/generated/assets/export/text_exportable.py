@@ -52,7 +52,7 @@ To export using this component, look at the file browser export section.
     @text_source.setter
     def text_source(self, target: str | IValue[primitives.String] | None) -> None:
         """Set the TextSource reference by target ID or IValue[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IValue) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TextSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id

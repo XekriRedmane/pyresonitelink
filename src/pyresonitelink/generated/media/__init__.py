@@ -5,6 +5,8 @@ from .grabbable_user_voice_modifier import GrabbableUserVoiceModifier
 from .random_audio_clip_player import RandomAudioClipPlayer
 from .capture.interactive_camera import InteractiveCamera
 from .capture.interactive_camera_anchor import InteractiveCameraAnchor
+from .legacy.legacy_audio_player import LegacyAudioPlayer
+from .legacy.legacy_video_player import LegacyVideoPlayer
 from .utility.channel_volume_meter import ChannelVolumeMeter
 from .utility.hover_playback import HoverPlayback
 from .utility.is_playing_driver import IsPlayingDriver

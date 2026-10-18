@@ -1,0 +1,13 @@
+{
+  "description": "The Join String node takes in an IEnumerable and a string separator, then returns the entire string array as a Collection.",
+  "category": "",
+  "fields": {
+    "Values": "All the values as a collection.",
+    "Separator": "The string separator used to separate the string collection.",
+    "* ([[Type:String|String]])": "Returns the string array as a collection."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:JoinString&action=raw"
+}

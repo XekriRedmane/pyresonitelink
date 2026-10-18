@@ -88,7 +88,7 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
     @text_preview_active.setter
     def text_preview_active(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the TextPreviewActive reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TextPreviewActive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -109,7 +109,7 @@ class VirtualKeyboard(GeneratedComponent, IItemMetadataSource, IWorldEventReceiv
     @text_preview.setter
     def text_preview(self, target: str | IText | None) -> None:
         """Set the TextPreview reference by target ID or IText instance."""
-        target_id: str | None = target.id if isinstance(target, IText) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TextPreview")
         if isinstance(member, members.Reference):
             member.targetId = target_id

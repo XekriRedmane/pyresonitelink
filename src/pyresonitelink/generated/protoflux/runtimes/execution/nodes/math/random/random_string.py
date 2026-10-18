@@ -46,7 +46,7 @@ class RandomString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
     @characters.setter
     def characters(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Characters reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Characters")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -67,7 +67,7 @@ class RandomString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
     @length.setter
     def length(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Length reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
             member.targetId = target_id

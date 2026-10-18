@@ -1,10 +1,15 @@
 """Generated component: AvatarDebugHand."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.hierarchy_material_target import HierarchyMaterialTarget
-from pyresonitelink.generated._types.pbs_metallic import PBS_Metallic
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.assets.tagging.hierarchy_material_target import HierarchyMaterialTarget
+    from pyresonitelink.generated.assets.materials.pbs_metallic import PBS_Metallic
 from pyresonitelink.generated._types.iavatar_object_component import IAvatarObjectComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -55,7 +60,7 @@ class AvatarDebugHand(GeneratedComponent, IAvatarObjectComponent, IWorldEventRec
     @material_target.setter
     def material_target(self, target: str | HierarchyMaterialTarget | None) -> None:
         """Set the _materialTarget reference by target ID or HierarchyMaterialTarget instance."""
-        target_id: str | None = target.id if isinstance(target, HierarchyMaterialTarget) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_materialTarget")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -76,7 +81,7 @@ class AvatarDebugHand(GeneratedComponent, IAvatarObjectComponent, IWorldEventRec
     @material.setter
     def material(self, target: str | PBS_Metallic | None) -> None:
         """Set the _material reference by target ID or PBS_Metallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_Metallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_material")
         if isinstance(member, members.Reference):
             member.targetId = target_id

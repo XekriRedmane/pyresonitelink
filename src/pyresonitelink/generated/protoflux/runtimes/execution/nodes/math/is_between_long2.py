@@ -48,7 +48,7 @@ class IsBetween_Long2(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @value.setter
     def value(self, target: str | INodeValueOutput[primitives.Long2] | None) -> None:
         """Set the Value reference by target ID or INodeValueOutput[primitives.Long2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class IsBetween_Long2(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @min.setter
     def min(self, target: str | INodeValueOutput[primitives.Long2] | None) -> None:
         """Set the Min reference by target ID or INodeValueOutput[primitives.Long2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Min")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ class IsBetween_Long2(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @max.setter
     def max(self, target: str | INodeValueOutput[primitives.Long2] | None) -> None:
         """Set the Max reference by target ID or INodeValueOutput[primitives.Long2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Max")
         if isinstance(member, members.Reference):
             member.targetId = target_id

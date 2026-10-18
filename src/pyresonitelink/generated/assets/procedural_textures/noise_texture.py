@@ -12,10 +12,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWorldEventReceiver):
+class NoiseTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """Noise texture is a component that procedurally generates a 2D texture with a random noise pattern like TV static.
 
     Category: Assets/Procedural Textures

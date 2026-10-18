@@ -39,7 +39,7 @@ class DebugUsers(GeneratedComponent, IComponent, IWorldEventReceiver):
     @text.setter
     def text(self, target: str | Sync[primitives.String] | None) -> None:
         """Set the text reference by target ID or Sync[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("text")
         if isinstance(member, members.Reference):
             member.targetId = target_id

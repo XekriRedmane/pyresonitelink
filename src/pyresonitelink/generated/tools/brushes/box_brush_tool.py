@@ -1,5 +1,8 @@
 """Generated component: BoxBrushTool."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,15 +10,17 @@ from pyresonitelink.generated._enums.template_handling import TemplateHandling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.interaction_handler import InteractionHandler
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.material import Material
-from pyresonitelink.generated._types.particle_system import ParticleSystem
-from pyresonitelink.generated._types.mesh_emitter import MeshEmitter
-from pyresonitelink.generated._types.color_dialog_interface import ColorDialogInterface
-from pyresonitelink.generated._types.mesh_renderer import MeshRenderer
-from pyresonitelink.generated._types.box_array_mesh import BoxArrayMesh
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.interaction.handlers.interaction_handler import InteractionHandler
+    from pyresonitelink.generated.rendering.particle_system.particle_system import ParticleSystem
+    from pyresonitelink.generated.rendering.particle_system.emitters.mesh_emitter import MeshEmitter
+    from pyresonitelink.generated.utility.entity_interfaces.color_dialog_interface import ColorDialogInterface
+    from pyresonitelink.generated.rendering.mesh_renderer import MeshRenderer
+    from pyresonitelink.generated.assets.procedural_meshes.box_array_mesh import BoxArrayMesh
 from pyresonitelink.generated._types.itool import ITool
 from pyresonitelink.generated._types.imaterial_apply_policy import IMaterialApplyPolicy
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -31,7 +36,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.BoxBrushTool"
 
-    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, fixed_minimum_point_distance: primitives.Float | None = None, position_smoothing: primitives.Float | None = None, rotation_smoothing: primitives.Float | None = None, pressure_smoothing: primitives.Float | None = None, max_stroke_length: primitives.Float | None = None, stroke_fade_in_length: primitives.Float | None = None, stroke_fade_out_length: primitives.Float | None = None, stroke_group_finish_wait_time: primitives.Float | None = None, activation_threshold: primitives.Float | None = None, deactivation_threshold_ratio: primitives.Float | None = None, menu_size_change: primitives.Float | None = None, snap_tip: primitives.Bool | None = None, snap_line: primitives.Bool | None = None, make_strokes_grabbable: primitives.Bool | None = None, position_strokes_to_tip: primitives.Bool | None = None, orient_strokes_to_tip: primitives.Bool | None = None, scale_strokes_to_user: primitives.Bool | None = None, pick_materials: primitives.Bool | None = None, pick_colors: primitives.Bool | None = None, current_material: str | IAssetProvider[Material] | None = None, particle_system: str | ParticleSystem | None = None, mesh_emitter_template: str | MeshEmitter | None = None, particle_template_handling: TemplateHandling | str | None = None, emission_rate_per_unit_length: primitives.Float | None = None, color_picker: str | ColorDialogInterface | None = None, picked_color: primitives.ColorX | None = None, last_used_material: str | IAssetProvider[Material] | None = None, last_created_material: str | IAssetProvider[Material] | None = None, pressure: primitives.Float | None = None, position: primitives.Float3 | None = None, rotation: primitives.FloatQ | None = None, last_point_delta: primitives.Float3 | None = None, velocity: primitives.Float3 | None = None, raw_delta: primitives.Float3 | None = None, raw_velocity: primitives.Float3 | None = None, raw_stroke_length: primitives.Float | None = None, stroke_length: primitives.Float | None = None, normalized_stroke_length: primitives.Float | None = None, stroke_fade_multiplier: primitives.Float | None = None, stroke_group_index: primitives.Int | None = None, stroke_group_active: primitives.Bool | None = None, tip_anchor: str | Slot | None = None, stroke_point_rate: primitives.Float | None = None, constant_point_rate: primitives.Float | None = None, pressure_affects_rate: primitives.Bool | None = None, pressure_affects_radius: primitives.Bool | None = None, particle_spawn_radius: primitives.Float | None = None, snap_points: primitives.Bool | None = None, pivot: primitives.Float3 | None = None, min_color: primitives.ColorX | None = None, max_color: primitives.ColorX | None = None, color_gap: primitives.Float | None = None, uniform_size: primitives.Bool | None = None, min_size: primitives.Float3 | None = None, max_size: primitives.Float3 | None = None, size_gap: primitives.Float | None = None, min_rotation: primitives.Float3 | None = None, max_rotation: primitives.Float3 | None = None, min_uv_scale: primitives.Float3 | None = None, max_uv_scale: primitives.Float3 | None = None, uv_scale_gap: primitives.Float | None = None, use_color: primitives.Bool | None = None, scale_uv_with_size: primitives.Bool | None = None, preview_renderer: str | MeshRenderer | None = None, preview_mesh: str | BoxArrayMesh | None = None, preview_mesh_offset: str | IField[primitives.Float3] | None = None, preview_mesh_rotation: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, tip_reference: str | Slot | None = None, block_grip_equip: primitives.Bool | None = None, block_remote_equip: primitives.Bool | None = None, equip_name: primitives.String | None = None, override_active_tool: str | InteractionHandler | None = None, grip_poses_generated: primitives.Bool | None = None, fixed_minimum_point_distance: primitives.Float | None = None, position_smoothing: primitives.Float | None = None, rotation_smoothing: primitives.Float | None = None, pressure_smoothing: primitives.Float | None = None, max_stroke_length: primitives.Float | None = None, stroke_fade_in_length: primitives.Float | None = None, stroke_fade_out_length: primitives.Float | None = None, stroke_group_finish_wait_time: primitives.Float | None = None, activation_threshold: primitives.Float | None = None, deactivation_threshold_ratio: primitives.Float | None = None, menu_size_change: primitives.Float | None = None, snap_tip: primitives.Bool | None = None, snap_line: primitives.Bool | None = None, make_strokes_grabbable: primitives.Bool | None = None, position_strokes_to_tip: primitives.Bool | None = None, orient_strokes_to_tip: primitives.Bool | None = None, scale_strokes_to_user: primitives.Bool | None = None, pick_materials: primitives.Bool | None = None, pick_colors: primitives.Bool | None = None, current_material: str | IAssetProvider[Material] | None = None, particle_system: str | ParticleSystem | None = None, mesh_emitter_template: str | MeshEmitter | None = None, particle_template_handling: TemplateHandling | str | None = None, emission_rate_per_unit_length: primitives.Float | None = None, color_picker: str | ColorDialogInterface | None = None, picked_color: primitives.ColorX | None = None, last_picked_color: primitives.ColorX | None = None, last_used_material: str | IAssetProvider[Material] | None = None, last_created_material: str | IAssetProvider[Material] | None = None, pressure: primitives.Float | None = None, position: primitives.Float3 | None = None, rotation: primitives.FloatQ | None = None, last_point_delta: primitives.Float3 | None = None, velocity: primitives.Float3 | None = None, raw_delta: primitives.Float3 | None = None, raw_velocity: primitives.Float3 | None = None, raw_stroke_length: primitives.Float | None = None, stroke_length: primitives.Float | None = None, normalized_stroke_length: primitives.Float | None = None, stroke_fade_multiplier: primitives.Float | None = None, stroke_group_index: primitives.Int | None = None, stroke_group_active: primitives.Bool | None = None, tip_anchor: str | Slot | None = None, stroke_point_rate: primitives.Float | None = None, constant_point_rate: primitives.Float | None = None, pressure_affects_rate: primitives.Bool | None = None, pressure_affects_radius: primitives.Bool | None = None, particle_spawn_radius: primitives.Float | None = None, snap_points: primitives.Bool | None = None, pivot: primitives.Float3 | None = None, min_color: primitives.ColorX | None = None, max_color: primitives.ColorX | None = None, color_gap: primitives.Float | None = None, uniform_size: primitives.Bool | None = None, min_size: primitives.Float3 | None = None, max_size: primitives.Float3 | None = None, size_gap: primitives.Float | None = None, min_rotation: primitives.Float3 | None = None, max_rotation: primitives.Float3 | None = None, min_uv_scale: primitives.Float3 | None = None, max_uv_scale: primitives.Float3 | None = None, uv_scale_gap: primitives.Float | None = None, use_color: primitives.Bool | None = None, scale_uv_with_size: primitives.Bool | None = None, preview_renderer: str | MeshRenderer | None = None, preview_mesh: str | BoxArrayMesh | None = None, preview_mesh_offset: str | IField[primitives.Float3] | None = None, preview_mesh_rotation: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -67,6 +72,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             emission_rate_per_unit_length: Initial value for EmissionRatePerUnitLength.
             color_picker: Initial value for _colorPicker.
             picked_color: Initial value for _pickedColor.
+            last_picked_color: Initial value for _lastPickedColor.
             last_used_material: Initial value for _lastUsedMaterial.
             last_created_material: Initial value for _lastCreatedMaterial.
             pressure: Initial value for Pressure.
@@ -175,6 +181,8 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             self.color_picker = color_picker
         if picked_color is not None:
             self.picked_color = picked_color
+        if last_picked_color is not None:
+            self.last_picked_color = last_picked_color
         if last_used_material is not None:
             self.last_used_material = last_used_material
         if last_created_material is not None:
@@ -282,7 +290,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @tip_reference.setter
     def tip_reference(self, target: str | Slot | None) -> None:
         """Set the TipReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TipReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -360,7 +368,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @override_active_tool.setter
     def override_active_tool(self, target: str | InteractionHandler | None) -> None:
         """Set the _overrideActiveTool reference by target ID or InteractionHandler instance."""
-        target_id: str | None = target.id if isinstance(target, InteractionHandler) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_overrideActiveTool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -774,7 +782,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @current_material.setter
     def current_material(self, target: str | IAssetProvider[Material] | None) -> None:
         """Set the CurrentMaterial reference by target ID or IAssetProvider[Material] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CurrentMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -808,7 +816,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @particle_system.setter
     def particle_system(self, target: str | ParticleSystem | None) -> None:
         """Set the ParticleSystem reference by target ID or ParticleSystem instance."""
-        target_id: str | None = target.id if isinstance(target, ParticleSystem) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ParticleSystem")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -829,7 +837,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @mesh_emitter_template.setter
     def mesh_emitter_template(self, target: str | MeshEmitter | None) -> None:
         """Set the MeshEmitterTemplate reference by target ID or MeshEmitter instance."""
-        target_id: str | None = target.id if isinstance(target, MeshEmitter) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MeshEmitterTemplate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -889,7 +897,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @color_picker.setter
     def color_picker(self, target: str | ColorDialogInterface | None) -> None:
         """Set the _colorPicker reference by target ID or ColorDialogInterface instance."""
-        target_id: str | None = target.id if isinstance(target, ColorDialogInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colorPicker")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -919,6 +927,25 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
             )
 
     @property
+    def last_picked_color(self) -> primitives.ColorX | None:
+        """The _lastPickedColor field value."""
+        member = self.get_member("_lastPickedColor")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @last_picked_color.setter
+    def last_picked_color(self, value: primitives.ColorX) -> None:
+        """Set the _lastPickedColor field value."""
+        member = self.get_member("_lastPickedColor")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "_lastPickedColor", fields.FieldColorX(value=value)
+            )
+
+    @property
     def hide_on_stroke(self) -> members.SyncList | None:
         """The _hideOnStroke member."""
         member = self.get_member("_hideOnStroke")
@@ -942,7 +969,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @last_used_material.setter
     def last_used_material(self, target: str | IAssetProvider[Material] | None) -> None:
         """Set the _lastUsedMaterial reference by target ID or IAssetProvider[Material] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_lastUsedMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -963,7 +990,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @last_created_material.setter
     def last_created_material(self, target: str | IAssetProvider[Material] | None) -> None:
         """Set the _lastCreatedMaterial reference by target ID or IAssetProvider[Material] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_lastCreatedMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1231,7 +1258,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @tip_anchor.setter
     def tip_anchor(self, target: str | Slot | None) -> None:
         """Set the TipAnchor reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TipAnchor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1664,7 +1691,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @preview_renderer.setter
     def preview_renderer(self, target: str | MeshRenderer | None) -> None:
         """Set the _previewRenderer reference by target ID or MeshRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, MeshRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_previewRenderer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1685,7 +1712,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @preview_mesh.setter
     def preview_mesh(self, target: str | BoxArrayMesh | None) -> None:
         """Set the _previewMesh reference by target ID or BoxArrayMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BoxArrayMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_previewMesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1706,7 +1733,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @preview_mesh_offset.setter
     def preview_mesh_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _previewMeshOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_previewMeshOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1727,7 +1754,7 @@ class BoxBrushTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable, 
     @preview_mesh_rotation.setter
     def preview_mesh_rotation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _previewMeshRotation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_previewMeshRotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -47,7 +47,7 @@ Unlike its non-local equivalent, every user's client will be listening for chang
     @condition.setter
     def condition(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Condition reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -68,7 +68,7 @@ Unlike its non-local equivalent, every user's client will be listening for chang
     @on_change.setter
     def on_change(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnChange reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnChange")
         if isinstance(member, members.Reference):
             member.targetId = target_id

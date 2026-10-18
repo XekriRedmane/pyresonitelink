@@ -2,6 +2,7 @@
 
 from .ai_generated_content import AI_GeneratedContent
 from .asset_optimization_block import AssetOptimizationBlock
+from .avatar_equip_block import AvatarEquipBlock
 from .destroy_block import DestroyBlock
 from .destroy_root import DestroyRoot
 from .duplicate_block import DuplicateBlock

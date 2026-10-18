@@ -9,10 +9,11 @@ from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The PBS_RimSpecular material is used in away materials, and can be used to make a normal PBS material with an emissive rim from camera view.
 
     Category: Assets/Materials/PBS
@@ -184,7 +185,7 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
     @albedo_texture.setter
     def albedo_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -224,7 +225,7 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
     @emissive_map.setter
     def emissive_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -245,7 +246,7 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
     @normal_map.setter
     def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -285,7 +286,7 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
     @occlusion_map.setter
     def occlusion_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OcclusionMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OcclusionMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -477,7 +478,7 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
     @specular_map.setter
     def specular_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the SpecularMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpecularMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -498,7 +499,7 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
     @regular.setter
     def regular(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _regular reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_regular")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -519,7 +520,7 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
     @transparent_ref.setter
     def transparent_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _transparent reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_transparent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -540,7 +541,7 @@ class PBS_RimSpecular(GeneratedComponent, IAssetProvider, ICustomInspector, IWor
     @zwrite.setter
     def zwrite(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _zwrite reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_zwrite")
         if isinstance(member, members.Reference):
             member.targetId = target_id

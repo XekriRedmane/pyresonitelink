@@ -13,10 +13,11 @@ from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The OverlayUnlitMaterial component is a material that is similar to a UnlitMaterial except it renders differently when in front or behind an object.
 
     Category: Assets/Materials/Unlit
@@ -129,7 +130,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -188,7 +189,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
     @behind_texture.setter
     def behind_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the BehindTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("BehindTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -247,7 +248,7 @@ class OverlayUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector,
     @front_texture.setter
     def front_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the FrontTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FrontTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -60,7 +60,7 @@ class ReferenceCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
     @source.setter
     def source(self, target: str | SyncRef[T] | None) -> None:
         """Set the Source reference by target ID or SyncRef[T] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -81,7 +81,7 @@ class ReferenceCopy(GenericComponent[T], IComponent, IWorldEventReceiver):
     @target.setter
     def target(self, target: str | SyncRef[T] | None) -> None:
         """Set the Target reference by target ID or SyncRef[T] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id

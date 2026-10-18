@@ -1,5 +1,8 @@
 """Generated component: LegacyWorldDetail."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,17 +10,19 @@ from pyresonitelink.data import protocols
 from pyresonitelink.generated._enums.detail_category import DetailCategory
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.text import Text
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.raw_graphic import RawGraphic
-from pyresonitelink.generated._types.static_texture_2d import StaticTexture2D
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.button import Button
-from pyresonitelink.generated._types.scroll_rect import ScrollRect
-from pyresonitelink.generated._types.image import Image
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.sprite import Sprite
 from pyresonitelink.generated._types.sync_ref import SyncRef
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.graphics.text import Text
+    from pyresonitelink.generated.uix.graphics.raw_graphic import RawGraphic
+    from pyresonitelink.generated.assets.static_texture_2d import StaticTexture2D
+    from pyresonitelink.generated.uix.interaction.button import Button
+    from pyresonitelink.generated.uix.interaction.scroll_rect import ScrollRect
+    from pyresonitelink.generated.uix.graphics.image import Image
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -381,7 +386,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @host_text.setter
     def host_text(self, target: str | Text | None) -> None:
         """Set the _hostText reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_hostText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -402,7 +407,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @session_items_root.setter
     def session_items_root(self, target: str | Slot | None) -> None:
         """Set the _sessionItemsRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_sessionItemsRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -423,7 +428,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @thumbnail_graphic.setter
     def thumbnail_graphic(self, target: str | RawGraphic | None) -> None:
         """Set the _thumbnailGraphic reference by target ID or RawGraphic instance."""
-        target_id: str | None = target.id if isinstance(target, RawGraphic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_thumbnailGraphic")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -444,7 +449,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @thumbnail_texture.setter
     def thumbnail_texture(self, target: str | StaticTexture2D | None) -> None:
         """Set the _thumbnailTexture reference by target ID or StaticTexture2D instance."""
-        target_id: str | None = target.id if isinstance(target, StaticTexture2D) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_thumbnailTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -465,7 +470,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @detail_image_root.setter
     def detail_image_root(self, target: str | Slot | None) -> None:
         """Set the _detailImageRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_detailImageRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -486,7 +491,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_root.setter
     def compact_root(self, target: str | Slot | None) -> None:
         """Set the _compactRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -507,7 +512,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_header_root.setter
     def compact_header_root(self, target: str | Slot | None) -> None:
         """Set the _compactHeaderRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactHeaderRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -528,7 +533,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @detail_header_root.setter
     def detail_header_root(self, target: str | Slot | None) -> None:
         """Set the _detailHeaderRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_detailHeaderRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -549,7 +554,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_mask_enabled.setter
     def compact_mask_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _compactMaskEnabled reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactMaskEnabled")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -570,7 +575,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_mask_root_enabled.setter
     def compact_mask_root_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _compactMaskRootEnabled reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactMaskRootEnabled")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -591,7 +596,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @open_button.setter
     def open_button(self, target: str | Button | None) -> None:
         """Set the _openButton reference by target ID or Button instance."""
-        target_id: str | None = target.id if isinstance(target, Button) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_openButton")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -612,7 +617,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @scroll_rect.setter
     def scroll_rect(self, target: str | ScrollRect | None) -> None:
         """Set the _scrollRect reference by target ID or ScrollRect instance."""
-        target_id: str | None = target.id if isinstance(target, ScrollRect) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_scrollRect")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -633,7 +638,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @expand_button.setter
     def expand_button(self, target: str | Button | None) -> None:
         """Set the _expandButton reference by target ID or Button instance."""
-        target_id: str | None = target.id if isinstance(target, Button) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_expandButton")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -654,7 +659,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @expand_icon.setter
     def expand_icon(self, target: str | Image | None) -> None:
         """Set the _expandIcon reference by target ID or Image instance."""
-        target_id: str | None = target.id if isinstance(target, Image) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_expandIcon")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -675,7 +680,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @expand_sprite.setter
     def expand_sprite(self, target: str | IAssetProvider[Sprite] | None) -> None:
         """Set the _expandSprite reference by target ID or IAssetProvider[Sprite] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_expandSprite")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -696,7 +701,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_sprite.setter
     def compact_sprite(self, target: str | IAssetProvider[Sprite] | None) -> None:
         """Set the _compactSprite reference by target ID or IAssetProvider[Sprite] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactSprite")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -717,7 +722,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @description.setter
     def description(self, target: str | Text | None) -> None:
         """Set the _description reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_description")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -738,7 +743,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @left_details_root.setter
     def left_details_root(self, target: str | Slot | None) -> None:
         """Set the _leftDetailsRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_leftDetailsRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -759,7 +764,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @right_details_root.setter
     def right_details_root(self, target: str | Slot | None) -> None:
         """Set the _rightDetailsRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rightDetailsRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -780,7 +785,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @details_text.setter
     def details_text(self, target: str | Text | None) -> None:
         """Set the _detailsText reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_detailsText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -801,7 +806,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @cycle_left_button.setter
     def cycle_left_button(self, target: str | Button | None) -> None:
         """Set the _cycleLeftButton reference by target ID or Button instance."""
-        target_id: str | None = target.id if isinstance(target, Button) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cycleLeftButton")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -822,7 +827,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @cycle_right_button.setter
     def cycle_right_button(self, target: str | Button | None) -> None:
         """Set the _cycleRightButton reference by target ID or Button instance."""
-        target_id: str | None = target.id if isinstance(target, Button) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cycleRightButton")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -843,7 +848,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_parent.setter
     def compact_parent(self, target: str | SyncRef[Slot] | None) -> None:
         """Set the _compactParent reference by target ID or SyncRef[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -864,7 +869,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_header_parent.setter
     def compact_header_parent(self, target: str | SyncRef[Slot] | None) -> None:
         """Set the _compactHeaderParent reference by target ID or SyncRef[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactHeaderParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -885,7 +890,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @sidebar_active.setter
     def sidebar_active(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _sidebarActive reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_sidebarActive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -906,7 +911,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @sidebar_anchor_min.setter
     def sidebar_anchor_min(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _sidebarAnchorMin reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_sidebarAnchorMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -927,7 +932,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @sidebar_anchor_max.setter
     def sidebar_anchor_max(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _sidebarAnchorMax reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_sidebarAnchorMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -948,7 +953,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @content_anchor_min.setter
     def content_anchor_min(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _contentAnchorMin reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_contentAnchorMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -969,7 +974,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @content_anchor_max.setter
     def content_anchor_max(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _contentAnchorMax reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_contentAnchorMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -990,7 +995,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @rect_transform_lerp.setter
     def rect_transform_lerp(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _rectTransformLerp reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rectTransformLerp")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1011,7 +1016,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @modal_anchor_min.setter
     def modal_anchor_min(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _modalAnchorMin reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_modalAnchorMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1032,7 +1037,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @modal_anchor_max.setter
     def modal_anchor_max(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _modalAnchorMax reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_modalAnchorMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1053,7 +1058,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_buttons_active.setter
     def compact_buttons_active(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _compactButtonsActive reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactButtonsActive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1074,7 +1079,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_buttons_anchor_min.setter
     def compact_buttons_anchor_min(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _compactButtonsAnchorMin reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactButtonsAnchorMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1095,7 +1100,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_buttons_anchor_max.setter
     def compact_buttons_anchor_max(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _compactButtonsAnchorMax reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactButtonsAnchorMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1116,7 +1121,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_detail_rect.setter
     def compact_detail_rect(self, target: str | IField[primitives.Rect] | None) -> None:
         """Set the _compactDetailRect reference by target ID or IField[primitives.Rect] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactDetailRect")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1137,7 +1142,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_detail_button_rect.setter
     def compact_detail_button_rect(self, target: str | IField[primitives.Rect] | None) -> None:
         """Set the _compactDetailButtonRect reference by target ID or IField[primitives.Rect] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactDetailButtonRect")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1158,7 +1163,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_detail_text.setter
     def compact_detail_text(self, target: str | Text | None) -> None:
         """Set the _compactDetailText reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactDetailText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1179,7 +1184,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @compact_detail_expand_button.setter
     def compact_detail_expand_button(self, target: str | Button | None) -> None:
         """Set the _compactDetailExpandButton reference by target ID or Button instance."""
-        target_id: str | None = target.id if isinstance(target, Button) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_compactDetailExpandButton")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1200,7 +1205,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
     @new_session_item_root.setter
     def new_session_item_root(self, target: str | Slot | None) -> None:
         """Set the _newSessionItemRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_newSessionItemRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1210,7 +1215,7 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.Slot'),
             )
 
-    async def open_world_detail(self, resolink: protocols.ResoniteLinkClient, item: str, debug: bool = False) -> dict:
+    async def open_world_detail(self, resolink: protocols.ResoniteLinkClient, item: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Call the OpenWorldDetail sync method.
 
         Args:
@@ -1222,6 +1227,6 @@ class LegacyWorldDetail(GeneratedComponent, IComponent, IWorldEventReceiver):
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "OpenWorldDetail", {"item": item}, debug,
+            resolink, "OpenWorldDetail", {"item": members.DataReference(targetID=item) if isinstance(item, str) else item}, debug,
         )
 

@@ -38,7 +38,7 @@ class AvatarMouthTrackingInfo(GeneratedComponent, IComponent, IWorldEventReceive
     @mouth_data_source.setter
     def mouth_data_source(self, target: str | IMouthTrackingSourceComponent | None) -> None:
         """Set the MouthDataSource reference by target ID or IMouthTrackingSourceComponent instance."""
-        target_id: str | None = target.id if isinstance(target, IMouthTrackingSourceComponent) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MouthDataSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id

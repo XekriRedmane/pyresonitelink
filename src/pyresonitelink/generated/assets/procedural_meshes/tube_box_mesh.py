@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class TubeBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class TubeBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The TubeBoxMesh component is used to generate geometry that is used with a MeshRenderer.
 
     Category: Assets/Procedural Meshes

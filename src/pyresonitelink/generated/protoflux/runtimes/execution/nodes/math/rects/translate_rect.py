@@ -45,7 +45,7 @@ class TranslateRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
     @rect.setter
     def rect(self, target: str | INodeValueOutput[primitives.Rect] | None) -> None:
         """Set the Rect reference by target ID or INodeValueOutput[primitives.Rect] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Rect")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class TranslateRect(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
     @offset.setter
     def offset(self, target: str | INodeValueOutput[primitives.Float2] | None) -> None:
         """Set the Offset reference by target ID or INodeValueOutput[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Offset")
         if isinstance(member, members.Reference):
             member.targetId = target_id

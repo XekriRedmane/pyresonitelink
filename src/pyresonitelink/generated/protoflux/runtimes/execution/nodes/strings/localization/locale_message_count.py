@@ -43,7 +43,7 @@ class LocaleMessageCount(GeneratedComponent, INodeValueOutput, IExecutionNode, I
     @locale.setter
     def locale(self, target: str | INodeObjectOutput[LocaleResource] | None) -> None:
         """Set the Locale reference by target ID or INodeObjectOutput[LocaleResource] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Locale")
         if isinstance(member, members.Reference):
             member.targetId = target_id

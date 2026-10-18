@@ -1,0 +1,11 @@
+{
+  "description": "The IsAprilFools node returns if it's April 1st as a bool.",
+  "category": "",
+  "fields": {
+    "* ([[Type:bool|bool]])": "``true`` if it's April 1st, ``false`` otherwise."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsAprilFools&action=raw"
+}

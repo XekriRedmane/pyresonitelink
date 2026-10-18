@@ -48,7 +48,7 @@ class MatrixElement_Float4x4(GeneratedComponent, INodeValueOutput, IExecutionNod
     @matrix.setter
     def matrix(self, target: str | INodeValueOutput[primitives.Float4x4] | None) -> None:
         """Set the Matrix reference by target ID or INodeValueOutput[primitives.Float4x4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Matrix")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class MatrixElement_Float4x4(GeneratedComponent, INodeValueOutput, IExecutionNod
     @row.setter
     def row(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Row reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Row")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ class MatrixElement_Float4x4(GeneratedComponent, INodeValueOutput, IExecutionNod
     @column.setter
     def column(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Column reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Column")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -45,7 +45,7 @@ class PackRows_Float2x2(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
     @row0.setter
     def row0(self, target: str | INodeValueOutput[primitives.Float2] | None) -> None:
         """Set the Row0 reference by target ID or INodeValueOutput[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Row0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class PackRows_Float2x2(GeneratedComponent, INodeValueOutput, IExecutionNode, IN
     @row1.setter
     def row1(self, target: str | INodeValueOutput[primitives.Float2] | None) -> None:
         """Set the Row1 reference by target ID or INodeValueOutput[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Row1")
         if isinstance(member, members.Reference):
             member.targetId = target_id

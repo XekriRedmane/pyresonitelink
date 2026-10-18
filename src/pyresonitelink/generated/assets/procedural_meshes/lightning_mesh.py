@@ -12,10 +12,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class LightningMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class LightningMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The LightingMesh component generates geometry of a procedural lighting bolt for use with a MeshRenderer.
 
     Category: Assets/Procedural Meshes

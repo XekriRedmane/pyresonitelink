@@ -1,15 +1,20 @@
 """Generated component: LegacyWorldThumbnailItem."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.raw_graphic import RawGraphic
-from pyresonitelink.generated._types.static_texture_2d import StaticTexture2D
-from pyresonitelink.generated._types.rect_transform import RectTransform
-from pyresonitelink.generated._types.text import Text
-from pyresonitelink.generated._types.image import Image
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.graphics.raw_graphic import RawGraphic
+    from pyresonitelink.generated.assets.static_texture_2d import StaticTexture2D
+    from pyresonitelink.generated.uix.rect_transform import RectTransform
+    from pyresonitelink.generated.uix.graphics.text import Text
+    from pyresonitelink.generated.uix.graphics.image import Image
 from pyresonitelink.generated._types.ibutton_press_receiver import IButtonPressReceiver
 from pyresonitelink.generated._types.ibutton_hover_receiver import IButtonHoverReceiver
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -184,7 +189,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @thumbnail_graphic.setter
     def thumbnail_graphic(self, target: str | RawGraphic | None) -> None:
         """Set the _thumbnailGraphic reference by target ID or RawGraphic instance."""
-        target_id: str | None = target.id if isinstance(target, RawGraphic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_thumbnailGraphic")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -205,7 +210,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @thumbnail_texture.setter
     def thumbnail_texture(self, target: str | StaticTexture2D | None) -> None:
         """Set the _thumbnailTexture reference by target ID or StaticTexture2D instance."""
-        target_id: str | None = target.id if isinstance(target, StaticTexture2D) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_thumbnailTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -226,7 +231,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @name_root.setter
     def name_root(self, target: str | RectTransform | None) -> None:
         """Set the _nameRoot reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_nameRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -247,7 +252,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @detail_root.setter
     def detail_root(self, target: str | RectTransform | None) -> None:
         """Set the _detailRoot reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_detailRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -268,7 +273,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @visited_root.setter
     def visited_root(self, target: str | RectTransform | None) -> None:
         """Set the _visitedRoot reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_visitedRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -289,7 +294,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @counter_root.setter
     def counter_root(self, target: str | RectTransform | None) -> None:
         """Set the _counterRoot reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_counterRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -310,7 +315,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @icons_root.setter
     def icons_root(self, target: str | RectTransform | None) -> None:
         """Set the _iconsRoot reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_iconsRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -331,7 +336,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @close_button.setter
     def close_button(self, target: str | RectTransform | None) -> None:
         """Set the _closeButton reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_closeButton")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -352,7 +357,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @name_text.setter
     def name_text(self, target: str | Text | None) -> None:
         """Set the _nameText reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_nameText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -373,7 +378,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @detail_text.setter
     def detail_text(self, target: str | Text | None) -> None:
         """Set the _detailText reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_detailText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -394,7 +399,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @counter_text.setter
     def counter_text(self, target: str | Text | None) -> None:
         """Set the _counterText reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_counterText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -415,7 +420,7 @@ class LegacyWorldThumbnailItem(GeneratedComponent, IButtonPressReceiver, IButton
     @border_overlay.setter
     def border_overlay(self, target: str | Image | None) -> None:
         """Set the _borderOverlay reference by target ID or Image instance."""
-        target_id: str | None = target.id if isinstance(target, Image) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_borderOverlay")
         if isinstance(member, members.Reference):
             member.targetId = target_id

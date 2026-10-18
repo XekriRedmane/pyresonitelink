@@ -43,7 +43,7 @@ class GetComponentEnabled(GeneratedComponent, INodeValueOutput, IExecutionNode, 
     @component_.setter
     def component_(self, target: str | INodeObjectOutput[IComponent] | None) -> None:
         """Set the Component reference by target ID or INodeObjectOutput[IComponent] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Component")
         if isinstance(member, members.Reference):
             member.targetId = target_id

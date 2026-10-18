@@ -1,11 +1,16 @@
 """Generated component: ProtoFluxNodeDebugInfo."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.proto_flux_node import ProtoFluxNode
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.none.proto_flux_node import ProtoFluxNode
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -70,7 +75,7 @@ class ProtoFluxNodeDebugInfo(GeneratedComponent, IComponent, IWorldEventReceiver
     @node.setter
     def node(self, target: str | ProtoFluxNode | None) -> None:
         """Set the Node reference by target ID or ProtoFluxNode instance."""
-        target_id: str | None = target.id if isinstance(target, ProtoFluxNode) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             member.targetId = target_id

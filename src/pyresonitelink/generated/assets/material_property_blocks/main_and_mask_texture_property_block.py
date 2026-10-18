@@ -8,10 +8,11 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class MainAndMaskTexturePropertyBlock(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class MainAndMaskTexturePropertyBlock(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The MainAndMaskTexturePropertyBlock component is used to modify material properties on mesh renderers and skinned mesh renderers as part of their material Property blocks. This is useful in instances where having lots of extra materials is less performant than modifying a material using a Property Block.
 
     Category: Assets/Material Property Blocks
@@ -69,7 +70,7 @@ class MainAndMaskTexturePropertyBlock(GeneratedComponent, IAssetProvider, ICusto
     @texture.setter
     def texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Texture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +91,7 @@ class MainAndMaskTexturePropertyBlock(GeneratedComponent, IAssetProvider, ICusto
     @mask_texture.setter
     def mask_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the MaskTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MaskTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -1,5 +1,8 @@
 """Generated component: TrackedDevicePositioner."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,8 +10,10 @@ from pyresonitelink.generated._enums.body_node import BodyNode
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.avatar_object_slot import AvatarObjectSlot
-from pyresonitelink.generated._types.user_pose_controller import UserPoseController
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.avatar_object_slot import AvatarObjectSlot
+    from pyresonitelink.generated.users.controllers.user_pose_controller import UserPoseController
 from pyresonitelink.generated._types.iinput_update_receiver import IInputUpdateReceiver
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -145,7 +150,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
     @reference_model.setter
     def reference_model(self, target: str | Slot | None) -> None:
         """Set the ReferenceModel reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ReferenceModel")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -166,7 +171,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
     @body_node_root.setter
     def body_node_root(self, target: str | Slot | None) -> None:
         """Set the BodyNodeRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("BodyNodeRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -187,7 +192,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
     @object_slot.setter
     def object_slot(self, target: str | AvatarObjectSlot | None) -> None:
         """Set the ObjectSlot reference by target ID or AvatarObjectSlot instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarObjectSlot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ObjectSlot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -284,7 +289,7 @@ class TrackedDevicePositioner(GeneratedComponent, IInputUpdateReceiver, ICompone
     @pose_filter.setter
     def pose_filter(self, target: str | UserPoseController | None) -> None:
         """Set the PoseFilter reference by target ID or UserPoseController instance."""
-        target_id: str | None = target.id if isinstance(target, UserPoseController) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PoseFilter")
         if isinstance(member, members.Reference):
             member.targetId = target_id

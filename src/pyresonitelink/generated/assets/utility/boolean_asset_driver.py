@@ -83,7 +83,7 @@ class BooleanAssetDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
     @target.setter
     def target(self, target: str | AssetRef[A] | None) -> None:
         """Set the Target reference by target ID or AssetRef[A] instance."""
-        target_id: str | None = target.id if isinstance(target, AssetRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -104,7 +104,7 @@ class BooleanAssetDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
     @false_target.setter
     def false_target(self, target: str | IAssetProvider[A] | None) -> None:
         """Set the FalseTarget reference by target ID or IAssetProvider[A] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FalseTarget")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -125,7 +125,7 @@ class BooleanAssetDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
     @true_target.setter
     def true_target(self, target: str | IAssetProvider[A] | None) -> None:
         """Set the TrueTarget reference by target ID or IAssetProvider[A] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TrueTarget")
         if isinstance(member, members.Reference):
             member.targetId = target_id

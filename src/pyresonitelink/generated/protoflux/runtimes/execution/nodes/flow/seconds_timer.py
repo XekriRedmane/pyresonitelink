@@ -56,7 +56,7 @@ class SecondsTimer(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, 
     @updating_user.setter
     def updating_user(self, target: str | IGlobalValueProxy[User] | None) -> None:
         """Set the UpdatingUser reference by target ID or IGlobalValueProxy[User] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UpdatingUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -77,7 +77,7 @@ class SecondsTimer(GeneratedComponent, IExecutionUpdateReceiver, IMappableNode, 
     @skip_if_null.setter
     def skip_if_null(self, target: str | IGlobalValueProxy[primitives.Bool] | None) -> None:
         """Set the SkipIfNull reference by target ID or IGlobalValueProxy[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SkipIfNull")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +100,7 @@ This input can be driven by a Local User node to generate impulses for every use
     @on_update.setter
     def on_update(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnUpdate reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnUpdate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -121,7 +121,7 @@ This input can be driven by a Local User node to generate impulses for every use
     @interval.setter
     def interval(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Interval reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Interval")
         if isinstance(member, members.Reference):
             member.targetId = target_id

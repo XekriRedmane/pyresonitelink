@@ -135,7 +135,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit0.setter
     def bit0(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit0 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -156,7 +156,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit1.setter
     def bit1(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit1 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -177,7 +177,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit2.setter
     def bit2(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit2 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit2")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -198,7 +198,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit3.setter
     def bit3(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit3 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit3")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -219,7 +219,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit4.setter
     def bit4(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit4 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit4")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -240,7 +240,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit5.setter
     def bit5(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit5 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit5")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -261,7 +261,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit6.setter
     def bit6(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit6 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit6")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -282,7 +282,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit7.setter
     def bit7(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit7 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit7")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -303,7 +303,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit8.setter
     def bit8(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit8 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit8")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -324,7 +324,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit9.setter
     def bit9(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit9 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit9")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -345,7 +345,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit10.setter
     def bit10(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit10 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit10")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -366,7 +366,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit11.setter
     def bit11(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit11 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit11")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -387,7 +387,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit12.setter
     def bit12(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit12 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit12")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -408,7 +408,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit13.setter
     def bit13(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit13 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit13")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -429,7 +429,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit14.setter
     def bit14(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit14 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit14")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -450,7 +450,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit15.setter
     def bit15(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit15 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit15")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -471,7 +471,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit16.setter
     def bit16(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit16 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit16")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -492,7 +492,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit17.setter
     def bit17(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit17 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit17")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -513,7 +513,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit18.setter
     def bit18(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit18 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit18")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -534,7 +534,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit19.setter
     def bit19(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit19 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit19")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -555,7 +555,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit20.setter
     def bit20(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit20 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit20")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -576,7 +576,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit21.setter
     def bit21(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit21 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit21")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -597,7 +597,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit22.setter
     def bit22(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit22 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit22")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -618,7 +618,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit23.setter
     def bit23(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit23 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit23")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -639,7 +639,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit24.setter
     def bit24(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit24 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit24")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -660,7 +660,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit25.setter
     def bit25(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit25 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit25")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -681,7 +681,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit26.setter
     def bit26(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit26 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit26")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -702,7 +702,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit27.setter
     def bit27(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit27 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit27")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -723,7 +723,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit28.setter
     def bit28(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit28 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit28")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -744,7 +744,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit29.setter
     def bit29(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit29 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit29")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -765,7 +765,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit30.setter
     def bit30(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit30 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit30")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -786,7 +786,7 @@ class ComposeBits_int(GeneratedComponent, INodeValueOutput, IExecutionNode, INod
     @bit31.setter
     def bit31(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Bit31 reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Bit31")
         if isinstance(member, members.Reference):
             member.targetId = target_id

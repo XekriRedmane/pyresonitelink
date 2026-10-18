@@ -97,7 +97,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @item_name.setter
     def item_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -118,7 +118,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @spawning_user.setter
     def spawning_user(self, target: str | UserRef | None) -> None:
         """Set the SpawningUser reference by target ID or UserRef instance."""
-        target_id: str | None = target.id if isinstance(target, UserRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -139,7 +139,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @spawning_user_id.setter
     def spawning_user_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the SpawningUserID reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpawningUserID")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -179,7 +179,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @progress_known.setter
     def progress_known(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the ProgressKnown reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ProgressKnown")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -200,7 +200,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @progress.setter
     def progress(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the Progress reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Progress")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -221,7 +221,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @processed_count_known.setter
     def processed_count_known(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the ProcessedCountKnown reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ProcessedCountKnown")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -242,7 +242,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @processed_item_count.setter
     def processed_item_count(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the ProcessedItemCount reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ProcessedItemCount")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -263,7 +263,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @total_item_count_known.setter
     def total_item_count_known(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the TotalItemCountKnown reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalItemCountKnown")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -284,7 +284,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @total_item_count.setter
     def total_item_count(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalItemCount reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalItemCount")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -305,7 +305,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @phase_name.setter
     def phase_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the PhaseName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PhaseName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -326,7 +326,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @sub_phase_name.setter
     def sub_phase_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the SubPhaseName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SubPhaseName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -347,7 +347,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @stage.setter
     def stage(self, target: str | IField[ProgressStage] | None) -> None:
         """Set the Stage reference by target ID or IField[ProgressStage] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Stage")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -368,7 +368,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @has_completed.setter
     def has_completed(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HasCompleted reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HasCompleted")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -389,7 +389,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @has_failed.setter
     def has_failed(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HasFailed reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HasFailed")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -410,7 +410,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @completion_message.setter
     def completion_message(self, target: str | IField[primitives.String] | None) -> None:
         """Set the CompletionMessage reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CompletionMessage")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -431,7 +431,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @failure_reason.setter
     def failure_reason(self, target: str | IField[primitives.String] | None) -> None:
         """Set the FailureReason reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FailureReason")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -452,7 +452,7 @@ class ProgressBarInterface(GeneratedComponent, IItemMetadataSource, IWorldEventR
     @can_be_hidden.setter
     def can_be_hidden(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the CanBeHidden reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CanBeHidden")
         if isinstance(member, members.Reference):
             member.targetId = target_id

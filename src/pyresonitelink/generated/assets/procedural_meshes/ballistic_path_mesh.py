@@ -11,10 +11,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class BallisticPathMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The ballistics path mesh is a component that generates a stripe or tube mesh that traces the future path of a virtual thrown object.
 
 Tube mode currently does not work due to a small oversight. See issue 2901

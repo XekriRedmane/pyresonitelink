@@ -155,7 +155,7 @@ class UI_TextUnlitMaterial(GeneratedComponent, IUIX_Material, ITextMaterial, ICu
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -176,7 +176,7 @@ class UI_TextUnlitMaterial(GeneratedComponent, IUIX_Material, ITextMaterial, ICu
     @font_atlas.setter
     def font_atlas(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the FontAtlas reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FontAtlas")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -46,7 +46,7 @@ class OnGrabbableReleased(GeneratedComponent, IExecutionNode, INode, ICustomInsp
     @grabbable.setter
     def grabbable(self, target: str | IGlobalValueProxy[IGrabbable] | None) -> None:
         """Set the Grabbable reference by target ID or IGlobalValueProxy[IGrabbable] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Grabbable")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -67,7 +67,7 @@ class OnGrabbableReleased(GeneratedComponent, IExecutionNode, INode, ICustomInsp
     @on_released.setter
     def on_released(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnReleased reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnReleased")
         if isinstance(member, members.Reference):
             member.targetId = target_id

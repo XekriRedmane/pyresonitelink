@@ -1,11 +1,16 @@
 """Generated component: AudioFilterBlendWrapper."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.audio_dsp_effect import AudioDSP_Effect
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.none.audio_dsp_effect import AudioDSP_Effect
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -64,7 +69,7 @@ class AudioFilterBlendWrapper(GeneratedComponent, IComponent, IWorldEventReceive
     @nested_filter.setter
     def nested_filter(self, target: str | AudioDSP_Effect | None) -> None:
         """Set the NestedFilter reference by target ID or AudioDSP_Effect instance."""
-        target_id: str | None = target.id if isinstance(target, AudioDSP_Effect) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NestedFilter")
         if isinstance(member, members.Reference):
             member.targetId = target_id

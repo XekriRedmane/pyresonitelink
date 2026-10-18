@@ -89,7 +89,7 @@ RemoteConnectionPointDriver allows driving local position, vector, orientation a
     @target_point.setter
     def target_point(self, target: str | Slot | None) -> None:
         """Set the TargetPoint reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetPoint")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -167,7 +167,7 @@ RemoteConnectionPointDriver allows driving local position, vector, orientation a
     @local_point.setter
     def local_point(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the LocalPoint reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LocalPoint")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -188,7 +188,7 @@ RemoteConnectionPointDriver allows driving local position, vector, orientation a
     @local_vector.setter
     def local_vector(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the LocalVector reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LocalVector")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -209,7 +209,7 @@ RemoteConnectionPointDriver allows driving local position, vector, orientation a
     @local_orientation.setter
     def local_orientation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the LocalOrientation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LocalOrientation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -230,7 +230,7 @@ RemoteConnectionPointDriver allows driving local position, vector, orientation a
     @local_size.setter
     def local_size(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the LocalSize reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LocalSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id

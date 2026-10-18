@@ -1,15 +1,20 @@
 """Generated component: LegacySlider."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.legacy_ui_style import LegacyUIStyle
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.multi_bevel_stripe_mesh import MultiBevelStripeMesh
-from pyresonitelink.generated._types.bevel_stripe_mesh import BevelStripeMesh
-from pyresonitelink.generated._types.pbs_rim_metallic import PBS_RimMetallic
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.visuals.legacy_ui_style import LegacyUIStyle
+    from pyresonitelink.generated.assets.procedural_meshes.legacy_ui.multi_bevel_stripe_mesh import MultiBevelStripeMesh
+    from pyresonitelink.generated.assets.procedural_meshes.legacy_ui.bevel_stripe_mesh import BevelStripeMesh
+    from pyresonitelink.generated.assets.materials.pbs.pbs_rim_metallic import PBS_RimMetallic
 from pyresonitelink.generated._types.islider import ISlider
 from pyresonitelink.generated._types.itouchable import ITouchable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -153,7 +158,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @style.setter
     def style(self, target: str | LegacyUIStyle | None) -> None:
         """Set the Style reference by target ID or LegacyUIStyle instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyUIStyle) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Style")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -231,7 +236,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @drive_field.setter
     def drive_field(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the DriveField reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DriveField")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -575,7 +580,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @track_mesh.setter
     def track_mesh(self, target: str | MultiBevelStripeMesh | None) -> None:
         """Set the _trackMesh reference by target ID or MultiBevelStripeMesh instance."""
-        target_id: str | None = target.id if isinstance(target, MultiBevelStripeMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_trackMesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -596,7 +601,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @left_mesh.setter
     def left_mesh(self, target: str | BevelStripeMesh | None) -> None:
         """Set the _leftMesh reference by target ID or BevelStripeMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BevelStripeMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_leftMesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -617,7 +622,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @right_mesh.setter
     def right_mesh(self, target: str | BevelStripeMesh | None) -> None:
         """Set the _rightMesh reference by target ID or BevelStripeMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BevelStripeMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rightMesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -638,7 +643,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @cursor_mesh.setter
     def cursor_mesh(self, target: str | BevelStripeMesh | None) -> None:
         """Set the _cursorMesh reference by target ID or BevelStripeMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BevelStripeMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cursorMesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -659,7 +664,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @track_material.setter
     def track_material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _trackMaterial reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_trackMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -680,7 +685,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @left_material.setter
     def left_material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _leftMaterial reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_leftMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -701,7 +706,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @right_material.setter
     def right_material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _rightMaterial reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rightMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -722,7 +727,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @cursor_material.setter
     def cursor_material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _cursorMaterial reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cursorMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -743,7 +748,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @left_position.setter
     def left_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _leftPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_leftPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -764,7 +769,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @right_position.setter
     def right_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _rightPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rightPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -785,7 +790,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @cursor_position.setter
     def cursor_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _cursorPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cursorPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -806,7 +811,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @left_collider_size.setter
     def left_collider_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _leftColliderSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_leftColliderSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -827,7 +832,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @right_collider_size.setter
     def right_collider_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _rightColliderSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rightColliderSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -848,7 +853,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @track_collider_size.setter
     def track_collider_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _trackColliderSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_trackColliderSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -869,7 +874,7 @@ class LegacySlider(GeneratedComponent, ISlider, ITouchable, IWorldEventReceiver)
     @cursor_collider_size.setter
     def cursor_collider_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _cursorColliderSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cursorColliderSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id

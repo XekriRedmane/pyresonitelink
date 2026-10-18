@@ -1,13 +1,19 @@
 """Generated component: DynamicBoneChain."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
+from pyresonitelink.data import protocols
 from pyresonitelink.generated._enums.vibrate_preset import VibratePreset
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.grabber import Grabber
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.grabber import Grabber
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.igrabbable import IGrabbable
 from pyresonitelink.generated._types.idestroy_block import IDestroyBlock
@@ -901,7 +907,7 @@ The Dynamic Bone Chain component contains various properties for adjusting the p
     @effector_target.setter
     def effector_target(self, target: str | Slot | None) -> None:
         """Set the EffectorTarget reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EffectorTarget")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -960,7 +966,7 @@ The Dynamic Bone Chain component contains various properties for adjusting the p
     @active_grabber.setter
     def active_grabber(self, target: str | Grabber | None) -> None:
         """Set the _activeGrabber reference by target ID or Grabber instance."""
-        target_id: str | None = target.id if isinstance(target, Grabber) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_activeGrabber")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -982,4 +988,45 @@ The Dynamic Bone Chain component contains various properties for adjusting the p
     def bones(self, value: members.SyncList) -> None:
         """Set Bones. The bones that should be controlled by this dynamic bone chain."""
         self.set_member("Bones", value)
+
+    async def setup_from_children(self, resolink: protocols.ResoniteLinkClient, root: str | workers.Worker | GeneratedComponent, force_link: primitives.Bool, debug: bool = False) -> dict:
+        """Sets up bones from children, ignoring ones already driven.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            root: The root parameter.
+            force_link: The forceLink parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetupFromChildren", {"root": members.DataReference(targetID=root) if isinstance(root, str) else root, "forceLink": fields.FieldBool(value=force_link)}, debug,
+        )
+
+    async def setup_from_rig_children(self, resolink: protocols.ResoniteLinkClient, rig: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
+        """Call the SetupFromRigChildren sync method.
+
+        Args:
+            resolink: Connected ResoniteLink client.
+            rig: The rig parameter.
+            debug: Print request/response JSON.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetupFromRigChildren", {"rig": members.DataReference(targetID=rig) if isinstance(rig, str) else rig}, debug,
+        )
+
+    async def setup_from_rig_children_0(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the SetupFromRigChildren sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "SetupFromRigChildren", {}, debug,
+        )
 

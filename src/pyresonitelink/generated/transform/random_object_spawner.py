@@ -1,5 +1,6 @@
 """Generated component: RandomObjectSpawner."""
 
+from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
@@ -68,6 +69,6 @@ Prior to Build 2020.11.8.605, this component would duplicate a random slot from 
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "SpawnAtPoint", {"point": point}, debug,
+            resolink, "SpawnAtPoint", {"point": fields.FieldFloat3(value=point)}, debug,
         )
 

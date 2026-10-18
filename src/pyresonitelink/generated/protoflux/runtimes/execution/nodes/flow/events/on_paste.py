@@ -45,7 +45,7 @@ TODO: Does this node fire when the entire node group this is connected to is loa
     @trigger.setter
     def trigger(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the Trigger reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Trigger")
         if isinstance(member, members.Reference):
             member.targetId = target_id

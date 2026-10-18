@@ -58,7 +58,7 @@ When called, this node will add the locomotion to the user in question.
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -79,7 +79,7 @@ When called, this node will add the locomotion to the user in question.
     @modules_root.setter
     def modules_root(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the ModulesRoot reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ModulesRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +100,7 @@ When called, this node will add the locomotion to the user in question.
     @target_user.setter
     def target_user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the TargetUser reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -121,7 +121,7 @@ When called, this node will add the locomotion to the user in question.
     @clear_existing.setter
     def clear_existing(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the ClearExisting reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ClearExisting")
         if isinstance(member, members.Reference):
             member.targetId = target_id

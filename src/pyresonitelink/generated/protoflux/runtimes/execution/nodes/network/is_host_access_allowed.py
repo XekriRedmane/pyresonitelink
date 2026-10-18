@@ -52,7 +52,7 @@ If you provide a scheme (also called a protocol) inside the host string, it will
     @host.setter
     def host(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Host reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Host")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +73,7 @@ If you provide a scheme (also called a protocol) inside the host string, it will
     @port.setter
     def port(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Port reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Port")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -94,7 +94,7 @@ If you provide a scheme (also called a protocol) inside the host string, it will
     @scope.setter
     def scope(self, target: str | INodeValueOutput[HostAccessScope] | None) -> None:
         """Set the Scope reference by target ID or INodeValueOutput[HostAccessScope] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Scope")
         if isinstance(member, members.Reference):
             member.targetId = target_id

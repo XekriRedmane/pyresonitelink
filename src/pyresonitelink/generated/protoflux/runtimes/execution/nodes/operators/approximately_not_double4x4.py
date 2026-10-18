@@ -48,7 +48,7 @@ class ApproximatelyNot_Double4x4(GeneratedComponent, INodeValueOutput, IExecutio
     @a.setter
     def a(self, target: str | INodeValueOutput[primitives.Double4x4] | None) -> None:
         """Set the A reference by target ID or INodeValueOutput[primitives.Double4x4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class ApproximatelyNot_Double4x4(GeneratedComponent, INodeValueOutput, IExecutio
     @b.setter
     def b(self, target: str | INodeValueOutput[primitives.Double4x4] | None) -> None:
         """Set the B reference by target ID or INodeValueOutput[primitives.Double4x4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("B")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ class ApproximatelyNot_Double4x4(GeneratedComponent, INodeValueOutput, IExecutio
     @epsilon.setter
     def epsilon(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the Epsilon reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Epsilon")
         if isinstance(member, members.Reference):
             member.targetId = target_id

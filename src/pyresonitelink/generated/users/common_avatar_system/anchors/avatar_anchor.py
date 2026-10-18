@@ -186,7 +186,7 @@ When a user is anchored to an an anchor, first ``TransformRestoreMode`` takes it
     @position_reference.setter
     def position_reference(self, target: str | Slot | None) -> None:
         """Set the PositionReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PositionReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -227,7 +227,7 @@ When a user is anchored to an an anchor, first ``TransformRestoreMode`` takes it
     @rotation_reference.setter
     def rotation_reference(self, target: str | Slot | None) -> None:
         """Set the RotationReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RotationReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -345,7 +345,7 @@ When a user is anchored to an an anchor, first ``TransformRestoreMode`` takes it
     @restore_reference.setter
     def restore_reference(self, target: str | Slot | None) -> None:
         """Set the RestoreReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RestoreReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -392,7 +392,7 @@ When a user is anchored to an an anchor, first ``TransformRestoreMode`` takes it
     @original_space.setter
     def original_space(self, target: str | Slot | None) -> None:
         """Set the _originalSpace reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_originalSpace")
         if isinstance(member, members.Reference):
             member.targetId = target_id

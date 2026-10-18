@@ -5,15 +5,15 @@ from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.generated._enums.color_profile import ColorProfile
-from pyresonitelink.generated._enums.spherical_harmonics_l1 import SphericalHarmonicsL1
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class IcoSphereMeshSH1(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class IcoSphereMeshSH1(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The Ico Sphere Mesh SH1 component creates Ico Sphere data using Sphercal harmonics.
 
     Category: Assets/Procedural Meshes
@@ -21,7 +21,7 @@ class IcoSphereMeshSH1(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.IcoSphereMeshSH1"
 
-    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, radius: primitives.Float | None = None, subdivisions: primitives.Int | None = None, flat_shading: primitives.Bool | None = None, flat_face_extrude: primitives.Float | None = None, flat_face_scale: primitives.Float | None = None, colors: SphericalHarmonicsL1 | str | None = None, radius_multiplier: SphericalHarmonicsL1 | str | None = None, negative_radius_inverts_color: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, high_priority_integration: primitives.Bool | None = None, override_bounding_box: primitives.Bool | None = None, overriden_bounding_box: primitives.BoundingBox | None = None, profile: ColorProfile | str | None = None, radius: primitives.Float | None = None, subdivisions: primitives.Int | None = None, flat_shading: primitives.Bool | None = None, flat_face_extrude: primitives.Float | None = None, flat_face_scale: primitives.Float | None = None, colors: primitives.SphericalHarmonicsL1 | None = None, radius_multiplier: primitives.SphericalHarmonicsL1 | None = None, negative_radius_inverts_color: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -238,43 +238,41 @@ class IcoSphereMeshSH1(GeneratedComponent, IAssetProvider, ICustomInspector, IWo
             )
 
     @property
-    def colors(self) -> SphericalHarmonicsL1 | None:
+    def colors(self) -> primitives.SphericalHarmonicsL1 | None:
         """The spherical harmonic colors to use."""
         member = self.get_member("Colors")
-        if isinstance(member, members.FieldEnum) and member.value is not None:
-            return SphericalHarmonicsL1(member.value)
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @colors.setter
-    def colors(self, value: SphericalHarmonicsL1 | str) -> None:
-        """Set Colors. The spherical harmonic colors to use."""
+    def colors(self, value: primitives.SphericalHarmonicsL1) -> None:
+        """Set the Colors field value."""
         member = self.get_member("Colors")
-        if isinstance(member, members.FieldEnum):
-            member.value = str(value)
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
         else:
             self.set_member(
-                "Colors",
-                members.FieldEnum(value=str(value)),
+                "Colors", fields.FieldSphericalHarmonicsL1(value=value)
             )
 
     @property
-    def radius_multiplier(self) -> SphericalHarmonicsL1 | None:
+    def radius_multiplier(self) -> primitives.SphericalHarmonicsL1 | None:
         """The spherical harmonics to use to influence the mesh radius at different spots."""
         member = self.get_member("RadiusMultiplier")
-        if isinstance(member, members.FieldEnum) and member.value is not None:
-            return SphericalHarmonicsL1(member.value)
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @radius_multiplier.setter
-    def radius_multiplier(self, value: SphericalHarmonicsL1 | str) -> None:
-        """Set RadiusMultiplier. The spherical harmonics to use to influence the mesh radius at different spots."""
+    def radius_multiplier(self, value: primitives.SphericalHarmonicsL1) -> None:
+        """Set the RadiusMultiplier field value."""
         member = self.get_member("RadiusMultiplier")
-        if isinstance(member, members.FieldEnum):
-            member.value = str(value)
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
         else:
             self.set_member(
-                "RadiusMultiplier",
-                members.FieldEnum(value=str(value)),
+                "RadiusMultiplier", fields.FieldSphericalHarmonicsL1(value=value)
             )
 
     @property

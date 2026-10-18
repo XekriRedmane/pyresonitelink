@@ -1,5 +1,8 @@
 """Generated component: AssetFrameSlot."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,7 +10,9 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.box_collider import BoxCollider
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.physics.colliders.box_collider import BoxCollider
 from pyresonitelink.generated._types.igrabbable_receiver import IGrabbableReceiver
 from pyresonitelink.generated._types.igrabbable_reparent_block import IGrabbableReparentBlock
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -138,7 +143,7 @@ Optionally it calls a sync delegate that takes an argument of the chosen asset t
     @current.setter
     def current(self, target: str | Slot | None) -> None:
         """Set the _current reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_current")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -178,7 +183,7 @@ Optionally it calls a sync delegate that takes an argument of the chosen asset t
     @frame_size_ref.setter
     def frame_size_ref(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _frameSize reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_frameSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -199,7 +204,7 @@ Optionally it calls a sync delegate that takes an argument of the chosen asset t
     @collider.setter
     def collider(self, target: str | BoxCollider | None) -> None:
         """Set the _collider reference by target ID or BoxCollider instance."""
-        target_id: str | None = target.id if isinstance(target, BoxCollider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_collider")
         if isinstance(member, members.Reference):
             member.targetId = target_id

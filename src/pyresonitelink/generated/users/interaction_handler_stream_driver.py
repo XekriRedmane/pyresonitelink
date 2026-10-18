@@ -82,7 +82,7 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
     @primary_blocked_stream.setter
     def primary_blocked_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the PrimaryBlockedStream reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PrimaryBlockedStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -103,7 +103,7 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
     @secondary_blocked_stream.setter
     def secondary_blocked_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the SecondaryBlockedStream reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SecondaryBlockedStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -124,7 +124,7 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
     @laser_active_stream.setter
     def laser_active_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the LaserActiveStream reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LaserActiveStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -145,7 +145,7 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
     @show_laser_to_others_stream.setter
     def show_laser_to_others_stream(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the ShowLaserToOthersStream reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ShowLaserToOthersStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -166,7 +166,7 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
     @laser_target_stream.setter
     def laser_target_stream(self, target: str | ValueStream[primitives.Float3] | None) -> None:
         """Set the LaserTargetStream reference by target ID or ValueStream[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LaserTargetStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -187,7 +187,7 @@ class InteractionHandlerStreamDriver(GeneratedComponent, IComponent, IWorldEvent
     @grab_distance_stream.setter
     def grab_distance_stream(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the GrabDistanceStream reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("GrabDistanceStream")
         if isinstance(member, members.Reference):
             member.targetId = target_id

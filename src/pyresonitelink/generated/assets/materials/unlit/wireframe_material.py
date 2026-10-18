@@ -11,10 +11,11 @@ from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.icommon_material import ICommonMaterial
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, IWorldEventReceiver):
+class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, IComponent, IWorldEventReceiver):
     """Wireframe material is a material that can be used to see the edges of the polygons in a mesh. This does not show the polygons of a text renderer.
 
     Category: Assets/Materials/Unlit
@@ -355,7 +356,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
     @texture.setter
     def texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Texture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Texture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -472,7 +473,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
     @regular.setter
     def regular(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _regular reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_regular")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -493,7 +494,7 @@ class WireframeMaterial(GeneratedComponent, ICommonMaterial, ICustomInspector, I
     @regular_double_sided.setter
     def regular_double_sided(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _regularDoubleSided reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_regularDoubleSided")
         if isinstance(member, members.Reference):
             member.targetId = target_id

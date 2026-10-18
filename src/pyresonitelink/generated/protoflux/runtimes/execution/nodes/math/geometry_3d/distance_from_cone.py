@@ -54,7 +54,7 @@ class DistanceFromCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
     @cone_center.setter
     def cone_center(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the ConeCenter reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ConeCenter")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -75,7 +75,7 @@ class DistanceFromCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
     @cone_orientation.setter
     def cone_orientation(self, target: str | INodeValueOutput[primitives.FloatQ] | None) -> None:
         """Set the ConeOrientation reference by target ID or INodeValueOutput[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ConeOrientation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -96,7 +96,7 @@ class DistanceFromCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
     @cone_height.setter
     def cone_height(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the ConeHeight reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ConeHeight")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -117,7 +117,7 @@ class DistanceFromCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
     @cone_base_radius.setter
     def cone_base_radius(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the ConeBaseRadius reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ConeBaseRadius")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -138,7 +138,7 @@ class DistanceFromCone(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
     @point.setter
     def point(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Point reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             member.targetId = target_id

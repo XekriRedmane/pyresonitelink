@@ -11,10 +11,11 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.texture_2d import Texture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class ColorDepthPointCloud(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class ColorDepthPointCloud(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The Color Depth Point Cloud component.
 
     Category: Assets/Procedural Meshes
@@ -151,7 +152,7 @@ class ColorDepthPointCloud(GeneratedComponent, IAssetProvider, ICustomInspector,
     @color_texture.setter
     def color_texture(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the ColorTexture reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ColorTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -172,7 +173,7 @@ class ColorDepthPointCloud(GeneratedComponent, IAssetProvider, ICustomInspector,
     @depth_texture.setter
     def depth_texture(self, target: str | IAssetProvider[Texture2D] | None) -> None:
         """Set the DepthTexture reference by target ID or IAssetProvider[Texture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DepthTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id

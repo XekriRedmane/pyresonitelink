@@ -17,10 +17,11 @@ from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.i_uix_material import IUIX_Material
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class BlurMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEventReceiver):
+class BlurMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IComponent, IWorldEventReceiver):
     """The BlurMaterial Component is used to blur objects rendered behind it, by first rendering everything behind it using z-test and then grabbing the pixels, then creating spread transparent ghost images of the original pixels to give the illusion of blur.
 
     Category: Assets/Materials/Filters
@@ -367,7 +368,7 @@ class BlurMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
     @spread_magnitude_texture.setter
     def spread_magnitude_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the SpreadMagnitudeTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpreadMagnitudeTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -502,7 +503,7 @@ class BlurMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
     @normal_map.setter
     def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -660,7 +661,7 @@ class BlurMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
     @global_.setter
     def global_(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _global reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_global")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -681,7 +682,7 @@ class BlurMaterial(GeneratedComponent, IUIX_Material, ICustomInspector, IWorldEv
     @per_object_ref.setter
     def per_object_ref(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _perObject reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_perObject")
         if isinstance(member, members.Reference):
             member.targetId = target_id

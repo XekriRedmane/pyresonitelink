@@ -54,7 +54,7 @@ class Remap_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @in_min.setter
     def in_min(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the InMin reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("InMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -75,7 +75,7 @@ class Remap_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @in_max.setter
     def in_max(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the InMax reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("InMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -96,7 +96,7 @@ class Remap_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @out_min.setter
     def out_min(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the OutMin reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OutMin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -117,7 +117,7 @@ class Remap_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @out_max.setter
     def out_max(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the OutMax reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OutMax")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -138,7 +138,7 @@ class Remap_Double(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @value.setter
     def value(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the Value reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id

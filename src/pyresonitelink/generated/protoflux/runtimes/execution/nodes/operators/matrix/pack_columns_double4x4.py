@@ -51,7 +51,7 @@ class PackColumns_Double4x4(GeneratedComponent, INodeValueOutput, IExecutionNode
     @column0.setter
     def column0(self, target: str | INodeValueOutput[primitives.Double4] | None) -> None:
         """Set the Column0 reference by target ID or INodeValueOutput[primitives.Double4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Column0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +72,7 @@ class PackColumns_Double4x4(GeneratedComponent, INodeValueOutput, IExecutionNode
     @column1.setter
     def column1(self, target: str | INodeValueOutput[primitives.Double4] | None) -> None:
         """Set the Column1 reference by target ID or INodeValueOutput[primitives.Double4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Column1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +93,7 @@ class PackColumns_Double4x4(GeneratedComponent, INodeValueOutput, IExecutionNode
     @column2.setter
     def column2(self, target: str | INodeValueOutput[primitives.Double4] | None) -> None:
         """Set the Column2 reference by target ID or INodeValueOutput[primitives.Double4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Column2")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -114,7 +114,7 @@ class PackColumns_Double4x4(GeneratedComponent, INodeValueOutput, IExecutionNode
     @column3.setter
     def column3(self, target: str | INodeValueOutput[primitives.Double4] | None) -> None:
         """Set the Column3 reference by target ID or INodeValueOutput[primitives.Double4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Column3")
         if isinstance(member, members.Reference):
             member.targetId = target_id

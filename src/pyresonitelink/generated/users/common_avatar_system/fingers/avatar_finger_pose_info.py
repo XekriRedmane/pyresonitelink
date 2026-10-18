@@ -38,7 +38,7 @@ class AvatarFingerPoseInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
     @finger_pose_source.setter
     def finger_pose_source(self, target: str | IFingerPoseSourceComponent | None) -> None:
         """Set the FingerPoseSource reference by target ID or IFingerPoseSourceComponent instance."""
-        target_id: str | None = target.id if isinstance(target, IFingerPoseSourceComponent) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FingerPoseSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id

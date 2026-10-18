@@ -7,10 +7,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class TriangleWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class TriangleWaveClip(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The TriangleWaveClip component is used to make a buzzing like repeating sound clip, which can be used to make audio clips that make a repeating noise.
 
     Category: Assets/Procedural Audio Clips

@@ -133,7 +133,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
     @auto_inject.setter
     def auto_inject(self, target: str | Slot | None) -> None:
         """Set the AutoInject reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AutoInject")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -344,7 +344,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
     @locomotion_modules.setter
     def locomotion_modules(self, target: str | Slot | None) -> None:
         """Set the LocomotionModules reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LocomotionModules")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -365,7 +365,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
     @force_default_locomotion_module.setter
     def force_default_locomotion_module(self, target: str | ILocomotionModule | None) -> None:
         """Set the ForceDefaultLocomotionModule reference by target ID or ILocomotionModule instance."""
-        target_id: str | None = target.id if isinstance(target, ILocomotionModule) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ForceDefaultLocomotionModule")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -462,7 +462,7 @@ class CommonAvatarBuilder(GeneratedComponent, IEmptyAvatarSlotHandler, ICustomIn
     @empty_avatar_slot_handler.setter
     def empty_avatar_slot_handler(self, target: str | IEmptyAvatarSlotHandler | None) -> None:
         """Set the EmptyAvatarSlotHandler reference by target ID or IEmptyAvatarSlotHandler instance."""
-        target_id: str | None = target.id if isinstance(target, IEmptyAvatarSlotHandler) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmptyAvatarSlotHandler")
         if isinstance(member, members.Reference):
             member.targetId = target_id

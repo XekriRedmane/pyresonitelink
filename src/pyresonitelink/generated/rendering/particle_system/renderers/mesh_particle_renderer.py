@@ -52,7 +52,7 @@ This component is part of the Photon Dust system made by Frooxius.
     @material.setter
     def material(self, target: str | IAssetProvider[Material] | None) -> None:
         """Set the Material reference by target ID or IAssetProvider[Material] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Material")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +73,7 @@ This component is part of the Photon Dust system made by Frooxius.
     @mesh.setter
     def mesh(self, target: str | IAssetProvider[Mesh] | None) -> None:
         """Set the Mesh reference by target ID or IAssetProvider[Mesh] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Mesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id

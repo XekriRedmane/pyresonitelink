@@ -42,7 +42,7 @@ class OtherSide(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICu
     @node.setter
     def node(self, target: str | INodeValueOutput[BodyNode] | None) -> None:
         """Set the Node reference by target ID or INodeValueOutput[BodyNode] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             member.targetId = target_id

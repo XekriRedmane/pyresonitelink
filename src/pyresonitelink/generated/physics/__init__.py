@@ -12,6 +12,7 @@ from .colliders.triangle_collider import TriangleCollider
 from .dynamic_bones.dynamic_bone_chain import DynamicBoneChain
 from .dynamic_bones.dynamic_bone_player_colliders import DynamicBonePlayerColliders
 from .dynamic_bones.dynamic_bone_sphere_collider import DynamicBoneSphereCollider
+from .events.collider_event_relay import ColliderEventRelay
 from .extensions.mesh_uv_raycast_portal import MeshUVRaycastPortal
 from .extensions.slot_raycast_transfer_portal import SlotRaycastTransferPortal
 from .utility.collider_user_tracker import ColliderUserTracker

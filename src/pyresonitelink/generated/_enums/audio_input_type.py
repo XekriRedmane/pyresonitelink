@@ -10,4 +10,5 @@ class AudioInputType(StrEnum):
     capture_device = "CaptureDevice"
     output_device = "OutputDevice"
     loopback = "Loopback"
+    application_loopback = "ApplicationLoopback"
 

@@ -1,0 +1,14 @@
+{
+  "description": "Added: 2026.5.11.1342\n\nFires impulse as the user when a user has focused into the current world, either after loading or when switching to it.",
+  "category": "",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Video",
+      "text": "6QA9JuulYmI"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:WorldFocused&action=raw"
+}

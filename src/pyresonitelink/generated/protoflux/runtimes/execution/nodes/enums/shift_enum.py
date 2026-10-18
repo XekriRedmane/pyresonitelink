@@ -56,7 +56,7 @@ Shift Enum is a ProtoFlux node that when provided an Enum will give an enum with
     @value.setter
     def value(self, target: str | INodeValueOutput[E] | None) -> None:
         """Set the Value reference by target ID or INodeValueOutput[E] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -77,7 +77,7 @@ Shift Enum is a ProtoFlux node that when provided an Enum will give an enum with
     @delta.setter
     def delta(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Delta reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Delta")
         if isinstance(member, members.Reference):
             member.targetId = target_id

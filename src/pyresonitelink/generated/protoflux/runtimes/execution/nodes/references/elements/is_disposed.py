@@ -43,7 +43,7 @@ class IsDisposed(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, IC
     @element.setter
     def element(self, target: str | INodeObjectOutput[Worker] | None) -> None:
         """Set the Element reference by target ID or INodeObjectOutput[Worker] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Element")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -1,5 +1,8 @@
 """Generated component: ProceduralSkyMaterial."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -8,13 +11,16 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.shader import Shader
-from pyresonitelink.generated._types.light import Light
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.light import Light
 from pyresonitelink.generated._types.iskybox_material import ISkyboxMaterial
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class ProceduralSkyMaterial(GeneratedComponent, ISkyboxMaterial, ICustomInspector, IWorldEventReceiver):
+class ProceduralSkyMaterial(GeneratedComponent, ISkyboxMaterial, ICustomInspector, IComponent, IWorldEventReceiver):
     """The Procedural Sky Material component is used to make a on-the-fly generated skybox using a light object and some values for atmosphere and sun size.
 
     Category: Assets/Materials/Skybox
@@ -90,7 +96,7 @@ class ProceduralSkyMaterial(GeneratedComponent, ISkyboxMaterial, ICustomInspecto
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -150,7 +156,7 @@ class ProceduralSkyMaterial(GeneratedComponent, ISkyboxMaterial, ICustomInspecto
     @sun.setter
     def sun(self, target: str | Light | None) -> None:
         """Set the Sun reference by target ID or Light instance."""
-        target_id: str | None = target.id if isinstance(target, Light) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Sun")
         if isinstance(member, members.Reference):
             member.targetId = target_id

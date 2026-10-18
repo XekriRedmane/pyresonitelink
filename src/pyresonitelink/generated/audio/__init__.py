@@ -10,3 +10,4 @@ from .multi_audio_clip_player import MultiAudioClipPlayer
 from .utility.audio_device_index_finder import AudioDeviceIndexFinder
 from .utility.audio_input_device_info import AudioInputDeviceInfo
 from .utility.audio_output_device_info import AudioOutputDeviceInfo
+from .utility.local_audio_device_stream import LocalAudioDeviceStream

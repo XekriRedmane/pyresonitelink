@@ -1,11 +1,16 @@
 """Generated component: WebsocketConnectionEvents."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iglobal_value_proxy import IGlobalValueProxy
-from pyresonitelink.generated._types.websocket_client import WebsocketClient
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.network.websocket_client import WebsocketClient
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
@@ -49,7 +54,7 @@ class WebsocketConnectionEvents(GeneratedComponent, IExecutionNode, INode, ICust
     @client.setter
     def client(self, target: str | IGlobalValueProxy[WebsocketClient] | None) -> None:
         """Set the Client reference by target ID or IGlobalValueProxy[WebsocketClient] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Client")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -70,7 +75,7 @@ class WebsocketConnectionEvents(GeneratedComponent, IExecutionNode, INode, ICust
     @on_connected.setter
     def on_connected(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnConnected reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnConnected")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -91,7 +96,7 @@ class WebsocketConnectionEvents(GeneratedComponent, IExecutionNode, INode, ICust
     @on_disconnected.setter
     def on_disconnected(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnDisconnected reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnDisconnected")
         if isinstance(member, members.Reference):
             member.targetId = target_id

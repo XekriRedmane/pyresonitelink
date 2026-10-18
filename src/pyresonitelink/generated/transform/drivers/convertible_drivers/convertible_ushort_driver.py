@@ -1,0 +1,84 @@
+"""Generated component: ConvertibleUshortDriver."""
+
+from pyresonitelink.data import members
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GenericComponent, T
+from pyresonitelink.generated._types.ifield import IField
+from pyresonitelink.generated._types.icomponent import IComponent
+from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+
+
+class ConvertibleUshortDriver(GenericComponent[T], IComponent, IWorldEventReceiver):
+    """The ConvertibleUshortDriver component is used to convert a value into a Ushort using the value's convert to Ushort method.
+
+    Category: Transform/Drivers/Convertible Drivers
+
+    Used to convert values from one type into another via Components rather
+    than ProtoFlux.
+
+    Parameterize with a value type::
+
+        ConvertibleUshortDriver[primitives.Float]
+        ConvertibleUshortDriver[primitives.Float3]
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ConvertibleUshortDriver<>"
+    _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.ConvertibleUshortDriver<>"
+
+    def __init__(self, source: str | IField[T] | None = None, target: str | IField[primitives.UShort] | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            source: Initial value for Source.
+            target: Initial value for Target.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if source is not None:
+            self.source = source
+        if target is not None:
+            self.target = target
+
+    @property
+    def source(self) -> str | None:
+        """The value to convert."""
+        member = self.get_member("Source")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @source.setter
+    def source(self, target: str | IField[T] | None) -> None:
+        """Set the Source reference by target ID or IField[T] instance."""
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
+        member = self.get_member("Source")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Source",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<T>'),
+            )
+
+    @property
+    def target(self) -> str | None:
+        """The field to drive with ``Source`` converted into a Ushort."""
+        member = self.get_member("Target")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @target.setter
+    def target(self, target: str | IField[primitives.UShort] | None) -> None:
+        """Set the Target reference by target ID or IField[primitives.UShort] instance."""
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
+        member = self.get_member("Target")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Target",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<ushort>'),
+            )
+

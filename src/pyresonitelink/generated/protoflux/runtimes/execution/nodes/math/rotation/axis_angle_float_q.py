@@ -45,7 +45,7 @@ class AxisAngle_floatQ(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
     @axis.setter
     def axis(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Axis reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Axis")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class AxisAngle_floatQ(GeneratedComponent, INodeValueOutput, IExecutionNode, INo
     @angle.setter
     def angle(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Angle reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Angle")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -42,7 +42,7 @@ class NOT_Bool(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, ICus
     @a.setter
     def a(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the A reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("A")
         if isinstance(member, members.Reference):
             member.targetId = target_id

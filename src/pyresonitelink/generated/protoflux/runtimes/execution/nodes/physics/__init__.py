@@ -12,10 +12,12 @@ from .find_character_controller_from_user import FindCharacterControllerFromUser
 from .hit_uv_coordinate import HitUVCoordinate
 from .is_character_controller import IsCharacterController
 from .is_character_on_ground import IsCharacterOnGround
+from .raycast_all import RaycastAll
 from .raycast_one import RaycastOne
 from .raycaster import Raycaster
 from .set_character_gravity import SetCharacterGravity
 from .set_character_velocity import SetCharacterVelocity
+from .unpack_raycast_hit import UnpackRaycastHit
 from .events.on_contact_end import OnContactEnd
 from .events.on_contact_start import OnContactStart
 from .events.on_contact_stay import OnContactStay

@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class LabelPointerMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The LabelPointerMesh component is used by the labeler tool to point to a position and underline some generated text elements.
 
     Category: Assets/Procedural Meshes

@@ -44,7 +44,7 @@ class GetUserFromComponent(GeneratedComponent, INodeObjectOutput, IExecutionNode
     @instance.setter
     def instance(self, target: str | INodeObjectOutput[IComponent] | None) -> None:
         """Set the Instance reference by target ID or INodeObjectOutput[IComponent] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             member.targetId = target_id

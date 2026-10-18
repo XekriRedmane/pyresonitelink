@@ -43,6 +43,11 @@ from .datetime.date_time_second import DateTimeSecond
 from .datetime.date_time_ticks import DateTimeTicks
 from .datetime.date_time_year import DateTimeYear
 from .datetime.set_date_time_kind import SetDateTimeKind
+from .events.is_april_fools import IsAprilFools
+from .events.is_black_history_month import IsBlackHistoryMonth
+from .events.is_black_history_month_uk import IsBlackHistoryMonthUK
+from .events.is_halloween import IsHalloween
+from .events.is_pride_month import IsPrideMonth
 from .timespan.time_span_days import TimeSpanDays
 from .timespan.time_span_from_days import TimeSpanFromDays
 from .timespan.time_span_from_hours import TimeSpanFromHours

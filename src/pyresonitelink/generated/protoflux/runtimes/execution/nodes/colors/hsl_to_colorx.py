@@ -52,7 +52,7 @@ class HSL_ToColorX(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @h.setter
     def h(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the H reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("H")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -73,7 +73,7 @@ class HSL_ToColorX(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @s.setter
     def s(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the S reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("S")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -94,7 +94,7 @@ class HSL_ToColorX(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @l.setter
     def l(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the L reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("L")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -115,7 +115,7 @@ class HSL_ToColorX(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @target_profile.setter
     def target_profile(self, target: str | INodeValueOutput[ColorProfile] | None) -> None:
         """Set the TargetProfile reference by target ID or INodeValueOutput[ColorProfile] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetProfile")
         if isinstance(member, members.Reference):
             member.targetId = target_id

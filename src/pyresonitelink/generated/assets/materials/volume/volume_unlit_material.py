@@ -11,10 +11,11 @@ from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.texture_3d import Texture3D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class VolumeUnlitMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The VolumeUnlitMaterial component is used to display 3D Textures like Xrays, sunbeams, MRIs, CT scans, or any other 3D texture in a volumetric 3D cube that can optionally be sliced. Can also be used for volumetric lighting, but high texture resolutions can be large and cause considerable render lag.
 
 This is a raymarched material, which means that a ray is stepped iteratively closer and closer to the volume in order to determine what is shown or not.
@@ -104,7 +105,7 @@ This is a raymarched material, which means that a ray is stepped iteratively clo
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -184,7 +185,7 @@ This is a raymarched material, which means that a ray is stepped iteratively clo
     @volume.setter
     def volume(self, target: str | IAssetProvider[Texture3D] | None) -> None:
         """Set the Volume reference by target ID or IAssetProvider[Texture3D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Volume")
         if isinstance(member, members.Reference):
             member.targetId = target_id

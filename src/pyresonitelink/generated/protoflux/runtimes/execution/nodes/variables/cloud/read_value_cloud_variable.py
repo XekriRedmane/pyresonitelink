@@ -62,7 +62,7 @@ class ReadValueCloudVariable(GenericComponent[T], IAsyncNodeOperation, IExecutio
     @path.setter
     def path(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Path reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Path")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -83,7 +83,7 @@ class ReadValueCloudVariable(GenericComponent[T], IAsyncNodeOperation, IExecutio
     @variable_owner_id.setter
     def variable_owner_id(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the VariableOwnerId reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("VariableOwnerId")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -104,7 +104,7 @@ class ReadValueCloudVariable(GenericComponent[T], IAsyncNodeOperation, IExecutio
     @on_request.setter
     def on_request(self, target: str | INodeOperation | None) -> None:
         """Set the OnRequest reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnRequest")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -125,7 +125,7 @@ class ReadValueCloudVariable(GenericComponent[T], IAsyncNodeOperation, IExecutio
     @on_done.setter
     def on_done(self, target: str | INodeOperation | None) -> None:
         """Set the OnDone reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnDone")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -146,7 +146,7 @@ class ReadValueCloudVariable(GenericComponent[T], IAsyncNodeOperation, IExecutio
     @on_fail.setter
     def on_fail(self, target: str | INodeOperation | None) -> None:
         """Set the OnFail reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFail")
         if isinstance(member, members.Reference):
             member.targetId = target_id

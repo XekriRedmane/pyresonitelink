@@ -1,11 +1,16 @@
 """Generated component: OSC_Value."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
-from pyresonitelink.generated._types.osc_handler import OSC_Handler
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.network.osc.osc_handler import OSC_Handler
 
 
 class OSC_Value(GenericComponent[T]):
@@ -53,7 +58,7 @@ class OSC_Value(GenericComponent[T]):
     @handler.setter
     def handler(self, target: str | OSC_Handler | None) -> None:
         """Set the Handler reference by target ID or OSC_Handler instance."""
-        target_id: str | None = target.id if isinstance(target, OSC_Handler) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Handler")
         if isinstance(member, members.Reference):
             member.targetId = target_id

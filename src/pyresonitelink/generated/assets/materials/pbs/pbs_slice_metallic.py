@@ -241,7 +241,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
     @albedo_texture.setter
     def albedo_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -300,7 +300,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
     @emissive_map.setter
     def emissive_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -321,7 +321,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
     @normal_map.setter
     def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -361,7 +361,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
     @occlusion_map.setter
     def occlusion_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OcclusionMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OcclusionMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -420,7 +420,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
     @detail_albedo_texture.setter
     def detail_albedo_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the DetailAlbedoTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DetailAlbedoTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -441,7 +441,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
     @detail_normal_map.setter
     def detail_normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the DetailNormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DetailNormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -743,7 +743,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
     @metallic_map.setter
     def metallic_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the MetallicMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MetallicMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -764,7 +764,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
     @regular.setter
     def regular(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _regular reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_regular")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -785,7 +785,7 @@ class PBS_SliceMetallic(GeneratedComponent, IPBS_Metallic, ICullingMaterial, ICu
     @transparent.setter
     def transparent(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _transparent reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_transparent")
         if isinstance(member, members.Reference):
             member.targetId = target_id

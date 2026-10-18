@@ -1,16 +1,21 @@
 """Generated component: BrowserDialog."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.browser_item import BrowserItem
-from pyresonitelink.generated._types.text import Text
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.grid_layout import GridLayout
-from pyresonitelink.generated._types.sprite_provider import SpriteProvider
-from pyresonitelink.generated._types.slide_swap_region import SlideSwapRegion
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.none.browser_item import BrowserItem
+    from pyresonitelink.generated.uix.graphics.text import Text
+    from pyresonitelink.generated.uix.layout.grid_layout import GridLayout
+    from pyresonitelink.generated.assets.sprite_provider import SpriteProvider
+    from pyresonitelink.generated.uix.utility.slide_swap_region import SlideSwapRegion
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -76,7 +81,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
     @selected_item.setter
     def selected_item(self, target: str | BrowserItem | None) -> None:
         """Set the SelectedItem reference by target ID or BrowserItem instance."""
-        target_id: str | None = target.id if isinstance(target, BrowserItem) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SelectedItem")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -97,7 +102,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
     @previous_selected_item.setter
     def previous_selected_item(self, target: str | BrowserItem | None) -> None:
         """Set the _previousSelectedItem reference by target ID or BrowserItem instance."""
-        target_id: str | None = target.id if isinstance(target, BrowserItem) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_previousSelectedItem")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -156,7 +161,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
     @selected_text.setter
     def selected_text(self, target: str | Text | None) -> None:
         """Set the _selectedText reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_selectedText")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -177,7 +182,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
     @path_root.setter
     def path_root(self, target: str | Slot | None) -> None:
         """Set the _pathRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_pathRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -198,7 +203,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
     @buttons_root.setter
     def buttons_root(self, target: str | Slot | None) -> None:
         """Set the _buttonsRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_buttonsRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -219,7 +224,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
     @folder_grid.setter
     def folder_grid(self, target: str | GridLayout | None) -> None:
         """Set the _folderGrid reference by target ID or GridLayout instance."""
-        target_id: str | None = target.id if isinstance(target, GridLayout) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_folderGrid")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -240,7 +245,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
     @item_grid.setter
     def item_grid(self, target: str | GridLayout | None) -> None:
         """Set the _itemGrid reference by target ID or GridLayout instance."""
-        target_id: str | None = target.id if isinstance(target, GridLayout) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_itemGrid")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -261,7 +266,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
     @tab_sprite.setter
     def tab_sprite(self, target: str | SpriteProvider | None) -> None:
         """Set the _tabSprite reference by target ID or SpriteProvider instance."""
-        target_id: str | None = target.id if isinstance(target, SpriteProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_tabSprite")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -282,7 +287,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
     @loading_indicator.setter
     def loading_indicator(self, target: str | Slot | None) -> None:
         """Set the _loadingIndicator reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_loadingIndicator")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -303,7 +308,7 @@ class BrowserDialog(GeneratedComponent, IComponent, IWorldEventReceiver):
     @swapper.setter
     def swapper(self, target: str | SlideSwapRegion | None) -> None:
         """Set the _swapper reference by target ID or SlideSwapRegion instance."""
-        target_id: str | None = target.id if isinstance(target, SlideSwapRegion) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_swapper")
         if isinstance(member, members.Reference):
             member.targetId = target_id

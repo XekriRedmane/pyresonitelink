@@ -1,12 +1,17 @@
 """Generated component: PackProtoFluxFromNode."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.proto_flux_node import ProtoFluxNode
 from pyresonitelink.generated._types.slot import Slot
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.none.proto_flux_node import ProtoFluxNode
 from pyresonitelink.generated._types.isync_node_operation import ISyncNodeOperation
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -53,7 +58,7 @@ If you decide to add more nodes and connect them to a node that is under a diffe
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -74,7 +79,7 @@ If you decide to add more nodes and connect them to a node that is under a diffe
     @start_node.setter
     def start_node(self, target: str | INodeObjectOutput[ProtoFluxNode] | None) -> None:
         """Set the StartNode reference by target ID or INodeObjectOutput[ProtoFluxNode] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("StartNode")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -95,7 +100,7 @@ If you decide to add more nodes and connect them to a node that is under a diffe
     @target.setter
     def target(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Target reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id

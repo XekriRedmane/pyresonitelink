@@ -155,7 +155,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @user.setter
     def user(self, target: str | User | None) -> None:
         """Set the User reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -176,7 +176,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @is_tracking.setter
     def is_tracking(self, target: str | ValueStream[primitives.Bool] | None) -> None:
         """Set the IsTracking reference by target ID or ValueStream[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IsTracking")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -197,7 +197,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @jaw.setter
     def jaw(self, target: str | ValueStream[primitives.Float3] | None) -> None:
         """Set the Jaw reference by target ID or ValueStream[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Jaw")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -218,7 +218,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @jaw_open.setter
     def jaw_open(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the JawOpen reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("JawOpen")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -239,7 +239,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @tongue.setter
     def tongue(self, target: str | ValueStream[primitives.Float3] | None) -> None:
         """Set the Tongue reference by target ID or ValueStream[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Tongue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -260,7 +260,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @tongue_roll.setter
     def tongue_roll(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the TongueRoll reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TongueRoll")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -281,7 +281,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_upper_left_raise.setter
     def lip_upper_left_raise(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipUpperLeftRaise reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipUpperLeftRaise")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -302,7 +302,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_upper_right_raise.setter
     def lip_upper_right_raise(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipUpperRightRaise reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipUpperRightRaise")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -323,7 +323,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_lower_leftaise.setter
     def lip_lower_leftaise(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipLowerLeftaise reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipLowerLeftaise")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -344,7 +344,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_lower_right_raise.setter
     def lip_lower_right_raise(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipLowerRightRaise reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipLowerRightRaise")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -365,7 +365,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_upper_horizontal.setter
     def lip_upper_horizontal(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipUpperHorizontal reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipUpperHorizontal")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -386,7 +386,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_lower_horizontal.setter
     def lip_lower_horizontal(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipLowerHorizontal reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipLowerHorizontal")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -407,7 +407,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @mouth_left_smile_frown.setter
     def mouth_left_smile_frown(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the MouthLeftSmileFrown reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MouthLeftSmileFrown")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -428,7 +428,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @mouth_right_smile_frown.setter
     def mouth_right_smile_frown(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the MouthRightSmileFrown reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MouthRightSmileFrown")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -449,7 +449,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @mouth_left_dimple.setter
     def mouth_left_dimple(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the MouthLeftDimple reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MouthLeftDimple")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -470,7 +470,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @mouth_right_dimple.setter
     def mouth_right_dimple(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the MouthRightDimple reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MouthRightDimple")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -491,7 +491,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @mouth_pout_left.setter
     def mouth_pout_left(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the MouthPoutLeft reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MouthPoutLeft")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -512,7 +512,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @mouth_pout_right.setter
     def mouth_pout_right(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the MouthPoutRight reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MouthPoutRight")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -533,7 +533,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_top_left_overturn.setter
     def lip_top_left_overturn(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipTopLeftOverturn reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipTopLeftOverturn")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -554,7 +554,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_top_right_overturn.setter
     def lip_top_right_overturn(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipTopRightOverturn reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipTopRightOverturn")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -575,7 +575,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_bottom_left_overturn.setter
     def lip_bottom_left_overturn(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipBottomLeftOverturn reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipBottomLeftOverturn")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -596,7 +596,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_bottom_right_overturn.setter
     def lip_bottom_right_overturn(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipBottomRightOverturn reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipBottomRightOverturn")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -617,7 +617,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_top_left_over_under.setter
     def lip_top_left_over_under(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipTopLeftOverUnder reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipTopLeftOverUnder")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -638,7 +638,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_top_right_over_under.setter
     def lip_top_right_over_under(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipTopRightOverUnder reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipTopRightOverUnder")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -659,7 +659,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_bottom_left_over_under.setter
     def lip_bottom_left_over_under(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipBottomLeftOverUnder reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipBottomLeftOverUnder")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -680,7 +680,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_bottom_right_over_under.setter
     def lip_bottom_right_over_under(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipBottomRightOverUnder reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipBottomRightOverUnder")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -701,7 +701,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_left_stretch_tighten.setter
     def lip_left_stretch_tighten(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipLeftStretchTighten reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipLeftStretchTighten")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -722,7 +722,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lip_right_stretch_tighten.setter
     def lip_right_stretch_tighten(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipRightStretchTighten reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipRightStretchTighten")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -743,7 +743,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lips_left_press.setter
     def lips_left_press(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipsLeftPress reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipsLeftPress")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -764,7 +764,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @lips_right_press.setter
     def lips_right_press(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the LipsRightPress reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LipsRightPress")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -785,7 +785,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @cheek_left_puff_suck.setter
     def cheek_left_puff_suck(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the CheekLeftPuffSuck reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CheekLeftPuffSuck")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -806,7 +806,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @cheek_right_puff_suck.setter
     def cheek_right_puff_suck(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the CheekRightPuffSuck reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CheekRightPuffSuck")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -827,7 +827,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @cheek_left_raise.setter
     def cheek_left_raise(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the CheekLeftRaise reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CheekLeftRaise")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -848,7 +848,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @cheek_right_raise.setter
     def cheek_right_raise(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the CheekRightRaise reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CheekRightRaise")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -869,7 +869,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @nose_wrinkle_left.setter
     def nose_wrinkle_left(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the NoseWrinkleLeft reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NoseWrinkleLeft")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -890,7 +890,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @nose_wrinkle_right.setter
     def nose_wrinkle_right(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the NoseWrinkleRight reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NoseWrinkleRight")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -911,7 +911,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @chin_raise_bottom.setter
     def chin_raise_bottom(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the ChinRaiseBottom reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ChinRaiseBottom")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -932,7 +932,7 @@ class MouthTrackingStreamManager(GeneratedComponent, IMouthTrackingSourceCompone
     @chin_raise_top.setter
     def chin_raise_top(self, target: str | ValueStream[primitives.Float] | None) -> None:
         """Set the ChinRaiseTop reference by target ID or ValueStream[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, ValueStream) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ChinRaiseTop")
         if isinstance(member, members.Reference):
             member.targetId = target_id

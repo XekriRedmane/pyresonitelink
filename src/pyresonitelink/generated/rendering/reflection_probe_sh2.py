@@ -1,12 +1,16 @@
 """Generated component: ReflectionProbeSH2."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
-from pyresonitelink.generated._enums.spherical_harmonics_l2 import SphericalHarmonicsL2
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.reflection_probe import ReflectionProbe
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.reflection_probe import ReflectionProbe
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -24,7 +28,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.ReflectionProbeSH2"
 
-    def __init__(self, probe: str | ReflectionProbe | None = None, ambient_light: SphericalHarmonicsL2 | str | None = None, order0_scale: primitives.Float | None = None, order1_scale: primitives.Float | None = None, order2_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, probe: str | ReflectionProbe | None = None, ambient_light: primitives.SphericalHarmonicsL2 | None = None, order0_scale: primitives.Float | None = None, order1_scale: primitives.Float | None = None, order2_scale: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -58,7 +62,7 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
     @probe.setter
     def probe(self, target: str | ReflectionProbe | None) -> None:
         """Set the Probe reference by target ID or ReflectionProbe instance."""
-        target_id: str | None = target.id if isinstance(target, ReflectionProbe) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Probe")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,23 +73,22 @@ class ReflectionProbeSH2(GeneratedComponent, ICustomInspector, IComponent, IWorl
             )
 
     @property
-    def ambient_light(self) -> SphericalHarmonicsL2 | None:
+    def ambient_light(self) -> primitives.SphericalHarmonicsL2 | None:
         """``Probe``'s sampled data as SH2 color data for ambient lighting usage."""
         member = self.get_member("AmbientLight")
-        if isinstance(member, members.FieldEnum) and member.value is not None:
-            return SphericalHarmonicsL2(member.value)
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @ambient_light.setter
-    def ambient_light(self, value: SphericalHarmonicsL2 | str) -> None:
-        """Set AmbientLight. ``Probe``'s sampled data as SH2 color data for ambient lighting usage."""
+    def ambient_light(self, value: primitives.SphericalHarmonicsL2) -> None:
+        """Set the AmbientLight field value."""
         member = self.get_member("AmbientLight")
-        if isinstance(member, members.FieldEnum):
-            member.value = str(value)
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
         else:
             self.set_member(
-                "AmbientLight",
-                members.FieldEnum(value=str(value)),
+                "AmbientLight", fields.FieldSphericalHarmonicsL2(value=value)
             )
 
     @property

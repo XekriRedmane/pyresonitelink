@@ -1,14 +1,19 @@
 """Generated component: Canvas."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.generated._enums.culling import Culling
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.rect_transform import RectTransform
-from pyresonitelink.generated._types.box_collider import BoxCollider
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.rect_transform import RectTransform
+    from pyresonitelink.generated.physics.colliders.box_collider import BoxCollider
 from pyresonitelink.generated._types.itouchable import ITouchable
 from pyresonitelink.generated._types.itouch_grabbable import ITouchGrabbable
 from pyresonitelink.generated._types.ibounded import IBounded
@@ -323,7 +328,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
     @root_rect.setter
     def root_rect(self, target: str | RectTransform | None) -> None:
         """Set the _rootRect reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rootRect")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -344,7 +349,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
     @collider.setter
     def collider(self, target: str | BoxCollider | None) -> None:
         """Set the Collider reference by target ID or BoxCollider instance."""
-        target_id: str | None = target.id if isinstance(target, BoxCollider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Collider")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -385,7 +390,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
     @collider_size.setter
     def collider_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _colliderSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -406,7 +411,7 @@ class Canvas(GeneratedComponent, ITouchable, ITouchGrabbable, IBounded, ILaserIn
     @collider_offset.setter
     def collider_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _colliderOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colliderOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id

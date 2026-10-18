@@ -85,7 +85,7 @@ Due to this pattern, the intermediate bone of the thumb should never be bound as
     @pose_source.setter
     def pose_source(self, target: str | IFingerPoseSourceComponent | None) -> None:
         """Set the PoseSource reference by target ID or IFingerPoseSourceComponent instance."""
-        target_id: str | None = target.id if isinstance(target, IFingerPoseSourceComponent) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PoseSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -145,7 +145,7 @@ Due to this pattern, the intermediate bone of the thumb should never be bound as
     @hand_root.setter
     def hand_root(self, target: str | Slot | None) -> None:
         """Set the HandRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HandRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id

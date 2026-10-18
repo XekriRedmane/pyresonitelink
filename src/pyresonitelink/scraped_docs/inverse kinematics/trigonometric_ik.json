@@ -1,0 +1,14 @@
+{
+  "description": "Added somewhere around: 2026.6.xx (Can't find in mention in devlog. Was added to Locale here )\n\nUsed for elbows and knees on Humanid rigs, where there is exactly one solution to the IK solve. The final version is also likely to include constraints.\n\nIt can also be used for things like robotic arms or jointed segments.\n\nhttps://en.wikipedia.org/wiki/Inverse_kinematics",
+  "category": "Transform:Inverse Kinematics",
+  "fields": {},
+  "methods": {},
+  "usage": "",
+  "notes": [
+    {
+      "title": "Video",
+      "text": "KhIYD_5jM4M"
+    }
+  ],
+  "_source_url": "https://wiki.resonite.com/index.php?title=Component:TrigonometricIK&action=raw"
+}

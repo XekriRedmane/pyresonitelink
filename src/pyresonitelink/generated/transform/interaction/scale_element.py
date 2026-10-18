@@ -1,12 +1,17 @@
 """Generated component: ScaleElement."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.scale_group import ScaleGroup
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.transform.interaction.scale_group import ScaleGroup
 from pyresonitelink.generated._types.itouchable import ITouchable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -53,7 +58,7 @@ class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
     @group.setter
     def group(self, target: str | ScaleGroup | None) -> None:
         """Set the Group reference by target ID or ScaleGroup instance."""
-        target_id: str | None = target.id if isinstance(target, ScaleGroup) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Group")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -112,7 +117,7 @@ class ScaleElement(GeneratedComponent, ITouchable, IWorldEventReceiver):
     @scale_target.setter
     def scale_target(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _scaleTarget reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_scaleTarget")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -53,7 +53,7 @@ class ReplaceSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
     @str_.setter
     def str_(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Str reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Str")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -74,7 +74,7 @@ class ReplaceSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
     @search_for.setter
     def search_for(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the SearchFor reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SearchFor")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -95,7 +95,7 @@ class ReplaceSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
     @replace_with.setter
     def replace_with(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the ReplaceWith reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ReplaceWith")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -116,7 +116,7 @@ class ReplaceSubstring(GeneratedComponent, INodeObjectOutput, IExecutionNode, IN
     @comparison_mode.setter
     def comparison_mode(self, target: str | INodeValueOutput[StringComparison] | None) -> None:
         """Set the ComparisonMode reference by target ID or INodeValueOutput[StringComparison] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ComparisonMode")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -45,7 +45,7 @@ class PingPong_Long4(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
     @n.setter
     def n(self, target: str | INodeValueOutput[primitives.Long4] | None) -> None:
         """Set the N reference by target ID or INodeValueOutput[primitives.Long4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("N")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class PingPong_Long4(GeneratedComponent, INodeValueOutput, IExecutionNode, INode
     @length.setter
     def length(self, target: str | INodeValueOutput[primitives.Long4] | None) -> None:
         """Set the Length reference by target ID or INodeValueOutput[primitives.Long4] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Length")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -12,10 +12,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class UVTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWorldEventReceiver):
+class UVTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The UVTexture component is used to procedurally generate texture data for a debug uv texture image that is colored red and green based on the x and y coordinates at any given point on an image.
 
     Category: Assets/Procedural Textures

@@ -1,5 +1,8 @@
 """Generated component: SessionInfoItemInterface."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -9,9 +12,11 @@ from pyresonitelink.generated._types.ifield import IField
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.sync_ref import SyncRef
 from pyresonitelink.generated._types.idata_feed_view import IDataFeedView
-from pyresonitelink.generated._types.feed_item_interface import FeedItemInterface
 from pyresonitelink.generated._types.sync_field_list import SyncFieldList
 from pyresonitelink.generated._types.session_access_level import SessionAccessLevel
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.radiant_ui.data_feeds.interfaces.feed_item_interface import FeedItemInterface
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -176,7 +181,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @item_name.setter
     def item_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -197,7 +202,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @item_key.setter
     def item_key(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemKey reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemKey")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -218,7 +223,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @item_description.setter
     def item_description(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemDescription reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemDescription")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -239,7 +244,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @has_description.setter
     def has_description(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HasDescription reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HasDescription")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -260,7 +265,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @description_cleanup.setter
     def description_cleanup(self, target: str | Slot | None) -> None:
         """Set the DescriptionCleanup reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DescriptionCleanup")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -281,7 +286,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @item_icon.setter
     def item_icon(self, target: str | IField[str] | None) -> None:
         """Set the ItemIcon reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemIcon")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -302,7 +307,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @has_icon.setter
     def has_icon(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HasIcon reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HasIcon")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -323,7 +328,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @icon_cleanup.setter
     def icon_cleanup(self, target: str | Slot | None) -> None:
         """Set the IconCleanup reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IconCleanup")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -344,7 +349,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @view.setter
     def view(self, target: str | SyncRef[IDataFeedView] | None) -> None:
         """Set the View reference by target ID or SyncRef[IDataFeedView] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("View")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -365,7 +370,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @parent_container.setter
     def parent_container(self, target: str | FeedItemInterface | None) -> None:
         """Set the ParentContainer reference by target ID or FeedItemInterface instance."""
-        target_id: str | None = target.id if isinstance(target, FeedItemInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ParentContainer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -386,7 +391,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @child_container.setter
     def child_container(self, target: str | Slot | None) -> None:
         """Set the ChildContainer reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ChildContainer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -420,7 +425,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @enabled_state.setter
     def enabled_state(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the EnabledState reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EnabledState")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -441,7 +446,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @session_name.setter
     def session_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the SessionName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SessionName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -462,7 +467,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @description.setter
     def description(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Description reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Description")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -483,7 +488,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @thumbnail_url.setter
     def thumbnail_url(self, target: str | IField[str] | None) -> None:
         """Set the ThumbnailUrl reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ThumbnailUrl")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -504,7 +509,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @session_id.setter
     def session_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the SessionId reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SessionId")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -525,7 +530,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @session_urls.setter
     def session_urls(self, target: str | SyncFieldList[str] | None) -> None:
         """Set the SessionURLs reference by target ID or SyncFieldList[str] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncFieldList) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SessionURLs")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -546,7 +551,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @host_user_id.setter
     def host_user_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the HostUserId reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HostUserId")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -567,7 +572,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @host_user_session_id.setter
     def host_user_session_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the HostUserSessionId reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HostUserSessionId")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -588,7 +593,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @host_machine_id.setter
     def host_machine_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the HostMachineId reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HostMachineId")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -609,7 +614,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @host_username.setter
     def host_username(self, target: str | IField[primitives.String] | None) -> None:
         """Set the HostUsername reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HostUsername")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -630,7 +635,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @compatibility_hash.setter
     def compatibility_hash(self, target: str | IField[primitives.String] | None) -> None:
         """Set the CompatibilityHash reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CompatibilityHash")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -651,7 +656,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @universe_id.setter
     def universe_id(self, target: str | IField[primitives.String] | None) -> None:
         """Set the UniverseId reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UniverseId")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -672,7 +677,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @app_version.setter
     def app_version(self, target: str | IField[primitives.String] | None) -> None:
         """Set the AppVersion reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AppVersion")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -693,7 +698,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @is_headless_host.setter
     def is_headless_host(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the IsHeadlessHost reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IsHeadlessHost")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -714,7 +719,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @is_on_lan.setter
     def is_on_lan(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the IsOnLAN reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IsOnLAN")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -735,7 +740,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @joined_users.setter
     def joined_users(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the JoinedUsers reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("JoinedUsers")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -756,7 +761,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @active_users.setter
     def active_users(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the ActiveUsers reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ActiveUsers")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -777,7 +782,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @total_joined_users.setter
     def total_joined_users(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalJoinedUsers reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalJoinedUsers")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -798,7 +803,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @total_active_users.setter
     def total_active_users(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the TotalActiveUsers reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TotalActiveUsers")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -819,7 +824,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @maximum_users.setter
     def maximum_users(self, target: str | IField[primitives.Int] | None) -> None:
         """Set the MaximumUsers reference by target ID or IField[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MaximumUsers")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -840,7 +845,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @session_begin_time.setter
     def session_begin_time(self, target: str | IField[str] | None) -> None:
         """Set the SessionBeginTime reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SessionBeginTime")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -861,7 +866,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @last_update.setter
     def last_update(self, target: str | IField[str] | None) -> None:
         """Set the LastUpdate reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LastUpdate")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -882,7 +887,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @access_level.setter
     def access_level(self, target: str | IField[SessionAccessLevel] | None) -> None:
         """Set the AccessLevel reference by target ID or IField[SessionAccessLevel] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AccessLevel")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -903,7 +908,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @hide_from_listing.setter
     def hide_from_listing(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HideFromListing reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HideFromListing")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -924,7 +929,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @away_kick_enabled.setter
     def away_kick_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the AwayKickEnabled reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AwayKickEnabled")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -945,7 +950,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
     @away_kick_interval.setter
     def away_kick_interval(self, target: str | IField[str] | None) -> None:
         """Set the AwayKickInterval reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AwayKickInterval")
         if isinstance(member, members.Reference):
             member.targetId = target_id

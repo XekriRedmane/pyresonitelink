@@ -42,7 +42,7 @@ class UnpackColumns_Float2x2(GeneratedComponent, IExecutionNode, INode, ICustomI
     @matrix.setter
     def matrix(self, target: str | INodeValueOutput[primitives.Float2x2] | None) -> None:
         """Set the Matrix reference by target ID or INodeValueOutput[primitives.Float2x2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Matrix")
         if isinstance(member, members.Reference):
             member.targetId = target_id

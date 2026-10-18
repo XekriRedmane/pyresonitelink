@@ -64,7 +64,7 @@ class SampleColorX(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @point.setter
     def point(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Point reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Point")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -85,7 +85,7 @@ class SampleColorX(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @direction.setter
     def direction(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Direction reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -106,7 +106,7 @@ class SampleColorX(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @reference.setter
     def reference(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Reference reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Reference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -127,7 +127,7 @@ class SampleColorX(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @near_clip.setter
     def near_clip(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the NearClip reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NearClip")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -148,7 +148,7 @@ class SampleColorX(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @far_clip.setter
     def far_clip(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the FarClip reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FarClip")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -169,7 +169,7 @@ class SampleColorX(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @on_sample_start.setter
     def on_sample_start(self, target: str | INodeOperation | None) -> None:
         """Set the OnSampleStart reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSampleStart")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -190,7 +190,7 @@ class SampleColorX(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INod
     @on_sampled.setter
     def on_sampled(self, target: str | INodeOperation | None) -> None:
         """Set the OnSampled reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSampled")
         if isinstance(member, members.Reference):
             member.targetId = target_id

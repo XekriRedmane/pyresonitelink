@@ -1,12 +1,17 @@
 """Generated component: WebsocketTextMessageSender."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_object_output import INodeObjectOutput
-from pyresonitelink.generated._types.websocket_client import WebsocketClient
 from pyresonitelink.generated._types.inode_operation import INodeOperation
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.network.websocket_client import WebsocketClient
 from pyresonitelink.generated._types.iasync_node_operation import IAsyncNodeOperation
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -57,7 +62,7 @@ class WebsocketTextMessageSender(GeneratedComponent, IAsyncNodeOperation, IExecu
     @client.setter
     def client(self, target: str | INodeObjectOutput[WebsocketClient] | None) -> None:
         """Set the Client reference by target ID or INodeObjectOutput[WebsocketClient] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Client")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -78,7 +83,7 @@ class WebsocketTextMessageSender(GeneratedComponent, IAsyncNodeOperation, IExecu
     @data.setter
     def data(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Data reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Data")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -99,7 +104,7 @@ class WebsocketTextMessageSender(GeneratedComponent, IAsyncNodeOperation, IExecu
     @on_send_start.setter
     def on_send_start(self, target: str | INodeOperation | None) -> None:
         """Set the OnSendStart reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSendStart")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -120,7 +125,7 @@ class WebsocketTextMessageSender(GeneratedComponent, IAsyncNodeOperation, IExecu
     @on_sent.setter
     def on_sent(self, target: str | INodeOperation | None) -> None:
         """Set the OnSent reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -141,7 +146,7 @@ class WebsocketTextMessageSender(GeneratedComponent, IAsyncNodeOperation, IExecu
     @on_send_error.setter
     def on_send_error(self, target: str | INodeOperation | None) -> None:
         """Set the OnSendError reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSendError")
         if isinstance(member, members.Reference):
             member.targetId = target_id

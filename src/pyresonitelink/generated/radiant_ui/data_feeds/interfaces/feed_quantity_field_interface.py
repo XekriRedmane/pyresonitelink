@@ -1,5 +1,8 @@
 """Generated component: FeedQuantityFieldInterface."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from typing import Any
 
 T = Any
@@ -12,8 +15,10 @@ from pyresonitelink.generated._types.ifield import IField
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.sync_ref import SyncRef
 from pyresonitelink.generated._types.idata_feed_view import IDataFeedView
-from pyresonitelink.generated._types.feed_item_interface import FeedItemInterface
 from pyresonitelink.generated._types.sync_field_list import SyncFieldList
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.radiant_ui.data_feeds.interfaces.feed_item_interface import FeedItemInterface
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -136,7 +141,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @item_name.setter
     def item_name(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemName reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -157,7 +162,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @item_key.setter
     def item_key(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemKey reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemKey")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -178,7 +183,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @item_description.setter
     def item_description(self, target: str | IField[primitives.String] | None) -> None:
         """Set the ItemDescription reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemDescription")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -199,7 +204,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @has_description.setter
     def has_description(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HasDescription reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HasDescription")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -220,7 +225,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @description_cleanup.setter
     def description_cleanup(self, target: str | Slot | None) -> None:
         """Set the DescriptionCleanup reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DescriptionCleanup")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -241,7 +246,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @item_icon.setter
     def item_icon(self, target: str | IField[str] | None) -> None:
         """Set the ItemIcon reference by target ID or IField[str] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ItemIcon")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -262,7 +267,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @has_icon.setter
     def has_icon(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the HasIcon reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HasIcon")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -283,7 +288,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @icon_cleanup.setter
     def icon_cleanup(self, target: str | Slot | None) -> None:
         """Set the IconCleanup reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IconCleanup")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -304,7 +309,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @view.setter
     def view(self, target: str | SyncRef[IDataFeedView] | None) -> None:
         """Set the View reference by target ID or SyncRef[IDataFeedView] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncRef) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("View")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -325,7 +330,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @parent_container.setter
     def parent_container(self, target: str | FeedItemInterface | None) -> None:
         """Set the ParentContainer reference by target ID or FeedItemInterface instance."""
-        target_id: str | None = target.id if isinstance(target, FeedItemInterface) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ParentContainer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -346,7 +351,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @child_container.setter
     def child_container(self, target: str | Slot | None) -> None:
         """Set the ChildContainer reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ChildContainer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -380,7 +385,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @enabled_state.setter
     def enabled_state(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the EnabledState reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EnabledState")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -401,7 +406,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @value.setter
     def value(self, target: str | IField[T] | None) -> None:
         """Set the Value reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Value")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -422,7 +427,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @formatting.setter
     def formatting(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Formatting reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Formatting")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -443,7 +448,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @min.setter
     def min(self, target: str | IField[T] | None) -> None:
         """Set the Min reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Min")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -464,7 +469,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @max.setter
     def max(self, target: str | IField[T] | None) -> None:
         """Set the Max reference by target ID or IField[T] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Max")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -485,7 +490,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @default_unit.setter
     def default_unit(self, target: str | IField[primitives.String] | None) -> None:
         """Set the DefaultUnit reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DefaultUnit")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -506,7 +511,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @format_unit.setter
     def format_unit(self, target: str | IField[primitives.String] | None) -> None:
         """Set the FormatUnit reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FormatUnit")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -527,7 +532,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @format_number.setter
     def format_number(self, target: str | IField[primitives.String] | None) -> None:
         """Set the FormatNumber reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FormatNumber")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -548,7 +553,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @compound_format_units.setter
     def compound_format_units(self, target: str | SyncFieldList[primitives.String] | None) -> None:
         """Set the CompoundFormatUnits reference by target ID or SyncFieldList[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, SyncFieldList) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CompoundFormatUnits")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -569,7 +574,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @compound_override_names.setter
     def compound_override_names(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the CompoundOverrideNames reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CompoundOverrideNames")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -590,7 +595,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @compound_use_long_names.setter
     def compound_use_long_names(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the CompoundUseLongNames reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CompoundUseLongNames")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -611,7 +616,7 @@ class FeedQuantityFieldInterface(GeneratedComponent, IComponent, IWorldEventRece
     @compound_separator.setter
     def compound_separator(self, target: str | IField[primitives.String] | None) -> None:
         """Set the CompoundSeparator reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CompoundSeparator")
         if isinstance(member, members.Reference):
             member.targetId = target_id

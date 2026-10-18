@@ -130,7 +130,7 @@ This works as part of the game's robust Haptics system.
     @debug_visual.setter
     def debug_visual(self, target: str | Slot | None) -> None:
         """Set the _debugVisual reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_debugVisual")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -14,10 +14,11 @@ from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.audio_clip import AudioClip
 from pyresonitelink.generated._types.itexture_2d_provider import ITexture2DProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class AudioWaveformTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IWorldEventReceiver):
+class AudioWaveformTexture(GeneratedComponent, ITexture2DProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The AudioWaveformTexture component is used to generate a texture of a line with a visual representation of the volume and pitch of an audio over it's duration. For use with a material.
 
     Category: Assets/Procedural Textures
@@ -280,7 +281,7 @@ class AudioWaveformTexture(GeneratedComponent, ITexture2DProvider, ICustomInspec
     @clip.setter
     def clip(self, target: str | IAssetProvider[AudioClip] | None) -> None:
         """Set the Clip reference by target ID or IAssetProvider[AudioClip] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Clip")
         if isinstance(member, members.Reference):
             member.targetId = target_id

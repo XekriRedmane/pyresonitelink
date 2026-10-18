@@ -1,0 +1,12 @@
+{
+  "description": "The IsReadOnly node takes in a Collection and returns if the collection is a Read Only list.",
+  "category": "",
+  "fields": {
+    "Collection": "The collection to check.",
+    "* ([[Type:Bool|Bool]])": "Returns if the collection is a Read Only list."
+  },
+  "methods": {},
+  "usage": "Doesn't work with Collections that are by definition read only, for example, IReadOnlyList",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:IsReadOnly&action=raw"
+}

@@ -67,7 +67,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @root.setter
     def root(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Root reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -88,7 +88,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @bake_inactive.setter
     def bake_inactive(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the BakeInactive reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("BakeInactive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -109,7 +109,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @filter_with_tag.setter
     def filter_with_tag(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the FilterWithTag reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("FilterWithTag")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -130,7 +130,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @delay_before_bake.setter
     def delay_before_bake(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the DelayBeforeBake reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DelayBeforeBake")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -190,7 +190,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @on_bake_batch_start.setter
     def on_bake_batch_start(self, target: str | INodeOperation | None) -> None:
         """Set the OnBakeBatchStart reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnBakeBatchStart")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -211,7 +211,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @on_before_probe_bake.setter
     def on_before_probe_bake(self, target: str | INodeOperation | None) -> None:
         """Set the OnBeforeProbeBake reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnBeforeProbeBake")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -232,7 +232,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @on_probe_baked.setter
     def on_probe_baked(self, target: str | INodeOperation | None) -> None:
         """Set the OnProbeBaked reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnProbeBaked")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -253,7 +253,7 @@ class BakeReflectionProbes(GeneratedComponent, IAsyncNodeOperation, IExecutionNo
     @on_bake_batch_finished.setter
     def on_bake_batch_finished(self, target: str | INodeOperation | None) -> None:
         """Set the OnBakeBatchFinished reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnBakeBatchFinished")
         if isinstance(member, members.Reference):
             member.targetId = target_id

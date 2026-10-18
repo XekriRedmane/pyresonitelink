@@ -226,7 +226,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
     @label.setter
     def label(self, target: str | IField[primitives.String] | None) -> None:
         """Set the _label reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_label")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -247,7 +247,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
     @previous_enabled.setter
     def previous_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _previousEnabled reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_previousEnabled")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -268,7 +268,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
     @next_enabled.setter
     def next_enabled(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the _nextEnabled reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_nextEnabled")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -278,7 +278,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<bool>'),
             )
 
-    async def next_page(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
+    async def next_page(self, resolink: protocols.ResoniteLinkClient, button: str | workers.Worker | GeneratedComponent, event_data: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Switches to the next page via action.
 
         Args:
@@ -291,10 +291,10 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "NextPage", {"button": button, "eventData": event_data}, debug,
+            resolink, "NextPage", {"button": members.DataReference(targetID=button) if isinstance(button, str) else button, "eventData": members.DataReference(targetID=event_data) if isinstance(event_data, str) else event_data}, debug,
         )
 
-    async def previous_page(self, resolink: protocols.ResoniteLinkClient, button: str, event_data: str, debug: bool = False) -> dict:
+    async def previous_page(self, resolink: protocols.ResoniteLinkClient, button: str | workers.Worker | GeneratedComponent, event_data: str | workers.Worker | GeneratedComponent, debug: bool = False) -> dict:
         """Switches to the previous page via action.
 
         Args:
@@ -307,7 +307,7 @@ class PagingControl(GeneratedComponent, ICustomInspector, IComponent, IWorldEven
             The raw JSON response dict.
         """
         return await self.call_method(
-            resolink, "PreviousPage", {"button": button, "eventData": event_data}, debug,
+            resolink, "PreviousPage", {"button": members.DataReference(targetID=button) if isinstance(button, str) else button, "eventData": members.DataReference(targetID=event_data) if isinstance(event_data, str) else event_data}, debug,
         )
 
     async def next_page_0(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:

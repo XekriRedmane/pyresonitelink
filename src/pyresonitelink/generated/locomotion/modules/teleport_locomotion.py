@@ -1,5 +1,8 @@
 """Generated component: TeleportLocomotion."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,12 +10,14 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
-from pyresonitelink.generated._types.locomotion_controller import LocomotionController
-from pyresonitelink.generated._types.ballistic_path_mesh import BallisticPathMesh
-from pyresonitelink.generated._types.pbs_rim_metallic import PBS_RimMetallic
-from pyresonitelink.generated._types.mesh_renderer import MeshRenderer
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.character_controller import CharacterController
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.controllers.locomotion_controller import LocomotionController
+    from pyresonitelink.generated.assets.procedural_meshes.ballistic_path_mesh import BallisticPathMesh
+    from pyresonitelink.generated.assets.materials.pbs.pbs_rim_metallic import PBS_RimMetallic
+    from pyresonitelink.generated.rendering.mesh_renderer import MeshRenderer
+    from pyresonitelink.generated.physics.character_controller import CharacterController
 from pyresonitelink.generated._types.ilocomotion_module import ILocomotionModule
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -112,7 +117,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
     @icon.setter
     def icon(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Icon reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Icon")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -152,7 +157,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
     @current_controller.setter
     def current_controller(self, target: str | LocomotionController | None) -> None:
         """Set the _currentController reference by target ID or LocomotionController instance."""
-        target_id: str | None = target.id if isinstance(target, LocomotionController) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_currentController")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -433,7 +438,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
     @path_mesh.setter
     def path_mesh(self, target: str | BallisticPathMesh | None) -> None:
         """Set the _pathMesh reference by target ID or BallisticPathMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BallisticPathMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_pathMesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -454,7 +459,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
     @path_material.setter
     def path_material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _pathMaterial reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_pathMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -475,7 +480,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
     @path_renderer.setter
     def path_renderer(self, target: str | MeshRenderer | None) -> None:
         """Set the _pathRenderer reference by target ID or MeshRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, MeshRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_pathRenderer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -496,7 +501,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
     @path_visual.setter
     def path_visual(self, target: str | Slot | None) -> None:
         """Set the _pathVisual reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_pathVisual")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -517,7 +522,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
     @target_point_visual.setter
     def target_point_visual(self, target: str | Slot | None) -> None:
         """Set the _targetPointVisual reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_targetPointVisual")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -538,7 +543,7 @@ class TeleportLocomotion(GeneratedComponent, ILocomotionModule, IWorldEventRecei
     @character_controller.setter
     def character_controller(self, target: str | CharacterController | None) -> None:
         """Set the _characterController reference by target ID or CharacterController instance."""
-        target_id: str | None = target.id if isinstance(target, CharacterController) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_characterController")
         if isinstance(member, members.Reference):
             member.targetId = target_id

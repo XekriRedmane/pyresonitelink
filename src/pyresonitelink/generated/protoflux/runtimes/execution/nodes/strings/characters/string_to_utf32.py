@@ -46,7 +46,7 @@ class StringToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
     @string.setter
     def string(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the String reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("String")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -67,7 +67,7 @@ class StringToUTF32(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
     @index_.setter
     def index_(self, target: str | INodeValueOutput[primitives.Int] | None) -> None:
         """Set the Index reference by target ID or INodeValueOutput[primitives.Int] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Index")
         if isinstance(member, members.Reference):
             member.targetId = target_id

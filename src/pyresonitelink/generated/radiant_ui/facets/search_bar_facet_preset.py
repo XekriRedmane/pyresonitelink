@@ -1,9 +1,14 @@
 """Generated component: SearchBarFacetPreset."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.radiant_search_bar import RadiantSearchBar
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.radiant_ui.general.radiant_search_bar import RadiantSearchBar
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -38,7 +43,7 @@ class SearchBarFacetPreset(GeneratedComponent, IComponent, IWorldEventReceiver):
     @search_bar.setter
     def search_bar(self, target: str | RadiantSearchBar | None) -> None:
         """Set the _searchBar reference by target ID or RadiantSearchBar instance."""
-        target_id: str | None = target.id if isinstance(target, RadiantSearchBar) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_searchBar")
         if isinstance(member, members.Reference):
             member.targetId = target_id

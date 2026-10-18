@@ -1,5 +1,8 @@
 """Generated component: PhysicalLocomotion."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -10,9 +13,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
-from pyresonitelink.generated._types.locomotion_controller import LocomotionController
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.character_controller import CharacterController
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.controllers.locomotion_controller import LocomotionController
+    from pyresonitelink.generated.physics.character_controller import CharacterController
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.iphysical_locomotion import IPhysicalLocomotion
 from pyresonitelink.generated._types.ifield_of_view_modifier import IFieldOfViewModifier
@@ -152,7 +157,7 @@ World authors can configure this feature by changing the properties on the Physi
     @icon.setter
     def icon(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Icon reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Icon")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -192,7 +197,7 @@ World authors can configure this feature by changing the properties on the Physi
     @current_controller.setter
     def current_controller(self, target: str | LocomotionController | None) -> None:
         """Set the _currentController reference by target ID or LocomotionController instance."""
-        target_id: str | None = target.id if isinstance(target, LocomotionController) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_currentController")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -315,7 +320,7 @@ World authors can configure this feature by changing the properties on the Physi
     @initialization_collider_root.setter
     def initialization_collider_root(self, target: str | Slot | None) -> None:
         """Set the InitializationColliderRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("InitializationColliderRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -720,7 +725,7 @@ World authors can configure this feature by changing the properties on the Physi
     @character_controller.setter
     def character_controller(self, target: str | CharacterController | None) -> None:
         """Set the _characterController reference by target ID or CharacterController instance."""
-        target_id: str | None = target.id if isinstance(target, CharacterController) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_characterController")
         if isinstance(member, members.Reference):
             member.targetId = target_id

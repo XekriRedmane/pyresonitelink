@@ -12,10 +12,11 @@ from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.ipbs_metallic import IPBS_Metallic
 from pyresonitelink.generated._types.icommon_material import ICommonMaterial
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class PBS_Metallic(GeneratedComponent, IPBS_Metallic, ICommonMaterial, ICustomInspector, IWorldEventReceiver):
+class PBS_Metallic(GeneratedComponent, IPBS_Metallic, ICommonMaterial, ICustomInspector, IComponent, IWorldEventReceiver):
     """PBS Metallic is a physically-based material that uses a Metallic-Smoothness (MS) map to store data about the metallicity and smoothness of an object. It is based on the Unity 5 Standard PBR Setup.
 
 For information about the maps and their properties read on!
@@ -144,7 +145,7 @@ For information about the maps and their properties read on!
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -260,7 +261,7 @@ For information about the maps and their properties read on!
     @albedo_texture.setter
     def albedo_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -300,7 +301,7 @@ For information about the maps and their properties read on!
     @emissive_map.setter
     def emissive_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -340,7 +341,7 @@ For information about the maps and their properties read on!
     @normal_map.setter
     def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -361,7 +362,7 @@ For information about the maps and their properties read on!
     @height_map.setter
     def height_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the HeightMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HeightMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -401,7 +402,7 @@ For information about the maps and their properties read on!
     @occlusion_map.setter
     def occlusion_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the OcclusionMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OcclusionMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -422,7 +423,7 @@ For information about the maps and their properties read on!
     @detail_albedo_texture.setter
     def detail_albedo_texture(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the DetailAlbedoTexture reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DetailAlbedoTexture")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -443,7 +444,7 @@ For information about the maps and their properties read on!
     @detail_normal_map.setter
     def detail_normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the DetailNormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DetailNormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -617,7 +618,7 @@ For information about the maps and their properties read on!
     @metallic_map.setter
     def metallic_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the MetallicMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MetallicMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id

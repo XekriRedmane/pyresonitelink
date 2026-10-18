@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class IcoSphereMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The IcoSphereMesh component procedurally generates a icosahedron mesh for use with a MeshRenderer, according to the parameters provided. 
 
 As of Version 2020.10.25.1103, this value is clamped in the range [0,8] to prevent accidentally creating a mesh with an excessive number of vertices.

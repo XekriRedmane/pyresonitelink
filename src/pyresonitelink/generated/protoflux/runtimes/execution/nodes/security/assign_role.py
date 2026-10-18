@@ -51,7 +51,7 @@ class AssignRole(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +72,7 @@ class AssignRole(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
     @handle.setter
     def handle(self, target: str | INodeObjectOutput[JoinRequestHandle] | None) -> None:
         """Set the Handle reference by target ID or INodeObjectOutput[JoinRequestHandle] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Handle")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +93,7 @@ class AssignRole(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode, 
     @role_name.setter
     def role_name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the RoleName reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RoleName")
         if isinstance(member, members.Reference):
             member.targetId = target_id

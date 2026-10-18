@@ -44,7 +44,7 @@ class ButtonClipboardCopyText(GeneratedComponent, IButtonPressReceiver, IWorldEv
     @source.setter
     def source(self, target: str | IField[primitives.String] | None) -> None:
         """Set the Source reference by target ID or IField[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
             member.targetId = target_id

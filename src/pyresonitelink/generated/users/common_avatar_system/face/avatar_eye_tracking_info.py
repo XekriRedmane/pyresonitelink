@@ -38,7 +38,7 @@ class AvatarEyeTrackingInfo(GeneratedComponent, IComponent, IWorldEventReceiver)
     @eye_data_source.setter
     def eye_data_source(self, target: str | IEyeDataSourceComponent | None) -> None:
         """Set the EyeDataSource reference by target ID or IEyeDataSourceComponent instance."""
-        target_id: str | None = target.id if isinstance(target, IEyeDataSourceComponent) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EyeDataSource")
         if isinstance(member, members.Reference):
             member.targetId = target_id

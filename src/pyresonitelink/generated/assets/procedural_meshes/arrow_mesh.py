@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class ArrowMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """Arrow Mesh is a procedural Asset mesh that generates a cylinder with a cone on the end. Like a 3d arrow. The Arrow Mesh allows for vertex color customization, as well as defining a shape and a direction, aka a Vector.
 }}
 

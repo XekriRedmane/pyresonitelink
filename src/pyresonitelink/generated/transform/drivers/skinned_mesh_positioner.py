@@ -1,13 +1,18 @@
 """Generated component: SkinnedMeshPositioner."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.skinned_mesh_renderer import SkinnedMeshRenderer
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.skinned_mesh_renderer import SkinnedMeshRenderer
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -40,7 +45,7 @@ cOuCitJ-ajI
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SkinnedMeshPositioner"
 
-    def __init__(self, skin: str | SkinnedMeshRenderer | None = None, triangle_index: primitives.Int | None = None, barycentric_coordinate: primitives.Float3 | None = None, local_position: primitives.Float3 | None = None, local_rotation: primitives.FloatQ | None = None, local_scale: primitives.Float3 | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, scale_drive: str | IField[primitives.Float3] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, skin: str | SkinnedMeshRenderer | None = None, triangle_index: primitives.Int | None = None, barycentric_coordinate: primitives.Float3 | None = None, local_position: primitives.Float3 | None = None, local_rotation: primitives.FloatQ | None = None, local_scale: primitives.Float3 | None = None, position_drive: str | IField[primitives.Float3] | None = None, rotation_drive: str | IField[primitives.FloatQ] | None = None, scale_drive: str | IField[primitives.Float3] | None = None, always_use_flat_normal: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -53,6 +58,7 @@ cOuCitJ-ajI
             position_drive: Initial value for PositionDrive.
             rotation_drive: Initial value for RotationDrive.
             scale_drive: Initial value for ScaleDrive.
+            always_use_flat_normal: Initial value for AlwaysUseFlatNormal.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -74,6 +80,8 @@ cOuCitJ-ajI
             self.rotation_drive = rotation_drive
         if scale_drive is not None:
             self.scale_drive = scale_drive
+        if always_use_flat_normal is not None:
+            self.always_use_flat_normal = always_use_flat_normal
 
     @property
     def skin(self) -> str | None:
@@ -86,7 +94,7 @@ cOuCitJ-ajI
     @skin.setter
     def skin(self, target: str | SkinnedMeshRenderer | None) -> None:
         """Set the Skin reference by target ID or SkinnedMeshRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, SkinnedMeshRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Skin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -202,7 +210,7 @@ cOuCitJ-ajI
     @position_drive.setter
     def position_drive(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the PositionDrive reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PositionDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -223,7 +231,7 @@ cOuCitJ-ajI
     @rotation_drive.setter
     def rotation_drive(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the RotationDrive reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RotationDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -244,7 +252,7 @@ cOuCitJ-ajI
     @scale_drive.setter
     def scale_drive(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the ScaleDrive reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ScaleDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -252,6 +260,25 @@ cOuCitJ-ajI
             self.set_member(
                 "ScaleDrive",
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.IField<float3>'),
+            )
+
+    @property
+    def always_use_flat_normal(self) -> primitives.Bool | None:
+        """The AlwaysUseFlatNormal field value."""
+        member = self.get_member("AlwaysUseFlatNormal")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @always_use_flat_normal.setter
+    def always_use_flat_normal(self, value: primitives.Bool) -> None:
+        """Set the AlwaysUseFlatNormal field value."""
+        member = self.get_member("AlwaysUseFlatNormal")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "AlwaysUseFlatNormal", fields.FieldBool(value=value)
             )
 
     async def compute_parameters(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:

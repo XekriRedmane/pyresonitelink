@@ -9,10 +9,11 @@ from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class PBS_ColorSplatMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class PBS_ColorSplatMetallic(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """A PBS Color Splat (Metallic & Specular) shader:
 - Supports 4 textures of each and a color map, where each channel represents contribution from each
 - Supports height map blending too for sharper, more defined look
@@ -248,7 +249,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -288,7 +289,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @color_map.setter
     def color_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the ColorMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ColorMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -347,7 +348,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @packed_height_map.setter
     def packed_height_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the PackedHeightMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PackedHeightMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -501,7 +502,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @albedo_texture0.setter
     def albedo_texture0(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture0 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -522,7 +523,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @albedo_texture1.setter
     def albedo_texture1(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture1 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -543,7 +544,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @albedo_texture2.setter
     def albedo_texture2(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture2 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture2")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -564,7 +565,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @albedo_texture3.setter
     def albedo_texture3(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the AlbedoTexture3 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AlbedoTexture3")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -661,7 +662,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @emissive_map0.setter
     def emissive_map0(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap0 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -682,7 +683,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @emissive_map1.setter
     def emissive_map1(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap1 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -703,7 +704,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @emissive_map2.setter
     def emissive_map2(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap2 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap2")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -724,7 +725,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @emissive_map3.setter
     def emissive_map3(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the EmissiveMap3 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EmissiveMap3")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -745,7 +746,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @packed_emission_map.setter
     def packed_emission_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the PackedEmissionMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PackedEmissionMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -766,7 +767,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @packed_normal_map01.setter
     def packed_normal_map01(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the PackedNormalMap01 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PackedNormalMap01")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -787,7 +788,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @packed_normal_map23.setter
     def packed_normal_map23(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the PackedNormalMap23 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PackedNormalMap23")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1112,7 +1113,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @metallic_map01.setter
     def metallic_map01(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the MetallicMap01 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MetallicMap01")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -1133,7 +1134,7 @@ Referencing a PackedEmissionMap Overrides EmissiveMap0-3 Inputs.
     @metallic_map23.setter
     def metallic_map23(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the MetallicMap23 reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MetallicMap23")
         if isinstance(member, members.Reference):
             member.targetId = target_id

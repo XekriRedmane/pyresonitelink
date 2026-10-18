@@ -51,7 +51,7 @@ class RectFromXYWH(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @x.setter
     def x(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the X reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("X")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +72,7 @@ class RectFromXYWH(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @y.setter
     def y(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Y reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Y")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +93,7 @@ class RectFromXYWH(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @width.setter
     def width(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Width reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Width")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -114,7 +114,7 @@ class RectFromXYWH(GeneratedComponent, INodeValueOutput, IExecutionNode, INode, 
     @height.setter
     def height(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Height reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Height")
         if isinstance(member, members.Reference):
             member.targetId = target_id

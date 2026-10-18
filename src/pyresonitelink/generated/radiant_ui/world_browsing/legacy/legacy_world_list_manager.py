@@ -1,5 +1,8 @@
 """Generated component: LegacyWorldListManager."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -9,7 +12,9 @@ from pyresonitelink.generated._enums.empty_session_filter import EmptySessionFil
 from pyresonitelink.generated._enums.session_access_level import SessionAccessLevel
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.legacy_world_item import LegacyWorldItem
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.radiant_ui.world_browsing.legacy.legacy_world_item import LegacyWorldItem
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -158,7 +163,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
     @world_item_template.setter
     def world_item_template(self, target: str | LegacyWorldItem | None) -> None:
         """Set the WorldItemTemplate reference by target ID or LegacyWorldItem instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyWorldItem) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("WorldItemTemplate")
         if isinstance(member, members.Reference):
             member.targetId = target_id

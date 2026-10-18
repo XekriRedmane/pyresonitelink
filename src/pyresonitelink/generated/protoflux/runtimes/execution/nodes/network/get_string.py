@@ -55,7 +55,7 @@ class GET_String(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
     @url.setter
     def url(self, target: str | INodeObjectOutput[str] | None) -> None:
         """Set the URL reference by target ID or INodeObjectOutput[str] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -89,7 +89,7 @@ class GET_String(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
     @on_sent.setter
     def on_sent(self, target: str | INodeOperation | None) -> None:
         """Set the OnSent reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -110,7 +110,7 @@ class GET_String(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
     @on_response.setter
     def on_response(self, target: str | INodeOperation | None) -> None:
         """Set the OnResponse reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnResponse")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -131,7 +131,7 @@ class GET_String(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
     @on_error.setter
     def on_error(self, target: str | INodeOperation | None) -> None:
         """Set the OnError reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnError")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -152,7 +152,7 @@ class GET_String(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode,
     @on_denied.setter
     def on_denied(self, target: str | INodeOperation | None) -> None:
         """Set the OnDenied reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnDenied")
         if isinstance(member, members.Reference):
             member.targetId = target_id

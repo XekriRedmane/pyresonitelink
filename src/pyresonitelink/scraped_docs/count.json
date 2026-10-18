@@ -1,0 +1,12 @@
+{
+  "description": "The Count node takes in a Collection and returns the number of elements (list/array) or number of KeyValuePairs (dictionary).\n\nSince lists and arrays are zero indexed in Resonite, the last element in the list/array is at count minus 1.\n\nKnown compatible types: any collection.\n\nKnown incompatible types: none.",
+  "category": "",
+  "fields": {
+    "Collection": "The collection to count from.",
+    "* ([[Type:Int|Int]])": "The total number of elements (list/array) or the number of key value pairs (dictionary)."
+  },
+  "methods": {},
+  "usage": "",
+  "notes": [],
+  "_source_url": "https://wiki.resonite.com/index.php?title=ProtoFlux:Count&action=raw"
+}

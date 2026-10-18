@@ -65,7 +65,7 @@ If the tool is null or the tool is already equipped ``OnEquipFail`` will fire.""
     @tool.setter
     def tool(self, target: str | INodeObjectOutput[ITool] | None) -> None:
         """Set the Tool reference by target ID or INodeObjectOutput[ITool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Tool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -88,7 +88,7 @@ If the user is null then the execution context's local user will be used, and if
     @user.setter
     def user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the User reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -111,7 +111,7 @@ If an interaction handler for the side can not be found then ``OnEquipFail`` wil
     @side.setter
     def side(self, target: str | INodeValueOutput[Chirality] | None) -> None:
         """Set the Side reference by target ID or INodeValueOutput[Chirality] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Side")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -134,7 +134,7 @@ If an another tool is already equipped and ``DequipExisting`` is false then ``On
     @dequip_existing.setter
     def dequip_existing(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the DequipExisting reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DequipExisting")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -155,7 +155,7 @@ If an another tool is already equipped and ``DequipExisting`` is false then ``On
     @on_equipped.setter
     def on_equipped(self, target: str | INodeOperation | None) -> None:
         """Set the OnEquipped reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnEquipped")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -176,7 +176,7 @@ If an another tool is already equipped and ``DequipExisting`` is false then ``On
     @on_equip_fail.setter
     def on_equip_fail(self, target: str | INodeOperation | None) -> None:
         """Set the OnEquipFail reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnEquipFail")
         if isinstance(member, members.Reference):
             member.targetId = target_id

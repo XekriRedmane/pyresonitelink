@@ -1,5 +1,8 @@
 """Generated component: TextRenderer."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -13,7 +16,9 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.font_set import FontSet
-from pyresonitelink.generated._types.font_material import FontMaterial
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.hidden.font_material import FontMaterial
 from pyresonitelink.generated._types.ibounded import IBounded
 from pyresonitelink.generated._types.itext import IText
 from pyresonitelink.generated._types.irenderable import IRenderable
@@ -205,7 +210,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
     @font.setter
     def font(self, target: str | IAssetProvider[FontSet] | None) -> None:
         """Set the Font reference by target ID or IAssetProvider[FontSet] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Font")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -604,7 +609,7 @@ class TextRenderer(GeneratedComponent, IBounded, IText, IRenderable, IAssetProvi
     @legacy_font_material.setter
     def legacy_font_material(self, target: str | FontMaterial | None) -> None:
         """Set the _legacyFontMaterial reference by target ID or FontMaterial instance."""
-        target_id: str | None = target.id if isinstance(target, FontMaterial) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_legacyFontMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id

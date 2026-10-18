@@ -1,12 +1,17 @@
 """Generated component: ArcSegmentLayout."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.rect_transform import RectTransform
-from pyresonitelink.generated._types.text import Text
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.uix.rect_transform import RectTransform
+    from pyresonitelink.generated.uix.graphics.text import Text
 from pyresonitelink.generated._types.ilayout_element import ILayoutElement
 from pyresonitelink.generated._types.iui_compute_component import IUIComputeComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -59,7 +64,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
     @nested.setter
     def nested(self, target: str | RectTransform | None) -> None:
         """Set the Nested reference by target ID or RectTransform instance."""
-        target_id: str | None = target.id if isinstance(target, RectTransform) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Nested")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -99,7 +104,7 @@ class ArcSegmentLayout(GeneratedComponent, ILayoutElement, IUIComputeComponent, 
     @label.setter
     def label(self, target: str | Text | None) -> None:
         """Set the Label reference by target ID or Text instance."""
-        target_id: str | None = target.id if isinstance(target, Text) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Label")
         if isinstance(member, members.Reference):
             member.targetId = target_id

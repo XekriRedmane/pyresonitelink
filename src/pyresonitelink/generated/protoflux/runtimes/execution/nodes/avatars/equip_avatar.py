@@ -56,7 +56,7 @@ class EquipAvatar(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -77,7 +77,7 @@ class EquipAvatar(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
     @user.setter
     def user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the User reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("User")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -98,7 +98,7 @@ class EquipAvatar(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
     @avatar_root.setter
     def avatar_root(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the AvatarRoot reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AvatarRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -119,7 +119,7 @@ class EquipAvatar(GeneratedComponent, ISyncNodeOperation, IExecutionNode, INode,
     @destroy_old.setter
     def destroy_old(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the DestroyOld reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DestroyOld")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -51,7 +51,7 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
     @center_.setter
     def center_(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Center reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Center")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +72,7 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
     @radius.setter
     def radius(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Radius reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +93,7 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
     @ray_origin.setter
     def ray_origin(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the RayOrigin reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RayOrigin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -114,7 +114,7 @@ class RaySphereIntersection(GeneratedComponent, IExecutionNode, INode, ICustomIn
     @ray_direction.setter
     def ray_direction(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the RayDirection reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RayDirection")
         if isinstance(member, members.Reference):
             member.targetId = target_id

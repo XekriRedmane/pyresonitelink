@@ -1,12 +1,17 @@
 """Generated component: ProtoFluxElementProxy."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.proto_flux_node import ProtoFluxNode
 from pyresonitelink.generated._types.slot import Slot
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.none.proto_flux_node import ProtoFluxNode
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -51,7 +56,7 @@ class ProtoFluxElementProxy(GeneratedComponent, IComponent, IWorldEventReceiver)
     @node.setter
     def node(self, target: str | ProtoFluxNode | None) -> None:
         """Set the Node reference by target ID or ProtoFluxNode instance."""
-        target_id: str | None = target.id if isinstance(target, ProtoFluxNode) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Node")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -129,7 +134,7 @@ class ProtoFluxElementProxy(GeneratedComponent, IComponent, IWorldEventReceiver)
     @connect_point.setter
     def connect_point(self, target: str | Slot | None) -> None:
         """Set the ConnectPoint reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ConnectPoint")
         if isinstance(member, members.Reference):
             member.targetId = target_id

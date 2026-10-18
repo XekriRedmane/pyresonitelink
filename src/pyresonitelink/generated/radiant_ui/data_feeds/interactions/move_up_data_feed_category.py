@@ -40,7 +40,7 @@ class MoveUpDataFeedCategory(GeneratedComponent, IButtonPressReceiver, IWorldEve
     @view.setter
     def view(self, target: str | IDataFeedView | None) -> None:
         """Set the View reference by target ID or IDataFeedView instance."""
-        target_id: str | None = target.id if isinstance(target, IDataFeedView) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("View")
         if isinstance(member, members.Reference):
             member.targetId = target_id

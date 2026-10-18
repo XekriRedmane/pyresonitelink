@@ -27,7 +27,7 @@ See also: Coordinate spaces
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Debugging.DebugLine"
 
-    def __init__(self, next: str | INodeOperation | None = None, point0: str | INodeValueOutput[primitives.Float3] | None = None, point1: str | INodeValueOutput[primitives.Float3] | None = None, color: str | INodeValueOutput[primitives.ColorX] | None = None, radius: str | INodeValueOutput[primitives.Float] | None = None, duration: str | INodeValueOutput[primitives.Float] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, point0: str | INodeValueOutput[primitives.Float3] | None = None, point1: str | INodeValueOutput[primitives.Float3] | None = None, color: str | INodeValueOutput[primitives.ColorX] | None = None, radius: str | INodeValueOutput[primitives.Float] | None = None, duration: str | INodeValueOutput[primitives.Float] | None = None, local: str | INodeValueOutput[primitives.Bool] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -37,6 +37,7 @@ See also: Coordinate spaces
             color: Initial value for Color.
             radius: Initial value for Radius.
             duration: Initial value for Duration.
+            local: Initial value for Local.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -52,6 +53,8 @@ See also: Coordinate spaces
             self.radius = radius
         if duration is not None:
             self.duration = duration
+        if local is not None:
+            self.local = local
 
     @property
     def next(self) -> str | None:
@@ -64,7 +67,7 @@ See also: Coordinate spaces
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -85,7 +88,7 @@ See also: Coordinate spaces
     @point0.setter
     def point0(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Point0 reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Point0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -106,7 +109,7 @@ See also: Coordinate spaces
     @point1.setter
     def point1(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Point1 reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Point1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -127,7 +130,7 @@ See also: Coordinate spaces
     @color.setter
     def color(self, target: str | INodeValueOutput[primitives.ColorX] | None) -> None:
         """Set the Color reference by target ID or INodeValueOutput[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -148,7 +151,7 @@ See also: Coordinate spaces
     @radius.setter
     def radius(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Radius reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Radius")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -169,7 +172,7 @@ See also: Coordinate spaces
     @duration.setter
     def duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Duration reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -177,5 +180,26 @@ See also: Coordinate spaces
             self.set_member(
                 "Duration",
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<float>'),
+            )
+
+    @property
+    def local(self) -> str | None:
+        """Target ID of the Local reference (targets INodeValueOutput[primitives.Bool])."""
+        member = self.get_member("Local")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @local.setter
+    def local(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
+        """Set the Local reference by target ID or INodeValueOutput[primitives.Bool] instance."""
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
+        member = self.get_member("Local")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "Local",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<bool>'),
             )
 

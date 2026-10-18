@@ -7,10 +7,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class DynamicSpriteFont(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class DynamicSpriteFont(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The DynamicSpriteFont component is used to construct a font asset that can be used to create custom fonts character by character.
 
     Category: Assets/Procedural Fonts

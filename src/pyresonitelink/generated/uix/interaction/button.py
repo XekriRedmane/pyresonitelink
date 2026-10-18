@@ -228,7 +228,7 @@ class Button(GeneratedComponent, IButton, IUIInteractable, IUIComputeComponent, 
     @legacy_color_drive.setter
     def legacy_color_drive(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the __legacy_ColorDrive reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("__legacy_ColorDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class BevelBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class BevelBoxMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The BevelBoxMesh component can be placed in a MeshRenderer to create a box with beveled edges.
 
     Category: Assets/Procedural Meshes

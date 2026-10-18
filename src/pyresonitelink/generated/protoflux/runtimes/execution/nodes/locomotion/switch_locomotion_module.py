@@ -58,7 +58,7 @@ class SwitchLocomotionModule(GeneratedComponent, ISyncNodeOperation, IExecutionN
     @target_user.setter
     def target_user(self, target: str | INodeObjectOutput[User] | None) -> None:
         """Set the TargetUser reference by target ID or INodeObjectOutput[User] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TargetUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -81,7 +81,7 @@ Ex: "Walk/Run (with climbing)", "Fly", "Noclip", "Teleport", (etc.)"""
     @module_name.setter
     def module_name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the ModuleName reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ModuleName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -102,7 +102,7 @@ Ex: "Walk/Run (with climbing)", "Fly", "Noclip", "Teleport", (etc.)"""
     @exact_match.setter
     def exact_match(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the ExactMatch reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ExactMatch")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -123,7 +123,7 @@ Ex: "Walk/Run (with climbing)", "Fly", "Noclip", "Teleport", (etc.)"""
     @on_switched.setter
     def on_switched(self, target: str | INodeOperation | None) -> None:
         """Set the OnSwitched reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSwitched")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -144,7 +144,7 @@ Ex: "Walk/Run (with climbing)", "Fly", "Noclip", "Teleport", (etc.)"""
     @on_not_found.setter
     def on_not_found(self, target: str | INodeOperation | None) -> None:
         """Set the OnNotFound reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnNotFound")
         if isinstance(member, members.Reference):
             member.targetId = target_id

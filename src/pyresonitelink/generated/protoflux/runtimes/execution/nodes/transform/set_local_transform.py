@@ -58,7 +58,7 @@ class SetLocalTransform(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -79,7 +79,7 @@ class SetLocalTransform(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
     @instance.setter
     def instance(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Instance reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Instance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -100,7 +100,7 @@ class SetLocalTransform(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
     @position.setter
     def position(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Position reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -121,7 +121,7 @@ class SetLocalTransform(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
     @rotation.setter
     def rotation(self, target: str | INodeValueOutput[primitives.FloatQ] | None) -> None:
         """Set the Rotation reference by target ID or INodeValueOutput[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Rotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -142,7 +142,7 @@ class SetLocalTransform(GeneratedComponent, ISyncNodeOperation, IExecutionNode, 
     @scale.setter
     def scale(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Scale reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
             member.targetId = target_id

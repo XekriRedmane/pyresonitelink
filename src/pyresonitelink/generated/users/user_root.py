@@ -1,12 +1,17 @@
 """Generated component: UserRoot."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.irender_settings_source import IRenderSettingsSource
-from pyresonitelink.generated._types.screen_controller import ScreenController
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.audio_listener import AudioListener
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.controllers.screen_controller import ScreenController
+    from pyresonitelink.generated.audio.audio_listener import AudioListener
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -56,7 +61,7 @@ class UserRoot(GeneratedComponent, IComponent, IWorldEventReceiver):
     @render_settings.setter
     def render_settings(self, target: str | IRenderSettingsSource | None) -> None:
         """Set the RenderSettings reference by target ID or IRenderSettingsSource instance."""
-        target_id: str | None = target.id if isinstance(target, IRenderSettingsSource) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RenderSettings")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -77,7 +82,7 @@ class UserRoot(GeneratedComponent, IComponent, IWorldEventReceiver):
     @screen_controller.setter
     def screen_controller(self, target: str | ScreenController | None) -> None:
         """Set the ScreenController reference by target ID or ScreenController instance."""
-        target_id: str | None = target.id if isinstance(target, ScreenController) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ScreenController")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -98,7 +103,7 @@ class UserRoot(GeneratedComponent, IComponent, IWorldEventReceiver):
     @override_root.setter
     def override_root(self, target: str | Slot | None) -> None:
         """Set the OverrideRoot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OverrideRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -119,7 +124,7 @@ class UserRoot(GeneratedComponent, IComponent, IWorldEventReceiver):
     @override_view.setter
     def override_view(self, target: str | Slot | None) -> None:
         """Set the OverrideView reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OverrideView")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -140,7 +145,7 @@ class UserRoot(GeneratedComponent, IComponent, IWorldEventReceiver):
     @primary_listener.setter
     def primary_listener(self, target: str | AudioListener | None) -> None:
         """Set the PrimaryListener reference by target ID or AudioListener instance."""
-        target_id: str | None = target.id if isinstance(target, AudioListener) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("PrimaryListener")
         if isinstance(member, members.Reference):
             member.targetId = target_id

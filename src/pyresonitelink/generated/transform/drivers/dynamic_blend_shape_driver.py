@@ -1,9 +1,14 @@
 """Generated component: DynamicBlendShapeDriver."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.skinned_mesh_renderer import SkinnedMeshRenderer
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.skinned_mesh_renderer import SkinnedMeshRenderer
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -56,7 +61,7 @@ class DynamicBlendShapeDriver(GeneratedComponent, ICustomInspector, IComponent, 
     @renderer.setter
     def renderer(self, target: str | SkinnedMeshRenderer | None) -> None:
         """Set the Renderer reference by target ID or SkinnedMeshRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, SkinnedMeshRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Renderer")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +95,7 @@ class DynamicBlendShapeDriver(GeneratedComponent, ICustomInspector, IComponent, 
     @last_renderer.setter
     def last_renderer(self, target: str | SkinnedMeshRenderer | None) -> None:
         """Set the _lastRenderer reference by target ID or SkinnedMeshRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, SkinnedMeshRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_lastRenderer")
         if isinstance(member, members.Reference):
             member.targetId = target_id

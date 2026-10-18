@@ -1,5 +1,8 @@
 """Generated component: ProtoFluxTool."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
@@ -7,11 +10,13 @@ from pyresonitelink.generated._enums.type_ import Type
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.slot import Slot
-from pyresonitelink.generated._types.interaction_handler import InteractionHandler
 from pyresonitelink.generated._types.ifield import IField
-from pyresonitelink.generated._types.text_renderer import TextRenderer
-from pyresonitelink.generated._types.proto_flux_element_proxy import ProtoFluxElementProxy
-from pyresonitelink.generated._types.proto_flux_node_visual import ProtoFluxNodeVisual
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.interaction.handlers.interaction_handler import InteractionHandler
+    from pyresonitelink.generated.rendering.text_renderer import TextRenderer
+    from pyresonitelink.generated.none.proto_flux_element_proxy import ProtoFluxElementProxy
+    from pyresonitelink.generated.hidden.proto_flux_node_visual import ProtoFluxNodeVisual
 from pyresonitelink.generated._types.itool import ITool
 from pyresonitelink.generated._types.imaterial_apply_policy import IMaterialApplyPolicy
 from pyresonitelink.generated._types.itouchable import ITouchable
@@ -122,7 +127,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
     @tip_reference.setter
     def tip_reference(self, target: str | Slot | None) -> None:
         """Set the TipReference reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TipReference")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -200,7 +205,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
     @override_active_tool.setter
     def override_active_tool(self, target: str | InteractionHandler | None) -> None:
         """Set the _overrideActiveTool reference by target ID or InteractionHandler instance."""
-        target_id: str | None = target.id if isinstance(target, InteractionHandler) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_overrideActiveTool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -260,7 +265,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
     @wire_point.setter
     def wire_point(self, target: str | Slot | None) -> None:
         """Set the WirePoint reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("WirePoint")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -390,7 +395,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
     @wire_point_position.setter
     def wire_point_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _wirePointPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_wirePointPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -411,7 +416,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
     @text.setter
     def text(self, target: str | TextRenderer | None) -> None:
         """Set the _text reference by target ID or TextRenderer instance."""
-        target_id: str | None = target.id if isinstance(target, TextRenderer) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_text")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -432,7 +437,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
     @current_proxy.setter
     def current_proxy(self, target: str | ProtoFluxElementProxy | None) -> None:
         """Set the _currentProxy reference by target ID or ProtoFluxElementProxy instance."""
-        target_id: str | None = target.id if isinstance(target, ProtoFluxElementProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_currentProxy")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -453,7 +458,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
     @current_temp_wire.setter
     def current_temp_wire(self, target: str | Slot | None) -> None:
         """Set the _currentTempWire reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_currentTempWire")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -474,7 +479,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
     @current_cut_line.setter
     def current_cut_line(self, target: str | Slot | None) -> None:
         """Set the _currentCutLine reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_currentCutLine")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -495,7 +500,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
     @cut_line_scale.setter
     def cut_line_scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _cutLineScale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cutLineScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -516,7 +521,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
     @cut_line_orientation.setter
     def cut_line_orientation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _cutLineOrientation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cutLineOrientation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -537,7 +542,7 @@ class ProtoFluxTool(GeneratedComponent, ITool, IMaterialApplyPolicy, ITouchable,
     @current_highlighted_node.setter
     def current_highlighted_node(self, target: str | ProtoFluxNodeVisual | None) -> None:
         """Set the _currentHighlightedNode reference by target ID or ProtoFluxNodeVisual instance."""
-        target_id: str | None = target.id if isinstance(target, ProtoFluxNodeVisual) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_currentHighlightedNode")
         if isinstance(member, members.Reference):
             member.targetId = target_id

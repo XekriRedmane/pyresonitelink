@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class CircleSegmentShaderMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The CircleSegmentShaderMesh creates a single quad that covers the bounding box area of a flat torus circle defined by the given values. This is used to render the UI_CircleSegment material.
 
     Category: Assets/Procedural Meshes

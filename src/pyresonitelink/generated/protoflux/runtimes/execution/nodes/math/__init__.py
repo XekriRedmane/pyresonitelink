@@ -549,6 +549,8 @@ from .interpolation.slerp_float2 import Slerp_Float2
 from .interpolation.slerp_float3 import Slerp_Float3
 from .interpolation.slerp_float4 import Slerp_Float4
 from .interpolation.slerp_float_q import Slerp_floatQ
+from .interpolation.slerp_unclamped_double_q import SlerpUnclamped_doubleQ
+from .interpolation.slerp_unclamped_float_q import SlerpUnclamped_floatQ
 from .interpolation.slerp_with_magnitude_color import SlerpWithMagnitude_Color
 from .interpolation.slerp_with_magnitude_colorx import SlerpWithMagnitude_ColorX
 from .interpolation.slerp_with_magnitude_double2 import SlerpWithMagnitude_Double2

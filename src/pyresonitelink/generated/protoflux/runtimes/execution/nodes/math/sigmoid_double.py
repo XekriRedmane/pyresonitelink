@@ -45,7 +45,7 @@ class SigmoidDouble(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
     @x.setter
     def x(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the X reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("X")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -66,7 +66,7 @@ class SigmoidDouble(GeneratedComponent, INodeValueOutput, IExecutionNode, INode,
     @e.setter
     def e(self, target: str | INodeValueOutput[primitives.Double] | None) -> None:
         """Set the E reference by target ID or INodeValueOutput[primitives.Double] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("E")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -7,6 +7,7 @@ from .local_user import LocalUser
 from .local_user_root import LocalUserRoot
 from .local_user_slot import LocalUserSlot
 from .local_user_space import LocalUserSpace
+from .sanitized_user_username import SanitizedUserUsername
 from .set_user_scale import SetUserScale
 from .user_from_id import UserFromID
 from .user_from_username import UserFromUsername

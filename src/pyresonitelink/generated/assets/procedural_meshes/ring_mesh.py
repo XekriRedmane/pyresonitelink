@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class RingMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """A ring mesh is a component that generates a ring of quads that has an ``InnerRadius``, ``OuterRadius``, and resolution which is the ``Segments`` field.
 
     Category: Assets/Procedural Meshes

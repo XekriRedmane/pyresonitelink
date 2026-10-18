@@ -1,11 +1,16 @@
 """Generated component: ParticleSystem."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.particle_style import ParticleStyle
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.particle_system.particle_style import ParticleStyle
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
 from pyresonitelink.generated._types.irenderable import IRenderable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -81,7 +86,7 @@ class ParticleSystem(GeneratedComponent, ICustomInspector, IRenderable, IWorldEv
     @style.setter
     def style(self, target: str | ParticleStyle | None) -> None:
         """Set the Style reference by target ID or ParticleStyle instance."""
-        target_id: str | None = target.id if isinstance(target, ParticleStyle) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Style")
         if isinstance(member, members.Reference):
             member.targetId = target_id

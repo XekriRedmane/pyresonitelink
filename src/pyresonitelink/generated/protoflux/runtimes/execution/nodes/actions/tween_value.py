@@ -76,7 +76,7 @@ Examples: Key Enum, Float, Int, etc"""
     @to.setter
     def to(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the To reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("To")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -99,7 +99,7 @@ Examples: Key Enum, Float, Int, etc"""
     @from_.setter
     def from_(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the From reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("From")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -120,7 +120,7 @@ Examples: Key Enum, Float, Int, etc"""
     @duration.setter
     def duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Duration reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -141,7 +141,7 @@ Examples: Key Enum, Float, Int, etc"""
     @curve.setter
     def curve(self, target: str | INodeValueOutput[CurvePreset] | None) -> None:
         """Set the Curve reference by target ID or INodeValueOutput[CurvePreset] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Curve")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -162,7 +162,7 @@ Examples: Key Enum, Float, Int, etc"""
     @proportional_duration.setter
     def proportional_duration(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the ProportionalDuration reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ProportionalDuration")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -183,7 +183,7 @@ Examples: Key Enum, Float, Int, etc"""
     @target.setter
     def target(self, target: str | INodeObjectOutput[IField[T]] | None) -> None:
         """Set the Target reference by target ID or INodeObjectOutput[IField[T]] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -204,7 +204,7 @@ Examples: Key Enum, Float, Int, etc"""
     @on_started.setter
     def on_started(self, target: str | INodeOperation | None) -> None:
         """Set the OnStarted reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnStarted")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -225,7 +225,7 @@ Examples: Key Enum, Float, Int, etc"""
     @on_done.setter
     def on_done(self, target: str | INodeOperation | None) -> None:
         """Set the OnDone reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnDone")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -1,14 +1,19 @@
 """Generated component: LegacyProgressBar."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.legacy_ui_style import LegacyUIStyle
-from pyresonitelink.generated._types.bevel_stripe_mesh import BevelStripeMesh
-from pyresonitelink.generated._types.pbs_rim_metallic import PBS_RimMetallic
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.rendering.visuals.legacy_ui_style import LegacyUIStyle
+    from pyresonitelink.generated.assets.procedural_meshes.legacy_ui.bevel_stripe_mesh import BevelStripeMesh
+    from pyresonitelink.generated.assets.materials.pbs.pbs_rim_metallic import PBS_RimMetallic
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -93,7 +98,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @style.setter
     def style(self, target: str | LegacyUIStyle | None) -> None:
         """Set the Style reference by target ID or LegacyUIStyle instance."""
-        target_id: str | None = target.id if isinstance(target, LegacyUIStyle) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Style")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -304,7 +309,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @bar_mesh.setter
     def bar_mesh(self, target: str | BevelStripeMesh | None) -> None:
         """Set the _barMesh reference by target ID or BevelStripeMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BevelStripeMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_barMesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -325,7 +330,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @container_mesh.setter
     def container_mesh(self, target: str | BevelStripeMesh | None) -> None:
         """Set the _containerMesh reference by target ID or BevelStripeMesh instance."""
-        target_id: str | None = target.id if isinstance(target, BevelStripeMesh) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_containerMesh")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -346,7 +351,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @bar_material.setter
     def bar_material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _barMaterial reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_barMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -367,7 +372,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @container_material.setter
     def container_material(self, target: str | PBS_RimMetallic | None) -> None:
         """Set the _containerMaterial reference by target ID or PBS_RimMetallic instance."""
-        target_id: str | None = target.id if isinstance(target, PBS_RimMetallic) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_containerMaterial")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -388,7 +393,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @bar_position.setter
     def bar_position(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _barPosition reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_barPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -409,7 +414,7 @@ class LegacyProgressBar(GeneratedComponent, IComponent, IWorldEventReceiver):
     @collider_size.setter
     def collider_size(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _colliderSize reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_colliderSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id

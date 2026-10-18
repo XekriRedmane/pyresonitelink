@@ -11,10 +11,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.itexture_provider import ITextureProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class MultiChannelSimplexTexture3D(GeneratedComponent, ITextureProvider, ICustomInspector, IWorldEventReceiver):
+class MultiChannelSimplexTexture3D(GeneratedComponent, ITextureProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The MultiChannelSimplexTexture3D component creates a monochrome noise channel for each RGBA channel with their own settings. It is also considered a ITexture3D element.
 
     Category: Assets/Procedural Texture3Ds

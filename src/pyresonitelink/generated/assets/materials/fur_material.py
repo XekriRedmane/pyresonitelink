@@ -9,10 +9,11 @@ from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.shader import Shader
 from pyresonitelink.generated._types.itexture_2d import ITexture2D
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class FurMaterial(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The FurMaterial component is used to make multi layered geometry out of a mesh's original geometry that has a specified distance between layers. The number of layers is a constant 20. Combined with a map to create holes in the layers via alpha, this creates the illusion of depth and fur like properties. The geometry layers are instanced on the GPU.
 
 Some players have reported lag when using Fur materials. This is due to either using too large of a texture, or due to an issue called Overdraw.
@@ -133,7 +134,7 @@ This means that if a user looks very closely at a fur shader, or the shader cove
     @shader.setter
     def shader(self, target: str | IAssetProvider[Shader] | None) -> None:
         """Set the _shader reference by target ID or IAssetProvider[Shader] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_shader")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -363,7 +364,7 @@ This means that if a user looks very closely at a fur shader, or the shader cove
     @base.setter
     def base(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Base reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Base")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -384,7 +385,7 @@ This means that if a user looks very closely at a fur shader, or the shader cove
     @normal_map.setter
     def normal_map(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the NormalMap reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalMap")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -405,7 +406,7 @@ This means that if a user looks very closely at a fur shader, or the shader cove
     @noise.setter
     def noise(self, target: str | IAssetProvider[ITexture2D] | None) -> None:
         """Set the Noise reference by target ID or IAssetProvider[ITexture2D] instance."""
-        target_id: str | None = target.id if isinstance(target, IAssetProvider) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Noise")
         if isinstance(member, members.Reference):
             member.targetId = target_id

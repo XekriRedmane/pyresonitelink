@@ -92,7 +92,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh0.setter
     def sh0(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH0 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH0")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -113,7 +113,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh1.setter
     def sh1(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH1 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH1")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -134,7 +134,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh2.setter
     def sh2(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH2 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH2")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -155,7 +155,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh3.setter
     def sh3(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH3 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH3")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -176,7 +176,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh4.setter
     def sh4(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH4 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH4")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -197,7 +197,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh5.setter
     def sh5(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH5 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH5")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -218,7 +218,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh6.setter
     def sh6(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH6 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH6")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -239,7 +239,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh7.setter
     def sh7(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH7 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH7")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -260,7 +260,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh8.setter
     def sh8(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH8 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH8")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -281,7 +281,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh9.setter
     def sh9(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH9 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH9")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -302,7 +302,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh10.setter
     def sh10(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH10 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH10")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -323,7 +323,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh11.setter
     def sh11(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH11 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH11")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -344,7 +344,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh12.setter
     def sh12(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH12 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH12")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -365,7 +365,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh13.setter
     def sh13(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH13 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH13")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -386,7 +386,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh14.setter
     def sh14(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH14 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH14")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -407,7 +407,7 @@ class PackSH3(GenericComponent[T], INodeValueOutput[T], IExecutionNode[T], INode
     @sh15.setter
     def sh15(self, target: str | INodeValueOutput[T] | None) -> None:
         """Set the SH15 reference by target ID or INodeValueOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SH15")
         if isinstance(member, members.Reference):
             member.targetId = target_id

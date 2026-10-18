@@ -8,6 +8,7 @@ from pyresonitelink.generated._types.inode_object_output import INodeObjectOutpu
 from pyresonitelink.generated._types.iworld_link import IWorldLink
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
 from pyresonitelink.generated._types.inode_operation import INodeOperation
+from pyresonitelink.generated._types.imappable_node import IMappableNode
 from pyresonitelink.generated._types.iasync_node_operation import IAsyncNodeOperation
 from pyresonitelink.generated._types.iexecution_node import IExecutionNode
 from pyresonitelink.generated._types.inode import INode
@@ -16,7 +17,7 @@ from pyresonitelink.generated._types.iobject_root import IObjectRoot
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class FocusWorld(GeneratedComponent, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
+class FocusWorld(GeneratedComponent, IMappableNode, IAsyncNodeOperation, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
     """The ``Focus World`` node allows a user to focus on a world by giving it a ressession link as the Url. If the world exists (as in, already opened for the user, or available as a headless) it will work as expected. If there is no world that is open already that the ressession link is referring to, it will fail.
 
 Headless worlds would normally have a SessionID that is consistent that you can use to make into a resession link, allowing you to open and join these worlds with ease.
@@ -65,7 +66,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @url.setter
     def url(self, target: str | INodeObjectOutput[str] | None) -> None:
         """Set the URL reference by target ID or INodeObjectOutput[str] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("URL")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -86,7 +87,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @world_link.setter
     def world_link(self, target: str | INodeObjectOutput[IWorldLink] | None) -> None:
         """Set the WorldLink reference by target ID or INodeObjectOutput[IWorldLink] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("WorldLink")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -107,7 +108,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @close_current.setter
     def close_current(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the CloseCurrent reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("CloseCurrent")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -128,7 +129,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @on_not_found.setter
     def on_not_found(self, target: str | INodeOperation | None) -> None:
         """Set the OnNotFound reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnNotFound")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -149,7 +150,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @on_focused.setter
     def on_focused(self, target: str | INodeOperation | None) -> None:
         """Set the OnFocused reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFocused")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -170,7 +171,7 @@ This node is also useful when making Exit Strategies, as you can set it up to wh
     @on_fail.setter
     def on_fail(self, target: str | INodeOperation | None) -> None:
         """Set the OnFail reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFail")
         if isinstance(member, members.Reference):
             member.targetId = target_id

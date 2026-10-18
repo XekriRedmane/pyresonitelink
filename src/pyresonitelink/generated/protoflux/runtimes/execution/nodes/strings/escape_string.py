@@ -13,7 +13,7 @@ from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventRec
 
 
 class EscapeString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode, ICustomInspector, IObjectRoot, IWorldEventReceiver):
-    """The Escape String node escapes strings by adding ``\`` behind special characters. Its intention is for use in an environment with .NET Regular Expressions, but since Resonite does not currently implement any user-facing regex, its usefulness is limited.
+    """The Escape String node escapes strings by adding ``\\`` behind special characters. Its intention is for use in an environment with .NET Regular Expressions, but since Resonite does not currently implement any user-facing regex, its usefulness is limited.
 
     Category: ProtoFlux/Runtimes/Execution/Nodes/Strings
     """
@@ -42,7 +42,7 @@ class EscapeString(GeneratedComponent, INodeObjectOutput, IExecutionNode, INode,
     @string.setter
     def string(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the String reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("String")
         if isinstance(member, members.Reference):
             member.targetId = target_id

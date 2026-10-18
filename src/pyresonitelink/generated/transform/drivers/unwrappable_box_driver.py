@@ -174,7 +174,7 @@ This can be used for presents or crates.
     @side0rotation.setter
     def side0rotation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _side0rotation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side0rotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -195,7 +195,7 @@ This can be used for presents or crates.
     @side1rotation.setter
     def side1rotation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _side1rotation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side1rotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -216,7 +216,7 @@ This can be used for presents or crates.
     @side2rotation.setter
     def side2rotation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _side2rotation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side2rotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -237,7 +237,7 @@ This can be used for presents or crates.
     @side3rotation.setter
     def side3rotation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _side3rotation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side3rotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -258,7 +258,7 @@ This can be used for presents or crates.
     @top_rotation.setter
     def top_rotation(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _topRotation reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_topRotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -279,7 +279,7 @@ This can be used for presents or crates.
     @side0offset.setter
     def side0offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side0offset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side0offset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -300,7 +300,7 @@ This can be used for presents or crates.
     @side1offset.setter
     def side1offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side1offset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side1offset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -321,7 +321,7 @@ This can be used for presents or crates.
     @side2offset.setter
     def side2offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side2offset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side2offset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -342,7 +342,7 @@ This can be used for presents or crates.
     @side3offset.setter
     def side3offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side3offset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side3offset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -363,7 +363,7 @@ This can be used for presents or crates.
     @top_offset.setter
     def top_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _topOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_topOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -384,7 +384,7 @@ This can be used for presents or crates.
     @side0content_offset.setter
     def side0content_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side0contentOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side0contentOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -405,7 +405,7 @@ This can be used for presents or crates.
     @side1content_offset.setter
     def side1content_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side1contentOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side1contentOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -426,7 +426,7 @@ This can be used for presents or crates.
     @side2content_offset.setter
     def side2content_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side2contentOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side2contentOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -447,7 +447,7 @@ This can be used for presents or crates.
     @side3content_offset.setter
     def side3content_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side3contentOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side3contentOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -468,7 +468,7 @@ This can be used for presents or crates.
     @top_content_offset.setter
     def top_content_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _topContentOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_topContentOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -489,7 +489,7 @@ This can be used for presents or crates.
     @side0content_scale.setter
     def side0content_scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side0contentScale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side0contentScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -510,7 +510,7 @@ This can be used for presents or crates.
     @side1content_scale.setter
     def side1content_scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side1contentScale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side1contentScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -531,7 +531,7 @@ This can be used for presents or crates.
     @side2content_scale.setter
     def side2content_scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side2contentScale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side2contentScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -552,7 +552,7 @@ This can be used for presents or crates.
     @side3content_scale.setter
     def side3content_scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _side3contentScale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_side3contentScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -573,7 +573,7 @@ This can be used for presents or crates.
     @bottom_content_scale.setter
     def bottom_content_scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _bottomContentScale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_bottomContentScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -594,7 +594,7 @@ This can be used for presents or crates.
     @top_content_scale.setter
     def top_content_scale(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _topContentScale reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_topContentScale")
         if isinstance(member, members.Reference):
             member.targetId = target_id

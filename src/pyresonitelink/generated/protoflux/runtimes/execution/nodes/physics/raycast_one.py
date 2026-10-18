@@ -46,7 +46,7 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Physics.RaycastOne"
 
-    def __init__(self, origin: str | INodeValueOutput[primitives.Float3] | None = None, direction: str | INodeValueOutput[primitives.Float3] | None = None, max_distance: str | INodeValueOutput[primitives.Float] | None = None, hit_triggers: str | INodeValueOutput[primitives.Bool] | None = None, users_only: str | INodeValueOutput[primitives.Bool] | None = None, debug_duration: str | INodeValueOutput[primitives.Float] | None = None, root: str | INodeObjectOutput[Slot] | None = None, on_hit: str | INodeOperation | None = None, on_miss: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, origin: str | INodeValueOutput[primitives.Float3] | None = None, direction: str | INodeValueOutput[primitives.Float3] | None = None, max_distance: str | INodeValueOutput[primitives.Float] | None = None, hit_triggers: str | INodeValueOutput[primitives.Bool] | None = None, users_only: str | INodeValueOutput[primitives.Bool] | None = None, debug_duration: str | INodeValueOutput[primitives.Float] | None = None, root: str | INodeObjectOutput[Slot] | None = None, ignore_hierarchy: str | INodeObjectOutput[Slot] | None = None, on_hit: str | INodeOperation | None = None, on_miss: str | INodeOperation | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -57,6 +57,7 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
             users_only: Initial value for UsersOnly.
             debug_duration: Initial value for DebugDuration.
             root: Initial value for Root.
+            ignore_hierarchy: Initial value for IgnoreHierarchy.
             on_hit: Initial value for OnHit.
             on_miss: Initial value for OnMiss.
             component: Existing Component to wrap.
@@ -76,6 +77,8 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
             self.debug_duration = debug_duration
         if root is not None:
             self.root = root
+        if ignore_hierarchy is not None:
+            self.ignore_hierarchy = ignore_hierarchy
         if on_hit is not None:
             self.on_hit = on_hit
         if on_miss is not None:
@@ -92,7 +95,7 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
     @origin.setter
     def origin(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Origin reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Origin")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -113,7 +116,7 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
     @direction.setter
     def direction(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Direction reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Direction")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -134,7 +137,7 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
     @max_distance.setter
     def max_distance(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the MaxDistance reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MaxDistance")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -155,7 +158,7 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
     @hit_triggers.setter
     def hit_triggers(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the HitTriggers reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HitTriggers")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -176,7 +179,7 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
     @users_only.setter
     def users_only(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the UsersOnly reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("UsersOnly")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -197,7 +200,7 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
     @debug_duration.setter
     def debug_duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the DebugDuration reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DebugDuration")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -218,13 +221,34 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
     @root.setter
     def root(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Root reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Root")
         if isinstance(member, members.Reference):
             member.targetId = target_id
         else:
             self.set_member(
                 "Root",
+                members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeObjectOutput<[FrooxEngine]FrooxEngine.Slot>'),
+            )
+
+    @property
+    def ignore_hierarchy(self) -> str | None:
+        """Target ID of the IgnoreHierarchy reference (targets INodeObjectOutput[Slot])."""
+        member = self.get_member("IgnoreHierarchy")
+        if isinstance(member, members.Reference):
+            return member.targetId
+        return None
+
+    @ignore_hierarchy.setter
+    def ignore_hierarchy(self, target: str | INodeObjectOutput[Slot] | None) -> None:
+        """Set the IgnoreHierarchy reference by target ID or INodeObjectOutput[Slot] instance."""
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
+        member = self.get_member("IgnoreHierarchy")
+        if isinstance(member, members.Reference):
+            member.targetId = target_id
+        else:
+            self.set_member(
+                "IgnoreHierarchy",
                 members.Reference(targetId=target_id, targetType='[FrooxEngine]FrooxEngine.ProtoFlux.INodeObjectOutput<[FrooxEngine]FrooxEngine.Slot>'),
             )
 
@@ -239,7 +263,7 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
     @on_hit.setter
     def on_hit(self, target: str | INodeOperation | None) -> None:
         """Set the OnHit reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnHit")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -260,7 +284,7 @@ This node can be combined with the Hit UV Coordinate node to get further data fr
     @on_miss.setter
     def on_miss(self, target: str | INodeOperation | None) -> None:
         """Set the OnMiss reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnMiss")
         if isinstance(member, members.Reference):
             member.targetId = target_id

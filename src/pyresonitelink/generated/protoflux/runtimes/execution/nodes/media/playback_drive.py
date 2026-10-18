@@ -71,7 +71,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
     @target.setter
     def target(self, target: str | INodeObjectOutput[SyncPlayback] | None) -> None:
         """Set the Target reference by target ID or INodeObjectOutput[SyncPlayback] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -92,7 +92,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
     @normalized_position.setter
     def normalized_position(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the NormalizedPosition reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("NormalizedPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -113,7 +113,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
     @maximum_position_error.setter
     def maximum_position_error(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the MaximumPositionError reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("MaximumPositionError")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -134,7 +134,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
     @speed.setter
     def speed(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Speed reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Speed")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -155,7 +155,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
     @play.setter
     def play(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Play reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Play")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -176,7 +176,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
     @loop.setter
     def loop(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Loop reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Loop")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -249,7 +249,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
     @on_start_drive.setter
     def on_start_drive(self, target: str | INodeOperation | None) -> None:
         """Set the OnStartDrive reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnStartDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -270,7 +270,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
     @on_stop_drive.setter
     def on_stop_drive(self, target: str | INodeOperation | None) -> None:
         """Set the OnStopDrive reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnStopDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -291,7 +291,7 @@ class PlaybackDrive(GeneratedComponent, IProtoFluxEngineProxyNode, IMappableNode
     @on_resync.setter
     def on_resync(self, target: str | INodeOperation | None) -> None:
         """Set the OnResync reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnResync")
         if isinstance(member, members.Reference):
             member.targetId = target_id

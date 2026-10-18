@@ -1,8 +1,8 @@
 """Generated component: ColorByOrientationDirectionSH1."""
 
-from pyresonitelink.data import members
+from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
-from pyresonitelink.generated._enums.spherical_harmonics_l1 import SphericalHarmonicsL1
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iparticle_system_module import IParticleSystemModule
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
@@ -16,7 +16,7 @@ class ColorByOrientationDirectionSH1(GeneratedComponent, IParticleSystemModule, 
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ColorByOrientationDirectionSH1"
 
-    def __init__(self, sh: SphericalHarmonicsL1 | str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, sh: primitives.SphericalHarmonicsL1 | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,22 +28,21 @@ class ColorByOrientationDirectionSH1(GeneratedComponent, IParticleSystemModule, 
             self.sh = sh
 
     @property
-    def sh(self) -> SphericalHarmonicsL1 | None:
+    def sh(self) -> primitives.SphericalHarmonicsL1 | None:
         """The spherical harmonic to sample."""
         member = self.get_member("SH")
-        if isinstance(member, members.FieldEnum) and member.value is not None:
-            return SphericalHarmonicsL1(member.value)
-        return None
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
 
     @sh.setter
-    def sh(self, value: SphericalHarmonicsL1 | str) -> None:
-        """Set SH. The spherical harmonic to sample."""
+    def sh(self, value: primitives.SphericalHarmonicsL1) -> None:
+        """Set the SH field value."""
         member = self.get_member("SH")
-        if isinstance(member, members.FieldEnum):
-            member.value = str(value)
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
         else:
             self.set_member(
-                "SH",
-                members.FieldEnum(value=str(value)),
+                "SH", fields.FieldSphericalHarmonicsL1(value=value)
             )
 

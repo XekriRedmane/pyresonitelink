@@ -61,7 +61,7 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
     @target.setter
     def target(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the Target reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -82,7 +82,7 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
     @space_name.setter
     def space_name(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the SpaceName reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SpaceName")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -103,7 +103,7 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
     @on_not_found.setter
     def on_not_found(self, target: str | INodeOperation | None) -> None:
         """Set the OnNotFound reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnNotFound")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -124,7 +124,7 @@ class ClearDynamicVariablesOfType(GenericComponent[T], IMappableNode, ISyncNodeO
     @on_cleared.setter
     def on_cleared(self, target: str | INodeOperation | None) -> None:
         """Set the OnCleared reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnCleared")
         if isinstance(member, members.Reference):
             member.targetId = target_id

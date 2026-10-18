@@ -1,11 +1,16 @@
 """Generated component: AvatarSlotEquippedToggle."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.avatar_object_slot import AvatarObjectSlot
 from pyresonitelink.generated._types.ifield import IField
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.avatar_object_slot import AvatarObjectSlot
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
@@ -46,7 +51,7 @@ class AvatarSlotEquippedToggle(GeneratedComponent, IComponent, IWorldEventReceiv
     @object_slot.setter
     def object_slot(self, target: str | AvatarObjectSlot | None) -> None:
         """Set the ObjectSlot reference by target ID or AvatarObjectSlot instance."""
-        target_id: str | None = target.id if isinstance(target, AvatarObjectSlot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ObjectSlot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -67,7 +72,7 @@ class AvatarSlotEquippedToggle(GeneratedComponent, IComponent, IWorldEventReceiv
     @equipped_drive.setter
     def equipped_drive(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the EquippedDrive reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("EquippedDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -88,7 +93,7 @@ class AvatarSlotEquippedToggle(GeneratedComponent, IComponent, IWorldEventReceiv
     @dequipped_drive.setter
     def dequipped_drive(self, target: str | IField[primitives.Bool] | None) -> None:
         """Set the DequippedDrive reference by target ID or IField[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DequippedDrive")
         if isinstance(member, members.Reference):
             member.targetId = target_id

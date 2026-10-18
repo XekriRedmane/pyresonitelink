@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class FrameMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The FrameMesh component generates a procedural mesh that is like a flat polygon 2d frame for use with Mesh Renderers.
 
     Category: Assets/Procedural Meshes

@@ -69,7 +69,7 @@ This could be disastrous if you are not careful!|danger}}
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ This could be disastrous if you are not careful!|danger}}
     @hierarchy_root.setter
     def hierarchy_root(self, target: str | INodeObjectOutput[Slot] | None) -> None:
         """Set the HierarchyRoot reference by target ID or INodeObjectOutput[Slot] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("HierarchyRoot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -111,7 +111,7 @@ This could be disastrous if you are not careful!|danger}}
     @exclude_colliders.setter
     def exclude_colliders(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the ExcludeColliders reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ExcludeColliders")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -132,7 +132,7 @@ This could be disastrous if you are not careful!|danger}}
     @exclude_meshes.setter
     def exclude_meshes(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the ExcludeMeshes reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ExcludeMeshes")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -153,7 +153,7 @@ This could be disastrous if you are not careful!|danger}}
     @exclude_disabled.setter
     def exclude_disabled(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the ExcludeDisabled reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("ExcludeDisabled")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -174,7 +174,7 @@ This could be disastrous if you are not careful!|danger}}
     @track_position.setter
     def track_position(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the TrackPosition reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TrackPosition")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -195,7 +195,7 @@ This could be disastrous if you are not careful!|danger}}
     @duration.setter
     def duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Duration reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -216,7 +216,7 @@ This could be disastrous if you are not careful!|danger}}
     @color.setter
     def color(self, target: str | INodeValueOutput[primitives.ColorX] | None) -> None:
         """Set the Color reference by target ID or INodeValueOutput[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -26,7 +26,7 @@ Swing Twist is a concept that is too complicated to explain on this wiki, but es
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LookAt"
 
-    def __init__(self, target_ref: str | Slot | None = None, target_point: primitives.Float3 | None = None, up: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, swing_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, max_swing: primitives.Float | None = None, max_twist: primitives.Float | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, target_ref: str | Slot | None = None, target_point: primitives.Float3 | None = None, up: primitives.Float3 | None = None, rotation_offset: primitives.FloatQ | None = None, swing_reference: primitives.Float3 | None = None, twist_reference: primitives.Float3 | None = None, max_swing: primitives.Float | None = None, max_twist: primitives.Float | None = None, target_ref_2: str | IField[primitives.FloatQ] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -38,6 +38,7 @@ Swing Twist is a concept that is too complicated to explain on this wiki, but es
             twist_reference: Initial value for TwistReference.
             max_swing: Initial value for MaxSwing.
             max_twist: Initial value for MaxTwist.
+            target_ref_2: Initial value for _target.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -57,6 +58,8 @@ Swing Twist is a concept that is too complicated to explain on this wiki, but es
             self.max_swing = max_swing
         if max_twist is not None:
             self.max_twist = max_twist
+        if target_ref_2 is not None:
+            self.target_ref_2 = target_ref_2
 
     @property
     def target_ref(self) -> str | None:
@@ -69,7 +72,7 @@ Swing Twist is a concept that is too complicated to explain on this wiki, but es
     @target_ref.setter
     def target_ref(self, target: str | Slot | None) -> None:
         """Set the Target reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Target")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -226,17 +229,17 @@ Swing Twist is a concept that is too complicated to explain on this wiki, but es
             )
 
     @property
-    def target_ref(self) -> str | None:
+    def target_ref_2(self) -> str | None:
         """The field to apply the rotation result to."""
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
-    @target_ref.setter
-    def target_ref(self, target: str | IField[primitives.FloatQ] | None) -> None:
+    @target_ref_2.setter
+    def target_ref_2(self, target: str | IField[primitives.FloatQ] | None) -> None:
         """Set the _target reference by target ID or IField[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_target")
         if isinstance(member, members.Reference):
             member.targetId = target_id

@@ -50,7 +50,7 @@ Spawn events can happen when a user either gets removed or deleted from the hier
     @only_host.setter
     def only_host(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the OnlyHost reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnlyHost")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ Spawn events can happen when a user either gets removed or deleted from the hier
     @on_spawn.setter
     def on_spawn(self, target: str | ISyncNodeOperation | None) -> None:
         """Set the OnSpawn reference by target ID or ISyncNodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, ISyncNodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnSpawn")
         if isinstance(member, members.Reference):
             member.targetId = target_id

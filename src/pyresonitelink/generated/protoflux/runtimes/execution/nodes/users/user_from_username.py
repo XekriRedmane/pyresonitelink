@@ -51,7 +51,7 @@ This will only work for users present in the session.
     @username.setter
     def username(self, target: str | INodeObjectOutput[primitives.String] | None) -> None:
         """Set the Username reference by target ID or INodeObjectOutput[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Username")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -72,7 +72,7 @@ This will only work for users present in the session.
     @ignore_case.setter
     def ignore_case(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the IgnoreCase reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("IgnoreCase")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -93,7 +93,7 @@ This will only work for users present in the session.
     @allow_partial_match.setter
     def allow_partial_match(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the AllowPartialMatch reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AllowPartialMatch")
         if isinstance(member, members.Reference):
             member.targetId = target_id

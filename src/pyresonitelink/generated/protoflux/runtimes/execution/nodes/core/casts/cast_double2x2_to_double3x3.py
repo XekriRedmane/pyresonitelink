@@ -43,7 +43,7 @@ class Cast_double2x2_To_double3x3(GeneratedComponent, ICast, INodeValueOutput, I
     @input_.setter
     def input_(self, target: str | INodeValueOutput[primitives.Double2x2] | None) -> None:
         """Set the Input reference by target ID or INodeValueOutput[primitives.Double2x2] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Input")
         if isinstance(member, members.Reference):
             member.targetId = target_id

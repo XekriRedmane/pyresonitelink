@@ -1,20 +1,27 @@
 """Generated component: Slider."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.generated._enums.active_user_handling import ActiveUserHandling
 from pyresonitelink.generated._enums.vibrate_preset import VibratePreset
+from pyresonitelink.generated._enums.curve_preset import CurvePreset
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
-from pyresonitelink.generated._types.grabber import Grabber
 from pyresonitelink.generated._types.slot import Slot
 from pyresonitelink.generated._types.sync import Sync
-from pyresonitelink.generated._types.igrabbable import IGrabbable
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.users.common_avatar_system.grabber import Grabber
+from pyresonitelink.generated._types.iui_interactable import IUIInteractable
+from pyresonitelink.generated._types.iui_compute_component import IUIComputeComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
+class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEventReceiver):
     """The Slider component allows for an object to be grabbed and moved. See Usage for more information.
 
     Category: Transform/Interaction
@@ -26,7 +33,7 @@ class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.Slider"
 
-    def __init__(self, edit_mode_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, drop_on_disable: primitives.Bool | None = None, dont_drive: primitives.Bool | None = None, allow_only_physical_grab: primitives.Bool | None = None, active_user_filter: ActiveUserHandling | str | None = None, grabber: str | Grabber | None = None, hold_slot: str | Slot | None = None, pos: str | Sync[primitives.Float3] | None = None, rot: str | Sync[primitives.FloatQ] | None = None, scl: str | Sync[primitives.Float3] | None = None, legacy_active_user_root_only: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, rotatable: primitives.Bool | None = None, scalable: primitives.Bool | None = None, range_: primitives.Float3 | None = None, origin: primitives.Float3 | None = None, min_scale: primitives.Float3 | None = None, max_scale: primitives.Float3 | None = None, vibration_offset: primitives.Float | None = None, vibration_preset: VibratePreset | str | None = None, snap_increment: primitives.Float | None = None, snap_time: primitives.Float | None = None, snap_on_release: primitives.Bool | None = None, pos_offset: primitives.Float3 | None = None, rot_offset: primitives.FloatQ | None = None, scale_reference: primitives.Float3 | None = None, reference_parent: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, edit_mode_only: primitives.Bool | None = None, allow_steal: primitives.Bool | None = None, drop_on_disable: primitives.Bool | None = None, dont_drive: primitives.Bool | None = None, allow_only_physical_grab: primitives.Bool | None = None, active_user_filter: ActiveUserHandling | str | None = None, grabber: str | Grabber | None = None, hold_slot: str | Slot | None = None, pos: str | Sync[primitives.Float3] | None = None, rot: str | Sync[primitives.FloatQ] | None = None, scl: str | Sync[primitives.Float3] | None = None, legacy_active_user_root_only: primitives.Bool | None = None, grab_priority: primitives.Int | None = None, rotatable: primitives.Bool | None = None, scalable: primitives.Bool | None = None, range_: primitives.Float3 | None = None, origin: primitives.Float3 | None = None, min_scale: primitives.Float3 | None = None, max_scale: primitives.Float3 | None = None, vibration_offset: primitives.Float | None = None, vibration_preset: VibratePreset | str | None = None, snap_increment: primitives.Float | None = None, snap_time: primitives.Float | None = None, snap_on_release: primitives.Bool | None = None, snap_interpolation_curve: CurvePreset | str | None = None, pos_offset: primitives.Float3 | None = None, rot_offset: primitives.FloatQ | None = None, scale_reference: primitives.Float3 | None = None, reference_parent: str | Slot | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,6 +61,7 @@ class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             snap_increment: Initial value for SnapIncrement.
             snap_time: Initial value for SnapTime.
             snap_on_release: Initial value for SnapOnRelease.
+            snap_interpolation_curve: Initial value for SnapInterpolationCurve.
             pos_offset: Initial value for posOffset.
             rot_offset: Initial value for rotOffset.
             scale_reference: Initial value for scaleReference.
@@ -109,6 +117,8 @@ class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             self.snap_time = snap_time
         if snap_on_release is not None:
             self.snap_on_release = snap_on_release
+        if snap_interpolation_curve is not None:
+            self.snap_interpolation_curve = snap_interpolation_curve
         if pos_offset is not None:
             self.pos_offset = pos_offset
         if rot_offset is not None:
@@ -244,7 +254,7 @@ class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     @grabber.setter
     def grabber(self, target: str | Grabber | None) -> None:
         """Set the _grabber reference by target ID or Grabber instance."""
-        target_id: str | None = target.id if isinstance(target, Grabber) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_grabber")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -265,7 +275,7 @@ class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     @hold_slot.setter
     def hold_slot(self, target: str | Slot | None) -> None:
         """Set the _holdSlot reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_holdSlot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -286,7 +296,7 @@ class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     @pos.setter
     def pos(self, target: str | Sync[primitives.Float3] | None) -> None:
         """Set the _pos reference by target ID or Sync[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_pos")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -307,7 +317,7 @@ class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     @rot.setter
     def rot(self, target: str | Sync[primitives.FloatQ] | None) -> None:
         """Set the _rot reference by target ID or Sync[primitives.FloatQ] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_rot")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -328,7 +338,7 @@ class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     @scl.setter
     def scl(self, target: str | Sync[primitives.Float3] | None) -> None:
         """Set the _scl reference by target ID or Sync[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, Sync) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_scl")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -587,6 +597,26 @@ class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
             )
 
     @property
+    def snap_interpolation_curve(self) -> CurvePreset | None:
+        """The SnapInterpolationCurve enum value."""
+        member = self.get_member("SnapInterpolationCurve")
+        if isinstance(member, members.FieldEnum) and member.value is not None:
+            return CurvePreset(member.value)
+        return None
+
+    @snap_interpolation_curve.setter
+    def snap_interpolation_curve(self, value: CurvePreset | str) -> None:
+        """Set the SnapInterpolationCurve enum value."""
+        member = self.get_member("SnapInterpolationCurve")
+        if isinstance(member, members.FieldEnum):
+            member.value = str(value)
+        else:
+            self.set_member(
+                "SnapInterpolationCurve",
+                members.FieldEnum(value=str(value)),
+            )
+
+    @property
     def snap_positions(self) -> members.SyncList | None:
         """Positions to snap to while grabbing or when released."""
         member = self.get_member("SnapPositions")
@@ -667,7 +697,7 @@ class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     @reference_parent.setter
     def reference_parent(self, target: str | Slot | None) -> None:
         """Set the referenceParent reference by target ID or Slot instance."""
-        target_id: str | None = target.id if isinstance(target, Slot) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("referenceParent")
         if isinstance(member, members.Reference):
             member.targetId = target_id

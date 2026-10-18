@@ -53,7 +53,7 @@ This node implements IVariable itself. This means that one may drag the output o
     @field.setter
     def field(self, target: str | INodeObjectOutput[IValue[T]] | None) -> None:
         """Set the Field reference by target ID or INodeObjectOutput[IValue[T]] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Field")
         if isinstance(member, members.Reference):
             member.targetId = target_id

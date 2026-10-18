@@ -57,7 +57,7 @@ If you want to mask different parts of a value, use the Mask node instead.|sugge
     @on_true.setter
     def on_true(self, target: str | INodeObjectOutput[T] | None) -> None:
         """Set the OnTrue reference by target ID or INodeObjectOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnTrue")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -78,7 +78,7 @@ If you want to mask different parts of a value, use the Mask node instead.|sugge
     @on_false.setter
     def on_false(self, target: str | INodeObjectOutput[T] | None) -> None:
         """Set the OnFalse reference by target ID or INodeObjectOutput[T] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeObjectOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFalse")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -99,7 +99,7 @@ If you want to mask different parts of a value, use the Mask node instead.|sugge
     @condition.setter
     def condition(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Condition reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Condition")
         if isinstance(member, members.Reference):
             member.targetId = target_id

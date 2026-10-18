@@ -50,7 +50,7 @@ The context made by this node is nested, meaning that any context-specific thing
     @task_start.setter
     def task_start(self, target: str | INodeOperation | None) -> None:
         """Set the TaskStart reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TaskStart")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -71,7 +71,7 @@ The context made by this node is nested, meaning that any context-specific thing
     @on_started.setter
     def on_started(self, target: str | INodeOperation | None) -> None:
         """Set the OnStarted reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnStarted")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -92,7 +92,7 @@ The context made by this node is nested, meaning that any context-specific thing
     @on_failed.setter
     def on_failed(self, target: str | INodeOperation | None) -> None:
         """Set the OnFailed reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("OnFailed")
         if isinstance(member, members.Reference):
             member.targetId = target_id

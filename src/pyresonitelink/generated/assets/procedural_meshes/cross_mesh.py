@@ -9,10 +9,11 @@ from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.iasset_provider import IAssetProvider
 from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IWorldEventReceiver):
+class CrossMesh(GeneratedComponent, IAssetProvider, ICustomInspector, IComponent, IWorldEventReceiver):
     """The CrossMesh component is a 3D mesh made of 3 crossing boxes of equal thickness and length. It can be rotated, and the bars can be lengthened and thickened/thinned.
 
     Category: Assets/Procedural Meshes

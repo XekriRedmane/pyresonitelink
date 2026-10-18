@@ -62,7 +62,7 @@ For example, providing a reference to a Material Tool and then making use of the
     @tool.setter
     def tool(self, target: str | ITool | None) -> None:
         """Set the Tool reference by target ID or ITool instance."""
-        target_id: str | None = target.id if isinstance(target, ITool) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Tool")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -83,7 +83,7 @@ For example, providing a reference to a Material Tool and then making use of the
     @simulating_user.setter
     def simulating_user(self, target: str | User | None) -> None:
         """Set the SimulatingUser reference by target ID or User instance."""
-        target_id: str | None = target.id if isinstance(target, User) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SimulatingUser")
         if isinstance(member, members.Reference):
             member.targetId = target_id

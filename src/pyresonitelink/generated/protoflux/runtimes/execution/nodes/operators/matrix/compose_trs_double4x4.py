@@ -48,7 +48,7 @@ class ComposeTRS_Double4x4(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @position.setter
     def position(self, target: str | INodeValueOutput[primitives.Double3] | None) -> None:
         """Set the Position reference by target ID or INodeValueOutput[primitives.Double3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -69,7 +69,7 @@ class ComposeTRS_Double4x4(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @rotation.setter
     def rotation(self, target: str | INodeValueOutput[primitives.DoubleQ] | None) -> None:
         """Set the Rotation reference by target ID or INodeValueOutput[primitives.DoubleQ] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Rotation")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -90,7 +90,7 @@ class ComposeTRS_Double4x4(GeneratedComponent, INodeValueOutput, IExecutionNode,
     @scale.setter
     def scale(self, target: str | INodeValueOutput[primitives.Double3] | None) -> None:
         """Set the Scale reference by target ID or INodeValueOutput[primitives.Double3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Scale")
         if isinstance(member, members.Reference):
             member.targetId = target_id

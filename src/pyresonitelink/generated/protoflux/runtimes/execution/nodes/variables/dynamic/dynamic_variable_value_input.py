@@ -50,7 +50,7 @@ class DynamicVariableValueInput(GenericComponent[T], IProtoFluxEngineProxyNode, 
     @variable_name.setter
     def variable_name(self, target: str | IGlobalValueProxy[primitives.String] | None) -> None:
         """Set the VariableName reference by target ID or IGlobalValueProxy[primitives.String] instance."""
-        target_id: str | None = target.id if isinstance(target, IGlobalValueProxy) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("VariableName")
         if isinstance(member, members.Reference):
             member.targetId = target_id

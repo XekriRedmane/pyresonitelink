@@ -20,7 +20,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CloudUserInfo"
 
-    def __init__(self, user_id: primitives.String | None = None, is_loaded: primitives.Bool | None = None, username: primitives.String | None = None, registration_date: str | None = None, original_registration_date: str | None = None, icon_url: str | None = None, is_contact: primitives.Bool | None = None, loaded_user_id: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user_id: primitives.String | None = None, is_loaded: primitives.Bool | None = None, username: primitives.String | None = None, registration_date: str | None = None, original_registration_date: str | None = None, icon_url: str | None = None, pronouns: primitives.String | None = None, is_contact: primitives.Bool | None = None, loaded_user_id: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -30,6 +30,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             registration_date: Initial value for RegistrationDate.
             original_registration_date: Initial value for OriginalRegistrationDate.
             icon_url: Initial value for IconURL.
+            pronouns: Initial value for Pronouns.
             is_contact: Initial value for IsContact.
             loaded_user_id: Initial value for _loadedUserId.
             component: Existing Component to wrap.
@@ -47,6 +48,8 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.original_registration_date = original_registration_date
         if icon_url is not None:
             self.icon_url = icon_url
+        if pronouns is not None:
+            self.pronouns = pronouns
         if is_contact is not None:
             self.is_contact = is_contact
         if loaded_user_id is not None:
@@ -164,6 +167,25 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         else:
             self.set_member(
                 "IconURL", fields.FieldUri(value=value)
+            )
+
+    @property
+    def pronouns(self) -> primitives.String | None:
+        """The Pronouns field value."""
+        member = self.get_member("Pronouns")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @pronouns.setter
+    def pronouns(self, value: primitives.String) -> None:
+        """Set the Pronouns field value."""
+        member = self.get_member("Pronouns")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "Pronouns", fields.FieldString(value=value)
             )
 
     @property

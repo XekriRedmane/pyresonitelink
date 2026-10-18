@@ -1,0 +1,102 @@
+"""Generated component: AudioAccessibilitySettings."""
+
+from pyresonitelink.data import fields
+from pyresonitelink.data import primitives
+from pyresonitelink.data import protocols
+from pyresonitelink.data import workers
+from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._types.icustom_inspector import ICustomInspector
+
+
+class AudioAccessibilitySettings(GeneratedComponent, ICustomInspector):
+    """See Settings/Audio Accessibility
+
+    Category: Hidden
+    """
+
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioAccessibilitySettings"
+
+    def __init__(self, whisper_volume: primitives.Float | None = None, voice_message_volume: primitives.Float | None = None, force_voice_audio_effects_off: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
+        """Initialize with optional member values.
+
+        Args:
+            whisper_volume: Initial value for WhisperVolume.
+            voice_message_volume: Initial value for VoiceMessageVolume.
+            force_voice_audio_effects_off: Initial value for ForceVoiceAudioEffectsOff.
+            component: Existing Component to wrap.
+        """
+        super().__init__(component)
+        if whisper_volume is not None:
+            self.whisper_volume = whisper_volume
+        if voice_message_volume is not None:
+            self.voice_message_volume = voice_message_volume
+        if force_voice_audio_effects_off is not None:
+            self.force_voice_audio_effects_off = force_voice_audio_effects_off
+
+    @property
+    def whisper_volume(self) -> primitives.Float | None:
+        """Controls the volume of sounds outside of your whisper sphere when using whisper mode."""
+        member = self.get_member("WhisperVolume")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @whisper_volume.setter
+    def whisper_volume(self, value: primitives.Float) -> None:
+        """Set the WhisperVolume field value."""
+        member = self.get_member("WhisperVolume")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "WhisperVolume", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def voice_message_volume(self) -> primitives.Float | None:
+        """Controls the volume of sounds while you are recording a voice message."""
+        member = self.get_member("VoiceMessageVolume")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @voice_message_volume.setter
+    def voice_message_volume(self, value: primitives.Float) -> None:
+        """Set the VoiceMessageVolume field value."""
+        member = self.get_member("VoiceMessageVolume")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "VoiceMessageVolume", fields.FieldFloat(value=value)
+            )
+
+    @property
+    def force_voice_audio_effects_off(self) -> primitives.Bool | None:
+        """The ForceVoiceAudioEffectsOff field value."""
+        member = self.get_member("ForceVoiceAudioEffectsOff")
+        if member is None:
+            return None
+        return getattr(member, 'value', None)
+
+    @force_voice_audio_effects_off.setter
+    def force_voice_audio_effects_off(self, value: primitives.Bool) -> None:
+        """Set the ForceVoiceAudioEffectsOff field value."""
+        member = self.get_member("ForceVoiceAudioEffectsOff")
+        if member is not None:
+            member.value = value  # type: ignore[attr-defined]
+        else:
+            self.set_member(
+                "ForceVoiceAudioEffectsOff", fields.FieldBool(value=value)
+            )
+
+    async def reset_to_default(self, resolink: protocols.ResoniteLinkClient, debug: bool = False) -> dict:
+        """Call the ResetToDefault sync method.
+
+        Returns:
+            The raw JSON response dict.
+        """
+        return await self.call_method(
+            resolink, "ResetToDefault", {}, debug,
+        )
+

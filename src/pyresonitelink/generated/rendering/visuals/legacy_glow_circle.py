@@ -124,7 +124,7 @@ class LegacyGlowCircle(GeneratedComponent, IComponent, IWorldEventReceiver):
     @cylinder_offset.setter
     def cylinder_offset(self, target: str | IField[primitives.Float3] | None) -> None:
         """Set the _cylinderOffset reference by target ID or IField[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cylinderOffset")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -145,7 +145,7 @@ class LegacyGlowCircle(GeneratedComponent, IComponent, IWorldEventReceiver):
     @cylinder_radius.setter
     def cylinder_radius(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _cylinderRadius reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cylinderRadius")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -166,7 +166,7 @@ class LegacyGlowCircle(GeneratedComponent, IComponent, IWorldEventReceiver):
     @cylinder_height.setter
     def cylinder_height(self, target: str | IField[primitives.Float] | None) -> None:
         """Set the _cylinderHeight reference by target ID or IField[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cylinderHeight")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -187,7 +187,7 @@ class LegacyGlowCircle(GeneratedComponent, IComponent, IWorldEventReceiver):
     @circle_quad_size.setter
     def circle_quad_size(self, target: str | IField[primitives.Float2] | None) -> None:
         """Set the _circleQuadSize reference by target ID or IField[primitives.Float2] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_circleQuadSize")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -208,7 +208,7 @@ class LegacyGlowCircle(GeneratedComponent, IComponent, IWorldEventReceiver):
     @circle_tint.setter
     def circle_tint(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the _circleTint reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_circleTint")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -229,7 +229,7 @@ class LegacyGlowCircle(GeneratedComponent, IComponent, IWorldEventReceiver):
     @cylinder_tint.setter
     def cylinder_tint(self, target: str | IField[primitives.ColorX] | None) -> None:
         """Set the _cylinderTint reference by target ID or IField[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, IField) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("_cylinderTint")
         if isinstance(member, members.Reference):
             member.targetId = target_id
