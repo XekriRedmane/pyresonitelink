@@ -120,7 +120,7 @@ class SlotTreeApp(App):
         tree.root.data = root_slot
 
         # Add children recursively
-        self._add_children(tree.root, root_slot)
+        self._add_slot_children(tree.root, root_slot)
 
         # Collapse the root initially
         tree.root.collapse()
@@ -131,7 +131,7 @@ class SlotTreeApp(App):
             return slot.name.value
         return "(unnamed)"
 
-    def _add_children(self, node: TreeNode, slot: Slot) -> None:
+    def _add_slot_children(self, node: TreeNode, slot: Slot) -> None:
         """Recursively add child slots to a tree node."""
         if not slot.children:
             return
@@ -140,7 +140,7 @@ class SlotTreeApp(App):
             if child.children:
                 # Has children - add as expandable node
                 child_node = node.add(child_name, data=child)
-                self._add_children(child_node, child)
+                self._add_slot_children(child_node, child)
                 child_node.collapse()
             else:
                 # No children - add as leaf

@@ -9,7 +9,8 @@ import asyncio
 import dataclasses as dc
 import json
 import uuid
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
+from typing import TYPE_CHECKING
 
 import numpy as np
 import websockets
@@ -21,6 +22,12 @@ from .data import messages
 from .data import primitives
 from .data import responses
 from .data import workers
+
+if TYPE_CHECKING:
+    # The methods that use these import them at call time, so importing the
+    # client doesn't import the generated component packages.
+    from .components.assets import StaticAudioClip
+    from .generated.assets.utility.asset_multiplexer import AssetMultiplexer
 
 
 MAX_RESPONSE_SIZE: int = 64 * 1024 * 1024
@@ -526,7 +533,7 @@ class Client:
     async def update_references(
         self,
         componentId: str,
-        references: dict[str, str | members.Reference],
+        references: Mapping[str, str | members.Reference],
         debug: bool = False,
     ) -> responses.Response:
         """Wire reference members on an existing component.
@@ -694,7 +701,7 @@ class Client:
 
     async def find_slot(
         self,
-        root: str | workers.Slot,
+        parent: str | workers.Slot,
         *,
         name: str | None = None,
         tag: str | None = None,
@@ -711,7 +718,7 @@ class Client:
         faster than fetching the entire slot hierarchy for deep searches.
 
         Args:
-            root: The slot to search under (string ID or Slot instance).
+            parent: The slot to search under (string ID or Slot instance).
             name: The slot name to search for.
             tag: The slot tag to search for.
             depth: Maximum search depth (-1 for unlimited).
@@ -725,8 +732,6 @@ class Client:
         Raises:
             ValueError: If neither name nor tag is specified.
         """
-        import time
-
         from pyresonitelink.data import primitives
         from pyresonitelink.protoflux.core import (
             RefObjectInput,
@@ -745,7 +750,7 @@ class Client:
         if name is None and tag is None:
             raise ValueError("Either name or tag must be specified.")
 
-        root_id = root.id if isinstance(root, workers.Slot) else root
+        parent_id = parent.id if isinstance(parent, workers.Slot) else parent
 
         # Create a temporary slot for the search nodes
         tmp = await self.add_slot(
@@ -761,9 +766,9 @@ class Client:
             )
             await result_var.add_to_slot(self, tmp, debug=debug)
 
-            # Root slot reference (for FindChild)
-            root_ref = RefObjectInput[workers.Slot](target=root_id)
-            await root_ref.add_to_slot(self, tmp, debug=debug)
+            # Parent slot reference (for FindChild)
+            parent_ref = RefObjectInput[workers.Slot](target=parent_id)
+            await parent_ref.add_to_slot(self, tmp, debug=debug)
 
             # Tmp slot reference (for WriteDynamicObjectVariable target)
             tmp_ref = RefObjectInput[workers.Slot](target=tmp)
@@ -782,25 +787,28 @@ class Client:
                 name_input = ValueObjectInput[primitives.String](value=name)
                 await name_input.add_to_slot(self, tmp, debug=debug)
 
-                find_kwargs: dict[str, object] = {
-                    "instance": root_ref.id,
-                    "name": name_input.id,
-                    "search_depth": depth_input.id,
-                }
+                match_substring_id: str | None = None
                 if match_substring:
                     ms_input = ValueInput[primitives.Bool](
                         primitives.Bool(True),
                     )
                     await ms_input.add_to_slot(self, tmp, debug=debug)
-                    find_kwargs["match_substring"] = ms_input.id
+                    match_substring_id = ms_input.id
+                ignore_case_id: str | None = None
                 if ignore_case:
                     ic_input = ValueInput[primitives.Bool](
                         primitives.Bool(True),
                     )
                     await ic_input.add_to_slot(self, tmp, debug=debug)
-                    find_kwargs["ignore_case"] = ic_input.id
+                    ignore_case_id = ic_input.id
 
-                find = FindChildByName(**find_kwargs)
+                find = FindChildByName(
+                    instance=parent_ref.id,
+                    name=name_input.id,
+                    search_depth=depth_input.id,
+                    match_substring=match_substring_id,
+                    ignore_case=ignore_case_id,
+                )
                 await find.add_to_slot(self, tmp, debug=debug)
             else:
                 from pyresonitelink.protoflux.slots.searching import (
@@ -812,7 +820,7 @@ class Client:
                 await tag_input.add_to_slot(self, tmp, debug=debug)
 
                 find = FindChildByTag(
-                    instance=root_ref.id,
+                    instance=parent_ref.id,
                     tag=tag_input.id,
                     search_depth=depth_input.id,
                 )
@@ -840,7 +848,7 @@ class Client:
             await update.add_to_slot(self, tmp, debug=debug)
 
             # Wait for engine evaluation
-            time.sleep(0.5)
+            await asyncio.sleep(0.5)
 
             # Read the result
             await result_var.refresh(self, debug=debug)

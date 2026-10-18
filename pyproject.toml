@@ -28,7 +28,7 @@ build-backend = "uv_build"
 dev = [
     "build>=1.4.0",
     "coverage>=7.13.0",
-    "mypy>=1.19.1",
+    "pyrefly>=1.4.0",
     "pytest>=9.0.2",
     "pytest-asyncio>=0.25.0",
     "pytest-cov>=7.1.0",
@@ -39,3 +39,7 @@ dev = [
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
+
+[tool.pyrefly]
+# Only the package is checked. The tests aren't type-checked.
+project-includes = ["src"]

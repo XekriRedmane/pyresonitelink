@@ -2,10 +2,12 @@
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from typing import Any, Protocol, TYPE_CHECKING
 
 if TYPE_CHECKING:
     from pyresonitelink.data import codec
+    from pyresonitelink.data import fields
     from pyresonitelink.data import messages
     from pyresonitelink.data import responses
     from pyresonitelink.data import workers
@@ -90,7 +92,7 @@ class ResoniteLinkClient(Protocol):
     async def update_references(
         self,
         componentId: str,
-        references: dict[str, str | members.Reference],
+        references: Mapping[str, str | members.Reference],
         debug: bool = False,
     ) -> responses.Response: ...
 
