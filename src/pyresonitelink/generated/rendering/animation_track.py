@@ -23,13 +23,13 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AnimationTrack<>"
     _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.AnimationTrack<>"
 
-    def __init__(self, node: primitives.String | None = None, component_: primitives.String | None = None, property: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, node: primitives.String | None = None, component_: primitives.String | None = None, property_: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
             node: Initial value for _node.
             component_: Initial value for _component.
-            property: Initial value for _property.
+            property_: Initial value for _property.
             component: Existing Component to wrap.
         """
         super().__init__(component)
@@ -37,8 +37,8 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
             self.node = node
         if component_ is not None:
             self.component_ = component_
-        if property is not None:
-            self.property = property
+        if property_ is not None:
+            self.property_ = property_
 
     @property
     def node(self) -> primitives.String | None:
@@ -79,15 +79,15 @@ class AnimationTrack(GenericComponent[T], IAnimationTrack, IWorldEventReceiver):
             )
 
     @property
-    def property(self) -> primitives.String | None:
+    def property_(self) -> primitives.String | None:
         """The property on an animation asset"""
         member = self.get_member("_property")
         if member is None:
             return None
         return getattr(member, 'value', None)
 
-    @property.setter
-    def property(self, value: primitives.String) -> None:
+    @property_.setter
+    def property_(self, value: primitives.String) -> None:
         """Set the _property field value."""
         member = self.get_member("_property")
         if member is not None:
