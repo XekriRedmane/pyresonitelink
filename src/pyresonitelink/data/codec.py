@@ -19,6 +19,7 @@ from .utils import JSON_IGNORE_KEY, JSON_KEEP_EMPTY_KEY, JSON_NAME_KEY
 
 from . import fields as field_types
 from . import members as member_types
+from . import mesh as mesh_types
 from . import messages as message_types
 from . import primitives as primitive_types
 from . import responses as response_types
@@ -427,6 +428,17 @@ def _init_type_registry() -> None:
     # Reference members, so it's registered for encoding only. Decoding
     # "reference" must still produce a Reference member.
     _CLASS_TO_TYPE[member_types.DataReference] = "reference"
+    # Mesh import data. The JSON and raw data submeshes share "points" and
+    # "triangles", and none of these are ever decoded, so they're
+    # registered for encoding only too.
+    _CLASS_TO_TYPE[mesh_types.UV2D] = "2D"
+    _CLASS_TO_TYPE[mesh_types.UV3D] = "3D"
+    _CLASS_TO_TYPE[mesh_types.UV4D] = "4D"
+    _CLASS_TO_TYPE[mesh_types.PointSubmesh] = "points"
+    _CLASS_TO_TYPE[mesh_types.TriangleSubmesh] = "triangles"
+    _CLASS_TO_TYPE[mesh_types.TriangleSubmeshFlat] = "trianglesFlat"
+    _CLASS_TO_TYPE[mesh_types.PointSubmeshRawData] = "points"
+    _CLASS_TO_TYPE[mesh_types.TriangleSubmeshRawData] = "triangles"
 
     # Primitive Fields - standalone types
     _register_type("byte", field_types.FieldByte)

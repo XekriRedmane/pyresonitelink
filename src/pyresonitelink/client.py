@@ -10,7 +10,7 @@ import dataclasses as dc
 import json
 import uuid
 from collections.abc import Mapping, Sequence
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import numpy as np
 import websockets
@@ -18,6 +18,7 @@ import websockets
 from .data import codec
 from .data import fields
 from .data import members
+from .data import mesh
 from .data import messages
 from .data import primitives
 from .data import responses
@@ -159,6 +160,17 @@ class Client:
 
         if message.messageId is None:
             message.messageId = str(uuid.uuid4())
+
+        # The server rejects a payload whose size doesn't match the message,
+        # and the error is easier to act on before anything is sent.
+        if isinstance(message, messages.BinaryPayloadMessage):
+            expected = message.expected_payload_size()
+            actual = len(message.payload) if message.payload is not None else 0
+            if expected is not None and actual != expected:
+                raise ValueError(
+                    f"{type(message).__name__} needs a {expected}-byte payload, "
+                    f"but has {actual} bytes"
+                )
 
         encoded_data = codec.encode(message)
         json_data = json.dumps(encoded_data, ensure_ascii=False)
@@ -632,8 +644,15 @@ class Client:
     ) -> responses.ComponentTypeList:
         """List component types in a category.
 
+        The doc comment on GetComponentTypeList.CategoryPath, in
+        ResoniteLink/Models/Messages/Reflection/GetComponentDefinitionList.cs
+        of the ResoniteLink repository, says that ``"*"`` lists every
+        component. As of Resonite 2026.9.18.82 it returns an empty list, so
+        listing everything means walking the subcategories.
+
         Args:
-            categoryPath: Category path (e.g. ``"/Data"``).
+            categoryPath: Category path (e.g. ``"/Data"``). None or ``"/"``
+                is the root category.
             debug: Print request/response JSON.
         """
         return await self.send_message(
@@ -659,6 +678,219 @@ class Client:
                 componentType=componentType, flattened=flattened,
             ),
             responses.ComponentDefinitionData, debug,
+        )
+
+    async def get_type_definition(
+        self,
+        type: str,  # pylint: disable=redefined-builtin
+        debug: bool = False,
+    ) -> responses.TypeDefinitionData:
+        """Get any type's definition, including interfaces and enums.
+
+        GetTypeDefinition fails for component types. Use
+        get_component_definition for those.
+
+        Args:
+            type: Fully qualified type name, e.g.
+                ``"[FrooxEngine]FrooxEngine.IAssetProvider<>"``.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.GetTypeDefinition(type=type),
+            responses.TypeDefinitionData, debug,
+        )
+
+    async def get_generic_type_definition(
+        self,
+        genericInstanceType: str,
+        debug: bool = False,
+    ) -> responses.TypeDefinitionData:
+        """Get the generic definition of a constructed generic type.
+
+        For ``ValueField<float>`` this returns the definition of
+        ``ValueField<>``.
+
+        Args:
+            genericInstanceType: The constructed generic type.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.GetGenericTypeDefinition(
+                genericInstanceType=genericInstanceType,
+            ),
+            responses.TypeDefinitionData, debug,
+        )
+
+    async def get_enum_definition(
+        self,
+        type: str,  # pylint: disable=redefined-builtin
+        debug: bool = False,
+    ) -> responses.EnumDefinitionData:
+        """Get an enum's values and backing type.
+
+        Many enums live outside FrooxEngine. ColorProfile, for one, is
+        ``"[Renderite.Shared]Renderite.Shared.ColorProfile"``. As of
+        Resonite 2026.9.18.82, a name that doesn't resolve fails with a
+        NullReferenceException message where "not a valid type" is meant.
+
+        Args:
+            type: Fully qualified enum type name.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.GetEnumDefinition(type=type),
+            responses.EnumDefinitionData, debug,
+        )
+
+    async def get_sync_object_definition(
+        self,
+        syncObjectType: str,
+        flattened: bool = True,
+        debug: bool = False,
+    ) -> responses.SyncObjectDefinitionData:
+        """Get a sync object type's definition, such as UserRef's.
+
+        Slot and Component are workers, not sync objects, so this fails
+        for them.
+
+        Args:
+            syncObjectType: Fully qualified sync object type name.
+            flattened: Include inherited members.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.GetSyncObjectDefinition(
+                syncObjectType=syncObjectType, flattened=flattened,
+            ),
+            responses.SyncObjectDefinitionData, debug,
+        )
+
+    # =========================================================================
+    # Sync methods and batches
+    # =========================================================================
+
+    async def call_sync_method(
+        self,
+        target: str | workers.Worker | Any,
+        methodName: str,
+        arguments: dict[str, object] | None = None,
+        debug: bool = False,
+    ) -> responses.MethodResult:
+        """Call a sync method on a component or sync member.
+
+        Generated components also have a wrapper for each of their sync
+        methods.
+
+        As of Resonite 2026.9.18.82, a method whose definition has
+        ``isAsync`` set fails with "Type not supported: Task`1" after the
+        server has started it, so its effect still happens. That covers
+        nearly every asset processing method, such as
+        StaticMesh.RecalculateNormals.
+
+        Args:
+            target: The target's ID, or an object with an ``id``, such as a
+                component.
+            methodName: The method's name, as in the definition's methods.
+            arguments: Parameter names mapped to values. A primitive is
+                passed as its field class, such as
+                ``fields.FieldInt(value=2)``. A component or slot is passed
+                as itself and becomes a reference.
+            debug: Print request/response JSON.
+
+        Returns:
+            The result, whose ``result`` holds the returned value.
+        """
+        target_id = target if isinstance(target, str) else target.id
+        assert target_id is not None, "Target has no ID"
+        return await self.send_message(
+            messages.CallSyncMethod(
+                targetID=target_id, methodName=methodName,
+                arguments=members.tag_method_arguments(arguments),
+            ),
+            responses.MethodResult, debug,
+        )
+
+    async def call_static_sync_method(
+        self,
+        targetType: str,
+        methodName: str,
+        arguments: dict[str, object] | None = None,
+        debug: bool = False,
+    ) -> responses.MethodResult:
+        """Call a static sync method on a type.
+
+        As of Resonite 2026.9.18.82, most static sync methods, such as
+        MeterTool.FilterUsers, fail with "Type must derive from Delegate",
+        and the server returns a plain Response, which raises
+        RuntimeError here. AvatarCreator's static methods are the
+        exception.
+
+        Args:
+            targetType: Fully qualified type name.
+            methodName: The method's name, as in the definition's methods.
+            arguments: Parameter names mapped to values, as for
+                call_sync_method.
+            debug: Print request/response JSON.
+
+        Returns:
+            The result, whose ``result`` holds the returned value.
+        """
+        return await self.send_message(
+            messages.CallStaticSyncMethod(
+                targetType=targetType, methodName=methodName,
+                arguments=members.tag_method_arguments(arguments),
+            ),
+            responses.MethodResult, debug,
+        )
+
+    # Messages that derive from DataModelOperation in ResoniteLink, which
+    # are the only ones a batch can hold.
+    _BATCHABLE: tuple[type, ...] = (
+        messages.GetSlot, messages.AddSlot, messages.UpdateSlot,
+        messages.RemoveSlot, messages.GetComponent, messages.AddComponent,
+        messages.UpdateComponent, messages.RemoveComponent,
+        messages.CallSyncMethod, messages.CallStaticSyncMethod,
+    )
+
+    async def data_model_operation_batch(
+        self,
+        operations: Sequence[messages.Message],
+        debug: bool = False,
+    ) -> responses.BatchResponse:
+        """Apply several data model operations in one engine update.
+
+        The server processes the operations in order with no engine update
+        in between, so nothing else in the world sees or changes the
+        objects halfway through. Each operation gets its own response, in
+        order, and the batch's own success only says that it was
+        processed.
+
+        Args:
+            operations: Slot and component operations and sync method
+                calls, such as messages.AddSlot or messages.UpdateComponent.
+            debug: Print request/response JSON.
+
+        Returns:
+            The batch response, whose ``responses`` hold one response per
+            operation.
+
+        Raises:
+            TypeError: An operation isn't a data model operation, such as
+                a reflection or import message.
+        """
+        for operation in operations:
+            if not isinstance(operation, self._BATCHABLE):
+                raise TypeError(
+                    f"{type(operation).__name__} can't be batched. Only slot "
+                    f"and component operations and sync method calls can."
+                )
+            # The server echoes each operation's ID as its response's
+            # sourceMessageId, which is None for an operation without one.
+            if operation.messageId is None:
+                operation.messageId = str(uuid.uuid4())
+        return await self.send_message(
+            messages.DataModelOperationBatch(operations=list(operations)),
+            responses.BatchResponse, debug,
         )
 
     # =========================================================================
@@ -696,6 +928,228 @@ class Client:
         """
         return await self.send_message(
             messages.ImportAudioClipFile(filePath=filePath),
+            responses.AssetData, debug,
+        )
+
+    async def import_audio_clip_raw_data(
+        self,
+        samples: np.ndarray,
+        sampleRate: int,
+        debug: bool = False,
+    ) -> responses.AssetData:
+        """Import an audio clip from PCM samples.
+
+        Args:
+            samples: The samples, from -1 to 1, shaped (sample count,) for
+                mono or (sample count, channel count).
+            sampleRate: The sample rate in Hz.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.ImportAudioClipRawData.from_samples(samples, sampleRate),
+            responses.AssetData, debug,
+        )
+
+    async def import_texture_2d_raw_data(
+        self,
+        pixels: np.ndarray,
+        colorProfile: str = "sRGB",
+        debug: bool = False,
+    ) -> responses.AssetData:
+        """Import a texture from RGBA pixels.
+
+        Args:
+            pixels: The image, shaped (height, width, 4), as uint8. Row 0
+                of the array is y = 0.
+            colorProfile: The color profile of the data, e.g. "sRGB" or
+                "Linear".
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.ImportTexture2DRawData.from_pixels(pixels, colorProfile),
+            responses.AssetData, debug,
+        )
+
+    async def import_texture_2d_raw_data_hdr(
+        self,
+        pixels: np.ndarray,
+        debug: bool = False,
+    ) -> responses.AssetData:
+        """Import a texture from floating point RGBA pixels, allowing HDR values.
+
+        Args:
+            pixels: The image, shaped (height, width, 4), as float32.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.ImportTexture2DRawDataHDR.from_pixels(pixels),
+            responses.AssetData, debug,
+        )
+
+    async def import_cubemap_files(
+        self,
+        positiveX: str,
+        positiveY: str,
+        positiveZ: str,
+        negativeX: str,
+        negativeY: str,
+        negativeZ: str,
+        debug: bool = False,
+    ) -> responses.AssetData:
+        """Import a cubemap from six face images.
+
+        Args:
+            positiveX: Path to the +X face image, and so on for the others.
+            positiveY: Path to the +Y face image.
+            positiveZ: Path to the +Z face image.
+            negativeX: Path to the -X face image.
+            negativeY: Path to the -Y face image.
+            negativeZ: Path to the -Z face image.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.ImportCubemapFiles(
+                filePathPositiveX=positiveX, filePathPositiveY=positiveY,
+                filePathPositiveZ=positiveZ, filePathNegativeX=negativeX,
+                filePathNegativeY=negativeY, filePathNegativeZ=negativeZ,
+            ),
+            responses.AssetData, debug,
+        )
+
+    async def import_cubemap_file_with_regions(
+        self,
+        filePath: str,
+        positiveX: primitives.Rect,
+        positiveY: primitives.Rect,
+        positiveZ: primitives.Rect,
+        negativeX: primitives.Rect,
+        negativeY: primitives.Rect,
+        negativeZ: primitives.Rect,
+        debug: bool = False,
+    ) -> responses.AssetData:
+        """Import a cubemap from one image that holds all six faces.
+
+        As of Resonite 2026.9.18.82, this always fails with "The supplied
+        Bitmap2D's don't all have mipmaps", because of a server bug. Use
+        import_cubemap_files or import_cubemap_raw_data instead.
+
+        Args:
+            filePath: Path to the image.
+            positiveX: The +X face's region of the image, in coordinates
+                from 0 to 1, and so on for the others.
+            positiveY: The +Y face's region.
+            positiveZ: The +Z face's region.
+            negativeX: The -X face's region.
+            negativeY: The -Y face's region.
+            negativeZ: The -Z face's region.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.ImportCubemapFileWithRegions(
+                filePath=filePath,
+                positiveXregion=positiveX, positiveYregion=positiveY,
+                positiveZregion=positiveZ, negativeXregion=negativeX,
+                negativeYregion=negativeY, negativeZregion=negativeZ,
+            ),
+            responses.AssetData, debug,
+        )
+
+    async def import_cubemap_raw_data(
+        self,
+        levels: Sequence[np.ndarray],
+        colorProfile: str = "sRGB",
+        debug: bool = False,
+    ) -> responses.AssetData:
+        """Import a cubemap from RGBA faces.
+
+        Args:
+            levels: The mip levels, each shaped (6, size, size, 4) as uint8,
+                with the faces in the order +X, +Y, +Z, -X, -Y, -Z. One
+                level means no mip maps. More than one must be the whole
+                chain down to 1x1.
+            colorProfile: The color profile of the data.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.ImportCubemapRawData.from_levels(levels, colorProfile),
+            responses.AssetData, debug,
+        )
+
+    async def import_cubemap_raw_data_hdr(
+        self,
+        levels: Sequence[np.ndarray],
+        debug: bool = False,
+    ) -> responses.AssetData:
+        """Import a cubemap from floating point RGBA faces, allowing HDR values.
+
+        Args:
+            levels: The mip levels, as for import_cubemap_raw_data, but as
+                float32.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.ImportCubemapRawDataHDR.from_levels(levels),
+            responses.AssetData, debug,
+        )
+
+    async def import_mesh_json(
+        self,
+        vertices: Sequence[mesh.Vertex],
+        submeshes: Sequence[
+            mesh.PointSubmesh | mesh.TriangleSubmesh | mesh.TriangleSubmeshFlat
+        ],
+        bones: Sequence[mesh.Bone] | None = None,
+        blendshapes: Sequence[mesh.BlendShape] | None = None,
+        debug: bool = False,
+    ) -> responses.AssetData:
+        """Import a mesh described in JSON. Convenient for small meshes.
+
+        As of Resonite 2026.9.18.82, the server rejects any vertex with UV
+        coordinates, with "UV channel 0 is already configured with 0
+        dimensions". import_mesh_raw_data handles UVs.
+
+        Args:
+            vertices: The vertices.
+            submeshes: The submeshes, which index into the vertices.
+            bones: The bones, for a skinned mesh.
+            blendshapes: The blendshapes.
+            debug: Print request/response JSON.
+        """
+        return await self.send_message(
+            messages.ImportMeshJSON(
+                vertices=list(vertices), submeshes=list(submeshes),
+                bones=list(bones) if bones else None,
+                blendshapes=list(blendshapes) if blendshapes else None,
+            ),
+            responses.AssetData, debug,
+        )
+
+    async def import_mesh_raw_data(
+        self,
+        positions: np.ndarray,
+        submeshes: Sequence[mesh.RawTriangles | mesh.RawPoints],
+        *,
+        normals: np.ndarray | None = None,
+        tangents: np.ndarray | None = None,
+        colors: np.ndarray | None = None,
+        uvs: Sequence[np.ndarray] = (),
+        bone_indices: np.ndarray | None = None,
+        bone_weights: np.ndarray | None = None,
+        bones: Sequence[mesh.Bone] | None = None,
+        blendshapes: Sequence[mesh.RawBlendShape] = (),
+        debug: bool = False,
+    ) -> responses.AssetData:
+        """Import a mesh given as numpy arrays, for meshes of any size.
+
+        The arguments are those of messages.ImportMeshRawData.from_arrays.
+        """
+        return await self.send_message(
+            messages.ImportMeshRawData.from_arrays(
+                positions, submeshes, normals=normals, tangents=tangents,
+                colors=colors, uvs=uvs, bone_indices=bone_indices,
+                bone_weights=bone_weights, bones=bones,
+                blendshapes=blendshapes,
+            ),
             responses.AssetData, debug,
         )
 
@@ -977,13 +1431,17 @@ class Client:
     async def request_session_data(
         self,
         debug: bool = False,
-    ) -> responses.Response:
+    ) -> responses.SessionData:
         """Request session data for the current ResoniteLink session.
 
         Args:
             debug: Print request/response JSON.
+
+        Returns:
+            The Resonite and ResoniteLink versions, and the session's
+            uniqueSessionId.
         """
         return await self.send_message(
             messages.RequestSessionData(),
-            responses.Response, debug,
+            responses.SessionData, debug,
         )
