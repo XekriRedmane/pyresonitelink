@@ -540,3 +540,28 @@ class TestEnumFields:
         plain = codec._decode_value({"$type": "enum", "value": "Clamp", "id": "Reso_2"})
         assert type(plain) is members.FieldEnum
 
+
+class TestEmptyCollections:
+    """Empty list and dictionary elements are sent, other empty lists aren't."""
+
+    def test_empty_sync_list_keeps_elements(self) -> None:
+        # The server fails an update whose list has no "elements" key.
+        from pyresonitelink.data import members
+
+        encoded = codec._encode_value(members.SyncList(id="Reso_1"))
+        assert encoded == {"$type": "list", "id": "Reso_1", "elements": []}
+
+    def test_empty_sync_dictionary_keeps_elements(self) -> None:
+        from pyresonitelink.data import members
+
+        encoded = codec._encode_value(members.SyncDictionary(id="Reso_1"))
+        assert encoded["elements"] == {}
+
+    def test_other_empty_lists_are_skipped(self) -> None:
+        encoded = codec._encode_value(Slot(id="S", children=[]))
+        assert "children" not in encoded
+
+    def test_slot_omits_root_slot_id(self) -> None:
+        encoded = codec._encode_value(Slot(id="S"))
+        assert "ROOT_SLOT_ID" not in encoded
+        assert Slot.ROOT_SLOT_ID == "Root"

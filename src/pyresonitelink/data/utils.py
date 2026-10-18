@@ -9,6 +9,9 @@ JSON_IGNORE_KEY = "__json_ignore__"
 # Metadata key for a field whose JSON key differs from its Python name
 JSON_NAME_KEY = "__json_name__"
 
+# Metadata key for a collection field that is encoded even when empty
+JSON_KEEP_EMPTY_KEY = "__json_keep_empty__"
+
 
 def json_name(name: str, **kwargs: Any) -> Any:
     """Create a dataclass field whose JSON key is name.

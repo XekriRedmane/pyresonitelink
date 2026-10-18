@@ -7,6 +7,7 @@ Slot and Component.
 # pylint: disable=invalid-name
 
 from dataclasses import dataclass, field
+from typing import ClassVar
 
 from .fields import FieldBool, FieldFloat3, FieldFloatQ, FieldLong, FieldString
 from .members import Member, Reference
@@ -42,7 +43,8 @@ class Slot(Worker):
     transform data, components, and child slots.
     """
 
-    ROOT_SLOT_ID: str = "Root"
+    # A class constant, so that it isn't a dataclass field that gets encoded.
+    ROOT_SLOT_ID: ClassVar[str] = "Root"
 
     parent: Reference | None = None
     position: FieldFloat3 | None = None

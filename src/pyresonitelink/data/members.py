@@ -10,6 +10,8 @@ import uuid
 from dataclasses import dataclass, field
 from typing import Generic, TypeVar
 
+from .utils import JSON_KEEP_EMPTY_KEY
+
 T = TypeVar("T")
 
 
@@ -52,9 +54,16 @@ class Reference(Member, Generic[T]):
 
 @dataclass
 class SyncList(Member):
-    """A synchronized list of members."""
+    """A synchronized list of members.
 
-    elements: list[Member] = field(default_factory=list[Member])
+    An empty list is still sent as ``"elements": []``. The server
+    dereferences the elements of every list in an update without checking
+    for null, so leaving the key out fails the whole update.
+    """
+
+    elements: list[Member] = field(
+        default_factory=list[Member], metadata={JSON_KEEP_EMPTY_KEY: True},
+    )
 
 
 @dataclass
@@ -161,8 +170,11 @@ class SyncDictionary(Member):
     """A synchronized dictionary member.
 
     Keys are typically enum values (as strings). Values are decoded
-    members stored in the elements dict.
+    members stored in the elements dict. As with SyncList, an empty
+    dictionary is still sent, because the server doesn't check for null.
     """
 
     enumType: str | None = None
-    elements: dict[str, Member] = field(default_factory=dict[str, Member])
+    elements: dict[str, Member] = field(
+        default_factory=dict[str, Member], metadata={JSON_KEEP_EMPTY_KEY: True},
+    )

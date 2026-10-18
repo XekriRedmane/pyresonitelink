@@ -15,7 +15,7 @@ from typing import Any, cast, get_args, get_origin
 
 import numpy as np
 
-from .utils import JSON_IGNORE_KEY, JSON_NAME_KEY
+from .utils import JSON_IGNORE_KEY, JSON_KEEP_EMPTY_KEY, JSON_NAME_KEY
 
 from . import fields as field_types
 from . import members as member_types
@@ -859,8 +859,12 @@ def _encode_dataclass(obj: DataType) -> dict[str, EncodableType]:
         if value is None:
             continue
 
-        # Skip empty lists/dicts
-        if isinstance(value, (list, dict)) and len(value) == 0:
+        # Skip empty lists/dicts, except where the server needs the key
+        if (
+            isinstance(value, (list, dict))
+            and len(value) == 0
+            and not f.metadata.get(JSON_KEEP_EMPTY_KEY)
+        ):
             continue
 
         # Encode the value
