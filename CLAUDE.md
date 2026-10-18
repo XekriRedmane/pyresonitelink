@@ -128,7 +128,7 @@ v = Float3(x=1, y=2.5, z=3)  # x, y, z are np.float32 after construction
 The `$type` discriminator in JSON maps to Python classes:
 - Scalar fields: `"bool"` -> `FieldBool`, `"int"` -> `FieldInt`, `"float"` -> `FieldFloat`, `"decimal"` -> `FieldDecimal` (uses `decimal.Decimal`), `"char"` -> `FieldChar`, `"string"` -> `FieldString`, `"Uri"` -> `FieldUri`
 - Composite fields: `"float3"` -> `FieldFloat3`, `"colorX"` -> `FieldColorX`, `"Rect"` -> `FieldRect`, `"BoundingBox"` -> `FieldBoundingBox`
-- Nullable variants: `"int?"` -> `FieldNullableInt`, `"bool?"` -> `FieldNullableBool`, `"enum?"` -> `FieldEnum`
+- Nullable variants: `"int?"` -> `FieldNullableInt`, `"bool?"` -> `FieldNullableBool`, `"enum?"` -> `FieldNullableEnum`
 - Array variants: `"float3[]"` -> `ArrayFloat3`, `"color[]"` -> `ArrayColor`
 - Member types: `"reference"` -> `Reference`, `"list"` -> `SyncList`, `"syncObject"` -> `SyncObject`, `"enum"` -> `FieldEnum`, `"playback"` -> `SyncPlayback`, `"dictionary<enum>"` -> `SyncDictionary`
 
@@ -260,8 +260,8 @@ await resolink.connect(PORT)
 # Slot operations — accept raw values or Field wrappers
 slot = await resolink.add_slot(name="My Slot", position=(0, 1.5, 0))  # parent=Root by default
 slot = await resolink.add_slot(parent=some_slot, name="Child")
-slot = await resolink.get_slot(slotId="Root", depth=1)
-await resolink.remove_slot(slotId=slot_id)
+slot = await resolink.get_slot("Root", depth=1)
+await resolink.remove_slot(slot)  # slot ID or Slot
 
 # Component operations — componentType + references for easy wiring
 resp = await resolink.add_component(
@@ -279,9 +279,30 @@ await resolink.remove_component(componentId=comp_id)
 # Reflection
 types = await resolink.get_component_type_list(categoryPath="/Data")
 defn = await resolink.get_component_definition(componentType="...", flattened=True)
+tdef = await resolink.get_type_definition("[FrooxEngine]FrooxEngine.IAssetProvider<>")
+edef = await resolink.get_enum_definition("[FrooxEngine]FrooxEngine.BlendMode")
+sdef = await resolink.get_sync_object_definition("[FrooxEngine]FrooxEngine.UserRef")
+gdef = await resolink.get_generic_type_definition("[FrooxEngine]FrooxEngine.ValueField<float>")
+session = await resolink.request_session_data()
+
+# Sync methods and batches
+result = await resolink.call_sync_method(component, "MethodName", {"arg": fields.FieldInt(value=2)})
+result = await resolink.call_static_sync_method("[FrooxEngine]FrooxEngine.SomeType", "MethodName")
+batch = await resolink.data_model_operation_batch([messages.AddSlot(...), messages.GetSlot(...)])
+
+# Imports from numpy data (each returns AssetData with .assetURL)
+await resolink.import_texture_2d_raw_data(pixels)            # (h, w, 4) uint8
+await resolink.import_cubemap_raw_data([faces])              # (6, size, size, 4) per mip level
+await resolink.import_mesh_raw_data(positions, [mesh.RawTriangles(tris)], normals=..., uvs=[...])
+await resolink.import_audio_clip_raw_data(samples, 48000)    # (count,) or (count, channels)
 ```
 
 `add_slot` returns a `Slot` directly (raises `RuntimeError` on failure). `add_component` returns `NewEntityId` with `.entityId`. Other mutations return `Response` with `.success`.
+
+- Reflection responses decode to `data/reflection.py` dataclasses. Member definitions decode by `$type` to `FieldDefinition`, `ReferenceDefinition`, etc. (`_MEMBER_DEFINITION_TYPES` in the codec).
+- `MethodResult.result` is a field member (`FieldInt`, `FieldBool`, ...) or a `members.DataReference` for a returned object, or `None` for void.
+- A batch's `responses` holds one response per operation, in order. Only `DataModelOperation` messages can be batched (`Client._BATCHABLE`). The client gives each operation a `messageId` so each response's `sourceMessageId` identifies its operation.
+- Binary payload messages have `from_*` builders in `messages.py` and an `expected_payload_size()`. `Client.request_json` raises `ValueError` before sending a payload of the wrong size.
 
 #### Audio Import
 
@@ -397,7 +418,7 @@ await resolink.connect(PORT)
 
 # 1. Create a temporary slot
 slot = await resolink.add_slot(name="__test__")
-slot_id = slot_resp.entityId
+slot_id = slot.id
 
 # 2. Add a generated component (accepts slot ID or Slot instance)
 value_field = ValueField[primitives.Float](42.5)
@@ -412,7 +433,7 @@ value_field.value = primitives.Float(99.0)
 await value_field.update(resolink)
 
 # 5. Clean up
-await resolink.remove_slot(slotId=slot_id)
+await resolink.remove_slot(slot_id)
 ```
 
 Key points:
@@ -512,6 +533,11 @@ await audio_output.exlude_user(resolink, user="some-user-id")
 
 `CallStaticSyncMethod` calls static methods on a type (field: `targetType` instead of `targetID`).
 
+`Client.call_sync_method` and `Client.call_static_sync_method` return `MethodResult`. Two server bugs (Resonite 2026.9.18.82) limit them:
+
+- Methods with `isAsync: true` in the definition (`Task<T>` in C#) fail with "Type not supported: Task`1" AFTER the method has started. This covers nearly every asset processing method (StaticMesh, StaticTexture2D, StaticAudioClip, ...).
+- Static methods declared with `[SyncMethod(typeof(Delegate))]` (5 of the 7, e.g. `MeterTool.FilterUsers`) fail with "Type must derive from Delegate" and return a plain `Response`, which `send_message` raises as `RuntimeError`. `AvatarCreator`'s static methods work.
+
 #### Method Arguments Must Be `$type`-Tagged
 
 - The server parses `arguments` as ResoniteLink `Data` values. A bare value like `{"depth": 2}` fails with "The JSON value could not be converted to ResoniteLink.Data".
@@ -579,7 +605,8 @@ ProtoFlux nodes are highly sensitive to component creation order and timing. For
 
 1. **ALWAYS use "Create Then Wire"**: Add components to the slot empty (or with scalar fields only) using `add_to_slot()`, then use `update_references()` to wire them together. constructor-based wiring frequently fails or triggers server-side type validation errors.
 2. **Explicit Target Types**: When calling `update_references()`, use `members.Reference` objects with an explicit `targetType` (e.g. `'[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<T>'`) instead of raw ID strings. This helps Resonite's strict type system resolve generic interface compatibility.
-3. **Strategic Delays**: Add small `asyncio.sleep(0.05)` delays between component creation and reference updates. Rapid-fire requests can sometimes lead to race conditions where the server hasn't fully registered a component before a reference to it arrives.
+3. **Delays Span Engine Updates**: Keep the `asyncio.sleep(0.05)` between creating ProtoFlux nodes and wiring them. Each client call already waits for its response, so message order is guaranteed without it. Without it the references all arrive, but the graph never runs (measured 18 Oct 2026, 17 of 34 Dergflux integration tests failed with the 0.05 s sleeps removed, 9 with all builder sleeps removed). The nodes apparently have to be registered in an engine update before they're wired. NEVER build a ProtoFlux graph with `data_model_operation_batch`, which runs every operation in one engine update.
+
 4. **Statement Ordering**: In impulse chains, the execution order is guaranteed by the wiring. ALWAYS ensure that "completion signals" (like setting a `ran` variable to True) are wired as the ABSOLUTE LAST statement in a chain to prevent tests from seeing partial results.
 
 #### Sync vs Async Impulse Flow
@@ -745,6 +772,8 @@ See `examples/protoflux_if_else.py` for the complete working example.
 - On Git Bash (MSYS2), paths starting with `/` get mangled to Windows paths. Use `MSYS_NO_PATHCONV=1` when passing category paths like `/Data`.
 - Five components can't be regenerated, because `GetComponentDefinition` throws a NullReferenceException for any component with a `SyncLinear<T>` or `SyncCurve<T>` member (a FrooxEngine bug in `ResoniteLinkReflection.BuildArrayDefinition`). Their modules are from an earlier generation: `AnimationTrack<>` (hand-patched), `BezierTubeMesh`, `GradientStripTexture`, and two PhotonDust `*OverLifetimeLinearGradient`. Component data also omits those members, so gradients and curves can't be read or written through ResoniteLink.
 - `DateTimeDayOfWeek` outputs a `System.DayOfWeek` enum, which isn't generated, so Dergflux has no `day_of_week`.
+- More ResoniteLink server bugs are listed in README.md under Known Issues: `importMeshJSON` rejects UVs, `importCubemapFileWithRegions` always fails, `getComponentTypeList("*")` returns nothing, and `getEnumDefinition` gives a NullReferenceException message for an unknown name. `tests/test_link_messages.py` checks for the first two and for the sync method bugs.
+- The codec omits empty lists and dicts, except fields marked with `JSON_KEEP_EMPTY_KEY` metadata. `SyncList.elements` and `SyncDictionary.elements` are marked, because the server's list and dictionary writers dereference `elements` without a null check, so an update without the key fails.
 
 ## Line Endings
 

@@ -156,6 +156,77 @@ await value_field.update(resolink)
 await value_field.refresh(resolink)
 ```
 
+#### Importing Assets from Data
+
+Textures, cubemaps, meshes, and audio can be imported from numpy arrays as well as from files. Each call returns an `AssetData` whose `assetURL` goes in the `URL` field of a static provider such as `StaticTexture2D`.
+
+```python
+import numpy as np
+from pyresonitelink.data import mesh
+
+# A texture from an RGBA image, shaped (height, width, 4) as uint8
+asset = await resolink.import_texture_2d_raw_data(pixels)
+
+# A cubemap from six faces, shaped (6, size, size, 4), in the order
+# +X, +Y, +Z, -X, -Y, -Z
+asset = await resolink.import_cubemap_raw_data([faces])
+
+# A mesh from vertex arrays, with any of normals, tangents, colors, UVs,
+# bone weights, and blendshapes
+asset = await resolink.import_mesh_raw_data(
+    positions,                                 # (V, 3)
+    [mesh.RawTriangles(triangles)],            # (N, 3) vertex indices
+    normals=normals,
+    uvs=[uv0],                                 # one (V, 2) array per channel
+)
+
+# Audio from samples from -1 to 1, shaped (count,) or (count, channels)
+asset = await resolink.import_audio_clip_raw_data(samples, 48000)
+```
+
+The payload builders behind these calls are also available as classmethods, such as `messages.ImportMeshRawData.from_arrays`. The client checks a payload's size against its message before sending it, because the server rejects a payload of the wrong size with a less helpful error. `import_texture_2d_raw_data_hdr`, `import_cubemap_raw_data_hdr`, `import_cubemap_files`, and `import_mesh_json` cover the remaining import messages. Two of the import messages run into server bugs, which are listed under [Known Issues](#known-issues).
+
+#### Batches
+
+`data_model_operation_batch` sends slot and component operations and sync method calls in one message. The server runs them in order within one engine update, so nothing else in the world sees the objects halfway through, and an operation can refer to an object that an earlier operation in the same batch created.
+
+```python
+from pyresonitelink.data import fields, members, messages, workers
+
+batch = await resolink.data_model_operation_batch([
+    messages.AddSlot(data=workers.Slot(
+        id=child_id,
+        parent=members.Reference(targetId=slot.id),
+        name=fields.FieldString(value="Child"),
+    )),
+    messages.GetSlot(slotId=slot.id, depth=1),
+])
+for response in batch.responses:
+    print(type(response).__name__, response.success)
+```
+
+Each operation gets its own response, in order. The batch's own `success` only says that the batch was processed, so check each response.
+
+Don't build a ProtoFlux graph in one batch. A node wired in the same engine update that created it can end up with every reference in place and still never run, which is why the Dergflux builder pauses between creating nodes and wiring them.
+
+#### Session and Reflection
+
+```python
+session = await resolink.request_session_data()
+print(session.resoniteVersion, session.resoniteLinkVersion)
+
+# Any type, including interfaces and abstract classes
+defn = await resolink.get_type_definition("[FrooxEngine]FrooxEngine.IAssetProvider<>")
+# The generic type definition behind a concrete generic type
+defn = await resolink.get_generic_type_definition("[FrooxEngine]FrooxEngine.ValueField<float>")
+# An enum's names and values
+enum = await resolink.get_enum_definition("[FrooxEngine]FrooxEngine.BlendMode")
+# A sync object, such as UserRef
+sync = await resolink.get_sync_object_definition("[FrooxEngine]FrooxEngine.UserRef")
+```
+
+The definitions decode to the dataclasses in `pyresonitelink.data.reflection`, and the members of a component or sync object definition decode to `FieldDefinition`, `ReferenceDefinition`, and the other member definition classes.
+
 ## Generated Components
 
 Components are generated from a live ResoniteLink server. The generator produces typed Python wrapper classes with properties, `__init__` parameters, and interface inheritance for type-safe wiring. Documentation from the [Resonite Wiki](https://wiki.resonite.com) is automatically scraped and merged into the generated class docstrings, so `help()` and IDE hover tooltips show descriptions for each component, its fields, inputs, and outputs.
@@ -256,10 +327,25 @@ await player.pause(resolink)
 await player.stop(resolink)
 
 # Arguments are passed as plain values or component instances
-await clip.adjust_volume(resolink, ratio=0.5)
+await output.exlude_user(resolink, user=user_id)
 ```
 
-The server only accepts method arguments tagged with their type, so the generated wrapper sends `ratio=0.5` as a `FieldFloat`, and a reference argument as a `members.DataReference`. If you call `call_method` yourself, pass arguments in that form. A component or slot instance is converted to a reference for you. ResoniteLink has no way to pass an enum or a struct, so a method that takes one can't be called.
+The server only accepts method arguments tagged with their type, so a generated wrapper sends a float argument as a `FieldFloat`, and a reference argument as a `members.DataReference`. If you call `call_method` yourself, pass arguments in that form. A component or slot instance is converted to a reference for you. ResoniteLink has no way to pass an enum or a struct, so a method that takes one can't be called.
+
+The client's `call_sync_method` and `call_static_sync_method` do the same for any target. They return a `MethodResult` whose `result` holds the returned value as a field, such as a `FieldInt`, or as a `members.DataReference` for a returned object.
+
+```python
+from pyresonitelink.data import fields
+
+result = await resolink.call_sync_method(root, "RemoveChildrenObjectRoots")
+print(result.success, result.result.value)
+
+await resolink.call_sync_method(
+    clip, "AdjustVolume", {"ratio": fields.FieldFloat(value=np.float32(0.5))},
+)
+```
+
+As of Resonite 2026.9.18.82, a method marked `isAsync` in its definition, such as `AdjustVolume`, fails on the server after it has started, and most static methods fail before they start. Both are listed under [Known Issues](#known-issues).
 
 See `examples/call_sync_method.py` for the complete example.
 
@@ -405,3 +491,13 @@ pyrefly check
 
 - First WebSocket connection fails with `ConnectionClosedError`. Workaround is implemented in the client (automatic retry).
 - On Git Bash (MSYS2), paths starting with `/` get mangled to Windows paths. Use `MSYS_NO_PATHCONV=1` when passing category paths.
+
+The following are bugs in ResoniteLink as of Resonite 2026.9.18.82. The tests in `tests/test_link_messages.py` check for each of the first four, so a fix shows up as a failing test.
+
+- A sync method whose definition has `isAsync` set, such as `StaticMesh.RecalculateNormals`, fails with "Type not supported: Task`1". The server has already started the method, so its effect still happens. This covers nearly all asset processing methods.
+- A static sync method declared with `[SyncMethod(typeof(Delegate))]`, such as `MeterTool.FilterUsers`, fails with "Type must derive from Delegate" before it runs. Five of the seven static methods are declared this way.
+- `import_mesh_json` fails for any vertex with UV coordinates. `import_mesh_raw_data` handles UVs.
+- `import_cubemap_file_with_regions` always fails with "The supplied Bitmap2D's don't all have mipmaps". `import_cubemap_files` works when the six face images are the same size.
+- `get_component_type_list("*")` returns nothing, although the [doc comment on `GetComponentTypeList.CategoryPath`](https://github.com/Yellow-Dog-Man/ResoniteLink/blob/067afad3d1977b3806cbad077f4e8a534f56f451/ResoniteLink/Models/Messages/Reflection/GetComponentDefinitionList.cs#L10-L15) says that it lists every component.
+- `get_enum_definition` with a name that doesn't resolve fails with a NullReferenceException message.
+- `get_component_definition` fails for the five components with a `SyncLinear` or `SyncCurve` member, and `get_component` leaves those members out.

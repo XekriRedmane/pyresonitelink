@@ -5,6 +5,13 @@ AdjustVolume(ratio) sync method. AdjustVolume processes the audio and
 replaces the clip's URL with that of the processed asset, so the URL read
 back afterward differs from the original.
 
+AdjustVolume waits for the clip's asset to load, and an asset only loads
+while something uses it, so an AudioClipPlayer refers to the clip.
+
+As of Resonite 2026.9.18.82, the server reports a failure for AdjustVolume
+and every other method that returns Task<bool>, but it has already started
+the method, so the URL still changes.
+
 Usage:
     python examples/call_sync_method.py [port]
 
@@ -18,6 +25,7 @@ import sys
 
 from pyresonitelink import client
 from pyresonitelink import discovery
+from pyresonitelink.generated.audio import audio_clip_player
 
 
 async def main(port: int | None) -> None:
@@ -35,11 +43,17 @@ async def main(port: int | None) -> None:
         clip = await resolink.create_audio_clip(slot, wav_path)
         print(f"Imported clip: {clip.url}")
 
+        # Without a user of the clip, its asset never loads, and
+        # AdjustVolume waits for it forever.
+        player = audio_clip_player.AudioClipPlayer()
+        player.clip = clip
+        await player.add_to_slot(resolink, slot)
+
         # A primitive argument is passed as a plain value. The generated
         # wrapper tags it with its type, as FieldFloat here, because the
         # server rejects untagged arguments.
         response = await clip.adjust_volume(resolink, ratio=0.5)
-        print(f"AdjustVolume succeeded: {response['success']}")
+        print(f"AdjustVolume reported success: {response['success']}")
 
         # The volume is adjusted in the background, and the clip's URL is
         # replaced when the new asset is ready.

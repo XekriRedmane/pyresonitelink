@@ -975,7 +975,11 @@ async def generate_all(
     _interface_cache.clear()
     _component_modules.clear()
 
-    # Recursively walk categories to find all component types
+    # Recursively walk categories to find all component types. The doc
+    # comment on GetComponentTypeList.CategoryPath, in ResoniteLink's
+    # ResoniteLink/Models/Messages/Reflection/GetComponentDefinitionList.cs,
+    # says that "*" lists every component at once, but as of Resonite
+    # 2026.9.18.82 it returns nothing.
     async def walk_category(category_path: str) -> list[str]:
         """Return all component type names under a category."""
         resp = await resolink.request_json(
