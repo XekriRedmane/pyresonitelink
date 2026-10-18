@@ -1,0 +1,8 @@
+# Every text file is stored with LF line endings and checked out with LF,
+# whatever core.autocrlf is set to on the machine. Git detects which files
+# are text, and the lines after this one name the binary types it must
+# never convert.
+* text=auto eol=lf
+
+*.png binary
+*.wav binary
