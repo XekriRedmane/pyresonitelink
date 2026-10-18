@@ -1153,7 +1153,7 @@ class TestBind:
         from pyresonitelink.data import fields
         g = _graph.Graph()
         slot = workers.Slot(id="s")
-        s = g.Space(slot, name="Audio")
+        s = g.Space(slot, space_name="Audio")
         s.vol = s.FloatDynVar("vol")
 
         comp = GeneratedComponent()

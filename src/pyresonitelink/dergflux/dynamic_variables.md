@@ -104,7 +104,7 @@ Example hierarchy:
 In Dergflux, when a Space has a name, variables use direct binding:
 
 ```python
-s = g.Space(slot, name="Audio")
+s = g.Space(slot, space_name="Audio")
 s.vol = s.FloatDynVar("vol")   # variable path: "Audio/vol"
 ```
 

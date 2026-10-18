@@ -1672,3 +1672,51 @@ class TestStructuralProperties:
         assert cond_comp is not None
         # Condition should be a comparison node (ValueGreaterThan)
         assert "ValueGreaterThan" in cond_comp.component_type
+
+
+class TestIsSlotOrChild:
+    """Tests _is_slot_or_child with real Slot data instead of MagicMocks.
+
+    A MagicMock answers any attribute, which once hid a read of a
+    nonexistent ``Reference.target`` attribute.
+    """
+
+    class _HierarchyClient:
+        """Serves get_slot from a child-to-parent map of slot IDs."""
+
+        def __init__(self, parents: dict[str, str | None]) -> None:
+            self.parents = parents
+
+        async def get_slot(self, slot: Any, depth: int = 0) -> Any:
+            from pyresonitelink.data import members, responses
+
+            slot_id = slot.id if isinstance(slot, workers.Slot) else slot
+            return responses.SlotData(
+                success=True,
+                data=workers.Slot(
+                    id=slot_id,
+                    parent=members.Reference(targetId=self.parents[slot_id]),
+                ),
+            )
+
+    @pytest.mark.asyncio
+    async def test_grandchild_is_under_parent(self) -> None:
+        client = self._HierarchyClient(
+            {"grandchild": "child", "child": "space", "space": "Root", "Root": None},
+        )
+        assert await _builder._is_slot_or_child(
+            client,  # type: ignore[arg-type]
+            workers.Slot(id="space"),
+            workers.Slot(id="grandchild"),
+        )
+
+    @pytest.mark.asyncio
+    async def test_sibling_is_not_under_parent(self) -> None:
+        client = self._HierarchyClient(
+            {"other": "Root", "space": "Root", "Root": None},
+        )
+        assert not await _builder._is_slot_or_child(
+            client,  # type: ignore[arg-type]
+            workers.Slot(id="space"),
+            workers.Slot(id="other"),
+        )

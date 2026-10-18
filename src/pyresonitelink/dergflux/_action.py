@@ -243,7 +243,7 @@ def create_action_context(
     # directly to the component constructor without materialization.
     input_exprs: dict[str, _expr.ExprProxy] = {}
     raw_inputs: dict[str, str] = {}
-    ref_bridges: dict[str, tuple[Any, str]] = {}
+    ref_bridges: dict[str, tuple[Any, str, str]] = {}
     for kwarg_name, value in kwargs.items():
         if kwarg_name not in action_def.inputs:
             raise TypeError(
@@ -274,7 +274,7 @@ def create_action_context(
             input_exprs[param_name] = _expr._coerce(value)
 
     # Initialize branch write lists
-    branch_stmts: dict[str, list[_flow.WriteRecord]] = {
+    branch_stmts: dict[str, list[_flow.Statement]] = {
         name: [] for name in action_def.flow_outputs
     }
 

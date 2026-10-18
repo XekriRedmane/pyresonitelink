@@ -502,6 +502,7 @@ class _BuildContext:
             if get_resp.data:
                 # Update loop_node instance with full server data
                 from pyresonitelink.protoflux.flow import For, RangeLoopInt
+                assert get_resp.data.componentType is not None, "Loop node has no component type"
                 if "RangeLoop" in get_resp.data.componentType:
                     self.loop_node = RangeLoopInt(component=get_resp.data)
                 else:
@@ -573,16 +574,10 @@ class _BuildContext:
             ConcreteInput = ValueInput[res_type]  # type: ignore[valid-type]
             comp = ConcreteInput(value=val)
         await comp.add_to_slot(self.resolink, self.slot, debug=self.debug)
-
-        # ProtoFlux nodes often must reference the output member, not the component root.
-        # For ValueInput<T> and ValueObjectInput<T>, the output is the 'Value' member.
-        get_resp = await self.resolink.get_component(componentId=comp.id, debug=self.debug)
-        assert get_resp.data is not None
-        value_member = get_resp.data.members.get("Value")
-        assert value_member is not None, f"ValueInput {comp.id} has no Value member"
-        
-        # Return a stub with the member ID so it can be wired as an input
-        return type("_OutputStub", (), {"id": value_member.id})()
+        # The ValueInput node is its own output, so downstream nodes reference
+        # the component. Referencing its Value field fails the server's type
+        # check, since a field doesn't implement INodeValueOutput<T>.
+        return comp
 
     async def _materialize_var_read(self, node: _expr.VarReadNode) -> Any:
         """Materialize a variable read.
@@ -634,6 +629,7 @@ class _BuildContext:
             ConcreteRead_type = f"[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Variables.ReadDynamicObjectVariable<{tn}>"
             comp = type("ReadDynamicObjectVariable_Stub", (), {"COMPONENT_TYPE": ConcreteRead_type, "add_to_slot": None, "id": None, "members": {}})
             # We must manually use add_component because our stub doesn't have the full machinery
+            assert self.slot.id is not None, "Build slot has no ID"
             resp = await self.resolink.add_component(containerSlotId=self.slot.id, componentType=ConcreteRead_type)
             if resp.entityId is None:
                 raise RuntimeError(f"Failed to create {ConcreteRead_type}: {resp.errorInfo}")
@@ -653,6 +649,7 @@ class _BuildContext:
         )
 
         # Re-fetch or get member ID
+        assert comp_id is not None, "ReadDynamicVariable has no ID"
         get_resp = await self.resolink.get_component(componentId=comp_id)
         assert get_resp.data is not None
         value_member = get_resp.data.members.get("Value")
@@ -886,7 +883,7 @@ async def _is_slot_or_child(
         slot_data = await resolink.get_slot(slot=current, depth=0)
         if slot_data.data is None or slot_data.data.parent is None:
             return False
-        parent_id = slot_data.data.parent.target
+        parent_id = slot_data.data.parent.targetId
         if parent_id is None:
             return False
         if parent_id == parent.id:
@@ -913,6 +910,7 @@ async def _find_existing_variable_component(
         if comp.componentType != component_type:
             continue
         # Refresh to get full member data
+        assert comp.id is not None, "Slot component has no ID"
         get_resp = await resolink.get_component(componentId=comp.id)
         if get_resp.data is None:
             continue
@@ -1012,7 +1010,11 @@ async def _build_dynvar(
     res_type = decl.resonite_type
     if res_type is type:
         ConcreteVar = DynamicTypeVariable
-    elif _is_protoflux_object_type(res_type):
+    elif _is_reference_type(res_type):
+        # Only world elements (Slot, User, components) are references. A
+        # string is an object type to ProtoFlux nodes, but the data
+        # component is DynamicValueVariable<string>, since
+        # DynamicReferenceVariable<string> doesn't exist.
         ConcreteVar = DynamicReferenceVariable[res_type]  # type: ignore[valid-type]
     else:
         ConcreteVar = DynamicValueVariable[res_type]  # type: ignore[valid-type]
@@ -1107,6 +1109,7 @@ async def _build_model_var(
     await store.add_to_slot(ctx.resolink, var_slot)
 
     # Poll for the +Store companion (auto-created by Resonite)
+    assert var_slot.id is not None, "Variable slot has no ID"
     store_id, store_ct, val_member_id = await _find_store_companion(
         ctx.resolink, var_slot.id,
     )
@@ -1115,6 +1118,9 @@ async def _build_model_var(
     if decl.initial_value is not None and val_member_id is not None:
         from pyresonitelink.generated import _type_map
         type_info = _type_map.from_python_type(decl.resonite_type)
+        assert type_info.field_class is not None, (
+            f"No field class for {decl.resonite_type}"
+        )
         update_member = type_info.field_class(
             value=decl.initial_value,
         )
@@ -1313,6 +1319,7 @@ async def _build_range_context(
     await range_node.add_to_slot(ctx.resolink, ctx.slot)
 
     # RE-FETCH component to get member data assigned by server
+    assert range_node.id is not None, "Range loop node has no ID"
     get_resp = await ctx.resolink.get_component(componentId=range_node.id)
     if get_resp.data:
         # Update range_node instance with full server data
@@ -1330,6 +1337,7 @@ async def _build_range_context(
     if iter_result is not None:
         refs["LoopIteration"] = iter_result.head.id
     if refs:
+        assert range_node.id is not None, "Range loop node has no ID"
         await ctx.resolink.update_references(
             componentId=range_node.id,
             references=refs,
@@ -1657,6 +1665,7 @@ async def _build_trigger(
     # nodes and connections are processed.
     await asyncio.sleep(0.5)
 
+    assert tag_node.id is not None, "Tag node has no ID"
     if trigger.value_type is None:
         from pyresonitelink.protoflux.flow import DynamicImpulseReceiver
         receiver = DynamicImpulseReceiver()
@@ -1853,6 +1862,7 @@ async def _setup_typed_trigger(
     ConcreteReceiver = DynamicImpulseReceiverWithValue[trigger.value_type]  # type: ignore[valid-type]
     receiver = ConcreteReceiver()
     await receiver.add_to_slot(ctx.resolink, ctx.slot)
+    assert tag_node.id is not None, "Tag node has no ID"
     await ctx.resolink.update_references(
         componentId=receiver.id,  # type: ignore[arg-type]
         references={"Tag": tag_node.id},
@@ -1908,6 +1918,7 @@ async def _build_raycast_one_context(
     if miss_result is not None:
         refs["OnMiss"] = miss_result.head.id
     if refs:
+        assert rc_node.id is not None, "RaycastOne node has no ID"
         await ctx.resolink.update_references(
             componentId=rc_node.id,
             references=refs,
@@ -2196,7 +2207,7 @@ async def build_graph(
     # trigger. If there's only one statement, wire the trigger directly.
     # If there are multiple, wrap in a Sequence node.
     # Save contexts keyed by slot ID so bindings can reuse them.
-    under_contexts: dict[str, _BuildContext] = {}
+    under_contexts: dict[str | None, _BuildContext] = {}
     for under_rec in graph._under_records:
         ctx = _BuildContext(resolink, under_rec.slot, debug=debug)
         ctx.is_async = under_rec.is_async

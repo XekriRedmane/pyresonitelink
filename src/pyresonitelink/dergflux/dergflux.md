@@ -94,7 +94,7 @@ A `Space` represents a `DynamicVariableSpace` component on a slot. You declare v
 
 ```python
 s = g.Space(slot)               # explicit slot
-s = g.Space(slot, name="MyVars") # named space
+s = g.Space(slot, space_name="MyVars") # named space
 ```
 
 Inside an `Under` block, the slot is optional:
@@ -102,7 +102,7 @@ Inside an `Under` block, the slot is optional:
 ```python
 with g.Under(slot):
     s = g.Space()          # inherits slot from Under
-    s = g.Space(name="Vars")  # named, inherits slot
+    s = g.Space(space_name="Vars")  # named, inherits slot
 ```
 
 If a `DynamicVariableSpace` with the given name already exists on the slot, it is reused.
