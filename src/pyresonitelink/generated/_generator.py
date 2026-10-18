@@ -15,9 +15,13 @@ _DOCS_DIR = Path(__file__).resolve().parent.parent / "scraped_docs"
 def _sanitize_docstring(text: str) -> str:
     """Escape text for safe inclusion in Python triple-quoted docstrings.
 
-    Handles both embedded triple-quotes and trailing quotes that would
-    merge with the closing triple-quote delimiter.
+    Handles backslashes, which would otherwise start escape sequences
+    (the wiki text for Escape String contains ``\\``), embedded
+    triple-quotes, and trailing quotes that would merge with the closing
+    triple-quote delimiter.
     """
+    # Backslashes first, since the escapes below add their own.
+    text = text.replace("\\", "\\\\")
     text = text.replace('"""', '"\\""')
     # A trailing " or "" would merge with the closing """ delimiter.
     if text.endswith('"'):
@@ -256,6 +260,9 @@ _PYTHON_KEYWORDS = frozenset({
     # Builtins that would shadow type annotations used in generated code
     "str", "int", "float", "bool", "bytes", "list", "dict", "set",
     "id", "input", "hash", "range", "slice", "format", "object",
+    # Decorators used in the class body, which a property of the same
+    # name would shadow (AnimationTrack has a member named Property)
+    "property", "classmethod", "staticmethod",
     # Base class attribute that must not be overridden as a property
     "component",
     # str methods (to avoid shadowing in StrEnum)
@@ -353,7 +360,10 @@ def _to_class_name(component_type: str) -> str:
     """Extract a Python class name from a fully-qualified Resonite type.
 
     Strips assembly prefix, takes the last dotted segment, and removes
-    generic arity markers like ``<>`` or ``<T>``.
+    generic arity markers like ``<>`` or ``<T>``. A nested type joins the
+    outer and inner names, so ``AudioZitaReverb+LegacyRangeMapper`` becomes
+    ``AudioZitaReverbLegacyRangeMapper``. Taking only the inner name would
+    let two different outer types collide on a name like ``Store``.
 
     Args:
         component_type: e.g. "[FrooxEngine]FrooxEngine.ValueField<>"
@@ -365,6 +375,8 @@ def _to_class_name(component_type: str) -> str:
     name = name.rsplit(".", 1)[-1]
     # Remove generic markers: <>, <T>, <T1, T2>, etc.
     name = re.sub(r"<[^>]*>", "", name)
+    # C# nested type separator, which isn't valid in a Python identifier.
+    name = name.replace("+", "")
     return name
 
 
@@ -519,6 +531,22 @@ def _resolve_member_from_definition(
         if vt_name in _PRIMITIVE_FIELD_MAP:
             py_type, field_cls = _PRIMITIVE_FIELD_MAP[vt_name]
             return (py_type, field_cls, "fields", False)
+        # Spherical harmonics are generic in their coefficient type, e.g.
+        # "[Elements.Core]Elements.Core.SphericalHarmonicsL1<>" with a
+        # genericArguments entry of "colorX". The coefficient type travels
+        # with each coefficient's $type, so it isn't needed here.
+        sh_match = re.fullmatch(
+            r"\[Elements\.Core\]Elements\.Core\.SphericalHarmonicsL([1-4])<>",
+            vt_name,
+        )
+        if sh_match:
+            order = sh_match.group(1)
+            return (
+                f"primitives.SphericalHarmonicsL{order}",
+                f"FieldSphericalHarmonicsL{order}",
+                "fields",
+                False,
+            )
         # Non-primitive field (enum, complex type) — treat as enum if
         # it's not a known primitive and not a generic parameter
         is_generic = value_type.get("isGenericParameter", False) if isinstance(value_type, dict) else False
@@ -582,6 +610,7 @@ def generate_component_source(
     definition: dict[str, Any],
     interfaces: list[str] | None = None,
     all_type_defs: dict[str, dict[str, Any]] | None = None,
+    component_modules: dict[str, tuple[str, str]] | None = None,
 ) -> str:
     """Generate Python source code for a component wrapper class.
 
@@ -605,10 +634,22 @@ def generate_component_source(
         interfaces: Resonite interface type strings implemented by
             this component (collected from the type hierarchy).
         all_type_defs: All known TypeDefinitions (for MRO dedup).
+        component_modules: Maps each reference target that is itself a
+            component, by its type name without generic arguments, to the
+            module and class that define it, such as
+            ``"[FrooxEngine]FrooxEngine.TextRenderer"`` to
+            ``("pyresonitelink.generated.rendering.text_renderer",
+            "TextRenderer")``. Those
+            classes are imported only for type checking, because there
+            are no ``_types/`` stubs for components, and because two
+            components that reference each other would otherwise import
+            each other at runtime.
 
     Returns:
         The Python source code as a string.
     """
+    if component_modules is None:
+        component_modules = {}
     class_name = _to_class_name(component_type)
     category = definition.get("categoryPath", "")
     is_generic = _is_generic_type(component_type)
@@ -650,6 +691,8 @@ def generate_component_source(
                     and vt_name not in _PRIMITIVE_WIRE_NAMES
                     and not vt.get("isGenericParameter", False)
                     and vt_name != "Nullable<>"
+                    and _resolve_member_from_definition(mem_def)[1]
+                    == "FieldEnum"
                 ):
                     enum_types[name] = vt_name
 
@@ -696,6 +739,7 @@ def generate_component_source(
                 ref_target_types[member_name] = tt
 
     # Pass 2: Deduplicate py_names
+    used_py_names: set[str] = set()
     for (res_name, py_name, py_type, member_class, import_mod,
          is_gp, is_arr) in raw_member_infos:
         if py_name_counts[py_name] > 1:
@@ -706,6 +750,14 @@ def generate_component_source(
             else:
                 # Fallback for other members (lists, etc.)
                 py_name += "_" + member_class.lower()
+        # Two members of the same kind can still collide, such as LookAt's
+        # Target and _target references, which both become target_ref.
+        if py_name in used_py_names:
+            n = 2
+            while f"{py_name}_{n}" in used_py_names:
+                n += 1
+            py_name = f"{py_name}_{n}"
+        used_py_names.add(py_name)
 
         member_infos.append(
             (res_name, py_name, py_type, member_class, import_mod, is_gp, is_arr)
@@ -716,8 +768,9 @@ def generate_component_source(
     # Pre-compute reference type info for imports and property annotations
     # Maps: resonite_name -> (annotation_str, module_name)
     ref_stub_imports: dict[str, tuple[str, str]] = {}
-    # All type classes that need importing: (class_name, module_name)
-    ref_stub_classes: list[tuple[str, str]] = []
+    # All type classes that need importing:
+    # (class name in annotations, stub module, referenced type name)
+    ref_stub_classes: list[tuple[str, str, str]] = []
     for res_name, tt in ref_target_types.items():
         ref_stub_imports[res_name] = (
             _ref_type_annotation(tt),
@@ -726,14 +779,29 @@ def generate_component_source(
         for ref_base in _collect_referenced_types(tt):
             cls = _simple_class_name(ref_base)
             # Skip generic parameter names (T, V, A, etc.)
-            if len(cls) <= 2 and cls.isupper():
+            if _is_generic_param_name(cls):
                 continue
             mod = _ref_stub_module_name(ref_base)
-            ref_stub_classes.append((cls, mod))
+            ref_stub_classes.append((cls, mod, ref_base))
 
     # Check for sync methods
     sync_methods = definition.get("methods", [])
     has_sync_methods = bool(sync_methods)
+    has_reference_args = False
+    for method_def in sync_methods:
+        if not isinstance(method_def, dict):
+            continue
+        for _pname, ptype_ref in method_def.get("parameters", {}).items():
+            ptype_str = (
+                ptype_ref.get("type", "") if isinstance(ptype_ref, dict)
+                else str(ptype_ref)
+            )
+            field_cls = _method_argument_field_class(ptype_str)
+            if field_cls:
+                imports_needed.add("fields")
+            else:
+                imports_needed.add("members")
+                has_reference_args = True
 
     # Build source lines
     lines: list[str] = []
@@ -750,7 +818,7 @@ def generate_component_source(
     defined_params = {"T"} if is_generic else set()
     extra_type_params: set[str] = set()
     for ann in ref_annotations:
-        for token in re.findall(r"\b([A-Z])\b", ann):
+        for token in re.findall(r"\b([A-Z]|T[A-Z][a-z][A-Za-z0-9]*)\b", ann):
             if token not in defined_params:
                 extra_type_params.add(token)
 
@@ -829,13 +897,19 @@ def generate_component_source(
         )
         for rn, _, pt, mc, _, is_gp, is_arr in member_infos
     )
-    if needs_workers:
+    if needs_workers or has_reference_args:
         lines.append("from pyresonitelink.data import workers")
 
     if is_generic:
-        lines.append(
-            "from pyresonitelink.generated._base import GenericComponent, T"
-        )
+        if has_reference_args:
+            lines.append(
+                "from pyresonitelink.generated._base import "
+                "GeneratedComponent, GenericComponent, T"
+            )
+        else:
+            lines.append(
+                "from pyresonitelink.generated._base import GenericComponent, T"
+            )
         base_class = "GenericComponent[T]"
     else:
         lines.append(
@@ -843,15 +917,55 @@ def generate_component_source(
         )
         base_class = "GeneratedComponent"
 
-    # Import reference target stubs (from generated/_types/)
-    seen_stubs: set[str] = set()
-    for stub_cls, stub_mod in ref_stub_classes:
+    # Import reference target stubs (from generated/_types/), or the
+    # component itself for type checking only when the target is a
+    # component.
+    # An enum already imported under the same name, e.g. ColorProfile
+    # reached through IField<ColorProfile?>, takes precedence over a stub.
+    seen_stubs: set[str] = set(enum_imports)
+    type_checking_imports: list[str] = []
+    own_key = re.sub(r"<.*", "", component_type)
+    references_itself = False
+    for stub_cls, stub_mod, ref_base in ref_stub_classes:
         if stub_cls and stub_mod and stub_cls not in seen_stubs:
-            lines.append(
-                f"from pyresonitelink.generated._types.{stub_mod}"
-                f" import {stub_cls}"
-            )
+            if ref_base == own_key:
+                # A component referencing its own type needs no import,
+                # but its annotations name the class before it's bound.
+                references_itself = True
+                seen_stubs.add(stub_cls)
+                continue
+            if ref_base in component_modules:
+                component_mod, component_cls = component_modules[ref_base]
+                # A nested type such as GaussianSplatTool+BoxInterface is
+                # named BoxInterface in annotations, but its component
+                # class is GaussianSplatToolBoxInterface.
+                alias = (
+                    f" as {stub_cls}" if component_cls != stub_cls else ""
+                )
+                type_checking_imports.append(
+                    f"    from {component_mod}"
+                    f" import {component_cls}{alias}"
+                )
+            else:
+                lines.append(
+                    f"from pyresonitelink.generated._types.{stub_mod}"
+                    f" import {stub_cls}"
+                )
             seen_stubs.add(stub_cls)
+    # Annotations that name a class imported only for type checking, or
+    # the class being defined, must not be evaluated at runtime. lines[0]
+    # is the module docstring and lines[1] is blank.
+    if type_checking_imports:
+        lines.append("")
+        lines.append("if TYPE_CHECKING:")
+        lines.extend(type_checking_imports)
+        lines[2:2] = [
+            "from __future__ import annotations",
+            "",
+            "from typing import TYPE_CHECKING",
+        ]
+    elif references_itself:
+        lines[2:2] = ["from __future__ import annotations", ""]
 
     # Process implemented interfaces into base classes.
     # This enables type checkers to verify that a component can be
@@ -1026,7 +1140,9 @@ def generate_component_source(
         # Insert the workers import after the members import
         workers_import = "from pyresonitelink.data import workers"
         if workers_import not in lines:
-            # Find where to insert (after the last data import)
+            # Find where to insert (after the last data import, or at the
+            # end if there's no data import)
+            insert_pos = len(lines)
             for idx, line in enumerate(lines):
                 if line.startswith("from pyresonitelink.data import"):
                     insert_pos = idx + 1
@@ -1187,8 +1303,8 @@ def generate_component_source(
             else:
                 lines.append(
                     f"        target_id: str | None = "
-                    f"target.id if isinstance(target, {isinstance_cls}) "
-                    f"else target  # type: ignore[assignment]"
+                    f"target if target is None or isinstance(target, str) "
+                    f"else target.id"
                 )
             lines.append(f'        member = self.get_member("{res_name}")')
             lines.append(
@@ -1318,16 +1434,26 @@ def generate_component_source(
                     ptype_str = ptype_ref.get("type", "")
                 else:
                     ptype_str = str(ptype_ref)
-                # Map Resonite type to Python annotation
-                py_prim = _primitive_python_name(ptype_str)
-                if py_prim:
-                    py_ann = py_prim
-                else:
-                    # Reference types — accept str (ID)
-                    py_ann = "str"
+                # Map Resonite type to Python annotation. The server only
+                # accepts $type-tagged arguments, so a primitive is wrapped
+                # in its field class and anything else is sent as a
+                # reference. A component or slot instance is converted to a
+                # reference by call_method.
                 safe_pname = _safe_python_name(pname)
+                field_cls = _method_argument_field_class(ptype_str)
+                if field_cls:
+                    py_ann = _primitive_python_name(ptype_str)
+                    call_args.append(
+                        f'"{pname}": fields.{field_cls}(value={safe_pname})'
+                    )
+                else:
+                    py_ann = "str | workers.Worker | GeneratedComponent"
+                    call_args.append(
+                        f'"{pname}": members.DataReference('
+                        f"targetID={safe_pname}) "
+                        f"if isinstance({safe_pname}, str) else {safe_pname}"
+                    )
                 py_params.append(f"{safe_pname}: {py_ann}")
-                call_args.append(f'"{pname}": {safe_pname}')
 
             # Handle overloads: append param count to avoid name clash
             if py_method in method_names_seen:
@@ -1348,7 +1474,7 @@ def generate_component_source(
             )
             lines.append(f"    async def {py_method}({param_str}) -> dict:")
             if method_doc:
-                lines.append(f'        """{method_doc}')
+                lines.append(f'        """{_sanitize_docstring(method_doc)}')
             else:
                 lines.append(
                     f'        """Call the {method_name} sync method.'
@@ -1449,6 +1575,27 @@ def _parse_target_type(resonite_type: str) -> tuple[str, list[str]]:
     return (base, args)
 
 
+def _method_argument_field_class(wire_name: str) -> str | None:
+    """Returns the field class that tags a primitive sync method argument.
+
+    ResoniteLink encodes a primitive method argument the same way as a
+    field of that type, so ``int`` is sent as ``FieldInt`` and ``int?`` as
+    ``FieldNullableInt``.
+
+    Args:
+        wire_name: The parameter's type from the method definition, such
+            as ``"int"``, ``"float3"``, or ``"bool?"``.
+
+    Returns:
+        The field class name, or None if the type isn't a primitive. A
+        non-primitive argument is sent as a reference.
+    """
+    if _primitive_python_name(wire_name) is None:
+        return None
+    entry = _PRIMITIVE_FIELD_MAP.get(wire_name)
+    return entry[1] if entry else None
+
+
 def _primitive_python_name(wire_name: str) -> str | None:
     """Map a primitive wire name to its Python annotation string.
 
@@ -1545,8 +1692,14 @@ def _is_primitive_wire_name(resonite_type: str) -> bool:
     )
 
 
+# Matches a generic type parameter name: one or two capitals such as T or
+# TV, or C#'s T-prefixed names such as TValue and TCollection. The
+# lowercase third letter keeps real types like TOTP_Dialog out.
+_GENERIC_PARAM_RE = re.compile(r"[A-Z]{1,2}|T[A-Z][a-z][A-Za-z0-9]*")
+
+
 def _is_generic_param_name(name: str) -> bool:
-    """Check if a name looks like a generic type parameter (T, V, A, etc.).
+    """Check if a name looks like a generic type parameter (T, TValue, etc.).
 
     Args:
         name: A type name string.
@@ -1555,7 +1708,7 @@ def _is_generic_param_name(name: str) -> bool:
         True if this is likely a generic type parameter name.
     """
     simple = _simple_class_name(name) if "[" in name or "." in name else name
-    return len(simple) <= 2 and simple.isupper()
+    return _GENERIC_PARAM_RE.fullmatch(simple) is not None
 
 
 def _collect_referenced_types(resonite_type: str) -> list[str]:

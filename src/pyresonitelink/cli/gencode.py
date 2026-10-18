@@ -14,6 +14,7 @@ their full type hierarchy.
 import argparse
 import asyncio
 import os
+import re
 from pathlib import Path
 from typing import Any, cast
 
@@ -27,10 +28,12 @@ from pyresonitelink.generated._generator import (
     get_enum_module_name,
     get_reference_target_types,
     _collect_referenced_types,
+    _is_generic_param_name,
     _is_primitive_wire_name,
     _PRIMITIVE_WIRE_NAMES,
     _ref_stub_module_name,
     _simple_class_name,
+    _to_class_name,
     _to_module_path,
 )
 
@@ -116,6 +119,29 @@ async def _get_type_definition_cached(
 # Cache for _collect_component_interfaces results, keyed by
 # component type's simple class name.
 _interface_cache: dict[str, list[str]] = {}
+
+# Maps each component seen so far, by its type name without generic
+# arguments, to the module and class that define it, e.g.
+# "[FrooxEngine]FrooxEngine.TextRenderer" to
+# ("pyresonitelink.generated.rendering.text_renderer", "TextRenderer").
+# A component that references another component imports it from there
+# for type checking. The full type name keeps FrooxEngine.Slider and
+# FrooxEngine.UIX.Slider apart.
+_component_modules: dict[str, tuple[str, str]] = {}
+
+
+def _record_component_module(component_type: str, category: str) -> None:
+    """Records which module defines a component's wrapper class.
+
+    Args:
+        component_type: Fully qualified Resonite type name.
+        category: Category path from the component's definition.
+    """
+    path = _output_path_for_component(component_type, category)
+    rel = path.relative_to(_GENERATED_DIR.parent.parent).with_suffix("")
+    _component_modules[re.sub(r"<.*", "", component_type)] = (
+        ".".join(rel.parts), _to_class_name(component_type),
+    )
 
 
 async def _collect_component_interfaces(
@@ -209,7 +235,7 @@ async def _generate_type_hierarchy(
     if cls_name in generated:
         return
     # Skip bare generic parameter names (T, V, A, etc.) and primitives
-    if (len(cls_name) <= 2 and cls_name.isupper()) or _is_primitive_wire_name(resonite_type):
+    if _is_generic_param_name(cls_name) or _is_primitive_wire_name(resonite_type):
         return
     generated.add(cls_name)
 
@@ -269,7 +295,50 @@ async def _generate_type_hierarchy(
     elif resp_plain and resp_plain.get("success"):
         type_def = cast(dict[str, Any], resp_plain.get("definition", {}))
     else:
+        # GetTypeDefinition fails for component types, so the type may be
+        # a component. Generating it as one records its module, and
+        # referencing components then import it for type checking only.
+        check = await resolink.request_json(
+            messages.GetComponentDefinition(
+                componentType=resonite_type, flattened=True,
+            )
+        )
+        if check.get("success"):
+            generated.discard(cls_name)
+            await _generate_component(
+                resolink, resonite_type, generated,
+                all_type_defs, dry_run, type_def_cache,
+            )
+            return
+        # Otherwise write a placeholder, so that modules importing the
+        # type still import. It has no base types or members.
         print(f"  Warning: could not get type definition for {resonite_type}")
+        mod_name = _ref_stub_module_name(resonite_type)
+        placeholder = (
+            f'"""Generated stub type: {cls_name}."""\n'
+            f"\n"
+            f"\n"
+            f"class {cls_name}:\n"
+            f'    """Stub for {resonite_type}.\n'
+            f"\n"
+            f"    The server returned no type definition for it, so the stub\n"
+            f"    has no base types or members.\n"
+            f'    """\n'
+            f"\n"
+            f'    RESONITE_TYPE: str = "{resonite_type}"\n'
+            f"\n"
+            f"    @property\n"
+            f"    def id(self) -> str | None:\n"
+            f'        """The element\'s unique ID."""\n'
+            f"        return None\n"
+        )
+        if dry_run:
+            print(f"\n--- {resonite_type} (_types/{mod_name}.py) ---")
+            print(placeholder)
+        else:
+            placeholder_path = _GENERATED_DIR / "_types" / f"{mod_name}.py"
+            placeholder_path.write_text(placeholder, encoding="utf-8")
+            print(f"Wrote {placeholder_path}")
         return
 
     full_name = str(type_def.get("fullTypeName", resonite_type))
@@ -314,7 +383,7 @@ async def _generate_type_hierarchy(
         if _is_primitive_wire_name(dep):
             continue
         # Skip bare type parameter names (single letters like T, V, A)
-        if len(dep_cls) <= 2 and dep_cls.isupper():
+        if _is_generic_param_name(dep_cls):
             continue
         if dep_cls not in generated:
             await _generate_type_hierarchy(
@@ -420,6 +489,12 @@ async def _generate_component(
                     )
                 )
                 if check.get("success"):
+                    check_def = cast(
+                        dict[str, Any], check.get("definition", {}),
+                    )
+                    check_category = str(check_def.get("categoryPath", ""))
+                    if check_category not in _SKIP_CATEGORIES:
+                        _record_component_module(ref_base, check_category)
                     await _generate_component(
                         resolink, ref_base, generated,
                         all_type_defs, dry_run,
@@ -485,10 +560,12 @@ async def _generate_component(
                 )
 
     # Generate this component
+    _record_component_module(component_type, category)
     source = generate_component_source(
         component_type, definition,
         interfaces=component_interfaces,
         all_type_defs=all_type_defs,
+        component_modules=_component_modules,
     )
     output_path = _output_path_for_component(component_type, category)
 
@@ -563,6 +640,12 @@ def _rebuild_init_exports(directory: Path) -> None:
                         break
 
     if not modules:
+        # Every component that was here has moved to another category,
+        # so the old re-exports must go.
+        (directory / "__init__.py").write_text(
+            f'"""Generated {directory.name} components."""\n',
+            encoding="utf-8",
+        )
         return
 
     needs_importlib = any(il for _, _, il in modules)
@@ -608,6 +691,10 @@ async def generate(
     # Clear the global interface cache so stale data from a previous
     # run doesn't carry over.
     _interface_cache.clear()
+    _component_modules.clear()
+    # Record where the existing components live, so that references to
+    # them are imported from the right modules.
+    _existing_component_types()
 
     await _generate_component(
         resolink, component_type, generated,
@@ -635,6 +722,56 @@ async def generate(
     await resolink.close()
 
 
+def _existing_component_types() -> list[str]:
+    """Returns the COMPONENT_TYPE of every generated component module.
+
+    Also records each module in ``_component_modules``, so that a
+    component referencing one of them imports it from the right place
+    even before it's regenerated.
+
+    Returns:
+        The fully qualified Resonite type names, in path order.
+    """
+    found: list[str] = []
+    for path in sorted(_GENERATED_DIR.rglob("*.py")):
+        rel_parts = path.relative_to(_GENERATED_DIR).parts
+        if any(part.startswith("_") for part in rel_parts):
+            continue
+        match = re.search(
+            r'^    COMPONENT_TYPE = "([^"]+)"$',
+            path.read_text(encoding="utf-8"),
+            flags=re.MULTILINE,
+        )
+        if match:
+            found.append(match.group(1))
+            rel = path.relative_to(_GENERATED_DIR.parent.parent).with_suffix("")
+            _component_modules[re.sub(r"<.*", "", match.group(1))] = (
+                ".".join(rel.parts), _to_class_name(match.group(1)),
+            )
+    return found
+
+
+def _rebuild_all_init_exports() -> None:
+    """Rebuilds the ``__init__.py`` re-exports of every generated package.
+
+    Packages are rebuilt deepest first, since each ``__init__.py`` also
+    re-exports its subpackages.
+    """
+    package_dirs = [
+        path for path in _GENERATED_DIR.rglob("*")
+        if path.is_dir()
+        and "__pycache__" not in path.parts
+        and not any(
+            part.startswith("_")
+            for part in path.relative_to(_GENERATED_DIR).parts
+        )
+    ]
+    package_dirs.sort(key=lambda path: len(path.parts), reverse=True)
+    for package_dir in package_dirs:
+        _rebuild_init_exports(package_dir)
+    _rebuild_init_exports(_GENERATED_DIR / "_enums")
+
+
 async def generate_all(
     port: int,
     host: str,
@@ -658,6 +795,7 @@ async def generate_all(
     all_type_defs: dict[str, dict[str, Any]] = {}
     type_def_cache: dict[str, dict[str, Any] | None] = {}
     _interface_cache.clear()
+    _component_modules.clear()
 
     # Recursively walk categories to find all component types
     async def walk_category(category_path: str) -> list[str]:
@@ -666,9 +804,14 @@ async def generate_all(
             messages.GetComponentTypeList(categoryPath=category_path),
         )
         types: list[str] = []
-        for ct in (resp.get("componentTypes") or []):
+        for ct in cast(list[str], resp.get("componentTypes") or []):
             types.append(ct)
-        for sub in (resp.get("subcategories") or []):
+            # Record every module before generating any, so that the
+            # order of generation can't decide how a reference to a
+            # component is imported.
+            if category_path.lstrip("/") not in _SKIP_CATEGORIES:
+                _record_component_module(ct, category_path.lstrip("/"))
+        for sub in cast(list[str], resp.get("subcategories") or []):
             sub_path = f"{category_path}/{sub}" if category_path else f"/{sub}"
             types.extend(await walk_category(sub_path))
         return types
@@ -676,6 +819,16 @@ async def generate_all(
     print("Discovering component types...")
     all_types = await walk_category("")
     print(f"Found {len(all_types)} component types")
+    # The category walk doesn't list every component. Components in the
+    # Hidden category, for one, only turn up as reference targets. Those
+    # generated earlier are regenerated too, so that none are left stale.
+    listed = set(all_types)
+    for existing in _existing_component_types():
+        if existing not in listed:
+            all_types.append(existing)
+            listed.add(existing)
+    print(f"Regenerating {len(all_types)} component types, "
+          f"including those already generated")
 
     errors = 0
     for i, comp_type in enumerate(all_types):
@@ -698,18 +851,7 @@ async def generate_all(
     print(f"\nDone: {len(generated)} generated, {errors} errors")
 
     if not dry_run:
-        # Rebuild __init__.py re-exports
-        nodes_dir = _GENERATED_DIR / "protoflux" / "runtimes" / "execution" / "nodes"
-        if nodes_dir.is_dir():
-            for cat_dir in sorted(nodes_dir.iterdir()):
-                if cat_dir.is_dir() and not cat_dir.name.startswith("_"):
-                    _rebuild_init_exports(cat_dir)
-        data_dir = _GENERATED_DIR / "data"
-        if data_dir.is_dir():
-            _rebuild_init_exports(data_dir)
-        enums_dir = _GENERATED_DIR / "_enums"
-        if enums_dir.is_dir():
-            _rebuild_init_exports(enums_dir)
+        _rebuild_all_init_exports()
 
     await resolink.close()
 
