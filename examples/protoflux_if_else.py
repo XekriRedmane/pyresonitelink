@@ -16,7 +16,6 @@ should already be generated from the bulk generation step).
 
 import asyncio
 import sys
-import time
 
 from pyresonitelink import client
 from pyresonitelink.data import primitives
@@ -159,7 +158,7 @@ async def main(port: int) -> None:
         return z_var.value
 
     print("\nWaiting for graph evaluation...")
-    time.sleep(1.0)
+    await asyncio.sleep(1.0)
 
     # Test 1: x=2 (< 3), expect z = 2 + 3 = 5
     z1 = await read_z()
@@ -168,14 +167,14 @@ async def main(port: int) -> None:
     # Test 2: x=5 (>= 3), expect z = 5 - 3 = 2
     x.value = primitives.Float(5.0)
     await x.update(resolink)
-    time.sleep(0.5)
+    await asyncio.sleep(0.5)
     z2 = await read_z()
     print(f"Test 2: x=5, z={z2} (expected 2.0)")
 
     # Test 3: x=3 (== 3, not < 3), expect z = 3 - 3 = 0
     x.value = primitives.Float(3.0)
     await x.update(resolink)
-    time.sleep(0.5)
+    await asyncio.sleep(0.5)
     z3 = await read_z()
     print(f"Test 3: x=3, z={z3} (expected 0.0)")
 

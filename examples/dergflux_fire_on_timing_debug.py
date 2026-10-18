@@ -3,7 +3,6 @@
 import asyncio
 import json
 import sys
-import time
 
 from pyresonitelink import client
 from pyresonitelink.data import primitives
@@ -50,11 +49,13 @@ async def main(port: int) -> None:
     print("Graph built.\n")
 
     # Dump all components on the slot
-    full_slot = await resolink.get_slot(slot=slot.id, depth=0)
+    full_slot = await resolink.get_slot(
+        slot=slot, depth=0, includeComponentData=True,
+    )
     print(f"Components on {slot.id}:")
-    if full_slot and full_slot.components:
-        for comp in full_slot.components:
-            comp_type = comp.workerType or "?"
+    if full_slot.data is not None and full_slot.data.components:
+        for comp in full_slot.data.components:
+            comp_type = comp.componentType or "?"
             # Print short type name
             short = comp_type.rsplit(".", 1)[-1] if "." in comp_type else comp_type
             print(f"  {comp.id}: {short}")
@@ -65,7 +66,7 @@ async def main(port: int) -> None:
                     elif hasattr(mval, 'value') and mval.value is not None:
                         print(f"    {mname} = {mval.value}")
 
-    time.sleep(2.0)
+    await asyncio.sleep(2.0)
 
     # Read results
     counter_var = s.counter

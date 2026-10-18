@@ -8,7 +8,6 @@ Usage:
 
 import asyncio
 import sys
-import time
 
 from pyresonitelink import client
 from pyresonitelink.data import messages, primitives
@@ -99,7 +98,7 @@ async def main(port: int) -> None:
         """Set x, wait, return z."""
         x_var.value = primitives.Float(x_val)
         await x_var.update(resolink)
-        time.sleep(0.5)
+        await asyncio.sleep(0.5)
         await z_var.refresh(resolink)
         return z_var.value
 

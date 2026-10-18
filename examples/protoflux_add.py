@@ -21,7 +21,6 @@ Requires generated classes. Run these first:
 
 import asyncio
 import sys
-import time
 
 from pyresonitelink import client
 from pyresonitelink.data import primitives
@@ -90,7 +89,7 @@ async def main(port: int) -> None:
     print(f"  _value -> {value_member.id} (result field member)")
 
     # Give the engine a moment to evaluate the graph
-    time.sleep(1.0)
+    await asyncio.sleep(1.0)
 
     # Read the result
     await result_field.refresh(resolink)

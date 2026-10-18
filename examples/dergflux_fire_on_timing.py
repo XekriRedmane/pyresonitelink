@@ -22,7 +22,6 @@ Usage:
 
 import asyncio
 import sys
-import time
 
 from pyresonitelink import client
 from pyresonitelink.data import messages, primitives
@@ -109,7 +108,7 @@ async def main(port: int) -> None:
         print("\n*** Missing connections! ***")
 
     print("\nWaiting for graph to run...")
-    time.sleep(1.0)
+    await asyncio.sleep(1.0)
 
     await s.counter.refresh(resolink)
     await s.detected.refresh(resolink)

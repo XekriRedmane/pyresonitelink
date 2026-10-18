@@ -15,7 +15,6 @@ Usage:
 
 import asyncio
 import sys
-import time
 
 from pyresonitelink import client
 from pyresonitelink.data import messages, primitives
@@ -110,7 +109,7 @@ async def main(port: int) -> None:
         """Set x, wait, read results."""
         s.x.value = primitives.Float(x_val)
         await s.x.update(resolink)
-        time.sleep(1.0)
+        await asyncio.sleep(1.0)
         await s.z.refresh(resolink)
         await s.log.refresh(resolink)
         print(f"  x={x_val}: z={s.z.value}, log={s.log.value!r}")

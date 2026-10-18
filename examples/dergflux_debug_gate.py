@@ -6,7 +6,6 @@ Usage:
 
 import asyncio
 import sys
-import time
 
 from pyresonitelink import client
 from pyresonitelink.data import messages, primitives
@@ -72,7 +71,7 @@ async def main(port: int) -> None:
 
     # -- Check values --
     print("\nWaiting for graph to run...")
-    time.sleep(0.5)
+    await asyncio.sleep(0.5)
 
     await s.counter.refresh(resolink)
     await s.ran.refresh(resolink)

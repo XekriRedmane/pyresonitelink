@@ -9,7 +9,6 @@ Usage:
 
 import asyncio
 import sys
-import time
 
 from pyresonitelink import client
 from pyresonitelink.dergflux import Graph
@@ -37,7 +36,9 @@ async def main(port: int) -> None:
     g = Graph()
 
     s = g.Space(slot)
-    s.total = s.FloatDynVar("total")
+    # The loop index is an int, and Dergflux has no implicit int to float
+    # conversion, so the accumulator is an int too.
+    s.total = s.IntDynVar("total")
 
     with g.Under(slot):
         # g.For(count) yields a ForProxy `f` with two sections:
@@ -73,11 +74,11 @@ async def main(port: int) -> None:
     # ===================================================================
 
     print("Waiting for graph evaluation...")
-    time.sleep(1.0)
+    await asyncio.sleep(1.0)
 
     total_var = s.total
     await total_var.refresh(resolink)
-    print(f"total = {total_var.value} (expected 90.0)")
+    print(f"total = {total_var.value} (expected 90)")
 
     # Clean up
     await resolink.remove_slot(slot=slot)

@@ -18,7 +18,7 @@ async def get_component_types(port: int, host: str, category: str) -> None:
     print(f"Connected. Requesting component types for category '{category}'...")
 
     response = await resolink.get_component_type_list(
-        messages.GetComponentTypeList(categoryPath=category)
+        categoryPath=category
     )
 
     if not response.success:

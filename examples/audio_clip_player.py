@@ -12,10 +12,8 @@ Requires a running Resonite session with ResoniteLink enabled.
 import asyncio
 import os
 import sys
-import time
 
 from pyresonitelink import client
-from pyresonitelink.data import workers
 from pyresonitelink.components.assets import StaticAudioClip
 from pyresonitelink.components.audio import AudioClipPlayer, AudioOutput
 
@@ -35,11 +33,9 @@ async def main(port: int) -> None:
             await resolink.remove_slot(slot=child)
 
     # Create a slot
-    slot_resp = await resolink.add_slot(
+    slot = await resolink.add_slot(
         name="AudioClipPlayer Example",
     )
-    assert slot_resp.entityId is not None
-    slot = workers.Slot(id=slot_resp.entityId)
     print(f"Created slot: {slot.id}\n")
 
     # --- Import the audio file ---
@@ -71,7 +67,7 @@ async def main(port: int) -> None:
     await player.play(resolink)
 
     # Wait for the clip to play
-    time.sleep(3)
+    await asyncio.sleep(3)
 
     # --- Check playback state ---
     await player.refresh(resolink)

@@ -8,7 +8,6 @@ Usage:
 
 import asyncio
 import sys
-import time
 
 from pyresonitelink import client
 from pyresonitelink.data import primitives
@@ -43,7 +42,7 @@ async def main(port: int) -> None:
     print("Graph built.\n")
 
     # Wait for a few frames to ensure graph has run
-    time.sleep(0.5)
+    await asyncio.sleep(0.5)
 
     counter_var = s.counter
     await counter_var.refresh(resolink)
