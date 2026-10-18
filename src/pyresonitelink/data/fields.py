@@ -7,11 +7,13 @@ Note: The C# BoxedValue and ValueType properties are marked [JsonIgnore] and
 are not included in these dataclasses.
 """
 
+import datetime
 from dataclasses import dataclass, field
 from decimal import Decimal
 
 import numpy as np
 
+from . import timeformats
 from .members import Member
 from .primitives import (
     BoundingBox,
@@ -385,44 +387,92 @@ class ArrayUri(Member):
 
 @dataclass
 class FieldTimeSpan(Member):
-    """Field containing a TimeSpan value (serialized as string)."""
+    """Field containing a TimeSpan value.
 
-    value: str | None = None
+    The wire form is a string such as "1.02:03:04.5", which is converted
+    to a timedelta, including when one is passed to the constructor.
+    """
+
+    value: datetime.timedelta | None = None
+
+    def __post_init__(self) -> None:
+        """Converts a wire-format string to a timedelta."""
+        if isinstance(self.value, str):
+            self.value = timeformats.parse_timespan(self.value)
 
 
 @dataclass
 class ArrayTimeSpan(Member):
-    """Array of TimeSpan values."""
+    """Array of TimeSpan values, as timedeltas."""
 
-    values: list[str] = field(default_factory=list[str])
+    values: list[datetime.timedelta] = field(
+        default_factory=list[datetime.timedelta],
+    )
+
+    def __post_init__(self) -> None:
+        """Converts wire-format strings to timedeltas."""
+        self.values = [
+            timeformats.parse_timespan(v) if isinstance(v, str) else v
+            for v in self.values
+        ]
 
 
 @dataclass
 class FieldNullableTimeSpan(Member):
-    """Field containing an optional TimeSpan value."""
+    """Field containing an optional TimeSpan value, as a timedelta."""
 
-    value: str | None = None
+    value: datetime.timedelta | None = None
+
+    def __post_init__(self) -> None:
+        """Converts a wire-format string to a timedelta."""
+        if isinstance(self.value, str):
+            self.value = timeformats.parse_timespan(self.value)
 
 
 @dataclass
 class FieldDateTime(Member):
-    """Field containing a DateTime value (serialized as string)."""
+    """Field containing a DateTime value.
 
-    value: str | None = None
+    The wire form is a string such as "2024-05-06T07:08:09.123Z", which is
+    converted to a datetime, including when one is passed to the
+    constructor. A "Z" suffix gives a datetime in UTC, and no suffix gives
+    a naive datetime.
+    """
+
+    value: datetime.datetime | None = None
+
+    def __post_init__(self) -> None:
+        """Converts a wire-format string to a datetime."""
+        if isinstance(self.value, str):
+            self.value = timeformats.parse_datetime(self.value)
 
 
 @dataclass
 class ArrayDateTime(Member):
-    """Array of DateTime values."""
+    """Array of DateTime values, as datetimes."""
 
-    values: list[str] = field(default_factory=list[str])
+    values: list[datetime.datetime] = field(
+        default_factory=list[datetime.datetime],
+    )
+
+    def __post_init__(self) -> None:
+        """Converts wire-format strings to datetimes."""
+        self.values = [
+            timeformats.parse_datetime(v) if isinstance(v, str) else v
+            for v in self.values
+        ]
 
 
 @dataclass
 class FieldNullableDateTime(Member):
-    """Field containing an optional DateTime value."""
+    """Field containing an optional DateTime value, as a datetime."""
 
-    value: str | None = None
+    value: datetime.datetime | None = None
+
+    def __post_init__(self) -> None:
+        """Converts a wire-format string to a datetime."""
+        if isinstance(self.value, str):
+            self.value = timeformats.parse_datetime(self.value)
 
 
 # =============================================================================

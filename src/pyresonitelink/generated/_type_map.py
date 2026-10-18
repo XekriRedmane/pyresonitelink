@@ -10,6 +10,7 @@ Used by the generated component base to resolve generic type parameters
 at runtime.
 """
 
+import datetime
 from typing import Any
 
 import numpy as np
@@ -66,6 +67,9 @@ _TYPE_INFOS: list[TypeInfo] = [
     TypeInfo(float, "double", fields.FieldDouble),
     # String-like
     TypeInfo(str, "string", fields.FieldString),
+    # Time, which travels as strings
+    TypeInfo(datetime.datetime, "DateTime", fields.FieldDateTime),
+    TypeInfo(datetime.timedelta, "TimeSpan", fields.FieldTimeSpan),
     # Colors
     TypeInfo(primitives.Color, "color", fields.FieldColor),
     TypeInfo(primitives.ColorX, "colorX", fields.FieldColorX),

@@ -10,6 +10,7 @@ composite types (``primitives.Float3``, ``primitives.FloatQ``, etc.).
 
 # pylint: disable=invalid-name
 
+import datetime
 from dataclasses import dataclass
 from typing import TypeAlias
 
@@ -31,8 +32,10 @@ Int: TypeAlias = np.int32
 UInt: TypeAlias = np.uint32
 Long: TypeAlias = np.int64
 ULong: TypeAlias = np.uint64
-DateTime: TypeAlias = np.datetime64
-TimeSpan: TypeAlias = np.timedelta64
+# ResoniteLink sends both as strings, which fields.FieldDateTime and
+# fields.FieldTimeSpan convert.
+DateTime: TypeAlias = datetime.datetime
+TimeSpan: TypeAlias = datetime.timedelta
 Float: TypeAlias = np.float32
 Double: TypeAlias = np.float64
 String: TypeAlias = str

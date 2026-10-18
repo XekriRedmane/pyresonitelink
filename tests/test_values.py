@@ -7,6 +7,7 @@ Run as: pytest --port=<resonite-link-port> tests/test_values.py [-s]
 
 # pylint: disable=protected-access,missing-function-docstring,missing-class-docstring
 
+import datetime
 import uuid
 
 import numpy as np
@@ -202,24 +203,41 @@ class TestValues:
     @pytest.mark.parametrize(
         "value_type, field_cls, value",
         [
-            # The server sends both as strings: DateTime in ISO 8601 with a
-            # trailing Z, and TimeSpan in .NET's [d.]hh:mm:ss[.fffffff] form.
-            ("DateTime", fields.FieldDateTime, "2024-05-06T07:08:09.123Z"),
-            ("TimeSpan", fields.FieldTimeSpan, "1.02:03:04.5000000"),
+            # Both travel as strings, which the field classes convert:
+            # DateTime in ISO 8601, and TimeSpan in .NET's
+            # [d.]hh:mm:ss[.fffffff] form.
+            (
+                "DateTime", fields.FieldDateTime,
+                datetime.datetime(
+                    2024, 5, 6, 7, 8, 9, 123000, tzinfo=datetime.timezone.utc,
+                ),
+            ),
+            (
+                "DateTime", fields.FieldDateTime,
+                datetime.datetime(2024, 5, 6, 7, 8, 9),
+            ),
+            (
+                "TimeSpan", fields.FieldTimeSpan,
+                datetime.timedelta(days=1, hours=2, minutes=3, seconds=4.5),
+            ),
+            (
+                "TimeSpan", fields.FieldTimeSpan,
+                -datetime.timedelta(seconds=1),
+            ),
         ],
     )
-    async def test_string_encoded_value_round_trip(
+    async def test_time_value_round_trip(
         self,
         resolink: client.Client,
         test_slot_id: str,
         value_type: str,
         field_cls: type[fields.FieldDateTime] | type[fields.FieldTimeSpan],
-        value: str,
+        value: datetime.datetime | datetime.timedelta,
     ) -> None:
         component_type = f"[FrooxEngine]FrooxEngine.ValueField<{value_type}>"
         component_id = await self._add_test_component(
             resolink, test_slot_id, component_type,
-            component_members={"Value": field_cls(value=value)},
+            component_members={"Value": field_cls(value=value)},  # type: ignore[arg-type]
         )
         response = await self._get_component(resolink, component_id)
         assert response.data is not None

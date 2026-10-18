@@ -5,6 +5,7 @@ and decode JSON back to Python dataclass objects, handling the $type
 discriminator used in the ResoniteLink protocol.
 """
 
+import datetime
 from dataclasses import asdict, fields, is_dataclass
 from decimal import Decimal
 import types
@@ -20,6 +21,7 @@ from . import messages as message_types
 from . import primitives as primitive_types
 from . import responses as response_types
 from . import reflection as reflection_types
+from . import timeformats
 from . import workers as worker_types
 
 # =============================================================================
@@ -789,6 +791,11 @@ def _encode_value(value: EncodableType) -> Any:
 
     if isinstance(value, Decimal):
         return str(value)
+    # DateTime and TimeSpan travel as strings.
+    if isinstance(value, datetime.datetime):
+        return timeformats.format_datetime(value)
+    if isinstance(value, datetime.timedelta):
+        return timeformats.format_timespan(value)
 
     if isinstance(value, list):
         return [_encode_value(item) for item in value]
