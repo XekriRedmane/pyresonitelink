@@ -462,7 +462,8 @@ def save_docs(component_name: str, docs: dict, output_dir: Path | None = None) -
     # Use snake_case filename matching the generated module
     filename = _to_snake_case(component_name) + ".json"
     path = output_dir / filename
-    with open(path, "w", encoding="utf-8") as f:
+    # LF on every platform, as the repository stores it.
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
         json.dump(docs, f, indent=2, ensure_ascii=False)
     return path
 

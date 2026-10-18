@@ -42,6 +42,8 @@ from pyresonitelink.generated._generator import (
 
 # Root of the generated package
 _GENERATED_DIR = Path(__file__).resolve().parent.parent / "generated"
+# Every file the generator writes passes newline="\n". Text mode on Windows
+# would otherwise write CRLF, and the repository stores LF (.gitattributes).
 
 # Category paths that should be skipped during generation.
 # These contain internal ProtoFlux proxy types (auto-generated
@@ -62,7 +64,7 @@ def _ensure_init_files(path: Path) -> None:
     ):
         init_path = _GENERATED_DIR / parent / "__init__.py"
         if not init_path.exists() and parent != Path("."):
-            init_path.write_text("")
+            init_path.write_text("", newline="\n")
 
 
 def _output_path_for_component(
@@ -505,7 +507,7 @@ async def _generate_type_hierarchy(
             print(placeholder)
         else:
             placeholder_path = _GENERATED_DIR / "_types" / f"{mod_name}.py"
-            placeholder_path.write_text(placeholder, encoding="utf-8")
+            placeholder_path.write_text(placeholder, encoding="utf-8", newline="\n")
             print(f"Wrote {placeholder_path}")
         return
 
@@ -571,8 +573,8 @@ async def _generate_type_hierarchy(
         output_path.parent.mkdir(parents=True, exist_ok=True)
         init_path = output_path.parent / "__init__.py"
         if not init_path.exists():
-            init_path.write_text("")
-        output_path.write_text(source, encoding="utf-8")
+            init_path.write_text("", newline="\n")
+        output_path.write_text(source, encoding="utf-8", newline="\n")
         print(f"Wrote {output_path}")
 
 
@@ -710,7 +712,7 @@ async def _generate_component(
                                 parents=True, exist_ok=True,
                             )
                             enum_path.write_text(
-                                enum_src, encoding="utf-8",
+                                enum_src, encoding="utf-8", newline="\n",
                             )
                             print(f"Wrote {enum_path}")
 
@@ -746,7 +748,7 @@ async def _generate_component(
     else:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         _ensure_init_files(output_path)
-        output_path.write_text(source, encoding="utf-8")
+        output_path.write_text(source, encoding="utf-8", newline="\n")
         print(f"Wrote {output_path}")
 
 
@@ -816,6 +818,7 @@ def _rebuild_init_exports(directory: Path) -> None:
         (directory / "__init__.py").write_text(
             f'"""Generated {directory.name} components."""\n',
             encoding="utf-8",
+            newline="\n",
         )
         return
 
@@ -834,7 +837,9 @@ def _rebuild_init_exports(directory: Path) -> None:
             lines.append(f"from .{mod_path} import {cls_name}")
     lines.append("")
 
-    (directory / "__init__.py").write_text("\n".join(lines), encoding="utf-8")
+    (directory / "__init__.py").write_text(
+        "\n".join(lines), encoding="utf-8", newline="\n",
+    )
 
 
 async def generate(
