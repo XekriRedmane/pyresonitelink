@@ -177,6 +177,15 @@ The type hierarchy generator (`generate_type_source`) produces proper Python cla
 - **Base types and interfaces** become Python base classes (multiple inheritance)
 - **Root types** (no bases) get an `id: str | None` attribute so they can be used as reference targets
 
+#### Components That Share a Name
+
+- Resonite treats `X`, `X<T>`, and `X<T1, T2>` as different components. Keyed by plain class name, they used to overwrite each other's module, and `generated` skipped the second one outright.
+- `gencode._assign_class_names` looks up the whole family and records names in `_generator._CLASS_NAME_OVERRIDES`, which `_to_class_name` and `_to_module_path` consult: the fewest-parameter generic keeps the name, longer ones get `With` + extra parameters (`ValueWriteWithContext`), an ancestor in a non-generic/generic pair gets `Base`, and a generic sibling gets `Of` (`SliderOf`).
+- `_avoid_namespace_clash` prefixes the distinguishing namespace when two namespaces collide in one module (`CharactersNewLine`).
+- ALWAYS key components by `_generator._arity_key` (`ValueWrite<,>`, `Slider<>`), never by bare class name or by the type with generic arguments stripped. A reference to `Slider<float>` must resolve to `UIX.Slider<T>`, not the non-generic `UIX.Slider`.
+- ALWAYS use `_collect_referenced_type_keys` (keeps arity) when looking up components, and `_collect_referenced_types` only for `_types/` stubs.
+- A flattened `GetComponentDefinition` omits the base type and interfaces (`GetTypeDefinition(workerType, !flattened)` in FrooxEngine). Ask for `flattened=False` when they're needed.
+
 #### Reference Targets That Are Components
 
 - A reference can target another component, e.g. `LegacyCloudStorageSpaceIndicator._ownerLabel -> TextRenderer`. There is no `_types/` stub for a component.
@@ -510,6 +519,15 @@ await audio_output.exlude_user(resolink, user="some-user-id")
 
 The generator emits the tagging (`_method_argument_field_class`), and `call_method` converts component and slot instances to `DataReference`.
 
+### Dergflux Types: Conversions and Time
+
+- Operands of different numeric types are unified by `_expr.unify`, which wraps the narrower one in a `CastNode` following C#'s implicit widening (`_types.can_widen`, `_types.common_type`). The builder materializes a `CastNode` as `Cast_<from>_To_<to>` from `generated/.../nodes/core/casts/`.
+- ALWAYS route a value whose type is fixed by its destination (assignment, node argument) through `_expr.implicit`, which widens or raises `TypeError`. Narrowing only happens through `dergflux.math.convert` / `to_int` etc.
+- NEVER give an untyped literal the other operand's type when it doesn't fit. `int_var + 2.5` must widen the int, not truncate the 2.5 (`_expr._type_literal`).
+- `primitives.DateTime` / `TimeSpan` are `datetime.datetime` / `datetime.timedelta`. The wire form is a string, converted by `data/timeformats.py` in the field classes' `__post_init__` and in `codec._encode_value`.
+- The time nodes' output types come from their C# base classes (e.g. `ToUnixSeconds : DateTimeConverter<long>`, `TimeSpanTotalSeconds : TimeSpanExtractor<double>`). Check `ProtoFlux.Nodes.Core.dll` with ilspycmd rather than guessing.
+- `_create_and_wire` wires each reference with the `targetType` the new component's data reports for that member. ALWAYS keep it that way. The old per-class guesses gave `Add_DateTime_TimeSpan`'s TimeSpan input a DateTime target type.
+
 ### ProtoFlux
 
 ProtoFlux is Resonite's visual programming system. Nodes are components that wire together via references. Understanding the execution model is important:
@@ -722,7 +740,8 @@ See `examples/protoflux_if_else.py` for the complete working example.
 
 - First WebSocket connection fails with `ConnectionClosedError` on initial request. Workaround is implemented in the client (retry logic).
 - On Git Bash (MSYS2), paths starting with `/` get mangled to Windows paths. Use `MSYS_NO_PATHCONV=1` when passing category paths like `/Data`.
-- 18 `_types/` stubs are minimal placeholders because `GetTypeDefinition` fails for component types. These need a fallback to `GetComponentDefinition`. See memory file `type_stub_todo.md` for the full list.
+- Five components can't be regenerated, because `GetComponentDefinition` throws a NullReferenceException for any component with a `SyncLinear<T>` or `SyncCurve<T>` member (a FrooxEngine bug in `ResoniteLinkReflection.BuildArrayDefinition`). Their modules are from an earlier generation: `AnimationTrack<>` (hand-patched), `BezierTubeMesh`, `GradientStripTexture`, and two PhotonDust `*OverLifetimeLinearGradient`. Component data also omits those members, so gradients and curves can't be read or written through ResoniteLink.
+- `DateTimeDayOfWeek` outputs a `System.DayOfWeek` enum, which isn't generated, so Dergflux has no `day_of_week`.
 
 ## Debugging Guidelines
 

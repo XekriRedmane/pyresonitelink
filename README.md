@@ -6,7 +6,7 @@ pyresonitelink is a Python library for interacting with the Resonite VR platform
 
 **Python 3.13+ required.**
 
-Because Python's native numeric types are infinite-precision integers and 64-bit floats, and Resonite has stricter types, this library uses numpy scalar types under the hood to match Resonite's C# type system precisely. Scalar aliases are provided in the `primitives` module: `primitives.Bool`, `primitives.Int`, `primitives.Long`, `primitives.Float`, `primitives.String`, etc. Composite types like `primitives.Float2`, `primitives.Float3`, `primitives.FloatQ`, `primitives.Color`, and `primitives.ColorX` are dataclasses with numpy-typed fields that coerce from plain Python `int`/`float` in their constructors. Spherical harmonics (`primitives.SphericalHarmonicsL1` through `L4`) are generic in Resonite, so each of their coefficients is a field instance such as `fields.FieldColorX`, which carries its own type.
+Because Python's native numeric types are infinite-precision integers and 64-bit floats, and Resonite has stricter types, this library uses numpy scalar types under the hood to match Resonite's C# type system precisely. Scalar aliases are provided in the `primitives` module: `primitives.Bool`, `primitives.Int`, `primitives.Long`, `primitives.Float`, `primitives.String`, etc. `primitives.DateTime` and `primitives.TimeSpan` are Python's `datetime.datetime` and `datetime.timedelta`. ResoniteLink sends both as strings, which the field classes convert. Composite types like `primitives.Float2`, `primitives.Float3`, `primitives.FloatQ`, `primitives.Color`, and `primitives.ColorX` are dataclasses with numpy-typed fields that coerce from plain Python `int`/`float` in their constructors. Spherical harmonics (`primitives.SphericalHarmonicsL1` through `L4`) are generic in Resonite, so each of their coefficients is a field instance such as `fields.FieldColorX`, which carries its own type.
 
 ## Installation
 
@@ -174,6 +174,20 @@ The `--all` flag recursively walks every component category on the server, scrap
 
 A component that references another component, such as a `TextRenderer`, imports that class only for type checking. This keeps two components that reference each other from importing each other at runtime.
 
+#### Names of components that share a name
+
+Resonite treats `X`, `X<T>`, and `X<T1, T2>` as different components, but in Python they'd all be the class `X` in one module, so the generator renames all but one:
+
+| Resonite | Python | Rule |
+|---|---|---|
+| `ValueWrite<T>` | `ValueWrite` | The generic form with the fewest parameters keeps the name. |
+| `ValueWrite<C, T>` | `ValueWriteWithContext` | A longer form adds `With` and its extra parameters, where `C` (the ProtoFlux context) is `Context` and `TValue` is `Value`. |
+| `FireOnLocalTrue` | `FireOnLocalTrue` | Of a non-generic and a generic form where one derives from the other, the derived one keeps the name. |
+| `FireOnLocalTrue<C>` | `FireOnLocalTrueBase` | The one it derives from gets `Base`. |
+| `UIX.Slider` | `Slider` | When neither derives from the other, the non-generic one keeps the name. |
+| `UIX.Slider<T>` | `SliderOf` | The generic one gets `Of`, as in `SliderOf[primitives.Float]`. |
+| `Strings.Characters.NewLine` | `CharactersNewLine` | A component whose module already belongs to a namesake in another namespace gets the namespace that tells it apart. |
+
 ### Using Generated Components
 
 Import shortcuts are provided so you don't need the deeply nested paths:
@@ -305,6 +319,8 @@ print(x_var.value)
 Key features:
 - **Expressions**: `+`, `-`, `*`, `/`, `%`, `**`, `abs()`, comparisons, bitwise `&`/`|`/`^`/`~`/`<<`/`>>`
 - **Math functions**: `sin`, `cos`, `sqrt`, `lerp`, `clamp`, `min_`, `max_`, and [more](src/pyresonitelink/dergflux/dergflux.md#math-functions)
+- **Type conversions**: numeric operands widen automatically as in C#, so `float_var + int_var` works, and narrowing takes `math.to_int(x)` or `math.convert(x, primitives.Int)` ([details](src/pyresonitelink/dergflux/dergflux.md#type-conversions))
+- **Time and dates**: `time.utc_now()`, `time.hours(2)`, `now.year`, `span.total_seconds`, and DateTime/TimeSpan arithmetic, with Python `datetime` and `timedelta` values ([details](src/pyresonitelink/dergflux/dergflux.md#time-and-dates))
 - **Flow control**: `g.If`/`g.Else`, `g.For`, `g.While`, `g.Range`
 - **Triggers**: `g.Under(slot)` (Update every frame), `g.Under(slot, trigger="tag")` (named impulse), `g.Under(slot, trigger=("tag", type))` (with value)
 - **Bindings**: `g.Bind(s.x, component, "Field")` — permanently bind a variable or expression to a component field
