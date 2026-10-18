@@ -32,30 +32,81 @@ def _math_call_1(func_name: str, x: Any) -> _expr.ExprProxy:
 
 
 def _math_call_2(func_name: str, a: Any, b: Any) -> _expr.ExprProxy:
-    """Create a binary math function call node."""
-    ap = _expr._coerce(a)
-    bp = _expr._coerce(b)
-    from pyresonitelink.dergflux import _types
-    result_type = _types.infer_result_type(ap._node._type, bp._node._type)
+    """Create a binary math function call node.
+
+    The arguments are widened to their common type first.
+    """
+    a_node, b_node, result_type = _expr.unify(
+        _expr._coerce(a)._node, _expr._coerce(b)._node, func_name,
+    )
     return _expr.ExprProxy(
-        _expr.MathCallNode(func_name, [ap._node, bp._node], result_type),
+        _expr.MathCallNode(func_name, [a_node, b_node], result_type),
     )
 
 
 def _math_call_3(
     func_name: str, a: Any, b: Any, c: Any,
 ) -> _expr.ExprProxy:
-    """Create a ternary math function call node."""
-    ap = _expr._coerce(a)
-    bp = _expr._coerce(b)
+    """Create a ternary math function call node.
+
+    The first two arguments are widened to their common type first. The
+    third can differ, as for the t of lerp(a, b, t).
+    """
+    a_node, b_node, result_type = _expr.unify(
+        _expr._coerce(a)._node, _expr._coerce(b)._node, func_name,
+    )
     cp = _expr._coerce(c)
-    from pyresonitelink.dergflux import _types
-    result_type = _types.infer_result_type(ap._node._type, bp._node._type)
     return _expr.ExprProxy(
         _expr.MathCallNode(
-            func_name, [ap._node, bp._node, cp._node], result_type,
+            func_name, [a_node, b_node, cp._node], result_type,
         ),
     )
+
+
+# =========================================================================
+# Conversions
+# =========================================================================
+
+
+def convert(x: Any, to: type) -> _expr.ExprProxy:
+    """Converts a value to another type, narrowing it if needed.
+
+    Widening, such as int to float, happens without this. Narrowing, such
+    as float to int, needs it, and uses ProtoFlux's Cast node for the two
+    types, e.g. Cast_float_To_int.
+
+    Args:
+        x: An expression or a Python literal.
+        to: The type to convert to, e.g. primitives.Int.
+
+    Returns:
+        The converted expression.
+    """
+    return _expr.explicit(x, to)
+
+
+def to_int(x: Any) -> _expr.ExprProxy:
+    """Converts a value to an int (primitives.Int)."""
+    from pyresonitelink.data import primitives
+    return convert(x, primitives.Int)
+
+
+def to_long(x: Any) -> _expr.ExprProxy:
+    """Converts a value to a long (primitives.Long)."""
+    from pyresonitelink.data import primitives
+    return convert(x, primitives.Long)
+
+
+def to_float(x: Any) -> _expr.ExprProxy:
+    """Converts a value to a float (primitives.Float)."""
+    from pyresonitelink.data import primitives
+    return convert(x, primitives.Float)
+
+
+def to_double(x: Any) -> _expr.ExprProxy:
+    """Converts a value to a double (primitives.Double)."""
+    from pyresonitelink.data import primitives
+    return convert(x, primitives.Double)
 
 
 # =========================================================================
@@ -240,6 +291,18 @@ def conditional(
     """Conditional (ternary) expression.
 
     Returns ``on_true`` if ``condition`` is true, else ``on_false``.
-    Uses generic ``ValueConditional<T>``.
+    Uses generic ``ValueConditional<T>``, where T is the common type of
+    the two values. The condition must be a Bool.
     """
-    return _math_call_3("conditional", condition, on_true, on_false)
+    from pyresonitelink.data import primitives
+
+    cond = _expr.implicit(condition, primitives.Bool, "conditional")
+    true_node, false_node, result_type = _expr.unify(
+        _expr._coerce(on_true)._node, _expr._coerce(on_false)._node,
+        "conditional",
+    )
+    return _expr.ExprProxy(
+        _expr.MathCallNode(
+            "conditional", [cond._node, true_node, false_node], result_type,
+        ),
+    )

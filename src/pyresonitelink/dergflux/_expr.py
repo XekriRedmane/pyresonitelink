@@ -172,6 +172,22 @@ class MathCallNode(ExprNode):
         self.args = args
 
 
+class CastNode(ExprNode):
+    """A conversion of an expression to another type.
+
+    At build time, this materializes into a ProtoFlux node such as
+    Cast_int_To_float. Implicit conversions only widen, following C#.
+    dergflux.math.convert creates the others.
+
+    Attributes:
+        expr: The expression node being converted.
+    """
+
+    def __init__(self, expr: ExprNode, target_type: type) -> None:
+        super().__init__(target_type)
+        self.expr = expr
+
+
 class MemberAccessNode(ExprNode):
     """Accessing a property of a DateTime or TimeSpan expression.
 
@@ -212,34 +228,164 @@ def _coerce(value: Any) -> ExprProxy:
     return ExprProxy(ConstNode(value))
 
 
-def _binop(op: BinOp, left: ExprProxy, right: Any) -> ExprProxy:
-    """Create a binary operation proxy."""
-    right_proxy = _coerce(right)
+def _type_literal(const: ConstNode, context_type: type | None) -> None:
+    """Gives an untyped literal a type, from the other operand if it fits.
+
+    An int literal next to a float takes the float type, since an int
+    widens to a float. A float literal next to an int keeps its own type,
+    Float, and the int is widened instead, so ``int_var + 2.5`` is a
+    float rather than a truncated int.
+    """
     from pyresonitelink.dergflux import _types
+
+    if const._type is not None:
+        return
+    natural = _types.literal_type(const.value)
+    if context_type is not None and (
+        natural is None or _types.can_widen(natural, context_type)
+    ):
+        const._type = context_type
+    else:
+        const._type = natural
+
+
+def implicit(value: Any, target_type: type, context: str) -> ExprProxy:
+    """Converts a value to a type, widening it if needed.
+
+    Args:
+        value: An ExprProxy or a Python literal.
+        target_type: The type the value is needed as.
+        context: What the value is for, e.g. "assignment to x", for the
+            error message.
+
+    Returns:
+        The value as an ExprProxy of target_type.
+
+    Raises:
+        TypeError: The conversion would narrow, e.g. from a float to an
+            int, or there's no conversion between the types.
+    """
+    from pyresonitelink.dergflux import _types
+
+    proxy = _coerce(value)
+    node = proxy._node
+    if isinstance(node, ConstNode) and node._type is None:
+        _type_literal(node, target_type)
+    if node._type is None or node._type == target_type:
+        return proxy
+    if _types.can_widen(node._type, target_type):
+        return ExprProxy(CastNode(node, target_type))
+    raise TypeError(
+        f"{context}: {_types.type_name(node._type)} doesn't convert to "
+        f"{_types.type_name(target_type)} implicitly. Convert it with "
+        f"dergflux.math.convert(value, primitives."
+        f"{_types.type_name(target_type)})."
+    )
+
+
+def explicit(value: Any, target_type: type) -> ExprProxy:
+    """Converts a value to a type, narrowing it if needed.
+
+    Args:
+        value: An ExprProxy or a Python literal.
+        target_type: The type to convert to.
+
+    Returns:
+        The value as an ExprProxy of target_type.
+    """
+    proxy = _coerce(value)
+    node = proxy._node
+    if isinstance(node, ConstNode) and node._type is None:
+        node._type = target_type
+        return proxy
+    if node._type == target_type:
+        return proxy
+    return ExprProxy(CastNode(node, target_type))
+
+
+def unify(
+    left: ExprNode, right: ExprNode, context: str,
+) -> tuple[ExprNode, ExprNode, type | None]:
+    """Converts two operands to their common type.
+
+    Args:
+        left: The left operand.
+        right: The right operand.
+        context: What the operands are for, for the error message.
+
+    Returns:
+        The operands, each wrapped in a CastNode if it needed widening,
+        and their common type.
+
+    Raises:
+        TypeError: The operands have no common type, e.g. a bool and an
+            int.
+    """
+    from pyresonitelink.dergflux import _types
+
+    if isinstance(right, ConstNode):
+        _type_literal(right, left._type)
+    if isinstance(left, ConstNode):
+        _type_literal(left, right._type)
+    if left._type is None or right._type is None or left._type == right._type:
+        return left, right, left._type if left._type is not None else right._type
+    common = _types.common_type(left._type, right._type)
+    if common is None:
+        raise TypeError(
+            f"{context}: {_types.type_name(left._type)} and "
+            f"{_types.type_name(right._type)} have no common type. Convert "
+            f"one of them with dergflux.math.convert."
+        )
+    if left._type != common:
+        left = CastNode(left, common)
+    if right._type != common:
+        right = CastNode(right, common)
+    return left, right, common
+
+
+def _binop(op: BinOp, left: ExprProxy, right: Any) -> ExprProxy:
+    """Create a binary operation proxy.
+
+    Operands of different numeric types are widened to their common type
+    first. DateTime and TimeSpan have their own combinations: a DateTime
+    plus or minus a TimeSpan is a DateTime, and the difference of two
+    DateTimes is a TimeSpan.
+    """
+    right_proxy = _coerce(right)
     from pyresonitelink.data import primitives
 
-    # Propagate type from typed operand to untyped constant.
-    # e.g. FloatDynVar + 1 -> the ConstNode(1) gets Float type.
     left_node = left._node
     right_node = right_proxy._node
-    if isinstance(right_node, ConstNode) and right_node._type is None:
-        right_node._type = left_node._type
-    elif isinstance(left_node, ConstNode) and left_node._type is None:
-        left_node._type = right_node._type
+    if isinstance(right_node, ConstNode):
+        _type_literal(right_node, left_node._type)
+    if isinstance(left_node, ConstNode):
+        _type_literal(left_node, right_node._type)
+
+    types = (left_node._type, right_node._type)
+    if op == BinOp.ADD and types == (primitives.TimeSpan, primitives.DateTime):
+        # Only DateTime + TimeSpan has a node, and addition commutes.
+        left_node, right_node = right_node, left_node
+        types = (primitives.DateTime, primitives.TimeSpan)
+    if op in (BinOp.ADD, BinOp.SUB) and types == (
+        primitives.DateTime, primitives.TimeSpan,
+    ):
+        return ExprProxy(
+            BinaryOpNode(op, left_node, right_node, primitives.DateTime),
+        )
+    if op == BinOp.SUB and types == (primitives.DateTime, primitives.DateTime):
+        return ExprProxy(
+            BinaryOpNode(op, left_node, right_node, primitives.TimeSpan),
+        )
 
     result_type: type | None
-    if op in _COMPARISON_OPS:
-        result_type = primitives.Bool
-    elif (
-        op == BinOp.SUB
-        and left_node._type == primitives.DateTime
-        and right_node._type == primitives.DateTime
-    ):
-        result_type = primitives.TimeSpan
+    if op in (BinOp.LSHIFT, BinOp.RSHIFT):
+        # The shift count is an int whatever the shifted value's type.
+        result_type = left_node._type
     else:
-        result_type = _types.infer_result_type(
-            left_node._type, right_node._type,
+        left_node, right_node, common = unify(
+            left_node, right_node, f"The {op.value} operator",
         )
+        result_type = primitives.Bool if op in _COMPARISON_OPS else common
     return ExprProxy(
         BinaryOpNode(op, left_node, right_node, result_type),
     )
@@ -390,26 +536,35 @@ class ExprProxy:
         if name in ("id", "RESONITE_TYPE"):
             raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")
 
+        # The types are those of the ProtoFlux nodes, e.g. DateTimeTicks is
+        # a DateTimeExtractor<long> and TimeSpanTotalDays a
+        # TimeSpanExtractor<double>.
         if self._node._type == primitives.DateTime:
             int_props = {
                 "year", "month", "day", "hour", "minute", "second",
-                "millisecond", "day_of_year", "ticks",
+                "millisecond", "day_of_year",
             }
             if name in int_props:
                 return ExprProxy(MemberAccessNode(name, self._node, primitives.Int))
+            if name == "ticks":
+                return ExprProxy(MemberAccessNode(name, self._node, primitives.Long))
             if name == "day_of_week":
-                # from pyresonitelink.generated._enums.day_of_week import DayOfWeek
-                # return ExprProxy(MemberAccessNode(name, self._node, DayOfWeek))
-                return ExprProxy(MemberAccessNode(name, self._node, primitives.Int))
+                raise AttributeError(
+                    "day_of_week isn't supported, because the DateTimeDayOfWeek "
+                    "node outputs a System.DayOfWeek enum, which Dergflux has "
+                    "no type for."
+                )
 
         if self._node._type == primitives.TimeSpan:
-            int_props = {"days", "hours", "minutes", "seconds", "milliseconds", "ticks"}
+            int_props = {"days", "hours", "minutes", "seconds", "milliseconds"}
             float_props = {
                 "total_days", "total_hours", "total_minutes",
                 "total_seconds", "total_milliseconds",
             }
             if name in int_props:
                 return ExprProxy(MemberAccessNode(name, self._node, primitives.Int))
+            if name == "ticks":
+                return ExprProxy(MemberAccessNode(name, self._node, primitives.Long))
             if name in float_props:
                 return ExprProxy(MemberAccessNode(name, self._node, primitives.Double))
 

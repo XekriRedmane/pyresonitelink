@@ -228,8 +228,16 @@ class Space:
             vars_dict[name] = value
             return
 
-        # Write: s.z = <expr>
-        proxy = _expr._coerce(value)
+        # Write: s.z = <expr>. The value widens to the variable's type, so
+        # an int expression can be written to a float variable, but a float
+        # can't be written to an int variable without an explicit convert.
+        decl = object.__getattribute__(self, "_vars").get(name)
+        if decl is not None:
+            proxy = _expr.implicit(
+                value, decl.resonite_type, f"Assignment to {name}",
+            )
+        else:
+            proxy = _expr._coerce(value)
         graph: _graph.Graph = object.__getattribute__(self, "_graph")
         from pyresonitelink.dergflux import _flow
 

@@ -13,6 +13,8 @@ Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs in
   - [Model Variables](#model-variables)
   - [Expressions](#expressions)
   - [Math Functions](#math-functions)
+  - [Type Conversions](#type-conversions)
+  - [Time and Dates](#time-and-dates)
 - [Flow Control](#flow-control)
   - [If / Else](#if--else)
   - [Continuation](#continuation-after-if--else)
@@ -308,6 +310,63 @@ dm.conditional(s.flag, s.a, s.b)  # if flag then a else b
 ```
 
 This is a value-level conditional (like C's ternary `?:`) — it selects between two values based on a `Bool`, without creating an impulse flow.
+
+### Type Conversions
+
+Dergflux follows C#'s implicit numeric conversions, which only widen. When two operands of an operator differ in type, both are converted to the narrowest type they both widen to, and a `Cast_<from>_To_<to>` node is added for each one that changes:
+
+```python
+s.total = s.total + i     # float + int: i is widened to float
+s.big = s.count + s.flags # int + uint: both are widened to long
+s.v = s.ints3 + s.floats3 # int3 + float3: the int3 is widened to float3
+```
+
+The same applies to assignments, to the arguments of two-argument math functions such as `dm.min_`, to the two values of `dm.conditional`, and to the arguments of the `time` functions. An int literal takes the type of the other operand, but a float literal next to an int widens the int, so `s.count + 2.5` is a float rather than a truncated int.
+
+Narrowing needs an explicit conversion, and Dergflux raises a `TypeError` at the line that would narrow:
+
+```python
+s.count = s.ratio * 10            # TypeError: Float doesn't convert to Int implicitly
+s.count = dm.to_int(s.ratio * 10) # truncates toward zero, as C#'s (int) cast does
+s.count = dm.convert(s.x, primitives.Int)  # the same, for any type
+```
+
+`dm.to_int`, `dm.to_long`, `dm.to_float`, and `dm.to_double` are shorthands for `dm.convert`. Types with no conversion between them, such as `Bool` and `Int`, raise a `TypeError` too.
+
+### Time and Dates
+
+`DateTime` and `TimeSpan` values are Python `datetime.datetime` and `datetime.timedelta` objects, so literals can be used directly. The `time` module provides the ProtoFlux time nodes:
+
+```python
+import datetime
+from pyresonitelink.dergflux import time
+
+s.started = s.DateTimeModelVar("started")
+s.waited = s.TimeSpanModelVar("waited")
+
+s.started = time.utc_now()
+s.waited = time.utc_now() - s.started            # DateTime - DateTime is a TimeSpan
+s.deadline = s.started + time.minutes(5)          # DateTime + TimeSpan is a DateTime
+s.later = s.started + datetime.timedelta(hours=1) # literals work too
+s.seconds = s.waited.total_seconds                # a Double
+```
+
+| Function or property | Result type | Node |
+|---|---|---|
+| `time.utc_now()` | DateTime | `UtcNow` |
+| `time.delta_time()` and its `smooth_`, `raw_`, and `inverted_` variants | Float | `DeltaTime` etc. |
+| `time.days(n)`, `hours`, `minutes`, `seconds`, `milliseconds` | TimeSpan | `TimeSpanFrom*`, which take a double |
+| `time.ticks(n)` | TimeSpan | `TimeSpanFromTicks`, which takes a long |
+| `time.from_unix_seconds(n)`, `from_unix_milliseconds(n)` | DateTime, in UTC | `FromUnix*`, which take a long |
+| `time.to_unix_seconds(dt)`, `to_unix_milliseconds(dt)` | Long | `ToUnix*` |
+| `dt.year`, `month`, `day`, `hour`, `minute`, `second`, `millisecond`, `day_of_year` | Int | `DateTime*` |
+| `dt.ticks`, `span.ticks` | Long | `DateTimeTicks`, `TimeSpanTicks` |
+| `span.days`, `hours`, `minutes`, `seconds`, `milliseconds` | Int | `TimeSpan*` |
+| `span.total_days`, `total_hours`, `total_minutes`, `total_seconds`, `total_milliseconds` | Double | `TimeSpanTotal*` |
+
+`dt.day_of_week` isn't supported, because the `DateTimeDayOfWeek` node outputs a `System.DayOfWeek` enum, which Dergflux has no type for.
+
+ResoniteLink sends both types as strings. A DateTime with a `Z` suffix becomes an aware `datetime` in UTC, and one without a suffix becomes a naive `datetime`. An aware `datetime` is sent as UTC. Python keeps microseconds, so the seventh fractional digit of a .NET time, which counts 100-nanosecond ticks, is lost when reading.
 
 ## Flow Control
 

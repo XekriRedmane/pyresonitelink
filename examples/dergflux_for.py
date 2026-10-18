@@ -36,9 +36,9 @@ async def main(port: int) -> None:
     g = Graph()
 
     s = g.Space(slot)
-    # The loop index is an int, and Dergflux has no implicit int to float
-    # conversion, so the accumulator is an int too.
-    s.total = s.IntDynVar("total")
+    # total is a float and the loop index an int. The index is widened to
+    # a float for the addition, with a Cast_int_To_float node.
+    s.total = s.FloatDynVar("total")
 
     with g.Under(slot):
         # g.For(count) yields a ForProxy `f` with two sections:
@@ -78,7 +78,7 @@ async def main(port: int) -> None:
 
     total_var = s.total
     await total_var.refresh(resolink)
-    print(f"total = {total_var.value} (expected 90)")
+    print(f"total = {total_var.value} (expected 90.0)")
 
     # Clean up
     await resolink.remove_slot(slot=slot)

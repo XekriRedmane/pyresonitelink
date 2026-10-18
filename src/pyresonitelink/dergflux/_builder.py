@@ -278,18 +278,18 @@ async def _create_and_wire(
         typed_refs = {}
         for k, v in references.items():
             target_id = v.id if hasattr(v, "id") else v
-            
-            # Use specific targetType hints for certain non-generic nodes
-            # that are sensitive to the interface name.
-            target_type = '[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<T>'
-            cls_name = component_class.__name__
-            if "TimeSpanFrom" in cls_name and cls_name != "TimeSpanFromTicks":
-                target_type = '[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<double>'
-            elif cls_name == "TimeSpanFromTicks":
-                target_type = '[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<long>'
-            elif "DateTime" in cls_name:
-                target_type = '[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<DateTime>'
-            
+
+            # The new component's data gives each reference's exact
+            # targetType, e.g. INodeValueOutput<DateTime> for one input of
+            # Add_DateTime_TimeSpan and INodeValueOutput<TimeSpan> for the
+            # other.
+            member = comp.get_member(k)
+            target_type = (
+                member.targetType
+                if isinstance(member, members.Reference) and member.targetType
+                else "[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<T>"
+            )
+
             if debug:
                 print(f"  Wiring reference '{k}': target={target_id}, type={target_type}")
 
@@ -390,9 +390,8 @@ class _BuildContext:
         if self.debug:
             print(f"Materializing node: {type(node).__name__} (type={getattr(node, '_type', 'N/A')})")
         
-        if type(node) is _expr.ExprNode:
-            # Special core nodes that use the base ExprNode class
-            return await self._materialize_core_node(node)
+        if isinstance(node, _expr.CastNode):
+            return await self._materialize_cast(node)
         if isinstance(node, _expr.ConstNode):
             return await self._materialize_const(node)
         if isinstance(node, _expr.VarReadNode):
@@ -517,28 +516,41 @@ class _BuildContext:
             
         return type("_OutputStub", (), {"id": val_member.id})()
 
-    async def _materialize_core_node(self, node: _expr.ExprNode) -> Any:
-        """Materialize a core node (base ExprNode class with a specific type)."""
-        from pyresonitelink.data import primitives
+    async def _materialize_cast(self, node: _expr.CastNode) -> Any:
+        """Materialize a conversion as a ProtoFlux Cast node.
 
-        if node._type == primitives.DateTime:
-            # utc_now()
-            from pyresonitelink.protoflux.time import UtcNow
-            comp = UtcNow()
-            await comp.add_to_slot(self.resolink, self.slot)
-            return comp
+        The node for converting an int to a float is Cast_int_To_float,
+        in the Core/Casts category, and its input is named Input.
+        """
+        from pyresonitelink.dergflux import _types
+        from pyresonitelink.generated import _generator, _type_map
 
-        if node._type == primitives.Float:
-            # delta_time variants
-            # We don't store the func name in ExprNode yet, so we have to
-            # rely on some other way to distinguish them if there were many.
-            # For now, base Float ExprNode is always delta_time().
-            from pyresonitelink.protoflux.time import DeltaTime
-            comp = DeltaTime()
-            await comp.add_to_slot(self.resolink, self.slot)
-            return comp
-
-        raise TypeError(f"Core node with type {node._type} not supported")
+        source_type = _resolve_type(node.expr)
+        target_type = _resolve_type(node)
+        inner = await self.materialize(node.expr)
+        if source_type == target_type:
+            return inner
+        source = _type_map.from_python_type(source_type).resonite_name
+        target = _type_map.from_python_type(target_type).resonite_name
+        class_name = f"Cast_{source}_To_{target}"
+        module_name = (
+            "pyresonitelink.generated.protoflux.runtimes.execution.nodes."
+            f"core.casts.{_generator._to_snake_case(class_name)}"
+        )
+        try:
+            CastClass = getattr(
+                importlib.import_module(module_name), class_name,
+            )
+        except (ImportError, AttributeError):
+            raise TypeError(
+                f"ProtoFlux has no node to convert "
+                f"{_types.type_name(source_type)} to "
+                f"{_types.type_name(target_type)} ({class_name})."
+            ) from None
+        return await _create_and_wire(
+            self.resolink, self.slot, CastClass, {"Input": inner.id},
+            debug=self.debug,
+        )
 
     async def _materialize_const(self, node: _expr.ConstNode) -> Any:
         """Materialize a constant as a ValueInput<T> or ValueObjectInput<T>.
@@ -561,9 +573,6 @@ class _BuildContext:
         elif res_type is primitives.Int:
             val = np.int32(val)
         elif res_type is primitives.Long:
-            val = np.int64(val)
-        elif res_type is primitives.DateTime or res_type is primitives.TimeSpan:
-            # DateTime/TimeSpan are stored as int64 (ticks)
             val = np.int64(val)
 
         # Strings are object types in ProtoFlux
@@ -688,6 +697,26 @@ class _BuildContext:
                 debug=self.debug,
             )
 
+        # DateTime arithmetic has its own nodes. _expr._binop puts the
+        # DateTime first for DateTime + TimeSpan.
+        if node.left._type == primitives.DateTime and node.op in (
+            _expr.BinOp.ADD, _expr.BinOp.SUB,
+        ):
+            from pyresonitelink.protoflux import time as time_nodes
+            if node.right._type == primitives.TimeSpan:
+                TimeClass = (
+                    time_nodes.Add_DateTime_TimeSpan
+                    if node.op is _expr.BinOp.ADD
+                    else time_nodes.Sub_DateTime_TimeSpan
+                )
+            else:
+                TimeClass = time_nodes.Sub_DateTime
+            return await _create_and_wire(
+                self.resolink, self.slot, TimeClass,
+                {"A": left_comp.id, "B": right_comp.id},
+                debug=self.debug,
+            )
+
         # Generic binary op
         name = _GENERIC_BINOP_NAMES[node.op]
         from pyresonitelink.protoflux import operators
@@ -809,13 +838,15 @@ class _BuildContext:
         if node.func_name == "from_unix_seconds":
             from pyresonitelink.protoflux.time import FromUnixSeconds
             return await _create_and_wire(
-                self.resolink, self.slot, FromUnixSeconds, {"Seconds": arg_comps[0].id},
+                self.resolink, self.slot, FromUnixSeconds, {"UnixSeconds": arg_comps[0].id},
                 debug=self.debug,
             )
         if node.func_name == "from_unix_milliseconds":
             from pyresonitelink.protoflux.time import FromUnixMilliseconds
             return await _create_and_wire(
-                self.resolink, self.slot, FromUnixMilliseconds, {"Milliseconds": arg_comps[0].id},
+                self.resolink, self.slot, FromUnixMilliseconds,
+                # The node's input really is spelled UnixMiliseconds.
+                {"UnixMiliseconds": arg_comps[0].id},
                 debug=self.debug,
             )
         if node.func_name == "to_unix_seconds":
