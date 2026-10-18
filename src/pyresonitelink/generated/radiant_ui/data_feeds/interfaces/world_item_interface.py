@@ -27,7 +27,7 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.WorldItemInterface"
 
-    def __init__(self, has_data: primitives.Bool | None = None, item_name: str | IField[primitives.String] | None = None, item_key: str | IField[primitives.String] | None = None, item_description: str | IField[primitives.String] | None = None, has_description: str | IField[primitives.Bool] | None = None, description_cleanup: str | Slot | None = None, item_icon: str | IField[str] | None = None, has_icon: str | IField[primitives.Bool] | None = None, icon_cleanup: str | Slot | None = None, view: str | SyncRef[IDataFeedView] | None = None, parent_container: str | FeedItemInterface | None = None, child_container: str | Slot | None = None, enabled_state: str | IField[primitives.Bool] | None = None, world_name: str | IField[primitives.String] | None = None, description: str | IField[primitives.String] | None = None, thumbnail_url: str | IField[str] | None = None, joined_users: str | IField[primitives.Int] | None = None, active_users: str | IField[primitives.Int] | None = None, is_host: str | IField[primitives.Bool] | None = None, away_kick_enabled: str | IField[primitives.Bool] | None = None, away_kick_interval: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, has_data: primitives.Bool | None = None, item_name: str | IField[primitives.String] | None = None, item_key: str | IField[primitives.String] | None = None, item_description: str | IField[primitives.String] | None = None, has_description: str | IField[primitives.Bool] | None = None, description_cleanup: str | Slot | None = None, item_icon: str | IField[str] | None = None, has_icon: str | IField[primitives.Bool] | None = None, icon_cleanup: str | Slot | None = None, view: str | SyncRef[IDataFeedView] | None = None, parent_container: str | FeedItemInterface | None = None, child_container: str | Slot | None = None, enabled_state: str | IField[primitives.Bool] | None = None, world_name: str | IField[primitives.String] | None = None, description: str | IField[primitives.String] | None = None, thumbnail_url: str | IField[str] | None = None, joined_users: str | IField[primitives.Int] | None = None, active_users: str | IField[primitives.Int] | None = None, is_host: str | IField[primitives.Bool] | None = None, away_kick_enabled: str | IField[primitives.Bool] | None = None, away_kick_interval: str | IField[primitives.TimeSpan] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -538,8 +538,8 @@ class WorldItemInterface(GeneratedComponent, IComponent, IWorldEventReceiver):
         return None
 
     @away_kick_interval.setter
-    def away_kick_interval(self, target: str | IField[str] | None) -> None:
-        """Set the AwayKickInterval reference by target ID or IField[str] instance."""
+    def away_kick_interval(self, target: str | IField[primitives.TimeSpan] | None) -> None:
+        """Set the AwayKickInterval reference by target ID or IField[primitives.TimeSpan] instance."""
         target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AwayKickInterval")
         if isinstance(member, members.Reference):

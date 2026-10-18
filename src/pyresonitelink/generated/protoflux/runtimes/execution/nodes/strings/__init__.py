@@ -118,6 +118,7 @@ from .characters.to_utf16 import ToUTF16
 from .constants.backspace import Backspace
 from .constants.bell import Bell
 from .constants.carriage_return import CarriageReturn
+from .constants.characters_new_line import CharactersNewLine
 from .constants.form_feed import FormFeed
 from .constants.new_line import NewLine
 from .constants.space import Space
@@ -129,6 +130,8 @@ from .formatting.format_date_time_as_date import FormatDateTimeAsDate
 from .formatting.format_date_time_as_time import FormatDateTimeAsTime
 from .formatting.format_string import FormatString
 from .formatting.format_timespan import FormatTimespan
+from .formatting.to_lower import ToLower
+from .formatting.to_upper import ToUpper
 from .localization.current_culture import CurrentCulture
 from .localization.format_locale_string import FormatLocaleString
 from .localization.invariant_culture import InvariantCulture

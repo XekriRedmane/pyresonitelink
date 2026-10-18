@@ -7,11 +7,13 @@ from .add_value import AddValue
 from .add_value_with_object_key import AddValueWithObjectKey
 from .add_value_with_value_key import AddValueWithValueKey
 from .clear import Clear
+from .clear_with_value import ClearWithValue
 from .contains_object import ContainsObject
 from .contains_object_key import ContainsObjectKey
 from .contains_value import ContainsValue
 from .contains_value_key import ContainsValueKey
 from .count import Count
+from .count_with_value import CountWithValue
 from .get_at_object import GetAtObject
 from .get_at_value import GetAtValue
 from .get_object_with_object_key import GetObjectWithObjectKey
@@ -23,6 +25,7 @@ from .index_of_value import IndexOfValue
 from .insert_at_object import InsertAtObject
 from .insert_at_value import InsertAtValue
 from .is_empty import IsEmpty
+from .is_empty_with_value import IsEmptyWithValue
 from .is_read_only import IsReadOnly
 from .read_only_contains_object import ReadOnlyContainsObject
 from .read_only_contains_value import ReadOnlyContainsValue
@@ -35,6 +38,7 @@ from .read_only_is_empty import ReadOnlyIsEmpty
 from .remove_all_object import RemoveAllObject
 from .remove_all_value import RemoveAllValue
 from .remove_at import RemoveAt
+from .remove_at_with_value import RemoveAtWithValue
 from .remove_object import RemoveObject
 from .remove_object_key import RemoveObjectKey
 from .remove_value import RemoveValue

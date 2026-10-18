@@ -23,9 +23,13 @@ from .dynamic_impulse_trigger_with_object import DynamicImpulseTriggerWithObject
 from .dynamic_impulse_trigger_with_value import DynamicImpulseTriggerWithValue
 from .fire_on_false import FireOnFalse
 from .fire_on_local_false import FireOnLocalFalse
+from .fire_on_local_false_base import FireOnLocalFalseBase
 from .fire_on_local_object_change import FireOnLocalObjectChange
+from .fire_on_local_object_change_with_context import FireOnLocalObjectChangeWithContext
 from .fire_on_local_true import FireOnLocalTrue
+from .fire_on_local_true_base import FireOnLocalTrueBase
 from .fire_on_local_value_change import FireOnLocalValueChange
+from .fire_on_local_value_change_with_context import FireOnLocalValueChangeWithContext
 from .fire_on_object_value_change import FireOnObjectValueChange
 from .fire_on_ref_change import FireOnRefChange
 from .fire_on_true import FireOnTrue

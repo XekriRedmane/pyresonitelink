@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.icomponent import IComponent
@@ -16,7 +17,7 @@ class FundingStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.FundingStatistics"
 
-    def __init__(self, timestamp: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, timestamp: primitives.DateTime | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -28,7 +29,7 @@ class FundingStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.timestamp = timestamp
 
     @property
-    def timestamp(self) -> str | None:
+    def timestamp(self) -> primitives.DateTime | None:
         """The last time the values were updated as a time stamp."""
         member = self.get_member("Timestamp")
         if member is None:
@@ -36,7 +37,7 @@ class FundingStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @timestamp.setter
-    def timestamp(self, value: str) -> None:
+    def timestamp(self, value: primitives.DateTime) -> None:
         """Set the Timestamp field value."""
         member = self.get_member("Timestamp")
         if member is not None:

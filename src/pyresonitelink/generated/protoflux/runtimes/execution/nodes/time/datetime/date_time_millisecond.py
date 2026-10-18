@@ -1,6 +1,7 @@
 """Generated component: DateTimeMillisecond."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -19,7 +20,7 @@ class DateTimeMillisecond(GeneratedComponent, INodeValueOutput, IExecutionNode, 
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.DateTimeMillisecond"
 
-    def __init__(self, date_time: str | INodeValueOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, date_time: str | INodeValueOutput[primitives.DateTime] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,8 +40,8 @@ class DateTimeMillisecond(GeneratedComponent, INodeValueOutput, IExecutionNode, 
         return None
 
     @date_time.setter
-    def date_time(self, target: str | INodeValueOutput[str] | None) -> None:
-        """Set the DateTime reference by target ID or INodeValueOutput[str] instance."""
+    def date_time(self, target: str | INodeValueOutput[primitives.DateTime] | None) -> None:
+        """Set the DateTime reference by target ID or INodeValueOutput[primitives.DateTime] instance."""
         target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("DateTime")
         if isinstance(member, members.Reference):

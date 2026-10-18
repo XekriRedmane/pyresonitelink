@@ -29,7 +29,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LegacyWorldListManager"
 
-    def __init__(self, world_item_template: str | LegacyWorldItem | None = None, world_item_type: Type | str | None = None, show_opened_worlds: primitives.Bool | None = None, show_sessions: primitives.Bool | None = None, show_published_worlds: primitives.Bool | None = None, show_locally_saved_worlds: primitives.Bool | None = None, merge_sessions_by_world_id: primitives.Bool | None = None, idle_sort_delay: primitives.Float | None = None, interacting_sort_delay: primitives.Float | None = None, search_term: primitives.String | None = None, submitted_to: primitives.String | None = None, only_featured: primitives.Bool | None = None, own_worlds: primitives.Bool | None = None, by_owner: primitives.String | None = None, owner_type: OwnerType | str | None = None, min_date: str | None = None, max_date: str | None = None, max_items: primitives.Int | None = None, skip_items: primitives.Int | None = None, empty_sessions: EmptySessionFilter | str | None = None, incompatible_sessions: primitives.Bool | None = None, only_headless_hosts: primitives.Bool | None = None, minimum_total_users: primitives.Int | None = None, minimum_total_contacts: primitives.Int | None = None, min_session_access_level: SessionAccessLevel | str | None = None, max_session_access_level: SessionAccessLevel | str | None = None, min_uptime: primitives.Double | None = None, max_uptime: primitives.Double | None = None, parent_session_id: primitives.String | None = None, visited: primitives.Bool | None = None, is_searching: primitives.Bool | None = None, has_more_results: primitives.Bool | None = None, total_results: primitives.Int | None = None, filtered_results: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, world_item_template: str | LegacyWorldItem | None = None, world_item_type: Type | str | None = None, show_opened_worlds: primitives.Bool | None = None, show_sessions: primitives.Bool | None = None, show_published_worlds: primitives.Bool | None = None, show_locally_saved_worlds: primitives.Bool | None = None, merge_sessions_by_world_id: primitives.Bool | None = None, idle_sort_delay: primitives.Float | None = None, interacting_sort_delay: primitives.Float | None = None, search_term: primitives.String | None = None, submitted_to: primitives.String | None = None, only_featured: primitives.Bool | None = None, own_worlds: primitives.Bool | None = None, by_owner: primitives.String | None = None, owner_type: OwnerType | str | None = None, min_date: primitives.DateTime | None = None, max_date: primitives.DateTime | None = None, max_items: primitives.Int | None = None, skip_items: primitives.Int | None = None, empty_sessions: EmptySessionFilter | str | None = None, incompatible_sessions: primitives.Bool | None = None, only_headless_hosts: primitives.Bool | None = None, minimum_total_users: primitives.Int | None = None, minimum_total_contacts: primitives.Int | None = None, min_session_access_level: SessionAccessLevel | str | None = None, max_session_access_level: SessionAccessLevel | str | None = None, min_uptime: primitives.Double | None = None, max_uptime: primitives.Double | None = None, parent_session_id: primitives.String | None = None, visited: primitives.Bool | None = None, is_searching: primitives.Bool | None = None, has_more_results: primitives.Bool | None = None, total_results: primitives.Int | None = None, filtered_results: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -442,7 +442,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def min_date(self) -> str | None:
+    def min_date(self) -> primitives.DateTime | None:
         """The minimum date for a world to show up in the results."""
         member = self.get_member("MinDate")
         if member is None:
@@ -450,7 +450,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @min_date.setter
-    def min_date(self, value: str) -> None:
+    def min_date(self, value: primitives.DateTime) -> None:
         """Set the MinDate field value."""
         member = self.get_member("MinDate")
         if member is not None:
@@ -461,7 +461,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def max_date(self) -> str | None:
+    def max_date(self) -> primitives.DateTime | None:
         """The maximum date allowed for a world to show up in the results."""
         member = self.get_member("MaxDate")
         if member is None:
@@ -469,7 +469,7 @@ class LegacyWorldListManager(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @max_date.setter
-    def max_date(self, value: str) -> None:
+    def max_date(self, value: primitives.DateTime) -> None:
         """Set the MaxDate field value."""
         member = self.get_member("MaxDate")
         if member is not None:

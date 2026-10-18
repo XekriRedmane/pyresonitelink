@@ -23,7 +23,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SessionInfoSource"
 
-    def __init__(self, session_id: primitives.String | None = None, is_open: primitives.Bool | None = None, last_updated: str | None = None, name: primitives.String | None = None, description: primitives.String | None = None, corresponding_record_id: primitives.String | None = None, corresponding_owner_id: primitives.String | None = None, host_user_id: primitives.String | None = None, host_username: primitives.String | None = None, sanitized_host_username: primitives.String | None = None, app_version: primitives.String | None = None, headless_host: primitives.Bool | None = None, thumbnail: primitives.String | None = None, joined_users: primitives.Int | None = None, active_users: primitives.Int | None = None, total_joined_users: primitives.Int | None = None, total_active_users: primitives.Int | None = None, maximum_users: primitives.Int | None = None, mobile_friendly: primitives.Bool | None = None, access_level: SessionAccessLevel | str | None = None, is_on_lan: primitives.Bool | None = None, away_kick_enabled: primitives.Bool | None = None, away_kick_interval: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, session_id: primitives.String | None = None, is_open: primitives.Bool | None = None, last_updated: primitives.DateTime | None = None, name: primitives.String | None = None, description: primitives.String | None = None, corresponding_record_id: primitives.String | None = None, corresponding_owner_id: primitives.String | None = None, host_user_id: primitives.String | None = None, host_username: primitives.String | None = None, sanitized_host_username: primitives.String | None = None, app_version: primitives.String | None = None, headless_host: primitives.Bool | None = None, thumbnail: primitives.String | None = None, joined_users: primitives.Int | None = None, active_users: primitives.Int | None = None, total_joined_users: primitives.Int | None = None, total_active_users: primitives.Int | None = None, maximum_users: primitives.Int | None = None, mobile_friendly: primitives.Bool | None = None, access_level: SessionAccessLevel | str | None = None, is_on_lan: primitives.Bool | None = None, away_kick_enabled: primitives.Bool | None = None, away_kick_interval: primitives.TimeSpan | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -139,7 +139,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
             )
 
     @property
-    def last_updated(self) -> str | None:
+    def last_updated(self) -> primitives.DateTime | None:
         """The last time the info on this component was updated."""
         member = self.get_member("LastUpdated")
         if member is None:
@@ -147,7 +147,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @last_updated.setter
-    def last_updated(self, value: str) -> None:
+    def last_updated(self, value: primitives.DateTime) -> None:
         """Set the LastUpdated field value."""
         member = self.get_member("LastUpdated")
         if member is not None:
@@ -546,7 +546,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
             )
 
     @property
-    def away_kick_interval(self) -> str | None:
+    def away_kick_interval(self) -> primitives.TimeSpan | None:
         """How long till a user is kicked for being away in a session."""
         member = self.get_member("AwayKickInterval")
         if member is None:
@@ -554,7 +554,7 @@ class SessionInfoSource(GeneratedComponent, IWorldLink, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @away_kick_interval.setter
-    def away_kick_interval(self, value: str) -> None:
+    def away_kick_interval(self, value: primitives.TimeSpan) -> None:
         """Set the AwayKickInterval field value."""
         member = self.get_member("AwayKickInterval")
         if member is not None:

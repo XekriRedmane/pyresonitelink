@@ -4,8 +4,13 @@ from enum import StrEnum
 
 
 class Mode(StrEnum):
-    """Enum: [FrooxEngine]FrooxEngine.Undo.SpawnOrDestroy+Mode."""
+    """Enum: [FrooxEngine]FrooxEngine.EngineDebugDialog+Mode."""
 
-    spawn = "Spawn"
-    destroy = "Destroy"
+    gather_jobs = "GatherJobs"
+    worlds = "Worlds"
+    focused_world = "FocusedWorld"
+    physics = "Physics"
+    background_jobs = "BackgroundJobs"
+    loaded_assets = "LoadedAssets"
+    special = "Special"
 

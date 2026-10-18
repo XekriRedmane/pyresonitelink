@@ -7,21 +7,26 @@ from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
-from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated._base import GenericComponent, T
 
 if TYPE_CHECKING:
     from pyresonitelink.generated.rendering.particle_system.particle_system import ParticleSystem
-from pyresonitelink.generated._types.iparticle_system_subsystem import IParticleSystemSubsystem
-from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
+from pyresonitelink.generated._types.iparticle_system_emitter import IParticleSystemEmitter
 
 
-class ParticleEmitter(GeneratedComponent, IParticleSystemSubsystem, IWorldEventReceiver):
-    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ParticleEmitter.
+class ParticleEmitter(GenericComponent[T], IParticleSystemEmitter[T]):
+    """Wrapper for [FrooxEngine]FrooxEngine.PhotonDust.ParticleEmitter<>.
 
     Category: Rendering/Particle System/Emitters
+
+    Parameterize with a value type::
+
+        ParticleEmitter[primitives.Float]
+        ParticleEmitter[primitives.Float3]
     """
 
-    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleEmitter"
+    COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleEmitter<>"
+    _GENERIC_TYPE_TEMPLATE = "[FrooxEngine]FrooxEngine.PhotonDust.ParticleEmitter<>"
 
     def __init__(self, system: str | ParticleSystem | None = None, rate: primitives.Float | None = None, burst_on_activated_min: primitives.Float | None = None, burst_on_activated_max: primitives.Float | None = None, burst_on_start: primitives.Bool | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.

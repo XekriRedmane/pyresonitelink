@@ -22,7 +22,7 @@ class ToString_TimeSpan(GeneratedComponent, INodeObjectOutput, IExecutionNode, I
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.ParsingFormatting.ToString_TimeSpan"
 
-    def __init__(self, v: str | INodeValueOutput[str] | None = None, format_: str | INodeObjectOutput[primitives.String] | None = None, format_provider: str | INodeObjectOutput[IFormatProvider] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, v: str | INodeValueOutput[primitives.TimeSpan] | None = None, format_: str | INodeObjectOutput[primitives.String] | None = None, format_provider: str | INodeObjectOutput[IFormatProvider] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,15 +41,15 @@ class ToString_TimeSpan(GeneratedComponent, INodeObjectOutput, IExecutionNode, I
 
     @property
     def v(self) -> str | None:
-        """Target ID of the V reference (targets INodeValueOutput[str])."""
+        """Target ID of the V reference (targets INodeValueOutput[primitives.TimeSpan])."""
         member = self.get_member("V")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @v.setter
-    def v(self, target: str | INodeValueOutput[str] | None) -> None:
-        """Set the V reference by target ID or INodeValueOutput[str] instance."""
+    def v(self, target: str | INodeValueOutput[primitives.TimeSpan] | None) -> None:
+        """Set the V reference by target ID or INodeValueOutput[primitives.TimeSpan] instance."""
         target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("V")
         if isinstance(member, members.Reference):

@@ -20,7 +20,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CloudUserInfo"
 
-    def __init__(self, user_id: primitives.String | None = None, is_loaded: primitives.Bool | None = None, username: primitives.String | None = None, registration_date: str | None = None, original_registration_date: str | None = None, icon_url: str | None = None, pronouns: primitives.String | None = None, is_contact: primitives.Bool | None = None, loaded_user_id: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, user_id: primitives.String | None = None, is_loaded: primitives.Bool | None = None, username: primitives.String | None = None, registration_date: primitives.DateTime | None = None, original_registration_date: primitives.DateTime | None = None, icon_url: str | None = None, pronouns: primitives.String | None = None, is_contact: primitives.Bool | None = None, loaded_user_id: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -113,7 +113,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def registration_date(self) -> str | None:
+    def registration_date(self) -> primitives.DateTime | None:
         """The time that the given user registered their account"""
         member = self.get_member("RegistrationDate")
         if member is None:
@@ -121,7 +121,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @registration_date.setter
-    def registration_date(self, value: str) -> None:
+    def registration_date(self, value: primitives.DateTime) -> None:
         """Set the RegistrationDate field value."""
         member = self.get_member("RegistrationDate")
         if member is not None:
@@ -132,7 +132,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def original_registration_date(self) -> str | None:
+    def original_registration_date(self) -> primitives.DateTime | None:
         """The time that the given user registered their account which they migrated from."""
         member = self.get_member("OriginalRegistrationDate")
         if member is None:
@@ -140,7 +140,7 @@ class CloudUserInfo(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @original_registration_date.setter
-    def original_registration_date(self, value: str) -> None:
+    def original_registration_date(self, value: primitives.DateTime) -> None:
         """Set the OriginalRegistrationDate field value."""
         member = self.get_member("OriginalRegistrationDate")
         if member is not None:

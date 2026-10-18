@@ -29,7 +29,7 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.SessionInfoItemInterface"
 
-    def __init__(self, has_data: primitives.Bool | None = None, item_name: str | IField[primitives.String] | None = None, item_key: str | IField[primitives.String] | None = None, item_description: str | IField[primitives.String] | None = None, has_description: str | IField[primitives.Bool] | None = None, description_cleanup: str | Slot | None = None, item_icon: str | IField[str] | None = None, has_icon: str | IField[primitives.Bool] | None = None, icon_cleanup: str | Slot | None = None, view: str | SyncRef[IDataFeedView] | None = None, parent_container: str | FeedItemInterface | None = None, child_container: str | Slot | None = None, enabled_state: str | IField[primitives.Bool] | None = None, session_name: str | IField[primitives.String] | None = None, description: str | IField[primitives.String] | None = None, thumbnail_url: str | IField[str] | None = None, session_id: str | IField[primitives.String] | None = None, session_urls: str | SyncFieldList[str] | None = None, host_user_id: str | IField[primitives.String] | None = None, host_user_session_id: str | IField[primitives.String] | None = None, host_machine_id: str | IField[primitives.String] | None = None, host_username: str | IField[primitives.String] | None = None, compatibility_hash: str | IField[primitives.String] | None = None, universe_id: str | IField[primitives.String] | None = None, app_version: str | IField[primitives.String] | None = None, is_headless_host: str | IField[primitives.Bool] | None = None, is_on_lan: str | IField[primitives.Bool] | None = None, joined_users: str | IField[primitives.Int] | None = None, active_users: str | IField[primitives.Int] | None = None, total_joined_users: str | IField[primitives.Int] | None = None, total_active_users: str | IField[primitives.Int] | None = None, maximum_users: str | IField[primitives.Int] | None = None, session_begin_time: str | IField[str] | None = None, last_update: str | IField[str] | None = None, access_level: str | IField[SessionAccessLevel] | None = None, hide_from_listing: str | IField[primitives.Bool] | None = None, away_kick_enabled: str | IField[primitives.Bool] | None = None, away_kick_interval: str | IField[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, has_data: primitives.Bool | None = None, item_name: str | IField[primitives.String] | None = None, item_key: str | IField[primitives.String] | None = None, item_description: str | IField[primitives.String] | None = None, has_description: str | IField[primitives.Bool] | None = None, description_cleanup: str | Slot | None = None, item_icon: str | IField[str] | None = None, has_icon: str | IField[primitives.Bool] | None = None, icon_cleanup: str | Slot | None = None, view: str | SyncRef[IDataFeedView] | None = None, parent_container: str | FeedItemInterface | None = None, child_container: str | Slot | None = None, enabled_state: str | IField[primitives.Bool] | None = None, session_name: str | IField[primitives.String] | None = None, description: str | IField[primitives.String] | None = None, thumbnail_url: str | IField[str] | None = None, session_id: str | IField[primitives.String] | None = None, session_urls: str | SyncFieldList[str] | None = None, host_user_id: str | IField[primitives.String] | None = None, host_user_session_id: str | IField[primitives.String] | None = None, host_machine_id: str | IField[primitives.String] | None = None, host_username: str | IField[primitives.String] | None = None, compatibility_hash: str | IField[primitives.String] | None = None, universe_id: str | IField[primitives.String] | None = None, app_version: str | IField[primitives.String] | None = None, is_headless_host: str | IField[primitives.Bool] | None = None, is_on_lan: str | IField[primitives.Bool] | None = None, joined_users: str | IField[primitives.Int] | None = None, active_users: str | IField[primitives.Int] | None = None, total_joined_users: str | IField[primitives.Int] | None = None, total_active_users: str | IField[primitives.Int] | None = None, maximum_users: str | IField[primitives.Int] | None = None, session_begin_time: str | IField[primitives.DateTime] | None = None, last_update: str | IField[primitives.DateTime] | None = None, access_level: str | IField[SessionAccessLevel] | None = None, hide_from_listing: str | IField[primitives.Bool] | None = None, away_kick_enabled: str | IField[primitives.Bool] | None = None, away_kick_interval: str | IField[primitives.TimeSpan] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -843,8 +843,8 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
         return None
 
     @session_begin_time.setter
-    def session_begin_time(self, target: str | IField[str] | None) -> None:
-        """Set the SessionBeginTime reference by target ID or IField[str] instance."""
+    def session_begin_time(self, target: str | IField[primitives.DateTime] | None) -> None:
+        """Set the SessionBeginTime reference by target ID or IField[primitives.DateTime] instance."""
         target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("SessionBeginTime")
         if isinstance(member, members.Reference):
@@ -864,8 +864,8 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
         return None
 
     @last_update.setter
-    def last_update(self, target: str | IField[str] | None) -> None:
-        """Set the LastUpdate reference by target ID or IField[str] instance."""
+    def last_update(self, target: str | IField[primitives.DateTime] | None) -> None:
+        """Set the LastUpdate reference by target ID or IField[primitives.DateTime] instance."""
         target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("LastUpdate")
         if isinstance(member, members.Reference):
@@ -948,8 +948,8 @@ class SessionInfoItemInterface(GeneratedComponent, IComponent, IWorldEventReceiv
         return None
 
     @away_kick_interval.setter
-    def away_kick_interval(self, target: str | IField[str] | None) -> None:
-        """Set the AwayKickInterval reference by target ID or IField[str] instance."""
+    def away_kick_interval(self, target: str | IField[primitives.TimeSpan] | None) -> None:
+        """Set the AwayKickInterval reference by target ID or IField[primitives.TimeSpan] instance."""
         target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("AwayKickInterval")
         if isinstance(member, members.Reference):

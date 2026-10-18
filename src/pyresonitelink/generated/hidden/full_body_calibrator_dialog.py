@@ -13,10 +13,10 @@ from pyresonitelink.generated._base import GeneratedComponent
 if TYPE_CHECKING:
     from pyresonitelink.generated.hidden.full_body_calibrator import FullBodyCalibrator
     from pyresonitelink.generated.uix.interaction.button import Button
-    from pyresonitelink.generated.uix.interaction.slider import Slider
+    from pyresonitelink.generated.uix.interaction.slider_of import SliderOf as Slider
     from pyresonitelink.generated.uix.interaction.checkbox import Checkbox
     from pyresonitelink.generated.uix.graphics.text import Text
-    from pyresonitelink.generated.common_ui.editors.quantity_text_editor_parser import QuantityTextEditorParser
+    from pyresonitelink.generated.common_ui.editors.quantity_text_editor_parser_with_t import QuantityTextEditorParserWithT as QuantityTextEditorParser
     from pyresonitelink.generated.uix.utility.slide_swap_region import SlideSwapRegion
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver

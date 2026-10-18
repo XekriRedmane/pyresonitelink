@@ -19,7 +19,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.OnlineStatistics"
 
-    def __init__(self, timestamp: str | None = None, registered_online_users: primitives.Int | None = None, total_online_users: primitives.Int | None = None, present_users: primitives.Int | None = None, away_users: primitives.Int | None = None, users_in_vr: primitives.Int | None = None, users_in_screen: primitives.Int | None = None, users_on_desktop: primitives.Int | None = None, users_on_mobile: primitives.Int | None = None, users_in_visible_public_sessions: primitives.Int | None = None, users_in_visible_semi_accessible_sessions: primitives.Int | None = None, users_in_hidden_sessions: primitives.Int | None = None, users_in_private_sessions: primitives.Int | None = None, users_in_private: primitives.Int | None = None, users_in_lan: primitives.Int | None = None, users_in_contacts: primitives.Int | None = None, users_in_contacts_plus: primitives.Int | None = None, users_in_registered: primitives.Int | None = None, users_in_public: primitives.Int | None = None, graphical_client_users: primitives.Int | None = None, chat_client_users: primitives.Int | None = None, headless_users: primitives.Int | None = None, bot_users: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, timestamp: primitives.DateTime | None = None, registered_online_users: primitives.Int | None = None, total_online_users: primitives.Int | None = None, present_users: primitives.Int | None = None, away_users: primitives.Int | None = None, users_in_vr: primitives.Int | None = None, users_in_screen: primitives.Int | None = None, users_on_desktop: primitives.Int | None = None, users_on_mobile: primitives.Int | None = None, users_in_visible_public_sessions: primitives.Int | None = None, users_in_visible_semi_accessible_sessions: primitives.Int | None = None, users_in_hidden_sessions: primitives.Int | None = None, users_in_private_sessions: primitives.Int | None = None, users_in_private: primitives.Int | None = None, users_in_lan: primitives.Int | None = None, users_in_contacts: primitives.Int | None = None, users_in_contacts_plus: primitives.Int | None = None, users_in_registered: primitives.Int | None = None, users_in_public: primitives.Int | None = None, graphical_client_users: primitives.Int | None = None, chat_client_users: primitives.Int | None = None, headless_users: primitives.Int | None = None, bot_users: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -97,7 +97,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
             self.bot_users = bot_users
 
     @property
-    def timestamp(self) -> str | None:
+    def timestamp(self) -> primitives.DateTime | None:
         """The last time the component got the online statistics successfully."""
         member = self.get_member("Timestamp")
         if member is None:
@@ -105,7 +105,7 @@ class OnlineStatistics(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @timestamp.setter
-    def timestamp(self, value: str) -> None:
+    def timestamp(self, value: primitives.DateTime) -> None:
         """Set the Timestamp field value."""
         member = self.get_member("Timestamp")
         if member is not None:

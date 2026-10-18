@@ -27,8 +27,10 @@ from .interaction.radiant_modal_overlay import RadiantModalOverlay
 from .interaction.reference_proxy_source import ReferenceProxySource
 from .interaction.reference_radio import ReferenceRadio
 from .interaction.reference_receiver import ReferenceReceiver
+from .interaction.reference_receiver_of import ReferenceReceiverOf
 from .interaction.scroll_rect import ScrollRect
 from .interaction.slider import Slider
+from .interaction.slider_of import SliderOf
 from .interaction.text_field import TextField
 from .interaction.ui_grab_instancer import UIGrabInstancer
 from .interaction.value_field_proxy_source import ValueFieldProxySource

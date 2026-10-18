@@ -1,5 +1,8 @@
 """Generated component: ProceduralAssetMetadata."""
 
+from __future__ import annotations
+
+from typing import TYPE_CHECKING
 from typing import Any
 
 A = Any
@@ -8,7 +11,9 @@ from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GenericComponent, T
-from pyresonitelink.generated._types.procedural_asset_provider import ProceduralAssetProvider
+
+if TYPE_CHECKING:
+    from pyresonitelink.generated.none.procedural_asset_provider import ProceduralAssetProvider
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 

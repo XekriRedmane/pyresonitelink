@@ -21,7 +21,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.MysterySettings"
 
-    def __init__(self, difficulty: ResoniteDifficulty | str | None = None, loooong: primitives.Bool | None = None, the_truth: primitives.Bool | None = None, mirror_mirrors: primitives.Bool | None = None, phantom_sense: primitives.Bool | None = None, expressiveness: primitives.Float | None = None, ghosts: primitives.Bool | None = None, more_fps: primitives.Bool | None = None, precious_toggle: primitives.Bool | None = None, toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, precious_toggle_start: str | None = None, precious_toggle_duration: str | None = None, mysterious_message: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, difficulty: ResoniteDifficulty | str | None = None, loooong: primitives.Bool | None = None, the_truth: primitives.Bool | None = None, mirror_mirrors: primitives.Bool | None = None, phantom_sense: primitives.Bool | None = None, expressiveness: primitives.Float | None = None, ghosts: primitives.Bool | None = None, more_fps: primitives.Bool | None = None, precious_toggle: primitives.Bool | None = None, toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, toggle_toggle_toggle_toggle_toggle_toggle_toggle_toggle: primitives.Bool | None = None, precious_toggle_start: primitives.DateTime | None = None, precious_toggle_duration: primitives.TimeSpan | None = None, mysterious_message: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -392,7 +392,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def precious_toggle_start(self) -> str | None:
+    def precious_toggle_start(self) -> primitives.DateTime | None:
         """The PreciousToggleStart field value."""
         member = self.get_member("PreciousToggleStart")
         if member is None:
@@ -400,7 +400,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @precious_toggle_start.setter
-    def precious_toggle_start(self, value: str) -> None:
+    def precious_toggle_start(self, value: primitives.DateTime) -> None:
         """Set the PreciousToggleStart field value."""
         member = self.get_member("PreciousToggleStart")
         if member is not None:
@@ -411,7 +411,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
             )
 
     @property
-    def precious_toggle_duration(self) -> str | None:
+    def precious_toggle_duration(self) -> primitives.TimeSpan | None:
         """How long the previous precious little toggle was held."""
         member = self.get_member("PreciousToggleDuration")
         if member is None:
@@ -419,7 +419,7 @@ class MysterySettings(GeneratedComponent, ICustomInspector):
         return getattr(member, 'value', None)
 
     @precious_toggle_duration.setter
-    def precious_toggle_duration(self, value: str) -> None:
+    def precious_toggle_duration(self, value: primitives.TimeSpan) -> None:
         """Set the PreciousToggleDuration field value."""
         member = self.get_member("PreciousToggleDuration")
         if member is not None:

@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from pyresonitelink.generated.interaction.handlers.interaction_handler import InteractionHandler
     from pyresonitelink.generated.rendering.particle_system.particle_style import ParticleStyle
     from pyresonitelink.generated.rendering.particle_system.modules.speed_range_initializer import SpeedRangeInitializer
-    from pyresonitelink.generated.rendering.particle_system.emitters.particle_emitter import ParticleEmitter
+    from pyresonitelink.generated.rendering.particle_system.emitters.particle_emitter_base import ParticleEmitterBase as ParticleEmitter
 from pyresonitelink.generated._types.itool import ITool
 from pyresonitelink.generated._types.imaterial_apply_policy import IMaterialApplyPolicy
 from pyresonitelink.generated._types.itouchable import ITouchable

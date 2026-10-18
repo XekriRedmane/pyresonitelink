@@ -29,7 +29,7 @@ class DelayUpdatesOrTimeWithObjectTimeSpan(GenericComponent[T], IAsyncNodeOperat
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async.DelayUpdatesOrTimeWithObjectTimeSpan<>"
     _GENERIC_TYPE_TEMPLATE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Async.DelayUpdatesOrTimeWithObjectTimeSpan<>"
 
-    def __init__(self, next: str | INodeOperation | None = None, on_triggered: str | INodeOperation | None = None, updates: str | INodeValueOutput[primitives.Int] | None = None, value: str | INodeObjectOutput[T] | None = None, duration: str | INodeValueOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, on_triggered: str | INodeOperation | None = None, updates: str | INodeValueOutput[primitives.Int] | None = None, value: str | INodeObjectOutput[T] | None = None, duration: str | INodeValueOutput[primitives.TimeSpan] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -151,15 +151,15 @@ class DelayUpdatesOrTimeWithObjectTimeSpan(GenericComponent[T], IAsyncNodeOperat
 
     @property
     def duration(self) -> str | None:
-        """Target ID of the Duration reference (targets INodeValueOutput[str])."""
+        """Target ID of the Duration reference (targets INodeValueOutput[primitives.TimeSpan])."""
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @duration.setter
-    def duration(self, target: str | INodeValueOutput[str] | None) -> None:
-        """Set the Duration reference by target ID or INodeValueOutput[str] instance."""
+    def duration(self, target: str | INodeValueOutput[primitives.TimeSpan] | None) -> None:
+        """Set the Duration reference by target ID or INodeValueOutput[primitives.TimeSpan] instance."""
         target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):

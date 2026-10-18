@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from pyresonitelink.generated.hidden.render_texture_proxy_provider import RenderTextureProxyProvider
     from pyresonitelink.generated.uix.rect_transform import RectTransform
     from pyresonitelink.generated.uix.interaction.button import Button
-    from pyresonitelink.generated.uix.interaction.slider import Slider
+    from pyresonitelink.generated.uix.interaction.slider_of import SliderOf as Slider
     from pyresonitelink.generated.uix.interaction.checkbox import Checkbox
     from pyresonitelink.generated.hidden.interactive_camera_user_control import InteractiveCameraUserControl
     from pyresonitelink.generated.hidden.interactive_camera_control_settings import InteractiveCameraControlSettings

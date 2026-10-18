@@ -18,7 +18,7 @@ class CloudServerStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.CloudServerStatus"
 
-    def __init__(self, status: ServerStatus | str | None = None, response_time_milliseconds: primitives.Int | None = None, last_server_update_time: str | None = None, last_server_state_fetch: str | None = None, last_local_server_response_time: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, status: ServerStatus | str | None = None, response_time_milliseconds: primitives.Int | None = None, last_server_update_time: primitives.DateTime | None = None, last_server_state_fetch: primitives.DateTime | None = None, last_local_server_response_time: primitives.DateTime | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -81,7 +81,7 @@ class CloudServerStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def last_server_update_time(self) -> str | None:
+    def last_server_update_time(self) -> primitives.DateTime | None:
         """The last time the server updated"""
         member = self.get_member("LastServerUpdateTime")
         if member is None:
@@ -89,7 +89,7 @@ class CloudServerStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @last_server_update_time.setter
-    def last_server_update_time(self, value: str) -> None:
+    def last_server_update_time(self, value: primitives.DateTime) -> None:
         """Set the LastServerUpdateTime field value."""
         member = self.get_member("LastServerUpdateTime")
         if member is not None:
@@ -100,7 +100,7 @@ class CloudServerStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def last_server_state_fetch(self) -> str | None:
+    def last_server_state_fetch(self) -> primitives.DateTime | None:
         """The last time the server status was fetched."""
         member = self.get_member("LastServerStateFetch")
         if member is None:
@@ -108,7 +108,7 @@ class CloudServerStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @last_server_state_fetch.setter
-    def last_server_state_fetch(self, value: str) -> None:
+    def last_server_state_fetch(self, value: primitives.DateTime) -> None:
         """Set the LastServerStateFetch field value."""
         member = self.get_member("LastServerStateFetch")
         if member is not None:
@@ -119,7 +119,7 @@ class CloudServerStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
             )
 
     @property
-    def last_local_server_response_time(self) -> str | None:
+    def last_local_server_response_time(self) -> primitives.DateTime | None:
         """The last time the client got a response from the server."""
         member = self.get_member("LastLocalServerResponseTime")
         if member is None:
@@ -127,7 +127,7 @@ class CloudServerStatus(GeneratedComponent, IComponent, IWorldEventReceiver):
         return getattr(member, 'value', None)
 
     @last_local_server_response_time.setter
-    def last_local_server_response_time(self, value: str) -> None:
+    def last_local_server_response_time(self, value: primitives.DateTime) -> None:
         """Set the LastLocalServerResponseTime field value."""
         member = self.get_member("LastLocalServerResponseTime")
         if member is not None:

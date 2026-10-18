@@ -63,7 +63,7 @@ class DebugVector(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @next.setter
     def next(self, target: str | INodeOperation | None) -> None:
         """Set the Next reference by target ID or INodeOperation instance."""
-        target_id: str | None = target.id if isinstance(target, INodeOperation) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Next")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -84,7 +84,7 @@ class DebugVector(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @position.setter
     def position(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Position reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Position")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -105,7 +105,7 @@ class DebugVector(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @vector.setter
     def vector(self, target: str | INodeValueOutput[primitives.Float3] | None) -> None:
         """Set the Vector reference by target ID or INodeValueOutput[primitives.Float3] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Vector")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -126,7 +126,7 @@ class DebugVector(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @color.setter
     def color(self, target: str | INodeValueOutput[primitives.ColorX] | None) -> None:
         """Set the Color reference by target ID or INodeValueOutput[primitives.ColorX] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Color")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -147,7 +147,7 @@ class DebugVector(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @radius_ratio.setter
     def radius_ratio(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the RadiusRatio reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("RadiusRatio")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -168,7 +168,7 @@ class DebugVector(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @duration.setter
     def duration(self, target: str | INodeValueOutput[primitives.Float] | None) -> None:
         """Set the Duration reference by target ID or INodeValueOutput[primitives.Float] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Duration")
         if isinstance(member, members.Reference):
             member.targetId = target_id
@@ -189,7 +189,7 @@ class DebugVector(GeneratedComponent, IMappableNode, ISyncNodeOperation, IExecut
     @local.setter
     def local(self, target: str | INodeValueOutput[primitives.Bool] | None) -> None:
         """Set the Local reference by target ID or INodeValueOutput[primitives.Bool] instance."""
-        target_id: str | None = target.id if isinstance(target, INodeValueOutput) else target  # type: ignore[assignment]
+        target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Local")
         if isinstance(member, members.Reference):
             member.targetId = target_id

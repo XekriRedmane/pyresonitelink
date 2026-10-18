@@ -3,6 +3,7 @@
 from .backspace import Backspace
 from .bell import Bell
 from .carriage_return import CarriageReturn
+from .characters_new_line import CharactersNewLine
 from .form_feed import FormFeed
 from .new_line import NewLine
 from .space import Space

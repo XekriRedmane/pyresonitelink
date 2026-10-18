@@ -14,8 +14,10 @@ from .radiant_modal_overlay import RadiantModalOverlay
 from .reference_proxy_source import ReferenceProxySource
 from .reference_radio import ReferenceRadio
 from .reference_receiver import ReferenceReceiver
+from .reference_receiver_of import ReferenceReceiverOf
 from .scroll_rect import ScrollRect
 from .slider import Slider
+from .slider_of import SliderOf
 from .text_field import TextField
 from .ui_grab_instancer import UIGrabInstancer
 from .value_field_proxy_source import ValueFieldProxySource

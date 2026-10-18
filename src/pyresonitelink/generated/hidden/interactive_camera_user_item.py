@@ -12,7 +12,7 @@ if TYPE_CHECKING:
     from pyresonitelink.generated.hidden.interactive_camera_control import InteractiveCameraControl
     from pyresonitelink.generated.uix.graphics.text import Text
     from pyresonitelink.generated.uix.interaction.button import Button
-    from pyresonitelink.generated.uix.interaction.slider import Slider
+    from pyresonitelink.generated.uix.interaction.slider_of import SliderOf as Slider
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 

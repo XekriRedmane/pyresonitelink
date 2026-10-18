@@ -22,7 +22,7 @@ class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Strings.FormatDateTimeAsTime"
 
-    def __init__(self, date: str | INodeValueOutput[str] | None = None, use24_hour_clock: str | INodeValueOutput[primitives.Bool] | None = None, show_seconds: str | INodeValueOutput[primitives.Bool] | None = None, show_milliseconds: str | INodeValueOutput[primitives.Bool] | None = None, format_provider: str | INodeObjectOutput[IFormatProvider] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, date: str | INodeValueOutput[primitives.DateTime] | None = None, use24_hour_clock: str | INodeValueOutput[primitives.Bool] | None = None, show_seconds: str | INodeValueOutput[primitives.Bool] | None = None, show_milliseconds: str | INodeValueOutput[primitives.Bool] | None = None, format_provider: str | INodeObjectOutput[IFormatProvider] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -54,8 +54,8 @@ class FormatDateTimeAsTime(GeneratedComponent, INodeObjectOutput, IExecutionNode
         return None
 
     @date.setter
-    def date(self, target: str | INodeValueOutput[str] | None) -> None:
-        """Set the Date reference by target ID or INodeValueOutput[str] instance."""
+    def date(self, target: str | INodeValueOutput[primitives.DateTime] | None) -> None:
+        """Set the Date reference by target ID or INodeValueOutput[primitives.DateTime] instance."""
         target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Date")
         if isinstance(member, members.Reference):

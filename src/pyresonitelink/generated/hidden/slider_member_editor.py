@@ -11,7 +11,7 @@ from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
 
 if TYPE_CHECKING:
-    from pyresonitelink.generated.uix.interaction.slider import Slider
+    from pyresonitelink.generated.uix.interaction.slider_of import SliderOf as Slider
     from pyresonitelink.generated.hidden.primitive_member_editor import PrimitiveMemberEditor
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver

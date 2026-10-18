@@ -24,7 +24,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AudioMetadata"
 
-    def __init__(self, location_name: primitives.String | None = None, location_url: str | None = None, location_hidden_from_listing: primitives.Bool | None = None, time_taken: str | None = None, taken_global_position: primitives.Float3 | None = None, taken_global_rotation: primitives.FloatQ | None = None, taken_global_scale: primitives.Float3 | None = None, app_version: primitives.String | None = None, renderer_name: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, location_name: primitives.String | None = None, location_url: str | None = None, location_hidden_from_listing: primitives.Bool | None = None, time_taken: primitives.DateTime | None = None, taken_global_position: primitives.Float3 | None = None, taken_global_rotation: primitives.FloatQ | None = None, taken_global_scale: primitives.Float3 | None = None, app_version: primitives.String | None = None, renderer_name: primitives.String | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -143,7 +143,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
             )
 
     @property
-    def time_taken(self) -> str | None:
+    def time_taken(self) -> primitives.DateTime | None:
         """Exact timestamp that the audio was recorded at"""
         member = self.get_member("TimeTaken")
         if member is None:
@@ -151,7 +151,7 @@ class AudioMetadata(GeneratedComponent, IItemMetadataSource, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @time_taken.setter
-    def time_taken(self, value: str) -> None:
+    def time_taken(self, value: primitives.DateTime) -> None:
         """Set the TimeTaken field value."""
         member = self.get_member("TimeTaken")
         if member is not None:

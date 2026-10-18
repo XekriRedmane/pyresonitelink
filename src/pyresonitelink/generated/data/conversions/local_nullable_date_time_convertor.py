@@ -2,6 +2,7 @@
 
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.ifield import IField
@@ -18,7 +19,7 @@ class LocalNullableDateTimeConvertor(GeneratedComponent, IComponent, IWorldEvent
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.LocalNullableDateTimeConvertor"
 
-    def __init__(self, source: str | IField[Nullable[str]] | None = None, local_date_time: str | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, source: str | IField[Nullable[primitives.DateTime]] | None = None, local_date_time: primitives.DateTime | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -41,8 +42,8 @@ class LocalNullableDateTimeConvertor(GeneratedComponent, IComponent, IWorldEvent
         return None
 
     @source.setter
-    def source(self, target: str | IField[Nullable[str]] | None) -> None:
-        """Set the Source reference by target ID or IField[Nullable[str]] instance."""
+    def source(self, target: str | IField[Nullable[primitives.DateTime]] | None) -> None:
+        """Set the Source reference by target ID or IField[Nullable[primitives.DateTime]] instance."""
         target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Source")
         if isinstance(member, members.Reference):
@@ -54,7 +55,7 @@ class LocalNullableDateTimeConvertor(GeneratedComponent, IComponent, IWorldEvent
             )
 
     @property
-    def local_date_time(self) -> str | None:
+    def local_date_time(self) -> primitives.DateTime | None:
         """The value of the field targeted by ``Source`` converted to the local user's datetime."""
         member = self.get_member("LocalDateTime")
         if member is None:
@@ -62,7 +63,7 @@ class LocalNullableDateTimeConvertor(GeneratedComponent, IComponent, IWorldEvent
         return getattr(member, 'value', None)
 
     @local_date_time.setter
-    def local_date_time(self, value: str) -> None:
+    def local_date_time(self, value: primitives.DateTime) -> None:
         """Set the LocalDateTime field value."""
         member = self.get_member("LocalDateTime")
         if member is not None:

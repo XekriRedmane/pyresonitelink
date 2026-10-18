@@ -1,6 +1,7 @@
 """Generated component: TimeSpanTotalSeconds."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_value_output import INodeValueOutput
@@ -19,7 +20,7 @@ class TimeSpanTotalSeconds(GeneratedComponent, INodeValueOutput, IExecutionNode,
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.TimeAndDate.TimeSpanTotalSeconds"
 
-    def __init__(self, time_span: str | INodeValueOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, time_span: str | INodeValueOutput[primitives.TimeSpan] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -39,8 +40,8 @@ class TimeSpanTotalSeconds(GeneratedComponent, INodeValueOutput, IExecutionNode,
         return None
 
     @time_span.setter
-    def time_span(self, target: str | INodeValueOutput[str] | None) -> None:
-        """Set the TimeSpan reference by target ID or INodeValueOutput[str] instance."""
+    def time_span(self, target: str | INodeValueOutput[primitives.TimeSpan] | None) -> None:
+        """Set the TimeSpan reference by target ID or INodeValueOutput[primitives.TimeSpan] instance."""
         target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("TimeSpan")
         if isinstance(member, members.Reference):

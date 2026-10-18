@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from pyresonitelink.generated.uix.interaction.modal_overlay_manager import ModalOverlayManager
     from pyresonitelink.generated.hidden.radiant_dash_button import RadiantDashButton
     from pyresonitelink.generated.uix.utility.slide_swap_region import SlideSwapRegion
-    from pyresonitelink.generated.common_ui.editors.quantity_text_editor_parser import QuantityTextEditorParser
+    from pyresonitelink.generated.common_ui.editors.quantity_text_editor_parser_with_t import QuantityTextEditorParserWithT as QuantityTextEditorParser
 from pyresonitelink.generated._types.icomponent import IComponent
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 

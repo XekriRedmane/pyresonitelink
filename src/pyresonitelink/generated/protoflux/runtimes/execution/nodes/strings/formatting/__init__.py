@@ -6,3 +6,5 @@ from .format_date_time_as_date import FormatDateTimeAsDate
 from .format_date_time_as_time import FormatDateTimeAsTime
 from .format_string import FormatString
 from .format_timespan import FormatTimespan
+from .to_lower import ToLower
+from .to_upper import ToUpper

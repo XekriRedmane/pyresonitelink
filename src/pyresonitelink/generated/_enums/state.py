@@ -4,9 +4,12 @@ from enum import StrEnum
 
 
 class State(StrEnum):
-    """Enum: [FrooxEngine]FrooxEngine.ContextMenu+State."""
+    """Enum: [FrooxEngine]FrooxEngine.TOTP_Dialog+State."""
 
-    closed = "Closed"
-    opening = "Opening"
-    opened = "Opened"
+    initializing = "Initializing"
+    setup_auth = "SetupAuth"
+    save_recovery_codes = "SaveRecoveryCodes"
+    activate = "Activate"
+    deactivate = "Deactivate"
+    message = "Message"
 

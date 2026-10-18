@@ -20,7 +20,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
 
     COMPONENT_TYPE = "[FrooxEngine]FrooxEngine.AccountMigrationStatus"
 
-    def __init__(self, task_id: primitives.String | None = None, exists: primitives.Bool | None = None, name: primitives.String | None = None, description: primitives.String | None = None, state: MigrationState | str | None = None, estimated_queue_position: primitives.Int | None = None, start_count: primitives.Int | None = None, created_on: str | None = None, started_on: str | None = None, completed_on: str | None = None, records_per_minute: primitives.Double | None = None, currently_migrating: primitives.String | None = None, current_item: primitives.String | None = None, total_record_count: primitives.Int | None = None, total_migrated_record_count: primitives.Int | None = None, total_failed_record_count: primitives.Int | None = None, total_migrated_variable_count: primitives.Int | None = None, total_migrated_variable_definition_count: primitives.Int | None = None, total_contact_count: primitives.Int | None = None, migrated_contact_count: primitives.Int | None = None, migrated_message_count: primitives.Int | None = None, total_group_count: primitives.Int | None = None, migrated_group_count: primitives.Int | None = None, total_migrated_member_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, task_id: primitives.String | None = None, exists: primitives.Bool | None = None, name: primitives.String | None = None, description: primitives.String | None = None, state: MigrationState | str | None = None, estimated_queue_position: primitives.Int | None = None, start_count: primitives.Int | None = None, created_on: primitives.DateTime | None = None, started_on: primitives.DateTime | None = None, completed_on: primitives.DateTime | None = None, records_per_minute: primitives.Double | None = None, currently_migrating: primitives.String | None = None, current_item: primitives.String | None = None, total_record_count: primitives.Int | None = None, total_migrated_record_count: primitives.Int | None = None, total_failed_record_count: primitives.Int | None = None, total_migrated_variable_count: primitives.Int | None = None, total_migrated_variable_definition_count: primitives.Int | None = None, total_contact_count: primitives.Int | None = None, migrated_contact_count: primitives.Int | None = None, migrated_message_count: primitives.Int | None = None, total_group_count: primitives.Int | None = None, migrated_group_count: primitives.Int | None = None, total_migrated_member_count: primitives.Int | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -235,7 +235,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def created_on(self) -> str | None:
+    def created_on(self) -> primitives.DateTime | None:
         """When the migration task was submitted to the list of migrations to be done on the cloud"""
         member = self.get_member("CreatedOn")
         if member is None:
@@ -243,7 +243,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @created_on.setter
-    def created_on(self, value: str) -> None:
+    def created_on(self, value: primitives.DateTime) -> None:
         """Set the CreatedOn field value."""
         member = self.get_member("CreatedOn")
         if member is not None:
@@ -254,7 +254,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def started_on(self) -> str | None:
+    def started_on(self) -> primitives.DateTime | None:
         """When the cloud started to migrate the items for this task."""
         member = self.get_member("StartedOn")
         if member is None:
@@ -262,7 +262,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @started_on.setter
-    def started_on(self, value: str) -> None:
+    def started_on(self, value: primitives.DateTime) -> None:
         """Set the StartedOn field value."""
         member = self.get_member("StartedOn")
         if member is not None:
@@ -273,7 +273,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
             )
 
     @property
-    def completed_on(self) -> str | None:
+    def completed_on(self) -> primitives.DateTime | None:
         """When the Cloud completed this migration task."""
         member = self.get_member("CompletedOn")
         if member is None:
@@ -281,7 +281,7 @@ class AccountMigrationStatus(GeneratedComponent, IComponent, IWorldEventReceiver
         return getattr(member, 'value', None)
 
     @completed_on.setter
-    def completed_on(self, value: str) -> None:
+    def completed_on(self, value: primitives.DateTime) -> None:
         """Set the CompletedOn field value."""
         member = self.get_member("CompletedOn")
         if member is not None:

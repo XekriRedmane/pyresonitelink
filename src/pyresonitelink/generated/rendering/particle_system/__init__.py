@@ -10,6 +10,7 @@ from .emitters.cylinder_emitter import CylinderEmitter
 from .emitters.line_emitter import LineEmitter
 from .emitters.mesh_emitter import MeshEmitter
 from .emitters.particle_emitter import ParticleEmitter
+from .emitters.particle_emitter_base import ParticleEmitterBase
 from .emitters.point_emitter import PointEmitter
 from .emitters.skinned_mesh_emitter import SkinnedMeshEmitter
 from .emitters.sphere_emitter import SphereEmitter

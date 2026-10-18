@@ -1,6 +1,7 @@
 """Generated component: LocalImpulseTimeoutTimeSpan."""
 
 from pyresonitelink.data import members
+from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
 from pyresonitelink.generated._types.inode_operation import INodeOperation
@@ -20,7 +21,7 @@ class LocalImpulseTimeoutTimeSpan(GeneratedComponent, IExecutionNode, INode, ICu
 
     COMPONENT_TYPE = "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.Actions.LocalImpulseTimeoutTimeSpan"
 
-    def __init__(self, next: str | INodeOperation | None = None, timeout: str | INodeValueOutput[str] | None = None, *, component: workers.Component | None = None) -> None:
+    def __init__(self, next: str | INodeOperation | None = None, timeout: str | INodeValueOutput[primitives.TimeSpan] | None = None, *, component: workers.Component | None = None) -> None:
         """Initialize with optional member values.
 
         Args:
@@ -83,15 +84,15 @@ class LocalImpulseTimeoutTimeSpan(GeneratedComponent, IExecutionNode, INode, ICu
 
     @property
     def timeout(self) -> str | None:
-        """Target ID of the Timeout reference (targets INodeValueOutput[str])."""
+        """Target ID of the Timeout reference (targets INodeValueOutput[primitives.TimeSpan])."""
         member = self.get_member("Timeout")
         if isinstance(member, members.Reference):
             return member.targetId
         return None
 
     @timeout.setter
-    def timeout(self, target: str | INodeValueOutput[str] | None) -> None:
-        """Set the Timeout reference by target ID or INodeValueOutput[str] instance."""
+    def timeout(self, target: str | INodeValueOutput[primitives.TimeSpan] | None) -> None:
+        """Set the Timeout reference by target ID or INodeValueOutput[primitives.TimeSpan] instance."""
         target_id: str | None = target if target is None or isinstance(target, str) else target.id
         member = self.get_member("Timeout")
         if isinstance(member, members.Reference):

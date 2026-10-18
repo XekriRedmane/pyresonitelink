@@ -16,12 +16,11 @@ from pyresonitelink.generated._types.sync import Sync
 
 if TYPE_CHECKING:
     from pyresonitelink.generated.users.common_avatar_system.grabber import Grabber
-from pyresonitelink.generated._types.iui_interactable import IUIInteractable
-from pyresonitelink.generated._types.iui_compute_component import IUIComputeComponent
+from pyresonitelink.generated._types.igrabbable import IGrabbable
 from pyresonitelink.generated._types.iworld_event_receiver import IWorldEventReceiver
 
 
-class Slider(GeneratedComponent, IUIInteractable, IUIComputeComponent, IWorldEventReceiver):
+class Slider(GeneratedComponent, IGrabbable, IWorldEventReceiver):
     """The Slider component allows for an object to be grabbed and moved. See Usage for more information.
 
     Category: Transform/Interaction
