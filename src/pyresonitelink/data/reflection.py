@@ -6,6 +6,8 @@ used to describe component type structures, members, and generic parameters.
 
 from dataclasses import dataclass, field
 
+from .utils import json_name
+
 
 # =============================================================================
 # Type References and Generic Parameters
@@ -48,8 +50,8 @@ class GenericParameter:
     unmanaged: bool = False
     struct: bool = False
     enum: bool = False
-    # "class" is a Python keyword, so we use class_ and handle it in codec
-    class_: bool = False
+    # "class" is a Python keyword, so the field is class_ in Python.
+    class_: bool = json_name("class", default=False)
 
 
 # =============================================================================
@@ -228,6 +230,45 @@ class SyncMethodDefinition:
     returnType: TypeReference | None = None
     isStatic: bool = False
     isAsync: bool = False
+
+
+# =============================================================================
+# Enum and Sync Object Definitions
+# =============================================================================
+
+
+@dataclass
+class EnumDefinition:
+    """Full definition of an enum type.
+
+    Args:
+        type: Structured type definition of the enum.
+        backingType: The enum's underlying integer type, e.g. "int".
+        values: Each value's name mapped to its number.
+        isFlags: Whether the enum is a set of bit flags.
+    """
+
+    type: TypeDefinition | None = None
+    backingType: str | None = None
+    values: dict[str, int] | None = None
+    isFlags: bool = False
+
+
+@dataclass
+class SyncObjectDefinition:
+    """Full definition of a sync object type, such as UserRef.
+
+    Args:
+        type: Structured type definition of the sync object.
+        members: All members and their definitions.
+        methods: All supported sync methods.
+        baseTypeIsSyncObject: Whether the base type is also a sync object.
+    """
+
+    type: TypeDefinition | None = None
+    members: dict[str, MemberDefinition] | None = None
+    methods: list[SyncMethodDefinition] | None = None
+    baseTypeIsSyncObject: bool = False
 
 
 # =============================================================================

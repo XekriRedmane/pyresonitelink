@@ -6,6 +6,8 @@ discriminator used in the ResoniteLink protocol.
 """
 
 import datetime
+import functools
+import typing
 from dataclasses import asdict, fields, is_dataclass
 from decimal import Decimal
 import types
@@ -13,7 +15,7 @@ from typing import Any, cast, get_args, get_origin
 
 import numpy as np
 
-from .utils import JSON_IGNORE_KEY
+from .utils import JSON_IGNORE_KEY, JSON_NAME_KEY
 
 from . import fields as field_types
 from . import members as member_types
@@ -399,6 +401,12 @@ def _init_type_registry() -> None:
     _register_type("assetData", response_types.AssetData)
     _register_type("componentTypeList", response_types.ComponentTypeList)
     _register_type("componentDefinitionData", response_types.ComponentDefinitionData)
+    _register_type("typeDefinitionData", response_types.TypeDefinitionData)
+    _register_type("enumDefinitionData", response_types.EnumDefinitionData)
+    _register_type("syncObjectDefinitionData", response_types.SyncObjectDefinitionData)
+    _register_type("sessionData", response_types.SessionData)
+    _register_type("methodResult", response_types.MethodResult)
+    _register_type("batchResponse", response_types.BatchResponse)
 
     # Workers
     _register_type("slot", worker_types.Slot)
@@ -411,7 +419,7 @@ def _init_type_registry() -> None:
     _register_type("emptyElement", member_types.EmptyElement)
     _register_type("empty", member_types.EmptyElement)
     _register_type("enum", member_types.FieldEnum)
-    _register_type("enum?", member_types.FieldEnum)
+    _register_type("enum?", member_types.FieldNullableEnum)
     _register_type("type", member_types.Type)
     _register_type("playback", member_types.SyncPlayback)
     _register_type("dictionary<enum>", member_types.SyncDictionary)
@@ -804,11 +812,19 @@ def _encode_value(value: EncodableType) -> Any:
         return {k: _encode_value(v) for k, v in value.items() if v is not None}
 
     if is_dataclass(value) and not isinstance(value, type):
+        # A primitive keeps its own wire shape wherever it appears, so a
+        # Rect in a list or dict still encodes as position and size.
+        if type(value) in _PRIMITIVE_TYPES:
+            return _encode_primitive(value)
+        # Registered classes get a $type. Plain nested data from this
+        # library, such as a mesh Vertex, is encoded as an object without
+        # one. Any other dataclass is most likely a class that was never
+        # registered, so it raises below.
         cls = type(value)
         if (
             cls in _CLASS_TO_TYPE
-            or cls in _PRIMITIVE_TYPES
             or cls in _SPHERICAL_HARMONICS_TYPES
+            or cls.__module__.startswith("pyresonitelink.")
         ):
             return _encode_dataclass(value)
 
@@ -855,7 +871,7 @@ def _encode_dataclass(obj: DataType) -> dict[str, EncodableType]:
         if is_dataclass(value) and _is_primitive_type(type(value)):
             encoded = _encode_primitive(value)
 
-        result[f.name] = encoded
+        result[f.metadata.get(JSON_NAME_KEY, f.name)] = encoded
 
     return result
 
@@ -888,15 +904,24 @@ def encode(obj: DataType) -> dict[str, Any]:
 # =============================================================================
 
 
+@functools.cache
 def _get_field_types(cls: type) -> dict[str, Any]:
     """Get a mapping of field names to their types for a dataclass.
 
     Returns the full generic type (e.g., list[Slot]) to preserve element type info.
+    String annotations, such as the forward reference in
+    ``list["TypeReference"]``, are resolved, so nested dataclasses decode
+    as dataclasses rather than dicts.
     """
+    try:
+        hints = typing.get_type_hints(cls)
+    except (NameError, TypeError):
+        # A name that only exists for type checking can't be resolved.
+        hints = {}
     result: dict[str, Any] = {}
     for field in fields(cls):
         # Get the actual type, handling Optional types
-        field_type = field.type
+        field_type = hints.get(field.name, field.type)
 
         # Handle X | None (Python 3.10+ union syntax)
         if isinstance(field_type, types.UnionType):
@@ -1001,6 +1026,51 @@ def _decode_value(data: JsonValue, expected_type: type | None = None) -> Any:
     return data
 
 
+# Member definitions in a component or sync object definition, by $type.
+# They're decoded separately because "reference" and "list" also name
+# member types in _TYPE_REGISTRY, which would decode a reference definition
+# as a Reference member.
+_MEMBER_DEFINITION_TYPES: dict[str, type] = {
+    "field": reflection_types.FieldDefinition,
+    "reference": reflection_types.ReferenceDefinition,
+    "list": reflection_types.ListDefinition,
+    "array": reflection_types.ArrayDefinition,
+    "dictionary": reflection_types.DictionaryDefinition,
+    "syncObject": reflection_types.SyncObjectMemberDefinition,
+    "empty": reflection_types.EmptyMemberDefinition,
+    "playback": reflection_types.SyncPlaybackDefinition,
+}
+
+
+def _decode_member_definition(data: dict[str, Any]) -> Any:
+    """Decodes a member definition by its $type.
+
+    Args:
+        data: The member definition JSON, e.g. {"$type": "field", ...}.
+
+    Returns:
+        The reflection dataclass for the $type, or a plain MemberDefinition
+        for an unknown one.
+    """
+    cls = _MEMBER_DEFINITION_TYPES.get(
+        str(data.get("$type")), reflection_types.MemberDefinition,
+    )
+    return _decode_dataclass(data, cls)
+
+
+def _decode_method_result_value(data: dict[str, Any]) -> Any:
+    """Decodes the returned value in a MethodResult.
+
+    A primitive comes back in its field's wire form and decodes as that
+    field class. A reference comes back as {"$type": "reference",
+    "targetID": ...}, which is a DataReference rather than a Reference
+    member.
+    """
+    if data.get("$type") == "reference":
+        return member_types.DataReference(targetID=data.get("targetID"))
+    return _decode_value(data)
+
+
 def _decode_dataclass(data: dict[str, Any], cls: type) -> Any:
     """Decode a dictionary to a dataclass instance.
 
@@ -1019,11 +1089,29 @@ def _decode_dataclass(data: dict[str, Any], cls: type) -> Any:
         if f.metadata.get(JSON_IGNORE_KEY):
             continue
 
-        if f.name not in data or f.name == "$type":
+        key = f.metadata.get(JSON_NAME_KEY, f.name)
+        if key not in data or key == "$type":
             continue
 
-        value = data[f.name]
+        value = data[key]
         field_type = _field_types.get(f.name)
+
+        if field_type is reflection_types.MemberDefinition and isinstance(value, dict):
+            kwargs[f.name] = _decode_member_definition(value)
+            continue
+        if (
+            get_origin(field_type) is dict
+            and get_args(field_type)[1:] == (reflection_types.MemberDefinition,)
+            and isinstance(value, dict)
+        ):
+            kwargs[f.name] = {
+                k: _decode_member_definition(v) if isinstance(v, dict) else v
+                for k, v in value.items()
+            }
+            continue
+        if cls is response_types.MethodResult and f.name == "result" and isinstance(value, dict):
+            kwargs[f.name] = _decode_method_result_value(value)
+            continue
 
         # Handle nested dataclasses
         if isinstance(value, dict):
@@ -1041,8 +1129,18 @@ def _decode_dataclass(data: dict[str, Any], cls: type) -> Any:
                 # Handle dict fields (like members in Component)
                 origin = get_origin(field_type) if field_type else None
                 if field_type is dict or (origin is not None and origin is dict):
-                    # Decode each value in the dict
-                    kwargs[f.name] = {k: _decode_value(v) for k, v in value.items()}
+                    # Decode each value in the dict, against the declared
+                    # value type when there is one, e.g. the TypeReference
+                    # in dict[str, TypeReference]
+                    dict_args = get_args(field_type)
+                    value_type = (
+                        dict_args[1]
+                        if len(dict_args) == 2 and isinstance(dict_args[1], type)
+                        else None
+                    )
+                    kwargs[f.name] = {
+                        k: _decode_value(v, value_type) for k, v in value.items()
+                    }
                 else:
                     kwargs[f.name] = value
         elif isinstance(value, list):

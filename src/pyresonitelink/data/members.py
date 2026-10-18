@@ -78,6 +78,16 @@ class FieldEnum(Member):
 
 
 @dataclass
+class FieldNullableEnum(FieldEnum):
+    """A field containing an optional enum value represented as a string.
+
+    It has its own wire type, "enum?". The server can't cast between the
+    two, so sending "enum?" to a non-nullable enum field fails with an
+    InvalidCastException, and the other way around presumably too.
+    """
+
+
+@dataclass
 class DataReference:
     """A reference passed as an argument to a sync method.
 
@@ -92,6 +102,41 @@ class DataReference:
     """
 
     targetID: str | None = None
+
+
+def tag_method_arguments(
+    arguments: dict[str, object] | None,
+) -> dict[str, "Member | DataReference"]:
+    """Returns sync method arguments in the $type-tagged form the server parses.
+
+    A Member, such as FieldInt(value=2), and a DataReference are passed as
+    they are. Anything else with an ``id`` attribute, such as a component
+    or a slot, becomes a DataReference to it.
+
+    Args:
+        arguments: Parameter names mapped to values, or None.
+
+    Returns:
+        The arguments, ready for CallSyncMethod or CallStaticSyncMethod.
+
+    Raises:
+        TypeError: An argument is neither tagged nor something with an ID.
+            A bare value such as 2 can't be sent, because the server needs
+            its type.
+    """
+    tagged: dict[str, Member | DataReference] = {}
+    for name, value in (arguments or {}).items():
+        if isinstance(value, (Member, DataReference)):
+            tagged[name] = value
+        elif getattr(value, "id", None) is not None:
+            tagged[name] = DataReference(targetID=getattr(value, "id"))
+        else:
+            raise TypeError(
+                f"Argument {name}={value!r} needs a type. Pass a field "
+                f"instance such as fields.FieldInt(value=2), or a "
+                f"members.DataReference."
+            )
+    return tagged
 
 
 @dataclass

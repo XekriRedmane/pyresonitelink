@@ -6,6 +6,27 @@ from typing import Any
 # Metadata key for marking fields to ignore during JSON encoding/decoding
 JSON_IGNORE_KEY = "__json_ignore__"
 
+# Metadata key for a field whose JSON key differs from its Python name
+JSON_NAME_KEY = "__json_name__"
+
+
+def json_name(name: str, **kwargs: Any) -> Any:
+    """Create a dataclass field whose JSON key is name.
+
+    For a JSON key that can't be a Python identifier, such as the keyword
+    "class".
+
+    Args:
+        name: The key the field has in JSON.
+        **kwargs: Arguments passed to dataclasses.field() (e.g., default).
+
+    Returns:
+        A dataclass field with json_name metadata.
+    """
+    metadata = kwargs.pop("metadata", {})
+    metadata[JSON_NAME_KEY] = name
+    return field(metadata=metadata, **kwargs)  # pylint: disable=invalid-field-call
+
 
 def json_ignore(**kwargs: Any) -> Any:
     """Create a dataclass field that is ignored during JSON encoding/decoding.

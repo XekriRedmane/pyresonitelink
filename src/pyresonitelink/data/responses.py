@@ -8,6 +8,7 @@ This module contains response classes received from Resonite after sending messa
 from dataclasses import dataclass
 
 from . import reflection
+from .members import DataReference, Member
 from .workers import Component, Slot
 
 
@@ -100,3 +101,92 @@ class ComponentDefinitionData(Response):
     """
 
     definition: reflection.ComponentDefinition | None = None
+
+
+@dataclass
+class TypeDefinitionData(Response):
+    """Response containing a type's definition.
+
+    Returned by GetTypeDefinition and GetGenericTypeDefinition.
+
+    Args:
+        definition: The definition of the requested type.
+    """
+
+    definition: reflection.TypeDefinition | None = None
+
+
+@dataclass
+class EnumDefinitionData(Response):
+    """Response containing an enum's definition.
+
+    Returned by GetEnumDefinition.
+
+    Args:
+        definition: The definition of the requested enum.
+    """
+
+    definition: reflection.EnumDefinition | None = None
+
+
+@dataclass
+class SyncObjectDefinitionData(Response):
+    """Response containing a sync object's definition.
+
+    Returned by GetSyncObjectDefinition.
+
+    Args:
+        definition: The definition of the requested sync object type.
+    """
+
+    definition: reflection.SyncObjectDefinition | None = None
+
+
+@dataclass
+class SessionData(Response):
+    """Response describing the ResoniteLink session.
+
+    Returned by RequestSessionData.
+
+    Args:
+        resoniteVersion: The version of Resonite, e.g. "2026.9.18.82".
+        resoniteLinkVersion: The version of the ResoniteLink library that
+            Resonite uses, e.g. "0.13.1.0".
+        uniqueSessionId: An ID unique to this ResoniteLink session for as
+            long as the world runs. IDs generated with it as a prefix
+            won't collide with those of another ResoniteLink session in
+            the same world. It isn't unique across worlds or restarts.
+    """
+
+    resoniteVersion: str | None = None
+    resoniteLinkVersion: str | None = None
+    uniqueSessionId: str | None = None
+
+
+@dataclass
+class MethodResult(Response):
+    """Response containing the value a sync method returned.
+
+    Returned by CallSyncMethod and CallStaticSyncMethod.
+
+    Args:
+        result: The returned value, as the field class of its type, such
+            as FieldInt, or a DataReference for a reference. None when the
+            method returns nothing.
+    """
+
+    result: Member | DataReference | None = None
+
+
+@dataclass
+class BatchResponse(Response):
+    """Response to a DataModelOperationBatch.
+
+    success only means that the batch was processed. Each operation's own
+    response says whether that operation succeeded.
+
+    Args:
+        responses: One response per operation, in order.
+    """
+
+    responses: list[Response] | None = None

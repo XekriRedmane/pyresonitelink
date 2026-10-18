@@ -518,3 +518,25 @@ class TestSphericalHarmonics:
         assert isinstance(decoded.value.sh8, fields.FieldColorX)
         assert decoded.value.sh8.value is not None
         assert decoded.value.sh8.value.g == pytest.approx(0.25)
+
+
+class TestEnumFields:
+    """Enum and nullable enum fields have separate wire types."""
+
+    def test_enum_field_encodes_as_enum(self) -> None:
+        # Both used to encode as "enum?", which the server rejects for a
+        # non-nullable enum field with an InvalidCastException.
+        from pyresonitelink.data import members
+
+        encoded = codec._encode_value(members.FieldEnum(id=None, value="Clamp"))  # type: ignore[arg-type]
+        assert encoded == {"$type": "enum", "value": "Clamp"}
+
+    def test_nullable_enum_round_trips(self) -> None:
+        from pyresonitelink.data import members
+
+        decoded = codec._decode_value({"$type": "enum?", "value": None, "id": "Reso_1"})
+        assert isinstance(decoded, members.FieldNullableEnum)
+        assert codec._encode_value(decoded)["$type"] == "enum?"
+        plain = codec._decode_value({"$type": "enum", "value": "Clamp", "id": "Reso_2"})
+        assert type(plain) is members.FieldEnum
+

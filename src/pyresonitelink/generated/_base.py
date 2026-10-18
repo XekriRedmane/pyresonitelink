@@ -214,18 +214,13 @@ class GeneratedComponent:
             The raw JSON response dict.
         """
         assert self.id is not None, "Component has no ID; add_to_slot first"
-        tagged: dict[str, members.Member | members.DataReference] = {}
-        for name, value in (arguments or {}).items():
-            if isinstance(value, (GeneratedComponent, workers.Worker)):
-                assert value.id is not None, f"Argument {name} has no ID"
-                tagged[name] = members.DataReference(targetID=value.id)
-            else:
-                tagged[name] = value
         return await resolink.request_json(
             messages.CallSyncMethod(
                 targetID=self.id,
                 methodName=method_name,
-                arguments=tagged,
+                arguments=members.tag_method_arguments(
+                    dict(arguments or {}),
+                ),
             ),
             debug=debug,
         )
