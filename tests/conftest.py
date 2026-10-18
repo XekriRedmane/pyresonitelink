@@ -7,6 +7,7 @@ import pytest
 import pytest_asyncio
 
 from pyresonitelink import client
+from pyresonitelink import discovery
 from pyresonitelink.data import responses
 
 
@@ -16,7 +17,18 @@ def pytest_addoption(parser: pytest.Parser) -> None:
         "--port",
         action="store",
         type=int,
-        help="Port number for ResoniteLink connection",
+        help=(
+            "Port number for ResoniteLink connection. If omitted, the port "
+            "is found from the session's LAN announcement."
+        ),
+    )
+    parser.addoption(
+        "--session",
+        action="store",
+        help=(
+            "World name of the ResoniteLink session to test against, when "
+            "--port is omitted and more than one session is running."
+        ),
     )
 
 
@@ -27,6 +39,12 @@ async def resolink(
     """Fixture providing a ResoniteLink client."""
     host = "localhost"
     resolink_port = request.config.getoption("--port")
+    if resolink_port is None:
+        session = await discovery.find_session(
+            request.config.getoption("--session"),
+        )
+        print(f"Found session {session.name!r} on port {session.port}")
+        resolink_port = session.port
     print(f"Connecting to ws://{host}:{resolink_port}...")
     resolink_client = client.Client()
     await resolink_client.connect(resolink_port, host)
