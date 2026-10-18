@@ -172,6 +172,28 @@ class MathCallNode(ExprNode):
         self.args = args
 
 
+class MemberAccessNode(ExprNode):
+    """Accessing a property of a DateTime or TimeSpan expression.
+
+    At build time, this materializes into a ProtoFlux node like
+    DateTime_Hour or TimeSpan_TotalSeconds.
+
+    Attributes:
+        member_name: The property name (e.g. "hour", "total_seconds").
+        expr: The expression node being accessed.
+    """
+
+    def __init__(
+        self,
+        member_name: str,
+        expr: ExprNode,
+        result_type: type,
+    ) -> None:
+        super().__init__(result_type)
+        self.member_name = member_name
+        self.expr = expr
+
+
 # =========================================================================
 # Expression Proxy
 # =========================================================================
@@ -194,6 +216,7 @@ def _binop(op: BinOp, left: ExprProxy, right: Any) -> ExprProxy:
     """Create a binary operation proxy."""
     right_proxy = _coerce(right)
     from pyresonitelink.dergflux import _types
+    from pyresonitelink.data import primitives
 
     # Propagate type from typed operand to untyped constant.
     # e.g. FloatDynVar + 1 -> the ConstNode(1) gets Float type.
@@ -206,8 +229,13 @@ def _binop(op: BinOp, left: ExprProxy, right: Any) -> ExprProxy:
 
     result_type: type | None
     if op in _COMPARISON_OPS:
-        from pyresonitelink.data import primitives
         result_type = primitives.Bool
+    elif (
+        op == BinOp.SUB
+        and left_node._type == primitives.DateTime
+        and right_node._type == primitives.DateTime
+    ):
+        result_type = primitives.TimeSpan
     else:
         result_type = _types.infer_result_type(
             left_node._type, right_node._type,
@@ -353,3 +381,36 @@ class ExprProxy:
 
     def __repr__(self) -> str:
         return f"ExprProxy({self._node!r})"
+
+    def __getattr__(self, name: str) -> ExprProxy:
+        """Access properties for DateTime and TimeSpan expressions."""
+        from pyresonitelink.data import primitives
+
+        # Special internal attributes used by builder/serialization
+        if name in ("id", "RESONITE_TYPE"):
+            raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")
+
+        if self._node._type == primitives.DateTime:
+            int_props = {
+                "year", "month", "day", "hour", "minute", "second",
+                "millisecond", "day_of_year", "ticks",
+            }
+            if name in int_props:
+                return ExprProxy(MemberAccessNode(name, self._node, primitives.Int))
+            if name == "day_of_week":
+                # from pyresonitelink.generated._enums.day_of_week import DayOfWeek
+                # return ExprProxy(MemberAccessNode(name, self._node, DayOfWeek))
+                return ExprProxy(MemberAccessNode(name, self._node, primitives.Int))
+
+        if self._node._type == primitives.TimeSpan:
+            int_props = {"days", "hours", "minutes", "seconds", "milliseconds", "ticks"}
+            float_props = {
+                "total_days", "total_hours", "total_minutes",
+                "total_seconds", "total_milliseconds",
+            }
+            if name in int_props:
+                return ExprProxy(MemberAccessNode(name, self._node, primitives.Int))
+            if name in float_props:
+                return ExprProxy(MemberAccessNode(name, self._node, primitives.Double))
+
+        raise AttributeError(f"'{self.__class__.__name__}' object has no attribute '{name}'")

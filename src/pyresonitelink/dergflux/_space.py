@@ -72,6 +72,8 @@ _VAR_TYPES: dict[str, type] = {
     "DoubleDynVar": primitives.Double,
     "StringDynVar": primitives.String,
     "CharDynVar": primitives.Char,
+    "DateTimeDynVar": primitives.DateTime,
+    "TimeSpanDynVar": primitives.TimeSpan,
     # Colors
     "ColorDynVar": primitives.Color,
     "ColorXDynVar": primitives.ColorX,

@@ -20,8 +20,9 @@ from pyresonitelink.dergflux._action import ActionDef, InputDef, OutputDef
 from pyresonitelink.dergflux._graph import Graph, Outcome
 from pyresonitelink.dergflux._space import ModelVarDecl, Space, VarDecl
 from pyresonitelink.dergflux import _math as math
+from pyresonitelink.dergflux import time
 
 __all__ = [
     "ActionDef", "InputDef", "OutputDef",
-    "Graph", "ModelVarDecl", "Outcome", "Space", "VarDecl", "math",
+    "Graph", "ModelVarDecl", "Outcome", "Space", "VarDecl", "math", "time",
 ]

@@ -12,6 +12,8 @@ PYTHON_TO_RESONITE: dict[type, type] = {
     float: primitives.Float,
     bool: primitives.Bool,
     str: primitives.String,
+    primitives.DateTime: primitives.DateTime,
+    primitives.TimeSpan: primitives.TimeSpan,
 }
 
 

@@ -1501,12 +1501,17 @@ class Graph:
 
     # --- Build ---
 
-    async def build(self, resolink: protocols.ResoniteLinkClient) -> None:
+    async def build(
+        self,
+        resolink: protocols.ResoniteLinkClient,
+        debug: bool = False,
+    ) -> None:
         """Materialize the recorded graph as ProtoFlux components.
 
         Args:
             resolink: A connected ResoniteLink client.
+            debug: Whether to print request/response JSON.
         """
         from pyresonitelink.dergflux import _builder
 
-        await _builder.build_graph(self, resolink)
+        await _builder.build_graph(self, resolink, debug=debug)
