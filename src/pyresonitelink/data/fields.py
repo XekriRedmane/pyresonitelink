@@ -45,6 +45,10 @@ from .primitives import (
     Long3,
     Long4,
     Rect,
+    SphericalHarmonicsL1,
+    SphericalHarmonicsL2,
+    SphericalHarmonicsL3,
+    SphericalHarmonicsL4,
     SByte2,
     SByte3,
     SByte4,
@@ -1392,3 +1396,37 @@ class FieldBoundingBox(Member):
     """Field containing a BoundingBox value."""
 
     value: BoundingBox | None = None
+
+
+
+# =============================================================================
+# Spherical Harmonics Fields
+# =============================================================================
+
+
+@dataclass
+class FieldSphericalHarmonicsL1(Member):
+    """Field containing a SphericalHarmonicsL1 value."""
+
+    value: SphericalHarmonicsL1 | None = None
+
+
+@dataclass
+class FieldSphericalHarmonicsL2(Member):
+    """Field containing a SphericalHarmonicsL2 value."""
+
+    value: SphericalHarmonicsL2 | None = None
+
+
+@dataclass
+class FieldSphericalHarmonicsL3(Member):
+    """Field containing a SphericalHarmonicsL3 value."""
+
+    value: SphericalHarmonicsL3 | None = None
+
+
+@dataclass
+class FieldSphericalHarmonicsL4(Member):
+    """Field containing a SphericalHarmonicsL4 value."""
+
+    value: SphericalHarmonicsL4 | None = None

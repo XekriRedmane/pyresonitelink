@@ -183,7 +183,14 @@ class GeneratedComponent:
         self,
         resolink: protocols.ResoniteLinkClient,
         method_name: str,
-        arguments: dict[str, object] | None = None,
+        arguments: (
+            dict[
+                str,
+                members.Member | members.DataReference
+                | GeneratedComponent | workers.Worker,
+            ]
+            | None
+        ) = None,
         debug: bool = False,
     ) -> dict[str, codec.JsonValue]:
         """Call a sync method on this component.
@@ -196,18 +203,29 @@ class GeneratedComponent:
             resolink: Connected ResoniteLink client.
             method_name: Name of the method to call (PascalCase, as
                 defined by Resonite).
-            arguments: Named arguments mapping parameter name to value.
+            arguments: Named arguments mapping parameter name to value. A
+                primitive is passed as its field class, such as
+                ``fields.FieldInt(value=2)``, and a reference as a
+                ``members.DataReference``. A component or slot instance is
+                converted to a ``DataReference`` to it.
             debug: Print request/response JSON.
 
         Returns:
             The raw JSON response dict.
         """
         assert self.id is not None, "Component has no ID; add_to_slot first"
+        tagged: dict[str, members.Member | members.DataReference] = {}
+        for name, value in (arguments or {}).items():
+            if isinstance(value, (GeneratedComponent, workers.Worker)):
+                assert value.id is not None, f"Argument {name} has no ID"
+                tagged[name] = members.DataReference(targetID=value.id)
+            else:
+                tagged[name] = value
         return await resolink.request_json(
             messages.CallSyncMethod(
                 targetID=self.id,
                 methodName=method_name,
-                arguments=arguments or {},
+                arguments=tagged,
             ),
             debug=debug,
         )

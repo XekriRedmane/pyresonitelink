@@ -78,6 +78,23 @@ class FieldEnum(Member):
 
 
 @dataclass
+class DataReference:
+    """A reference passed as an argument to a sync method.
+
+    Sync method arguments use ResoniteLink's ``Data`` types rather than
+    members. A primitive argument is encoded the same way as its field,
+    such as ``FieldInt``, but a reference argument has its own wire form,
+    ``{"$type": "reference", "targetID": ...}``. Note the capital ``ID``,
+    which differs from the ``targetId`` of a ``Reference`` member.
+
+    This class is only ever encoded. The codec decodes ``"reference"`` as
+    a ``Reference`` member.
+    """
+
+    targetID: str | None = None
+
+
+@dataclass
 class Type(Member):
     """A field containing a Resonite type value (assembly-qualified name)."""
 

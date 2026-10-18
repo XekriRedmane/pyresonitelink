@@ -437,3 +437,84 @@ class TestRoundTrip:
         assert isinstance(decoded, Response)
         assert decoded.sourceMessageId == original.sourceMessageId
         assert decoded.success == original.success
+
+
+class TestSyncMethodArguments:
+    """Tests for the $type-tagged arguments of sync method calls."""
+
+    def test_primitive_argument_is_tagged(self) -> None:
+        from pyresonitelink.data import fields, messages
+
+        encoded = encode(messages.CallSyncMethod(
+            targetID="Reso_1",
+            methodName="SetDepth",
+            arguments={"depth": fields.FieldInt(id=None, value=2)},  # type: ignore[arg-type]
+        ))
+        assert encoded["arguments"] == {"depth": {"$type": "int", "value": 2}}
+
+    def test_reference_argument_uses_capital_id(self) -> None:
+        from pyresonitelink.data import members, messages
+
+        encoded = encode(messages.CallSyncMethod(
+            targetID="Reso_1",
+            methodName="ExludeUser",
+            arguments={"user": members.DataReference(targetID="Reso_2")},
+        ))
+        assert encoded["arguments"] == {
+            "user": {"$type": "reference", "targetID": "Reso_2"},
+        }
+
+    def test_reference_member_still_decodes_as_reference(self) -> None:
+        # DataReference shares the "reference" $type, but is registered for
+        # encoding only.
+        decoded = codec._decode_value(
+            {"$type": "reference", "targetId": "Reso_2", "id": "Reso_3"},
+        )
+        assert isinstance(decoded, Reference)
+        assert decoded.targetId == "Reso_2"
+
+
+class TestSphericalHarmonics:
+    """Tests for the spherical harmonics field types."""
+
+    def test_encode_keeps_coefficient_types(self) -> None:
+        from pyresonitelink.data import fields, primitives
+
+        sh = primitives.SphericalHarmonicsL1(
+            sh0=fields.FieldFloat(id=None, value=1.0),  # type: ignore[arg-type]
+            sh1=fields.FieldFloat(id=None, value=2.0),  # type: ignore[arg-type]
+            sh2=fields.FieldFloat(id=None, value=3.0),  # type: ignore[arg-type]
+            sh3=fields.FieldFloat(id=None, value=4.0),  # type: ignore[arg-type]
+        )
+        encoded = codec._encode_value(
+            fields.FieldSphericalHarmonicsL1(id="Reso_9", value=sh),
+        )
+        assert encoded == {
+            "$type": "sh_l1",
+            "id": "Reso_9",
+            "value": {
+                "sh0": {"$type": "float", "value": 1.0},
+                "sh1": {"$type": "float", "value": 2.0},
+                "sh2": {"$type": "float", "value": 3.0},
+                "sh3": {"$type": "float", "value": 4.0},
+            },
+        }
+
+    def test_decode_colorx_coefficients(self) -> None:
+        from pyresonitelink.data import fields, primitives
+
+        coefficient = {
+            "$type": "colorX",
+            "value": {"r": 0.5, "g": 0.25, "b": 0.0, "a": 1.0, "profile": "Linear"},
+        }
+        data = {
+            "$type": "sh_l2",
+            "id": "Reso_9",
+            "value": {f"sh{i}": coefficient for i in range(9)},
+        }
+        decoded = codec._decode_value(data)  # type: ignore[arg-type]
+        assert isinstance(decoded, fields.FieldSphericalHarmonicsL2)
+        assert isinstance(decoded.value, primitives.SphericalHarmonicsL2)
+        assert isinstance(decoded.value.sh8, fields.FieldColorX)
+        assert decoded.value.sh8.value is not None
+        assert decoded.value.sh8.value.g == pytest.approx(0.25)

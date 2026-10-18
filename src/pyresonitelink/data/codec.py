@@ -76,6 +76,7 @@ type PrimitiveType = (
 type MemberType = (
     member_types.Member
     | member_types.Reference
+    | member_types.DataReference
     | member_types.SyncList
     | member_types.SyncObject
     | member_types.EmptyElement
@@ -264,6 +265,10 @@ type FieldType = (
     | field_types.FieldDouble4x4
     | field_types.ArrayDouble4x4
     | field_types.FieldNullableDouble4x4
+    | field_types.FieldSphericalHarmonicsL1
+    | field_types.FieldSphericalHarmonicsL2
+    | field_types.FieldSphericalHarmonicsL3
+    | field_types.FieldSphericalHarmonicsL4
 )
 
 type WorkerType = worker_types.Worker | worker_types.Slot | worker_types.Component
@@ -408,6 +413,10 @@ def _init_type_registry() -> None:
     _register_type("type", member_types.Type)
     _register_type("playback", member_types.SyncPlayback)
     _register_type("dictionary<enum>", member_types.SyncDictionary)
+    # A sync method's reference argument shares the "reference" $type with
+    # Reference members, so it's registered for encoding only. Decoding
+    # "reference" must still produce a Reference member.
+    _CLASS_TO_TYPE[member_types.DataReference] = "reference"
 
     # Primitive Fields - standalone types
     _register_type("byte", field_types.FieldByte)
@@ -607,6 +616,11 @@ def _init_type_registry() -> None:
     # Geometry Fields
     _register_type("Rect", field_types.FieldRect)
     _register_type("BoundingBox", field_types.FieldBoundingBox)
+    # Spherical harmonics fields
+    _register_type("sh_l1", field_types.FieldSphericalHarmonicsL1)
+    _register_type("sh_l2", field_types.FieldSphericalHarmonicsL2)
+    _register_type("sh_l3", field_types.FieldSphericalHarmonicsL3)
+    _register_type("sh_l4", field_types.FieldSphericalHarmonicsL4)
 
 
 # Initialize the registry
@@ -666,6 +680,18 @@ _PRIMITIVE_TYPES: set[type] = {
     primitive_types.Double4x4,
     primitive_types.Rect,
     primitive_types.BoundingBox,
+}
+
+
+# Spherical harmonics values are encoded as plain objects, like the
+# primitives above, but each coefficient keeps its $type because the
+# coefficient type varies. They're decoded by the generic dataclass path,
+# which already decodes any nested value that carries a $type.
+_SPHERICAL_HARMONICS_TYPES: set[type] = {
+    primitive_types.SphericalHarmonicsL1,
+    primitive_types.SphericalHarmonicsL2,
+    primitive_types.SphericalHarmonicsL3,
+    primitive_types.SphericalHarmonicsL4,
 }
 
 
@@ -772,7 +798,11 @@ def _encode_value(value: EncodableType) -> Any:
 
     if is_dataclass(value) and not isinstance(value, type):
         cls = type(value)
-        if cls in _CLASS_TO_TYPE or cls in _PRIMITIVE_TYPES:
+        if (
+            cls in _CLASS_TO_TYPE
+            or cls in _PRIMITIVE_TYPES
+            or cls in _SPHERICAL_HARMONICS_TYPES
+        ):
             return _encode_dataclass(value)
 
     raise ValueError(f"Cannot encode value of type {type(value).__name__}: {value!r}")

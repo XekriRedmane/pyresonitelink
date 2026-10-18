@@ -8,6 +8,7 @@ This module contains message classes used to send commands to Resonite.
 import abc
 from dataclasses import dataclass
 
+from .members import DataReference, Member
 from .workers import Component, Slot
 from .utils import json_ignore
 
@@ -234,12 +235,16 @@ class CallSyncMethod(Message):
         targetID: ID of the component or sync member to call the method on.
         methodName: Name of the method to call.
         arguments: Named arguments to the method, mapping parameter
-            name to value.
+            name to value. The server only accepts values tagged with a
+            ``$type``, so a primitive is passed as its field class, such as
+            ``FieldInt(value=2)``, and a reference as a ``DataReference``.
+            A bare value such as ``2`` fails with "The JSON value could
+            not be converted to ResoniteLink.Data".
     """
 
     targetID: str | None = None
     methodName: str | None = None
-    arguments: dict[str, object] | None = None
+    arguments: dict[str, Member | DataReference] | None = None
 
 
 @dataclass
@@ -254,12 +259,12 @@ class CallStaticSyncMethod(Message):
         targetType: Fully qualified type name.
         methodName: Name of the static method to call.
         arguments: Named arguments to the method, mapping parameter
-            name to value.
+            name to value, tagged as for ``CallSyncMethod``.
     """
 
     targetType: str | None = None
     methodName: str | None = None
-    arguments: dict[str, object] | None = None
+    arguments: dict[str, Member | DataReference] | None = None
 
 
 # =============================================================================

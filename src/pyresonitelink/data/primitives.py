@@ -15,6 +15,8 @@ from typing import TypeAlias
 
 import numpy as np
 
+from .members import Member
+
 
 # =============================================================================
 # Scalar Type Aliases
@@ -859,3 +861,94 @@ class BoundingBox:
         self.max_x = np.float32(self.max_x)  # type: ignore[assignment]
         self.max_y = np.float32(self.max_y)  # type: ignore[assignment]
         self.max_z = np.float32(self.max_z)  # type: ignore[assignment]
+
+
+# =============================================================================
+# Spherical Harmonics
+# =============================================================================
+
+# In FrooxEngine the spherical harmonics types are generic in their
+# coefficient type, which can be any type that supports addition and scaling,
+# such as float, float3, or colorX. ResoniteLink therefore sends each
+# coefficient as a $type-tagged value, the same way a field is encoded, so
+# here each coefficient is a field instance such as FieldColorX. All the
+# coefficients of one value must have the same type, and the server rejects
+# a type that FrooxEngine can't use as a coefficient.
+
+
+@dataclass
+class SphericalHarmonicsL1:
+    """First order spherical harmonics, with 4 coefficients."""
+
+    sh0: Member | None = None
+    sh1: Member | None = None
+    sh2: Member | None = None
+    sh3: Member | None = None
+
+
+@dataclass
+class SphericalHarmonicsL2:
+    """Second order spherical harmonics, with 9 coefficients."""
+
+    sh0: Member | None = None
+    sh1: Member | None = None
+    sh2: Member | None = None
+    sh3: Member | None = None
+    sh4: Member | None = None
+    sh5: Member | None = None
+    sh6: Member | None = None
+    sh7: Member | None = None
+    sh8: Member | None = None
+
+
+@dataclass
+class SphericalHarmonicsL3:
+    """Third order spherical harmonics, with 16 coefficients."""
+
+    sh0: Member | None = None
+    sh1: Member | None = None
+    sh2: Member | None = None
+    sh3: Member | None = None
+    sh4: Member | None = None
+    sh5: Member | None = None
+    sh6: Member | None = None
+    sh7: Member | None = None
+    sh8: Member | None = None
+    sh9: Member | None = None
+    sh10: Member | None = None
+    sh11: Member | None = None
+    sh12: Member | None = None
+    sh13: Member | None = None
+    sh14: Member | None = None
+    sh15: Member | None = None
+
+
+@dataclass
+class SphericalHarmonicsL4:
+    """Fourth order spherical harmonics, with 25 coefficients."""
+
+    sh0: Member | None = None
+    sh1: Member | None = None
+    sh2: Member | None = None
+    sh3: Member | None = None
+    sh4: Member | None = None
+    sh5: Member | None = None
+    sh6: Member | None = None
+    sh7: Member | None = None
+    sh8: Member | None = None
+    sh9: Member | None = None
+    sh10: Member | None = None
+    sh11: Member | None = None
+    sh12: Member | None = None
+    sh13: Member | None = None
+    sh14: Member | None = None
+    sh15: Member | None = None
+    sh16: Member | None = None
+    sh17: Member | None = None
+    sh18: Member | None = None
+    sh19: Member | None = None
+    sh20: Member | None = None
+    sh21: Member | None = None
+    sh22: Member | None = None
+    sh23: Member | None = None
+    sh24: Member | None = None
