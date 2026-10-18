@@ -20,6 +20,12 @@ Check the Releases section for the latest wheel. The repo uses [uv](https://docs
 uv sync
 ```
 
+The repository stores every text file with LF line endings. A pre-commit hook refuses commits that would add CRLF endings or change only a file's line endings. Enable it once in each clone:
+
+```bash
+git config core.hooksPath .githooks
+```
+
 ## Getting Started
 
 ResoniteLink runs inside one world. Enable it with the Enable ResoniteLink button in the dashboard's Session tab, which shows the port to connect to. The [AutoResoLink](https://github.com/XekriRedmane/AutoResoLink) mod can also start it for you whenever you create a new world.

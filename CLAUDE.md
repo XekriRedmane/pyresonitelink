@@ -42,6 +42,9 @@ The repo uses a Python venv maintained by uv.
 # Install dependencies (uses uv)
 uv sync
 
+# Enable the pre-commit hook that refuses line-ending changes (once per clone)
+git config core.hooksPath .githooks
+
 # Run tests (requires running ResoniteLink in Resonite - enable in the dashboard's Session tab)
 # Without --port, the session is found from its LAN announcement (UDP 12512).
 pytest tests/
@@ -742,6 +745,12 @@ See `examples/protoflux_if_else.py` for the complete working example.
 - On Git Bash (MSYS2), paths starting with `/` get mangled to Windows paths. Use `MSYS_NO_PATHCONV=1` when passing category paths like `/Data`.
 - Five components can't be regenerated, because `GetComponentDefinition` throws a NullReferenceException for any component with a `SyncLinear<T>` or `SyncCurve<T>` member (a FrooxEngine bug in `ResoniteLinkReflection.BuildArrayDefinition`). Their modules are from an earlier generation: `AnimationTrack<>` (hand-patched), `BezierTubeMesh`, `GradientStripTexture`, and two PhotonDust `*OverLifetimeLinearGradient`. Component data also omits those members, so gradients and curves can't be read or written through ResoniteLink.
 - `DateTimeDayOfWeek` outputs a `System.DayOfWeek` enum, which isn't generated, so Dergflux has no `day_of_week`.
+
+## Line Endings
+
+- The repository stores LF for every text file, and `.gitattributes` (`* text=auto eol=lf`) checks them out as LF too. Commit dfd79fce converted the 8442 files that had been committed with CRLF.
+- `.githooks/pre-commit` refuses a commit that stores CRLF or changes only line endings. ALWAYS run `git config core.hooksPath .githooks` in a new clone, and NEVER bypass the hook with `--no-verify`.
+- ALWAYS write files with `newline="\n"` in code that generates files. `Path.write_text` and text-mode `open` write CRLF on Windows.
 
 ## Debugging Guidelines
 

@@ -1,0 +1,40 @@
+#!/bin/sh
+# Refuses a commit that stores CRLF line endings or that changes only the
+# line endings of a file. The repository stores LF (see .gitattributes),
+# and tools on Windows keep converting files to CRLF, which turns a
+# one-line change into a diff of every line.
+#
+# Enable it once per clone with:
+#     git config core.hooksPath .githooks
+
+status=0
+
+# Staged files whose stored blob has CRLF endings. .gitattributes converts
+# text files to LF on "git add", so this catches files that git treats as
+# binary or whose text attribute is turned off.
+crlf=$(git diff --cached --name-only -z --diff-filter=ACMR |
+    xargs -0 -r git ls-files --eol -- |
+    awk '$1 == "i/crlf" || $1 == "i/mixed" { sub(/^[^\t]*\t/, ""); print }')
+if [ -n "$crlf" ]; then
+    echo "pre-commit: these staged files have CRLF line endings:" >&2
+    echo "$crlf" | sed 's/^/    /' >&2
+    echo "Convert them to LF and stage them again." >&2
+    status=1
+fi
+
+# Staged files whose line counts change when carriage returns at the ends
+# of lines are ignored. Some of their changes are only line endings.
+plain=$(mktemp)
+ignoring_cr=$(mktemp)
+git diff --cached --numstat > "$plain"
+git diff --cached --numstat --ignore-cr-at-eol > "$ignoring_cr"
+changed=$(diff "$plain" "$ignoring_cr" | sed -n 's/^< [0-9-]*\t[0-9-]*\t//p')
+rm -f "$plain" "$ignoring_cr"
+if [ -n "$changed" ]; then
+    echo "pre-commit: these staged files change line endings:" >&2
+    echo "$changed" | sed 's/^/    /' >&2
+    echo "Restore each file's line endings from HEAD and stage it again." >&2
+    status=1
+fi
+
+exit $status
