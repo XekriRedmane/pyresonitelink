@@ -6,7 +6,7 @@ pyresonitelink is a Python library for interacting with the Resonite VR platform
 
 **Python 3.13+ required.**
 
-Because Python's native numeric types are infinite-precision integers and 64-bit floats, and Resonite has stricter types, this library uses numpy scalar types under the hood to match Resonite's C# type system precisely. Scalar aliases are provided in the `primitives` module: `primitives.Bool`, `primitives.Int`, `primitives.Long`, `primitives.Float`, `primitives.String`, etc. Composite types like `primitives.Float2`, `primitives.Float3`, `primitives.FloatQ`, `primitives.Color`, and `primitives.ColorX` are dataclasses with numpy-typed fields that coerce from plain Python `int`/`float` in their constructors.
+Because Python's native numeric types are infinite-precision integers and 64-bit floats, and Resonite has stricter types, this library uses numpy scalar types under the hood to match Resonite's C# type system precisely. Scalar aliases are provided in the `primitives` module: `primitives.Bool`, `primitives.Int`, `primitives.Long`, `primitives.Float`, `primitives.String`, etc. Composite types like `primitives.Float2`, `primitives.Float3`, `primitives.FloatQ`, `primitives.Color`, and `primitives.ColorX` are dataclasses with numpy-typed fields that coerce from plain Python `int`/`float` in their constructors. Spherical harmonics (`primitives.SphericalHarmonicsL1` through `L4`) are generic in Resonite, so each of their coefficients is a field instance such as `fields.FieldColorX`, which carries its own type.
 
 ## Installation
 
@@ -22,7 +22,21 @@ uv sync
 
 ## Getting Started
 
-Enable ResoniteLink in your Resonite dashboard under Settings. It will show the port number to use for connections.
+ResoniteLink runs inside one world. Enable it with the Enable ResoniteLink button in the dashboard's Session tab, which shows the port to connect to. The [AutoResoLink](https://github.com/XekriRedmane/AutoResoLink) mod can also start it for you whenever you create a new world.
+
+### Finding a Session
+
+Every world running ResoniteLink announces its name and port on the LAN every 10 seconds, so a program can find the port without being told it:
+
+```python
+from pyresonitelink import discovery
+
+session = await discovery.find_session()             # the only running session
+session = await discovery.find_session("My World")   # or the one with this world name
+await resolink.connect(session.port)
+```
+
+`discovery.discover_sessions()` returns every session it hears. Both functions listen for 11 seconds by default, which is long enough to hear each session once.
 
 ### Quick Example
 
@@ -36,7 +50,7 @@ async def main(port: int):
     await resolink.connect(port)
 
     # Get the root slot
-    slot = await resolink.get_slot(slotId="Root", depth=1)
+    slot = await resolink.get_slot("Root", depth=1)
     print(slot)
 
     # Create a slot with raw Python values (auto-coerced)
@@ -156,7 +170,9 @@ python -m pyresonitelink.cli.gencode <port> --all
 python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.ValueField<>" --dry-run
 ```
 
-The `--all` flag recursively walks every component category on the server, scrapes wiki documentation for each component, and regenerates all wrapper classes. Internal ProtoFlux proxy types (~3066 CoreNodes) are skipped automatically. The generator rebuilds `__init__.py` re-exports so new components are immediately importable via the short paths.
+The `--all` flag recursively walks every component category on the server, scrapes wiki documentation for each component, and regenerates all wrapper classes. The category walk doesn't list every component, so `--all` also regenerates every component that already has a generated module. Internal ProtoFlux proxy types (~3066 CoreNodes) are skipped automatically. The generator rebuilds the `__init__.py` re-exports of every generated package, so new components are immediately importable via the short paths.
+
+A component that references another component, such as a `TextRenderer`, imports that class only for type checking. This keeps two components that reference each other from importing each other at runtime.
 
 ### Using Generated Components
 
@@ -201,7 +217,7 @@ await input_b.add_to_slot(resolink, slot_id)
 add = FloatAdd(a=input_a, b=input_b)  # type-checks!
 
 # Invalid: AudioClipPlayer does not implement INodeValueOutput
-add = FloatAdd(a=player)  # mypy error!
+add = FloatAdd(a=player)  # type error!
 ```
 
 ### Calling Sync Methods
@@ -218,7 +234,12 @@ await player.add_to_slot(resolink, slot)
 await player.play(resolink)    # calls CallSyncMethod under the hood
 await player.pause(resolink)
 await player.stop(resolink)
+
+# Arguments are passed as plain values or component instances
+await clip.adjust_volume(resolink, ratio=0.5)
 ```
+
+The server only accepts method arguments tagged with their type, so the generated wrapper sends `ratio=0.5` as a `FieldFloat`, and a reference argument as a `members.DataReference`. If you call `call_method` yourself, pass arguments in that form. A component or slot instance is converted to a reference for you. ResoniteLink has no way to pass an enum or a struct, so a method that takes one can't be called.
 
 See `examples/call_sync_method.py` for the complete example.
 
@@ -343,17 +364,19 @@ python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.ValueField
 
 ## Running Tests
 
-Tests require a running Resonite session with ResoniteLink enabled:
+Tests require a running Resonite session with ResoniteLink enabled. If you leave out `--port`, the tests find the session from its LAN announcement, and `--session` picks one by world name when more than one is running:
 
 ```bash
+pytest tests/
+pytest --session="My World" tests/
 pytest --port=<resonite-link-port> tests/
-pytest --port=<port> tests/test_values.py::test_update_component -s
+pytest --port=<port> tests/test_values.py::TestValues::test_update_component -s
 ```
 
 Type checking:
 
 ```bash
-mypy src/
+pyrefly check
 ```
 
 ## Known Issues

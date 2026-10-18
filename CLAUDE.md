@@ -42,14 +42,17 @@ The repo uses a Python venv maintained by uv.
 # Install dependencies (uses uv)
 uv sync
 
-# Run tests (requires running ResoniteLink in Resonite - enable in dashboard Settings)
+# Run tests (requires running ResoniteLink in Resonite - enable in the dashboard's Session tab)
+# Without --port, the session is found from its LAN announcement (UDP 12512).
+pytest tests/
+pytest --session="World Name" tests/   # pick one of several sessions
 pytest --port=<resonite-link-port> tests/
 
 # Run a single test
 pytest --port=<port> tests/test_values.py::test_update_component -s
 
-# Type checking
-mypy src/
+# Type checking (pyrefly, configured in pyproject.toml)
+pyrefly check
 
 # CLI tools
 python -m pyresonitelink.cli.tree <port>                    # Interactive TUI browser
@@ -174,6 +177,20 @@ The type hierarchy generator (`generate_type_source`) produces proper Python cla
 - **Base types and interfaces** become Python base classes (multiple inheritance)
 - **Root types** (no bases) get an `id: str | None` attribute so they can be used as reference targets
 
+#### Reference Targets That Are Components
+
+- A reference can target another component, e.g. `LegacyCloudStorageSpaceIndicator._ownerLabel -> TextRenderer`. There is no `_types/` stub for a component.
+- The generator imports such a class from its real module under `if TYPE_CHECKING:` and adds `from __future__ import annotations`. `gencode` tracks the modules in `_component_modules` and passes them as `component_modules`.
+- NEVER import a component reference target at runtime. Components that reference each other would import each other circularly.
+- Reference setters test `isinstance(target, str)` rather than `isinstance(target, TargetClass)`, because the target class only exists for type checking.
+- Before Oct 2026 these imports pointed at nonexistent `_types/` modules, which made 20 of 33 generated packages (including `assets`) fail to import, unnoticed.
+
+ALWAYS check that every generated package imports after regenerating:
+
+```bash
+uv run python -c "import importlib, pkgutil, pyresonitelink.generated as g; [importlib.import_module(m.name) for m in pkgutil.walk_packages(g.__path__, g.__name__ + '.') if m.ispkg]"
+```
+
 #### Resonite's Non-Generic / Generic Type Duality
 
 Resonite has a pattern where both a non-generic `X` and a generic `X<T>` exist as separate types, with `X<T>` inheriting from `X`. For example:
@@ -206,7 +223,7 @@ Some Resonite types have self-referential constraints like `V: IEngineAssetVaria
 
 #### TypeVar Bounds in `_types/` Stubs
 
-Generated `_types/` stubs use **unbounded** TypeVars (no `bound=` parameter). Although the server reports bounds (e.g. `T: IWorldElement`), including them causes false-positive mypy errors when component classes use their own `T` (from `GenericComponent[T]`, which is unbounded) as a type argument to a bounded stub. The stubs exist for isinstance checks and type annotations, not runtime enforcement.
+Generated `_types/` stubs use **unbounded** TypeVars (no `bound=` parameter). Although the server reports bounds (e.g. `T: IWorldElement`), including them causes false-positive type errors when component classes use their own `T` (from `GenericComponent[T]`, which is unbounded) as a type argument to a bounded stub. The stubs exist for isinstance checks and type annotations, not runtime enforcement.
 
 #### Undefined Type Parameters in Non-Generic Components
 
@@ -349,7 +366,7 @@ FloatInput = ValueInput[primitives.Float]
 add = FloatAdd(a=input_a, b=input_b)  # type-checks
 
 # Invalid: AudioClipPlayer does not implement INodeValueOutput
-add = FloatAdd(a=player)  # mypy error!
+add = FloatAdd(a=player)  # type error!
 ```
 
 The generator collects interfaces by tracing the component's base type chain via `GetTypeDefinition`, then deduplicates:
@@ -408,9 +425,10 @@ Dynamic variables (`*DynVar`) are more complex to test than model variables beca
 
 1. **`OnlyDirectBinding=False`**: ALWAYS set `OnlyDirectBinding` to `False` on the `DynamicVariableSpace` component (the Dergflux builder does this by default). If `True`, nodes on child slots (like temporary readers) will fail to bind to the variable.
 2. **Value vs. Reference Dispatch**: 
-   - Primitive types (`bool`, `int`, `float`, etc.) use `DynamicValueVariable<T>`.
-   - Object types (including **`string`**) use `DynamicReferenceVariable<T>`.
-   The Dergflux builder handles this dispatch automatically based on the Resonite type.
+   - Primitive types (`bool`, `int`, `float`, etc.) **and `string`** use the `DynamicValueVariable<T>` data component.
+   - Only world elements (`Slot`, `User`, components) use `DynamicReferenceVariable<T>`. `DynamicReferenceVariable<string>` doesn't exist, and adding it fails with "Failed to resolve type".
+   - The ProtoFlux read/write nodes are different: `string` uses the Object variants (`ReadDynamicObjectVariable<string>`), and those work with a `DynamicValueVariable<string>`.
+   The Dergflux builder handles this dispatch automatically, using `_is_reference_type` for the data component and `_is_protoflux_object_type` for the nodes.
 3. **Binding Latency**: Dynamic variables require 1-2 engine updates to bind to their space. ALWAYS use a "gate" variable (like `ran`) and poll it to ensure the entire impulse has finished before checking results.
 4. **Reader Type Strings**: `ReadDynamicValueVariable<T>` is extremely sensitive to assembly qualification. Some versions of this node in Resonite require a double-qualified name: `[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.FrooxEngine.Variables.ReadDynamicValueVariable<T>`.
 
@@ -482,6 +500,16 @@ await audio_output.exlude_user(resolink, user="some-user-id")
 
 `CallStaticSyncMethod` calls static methods on a type (field: `targetType` instead of `targetID`).
 
+#### Method Arguments Must Be `$type`-Tagged
+
+- The server parses `arguments` as ResoniteLink `Data` values. A bare value like `{"depth": 2}` fails with "The JSON value could not be converted to ResoniteLink.Data".
+- A primitive argument uses the same wire form as its field, so pass the field class: `fields.FieldInt(value=2)` encodes as `{"$type": "int", "value": 2}`. The extra `id` that `Member` adds is ignored by the server.
+- A reference argument is `members.DataReference(targetID=...)`, which encodes as `{"$type": "reference", "targetID": ...}`. Note the capital `ID`, unlike the `targetId` of a `Reference` member.
+- `DataReference` is registered in the codec for encoding only. NEVER register it with `_register_type`, which would make `"reference"` decode as a `DataReference` instead of a `Reference` member.
+- There is no `Data` type for enums or structs, so methods taking those can't be called through ResoniteLink.
+
+The generator emits the tagging (`_method_argument_field_class`), and `call_method` converts component and slot instances to `DataReference`.
+
 ### ProtoFlux
 
 ProtoFlux is Resonite's visual programming system. Nodes are components that wire together via references. Understanding the execution model is important:
@@ -508,6 +536,12 @@ Resonite distinguishes between **value types** and **object types** in ProtoFlux
 **`string` is an object type, not a value type.** This is a common gotcha. Even though `string` has a `FieldString` field class and looks like a value type in the data model, in ProtoFlux it is an object type. `ValueInput<string>` does not exist — you must use `ValueObjectInput<string>`. Similarly, `WriteDynamicValueVariable<string>` does not exist — use `WriteDynamicObjectVariable<string>`.
 
 ALWAYS check whether a type needs Value or Object variants before creating ProtoFlux nodes. The `_is_protoflux_object_type()` helper in the Dergflux builder handles this.
+
+#### Wire Inputs to the Node, Not Its Value Field
+
+- A `ValueInput<T>` node implements `INodeValueOutput<T>`, but its `Value` field doesn't.
+- Wiring a reference to the field's member ID fails with "Reference target ... is not compatible type".
+- ALWAYS return the component itself from builder `_materialize_*` methods for constant nodes. A change that returned the `Value` member ID broke every Dergflux graph with a constant (fixed Oct 2026). The mock-based `test_dergflux_builder.py` didn't catch it, so ALWAYS run the integration tests after changing the builder.
 
 #### GlobalValue vs ValueInput for IGlobalValueProxy References
 
@@ -647,7 +681,7 @@ add2 = FloatAdd(a=add1, b=input_5)
 add2 = FloatAdd(a=add1.id, b=input_5.id)
 ```
 
-Any node that implements `INodeValueOutput<T>` can be used as a value input. This includes `ValueInput<T>`, `ValueAdd<T>`, and all other computation nodes. The type checker enforces this — passing an `AudioClipPlayer` where `INodeValueOutput[float32]` is expected is a mypy error.
+Any node that implements `INodeValueOutput<T>` can be used as a value input. This includes `ValueInput<T>`, `ValueAdd<T>`, and all other computation nodes. The type checker enforces this — passing an `AudioClipPlayer` where `INodeValueOutput[float32]` is expected is a type error.
 
 For impulse/flow connections, the source node's output points to the target:
 
@@ -689,7 +723,6 @@ See `examples/protoflux_if_else.py` for the complete working example.
 - First WebSocket connection fails with `ConnectionClosedError` on initial request. Workaround is implemented in the client (retry logic).
 - On Git Bash (MSYS2), paths starting with `/` get mangled to Windows paths. Use `MSYS_NO_PATHCONV=1` when passing category paths like `/Data`.
 - 18 `_types/` stubs are minimal placeholders because `GetTypeDefinition` fails for component types. These need a fallback to `GetComponentDefinition`. See memory file `type_stub_todo.md` for the full list.
-- `cli/get_components.py` passes message objects to the convenience API methods instead of using keyword args (pre-existing, not yet fixed).
 
 ## Debugging Guidelines
 
@@ -729,7 +762,7 @@ Key definition patterns:
 
 ### Generation Performance
 
-The generator caches `GetTypeDefinition` responses and interface collection results. Most components share the same base type chain, so repeated lookups are instant. Internal ProtoFlux proxy types (3066 CoreNodes with hex suffixes) are skipped via `_SKIP_CATEGORIES`. Full generation of all ~4800 components takes ~3 minutes.
+The generator caches `GetTypeDefinition` responses and interface collection results. Most components share the same base type chain, so repeated lookups are instant. Internal ProtoFlux proxy types (3066 CoreNodes with hex suffixes) are skipped via `_SKIP_CATEGORIES`. Full generation (`--all`, about 8000 component types including the existing ones) took about 45 minutes on 18 Oct 2026.
 
 ### Resonite Type String Gotchas
 
@@ -773,7 +806,7 @@ Exemptions from this rule:
   - collections.abc module
   - typing_extensions module
 
-You must annotate Python code with type hints. Type-check the code at build time with mypy. In most cases, when feasible, type annotations are in source files. For third-party or extension modules, annotations can be in stub .pyi files.
+You must annotate Python code with type hints. Type-check the code at build time with pyrefly. In most cases, when feasible, type annotations are in source files. For third-party or extension modules, annotations can be in stub .pyi files.
 
 You must add docstrings to all classes and functions using the Google style of docstrings.
 
