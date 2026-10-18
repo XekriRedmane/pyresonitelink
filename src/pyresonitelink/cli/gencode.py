@@ -27,6 +27,9 @@ from pyresonitelink.generated._generator import (
     generate_type_source,
     get_enum_module_name,
     get_reference_target_types,
+    _CLASS_NAME_OVERRIDES,
+    _arity_key,
+    _collect_referenced_type_keys,
     _collect_referenced_types,
     _is_generic_param_name,
     _is_primitive_wire_name,
@@ -116,18 +119,183 @@ async def _get_type_definition_cached(
     return None
 
 
-# Cache for _collect_component_interfaces results, keyed by
-# component type's simple class name.
+# Cache for _collect_component_interfaces results, keyed by the
+# component type's _arity_key.
 _interface_cache: dict[str, list[str]] = {}
 
-# Maps each component seen so far, by its type name without generic
-# arguments, to the module and class that define it, e.g.
-# "[FrooxEngine]FrooxEngine.TextRenderer" to
+# Maps each component seen so far, by its _arity_key, to the module and
+# class that define it, e.g. "[FrooxEngine]FrooxEngine.TextRenderer" to
 # ("pyresonitelink.generated.rendering.text_renderer", "TextRenderer").
 # A component that references another component imports it from there
 # for type checking. The full type name keeps FrooxEngine.Slider and
-# FrooxEngine.UIX.Slider apart.
+# FrooxEngine.UIX.Slider apart, and the arity marker keeps UIX.Slider and
+# UIX.Slider<T> apart.
 _component_modules: dict[str, tuple[str, str]] = {}
+
+# GetComponentDefinition responses by type name, or None when the request
+# failed, which is also how a type that isn't a component shows up.
+_component_definitions: dict[str, dict[str, Any] | None] = {}
+
+# _arity_keys whose family has already been checked for name clashes.
+_names_assigned: set[str] = set()
+
+
+async def _get_component_definition(
+    resolink: client.Client, component_type: str,
+) -> dict[str, Any] | None:
+    """Returns a component's flattened definition, or None if there's none.
+
+    Args:
+        resolink: Connected ResoniteLink client.
+        component_type: Fully qualified Resonite type name.
+
+    Returns:
+        The "definition" dict from the response, or None if the request
+        failed.
+    """
+    if component_type not in _component_definitions:
+        resp = await resolink.request_json(
+            messages.GetComponentDefinition(
+                componentType=component_type, flattened=True,
+            )
+        )
+        _component_definitions[component_type] = (
+            cast(dict[str, Any], resp.get("definition", {}))
+            if resp.get("success") else None
+        )
+    return _component_definitions[component_type]
+
+
+def _describe_generic_param(name: str) -> str:
+    """Returns the word a generic parameter adds to a class name.
+
+    ProtoFlux names the execution context type parameter C, so it becomes
+    "Context". A T-prefixed name such as TValue loses the T. Any other
+    name is used as it is.
+
+    Args:
+        name: The generic parameter's name, e.g. "C" or "TValue".
+
+    Returns:
+        e.g. "Context" or "Value".
+    """
+    if name == "C":
+        return "Context"
+    if re.fullmatch(r"T[A-Z][A-Za-z0-9]*", name):
+        return name[1:]
+    return name
+
+
+async def _assign_class_names(
+    resolink: client.Client, component_type: str,
+) -> None:
+    """Gives distinct class names to components that share a plain name.
+
+    Resonite treats X, X<T>, and X<T1, T2> as different types, but all
+    three would become the Python class X in the same module. This looks
+    up the whole family and records the names in _CLASS_NAME_OVERRIDES:
+
+    - Among the generic forms, the one with the fewest parameters keeps
+      the plain name. Each longer form adds "With" and its extra
+      parameters, e.g. ValueWrite<C, T> becomes ValueWriteWithContext.
+    - Of a non-generic X and a generic X<T>, when one derives from the
+      other, the descendant keeps the plain name and the ancestor gets
+      "Base". FireOnLocalTrue derives from FireOnLocalTrue<C>, which
+      becomes FireOnLocalTrueBase. When neither derives from the other,
+      the generic one gets "Of", e.g. SliderOf.
+
+    Args:
+        resolink: Connected ResoniteLink client.
+        component_type: Fully qualified Resonite type name.
+    """
+    key = _arity_key(component_type)
+    if key in _names_assigned:
+        return
+    stem = re.sub(r"<.*", "", key)
+    family: dict[int, dict[str, Any]] = {}
+    family_keys: dict[int, str] = {}
+    for arity in range(4):
+        member_key = stem if arity == 0 else f"{stem}<{',' * (arity - 1)}>"
+        _names_assigned.add(member_key)
+        definition = await _get_component_definition(resolink, member_key)
+        if definition is not None:
+            family[arity] = definition
+            family_keys[arity] = member_key
+    if len(family) < 2:
+        return
+
+    def params(arity: int) -> list[str]:
+        type_def = family[arity].get("type") or {}
+        return [
+            str(p.get("name", ""))
+            for p in type_def.get("genericParameters") or []
+        ]
+
+    async def base_key(arity: int) -> str:
+        # A flattened definition leaves out the base type, so this asks
+        # for the unflattened one.
+        resp = await resolink.request_json(
+            messages.GetComponentDefinition(
+                componentType=family_keys[arity], flattened=False,
+            )
+        )
+        definition = cast(dict[str, Any], resp.get("definition") or {})
+        type_def = definition.get("type") or {}
+        base = (type_def.get("baseType") or {}).get("type") or ""
+        return _arity_key(str(base))
+
+    plain = _to_class_name(stem, use_overrides=False)
+    generic_arities = sorted(a for a in family if a > 0)
+    for arity in generic_arities[1:]:
+        shortest = params(generic_arities[0])
+        extra = [p for p in params(arity) if p not in shortest]
+        suffix = "".join(_describe_generic_param(p) for p in extra) or str(arity)
+        _CLASS_NAME_OVERRIDES[family_keys[arity]] = f"{plain}With{suffix}"
+    if 0 in family and generic_arities:
+        generic = generic_arities[0]
+        if await base_key(0) == family_keys[generic]:
+            _CLASS_NAME_OVERRIDES[family_keys[generic]] = f"{plain}Base"
+        elif await base_key(generic) == family_keys[0]:
+            _CLASS_NAME_OVERRIDES[family_keys[0]] = f"{plain}Base"
+        else:
+            _CLASS_NAME_OVERRIDES[family_keys[generic]] = f"{plain}Of"
+
+
+def _avoid_namespace_clash(component_type: str, category: str) -> None:
+    """Renames a component whose module already belongs to another one.
+
+    Two components with the same name in different namespaces, such as
+    Strings.NewLine and Strings.Characters.NewLine, can land in the same
+    category and so the same file. The one that doesn't own the existing
+    file gets the namespace segments that tell it apart as a prefix, e.g.
+    CharactersNewLine.
+
+    Args:
+        component_type: Fully qualified Resonite type name.
+        category: Category path from the component's definition.
+    """
+    key = _arity_key(component_type)
+    if key in _CLASS_NAME_OVERRIDES:
+        return
+    path = _output_path_for_component(component_type, category)
+    if not path.exists():
+        return
+    match = re.search(
+        r'^    (?:COMPONENT_TYPE|_GENERIC_TYPE_TEMPLATE) = "([^"]+)"$',
+        path.read_text(encoding="utf-8"),
+        flags=re.MULTILINE,
+    )
+    if not match:
+        return
+    owner_stem = re.sub(r"<.*", "", match.group(1))
+    stem = re.sub(r"<.*", "", key)
+    if owner_stem == stem:
+        return
+    namespace = re.sub(r"^\[.*?\]", "", stem).split(".")[:-1]
+    owner_namespace = re.sub(r"^\[.*?\]", "", owner_stem).split(".")[:-1]
+    extra = [part for part in namespace if part not in owner_namespace]
+    prefix = "".join(extra) if extra else namespace[-1]
+    _CLASS_NAME_OVERRIDES[key] = prefix + _to_class_name(component_type)
 
 
 def _record_component_module(component_type: str, category: str) -> None:
@@ -139,7 +307,7 @@ def _record_component_module(component_type: str, category: str) -> None:
     """
     path = _output_path_for_component(component_type, category)
     rel = path.relative_to(_GENERATED_DIR.parent.parent).with_suffix("")
-    _component_modules[re.sub(r"<.*", "", component_type)] = (
+    _component_modules[_arity_key(component_type)] = (
         ".".join(rel.parts), _to_class_name(component_type),
     )
 
@@ -165,7 +333,7 @@ async def _collect_component_interfaces(
         List of full Resonite interface type strings (e.g.
         ``"[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<>"``).
     """
-    cache_key = _simple_class_name(component_type)
+    cache_key = _arity_key(component_type)
     if cache_key in _interface_cache:
         return _interface_cache[cache_key]
 
@@ -450,27 +618,31 @@ async def _generate_component(
                     save_docs(cls_name, wiki_docs)
                     # New docs found — force regeneration so the
                     # docs get merged into the component code.
-                    generated.discard(cls_name)
+                    generated.discard(_arity_key(component_type))
 
-    if cls_name in generated:
+    # ValueWrite<T> and ValueWrite<C, T> are different components, so the
+    # key keeps the arity.
+    gen_key = _arity_key(component_type)
+    if gen_key in generated:
         return
-    generated.add(cls_name)
+    generated.add(gen_key)
 
-    # Get component definition
-    def_resp = await resolink.request_json(
-        messages.GetComponentDefinition(
-            componentType=component_type, flattened=True
+    definition = await _get_component_definition(resolink, component_type)
+    if definition is None:
+        def_resp = await resolink.request_json(
+            messages.GetComponentDefinition(
+                componentType=component_type, flattened=True
+            )
         )
-    )
-    if not def_resp.get("success"):
         print(f"Error: {def_resp.get('errorInfo')}")
         return
-
-    definition = cast(dict[str, Any], def_resp.get("definition", {}))
     category = str(definition.get("categoryPath", ""))
 
     if category in _SKIP_CATEGORIES:
         return
+
+    await _assign_class_names(resolink, component_type)
+    _avoid_namespace_clash(component_type, category)
 
     # Generate referenced types first.
     # The definition's TypeReference dicts contain full generic args
@@ -479,24 +651,23 @@ async def _generate_component(
     # member types.  comp_data is no longer used.
     ref_targets = get_reference_target_types(definition, None)
     for target_type_str in ref_targets.values():
-        for ref_base in _collect_referenced_types(target_type_str):
-            ref_cls = _simple_class_name(ref_base)
-            if ref_cls not in generated:
+        # The keys keep the arity, so a reference to Slider<float> finds
+        # the generic UIX.Slider<T> and not the non-generic UIX.Slider.
+        for ref_key in _collect_referenced_type_keys(target_type_str):
+            ref_base = re.sub(r"<.*", "", ref_key)
+            if ref_key not in generated:
                 # Try as component first
-                check = await resolink.request_json(
-                    messages.GetComponentDefinition(
-                        componentType=ref_base, flattened=True
-                    )
+                check_def = await _get_component_definition(
+                    resolink, ref_key,
                 )
-                if check.get("success"):
-                    check_def = cast(
-                        dict[str, Any], check.get("definition", {}),
-                    )
+                if check_def is not None:
                     check_category = str(check_def.get("categoryPath", ""))
                     if check_category not in _SKIP_CATEGORIES:
-                        _record_component_module(ref_base, check_category)
+                        await _assign_class_names(resolink, ref_key)
+                        _avoid_namespace_clash(ref_key, check_category)
+                        _record_component_module(ref_key, check_category)
                     await _generate_component(
-                        resolink, ref_base, generated,
+                        resolink, ref_key, generated,
                         all_type_defs, dry_run,
                         type_def_cache,
                     )
@@ -737,16 +908,18 @@ def _existing_component_types() -> list[str]:
         rel_parts = path.relative_to(_GENERATED_DIR).parts
         if any(part.startswith("_") for part in rel_parts):
             continue
+        text = path.read_text(encoding="utf-8")
         match = re.search(
-            r'^    COMPONENT_TYPE = "([^"]+)"$',
-            path.read_text(encoding="utf-8"),
+            r'^    (?:COMPONENT_TYPE|_GENERIC_TYPE_TEMPLATE) = "([^"]+)"$',
+            text,
             flags=re.MULTILINE,
         )
-        if match:
+        class_match = re.search(r"^class (\w+)", text, flags=re.MULTILINE)
+        if match and class_match:
             found.append(match.group(1))
             rel = path.relative_to(_GENERATED_DIR.parent.parent).with_suffix("")
-            _component_modules[re.sub(r"<.*", "", match.group(1))] = (
-                ".".join(rel.parts), _to_class_name(match.group(1)),
+            _component_modules[_arity_key(match.group(1))] = (
+                ".".join(rel.parts), class_match.group(1),
             )
     return found
 
@@ -806,16 +979,14 @@ async def generate_all(
         types: list[str] = []
         for ct in cast(list[str], resp.get("componentTypes") or []):
             types.append(ct)
-            # Record every module before generating any, so that the
-            # order of generation can't decide how a reference to a
-            # component is imported.
             if category_path.lstrip("/") not in _SKIP_CATEGORIES:
-                _record_component_module(ct, category_path.lstrip("/"))
+                walked_categories[ct] = category_path.lstrip("/")
         for sub in cast(list[str], resp.get("subcategories") or []):
             sub_path = f"{category_path}/{sub}" if category_path else f"/{sub}"
             types.extend(await walk_category(sub_path))
         return types
 
+    walked_categories: dict[str, str] = {}
     print("Discovering component types...")
     all_types = await walk_category("")
     print(f"Found {len(all_types)} component types")
@@ -829,6 +1000,15 @@ async def generate_all(
             listed.add(existing)
     print(f"Regenerating {len(all_types)} component types, "
           f"including those already generated")
+    # Name every component and record its module before generating any,
+    # so that the order of generation can't decide how a reference to a
+    # component is imported.
+    print("Assigning class names...")
+    for ct in walked_categories:
+        await _assign_class_names(resolink, ct)
+    for ct, category in walked_categories.items():
+        _avoid_namespace_clash(ct, category)
+        _record_component_module(ct, category)
 
     errors = 0
     for i, comp_type in enumerate(all_types):

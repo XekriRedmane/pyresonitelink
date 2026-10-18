@@ -356,7 +356,46 @@ def _safe_python_name(name: str) -> str:
     return py
 
 
-def _to_class_name(component_type: str) -> str:
+# Maps a component's type name, with its generic arguments reduced to an
+# arity marker (see _arity_key), to the class name it gets instead of the
+# plain one. gencode fills it in when two components would otherwise get
+# the same name: "...ValueWrite<,>" -> "ValueWriteWithContext", or
+# "...UIX.Slider<>" -> "SliderOf".
+_CLASS_NAME_OVERRIDES: dict[str, str] = {}
+
+
+def _arity_key(resonite_type: str) -> str:
+    """Returns a type name with its generic arguments reduced to commas.
+
+    ``ValueWrite<[FrooxEngineContext], float>`` and ``ValueWrite<,>``
+    both become ``ValueWrite<,>``, and ``Slider<float>`` becomes
+    ``Slider<>``. A non-generic name is returned unchanged. This tells
+    apart types that share a name but differ in their number of generic
+    parameters, which Resonite treats as different types.
+
+    Args:
+        resonite_type: Full Resonite type string.
+
+    Returns:
+        The type name with an arity marker.
+    """
+    start = resonite_type.find("<")
+    if start < 0:
+        return resonite_type
+    end = resonite_type.rfind(">")
+    depth = 0
+    commas = 0
+    for ch in resonite_type[start + 1:end]:
+        if ch in "<[":
+            depth += 1
+        elif ch in ">]":
+            depth -= 1
+        elif ch == "," and depth == 0:
+            commas += 1
+    return f"{resonite_type[:start]}<{',' * commas}>"
+
+
+def _to_class_name(component_type: str, use_overrides: bool = True) -> str:
     """Extract a Python class name from a fully-qualified Resonite type.
 
     Strips assembly prefix, takes the last dotted segment, and removes
@@ -367,10 +406,17 @@ def _to_class_name(component_type: str) -> str:
 
     Args:
         component_type: e.g. "[FrooxEngine]FrooxEngine.ValueField<>"
+        use_overrides: Whether to return the name from
+            ``_CLASS_NAME_OVERRIDES`` when there is one. Wiki docs are
+            keyed by the plain name.
 
     Returns:
         e.g. "ValueField"
     """
+    if use_overrides:
+        override = _CLASS_NAME_OVERRIDES.get(_arity_key(component_type))
+        if override:
+            return override
     name = re.sub(r"^\[.*?\]", "", component_type)
     name = name.rsplit(".", 1)[-1]
     # Remove generic markers: <>, <T>, <T1, T2>, etc.
@@ -404,6 +450,9 @@ def _to_module_path(component_type: str) -> str:
     last = parts[-1]
     if "+" in last:
         last = last.replace("+", "_")
+    override = _CLASS_NAME_OVERRIDES.get(_arity_key(component_type))
+    if override:
+        last = override
     filename = _to_snake_case(last) + ".py"
     if dirs:
         return "/".join(dirs) + "/" + filename
@@ -769,20 +818,21 @@ def generate_component_source(
     # Maps: resonite_name -> (annotation_str, module_name)
     ref_stub_imports: dict[str, tuple[str, str]] = {}
     # All type classes that need importing:
-    # (class name in annotations, stub module, referenced type name)
+    # (class name in annotations, stub module, referenced type's _arity_key)
     ref_stub_classes: list[tuple[str, str, str]] = []
     for res_name, tt in ref_target_types.items():
         ref_stub_imports[res_name] = (
             _ref_type_annotation(tt),
             _ref_stub_module_name(tt),
         )
-        for ref_base in _collect_referenced_types(tt):
+        for ref_key in _collect_referenced_type_keys(tt):
+            ref_base = re.sub(r"<.*", "", ref_key)
             cls = _simple_class_name(ref_base)
             # Skip generic parameter names (T, V, A, etc.)
             if _is_generic_param_name(cls):
                 continue
             mod = _ref_stub_module_name(ref_base)
-            ref_stub_classes.append((cls, mod, ref_base))
+            ref_stub_classes.append((cls, mod, ref_key))
 
     # Check for sync methods
     sync_methods = definition.get("methods", [])
@@ -924,7 +974,7 @@ def generate_component_source(
     # reached through IField<ColorProfile?>, takes precedence over a stub.
     seen_stubs: set[str] = set(enum_imports)
     type_checking_imports: list[str] = []
-    own_key = re.sub(r"<.*", "", component_type)
+    own_key = _arity_key(component_type)
     references_itself = False
     for stub_cls, stub_mod, ref_base in ref_stub_classes:
         if stub_cls and stub_mod and stub_cls not in seen_stubs:
@@ -1051,7 +1101,7 @@ def generate_component_source(
     lines.append("")
 
     # Load wiki documentation if available
-    wiki_docs = _load_wiki_docs(class_name)
+    wiki_docs = _load_wiki_docs(_to_class_name(component_type, use_overrides=False))
 
     # Class
     lines.append(f"class {class_name}({bases_str}):")
@@ -1733,6 +1783,31 @@ def _collect_referenced_types(resonite_type: str) -> list[str]:
     for arg in args:
         if arg and not _is_generic_param_name(arg):
             result.extend(_collect_referenced_types(arg))
+    return result
+
+
+def _collect_referenced_type_keys(resonite_type: str) -> list[str]:
+    """Collect the types mentioned in a type string, keeping their arity.
+
+    Like ``_collect_referenced_types``, but each type keeps an arity marker
+    (see ``_arity_key``), so ``Slider<float>`` gives ``Slider<>`` rather
+    than ``Slider``. Resonite has both a non-generic ``UIX.Slider`` and a
+    generic ``UIX.Slider<T>``, and dropping the marker picks the wrong one.
+
+    Args:
+        resonite_type: Full Resonite type string.
+
+    Returns:
+        Full Resonite type names with arity markers, excluding primitives
+        and generic parameter names.
+    """
+    base, args = _parse_target_type(resonite_type)
+    result: list[str] = []
+    if not _is_primitive_wire_name(base) and not _is_generic_param_name(base):
+        result.append(_arity_key(resonite_type))
+    for arg in args:
+        if arg and not _is_generic_param_name(arg):
+            result.extend(_collect_referenced_type_keys(arg))
     return result
 
 
