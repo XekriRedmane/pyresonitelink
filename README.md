@@ -119,10 +119,35 @@ slot = await resolink.find_slot("Root", name="spawn", match_substring=True, igno
 
 # Remove a slot
 await resolink.remove_slot(slot=slot)
+
+# A slot's position, rotation, and scale in world space
+head = await resolink.get_global_transform(head_slot)
 ```
 
 `add_slot` returns a `Slot` directly (raises `RuntimeError` on failure).
 `find_slot` returns `Slot | None`, using temporary ProtoFlux search nodes for fast deep searches.
+
+A slot's position, rotation, and scale are relative to its parent, both in `add_slot` and in slot data. `get_global_transform` returns a `transforms.Transform` relative to the world. It sends one request for the slot and one for each of its ancestors, because ResoniteLink can't return a slot's ancestors in one request.
+
+`pyresonitelink.data.transforms` does the arithmetic and needs no server:
+
+```python
+from pyresonitelink.data import primitives
+from pyresonitelink.data import transforms
+
+# +Z is forward in Resonite
+forward = transforms.rotate(head.rotation, primitives.Float3(0, 0, 1))
+
+# The transform of a child in its grandparent's space, and back again
+world = transforms.compose(parent, local)
+local = transforms.relative_to(parent, world)
+
+# Rotation b followed by rotation a, and the rotation that undoes q
+q = transforms.multiply(a, b)
+q_inv = transforms.inverse(q)
+```
+
+Use `relative_to` to find the local transform that puts a new child slot at a given place in the world. `compose` multiplies the scales component-wise, which is exact unless a non-uniform parent scale meets a rotated child. In that case the true result is sheared, and a `Transform` can't represent shear.
 
 #### Audio
 
@@ -293,6 +318,8 @@ value_field.value = primitives.Float(99.0)
 await value_field.update(resolink)
 await value_field.refresh(resolink)
 ```
+
+A component that drives a slot's transform, such as `Spinner`, refers to the slot's field member and not to the slot. The member ID comes from the slot's data, as in `(await resolink.get_slot(slot)).data.rotation.id`. See `examples/spinning_cube.py`, which builds a cube from a `BoxMesh`, a `PBS_Metallic` material, and a `MeshRenderer`, places it in front of the user's head, and turns it with a `Spinner` without any ProtoFlux.
 
 ### Type-Safe Wiring
 

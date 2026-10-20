@@ -8,6 +8,7 @@ Run as: pytest --port=<resonite-link-port> tests/test_values.py [-s]
 # pylint: disable=protected-access,missing-function-docstring,missing-class-docstring
 
 import datetime
+import math
 import uuid
 
 import numpy as np
@@ -97,6 +98,31 @@ class TestValues:
         response = codec.decode_response(json_response)
         assert isinstance(response, responses.Response)
         # From this point on, we can use remove_slot.
+
+    @pytest.mark.asyncio(loop_scope="session")
+    async def test_get_global_transform(self, resolink: client.Client) -> None:
+        # The parent is turned 90 degrees around +Y, which maps +Z to +X.
+        s = math.sqrt(0.5)
+        parent = await resolink.add_slot(
+            name="__test_get_global_transform__",
+            position=(1, 2, 3), rotation=(0, s, 0, s), scale=(2, 2, 2),
+        )
+        try:
+            child = await resolink.add_slot(
+                parent=parent, position=(0, 0, 1), rotation=(s, 0, 0, s),
+            )
+            result = await resolink.get_global_transform(child)
+            # Root has the identity transform, so the child's offset of 1
+            # along +Z is doubled and turned to +X by the parent alone.
+            p, q, k = result.position, result.rotation, result.scale
+            np.testing.assert_allclose([p.x, p.y, p.z], [3, 2, 3], atol=1e-5)
+            # The rotation is the product (0, s, 0, s) * (s, 0, 0, s).
+            np.testing.assert_allclose(
+                [q.x, q.y, q.z, q.w], [0.5, 0.5, -0.5, 0.5], atol=1e-5,
+            )
+            np.testing.assert_allclose([k.x, k.y, k.z], [2, 2, 2], atol=1e-5)
+        finally:
+            await resolink.remove_slot(parent)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_add_component(self, resolink: client.Client) -> None:

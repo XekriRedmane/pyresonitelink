@@ -262,6 +262,7 @@ slot = await resolink.add_slot(name="My Slot", position=(0, 1.5, 0))  # parent=R
 slot = await resolink.add_slot(parent=some_slot, name="Child")
 slot = await resolink.get_slot("Root", depth=1)
 await resolink.remove_slot(slot)  # slot ID or Slot
+head = await resolink.get_global_transform(slot)  # transforms.Transform in world space
 
 # Component operations — componentType + references for easy wiring
 resp = await resolink.add_component(
@@ -299,6 +300,8 @@ await resolink.import_audio_clip_raw_data(samples, 48000)    # (count,) or (coun
 
 `add_slot` returns a `Slot` directly (raises `RuntimeError` on failure). `add_component` returns `NewEntityId` with `.entityId`. Other mutations return `Response` with `.success`.
 
+- Slot positions, rotations, and scales are relative to the parent, in `add_slot` and in slot data alike. ALWAYS convert a world transform with `transforms.relative_to(await resolink.get_global_transform(parent), world)` before passing it to `add_slot`.
+- `data/transforms.py` holds the quaternion and transform arithmetic (`rotate`, `multiply`, `inverse`, `compose`, `relative_to`). `get_global_transform` walks up the parents with one `get_slot` each and composes their transforms.
 - Reflection responses decode to `data/reflection.py` dataclasses. Member definitions decode by `$type` to `FieldDefinition`, `ReferenceDefinition`, etc. (`_MEMBER_DEFINITION_TYPES` in the codec).
 - `MethodResult.result` is a field member (`FieldInt`, `FieldBool`, ...) or a `members.DataReference` for a returned object, or `None` for void.
 - A batch's `responses` holds one response per operation, in order. Only `DataModelOperation` messages can be batched (`Client._BATCHABLE`). The client gives each operation a `messageId` so each response's `sourceMessageId` identifies its operation.

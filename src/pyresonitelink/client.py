@@ -22,6 +22,7 @@ from .data import mesh
 from .data import messages
 from .data import primitives
 from .data import responses
+from .data import transforms
 from .data import workers
 
 if TYPE_CHECKING:
@@ -328,12 +329,12 @@ class Client:
             parent: The parent slot — a slot ID string, a ``Slot``
                 instance, or None for the root slot (default).
             name: Slot name (``str`` or ``FieldString``).
-            position: World position (``Float3``, 3-sequence, or
-                ``FieldFloat3``).
-            rotation: World rotation (``FloatQ``, 4-sequence, or
-                ``FieldFloatQ``).
-            scale: World scale (``Float3``, 3-sequence, or
-                ``FieldFloat3``).
+            position: Position relative to the parent (``Float3``,
+                3-sequence, or ``FieldFloat3``).
+            rotation: Rotation relative to the parent (``FloatQ``,
+                4-sequence, or ``FieldFloatQ``).
+            scale: Scale relative to the parent (``Float3``, 3-sequence,
+                or ``FieldFloat3``).
             isActive: Whether the slot is active (``bool`` or
                 ``FieldBool``).
             isPersistent: Whether the slot persists across sessions
@@ -417,6 +418,53 @@ class Client:
                 f"Failed to create slot: {resp.errorInfo}"
             )
         return workers.Slot(id=resp.entityId)
+
+    async def get_global_transform(
+        self,
+        slot: str | workers.Slot,
+        debug: bool = False,
+    ) -> transforms.Transform:
+        """Returns a slot's position, rotation, and scale in world space.
+
+        ResoniteLink reports each slot's transform relative to its parent,
+        and it can't return a slot's ancestors in one request. This sends
+        one GetSlot request for the slot and one for each of its ancestors,
+        and composes their transforms with ``transforms.compose``.
+
+        Args:
+            slot: The slot, either a slot ID string or a ``Slot``
+                instance (whose ``id`` is used).
+            debug: Print request/response JSON.
+
+        Returns:
+            The slot's transform relative to the world, which includes
+            Root's own transform.
+
+        Raises:
+            RuntimeError: If the server rejects a request, or a slot's
+                data lacks its transform.
+        """
+        current = slot.id if isinstance(slot, workers.Slot) else slot
+        assert current is not None, "Slot has no ID"
+        result: transforms.Transform | None = None
+        while current is not None:
+            resp = await self.get_slot(current, debug=debug)
+            data = resp.data
+            if data is None:
+                raise RuntimeError(
+                    f"Failed to get slot {current}: {resp.errorInfo}"
+                )
+            position = data.position.value if data.position else None
+            rotation = data.rotation.value if data.rotation else None
+            scale = data.scale.value if data.scale else None
+            if position is None or rotation is None or scale is None:
+                raise RuntimeError(f"Slot {current} has no transform data.")
+            local = transforms.Transform(position, rotation, scale)
+            result = local if result is None else transforms.compose(local, result)
+            # Root's parent reference has no target.
+            current = data.parent.targetId if data.parent else None
+        assert result is not None
+        return result
 
     async def update_slot(
         self,
