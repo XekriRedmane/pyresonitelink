@@ -11,13 +11,13 @@ from contextlib import contextmanager
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any, Iterator
 
+from pyresonitelink.data import workers
 from pyresonitelink.dergflux import _expr
 from pyresonitelink.dergflux import _flow
 from pyresonitelink.dergflux import _space
 
 if TYPE_CHECKING:
     from pyresonitelink.data import protocols
-    from pyresonitelink.data import workers
 
 
 @dataclass
@@ -1416,11 +1416,17 @@ class Graph:
     def Bind(
         self,
         expr: object,
-        component: Any,
+        target: Any,
         member_name: str,
         slot: workers.Slot | None = None,
     ) -> None:
-        """Permanently bind a ProtoFlux expression to a component field.
+        """Permanently bind a ProtoFlux expression to a field.
+
+        The field is a member of a component, or one of a slot's own
+        fields: ``"Position"``, ``"Rotation"``, ``"Scale"``,
+        ``"IsActive"``, or ``"OrderOffset"``. A slot field's type is known,
+        so the expression is widened to it, and an expression that would
+        have to narrow raises ``TypeError``.
 
         The binding mechanism depends on the source:
 
@@ -1448,17 +1454,26 @@ class Graph:
             # Bind a dynamic variable to a field
             g.Bind(s.volume, audio_output, "Volume", slot=slot)
 
+            # Drive a slot's rotation
+            g.Bind(dm.axis_angle(axis, s.angle), wheel, "Rotation", slot=slot)
+
         Args:
             expr: The expression to bind from (ExprProxy or literal).
-            component: The target component (a GeneratedComponent instance).
-            member_name: The Resonite member name to bind to (e.g. ``"Index"``).
+            target: The component (a GeneratedComponent instance) or the
+                slot (a workers.Slot) whose field is bound.
+            member_name: The Resonite member name to bind to (e.g.
+                ``"Index"``, or ``"Rotation"`` for a slot).
             slot: The slot to place the binding node on.  If omitted, uses
                 the active ``Under()`` slot.
 
         Raises:
             RuntimeError: If no slot is available, or if the field is
                 already bound.
-            ValueError: If the component has no member with the given name.
+            ValueError: If the component has no member with the given
+                name, or the slot has no field that can be driven by that
+                name.
+            TypeError: If the expression doesn't convert implicitly to a
+                slot field's type.
         """
         expr_proxy = _expr._coerce(expr)
         bind_slot = slot
@@ -1469,17 +1484,29 @@ class Graph:
                 "Bind() requires a slot. Either pass one explicitly "
                 "or use inside g.Under(slot)."
             )
-        member = component.get_member(member_name)
-        if member is None:
+        if isinstance(target, workers.Slot):
+            field_type = _flow.SLOT_FIELD_TYPES.get(
+                _flow.slot_attribute(member_name),
+            )
+            if field_type is None:
+                raise ValueError(
+                    f"A slot has no field '{member_name}' that Bind() can "
+                    f"drive. The fields are "
+                    f"{', '.join(_flow.SLOT_FIELD_NAMES)}."
+                )
+            expr_proxy = _expr.implicit(
+                expr_proxy, field_type, f"Binding to the slot's {member_name}",
+            )
+        elif target.get_member(member_name) is None:
             raise ValueError(
-                f"Component {component!r} has no member '{member_name}'."
+                f"Component {target!r} has no member '{member_name}'."
             )
         # Check for duplicate binding
         for existing in self._bindings:
-            if (existing.component is component
+            if (_flow.same_target(existing.target, target)
                     and existing.member_name == member_name):
                 raise RuntimeError(
-                    f"Field '{member_name}' on {component!r} is already "
+                    f"Field '{member_name}' on {target!r} is already "
                     f"bound. A field can only be bound once."
                 )
         # Detect if the source is a bare dynamic variable read
@@ -1491,7 +1518,7 @@ class Graph:
             dynvar_space = node.space
 
         self._bindings.append(_flow.BindRecord(
-            component=component,
+            target=target,
             member_name=member_name,
             expr=expr_proxy,
             slot=bind_slot,

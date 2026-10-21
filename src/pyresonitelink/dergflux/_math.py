@@ -263,26 +263,195 @@ def clamp(value: Any, lo: Any, hi: Any) -> _expr.ExprProxy:
     return _math_call_3("clamp", value, lo, hi)
 
 
-def lerp(a: Any, b: Any, t: Any) -> _expr.ExprProxy:
-    """Linear interpolation from a to b by t.
+def _lerp(func_name: str, a: Any, b: Any, t: Any) -> _expr.ExprProxy:
+    """Returns a call to the lerp node named func_name.
 
-    Uses generic ``ValueLerp<T>`` (not the typed Lerp_* variants).
+    The lerp nodes take their weight as a float, whatever the type of the
+    values, so t is converted to a Float.
     """
-    return _math_call_3("lerp", a, b, t)
+    from pyresonitelink.data import primitives
+
+    a_node, b_node, result_type = _expr.unify(
+        _expr._coerce(a)._node, _expr._coerce(b)._node, func_name,
+    )
+    weight = _expr.implicit(t, primitives.Float, f"{func_name}'s t")
+    return _expr.ExprProxy(
+        _expr.MathCallNode(func_name, [a_node, b_node, weight._node], result_type),
+    )
+
+
+def lerp(a: Any, b: Any, t: Any) -> _expr.ExprProxy:
+    """Returns a + (b - a) * t, with t clamped to [0, 1].
+
+    Uses ``ValueLerp<T>``. a and b are widened to their common type, which
+    is the result's type, and can be numbers or vectors. The node takes t
+    as a Float, so a Double t raises TypeError until it's converted with
+    ``to_float``.
+    """
+    return _lerp("lerp", a, b, t)
+
+
+def lerp_unclamped(a: Any, b: Any, t: Any) -> _expr.ExprProxy:
+    """Returns a + (b - a) * t, without clamping t.
+
+    Uses ``ValueLerpUnclamped<T>``. The arguments are those of lerp.
+    """
+    return _lerp("lerp_unclamped", a, b, t)
 
 
 def inverse_lerp(a: Any, b: Any, value: Any) -> _expr.ExprProxy:
-    """Inverse linear interpolation.
+    """Returns (value - a) / (b - a), the t for which lerp(a, b, t) is value.
 
-    Returns the interpolation parameter t such that
-    ``lerp(a, b, t) == value``.
+    The result isn't clamped. The three arguments are widened to their
+    common type. For numbers this is ``ValueInverseLerp<T>``, whose result
+    is a Float even when the arguments are Doubles. For Float2 to Float4
+    and Double2 to Double4 vectors it's ``InverseLerp_Float3`` and so on,
+    which work per component and give a vector of the arguments' type.
     """
-    return _math_call_3("inverse_lerp", a, b, value)
+    from pyresonitelink.data import primitives
+    from pyresonitelink.dergflux import _types
+
+    nodes = [_expr._coerce(x)._node for x in (a, b, value)]
+    # Literals take the type of the first typed argument where they can,
+    # as in inverse_lerp(0, 10, x), so they need no cast nodes.
+    context = next((n._type for n in nodes if n._type is not None), None)
+    for node in nodes:
+        if isinstance(node, _expr.ConstNode):
+            _expr._type_literal(node, context)
+    a_node, b_node, common = _expr.unify(nodes[0], nodes[1], "inverse_lerp")
+    value_node = nodes[2]
+    if common is not None:
+        # Widen value to a and b's type, or a and b to value's.
+        a_node, value_node, common = _expr.unify(a_node, value_node, "inverse_lerp")
+        if common is not None and b_node._type != common:
+            b_node = _expr.implicit(
+                _expr.ExprProxy(b_node), common, "inverse_lerp",
+            )._node
+    result_type = common if common in _types._VECTORS else primitives.Float
+    return _expr.ExprProxy(
+        _expr.MathCallNode(
+            "inverse_lerp", [a_node, b_node, value_node], result_type,
+        ),
+    )
 
 
-def smoothstep(edge0: Any, edge1: Any, x: Any) -> _expr.ExprProxy:
-    """Hermite smoothstep interpolation."""
-    return _math_call_3("smoothstep", edge0, edge1, x)
+def _float_type(*values: _expr.ExprProxy) -> type:
+    """Returns Double if any of the values is a Double, and Float otherwise.
+
+    The shaping nodes exist only for float and double.
+    """
+    from pyresonitelink.data import primitives
+
+    if any(_type_of(v) == primitives.Double for v in values):
+        return primitives.Double
+    return primitives.Float
+
+
+def _shape(func_name: str, args: tuple[Any, ...]) -> _expr.ExprProxy:
+    """Returns smoothstep or smootherstep of one argument or three.
+
+    With three arguments (edge0, edge1, x), x is first mapped to 0 at
+    edge0 and 1 at edge1, and clamped to that range.
+    """
+    if len(args) not in (1, 3):
+        raise TypeError(
+            f"{func_name} takes x, or edge0, edge1, and x, but got "
+            f"{len(args)} arguments."
+        )
+    proxies = [_expr._coerce(a) for a in args]
+    t = _float_type(*proxies)
+    converted = [_expr.implicit(p, t, func_name) for p in proxies]
+    x = converted[-1]
+    if len(converted) == 3:
+        edge0, edge1 = converted[0], converted[1]
+        x = clamp01((x - edge0) / (edge1 - edge0))
+    return _expr.ExprProxy(_expr.MathCallNode(func_name, [x._node], t))
+
+
+def smoothstep(*args: Any) -> _expr.ExprProxy:
+    """Returns 3x² - 2x³, which eases from 0 at x = 0 to 1 at x = 1.
+
+    Called as smoothstep(x), this is ProtoFlux's SmoothStep node, which
+    doesn't clamp x, so the result leaves [0, 1] when x does. Called as
+    smoothstep(edge0, edge1, x), as in GLSL, x is mapped to 0 at edge0 and
+    1 at edge1 and clamped to that range first, so the result is 0 at or
+    below edge0 and 1 at or above edge1.
+
+    The result is a Double if any argument is, and a Float otherwise.
+    """
+    return _shape("smoothstep", args)
+
+
+def smootherstep(*args: Any) -> _expr.ExprProxy:
+    """Returns 6x⁵ - 15x⁴ + 10x³, a smoothstep with zero acceleration at the ends.
+
+    The arguments are those of smoothstep, and so are the clamping and the
+    result type.
+    """
+    return _shape("smootherstep", args)
+
+
+# =========================================================================
+# Rotations
+# =========================================================================
+
+
+def _type_of(proxy: _expr.ExprProxy) -> type | None:
+    """Returns an expression's type, or an untyped literal's own type."""
+    from pyresonitelink.dergflux import _types
+
+    node = proxy._node
+    if node._type is None and isinstance(node, _expr.ConstNode):
+        return _types.literal_type(node.value)
+    return node._type
+
+
+def axis_angle(axis: Any, angle: Any) -> _expr.ExprProxy:
+    """Returns the rotation by angle degrees about axis.
+
+    Uses ProtoFlux's AxisAngle node, which normalizes the axis. The axis
+    is a Float3 and the angle a Float, giving a FloatQ, unless either is
+    a Double3 or Double, in which case both are widened and the result is
+    a DoubleQ. A positive angle turns +Y toward +Z about +X, which in
+    Resonite's left-handed coordinates is clockwise seen from the tip of
+    the axis.
+    """
+    from pyresonitelink.data import primitives
+
+    axis_p, angle_p = _expr._coerce(axis), _expr._coerce(angle)
+    if (_type_of(axis_p) == primitives.Double3
+            or _type_of(angle_p) == primitives.Double):
+        vector, scalar, result = (
+            primitives.Double3, primitives.Double, primitives.DoubleQ,
+        )
+    else:
+        vector, scalar, result = (
+            primitives.Float3, primitives.Float, primitives.FloatQ,
+        )
+    axis_p = _expr.implicit(axis_p, vector, "axis_angle's axis")
+    angle_p = _expr.implicit(angle_p, scalar, "axis_angle's angle")
+    return _expr.ExprProxy(
+        _expr.MathCallNode("axis_angle", [axis_p._node, angle_p._node], result),
+    )
+
+
+def from_euler(angles: Any) -> _expr.ExprProxy:
+    """Returns the rotation given by Euler angles in degrees.
+
+    Uses ProtoFlux's FromEuler node. A Float3 gives a FloatQ and a Double3
+    a DoubleQ.
+    """
+    from pyresonitelink.data import primitives
+
+    angles_p = _expr._coerce(angles)
+    if _type_of(angles_p) == primitives.Double3:
+        vector, result = primitives.Double3, primitives.DoubleQ
+    else:
+        vector, result = primitives.Float3, primitives.FloatQ
+    angles_p = _expr.implicit(angles_p, vector, "from_euler")
+    return _expr.ExprProxy(
+        _expr.MathCallNode("from_euler", [angles_p._node], result),
+    )
 
 
 def conditional(

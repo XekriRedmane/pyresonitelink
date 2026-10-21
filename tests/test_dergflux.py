@@ -1053,7 +1053,7 @@ class TestBind:
         g.Bind(s.idx, comp, "Index", slot=slot)
         assert len(g._bindings) == 1
         assert g._bindings[0].member_name == "Index"
-        assert g._bindings[0].component is comp
+        assert g._bindings[0].target is comp
 
     def test_bind_inside_under(self) -> None:
         from pyresonitelink.generated._base import GeneratedComponent
@@ -1401,3 +1401,189 @@ class TestGraph:
         # The action is nested in the For's iteration stmts
         assert len(stmts[0].iteration_stmts) == 1
         assert isinstance(stmts[0].iteration_stmts[0], _action.ActionContext)
+
+
+# =========================================================================
+# Primitive literals, shaping, rotations, world time, and slot bindings
+# =========================================================================
+
+
+class TestPrimitiveLiterals:
+    """A literal of a primitives type keeps that type."""
+
+    def test_numpy_scalar_keeps_its_type(self) -> None:
+        from pyresonitelink.dergflux import _types
+        assert _types.literal_type(primitives.Double(2.5)) is primitives.Double
+        assert _types.literal_type(primitives.Float(2.5)) is primitives.Float
+
+    def test_vector_keeps_its_type(self) -> None:
+        from pyresonitelink.dergflux import _types
+        assert _types.literal_type(primitives.Float3(0, 1, 0)) is primitives.Float3
+
+    def test_float_literal_plus_int_literal_is_float(self) -> None:
+        # The float32 literal used to take the int's type.
+        result = _expr._coerce(primitives.Float(5.0)) + 0
+        assert result._node._type is primitives.Float
+
+
+class TestShaping:
+    """Tests for smoothstep and smootherstep."""
+
+    def test_one_argument_calls_the_node(self) -> None:
+        from pyresonitelink.dergflux import _math
+        x = _expr.ExprProxy(_expr.ConstNode(0.5, primitives.Float))
+        result = _math.smoothstep(x)
+        assert isinstance(result._node, _expr.MathCallNode)
+        assert result._node.func_name == "smoothstep"
+        assert result._node.args == [x._node]
+        assert result._node._type is primitives.Float
+
+    def test_three_arguments_clamp_the_mapped_value(self) -> None:
+        from pyresonitelink.dergflux import _math
+        x = _expr.ExprProxy(_expr.ConstNode(0.5, primitives.Double))
+        result = _math.smootherstep(0, 2, x)
+        assert result._node.func_name == "smootherstep"
+        assert result._node._type is primitives.Double
+        (inner,) = result._node.args
+        assert isinstance(inner, _expr.MathCallNode)
+        assert inner.func_name == "clamp01"
+
+    def test_int_argument_widens_to_float(self) -> None:
+        from pyresonitelink.dergflux import _math
+        x = _expr.ExprProxy(_expr.ConstNode(1, primitives.Int))
+        result = _math.smoothstep(x)
+        assert result._node._type is primitives.Float
+        assert isinstance(result._node.args[0], _expr.CastNode)
+
+    def test_two_arguments_raise(self) -> None:
+        from pyresonitelink.dergflux import _math
+        with pytest.raises(TypeError, match="takes x, or edge0, edge1, and x"):
+            _math.smoothstep(0, 1)
+
+
+class TestRotations:
+    """Tests for axis_angle and from_euler."""
+
+    def test_axis_angle_is_floatq(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.axis_angle(primitives.Float3(1, 0, 0), 90.0)
+        assert result._node.func_name == "axis_angle"
+        assert result._node._type is primitives.FloatQ
+        axis, angle = result._node.args
+        assert axis._type is primitives.Float3
+        assert angle._type is primitives.Float
+
+    def test_double_angle_gives_doubleq(self) -> None:
+        from pyresonitelink.dergflux import _math
+        angle = _expr.ExprProxy(_expr.ConstNode(90.0, primitives.Double))
+        result = _math.axis_angle(primitives.Float3(1, 0, 0), angle)
+        assert result._node._type is primitives.DoubleQ
+        axis, _ = result._node.args
+        assert axis._type is primitives.Double3
+
+    def test_from_euler(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.from_euler(primitives.Double3(0, 90, 0))
+        assert result._node.func_name == "from_euler"
+        assert result._node._type is primitives.DoubleQ
+
+
+class TestWorldTime:
+
+    def test_world_time_is_double(self) -> None:
+        from pyresonitelink.dergflux import time
+        result = time.world_time()
+        assert result._node.func_name == "world_time"
+        assert result._node._type is primitives.Double
+
+
+class TestBindSlot:
+    """Tests for g.Bind() with a slot as the target."""
+
+    def test_records_the_slot(self) -> None:
+        from pyresonitelink.dergflux import _math
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        wheel = workers.Slot(id="wheel")
+        g.Bind(_math.axis_angle(primitives.Float3(1, 0, 0), 30.0), wheel, "Rotation", slot=slot)
+        assert g._bindings[0].target is wheel
+        assert g._bindings[0].member_name == "Rotation"
+
+    def test_expression_widens_to_the_field(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        position = _expr.ExprProxy(_expr.ConstNode(primitives.Int3(1, 2, 3), primitives.Int3))
+        g.Bind(position, workers.Slot(id="w"), "Position", slot=slot)
+        node = g._bindings[0].expr._node
+        assert isinstance(node, _expr.CastNode)
+        assert node._type is primitives.Float3
+
+    def test_narrowing_raises(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        offset = _expr.ExprProxy(_expr.ConstNode(1.5, primitives.Float))
+        with pytest.raises(TypeError, match="OrderOffset"):
+            g.Bind(offset, workers.Slot(id="w"), "OrderOffset", slot=slot)
+
+    def test_unknown_field_raises(self) -> None:
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        with pytest.raises(ValueError, match="Rotation"):
+            g.Bind(1.0, workers.Slot(id="w"), "Name", slot=slot)
+
+    def test_rebinding_the_same_slot_raises(self) -> None:
+        from pyresonitelink.dergflux import _math
+        g = _graph.Graph()
+        slot = workers.Slot(id="s")
+        rotation = _math.axis_angle(primitives.Float3(1, 0, 0), 30.0)
+        g.Bind(rotation, workers.Slot(id="w"), "Rotation", slot=slot)
+        with pytest.raises(RuntimeError, match="already bound"):
+            g.Bind(rotation, workers.Slot(id="w"), "Rotation", slot=slot)
+
+
+class TestLerp:
+    """Tests for lerp, lerp_unclamped, and inverse_lerp."""
+
+    def test_lerp_takes_the_values_type(self) -> None:
+        from pyresonitelink.dergflux import _math
+        a = _expr.ExprProxy(_expr.ConstNode(1.0, primitives.Double))
+        result = _math.lerp(a, 2, 0.5)
+        assert result._node.func_name == "lerp"
+        assert result._node._type is primitives.Double
+        assert result._node.args[2]._type is primitives.Float
+
+    def test_lerp_with_double_t_raises(self) -> None:
+        from pyresonitelink.dergflux import _math
+        t = _expr.ExprProxy(_expr.ConstNode(0.5, primitives.Double))
+        with pytest.raises(TypeError, match="lerp's t"):
+            _math.lerp(1.0, 2.0, t)
+
+    def test_lerp_unclamped(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.lerp_unclamped(primitives.Float3(0, 0, 0), primitives.Float3(1, 1, 1), 2.0)
+        assert result._node.func_name == "lerp_unclamped"
+        assert result._node._type is primitives.Float3
+
+    def test_inverse_lerp_of_doubles_is_float(self) -> None:
+        from pyresonitelink.dergflux import _math
+        x = _expr.ExprProxy(_expr.ConstNode(5.0, primitives.Double))
+        result = _math.inverse_lerp(0, 10, x)
+        assert result._node._type is primitives.Float
+        # The literals take the Double type, so no casts are needed.
+        assert [arg._type for arg in result._node.args] == [primitives.Double] * 3
+        assert not any(isinstance(arg, _expr.CastNode) for arg in result._node.args)
+
+    def test_inverse_lerp_widens_to_the_widest_argument(self) -> None:
+        from pyresonitelink.dergflux import _math
+        a = _expr.ExprProxy(_expr.ConstNode(0, primitives.Int))
+        b = _expr.ExprProxy(_expr.ConstNode(10, primitives.Int))
+        x = _expr.ExprProxy(_expr.ConstNode(5.0, primitives.Double))
+        result = _math.inverse_lerp(a, b, x)
+        assert [arg._type for arg in result._node.args] == [primitives.Double] * 3
+
+    def test_inverse_lerp_of_vectors_is_a_vector(self) -> None:
+        from pyresonitelink.dergflux import _math
+        result = _math.inverse_lerp(
+            primitives.Float3(0, 0, 0), primitives.Float3(2, 4, 8), primitives.Float3(1, 1, 1),
+        )
+        assert result._node._type is primitives.Float3

@@ -33,6 +33,20 @@ def utc_now() -> _expr.ExprProxy:
     return _call("utc_now", [], primitives.DateTime)
 
 
+def world_time() -> _expr.ExprProxy:
+    """Returns the world's time in seconds, as a Double.
+
+    The time starts at 0 when the session starts, and each user's copy
+    follows the host's (FrooxEngine's TimeController.WorldTime). To count
+    from some moment, store the world time then and subtract it.
+
+    ProtoFlux's Elapsed Time nodes give the same value until their Reset
+    impulse sets a start time, and Dergflux can't send that impulse, so
+    there's no elapsed time function.
+    """
+    return _call("world_time", [], primitives.Double)
+
+
 def delta_time() -> _expr.ExprProxy:
     """Returns the seconds since the last frame, as a Float."""
     return _call("delta_time", [], primitives.Float)

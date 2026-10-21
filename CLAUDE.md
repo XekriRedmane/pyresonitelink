@@ -595,6 +595,12 @@ ALWAYS check whether a type needs Value or Object variants before creating Proto
 - Wiring a reference to the field's member ID fails with "Reference target ... is not compatible type".
 - ALWAYS return the component itself from builder `_materialize_*` methods for constant nodes. A change that returned the `Value` member ID broke every Dergflux graph with a constant (fixed Oct 2026). The mock-based `test_dergflux_builder.py` didn't catch it, so ALWAYS run the integration tests after changing the builder.
 
+#### A Field Drive's Target Is on Its Proxy
+
+- `ValueFieldDrive<T>` has only a `Value` input. The server adds a `FieldDriveBase<T>+Proxy` component beside it. The Proxy's `Drive` reference (`IField<T>`) is the driven field, and its `Node` reference is the drive node.
+- ALWAYS set `Drive` on the Proxy, found by its `Node` (`_builder._find_drive_proxy`). Until Oct 2026 Dergflux wired a `_value` member that the node doesn't have. `update_references` skips an unknown member silently, so no Dergflux expression binding ever drove its field.
+- `ElapsedTime*` nodes return the world time, not the time since they were added, until their Reset impulse runs. Their Proxy's `SyncTime` starts at offset 0 (checked in the decompiled source and live, 20 Oct 2026). Use `WorldTimeDouble` minus a stored start time, as `examples/dergflux_number_wheel.py` does.
+
 #### GlobalValue vs ValueInput for IGlobalValueProxy References
 
 Some ProtoFlux nodes have reference members targeting `IGlobalValueProxy<T>` instead of `INodeValueOutput<T>`. For example, `DynamicImpulseReceiver.Tag` expects `IGlobalValueProxy<string>`. These references CANNOT be wired to `ValueInput<T>` or `ValueObjectInput<T>` — they require a `GlobalValue<T>` component instead.

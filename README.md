@@ -443,12 +443,13 @@ print(x_var.value)
 
 Key features:
 - **Expressions**: `+`, `-`, `*`, `/`, `%`, `**`, `abs()`, comparisons, bitwise `&`/`|`/`^`/`~`/`<<`/`>>`
-- **Math functions**: `sin`, `cos`, `sqrt`, `lerp`, `clamp`, `min_`, `max_`, and [more](src/pyresonitelink/dergflux/dergflux.md#math-functions)
+- **Math functions**: `sin`, `cos`, `sqrt`, `clamp`, `min_`, `max_`, `lerp`, `smoothstep`, and [more](src/pyresonitelink/dergflux/dergflux.md#math-functions)
+- **Rotations**: `math.axis_angle(axis, degrees)` and `math.from_euler(angles)` give a `FloatQ` or `DoubleQ` ([details](src/pyresonitelink/dergflux/dergflux.md#rotations))
 - **Type conversions**: numeric operands widen automatically as in C#, so `float_var + int_var` works, and narrowing takes `math.to_int(x)` or `math.convert(x, primitives.Int)` ([details](src/pyresonitelink/dergflux/dergflux.md#type-conversions))
-- **Time and dates**: `time.utc_now()`, `time.hours(2)`, `now.year`, `span.total_seconds`, and DateTime/TimeSpan arithmetic, with Python `datetime` and `timedelta` values ([details](src/pyresonitelink/dergflux/dergflux.md#time-and-dates))
+- **Time and dates**: `time.utc_now()`, `time.world_time()`, `time.hours(2)`, `now.year`, `span.total_seconds`, and DateTime/TimeSpan arithmetic, with Python `datetime` and `timedelta` values ([details](src/pyresonitelink/dergflux/dergflux.md#time-and-dates))
 - **Flow control**: `g.If`/`g.Else`, `g.For`, `g.While`, `g.Range`
 - **Triggers**: `g.Under(slot)` (Update every frame), `g.Under(slot, trigger="tag")` (named impulse), `g.Under(slot, trigger=("tag", type))` (with value)
-- **Bindings**: `g.Bind(s.x, component, "Field")` — permanently bind a variable or expression to a component field
+- **Bindings**: `g.Bind(s.x, component, "Field")` permanently binds a variable or expression to a component field, and `g.Bind(expr, slot, "Rotation")` to a slot's Position, Rotation, Scale, IsActive, or OrderOffset
 - **Action nodes**: `g.RaycastOne(...)`, `g.PlayOneShotAndWait(...)`, `g.SlotChildrenEvents(...)`, or define custom actions with `ActionDef`
 - **Auto-bridging**: pass components directly to action inputs (e.g. `clip=my_clip`) — the builder creates `RefObjectInput` bridges automatically
 
@@ -463,7 +464,10 @@ python examples/dergflux_if_else.py <port>                    # If/Else with con
 python examples/dergflux_for.py <port>                         # For loop with OnStart/OnIterate
 python examples/dergflux_play_one_shot_and_wait.py <port>      # Async audio playback
 python examples/dergflux_play_sequence.py <port>               # Multiplexer + For + PlayOneShotAndWait
+python examples/dergflux_number_wheel.py [port]                # A counting drum, driven by a binding
 ```
+
+`dergflux_number_wheel.py` is `number_wheel.py` with its ProtoFlux graph written in Dergflux. Both place a ten-sided number drum from `examples/NumberDrum.glb` 5 m in front of the user's head and turn it to the next digit every second.
 
 ## Command-Line Tools
 

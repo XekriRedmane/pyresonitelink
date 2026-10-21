@@ -349,23 +349,25 @@ async def build_graph(
         raise RuntimeError(f"Failed to set the drive target: {resp.errorInfo}")
 
 
-async def main(port: int | None) -> None:
-    """Places the counting drum in front of the user's head."""
+async def place_drum(
+    resolink: client.Client, slot_name: str,
+) -> tuple[workers.Slot, workers.Slot]:
+    """Places the drum 5 m in front of the user's head, with the 0 facing it.
+
+    A slot under Root named slot_name, from a previous run, is deleted
+    first.
+
+    Returns:
+        The drum's slot, whose Rotation turns the drum, and an empty slot
+        beside it for the ProtoFlux graph.
+    """
     positions, normals, drum_triangles, digit_triangles = load_drum(GLB_PATH)
     print(f"Read {len(positions)} vertices from {GLB_PATH}.")
 
-    if port is None:
-        session = await discovery.find_session()
-        print(f"Found {session.name!r} on port {session.port}.")
-        port = session.port
-    resolink = client.Client()
-    await resolink.connect(port)
-
-    # Delete the wheel from a previous run.
     root = (await resolink.get_slot(workers.Slot.ROOT_SLOT_ID, depth=1)).data
     assert root is not None
     for child in root.children:
-        if child.name is not None and child.name.value == SLOT_NAME:
+        if child.name is not None and child.name.value == slot_name:
             print(f"Deleting old slot {child.id}.")
             await resolink.remove_slot(child)
 
@@ -387,7 +389,7 @@ async def main(port: int | None) -> None:
     root_transform = await resolink.get_global_transform(workers.Slot.ROOT_SLOT_ID)
     local = transforms.relative_to(root_transform, world)
     wheel = await resolink.add_slot(
-        name=SLOT_NAME,
+        name=slot_name,
         position=local.position,
         rotation=local.rotation,
         scale=(WHEEL_SCALE, WHEEL_SCALE, WHEEL_SCALE),
@@ -427,7 +429,18 @@ async def main(port: int | None) -> None:
     materials.elements.append(members.Reference(targetId=black.id))
     materials.elements.append(members.Reference(targetId=white.id))
     await renderer.update(resolink)
+    return drum_slot, graph_slot
 
+
+async def main(port: int | None) -> None:
+    """Places the counting drum in front of the user's head."""
+    if port is None:
+        session = await discovery.find_session()
+        print(f"Found {session.name!r} on port {session.port}.")
+        port = session.port
+    resolink = client.Client()
+    await resolink.connect(port)
+    drum_slot, graph_slot = await place_drum(resolink, SLOT_NAME)
     await build_graph(resolink, graph_slot, drum_slot)
     print("The drum turns to the next digit every second, and is left in place.")
     await resolink.close()

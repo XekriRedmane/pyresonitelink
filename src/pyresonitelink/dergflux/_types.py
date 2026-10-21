@@ -73,6 +73,13 @@ _VECTOR_BY_PARTS: dict[tuple[type, int], type] = {
     parts: vector for vector, parts in _VECTORS.items()
 }
 
+# Every type in primitives, such as np.float32 (Float) and Float3. A
+# literal of one of these types already says which Resonite type it is.
+_PRIMITIVE_TYPES: frozenset[type] = frozenset(
+    value for name, value in vars(primitives).items()
+    if name[:1].isupper() and isinstance(value, type)
+)
+
 
 def type_name(resonite_type: type | None) -> str:
     """Returns a readable name for a Resonite type, for error messages.
@@ -145,12 +152,19 @@ def literal_type(value: object) -> type | None:
     """Returns the Resonite type of a Python literal on its own.
 
     Args:
-        value: A Python literal such as 3, 2.5, True, or "text".
+        value: A Python literal such as 3, 2.5, True, or "text", or a
+            value of a primitives type such as primitives.Double(2.5) or
+            primitives.Float3(0, 1, 0).
 
     Returns:
         The type, or None for a value with no Resonite equivalent.
     """
-    return PYTHON_TO_RESONITE.get(type(value))
+    natural = PYTHON_TO_RESONITE.get(type(value))
+    if natural is not None:
+        return natural
+    if type(value) in _PRIMITIVE_TYPES:
+        return type(value)
+    return None
 
 
 def infer_result_type(
@@ -190,5 +204,4 @@ def resolve_const_type(value: object, context_type: type | None) -> type:
     """
     if context_type is not None:
         return context_type
-    py_type = type(value)
-    return PYTHON_TO_RESONITE.get(py_type, primitives.Float)
+    return literal_type(value) or primitives.Float

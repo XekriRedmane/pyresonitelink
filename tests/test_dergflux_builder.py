@@ -35,6 +35,8 @@ class _ComponentRecord:
     slot_id: str
     member_ids: dict[str, str] = field(default_factory=dict)
     references: dict[str, str] = field(default_factory=dict)
+    # For a field drive's Proxy, the drive node it belongs to.
+    proxy_of: str | None = None
 
 
 @dataclass
@@ -74,7 +76,13 @@ _COMMON_MEMBERS = [
     "SpaceName", "OnlyDirectBinding", "VariableName",
     "Node", "Reference", "Shift", "Power",
     "Min", "Max", "Edge0", "Edge1", "X", "Y",
+    "OnTrue", "OnFalse", "Axis", "Angle", "Angles", "Drive",
+    "From", "To", "Lerp",
 ]
+
+# The slot fields that Bind() can drive. A mock slot's member ID for one
+# is "<slot ID>-<field>".
+_SLOT_FIELDS = ["position", "rotation", "scale", "isActive", "orderOffset"]
 
 
 class MockClient:
@@ -144,16 +152,33 @@ class MockClient:
         """Return a mock slot response with components and children."""
         from unittest.mock import MagicMock
 
-        sid = slotId or (slot.id if slot is not None else None)
-        comps = [
-            MagicMock(id=c.id, componentType=c.component_type)
-            for c in self.components.values()
-            if c.slot_id == sid
-        ]
+        if slotId is not None:
+            sid = slotId
+        elif isinstance(slot, str):
+            sid = slot
+        else:
+            sid = slot.id if slot is not None else None
+        comps: list[Any] = []
+        for c in self.components.values():
+            if c.slot_id != sid:
+                continue
+            if c.proxy_of is not None:
+                # A real Component, so the builder can read its Node.
+                comps.append(workers.Component(
+                    id=c.id, componentType=c.component_type,
+                    members={
+                        "Node": members.Reference(targetId=c.proxy_of),
+                        "Drive": members.Reference(targetId=None),
+                    },
+                ))
+            else:
+                comps.append(MagicMock(id=c.id, componentType=c.component_type))
         resp = MagicMock()
         resp.data = MagicMock()
         resp.data.components = comps
         resp.data.parent = None
+        for name in _SLOT_FIELDS:
+            setattr(resp.data, name, MagicMock(id=f"{sid}-{name}"))
         return resp
 
     async def remove_slot(self, **kw: Any) -> Any:
@@ -272,6 +297,17 @@ class MockClient:
         self.components[cid] = rec
         self.component_list.append(rec)
         self._ensure_member_ids(cid)
+
+        if "FieldDrive" in ct:
+            # The server adds a Proxy beside each field drive node.
+            proxy_cid = self._gen_id("proxy")
+            proxy_rec = _ComponentRecord(
+                id=proxy_cid,
+                component_type="[FrooxEngine]FrooxEngine.ProtoFlux.CoreNodes.FieldDriveBase<T>+Proxy",
+                slot_id=slot_id, proxy_of=cid,
+            )
+            self.components[proxy_cid] = proxy_rec
+            self.component_list.append(proxy_rec)
 
         if "DataModel" in ct and "FieldStore" in ct:
             store_cid = self._gen_id("store")
@@ -1720,3 +1756,227 @@ class TestIsSlotOrChild:
             workers.Slot(id="space"),
             workers.Slot(id="other"),
         )
+
+
+# =========================================================================
+# Tests: shaping, conditional, rotations, world time, and bindings
+# =========================================================================
+
+
+class TestMathBuild:
+    """Test builder output for the shaping, conditional, and time nodes."""
+
+    @pytest.mark.asyncio
+    async def test_conditional_wiring(self, mock_client: MockClient) -> None:
+        """r = conditional(flag, a, b) wires each argument to its own input."""
+        from pyresonitelink.dergflux import math as dm
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="cond")
+        s.flag = s.BoolModelVar("flag", value=True)
+        s.a = s.FloatModelVar("a", value=1.0)
+        s.b = s.FloatModelVar("b", value=2.0)
+        s.r = s.FloatModelVar("r")
+        with g.Under(slot):
+            s.r = dm.conditional(s.flag, s.a, s.b)
+        await _build(mock_client, g)
+        m = mock_client
+
+        cond = m.find_one(r"ValueConditional")
+        condition = m.ref_target_type(cond, "Condition")
+        assert condition is not None and _dmvfs_type_arg(condition) == "bool"
+        on_true = m.ref_target_comp(cond, "OnTrue")
+        on_false = m.ref_target_comp(cond, "OnFalse")
+        assert on_true is not None and on_false is not None
+        assert on_true.id != on_false.id
+        assert _dmvfs_type_arg(on_true.component_type) == "float"
+        assert _dmvfs_type_arg(on_false.component_type) == "float"
+
+    @pytest.mark.asyncio
+    async def test_smoothstep_one_argument(self, mock_client: MockClient) -> None:
+        """smoothstep(x) is a SmoothStep_Float node reading x."""
+        from pyresonitelink.dergflux import math as dm
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="shape")
+        s.x = s.FloatModelVar("x", value=0.25)
+        s.y = s.FloatModelVar("y")
+        with g.Under(slot):
+            s.y = dm.smoothstep(s.x)
+        await _build(mock_client, g)
+        m = mock_client
+
+        node = m.find_one(_ct("SmoothStep_Float"))
+        value = m.ref_target_type(node, "Value")
+        assert value is not None and "DataModel" in value
+
+    @pytest.mark.asyncio
+    async def test_smootherstep_edges(self, mock_client: MockClient) -> None:
+        """smootherstep(0, 2, x) clamps the mapped x before the node."""
+        from pyresonitelink.dergflux import math as dm
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="shape3")
+        s.x = s.DoubleModelVar("x", value=0.5)
+        s.y = s.DoubleModelVar("y")
+        with g.Under(slot):
+            s.y = dm.smootherstep(0, 2, s.x)
+        await _build(mock_client, g)
+        m = mock_client
+
+        node = m.find_one(_ct("SmootherStep_Double"))
+        assert m.ref_target_type(node, "Value") is not None
+        assert "Clamp01_Double" in (m.ref_target_type(node, "Value") or "")
+
+    @pytest.mark.asyncio
+    async def test_world_time(self, mock_client: MockClient) -> None:
+        """time.world_time() is a WorldTimeDouble node."""
+        from pyresonitelink.dergflux import time
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="wt")
+        s.t = s.DoubleModelVar("t")
+        with g.Under(slot):
+            s.t = time.world_time()
+        await _build(mock_client, g)
+        assert mock_client.count(_ct("WorldTimeDouble")) == 1
+
+
+class TestBindBuild:
+    """Test builder output for g.Bind() with an expression."""
+
+    @pytest.mark.asyncio
+    async def test_expression_to_component(self, mock_client: MockClient) -> None:
+        """The drive's Proxy, not the drive, references the bound field."""
+        from pyresonitelink.data import fields
+        from pyresonitelink.generated._base import GeneratedComponent
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="bind")
+        s.x = s.FloatModelVar("x", value=1.0)
+        comp = GeneratedComponent()
+        comp._component.members["Value"] = fields.FieldFloat(id="field-member", value=0.0)
+        g.Bind(s.x + 1, comp, "Value", slot=slot)
+        await _build(mock_client, g)
+        m = mock_client
+
+        drive = m.find_one(r"ValueFieldDrive<float>")
+        assert m.ref_target_type(drive, "Value") is not None
+        proxy = m.find_one(r"\+Proxy")
+        assert proxy.proxy_of == drive.id
+        assert proxy.references["Drive"] == "field-member"
+
+    @pytest.mark.asyncio
+    async def test_axis_angle_to_slot_rotation(self, mock_client: MockClient) -> None:
+        """A FloatQ expression drives the slot's Rotation field."""
+        from pyresonitelink.dergflux import math as dm
+        slot = workers.Slot(id="test-slot")
+        wheel = workers.Slot(id="wheel")
+        g = Graph()
+        s = g.Space(slot, space_name="turn")
+        s.angle = s.FloatModelVar("angle", value=30.0)
+        g.Bind(dm.axis_angle(primitives.Float3(-1, 0, 0), s.angle), wheel, "Rotation", slot=slot)
+        await _build(mock_client, g)
+        m = mock_client
+
+        axis_angle = m.find_one(_ct("AxisAngle_floatQ"))
+        assert "ValueInput<float3>" in (m.ref_target_type(axis_angle, "Axis") or "")
+        assert _dmvfs_type_arg(m.ref_target_type(axis_angle, "Angle") or "") == "float"
+        drive = m.find_one(r"ValueFieldDrive<floatQ>")
+        assert m.ref_target_comp(drive, "Value") == axis_angle
+        proxy = m.find_one(r"\+Proxy")
+        assert proxy.references["Drive"] == "wheel-rotation"
+
+    @pytest.mark.asyncio
+    async def test_binding_is_built_before_flows(self, mock_client: MockClient) -> None:
+        """A binding that reads only variables exists before any flow node."""
+        from pyresonitelink.dergflux import math as dm
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="early")
+        s.angle = s.FloatModelVar("angle")
+        with g.Under(slot):
+            with g.If(s.angle == 0):
+                s.angle = 30.0
+        g.Bind(dm.axis_angle(primitives.Float3(0, 1, 0), s.angle), workers.Slot(id="w"), "Rotation", slot=slot)
+        await _build(mock_client, g)
+        m = mock_client
+
+        order = [c.id for c in m.component_list]
+        drive = m.find_one(r"ValueFieldDrive<floatQ>")
+        if_node = m.find_one(_ct("If"))
+        assert order.index(drive.id) < order.index(if_node.id)
+
+    @pytest.mark.asyncio
+    async def test_loop_index_binding_is_built_after_its_loop(
+        self, mock_client: MockClient,
+    ) -> None:
+        """A binding that reads a loop index waits for the loop's node."""
+        from pyresonitelink.data import fields
+        from pyresonitelink.generated._base import GeneratedComponent
+        slot = workers.Slot(id="test-slot")
+        comp = GeneratedComponent()
+        comp._component.members["Index"] = fields.FieldInt(id="index-member", value=0)
+        g = Graph()
+        with g.Under(slot):
+            with g.For(3) as f:
+                with f.OnIterate() as i:
+                    g.Bind(i, comp, "Index")
+        await _build(mock_client, g)
+        m = mock_client
+
+        order = [c.id for c in m.component_list]
+        drive = m.find_one(r"ValueFieldDrive<int>")
+        loop = m.find_one(_ct("For"))
+        assert order.index(loop.id) < order.index(drive.id)
+        assert m.ref_target_comp(drive, "Value") == loop
+
+
+class TestLerpBuild:
+    """Test builder output for the lerp functions."""
+
+    @pytest.mark.asyncio
+    async def test_lerp(self, mock_client: MockClient) -> None:
+        """lerp(a, b, t) is a ValueLerp<float> wired From, To, and Lerp."""
+        from pyresonitelink.dergflux import math as dm
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="lerp")
+        s.a = s.FloatModelVar("a", value=2.0)
+        s.b = s.FloatModelVar("b", value=10.0)
+        s.t = s.FloatModelVar("t", value=0.25)
+        s.r = s.FloatModelVar("r")
+        s.u = s.FloatModelVar("u")
+        with g.Under(slot):
+            s.r = dm.lerp(s.a, s.b, s.t)
+            s.u = dm.lerp_unclamped(s.a, s.b, s.t)
+        await _build(mock_client, g)
+        m = mock_client
+
+        for pattern in (r"\.ValueLerp<float>", r"\.ValueLerpUnclamped<float>"):
+            node = m.find_one(pattern)
+            sources = [m.ref_target_comp(node, name) for name in ("From", "To", "Lerp")]
+            assert all(c is not None and _is_dmvfs(c.component_type) for c in sources)
+            assert len({c.id for c in sources if c is not None}) == 3
+
+    @pytest.mark.asyncio
+    async def test_inverse_lerp_scalar_and_vector(self, mock_client: MockClient) -> None:
+        """Doubles use ValueInverseLerp<double>, and Float3s InverseLerp_Float3."""
+        from pyresonitelink.dergflux import math as dm
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="ilerp")
+        s.x = s.DoubleModelVar("x", value=4.0)
+        s.v = s.Float3ModelVar("v")
+        s.r = s.FloatModelVar("r")
+        s.rv = s.Float3ModelVar("rv")
+        with g.Under(slot):
+            s.r = dm.inverse_lerp(2, 10, s.x)
+            s.rv = dm.inverse_lerp(primitives.Float3(0, 0, 0), primitives.Float3(2, 4, 8), s.v)
+        await _build(mock_client, g)
+        m = mock_client
+
+        scalar = m.find_one(r"ValueInverseLerp<double>")
+        assert _dmvfs_type_arg(m.ref_target_type(scalar, "Value") or "") == "double"
+        vector = m.find_one(_ct("InverseLerp_Float3"))
+        assert _dmvfs_type_arg(m.ref_target_type(vector, "Value") or "") == "float3"

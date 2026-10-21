@@ -8,6 +8,7 @@ the Resonite server via the ResoniteLink client.
 from __future__ import annotations
 
 import asyncio
+import dataclasses
 import importlib
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any
@@ -16,6 +17,7 @@ import numpy as np
 
 _BUILD_DELAY = 0.1  # seconds between component creates (temporary)
 
+from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import workers
 from pyresonitelink.dergflux import _expr
@@ -99,6 +101,8 @@ _GENERIC_MATH: dict[str, tuple[str, str, list[str]]] = {
     "min": ("math", "ValueMin", ["a", "b"]),
     "max": ("math", "ValueMax", ["a", "b"]),
     "clamp": ("math", "ValueClamp", ["value", "min", "max"]),
+    "lerp": ("math", "ValueLerp", ["from", "to", "lerp"]),
+    "lerp_unclamped": ("math", "ValueLerpUnclamped", ["from", "to", "lerp"]),
     "abs": ("math", "ValueAbs", ["n"]),
 }
 
@@ -177,20 +181,16 @@ _TYPED_MATH: dict[str, tuple[str, str, list[str]]] = {
     # Sign / value
     "sign": ("math", "Sign", ["n"]),
     "clamp01": ("math", "Clamp01", ["n"]),
-    # Interpolation
-    "smoothstep": ("math", "SmoothStep", ["edge0", "edge1", "x"]),
+    # Shaping. dergflux.math maps the three-argument forms onto these.
+    "smoothstep": ("math.shaping", "SmoothStep", ["value"]),
+    "smootherstep": ("math.shaping", "SmootherStep", ["value"]),
 }
-
-# Lerp variants: use generic ValueLerp etc. from protoflux.operators
-# Actually these don't exist as generic Value* — check if they're in math
-# Let me check... ValueLerp doesn't exist. We need typed Lerp nodes.
-# But Lerp_Float etc are in math/interpolation or similar subdirs.
-# For now, handle lerp/inverse_lerp as generic math if possible.
 
 # Additional generic math that lives in protoflux.operators (not math):
 _GENERIC_MATH_OPERATORS: dict[str, tuple[str, list[str]]] = {
     # ValueConditional is in operators
-    "conditional": ("ValueConditional", ["on_true", "on_false", "condition"]),
+    # In the order of dergflux.math.conditional's arguments.
+    "conditional": ("ValueConditional", ["condition", "on_true", "on_false"]),
 }
 
 
@@ -574,6 +574,12 @@ class _BuildContext:
             val = np.int32(val)
         elif res_type is primitives.Long:
             val = np.int64(val)
+        elif (dataclasses.is_dataclass(val) and dataclasses.is_dataclass(res_type)
+                and type(val) is not res_type):
+            # A vector literal that took a wider type from its context,
+            # such as a Float3 used as a Double3. The fields have the same
+            # names, and the new type's __post_init__ converts them.
+            val = res_type(*(getattr(val, f.name) for f in dataclasses.fields(val)))
 
         # Strings are object types in ProtoFlux
         if res_type is str or res_type is primitives.String:
@@ -805,6 +811,9 @@ class _BuildContext:
         if node.func_name == "utc_now":
             from pyresonitelink.protoflux.time import UtcNow
             return await _create_and_wire(self.resolink, self.slot, UtcNow, {}, debug=self.debug)
+        if node.func_name == "world_time":
+            from pyresonitelink.protoflux.time import WorldTimeDouble
+            return await _create_and_wire(self.resolink, self.slot, WorldTimeDouble, {}, debug=self.debug)
         if node.func_name == "delta_time":
             from pyresonitelink.protoflux.time import DeltaTime
             return await _create_and_wire(self.resolink, self.slot, DeltaTime, {}, debug=self.debug)
@@ -860,6 +869,38 @@ class _BuildContext:
             return await _create_and_wire(
                 self.resolink, self.slot, ToUnixMilliseconds, {"DateTime": arg_comps[0].id},
                 debug=self.debug,
+            )
+
+        # Inverse lerp is generic over numbers, and typed for vectors. Its
+        # result type differs from its arguments', so the node is chosen
+        # by the arguments' type.
+        if node.func_name == "inverse_lerp":
+            from pyresonitelink.dergflux import _types
+            from pyresonitelink.protoflux.math import interpolation
+            arg_type = _resolve_type(node.args[0])
+            if arg_type in _types._VECTORS:
+                Class = getattr(
+                    interpolation, f"InverseLerp_{_TYPE_SUFFIXES[arg_type]}",
+                )
+            else:
+                Class = interpolation.ValueInverseLerp[arg_type]  # type: ignore[valid-type]
+            return await _create_and_wire(
+                self.resolink, self.slot, Class,
+                _make_refs(["from", "to", "value"]), debug=self.debug,
+            )
+
+        # Rotations. The node names end in floatQ or doubleQ.
+        if node.func_name in ("axis_angle", "from_euler"):
+            from pyresonitelink.protoflux.math import rotation
+            suffix = "doubleQ" if res_type is primitives.DoubleQ else "floatQ"
+            if node.func_name == "axis_angle":
+                Class = getattr(rotation, f"AxisAngle_{suffix}")
+                refs = {"Axis": arg_comps[0].id, "Angle": arg_comps[1].id}
+            else:
+                Class = getattr(rotation, f"FromEuler_{suffix}")
+                refs = {"Angles": arg_comps[0].id}
+            return await _create_and_wire(
+                self.resolink, self.slot, Class, refs, debug=self.debug,
             )
 
         # Typed math function
@@ -1753,41 +1794,104 @@ def _is_reference_type(res_type: type) -> bool:
         return True
 
 
-async def _build_bindings(
-    graph: _graph.Graph,
+async def _bound_member_id(
     resolink: protocols.ResoniteLinkClient,
-) -> None:
-    """Build all recorded bindings.
+    bind_rec: _flow.BindRecord,
+) -> str:
+    """Returns the member ID of the field that a binding drives.
 
-    Dispatches between three driver types:
-    - DynamicValueVariableDriver<T> for dynvar -> value field
-    - DynamicReferenceVariableDriver<T> for dynvar -> reference field
-    - ValueFieldDrive<T> for general expression -> field
+    A slot's member IDs are only known from its data, so the slot is
+    fetched.
+
+    Raises:
+        RuntimeError: The slot's data has no such field.
     """
-    for bind_rec in graph._bindings:
-        member = bind_rec.component.get_member(bind_rec.member_name)
-        assert member is not None
-        res_type = _resolve_type(bind_rec.expr._node)
+    target = bind_rec.target
+    if isinstance(target, workers.Slot):
+        data = (await resolink.get_slot(target)).data
+        attribute = _flow.slot_attribute(bind_rec.member_name)
+        slot_field = getattr(data, attribute, None) if data is not None else None
+        if slot_field is None or slot_field.id is None:
+            raise RuntimeError(
+                f"Slot {target.id} returned no {bind_rec.member_name} field."
+            )
+        return slot_field.id
+    member = target.get_member(bind_rec.member_name)
+    assert member is not None and member.id is not None
+    return member.id
 
-        if bind_rec.dynvar_name is not None:
-            # Source is a dynamic variable — use a driver component
-            await _build_dynvar_binding(
-                resolink, bind_rec, member, res_type,
-            )
-        else:
-            # Source is a general expression — use ValueFieldDrive
-            await _build_expr_binding(
-                resolink, bind_rec, member, res_type,
-            )
+
+async def _find_drive_proxy(
+    resolink: protocols.ResoniteLinkClient,
+    slot: workers.Slot,
+    node_id: str,
+) -> workers.Component:
+    """Returns the Proxy component of a field drive node.
+
+    The server adds the Proxy beside the node, and the field that the node
+    drives is the Proxy's Drive reference. The Proxy's Node reference
+    identifies the node it belongs to.
+
+    Raises:
+        RuntimeError: No Proxy for the node appeared within a second.
+    """
+    for _ in range(20):
+        data = (await resolink.get_slot(slot, includeComponentData=True)).data
+        for component in data.components if data is not None else []:
+            node = (component.members or {}).get("Node")
+            if ((component.componentType or "").endswith("+Proxy")
+                    and isinstance(node, members.Reference)
+                    and node.targetId == node_id):
+                return component
+        await asyncio.sleep(0.05)
+    raise RuntimeError(f"No Proxy component appeared for the drive {node_id}.")
+
+
+def _uses_flow_state(node: _expr.ExprNode) -> bool:
+    """Returns whether an expression reads a value that a flow creates.
+
+    These are a loop's index, a trigger's value, and an action's outputs.
+    """
+    if isinstance(node, (
+        _expr.LoopIndexNode, _expr.TriggerValueNode, _expr.ComponentOutputNode,
+    )):
+        return True
+    if isinstance(node, _expr.BinaryOpNode):
+        return _uses_flow_state(node.left) or _uses_flow_state(node.right)
+    if isinstance(node, _expr.UnaryOpNode):
+        return _uses_flow_state(node.operand)
+    if isinstance(node, _expr.MathCallNode):
+        return any(_uses_flow_state(arg) for arg in node.args)
+    if isinstance(node, (_expr.CastNode, _expr.MemberAccessNode)):
+        return _uses_flow_state(node.expr)
+    return False
+
+
+async def _build_binding(
+    resolink: protocols.ResoniteLinkClient,
+    bind_rec: _flow.BindRecord,
+    ctx: _BuildContext,
+) -> None:
+    """Builds a binding with the driver that suits its source.
+
+    Uses DynamicValueVariableDriver<T> or DynamicReferenceVariableDriver<T>
+    for a bare dynamic variable, and ValueFieldDrive<T> otherwise.
+    """
+    member_id = await _bound_member_id(resolink, bind_rec)
+    res_type = _resolve_type(bind_rec.expr._node)
+    if bind_rec.dynvar_name is not None:
+        await _build_dynvar_binding(resolink, bind_rec, member_id, res_type)
+    else:
+        await _build_expr_binding(ctx, bind_rec, member_id, res_type)
 
 
 async def _build_dynvar_binding(
     resolink: protocols.ResoniteLinkClient,
     bind_rec: _flow.BindRecord,
-    member: Any,
+    member_id: str,
     res_type: type,
 ) -> None:
-    """Build a binding from a dynamic variable to a component field.
+    """Build a binding from a dynamic variable to a field.
 
     Uses DynamicValueVariableDriver<T> for value types or
     DynamicReferenceVariableDriver<T> for reference types.
@@ -1807,7 +1911,7 @@ async def _build_dynvar_binding(
         ConcreteDriver = DynamicReferenceVariableDriver[res_type]  # type: ignore[valid-type]
         driver = ConcreteDriver(
             variable_name=full_path,
-            target=member.id,
+            target=member_id,
         )
     else:
         from pyresonitelink.components.data.dynamic import (
@@ -1816,54 +1920,51 @@ async def _build_dynvar_binding(
         ConcreteDriver = DynamicValueVariableDriver[res_type]  # type: ignore[valid-type]
         driver = ConcreteDriver(
             variable_name=full_path,
-            target=member.id,
+            target=member_id,
         )
 
     await driver.add_to_slot(resolink, bind_rec.slot)
 
 
 async def _build_expr_binding(
-    resolink: protocols.ResoniteLinkClient,
-    bind_rec: _flow.BindRecord,
-    member: Any,
-    res_type: type,
-) -> None:
-    """Build a binding from a ProtoFlux expression to a component field."""
-    ctx = _BuildContext(resolink, bind_rec.slot)
-    await _build_expr_binding_with_ctx(ctx, bind_rec, member, res_type)
-
-
-async def _build_expr_binding_with_ctx(
     ctx: _BuildContext,
     bind_rec: _flow.BindRecord,
-    member: Any,
+    member_id: str,
     res_type: type,
 ) -> None:
-    """Build a binding using a specific build context.
+    """Build a binding from a ProtoFlux expression to a field.
 
     Uses ValueFieldDrive<T>.  The ctx may carry loop_node and other
     state from flow building, allowing bindings to reference loop
     indices and other flow-scoped values.
 
-    Creates the drive without references in the constructor, then
-    wires Value and _value via update_references to avoid ResoniteLink
-    type compatibility issues with ProtoFlux node outputs.
+    The drive node's Value input is wired to the expression. The field it
+    drives is set on the node's Proxy component.
     """
     from pyresonitelink.protoflux.core import ValueFieldDrive
 
     expr_comp = await ctx.materialize(bind_rec.expr._node)
 
     ConcreteDrive = ValueFieldDrive[res_type]  # type: ignore[valid-type]
-    bind_node = ConcreteDrive()
-    await bind_node.add_to_slot(ctx.resolink, bind_rec.slot)
-
-    await ctx.resolink.update_references(
-        componentId=bind_node.id,  # type: ignore[arg-type]
-        references={
-            "Value": expr_comp.id,
-            "_value": member.id,
-        },
+    drive = await _create_and_wire(
+        ctx.resolink, bind_rec.slot, ConcreteDrive, {"Value": expr_comp.id},
+        debug=ctx.debug,
     )
+    proxy = await _find_drive_proxy(ctx.resolink, bind_rec.slot, drive.id)
+    assert proxy.id is not None
+    target = (proxy.members or {}).get("Drive")
+    resp = await ctx.resolink.update_references(
+        componentId=proxy.id,
+        references={"Drive": members.Reference(
+            targetId=member_id,
+            targetType=target.targetType if isinstance(target, members.Reference) else None,
+        )},
+    )
+    if not resp.success:
+        raise RuntimeError(
+            f"Failed to set the field that drive {drive.id} drives: "
+            f"{resp.errorInfo}"
+        )
 
 
 # =========================================================================
@@ -2233,6 +2334,20 @@ async def build_graph(
     # Give the server a moment to settle after space building
     await asyncio.sleep(0.2)
 
+    # Bindings that don't read a flow's state are built before the flows,
+    # so that a flow's first run happens with them already driving their
+    # fields. The others need the flow's nodes, and are built after it.
+    early_bindings = [
+        b for b in graph._bindings if not _uses_flow_state(b.expr._node)
+    ]
+    late_bindings = [
+        b for b in graph._bindings if _uses_flow_state(b.expr._node)
+    ]
+    for bind_rec in early_bindings:
+        await _build_binding(
+            resolink, bind_rec, _BuildContext(resolink, bind_rec.slot, debug=debug),
+        )
+
     # Build each Under record.
     # Each record contains a sequence of flow statements sharing one
     # trigger. If there's only one statement, wire the trigger directly.
@@ -2307,23 +2422,11 @@ async def build_graph(
         else:
             await _build_trigger(ctx, entry, trigger)
 
-    # Build bindings (ValueFieldDrive<T>, DynamicValueVariableDriver, etc.)
-    # Bindings are built using the ctx from the last Under block that
-    # matches their slot, so they have access to loop_node and other
-    # flow state (e.g. for g.Bind(i, mux, "Index") inside a For loop).
-    for bind_rec in graph._bindings:
+    # The remaining bindings are built using the ctx from the last Under
+    # block that matches their slot, so they have access to loop_node and
+    # other flow state (e.g. for g.Bind(i, mux, "Index") inside a For loop).
+    for bind_rec in late_bindings:
         bind_ctx = under_contexts.get(bind_rec.slot.id)
         if bind_ctx is None:
-            bind_ctx = _BuildContext(resolink, bind_rec.slot)
-        member = bind_rec.component.get_member(bind_rec.member_name)
-        assert member is not None
-        res_type = _resolve_type(bind_rec.expr._node)
-
-        if bind_rec.dynvar_name is not None:
-            await _build_dynvar_binding(
-                resolink, bind_rec, member, res_type,
-            )
-        else:
-            await _build_expr_binding_with_ctx(
-                bind_ctx, bind_rec, member, res_type,
-            )
+            bind_ctx = _BuildContext(resolink, bind_rec.slot, debug=debug)
+        await _build_binding(resolink, bind_rec, bind_ctx)

@@ -298,10 +298,32 @@ dm.clamp(s.x, lo, hi)      # clamp to [lo, hi]
 #### Interpolation
 
 ```python
-dm.lerp(s.a, s.b, s.t)          # linear interpolation
-dm.inverse_lerp(s.a, s.b, s.x)  # inverse lerp (find t)
-dm.smoothstep(edge0, edge1, s.x) # Hermite smoothstep
+dm.lerp(s.a, s.b, s.t)            # a + (b - a) * t, with t clamped to [0, 1]
+dm.lerp_unclamped(s.a, s.b, s.t)  # the same without the clamp
+dm.inverse_lerp(s.a, s.b, s.x)    # (x - a) / (b - a), the t that lerp(a, b, t) maps to x
 ```
+
+`a` and `b` can be numbers or vectors, and the result of `lerp` has their common type. The lerp nodes take `t` as a Float whatever the values' type, so a Double `t` raises `TypeError` until it's converted with `dm.to_float`. `inverse_lerp` isn't clamped. For numbers its result is a Float, even when the arguments are Doubles. For vectors from Float2 to Double4 it works per component and gives a vector of the arguments' type.
+
+#### Shaping
+
+```python
+dm.smoothstep(s.x)                # 3x² - 2x³
+dm.smoothstep(edge0, edge1, s.x)  # 0 at or below edge0, 1 at or above edge1, as in GLSL
+dm.smootherstep(s.x)              # 6x⁵ - 15x⁴ + 10x³
+dm.smootherstep(edge0, edge1, s.x)
+```
+
+ProtoFlux's SmoothStep and SmootherStep nodes don't clamp their input, so with one argument the result leaves [0, 1] when `x` does. The three-argument forms map `x` to 0 at `edge0` and 1 at `edge1`, and clamp it, before the node. The result is a Double if any argument is one, and a Float otherwise.
+
+#### Rotations
+
+```python
+dm.axis_angle(primitives.Float3(0, 1, 0), s.degrees)  # a FloatQ
+dm.from_euler(s.angles)                               # Euler angles, a Float3
+```
+
+Both take degrees, as the AxisAngle and FromEuler nodes do, and `axis_angle` normalizes the axis. Float arguments give a `FloatQ`. A `Double` or `Double3` argument gives a `DoubleQ`, and the other argument is widened to match. A positive angle turns +Y toward +Z about +X, which in Resonite's left-handed coordinates is clockwise seen from the tip of the axis.
 
 #### Conditional
 
@@ -321,7 +343,7 @@ s.big = s.count + s.flags # int + uint: both are widened to long
 s.v = s.ints3 + s.floats3 # int3 + float3: the int3 is widened to float3
 ```
 
-The same applies to assignments, to the arguments of two-argument math functions such as `dm.min_`, to the two values of `dm.conditional`, and to the arguments of the `time` functions. An int literal takes the type of the other operand, but a float literal next to an int widens the int, so `s.count + 2.5` is a float rather than a truncated int.
+The same applies to assignments, to the arguments of two-argument math functions such as `dm.min_`, to the two values of `dm.conditional`, and to the arguments of the `time` functions. An int literal takes the type of the other operand, but a float literal next to an int widens the int, so `s.count + 2.5` is a float rather than a truncated int. A literal of a `primitives` type, such as `primitives.Double(2.5)` or `primitives.Float3(0, 1, 0)`, has that type from the start.
 
 Narrowing needs an explicit conversion, and Dergflux raises a `TypeError` at the line that would narrow:
 
@@ -354,6 +376,7 @@ s.seconds = s.waited.total_seconds                # a Double
 | Function or property | Result type | Node |
 |---|---|---|
 | `time.utc_now()` | DateTime | `UtcNow` |
+| `time.world_time()` | Double | `WorldTimeDouble` |
 | `time.delta_time()` and its `smooth_`, `raw_`, and `inverted_` variants | Float | `DeltaTime` etc. |
 | `time.days(n)`, `hours`, `minutes`, `seconds`, `milliseconds` | TimeSpan | `TimeSpanFrom*`, which take a double |
 | `time.ticks(n)` | TimeSpan | `TimeSpanFromTicks`, which takes a long |
@@ -363,6 +386,8 @@ s.seconds = s.waited.total_seconds                # a Double
 | `dt.ticks`, `span.ticks` | Long | `DateTimeTicks`, `TimeSpanTicks` |
 | `span.days`, `hours`, `minutes`, `seconds`, `milliseconds` | Int | `TimeSpan*` |
 | `span.total_days`, `total_hours`, `total_minutes`, `total_seconds`, `total_milliseconds` | Double | `TimeSpanTotal*` |
+
+`time.world_time()` is the world's time in seconds. It starts at 0 when the session starts, and each user's copy follows the host's. To count from some moment, store the world time then and subtract it, as `examples/dergflux_number_wheel.py` does. ProtoFlux's Elapsed Time nodes return the same value as the world time until their Reset impulse sets a start time, and Dergflux can't send that impulse, so Dergflux has no elapsed time function.
 
 `dt.day_of_week` isn't supported, because the `DateTimeDayOfWeek` node outputs a `System.DayOfWeek` enum, which Dergflux has no type for.
 
@@ -515,9 +540,10 @@ The indexed inputs can be wired from external impulse sources.
 
 ## Bindings
 
-``g.Bind()`` permanently binds a value source to a component field.
-The field always reflects the source's current value.  **A field can
-only be bound once** — attempting to rebind raises ``RuntimeError``.
+``g.Bind()`` permanently binds a value source to a field of a component
+or of a slot. The field always reflects the source's current value.
+**A field can only be bound once** — attempting to rebind raises
+``RuntimeError``.
 
 The binding mechanism depends on the source:
 
@@ -527,7 +553,10 @@ The binding mechanism depends on the source:
   types like Slot).  The driver reads the named variable by path and
   continuously drives the target field.
 - **General expression** (e.g. ``i``, ``s.x + 1``): Creates a
-  ``ValueFieldDrive<T>`` driven by the ProtoFlux expression.
+  ``ValueFieldDrive<T>`` whose ``Value`` input reads the expression. The
+  field that it drives is the ``Drive`` reference of a
+  ``FieldDriveBase<T>+Proxy`` component, which the server adds beside the
+  node, and the builder sets it there.
 
 ```python
 # Bind a loop counter to a field (uses ValueFieldDrive)
@@ -538,7 +567,16 @@ with g.Under(slot):
 
 # Bind a dynamic variable to a field (uses DynamicValueVariableDriver)
 g.Bind(s.volume, audio_output, "Volume", slot=slot)
+
+# Drive a slot's rotation
+g.Bind(dm.axis_angle(primitives.Float3(0, 1, 0), s.angle), wheel, "Rotation", slot=slot)
 ```
+
+A slot's fields that can be bound are ``"Position"``, ``"Rotation"``,
+``"Scale"``, ``"IsActive"``, and ``"OrderOffset"``. Their types are known,
+so the expression is widened to the field's type, and an expression that
+would have to narrow raises ``TypeError`` at the ``Bind`` call. A slot's
+``Name`` and ``Tag`` are strings, which ``ValueFieldDrive`` can't drive.
 
 For named spaces, the variable path is automatically prefixed with
 the space name (e.g. ``"Audio/vol"`` for a variable ``vol`` in space
@@ -547,8 +585,10 @@ the space name (e.g. ``"Audio/vol"`` for a variable ``vol`` in space
 Arguments:
 
 - ``expr`` — an ExprProxy or literal value to bind from
-- ``component`` — the target component (a generated component instance)
-- ``member_name`` — the Resonite member name to bind to (e.g. ``"Index"``)
+- ``target`` — the component (a generated component instance) or the
+  slot (a ``workers.Slot``) whose field is bound
+- ``member_name`` — the Resonite member name to bind to (e.g. ``"Index"``,
+  or ``"Rotation"`` for a slot)
 - ``slot`` — optional; defaults to the active ``Under()`` slot
 
 ## Actions
@@ -970,7 +1010,10 @@ Shared sub-expressions are materialized only once (identity-cached).
 | `dm.round_(x)` | `Round_Float`, etc. |
 | `dm.sign(x)` | `Sign_Float`, `Sign_Int`, etc. |
 | `dm.clamp01(x)` | `Clamp01_Float`, etc. |
-| `dm.smoothstep(e0, e1, x)` | `SmoothStep_Float`, etc. |
+| `dm.smoothstep(x)`, `dm.smoothstep(e0, e1, x)` | `SmoothStep_Float`, `SmoothStep_Double` |
+| `dm.smootherstep(x)`, `dm.smootherstep(e0, e1, x)` | `SmootherStep_Float`, `SmootherStep_Double` |
+| `dm.axis_angle(axis, angle)` | `AxisAngle_floatQ`, `AxisAngle_doubleQ` |
+| `dm.from_euler(angles)` | `FromEuler_floatQ`, `FromEuler_doubleQ` |
 
 ### Math Functions (generic `Value*<T>` nodes)
 
@@ -984,7 +1027,8 @@ Shared sub-expressions are materialized only once (identity-cached).
 | `dm.max_(a, b)` | `ValueMax<T>` |
 | `dm.clamp(v, lo, hi)` | `ValueClamp<T>` |
 | `dm.lerp(a, b, t)` | `ValueLerp<T>` |
-| `dm.inverse_lerp(a, b, v)` | `ValueInverseLerp<T>` |
+| `dm.lerp_unclamped(a, b, t)` | `ValueLerpUnclamped<T>` |
+| `dm.inverse_lerp(a, b, v)` | `ValueInverseLerp<T>` for numbers, `InverseLerp_Float3` etc. for vectors |
 | `dm.conditional(c, t, f)` | `ValueConditional<T>` |
 
 ## Complete Example

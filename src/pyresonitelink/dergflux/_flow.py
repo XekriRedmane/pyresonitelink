@@ -14,8 +14,10 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Any, Union
 
+from pyresonitelink.data import primitives
+from pyresonitelink.data import workers
+
 if TYPE_CHECKING:
-    from pyresonitelink.data import workers
     from pyresonitelink.dergflux import _expr
     from pyresonitelink.dergflux import _space
 
@@ -325,11 +327,53 @@ class BareWriteContext(FlowContext):
         return self.stmts
 
 
+# The slot fields that Bind() can drive, by their workers.Slot attribute
+# names, and their types. A ValueFieldDrive drives value types only, so a
+# slot's Name and Tag strings aren't included.
+SLOT_FIELD_TYPES: dict[str, type] = {
+    "position": primitives.Float3,
+    "rotation": primitives.FloatQ,
+    "scale": primitives.Float3,
+    "isActive": primitives.Bool,
+    "orderOffset": primitives.Long,
+}
+
+# The same fields by their Resonite member names, for messages.
+SLOT_FIELD_NAMES: tuple[str, ...] = (
+    "Position", "Rotation", "Scale", "IsActive", "OrderOffset",
+)
+
+
+def slot_attribute(member_name: str) -> str:
+    """Returns the workers.Slot attribute for a slot field's member name.
+
+    The attributes are the member names with a lowercase first letter,
+    as "Rotation" is rotation and "IsActive" is isActive.
+    """
+    return member_name[:1].lower() + member_name[1:]
+
+
+def same_target(a: Any, b: Any) -> bool:
+    """Returns whether two binding targets are the same component or slot.
+
+    Two Slot objects with the same ID are the same slot.
+    """
+    if isinstance(a, workers.Slot) and isinstance(b, workers.Slot):
+        return a.id == b.id
+    return a is b
+
+
 @dataclass
 class BindRecord:
-    """A permanent binding from a value source to a component field."""
+    """A permanent binding from a value source to a field.
 
-    component: Any
+    Attributes:
+        target: The component, or the workers.Slot, that has the field.
+        member_name: The field's Resonite member name, e.g. "Index", or
+            "Rotation" for a slot.
+    """
+
+    target: Any
     member_name: str
     expr: _expr.ExprProxy
     slot: workers.Slot
