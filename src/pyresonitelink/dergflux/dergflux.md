@@ -940,13 +940,17 @@ See [Sync vs Async Flow](async_flow.md) for the full technical details.
 Calling `await g.build(resolink)` materializes everything on the server:
 
 1. **Spaces**: Creates `DynamicVariableSpace` components (skipped if already present).
-2. **Variables**: Creates `DynamicValueVariable<T>` components (skipped if already present).
-3. **Expressions**: Walks the AST bottom-up, creating operator and math nodes.
-4. **Writes**: Creates `WriteDynamicValueVariable<T>` chains (linked via `on_success`).
-5. **Flow**: Creates `If` nodes wired to the condition and write chains.
-6. **Trigger**: Creates `Update`, `DynamicImpulseReceiver`, or `DynamicImpulseReceiverWithValue<T>` to drive the impulse flow.
+2. **Variables**: Creates `DynamicValueVariable<T>` components (skipped if already present), and a child slot with a `DataModelValueFieldStore<T>` for each model variable.
+3. **Bindings that read no flow state**: Creates their drivers and `ValueFieldDrive<T>` nodes, so a flow's first run happens with them already driving their fields.
+4. **Expressions**: Walks the AST bottom-up, creating operator and math nodes.
+5. **Writes**: Creates `WriteDynamicValueVariable<T>` chains (linked via `on_success`).
+6. **Flow**: Creates `If` nodes wired to the condition and write chains.
+7. **Trigger**: Creates `Update`, `DynamicImpulseReceiver`, or `DynamicImpulseReceiverWithValue<T>` to drive the impulse flow.
+8. **Bindings that read flow state**: Creates the bindings whose expressions read a loop index, a trigger's value, or an action's output, which need the flow's nodes.
 
 Shared sub-expressions are materialized only once (identity-cached).
+
+A flow driven by `Update` starts running as soon as its trigger is wired, while the rest of the graph may still be building. Each node takes a round trip and a short pause, so a large graph takes seconds to build. A flow that records a start time therefore records it before any later part of the graph exists, and a value that should start counting when the whole graph is ready belongs in a binding, which is built first.
 
 ## Operator Reference
 

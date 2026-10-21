@@ -1980,3 +1980,119 @@ class TestLerpBuild:
         assert _dmvfs_type_arg(m.ref_target_type(scalar, "Value") or "") == "double"
         vector = m.find_one(_ct("InverseLerp_Float3"))
         assert _dmvfs_type_arg(m.ref_target_type(vector, "Value") or "") == "float3"
+
+
+# =========================================================================
+# Tests: every math and time function builds, with real member names
+# =========================================================================
+
+
+def _member_names(component_class: type) -> set[str]:
+    """Returns the member names that a generated component class reads.
+
+    A parameterized class such as ValueLerp[Float] is created at runtime,
+    so its generated base classes are searched.
+    """
+    import inspect
+
+    names: set[str] = set()
+    for klass in component_class.__mro__:
+        if not klass.__module__.startswith("pyresonitelink.generated."):
+            continue
+        try:
+            source = inspect.getsource(klass)
+        except (OSError, TypeError):
+            continue
+        names.update(re.findall(r'get_member\("(\w+)"\)', source))
+    return names
+
+
+def _calls() -> list[tuple[str, Any]]:
+    """Returns (id, call) pairs, where call(s) builds an expression from s.
+
+    The space s has the model variables f (Float), d (Double), b (Bool),
+    and v (Float3).
+    """
+    from pyresonitelink.dergflux import math as dm
+    from pyresonitelink.dergflux import time
+
+    one = [
+        "acos", "asin", "atan", "ceil", "clamp01", "cos", "cube", "exp",
+        "floor", "log", "log10", "one_minus", "reciprocal", "round_", "sign",
+        "sin", "smootherstep", "smoothstep", "sqrt", "square", "tan",
+        "to_double", "to_float", "to_int", "to_long",
+    ]
+    calls: list[tuple[str, Any]] = [
+        (name, lambda s, fn=getattr(dm, name): fn(s.f)) for name in one
+    ]
+    calls += [
+        ("atan2", lambda s: dm.atan2(s.f, s.f)),
+        ("min_", lambda s: dm.min_(s.f, s.f)),
+        ("max_", lambda s: dm.max_(s.f, s.f)),
+        ("clamp", lambda s: dm.clamp(s.f, 0, 1)),
+        ("conditional", lambda s: dm.conditional(s.b, s.f, s.f)),
+        ("convert", lambda s: dm.convert(s.f, primitives.Int)),
+        ("axis_angle", lambda s: dm.axis_angle(s.v, s.f)),
+        ("from_euler", lambda s: dm.from_euler(s.v)),
+        ("lerp", lambda s: dm.lerp(s.f, s.f, s.f)),
+        ("lerp_unclamped", lambda s: dm.lerp_unclamped(s.v, s.v, s.f)),
+        ("inverse_lerp", lambda s: dm.inverse_lerp(s.d, s.d, s.d)),
+        ("inverse_lerp_vector", lambda s: dm.inverse_lerp(s.v, s.v, s.v)),
+        ("smoothstep_edges", lambda s: dm.smoothstep(0, 1, s.d)),
+        ("smootherstep_edges", lambda s: dm.smootherstep(0, 1, s.f)),
+        ("power", lambda s: s.f ** 2),
+        ("abs", lambda s: abs(s.f)),
+        ("world_time", lambda s: time.world_time()),
+        ("utc_now", lambda s: time.utc_now()),
+        ("delta_time", lambda s: time.delta_time()),
+        ("smooth_delta_time", lambda s: time.smooth_delta_time()),
+        ("raw_delta_time", lambda s: time.raw_delta_time()),
+        ("inverted_delta_time", lambda s: time.inverted_delta_time()),
+        ("inverted_smooth_delta_time", lambda s: time.inverted_smooth_delta_time()),
+        ("inverted_raw_delta_time", lambda s: time.inverted_raw_delta_time()),
+    ]
+    return calls
+
+
+class TestFunctionAudit:
+    """Each Dergflux math and time function builds, and wires real members.
+
+    A function with no builder entry raises TypeError when built, and a
+    reference to a member the node class doesn't have fails the check in
+    _create_and_wire. The server ignores a reference to an unknown member,
+    so neither mistake shows up otherwise.
+    """
+
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("call", [c for _, c in _calls()], ids=[n for n, _ in _calls()])
+    async def test_builds_with_real_members(
+        self, mock_client: MockClient, monkeypatch: pytest.MonkeyPatch, call: Any,
+    ) -> None:
+        from pyresonitelink.dergflux import _types
+
+        original = _builder._create_and_wire
+
+        async def checked(
+            resolink: Any, slot: Any, component_class: Any,
+            references: dict[str, str], debug: bool = False,
+        ) -> Any:
+            unknown = set(references) - _member_names(component_class)
+            assert not unknown, (
+                f"{component_class.__name__} has no member {sorted(unknown)}"
+            )
+            return await original(resolink, slot, component_class, references, debug=debug)
+
+        monkeypatch.setattr(_builder, "_create_and_wire", checked)
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="audit")
+        s.f = s.FloatModelVar("f", value=0.5)
+        s.d = s.DoubleModelVar("d", value=0.5)
+        s.b = s.BoolModelVar("b", value=True)
+        s.v = s.Float3ModelVar("v")
+        result = call(s)
+        type_name = _types.type_name(result._node._type)
+        s.r = getattr(s, f"{type_name}ModelVar")("r")
+        with g.Under(slot):
+            s.r = result
+        await _build(mock_client, g)

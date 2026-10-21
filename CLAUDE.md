@@ -601,6 +601,15 @@ ALWAYS check whether a type needs Value or Object variants before creating Proto
 - ALWAYS set `Drive` on the Proxy, found by its `Node` (`_builder._find_drive_proxy`). Until Oct 2026 Dergflux wired a `_value` member that the node doesn't have. `update_references` skips an unknown member silently, so no Dergflux expression binding ever drove its field.
 - `ElapsedTime*` nodes return the world time, not the time since they were added, until their Reset impulse runs. Their Proxy's `SyncTime` starts at offset 0 (checked in the decompiled source and live, 20 Oct 2026). Use `WorldTimeDouble` minus a stored start time, as `examples/dergflux_number_wheel.py` does.
 
+#### Dergflux Expressions Overload `==`
+
+- `ExprProxy.__eq__` builds an equality node instead of returning a bool, and `bool()` of a proxy raises `TypeError`.
+- NEVER compare objects that hold proxies with `==` or `in`. A dataclass such as `BindRecord` compares its fields, so `rec in records` raises. Select records by a predicate, or compare with `is`.
+
+#### Every Dergflux Function Is Built in a Test
+
+- ALWAYS keep `TestFunctionAudit` in `test_dergflux_builder.py` covering every public `dergflux.math` and `dergflux.time` function. It builds each one and checks every wired reference name against the generated node class, because the server ignores a reference to an unknown member. It catches a missing builder entry and a wrong input name, which is how `lerp` and `smoothstep` stayed broken.
+
 #### GlobalValue vs ValueInput for IGlobalValueProxy References
 
 Some ProtoFlux nodes have reference members targeting `IGlobalValueProxy<T>` instead of `INodeValueOutput<T>`. For example, `DynamicImpulseReceiver.Tag` expects `IGlobalValueProxy<string>`. These references CANNOT be wired to `ValueInput<T>` or `ValueObjectInput<T>` — they require a `GlobalValue<T>` component instead.
