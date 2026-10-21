@@ -8,6 +8,7 @@ I strongly suggest using the async versions of the functions.
 import asyncio
 import dataclasses as dc
 import json
+import random
 import uuid
 from collections.abc import Mapping, Sequence
 from typing import TYPE_CHECKING, Any
@@ -104,6 +105,74 @@ def _coerce_composite_field[F](
     names = [f.name for f in dc.fields(primitive_cls)]  # type: ignore[arg-type]
     kwargs = {name: value[i] for i, name in enumerate(names)}  # type: ignore[index]
     return field_cls(value=primitive_cls(**kwargs))  # type: ignore[call-arg]
+
+
+# The engine runs components in ascending UpdateOrder (a SortedDictionary
+# of buckets in UpdateManager), so the largest int runs last.
+_PROBE_UPDATE_ORDER = np.int32(np.iinfo(np.int32).max)
+# Seconds between reads of a global transform probe. Each read already takes
+# about 8 ms, and an engine update at 60 FPS takes about 17 ms.
+_PROBE_POLL_INTERVAL = 0.005
+# The magnitude bound of each component of a probe's sentinel values.
+_SENTINEL_RANGE = 1e4
+
+# The slot fields that UpdateSlot can change, each of which is a member with
+# an ID.
+_SLOT_MEMBER_FIELDS = (
+    "parent", "position", "rotation", "scale", "isActive", "isPersistent",
+    "name", "tag", "orderOffset",
+)
+
+
+def _random_float3() -> primitives.Float3:
+    """Returns a Float3 with each component uniform in +/-_SENTINEL_RANGE."""
+    return primitives.Float3(
+        *(random.uniform(-_SENTINEL_RANGE, _SENTINEL_RANGE) for _ in range(3))
+    )
+
+
+def _transform_of(data: workers.Slot, slot_id: str) -> transforms.Transform:
+    """Returns a slot's transform relative to its parent.
+
+    Args:
+        data: The slot's data, as returned by GetSlot.
+        slot_id: The slot's ID, for the error message.
+
+    Raises:
+        RuntimeError: The data lacks part of the transform.
+    """
+    position = data.position.value if data.position else None
+    rotation = data.rotation.value if data.rotation else None
+    scale = data.scale.value if data.scale else None
+    if position is None or rotation is None or scale is None:
+        raise RuntimeError(f"Slot {slot_id} has no transform data.")
+    return transforms.Transform(position, rotation, scale)
+
+
+def _batch_slot_data(
+    batch: responses.BatchResponse, count: int,
+) -> list[workers.Slot]:
+    """Returns the slot data from a batch of GetSlot operations.
+
+    Args:
+        batch: The response to a batch of only GetSlot operations.
+        count: The number of operations in the batch.
+
+    Raises:
+        RuntimeError: An operation failed, or the batch has the wrong
+            number of responses.
+    """
+    results = batch.responses or []
+    if len(results) != count:
+        raise RuntimeError(
+            f"Expected {count} responses in the batch, got {len(results)}."
+        )
+    slots = []
+    for response in results:
+        if not isinstance(response, responses.SlotData) or response.data is None:
+            raise RuntimeError(f"Failed to get slot: {response.errorInfo}")
+        slots.append(response.data)
+    return slots
 
 
 class Client:
@@ -422,18 +491,33 @@ class Client:
     async def get_global_transform(
         self,
         slot: str | workers.Slot,
+        timeout: float = DEFAULT_TIMEOUT,
         debug: bool = False,
     ) -> transforms.Transform:
         """Returns a slot's position, rotation, and scale in world space.
 
-        ResoniteLink reports each slot's transform relative to its parent,
-        and it can't return a slot's ancestors in one request. This sends
-        one GetSlot request for the slot and one for each of its ancestors,
-        and composes their transforms with ``transforms.compose``.
+        The transforms of a slot and of each of its ancestors can change in
+        every engine update, so composing local transforms that were read
+        in separate requests would mix values from different updates.
+        Instead, this adds a temporary probe slot under Root with a
+        CopyGlobalTransform and a CopyGlobalScale component whose source is
+        the slot. In each engine update the two components set the probe's
+        transform relative to Root to the slot's. The probe's position and
+        scale start at random values, and the probe is read until the
+        drives have replaced both.
+
+        The components have the largest UpdateOrder, so they copy the
+        transform after every other component's common update. The result
+        is the slot's transform at that point in one engine update. Changes
+        made later in the same update, such as by IK, aren't included.
+
+        This takes about 60 ms at 60 FPS, regardless of how deeply the slot
+        is nested.
 
         Args:
             slot: The slot, either a slot ID string or a ``Slot``
                 instance (whose ``id`` is used).
+            timeout: Seconds to wait for the drives to run.
             debug: Print request/response JSON.
 
         Returns:
@@ -441,44 +525,146 @@ class Client:
             Root's own transform.
 
         Raises:
-            RuntimeError: If the server rejects a request, or a slot's
-                data lacks its transform.
+            RuntimeError: If the server rejects a request, such as when
+                the slot doesn't exist.
+            TimeoutError: If the drives haven't run within the timeout.
         """
-        current = slot.id if isinstance(slot, workers.Slot) else slot
-        assert current is not None, "Slot has no ID"
-        result: transforms.Transform | None = None
-        while current is not None:
-            resp = await self.get_slot(current, debug=debug)
-            data = resp.data
-            if data is None:
-                raise RuntimeError(
-                    f"Failed to get slot {current}: {resp.errorInfo}"
+        slot_id = slot.id if isinstance(slot, workers.Slot) else slot
+        assert slot_id is not None, "Slot has no ID"
+        root = workers.Slot.ROOT_SLOT_ID
+        if slot_id == root:
+            # Root has no parent, so its local transform is its global one.
+            # A probe would give the wrong scale, because CopyGlobalScale
+            # treats Root as its own parent.
+            return _transform_of(
+                await self._get_slot_data(root, debug), root,
+            )
+
+        probe_id = str(uuid.uuid4())
+        # Any value could be a real transform, so the sentinels are drawn
+        # anew for each call. The chance that a driven value equals one
+        # exactly is about 2**-96. They're far from the float32 limits and
+        # from values a world is likely to use, such as float.MaxValue.
+        position_sentinel = _random_float3()
+        scale_sentinel = _random_float3()
+        probe = workers.Slot(
+            id=probe_id,
+            parent=members.Reference(targetId=root),
+            name=fields.FieldString(value="Global transform probe"),
+            position=fields.FieldFloat3(value=position_sentinel),
+            scale=fields.FieldFloat3(value=scale_sentinel),
+            isPersistent=fields.FieldBool(value=False),
+        )
+        # Both components drive the fields of the slot they're attached to,
+        # without being told which.
+        probe_components = [
+            workers.Component(
+                id=str(uuid.uuid4()),
+                componentType="[FrooxEngine]FrooxEngine.CopyGlobalTransform",
+                members={
+                    "Source": members.Reference(targetId=slot_id),
+                    "UpdateOrder": fields.FieldInt(value=_PROBE_UPDATE_ORDER),
+                },
+            ),
+            workers.Component(
+                id=str(uuid.uuid4()),
+                componentType="[FrooxEngine]FrooxEngine.CopyGlobalScale",
+                members={
+                    "Source": members.Reference(targetId=slot_id),
+                    "NonUniform": fields.FieldBool(value=True),
+                    "UpdateOrder": fields.FieldInt(value=_PROBE_UPDATE_ORDER),
+                },
+            ),
+        ]
+        try:
+            # AddSlot fails when given components, so they're added separately in the
+            # same batch. The GetSlot reports a missing slot.
+            created = await self.data_model_operation_batch(
+                [
+                    messages.GetSlot(slotId=slot_id),
+                    messages.AddSlot(data=probe),
+                    *(messages.AddComponent(containerSlotId=probe_id, data=c)
+                      for c in probe_components),
+                ],
+                debug,
+            )
+            for response in created.responses or []:
+                if not response.success:
+                    raise RuntimeError(
+                        f"Failed to probe slot {slot_id}: {response.errorInfo}"
+                    )
+
+            deadline = asyncio.get_running_loop().time() + timeout
+            while True:
+                # Root is read in the same engine update as the probe.
+                polled = await self.data_model_operation_batch(
+                    [messages.GetSlot(slotId=probe_id),
+                     messages.GetSlot(slotId=root)],
+                    debug,
                 )
-            position = data.position.value if data.position else None
-            rotation = data.rotation.value if data.rotation else None
-            scale = data.scale.value if data.scale else None
-            if position is None or rotation is None or scale is None:
-                raise RuntimeError(f"Slot {current} has no transform data.")
-            local = transforms.Transform(position, rotation, scale)
-            result = local if result is None else transforms.compose(local, result)
-            # Root's parent reference has no target.
-            current = data.parent.targetId if data.parent else None
-        assert result is not None
-        return result
+                probe_data, root_data = _batch_slot_data(polled, 2)
+                if (
+                    probe_data.position is not None
+                    and probe_data.position.value != position_sentinel
+                    and probe_data.scale is not None
+                    and probe_data.scale.value != scale_sentinel
+                ):
+                    return transforms.compose(
+                        _transform_of(root_data, root),
+                        _transform_of(probe_data, probe_id),
+                    )
+                if asyncio.get_running_loop().time() > deadline:
+                    raise TimeoutError(
+                        f"The probe of slot {slot_id} wasn't driven within "
+                        f"{timeout} s."
+                    )
+                await asyncio.sleep(_PROBE_POLL_INTERVAL)
+        finally:
+            await self.remove_slot(probe_id, debug)
+
+    async def _get_slot_data(self, slot_id: str, debug: bool) -> workers.Slot:
+        """Returns a slot's data.
+
+        Raises:
+            RuntimeError: If the server rejects the request.
+        """
+        resp = await self.get_slot(slot_id, debug=debug)
+        if resp.data is None:
+            raise RuntimeError(f"Failed to get slot {slot_id}: {resp.errorInfo}")
+        return resp.data
 
     async def update_slot(
         self,
         data: workers.Slot,
         debug: bool = False,
     ) -> responses.Response:
-        """Update an existing slot.
+        """Updates an existing slot.
+
+        Only the fields that are set in data are changed. The server
+        associates the member ID in an update with the slot's field
+        (ResoniteLinkTranslator.WriteMemberData), and it fails on a second ID
+        for a field that already has one, with "One of the dictionaries
+        already contains one of the elements". A field gets an ID when it's
+        read or written with one, and a field constructed in Python has a
+        fresh random ID. The server skips the association for an empty ID,
+        so this sends every field with an empty ID. data itself isn't
+        modified.
 
         Args:
             data: Slot data with ``id`` set to the target slot.
             debug: Print request/response JSON.
+
+        Returns:
+            The response, whose ``success`` is True if the update was
+            applied.
         """
+        anonymous = {
+            name: dc.replace(member, id="")
+            for name in _SLOT_MEMBER_FIELDS
+            if (member := getattr(data, name)) is not None
+        }
         return await self.send_message(
-            messages.UpdateSlot(data=data),
+            messages.UpdateSlot(data=dc.replace(data, **anonymous)),
             responses.Response, debug,
         )
 

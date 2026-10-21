@@ -120,14 +120,20 @@ slot = await resolink.find_slot("Root", name="spawn", match_substring=True, igno
 # Remove a slot
 await resolink.remove_slot(slot=slot)
 
+# Change some of a slot's fields
+await resolink.update_slot(workers.Slot(
+    id=slot.id, position=fields.FieldFloat3(value=primitives.Float3(0, 1, 0)),
+))
+
 # A slot's position, rotation, and scale in world space
 head = await resolink.get_global_transform(head_slot)
 ```
 
 `add_slot` returns a `Slot` directly (raises `RuntimeError` on failure).
 `find_slot` returns `Slot | None`, using temporary ProtoFlux search nodes for fast deep searches.
+`update_slot` changes only the fields that are set, and its response's `success` is true if the update was applied. The server returns an error for a second member ID for a field that already has one, and every field constructed in Python has a fresh random ID, so `update_slot` sends each field with an empty ID, which the server doesn't associate with anything.
 
-A slot's position, rotation, and scale are relative to its parent, both in `add_slot` and in slot data. `get_global_transform` returns a `transforms.Transform` relative to the world. It sends one request for the slot and one for each of its ancestors, because ResoniteLink can't return a slot's ancestors in one request.
+A slot's position, rotation, and scale are relative to its parent, both in `add_slot` and in slot data. `get_global_transform` returns a `transforms.Transform` relative to the world. Any slot's transform can change in every engine update, so the ancestors' transforms can't be read one request at a time and combined. Instead, `get_global_transform` adds a temporary probe slot under Root with CopyGlobalTransform and CopyGlobalScale components, which copy the slot's world transform to the probe within one engine update. It reads the probe until the copy has happened and then deletes it, which takes about 60 ms at 60 FPS.
 
 `pyresonitelink.data.transforms` does the arithmetic and needs no server:
 

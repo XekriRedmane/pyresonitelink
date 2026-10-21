@@ -7,6 +7,7 @@ Run as: pytest --port=<resonite-link-port> tests/test_values.py [-s]
 
 # pylint: disable=protected-access,missing-function-docstring,missing-class-docstring
 
+import asyncio
 import datetime
 import math
 import uuid
@@ -19,8 +20,11 @@ from pyresonitelink.data import codec
 from pyresonitelink.data import fields
 from pyresonitelink.data import members
 from pyresonitelink.data import messages
+from pyresonitelink.data import primitives
 from pyresonitelink.data import responses
+from pyresonitelink.data import transforms
 from pyresonitelink.data import workers
+from pyresonitelink.generated.transform.drivers import spinner
 
 
 class TestValues:
@@ -116,13 +120,70 @@ class TestValues:
             # along +Z is doubled and turned to +X by the parent alone.
             p, q, k = result.position, result.rotation, result.scale
             np.testing.assert_allclose([p.x, p.y, p.z], [3, 2, 3], atol=1e-5)
-            # The rotation is the product (0, s, 0, s) * (s, 0, 0, s).
-            np.testing.assert_allclose(
-                [q.x, q.y, q.z, q.w], [0.5, 0.5, -0.5, 0.5], atol=1e-5,
-            )
+            # The rotation is the product (0, s, 0, s) * (s, 0, 0, s). The
+            # engine may return its negation, which is the same rotation.
+            rotation = np.array([q.x, q.y, q.z, q.w])
+            expected = np.array([0.5, 0.5, -0.5, 0.5])
+            if np.dot(rotation, expected) < 0:
+                rotation = -rotation
+            np.testing.assert_allclose(rotation, expected, atol=1e-5)
             np.testing.assert_allclose([k.x, k.y, k.z], [2, 2, 2], atol=1e-5)
         finally:
             await resolink.remove_slot(parent)
+
+    @pytest.mark.asyncio(loop_scope="session")
+    async def test_get_global_transform_is_frame_consistent(
+        self, resolink: client.Client,
+    ) -> None:
+        # The parent and child spin at opposite speeds around +Y, so the
+        # child's world rotation is the same in every engine update. A
+        # result that mixed the two rotations from different updates was
+        # off by about 3 degrees at these speeds.
+        parent = await resolink.add_slot(
+            name="__test_get_global_transform_is_frame_consistent__",
+        )
+        try:
+            child = await resolink.add_slot(parent=parent, position=(1, 0, 0))
+            for slot, speed in ((parent, 180), (child, -180)):
+                data = (await resolink.get_slot(slot)).data
+                assert data is not None and data.rotation is not None
+                await spinner.Spinner(
+                    target=data.rotation.id,
+                    speed=primitives.Float3(0, speed, 0),
+                ).add_to_slot(resolink, slot)
+            # Each spinner starts turning in the engine update after it's
+            # added, and the two may have been added in different updates.
+            await asyncio.sleep(0.2)
+            first = (await resolink.get_global_transform(child)).rotation
+            for _ in range(10):
+                q = (await resolink.get_global_transform(child)).rotation
+                difference = transforms.multiply(transforms.inverse(first), q)
+                angle = math.degrees(2 * math.acos(min(1.0, abs(float(difference.w)))))
+                assert angle < 0.1
+        finally:
+            await resolink.remove_slot(parent)
+
+    @pytest.mark.asyncio(loop_scope="session")
+    async def test_update_slot(self, resolink: client.Client) -> None:
+        slot = await resolink.add_slot(name="__test_update_slot__")
+        try:
+            # Each update's fields have fresh member IDs, and the read after
+            # each update gives the fields IDs on the server. Sent as they
+            # were, the second update's IDs caused an error.
+            for x in (1, 2):
+                response = await resolink.update_slot(workers.Slot(
+                    id=slot.id,
+                    position=fields.FieldFloat3(value=primitives.Float3(x, 0, 0)),
+                    name=fields.FieldString(value=f"__test_update_slot_{x}__"),
+                ))
+                assert response.success, response.errorInfo
+                data = (await resolink.get_slot(slot)).data
+                assert data is not None
+                assert data.position is not None and data.name is not None
+                assert data.position.value == primitives.Float3(x, 0, 0)
+                assert data.name.value == f"__test_update_slot_{x}__"
+        finally:
+            await resolink.remove_slot(slot)
 
     @pytest.mark.asyncio(loop_scope="session")
     async def test_add_component(self, resolink: client.Client) -> None:
