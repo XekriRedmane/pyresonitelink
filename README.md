@@ -215,6 +215,25 @@ asset = await resolink.import_mesh_raw_data(
 asset = await resolink.import_audio_clip_raw_data(samples, 48000)
 ```
 
+`pyresonitelink.utils.glb` reads the arrays for `import_mesh_raw_data` from a glTF file (.glb or .gltf), using [trimesh](https://trimesh.org) to parse it. `read_node` reads a node and its descendants as one `glb.Mesh`, with one set of vertices and a submesh for each primitive, and applies the descendants' transforms. glTF is right-handed and Resonite is left-handed, so `to_resonite` negates X and swaps two corners of each triangle to keep the front faces in front, as Resonite's own model importer does. `transform` applies any other linear or affine transform.
+
+The submeshes come in trimesh's order, which differs from the file's, so `m.nodes` and `m.materials` give the node and the material of each one. glTF has no flag for a hidden node, so `read_node` takes a `skip` function, which is given each descendant's name and extras (`glb.node_extras`) and leaves out the descendants it returns True for, together with their subtrees. Some trimesh methods replace the file's normals, and the module docstring lists those and the other differences between trimesh and Resonite. Only the first UV channel is read, and tangents, colors, skins, and morph targets aren't read yet. Each material's `baseColorTexture` is a PIL image.
+
+```python
+from pyresonitelink.data import mesh
+from pyresonitelink.utils import glb
+
+m = glb.to_resonite(glb.read_node(glb.load("model.glb"), "Body"))
+asset = await resolink.import_mesh_raw_data(
+    m.positions,
+    [mesh.RawTriangles(t) for t in m.submeshes],  # one per m.nodes entry
+    normals=m.normals,
+    uvs=[] if m.uvs is None else [m.uvs],
+)
+```
+
+`examples/textured_card.py` places `examples/TexturedCard.glb`, a paper card with transparent decals, in front of the user. It uploads each material's texture with `import_texture_2d_raw_data` and gives each submesh an unlit material with the file's blend mode. `examples/make_textured_card.py` writes the card, including hidden nodes marked in their extras, which the example leaves out with `skip`.
+
 The payload builders behind these calls are also available as classmethods, such as `messages.ImportMeshRawData.from_arrays`. The client checks a payload's size against its message before sending it, because the server rejects a payload of the wrong size with a less helpful error. `import_texture_2d_raw_data_hdr`, `import_cubemap_raw_data_hdr`, `import_cubemap_files`, and `import_mesh_json` cover the remaining import messages. Two of the import messages run into server bugs, which are listed under [Known Issues](#known-issues).
 
 #### Batches

@@ -422,7 +422,12 @@ class ImportTexture2DRawData(ImportTexture2DRawDataBase):
 
         Args:
             pixels: The image, shaped (height, width, 4), as uint8. Row 0
-                of the array is y = 0.
+                is the top of the image, as in an array from a PIL image.
+                FrooxEngine's ResoniteLinkAssetImporter copies row y to
+                row y of a Bitmap2D, and a Bitmap2D created with the
+                default flipY stores row y as the y-th row from the top
+                (Bitmap2DBase.PixelStart). Text in textures imported this
+                way reads the right way up in Resonite.
             colorProfile: The color profile of the data, e.g. "sRGB" or
                 "Linear".
         """
@@ -459,7 +464,7 @@ class ImportTexture2DRawDataHDR(ImportTexture2DRawDataBase):
 
         Args:
             pixels: The image, shaped (height, width, 4), as float32. Row 0
-                of the array is y = 0.
+                is the top of the image, as for ImportTexture2DRawData.
         """
         pixels = np.ascontiguousarray(pixels, dtype="<f4")
         if pixels.ndim != 3 or pixels.shape[2] != 4:

@@ -33,11 +33,8 @@ Requires a running Resonite session with ResoniteLink enabled.
 """
 
 import asyncio
-import json
 import os
-import struct
 import sys
-from typing import Any
 
 import numpy as np
 
@@ -59,6 +56,7 @@ from pyresonitelink.protoflux import time as pf_time
 from pyresonitelink.protoflux.core import casts
 from pyresonitelink.protoflux.math import rotation
 from pyresonitelink.protoflux.math import shaping
+from pyresonitelink.utils import glb
 
 GLB_PATH = os.path.join(os.path.dirname(__file__), "NumberDrum.glb")
 SLOT_NAME = "Number Wheel Example"
@@ -72,134 +70,74 @@ REST_SECONDS = 0.6  # of each second, before the drum starts to turn
 MOVE_SECONDS = 1.0 - REST_SECONDS
 DEGREES_PER_DIGIT = 36.0
 
-# The glTF component types and element counts used by the drum's accessors.
-_COMPONENT_TYPES = {5123: np.uint16, 5125: np.uint32, 5126: np.float32}
-_ELEMENT_COUNTS = {"SCALAR": 1, "VEC2": 2, "VEC3": 3, "VEC4": 4}
-
-# Maps the drum's mesh coordinates to the wheel slot's coordinates.
+# Rotates the drum from its own coordinates, after glb.to_resonite, to the
+# wheel slot's coordinates.
 #
-# glTF is right-handed and Resonite is left-handed, so X is negated, as
-# Unity's glTF importers do. After that, the drum's axis is Y, and digit d
-# faces the direction 90 - 36d degrees around Y, measured from +Z toward
-# +X. The top of each digit points toward the next digit, so 0 faces +X
-# with its top toward +Z.
+# After glb.to_resonite negates X, the drum's axis is Y, and digit d faces
+# the direction 90 - 36d degrees around Y, measured from +Z toward +X. The
+# top of each digit points toward the next digit, so 0 faces +X with its
+# top toward +Z.
 #
-# The rotation then turns the drum so that its axis is X, the 0 faces -Z,
-# and the top of the 0 is +Y. Its rows are:
+# The rotation turns the drum so that its axis is X, the 0 faces -Z, and
+# the top of the 0 is +Y. Its rows are:
 #
 #   x' = -y    the drum's axis, Y, becomes horizontal
 #   y' =  z    the top of the 0 points up
 #   z' = -x    the 0 faces -Z, toward the user
-_GLTF_TO_WHEEL = np.array([
+_DRUM_TO_WHEEL = np.array([
     [0.0, -1.0, 0.0],
     [0.0, 0.0, 1.0],
     [-1.0, 0.0, 0.0],
-]) @ np.diag([-1.0, 1.0, 1.0])
+])
 
 
 def format_vector(v: primitives.Float3) -> str:
-    """Returns a Float3 as "(x, y, z)" with two decimal places."""
+    """Formats a Float3 as "(x, y, z)" with two decimal places.
+
+    Args:
+        v (primitives.Float3): The vector.
+
+    Returns:
+        The formatted vector.
+    """
     return f"({v.x:.2f}, {v.y:.2f}, {v.z:.2f})"
 
 
-def read_glb(path: str) -> tuple[dict[str, Any], bytes]:
-    """Returns the JSON chunk and the binary chunk of a .glb file."""
-    with open(path, "rb") as f:
-        data = f.read()
-    magic, _, length = struct.unpack_from("<III", data, 0)
-    if magic != 0x46546C67:  # "glTF"
-        raise ValueError(f"{path} is not a binary glTF file.")
-    gltf: dict[str, Any] = {}
-    binary = b""
-    offset = 12
-    while offset < length:
-        chunk_length, chunk_type = struct.unpack_from("<II", data, offset)
-        chunk = data[offset + 8:offset + 8 + chunk_length]
-        if chunk_type == 0x4E4F534A:  # "JSON"
-            gltf = json.loads(chunk)
-        elif chunk_type == 0x004E4942:  # "BIN"
-            binary = chunk
-        offset += 8 + chunk_length
-    return gltf, binary
-
-
-def read_accessor(
-    gltf: dict[str, Any], binary: bytes, index: int,
-) -> np.ndarray:
-    """Returns a glTF accessor's elements, shaped (count, components).
-
-    Only tightly packed buffer views are handled, which is how the
-    extraction tools write them.
-    """
-    accessor = gltf["accessors"][index]
-    view = gltf["bufferViews"][accessor["bufferView"]]
-    if "byteStride" in view:
-        raise ValueError(f"Accessor {index} has interleaved data.")
-    components = _ELEMENT_COUNTS[accessor["type"]]
-    array = np.frombuffer(
-        binary,
-        dtype=_COMPONENT_TYPES[accessor["componentType"]],
-        count=accessor["count"] * components,
-        offset=view.get("byteOffset", 0) + accessor.get("byteOffset", 0),
-    )
-    return array.reshape(accessor["count"], components)
-
-
-def load_drum(
-    path: str,
-) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
+def load_drum(path: str) -> glb.Mesh:
     """Reads the drum and its digits from a .glb file.
 
-    Both meshes are returned in the wheel's coordinates (see
-    _GLTF_TO_WHEEL), in one set of vertices.
+    The drum node's mesh is the first submesh, and the mesh of its Digits
+    child is the second. Both are in the wheel's coordinates (see
+    _DRUM_TO_WHEEL).
+
+    Args:
+        path (str): The .glb file.
 
     Returns:
-        The vertex positions and normals, each shaped (V, 3), and the
-        triangles of the drum and of the digits, each shaped (N, 3).
-    """
-    gltf, binary = read_glb(path)
-    nodes = gltf["nodes"]
-    drum = next((n for n in nodes if n.get("name") == DRUM_NODE), None)
-    if drum is None:
-        raise LookupError(f"{path} has no node named {DRUM_NODE!r}.")
-    digits = next(
-        (nodes[i] for i in drum.get("children", [])
-         if nodes[i].get("name") == DIGITS_NODE),
-        None,
-    )
-    if digits is None:
-        raise LookupError(f"{DRUM_NODE!r} has no child named {DIGITS_NODE!r}.")
+        The drum and its digits, as one mesh with two submeshes.
 
-    positions: list[np.ndarray] = []
-    normals: list[np.ndarray] = []
-    triangles: list[np.ndarray] = []
-    vertex_count = 0
-    # Both nodes are at the origin, unrotated and unscaled.
-    for node in (drum, digits):
-        primitive = gltf["meshes"][node["mesh"]]["primitives"][0]
-        p = read_accessor(gltf, binary, primitive["attributes"]["POSITION"])
-        n = read_accessor(gltf, binary, primitive["attributes"]["NORMAL"])
-        # _GLTF_TO_WHEEL is orthogonal, so it transforms normals too.
-        p = p @ _GLTF_TO_WHEEL.T
-        n = n @ _GLTF_TO_WHEEL.T
-        t = read_accessor(gltf, binary, primitive["indices"]).reshape(-1, 3)
-        # Negating X mirrors the mesh, which reverses the winding of each
-        # triangle, so two of its corners are swapped back.
-        t = t[:, [0, 2, 1]].astype(np.int32) + vertex_count
-        positions.append(p)
-        normals.append(n)
-        triangles.append(t)
-        vertex_count += len(p)
-    return (
-        np.concatenate(positions).astype(np.float32),
-        np.concatenate(normals).astype(np.float32),
-        triangles[0],
-        triangles[1],
-    )
+    Raises:
+        LookupError: The file has no node named DRUM_NODE.
+        ValueError: The submeshes aren't one from DRUM_NODE followed by one
+            from DIGITS_NODE.
+    """
+    drum = glb.read_node(glb.load(path), DRUM_NODE)
+    # place_drum gives the submeshes their materials by position.
+    if drum.nodes != [DRUM_NODE, DIGITS_NODE]:
+        raise ValueError(f"{path} has submeshes from {drum.nodes}.")
+    return glb.transform(glb.to_resonite(drum), _DRUM_TO_WHEEL)
 
 
 async def find_head(resolink: client.Client) -> str:
-    """Returns the slot ID of the first user's head.
+    """Finds the slot ID of the first user's head.
+
+    The first user is the first child of Root with a UserRoot component.
+
+    Args:
+        resolink (client.Client): The connected client.
+
+    Returns:
+        The ID of the user root's child named "Head".
 
     Raises:
         LookupError: No user root or no head slot was found.
@@ -237,11 +175,14 @@ async def add_node(
     reports for it.
 
     Args:
-        resolink: The client.
-        slot: The slot to add the node to.
-        node: The node, which has no ID yet.
-        **inputs: The node's input members, by member name, and the nodes
-            they read from.
+        resolink (client.Client): The connected client.
+        slot (workers.Slot): The slot to add the node to.
+        node (GeneratedComponent): The node, which has no ID yet.
+        **inputs (GeneratedComponent): The node's input members, by member
+            name, and the nodes they read from.
+
+    Raises:
+        RuntimeError: The server refused the references.
     """
     await node.add_to_slot(resolink, slot)
     if not inputs:
@@ -273,11 +214,28 @@ async def build_graph(
     graph_slot: workers.Slot,
     drum_slot: workers.Slot,
 ) -> None:
-    """Builds the ProtoFlux graph that drives the drum slot's rotation."""
+    """Builds the ProtoFlux graph that drives the drum slot's rotation.
+
+    Args:
+        resolink (client.Client): The connected client.
+        graph_slot (workers.Slot): The slot to add the nodes to.
+        drum_slot (workers.Slot): The slot whose Rotation the graph drives.
+
+    Raises:
+        RuntimeError: A node couldn't be wired, or the server didn't add
+            the drive's Proxy component.
+    """
     Double = primitives.Double
 
     async def constant(value: float) -> GeneratedComponent:
-        """Adds a ValueInput<double> node that outputs a constant."""
+        """Adds a ValueInput<double> node that outputs a constant.
+
+        Args:
+            value (float): The constant.
+
+        Returns:
+            The node.
+        """
         node = core.ValueInput[Double](Double(value))
         await add_node(resolink, graph_slot, node)
         return node
@@ -357,12 +315,17 @@ async def place_drum(
     A slot under Root named slot_name, from a previous run, is deleted
     first.
 
+    Args:
+        resolink (client.Client): The connected client.
+        slot_name (str): The name of the slot under Root that holds the
+            drum.
+
     Returns:
         The drum's slot, whose Rotation turns the drum, and an empty slot
         beside it for the ProtoFlux graph.
     """
-    positions, normals, drum_triangles, digit_triangles = load_drum(GLB_PATH)
-    print(f"Read {len(positions)} vertices from {GLB_PATH}.")
+    drum = load_drum(GLB_PATH)
+    print(f"Read {len(drum.positions)} vertices from {GLB_PATH}.")
 
     root = (await resolink.get_slot(workers.Slot.ROOT_SLOT_ID, depth=1)).data
     assert root is not None
@@ -399,9 +362,9 @@ async def place_drum(
     print(f"Created slot {wheel.id} at {format_vector(world.position)}.")
 
     asset = await resolink.import_mesh_raw_data(
-        positions,
-        [mesh.RawTriangles(drum_triangles), mesh.RawTriangles(digit_triangles)],
-        normals=normals,
+        drum.positions,
+        [mesh.RawTriangles(t) for t in drum.submeshes],
+        normals=drum.normals,
     )
     drum_mesh = static_mesh.StaticMesh(url=asset.assetURL)
     await drum_mesh.add_to_slot(resolink, drum_slot)
@@ -433,7 +396,12 @@ async def place_drum(
 
 
 async def main(port: int | None) -> None:
-    """Places the counting drum in front of the user's head."""
+    """Places the counting drum in front of the user's head.
+
+    Args:
+        port (int | None): The ResoniteLink port, or None to find the
+            session from its LAN announcement.
+    """
     if port is None:
         session = await discovery.find_session()
         print(f"Found {session.name!r} on port {session.port}.")

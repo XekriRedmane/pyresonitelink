@@ -1194,7 +1194,7 @@ class Client:
 
         Args:
             pixels: The image, shaped (height, width, 4), as uint8. Row 0
-                of the array is y = 0.
+                is the top of the image, as in an array from a PIL image.
             colorProfile: The color profile of the data, e.g. "sRGB" or
                 "Linear".
             debug: Print request/response JSON.
