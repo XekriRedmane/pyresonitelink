@@ -97,12 +97,16 @@ Python objects <- decode_response() <- JSON <---+
 - **`generated/_types/`**: Generated type hierarchy classes (interfaces, abstract types, asset types) used by reference properties.
 - **`cli/gencode.py`**: CLI for generating component wrapper classes and their type dependencies. Automatically rebuilds `__init__.py` re-exports after generation.
 - **`cli/get_components.py`**: CLI for browsing component types and definitions.
-- **`utils/glb.py`**: Reads meshes from glTF files and converts them to Resonite's coordinates.
+- **`utils/glb.py`**: Reads meshes from glTF files and converts them to Resonite's coordinates. `read_part` reads a node centered on its origin, with its position, for a slot of its own.
 - **`utils/placement.py`**: Finds the user's head (`find_head`), and gives a world transform in front of it (`in_front_of_head`).
 - **`utils/slots.py`**: Adds a slot at a place given in world space (`add_slot_at`).
 - **`utils/rendering.py`**: Imports a `glb.Mesh` and shows it with a StaticMesh and a MeshRenderer (`add_mesh`), or adds a renderer with its material list (`add_renderer`). `add_part` adds a slot for the mesh and picks each submesh's material by its glTF material name (`materials_by_name`).
 - **`utils/materials.py`**: `Finish` holds a PBS_Metallic's color, metalness, smoothness, and emissive color, and `add_materials` adds one material per entry of a table of finishes.
-- **`utils/wiring.py`**: Adds ProtoFlux nodes and wires them (`add_node`), and sets the field a drive node drives (`drive_field`). The Dergflux builder uses both.
+- **`utils/wiring.py`**: Adds ProtoFlux nodes and wires them (`add_node`), and sets the field a drive node drives (`drive_field`). The Dergflux builder uses both. `drive_from` adds a ValueFieldDrive and sets its field, and `add_reference_input` adds a `RefObjectInput<T>` for an interface T.
+- **`utils/colliders.py`**: Adds a BoxCollider that fits a mesh's bounds (`add_bounding_box`).
+- **`utils/controls.py`**: Makes a slot a crank that a hand turns (`add_crank`: Joint + KnobControl), counts its angle (`track_angle`), and drives a Bool while it's held (`drive_grabbed`).
+- **`utils/probes.py`**: `ViewProbe` reads the local user's view (the camera in desktop mode) through ValueFieldDrives.
+- **`utils/counters.py`**: Dergflux helpers for odometers: drum carry (`drum_turns`) and detents that snap (`add_detents`).
 
 ### Import Aliases
 
@@ -309,7 +313,7 @@ await resolink.import_audio_clip_raw_data(samples, 48000)    # (count,) or (coun
 `add_slot` returns a `Slot` directly (raises `RuntimeError` on failure). `add_component` returns `NewEntityId` with `.entityId`. Other mutations return `Response` with `.success`.
 
 - Slot positions, rotations, and scales are relative to the parent, in `add_slot` and in slot data alike. ALWAYS convert a world transform with `transforms.relative_to(await resolink.get_global_transform(parent), world)` before passing it to `add_slot`. `slots.add_slot_at` does this.
-- `data/transforms.py` holds the quaternion and transform arithmetic (`rotate`, `multiply`, `inverse`, `compose`, `relative_to`).
+- `data/transforms.py` holds the quaternion and transform arithmetic (`rotate`, `multiply`, `inverse`, `twist_angle`, `compose`, `relative_to`).
 - NEVER compute a world transform by reading the ancestors with one `get_slot` each. Every transform can change in every engine update, and a counter-spinning child came out about 3 degrees off. `get_global_transform` adds a temporary probe slot under Root with `CopyGlobalTransform` and `CopyGlobalScale` (UpdateOrder int.MaxValue, so they run last), and polls it until random float32 sentinels in its position and scale have been replaced.
 - The server associates each member ID in a read or write with its member, and returns an error for a second ID for the same member ("One of the dictionaries already contains one of the elements"). Fresh `Member`s get random IDs, so a second update with fresh IDs fails. An empty ID skips the association (`ResoniteLinkTranslator.WriteMemberData`), and `update_slot` sends every field with `id=""`. `update_component` doesn't, because the server adds a SyncList element only for an element ID it hasn't seen.
 - Reflection responses decode to `data/reflection.py` dataclasses. Member definitions decode by `$type` to `FieldDefinition`, `ReferenceDefinition`, etc. (`_MEMBER_DEFINITION_TYPES` in the codec).
@@ -715,6 +719,8 @@ The generator skips 3066 internal ProtoFlux proxy types under `ProtoFlux/FrooxEn
 #### Reading a Computed Result
 
 ProtoFlux nodes don't expose their output values directly. To read a result:
+
+- ALWAYS read a value that changes every frame, such as `ViewRotation`, through a `ValueFieldDrive<T>` (`wiring.drive_from`). A `ValueDisplay<T>` fed by `ViewRotation` wrote its field once, when it was wired, and never again, while a `ValueFieldDrive<T>` followed the view (measured 23 Oct 2026).
 
 1. Create a `ValueField<T>` component to hold the result
 2. Create a `ValueDisplay<T>` node

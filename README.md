@@ -151,9 +151,14 @@ local = transforms.relative_to(parent, world)
 # Rotation b followed by rotation a, and the rotation that undoes q
 q = transforms.multiply(a, b)
 q_inv = transforms.inverse(q)
+
+# How far a wheel has turned on its shaft, in degrees from -180 to 180
+angle = transforms.twist_angle(wheel.rotation, primitives.Float3(0, 0, 1))
 ```
 
 Use `relative_to` to find the local transform that puts a new child slot at a given place in the world. `compose` multiplies the scales component-wise, which is exact unless a non-uniform parent scale meets a rotated child. In that case the true result is sheared, and a `Transform` can't represent shear.
+
+`twist_angle` splits a rotation into a twist about an axis followed by a swing that tilts the axis, and returns the twist's angle. Its sign is that of `floatQ.AxisAngle`, and in Resonite's left-handed coordinates a positive angle looks counterclockwise to someone looking along the axis.
 
 #### Placing Slots in the World
 
@@ -232,6 +237,8 @@ asset = await resolink.import_audio_clip_raw_data(samples, 48000)
 
 `pyresonitelink.utils.glb` reads the arrays for `import_mesh_raw_data` from a glTF file (.glb or .gltf), using [trimesh](https://trimesh.org) to parse it. `read_node` reads a node and its descendants as one `glb.Mesh`, with one set of vertices and a submesh for each primitive, and applies the descendants' transforms. glTF is right-handed and Resonite is left-handed, so `to_resonite` negates X and swaps two corners of each triangle to keep the front faces in front, as Resonite's own model importer does. `transform` applies any other linear or affine transform.
 
+`read_part` reads a node for a slot of its own. It returns the mesh centered on the node's origin, with the node's rotation and scale applied, and the origin's position in the file, both in Resonite's coordinates. A slot at that position under the model's slot shows the node where the file has it, and a part that turns, such as a wheel, turns about its own origin. Its `turn` argument applies a rotation after the conversion, such as `np.diag([-1, 1, -1])`, which turns a model whose front faces +Z half a turn, so that the front faces -Z.
+
 The submeshes come in trimesh's order, which differs from the file's, so `m.nodes` and `m.materials` give the node and the material of each one. glTF has no flag for a hidden node, so `read_node` takes a `skip` function, which is given each descendant's name and extras (`glb.node_extras`) and leaves out the descendants it returns True for, together with their subtrees. Some trimesh methods replace the file's normals, and the module docstring lists those and the other differences between trimesh and Resonite. Only the first UV channel is read, and tangents, colors, skins, and morph targets aren't read yet. Each material's `baseColorTexture` is a PIL image.
 
 ```python
@@ -273,13 +280,46 @@ table = {
 mats = await materials.add_materials(resolink, model, table)
 scene = glb.load("model.glb")
 for node in ["Body", "Wheel"]:
-    m = glb.to_resonite(glb.read_node(scene, node))
-    await rendering.add_part(resolink, model, m, mats, name=node)
+    part, position = glb.read_part(scene, node)
+    await rendering.add_part(resolink, model, part, mats, name=node, position=position)
 ```
 
 `examples/textured_card.py` places `examples/TexturedCard.glb`, a paper card with transparent decals, in front of the user. It uploads each material's texture with `import_texture_2d_raw_data` and gives each submesh an unlit material with the file's blend mode. `examples/make_textured_card.py` writes the card, including hidden nodes marked in their extras, which the example leaves out with `skip`.
 
 The payload builders behind these calls are also available as classmethods, such as `messages.ImportMeshRawData.from_arrays`. The client checks a payload's size against its message before sending it, because the server rejects a payload of the wrong size with a less helpful error. `import_texture_2d_raw_data_hdr`, `import_cubemap_raw_data_hdr`, `import_cubemap_files`, and `import_mesh_json` cover the remaining import messages. Two of the import messages run into server bugs, which are listed under [Known Issues](#known-issues).
+
+#### Controls a Hand Turns
+
+`pyresonitelink.utils.controls.add_crank` makes a slot into a crank, such as a wheel or a knob. It adds a Joint, which makes the slot grabbable and turns it about an axis to follow the hand, and a KnobControl, which adds `per_turn` to a float field for each turn. A turn that looks clockwise to someone looking along the axis adds, and the field stays between `minimum` and `maximum`. The crank's slot needs no rotation relative to its parent, and it needs a collider on itself or on a descendant, because a hand's Grabber looks for the Joint from the collider it touches up through the collider's ancestors. `pyresonitelink.utils.colliders.add_bounding_box` adds a slot with a BoxCollider that fits a mesh's bounds, so a collider on a handle makes the crank grabbable only by its handle.
+
+```python
+from pyresonitelink.data import primitives
+from pyresonitelink.utils import colliders
+from pyresonitelink.utils import controls
+
+grip = await controls.add_crank(
+    resolink, crank, axis=primitives.Float3(0, 0, 1),
+    target_id=count.get_member("Value").id, per_turn=1.0, minimum=0.0,
+)
+await colliders.add_bounding_box(resolink, crank, handle_mesh, name="Handle")
+```
+
+A Joint can't be grabbed while its slot's rotation is driven, and a KnobControl counts every change of its slot's rotation, including one written by a script. So a crank that shows an angle other than the hand's, such as one of two wheels geared together, is two slots. The crank slot, which has no mesh, has the Joint and the KnobControls, and its child shows the mesh and has the collider. `controls.track_angle` counts the crank's angle, in degrees, into a second field, and the child's rotation is driven to the angle to show minus the crank's angle. `controls.drive_grabbed` drives a Bool field true while the crank is held. The module docstring describes the arrangement in full.
+
+#### Reading the User's View
+
+`pyresonitelink.utils.probes.ViewProbe` reads where the user's view is, which is the camera in desktop mode and the headset in VR. It is a slot with two ValueFields, which ValueFieldDrives drive from the ViewPosition and ViewRotation nodes. ResoniteLink reads the values of the Resonite instance it connects to, so the user is the one running that instance. In desktop mode the camera points about 3 degrees away from the avatar's Head slot, which `placement.in_front_of_head` uses, so a script that has to know where the screen center points reads the probe instead.
+
+```python
+from pyresonitelink.data import primitives
+from pyresonitelink.data import transforms
+from pyresonitelink.utils import probes
+
+probe = await probes.ViewProbe.create(resolink)  # returns once the fields are driven
+view = await probe.read(resolink)                # a transforms.Transform
+forward = transforms.rotate(view.rotation, primitives.Float3(0, 0, 1))
+await probe.remove(resolink)
+```
 
 #### Batches
 
@@ -473,6 +513,13 @@ await wiring.drive_field(resolink, slot, drive, value_field.get_member("Value").
 
 Dergflux builds its graphs with these two functions.
 
+`wiring.drive_from` adds the drive node and sets its Proxy in one call. A field driven this way takes the node's value in every engine update, which a ValueDisplay doesn't do for a value that changes every frame without a change event, such as ViewRotation's. `wiring.add_reference_input` adds a `RefObjectInput<T>` that refers to a world element, such as a component, with T given as a Resonite type name. That is how a node input that takes an interface, such as IsGrabbableGrabbed's `INodeObjectOutput<IGrabbable>`, is fed, since the generated `RefObjectInput` class can't be given an interface as T.
+
+```python
+drive = await wiring.drive_from(resolink, slot, view_rotation_node, field_id, primitives.FloatQ)
+reference = await wiring.add_reference_input(resolink, slot, joint, "[FrooxEngine]FrooxEngine.IGrabbable")
+```
+
 ### Examples
 
 ### Dataflow: Addition Graph
@@ -540,6 +587,24 @@ Key features:
 See the [Dergflux reference](src/pyresonitelink/dergflux/dergflux.md) for the full API.
 
 See also: [Dynamic Variables](src/pyresonitelink/dergflux/dynamic_variables.md) | [Sync vs Async Flow](src/pyresonitelink/dergflux/async_flow.md)
+
+### Mechanical Counters
+
+`pyresonitelink.utils.counters` has Dergflux expressions and flows for counters with number drums, such as odometers. A counter's position is the number of digits its lowest drum has turned. `drum_turns(position, place)` is how many digits the drum for a place (1, 10, 100, ...) has turned. The lowest drum turns with the position, and each higher drum rests on its digit and rolls to the next one while the drum below it rolls from 9 to 0, as an odometer's carry gears make it.
+
+`add_detents` makes the drums rest on whole digits and snap between them. It adds a flow that runs in every engine update and keeps a detent, the whole digit the drums rest on. While the number stays within `threshold` digits of the detent, the drums lean toward it by `creep` of the way. When it goes further, the detent moves to the nearest digit and the drums snap to it, speeding up and slowing down through two smoothing stages. When the `held` expression is false, the number itself is set to the detent. It returns the smoothed position to pass to `drum_turns`.
+
+```python
+from pyresonitelink.dergflux import math as dm
+from pyresonitelink.utils import counters
+
+s.value = s.FloatDynVar("value")  # set by hand, e.g. by a crank
+s.held = s.BoolDynVar("held")      # driven by controls.drive_grabbed
+position = counters.add_detents(g, s, slot, "value", scale=100, held=s.held)
+for place, drum in zip([1, 10, 100, 1000], drums):
+    angle = dm.to_float(counters.drum_turns(position, place) * 36)
+    g.Bind(dm.axis_angle(primitives.Float3(-1, 0, 0), angle), drum, "Rotation", slot=slot)
+```
 
 ### Dergflux Examples
 

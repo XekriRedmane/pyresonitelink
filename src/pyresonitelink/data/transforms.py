@@ -100,6 +100,35 @@ def rotate(q: primitives.FloatQ, v: primitives.Float3) -> primitives.Float3:
     return _to_float3(_rotate(_quaternion(q), _vector(v)))
 
 
+def twist_angle(q: primitives.FloatQ, axis: primitives.Float3) -> float:
+    """Returns the angle in degrees by which a rotation turns about an axis.
+
+    The rotation is split into a twist about the axis followed by a swing
+    that tilts the axis, and the twist's angle is returned, from -180 to 180.
+    For a rotation about the axis alone, such as a wheel's on its shaft,
+    that is the rotation's own angle. That is, if q is the rotation by a
+    degrees about axis, the result is a, wrapped to -180 to 180.
+
+    The angle has the sign of a rotation built from the same axis and
+    angle, e.g. by Resonite's floatQ.AxisAngle. In Resonite's left-handed
+    coordinates, a positive angle looks counterclockwise to someone looking
+    along the axis.
+
+    Raises:
+        ValueError: axis is the zero vector.
+    """
+    a = _vector(axis)
+    length = float(np.linalg.norm(a))
+    if length == 0.0:
+        raise ValueError("The zero vector has no direction to turn about.")
+    quaternion = _quaternion(q)
+    # The twist is the quaternion's vector part projected onto the axis,
+    # together with its scalar part.
+    along = float(np.dot(quaternion[:3], a / length))
+    angle = np.degrees(2 * np.arctan2(along, quaternion[3]))
+    return float((angle + 180.0) % 360.0 - 180.0)
+
+
 @dataclass
 class Transform:
     """Represents a slot's position, rotation, and scale.

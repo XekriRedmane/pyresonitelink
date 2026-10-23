@@ -50,6 +50,31 @@ class TestRotate:
         _assert_vector(transforms.rotate(X_90, FORWARD), (0, -1, 0))
 
 
+class TestTwistAngle:
+
+    def test_rotation_about_the_axis(self) -> None:
+        z = primitives.Float3(0, 0, 1)
+        assert transforms.twist_angle(_axis_angle((0, 0, 1), 30), z) == pytest.approx(30, abs=1e-4)
+        assert transforms.twist_angle(_axis_angle((0, 0, 1), -170), z) == pytest.approx(-170, abs=1e-4)
+
+    def test_wraps_to_half_a_turn(self) -> None:
+        z = primitives.Float3(0, 0, 1)
+        assert transforms.twist_angle(_axis_angle((0, 0, 1), 190), z) == pytest.approx(-170, abs=1e-4)
+
+    def test_opposite_axis_negates(self) -> None:
+        minus_z = primitives.Float3(0, 0, -2)
+        assert transforms.twist_angle(_axis_angle((0, 0, 1), 30), minus_z) == pytest.approx(-30, abs=1e-4)
+
+    def test_ignores_a_swing_after_the_twist(self) -> None:
+        # A tilt about X applied after a 40 degree turn about Z.
+        q = transforms.multiply(_axis_angle((1, 0, 0), 25), _axis_angle((0, 0, 1), 40))
+        assert transforms.twist_angle(q, primitives.Float3(0, 0, 1)) == pytest.approx(40, abs=1e-4)
+
+    def test_zero_axis(self) -> None:
+        with pytest.raises(ValueError, match="zero vector"):
+            transforms.twist_angle(Y_90, primitives.Float3(0, 0, 0))
+
+
 class TestMultiply:
 
     def test_identity(self) -> None:

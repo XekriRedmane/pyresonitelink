@@ -340,3 +340,53 @@ def read_node(
     if not parts:
         raise ValueError(f"Node {node!r} and its descendants have no meshes.")
     return merge(parts)
+
+
+def read_part(
+    scene: trimesh.Scene,
+    node: str,
+    *,
+    turn: np.ndarray | None = None,
+    skip: Callable[[str, dict[str, Any]], bool] | None = None,
+) -> tuple[Mesh, np.ndarray]:
+    """Reads a node as a part of a model, to show on a slot of its own.
+
+    The mesh is read as read_node reads it, and the node's own rotation and
+    scale relative to the scene are applied, so the mesh is centered on the
+    node's origin and has the scene's axes. The position is the node's
+    origin in the scene. Both are converted to Resonite's coordinates, and
+    then turned by turn. A slot at the position under a slot that stands
+    for the scene's root, with no rotation, shows the node where it is in
+    the file. A part that turns, such as a wheel, turns about its own
+    origin, since that is the slot's origin.
+
+        part, position = glb.read_part(scene, "Wheel")
+        wheel = await rendering.add_part(
+            resolink, model, part, mats, name="Wheel", position=position,
+        )
+
+    Args:
+        scene (trimesh.Scene): The scene, as returned by load.
+        node (str): The name of the node's frame in scene.graph.
+        turn (np.ndarray | None): A 3x3 linear transform applied to the
+            mesh and the position after the conversion, such as
+            np.diag([-1, 1, -1]), which turns a model half a turn about Y
+            so that a front that faces +Z in the file faces -Z. None
+            applies nothing.
+        skip (Callable[[str, dict[str, Any]], bool] | None): As in
+            read_node.
+
+    Returns:
+        The mesh, and the position as a float64 array of shape (3,).
+
+    Raises:
+        LookupError: The scene has no frame with the name.
+        ValueError: There are no meshes in the node or its descendants, or
+            one of them is points or lines.
+    """
+    m = read_node(scene, node, skip=skip)
+    matrix, _ = scene.graph.get(node)
+    to_resonite_axes = np.diag([-1.0, 1.0, 1.0])
+    linear = to_resonite_axes if turn is None else np.asarray(turn, dtype=np.float64) @ to_resonite_axes
+    part = transform(transform(m, matrix[:3, :3]), linear)
+    return part, linear @ np.asarray(matrix[:3, 3], dtype=np.float64)

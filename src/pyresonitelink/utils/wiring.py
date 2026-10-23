@@ -20,6 +20,12 @@ its Drive.
     drive = core.ValueFieldDrive[primitives.Float]()
     await wiring.add_node(resolink, slot, drive, {"Value": add})
     await wiring.drive_field(resolink, slot, drive, field_member_id)
+
+drive_from does the last three lines in one call. add_reference_input adds
+a RefObjectInput<T> node, which outputs a reference to a world element such
+as a component. A node input that takes an INodeObjectOutput<T> of an
+interface, such as IsGrabbableGrabbed's Grabbable, is fed by one, and the
+generated RefObjectInput class can't be given an interface as T.
 """
 
 import asyncio
@@ -29,6 +35,7 @@ from pyresonitelink.data import members
 from pyresonitelink.data import protocols
 from pyresonitelink.data import workers
 from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated.protoflux.runtimes.execution.nodes.core import value_field_drive
 
 # The time between adding a node and wiring it. With no pause, the
 # references all arrive but the graph doesn't run (measured 18 Oct 2026).
@@ -38,6 +45,10 @@ WIRE_DELAY = 0.05  # seconds
 
 # The targetType sent for a member whose data reports none.
 _DEFAULT_TARGET_TYPE = "[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<T>"
+
+_REF_INPUT_TYPE = (
+    "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes.RefObjectInput<{}>"
+)
 
 # How often and how many times drive_field looks for the Proxy.
 _PROXY_POLL_INTERVAL = 0.05  # seconds
@@ -168,3 +179,89 @@ async def drive_field(
         raise RuntimeError(
             f"Failed to set the field that drive {drive_id} drives: {resp.errorInfo}"
         )
+
+
+async def drive_from(
+    resolink: protocols.ResoniteLinkClient,
+    slot: str | workers.Slot,
+    source: str | GeneratedComponent,
+    field_id: str,
+    value_type: type,
+    *,
+    debug: bool = False,
+) -> GeneratedComponent:
+    """Adds a ValueFieldDrive<T> that drives a field from a node's output.
+
+    The field takes the node's value in every engine update. A ValueDisplay
+    can't take its place for a value that changes every frame, such as the
+    ViewRotation node's, since it wrote its field only once, when it was
+    wired (measured 23 Oct 2026).
+
+    Args:
+        resolink (protocols.ResoniteLinkClient): The connected client.
+        slot (str | workers.Slot): The slot to add the drive node to.
+        source (str | GeneratedComponent): The node whose output drives
+            the field, or its ID.
+        field_id (str): The member ID of the field to drive.
+        value_type (type): The field's value type, such as
+            primitives.Float or primitives.Bool.
+        debug (bool): Print request and response JSON.
+
+    Returns:
+        The drive node.
+
+    Raises:
+        RuntimeError: The server refused a reference, or no Proxy appeared.
+    """
+    drive = value_field_drive.ValueFieldDrive[value_type]()  # type: ignore[valid-type]
+    await add_node(resolink, slot, drive, {"Value": source}, debug=debug)
+    await drive_field(resolink, slot, drive, field_id)
+    return drive
+
+
+async def add_reference_input(
+    resolink: protocols.ResoniteLinkClient,
+    slot: str | workers.Slot,
+    target: str | GeneratedComponent | workers.Slot,
+    type_name: str,
+    *,
+    debug: bool = False,
+) -> str:
+    """Adds a RefObjectInput<T> node that outputs a reference to a world element.
+
+    Args:
+        resolink (protocols.ResoniteLinkClient): The connected client.
+        slot (str | workers.Slot): The slot to add the node to.
+        target (str | GeneratedComponent | workers.Slot): The element the
+            node refers to, such as a component, or its ID.
+        type_name (str): T, the assembly-qualified Resonite type of the
+            reference, e.g. "[FrooxEngine]FrooxEngine.IGrabbable".
+        debug (bool): Print request and response JSON.
+
+    Returns:
+        The new node's ID.
+
+    Raises:
+        RuntimeError: The server refused the node or its reference.
+    """
+    added = await resolink.add_component(
+        slot, data=workers.Component(componentType=_REF_INPUT_TYPE.format(type_name)), debug=debug,
+    )
+    if not added.success or added.entityId is None:
+        raise RuntimeError(f"Failed to add RefObjectInput<{type_name}>: {added.errorInfo}")
+    node_id = added.entityId
+    await asyncio.sleep(WIRE_DELAY)
+    data = (await resolink.get_component(componentId=node_id, debug=debug)).data
+    reported = (data.members or {}).get("Target") if data is not None else None
+    target_id = target if isinstance(target, str) else target.id
+    resp = await resolink.update_references(
+        componentId=node_id,
+        references={"Target": members.Reference(
+            targetId=target_id,
+            targetType=reported.targetType if isinstance(reported, members.Reference) else None,
+        )},
+        debug=debug,
+    )
+    if not resp.success:
+        raise RuntimeError(f"Failed to set the target of {node_id}: {resp.errorInfo}")
+    return node_id

@@ -240,6 +240,45 @@ class TestExampleCard:
         assert {"Guide", "Large Check", "Cross"} <= set(m.nodes)
 
 
+class TestReadPart:
+
+    def test_centers_on_the_node_with_the_scene_axes(self, tmp_path: pathlib.Path) -> None:
+        # b is under a, which moves it +1 in X. b moves itself +2 in Y,
+        # turns 90 degrees about +Z, and scales by 2. In glTF, the turn
+        # takes +X to +Y and +Y to -X.
+        scene = _scene(tmp_path, [
+            {"name": "a", "translation": [1, 0, 0], "children": [1]},
+            {"name": "b", "mesh": 1, "translation": [0, 2, 0], "scale": [2, 2, 2],
+             "rotation": [0, 0, np.sin(np.pi / 4), np.cos(np.pi / 4)]},
+        ])
+        part, position = glb.read_part(scene, "b")
+        in_scene_axes = np.array([[0, 0, 0], [0, 2, 0], [-2, 0, 0]])
+        np.testing.assert_allclose(part.positions, in_scene_axes * [-1, 1, 1], atol=1e-6)
+        np.testing.assert_allclose(position, [-1, 2, 0])
+        # The conversion mirrors X once, so the winding is swapped once.
+        np.testing.assert_array_equal(part.submeshes[0], [[0, 2, 1]])
+
+    def test_turn_applies_after_the_conversion(self, tmp_path: pathlib.Path) -> None:
+        scene = _scene(tmp_path, [
+            {"name": "a", "children": [1]},
+            {"name": "b", "mesh": 1, "translation": [1, 2, 3]},
+        ])
+        half_turn = np.diag([-1.0, 1.0, -1.0])
+        part, position = glb.read_part(scene, "b", turn=half_turn)
+        np.testing.assert_allclose(part.positions, _POSITIONS * [1, 1, -1], atol=1e-6)
+        np.testing.assert_allclose(position, [1, 2, -3])
+        # The half turn isn't a mirror, so only the conversion swaps.
+        np.testing.assert_array_equal(part.submeshes[0], [[0, 2, 1]])
+
+    def test_skip_is_passed_on(self, tmp_path: pathlib.Path) -> None:
+        scene = _scene(tmp_path, [
+            {"name": "a", "mesh": 0, "children": [1]},
+            {"name": "b", "mesh": 1, "extras": {"hidden": True}},
+        ])
+        part, _ = glb.read_part(scene, "a", skip=lambda name, extras: extras.get("hidden") is True)
+        assert part.nodes == ["a"]
+
+
 def _triangle() -> glb.Mesh:
     """Returns the test triangle as a Mesh, without reading a file."""
     return glb.Mesh(

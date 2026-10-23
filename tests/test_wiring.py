@@ -189,3 +189,53 @@ class TestDriveField:
         with pytest.raises(RuntimeError, match="No Proxy"):
             await wiring.drive_field(fake, "slot", drive, "field-id")  # type: ignore[arg-type]
         assert fake.wired == []
+
+
+class TestDriveFrom:
+    async def test_wires_the_value_then_the_proxy(self) -> None:
+        fake = FakeClient()
+        source = core.ValueInput[primitives.Float](primitives.Float(1))
+        await wiring.add_node(fake, "slot", source)  # type: ignore[arg-type]
+        drive = await wiring.drive_from(fake, "slot", source, "field-id", primitives.Float)  # type: ignore[arg-type]
+        assert drive.COMPONENT_TYPE.endswith("ValueFieldDrive<float>")
+        assert drive.id is not None and fake.slot_of[drive.id] == "slot"
+        (value_wiring, drive_wiring) = fake.wired
+        assert value_wiring[0] == drive.id
+        assert _reference(value_wiring[1], "Value").targetId == source.id
+        proxy = fake.components[drive_wiring[0]]
+        assert proxy.componentType == PROXY_TYPE
+        assert _reference(drive_wiring[1], "Drive").targetId == "field-id"
+
+
+GRABBABLE = "[FrooxEngine]FrooxEngine.IGrabbable"
+GRABBABLE_TARGET = f"[FrooxEngine]FrooxEngine.ProtoFlux.INodeObjectOutput<{GRABBABLE}>"
+
+
+class TestAddReferenceInput:
+    async def test_adds_and_targets_with_the_reported_type(self) -> None:
+        fake = FakeClient(reported={"Target": members.Reference(targetType=GRABBABLE)})
+        node_id = await wiring.add_reference_input(fake, "slot", "joint-id", GRABBABLE)  # type: ignore[arg-type]
+        node = fake.components[node_id]
+        assert node.componentType == (
+            "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes"
+            f".RefObjectInput<{GRABBABLE}>"
+        )
+        assert fake.slot_of[node_id] == "slot"
+        ((component_id, targets),) = fake.wired
+        assert component_id == node_id
+        target = _reference(targets, "Target")
+        assert target.targetId == "joint-id"
+        assert target.targetType == GRABBABLE
+
+    async def test_takes_a_component(self) -> None:
+        fake = FakeClient()
+        source = core.ValueInput[primitives.Float](primitives.Float(1))
+        await wiring.add_node(fake, "slot", source)  # type: ignore[arg-type]
+        await wiring.add_reference_input(fake, "slot", source, GRABBABLE)  # type: ignore[arg-type]
+        ((_, targets),) = fake.wired
+        assert _reference(targets, "Target").targetId == source.id
+
+    async def test_refused(self) -> None:
+        fake = FakeClient(wire_success=False)
+        with pytest.raises(RuntimeError, match="refused"):
+            await wiring.add_reference_input(fake, "slot", "joint-id", GRABBABLE)  # type: ignore[arg-type]
