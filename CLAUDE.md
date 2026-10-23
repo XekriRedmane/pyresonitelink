@@ -622,6 +622,11 @@ ALWAYS check whether a type needs Value or Object variants before creating Proto
 
 - ALWAYS keep `TestFunctionAudit` in `test_dergflux_builder.py` covering every public `dergflux.math` and `dergflux.time` function. It builds each one and checks every wired reference name against the generated node class, because the server ignores a reference to an unknown member. It catches a missing builder entry and a wrong input name, which is how `lerp` and `smoothstep` stayed broken.
 
+#### Dergflux Data Sources Need a Named Output
+
+- `g.DataSource` refers to each value output by a member name (`OutputDef`), and `_materialize_component_output` looks up that member's ID. A node that is its own output, such as `IsGrabbableGrabbed`, has no such member, so it can't be a data source.
+- Wire such a node by hand and drive a dynamic variable from it, which the flow then reads, as `utils.controls.drive_grabbed` does with `wiring.add_reference_input` and `wiring.drive_from`.
+
 #### GlobalValue vs ValueInput for IGlobalValueProxy References
 
 Some ProtoFlux nodes have reference members targeting `IGlobalValueProxy<T>` instead of `INodeValueOutput<T>`. For example, `DynamicImpulseReceiver.Tag` expects `IGlobalValueProxy<string>`. These references CANNOT be wired to `ValueInput<T>` or `ValueObjectInput<T>` — they require a `GlobalValue<T>` component instead.
