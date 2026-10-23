@@ -85,6 +85,8 @@ _COMMON_MEMBERS = [
     "Format", "FormatProvider",
     # Members of the slot actions.
     "Template", "OverrideParent", "Duplicate", "Name", "Active",
+    # Members of the keyboard nodes and SetFeetPosition.
+    "Key", "UserRoot", "Position",
 ]
 
 # The slot fields that Bind() can drive. A mock slot's member ID for one
@@ -108,6 +110,8 @@ class MockClient:
         self.component_list: list[_ComponentRecord] = []
         # Reverse map: member_id -> (component_id, member_name)
         self._member_owner: dict[str, tuple[str, str]] = {}
+        # The data of every update_component call, in order.
+        self.updates: list[Any] = []
 
     def _gen_id(self, prefix: str = "mock") -> str:
         """Generate a unique fake ID."""
@@ -245,6 +249,7 @@ class MockClient:
 
     async def update_component(self, data: Any = None, **kwargs: Any) -> MockResponse:
         """Record a component update."""
+        self.updates.append(data)
         return MockResponse(success=True)
 
     async def update_references(
@@ -2155,6 +2160,135 @@ class TestPlayerKitBuild:
         assert m.ref_target_comp(m.find_one(r"IsNull<"), "Instance") is find
 
 
+class TestSequenceBuild:
+    """Statements that branch are called from a Sequence rather than chained.
+
+    Chaining each branch's tails to the next statement doubles the paths
+    that ProtoFlux's ImpulseValidator walks with each such statement, and
+    a chain of 40 froze Resonite's engine (23 Oct 2026).
+    """
+
+    @staticmethod
+    def _calls(m: MockClient, sequence: Any) -> list[str]:
+        update = next(u for u in m.updates if u.id == sequence.id)
+        return [e.targetId for e in update.members["Calls"].elements]
+
+    @pytest.mark.asyncio
+    async def test_one_branching_statement_is_chained(self, mock_client: MockClient) -> None:
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="one")
+        s.x = s.FloatModelVar("x")
+        with g.Under(slot):
+            with g.If(s.x < 1):
+                s.x = 1.0
+            s.x = s.x + 1
+        await _build(mock_client, g)
+        m = mock_client
+        assert not m.find(_ct("Sequence"))
+        if_node = m.find_one(_ct("If"))
+        assert m.ref_target_comp(if_node, "OnFalse") is not None
+
+    @pytest.mark.asyncio
+    async def test_two_branching_statements_use_a_sequence(self, mock_client: MockClient) -> None:
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="two")
+        s.x = s.FloatModelVar("x")
+        with g.Under(slot):
+            with g.If(s.x < 1):
+                s.x = 1.0
+            with g.If(s.x > 5):
+                s.x = 5.0
+        await _build(mock_client, g)
+        m = mock_client
+        sequence = m.find_one(_ct("Sequence"))
+        ifs = m.find(_ct("If"))
+        assert self._calls(m, sequence) == [ifs[0].id, ifs[1].id]
+        # The first If's empty branch isn't chained to the second If.
+        assert m.ref_target_comp(ifs[0], "OnFalse") is None
+        assert m.ref_target_comp(m.find_one(_ct("Update")), "OnUpdate") is sequence
+
+    @pytest.mark.asyncio
+    async def test_a_sequenced_branch_sequences_its_parent(self, mock_client: MockClient) -> None:
+        """A list after an If whose branch is sequenced can't chain to its tails."""
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="nested")
+        s.x = s.FloatModelVar("x")
+        s.done = s.BoolModelVar("done")
+        with g.Under(slot):
+            with g.If(s.x < 10):
+                with g.If(s.x < 1):
+                    s.x = 1.0
+                with g.If(s.x > 5):
+                    s.x = 5.0
+            s.done = True
+        await _build(mock_client, g)
+        m = mock_client
+        inner, outer = m.find(_ct("Sequence"))
+        outer_if = next(i for i in m.find(_ct("If")) if m.ref_target_comp(i, "OnTrue") is inner)
+        write = next(w for w in m.find(r"ValueWrite<") if "bool" in w.component_type)
+        assert self._calls(m, outer) == [outer_if.id, write.id]
+
+
+class TestKeyboardAndUserRootBuild:
+    """Builds enum constants, the keyboard nodes, and moving the local user."""
+
+    @pytest.mark.asyncio
+    async def test_key_constant(self, mock_client: MockClient) -> None:
+        """A key is a ValueInput<Key> whose Value is set to the key's name."""
+        from pyresonitelink.dergflux import keyboard
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="keys")
+        s.tab = s.BoolModelVar("tab")
+        with g.Under(slot):
+            s.tab = keyboard.held("Tab")
+        await _build(mock_client, g)
+        m = mock_client
+
+        constant = m.find_one(r"ValueInput<\[Renderite\.Shared\]Renderite\.Shared\.Key>$")
+        held = m.find_one(_ct("KeyHeld"))
+        assert m.ref_target_comp(held, "Key") is constant
+        update = next(u for u in m.updates if u.id == constant.id)
+        assert update.members["Value"].value == "Tab"
+        assert update.members["Value"].id == constant.member_ids["Value"]
+
+    @pytest.mark.asyncio
+    async def test_set_feet_position(
+        self, mock_client: MockClient, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        """SetFeetPosition takes the local user's root and a point, and goes on to the next statement."""
+        from pyresonitelink.dergflux import users
+
+        original = _builder._create_and_wire
+
+        async def checked(
+            resolink: Any, slot: Any, component_class: Any,
+            references: dict[str, str], debug: bool = False,
+        ) -> Any:
+            unknown = set(references) - _member_names(component_class)
+            assert not unknown, f"{component_class.__name__} has no member {sorted(unknown)}"
+            return await original(resolink, slot, component_class, references, debug=debug)
+
+        monkeypatch.setattr(_builder, "_create_and_wire", checked)
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="move")
+        s.done = s.BoolModelVar("done")
+        with g.Under(slot):
+            g.SetFeetPosition(users.local_user_root(), primitives.Float3(1, 0, 2))
+            s.done = True
+        await _build(mock_client, g)
+        m = mock_client
+
+        setter = m.find_one(_ct("SetFeetPosition"))
+        assert m.ref_target_comp(setter, "UserRoot") is m.find_one(_ct("LocalUserRoot"))
+        assert "ValueInput<float3>" in (m.ref_target_type(setter, "Position") or "")
+        assert m.ref_target_comp(setter, "Next") is m.find_one(r"ValueWrite<")
+
+
 class TestContinuationBuild:
     """Statements after a raycast or a transform setter run after it."""
 
@@ -2273,6 +2407,7 @@ def _calls() -> list[tuple[str, Any]]:
     and v (Float3).
     """
     from pyresonitelink.dergflux import interaction
+    from pyresonitelink.dergflux import keyboard
     from pyresonitelink.dergflux import math as dm
     from pyresonitelink.dergflux import mouse
     from pyresonitelink.dergflux import slots
@@ -2348,6 +2483,11 @@ def _calls() -> list[tuple[str, Any]]:
         ("slot_name", lambda s: slots.name(slots.ref("ball"))),
         ("find_child", lambda s: dm.is_null(slots.find_child(slots.ref("ball"), "Tag"))),
         ("string_conditional", lambda s: dm.conditional(s.b, "yes", "no")),
+        ("key_held", lambda s: keyboard.held("Tab")),
+        ("key_pressed", lambda s: keyboard.pressed("Backspace")),
+        ("key_released", lambda s: keyboard.released("Tab")),
+        ("child_index", lambda s: slots.child_index(slots.ref("ball"))),
+        ("parent", lambda s: transform.global_position(slots.parent(slots.ref("ball")))),
         ("is_grabbed", lambda s: interaction.is_grabbed(_added(grabbable.Grabbable()))),
         ("to_string", lambda s: strings.to_string(s.v)),
         ("concatenate", lambda s: "y=" + strings.to_string(s.f)),

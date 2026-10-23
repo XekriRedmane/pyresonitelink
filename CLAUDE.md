@@ -58,6 +58,7 @@ pytest --port=<port> tests/test_values.py::test_update_component -s
 # The project check covers only src/. Check examples by path.
 pyrefly check
 pyrefly check examples/spinning_cube.py
+pyrefly check --search-path examples examples/dergflux_golf.py   # it imports golf_holes from beside it
 
 # CLI tools
 python -m pyresonitelink.cli.tree <port>                    # Interactive TUI browser
@@ -108,7 +109,8 @@ Python objects <- decode_response() <- JSON <---+
 - **`utils/probes.py`**: `ViewProbe` reads the local user's view (the camera in desktop mode) through ValueFieldDrives.
 - **`utils/counters.py`**: Dergflux helpers for odometers: drum carry (`drum_turns`) and detents that snap (`add_detents`).
 - **`utils/recorder.py`**: `Recorder` appends values to a string model variable from inside a running Dergflux flow, for a script to read and parse afterwards.
-- **`dergflux/slots.py`, `transform.py`, `variables.py`, `strings.py`, `users.py`, `interaction.py`, `mouse.py`**: Dergflux expressions for slot references, transforms, dynamic variables read from any slot, strings, users and the local view, grabbing, and the mouse. They build on `_expr.node_output`, which makes an expression from any node's output.
+- **`utils/batches.py`**: `SceneBatch` adds static slots and components in `data_model_operation_batch` messages, with IDs it chooses so later additions can refer to earlier ones. NEVER add ProtoFlux nodes with it.
+- **`dergflux/slots.py`, `transform.py`, `variables.py`, `strings.py`, `users.py`, `interaction.py`, `mouse.py`, `keyboard.py`**: Dergflux expressions for slot references, transforms, dynamic variables read from any slot, strings, users and the local view, grabbing, the mouse, and the keyboard. An enum input, such as a keyboard node's Key, takes an `_expr.EnumConstNode`. They build on `_expr.node_output`, which makes an expression from any node's output.
 
 ### Import Aliases
 
@@ -655,6 +657,12 @@ ALWAYS check whether a type needs Value or Object variants before creating Proto
 - To give each user a copy of something with its own graph, build the graph in an inactive template and duplicate it with `g.DuplicateSlot` from a flow on the user's machine (a button's events fire only there). `g.OnDuplicate` fires only on the duplicating machine, so the template claims the copy there with a `UserModelVar`. `examples/dergflux_golf.py` does this per player.
 - Drives in an inactive slot compute, but Update flows there don't run (measured 23 Oct 2026). ALWAYS gate a template's flows on its owner anyway, since a duplicate is active.
 - In desktop mode a click reaches a button only within 2 s of the view turning (`InteractionLaser`, `FirstPersonTargettingController`). A test driver that clicks a button after the mouse has been still MUST turn the view a pixel and back in separate updates first. The mouse nodes aren't affected.
+
+#### Branches That Join Multiply ProtoFlux's Validation
+
+- ProtoFlux's `ImpulseValidator.ValidateImpulseFlow` walks every path of a flow, with no memo. Each If whose branches join at the next statement doubles the paths. On 23 Oct 2026 a golf kit graph with about 40 such Ifs in a row froze Resonite's engine thread in the ProtoFluxRebuild stage for good (seen with `dotnet-stack report` on the Renderite.Host process).
+- `_builder._join_statements` calls a list's statements from a `Sequence` node when two or more of them branch, so the paths add up. ALWAYS keep that rule, and prefer a write of a `math.conditional` to an If per case, and an else-if chain to Ifs in a row.
+- To see where a frozen engine is stuck, run `dotnet-stack report -p <Renderite.Host PID>`. The Resonite process is only the boot loop.
 
 #### Recording a Running Graph
 

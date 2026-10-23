@@ -21,6 +21,7 @@ machine runs the flow.
 from pyresonitelink.data import primitives
 from pyresonitelink.dergflux import _expr
 from pyresonitelink.generated._types import user
+from pyresonitelink.generated._types import user_root as _user_root
 
 
 def local_user() -> _expr.ExprProxy:
@@ -118,4 +119,11 @@ def username(u: object) -> _expr.ExprProxy:
     return _expr.node_output(
         {"User": u}, primitives.String,
         module="protoflux.users", class_name="UserUsername",
+    )
+
+
+def local_user_root() -> _expr.ExprProxy:
+    """Returns the local user's UserRoot, for g.SetFeetPosition."""
+    return _expr.node_output(
+        {}, _user_root.UserRoot, module="protoflux.users", class_name="LocalUserRoot",
     )

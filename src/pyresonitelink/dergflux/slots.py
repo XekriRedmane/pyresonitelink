@@ -155,3 +155,29 @@ def find_child(slot: Any, child_name: Any, *, depth: int = 0) -> _expr.ExprProxy
         workers.Slot,
         module="protoflux.slots.searching", class_name="FindChildByName",
     )
+
+
+def child_index(slot: Any) -> _expr.ExprProxy:
+    """Returns a slot's index among its parent's children, an Int, or -1 for Root or null.
+
+    Args:
+        slot: The slot, as a workers.Slot or a slot expression.
+    """
+    from pyresonitelink.data import primitives
+
+    return _expr.node_output(
+        {"Instance": _slot(slot)}, primitives.Int,
+        module="protoflux.slots", class_name="IndexOfChild",
+    )
+
+
+def parent(slot: Any) -> _expr.ExprProxy:
+    """Returns a slot's parent, or null for Root or null.
+
+    Args:
+        slot: The slot, as a workers.Slot or a slot expression.
+    """
+    return _expr.node_output(
+        {"Instance": _slot(slot)}, workers.Slot,
+        module="protoflux.slots", class_name="GetParentSlot",
+    )

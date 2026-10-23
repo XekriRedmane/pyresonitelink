@@ -121,6 +121,21 @@ SetSlotActiveSelf = ActionDef(
     continuations=["next"],
 )
 
+# Moves a user so that their feet are at a point in world space, keeping
+# the head's offset from the feet (UserRoot.FeetPosition). A user can move
+# only their own root, so a flow that moves the local user's runs on that
+# user's machine.
+SetFeetPosition = ActionDef(
+    import_path="protoflux.users.user_root",
+    class_name="SetFeetPosition",
+    inputs={
+        "user_root": InputDef("user_root"),
+        "position": InputDef("position", primitives.Float3),
+    },
+    flow_outputs=["next"],
+    continuations=["next"],
+)
+
 PlayOneShot = ActionDef(
     import_path="protoflux.audio",
     class_name="PlayOneShot",

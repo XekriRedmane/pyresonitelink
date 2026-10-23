@@ -20,6 +20,7 @@ Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs in
   - [Variables on Other Slots](#variables-on-other-slots)
   - [Users and Grabbing](#users-and-grabbing)
   - [Mouse](#mouse)
+  - [Keyboard](#keyboard)
 - [Flow Control](#flow-control)
   - [If / Else](#if--else)
   - [Continuation](#continuation-after-if--else)
@@ -474,6 +475,7 @@ n = transform.local_direction_to_global(head, primitives.Float3(0, 0, 1))
 | `transform.local_direction_to_global(slot, d)` | Float3 | `LocalDirectionToGlobal` |
 | `slots.name(slot)` | String | `GetSlotName` |
 | `slots.find_child(slot, name, depth=0)` | Slot, or null | `FindChildByName` |
+| `slots.child_index(slot)` | Int, or -1 for Root or null | `IndexOfChild` |
 
 `slots.find_child` turns off FindChildByName's substring match, which is on by default, so it finds only a child with exactly the name. A depth of 0 searches the direct children only, and -1 searches every descendant.
 
@@ -507,6 +509,7 @@ users.is_dash_open(u)            # a Bool, true while the user's dash is open
 users.view_position()            # a Float3, the local user's view (the camera in desktop mode)
 users.view_rotation()            # a FloatQ, which looks along its +Z
 users.username(u)                # a String, or null for a null user
+users.local_user_root()          # the local user's UserRoot, for g.SetFeetPosition
 interaction.is_grabbed(grab)     # a Bool, true while a Grabbable or other IGrabbable is held
 ```
 
@@ -541,12 +544,33 @@ These read the mouse of the machine that evaluates them, through ProtoFlux's mou
 
 The unit of `scroll_delta` isn't documented, so a flow that counts notches of the wheel should act in the update in which the scrolling starts.
 
+### Keyboard
+
+```python
+from pyresonitelink.dergflux import keyboard
+
+keyboard.held("Tab")          # a Bool, true while the key is down
+keyboard.pressed("Backspace") # true in the update in which it went down
+keyboard.released("Tab")      # true in the update in which it came up
+```
+
+A key is named as Resonite names it, or given as a member of the generated `Key` enum. The nodes take the key as an input, which `keyboard.key(name)` makes: a `ValueInput<Key>` whose Value the builder sets after adding it. They read the keyboard of the machine that evaluates them, and read false while a text field has the keyboard. In desktop mode Resonite binds W, A, S, D, Space, Shift, Control, Alt, E, F, R, T, C, X, Z, Y, V, I, M, P, Escape, Delete, the arrow keys, PageUp, and PageDown itself (`KeyboardAndMouseBindingGenerator`). Tab and Backspace are free.
+
 ## Flow Control
 
-All flow control must be inside a `g.Under(slot)` block.  Multiple
-flow statements inside a single `Under` block are chained via a
-ProtoFlux `Sequence` node — each runs to completion before the next
-starts.
+All flow control must be inside a `g.Under(slot)` block. The statements
+of a block, or of a branch, run in order, each to completion before the
+next starts.
+
+The builder chains them, wiring the outputs where each statement ends to
+the next statement, unless two or more of them branch. Those are called
+from a ProtoFlux `Sequence` node instead, and so is every list that
+contains a statement built that way. ProtoFlux's `ImpulseValidator`
+walks every path through a flow, with no memo of the nodes it has
+checked, so each branching statement whose branches join at the next one
+doubles its work. A chain of 40 such statements froze Resonite's engine
+thread for good (23 Oct 2026). The paths through a `Sequence` add up
+instead of multiplying.
 
 ### If / Else
 
@@ -572,13 +596,14 @@ with g.Under(slot):
     with g.Else():
         s.z = s.x - 3
 
-    # Runs after either branch completes (via Sequence)
+    # Runs after either branch completes
     s.z = s.z + 1
 ```
 
-At build time, the `If` and the bare write become two entries in a
-`Sequence` node.  The trigger drives the Sequence, which fires the
-If first, waits for it to complete, then fires the bare write.
+At build time, both branches of the `If` are chained to the bare write.
+Had the block held a second `If`, the two `If`s and the write would
+instead be the calls of a `Sequence` node, which fires the first `If`,
+waits for it to complete, and then fires the next call.
 
 ### For
 
@@ -875,6 +900,10 @@ that ran the flow only (``Slot.Duplicate`` calls ``RunDuplicate``
 locally), so a graph in the template can claim the duplicate for that
 machine's user with ``g.OnDuplicate``. ``examples/dergflux_golf.py`` gives
 each player a kit this way.
+
+``g.SetFeetPosition(users.local_user_root(), point)`` moves the local user
+so that their feet are at a point in world space. A user can move only
+their own root, so the flow that does it runs on that user's machine.
 
 A drive in an inactive slot computes, but an Update flow there doesn't
 run (measured 23 Oct 2026, with a template kit whose flow ran only once

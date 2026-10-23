@@ -21,6 +21,7 @@ from pyresonitelink.dergflux._graph import Graph, Outcome
 from pyresonitelink.dergflux._space import ModelVarDecl, Space, VarDecl
 from pyresonitelink.dergflux import _math as math
 from pyresonitelink.dergflux import interaction
+from pyresonitelink.dergflux import keyboard
 from pyresonitelink.dergflux import mouse
 from pyresonitelink.dergflux import slots
 from pyresonitelink.dergflux import strings
@@ -32,5 +33,5 @@ from pyresonitelink.dergflux import variables
 __all__ = [
     "ActionDef", "InputDef", "OutputDef",
     "Graph", "ModelVarDecl", "Outcome", "Space", "VarDecl",
-    "interaction", "math", "mouse", "slots", "strings", "time", "transform", "users", "variables",
+    "interaction", "keyboard", "math", "mouse", "slots", "strings", "time", "transform", "users", "variables",
 ]

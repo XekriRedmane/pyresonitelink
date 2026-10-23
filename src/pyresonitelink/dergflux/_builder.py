@@ -54,10 +54,15 @@ class FlowResult:
             statement.  For an If node with only a true branch,
             this includes the true branch's last OnSuccess AND the
             If node's OnFalse.
+        sequenced: Whether a statement list inside it is called from a
+            Sequence node. Such a list has no tails, so the statements
+            after it can't be chained to it, and the list it is in must
+            call it from a Sequence too.
     """
 
     head: Any
     tails: list[_Tail] = field(default_factory=list)
+    sequenced: bool = False
 
 
 # =========================================================================
@@ -450,6 +455,8 @@ class _BuildContext:
             return await self._materialize_node_output(node)
         if isinstance(node, _expr.ElementRefNode):
             return await self._materialize_element_ref(node)
+        if isinstance(node, _expr.EnumConstNode):
+            return await self._materialize_enum_const(node)
         raise TypeError(f"Unknown node type: {type(node).__name__}")
 
     async def _materialize_node_output(self, node: _expr.NodeOutputNode) -> Any:
@@ -492,6 +499,34 @@ class _BuildContext:
                 f"{call.describe()} has no output {node.output_name}."
             )
         return type("_OutputStub", (), {"id": member.id})()
+
+    async def _materialize_enum_const(self, node: _expr.EnumConstNode) -> Any:
+        """Materializes an enum constant as a ValueInput<E> with its Value set.
+
+        The generated ValueInput class can't be parameterized with an enum,
+        so the node is added by its type string.
+        """
+        component_type = (
+            "[ProtoFluxBindings]FrooxEngine.ProtoFlux.Runtimes.Execution.Nodes."
+            f"ValueInput<{node.enum_type}>"
+        )
+        resp = await self.resolink.add_component(
+            containerSlotId=self.slot, componentType=component_type,
+        )
+        if resp.entityId is None:
+            raise RuntimeError(f"Failed to add {component_type}: {resp.errorInfo}")
+        data = (await self.resolink.get_component(componentId=resp.entityId)).data
+        assert data is not None, f"No data for {resp.entityId}"
+        current = data.members.get("Value")
+        value = members.FieldEnum(value=node.value)
+        if current is not None:
+            value.id = current.id
+        update = await self.resolink.update_component(data=workers.Component(
+            id=resp.entityId, componentType=component_type, members={"Value": value},
+        ))
+        if not update.success:
+            raise RuntimeError(f"Failed to set {component_type} to {node.value}: {update.errorInfo}")
+        return type("_OutputStub", (), {"id": resp.entityId})()
 
     async def _materialize_element_ref(self, node: _expr.ElementRefNode) -> Any:
         """Materializes a reference to a world element as a RefObjectInput<T>.
@@ -1420,7 +1455,8 @@ async def _build_if_context(
     else:
         tails.append(_Tail(if_node, "OnFalse"))
 
-    return FlowResult(head=if_node, tails=tails)
+    sequenced = any(r is not None and r.sequenced for r in (true_result, false_result))
+    return FlowResult(head=if_node, tails=tails, sequenced=sequenced)
 
 
 async def _build_for_context(
@@ -1789,12 +1825,59 @@ async def _build_stmt_chain(
 
     if not results:
         return None
+    return await _join_statements(ctx, results)
 
-    # Chain: wire each result's tails to the next result's head
+
+async def _join_statements(ctx: _BuildContext, results: list[FlowResult]) -> FlowResult:
+    """Joins the built statements of a list so that they run in order.
+
+    Statements are chained, each one's tails wired to the next one's
+    head, unless the list has two or more statements that branch, or a
+    statement that is sequenced. Those are called from a Sequence node
+    instead.
+
+    The reason is ProtoFlux's ImpulseValidator, which walks every path
+    of a flow from the point that is wired, with no memo of the nodes it
+    has already checked. Each branching statement whose branches join at
+    the next statement doubles the paths, so a chain of 40 of them froze
+    Resonite's engine thread for good (23 Oct 2026). A Sequence runs each
+    call to completion before the next, and the paths through it add up
+    instead.
+    """
+    if len(results) == 1:
+        return results[0]
+    branching = sum(1 for r in results if len(r.tails) > 1)
+    if branching >= 2 or any(r.sequenced for r in results):
+        sequence = await _build_sequence(ctx, [r.head for r in results])
+        return FlowResult(head=sequence, tails=[], sequenced=True)
     for i in range(len(results) - 1):
         await _wire_tails_to_head(ctx, results[i].tails, results[i + 1].head)
-
     return FlowResult(head=results[0].head, tails=results[-1].tails)
+
+
+async def _build_sequence(ctx: _BuildContext, heads: list[Any]) -> Any:
+    """Adds a Sequence node, or an AsyncSequence in an async flow, that calls heads in order."""
+    from pyresonitelink.data import members as mem
+    from pyresonitelink.protoflux.flow import Sequence
+
+    if ctx.is_async:
+        _async_flow = importlib.import_module(
+            "pyresonitelink.generated.protoflux.runtimes.execution.nodes.flow.async",
+        )
+        node = _async_flow.AsyncSequence()
+    else:
+        node = Sequence()
+    await node.add_to_slot(ctx.resolink, ctx.slot)
+    calls = node.calls
+    calls_list = mem.SyncList(elements=[mem.Reference(targetId=h.id) for h in heads])
+    if calls is not None:
+        calls_list.id = calls.id
+    resp = await ctx.resolink.update_component(data=workers.Component(
+        id=node.id, componentType=node.component.componentType, members={"Calls": calls_list},
+    ))
+    if not resp.success:
+        raise RuntimeError(f"Failed to set the calls of Sequence {node.id}: {resp.errorInfo}")
+    return node
 
 
 # =========================================================================
@@ -2239,6 +2322,7 @@ async def _build_action_context(
     # Build and wire each flow output branch
     branch_refs: dict[str, str] = {}
     tails: list[_Tail] = []
+    sequenced = False
     for branch_name in action_def.flow_outputs:
         writes = action_ctx.branch_stmts.get(branch_name, [])
         result = await _build_stmt_chain(ctx, writes)
@@ -2250,6 +2334,7 @@ async def _build_action_context(
             tails.extend(
                 result.tails if result is not None else [_Tail(node, member_name)]
             )
+            sequenced = sequenced or (result is not None and result.sequenced)
     if branch_refs:
         await ctx.resolink.update_references(
             componentId=node.id,
@@ -2258,7 +2343,7 @@ async def _build_action_context(
 
     if not action_def.continuations:
         tails = [_Tail(node, "OnSuccess")]
-    return FlowResult(head=node, tails=tails)
+    return FlowResult(head=node, tails=tails, sequenced=sequenced)
 
 
 async def _build_indexed_branch_context(
@@ -2498,13 +2583,7 @@ async def build_graph(
         if not results:
             continue
 
-        # Chain results: wire each result's tails to the next's head
-        for i in range(len(results) - 1):
-            await _wire_tails_to_head(
-                ctx, results[i].tails, results[i + 1].head,
-            )
-
-        entry = results[0].head
+        entry = (await _join_statements(ctx, results)).head
 
         # Wait a moment before wiring the final trigger to ensure all 
         # nodes and connections are processed.

@@ -258,7 +258,8 @@ class Graph:
 
     Use ``g.Under(slot)`` to set the default slot and trigger for
     everything inside the block.  Flow statements inside ``Under``
-    are chained via a Sequence node when there are multiple.
+    run in order, chained, or called from a Sequence node when two or
+    more of them branch.
 
     Usage::
 
@@ -301,9 +302,11 @@ class Graph:
         ``While()``, and bare writes — will use this slot.  The trigger
         controls what drives the impulse flow.
 
-        Multiple flow statements inside a single ``Under`` block are
-        chained via a Sequence node — each runs to completion before
-        the next starts.
+        Multiple flow statements inside a single ``Under`` block run in
+        order, each to completion before the next starts. The builder
+        calls them from a Sequence node when two or more of them branch,
+        so that the paths ProtoFlux's validator walks add up instead of
+        multiplying.
 
         **No trigger (default) — fires every frame**::
 
@@ -1447,6 +1450,16 @@ class Graph:
         """
         from pyresonitelink.dergflux import actions
         self.Do(actions.SetSlotActiveSelf, instance=instance, active=active)
+
+    def SetFeetPosition(self, user_root: Any, position: object) -> None:
+        """Moves a user so that their feet are at a point in world space.
+
+        Args:
+            user_root: The user's UserRoot, such as users.local_user_root().
+            position: The point, a Float3.
+        """
+        from pyresonitelink.dergflux import actions
+        self.Do(actions.SetFeetPosition, user_root=user_root, position=position)
 
     @contextmanager
     def PlayOneShot(self, **kwargs: Any) -> Iterator[Any]:

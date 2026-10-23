@@ -313,6 +313,25 @@ class ElementRefNode(ExprNode):
         self.type_name = type_name
 
 
+class EnumConstNode(ExprNode):
+    """A constant of an enum type, such as a keyboard Key.
+
+    At build time, this becomes a ValueInput<E> node whose Value is the
+    constant. Dergflux does no arithmetic or comparison on enums, so the
+    constant only goes into the inputs of nodes that take one.
+
+    Attributes:
+        enum_type: E, the assembly-qualified Resonite name of the enum,
+            e.g. "[Renderite.Shared]Renderite.Shared.Key".
+        value: The member's name in Resonite, e.g. "Tab".
+    """
+
+    def __init__(self, enum_type: str, value: str, expr_type: type) -> None:
+        super().__init__(expr_type)
+        self.enum_type = enum_type
+        self.value = value
+
+
 def node_output(
     inputs: dict[str, Any],
     result_type: type,
