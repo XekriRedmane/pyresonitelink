@@ -1287,21 +1287,113 @@ class Graph:
 
         Args:
             origin: Ray origin (Float3).
-            direction: Ray direction (Float3).
-            max_distance: Max ray distance (Float).
+            direction: Ray direction (Float3). The node measures
+                max_distance and hit_distance in lengths of the direction
+                (MainPhysicsSimulation.RaycastOne passes it to BEPU
+                unnormalized), so a normalized direction gives meters.
+            max_distance: Max ray distance (Float), in lengths of the
+                direction.
             hit_triggers: Hit triggers (Bool).
             users_only: Only hit users (Bool).
             debug_duration: Debug visualization duration (Float).
-            root: Root slot for coordinate space.
+            root: Root slot for coordinate space. The origin, direction,
+                and max distance are in its space, and the hit outputs
+                are in world space.
+            ignore_hierarchy: A slot whose colliders, and its
+                descendants', the ray passes through.
+
+        The statement after the raycast runs after the hit or miss branch.
 
         Yields:
             An ``ActionProxy`` with ``on_hit()``, ``on_miss()``, and
-            value outputs: ``hit_point``, ``hit_normal``,
-            ``hit_distance``, ``hit_triangle_index``.
+            value outputs: ``hit_collider`` (an ICollider),
+            ``hit_point``, ``hit_normal``, ``hit_distance``,
+            ``hit_triangle_index``.
         """
         from pyresonitelink.dergflux import actions
         with self.Action(actions.RaycastOne, **kwargs) as proxy:
             yield proxy
+
+    def Do(self, action_def: Any, **kwargs: Any) -> Any:
+        """Records an action node that has no branches as a statement.
+
+        The node runs when the flow reaches it, and the flow then goes on
+        to the next statement, as after a write. ``SetGlobalPosition`` and
+        the other transform setters use this.
+
+        Must be used inside a ``g.Under(slot)`` context.
+
+        Args:
+            action_def: An ``ActionDef`` whose flow outputs are all
+                continuations.
+            **kwargs: Input values, matching the keys in
+                ``action_def.inputs``.
+
+        Returns:
+            An ``ActionProxy`` for the node's value outputs, if it has any.
+        """
+        from pyresonitelink.dergflux import _action
+
+        ctx, proxy = _action.create_action_context(self, action_def, kwargs)
+        self._record_statement(ctx)
+        return proxy
+
+    def SetGlobalPosition(self, instance: Any, position: object) -> None:
+        """Sets a slot's position in world space.
+
+        Args:
+            instance: The slot, as a workers.Slot or a Slot expression
+                such as one from ``dergflux.slots``.
+            position: The position, a Float3.
+        """
+        from pyresonitelink.dergflux import actions
+        self.Do(actions.SetGlobalPosition, instance=instance, position=position)
+
+    def SetGlobalRotation(self, instance: Any, rotation: object) -> None:
+        """Sets a slot's rotation in world space.
+
+        Args:
+            instance: The slot, as a workers.Slot or a Slot expression.
+            rotation: The rotation, a FloatQ.
+        """
+        from pyresonitelink.dergflux import actions
+        self.Do(actions.SetGlobalRotation, instance=instance, rotation=rotation)
+
+    def SetGlobalPositionRotation(
+        self, instance: Any, position: object, rotation: object,
+    ) -> None:
+        """Sets a slot's position and rotation in world space.
+
+        Args:
+            instance: The slot, as a workers.Slot or a Slot expression.
+            position: The position, a Float3.
+            rotation: The rotation, a FloatQ.
+        """
+        from pyresonitelink.dergflux import actions
+        self.Do(
+            actions.SetGlobalPositionRotation,
+            instance=instance, position=position, rotation=rotation,
+        )
+
+    def SetLocalPosition(self, instance: Any, position: object) -> None:
+        """Sets a slot's position relative to its parent.
+
+        Args:
+            instance: The slot, as a workers.Slot or a Slot expression.
+            position: The position, a Float3.
+        """
+        from pyresonitelink.dergflux import actions
+        self.Do(actions.SetLocalPosition, instance=instance, position=position)
+
+    def SetLocalRotation(self, instance: Any, rotation: object) -> None:
+        """Sets a slot's rotation relative to its parent.
+
+        Args:
+            instance: The slot, as a workers.Slot or a Slot expression.
+            rotation: The rotation, a FloatQ.
+        """
+        from pyresonitelink.dergflux import actions
+        self.Do(actions.SetLocalRotation, instance=instance, rotation=rotation)
 
     @contextmanager
     def PlayOneShot(self, **kwargs: Any) -> Iterator[Any]:

@@ -64,3 +64,41 @@ class TestInFrontOfHead:
         # +Z now points from the transform back toward the head.
         assert fake_scene.close(transforms.rotate(world.rotation, primitives.Float3(0, 0, 1)), (-1, 0, 0))
         assert fake_scene.close(world.scale, (0.5, 0.5, 0.5))
+
+
+class TestOnFloorInFrontOfHead:
+    @pytest.fixture
+    def fake(self) -> fake_scene.FakeClient:
+        """A user standing at (1, 0.5, 3), whose head looks along +X and down.
+
+        The head is turned 90 degrees about Y, which takes its forward axis
+        to +X, and then pitched 30 degrees down about its own X axis.
+        """
+        fake = fake_scene.FakeClient((_user("user"),))
+        s = math.sqrt(0.5)
+        pitch = math.radians(30)
+        fake.world["user"] = transforms.Transform(primitives.Float3(1, 0.5, 3))
+        fake.world["head"] = transforms.Transform(
+            primitives.Float3(1, 2.2, 3),
+            transforms.multiply(
+                primitives.FloatQ(0, s, 0, s),
+                primitives.FloatQ(math.sin(pitch / 2), 0, 0, math.cos(pitch / 2)),
+            ),
+        )
+        return fake
+
+    async def test_is_at_the_feet_height_along_the_flattened_view(
+        self, fake: fake_scene.FakeClient,
+    ) -> None:
+        world = await placement.on_floor_in_front_of_head(fake, 2.0)  # type: ignore[arg-type]
+        assert fake_scene.close(world.position, (3, 0.5, 3))
+        assert fake_scene.close(transforms.rotate(world.rotation, primitives.Float3(0, 0, 1)), (1, 0, 0))
+        assert fake_scene.close(transforms.rotate(world.rotation, primitives.Float3(0, 1, 0)), (0, 1, 0))
+
+    async def test_straight_down_raises(self, fake: fake_scene.FakeClient) -> None:
+        s = math.sqrt(0.5)
+        fake.world["head"] = transforms.Transform(
+            primitives.Float3(1, 2.2, 3), primitives.FloatQ(s, 0, 0, s),
+        )
+        with pytest.raises(ValueError, match="straight up or down"):
+            await placement.on_floor_in_front_of_head(fake, 2.0)  # type: ignore[arg-type]

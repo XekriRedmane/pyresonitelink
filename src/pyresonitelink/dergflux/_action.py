@@ -104,6 +104,11 @@ class ActionDef:
         is_event_source: If True, the node fires impulses on its own
             (e.g. ``SlotChildrenEvents`` fires when children change).
             No trigger (Update/DynamicImpulseReceiver) is created.
+        continuations: The flow outputs that continue the flow that ran
+            the node, such as RaycastOne's ``on_hit`` and ``on_miss``. The
+            statement after the action runs after whichever of them fires,
+            and after its branch if it has one. If this is empty, the
+            statement after the action is wired to the node's OnSuccess.
     """
 
     import_path: str
@@ -113,6 +118,7 @@ class ActionDef:
     value_outputs: dict[str, OutputDef] = field(default_factory=dict)
     is_async: bool = False
     is_event_source: bool = False
+    continuations: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -252,11 +258,19 @@ def create_action_context(
             )
         input_def = action_def.inputs[kwarg_name]
         param_name = input_def.param_name
-        if input_def.type is None:
+        if input_def.type is None and isinstance(value, _expr.ExprProxy):
+            # A reference computed in the graph, such as a slot from
+            # dergflux.slots.
+            input_exprs[param_name] = value
+        elif input_def.type is None:
             # Reference input
             has_id = hasattr(value, "id") and not isinstance(value, str)
             if input_def.ref_type is not None and has_id:
-                ref_bridges[param_name] = (value, input_def.ref_type, "ref")
+                # A RefObjectInput<ref_type> passes the element in. The
+                # builder adds one for each element and type.
+                input_exprs[param_name] = _expr.ExprProxy(_expr.ElementRefNode(
+                    value.id, input_def.ref_type, type(value),
+                ))
             elif input_def.global_type is not None and has_id:
                 ref_bridges[param_name] = (value, input_def.global_type, "global_ref")
             elif isinstance(value, str):

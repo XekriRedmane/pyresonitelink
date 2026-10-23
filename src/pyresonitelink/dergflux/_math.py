@@ -454,6 +454,140 @@ def from_euler(angles: Any) -> _expr.ExprProxy:
     )
 
 
+# =========================================================================
+# Vectors
+# =========================================================================
+
+# The modules of the vector nodes, relative to pyresonitelink.
+_VECTORS_MODULE = "protoflux.operators.vectors"
+_PACKING_MODULE = "protoflux.operators.packing"
+
+
+def _float_vector(func_name: str, *args: Any) -> tuple[list[_expr.ExprNode], type]:
+    """Widens vector arguments to their common type, which has float or double elements.
+
+    Returns:
+        The arguments' nodes and their common type.
+
+    Raises:
+        TypeError: The arguments aren't vectors of the same dimension, or
+            their elements are integers, for which ProtoFlux has no such
+            node.
+    """
+    from pyresonitelink.data import primitives
+    from pyresonitelink.dergflux import _types
+
+    nodes = [_expr._coerce(arg)._node for arg in args]
+    vector_type = _type_of(_expr.ExprProxy(nodes[0]))
+    for i in range(1, len(nodes)):
+        nodes[0], nodes[i], vector_type = _expr.unify(nodes[0], nodes[i], func_name)
+    if (vector_type not in _types._VECTORS
+            or _types._VECTORS[vector_type][0] not in (primitives.Float, primitives.Double)):
+        raise TypeError(
+            f"{func_name} takes vectors of floats or doubles, not "
+            f"{_types.type_name(vector_type)}."
+        )
+    # unify widened the first argument against each of the others, so the
+    # earlier ones may still be narrower than the common type.
+    nodes = [_expr.implicit(_expr.ExprProxy(n), vector_type, func_name)._node for n in nodes]
+    return nodes, vector_type
+
+
+def _vector_node(
+    func_name: str, class_prefix: str, args: tuple[Any, ...], result: str,
+) -> _expr.ExprProxy:
+    """Builds a vector node such as Dot_Float3, whose inputs are A and B.
+
+    Args:
+        func_name: The Dergflux function, for error messages.
+        class_prefix: The node's name before the type, e.g. "Dot".
+        args: One or two vectors.
+        result: "element" if the node returns a number of the vectors'
+            element type, or "vector" if it returns a vector of their type.
+    """
+    from pyresonitelink.dergflux import _types
+
+    nodes, vector_type = _float_vector(func_name, *args)
+    element, _ = _types._VECTORS[vector_type]
+    return _expr.node_output(
+        {name: _expr.ExprProxy(n) for name, n in zip("AB", nodes)},
+        element if result == "element" else vector_type,
+        module=_VECTORS_MODULE,
+        class_name=f"{class_prefix}_{_types.type_name(vector_type)}",
+    )
+
+
+def dot(a: Any, b: Any) -> _expr.ExprProxy:
+    """Returns the dot product of two vectors, a number of their element type.
+
+    The vectors are Float2 to Double4, widened to their common type.
+    """
+    return _vector_node("dot", "Dot", (a, b), "element")
+
+
+def cross(a: Any, b: Any) -> _expr.ExprProxy:
+    """Returns the cross product of two Float3 or Double3 vectors.
+
+    Resonite's coordinates are left-handed, so cross((1, 0, 0), (0, 1, 0))
+    is (0, 0, 1), which is forward.
+    """
+    return _vector_node("cross", "Cross", (a, b), "vector")
+
+
+def magnitude(v: Any) -> _expr.ExprProxy:
+    """Returns a vector's length, a number of its element type."""
+    return _vector_node("magnitude", "Magnitude", (v,), "element")
+
+
+def normalized(v: Any) -> _expr.ExprProxy:
+    """Returns a vector scaled to length 1, or the zero vector unchanged."""
+    return _vector_node("normalized", "Normalized", (v,), "vector")
+
+
+def distance(a: Any, b: Any) -> _expr.ExprProxy:
+    """Returns the distance between two points, a number of their element type."""
+    return _vector_node("distance", "Distance", (a, b), "element")
+
+
+def pack(*elements: Any) -> _expr.ExprProxy:
+    """Returns the vector with the given elements, such as a Float3 from x, y, and z.
+
+    The elements are widened to their common type, and the vector's
+    element type is that type, or Float for untyped literals. Uses
+    ProtoFlux's Pack node, such as Pack_Float3.
+
+    Raises:
+        TypeError: There are fewer than 2 or more than 4 elements, or the
+            elements have no common float or double type.
+    """
+    from pyresonitelink.data import primitives
+    from pyresonitelink.dergflux import _types
+
+    if not 2 <= len(elements) <= 4:
+        raise TypeError(f"pack takes 2 to 4 elements, not {len(elements)}.")
+    element_type: type | None = None
+    for element in elements:
+        node = _expr._coerce(element)._node
+        own = _type_of(_expr.ExprProxy(node))
+        if own is not None:
+            element_type = own if element_type is None else _types.common_type(element_type, own)
+    if element_type in (None, primitives.Int, primitives.Long):
+        element_type = primitives.Float
+    if element_type not in (primitives.Float, primitives.Double):
+        raise TypeError("pack takes elements that convert to floats or doubles.")
+    assert element_type is not None
+    vector_type = _types._VECTOR_BY_PARTS[(element_type, len(elements))]
+    return _expr.node_output(
+        {
+            name: _expr.implicit(element, element_type, "pack")
+            for name, element in zip("XYZW", elements)
+        },
+        vector_type,
+        module=_PACKING_MODULE,
+        class_name=f"Pack_{_types.type_name(vector_type)}",
+    )
+
+
 def conditional(
     condition: Any, on_true: Any, on_false: Any,
 ) -> _expr.ExprProxy:

@@ -274,6 +274,68 @@ async def _create_and_wire(
     return comp
 
 
+class _AddedNode:
+    """A node added by its component type, with the members from its data.
+
+    Attributes:
+        id: The node's ID.
+    """
+
+    def __init__(self, data: workers.Component) -> None:
+        self.id = data.id
+        self._members = data.members or {}
+
+    def get_member(self, name: str) -> Any:
+        """Returns the member with a Resonite name, or None."""
+        return self._members.get(name)
+
+
+async def _add_node_by_type(
+    ctx: _BuildContext,
+    component_type: str,
+    references: dict[str, str],
+) -> _AddedNode:
+    """Adds a node named by its component type, then wires its references.
+
+    This serves for nodes whose generated class can't be parameterized,
+    such as ObjectCast<I, O>. Each reference is sent with the targetType
+    that the new node's data reports, as wiring.add_node does.
+
+    Raises:
+        RuntimeError: The server refused the node or its references.
+    """
+    added = await ctx.resolink.add_component(
+        ctx.slot, data=workers.Component(componentType=component_type),
+        debug=ctx.debug,
+    )
+    if not added.success or added.entityId is None:
+        raise RuntimeError(f"Failed to add {component_type}: {added.errorInfo}")
+    await asyncio.sleep(wiring.WIRE_DELAY)
+    data = (await ctx.resolink.get_component(
+        componentId=added.entityId, debug=ctx.debug,
+    )).data
+    if data is None:
+        raise RuntimeError(f"No data came back for {component_type} {added.entityId}.")
+    data.id = added.entityId
+    node = _AddedNode(data)
+    if references:
+        typed: dict[str, str | members.Reference] = {}
+        for name, target in references.items():
+            member = node.get_member(name)
+            typed[name] = members.Reference(
+                targetId=target,
+                targetType=member.targetType if isinstance(member, members.Reference) else None,
+            )
+        resp = await ctx.resolink.update_references(
+            componentId=added.entityId, references=typed, debug=ctx.debug,
+        )
+        if not resp.success:
+            raise RuntimeError(
+                f"Failed to wire {component_type} {added.entityId}: {resp.errorInfo}"
+            )
+    return node
+
+
 class _BuildContext:
     """Holds state during a single build operation.
 
@@ -308,6 +370,10 @@ class _BuildContext:
         self.loop_node: Any = None
         self.component_outputs: dict[str, Any] = {}
         self.is_async: bool = False
+        # Nodes added for NodeCalls, by id() of the call, and RefObjectInput
+        # nodes, by the element's ID and the reference's type.
+        self.call_cache: dict[int, Any] = {}
+        self.element_refs: dict[tuple[str, str], Any] = {}
 
     async def ensure_slot_ref(self) -> Any:
         """Create the shared RefObjectInput<Slot> if needed."""
@@ -374,7 +440,69 @@ class _BuildContext:
             return await self._materialize_math_call(node)
         if isinstance(node, _expr.MemberAccessNode):
             return await self._materialize_member_access(node)
+        if isinstance(node, _expr.NodeOutputNode):
+            return await self._materialize_node_output(node)
+        if isinstance(node, _expr.ElementRefNode):
+            return await self._materialize_element_ref(node)
         raise TypeError(f"Unknown node type: {type(node).__name__}")
+
+    async def _materialize_node_output(self, node: _expr.NodeOutputNode) -> Any:
+        """Materializes an output of a node, adding the node once for all its outputs.
+
+        Returns:
+            The node itself when it is its own output, and otherwise a
+            stub whose id is the output member's ID.
+
+        Raises:
+            RuntimeError: The node has no member named by the output.
+        """
+        call = node.call
+        comp = self.call_cache.get(id(call))
+        if comp is None:
+            refs: dict[str, str] = {}
+            for name, arg in call.inputs.items():
+                refs[name] = (await self.materialize(arg)).id
+            if call.component_type is not None:
+                comp = await _add_node_by_type(self, call.component_type, refs)
+            else:
+                assert call.module is not None
+                node_class = getattr(
+                    importlib.import_module(f"pyresonitelink.{call.module}"),
+                    call.class_name,
+                )
+                if call.type_args:
+                    node_class = node_class[
+                        call.type_args[0] if len(call.type_args) == 1 else call.type_args
+                    ]
+                comp = await _create_and_wire(
+                    self.resolink, self.slot, node_class, refs, debug=self.debug,
+                )
+            self.call_cache[id(call)] = comp
+        if node.output_name is None:
+            return comp
+        member = comp.get_member(node.output_name)
+        if member is None or member.id is None:
+            raise RuntimeError(
+                f"{call.describe()} has no output {node.output_name}."
+            )
+        return type("_OutputStub", (), {"id": member.id})()
+
+    async def _materialize_element_ref(self, node: _expr.ElementRefNode) -> Any:
+        """Materializes a reference to a world element as a RefObjectInput<T>.
+
+        One node is added for each element and type, however many
+        expressions refer to it.
+        """
+        key = (node.target_id, node.type_name)
+        stub = self.element_refs.get(key)
+        if stub is None:
+            node_id = await wiring.add_reference_input(
+                self.resolink, self.slot, node.target_id, node.type_name,
+                debug=self.debug,
+            )
+            stub = type("_OutputStub", (), {"id": node_id})()
+            self.element_refs[key] = stub
+        return stub
 
     async def _materialize_member_access(
         self, node: _expr.MemberAccessNode,
@@ -1172,6 +1300,9 @@ async def _build_model_var(
     # Store the DataModelValueFieldStore component for wiring and reading.
     # It implements INodeValueOutput<T> directly.
     built_vars[attr_name] = store
+    object.__getattribute__(space, "_stores")[attr_name] = _space.ModelStore(
+        store_id, store_ct, val_member_id,
+    )
 
 
 async def _find_store_companion(
@@ -1802,6 +1933,8 @@ def _uses_flow_state(node: _expr.ExprNode) -> bool:
         return any(_uses_flow_state(arg) for arg in node.args)
     if isinstance(node, (_expr.CastNode, _expr.MemberAccessNode)):
         return _uses_flow_state(node.expr)
+    if isinstance(node, _expr.NodeOutputNode):
+        return any(_uses_flow_state(arg) for arg in node.call.inputs.values())
     return False
 
 
@@ -1986,11 +2119,17 @@ async def _build_raycast_one_context(
 async def _build_action_context(
     ctx: _BuildContext,
     action_ctx: Any,
-) -> Any:
+) -> FlowResult:
     """Build a generic ActionContext into its ProtoFlux node.
 
     Dynamically imports the component class, materializes inputs,
     creates the node, registers outputs, and wires flow branches.
+
+    Returns:
+        The node as the head. The tails are where the flow goes on after
+        the action. For an action with continuations, each continuation
+        is a tail, or the last tails of its branch if it has one. For any
+        other action, the tail is the node's OnSuccess.
     """
     from pyresonitelink.dergflux import _action
 
@@ -2067,22 +2206,27 @@ async def _build_action_context(
 
     # Build and wire each flow output branch
     branch_refs: dict[str, str] = {}
+    tails: list[_Tail] = []
     for branch_name in action_def.flow_outputs:
         writes = action_ctx.branch_stmts.get(branch_name, [])
         result = await _build_stmt_chain(ctx, writes)
+        # Convert snake_case branch name to PascalCase member name
+        member_name = _to_pascal(branch_name)
         if result is not None:
-            # Convert snake_case branch name to PascalCase member name
-            member_name = "".join(
-                part.capitalize() for part in branch_name.split("_")
-            )
             branch_refs[member_name] = result.head.id
+        if branch_name in action_def.continuations:
+            tails.extend(
+                result.tails if result is not None else [_Tail(node, member_name)]
+            )
     if branch_refs:
         await ctx.resolink.update_references(
             componentId=node.id,
             references=branch_refs,
         )
 
-    return node
+    if not action_def.continuations:
+        tails = [_Tail(node, "OnSuccess")]
+    return FlowResult(head=node, tails=tails)
 
 
 async def _build_indexed_branch_context(
@@ -2230,7 +2374,7 @@ async def _build_flow_context(
     else:
         from pyresonitelink.dergflux import _action
         if isinstance(flow_ctx, _action.ActionContext):
-            node = await _build_action_context(ctx, flow_ctx)
+            return await _build_action_context(ctx, flow_ctx)
         elif isinstance(flow_ctx, _flow.IndexedBranchContext):
             node = await _build_indexed_branch_context(ctx, flow_ctx)
         else:

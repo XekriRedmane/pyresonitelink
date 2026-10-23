@@ -78,6 +78,11 @@ _COMMON_MEMBERS = [
     "Min", "Max", "Edge0", "Edge1", "X", "Y",
     "OnTrue", "OnFalse", "Axis", "Angle", "Angles", "Drive",
     "From", "To", "Lerp",
+    # Outputs and inputs of the vector, transform, and physics nodes.
+    "Z", "W", "V", "GlobalPosition", "GlobalRotation", "GlobalScale",
+    "Instance", "Next", "FoundValue", "Component", "User", "Grabbable",
+    "OnHit", "OnMiss", "HitCollider", "HitPoint", "HitNormal", "HitDistance",
+    "Format", "FormatProvider",
 ]
 
 # The slot fields that Bind() can drive. A mock slot's member ID for one
@@ -1983,6 +1988,130 @@ class TestLerpBuild:
 
 
 # =========================================================================
+# Tests: actions that continue the flow, and slots as values
+# =========================================================================
+
+
+class TestVariableNamesBuild:
+    """A variable's attribute name and its path may differ."""
+
+    @pytest.mark.asyncio
+    async def test_read_of_a_renamed_model_variable(self, mock_client: MockClient) -> None:
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="names")
+        s.v = s.FloatModelVar("velocity")
+        with g.Under(slot):
+            s.v = s.v + 1
+        await _build(mock_client, g)
+        m = mock_client
+
+        add = m.find_one(r"ValueAdd<float>")
+        assert _is_dmvfs(m.ref_target_type(add, "A") or "")
+        assert any(sl.name == "velocity" for sl in m.slots.values())
+
+    @pytest.mark.asyncio
+    async def test_read_of_a_renamed_dynamic_variable(self, mock_client: MockClient) -> None:
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="names")
+        s.v = s.FloatDynVar("velocity")
+        s.w = s.FloatDynVar("other")
+        with g.Under(slot):
+            s.w = s.v + 1
+        await _build(mock_client, g)
+
+        read = mock_client.find_one(r"ReadDynamicValueVariable<float>")
+        assert mock_client.ref_target_comp(read, "Path") is not None
+
+
+class TestContinuationBuild:
+    """Statements after a raycast or a transform setter run after it."""
+
+    @pytest.mark.asyncio
+    async def test_statement_after_raycast_follows_both_branches(
+        self, mock_client: MockClient,
+    ) -> None:
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="ray")
+        s.a = s.FloatModelVar("a")
+        s.b = s.FloatModelVar("b")
+        with g.Under(slot):
+            with g.RaycastOne(origin=primitives.Float3(0, 1, 0),
+                              direction=primitives.Float3(0, -1, 0)) as r:
+                with r.on_hit():
+                    s.a = r.hit_distance
+            s.b = 2.0
+        await _build(mock_client, g)
+        m = mock_client
+
+        ray = m.find_one(_ct("RaycastOne"))
+        writes = m.find(r"ValueWrite<")
+        write_a = m.ref_target_comp(ray, "OnHit")
+        assert write_a is not None
+        write_b = next(w for w in writes if w is not write_a)
+        assert m.ref_target_comp(write_a, "OnWritten") is write_b
+        assert m.ref_target_comp(ray, "OnMiss") is write_b
+
+    @pytest.mark.asyncio
+    async def test_set_global_position_is_a_statement(
+        self, mock_client: MockClient,
+    ) -> None:
+        from pyresonitelink.dergflux import slots
+        from pyresonitelink.dergflux import transform
+        slot = workers.Slot(id="test-slot")
+        ball = slots.ref(workers.Slot(id="ball"))
+        g = Graph()
+        s = g.Space(slot, space_name="move")
+        s.done = s.BoolModelVar("done")
+        with g.Under(slot):
+            g.SetGlobalPosition(ball, transform.global_position(ball) + primitives.Float3(0, 1, 0))
+            s.done = True
+        await _build(mock_client, g)
+        m = mock_client
+
+        setter = m.find_one(_ct("SetGlobalPosition"))
+        reference = m.find_one(r"RefObjectInput<\[FrooxEngine\]FrooxEngine\.Slot>")
+        assert reference.references["Target"] == "ball"
+        assert m.ref_target_comp(setter, "Instance") is reference
+        assert m.ref_target_comp(setter, "Next") is m.find_one(r"ValueWrite<")
+        # The GlobalTransform reads the same reference node.
+        global_transform = m.find_one(_ct("GlobalTransform"))
+        assert m.ref_target_comp(global_transform, "Instance") is reference
+
+    @pytest.mark.asyncio
+    async def test_slot_of_hit_collider(self, mock_client: MockClient) -> None:
+        from pyresonitelink.dergflux import slots
+        from pyresonitelink.dergflux import variables
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="hit")
+        s.f = s.FloatModelVar("f")
+        with g.Under(slot):
+            with g.RaycastOne(origin=primitives.Float3(0, 1, 0),
+                              direction=primitives.Float3(0, -1, 0),
+                              ignore_hierarchy=workers.Slot(id="ball")) as r:
+                with r.on_hit():
+                    s.f = variables.read(
+                        slots.of_component(r.hit_collider), "Physics/Friction",
+                        primitives.Float,
+                    ).value
+        await _build(mock_client, g)
+        m = mock_client
+
+        ray = m.find_one(_ct("RaycastOne"))
+        ignored = m.ref_target_comp(ray, "IgnoreHierarchy")
+        assert ignored is not None and ignored.references["Target"] == "ball"
+        cast = m.find_one(r"ObjectCast<")
+        assert m.owner_of(cast.references["Input"]) == (ray.id, "HitCollider")
+        get_slot = m.find_one(_ct("GetSlot"))
+        assert m.ref_target_comp(get_slot, "Component") is cast
+        read = m.find_one(r"ReadDynamicValueVariable<float>")
+        assert m.ref_target_comp(read, "Source") is get_slot
+
+
+# =========================================================================
 # Tests: every math and time function builds, with real member names
 # =========================================================================
 
@@ -2013,8 +2142,15 @@ def _calls() -> list[tuple[str, Any]]:
     The space s has the model variables f (Float), d (Double), b (Bool),
     and v (Float3).
     """
+    from pyresonitelink.dergflux import interaction
     from pyresonitelink.dergflux import math as dm
+    from pyresonitelink.dergflux import slots
+    from pyresonitelink.dergflux import strings
     from pyresonitelink.dergflux import time
+    from pyresonitelink.dergflux import transform
+    from pyresonitelink.dergflux import users
+    from pyresonitelink.dergflux import variables
+    from pyresonitelink.generated.transform.interaction import grabbable
 
     one = [
         "acos", "asin", "atan", "ceil", "clamp01", "cos", "cube", "exp",
@@ -2050,8 +2186,39 @@ def _calls() -> list[tuple[str, Any]]:
         ("inverted_delta_time", lambda s: time.inverted_delta_time()),
         ("inverted_smooth_delta_time", lambda s: time.inverted_smooth_delta_time()),
         ("inverted_raw_delta_time", lambda s: time.inverted_raw_delta_time()),
+        ("dot", lambda s: dm.dot(s.v, s.v)),
+        ("cross", lambda s: dm.cross(s.v, s.v)),
+        ("magnitude", lambda s: dm.magnitude(s.v)),
+        ("normalized", lambda s: dm.normalized(s.v)),
+        ("distance", lambda s: dm.distance(s.v, s.v)),
+        ("pack", lambda s: dm.pack(s.f, 0, s.f)),
+        ("element", lambda s: s.v.y),
+        ("vector_times_float", lambda s: s.v * s.f),
+        ("float_times_vector", lambda s: s.f * s.v),
+        ("vector_over_float", lambda s: s.v / s.f),
+        ("rotate", lambda s: dm.axis_angle(s.v, s.f) * s.v),
+        ("global_position", lambda s: transform.global_position(slots.ref("ball"))),
+        ("global_rotation", lambda s: transform.global_rotation(slots.ref("ball"))),
+        ("global_point_to_local", lambda s: transform.global_point_to_local("ball", s.v)),
+        ("local_point_to_global", lambda s: transform.local_point_to_global("ball", s.v)),
+        ("global_direction_to_local", lambda s: transform.global_direction_to_local("ball", s.v)),
+        ("local_direction_to_global", lambda s: transform.local_direction_to_global("ball", s.v)),
+        ("dynamic_read", lambda s: variables.read(slots.ref("ball"), "P/x", primitives.Float).value),
+        ("local_user_is_host", lambda s: users.local_user_is_host()),
+        ("is_grabbed", lambda s: interaction.is_grabbed(_added(grabbable.Grabbable()))),
+        ("to_string", lambda s: strings.to_string(s.v)),
+        ("concatenate", lambda s: "y=" + strings.to_string(s.f)),
+        ("slot_of_component", lambda s: variables.read(
+            slots.of_component(_added(grabbable.Grabbable())), "P/x", primitives.Float,
+        ).found),
     ]
     return calls
+
+
+def _added(component: Any) -> Any:
+    """Gives a component an ID, as if it had been added to a slot."""
+    component._component.id = "added-component"
+    return component
 
 
 class TestFunctionAudit:

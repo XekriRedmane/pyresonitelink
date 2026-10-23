@@ -56,6 +56,10 @@ _NUMERIC_ORDER: tuple[type, ...] = (
     primitives.Float, primitives.Double,
 )
 
+# The numeric types that aren't vectors, which a vector can be multiplied
+# or divided by.
+_SCALARS: frozenset[type] = frozenset(_NUMERIC_ORDER)
+
 # Vector types by element type and dimension. A vector widens to the
 # vector of the same dimension whose element type its own widens to, so
 # int3 becomes float3.

@@ -14,6 +14,7 @@ from pyresonitelink.data import primitives, workers
 from pyresonitelink.dergflux import _expr
 
 if TYPE_CHECKING:
+    from pyresonitelink.data import protocols
     from pyresonitelink.dergflux import _graph
 
 
@@ -53,6 +54,25 @@ class ModelVarDecl:
     path: str
     resonite_type: type
     initial_value: Any = field(default=None)
+
+
+@dataclass
+class ModelStore:
+    """Where a built model variable keeps its value.
+
+    A DataModelValueFieldStore<T> keeps its value in a +Store component
+    that the server adds beside it, in that component's Value field.
+
+    Attributes:
+        component_id: The +Store component's ID.
+        component_type: The +Store component's type.
+        value_id: The member ID of its Value field, or None if the server
+            reported none.
+    """
+
+    component_id: str
+    component_type: str
+    value_id: str | None
 
 
 # Maps convenience method names to their Resonite primitive types.
@@ -190,6 +210,75 @@ class Space:
         object.__setattr__(self, "_space_name", space_name)
         object.__setattr__(self, "_vars", {})
         object.__setattr__(self, "_built_vars", {})
+        object.__setattr__(self, "_stores", {})
+
+    # --- Reading and writing model variables from Python ---
+
+    def _store(self, name: str) -> ModelStore:
+        """Returns where a built model variable keeps its value.
+
+        Raises:
+            KeyError: The space has no built model variable by that name.
+        """
+        stores: dict[str, ModelStore] = object.__getattribute__(self, "_stores")
+        if name not in stores:
+            raise KeyError(
+                f"'{name}' isn't a model variable of this Space, or the "
+                "graph hasn't been built yet."
+            )
+        return stores[name]
+
+    async def ReadModelVar(
+        self, resolink: protocols.ResoniteLinkClient, name: str,
+    ) -> Any:
+        """Reads a model variable's current value from the server.
+
+        Only works after the graph is built.
+
+        Args:
+            resolink: The connected client.
+            name: The variable's attribute name on this Space.
+
+        Returns:
+            The value, e.g. a primitives.Float3 or a str.
+        """
+        store = self._store(name)
+        data = (await resolink.get_component(componentId=store.component_id)).data
+        assert data is not None, f"No data for {store.component_id}"
+        return data.members["Value"].value  # type: ignore[union-attr]
+
+    async def WriteModelVar(
+        self, resolink: protocols.ResoniteLinkClient, name: str, value: Any,
+    ) -> None:
+        """Writes a model variable's value on the server.
+
+        Only works after the graph is built. A flow that writes the same
+        variable in the same engine update may overwrite the value.
+
+        Args:
+            resolink: The connected client.
+            name: The variable's attribute name on this Space.
+            value: The new value, of the variable's type.
+
+        Raises:
+            RuntimeError: The server refused the update.
+        """
+        from pyresonitelink.generated import _type_map
+
+        store = self._store(name)
+        decl = object.__getattribute__(self, "_vars")[name]
+        field_class = _type_map.from_python_type(decl.resonite_type).field_class
+        assert field_class is not None, f"No field class for {decl.resonite_type}"
+        member = field_class(value=value)
+        if store.value_id is not None:
+            member.id = store.value_id
+        resp = await resolink.update_component(data=workers.Component(
+            id=store.component_id,
+            componentType=store.component_type,
+            members={"Value": member},
+        ))
+        if not resp.success:
+            raise RuntimeError(f"Failed to write {name}: {resp.errorInfo}")
 
     # --- Variable declaration ---
 
@@ -303,6 +392,9 @@ class Space:
         if name in built:
             return built[name]
         # During recording, return an ExprProxy for the expression tree
+        # The node names the variable by its attribute, as a write does,
+        # since the builder looks declarations up by attribute. The
+        # declaration holds the path, which may differ.
         decl = vars_dict[name]
-        node = _expr.VarReadNode(decl.path, self, decl.resonite_type)
+        node = _expr.VarReadNode(name, self, decl.resonite_type)
         return _expr.ExprProxy(node)

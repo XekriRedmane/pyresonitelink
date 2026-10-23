@@ -11,7 +11,12 @@ Import these and pass them to ``g.Action()``::
 
 from pyresonitelink.data import primitives
 from pyresonitelink.dergflux._action import ActionDef, InputDef, OutputDef
+from pyresonitelink.generated._types.icollider import ICollider as _ICollider
 from pyresonitelink.generated._types.slot import Slot as _SlotType
+
+# The type of a slot reference. An input with this ref_type accepts a
+# workers.Slot, which is passed in through a RefObjectInput<Slot>.
+SLOT_TYPE = "[FrooxEngine]FrooxEngine.Slot"
 
 
 RaycastOne = ActionDef(
@@ -24,16 +29,52 @@ RaycastOne = ActionDef(
         "hit_triggers": InputDef("hit_triggers", primitives.Bool),
         "users_only": InputDef("users_only", primitives.Bool),
         "debug_duration": InputDef("debug_duration", primitives.Float),
-        "root": InputDef("root"),
+        "root": InputDef("root", ref_type=SLOT_TYPE),
+        "ignore_hierarchy": InputDef("ignore_hierarchy", ref_type=SLOT_TYPE),
     },
     flow_outputs=["on_hit", "on_miss"],
     value_outputs={
+        "hit_collider": OutputDef("HitCollider", _ICollider),
         "hit_point": OutputDef("HitPoint", primitives.Float3),
         "hit_normal": OutputDef("HitNormal", primitives.Float3),
         "hit_distance": OutputDef("HitDistance", primitives.Float),
         "hit_triangle_index": OutputDef("HitTriangleIndex", primitives.Int),
     },
+    continuations=["on_hit", "on_miss"],
 )
+
+# The transform setters. Each sets a slot's transform when the flow
+# reaches it and then goes on, so it is a statement of its own
+# (Graph.SetGlobalPosition etc.). A null or removed slot ends the flow
+# (TransformSetter.Do returns false, and ActionBreakableFlowNode stops).
+
+
+def _transform_setter(class_name: str, **values: type) -> ActionDef:
+    """Returns the ActionDef of a transform setter node, such as SetGlobalPosition.
+
+    Args:
+        class_name: The node's class name.
+        **values: The node's value inputs, by snake_case name, and their
+            types.
+    """
+    inputs = {"instance": InputDef("instance", ref_type=SLOT_TYPE)}
+    inputs.update({name: InputDef(name, t) for name, t in values.items()})
+    return ActionDef(
+        import_path="protoflux.transform",
+        class_name=class_name,
+        inputs=inputs,
+        flow_outputs=["next"],
+        continuations=["next"],
+    )
+
+
+SetGlobalPosition = _transform_setter("SetGlobalPosition", position=primitives.Float3)
+SetGlobalRotation = _transform_setter("SetGlobalRotation", rotation=primitives.FloatQ)
+SetGlobalPositionRotation = _transform_setter(
+    "SetGlobalPositionRotation", position=primitives.Float3, rotation=primitives.FloatQ,
+)
+SetLocalPosition = _transform_setter("SetLocalPosition", position=primitives.Float3)
+SetLocalRotation = _transform_setter("SetLocalRotation", rotation=primitives.FloatQ)
 
 PlayOneShot = ActionDef(
     import_path="protoflux.audio",

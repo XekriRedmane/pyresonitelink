@@ -20,9 +20,16 @@ from pyresonitelink.dergflux._action import ActionDef, InputDef, OutputDef
 from pyresonitelink.dergflux._graph import Graph, Outcome
 from pyresonitelink.dergflux._space import ModelVarDecl, Space, VarDecl
 from pyresonitelink.dergflux import _math as math
+from pyresonitelink.dergflux import interaction
+from pyresonitelink.dergflux import slots
+from pyresonitelink.dergflux import strings
 from pyresonitelink.dergflux import time
+from pyresonitelink.dergflux import transform
+from pyresonitelink.dergflux import users
+from pyresonitelink.dergflux import variables
 
 __all__ = [
     "ActionDef", "InputDef", "OutputDef",
-    "Graph", "ModelVarDecl", "Outcome", "Space", "VarDecl", "math", "time",
+    "Graph", "ModelVarDecl", "Outcome", "Space", "VarDecl",
+    "interaction", "math", "slots", "strings", "time", "transform", "users", "variables",
 ]

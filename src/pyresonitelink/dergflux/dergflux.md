@@ -15,6 +15,10 @@ Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs in
   - [Math Functions](#math-functions)
   - [Type Conversions](#type-conversions)
   - [Time and Dates](#time-and-dates)
+  - [Strings](#strings)
+  - [Slots and Transforms](#slots-and-transforms)
+  - [Variables on Other Slots](#variables-on-other-slots)
+  - [Users and Grabbing](#users-and-grabbing)
 - [Flow Control](#flow-control)
   - [If / Else](#if--else)
   - [Continuation](#continuation-after-if--else)
@@ -23,6 +27,7 @@ Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs in
 - [Bindings](#bindings)
 - [Actions](#actions)
   - [Action Nodes](#action-nodes)
+  - [Transform Setters](#transform-setters)
   - [Defining Custom Actions](#defining-custom-actions)
 - [Data Sources](#data-sources)
   - [Data Source Nodes](#data-source-nodes)
@@ -171,6 +176,22 @@ Under the hood, each model variable creates:
 **Writing**: uses `ValueWrite<FrooxEngineContext, T>` (not `ValueWrite<T>`). The `FrooxEngineContext` type parameter makes the write compatible with the data model store's `IVariable` interface.
 
 **Initial values**: set via the `+Store` companion's `Value` field.
+
+#### Reading and Writing Model Variables from Python
+
+After `g.build()`, `await s.ReadModelVar(resolink, "x")` reads a model variable's current value from its +Store component, and `await s.WriteModelVar(resolink, "x", value)` writes it. The name is the variable's attribute on the Space. A flow that writes the same variable in the same engine update may overwrite a written value.
+
+`pyresonitelink.utils.recorder.Recorder` uses these to record values from inside a running flow, one line per `record()` call, for a script to read in one request afterwards. Polling the values through ResoniteLink instead would sample them at arbitrary points in an update and skip updates.
+
+```python
+rec = recorder.Recorder(g, s, "trace")
+with g.Under(slot):
+    ...
+    rec.record(where="end", p=p, v=s.v)   # vectors become p.x, p.y, p.z
+await g.build(resolink)
+await rec.start(resolink, lines=300)
+rows = await rec.read(resolink)            # [{"t": ..., "where": "end", "p.x": ...}, ...]
+```
 
 #### When to Use Model Variables vs Dynamic Variables
 
@@ -333,6 +354,23 @@ dm.conditional(s.flag, s.a, s.b)  # if flag then a else b
 
 This is a value-level conditional (like C's ternary `?:`) — it selects between two values based on a `Bool`, without creating an impulse flow.
 
+#### Vectors
+
+```python
+dm.dot(s.a, s.b)         # a number of the vectors' element type
+dm.cross(s.a, s.b)       # Float3 or Double3 only
+dm.magnitude(s.v)        # a vector's length
+dm.normalized(s.v)       # length 1, or the zero vector unchanged
+dm.distance(s.p, s.q)    # between two points
+dm.pack(s.x, 0, s.z)     # a Float3 from three numbers
+s.v.x, s.v.y, s.v.z      # a vector's elements
+s.v * s.f, s.f * s.v     # a vector times a number
+s.v / s.f, s.f / s.v     # divided element by element
+s.q * s.v                # a FloatQ rotating a Float3
+```
+
+These take vectors of floats or doubles, from Float2 to Double4, and raise `TypeError` for vectors of integers. Two vectors are widened to their common type first. The elements of one vector expression come from one Unpack node, such as `Unpack_Float3`, whose outputs are `X`, `Y`, `Z`, and `W`. A vector with a number uses the typed nodes such as `Mul_Float3_Float` and `Div_Float_Float3`, and the number is widened to the vector's element type, or the vector to a vector of the number's type. An int literal takes the element type without a Cast node, so `s.v * 2` is a `Mul_Float3_Float`. A `FloatQ` times a `Float3` uses `Mul_FloatQ_Float3`, and a `DoubleQ` times a `Double3` uses `Mul_DoubleQ_Double3`. Vector plus or minus vector still uses the generic `ValueAdd<T>` and `ValueSub<T>`.
+
 ### Type Conversions
 
 Dergflux follows C#'s implicit numeric conversions, which only widen. When two operands of an operator differ in type, both are converted to the narrowest type they both widen to, and a `Cast_<from>_To_<to>` node is added for each one that changes:
@@ -392,6 +430,70 @@ s.seconds = s.waited.total_seconds                # a Double
 `dt.day_of_week` isn't supported, because the `DateTimeDayOfWeek` node outputs a `System.DayOfWeek` enum, which Dergflux has no type for.
 
 ResoniteLink sends both types as strings. A DateTime with a `Z` suffix becomes an aware `datetime` in UTC, and one without a suffix becomes a naive `datetime`. An aware `datetime` is sent as UTC. Python keeps microseconds, so the seventh fractional digit of a .NET time, which counts 100-nanosecond ticks, is lost when reading.
+
+### Strings
+
+```python
+from pyresonitelink.dergflux import strings
+
+s.log = s.log + "y=" + strings.to_string(p.y) + "\n"
+```
+
+Strings join with `+`, which uses ConcatenateString. `strings.to_string(x)` uses the ToString node of the value's type, such as `ToString_Float`, which formats with the invariant culture, so a float is written with a period and as few digits as read back to the same float. A number is never joined to a string implicitly, and `"y=" + p.y` raises `TypeError`.
+
+### Slots and Transforms
+
+A graph that reads or moves a slot takes it as a reference. `slots.ref(slot)` makes one from a `workers.Slot` or a slot ID, and the builder holds it in a `RefObjectInput<Slot>` node, one per slot however often it is used. `slots.of_component(c)` is the slot that a component is on, through ProtoFlux's GetSlot node. It takes a component expression such as a raycast's `hit_collider`, or a component already added to a slot. GetSlot takes an `IComponent`, and ProtoFlux refuses a narrower type such as `ICollider` there, so a narrower component passes through an `ObjectCast<ICollider, IComponent>` node first.
+
+```python
+from pyresonitelink.dergflux import slots
+from pyresonitelink.dergflux import transform
+
+ball = slots.ref(ball_slot)
+head = slots.ref(club_head_slot)
+p = transform.global_position(ball)
+q = transform.global_point_to_local(head, p)   # the ball's center in the head's space
+n = transform.local_direction_to_global(head, primitives.Float3(0, 0, 1))
+```
+
+| Function | Result | Node |
+|---|---|---|
+| `transform.global_position(slot)` | Float3 | `GlobalTransform.GlobalPosition` |
+| `transform.global_rotation(slot)` | FloatQ | `GlobalTransform.GlobalRotation` |
+| `transform.global_scale(slot)` | Float3 | `GlobalTransform.GlobalScale` |
+| `transform.global_point_to_local(slot, p)` | Float3 | `GlobalPointToLocal` |
+| `transform.local_point_to_global(slot, p)` | Float3 | `LocalPointToGlobal` |
+| `transform.global_direction_to_local(slot, d)` | Float3 | `GlobalDirectionToLocal` |
+| `transform.local_direction_to_global(slot, d)` | Float3 | `LocalDirectionToGlobal` |
+
+The three `global_*` outputs of one slot reference share one GlobalTransform node. A `workers.Slot` passed directly makes a new reference each time, so a graph that reads a slot more than once should make one reference with `slots.ref` and pass that. The nodes read the slot whenever the flow evaluates them, so a position read after `g.SetGlobalPosition` in the same impulse is the new one.
+
+### Variables on Other Slots
+
+A Space's variables are read from the Space's slot. `variables.read(source, path, type)` reads a dynamic variable from a slot that the graph computes, such as the slot of the collider that a raycast hit, so that each object can carry its own values. It returns the value and a Bool that says whether the variable was found. A variable that wasn't found reads as the type's default.
+
+```python
+from pyresonitelink.dergflux import variables
+
+r = variables.read(slots.of_component(hit.hit_collider), "Physics/Friction", primitives.Float)
+friction = dm.conditional(r.found, r.value, 0.5)
+```
+
+The path is `"space/name"`. ProtoFlux's ReadDynamicValueVariable looks for the nearest DynamicVariableSpace of that name on the slot or its ancestors, and then for the variable in that space (`DynamicVariableHelper.FindSpace`). A variable missing from the nearest such space isn't looked for in spaces further up. Value types are supported, and strings and references aren't.
+
+### Users and Grabbing
+
+```python
+from pyresonitelink.dergflux import interaction
+from pyresonitelink.dergflux import users
+
+users.local_user()               # the User whose machine evaluates the node
+users.is_host(users.local_user())
+users.local_user_is_host()       # a Bool, true only on the host's machine
+interaction.is_grabbed(grab)     # a Bool, true while a Grabbable or other IGrabbable is held
+```
+
+An Update node fires on every user's machine, and each machine writes what its own run computes. A flow that moves something, such as a simulated ball, should run on one machine, and `g.If(users.local_user_is_host())` makes it the host's.
 
 ## Flow Control
 
@@ -612,8 +714,28 @@ with g.Under(slot):
             s.distance = -1
 ```
 
-Value outputs: ``r.hit_point`` (Float3), ``r.hit_normal`` (Float3),
-``r.hit_distance`` (Float), ``r.hit_triangle_index`` (Int).
+Value outputs: ``r.hit_collider`` (an ICollider), ``r.hit_point``
+(Float3), ``r.hit_normal`` (Float3), ``r.hit_distance`` (Float),
+``r.hit_triangle_index`` (Int). They are set only on a hit, so read them
+in ``on_hit()``.
+
+``max_distance`` and ``hit_distance`` are measured in lengths of
+``direction``. ``MainPhysicsSimulation.RaycastOne`` passes the direction to
+BEPU unnormalized, the ray ends at ``origin + direction * max_distance``,
+and ``hit_distance`` is the multiple of the direction where it hit. A ray
+along a velocity of 4 m/s with a ``max_distance`` of 0.1 reaches 0.4 m.
+Pass ``dm.normalized(v)`` to work in meters.
+
+``ignore_hierarchy`` takes a slot whose colliders, and its descendants',
+the ray passes through, such as the collider of the object that casts
+it. ``root`` takes a slot, and the origin, direction, and maximum distance
+are then in its space. The hit outputs are in world space either way.
+
+A statement after the raycast runs after whichever branch fired. The
+node returns null instead of either branch when the direction is zero,
+the maximum distance isn't positive, or the origin isn't a valid number,
+and the flow ends there, so guard a ray whose direction can be zero with
+``g.If``.
 
 **PlayOneShotAndWait** — play audio with start/finish callbacks:
 
@@ -662,6 +784,28 @@ with g.Under(slot):
 - ``actions.DelayUpdates`` — update delay
 - ``actions.DelayUpdatesOrSecondsFloat/Double/Int`` — combined delay
 
+### Transform Setters
+
+```python
+with g.Under(slot):
+    g.SetGlobalPosition(ball, transform.global_position(ball) + s.v * dt)
+    g.SetLocalRotation(pivot, dm.axis_angle(primitives.Float3(1, 0, 0), s.angle))
+    s.moved = True     # runs after both setters
+```
+
+``g.SetGlobalPosition``, ``g.SetGlobalRotation``,
+``g.SetGlobalPositionRotation``, ``g.SetLocalPosition``, and
+``g.SetLocalRotation`` are statements. Each sets a slot's transform when
+the flow reaches it, and the flow then goes on to the next statement. The
+slot is a ``workers.Slot`` or a slot expression from ``dergflux.slots``. A
+null or removed slot ends the flow (``TransformSetter.Do``).
+
+Unlike a binding, a setter leaves the slot undriven, so a user can still
+grab it.
+
+``g.Do(action_def, **inputs)`` records any action whose flow outputs all
+continue the flow, as these do, as a statement.
+
 ### Defining Custom Actions
 
 Any ProtoFlux node with flow outputs can be wrapped as an action using
@@ -703,6 +847,13 @@ Or add a named shortcut method on Graph that delegates to ``g.Action()``.
   component/slot is passed.  Used for ``IGlobalValueProxy`` inputs.
 
 **ActionDef flags**:
+
+- ``continuations=[...]`` — the flow outputs that continue the flow
+  that ran the node, such as RaycastOne's ``on_hit`` and ``on_miss``,
+  or a setter's ``next``. A statement after the action runs after
+  whichever of them fires, and after its branch if it has one. Without
+  them, the statement after the action is wired to the node's
+  ``OnSuccess``.
 
 - ``is_async=True`` — the node is async; enclosing flow uses async variants
   and ``StartAsyncTask`` bridge.
