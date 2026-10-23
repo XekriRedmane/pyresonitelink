@@ -41,8 +41,8 @@ from pyresonitelink.data import workers
 from pyresonitelink.dergflux import Graph
 from pyresonitelink.dergflux import math as dm
 from pyresonitelink.dergflux import time
-from pyresonitelink.generated.assets.materials import pbs_metallic
 from pyresonitelink.utils import glb
+from pyresonitelink.utils import materials
 from pyresonitelink.utils import placement
 from pyresonitelink.utils import rendering
 from pyresonitelink.utils import slots
@@ -50,12 +50,19 @@ from pyresonitelink.utils import slots
 GLB_PATH = os.path.join(os.path.dirname(__file__), "NumberDrum.glb")
 SLOT_NAME = "Dergflux Number Wheel Example"
 DRUM_NODE = "Drum"
-DIGITS_NODE = "Digits"
 DISTANCE = 5.0  # meters in front of the head
 # The drum's radius in the file is 1. This makes it 0.5 m.
 WHEEL_SCALE = 0.5
 REST_SECONDS = 0.6  # of each second, before the drum starts to turn
 DEGREES_PER_DIGIT = 36.0
+
+# The material for each material name in the file. The colors are the
+# file's base colors, which glTF gives as linear values.
+MATERIALS = {
+    "Drum": materials.Finish((0.045, 0.045, 0.045), metallic=0.5, smoothness=0.4),
+    "Digits": materials.Finish((1.0, 1.0, 1.0), metallic=0.0, smoothness=0.47,
+                               emissive=(0.077, 0.077, 0.077)),
+}
 
 # Rotates the drum from its own coordinates, after glb.to_resonite, to the
 # wheel slot's coordinates.
@@ -81,9 +88,7 @@ _DRUM_TO_WHEEL = np.array([
 def load_drum(path: str) -> glb.Mesh:
     """Reads the drum and its digits from a .glb file.
 
-    The drum node's mesh is the first submesh, and the mesh of its Digits
-    child is the second. Both are in the wheel's coordinates (see
-    _DRUM_TO_WHEEL).
+    The mesh is in the wheel's coordinates (see _DRUM_TO_WHEEL).
 
     Args:
         path (str): The .glb file.
@@ -93,13 +98,8 @@ def load_drum(path: str) -> glb.Mesh:
 
     Raises:
         LookupError: The file has no node named DRUM_NODE.
-        ValueError: The submeshes aren't one from DRUM_NODE followed by one
-            from DIGITS_NODE.
     """
     drum = glb.read_node(glb.load(path), DRUM_NODE)
-    # place_drum gives the submeshes their materials by position.
-    if drum.nodes != [DRUM_NODE, DIGITS_NODE]:
-        raise ValueError(f"{path} has submeshes from {drum.nodes}.")
     return glb.transform(glb.to_resonite(drum), _DRUM_TO_WHEEL)
 
 
@@ -127,26 +127,11 @@ async def place_drum(resolink: client.Client) -> tuple[workers.Slot, workers.Slo
     # faces, points back at the head.
     world = await placement.in_front_of_head(resolink, DISTANCE, scale=WHEEL_SCALE)
     wheel = await slots.add_slot_at(resolink, world, name=SLOT_NAME)
-    drum_slot = await resolink.add_slot(parent=wheel, name="Drum")
     graph_slot = await resolink.add_slot(parent=wheel, name="ProtoFlux")
     print(f"Created slot {wheel.id}.")
 
-    # The colors are those of the materials in the file, which glTF gives
-    # as linear values.
-    black = pbs_metallic.PBS_Metallic(
-        albedo_color=primitives.ColorX(0.045, 0.045, 0.045, 1, "Linear"),
-        metallic=primitives.Float(0.5),
-        smoothness=primitives.Float(0.4),
-    )
-    await black.add_to_slot(resolink, drum_slot)
-    white = pbs_metallic.PBS_Metallic(
-        albedo_color=primitives.ColorX(1, 1, 1, 1, "Linear"),
-        emissive_color=primitives.ColorX(0.077, 0.077, 0.077, 1, "Linear"),
-        metallic=primitives.Float(0),
-        smoothness=primitives.Float(0.47),
-    )
-    await white.add_to_slot(resolink, drum_slot)
-    await rendering.add_mesh(resolink, drum_slot, drum, [black, white])
+    mats = await materials.add_materials(resolink, wheel, MATERIALS)
+    drum_slot = await rendering.add_part(resolink, wheel, drum, mats, name="Drum")
     return drum_slot, graph_slot
 
 

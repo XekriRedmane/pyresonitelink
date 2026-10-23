@@ -55,7 +55,9 @@ pytest --port=<resonite-link-port> tests/
 pytest --port=<port> tests/test_values.py::test_update_component -s
 
 # Type checking (pyrefly, configured in pyproject.toml)
+# The project check covers only src/. Check examples by path.
 pyrefly check
+pyrefly check examples/spinning_cube.py
 
 # CLI tools
 python -m pyresonitelink.cli.tree <port>                    # Interactive TUI browser
@@ -98,7 +100,8 @@ Python objects <- decode_response() <- JSON <---+
 - **`utils/glb.py`**: Reads meshes from glTF files and converts them to Resonite's coordinates.
 - **`utils/placement.py`**: Finds the user's head (`find_head`), and gives a world transform in front of it (`in_front_of_head`).
 - **`utils/slots.py`**: Adds a slot at a place given in world space (`add_slot_at`).
-- **`utils/rendering.py`**: Imports a `glb.Mesh` and shows it with a StaticMesh and a MeshRenderer (`add_mesh`), or adds a renderer with its material list (`add_renderer`).
+- **`utils/rendering.py`**: Imports a `glb.Mesh` and shows it with a StaticMesh and a MeshRenderer (`add_mesh`), or adds a renderer with its material list (`add_renderer`). `add_part` adds a slot for the mesh and picks each submesh's material by its glTF material name (`materials_by_name`).
+- **`utils/materials.py`**: `Finish` holds a PBS_Metallic's color, metalness, smoothness, and emissive color, and `add_materials` adds one material per entry of a table of finishes.
 - **`utils/wiring.py`**: Adds ProtoFlux nodes and wires them (`add_node`), and sets the field a drive node drives (`drive_field`). The Dergflux builder uses both.
 
 ### Import Aliases

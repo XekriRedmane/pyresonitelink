@@ -13,9 +13,16 @@ from a glTF file reaches Resonite.
     paint = pbs_metallic.PBS_Metallic()
     await paint.add_to_slot(resolink, slot)
     await rendering.add_mesh(resolink, slot, m, [paint] * len(m.submeshes))
+
+add_part adds a new slot for the mesh, and gives each submesh the material
+named after its glTF material, so that every part of a model can be shown
+with one table of materials.
+
+    mats = await materials.add_materials(resolink, model, table)
+    await rendering.add_part(resolink, model, m, mats, name="Body")
 """
 
-from collections.abc import Sequence
+from collections.abc import Mapping, Sequence
 
 from pyresonitelink import client
 from pyresonitelink.data import members
@@ -113,3 +120,85 @@ async def add_mesh(
     provider = static_mesh.StaticMesh(url=asset.assetURL)
     await provider.add_to_slot(resolink, slot)
     return await add_renderer(resolink, slot, provider, materials)
+
+
+def materials_by_name(
+    m: glb.Mesh, materials: Mapping[str, GeneratedComponent],
+) -> list[GeneratedComponent]:
+    """Returns the material of each submesh, chosen by its glTF material's name.
+
+    Args:
+        m (glb.Mesh): The mesh, whose materials list gives each submesh's
+            glTF material.
+        materials (Mapping[str, GeneratedComponent]): The material for each
+            glTF material name.
+
+    Returns:
+        The material of each submesh, in the order of m.submeshes.
+
+    Raises:
+        ValueError: A submesh has no glTF material, or one with no name.
+        LookupError: A submesh's glTF material name isn't in materials.
+    """
+    result = []
+    for i, gltf_material in enumerate(m.materials):
+        node = m.nodes[i] if i < len(m.nodes) else f"submesh {i}"
+        name = None if gltf_material is None else gltf_material.name
+        if name is None:
+            raise ValueError(f"The submesh from {node} has no named material.")
+        if name not in materials:
+            raise LookupError(f"There is no material for {name!r}, used by {node}.")
+        result.append(materials[name])
+    return result
+
+
+async def add_part(
+    resolink: client.Client,
+    parent: str | workers.Slot,
+    m: glb.Mesh,
+    materials: Mapping[str, GeneratedComponent],
+    *,
+    name: str,
+    position: client.Float3Like | None = None,
+    rotation: client.FloatQLike | None = None,
+    scale: client.Float3Like | None = None,
+) -> workers.Slot:
+    """Adds a slot that shows a mesh, with each submesh's material chosen by name.
+
+    Each submesh gets the material that materials gives for its glTF
+    material's name (see materials_by_name). The mesh is imported as with
+    add_mesh, so it must already be in Resonite's coordinates and in the
+    new slot's own space.
+
+    Args:
+        resolink (client.Client): The connected client.
+        parent (str | workers.Slot): The slot to add the new slot under, as
+            an ID or a Slot.
+        m (glb.Mesh): The mesh.
+        materials (Mapping[str, GeneratedComponent]): The material for each
+            glTF material name, each already added to a slot. Names that no
+            submesh uses are ignored.
+        name (str): The new slot's name.
+        position (client.Float3Like | None): The new slot's position in the
+            parent's space. The default is the parent's origin.
+        rotation (client.FloatQLike | None): The new slot's rotation
+            relative to the parent. The default is no rotation.
+        scale (client.Float3Like | None): The new slot's scale relative to
+            the parent. The default is 1.
+
+    Returns:
+        The new slot, which holds the StaticMesh and the MeshRenderer.
+
+    Raises:
+        ValueError: A submesh has no glTF material, or one with no name.
+        LookupError: A submesh's glTF material name isn't in materials.
+        RuntimeError: The server refused the materials.
+    """
+    # Check the names before anything is added, so that a missing material
+    # leaves no empty slot behind.
+    submesh_materials = materials_by_name(m, materials)
+    slot = await resolink.add_slot(
+        parent=parent, name=name, position=position, rotation=rotation, scale=scale,
+    )
+    await add_mesh(resolink, slot, m, submesh_materials)
+    return slot

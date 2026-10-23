@@ -258,6 +258,25 @@ await paint.add_to_slot(resolink, slot)
 await rendering.add_mesh(resolink, slot, m, [paint] * len(m.submeshes))
 ```
 
+A model whose parts share a set of materials can give each submesh its material by the name of its glTF material. `rendering.add_part` adds a slot for a mesh, at an optional position, rotation, and scale in the parent's space, and shows the mesh with the material that a table gives for each submesh's material name. It raises an error before adding anything when a submesh's material has no name or has no entry in the table, and `rendering.materials_by_name` makes the same lookup without adding anything. `pyresonitelink.utils.materials.Finish` holds the settings of an opaque, untextured PBS_Metallic, which are a linear color, a metalness, a smoothness, and an optional emissive color. glTF also gives base colors as linear values, so a file's colors can be copied in unchanged. `materials.add_materials` adds one material for each entry of a table of finishes and returns them under the same names.
+
+```python
+from pyresonitelink.utils import materials
+from pyresonitelink.utils import glb
+from pyresonitelink.utils import rendering
+
+table = {
+    "Paint": materials.Finish((0.47, 0.6, 0.57), metallic=0.3, smoothness=0.35),
+    "Chrome": materials.Finish((0.6, 0.6, 0.6), metallic=0.8, smoothness=0.5),
+    "Glow": materials.Finish((1, 1, 1), metallic=0, smoothness=0.5, emissive=(0.1, 0.1, 0.1)),
+}
+mats = await materials.add_materials(resolink, model, table)
+scene = glb.load("model.glb")
+for node in ["Body", "Wheel"]:
+    m = glb.to_resonite(glb.read_node(scene, node))
+    await rendering.add_part(resolink, model, m, mats, name=node)
+```
+
 `examples/textured_card.py` places `examples/TexturedCard.glb`, a paper card with transparent decals, in front of the user. It uploads each material's texture with `import_texture_2d_raw_data` and gives each submesh an unlit material with the file's blend mode. `examples/make_textured_card.py` writes the card, including hidden nodes marked in their extras, which the example leaves out with `skip`.
 
 The payload builders behind these calls are also available as classmethods, such as `messages.ImportMeshRawData.from_arrays`. The client checks a payload's size against its message before sending it, because the server rejects a payload of the wrong size with a less helpful error. `import_texture_2d_raw_data_hdr`, `import_cubemap_raw_data_hdr`, `import_cubemap_files`, and `import_mesh_json` cover the remaining import messages. Two of the import messages run into server bugs, which are listed under [Known Issues](#known-issues).
