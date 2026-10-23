@@ -163,6 +163,11 @@ python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.AudioClipP
 #   ... and all their transitive dependencies
 ```
 
+#### Documentation Comes From Resonite Itself
+
+- The JSON files in `scraped_docs/` were scraped from the Resonite wiki before Oct 2026, and the generator still merges them into docstrings. The scraper has been removed.
+- NEVER add a tool that extracts documentation from the wiki. ALWAYS derive new documentation from the decompiled source (resonite-source skill) or from behavior measured live.
+
 #### How Component Generation Works
 
 1. **GetComponentDefinition** provides member structure (names, types, references). The definition's `TypeReference` dicts contain full generic arguments (e.g. `INodeValueOutput<>` with `genericArguments: [{type: "float"}]`), so no temp slot instantiation is needed.

@@ -364,9 +364,9 @@ The definitions decode to the dataclasses in `pyresonitelink.data.reflection`, a
 
 ## Generated Components
 
-Components are generated from a live ResoniteLink server. The generator produces typed Python wrapper classes with properties, `__init__` parameters, and interface inheritance for type-safe wiring. Documentation from the [Resonite Wiki](https://wiki.resonite.com) is automatically scraped and merged into the generated class docstrings, so `help()` and IDE hover tooltips show descriptions for each component, its fields, inputs, and outputs.
+Components are generated from a live ResoniteLink server. The generator produces typed Python wrapper classes with properties, `__init__` parameters, and interface inheritance for type-safe wiring. Where a component has a file in `scraped_docs/`, the generator merges its descriptions into the class docstrings, so `help()` and IDE hover tooltips show descriptions for the component, its fields, inputs, and outputs. Those files were scraped from the Resonite Wiki at an earlier stage of the project, and no new ones are added. New documentation is derived from Resonite's code and from its observed behavior.
 
-All ~4800 components are pre-generated and included in the release. They do not need to be regenerated unless you want to pick up new Resonite components or updated wiki documentation.
+All ~4800 components are pre-generated and included in the release. They do not need to be regenerated unless you want to pick up new Resonite components.
 
 ### Generating Components
 
@@ -382,7 +382,7 @@ python -m pyresonitelink.cli.gencode <port> --all
 python -m pyresonitelink.cli.gencode <port> "[FrooxEngine]FrooxEngine.ValueField<>" --dry-run
 ```
 
-The `--all` flag recursively walks every component category on the server, scrapes wiki documentation for each component, and regenerates all wrapper classes. The category walk doesn't list every component, so `--all` also regenerates every component that already has a generated module. Internal ProtoFlux proxy types (~3066 CoreNodes) are skipped automatically. The generator rebuilds the `__init__.py` re-exports of every generated package, so new components are immediately importable via the short paths.
+The `--all` flag recursively walks every component category on the server and regenerates all wrapper classes. The category walk doesn't list every component, so `--all` also regenerates every component that already has a generated module. Internal ProtoFlux proxy types (~3066 CoreNodes) are skipped automatically. The generator rebuilds the `__init__.py` re-exports of every generated package, so new components are immediately importable via the short paths.
 
 A component that references another component, such as a `TextRenderer`, imports that class only for type checking. This keeps two components that reference each other from importing each other at runtime.
 

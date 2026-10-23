@@ -20,7 +20,6 @@ from typing import Any, cast
 
 from pyresonitelink import client
 from pyresonitelink.data import messages
-from pyresonitelink.cli.wikidocs import fetch_wiki_docs, save_docs
 from pyresonitelink.generated._generator import (
     generate_component_source,
     generate_enum_source,
@@ -599,28 +598,6 @@ async def _generate_component(
     if type_def_cache is None:
         type_def_cache = {}
     cls_name = _simple_class_name(component_type)
-
-    # Scrape wiki documentation early — before the generated check,
-    # so that components first generated as dependencies still get
-    # their wiki docs scraped when encountered as top-level components.
-    if not dry_run:
-        from pyresonitelink.generated._generator import _load_wiki_docs
-        if _load_wiki_docs(cls_name) is None:
-            is_mixed = (
-                "_" in cls_name
-                and not cls_name.startswith("UI_")
-                and not cls_name.startswith("PBS_")
-            )
-            if not is_mixed:
-                is_protoflux = "ProtoFlux" in component_type
-                wiki_docs = fetch_wiki_docs(
-                    cls_name, prefer_protoflux=is_protoflux,
-                )
-                if wiki_docs is not None:
-                    save_docs(cls_name, wiki_docs)
-                    # New docs found — force regeneration so the
-                    # docs get merged into the component code.
-                    generated.discard(_arity_key(component_type))
 
     # ValueWrite<T> and ValueWrite<C, T> are different components, so the
     # key keeps the arity.
