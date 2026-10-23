@@ -98,7 +98,7 @@ Python objects <- decode_response() <- JSON <---+
 - **`cli/gencode.py`**: CLI for generating component wrapper classes and their type dependencies. Automatically rebuilds `__init__.py` re-exports after generation.
 - **`cli/get_components.py`**: CLI for browsing component types and definitions.
 - **`utils/glb.py`**: Reads meshes from glTF files and converts them to Resonite's coordinates. `read_part` reads a node centered on its origin, with its position, for a slot of its own.
-- **`utils/placement.py`**: Finds the user's head (`find_head`), and gives a world transform in front of it (`in_front_of_head`).
+- **`utils/placement.py`**: Finds the user's head (`find_head`), and gives a world transform in front of it (`in_front_of_head`) or on the floor before the user (`on_floor_in_front_of_head`).
 - **`utils/slots.py`**: Adds a slot at a place given in world space (`add_slot_at`).
 - **`utils/rendering.py`**: Imports a `glb.Mesh` and shows it with a StaticMesh and a MeshRenderer (`add_mesh`), or adds a renderer with its material list (`add_renderer`). `add_part` adds a slot for the mesh and picks each submesh's material by its glTF material name (`materials_by_name`).
 - **`utils/materials.py`**: `Finish` holds a PBS_Metallic's color, metalness, smoothness, and emissive color, and `add_materials` adds one material per entry of a table of finishes.
@@ -107,6 +107,8 @@ Python objects <- decode_response() <- JSON <---+
 - **`utils/controls.py`**: Makes a slot a crank that a hand turns (`add_crank`: Joint + KnobControl), counts its angle (`track_angle`), and drives a Bool while it's held (`drive_grabbed`).
 - **`utils/probes.py`**: `ViewProbe` reads the local user's view (the camera in desktop mode) through ValueFieldDrives.
 - **`utils/counters.py`**: Dergflux helpers for odometers: drum carry (`drum_turns`) and detents that snap (`add_detents`).
+- **`utils/recorder.py`**: `Recorder` appends values to a string model variable from inside a running Dergflux flow, for a script to read and parse afterwards.
+- **`dergflux/slots.py`, `transform.py`, `variables.py`, `strings.py`, `users.py`, `interaction.py`**: Dergflux expressions for slot references, transforms, dynamic variables read from any slot, strings, the host, and grabbing. They build on `_expr.node_output`, which makes an expression from any node's output.
 
 ### Import Aliases
 
@@ -625,7 +627,23 @@ ALWAYS check whether a type needs Value or Object variants before creating Proto
 #### Dergflux Data Sources Need a Named Output
 
 - `g.DataSource` refers to each value output by a member name (`OutputDef`), and `_materialize_component_output` looks up that member's ID. A node that is its own output, such as `IsGrabbableGrabbed`, has no such member, so it can't be a data source.
-- Wire such a node by hand and drive a dynamic variable from it, which the flow then reads, as `utils.controls.drive_grabbed` does with `wiring.add_reference_input` and `wiring.drive_from`.
+- Make such a node an expression with `_expr.node_output(inputs, type, module=..., class_name=...)` and `output_name=None`, as `dergflux.interaction.is_grabbed` does. Nodes with several outputs share one `NodeCall`.
+- ProtoFlux object outputs are invariant in their type. `INodeObjectOutput<ICollider>` doesn't wire to an `INodeObjectOutput<IComponent>` input, so `slots.of_component` passes it through `ObjectCast<ICollider,IComponent>` (added by type string, `NodeCall.component_type`).
+
+#### RaycastOne Distances Are in Lengths of the Direction
+
+- `MainPhysicsSimulation.RaycastOne` passes the direction to BEPU unnormalized, so `MaxDistance` and `HitDistance` are multiples of the direction's length, and the ray reaches `origin + direction * MaxDistance`.
+- ALWAYS normalize the direction when the distances are meant in meters. A golf ball's ray along its velocity found the ground up to 30 cm early and lost a fifth of its speed per bounce (found 23 Oct 2026 with `utils.recorder`).
+- `tests/test_recorder_integration.py::TestRayIntoASurface::test_distances_are_in_lengths_of_the_direction` measures this live, and fails if a future build changes it.
+
+#### Action Continuations
+
+- An `ActionDef` with `continuations` (RaycastOne's `on_hit`/`on_miss`, a setter's `next`) gives the next statement's wiring to those outputs, or to the last tails of their branches. Without them the next statement is wired to `OnSuccess`, which most action nodes don't have, and the server ignores a reference to a missing member. Until Oct 2026 RaycastOne had none, so by the code a statement after a raycast never ran.
+- A Space's variable reads use the attribute name, as writes do (`s.v = s.Float3ModelVar("velocity")`). Until Oct 2026 a read used the path, and any variable whose attribute and path differed failed to build with a KeyError.
+
+#### Recording a Running Graph
+
+- ALWAYS study what a running graph does from update to update with `utils.recorder.Recorder`, placing `record()` calls in the flow, rather than by polling values through ResoniteLink. A poll lands anywhere in an update and skips updates.
 
 #### GlobalValue vs ValueInput for IGlobalValueProxy References
 

@@ -162,7 +162,7 @@ Use `relative_to` to find the local transform that puts a new child slot at a gi
 
 #### Placing Slots in the World
 
-`pyresonitelink.utils.slots.add_slot_at` adds a slot at a place given in world space. It reads the parent's world transform and does the `relative_to` conversion, so the new slot ends up exactly where the given world transform says. `pyresonitelink.utils.placement.in_front_of_head` gives a world transform in front of the user's head, which is the "Head" slot of the first child of Root that has a UserRoot component. `Slot.remove_children_named` removes a slot's children that have a given name, with their descendants, so that a script that adds a slot under a fixed name replaces the one from its previous run. It reads the children from the server, so only the slot's `id` has to be set.
+`pyresonitelink.utils.slots.add_slot_at` adds a slot at a place given in world space. It reads the parent's world transform and does the `relative_to` conversion, so the new slot ends up exactly where the given world transform says. `pyresonitelink.utils.placement.in_front_of_head` gives a world transform in front of the user's head, which is the "Head" slot of the first child of Root that has a UserRoot component. `placement.on_floor_in_front_of_head` gives one on the floor at the user's feet, along the head's forward direction made level, with +Y up and +Z pointing away from the user, for things that stand on the floor. `Slot.remove_children_named` removes a slot's children that have a given name, with their descendants, so that a script that adds a slot under a fixed name replaces the one from its previous run. It reads the children from the server, so only the slot's `id` has to be set.
 
 ```python
 from pyresonitelink.data import workers
@@ -581,7 +581,13 @@ Key features:
 - **Flow control**: `g.If`/`g.Else`, `g.For`, `g.While`, `g.Range`
 - **Triggers**: `g.Under(slot)` (Update every frame), `g.Under(slot, trigger="tag")` (named impulse), `g.Under(slot, trigger=("tag", type))` (with value)
 - **Bindings**: `g.Bind(s.x, component, "Field")` permanently binds a variable or expression to a component field, and `g.Bind(expr, slot, "Rotation")` to a slot's Position, Rotation, Scale, IsActive, or OrderOffset
-- **Action nodes**: `g.RaycastOne(...)`, `g.PlayOneShotAndWait(...)`, `g.SlotChildrenEvents(...)`, or define custom actions with `ActionDef`
+- **Vectors**: `math.dot`, `math.cross`, `math.magnitude`, `math.normalized`, `math.pack`, elements as `v.x`, a vector times or divided by a number, and a `FloatQ` rotating a `Float3` ([details](src/pyresonitelink/dergflux/dergflux.md#vectors))
+- **Strings**: `+` joins strings, and `strings.to_string(x)` formats a value ([details](src/pyresonitelink/dergflux/dergflux.md#strings))
+- **Slots and transforms**: `slots.ref(slot)`, `slots.of_component(c)`, `transform.global_position(slot)`, `transform.global_point_to_local(slot, p)`, and the setters `g.SetGlobalPosition(slot, p)` and its relatives ([details](src/pyresonitelink/dergflux/dergflux.md#slots-and-transforms))
+- **Variables on other slots**: `variables.read(slot, "space/name", type)` reads a dynamic variable from a slot the graph computes, such as a hit collider's ([details](src/pyresonitelink/dergflux/dergflux.md#variables-on-other-slots))
+- **Users and grabbing**: `users.local_user_is_host()` and `interaction.is_grabbed(grabbable)`
+- **Action nodes**: `g.RaycastOne(...)`, `g.PlayOneShotAndWait(...)`, `g.SlotChildrenEvents(...)`, or define custom actions with `ActionDef`. RaycastOne measures its distances in lengths of its direction, so normalize the direction to work in meters ([details](src/pyresonitelink/dergflux/dergflux.md#action-nodes)).
+- **Recording**: `pyresonitelink.utils.recorder.Recorder` records values from inside a running flow, one line per `record()` call, and a script reads the log in one request, as `s.ReadModelVar` and `s.WriteModelVar` read and write any model variable ([details](src/pyresonitelink/dergflux/dergflux.md#reading-and-writing-model-variables-from-python))
 - **Auto-bridging**: pass components directly to action inputs (e.g. `clip=my_clip`) — the builder creates `RefObjectInput` bridges automatically
 
 See the [Dergflux reference](src/pyresonitelink/dergflux/dergflux.md) for the full API.
@@ -614,9 +620,12 @@ python examples/dergflux_for.py <port>                         # For loop with O
 python examples/dergflux_play_one_shot_and_wait.py <port>      # Async audio playback
 python examples/dergflux_play_sequence.py <port>               # Multiplexer + For + PlayOneShotAndWait
 python examples/dergflux_number_wheel.py [port]                # A counting drum, driven by a binding
+python examples/dergflux_golf.py [port]                        # A golf ball that a graph moves, and a club
 ```
 
 `dergflux_number_wheel.py` places a ten-sided number drum from `examples/NumberDrum.glb` 5 m in front of the user's head. A binding turns it to the next digit every second, easing in and out along a smoothstep curve.
+
+`dergflux_golf.py` builds a small golf course on the floor in front of the user, with a fairway, a ramp, a bunker, a green, concrete walls, a ball, a club, and buttons. Resonite moves nothing by physics except characters, and its colliders have no friction or bounciness, so a graph moves the ball itself in every engine update. It finds what the ball touches with ray casts, and bounces, slides, or rolls the ball with the restitution, friction, and rolling resistance that the ball and each surface carry as dynamic variables. The club can be grabbed and swung in VR, and the "Putt", "Chip", and "Pitch" buttons swing it through the ball for desktop users. The script's docstring describes the method and its limits.
 
 ## Command-Line Tools
 
