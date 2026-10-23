@@ -28,6 +28,7 @@ Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs in
 - [Bindings](#bindings)
 - [Actions](#actions)
   - [Action Nodes](#action-nodes)
+  - [Slot Actions](#slot-actions)
   - [Transform Setters](#transform-setters)
   - [Defining Custom Actions](#defining-custom-actions)
 - [Data Sources](#data-sources)
@@ -162,7 +163,10 @@ s.x = s.FloatModelVar("x")
 s.n = s.IntModelVar("count")
 s.flag = s.BoolModelVar("active")
 s.name = s.StringModelVar("label")
+s.owner = s.UserModelVar("owner")
 ```
+
+A `UserModelVar` holds a reference to a user in a `DataModelUserRefStore`, which ProtoFlux writes with `ObjectWrite<FrooxEngineContext, User>`. It reads as null once the user has left the session, which `math.is_null` tests.
 
 #### How Model Variables Work
 
@@ -442,7 +446,7 @@ s.log = s.log + "y=" + strings.to_string(p.y) + "\n"
 
 Strings join with `+`, which uses ConcatenateString. `strings.to_string(x)` uses the ToString node of the value's type, such as `ToString_Float`, which formats with the invariant culture, so a float is written with a period and as few digits as read back to the same float. A number is never joined to a string implicitly, and `"y=" + p.y` raises `TypeError`.
 
-`==` and `!=` on strings use ObjectEquals and ObjectNotEquals, because ProtoFlux has no ValueEquals for strings. The same goes for references. A `StringModelVar` declared without a value starts as null, which isn't equal to `""`, so a variable that a flow compares with `""` should be declared with `""` as its value.
+`==` and `!=` on strings use ObjectEquals and ObjectNotEquals, because ProtoFlux has no ValueEquals for strings. The same goes for references. `math.conditional` with two strings uses ObjectConditional, and a binding of a string, such as a TextRenderer's `Text`, uses ObjectFieldDrive. `math.is_null(x)` is true for a null string or reference. A `StringModelVar` declared without a value starts as null, which isn't equal to `""`, so a variable that a flow compares with `""` should be declared with `""` as its value.
 
 ### Slots and Transforms
 
@@ -468,6 +472,10 @@ n = transform.local_direction_to_global(head, primitives.Float3(0, 0, 1))
 | `transform.local_point_to_global(slot, p)` | Float3 | `LocalPointToGlobal` |
 | `transform.global_direction_to_local(slot, d)` | Float3 | `GlobalDirectionToLocal` |
 | `transform.local_direction_to_global(slot, d)` | Float3 | `LocalDirectionToGlobal` |
+| `slots.name(slot)` | String | `GetSlotName` |
+| `slots.find_child(slot, name, depth=0)` | Slot, or null | `FindChildByName` |
+
+`slots.find_child` turns off FindChildByName's substring match, which is on by default, so it finds only a child with exactly the name. A depth of 0 searches the direct children only, and -1 searches every descendant.
 
 The three `global_*` outputs of one slot reference share one GlobalTransform node. A `workers.Slot` passed directly makes a new reference each time, so a graph that reads a slot more than once should make one reference with `slots.ref` and pass that. The nodes read the slot whenever the flow evaluates them, so a position read after `g.SetGlobalPosition` in the same impulse is the new one.
 
@@ -498,6 +506,7 @@ users.is_vr_active(u)            # a Bool, false in desktop mode
 users.is_dash_open(u)            # a Bool, true while the user's dash is open
 users.view_position()            # a Float3, the local user's view (the camera in desktop mode)
 users.view_rotation()            # a FloatQ, which looks along its +Z
+users.username(u)                # a String, or null for a null user
 interaction.is_grabbed(grab)     # a Bool, true while a Grabbable or other IGrabbable is held
 ```
 
@@ -842,6 +851,35 @@ grab it.
 
 ``g.Do(action_def, **inputs)`` records any action whose flow outputs all
 continue the flow, as these do, as a statement.
+
+### Slot Actions
+
+```python
+with g.Under(slot):
+    with g.If(math.is_null(slots.find_child(players, users.machine_id(users.local_user())))):
+        kit = g.DuplicateSlot(template, players)   # the duplicate, a slot expression
+        g.SetSlotActiveSelf(kit, True)
+        g.SetSlotName(kit, "Kit")
+    g.DestroySlot(old_slot)
+```
+
+These are statements too. ``g.DuplicateSlot(template, parent)`` copies a
+slot with everything under it and returns the copy, for the rest of the
+flow to use. References between things inside the template point to
+their copies in the duplicate, and references to things outside it are
+kept, so a template can hold a whole Dergflux graph that reads the
+course around it, and each duplicate runs a graph of its own.
+
+The duplicate's components get their OnDuplicate event on the machine
+that ran the flow only (``Slot.Duplicate`` calls ``RunDuplicate``
+locally), so a graph in the template can claim the duplicate for that
+machine's user with ``g.OnDuplicate``. ``examples/dergflux_golf.py`` gives
+each player a kit this way.
+
+A drive in an inactive slot computes, but an Update flow there doesn't
+run (measured 23 Oct 2026, with a template kit whose flow ran only once
+the kit was activated). A template that is inactive and has no owner
+does nothing.
 
 ### Defining Custom Actions
 

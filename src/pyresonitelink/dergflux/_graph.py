@@ -1395,6 +1395,59 @@ class Graph:
         from pyresonitelink.dergflux import actions
         self.Do(actions.SetLocalRotation, instance=instance, rotation=rotation)
 
+    def DuplicateSlot(self, template: Any, parent: Any = None) -> Any:
+        """Duplicates a slot with everything under it, and returns the copy.
+
+        References between things inside the slot point to their copies
+        in the duplicate, and references to things outside it are kept.
+        The duplicate's components get their OnDuplicate event on the
+        machine that ran the flow only, which g.OnDuplicate catches.
+
+        Args:
+            template: The slot to duplicate, as a workers.Slot or a Slot
+                expression.
+            parent: The duplicate's parent, or None for the template's
+                parent.
+
+        Returns:
+            The duplicate, a Slot expression that the rest of the flow
+            can use.
+        """
+        from pyresonitelink.dergflux import actions
+        inputs: dict[str, Any] = {"template": template}
+        if parent is not None:
+            inputs["override_parent"] = parent
+        return self.Do(actions.DuplicateSlot, **inputs).duplicate
+
+    def DestroySlot(self, instance: Any) -> None:
+        """Destroys a slot with everything under it.
+
+        Args:
+            instance: The slot, as a workers.Slot or a Slot expression.
+        """
+        from pyresonitelink.dergflux import actions
+        self.Do(actions.DestroySlot, instance=instance)
+
+    def SetSlotName(self, instance: Any, name: object) -> None:
+        """Sets a slot's name.
+
+        Args:
+            instance: The slot, as a workers.Slot or a Slot expression.
+            name: The name, a String.
+        """
+        from pyresonitelink.dergflux import actions
+        self.Do(actions.SetSlotName, instance=instance, name=name)
+
+    def SetSlotActiveSelf(self, instance: Any, active: object) -> None:
+        """Sets whether a slot itself is active.
+
+        Args:
+            instance: The slot, as a workers.Slot or a Slot expression.
+            active: A Bool.
+        """
+        from pyresonitelink.dergflux import actions
+        self.Do(actions.SetSlotActiveSelf, instance=instance, active=active)
+
     @contextmanager
     def PlayOneShot(self, **kwargs: Any) -> Iterator[Any]:
         """Context manager for playing a one-shot audio clip.

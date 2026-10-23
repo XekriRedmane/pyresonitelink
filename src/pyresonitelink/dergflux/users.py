@@ -107,3 +107,15 @@ def view_rotation() -> _expr.ExprProxy:
     return _expr.node_output(
         {}, primitives.FloatQ, module="protoflux.users.local_output", class_name="ViewRotation",
     )
+
+
+def username(u: object) -> _expr.ExprProxy:
+    """Returns a user's name, a String, or null for a null user.
+
+    Args:
+        u: The user, as a User expression such as local_user().
+    """
+    return _expr.node_output(
+        {"User": u}, primitives.String,
+        module="protoflux.users", class_name="UserUsername",
+    )

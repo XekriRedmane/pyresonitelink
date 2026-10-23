@@ -12,7 +12,8 @@ component is on, such as the collider that a raycast hit.
         g.SetGlobalPosition(ball, transform.global_position(ball) + (0, 0.01, 0))
 
 The values are object types in ProtoFlux, so the only things to do with
-them are to pass them to nodes that take them. Their Python types are the
+them are to pass them to nodes that take them, to compare them with ==
+and !=, and to test them with math.is_null. Their Python types are the
 generated stubs, such as ICollider, and workers.Slot for a slot.
 """
 
@@ -98,4 +99,59 @@ def of_component(component: Any) -> _expr.ExprProxy:
     return _expr.node_output(
         {"Component": component}, workers.Slot,
         module="protoflux.slots", class_name="GetSlot",
+    )
+
+
+def _slot(slot: Any) -> _expr.ExprProxy:
+    """Returns a slot expression for a slot, an ID, or a slot expression."""
+    if isinstance(slot, (workers.Slot, str)):
+        return ref(slot)
+    return _expr._coerce(slot)
+
+
+def name(slot: Any) -> _expr.ExprProxy:
+    """Returns a slot's name, a String.
+
+    Args:
+        slot: The slot, as a workers.Slot or a slot expression.
+    """
+    from pyresonitelink.data import primitives
+
+    return _expr.node_output(
+        {"Instance": _slot(slot)}, primitives.String,
+        module="protoflux.slots.info", class_name="GetSlotName",
+    )
+
+
+def find_child(slot: Any, child_name: Any, *, depth: int = 0) -> _expr.ExprProxy:
+    """Returns the first child of a slot with exactly a name, or null if there is none.
+
+    Uses ProtoFlux's FindChildByName, with its substring match turned off,
+    since the node matches any name that contains the given one unless it
+    is told otherwise.
+
+    Args:
+        slot: The slot to search under, as a workers.Slot or a slot
+            expression.
+        child_name: The name, a String expression or literal.
+        depth: How many levels below the direct children to search as
+            well. 0 searches the direct children only, and -1 searches
+            every descendant (Slot.FindChild).
+
+    Returns:
+        The child, a workers.Slot expression. math.is_null tells whether
+        one was found.
+    """
+    from pyresonitelink.data import primitives
+
+    return _expr.node_output(
+        {
+            "Instance": _slot(slot),
+            "Name": _expr.implicit(child_name, primitives.String, "find_child"),
+            "MatchSubstring": primitives.Bool(False),
+            "IgnoreCase": primitives.Bool(False),
+            "SearchDepth": primitives.Int(depth),
+        },
+        workers.Slot,
+        module="protoflux.slots.searching", class_name="FindChildByName",
     )

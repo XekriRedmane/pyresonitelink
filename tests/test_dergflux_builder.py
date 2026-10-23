@@ -83,6 +83,8 @@ _COMMON_MEMBERS = [
     "Instance", "Next", "FoundValue", "Component", "User", "Grabbable",
     "OnHit", "OnMiss", "HitCollider", "HitPoint", "HitNormal", "HitDistance",
     "Format", "FormatProvider",
+    # Members of the slot actions.
+    "Template", "OverrideParent", "Duplicate", "Name", "Active",
 ]
 
 # The slot fields that Bind() can drive. A mock slot's member ID for one
@@ -314,9 +316,12 @@ class MockClient:
             self.components[proxy_cid] = proxy_rec
             self.component_list.append(proxy_rec)
 
-        if "DataModel" in ct and "FieldStore" in ct:
+        if "DataModel" in ct and ("FieldStore" in ct or "UserRefStore" in ct):
             store_cid = self._gen_id("store")
-            store_ct = ct.replace("FieldStore", "FieldStore+Store")
+            if "FieldStore" in ct:
+                store_ct = ct.replace("FieldStore", "FieldStore+Store")
+            else:
+                store_ct = ct + "+Store"
             store_rec = _ComponentRecord(
                 id=store_cid, component_type=store_ct, slot_id=slot_id,
             )
@@ -2051,6 +2056,105 @@ class TestVariableNamesBuild:
         assert mock_client.ref_target_comp(read, "Path") is not None
 
 
+class TestPlayerKitBuild:
+    """Builds the pieces that a graph per player uses: users, strings, and slot actions."""
+
+    @pytest.mark.asyncio
+    async def test_user_model_variable(self, mock_client: MockClient) -> None:
+        """A User variable is a DataModelUserRefStore, written with ObjectWrite and compared with ObjectEquals."""
+        from pyresonitelink.dergflux import users
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="kit")
+        s.owner = s.UserModelVar("owner")
+        s.n = s.IntModelVar("n", 0)
+        with g.Under(slot):
+            with g.OnDuplicate() as e:
+                with e.trigger():
+                    s.owner = users.local_user()
+        with g.Under(slot):
+            with g.If(s.owner == users.local_user()):
+                s.n = s.n + 1
+        await _build(mock_client, g)
+        m = mock_client
+
+        store = m.find_one(r"DataModelUserRefStore$")
+        write = m.find_one(r"ObjectWrite<.*FrooxEngine\.User>")
+        assert write.references["Variable"] == store.id
+        equals = m.find_one(r"ObjectEquals<")
+        assert "User" in equals.component_type
+        assert m.ref_target_comp(equals, "A") is store
+
+    @pytest.mark.asyncio
+    async def test_string_conditional_and_binding(self, mock_client: MockClient) -> None:
+        """Strings choose with ObjectConditional and drive a field with ObjectFieldDrive."""
+        from pyresonitelink.data import fields
+        from pyresonitelink.dergflux import math as dm
+        from pyresonitelink.generated._base import GeneratedComponent
+        slot = workers.Slot(id="test-slot")
+        text = GeneratedComponent()
+        text._component.members["Text"] = fields.FieldString(id="text-member", value="")
+        g = Graph()
+        s = g.Space(slot, space_name="tag")
+        s.done = s.BoolModelVar("done")
+        g.Bind(dm.conditional(s.done, "holed", "playing"), text, "Text", slot=slot)
+        await _build(mock_client, g)
+        m = mock_client
+
+        assert not m.find(r"ValueConditional")
+        choose = m.find_one(r"ObjectConditional<string>")
+        drive = m.find_one(r"ObjectFieldDrive<string>")
+        assert m.ref_target_comp(drive, "Value") is choose
+        assert m.find_one(r"\+Proxy").references["Drive"] == "text-member"
+
+    @pytest.mark.asyncio
+    async def test_slot_actions(
+        self, mock_client: MockClient, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        """DuplicateSlot's output feeds the next action, and each wires members its node has."""
+        from pyresonitelink.dergflux import math as dm
+        from pyresonitelink.dergflux import slots
+        from pyresonitelink.dergflux import users
+
+        original = _builder._create_and_wire
+
+        async def checked(
+            resolink: Any, slot: Any, component_class: Any,
+            references: dict[str, str], debug: bool = False,
+        ) -> Any:
+            unknown = set(references) - _member_names(component_class)
+            assert not unknown, f"{component_class.__name__} has no member {sorted(unknown)}"
+            return await original(resolink, slot, component_class, references, debug=debug)
+
+        monkeypatch.setattr(_builder, "_create_and_wire", checked)
+        slot = workers.Slot(id="test-slot")
+        template = workers.Slot(id="template")
+        players = workers.Slot(id="players")
+        g = Graph()
+        with g.Under(slot):
+            name = users.machine_id(users.local_user())
+            with g.If(dm.is_null(slots.find_child(players, name))):
+                kit = g.DuplicateSlot(template, players)
+                g.SetSlotActiveSelf(kit, True)
+                g.SetSlotName(kit, name)
+                g.DestroySlot(kit)
+        await _build(mock_client, g)
+        m = mock_client
+
+        duplicate = m.find_one(_ct("DuplicateSlot"))
+        active = m.find_one(_ct("SetSlotActiveSelf"))
+        rename = m.find_one(_ct("SetSlotName"))
+        destroy = m.find_one(_ct("DestroySlot"))
+        assert m.ref_target_comp(duplicate, "Next") is active
+        assert m.ref_target_comp(active, "Next") is rename
+        assert m.ref_target_comp(rename, "Next") is destroy
+        # Each action takes the duplicate from DuplicateSlot's output.
+        for action in (active, rename, destroy):
+            assert action.references["Instance"] == duplicate.member_ids["Duplicate"]
+        find = m.find_one(_ct("FindChildByName"))
+        assert m.ref_target_comp(m.find_one(r"IsNull<"), "Instance") is find
+
+
 class TestContinuationBuild:
     """Statements after a raycast or a transform setter run after it."""
 
@@ -2239,6 +2343,11 @@ def _calls() -> list[tuple[str, Any]]:
         ("view_rotation", lambda s: users.view_rotation()),
         ("string_equals", lambda s: users.machine_id(users.local_user()) == ""),
         ("string_not_equals", lambda s: users.machine_id(users.local_user()) != ""),
+        ("username", lambda s: users.username(users.local_user())),
+        ("is_null", lambda s: dm.is_null(users.local_user())),
+        ("slot_name", lambda s: slots.name(slots.ref("ball"))),
+        ("find_child", lambda s: dm.is_null(slots.find_child(slots.ref("ball"), "Tag"))),
+        ("string_conditional", lambda s: dm.conditional(s.b, "yes", "no")),
         ("is_grabbed", lambda s: interaction.is_grabbed(_added(grabbable.Grabbable()))),
         ("to_string", lambda s: strings.to_string(s.v)),
         ("concatenate", lambda s: "y=" + strings.to_string(s.f)),

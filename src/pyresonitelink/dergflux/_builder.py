@@ -900,6 +900,9 @@ class _BuildContext:
         # Check for generic math in operators
         if node.func_name in _GENERIC_MATH_OPERATORS:
             class_name, param_names = _GENERIC_MATH_OPERATORS[node.func_name]
+            # ValueConditional<T> takes value types only.
+            if class_name == "ValueConditional" and _is_protoflux_object_type(res_type):
+                class_name = "ObjectConditional"
             from pyresonitelink.protoflux import operators
             GenericClass = getattr(operators, class_name)
             ConcreteClass = GenericClass[res_type]  # type: ignore[valid-type]
@@ -1273,6 +1276,21 @@ async def _build_model_var(
         DataModelValueFieldStore,
         DataModelObjectFieldStore,
     )
+    from pyresonitelink.generated._types import user as user_type
+    if decl.resonite_type is user_type.User:
+        # A User is kept in a UserRef, which has a store of its own type.
+        from pyresonitelink.protoflux.variables import DataModelUserRefStore
+        store = DataModelUserRefStore()
+        await store.add_to_slot(ctx.resolink, var_slot)
+        assert var_slot.id is not None, "Variable slot has no ID"
+        store_id, store_ct, val_member_id = await _find_store_companion(
+            ctx.resolink, var_slot.id,
+        )
+        built_vars[attr_name] = store
+        object.__getattribute__(space, "_stores")[attr_name] = _space.ModelStore(
+            store_id, store_ct, val_member_id,
+        )
+        return
     if _is_protoflux_object_type(decl.resonite_type):
         ConcreteStore = DataModelObjectFieldStore[decl.resonite_type]  # type: ignore[valid-type]
     else:
@@ -2014,18 +2032,23 @@ async def _build_expr_binding(
 ) -> None:
     """Build a binding from a ProtoFlux expression to a field.
 
-    Uses ValueFieldDrive<T>.  The ctx may carry loop_node and other
+    Uses ValueFieldDrive<T>, or ObjectFieldDrive<T> for a string or a
+    reference.  The ctx may carry loop_node and other
     state from flow building, allowing bindings to reference loop
     indices and other flow-scoped values.
 
     The drive node's Value input is wired to the expression, and
     wiring.drive_field sets the field it drives.
     """
+    from pyresonitelink.protoflux.core import ObjectFieldDrive
     from pyresonitelink.protoflux.core import ValueFieldDrive
 
     expr_comp = await ctx.materialize(bind_rec.expr._node)
 
-    ConcreteDrive = ValueFieldDrive[res_type]  # type: ignore[valid-type]
+    if _is_protoflux_object_type(res_type):
+        ConcreteDrive = ObjectFieldDrive[res_type]  # type: ignore[valid-type]
+    else:
+        ConcreteDrive = ValueFieldDrive[res_type]  # type: ignore[valid-type]
     drive = await _create_and_wire(
         ctx.resolink, bind_rec.slot, ConcreteDrive, {"Value": expr_comp.id},
         debug=ctx.debug,

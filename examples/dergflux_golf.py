@@ -1,19 +1,50 @@
-"""Example of a golf ball that a ProtoFlux graph moves, on a small course with a club.
+"""Example of a golf game for several players, whose balls a ProtoFlux graph moves.
 
 Resonite moves nothing by physics except characters, and its colliders
 have no friction or bounciness. So the graph that this script builds
-moves the ball itself, once per engine update, and finds what the ball
+moves each ball itself, once per engine update, and finds what the ball
 touches with ray casts. Every surface, the ball, and the club head carry
 their own physical properties as dynamic variables, so the ball bounces
 high off concrete, dies in the sand, and rolls far on the green.
 
 The course is built on the floor 2 m in front of the user, running away
 from them. From the tee it has a fairway with a ramp, a bunker sunk 3 cm
-into the fairway, more fairway, and a green, with low concrete walls
-along the sides and a tall concrete backstop at the far end. Next to the
-tee are a club and a "Tee" button, which puts the ball back on the tee.
-In VR the club can be grabbed by its grip and swung, and the ball can be
-picked up, placed, and thrown.
+into the fairway, more fairway, and a green with a cup and a flag, with
+low concrete walls along the sides and a tall concrete backstop at the
+far end. Next to the tee is a "Play" button.
+
+Players
+-------
+
+Each player plays with a kit of their own: a ball, a club, the aiming
+arrow and gauge of desktop shots, a name tag that floats above the ball,
+and the graph that moves the ball. Everyone plays the hole at the same
+time, and the balls pass through each other.
+
+Pressing Play gives the presser a kit, with the ball on the tee, by
+duplicating an inactive template kit into the "Players" slot. The
+duplicate's OnDuplicate event fires only on the presser's machine, where
+it stores the presser as the kit's owner and names the kit after the
+presser's machine ID, which is how a second press finds the presser's
+kit instead of making another. Pressing Play again puts the ball back on
+the tee and starts the count of strokes again. The host destroys a kit
+whose owner has left.
+
+Only the owner's machine runs a kit's flows, so only the owner can
+address, aim, and hit the ball. On every other machine, the kit's club
+can't be grabbed, and its grip has no collider, through drives that
+compute differently on each machine. The ball has no collider at all,
+so nothing can touch it, and the rays of one ball never meet another.
+Another player's club is shown only while it is held or swinging.
+
+The name tag shows the owner's name and the strokes taken, or how many
+strokes the hole took once the ball has dropped. Each club hit is a
+stroke. A ball that leaves the course's footprint costs a stroke and is
+put back where it was last hit from, as out of bounds is in golf.
+
+A ball drops into the cup when its center is over the cup, it touches
+the green, and it is slower than CAPTURE_SPEED. It then stays in the cup
+until its owner presses Play.
 
 Desktop shots
 -------------
@@ -21,7 +52,7 @@ Desktop shots
 A desktop user can't swing the club by hand, so a shot takes three
 steps with the mouse.
 
-1. Click the ball while it is at rest. This addresses the ball, and an
+1. Click your ball while it is at rest. This addresses the ball, and an
    arrow on the ground shows where the shot will go. A gauge in front of
    the view shows the club, which the scroll wheel changes.
 2. Look at where the ball should go. The arrow points from the ball to
@@ -35,13 +66,8 @@ steps with the mouse.
    ball stays addressed.
 
 A right click, or a click on the ball, lets go of the ball, so that the
-left button presses things again. Grabbing the ball, or the ball moving,
-also lets go of it.
-
-The mouse is read on the desktop user's machine, by a flow that runs only
-where the local user's machine ID matches the "golfer" model variable.
-That flow passes the swing to the host's flow through model variables,
-and the host swings the club.
+left button presses things again. The ball moving also lets go of it.
+Only the owner sees the arrow and the gauge.
 
 Physical properties
 -------------------
@@ -57,39 +83,37 @@ When the ball touches a surface, the two restitutions multiply, and the
 two friction and rolling coefficients combine as their geometric mean,
 as Box2D combines friction. The ball's own values are BALL.
 
-What the graph does in each engine update
------------------------------------------
+What a kit's graph does in each engine update
+---------------------------------------------
 
-The graph runs on the host only, since every user's machine runs an
-Update node and they would otherwise all move the ball.
+The graph runs on the owner's machine only, since every user's machine
+runs an Update node and they would otherwise all move the ball. Until
+the ball drops, in this order:
 
-While the ball is held, the graph only measures its velocity from how
-far it moved since the last update, so a thrown ball flies on at the
-hand's velocity.
-
-Otherwise, in this order:
-
-1. If a desktop user released a shot, the club is posed at the top of
+1. A ball outside the course's footprint is put back where it was last
+   hit from, and a stroke is added.
+2. If the owner released a desktop shot, the club is posed at the top of
    its backswing, facing along the shot, and in later updates it turns
    about a pivot above the ball until its follow-through.
-2. The ball's center is found in the club head's space. If it crossed
+3. The ball's center is found in the club head's space. If it crossed
    the plane of the face, within the face's bounds, since the last
    update, while the ball and the face moved toward each other, the ball
-   is hit. Comparing positions in the head's own space catches a fast
-   swing that moves the face past the ball within one update. The hit
-   changes the ball's velocity along the face normal by the impulse
-   between two bodies of the ball's and the head's masses. A ball sent
-   back to the tee starts its history in the head's space again, so that
-   the jump doesn't count as a crossing.
-3. Gravity is added to the velocity.
-4. A ray from the ball's center straight down, one radius and PROBE_SKIN
+   is hit, and a stroke is added. Comparing positions in the head's own
+   space catches a fast swing that moves the face past the ball within
+   one update. The hit changes the ball's velocity along the face normal
+   by the impulse between two bodies of the ball's and the head's
+   masses. A ball that was put somewhere starts its history in the
+   head's space again, so that the jump doesn't count as a crossing.
+4. Gravity is added to the velocity.
+5. A ray from the ball's center straight down, one radius and PROBE_SKIN
    long, finds the ground the ball rests on. A ball falling onto it
    faster than BOUNCE_SPEED bounces, and one moving more slowly rolls
    along it, slowed by rolling resistance.
-5. A ray from the ball's center along its velocity, as long as one
+6. A ray from the ball's center along its velocity, as long as one
    update's travel plus a radius, finds anything the ball reaches in this
    update. The ball stops against it, touching it, and bounces or slides.
    Otherwise the ball moves on.
+7. A ball that is over the cup, on the green, and slow enough drops in.
 
 A bounce reverses the velocity's part along the surface normal and scales
 it by the restitution. Coulomb friction slows the part along the surface
@@ -107,25 +131,26 @@ The ball doesn't spin, so it has no backspin, hook, or slice. The rays
 start at the ball's center, so where the ball meets an edge rather than
 a face, it can stop up to a radius away from the true point of contact.
 The club's head has no collider, and the ball goes through its back and
-sides. A ball that falls 3 m below the course goes back to the tee. Each
-run deletes the course from the previous run.
+sides. The cup is drawn on the green and has no hole in the green's
+collider, so a ball too fast to drop rolls straight across it, where a
+real cup's edge would deflect it.
+Each run deletes the course from the previous run, with every kit.
 
 The aiming spot is where the view meets the level plane through the
 ball's center, so on the ramp it is off from the true spot under the
-crosshair by the ramp's height. Whoever clicks the ball takes it over
-from a desktop user who is aiming, so a user who leaves the session
-while aiming doesn't keep the ball from everyone else.
+crosshair by the ramp's height. The other players see a kit's ball
+move with the network's delay, since only its owner's machine moves it.
 
 Recording
 ---------
 
-The graph records the ball's velocity before and after each bounce and
-each hit of the club, the club head's velocity at a hit, and the ball's
-position and velocity at the end of each update, with a
-utils.recorder.Recorder named "trace". It records nothing until a script
-starts it by writing the number of lines to record to the "trace_left"
-model variable, under the ProtoFlux slot, and then reads the lines from
-"trace_log".
+A kit's graph records the ball's velocity before and after each bounce
+and each hit of the club, the club head's velocity at a hit, where a
+ball went out of bounds or dropped, and the ball's position and velocity
+at the end of each update, with a utils.recorder.Recorder named "trace".
+It records nothing until a script starts it by writing the number of
+lines to record to the "trace_left" model variable, under the kit's
+ProtoFlux slot, and then reads the lines from "trace_log".
 
 Usage:
     python examples/dergflux_golf.py [port]
@@ -150,6 +175,7 @@ from pyresonitelink.dergflux import interaction
 from pyresonitelink.dergflux import math as dm
 from pyresonitelink.dergflux import mouse
 from pyresonitelink.dergflux import slots
+from pyresonitelink.dergflux import strings
 from pyresonitelink.dergflux import time
 from pyresonitelink.dergflux import transform
 from pyresonitelink.dergflux import users
@@ -163,7 +189,6 @@ from pyresonitelink.generated.assets.procedural_meshes import sphere_mesh
 from pyresonitelink.generated.data.dynamic import dynamic_value_variable
 from pyresonitelink.generated.data.dynamic import dynamic_variable_space
 from pyresonitelink.generated.physics.colliders import box_collider
-from pyresonitelink.generated.physics.colliders import sphere_collider
 from pyresonitelink.generated.rendering import text_renderer
 from pyresonitelink.generated.transform.interaction import grabbable
 from pyresonitelink.generated.transform.interaction import touch_button
@@ -196,8 +221,6 @@ ROLLING_SHARE = 5 / 7
 # How far in front of the club face a hit ball is put, so that the next
 # update doesn't find it crossing the face again.
 FACE_CLEARANCE = 0.001  # meters
-# How far below the course a ball goes back to the tee.
-LOST_DEPTH = 3.0  # meters
 
 
 @dataclasses.dataclass(frozen=True)
@@ -372,6 +395,9 @@ FINISHES = {
     "Steel": materials.Finish((0.6, 0.6, 0.62), metallic=0.9, smoothness=0.75),
     "Grip": materials.Finish((0.02, 0.02, 0.02), metallic=0.0, smoothness=0.3),
     "Button": materials.Finish((0.1, 0.2, 0.5), metallic=0.2, smoothness=0.5),
+    "Cup": materials.Finish((0.01, 0.01, 0.01), metallic=0.0, smoothness=0.0),
+    "Flagstick": materials.Finish((0.9, 0.9, 0.85), metallic=0.0, smoothness=0.5),
+    "Flag": materials.Finish((0.8, 0.05, 0.05), metallic=0.0, smoothness=0.3),
     # The arrow and the gauge glow, so that they show in any light.
     "Aim": materials.Finish((0.9, 0.8, 0.1), metallic=0.0, smoothness=0.3,
                             emissive=(0.6, 0.5, 0.05)),
@@ -425,12 +451,33 @@ COURSE = [
 
 TEE = (0.0, TOP + BALL_RADIUS, 0.0)  # the ball's center on the tee
 CLUB_START = (0.35, TOP + HEAD_DROP + 0.05, -0.15)  # the club's grip
-BUTTON_AT = (-0.9, 1.0, -0.8)  # the Tee button's center
+BUTTON_AT = (-0.9, 1.0, -0.8)  # the Play button's center
 BUTTON_SIZE = (0.14, 0.07, 0.02)  # meters
 LABEL_SIZE = 0.18  # the TextRenderer's Size, which makes letters about 3 cm tall
 # A positive tilt turns the button's face, toward -Z, up toward the user's
 # eyes.
 BUTTON_TILT = 30.0  # degrees
+
+# The course's footprint in its own space, to the outsides of the walls. A
+# ball whose center leaves it is out of bounds.
+BOUNDS_X = 1.65  # meters either side of the tee
+BOUNDS_Z = (-1.0, 13.15)  # meters from the tee
+# The cup's center on the green's surface. The Rules of Golf set a 108 mm
+# diameter.
+CUP_AT = (0.4, TOP, 11.0)
+CUP_RADIUS = 0.054  # meters
+# A ball over the cup and on the green drops in if it is slower than this.
+CAPTURE_SPEED = 1.3  # m/s
+# How far below the green's surface a dropped ball's center is put, which
+# hides the ball inside the green.
+CUP_DEPTH = BALL_RADIUS + 0.005  # meters
+FLAG_HEIGHT = 1.2  # meters from the green to the top of the flagstick
+FLAG_SIZE = (0.25, 0.16, 0.005)  # meters
+
+# The name tag's center above the ball's center, and its text's Size,
+# which makes letters about 2 cm tall.
+NAME_TAG_HEIGHT = 0.12  # meters
+NAME_TAG_SIZE = 0.12
 
 
 async def add_physics(resolink: client.Client, slot: workers.Slot, physics: Physics) -> None:
@@ -512,11 +559,33 @@ async def add_cylinder(
     return slot
 
 
+async def add_text(
+    resolink: client.Client,
+    parent: workers.Slot,
+    name: str,
+    text: str,
+    size: float,
+    position: tuple[float, float, float],
+) -> tuple[workers.Slot, text_renderer.TextRenderer]:
+    """Adds a slot with white text, which reads from the slot's -Z side.
+
+    Returns:
+        The new slot and its TextRenderer.
+    """
+    slot = await resolink.add_slot(parent=parent, name=name, position=position)
+    renderer = text_renderer.TextRenderer(
+        text=text, size=primitives.Float(size),
+        color=primitives.ColorX(1, 1, 1, 1, "sRGB"),
+    )
+    await renderer.add_to_slot(resolink, slot)
+    return slot, renderer
+
+
 @dataclasses.dataclass
 class AimVisuals:
-    """Represents the arrow and the gauge of desktop shots.
+    """Represents the arrow and the gauge of a kit's desktop shots, and its name tag.
 
-    Both are under a slot whose world transform is the identity, so that
+    They are under a slot whose world transform is the identity, so that
     the graph can drive their positions and rotations in world space.
 
     Attributes:
@@ -529,6 +598,8 @@ class AimVisuals:
             from the left end over the top, in degrees.
         club_labels: The slots of the clubs' names, one per club in
             CLUBS, of which the graph shows only the selected one.
+        name_tag: The name tag's slot, at the text's center.
+        name_text: The name tag's TextRenderer.
     """
 
     arrow: workers.Slot
@@ -536,43 +607,68 @@ class AimVisuals:
     gauge: workers.Slot
     fill: ring_mesh.RingMesh
     club_labels: list[workers.Slot]
+    name_tag: workers.Slot
+    name_text: text_renderer.TextRenderer
 
 
 @dataclasses.dataclass
-class Scene:
-    """Represents the slots and components that the graph uses.
+class Kit:
+    """Represents the slots and components of one player's kit.
+
+    The script builds the template kit, and the graph duplicates it for
+    each player, so these are the template's.
 
     Attributes:
-        course: The example's root slot, whose space is the course's.
-        graph: The slot for the ProtoFlux nodes.
+        root: The kit's slot, at the course's origin, named after its
+            owner's machine ID once it is duplicated.
+        graph: The slot for the kit's ProtoFlux nodes.
         ball: The ball's slot.
-        ball_grab: The ball's Grabbable.
         club: The club's slot, at the grip's center.
+        club_grab: The club's Grabbable.
+        grip_collider: The grip's BoxCollider, the club's only collider.
         head: The club head's slot, at the head's center, with the face
             toward +Z.
         pivot: The pivot of desktop swings, which turns about Y to face
             along the shot.
         arm: The pivot's child, which turns about X to swing the club.
         mount: Where the club goes during a desktop swing.
-        tee_button: The Tee button's TouchButton.
-        aim: The visuals of desktop shots.
+        aim: The arrow, the gauge, and the name tag.
     """
 
-    course: workers.Slot
+    root: workers.Slot
     graph: workers.Slot
     ball: workers.Slot
-    ball_grab: grabbable.Grabbable
     club: workers.Slot
+    club_grab: grabbable.Grabbable
+    grip_collider: box_collider.BoxCollider
     head: workers.Slot
     pivot: workers.Slot
     arm: workers.Slot
     mount: workers.Slot
-    tee_button: touch_button.TouchButton
     aim: AimVisuals
 
 
-async def build_scene(resolink: client.Client) -> Scene:
-    """Builds the course, the ball, the club, and the Tee button in front of the user.
+@dataclasses.dataclass
+class Course:
+    """Represents the slots and components that every player shares.
+
+    Attributes:
+        root: The example's root slot, whose space is the course's.
+        graph: The slot for the ProtoFlux nodes of the Play button.
+        players: The slot that the players' kits go under.
+        play_button: The Play button's TouchButton.
+        kit: The template kit, which is inactive.
+    """
+
+    root: workers.Slot
+    graph: workers.Slot
+    players: workers.Slot
+    play_button: touch_button.TouchButton
+    kit: Kit
+
+
+async def build_course(resolink: client.Client) -> Course:
+    """Builds the course, the cup, the Play button, and the template kit in front of the user.
 
     A slot under Root named SLOT_NAME, from a previous run, is deleted
     first.
@@ -593,73 +689,34 @@ async def build_scene(resolink: client.Client) -> Scene:
         )
         await add_physics(resolink, slot, piece.physics)
     print(f"Built {len(COURSE)} course pieces.")
-
-    ball = await resolink.add_slot(parent=course, name="Ball", position=TEE)
-    mesh = sphere_mesh.SphereMesh(radius=primitives.Float(BALL_RADIUS))
-    await mesh.add_to_slot(resolink, ball)
-    await rendering.add_renderer(resolink, ball, mesh, [mats["Ball"]])
-    await sphere_collider.SphereCollider(radius=primitives.Float(BALL_RADIUS)).add_to_slot(
-        resolink, ball,
-    )
-    ball_grab = grabbable.Grabbable()
-    await ball_grab.add_to_slot(resolink, ball)
-    await add_physics(resolink, ball, BALL)
-
-    club = await resolink.add_slot(parent=course, name="Club", position=CLUB_START)
-    await grabbable.Grabbable().add_to_slot(resolink, club)
-    # The grip is the club's only collider, so a hand grabs the club there
-    # and the ball's rays meet nothing else of it.
-    await add_box(
-        resolink, club, "Grip", (2 * GRIP_RADIUS, GRIP_LENGTH, 2 * GRIP_RADIUS),
-        mats["Grip"],
-    )
-    shaft_top = -GRIP_LENGTH / 2
-    shaft_bottom = -HEAD_DROP + HEAD_SIZE[1] / 2
-    await add_cylinder(
-        resolink, club, "Shaft", SHAFT_RADIUS, shaft_top - shaft_bottom, mats["Steel"],
-        (0.0, (shaft_top + shaft_bottom) / 2, 0.0),
-    )
-    # The loft turns the face's normal, +Z, up toward +Y, which is a
-    # negative angle about X. The graph drives the head's rotation from
-    # the selected club.
-    head = await add_box(
-        resolink, club, "Head", HEAD_SIZE, mats["Steel"],
-        position=(0.0, -HEAD_DROP, 0.0), tilt=-CLUBS[0].loft, collider=False,
-    )
-    await add_physics(resolink, head, CLUB_HEAD)
-
-    pivot = await resolink.add_slot(parent=course, name="Swing Pivot")
-    arm = await resolink.add_slot(parent=pivot, name="Swing Arm")
-    mount = await resolink.add_slot(
-        parent=arm, name="Club Mount", position=(0.0, -(PIVOT_HEIGHT - HEAD_DROP), 0.0),
-    )
+    await add_cup(resolink, course, mats)
 
     graph = await resolink.add_slot(parent=course, name="ProtoFlux")
-    tee_button = await add_button(resolink, course, "Tee", mats["Button"])
-    aim = await add_aim_visuals(resolink, course, mats)
-    print("Built the ball, the club, the Tee button, and the aiming visuals.")
-    return Scene(course, graph, ball, ball_grab, club, head, pivot, arm, mount, tee_button, aim)
+    players = await resolink.add_slot(parent=course, name="Players")
+    play_button = await add_button(resolink, course, "Play", mats["Button"])
+    kit = await build_kit(resolink, course, world, mats)
+    print("Built the cup, the Play button, and the template kit.")
+    return Course(course, graph, players, play_button, kit)
 
 
-async def add_text(
+async def add_cup(
     resolink: client.Client,
-    parent: workers.Slot,
-    name: str,
-    text: str,
-    size: float,
-    position: tuple[float, float, float],
-) -> workers.Slot:
-    """Adds a slot with white text, which reads from the slot's -Z side.
-
-    Returns:
-        The new slot.
-    """
-    slot = await resolink.add_slot(parent=parent, name=name, position=position)
-    await text_renderer.TextRenderer(
-        text=text, size=primitives.Float(size),
-        color=primitives.ColorX(1, 1, 1, 1, "sRGB"),
-    ).add_to_slot(resolink, slot)
-    return slot
+    course: workers.Slot,
+    mats: dict[str, pbs_metallic.PBS_Metallic],
+) -> None:
+    """Adds the cup on the green, and a flagstick standing in it, with no colliders."""
+    x, y, z = CUP_AT
+    # The cup is a disc a hair above the green, so that it isn't hidden
+    # by the green's top face.
+    await add_cylinder(resolink, course, "Cup", CUP_RADIUS, 0.002, mats["Cup"], (x, y + 0.001, z))
+    await add_cylinder(
+        resolink, course, "Flagstick", 0.006, FLAG_HEIGHT, mats["Flagstick"],
+        (x, y + FLAG_HEIGHT / 2, z),
+    )
+    await add_box(
+        resolink, course, "Flag", FLAG_SIZE, mats["Flag"],
+        position=(x + FLAG_SIZE[0] / 2, y + FLAG_HEIGHT - FLAG_SIZE[1] / 2, z), collider=False,
+    )
 
 
 async def add_button(
@@ -686,6 +743,66 @@ async def add_button(
         resolink, slot, "Label", label, LABEL_SIZE, (0.0, 0.0, -BUTTON_SIZE[2] / 2 - 0.001),
     )
     return button
+
+
+async def build_kit(
+    resolink: client.Client,
+    course: workers.Slot,
+    course_world: transforms.Transform,
+    mats: dict[str, pbs_metallic.PBS_Metallic],
+) -> Kit:
+    """Builds the inactive template kit at the course's origin.
+
+    Args:
+        resolink: The connected client.
+        course: The course's slot.
+        course_world: The course's transform in world space.
+        mats: The materials, by key in FINISHES.
+    """
+    root = await resolink.add_slot(parent=course, name="Kit Template", isActive=False)
+    ball = await resolink.add_slot(parent=root, name="Ball", position=TEE)
+    mesh = sphere_mesh.SphereMesh(radius=primitives.Float(BALL_RADIUS))
+    await mesh.add_to_slot(resolink, ball)
+    await rendering.add_renderer(resolink, ball, mesh, [mats["Ball"]])
+    await add_physics(resolink, ball, BALL)
+
+    club = await resolink.add_slot(parent=root, name="Club", position=CLUB_START)
+    club_grab = grabbable.Grabbable()
+    await club_grab.add_to_slot(resolink, club)
+    # The grip is the club's only collider, so a hand grabs the club there
+    # and the ball's rays meet nothing else of it.
+    grip = await add_box(
+        resolink, club, "Grip", (2 * GRIP_RADIUS, GRIP_LENGTH, 2 * GRIP_RADIUS),
+        mats["Grip"], collider=False,
+    )
+    grip_collider = box_collider.BoxCollider(
+        size=primitives.Float3(2 * GRIP_RADIUS, GRIP_LENGTH, 2 * GRIP_RADIUS),
+    )
+    await grip_collider.add_to_slot(resolink, grip)
+    shaft_top = -GRIP_LENGTH / 2
+    shaft_bottom = -HEAD_DROP + HEAD_SIZE[1] / 2
+    await add_cylinder(
+        resolink, club, "Shaft", SHAFT_RADIUS, shaft_top - shaft_bottom, mats["Steel"],
+        (0.0, (shaft_top + shaft_bottom) / 2, 0.0),
+    )
+    # The loft turns the face's normal, +Z, up toward +Y, which is a
+    # negative angle about X. The graph drives the head's rotation from
+    # the selected club.
+    head = await add_box(
+        resolink, club, "Head", HEAD_SIZE, mats["Steel"],
+        position=(0.0, -HEAD_DROP, 0.0), tilt=-CLUBS[0].loft, collider=False,
+    )
+    await add_physics(resolink, head, CLUB_HEAD)
+
+    pivot = await resolink.add_slot(parent=root, name="Swing Pivot")
+    arm = await resolink.add_slot(parent=pivot, name="Swing Arm")
+    mount = await resolink.add_slot(
+        parent=arm, name="Club Mount", position=(0.0, -(PIVOT_HEIGHT - HEAD_DROP), 0.0),
+    )
+
+    graph = await resolink.add_slot(parent=root, name="ProtoFlux")
+    aim = await add_aim_visuals(resolink, root, course_world, mats)
+    return Kit(root, graph, ball, club, club_grab, grip_collider, head, pivot, arm, mount, aim)
 
 
 async def add_ring(
@@ -724,12 +841,22 @@ async def add_ring(
 
 async def add_aim_visuals(
     resolink: client.Client,
-    course: workers.Slot,
+    kit: workers.Slot,
+    course_world: transforms.Transform,
     mats: dict[str, pbs_metallic.PBS_Metallic],
 ) -> AimVisuals:
-    """Adds the arrow and the gauge of desktop shots, hidden until the graph shows them."""
-    world = await slot_utils.add_slot_at(
-        resolink, transforms.Transform(), name="Aim Visuals", parent=course,
+    """Adds a kit's arrow, gauge, and name tag, which the graph shows and moves.
+
+    The kit is at the course's origin, so a slot under it at the inverse
+    of the course's world transform has the identity world transform,
+    in the template and in every duplicate.
+    """
+    identity = transforms.relative_to(course_world, transforms.Transform())
+    world = await resolink.add_slot(
+        parent=kit, name="World Frame",
+        position=tuple(float(c) for c in vars(identity.position).values()),
+        rotation=tuple(float(c) for c in vars(identity.rotation).values()),
+        scale=tuple(float(c) for c in vars(identity.scale).values()),
     )
     arrow = await resolink.add_slot(parent=world, name="Aim Arrow", isActive=False)
     arrow_shape = arrow_mesh.ArrowMesh(
@@ -743,26 +870,47 @@ async def add_aim_visuals(
     gauge = await resolink.add_slot(parent=world, name="Gauge", isActive=False)
     await add_ring(resolink, gauge, "Gauge Back", 180.0, mats["Gauge"])
     fill = await add_ring(resolink, gauge, "Gauge Fill", 0.0, mats["Power"], z=-0.001)
-    labels = [
-        await add_text(resolink, gauge, f"{club.name} Label", club.name, CLUB_LABEL_SIZE,
-                       (0.0, 0.015, 0.0))
-        for club in CLUBS
-    ]
+    labels = []
+    for club in CLUBS:
+        label, _ = await add_text(
+            resolink, gauge, f"{club.name} Label", club.name, CLUB_LABEL_SIZE, (0.0, 0.015, 0.0),
+        )
+        labels.append(label)
     await add_text(resolink, gauge, "Hint", HINT, HINT_SIZE, (0.0, -0.02, 0.0))
-    return AimVisuals(arrow, arrow_shape, gauge, fill, labels)
+
+    name_tag, name_text = await add_text(
+        resolink, world, "Name Tag", "", NAME_TAG_SIZE, (0.0, 0.0, 0.0),
+    )
+    return AimVisuals(arrow, arrow_shape, gauge, fill, labels, name_tag, name_text)
 
 
-async def build_graph(resolink: client.Client, scene: Scene) -> None:
-    """Builds the Dergflux graph that moves the ball, swings the club, and takes desktop shots."""
+def build_kit_graph(kit: Kit, course: workers.Slot, play_button: touch_button.TouchButton) -> Graph:
+    """Returns the Dergflux graph of the template kit, which each duplicate gets a copy of.
+
+    The graph references slots inside the kit and the course outside it.
+    A duplicate's references to slots inside it point to its own copies,
+    and its references to the course stay as they are.
+
+    Args:
+        kit: The template kit.
+        course: The course's slot.
+        play_button: The Play button, which also restarts the owner's hole.
+    """
     g = Graph()
-    s = g.Space(scene.graph, space_name="Golf")
+    s = g.Space(kit.graph, space_name="Golf")
+    # The user who pressed Play for this kit, which is null in the
+    # template and once the user has left.
+    s.owner = s.UserModelVar("owner")
+    s.claimed = s.BoolModelVar("claimed")  # whether the kit has had an owner
+    s.strokes = s.IntModelVar("strokes", 0)
+    s.holed = s.BoolModelVar("holed")
+    # Where the ball was last hit from, in the course's space.
+    s.last_spot = s.Float3ModelVar("last_spot", primitives.Float3(*TEE))
     s.v = s.Float3ModelVar("velocity")  # the ball's, in world space, in m/s
-    # The ball's center in the head's space, the head's center in world
-    # space, and the ball's center in world space, as they were at the
-    # end of the last update.
+    # The ball's center in the head's space and the head's center in
+    # world space, as they were at the end of the last update.
     s.prev_q = s.Float3ModelVar("prev_in_head")
     s.prev_head = s.Float3ModelVar("prev_head")
-    s.prev_ball = s.Float3ModelVar("prev_ball")
     s.tee_request = s.BoolModelVar("tee_request")
     s.swing_request = s.BoolModelVar("swing_request")
     s.swinging = s.BoolModelVar("swinging")
@@ -770,15 +918,13 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
     s.swing_back = s.FloatModelVar("swing_back")  # degrees
     s.swing_rate = s.FloatModelVar("swing_rate")  # degrees per second
     s.swing_yaw = s.FloatModelVar("swing_yaw")  # degrees about the course's Y
-    # The machine ID of the desktop user who addressed the ball, or an
-    # empty string while nobody has.
-    s.golfer = s.StringModelVar("golfer", "")
-    # The machine ID of a desktop user who pressed the left button on the
-    # ball, until the button comes up and addresses the ball.
-    s.presser = s.StringModelVar("presser", "")
+    s.addressed = s.BoolModelVar("addressed")
+    # Whether the left button went down with the crosshair on the ball,
+    # until it comes up and addresses the ball.
+    s.pressed_on_ball = s.BoolModelVar("pressed_on_ball")
     s.club = s.IntModelVar("club", 0)  # the index of the club in CLUBS
     s.aim = s.Float3ModelVar("aim")  # the shot's direction, level, in world space
-    s.charging = s.BoolModelVar("charging")  # whether the golfer holds the left button
+    s.charging = s.BoolModelVar("charging")  # whether the left button is held for a shot
     s.charge_time = s.FloatModelVar("charge_time")  # seconds since it went down
     s.fill = s.FloatModelVar("fill")  # the gauge's fill, from 0 to 1
     s.was_scrolling = s.BoolModelVar("was_scrolling")
@@ -786,13 +932,58 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
     # velocity at the end of each update, while a script asks for it.
     trace = recorder.Recorder(g, s, "trace")
 
-    course = slots.ref(scene.course)
-    ball = slots.ref(scene.ball)
-    club = slots.ref(scene.club)
-    head = slots.ref(scene.head)
-    pivot = slots.ref(scene.pivot)
-    arm = slots.ref(scene.arm)
-    mount = slots.ref(scene.mount)
+    root = slots.ref(kit.root)
+    course_ref = slots.ref(course)
+    ball = slots.ref(kit.ball)
+    club = slots.ref(kit.club)
+    head = slots.ref(kit.head)
+    pivot = slots.ref(kit.pivot)
+    arm = slots.ref(kit.arm)
+    mount = slots.ref(kit.mount)
+    local = users.local_user()
+    mine = s.owner == local
+
+    def by_club(values: list[float]) -> Any:
+        """Returns the value for the selected club, from one value per club in CLUBS."""
+        chosen: Any = values[-1]
+        for i in reversed(range(len(values) - 1)):
+            chosen = dm.conditional(s.club == i, values[i], chosen)
+        return chosen
+
+    with g.Under(kit.graph):
+        # Only the machine that duplicated the kit gets this event.
+        with g.OnDuplicate() as e:
+            with e.trigger():
+                s.owner = local
+                s.claimed = True
+                g.SetSlotName(root, users.machine_id(local))
+
+    with g.Under(kit.graph):
+        with g.If(users.local_user_is_host() & s.claimed & dm.is_null(s.owner)):
+            g.DestroySlot(root)
+
+    with g.Under(kit.graph):
+        with g.ButtonEvents(button=play_button) as e:
+            with e.pressed():
+                with g.If(mine):
+                    s.tee_request = True
+                    s.strokes = 0
+                    s.holed = False
+                    s.addressed = False
+                    s.charging = False
+                    s.fill = 0.0
+
+    add_ball_flow(g, s, kit, course_ref, ball, club, head, pivot, arm, mount, mine, trace)
+    add_desktop_shots(g, s, kit, course_ref, ball, mine, by_club)
+    add_bindings(g, s, kit, ball, mine, by_club)
+    return g
+
+
+def add_ball_flow(
+    g: Graph, s: Any, kit: Kit, course: Any, ball: Any, club: Any, head: Any,
+    pivot: Any, arm: Any, mount: Any, mine: Any, trace: recorder.Recorder,
+) -> None:
+    """Adds the flow that moves the owner's ball and swings the club in each update."""
 
     def ball_value(name: str) -> Any:
         return variables.read(ball, f"Physics/{name}", primitives.Float).value
@@ -810,13 +1001,10 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
     gravity = primitives.Float3(0, -GRAVITY, 0)
     face = HEAD_SIZE[2] / 2 + BALL_RADIUS  # the ball center's Z on the face
     swing_rotation = dm.axis_angle(primitives.Float3(1, 0, 0), s.swing_angle)
-
-    def by_club(values: list[float]) -> Any:
-        """Returns the value for the selected club, from one value per club in CLUBS."""
-        chosen: Any = values[-1]
-        for i in reversed(range(len(values) - 1)):
-            chosen = dm.conditional(s.club == i, values[i], chosen)
-        return chosen
+    in_course = transform.global_point_to_local(course, p)
+    out_of_bounds = ((abs(in_course.x) > BOUNDS_X)
+                     | (in_course.z < BOUNDS_Z[0]) | (in_course.z > BOUNDS_Z[1]))
+    cup = transform.local_point_to_global(course, primitives.Float3(*CUP_AT))
 
     def surface_of(hit: Any) -> tuple[Any, Any, Any]:
         """Returns the restitution, friction, and rolling coefficients of a contact."""
@@ -846,30 +1034,29 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
         s.v = along * keep - n * (vn * restitution)
         trace.record(where=f"{where}_out", v=s.v)
 
-    with g.Under(scene.graph):
-        with g.ButtonEvents(button=scene.tee_button) as e:
-            with e.pressed():
-                s.tee_request = True
+    with g.Under(kit.graph):
+        with g.If(mine):
+            with g.If(s.tee_request):
+                s.tee_request = False
+                s.v = primitives.Float3(0, 0, 0)
+                s.last_spot = primitives.Float3(*TEE)
+                g.SetGlobalPosition(ball, transform.local_point_to_global(
+                    course, primitives.Float3(*TEE)))
+                # The ball jumped, so its history in the head's space
+                # starts again here. Otherwise a jump across the face
+                # would count as a hit.
+                s.prev_q = q
 
-    build_desktop_shots(g, s, scene, by_club)
-
-    with g.Under(scene.graph):
-        with g.If(users.local_user_is_host()):
-            with g.If(interaction.is_grabbed(scene.ball_grab)):
-                s.v = (p - s.prev_ball) / dt
-            with g.Else():
-                lost = transform.global_point_to_local(course, p).y < -LOST_DEPTH
-                with g.If(s.tee_request | lost):
-                    s.tee_request = False
+            with g.If(~s.holed):
+                # 1. Out of bounds.
+                with g.If(out_of_bounds):
+                    trace.record(where="out", p=p)
+                    s.strokes = s.strokes + 1
                     s.v = primitives.Float3(0, 0, 0)
-                    g.SetGlobalPosition(ball, transform.local_point_to_global(
-                        course, primitives.Float3(*TEE)))
-                    # The ball jumped, so its history in the head's space
-                    # starts again here. Otherwise a jump across the face
-                    # would count as a hit.
+                    g.SetGlobalPosition(ball, transform.local_point_to_global(course, s.last_spot))
                     s.prev_q = q
 
-                # 1. The desktop swing.
+                # 2. The desktop swing.
                 with g.If(s.swing_request):
                     s.swing_request = False
                     s.swing_angle = s.swing_back
@@ -895,7 +1082,7 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
                         with g.If(s.swing_angle < -s.swing_back):
                             s.swinging = False
 
-                # 2. The club's hit. The face is at Z = face in the head's
+                # 3. The club's hit. The face is at Z = face in the head's
                 # space, and the ball crossed it if it was in front before
                 # and is behind now. It is a hit only if the ball and the
                 # face are moving toward each other.
@@ -913,18 +1100,20 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
                         ball_mass = ball_value("Mass")
                         head_mass = head_value("Mass")
                         trace.record(where="club_in", v=s.v, club=club_v)
+                        s.strokes = s.strokes + 1
+                        s.last_spot = transform.global_point_to_local(course, p)
                         s.v = s.v - n * (approach * (1 + e) * head_mass / (head_mass + ball_mass))
                         trace.record(where="club_out", v=s.v)
                         g.SetGlobalPosition(ball, transform.local_point_to_global(
                             head, dm.pack(crossing.x, crossing.y, face + FACE_CLEARANCE)))
 
-                # 3. Gravity.
+                # 4. Gravity.
                 s.v = s.v + gravity * dt
 
-                # 4. The ground under the ball.
+                # 5. The ground under the ball.
                 with g.RaycastOne(origin=p, direction=down,
                                   max_distance=BALL_RADIUS + PROBE_SKIN,
-                                  ignore_hierarchy=scene.ball) as ground:
+                                  ignore_hierarchy=kit.ball) as ground:
                     with ground.on_hit():
                         n = ground.hit_normal
                         vn = dm.dot(s.v, n)
@@ -935,7 +1124,7 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
                             with g.If(vn < BOUNCE_SPEED):
                                 # Rolling. The velocity loses its part along
                                 # the normal, and 2/7 of the gravity along the
-                                # surface that was added in step 3.
+                                # surface that was added in step 4.
                                 along_g = (n * n.y - up) * GRAVITY
                                 rolled = s.v - n * vn - along_g * ((1 - ROLLING_SHARE) * dt)
                                 slowing = rolling * GRAVITY * n.y * dt
@@ -948,7 +1137,7 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
                                 g.SetGlobalPosition(
                                     ball, p + n * (BALL_RADIUS - ground.hit_distance * n.y))
 
-                # 5. What the ball reaches in this update. A ray with no
+                # 6. What the ball reaches in this update. A ray with no
                 # direction ends the flow, so a ball at rest casts none.
                 # RaycastOne measures its maximum distance in lengths of
                 # its direction, so the direction is normalized.
@@ -956,7 +1145,7 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
                 with g.If(dm.magnitude(s.v) > 1e-4):
                     with g.RaycastOne(origin=p, direction=dm.normalized(s.v),
                                       max_distance=dm.magnitude(step) + BALL_RADIUS,
-                                      ignore_hierarchy=scene.ball) as hit:
+                                      ignore_hierarchy=kit.ball) as hit:
                         with hit.on_hit():
                             n = hit.hit_normal
                             vn = dm.dot(s.v, n)
@@ -972,34 +1161,32 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
                         with hit.on_miss():
                             g.SetGlobalPosition(ball, p + step)
 
+                # 7. The cup. The ball is on the green when its center is
+                # no more than a radius and PROBE_SKIN above the cup's.
+                to_cup = p - cup
+                over_cup = dm.magnitude(dm.pack(to_cup.x, 0, to_cup.z)) < CUP_RADIUS
+                with g.If(over_cup & (to_cup.y < BALL_RADIUS + PROBE_SKIN)
+                          & (dm.magnitude(s.v) < CAPTURE_SPEED)):
+                    trace.record(where="holed", p=p, v=s.v)
+                    s.holed = True
+                    s.v = primitives.Float3(0, 0, 0)
+                    g.SetGlobalPosition(ball, cup - primitives.Float3(0, CUP_DEPTH, 0))
+
             s.prev_q = q
             s.prev_head = head_pos
-            s.prev_ball = p
             trace.record(where="end", p=p, v=s.v)
-    await g.build(resolink)
 
 
-def build_desktop_shots(g: Graph, s: Any, scene: Scene, by_club: Any) -> None:
-    """Adds the flow and the bindings that let a desktop user address, aim, and hit the ball.
+def add_desktop_shots(
+    g: Graph, s: Any, kit: Kit, course: Any, ball: Any, mine: Any, by_club: Any,
+) -> None:
+    """Adds the flow that lets the owner, in desktop mode, address, aim, and hit the ball.
 
-    The flow runs on every machine, and each machine reads its own user's
-    mouse and view. Only the golfer's machine writes the shot's model
-    variables, apart from the press that addresses the ball. The arrow
-    is shown to everyone, and the gauge only to the golfer.
-
-    Args:
-        g: The graph.
-        s: The graph's Space, with the variables that build_graph declares.
-        scene: The slots and components of the course.
-        by_club: Returns the value for the selected club, from one value
-            per club in CLUBS.
+    The flow reads the mouse and the view of the machine that runs it,
+    so it runs only on the owner's.
     """
-    ball = slots.ref(scene.ball)
-    course = slots.ref(scene.course)
     p = transform.global_position(ball)
     local = users.local_user()
-    me = users.machine_id(local)
-    mine = s.golfer == me
     dash_open = users.is_dash_open(local)
     in_vr = users.is_vr_active(local)
     eye = users.view_position()
@@ -1012,8 +1199,7 @@ def build_desktop_shots(g: Graph, s: Any, scene: Scene, by_club: Any) -> None:
     depth = dm.dot(to_ball, forward)
     on_ball = ((depth > 0) & (depth < REACH)
                & (dm.magnitude(to_ball - forward * depth) < CLICK_RADIUS))
-    at_rest = ((dm.magnitude(s.v) < REST_SPEED)
-               & ~interaction.is_grabbed(scene.ball_grab))
+    at_rest = dm.magnitude(s.v) < REST_SPEED
 
     # The spot is where the view's ray meets the level plane through the
     # ball's center.
@@ -1024,14 +1210,14 @@ def build_desktop_shots(g: Graph, s: Any, scene: Scene, by_club: Any) -> None:
     facing = dm.pack(forward.x, 0, forward.z)
 
     def let_go() -> None:
-        s.golfer = ""
+        s.addressed = False
         s.charging = False
         s.fill = 0.0
 
-    with g.Under(scene.graph):
-        with g.If(~dash_open):
-            with g.If(mine):
-                with g.If(mouse.right_pressed() | ~at_rest | in_vr):
+    with g.Under(kit.graph):
+        with g.If(mine & ~dash_open):
+            with g.If(s.addressed):
+                with g.If(mouse.right_pressed() | ~at_rest | in_vr | s.holed):
                     let_go()
                 with g.Else():
                     # One club per turn of the wheel, counted when the
@@ -1058,7 +1244,7 @@ def build_desktop_shots(g: Graph, s: Any, scene: Scene, by_club: Any) -> None:
                                     MIN_BACKSWING_SHARE + (1 - MIN_BACKSWING_SHARE) * s.fill)
                                 s.swing_rate = speed * math.degrees(1 / PIVOT_HEIGHT)
                                 s.swing_request = True
-                                s.golfer = ""
+                                s.addressed = False
                             s.fill = 0.0
                     with g.Else():
                         with g.If((look_down > MIN_LOOK_DOWN) & (reach < MAX_AIM_DISTANCE)):
@@ -1075,44 +1261,86 @@ def build_desktop_shots(g: Graph, s: Any, scene: Scene, by_club: Any) -> None:
                                 s.charging = True
                                 s.charge_time = 0.0
             with g.Else():
-                with g.If(~in_vr):
+                with g.If(~in_vr & ~s.holed):
                     with g.If(mouse.left_pressed() & on_ball & at_rest):
-                        s.presser = me
+                        s.pressed_on_ball = True
                     # The ball is addressed when the button comes up, so
                     # that the press that addresses it doesn't also start a
                     # swing.
-                    with g.If(mouse.left_released() & (s.presser == me)):
-                        s.presser = ""
-                        s.golfer = me
-                        s.charging = False
-                        s.fill = 0.0
-                        s.aim = dm.normalized(facing)
-        with g.Else():
-            # The left button may come up in the dash, where the flow
-            # doesn't see it, so a swing in progress stops.
-            with g.If(mine & s.charging):
-                s.charging = False
-                s.fill = 0.0
+                    with g.If(mouse.left_released()):
+                        with g.If(s.pressed_on_ball):
+                            s.addressed = True
+                            s.charging = False
+                            s.fill = 0.0
+                            s.aim = dm.normalized(facing)
+                        s.pressed_on_ball = False
+        # The left button may come up in the dash, where the flow doesn't
+        # see it, so a swing in progress stops.
+        with g.If(mine & dash_open & s.charging):
+            s.charging = False
+            s.fill = 0.0
 
-    aim = scene.aim
-    g.Bind(s.golfer != "", aim.arrow, "IsActive", slot=scene.graph)
-    g.Bind(p + primitives.Float3(0, ARROW_LIFT, 0), aim.arrow, "Position", slot=scene.graph)
-    g.Bind(s.aim * (ARROW_LENGTH + ARROW_GROWTH * s.fill), aim.arrow_mesh, "Vector",
-           slot=scene.graph)
-    # A drive computes on each machine, so the gauge shows only on the
-    # golfer's, in front of the golfer's own view.
-    g.Bind(mine & ~dash_open, aim.gauge, "IsActive", slot=scene.graph)
-    g.Bind(eye + view * primitives.Float3(*GAUGE_AT), aim.gauge, "Position", slot=scene.graph)
-    g.Bind(view, aim.gauge, "Rotation", slot=scene.graph)
-    g.Bind(s.fill * 180, aim.fill, "Arc", slot=scene.graph)
-    for i, label in enumerate(aim.club_labels):
-        g.Bind(s.club == i, label, "IsActive", slot=scene.graph)
+
+def add_bindings(g: Graph, s: Any, kit: Kit, ball: Any, mine: Any, by_club: Any) -> None:
+    """Binds what each machine shows of the kit, and what it lets its user touch.
+
+    A drive computes on each machine, so the owner's machine and the
+    others' can show and allow different things.
+    """
+    p = transform.global_position(ball)
+    local = users.local_user()
+    eye = users.view_position()
+    view = users.view_rotation()
+    aim = kit.aim
+    at = kit.graph
+
+    g.Bind(mine, kit.club_grab, "Enabled", slot=at)
+    g.Bind(mine, kit.grip_collider, "Enabled", slot=at)
+    g.Bind(mine | interaction.is_grabbed(kit.club_grab) | s.swinging, kit.club, "IsActive",
+           slot=at)
     g.Bind(dm.axis_angle(primitives.Float3(1, 0, 0), -by_club([c.loft for c in CLUBS])),
-           scene.head, "Rotation", slot=scene.graph)
+           kit.head, "Rotation", slot=at)
+
+    g.Bind(mine & s.addressed, aim.arrow, "IsActive", slot=at)
+    g.Bind(p + primitives.Float3(0, ARROW_LIFT, 0), aim.arrow, "Position", slot=at)
+    g.Bind(s.aim * (ARROW_LENGTH + ARROW_GROWTH * s.fill), aim.arrow_mesh, "Vector", slot=at)
+
+    g.Bind(mine & s.addressed & ~users.is_dash_open(local), aim.gauge, "IsActive", slot=at)
+    g.Bind(eye + view * primitives.Float3(*GAUGE_AT), aim.gauge, "Position", slot=at)
+    g.Bind(view, aim.gauge, "Rotation", slot=at)
+    g.Bind(s.fill * 180, aim.fill, "Arc", slot=at)
+    for i, label in enumerate(aim.club_labels):
+        g.Bind(s.club == i, label, "IsActive", slot=at)
+
+    # The name tag turns to face each viewer.
+    g.Bind(p + primitives.Float3(0, NAME_TAG_HEIGHT, 0), aim.name_tag, "Position", slot=at)
+    g.Bind(view, aim.name_tag, "Rotation", slot=at)
+    g.Bind(
+        users.username(s.owner) + "\n"
+        + dm.conditional(s.holed, "holed in ", "strokes: ") + strings.to_string(s.strokes),
+        aim.name_text, "Text", slot=at,
+    )
+
+
+def build_play_graph(course: Course) -> Graph:
+    """Returns the graph that gives a player a kit when they press Play and have none.
+
+    It runs on the presser's machine, since a button's events fire only
+    there, so the duplicate's OnDuplicate event fires there too.
+    """
+    g = Graph()
+    with g.Under(course.graph):
+        with g.ButtonEvents(button=course.play_button) as e:
+            with e.pressed():
+                mine = slots.find_child(course.players, users.machine_id(users.local_user()))
+                with g.If(dm.is_null(mine)):
+                    kit = g.DuplicateSlot(course.kit.root, course.players)
+                    g.SetSlotActiveSelf(kit, True)
+    return g
 
 
 async def main(port: int | None) -> None:
-    """Builds the course and the graph in front of the user.
+    """Builds the course and the graphs in front of the user.
 
     Args:
         port (int | None): The ResoniteLink port, or None to find the
@@ -1124,9 +1352,11 @@ async def main(port: int | None) -> None:
         port = session.port
     resolink = client.Client()
     await resolink.connect(port)
-    scene = await build_scene(resolink)
-    await build_graph(resolink, scene)
-    print("The course is ready. Click the ball to aim a shot, or grab the club and swing it.")
+    course = await build_course(resolink)
+    await build_kit_graph(course.kit, course.root, course.play_button).build(resolink)
+    print("Built the kit's graph.")
+    await build_play_graph(course).build(resolink)
+    print("The course is ready. Press Play to get a ball.")
     await resolink.close()
 
 

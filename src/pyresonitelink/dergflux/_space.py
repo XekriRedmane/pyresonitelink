@@ -12,6 +12,7 @@ from typing import TYPE_CHECKING, Any
 
 from pyresonitelink.data import primitives, workers
 from pyresonitelink.dergflux import _expr
+from pyresonitelink.generated._types import user as _user
 
 if TYPE_CHECKING:
     from pyresonitelink.data import protocols
@@ -160,6 +161,9 @@ _MODEL_VAR_TYPES: dict[str, type] = {
 }
 _MODEL_VAR_TYPES["RefModelVar"] = workers.Slot
 _MODEL_VAR_TYPES["TypeModelVar"] = type
+# A User model variable holds a reference to a user, in a
+# DataModelUserRefStore. It reads as null once the user has left.
+_MODEL_VAR_TYPES["UserModelVar"] = _user.User
 
 
 class Space:

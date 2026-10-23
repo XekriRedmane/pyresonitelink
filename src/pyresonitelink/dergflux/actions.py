@@ -76,6 +76,51 @@ SetGlobalPositionRotation = _transform_setter(
 SetLocalPosition = _transform_setter("SetLocalPosition", position=primitives.Float3)
 SetLocalRotation = _transform_setter("SetLocalRotation", rotation=primitives.FloatQ)
 
+# Slot actions. Each runs when the flow reaches it and then goes on, so
+# it is a statement of its own (Graph.DuplicateSlot etc.).
+
+DuplicateSlot = ActionDef(
+    import_path="protoflux.slots",
+    class_name="DuplicateSlot",
+    inputs={
+        "template": InputDef("template", ref_type=SLOT_TYPE),
+        "override_parent": InputDef("override_parent", ref_type=SLOT_TYPE),
+    },
+    flow_outputs=["next"],
+    value_outputs={"duplicate": OutputDef("Duplicate", _SlotType)},
+    continuations=["next"],
+)
+
+DestroySlot = ActionDef(
+    import_path="protoflux.slots",
+    class_name="DestroySlot",
+    inputs={"instance": InputDef("instance", ref_type=SLOT_TYPE)},
+    flow_outputs=["next"],
+    continuations=["next"],
+)
+
+SetSlotName = ActionDef(
+    import_path="protoflux.slots.info",
+    class_name="SetSlotName",
+    inputs={
+        "instance": InputDef("instance", ref_type=SLOT_TYPE),
+        "name": InputDef("name", primitives.String),
+    },
+    flow_outputs=["next"],
+    continuations=["next"],
+)
+
+SetSlotActiveSelf = ActionDef(
+    import_path="protoflux.slots.info",
+    class_name="SetSlotActiveSelf",
+    inputs={
+        "instance": InputDef("instance", ref_type=SLOT_TYPE),
+        "active": InputDef("active", primitives.Bool),
+    },
+    flow_outputs=["next"],
+    continuations=["next"],
+)
+
 PlayOneShot = ActionDef(
     import_path="protoflux.audio",
     class_name="PlayOneShot",

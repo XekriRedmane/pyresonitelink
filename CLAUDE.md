@@ -652,6 +652,9 @@ ALWAYS check whether a type needs Value or Object variants before creating Proto
 - A drive (`g.Bind`) is computed on each machine, so binding `IsActive` to the same comparison shows something only to that user.
 - The mouse nodes see clicks that the laser also delivers, and clicks in the dash. Gate them with `~users.is_dash_open(users.local_user())`.
 - `==` on strings or references builds `ObjectEquals<T>`. `ValueEquals<string>` doesn't exist. A `StringModelVar` starts as null, which isn't equal to `""`, so give it `""` as its initial value.
+- To give each user a copy of something with its own graph, build the graph in an inactive template and duplicate it with `g.DuplicateSlot` from a flow on the user's machine (a button's events fire only there). `g.OnDuplicate` fires only on the duplicating machine, so the template claims the copy there with a `UserModelVar`. `examples/dergflux_golf.py` does this per player.
+- Drives in an inactive slot compute, but Update flows there don't run (measured 23 Oct 2026). ALWAYS gate a template's flows on its owner anyway, since a duplicate is active.
+- In desktop mode a click reaches a button only within 2 s of the view turning (`InteractionLaser`, `FirstPersonTargettingController`). A test driver that clicks a button after the mouse has been still MUST turn the view a pixel and back in separate updates first. The mouse nodes aren't affected.
 
 #### Recording a Running Graph
 

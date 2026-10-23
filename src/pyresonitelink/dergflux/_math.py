@@ -588,6 +588,30 @@ def pack(*elements: Any) -> _expr.ExprProxy:
     )
 
 
+def is_null(value: Any) -> _expr.ExprProxy:
+    """Returns a Bool that is true if a string or a reference is null.
+
+    Uses ProtoFlux's IsNull<T>. A user who has left the session, a slot
+    that was destroyed, and a slot that a search didn't find are null.
+
+    Args:
+        value: An expression of a ProtoFlux object type, such as a String,
+            a User, or a workers.Slot.
+
+    Raises:
+        TypeError: The value has no type.
+    """
+    from pyresonitelink.data import primitives
+
+    node = _expr._coerce(value)._node
+    if node._type is None:
+        raise TypeError("is_null takes a value with a type.")
+    return _expr.node_output(
+        {"Instance": _expr.ExprProxy(node)}, primitives.Bool,
+        module="protoflux.operators", class_name="IsNull", type_args=(node._type,),
+    )
+
+
 def conditional(
     condition: Any, on_true: Any, on_false: Any,
 ) -> _expr.ExprProxy:
@@ -595,7 +619,8 @@ def conditional(
 
     Returns ``on_true`` if ``condition`` is true, else ``on_false``.
     Uses generic ``ValueConditional<T>``, where T is the common type of
-    the two values. The condition must be a Bool.
+    the two values, or ``ObjectConditional<T>`` for strings and
+    references. The condition must be a Bool.
     """
     from pyresonitelink.data import primitives
 
