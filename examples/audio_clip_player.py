@@ -14,6 +14,7 @@ import os
 import sys
 
 from pyresonitelink import client
+from pyresonitelink.data import workers
 from pyresonitelink.components.assets import StaticAudioClip
 from pyresonitelink.components.audio import AudioClipPlayer, AudioOutput
 
@@ -25,12 +26,10 @@ async def main(port: int) -> None:
     print("Connected.\n")
 
     # Delete any leftover slot from a previous run
-    root = await resolink.get_slot(slot="Root", depth=1)
-    assert root.data is not None
-    for child in root.data.children:
-        if child.name and child.name.value == "AudioClipPlayer Example":
-            print(f"Deleting old slot {child.id}...")
-            await resolink.remove_slot(slot=child)
+    for old in await workers.Slot(id=workers.Slot.ROOT_SLOT_ID).remove_children_named(
+        resolink, "AudioClipPlayer Example",
+    ):
+        print(f"Deleted old slot {old}.")
 
     # Create a slot
     slot = await resolink.add_slot(

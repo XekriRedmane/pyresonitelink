@@ -83,7 +83,7 @@ Python objects <- decode_response() <- JSON <---+
 - **`data/primitives.py`**: PascalCase primitive types (Float3, FloatQ, Color, Rect, BoundingBox, etc.) with float/int coercion in `__post_init__`. Scalar aliases: `primitives.Float` = `np.float32`, `primitives.String` = `str`, `primitives.Char` = `str`, etc.
 - **`data/fields.py`**: Typed field wrappers (FieldFloat, FieldString, ArrayFloat3, FieldRect, etc.) for component member values. Includes nullable variants (FieldNullableInt, etc.) and array variants (ArrayFloat3, etc.).
 - **`data/members.py`**: Member types (Reference[T], SyncList, SyncObject, SyncPlayback, SyncDictionary, FieldEnum, EmptyElement). Reference is generic with a phantom type parameter for type-safe references.
-- **`data/workers.py`**: Core data model - Worker (base) -> Slot (scene node) -> Component.
+- **`data/workers.py`**: Core data model - Worker (base) -> Slot (scene node) -> Component. `Slot.remove_children_named` removes an earlier run's slots by name.
 - **`data/messages.py`**: Request types (GetSlot, AddComponent, UpdateComponent, GetComponentTypeList, GetComponentDefinition, GetTypeDefinition, GetSyncObjectDefinition, CallSyncMethod, CallStaticSyncMethod, etc.).
 - **`data/responses.py`**: Response types (SlotData, ComponentData, ComponentTypeList, ComponentDefinitionData, etc.).
 - **`data/reflection.py`**: Reflection data types for ComponentDefinition responses.
@@ -95,6 +95,11 @@ Python objects <- decode_response() <- JSON <---+
 - **`generated/_types/`**: Generated type hierarchy classes (interfaces, abstract types, asset types) used by reference properties.
 - **`cli/gencode.py`**: CLI for generating component wrapper classes and their type dependencies. Automatically rebuilds `__init__.py` re-exports after generation.
 - **`cli/get_components.py`**: CLI for browsing component types and definitions.
+- **`utils/glb.py`**: Reads meshes from glTF files and converts them to Resonite's coordinates.
+- **`utils/placement.py`**: Finds the user's head (`find_head`), and gives a world transform in front of it (`in_front_of_head`).
+- **`utils/slots.py`**: Adds a slot at a place given in world space (`add_slot_at`).
+- **`utils/rendering.py`**: Imports a `glb.Mesh` and shows it with a StaticMesh and a MeshRenderer (`add_mesh`), or adds a renderer with its material list (`add_renderer`).
+- **`utils/wiring.py`**: Adds ProtoFlux nodes and wires them (`add_node`), and sets the field a drive node drives (`drive_field`). The Dergflux builder uses both.
 
 ### Import Aliases
 
@@ -300,7 +305,7 @@ await resolink.import_audio_clip_raw_data(samples, 48000)    # (count,) or (coun
 
 `add_slot` returns a `Slot` directly (raises `RuntimeError` on failure). `add_component` returns `NewEntityId` with `.entityId`. Other mutations return `Response` with `.success`.
 
-- Slot positions, rotations, and scales are relative to the parent, in `add_slot` and in slot data alike. ALWAYS convert a world transform with `transforms.relative_to(await resolink.get_global_transform(parent), world)` before passing it to `add_slot`.
+- Slot positions, rotations, and scales are relative to the parent, in `add_slot` and in slot data alike. ALWAYS convert a world transform with `transforms.relative_to(await resolink.get_global_transform(parent), world)` before passing it to `add_slot`. `slots.add_slot_at` does this.
 - `data/transforms.py` holds the quaternion and transform arithmetic (`rotate`, `multiply`, `inverse`, `compose`, `relative_to`).
 - NEVER compute a world transform by reading the ancestors with one `get_slot` each. Every transform can change in every engine update, and a counter-spinning child came out about 3 degrees off. `get_global_transform` adds a temporary probe slot under Root with `CopyGlobalTransform` and `CopyGlobalScale` (UpdateOrder int.MaxValue, so they run last), and polls it until random float32 sentinels in its position and scale have been replaced.
 - The server associates each member ID in a read or write with its member, and returns an error for a second ID for the same member ("One of the dictionaries already contains one of the elements"). Fresh `Member`s get random IDs, so a second update with fresh IDs fails. An empty ID skips the association (`ResoniteLinkTranslator.WriteMemberData`), and `update_slot` sends every field with `id=""`. `update_component` doesn't, because the server adds a SyncList element only for an element ID it hasn't seen.
@@ -560,7 +565,7 @@ The generator emits the tagging (`_method_argument_field_class`), and `call_meth
 - NEVER give an untyped literal the other operand's type when it doesn't fit. `int_var + 2.5` must widen the int, not truncate the 2.5 (`_expr._type_literal`).
 - `primitives.DateTime` / `TimeSpan` are `datetime.datetime` / `datetime.timedelta`. The wire form is a string, converted by `data/timeformats.py` in the field classes' `__post_init__` and in `codec._encode_value`.
 - The time nodes' output types come from their C# base classes (e.g. `ToUnixSeconds : DateTimeConverter<long>`, `TimeSpanTotalSeconds : TimeSpanExtractor<double>`). Check `ProtoFlux.Nodes.Core.dll` with ilspycmd rather than guessing.
-- `_create_and_wire` wires each reference with the `targetType` the new component's data reports for that member. ALWAYS keep it that way. The old per-class guesses gave `Add_DateTime_TimeSpan`'s TimeSpan input a DateTime target type.
+- `wiring.add_node`, which the builder's `_create_and_wire` calls, wires each reference with the `targetType` the new component's data reports for that member. ALWAYS keep it that way. The old per-class guesses gave `Add_DateTime_TimeSpan`'s TimeSpan input a DateTime target type.
 
 ### ProtoFlux
 
@@ -598,7 +603,7 @@ ALWAYS check whether a type needs Value or Object variants before creating Proto
 #### A Field Drive's Target Is on Its Proxy
 
 - `ValueFieldDrive<T>` has only a `Value` input. The server adds a `FieldDriveBase<T>+Proxy` component beside it. The Proxy's `Drive` reference (`IField<T>`) is the driven field, and its `Node` reference is the drive node.
-- ALWAYS set `Drive` on the Proxy, found by its `Node` (`_builder._find_drive_proxy`). Until Oct 2026 Dergflux wired a `_value` member that the node doesn't have. `update_references` skips an unknown member silently, so no Dergflux expression binding ever drove its field.
+- ALWAYS set `Drive` on the Proxy, found by its `Node` (`wiring.drive_field`). Until Oct 2026 Dergflux wired a `_value` member that the node doesn't have. `update_references` skips an unknown member silently, so no Dergflux expression binding ever drove its field.
 - `ElapsedTime*` nodes return the world time, not the time since they were added, until their Reset impulse runs. Their Proxy's `SyncTime` starts at offset 0 (checked in the decompiled source and live, 20 Oct 2026). Use `WorldTimeDouble` minus a stored start time, as `examples/dergflux_number_wheel.py` does.
 
 #### Dergflux Expressions Overload `==`
@@ -623,9 +628,9 @@ The type mismatch error is: "Reference target ... is not compatible type". When 
 
 ProtoFlux nodes are highly sensitive to component creation order and timing. For maximum stability:
 
-1. **ALWAYS use "Create Then Wire"**: Add components to the slot empty (or with scalar fields only) using `add_to_slot()`, then use `update_references()` to wire them together. constructor-based wiring frequently fails or triggers server-side type validation errors.
+1. **ALWAYS use "Create Then Wire"**: Add components to the slot empty (or with scalar fields only) using `add_to_slot()`, then use `update_references()` to wire them together. `wiring.add_node` does both, with the target types and the delay below. constructor-based wiring frequently fails or triggers server-side type validation errors.
 2. **Explicit Target Types**: When calling `update_references()`, use `members.Reference` objects with an explicit `targetType` (e.g. `'[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<T>'`) instead of raw ID strings. This helps Resonite's strict type system resolve generic interface compatibility.
-3. **Delays Span Engine Updates**: Keep the `asyncio.sleep(0.05)` between creating ProtoFlux nodes and wiring them. Each client call already waits for its response, so message order is guaranteed without it. Without it the references all arrive, but the graph never runs (measured 18 Oct 2026, 17 of 34 Dergflux integration tests failed with the 0.05 s sleeps removed, 9 with all builder sleeps removed). The nodes apparently have to be registered in an engine update before they're wired. NEVER build a ProtoFlux graph with `data_model_operation_batch`, which runs every operation in one engine update.
+3. **Delays Span Engine Updates**: Keep the 0.05 s sleep (`wiring.WIRE_DELAY`) between creating ProtoFlux nodes and wiring them. Each client call already waits for its response, so message order is guaranteed without it. Without it the references all arrive, but the graph never runs (measured 18 Oct 2026, 17 of 34 Dergflux integration tests failed with the 0.05 s sleeps removed, 9 with all builder sleeps removed). The nodes apparently have to be registered in an engine update before they're wired. NEVER build a ProtoFlux graph with `data_model_operation_batch`, which runs every operation in one engine update.
 
 4. **Statement Ordering**: In impulse chains, the execution order is guaranteed by the wiring. ALWAYS ensure that "completion signals" (like setting a `ran` variable to True) are wired as the ABSOLUTE LAST statement in a chain to prevent tests from seeing partial results.
 

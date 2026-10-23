@@ -23,6 +23,7 @@ from pyresonitelink.data import workers
 from pyresonitelink.dergflux import _expr
 from pyresonitelink.dergflux import _flow
 from pyresonitelink.dergflux import _space
+from pyresonitelink.utils import wiring
 
 if TYPE_CHECKING:
     from pyresonitelink.data import protocols
@@ -257,56 +258,19 @@ async def _create_and_wire(
     references: dict[str, str],
     debug: bool = False,
 ) -> Any:
-    """Create a component empty and wire references via update_references.
+    """Creates a component and wires its references with wiring.add_node.
 
-    This avoids ResoniteLink type compatibility issues that occur when
-    reference members are set via constructor data in add_component.
-    ProtoFlux nodes often fail constructor-based wiring because the
-    server's type check is stricter than ProtoFlux's runtime system.
+    Returns:
+        The new component.
     """
     if debug:
         print(f"Creating component: {component_class.__name__} on slot {slot.id}")
-
     comp = component_class()
-    await comp.add_to_slot(resolink, slot, debug=debug)
-    # Small delay to let the server process the new component before wiring
-    await asyncio.sleep(0.05)
-    
-    if references:
-        from pyresonitelink.data import members
-        # Wire using Reference objects with explicit targetType
-        typed_refs = {}
-        for k, v in references.items():
-            target_id = v.id if hasattr(v, "id") else v
-
-            # The new component's data gives each reference's exact
-            # targetType, e.g. INodeValueOutput<DateTime> for one input of
-            # Add_DateTime_TimeSpan and INodeValueOutput<TimeSpan> for the
-            # other.
-            member = comp.get_member(k)
-            target_type = (
-                member.targetType
-                if isinstance(member, members.Reference) and member.targetType
-                else "[FrooxEngine]FrooxEngine.ProtoFlux.INodeValueOutput<T>"
-            )
-
-            if debug:
-                print(f"  Wiring reference '{k}': target={target_id}, type={target_type}")
-
-            typed_refs[k] = members.Reference(
-                targetId=target_id,
-                targetType=target_type,
-            )
-        resp = await resolink.update_references(
-            componentId=comp.id,
-            references=typed_refs,
-            debug=debug,
-        )
-        if not resp.success:
-            raise RuntimeError(
-                f"Failed to wire {type(comp).__name__} "
-                f"{comp.id}: {resp.errorInfo}"
-            )
+    await wiring.add_node(
+        resolink, slot, comp,
+        {k: v if isinstance(v, str) else v.id for k, v in references.items()},
+        debug=debug,
+    )
     return comp
 
 
@@ -1821,32 +1785,6 @@ async def _bound_member_id(
     return member.id
 
 
-async def _find_drive_proxy(
-    resolink: protocols.ResoniteLinkClient,
-    slot: workers.Slot,
-    node_id: str,
-) -> workers.Component:
-    """Returns the Proxy component of a field drive node.
-
-    The server adds the Proxy beside the node, and the field that the node
-    drives is the Proxy's Drive reference. The Proxy's Node reference
-    identifies the node it belongs to.
-
-    Raises:
-        RuntimeError: No Proxy for the node appeared within a second.
-    """
-    for _ in range(20):
-        data = (await resolink.get_slot(slot, includeComponentData=True)).data
-        for component in data.components if data is not None else []:
-            node = (component.members or {}).get("Node")
-            if ((component.componentType or "").endswith("+Proxy")
-                    and isinstance(node, members.Reference)
-                    and node.targetId == node_id):
-                return component
-        await asyncio.sleep(0.05)
-    raise RuntimeError(f"No Proxy component appeared for the drive {node_id}.")
-
-
 def _uses_flow_state(node: _expr.ExprNode) -> bool:
     """Returns whether an expression reads a value that a flow creates.
 
@@ -1938,8 +1876,8 @@ async def _build_expr_binding(
     state from flow building, allowing bindings to reference loop
     indices and other flow-scoped values.
 
-    The drive node's Value input is wired to the expression. The field it
-    drives is set on the node's Proxy component.
+    The drive node's Value input is wired to the expression, and
+    wiring.drive_field sets the field it drives.
     """
     from pyresonitelink.protoflux.core import ValueFieldDrive
 
@@ -1950,21 +1888,7 @@ async def _build_expr_binding(
         ctx.resolink, bind_rec.slot, ConcreteDrive, {"Value": expr_comp.id},
         debug=ctx.debug,
     )
-    proxy = await _find_drive_proxy(ctx.resolink, bind_rec.slot, drive.id)
-    assert proxy.id is not None
-    target = (proxy.members or {}).get("Drive")
-    resp = await ctx.resolink.update_references(
-        componentId=proxy.id,
-        references={"Drive": members.Reference(
-            targetId=member_id,
-            targetType=target.targetType if isinstance(target, members.Reference) else None,
-        )},
-    )
-    if not resp.success:
-        raise RuntimeError(
-            f"Failed to set the field that drive {drive.id} drives: "
-            f"{resp.errorInfo}"
-        )
+    await wiring.drive_field(ctx.resolink, bind_rec.slot, drive, member_id)
 
 
 # =========================================================================

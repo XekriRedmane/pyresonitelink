@@ -19,6 +19,7 @@ import sys
 import time
 
 from pyresonitelink import client
+from pyresonitelink.data import workers
 from pyresonitelink.dergflux import Graph
 
 
@@ -36,10 +37,10 @@ async def main(port: int) -> None:
     print("Connected.\n")
 
     # Delete any leftover slot from a previous run
-    old = await resolink.find_slot("Root", name="Dergflux Play Sequence")
-    if old is not None:
-        print(f"Deleting old slot {old.id}...")
-        await resolink.remove_slot(slot=old)
+    for old in await workers.Slot(id=workers.Slot.ROOT_SLOT_ID).remove_children_named(
+        resolink, "Dergflux Play Sequence",
+    ):
+        print(f"Deleted old slot {old}.")
 
     slot = await resolink.add_slot(name="Dergflux Play Sequence")
     print(f"Created slot: {slot.id}\n")

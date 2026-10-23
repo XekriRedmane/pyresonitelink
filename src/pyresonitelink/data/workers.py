@@ -7,10 +7,14 @@ Slot and Component.
 # pylint: disable=invalid-name
 
 from dataclasses import dataclass, field
-from typing import ClassVar
+from typing import TYPE_CHECKING, ClassVar
 
 from .fields import FieldBool, FieldFloat3, FieldFloatQ, FieldLong, FieldString
 from .members import Member, Reference
+
+if TYPE_CHECKING:
+    # protocols imports this module.
+    from . import protocols
 
 
 @dataclass
@@ -57,3 +61,35 @@ class Slot(Worker):
     orderOffset: FieldLong | None = None
     components: list[Component] = field(default_factory=list[Component])
     children: list["Slot"] = field(default_factory=list["Slot"])
+
+    async def remove_children_named(
+        self, resolink: "protocols.ResoniteLinkClient", name: str,
+    ) -> list[str]:
+        """Removes each child of this slot that has a given name, with its descendants.
+
+        Scripts that add a slot under a fixed name call this first, so that
+        running them again replaces the slot instead of adding a second one.
+        Only direct children are removed, and the name must match exactly.
+        The children are read from the server, so this slot's children
+        field may be empty or out of date. Only the slot's id is used.
+
+            root = workers.Slot(id=workers.Slot.ROOT_SLOT_ID)
+            await root.remove_children_named(resolink, "Example")
+
+        Args:
+            resolink (protocols.ResoniteLinkClient): The connected client.
+            name (str): The name of the children to remove.
+
+        Returns:
+            The IDs of the removed slots.
+        """
+        assert self.id is not None, "The slot has no ID."
+        data = (await resolink.get_slot(self.id, depth=1)).data
+        assert data is not None
+        removed: list[str] = []
+        for child in data.children:
+            if child.name is not None and child.name.value == name:
+                assert child.id is not None
+                await resolink.remove_slot(child)
+                removed.append(child.id)
+        return removed

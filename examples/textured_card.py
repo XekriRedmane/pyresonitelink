@@ -25,20 +25,16 @@ from typing import Any
 import numpy as np
 import trimesh
 
-import number_wheel
-
 from pyresonitelink import client
 from pyresonitelink import discovery
-from pyresonitelink.data import members
-from pyresonitelink.data import mesh
 from pyresonitelink.data import primitives
-from pyresonitelink.data import transforms
 from pyresonitelink.data import workers
-from pyresonitelink.generated.assets import static_mesh
 from pyresonitelink.generated.assets import static_texture_2d
 from pyresonitelink.generated.assets.materials.unlit import unlit_material
-from pyresonitelink.generated.rendering import mesh_renderer
 from pyresonitelink.utils import glb
+from pyresonitelink.utils import placement
+from pyresonitelink.utils import rendering
+from pyresonitelink.utils import slots
 
 GLB_PATH = os.path.join(os.path.dirname(__file__), "TexturedCard.glb")
 SLOT_NAME = "Textured Card Example"
@@ -46,8 +42,6 @@ CARD_NODE = "TexturedCard"
 DISTANCE = 1.5  # meters in front of the head
 # The card in the file is 0.22 m wide. This makes it 0.66 m.
 CARD_SCALE = 3.0
-# Half a turn about Y, which turns the card's front, +Z, toward the head.
-HALF_TURN = primitives.FloatQ(0, 1, 0, 0)
 
 # The Resonite blend mode for each glTF alphaMode. A material without an
 # alphaMode is opaque.
@@ -146,56 +140,26 @@ async def place_card(resolink: client.Client, slot_name: str) -> workers.Slot:
     card = load_card(GLB_PATH)
     print(f"Read {len(card.submeshes)} parts from {GLB_PATH}: {', '.join(card.nodes)}.")
 
-    root = (await resolink.get_slot(workers.Slot.ROOT_SLOT_ID, depth=1)).data
-    assert root is not None
-    for child in root.children:
-        if child.name is not None and child.name.value == slot_name:
-            print(f"Deleting old slot {child.id}.")
-            await resolink.remove_slot(child)
+    for old in await workers.Slot(id=workers.Slot.ROOT_SLOT_ID).remove_children_named(
+        resolink, slot_name,
+    ):
+        print(f"Deleted old slot {old}.")
 
-    head = await resolink.get_global_transform(await number_wheel.find_head(resolink))
-    forward = transforms.rotate(head.rotation, primitives.Float3(0, 0, 1))
-    world = transforms.Transform(
-        position=primitives.Float3(
-            head.position.x + DISTANCE * forward.x,
-            head.position.y + DISTANCE * forward.y,
-            head.position.z + DISTANCE * forward.z,
-        ),
-        rotation=transforms.multiply(head.rotation, HALF_TURN),
+    # Half a turn turns the card's front, +Z, toward the head.
+    world = await placement.in_front_of_head(
+        resolink, DISTANCE, turn=placement.HALF_TURN, scale=CARD_SCALE,
     )
-    root_transform = await resolink.get_global_transform(workers.Slot.ROOT_SLOT_ID)
-    local = transforms.relative_to(root_transform, world)
-    slot = await resolink.add_slot(
-        name=slot_name,
-        position=local.position,
-        rotation=local.rotation,
-        scale=(CARD_SCALE, CARD_SCALE, CARD_SCALE),
-    )
-    print(f"Created slot {slot.id} at {number_wheel.format_vector(world.position)}.")
+    slot = await slots.add_slot_at(resolink, world, name=slot_name)
+    print(f"Created slot {slot.id}.")
 
-    assert card.uvs is not None
-    asset = await resolink.import_mesh_raw_data(
-        card.positions,
-        [mesh.RawTriangles(t) for t in card.submeshes],
-        normals=card.normals,
-        uvs=[card.uvs],
-    )
-    card_mesh = static_mesh.StaticMesh(url=asset.assetURL)
-    await card_mesh.add_to_slot(resolink, slot)
-
-    # Parts that share a material in the file share one here. Materials
-    # apply to the submeshes in order.
+    # Parts that share a material in the file share one here.
     added: dict[int, unlit_material.UnlitMaterial] = {}
     for material in card.materials:
         if id(material) not in added:
             added[id(material)] = await add_material(resolink, slot, material)
-    renderer = mesh_renderer.MeshRenderer(mesh=card_mesh)
-    await renderer.add_to_slot(resolink, slot)
-    materials = renderer.materials
-    assert materials is not None
-    for material in card.materials:
-        materials.elements.append(members.Reference(targetId=added[id(material)].id))
-    await renderer.update(resolink)
+    await rendering.add_mesh(
+        resolink, slot, card, [added[id(material)] for material in card.materials],
+    )
     return slot
 
 

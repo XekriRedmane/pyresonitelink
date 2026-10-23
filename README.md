@@ -155,6 +155,21 @@ q_inv = transforms.inverse(q)
 
 Use `relative_to` to find the local transform that puts a new child slot at a given place in the world. `compose` multiplies the scales component-wise, which is exact unless a non-uniform parent scale meets a rotated child. In that case the true result is sheared, and a `Transform` can't represent shear.
 
+#### Placing Slots in the World
+
+`pyresonitelink.utils.slots.add_slot_at` adds a slot at a place given in world space. It reads the parent's world transform and does the `relative_to` conversion, so the new slot ends up exactly where the given world transform says. `pyresonitelink.utils.placement.in_front_of_head` gives a world transform in front of the user's head, which is the "Head" slot of the first child of Root that has a UserRoot component. `Slot.remove_children_named` removes a slot's children that have a given name, with their descendants, so that a script that adds a slot under a fixed name replaces the one from its previous run. It reads the children from the server, so only the slot's `id` has to be set.
+
+```python
+from pyresonitelink.data import workers
+from pyresonitelink.utils import placement
+from pyresonitelink.utils import slots
+
+await workers.Slot(id=workers.Slot.ROOT_SLOT_ID).remove_children_named(resolink, "Example")
+# 2 m in front of the head, turned so that +Z points back at the head
+world = await placement.in_front_of_head(resolink, 2.0, turn=placement.HALF_TURN, scale=0.5)
+slot = await slots.add_slot_at(resolink, world, name="Example")
+```
+
 #### Audio
 
 ```python
@@ -230,6 +245,17 @@ asset = await resolink.import_mesh_raw_data(
     normals=m.normals,
     uvs=[] if m.uvs is None else [m.uvs],
 )
+```
+
+`pyresonitelink.utils.rendering.add_mesh` makes that import and adds a StaticMesh and a MeshRenderer that show the mesh, with one material for each submesh, in order. `add_renderer` does the second part for a mesh component that already exists, such as a BoxMesh. A MeshRenderer starts with an empty material list, and the server adds a list element for each member ID it hasn't seen yet, so both functions send all the materials in one update.
+
+```python
+from pyresonitelink.generated.assets.materials import pbs_metallic
+from pyresonitelink.utils import rendering
+
+paint = pbs_metallic.PBS_Metallic()
+await paint.add_to_slot(resolink, slot)
+await rendering.add_mesh(resolink, slot, m, [paint] * len(m.submeshes))
 ```
 
 `examples/textured_card.py` places `examples/TexturedCard.glb`, a paper card with transparent decals, in front of the user. It uploads each material's texture with `import_texture_2d_raw_data` and gives each submesh an unlit material with the file's blend mode. `examples/make_textured_card.py` writes the card, including hidden nodes marked in their extras, which the example leaves out with `skip`.
@@ -408,6 +434,26 @@ ProtoFlux is Resonite's node-based visual programming language. See the
 documentation on value chains, impulse chains, execution contexts, and
 the three variable types (Local, Store, Data Model Store).
 
+### Adding and Wiring Nodes
+
+`pyresonitelink.utils.wiring.add_node` adds a node and then wires its references with `update_references`. The server often leaves references unwired when they are sent with the component, and a reference's target type must match the one the node reports, so `add_node` reads each reference's `targetType` from the new node's data. It also pauses between adding and wiring, because the graph doesn't run when the nodes are wired before an engine update has registered them.
+
+A `ValueFieldDrive<T>` node has only a `Value` input. The field it drives is the `Drive` reference of a Proxy component that the server adds beside it, and `wiring.drive_field` finds that Proxy and sets it.
+
+```python
+from pyresonitelink.data import primitives
+from pyresonitelink.protoflux import core, operators
+from pyresonitelink.utils import wiring
+
+add = operators.ValueAdd[primitives.Float]()
+await wiring.add_node(resolink, slot, add, {"A": input_a, "B": input_b})
+drive = core.ValueFieldDrive[primitives.Float]()
+await wiring.add_node(resolink, slot, drive, {"Value": add})
+await wiring.drive_field(resolink, slot, drive, value_field.get_member("Value").id)
+```
+
+Dergflux builds its graphs with these two functions.
+
 ### Examples
 
 ### Dataflow: Addition Graph
@@ -486,7 +532,7 @@ python examples/dergflux_play_sequence.py <port>               # Multiplexer + F
 python examples/dergflux_number_wheel.py [port]                # A counting drum, driven by a binding
 ```
 
-`dergflux_number_wheel.py` is `number_wheel.py` with its ProtoFlux graph written in Dergflux. Both place a ten-sided number drum from `examples/NumberDrum.glb` 5 m in front of the user's head and turn it to the next digit every second.
+`dergflux_number_wheel.py` places a ten-sided number drum from `examples/NumberDrum.glb` 5 m in front of the user's head. A binding turns it to the next digit every second, easing in and out along a smoothstep curve.
 
 ## Command-Line Tools
 

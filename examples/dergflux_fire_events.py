@@ -21,6 +21,7 @@ import asyncio
 import sys
 
 from pyresonitelink import client
+from pyresonitelink.data import workers
 from pyresonitelink.dergflux import Graph
 
 
@@ -30,10 +31,11 @@ async def main(port: int) -> None:
     await resolink.connect(port)
     print("Connected.\n")
 
-    old = await resolink.find_slot("Root", name="Dergflux Fire Events")
-    if old is not None:
-        print(f"Deleting old slot {old.id}...")
-        await resolink.remove_slot(slot=old)
+    # Delete any leftover slot from a previous run
+    for old in await workers.Slot(id=workers.Slot.ROOT_SLOT_ID).remove_children_named(
+        resolink, "Dergflux Fire Events",
+    ):
+        print(f"Deleted old slot {old}.")
 
     slot = await resolink.add_slot(name="Dergflux Fire Events")
     print(f"Created slot: {slot.id}\n")

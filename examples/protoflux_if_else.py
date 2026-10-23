@@ -51,12 +51,10 @@ async def main(port: int) -> None:
     print("Connected.\n")
 
     # Delete any leftover slot from a previous run
-    root = await resolink.get_slot(slot="Root", depth=1)
-    assert root.data is not None
-    for child in root.data.children:
-        if child.name and child.name.value == "If-Else Example":
-            print(f"Deleting old slot {child.id}...")
-            await resolink.remove_slot(slot=child)
+    for old in await workers.Slot(id=workers.Slot.ROOT_SLOT_ID).remove_children_named(
+        resolink, "If-Else Example",
+    ):
+        print(f"Deleted old slot {old}.")
 
     slot = await resolink.add_slot(name="If-Else Example")
     print(f"Created slot: {slot.id}\n")
