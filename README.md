@@ -582,10 +582,11 @@ Key features:
 - **Triggers**: `g.Under(slot)` (Update every frame), `g.Under(slot, trigger="tag")` (named impulse), `g.Under(slot, trigger=("tag", type))` (with value)
 - **Bindings**: `g.Bind(s.x, component, "Field")` permanently binds a variable or expression to a component field, and `g.Bind(expr, slot, "Rotation")` to a slot's Position, Rotation, Scale, IsActive, or OrderOffset
 - **Vectors**: `math.dot`, `math.cross`, `math.magnitude`, `math.normalized`, `math.pack`, elements as `v.x`, a vector times or divided by a number, and a `FloatQ` rotating a `Float3` ([details](src/pyresonitelink/dergflux/dergflux.md#vectors))
-- **Strings**: `+` joins strings, and `strings.to_string(x)` formats a value ([details](src/pyresonitelink/dergflux/dergflux.md#strings))
+- **Strings**: `+` joins strings, `==` and `!=` compare them, and `strings.to_string(x)` formats a value ([details](src/pyresonitelink/dergflux/dergflux.md#strings))
 - **Slots and transforms**: `slots.ref(slot)`, `slots.of_component(c)`, `transform.global_position(slot)`, `transform.global_point_to_local(slot, p)`, and the setters `g.SetGlobalPosition(slot, p)` and its relatives ([details](src/pyresonitelink/dergflux/dergflux.md#slots-and-transforms))
 - **Variables on other slots**: `variables.read(slot, "space/name", type)` reads a dynamic variable from a slot the graph computes, such as a hit collider's ([details](src/pyresonitelink/dergflux/dergflux.md#variables-on-other-slots))
-- **Users and grabbing**: `users.local_user_is_host()` and `interaction.is_grabbed(grabbable)`
+- **Users and grabbing**: `users.local_user_is_host()`, `users.machine_id(user)`, `users.is_vr_active(user)`, `users.is_dash_open(user)`, the local view's `users.view_position()` and `users.view_rotation()`, and `interaction.is_grabbed(grabbable)` ([details](src/pyresonitelink/dergflux/dergflux.md#users-and-grabbing))
+- **Mouse**: `mouse.left_pressed()`, `mouse.left_held()`, `mouse.left_released()`, the same for the right button, and `mouse.scroll_delta()`, read on the machine that runs the flow ([details](src/pyresonitelink/dergflux/dergflux.md#mouse))
 - **Action nodes**: `g.RaycastOne(...)`, `g.PlayOneShotAndWait(...)`, `g.SlotChildrenEvents(...)`, or define custom actions with `ActionDef`. RaycastOne measures its distances in lengths of its direction, so normalize the direction to work in meters ([details](src/pyresonitelink/dergflux/dergflux.md#action-nodes)).
 - **Recording**: `pyresonitelink.utils.recorder.Recorder` records values from inside a running flow, one line per `record()` call, and a script reads the log in one request, as `s.ReadModelVar` and `s.WriteModelVar` read and write any model variable ([details](src/pyresonitelink/dergflux/dergflux.md#reading-and-writing-model-variables-from-python))
 - **Auto-bridging**: pass components directly to action inputs (e.g. `clip=my_clip`) — the builder creates `RefObjectInput` bridges automatically
@@ -620,12 +621,12 @@ python examples/dergflux_for.py <port>                         # For loop with O
 python examples/dergflux_play_one_shot_and_wait.py <port>      # Async audio playback
 python examples/dergflux_play_sequence.py <port>               # Multiplexer + For + PlayOneShotAndWait
 python examples/dergflux_number_wheel.py [port]                # A counting drum, driven by a binding
-python examples/dergflux_golf.py [port]                        # A golf ball that a graph moves, and a club
+python examples/dergflux_golf.py [port]                        # A golf ball that a graph moves, a club, and desktop shots
 ```
 
 `dergflux_number_wheel.py` places a ten-sided number drum from `examples/NumberDrum.glb` 5 m in front of the user's head. A binding turns it to the next digit every second, easing in and out along a smoothstep curve.
 
-`dergflux_golf.py` builds a small golf course on the floor in front of the user, with a fairway, a ramp, a bunker, a green, concrete walls, a ball, a club, and buttons. Resonite moves nothing by physics except characters, and its colliders have no friction or bounciness, so a graph moves the ball itself in every engine update. It finds what the ball touches with ray casts, and bounces, slides, or rolls the ball with the restitution, friction, and rolling resistance that the ball and each surface carry as dynamic variables. The club can be grabbed and swung in VR, and the "Putt", "Chip", and "Pitch" buttons swing it through the ball for desktop users. The script's docstring describes the method and its limits.
+`dergflux_golf.py` builds a small golf course on the floor in front of the user, with a fairway, a ramp, a bunker, a green, concrete walls, a ball, a club, and buttons. Resonite moves nothing by physics except characters, and its colliders have no friction or bounciness, so a graph moves the ball itself in every engine update. It finds what the ball touches with ray casts, and bounces, slides, or rolls the ball with the restitution, friction, and rolling resistance that the ball and each surface carry as dynamic variables. The club can be grabbed and swung in VR. A desktop user clicks the ball, looks at where it should go while an arrow on the ground follows the view, and holds the left button while a gauge fills, and the club swings along the arrow on release. The scroll wheel picks a 7 iron, a wedge, or a putter, and a right click or a click on the ball lets go of it. The script's docstring describes the method and its limits.
 
 ## Command-Line Tools
 

@@ -79,6 +79,12 @@ _GENERIC_BINOP_NAMES: dict[_expr.BinOp, str] = {
     _expr.BinOp.NE: "ValueNotEquals",
 }
 
+# The equality operators for operands of ProtoFlux object types.
+_OBJECT_COMPARISON_NAMES: dict[_expr.BinOp, str] = {
+    _expr.BinOp.EQ: "ObjectEquals",
+    _expr.BinOp.NE: "ObjectNotEquals",
+}
+
 # Comparison ops parameterize on the operand type, not Bool result.
 _COMPARISON_OPS = {
     _expr.BinOp.LT, _expr.BinOp.LE,
@@ -815,8 +821,11 @@ class _BuildContext:
                 debug=self.debug,
             )
 
-        # Generic binary op
+        # Generic binary op. ValueEquals<T> takes value types only, so
+        # strings and references compare with ObjectEquals<T>.
         name = _GENERIC_BINOP_NAMES[node.op]
+        if node.op in _OBJECT_COMPARISON_NAMES and _is_protoflux_object_type(op_type):
+            name = _OBJECT_COMPARISON_NAMES[node.op]
         from pyresonitelink.protoflux import operators
         OpClass = getattr(operators, name)
         ConcreteOp = OpClass[op_type]

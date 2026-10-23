@@ -11,11 +11,37 @@ The course is built on the floor 2 m in front of the user, running away
 from them. From the tee it has a fairway with a ramp, a bunker sunk 3 cm
 into the fairway, more fairway, and a green, with low concrete walls
 along the sides and a tall concrete backstop at the far end. Next to the
-tee are a club and four buttons. "Tee" puts the ball back on the tee,
-and "Putt", "Chip", and "Pitch" swing the club through the ball at three
-speeds, for desktop users who can't swing it by hand. In VR the club can
-be grabbed by its grip and swung, and the ball can be picked up, placed,
-and thrown.
+tee are a club and a "Tee" button, which puts the ball back on the tee.
+In VR the club can be grabbed by its grip and swung, and the ball can be
+picked up, placed, and thrown.
+
+Desktop shots
+-------------
+
+A desktop user can't swing the club by hand, so a shot takes three
+steps with the mouse.
+
+1. Click the ball while it is at rest. This addresses the ball, and an
+   arrow on the ground shows where the shot will go. A gauge in front of
+   the view shows the club, which the scroll wheel changes.
+2. Look at where the ball should go. The arrow points from the ball to
+   the spot on the ground under the crosshair, or along the view when
+   that spot is farther than MAX_AIM_DISTANCE.
+3. Press and hold the left button. The aim stops following the view,
+   and the gauge fills and empties again every FILL_TIME seconds.
+   Release it to swing the club along the arrow, with a head speed that
+   rises with the square of the gauge's fill. A release within TAP_TIME
+   of the press, or with the gauge nearly empty, swings nothing, and the
+   ball stays addressed.
+
+A right click, or a click on the ball, lets go of the ball, so that the
+left button presses things again. Grabbing the ball, or the ball moving,
+also lets go of it.
+
+The mouse is read on the desktop user's machine, by a flow that runs only
+where the local user's machine ID matches the "golfer" model variable.
+That flow passes the swing to the host's flow through model variables,
+and the host swings the club.
 
 Physical properties
 -------------------
@@ -43,9 +69,9 @@ hand's velocity.
 
 Otherwise, in this order:
 
-1. If a swing button was pressed, the club is posed at the top of its
-   backswing, and in later updates it turns about a pivot above the ball
-   until its follow-through.
+1. If a desktop user released a shot, the club is posed at the top of
+   its backswing, facing along the shot, and in later updates it turns
+   about a pivot above the ball until its follow-through.
 2. The ball's center is found in the club head's space. If it crossed
    the plane of the face, within the face's bounds, since the last
    update, while the ball and the face moved toward each other, the ball
@@ -84,6 +110,12 @@ The club's head has no collider, and the ball goes through its back and
 sides. A ball that falls 3 m below the course goes back to the tee. Each
 run deletes the course from the previous run.
 
+The aiming spot is where the view meets the level plane through the
+ball's center, so on the ramp it is off from the true spot under the
+crosshair by the ramp's height. Whoever clicks the ball takes it over
+from a desktop user who is aiming, so a user who leaves the session
+while aiming doesn't keep the ball from everyone else.
+
 Recording
 ---------
 
@@ -116,14 +148,17 @@ from pyresonitelink.data import workers
 from pyresonitelink.dergflux import Graph
 from pyresonitelink.dergflux import interaction
 from pyresonitelink.dergflux import math as dm
+from pyresonitelink.dergflux import mouse
 from pyresonitelink.dergflux import slots
 from pyresonitelink.dergflux import time
 from pyresonitelink.dergflux import transform
 from pyresonitelink.dergflux import users
 from pyresonitelink.dergflux import variables
 from pyresonitelink.generated.assets.materials import pbs_metallic
+from pyresonitelink.generated.assets.procedural_meshes import arrow_mesh
 from pyresonitelink.generated.assets.procedural_meshes import box_mesh
 from pyresonitelink.generated.assets.procedural_meshes import cylinder_mesh
+from pyresonitelink.generated.assets.procedural_meshes import ring_mesh
 from pyresonitelink.generated.assets.procedural_meshes import sphere_mesh
 from pyresonitelink.generated.data.dynamic import dynamic_value_variable
 from pyresonitelink.generated.data.dynamic import dynamic_variable_space
@@ -218,24 +253,88 @@ GRIP_RADIUS = 0.013  # meters
 SHAFT_RADIUS = 0.0055  # meters
 HEAD_DROP = 0.9  # meters from the grip's center down to the head's center
 # The head is a box, heel to toe along X, sole to top along Y, and back to
-# face along Z, tilted back by the loft so the face looks upward.
+# face along Z, tilted back by the selected club's loft so the face looks
+# upward.
 HEAD_SIZE = (0.075, 0.045, 0.02)  # meters
-LOFT = 30.0  # degrees, between a 7 and an 8 iron
 
 # A desktop swing turns the club about a pivot this far above the ball's
 # center, so the head's center is this far from the pivot and passes
 # through the ball's center at the bottom of the swing.
 PIVOT_HEIGHT = 1.4  # meters
 
-# The desktop swings, by button label, as the backswing in degrees and
-# the head's speed at the bottom of the swing in m/s. A ball leaves a
-# head with CLUB_HEAD's and BALL's values at about 1.5 times the head's
-# speed, along the face normal, 30 degrees above level.
-SHOTS = {
-    "Putt": (8.0, 1.6),
-    "Chip": (40.0, 3.5),
-    "Pitch": (100.0, 8.0),
-}
+
+@dataclasses.dataclass(frozen=True)
+class Club:
+    """Represents one of the clubs that the club head can be.
+
+    A ball leaves a head with CLUB_HEAD's and BALL's values at about 1.5
+    times the head's speed, along the face normal, at the loft above
+    level.
+
+    Attributes:
+        name (str): The name that the gauge shows.
+        loft (float): The face's angle back from vertical, in degrees.
+        speed (float): The head's speed at the bottom of a desktop swing
+            with the gauge full, in m/s.
+        backswing (float): How far back a desktop swing with the gauge
+            full starts, in degrees about the pivot. It only changes how
+            the swing looks, since the head's speed is set separately.
+    """
+
+    name: str
+    loft: float
+    speed: float
+    backswing: float
+
+
+# The clubs in the order that the scroll wheel steps through them. The
+# first is the one the club starts as. A full iron shot lands about 13 m
+# away on level ground, and a full putt rolls about 5 m on the green.
+CLUBS = [
+    Club("7 Iron", loft=30.0, speed=8.0, backswing=100.0),
+    Club("Wedge", loft=50.0, speed=7.0, backswing=90.0),
+    Club("Putter", loft=3.0, speed=1.6, backswing=25.0),
+]
+# The share of a club's full head speed and backswing that an empty
+# gauge gives. The speed rises with the square of the fill, so that short
+# shots are easier to judge.
+MIN_SPEED_SHARE = 0.1
+MIN_BACKSWING_SHARE = 0.2
+FILL_TIME = 1.2  # seconds for the gauge to fill from empty
+# A shot released with the gauge below this fill, or this soon after the
+# press, swings nothing. Without TAP_TIME a quick click would swing, since
+# the gauge fills by an eighth in 0.15 s.
+CANCEL_FILL = 0.03
+TAP_TIME = 0.2  # seconds
+
+# The crosshair is on the ball when the view's ray passes within this
+# distance of the ball's center, and the ball is no farther than REACH.
+CLICK_RADIUS = 0.06  # meters
+REACH = 5.0  # meters
+# A ball slower than this is at rest and can be addressed.
+REST_SPEED = 0.05  # m/s
+# The aiming spot is used only when the view looks down by at least this
+# much (the sine of the angle below level) and the spot is no farther
+# than MAX_AIM_DISTANCE. The arrow keeps its direction while the spot is
+# closer to the ball than MIN_AIM_DISTANCE.
+MIN_LOOK_DOWN = 0.05
+MAX_AIM_DISTANCE = 30.0  # meters
+MIN_AIM_DISTANCE = 0.1  # meters
+# The arrow's length is ARROW_LENGTH, plus ARROW_GROWTH times the gauge's
+# fill.
+ARROW_LENGTH = 0.5  # meters
+ARROW_GROWTH = 0.8  # meters
+ARROW_LIFT = 0.005  # meters from the ball's center up to the arrow
+
+# The gauge, in the view's space, with the view looking along +Z.
+GAUGE_AT = (0.0, -0.1, 0.45)  # meters
+GAUGE_RADIUS = 0.05  # meters, to the outside of the ring
+GAUGE_WIDTH = 0.008  # meters
+# TextRenderer sizes. A Size is about 6.5 times the letter height, so
+# these make letters about 1.3 cm and 0.6 cm tall, seen from 0.45 m.
+CLUB_LABEL_SIZE = 0.085
+HINT_SIZE = 0.04
+HINT = "Look to aim, hold left to swing\nScroll for a club, right-click to let go"
 
 
 @dataclasses.dataclass(frozen=True)
@@ -273,6 +372,13 @@ FINISHES = {
     "Steel": materials.Finish((0.6, 0.6, 0.62), metallic=0.9, smoothness=0.75),
     "Grip": materials.Finish((0.02, 0.02, 0.02), metallic=0.0, smoothness=0.3),
     "Button": materials.Finish((0.1, 0.2, 0.5), metallic=0.2, smoothness=0.5),
+    # The arrow and the gauge glow, so that they show in any light.
+    "Aim": materials.Finish((0.9, 0.8, 0.1), metallic=0.0, smoothness=0.3,
+                            emissive=(0.6, 0.5, 0.05)),
+    "Gauge": materials.Finish((0.1, 0.1, 0.1), metallic=0.0, smoothness=0.3,
+                              emissive=(0.08, 0.08, 0.08)),
+    "Power": materials.Finish((0.9, 0.35, 0.05), metallic=0.0, smoothness=0.3,
+                              emissive=(0.9, 0.35, 0.05)),
 }
 
 
@@ -319,10 +425,10 @@ COURSE = [
 
 TEE = (0.0, TOP + BALL_RADIUS, 0.0)  # the ball's center on the tee
 CLUB_START = (0.35, TOP + HEAD_DROP + 0.05, -0.15)  # the club's grip
-BUTTONS_AT = (-0.9, 1.0, -0.8)  # the middle of the row of buttons
+BUTTON_AT = (-0.9, 1.0, -0.8)  # the Tee button's center
 BUTTON_SIZE = (0.14, 0.07, 0.02)  # meters
 LABEL_SIZE = 0.18  # the TextRenderer's Size, which makes letters about 3 cm tall
-# A positive tilt turns the buttons' faces, toward -Z, up toward the user's
+# A positive tilt turns the button's face, toward -Z, up toward the user's
 # eyes.
 BUTTON_TILT = 30.0  # degrees
 
@@ -407,6 +513,32 @@ async def add_cylinder(
 
 
 @dataclasses.dataclass
+class AimVisuals:
+    """Represents the arrow and the gauge of desktop shots.
+
+    Both are under a slot whose world transform is the identity, so that
+    the graph can drive their positions and rotations in world space.
+
+    Attributes:
+        arrow: The arrow's slot, at its tail.
+        arrow_mesh: The arrow's mesh, whose Vector is the arrow in world
+            space.
+        gauge: The gauge's slot, at the ring's center, facing the user
+            from -Z.
+        fill: The ring that shows how full the gauge is. Its Arc runs
+            from the left end over the top, in degrees.
+        club_labels: The slots of the clubs' names, one per club in
+            CLUBS, of which the graph shows only the selected one.
+    """
+
+    arrow: workers.Slot
+    arrow_mesh: arrow_mesh.ArrowMesh
+    gauge: workers.Slot
+    fill: ring_mesh.RingMesh
+    club_labels: list[workers.Slot]
+
+
+@dataclasses.dataclass
 class Scene:
     """Represents the slots and components that the graph uses.
 
@@ -418,9 +550,12 @@ class Scene:
         club: The club's slot, at the grip's center.
         head: The club head's slot, at the head's center, with the face
             toward +Z.
-        pivot: The pivot of desktop swings.
+        pivot: The pivot of desktop swings, which turns about Y to face
+            along the shot.
+        arm: The pivot's child, which turns about X to swing the club.
         mount: Where the club goes during a desktop swing.
-        buttons: The TouchButton of each button, by label.
+        tee_button: The Tee button's TouchButton.
+        aim: The visuals of desktop shots.
     """
 
     course: workers.Slot
@@ -430,12 +565,14 @@ class Scene:
     club: workers.Slot
     head: workers.Slot
     pivot: workers.Slot
+    arm: workers.Slot
     mount: workers.Slot
-    buttons: dict[str, touch_button.TouchButton]
+    tee_button: touch_button.TouchButton
+    aim: AimVisuals
 
 
 async def build_scene(resolink: client.Client) -> Scene:
-    """Builds the course, the ball, the club, and the buttons in front of the user.
+    """Builds the course, the ball, the club, and the Tee button in front of the user.
 
     A slot under Root named SLOT_NAME, from a previous run, is deleted
     first.
@@ -483,62 +620,140 @@ async def build_scene(resolink: client.Client) -> Scene:
         (0.0, (shaft_top + shaft_bottom) / 2, 0.0),
     )
     # The loft turns the face's normal, +Z, up toward +Y, which is a
-    # negative angle about X.
+    # negative angle about X. The graph drives the head's rotation from
+    # the selected club.
     head = await add_box(
         resolink, club, "Head", HEAD_SIZE, mats["Steel"],
-        position=(0.0, -HEAD_DROP, 0.0), tilt=-LOFT, collider=False,
+        position=(0.0, -HEAD_DROP, 0.0), tilt=-CLUBS[0].loft, collider=False,
     )
     await add_physics(resolink, head, CLUB_HEAD)
 
     pivot = await resolink.add_slot(parent=course, name="Swing Pivot")
+    arm = await resolink.add_slot(parent=pivot, name="Swing Arm")
     mount = await resolink.add_slot(
-        parent=pivot, name="Club Mount", position=(0.0, -(PIVOT_HEIGHT - HEAD_DROP), 0.0),
+        parent=arm, name="Club Mount", position=(0.0, -(PIVOT_HEIGHT - HEAD_DROP), 0.0),
     )
 
     graph = await resolink.add_slot(parent=course, name="ProtoFlux")
-    buttons = await add_buttons(resolink, course, mats["Button"])
-    print("Built the ball, the club, and the buttons.")
-    return Scene(course, graph, ball, ball_grab, club, head, pivot, mount, buttons)
+    tee_button = await add_button(resolink, course, "Tee", mats["Button"])
+    aim = await add_aim_visuals(resolink, course, mats)
+    print("Built the ball, the club, the Tee button, and the aiming visuals.")
+    return Scene(course, graph, ball, ball_grab, club, head, pivot, arm, mount, tee_button, aim)
 
 
-async def add_buttons(
+async def add_text(
     resolink: client.Client,
-    course: workers.Slot,
-    material: pbs_metallic.PBS_Metallic,
-) -> dict[str, touch_button.TouchButton]:
-    """Adds a row of labeled buttons next to the tee, facing the user.
+    parent: workers.Slot,
+    name: str,
+    text: str,
+    size: float,
+    position: tuple[float, float, float],
+) -> workers.Slot:
+    """Adds a slot with white text, which reads from the slot's -Z side.
 
     Returns:
-        The TouchButton of each button, by label.
+        The new slot.
     """
-    labels = ["Tee", *SHOTS]
-    spacing = BUTTON_SIZE[0] + 0.02
-    buttons: dict[str, touch_button.TouchButton] = {}
-    for i, label in enumerate(labels):
-        x = BUTTONS_AT[0] + (i - (len(labels) - 1) / 2) * spacing
-        slot = await add_box(
-            resolink, course, f"{label} Button", BUTTON_SIZE, material,
-            position=(x, BUTTONS_AT[1], BUTTONS_AT[2]), tilt=BUTTON_TILT,
-        )
-        button = touch_button.TouchButton()
-        await button.add_to_slot(resolink, slot)
-        buttons[label] = button
-        # The label sits just in front of the face toward the user, at -Z.
-        text = await resolink.add_slot(
-            parent=slot, name="Label",
-            position=(0.0, 0.0, -BUTTON_SIZE[2] / 2 - 0.001),
-        )
-        # A size of 0.04 made letters about 6 mm tall, so the size is about
-        # 6.5 times the letter height (seen on screen, 23 Oct 2026).
-        await text_renderer.TextRenderer(
-            text=label, size=primitives.Float(LABEL_SIZE),
-            color=primitives.ColorX(1, 1, 1, 1, "sRGB"),
-        ).add_to_slot(resolink, text)
-    return buttons
+    slot = await resolink.add_slot(parent=parent, name=name, position=position)
+    await text_renderer.TextRenderer(
+        text=text, size=primitives.Float(size),
+        color=primitives.ColorX(1, 1, 1, 1, "sRGB"),
+    ).add_to_slot(resolink, slot)
+    return slot
+
+
+async def add_button(
+    resolink: client.Client,
+    course: workers.Slot,
+    label: str,
+    material: pbs_metallic.PBS_Metallic,
+) -> touch_button.TouchButton:
+    """Adds a labeled button next to the tee, facing the user.
+
+    Returns:
+        The button's TouchButton.
+    """
+    slot = await add_box(
+        resolink, course, f"{label} Button", BUTTON_SIZE, material,
+        position=BUTTON_AT, tilt=BUTTON_TILT,
+    )
+    button = touch_button.TouchButton()
+    await button.add_to_slot(resolink, slot)
+    # The label sits just in front of the face toward the user, at -Z.
+    # A size of 0.04 made letters about 6 mm tall, so the size is about
+    # 6.5 times the letter height (seen on screen, 23 Oct 2026).
+    await add_text(
+        resolink, slot, "Label", label, LABEL_SIZE, (0.0, 0.0, -BUTTON_SIZE[2] / 2 - 0.001),
+    )
+    return button
+
+
+async def add_ring(
+    resolink: client.Client,
+    parent: workers.Slot,
+    name: str,
+    arc: float,
+    material: pbs_metallic.PBS_Metallic,
+    z: float = 0.0,
+) -> ring_mesh.RingMesh:
+    """Adds a slot with one of the gauge's rings, in the slot's XY plane.
+
+    Args:
+        resolink: The connected client.
+        parent: The gauge's slot.
+        name: The new slot's name.
+        arc: How much of the ring to draw, in degrees, from the left end
+            over the top.
+        material: The ring's material.
+        z: The slot's position along the gauge's Z, so that one ring can
+            sit in front of another.
+
+    Returns:
+        The ring's mesh.
+    """
+    slot = await resolink.add_slot(parent=parent, name=name, position=(0.0, 0.0, z))
+    mesh = ring_mesh.RingMesh(
+        arc=primitives.Float(arc), segments=primitives.Int(48),
+        inner_radius=primitives.Float(GAUGE_RADIUS - GAUGE_WIDTH),
+        outer_radius=primitives.Float(GAUGE_RADIUS),
+    )
+    await mesh.add_to_slot(resolink, slot)
+    await rendering.add_renderer(resolink, slot, mesh, [material])
+    return mesh
+
+
+async def add_aim_visuals(
+    resolink: client.Client,
+    course: workers.Slot,
+    mats: dict[str, pbs_metallic.PBS_Metallic],
+) -> AimVisuals:
+    """Adds the arrow and the gauge of desktop shots, hidden until the graph shows them."""
+    world = await slot_utils.add_slot_at(
+        resolink, transforms.Transform(), name="Aim Visuals", parent=course,
+    )
+    arrow = await resolink.add_slot(parent=world, name="Aim Arrow", isActive=False)
+    arrow_shape = arrow_mesh.ArrowMesh(
+        vector=primitives.Float3(0, 0, ARROW_LENGTH),
+        body_radius=primitives.Float(0.004), head_radius=primitives.Float(0.012),
+        head_length=primitives.Float(0.035),
+    )
+    await arrow_shape.add_to_slot(resolink, arrow)
+    await rendering.add_renderer(resolink, arrow, arrow_shape, [mats["Aim"]])
+
+    gauge = await resolink.add_slot(parent=world, name="Gauge", isActive=False)
+    await add_ring(resolink, gauge, "Gauge Back", 180.0, mats["Gauge"])
+    fill = await add_ring(resolink, gauge, "Gauge Fill", 0.0, mats["Power"], z=-0.001)
+    labels = [
+        await add_text(resolink, gauge, f"{club.name} Label", club.name, CLUB_LABEL_SIZE,
+                       (0.0, 0.015, 0.0))
+        for club in CLUBS
+    ]
+    await add_text(resolink, gauge, "Hint", HINT, HINT_SIZE, (0.0, -0.02, 0.0))
+    return AimVisuals(arrow, arrow_shape, gauge, fill, labels)
 
 
 async def build_graph(resolink: client.Client, scene: Scene) -> None:
-    """Builds the Dergflux graph that moves the ball and swings the club."""
+    """Builds the Dergflux graph that moves the ball, swings the club, and takes desktop shots."""
     g = Graph()
     s = g.Space(scene.graph, space_name="Golf")
     s.v = s.Float3ModelVar("velocity")  # the ball's, in world space, in m/s
@@ -551,9 +766,22 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
     s.tee_request = s.BoolModelVar("tee_request")
     s.swing_request = s.BoolModelVar("swing_request")
     s.swinging = s.BoolModelVar("swinging")
-    s.swing_angle = s.FloatModelVar("swing_angle")  # degrees about the pivot's X
+    s.swing_angle = s.FloatModelVar("swing_angle")  # degrees about the arm's X
     s.swing_back = s.FloatModelVar("swing_back")  # degrees
     s.swing_rate = s.FloatModelVar("swing_rate")  # degrees per second
+    s.swing_yaw = s.FloatModelVar("swing_yaw")  # degrees about the course's Y
+    # The machine ID of the desktop user who addressed the ball, or an
+    # empty string while nobody has.
+    s.golfer = s.StringModelVar("golfer", "")
+    # The machine ID of a desktop user who pressed the left button on the
+    # ball, until the button comes up and addresses the ball.
+    s.presser = s.StringModelVar("presser", "")
+    s.club = s.IntModelVar("club", 0)  # the index of the club in CLUBS
+    s.aim = s.Float3ModelVar("aim")  # the shot's direction, level, in world space
+    s.charging = s.BoolModelVar("charging")  # whether the golfer holds the left button
+    s.charge_time = s.FloatModelVar("charge_time")  # seconds since it went down
+    s.fill = s.FloatModelVar("fill")  # the gauge's fill, from 0 to 1
+    s.was_scrolling = s.BoolModelVar("was_scrolling")
     # Records the ball's velocity around each bounce, and its position and
     # velocity at the end of each update, while a script asks for it.
     trace = recorder.Recorder(g, s, "trace")
@@ -563,6 +791,7 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
     club = slots.ref(scene.club)
     head = slots.ref(scene.head)
     pivot = slots.ref(scene.pivot)
+    arm = slots.ref(scene.arm)
     mount = slots.ref(scene.mount)
 
     def ball_value(name: str) -> Any:
@@ -581,6 +810,13 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
     gravity = primitives.Float3(0, -GRAVITY, 0)
     face = HEAD_SIZE[2] / 2 + BALL_RADIUS  # the ball center's Z on the face
     swing_rotation = dm.axis_angle(primitives.Float3(1, 0, 0), s.swing_angle)
+
+    def by_club(values: list[float]) -> Any:
+        """Returns the value for the selected club, from one value per club in CLUBS."""
+        chosen: Any = values[-1]
+        for i in reversed(range(len(values) - 1)):
+            chosen = dm.conditional(s.club == i, values[i], chosen)
+        return chosen
 
     def surface_of(hit: Any) -> tuple[Any, Any, Any]:
         """Returns the restitution, friction, and rolling coefficients of a contact."""
@@ -610,20 +846,12 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
         s.v = along * keep - n * (vn * restitution)
         trace.record(where=f"{where}_out", v=s.v)
 
-    def press(label: str) -> None:
-        with g.ButtonEvents(button=scene.buttons[label]) as e:
-            with e.pressed():
-                if label == "Tee":
-                    s.tee_request = True
-                else:
-                    back, speed = SHOTS[label]
-                    s.swing_back = back
-                    s.swing_rate = math.degrees(speed / PIVOT_HEIGHT)
-                    s.swing_request = True
-
     with g.Under(scene.graph):
-        for label in scene.buttons:
-            press(label)
+        with g.ButtonEvents(button=scene.tee_button) as e:
+            with e.pressed():
+                s.tee_request = True
+
+    build_desktop_shots(g, s, scene, by_club)
 
     with g.Under(scene.graph):
         with g.If(users.local_user_is_host()):
@@ -647,7 +875,9 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
                     s.swing_angle = s.swing_back
                     s.swinging = True
                     g.SetGlobalPosition(pivot, p + primitives.Float3(0, PIVOT_HEIGHT, 0))
-                    g.SetLocalRotation(pivot, swing_rotation)
+                    g.SetLocalRotation(
+                        pivot, dm.axis_angle(primitives.Float3(0, 1, 0), s.swing_yaw))
+                    g.SetLocalRotation(arm, swing_rotation)
                     g.SetGlobalPositionRotation(
                         club, transform.global_position(mount), transform.global_rotation(mount),
                     )
@@ -657,7 +887,7 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
                 with g.Else():
                     with g.If(s.swinging):
                         s.swing_angle = s.swing_angle - s.swing_rate * dt
-                        g.SetLocalRotation(pivot, swing_rotation)
+                        g.SetLocalRotation(arm, swing_rotation)
                         g.SetGlobalPositionRotation(
                             club, transform.global_position(mount),
                             transform.global_rotation(mount),
@@ -749,6 +979,138 @@ async def build_graph(resolink: client.Client, scene: Scene) -> None:
     await g.build(resolink)
 
 
+def build_desktop_shots(g: Graph, s: Any, scene: Scene, by_club: Any) -> None:
+    """Adds the flow and the bindings that let a desktop user address, aim, and hit the ball.
+
+    The flow runs on every machine, and each machine reads its own user's
+    mouse and view. Only the golfer's machine writes the shot's model
+    variables, apart from the press that addresses the ball. The arrow
+    is shown to everyone, and the gauge only to the golfer.
+
+    Args:
+        g: The graph.
+        s: The graph's Space, with the variables that build_graph declares.
+        scene: The slots and components of the course.
+        by_club: Returns the value for the selected club, from one value
+            per club in CLUBS.
+    """
+    ball = slots.ref(scene.ball)
+    course = slots.ref(scene.course)
+    p = transform.global_position(ball)
+    local = users.local_user()
+    me = users.machine_id(local)
+    mine = s.golfer == me
+    dash_open = users.is_dash_open(local)
+    in_vr = users.is_vr_active(local)
+    eye = users.view_position()
+    view = users.view_rotation()
+    forward = view * primitives.Float3(0, 0, 1)
+
+    # The crosshair is on the ball when the view's ray passes close to the
+    # ball's center, in front of the view.
+    to_ball = p - eye
+    depth = dm.dot(to_ball, forward)
+    on_ball = ((depth > 0) & (depth < REACH)
+               & (dm.magnitude(to_ball - forward * depth) < CLICK_RADIUS))
+    at_rest = ((dm.magnitude(s.v) < REST_SPEED)
+               & ~interaction.is_grabbed(scene.ball_grab))
+
+    # The spot is where the view's ray meets the level plane through the
+    # ball's center.
+    look_down = -forward.y
+    reach = (eye.y - p.y) / dm.max_(look_down, MIN_LOOK_DOWN)
+    to_spot = eye + forward * reach - p
+    to_spot_level = dm.pack(to_spot.x, 0, to_spot.z)
+    facing = dm.pack(forward.x, 0, forward.z)
+
+    def let_go() -> None:
+        s.golfer = ""
+        s.charging = False
+        s.fill = 0.0
+
+    with g.Under(scene.graph):
+        with g.If(~dash_open):
+            with g.If(mine):
+                with g.If(mouse.right_pressed() | ~at_rest | in_vr):
+                    let_go()
+                with g.Else():
+                    # One club per turn of the wheel, counted when the
+                    # scrolling starts.
+                    scroll = mouse.scroll_delta()
+                    scrolling = scroll != 0
+                    with g.If(scrolling & ~s.was_scrolling):
+                        s.club = (s.club + dm.to_int(dm.sign(scroll)) + len(CLUBS)) % len(CLUBS)
+                    s.was_scrolling = scrolling
+
+                    with g.If(s.charging):
+                        # The fill rises to 1 in FILL_TIME and falls back to
+                        # 0 in as long again, over and over.
+                        s.charge_time = s.charge_time + time.delta_time()
+                        s.fill = 1 - abs(1 - (s.charge_time / FILL_TIME) % 2)
+                        with g.If(mouse.left_released()):
+                            s.charging = False
+                            with g.If((s.fill >= CANCEL_FILL) & (s.charge_time >= TAP_TIME)):
+                                level = transform.global_direction_to_local(course, s.aim)
+                                speed = by_club([c.speed for c in CLUBS]) * (
+                                    MIN_SPEED_SHARE + (1 - MIN_SPEED_SHARE) * s.fill * s.fill)
+                                s.swing_yaw = dm.atan2(level.x, level.z) * math.degrees(1)
+                                s.swing_back = by_club([c.backswing for c in CLUBS]) * (
+                                    MIN_BACKSWING_SHARE + (1 - MIN_BACKSWING_SHARE) * s.fill)
+                                s.swing_rate = speed * math.degrees(1 / PIVOT_HEIGHT)
+                                s.swing_request = True
+                                s.golfer = ""
+                            s.fill = 0.0
+                    with g.Else():
+                        with g.If((look_down > MIN_LOOK_DOWN) & (reach < MAX_AIM_DISTANCE)):
+                            # Near the ball the direction to the spot turns
+                            # quickly, so the arrow keeps its direction there.
+                            with g.If(dm.magnitude(to_spot_level) > MIN_AIM_DISTANCE):
+                                s.aim = dm.normalized(to_spot_level)
+                        with g.Else():
+                            s.aim = dm.normalized(facing)
+                        with g.If(mouse.left_pressed()):
+                            with g.If(on_ball):
+                                let_go()
+                            with g.Else():
+                                s.charging = True
+                                s.charge_time = 0.0
+            with g.Else():
+                with g.If(~in_vr):
+                    with g.If(mouse.left_pressed() & on_ball & at_rest):
+                        s.presser = me
+                    # The ball is addressed when the button comes up, so
+                    # that the press that addresses it doesn't also start a
+                    # swing.
+                    with g.If(mouse.left_released() & (s.presser == me)):
+                        s.presser = ""
+                        s.golfer = me
+                        s.charging = False
+                        s.fill = 0.0
+                        s.aim = dm.normalized(facing)
+        with g.Else():
+            # The left button may come up in the dash, where the flow
+            # doesn't see it, so a swing in progress stops.
+            with g.If(mine & s.charging):
+                s.charging = False
+                s.fill = 0.0
+
+    aim = scene.aim
+    g.Bind(s.golfer != "", aim.arrow, "IsActive", slot=scene.graph)
+    g.Bind(p + primitives.Float3(0, ARROW_LIFT, 0), aim.arrow, "Position", slot=scene.graph)
+    g.Bind(s.aim * (ARROW_LENGTH + ARROW_GROWTH * s.fill), aim.arrow_mesh, "Vector",
+           slot=scene.graph)
+    # A drive computes on each machine, so the gauge shows only on the
+    # golfer's, in front of the golfer's own view.
+    g.Bind(mine & ~dash_open, aim.gauge, "IsActive", slot=scene.graph)
+    g.Bind(eye + view * primitives.Float3(*GAUGE_AT), aim.gauge, "Position", slot=scene.graph)
+    g.Bind(view, aim.gauge, "Rotation", slot=scene.graph)
+    g.Bind(s.fill * 180, aim.fill, "Arc", slot=scene.graph)
+    for i, label in enumerate(aim.club_labels):
+        g.Bind(s.club == i, label, "IsActive", slot=scene.graph)
+    g.Bind(dm.axis_angle(primitives.Float3(1, 0, 0), -by_club([c.loft for c in CLUBS])),
+           scene.head, "Rotation", slot=scene.graph)
+
+
 async def main(port: int | None) -> None:
     """Builds the course and the graph in front of the user.
 
@@ -764,7 +1126,7 @@ async def main(port: int | None) -> None:
     await resolink.connect(port)
     scene = await build_scene(resolink)
     await build_graph(resolink, scene)
-    print("The course is ready. Press a button, or grab the club and swing it.")
+    print("The course is ready. Click the ball to aim a shot, or grab the club and swing it.")
     await resolink.close()
 
 

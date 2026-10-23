@@ -19,6 +19,7 @@ Dergflux is a Pythonic domain-specific language for building ProtoFlux graphs in
   - [Slots and Transforms](#slots-and-transforms)
   - [Variables on Other Slots](#variables-on-other-slots)
   - [Users and Grabbing](#users-and-grabbing)
+  - [Mouse](#mouse)
 - [Flow Control](#flow-control)
   - [If / Else](#if--else)
   - [Continuation](#continuation-after-if--else)
@@ -441,6 +442,8 @@ s.log = s.log + "y=" + strings.to_string(p.y) + "\n"
 
 Strings join with `+`, which uses ConcatenateString. `strings.to_string(x)` uses the ToString node of the value's type, such as `ToString_Float`, which formats with the invariant culture, so a float is written with a period and as few digits as read back to the same float. A number is never joined to a string implicitly, and `"y=" + p.y` raises `TypeError`.
 
+`==` and `!=` on strings use ObjectEquals and ObjectNotEquals, because ProtoFlux has no ValueEquals for strings. The same goes for references. A `StringModelVar` declared without a value starts as null, which isn't equal to `""`, so a variable that a flow compares with `""` should be declared with `""` as its value.
+
 ### Slots and Transforms
 
 A graph that reads or moves a slot takes it as a reference. `slots.ref(slot)` makes one from a `workers.Slot` or a slot ID, and the builder holds it in a `RefObjectInput<Slot>` node, one per slot however often it is used. `slots.of_component(c)` is the slot that a component is on, through ProtoFlux's GetSlot node. It takes a component expression such as a raycast's `hit_collider`, or a component already added to a slot. GetSlot takes an `IComponent`, and ProtoFlux refuses a narrower type such as `ICollider` there, so a narrower component passes through an `ObjectCast<ICollider, IComponent>` node first.
@@ -490,10 +493,44 @@ from pyresonitelink.dergflux import users
 users.local_user()               # the User whose machine evaluates the node
 users.is_host(users.local_user())
 users.local_user_is_host()       # a Bool, true only on the host's machine
+users.machine_id(u)              # a String, different for each user in the session
+users.is_vr_active(u)            # a Bool, false in desktop mode
+users.is_dash_open(u)            # a Bool, true while the user's dash is open
+users.view_position()            # a Float3, the local user's view (the camera in desktop mode)
+users.view_rotation()            # a FloatQ, which looks along its +Z
 interaction.is_grabbed(grab)     # a Bool, true while a Grabbable or other IGrabbable is held
 ```
 
 An Update node fires on every user's machine, and each machine writes what its own run computes. A flow that moves something, such as a simulated ball, should run on one machine, and `g.If(users.local_user_is_host())` makes it the host's.
+
+A flow that acts on one user's input runs on that user's machine. A String model variable can hold that user's machine ID, and the flow can run only where it equals `users.machine_id(users.local_user())`. A drive is computed on each machine too, so a binding of a slot's `IsActive` to that comparison shows the slot only to that user.
+
+```python
+s.player = s.StringModelVar("player", "")
+mine = s.player == users.machine_id(users.local_user())
+with g.Under(slot):
+    with g.If(mine):
+        ...
+g.Bind(mine, hud_slot, "IsActive", slot=slot)
+```
+
+`examples/dergflux_golf.py` uses this for desktop shots. The view nodes read the camera, which in desktop mode points a few degrees away from where the Head slot points.
+
+### Mouse
+
+```python
+from pyresonitelink.dergflux import mouse
+
+mouse.left_pressed()    # a Bool, true in the update in which the left button went down
+mouse.left_held()       # a Bool, true while it is down
+mouse.left_released()   # a Bool, true in the update in which it came up
+mouse.right_pressed()   # and right_held, right_released
+mouse.scroll_delta()    # a Float, positive for a turn of the wheel away from the user
+```
+
+These read the mouse of the machine that evaluates them, through ProtoFlux's mouse nodes, which read Resonite's input directly. They see every click, including one that the laser also delivers to whatever is under the crosshair, and one in the dash, so a flow should usually ignore them while `users.is_dash_open(users.local_user())` is true. In desktop mode Resonite itself presses and uses things with the left button, grabs with the right, and opens the context menu with the middle one. The cursor stays at the center of the screen except while the dash is open, so the crosshair is on the ray from `users.view_position()` along `users.view_rotation() * Float3(0, 0, 1)`.
+
+The unit of `scroll_delta` isn't documented, so a flow that counts notches of the wheel should act in the update in which the scrolling starts.
 
 ## Flow Control
 

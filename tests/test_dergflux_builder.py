@@ -1160,6 +1160,32 @@ class TestComparisonBuild:
         assert len(float_eq) == 1, "Expected 1 float ValueEquals (x==5)"
 
     @pytest.mark.asyncio
+    async def test_strings_compare_with_object_equals(self, mock_client: MockClient) -> None:
+        """String == and != use ObjectEquals and ObjectNotEquals, since ValueEquals<string> doesn't exist."""
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="cmp_str")
+        s.name = s.StringModelVar("name", "")
+        s.same = s.BoolModelVar("same")
+        s.different = s.BoolModelVar("different")
+
+        with g.Under(slot):
+            s.same = s.name == "golf"
+            s.different = s.name != "golf"
+
+        await _build(mock_client, g)
+        m = mock_client
+
+        assert not m.find(r"ValueEquals<string>")
+        assert not m.find(r"ValueNotEquals<string>")
+        eq = m.find_one(r"ObjectEquals")
+        assert eq.component_type.endswith("ObjectEquals<string>")
+        ne = m.find_one(r"ObjectNotEquals")
+        assert ne.component_type.endswith("ObjectNotEquals<string>")
+        b_type = m.ref_target_type(eq, "B")
+        assert b_type is not None and "ValueObjectInput" in b_type
+
+    @pytest.mark.asyncio
     async def test_not_equals(self, mock_client: MockClient) -> None:
         """If x != 5 creates ValueNotEquals + ValueEquals (gate)."""
         slot = workers.Slot(id="test-slot")
@@ -2144,6 +2170,7 @@ def _calls() -> list[tuple[str, Any]]:
     """
     from pyresonitelink.dergflux import interaction
     from pyresonitelink.dergflux import math as dm
+    from pyresonitelink.dergflux import mouse
     from pyresonitelink.dergflux import slots
     from pyresonitelink.dergflux import strings
     from pyresonitelink.dergflux import time
@@ -2205,12 +2232,26 @@ def _calls() -> list[tuple[str, Any]]:
         ("local_direction_to_global", lambda s: transform.local_direction_to_global("ball", s.v)),
         ("dynamic_read", lambda s: variables.read(slots.ref("ball"), "P/x", primitives.Float).value),
         ("local_user_is_host", lambda s: users.local_user_is_host()),
+        ("machine_id", lambda s: users.machine_id(users.local_user())),
+        ("is_vr_active", lambda s: users.is_vr_active(users.local_user())),
+        ("is_dash_open", lambda s: users.is_dash_open(users.local_user())),
+        ("view_position", lambda s: users.view_position()),
+        ("view_rotation", lambda s: users.view_rotation()),
+        ("string_equals", lambda s: users.machine_id(users.local_user()) == ""),
+        ("string_not_equals", lambda s: users.machine_id(users.local_user()) != ""),
         ("is_grabbed", lambda s: interaction.is_grabbed(_added(grabbable.Grabbable()))),
         ("to_string", lambda s: strings.to_string(s.v)),
         ("concatenate", lambda s: "y=" + strings.to_string(s.f)),
         ("slot_of_component", lambda s: variables.read(
             slots.of_component(_added(grabbable.Grabbable())), "P/x", primitives.Float,
         ).found),
+    ]
+    calls += [
+        (name, lambda s, fn=getattr(mouse, name): fn())
+        for name in [
+            "left_pressed", "left_held", "left_released",
+            "right_pressed", "right_held", "right_released", "scroll_delta",
+        ]
     ]
     return calls
 

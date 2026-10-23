@@ -108,7 +108,7 @@ Python objects <- decode_response() <- JSON <---+
 - **`utils/probes.py`**: `ViewProbe` reads the local user's view (the camera in desktop mode) through ValueFieldDrives.
 - **`utils/counters.py`**: Dergflux helpers for odometers: drum carry (`drum_turns`) and detents that snap (`add_detents`).
 - **`utils/recorder.py`**: `Recorder` appends values to a string model variable from inside a running Dergflux flow, for a script to read and parse afterwards.
-- **`dergflux/slots.py`, `transform.py`, `variables.py`, `strings.py`, `users.py`, `interaction.py`**: Dergflux expressions for slot references, transforms, dynamic variables read from any slot, strings, the host, and grabbing. They build on `_expr.node_output`, which makes an expression from any node's output.
+- **`dergflux/slots.py`, `transform.py`, `variables.py`, `strings.py`, `users.py`, `interaction.py`, `mouse.py`**: Dergflux expressions for slot references, transforms, dynamic variables read from any slot, strings, users and the local view, grabbing, and the mouse. They build on `_expr.node_output`, which makes an expression from any node's output.
 
 ### Import Aliases
 
@@ -645,6 +645,13 @@ ALWAYS check whether a type needs Value or Object variants before creating Proto
 
 - An `ActionDef` with `continuations` (RaycastOne's `on_hit`/`on_miss`, a setter's `next`) gives the next statement's wiring to those outputs, or to the last tails of their branches. Without them the next statement is wired to `OnSuccess`, which most action nodes don't have, and the server ignores a reference to a missing member. Until Oct 2026 RaycastOne had none, so by the code a statement after a raycast never ran.
 - A Space's variable reads use the attribute name, as writes do (`s.v = s.Float3ModelVar("velocity")`). Until Oct 2026 a read used the path, and any variable whose attribute and path differed failed to build with a KeyError.
+
+#### Reading One User's Input
+
+- The mouse nodes and `ViewPosition`/`ViewRotation` read the machine that evaluates them. A flow driven by Update runs on every machine, so gate a flow that acts on input with `s.player == users.machine_id(users.local_user())` (a String model variable), as `examples/dergflux_golf.py` does. NEVER write a shared model variable from a branch that every machine runs.
+- A drive (`g.Bind`) is computed on each machine, so binding `IsActive` to the same comparison shows something only to that user.
+- The mouse nodes see clicks that the laser also delivers, and clicks in the dash. Gate them with `~users.is_dash_open(users.local_user())`.
+- `==` on strings or references builds `ObjectEquals<T>`. `ValueEquals<string>` doesn't exist. A `StringModelVar` starts as null, which isn't equal to `""`, so give it `""` as its initial value.
 
 #### Recording a Running Graph
 
