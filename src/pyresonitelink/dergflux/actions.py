@@ -545,6 +545,12 @@ SecondsTimer = ActionDef(
 # Async actions — suspend across frames
 # =========================================================================
 
+# Each Delay calls OnTriggered as the delay starts, waits for it, waits
+# out what is left of the delay, and then goes on from Next
+# (AsyncActionFlowNode.RunAsync, DelayTime.Do, DelayUpdates.Do,
+# DelayUpdatesOrTime.Do). The UpdatesOrTime variants wait for both the
+# duration and the updates.
+
 DelaySecondsFloat = ActionDef(
     import_path="protoflux.flow",
     class_name="DelaySecondsFloat",
@@ -552,6 +558,7 @@ DelaySecondsFloat = ActionDef(
         "duration": InputDef("duration", primitives.Float),
     },
     flow_outputs=["next", "on_triggered"],
+    continuations=["next"],
     is_async=True,
 )
 
@@ -562,6 +569,7 @@ DelaySecondsDouble = ActionDef(
         "duration": InputDef("duration", primitives.Double),
     },
     flow_outputs=["next", "on_triggered"],
+    continuations=["next"],
     is_async=True,
 )
 
@@ -572,6 +580,7 @@ DelaySecondsInt = ActionDef(
         "duration": InputDef("duration", primitives.Int),
     },
     flow_outputs=["next", "on_triggered"],
+    continuations=["next"],
     is_async=True,
 )
 
@@ -582,6 +591,7 @@ DelayUpdates = ActionDef(
         "updates": InputDef("updates", primitives.Int),
     },
     flow_outputs=["next", "on_triggered"],
+    continuations=["next"],
     is_async=True,
 )
 
@@ -593,6 +603,7 @@ DelayUpdatesOrSecondsFloat = ActionDef(
         "duration": InputDef("duration", primitives.Float),
     },
     flow_outputs=["next", "on_triggered"],
+    continuations=["next"],
     is_async=True,
 )
 
@@ -604,6 +615,7 @@ DelayUpdatesOrSecondsDouble = ActionDef(
         "duration": InputDef("duration", primitives.Double),
     },
     flow_outputs=["next", "on_triggered"],
+    continuations=["next"],
     is_async=True,
 )
 
@@ -615,6 +627,7 @@ DelayUpdatesOrSecondsInt = ActionDef(
         "duration": InputDef("duration", primitives.Int),
     },
     flow_outputs=["next", "on_triggered"],
+    continuations=["next"],
     is_async=True,
 )
 
@@ -640,7 +653,10 @@ PlayOneShotAndWait = ActionDef(
         "priority": InputDef("priority", primitives.Int),
         "local_only": InputDef("local_only", primitives.Bool),
     },
+    # The node calls OnStartedPlaying, waits for it and then for the clip
+    # to stop, and goes on from OnFinishedPlaying.
     flow_outputs=["on_started_playing", "on_finished_playing"],
+    continuations=["on_finished_playing"],
     value_outputs={},
     is_async=True,
 )

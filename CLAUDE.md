@@ -328,6 +328,7 @@ await resolink.import_audio_clip_raw_data(samples, 48000)    # (count,) or (coun
 - A component's `OnAttach` can fill a SyncList before the data sent with `AddComponent` is written. TextRenderer's `Materials` gets the default text material that way, and the renderer draws with element 0. ALWAYS send a list element with an empty ID to replace such an element (`WriteSyncList` writes it over the element at its index), as the golf example's `add_text` does. An element with a new ID is inserted before it instead.
 - Reflection responses decode to `data/reflection.py` dataclasses. Member definitions decode by `$type` to `FieldDefinition`, `ReferenceDefinition`, etc. (`_MEMBER_DEFINITION_TYPES` in the codec).
 - `MethodResult.result` is a field member (`FieldInt`, `FieldBool`, ...) or a `members.DataReference` for a returned object, or `None` for void.
+- NEVER send requests on one `Client` from two coroutines at once. `request_json` sends and then awaits `recv` on the shared websocket, so a second request raises "cannot call recv while another coroutine is already running recv". Open a second `Client` for a watcher that runs beside other requests.
 - A batch's `responses` holds one response per operation, in order. Only `DataModelOperation` messages can be batched (`Client._BATCHABLE`). The client gives each operation a `messageId` so each response's `sourceMessageId` identifies its operation.
 - Binary payload messages have `from_*` builders in `messages.py` and an `expected_payload_size()`. `Client.request_json` raises `ValueError` before sending a payload of the wrong size.
 
@@ -647,6 +648,9 @@ ALWAYS check whether a type needs Value or Object variants before creating Proto
 #### Action Continuations
 
 - An `ActionDef` with `continuations` (RaycastOne's `on_hit`/`on_miss`, a setter's `next`) gives the next statement's wiring to those outputs, or to the last tails of their branches. Without them the next statement is wired to `OnSuccess`, which most action nodes don't have, and the server ignores a reference to a missing member. Until Oct 2026 RaycastOne had none, so by the code a statement after a raycast never ran.
+- ALWAYS declare `continuations` on an action that a flow passes through and whose node has no `OnSuccess`. `TestActionContinuations` in `test_dergflux_builder.py` fails otherwise. Until 23 Oct 2026 PlayOneShot, the seven Delays, and PlayOneShotAndWait had none.
+- A Delay node calls OnTriggered as the delay starts and goes on from Next when it ends (`DelayTime.Do`, `AsyncActionFlowNode.RunAsync`). PlayOneShotAndWait goes on from OnFinishedPlaying. The docs had both Delay outputs backwards until 23 Oct 2026.
+- ALWAYS test a continuation live with plain writes in a chain, as `TestAsyncContinuations` in `test_recorder_integration.py` does. `Recorder.record` branches, and the builder calls two or more branching statements from a Sequence, which runs the next statement whatever the action's wiring. A recorder-based test of the Delay passed with the bug in place.
 - A Space's variable reads use the attribute name, as writes do (`s.v = s.Float3ModelVar("velocity")`). Until Oct 2026 a read used the path, and any variable whose attribute and path differed failed to build with a KeyError.
 
 #### Reading One User's Input

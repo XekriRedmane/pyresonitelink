@@ -2417,7 +2417,8 @@ class TestContinuationBuild:
 
         read = m.find_one(r"ReadDynamicObjectVariable<string>")
         assert m.find(r"ReadDynamicValueVariable<") == []
-        assert m.ref_target_comp(read, "Source").references["Target"] == "hole"
+        source = m.ref_target_comp(read, "Source")
+        assert source is not None and source.references["Target"] == "hole"
         write = m.find_one(r"ObjectWrite<")
         assert m.owner_of(write.references["Value"]) == (read.id, "Value")
 
@@ -2560,6 +2561,44 @@ def _added(component: Any) -> Any:
     """Gives a component an ID, as if it had been added to a slot."""
     component._component.id = "added-component"
     return component
+
+
+def _flow_actions() -> list[str]:
+    """Returns the names of the actions that a flow passes through, which aren't event sources."""
+    from pyresonitelink.dergflux import _action
+    from pyresonitelink.dergflux import actions
+    return sorted(
+        name for name in dir(actions)
+        if isinstance(a := getattr(actions, name), _action.ActionDef)
+        and a.flow_outputs and not a.is_event_source
+    )
+
+
+class TestActionContinuations:
+    """The statement after each action is wired to a member that the action's node has.
+
+    An action without continuations has the next statement wired to its
+    OnSuccess. The server ignores a reference to a member the node lacks,
+    so a statement after PlayOneShot, a Delay, or PlayOneShotAndWait
+    silently never ran until their continuations were declared.
+    """
+
+    @pytest.mark.parametrize("name", _flow_actions())
+    def test_next_statement_is_wired_to_a_real_member(self, name: str) -> None:
+        import importlib
+
+        from pyresonitelink.dergflux import actions
+        action = getattr(actions, name)
+        node_class = getattr(
+            importlib.import_module(f"pyresonitelink.{action.import_path}"), action.class_name)
+        node_members = _member_names(node_class)
+        if action.continuations:
+            pascal = {"".join(p.capitalize() for p in c.split("_")) for c in action.continuations}
+            assert pascal <= node_members, f"{name} has no member {sorted(pascal - node_members)}"
+        else:
+            assert "OnSuccess" in node_members, (
+                f"{name} has no OnSuccess, so it needs continuations"
+            )
 
 
 class TestFunctionAudit:

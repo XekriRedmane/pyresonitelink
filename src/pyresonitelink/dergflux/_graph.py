@@ -1085,22 +1085,23 @@ class Graph:
 
     @contextmanager
     def DelaySeconds(self, **kwargs: Any) -> Iterator[Any]:
-        """Delay for a duration then fire.
+        """Waits for a duration in seconds, a Float, before the flow goes on.
 
         Async — the enclosing flow uses async variants automatically.
 
+        The ``on_triggered`` branch runs as the delay starts, and the
+        statements after the ``with`` block run when it ends
+        (DelayTime.Do, AsyncActionFlowNode.RunAsync). The delay counts
+        from its start, so a branch that takes longer than the duration
+        delays them further.
+
         Usage::
 
-            with g.Under(slot):
+            with g.Under(slot, trigger="go"):
                 with g.DelaySeconds(duration=2.0) as d:
                     with d.on_triggered():
-                        s.state = "delayed"
-
-        The ``duration`` type determines the variant:
-        Float (default), Double, or Int seconds.
-
-        Also has a ``next`` flow output that fires immediately
-        (before the delay).
+                        s.state = "waiting"  # at once
+                s.state = "delayed"  # 2 s later
         """
         from pyresonitelink.dergflux import actions
         with self.Action(actions.DelaySecondsFloat, **kwargs) as proxy:
@@ -1108,18 +1109,21 @@ class Graph:
 
     @contextmanager
     def DelayUpdates(self, **kwargs: Any) -> Iterator[Any]:
-        """Delay for a number of engine updates then fire.
+        """Waits for a number of engine updates before the flow goes on.
 
         Async — the enclosing flow uses async variants automatically.
 
+        The ``on_triggered`` branch runs as the delay starts, and the
+        statements after the ``with`` block run when it ends
+        (DelayUpdates.Do).
+
         Usage::
 
-            with g.Under(slot):
+            with g.Under(slot, trigger="go"):
                 with g.DelayUpdates(updates=2) as d:
                     with d.on_triggered():
-                        s.state = "delayed"
-
-        Also has a ``next`` flow output that fires immediately.
+                        s.state = "waiting"  # at once
+                s.state = "delayed"  # 2 updates later
         """
         from pyresonitelink.dergflux import actions
         with self.Action(actions.DelayUpdates, **kwargs) as proxy:
@@ -1127,16 +1131,22 @@ class Graph:
 
     @contextmanager
     def DelayUpdatesOrSeconds(self, **kwargs: Any) -> Iterator[Any]:
-        """Delay for N updates or a duration, whichever comes first.
+        """Waits for a duration in seconds and a number of updates, whichever ends later.
 
         Async — the enclosing flow uses async variants automatically.
 
+        The node waits out the duration and then any updates still to
+        come (DelayUpdatesOrTime.Do). The ``on_triggered`` branch runs as
+        the delay starts, and the statements after the ``with`` block run
+        when it ends.
+
         Usage::
 
-            with g.Under(slot):
+            with g.Under(slot, trigger="go"):
                 with g.DelayUpdatesOrSeconds(updates=60, duration=1.0) as d:
                     with d.on_triggered():
-                        s.state = "delayed"
+                        s.state = "waiting"  # at once
+                s.state = "delayed"  # after 1 s and 60 updates
         """
         from pyresonitelink.dergflux import actions
         with self.Action(actions.DelayUpdatesOrSecondsFloat, **kwargs) as proxy:

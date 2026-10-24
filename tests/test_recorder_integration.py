@@ -1,4 +1,4 @@
-"""Integration tests for utils.recorder and the Dergflux slot, ray, and variable nodes.
+"""Integration tests for utils.recorder and the Dergflux slot, ray, variable, and async nodes.
 
 Run as: pytest tests/test_recorder_integration.py [--port=<port>]
 
@@ -10,6 +10,8 @@ which the test reads back after the recording is done.
 
 from __future__ import annotations
 
+import asyncio
+import os
 from typing import Any
 
 import pytest
@@ -19,6 +21,7 @@ from pyresonitelink.data import primitives
 from pyresonitelink.dergflux import Graph
 from pyresonitelink.dergflux import math as dm
 from pyresonitelink.dergflux import slots
+from pyresonitelink.dergflux import time
 from pyresonitelink.dergflux import transform
 from pyresonitelink.dergflux import variables
 from pyresonitelink.generated.data.dynamic import dynamic_value_variable
@@ -31,6 +34,10 @@ from tests.test_dergflux_integration import dergflux_slot  # noqa: F401  (fixtur
 # Far below the world, so that the ray meets nothing but the test's box.
 FLOOR_DEPTH = -50.0  # meters
 FLOOR_THICKNESS = 0.1  # meters
+
+# A clip 0.28 s long, which the golf example plays.
+SHORT_CLIP = os.path.join(os.path.dirname(__file__), "..", "examples", "75205_golf_hit.wav")
+SHORT_CLIP_LENGTH = 0.277  # seconds
 
 
 class TestRecorder:
@@ -170,3 +177,75 @@ class TestRayIntoASurface:
         for row in rows:
             if row["where"] == "long_hit":
                 assert float(row["d"]) == pytest.approx((1 - FLOOR_THICKNESS / 2) / 2, abs=1e-3)
+
+
+class TestAsyncContinuations:
+    """The statements after an async action run when the action ends.
+
+    Each flow runs once, when the test sets its "go" variable, and writes
+    the world time at each step. The steps are plain writes, which the
+    builder chains from one to the next. Two or more statements that
+    branch, such as Recorder.record calls, are called from a Sequence
+    instead, which would hide a missing continuation. Until Oct 2026 the
+    Delay actions and PlayOneShotAndWait declared no continuations, so
+    the statements after them were wired to a missing OnSuccess and never
+    ran.
+    """
+
+    @staticmethod
+    async def _times(resolink: client.Client, s: Any, names: list[str]) -> list[float]:
+        """Waits until the flow has written its last time, and returns each one."""
+        deadline = asyncio.get_running_loop().time() + 10
+        while float(await s.ReadModelVar(resolink, names[-1])) == 0:
+            assert asyncio.get_running_loop().time() < deadline, f"{names[-1]} was never written"
+            await asyncio.sleep(0.1)
+        return [float(await s.ReadModelVar(resolink, name)) for name in names]
+
+    @pytest.mark.asyncio(loop_scope="session")
+    async def test_delay_triggers_at_once_and_goes_on_after(
+        self, resolink: client.Client, dergflux_slot: Any,
+    ) -> None:
+        """OnTriggered runs as a Delay starts, and the next statement runs when it ends."""
+        g = Graph()
+        s = g.Space(dergflux_slot, space_name="delay")
+        s.go = s.BoolModelVar("go", value=False)
+        s.start = s.DoubleModelVar("start", value=0.0)
+        s.triggered = s.DoubleModelVar("triggered", value=0.0)
+        s.after = s.DoubleModelVar("after", value=0.0)
+        with g.Under(dergflux_slot):
+            with g.If(s.go):
+                s.go = False
+                s.start = time.world_time()
+                with g.DelaySeconds(duration=0.5) as d:
+                    with d.on_triggered():
+                        s.triggered = time.world_time()
+                s.after = time.world_time()
+        await g.build(resolink)
+
+        await s.WriteModelVar(resolink, "go", True)
+        start, triggered, after = await self._times(resolink, s, ["start", "triggered", "after"])
+        assert triggered == start
+        assert after - start == pytest.approx(0.5, abs=0.1)
+
+    @pytest.mark.asyncio(loop_scope="session")
+    async def test_statement_after_play_one_shot_and_wait_runs_when_the_clip_ends(
+        self, resolink: client.Client, dergflux_slot: Any,
+    ) -> None:
+        g = Graph()
+        s = g.Space(dergflux_slot, space_name="wait")
+        s.go = s.BoolModelVar("go", value=False)
+        s.start = s.DoubleModelVar("start", value=0.0)
+        s.after = s.DoubleModelVar("after", value=0.0)
+        clip = await resolink.create_audio_clip(dergflux_slot, SHORT_CLIP)
+        with g.Under(dergflux_slot):
+            with g.If(s.go):
+                s.go = False
+                s.start = time.world_time()
+                with g.PlayOneShotAndWait(clip=clip, volume=0.2):
+                    pass
+                s.after = time.world_time()
+        await g.build(resolink)
+
+        await s.WriteModelVar(resolink, "go", True)
+        start, after = await self._times(resolink, s, ["start", "after"])
+        assert after - start == pytest.approx(SHORT_CLIP_LENGTH, abs=0.15)

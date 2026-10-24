@@ -832,23 +832,22 @@ with g.Under(slot):
             s.playing = True
 ```
 
-**Delay** (async — suspends across frames):
+**Delay** (async — suspends across frames). A Delay node calls OnTriggered as the delay starts and goes on from Next when it ends (`DelayTime.Do`, `AsyncActionFlowNode.RunAsync`), so the `on_triggered` branch runs at once, and the statements after the `with` block run after the delay. `DelayUpdatesOrSeconds` waits for both the duration and the updates. A statement after a PlayOneShotAndWait block runs after the clip stops.
 
 ```python
-with g.Under(slot):
+with g.Under(slot, trigger="go"):
     with g.DelaySeconds(duration=2.0) as d:
-        with d.next():
-            s.state = "waiting"      # fires immediately
         with d.on_triggered():
-            s.state = "delayed"      # fires after 2 seconds
+            s.state = "waiting"      # at once
+    s.state = "delayed"              # 2 seconds later
 
     with g.DelayUpdates(updates=2) as d:
-        with d.on_triggered():
-            s.state = "after 2 updates"
+        pass
+    s.state = "after 2 more updates"
 
     with g.DelayUpdatesOrSeconds(updates=60, duration=1.0) as d:
-        with d.on_triggered():
-            s.state = "after 60 updates or 1 second"
+        pass
+    s.state = "after 1 more second and at least 60 more updates"
 ```
 
 **Prebuilt actions** in ``pyresonitelink.dergflux.actions``:
