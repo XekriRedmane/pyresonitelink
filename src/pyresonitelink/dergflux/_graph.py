@@ -1472,12 +1472,24 @@ class Graph:
                     with r.on_started_playing():
                         s.state = "playing"
 
+        The node adds a slot for the sound and calls OnStartedPlaying at
+        once, and the statements after the ``with`` block run after the
+        branch. Without a branch, ``g.Do(actions.PlayOneShot, ...)``
+        records it as a plain statement. Unless ``local_only`` is true,
+        the slot is in the data model, so every user hears the sound,
+        even when only one machine runs the flow.
+
         Args:
             clip: Audio clip reference.
             volume: Playback volume (Float).
             speed: Playback speed (Float).
-            point: Spatial position (Float3).
-            root: Root slot.
+            point: Where the sound plays, in the root's space (Float3).
+            root: The slot that the point is in, and that the sound's slot
+                goes under unless ``parent_under_root`` is false. It is
+                the node's own slot by default.
+            parent_under_root: Whether the sound's slot goes under the
+                root, and moves with it, rather than under the world's
+                root (Bool, true by default).
             local_only: Only play locally (Bool).
             (and other audio parameters)
 

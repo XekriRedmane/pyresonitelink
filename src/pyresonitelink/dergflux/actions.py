@@ -154,7 +154,11 @@ PlayOneShot = ActionDef(
         "priority": InputDef("priority", primitives.Int),
         "local_only": InputDef("local_only", primitives.Bool),
     },
+    # The node calls OnStartedPlaying as soon as it has added the sound,
+    # so the flow goes on from there. It ends the flow instead when the
+    # clip or the root is null.
     flow_outputs=["on_started_playing"],
+    continuations=["on_started_playing"],
     value_outputs={},
 )
 

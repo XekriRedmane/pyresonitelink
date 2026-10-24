@@ -2345,6 +2345,33 @@ class TestContinuationBuild:
         assert m.ref_target_comp(global_transform, "Instance") is reference
 
     @pytest.mark.asyncio
+    async def test_statement_after_play_one_shot_follows_it(
+        self, mock_client: MockClient,
+    ) -> None:
+        """A PlayOneShot with no branch goes on from OnStartedPlaying to the next statement."""
+        from pyresonitelink.dergflux import actions
+        from pyresonitelink.dergflux import slots
+        from pyresonitelink.generated.assets import static_audio_clip
+        slot = workers.Slot(id="test-slot")
+        clip = static_audio_clip.StaticAudioClip()
+        clip._component.id = "clip"
+        g = Graph()
+        s = g.Space(slot, space_name="sound")
+        s.done = s.BoolModelVar("done")
+        with g.Under(slot):
+            g.Do(actions.PlayOneShot, clip=clip, root=slots.ref(workers.Slot(id="ball")),
+                 point=primitives.Float3(0, 0, 0), parent_under_root=False)
+            s.done = True
+        await _build(mock_client, g)
+        m = mock_client
+
+        play = m.find_one(_ct("PlayOneShot"))
+        clip_input = m.ref_target_comp(play, "Clip")
+        assert clip_input is not None
+        assert clip_input.references["Target"] == "clip"
+        assert m.ref_target_comp(play, "OnStartedPlaying") is m.find_one(r"ValueWrite<")
+
+    @pytest.mark.asyncio
     async def test_slot_of_hit_collider(self, mock_client: MockClient) -> None:
         from pyresonitelink.dergflux import slots
         from pyresonitelink.dergflux import variables
@@ -2373,6 +2400,26 @@ class TestContinuationBuild:
         assert m.ref_target_comp(get_slot, "Component") is cast
         read = m.find_one(r"ReadDynamicValueVariable<float>")
         assert m.ref_target_comp(read, "Source") is get_slot
+
+    @pytest.mark.asyncio
+    async def test_string_read_uses_the_object_node(self, mock_client: MockClient) -> None:
+        """A string is an object type in ProtoFlux, so its read is ReadDynamicObjectVariable<string>."""
+        from pyresonitelink.dergflux import slots
+        from pyresonitelink.dergflux import variables
+        slot = workers.Slot(id="test-slot")
+        g = Graph()
+        s = g.Space(slot, space_name="names")
+        s.name = s.StringModelVar("name", "")
+        with g.Under(slot):
+            s.name = variables.read(slots.ref("hole"), "Hole/Name", primitives.String).value
+        await _build(mock_client, g)
+        m = mock_client
+
+        read = m.find_one(r"ReadDynamicObjectVariable<string>")
+        assert m.find(r"ReadDynamicValueVariable<") == []
+        assert m.ref_target_comp(read, "Source").references["Target"] == "hole"
+        write = m.find_one(r"ObjectWrite<")
+        assert m.owner_of(write.references["Value"]) == (read.id, "Value")
 
 
 # =========================================================================
@@ -2470,6 +2517,10 @@ def _calls() -> list[tuple[str, Any]]:
         ("global_direction_to_local", lambda s: transform.global_direction_to_local("ball", s.v)),
         ("local_direction_to_global", lambda s: transform.local_direction_to_global("ball", s.v)),
         ("dynamic_read", lambda s: variables.read(slots.ref("ball"), "P/x", primitives.Float).value),
+        ("dynamic_read_string", lambda s: variables.read(
+            slots.ref("ball"), "P/name", primitives.String).value),
+        ("desktop_fov", lambda s: users.desktop_fov()),
+        ("window_resolution", lambda s: users.window_resolution()),
         ("local_user_is_host", lambda s: users.local_user_is_host()),
         ("machine_id", lambda s: users.machine_id(users.local_user())),
         ("is_vr_active", lambda s: users.is_vr_active(users.local_user())),

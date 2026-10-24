@@ -492,7 +492,7 @@ r = variables.read(slots.of_component(hit.hit_collider), "Physics/Friction", pri
 friction = dm.conditional(r.found, r.value, 0.5)
 ```
 
-The path is `"space/name"`. ProtoFlux's ReadDynamicValueVariable looks for the nearest DynamicVariableSpace of that name on the slot or its ancestors, and then for the variable in that space (`DynamicVariableHelper.FindSpace`). A variable missing from the nearest such space isn't looked for in spaces further up. Value types are supported, and strings and references aren't.
+The path is `"space/name"`. ProtoFlux's ReadDynamicValueVariable looks for the nearest DynamicVariableSpace of that name on the slot or its ancestors, and then for the variable in that space (`DynamicVariableHelper.FindSpace`). A variable missing from the nearest such space isn't looked for in spaces further up. Value types and strings are supported, and references aren't. A string is an object type in ProtoFlux, so `read` uses ReadDynamicObjectVariable<string> for it, which reads a `DynamicValueVariable<string>`, and a string that wasn't found reads as null.
 
 ### Users and Grabbing
 
@@ -508,6 +508,8 @@ users.is_vr_active(u)            # a Bool, false in desktop mode
 users.is_dash_open(u)            # a Bool, true while the user's dash is open
 users.view_position()            # a Float3, the local user's view (the camera in desktop mode)
 users.view_rotation()            # a FloatQ, which looks along its +Z
+users.desktop_fov()              # a Float, the vertical field of view in degrees, 75 by default
+users.window_resolution()        # an Int2, the Resonite window's size in pixels
 users.username(u)                # a String, or null for a null user
 users.local_user_root()          # the local user's UserRoot, for g.SetFeetPosition
 interaction.is_grabbed(grab)     # a Bool, true while a Grabbable or other IGrabbable is held
@@ -525,6 +527,8 @@ with g.Under(slot):
         ...
 g.Bind(mine, hud_slot, "IsActive", slot=slot)
 ```
+
+The desktop view's half height at a distance `d` is `d * tan(fov / 2)`, and its half width is that times the window's aspect ratio (`MathX.UVToPerspectiveCameraDirection`). The golf example puts its HUD in the view's upper left corner this way, and scales it with the tangent so that it covers the same share of the screen at any field of view.
 
 `examples/dergflux_golf.py` uses this for desktop shots. The view nodes read the camera, which in desktop mode points a few degrees away from where the Head slot points.
 

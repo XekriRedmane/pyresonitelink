@@ -110,6 +110,29 @@ def view_rotation() -> _expr.ExprProxy:
     )
 
 
+def desktop_fov() -> _expr.ExprProxy:
+    """Returns the local user's desktop field of view, a Float in degrees.
+
+    It is the vertical angle of the view, and the window's aspect ratio
+    sets the horizontal one (MathX.UVToPerspectiveCameraDirection). It
+    is 75 by default, and Resonite keeps it from 0.0001 to 179. In VR it
+    is still the desktop setting, which a headset doesn't use.
+    """
+    return _expr.node_output(
+        {}, primitives.Float, module="protoflux.users.local_output", class_name="DesktopFOV",
+    )
+
+
+def window_resolution() -> _expr.ExprProxy:
+    """Returns the size of the local machine's Resonite window in pixels, an Int2.
+
+    The aspect ratio of the desktop view is its x over its y.
+    """
+    return _expr.node_output(
+        {}, primitives.Int2, module="protoflux.devices.display", class_name="LocalWindowResolution",
+    )
+
+
 def username(u: object) -> _expr.ExprProxy:
     """Returns a user's name, a String, or null for a null user.
 

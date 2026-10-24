@@ -53,8 +53,12 @@ ADVANCE_DELAY seconds after the ball drops, it goes to the next hole's
 tee and the player is moved there. After hole 18 the HUD shows the
 round's score until Play is pressed.
 
-The HUD, which only its owner sees, shows the hole, its par, the strokes
-taken on it, and the score against par so far. Holding Tab shows the
+The HUD, which only its owner sees, is a framed, see-through panel in
+the upper left corner of the view. It shows the hole's
+number, name, and par, the strokes taken on it, and the score against
+par so far. The graph places it from the desktop field of view and the
+window's shape, so it stays in the corner when either changes. Its
+materials draw over anything in front of it. Holding Tab shows the
 scoreboard, with every player's strokes on each hole. Each kit draws its
 own row, placed by the kit's index under Players, so the board shows as
 many rows as there are kits.
@@ -106,9 +110,9 @@ and the Phase of the slide in seconds. The ball's graph works out the
 mover's velocity at a contact from them and the world's time, as the
 bindings that move the movers do.
 
-Each hole's slot has a space named "Hole" with its Tee, Par, and the
-corners Min and Max of the box a ball in play stays inside, all in the
-hole's space. Each zone's slot has a space named "Zone" with its Kind,
+Each hole's slot has a space named "Hole" with its Name, Tee, Par, and
+the corners Min and Max of the box a ball in play stays inside, all in
+the hole's space. Each zone's slot has a space named "Zone" with its Kind,
 Direction, Speed, and Target, in the zone's space.
 
 What a kit's graph does in each engine update
@@ -129,8 +133,9 @@ this order:
    space catches a fast swing that moves the face past the ball within
    one update. The hit changes the ball's velocity along the face normal
    by the impulse between two bodies of the ball's and the head's
-   masses. A ball that was put somewhere starts its history in the
-   head's space again, so that the jump doesn't count as a crossing.
+   masses, and the sound of the hit plays at the ball. A ball that was
+   put somewhere starts its history in the head's space again, so that
+   the jump doesn't count as a crossing.
 4. Gravity is added to the velocity.
 5. A ray from the ball's center straight down, one radius and PROBE_SKIN
    long, finds the ground the ball rests on. A ball falling onto it
@@ -180,7 +185,8 @@ deletes the course from the previous run, with every kit.
 
 The aiming spot is where the view meets the level plane through the
 ball's center, so on a slope it is off from the true spot under the
-crosshair. The other players see a kit's ball move with the network's
+crosshair. In VR the HUD goes to the corner of a view 40 degrees high
+and 1.4 times as wide, which hasn't been tried in a headset. The other players see a kit's ball move with the network's
 delay, since only its owner's machine moves it.
 
 Recording
@@ -204,16 +210,19 @@ Requires a running Resonite session with ResoniteLink enabled.
 import asyncio
 import dataclasses
 import math
+import os
 import sys
 from typing import Any
 
 import golf_holes
 from pyresonitelink import client
 from pyresonitelink import discovery
+from pyresonitelink.data import members
 from pyresonitelink.data import primitives
 from pyresonitelink.data import transforms
 from pyresonitelink.data import workers
 from pyresonitelink.dergflux import Graph
+from pyresonitelink.dergflux import actions
 from pyresonitelink.dergflux import interaction
 from pyresonitelink.dergflux import keyboard
 from pyresonitelink.dergflux import math as dm
@@ -225,9 +234,14 @@ from pyresonitelink.dergflux import transform
 from pyresonitelink.dergflux import users
 from pyresonitelink.dergflux import variables
 from pyresonitelink.generated._base import GeneratedComponent
+from pyresonitelink.generated.assets import static_audio_clip
+from pyresonitelink.generated.assets.materials.text import text_unlit_material
+from pyresonitelink.generated.assets.materials.unlit import overlay_unlit_material
 from pyresonitelink.generated.assets.procedural_meshes import arrow_mesh
 from pyresonitelink.generated.assets.procedural_meshes import box_mesh
 from pyresonitelink.generated.assets.procedural_meshes import cylinder_mesh
+from pyresonitelink.generated.assets.procedural_meshes import frame_mesh
+from pyresonitelink.generated.assets.procedural_meshes import quad_mesh
 from pyresonitelink.generated.assets.procedural_meshes import ring_mesh
 from pyresonitelink.generated.assets.procedural_meshes import sphere_mesh
 from pyresonitelink.generated.data.dynamic import dynamic_value_variable
@@ -253,6 +267,8 @@ SLOT_NAME = "Dergflux Golf Example"
 # Meters from the user's feet to hole 1's origin, at the near end of its
 # floor.
 DISTANCE = 1.5
+# The sound of the club hitting the ball, freesound.org sound 75205 (CC0).
+HIT_SOUND = os.path.join(os.path.dirname(__file__), "75205_golf_hit.wav")
 
 # The longest time step the graph takes, so that a stalled frame doesn't
 # throw the ball through the course.
@@ -390,22 +406,76 @@ ARROW_GROWTH = 0.8  # meters
 ARROW_LIFT = 0.005  # meters from the ball's center up to the arrow
 
 # Things in front of the view, in the view's space, with the view looking
-# along +Z. A TextRenderer's Size is about 6.5 times its letter height.
+# along +Z. A TextRenderer's em is a tenth of its Size, in meters
+# (TextRenderer), and the default font's capitals are about 0.07 times
+# its Size tall, which screenshots of the HUD confirmed.
 GAUGE_AT = (0.0, -0.1, 0.45)  # meters
 GAUGE_RADIUS = 0.05  # meters, to the outside of the ring
 GAUGE_WIDTH = 0.008  # meters
-CLUB_LABEL_SIZE = 0.085  # letters about 1.3 cm tall
-HINT_SIZE = 0.04  # letters about 0.6 cm tall
+CLUB_LABEL_SIZE = 0.085  # capitals about 6 mm tall
+HINT_SIZE = 0.04  # capitals about 3 mm tall
 HINT = "Look to aim, hold left to swing\nScroll for a club, right-click to let go"
-# The HUD's slot, at its center. Its status text is at its top left and
-# the banner, which names the result of a hole, above its center.
-HUD_AT = (0.0, 0.0, 0.6)  # meters
-STATUS_AT = (-0.34, 0.17, 0.0)  # meters, in the HUD's space
-STATUS_SIZE = 0.09  # letters about 1.4 cm tall
-KEYS_AT = (-0.34, 0.125, 0.0)  # meters, in the HUD's space, under the status
-KEYS = "Tab: scores    Backspace: replay from the last spot (+1)"
-BANNER_AT = (0.0, 0.07, 0.0)  # meters, in the HUD's space
+# The HUD is a framed, see-through panel in the upper left corner of the
+# view, HUD_DISTANCE in front of it. Its layout is in meters at that
+# distance with the default desktop field of view. The graph scales it by
+# the tangent of half the actual field of view over that of the default,
+# so that it covers the same share of the screen at any field of view.
+HUD_DISTANCE = 0.6  # meters
+DEFAULT_FOV = 75.0  # degrees, vertical
+HUD_MARGIN = 0.025  # meters from the top and left edges of the view to the frame
+# A headset has no window, so in VR the HUD goes to the corner of a view
+# with this tangent of its half height and this aspect ratio, which is
+# well inside what a headset shows.
+VR_TAN_HALF_FOV = math.tan(math.radians(20))
+VR_ASPECT = 1.4
+# The HUD's slot is at the panel's top left corner, with X to the right
+# and Y up, and the panel reads from its -Z side. The frame is outside
+# the panel. Each row is at the height of its text's middle.
+HUD_PANEL = (0.36, 0.29)  # meters inside the frame
+FRAME_WIDTH = 0.003  # meters
+HUD_PAD = 0.024  # meters from the frame to the text
+HOLE_ROW = -0.046  # the hole's number on the left, and its par on the right
+NAME_ROW = -0.088  # the hole's name
+RULE_ROWS = (-0.112, -0.216)  # the thin lines across the panel
+RULE_HEIGHT = 0.0015  # meters
+LABEL_ROW = -0.134  # STROKES and SCORE
+NUMBER_ROW = -0.176  # the strokes on the hole, and the score so far
+KEY_ROWS = (-0.240, -0.266)  # the keys
+# The HOLE capitals are about 2 cm tall, 0.07 times their Size.
+HOLE_SIZE = 0.29
+PAR_SIZE = 0.21
+NAME_SIZE = 0.20
+HUD_LABEL_SIZE = 0.12
+NUMBER_SIZE = 0.43
+KEY_SIZE = 0.12
+# The HUD's colors, as the hex codes that rich text takes.
+GOLD = "#E8C66A"  # the frame, the rules, the par, and the keys
+CREAM = "#FFF4D6"  # the hole's number and the numbers
+SAGE = "#A8D5B4"  # the hole's name
+DIM = "#B4C2BA"  # the labels and what the keys do
+UNDER_PAR = "#86E89A"
+OVER_PAR = "#FF9A7A"
+KEYS = (
+    f"<color={GOLD}>Tab</color>  scores",
+    f"<color={GOLD}>Backspace</color>  replay from the last spot (+1)",
+)
+# The panel is darkest at the top, behind the hole's number, and lets more
+# of the course show through toward the bottom.
+FILL_COLOR = (0.01, 0.025, 0.02)  # sRGB
+FILL_ALPHA = (0.5, 0.28)  # at the top and at the bottom
+# The banner, which names the result of a hole, is above the middle of
+# the view.
+BANNER_AT = (0.0, 0.07, 0.6)  # meters, in the view's space
 BANNER_SIZE = 0.16
+# The HUD's materials draw over anything between the HUD and the view.
+# They come after the course's transparent materials, in this order, so
+# that the fill is drawn first and the text last.
+FILL_QUEUE = 3100
+FRAME_QUEUE = 3150
+TEXT_QUEUE = 3200
+# The text's dark outline, as TextUnlitMaterial's OutlineThickness, which
+# runs from 0 to 0.5.
+OUTLINE = 0.2
 
 # The scoreboard, in the view's space. Its columns are along its X, and
 # its rows go down along its Y.
@@ -421,7 +491,7 @@ PAR_Y = 0.005
 FIRST_ROW_Y = -0.03
 ROW_STEP = 0.03  # meters from one player's row to the next
 MAX_ROWS = 8
-BOARD_TEXT_SIZE = 0.075  # letters about 1.2 cm tall
+BOARD_TEXT_SIZE = 0.075  # capitals about 5 mm tall
 
 # Text over the ball, the name of its owner.
 NAME_TAG_HEIGHT = 0.12  # meters above the ball's center
@@ -429,7 +499,7 @@ NAME_TAG_SIZE = 0.12
 
 PLAY_AT = (-0.95, 0.9, -0.5)  # the Play button, in hole 1's space
 BUTTON_SIZE = (0.16, 0.08, 0.02)  # meters
-LABEL_SIZE = 0.18  # letters about 3 cm tall
+LABEL_SIZE = 0.18  # capitals about 1.3 cm tall
 # A positive tilt turns the button's face, toward -Z, up toward the user's
 # eyes.
 BUTTON_TILT = 30.0  # degrees
@@ -486,6 +556,12 @@ ZONE_FINISHES = {
 WHITE = primitives.ColorX(1, 1, 1, 1, "sRGB")
 
 
+def srgb(code: str, alpha: float = 1.0) -> primitives.ColorX:
+    """Returns the color of a hex code such as "#E8C66A", with an alpha."""
+    r, g, b = (int(code[i:i + 2], 16) / 255 for i in (1, 3, 5))
+    return primitives.ColorX(r, g, b, alpha, "sRGB")
+
+
 # ---------------------------------------------------------------------------
 # Building the scenery.
 # ---------------------------------------------------------------------------
@@ -500,14 +576,17 @@ def add_variables(batch: batches.SceneBatch, slot: str, space: str,
         slot: The slot's ID.
         space: The space's name.
         values: The variables' values, by name. Each value's Python type
-            picks the variable's type: a Float3, an int for Int, or a
-            float for Float.
+            picks the variable's type: a Float3, a str for String, an int
+            for Int, or a float for Float.
     """
     batch.add_component(slot, dynamic_variable_space.DynamicVariableSpace(
         space_name=space, only_direct_binding=False))
     for name, value in values.items():
-        if isinstance(value, primitives.Float3):
-            variable: GeneratedComponent = dynamic_value_variable.DynamicValueVariable[primitives.Float3](
+        if isinstance(value, str):
+            variable: GeneratedComponent = dynamic_value_variable.DynamicValueVariable[primitives.String](
+                variable_name=f"{space}/{name}", value=value)
+        elif isinstance(value, primitives.Float3):
+            variable = dynamic_value_variable.DynamicValueVariable[primitives.Float3](
                 variable_name=f"{space}/{name}", value=value)
         elif isinstance(value, int):
             variable = dynamic_value_variable.DynamicValueVariable[primitives.Int](
@@ -605,24 +684,36 @@ def add_text(
     size: float,
     position: tuple[float, float, float],
     align: str = "Center",
+    *,
+    color: primitives.ColorX = WHITE,
+    material: str | None = None,
 ) -> tuple[str, text_renderer.TextRenderer]:
-    """Adds a slot with white text, which reads from the slot's -Z side.
+    """Adds a slot with text, which reads from the slot's -Z side.
 
     Args:
         batch: The batch to add it to.
         parent: The parent slot's ID.
         name: The new slot's name.
         text: The text.
-        size: The TextRenderer's Size, about 6.5 times the letter height.
+        size: The TextRenderer's Size, about 14 times the capitals' height.
         position: Where the text is anchored, in the parent's space.
         align: "Left", "Center", or "Right", for where the anchor is.
+        color: The text's color, which rich text tags in it override.
+        material: The ID of a TextUnlitMaterial to draw it with, or None
+            for the world's default text material.
 
     Returns:
         The new slot's ID and its TextRenderer.
     """
     slot = batch.add_slot(parent, name, position=position)
     renderer = text_renderer.TextRenderer(
-        text=text, size=primitives.Float(size), color=WHITE, horizontal_align=align)
+        text=text, size=primitives.Float(size), color=color, horizontal_align=align)
+    if material is not None:
+        # The renderer draws with the first of its Materials, which it
+        # sets to the default when it is added. An element with no ID
+        # takes the place of the one at its index.
+        renderer.component.members["Materials"] = members.SyncList(
+            id=batches.new_id(), elements=[members.Reference(id="", targetId=material)])
     batch.add_component(slot, renderer)
     return slot, renderer
 
@@ -691,7 +782,7 @@ def add_hole(batch: batches.SceneBatch, holes: str, hole: golf_holes.Hole,
     slot = batch.add_slot(holes, f"Hole {hole.number}", position=golf_holes.hole_origin(hole.number))
     low, high = hole.bounds()
     add_variables(batch, slot, "Hole", {
-        "Tee": primitives.Float3(*hole.tee), "Par": hole.par,
+        "Name": hole.name, "Tee": primitives.Float3(*hole.tee), "Par": hole.par,
         "Min": primitives.Float3(*low), "Max": primitives.Float3(*high),
     })
     groups: dict[str, str] = {}
@@ -758,9 +849,13 @@ class AimVisuals:
             CLUBS, of which the graph shows only the selected one.
         name_tag: The name tag's slot, at the text's center.
         name_text: The name tag's TextRenderer.
-        hud: The HUD's slot.
-        status: The HUD's text of the hole, par, strokes, and score.
-        banner: The slot of the HUD's text that names a hole's result.
+        hud: The HUD's slot, at the top left corner of its panel.
+        hud_hole: The HUD's text of the hole's number.
+        hud_par: The HUD's text of the hole's par.
+        hud_name: The HUD's text of the hole's name.
+        hud_strokes: The HUD's text of the strokes on the hole.
+        hud_score: The HUD's text of the score against par so far.
+        banner: The slot of the text that names a hole's result.
         banner_text: Its TextRenderer.
         row: The slot of the kit's row of the scoreboard.
         row_name: The row's TextRenderer of the player's name.
@@ -777,7 +872,11 @@ class AimVisuals:
     name_tag: workers.Slot
     name_text: text_renderer.TextRenderer
     hud: workers.Slot
-    status: text_renderer.TextRenderer
+    hud_hole: text_renderer.TextRenderer
+    hud_par: text_renderer.TextRenderer
+    hud_name: text_renderer.TextRenderer
+    hud_strokes: text_renderer.TextRenderer
+    hud_score: text_renderer.TextRenderer
     banner: workers.Slot
     banner_text: text_renderer.TextRenderer
     row: workers.Slot
@@ -838,6 +937,7 @@ class Course:
         board: The slot of the scoreboard's panel and headings.
         movers: The slot of each mover's pivot, with the mover.
         kit: The template kit, which is inactive.
+        hit_sound: The clip that plays when a club hits a ball.
     """
 
     root: workers.Slot
@@ -848,6 +948,7 @@ class Course:
     board: workers.Slot
     movers: list[tuple[workers.Slot, golf_holes.Mover]]
     kit: Kit
+    hit_sound: static_audio_clip.StaticAudioClip
 
 
 def add_board(batch: batches.SceneBatch, frame: str, mats: dict[str, str]) -> str:
@@ -895,12 +996,14 @@ async def build_course(resolink: client.Client) -> Course:
     mat_ids: dict[str, str] = {k: v for k, v in mats.items() if v is not None}
 
     batch = batches.SceneBatch(resolink)
+    mat_ids.update(add_hud_materials(batch, course.id))
     holes = batch.add_slot(course.id, "Holes")
     movers: list[tuple[workers.Slot, golf_holes.Mover]] = []
     for hole in HOLES:
         movers += [(workers.Slot(id=p), m) for p, m in add_hole(batch, holes, hole, mat_ids)]
     graph = batch.add_slot(course.id, "ProtoFlux")
     players = batch.add_slot(course.id, "Players")
+    sounds = batch.add_slot(course.id, "Sounds")
 
     play_slot = add_box(batch, course.id, "Play Button", BUTTON_SIZE, mat_ids["Button"],
                         position=PLAY_AT, rotation=(BUTTON_TILT, 0.0, 0.0))
@@ -921,9 +1024,10 @@ async def build_course(resolink: client.Client) -> Course:
     print(f"Built {len(HOLES)} holes, the Play button, the scoreboard, and the template kit.")
     for component in _components_to_refresh(kit, play_button):
         await component.refresh(resolink)
+    hit_sound = await resolink.create_audio_clip(sounds, HIT_SOUND)
     return Course(
         course, workers.Slot(id=holes), workers.Slot(id=graph), workers.Slot(id=players),
-        play_button, workers.Slot(id=board), movers, kit,
+        play_button, workers.Slot(id=board), movers, kit, hit_sound,
     )
 
 
@@ -937,7 +1041,8 @@ def _components_to_refresh(kit: Kit, play_button: touch_button.TouchButton) -> l
     aim = kit.aim
     return [
         play_button, kit.club_grab, kit.grip_collider, aim.arrow_mesh, aim.fill, aim.name_text,
-        aim.status, aim.banner_text, aim.row_name, *aim.row_holes, aim.row_total, aim.row_diff,
+        aim.hud_hole, aim.hud_par, aim.hud_name, aim.hud_strokes, aim.hud_score,
+        aim.banner_text, aim.row_name, *aim.row_holes, aim.row_total, aim.row_diff,
     ]
 
 
@@ -1046,10 +1151,9 @@ def add_aim_visuals(batch: batches.SceneBatch, kit: str, identity: transforms.Tr
 
     name_tag, name_text = add_text(batch, world, "Name Tag", "", NAME_TAG_SIZE, (0.0, 0.0, 0.0))
 
-    hud = batch.add_slot(world, "HUD", active=False)
-    _, status = add_text(batch, hud, "Status", "", STATUS_SIZE, STATUS_AT, "Left")
-    add_text(batch, hud, "Keys", KEYS, HINT_SIZE, KEYS_AT, "Left")
-    banner, banner_text = add_text(batch, hud, "Banner", "", BANNER_SIZE, BANNER_AT)
+    hud, (hud_hole, hud_par, hud_name, hud_strokes, hud_score) = add_hud(batch, world, mats)
+    banner, banner_text = add_text(batch, world, "Banner", "", BANNER_SIZE, (0.0, 0.0, 0.0),
+                                   color=srgb(CREAM), material=mats["HUD Text"])
 
     row = batch.add_slot(world, "Score Row", active=False)
     _, row_name = add_text(batch, row, "Name", "", BOARD_TEXT_SIZE, (NAME_X, 0.0, 0.0), "Left")
@@ -1063,9 +1167,91 @@ def add_aim_visuals(batch: batches.SceneBatch, kit: str, identity: transforms.Tr
     return AimVisuals(
         workers.Slot(id=arrow), arrow_shape, workers.Slot(id=gauge), fill,
         [workers.Slot(id=label) for label in labels], workers.Slot(id=name_tag), name_text,
-        workers.Slot(id=hud), status, workers.Slot(id=banner), banner_text,
+        workers.Slot(id=hud), hud_hole, hud_par, hud_name, hud_strokes, hud_score,
+        workers.Slot(id=banner), banner_text,
         workers.Slot(id=row), row_name, row_holes, row_total, row_diff,
     )
+
+
+def add_hud(batch: batches.SceneBatch, world: str,
+            mats: dict[str, str]) -> tuple[str, list[text_renderer.TextRenderer]]:
+    """Adds the HUD's framed, see-through panel and its text, hidden until the graph shows it.
+
+    Args:
+        batch: The batch to add it to.
+        world: The kit's World Frame slot.
+        mats: The materials' IDs, which include the HUD's.
+
+    Returns:
+        The HUD's slot ID, and its TextRenderers of the hole's number,
+        par, and name, the strokes, and the score, in that order.
+    """
+    w, h = HUD_PANEL
+    hud = batch.add_slot(world, "HUD", active=False)
+    # The panel and the lines are a millimeter or two behind the text,
+    # along +Z.
+    fill = batch.add_slot(hud, "Fill", position=(w / 2, -h / 2, 0.002))
+    top = primitives.ColorX(*FILL_COLOR, FILL_ALPHA[0], "sRGB")
+    bottom = primitives.ColorX(*FILL_COLOR, FILL_ALPHA[1], "sRGB")
+    quad = quad_mesh.QuadMesh(
+        size=primitives.Float2(w, h), upper_left_color=top, upper_right_color=top,
+        lower_left_color=bottom, lower_right_color=bottom,
+    )
+    batch.add_renderer(fill, batch.add_component(fill, quad), [mats["HUD Fill"]])
+    frame = batch.add_slot(hud, "Frame", position=(w / 2, -h / 2, 0.001))
+    border = frame_mesh.FrameMesh(content_size=primitives.Float2(w, h),
+                                  thickness=primitives.Float(FRAME_WIDTH))
+    batch.add_renderer(frame, batch.add_component(frame, border), [mats["HUD Frame"]])
+    for i, y in enumerate(RULE_ROWS):
+        rule = batch.add_slot(hud, f"Rule {i + 1}", position=(w / 2, y, 0.001))
+        line = quad_mesh.QuadMesh(size=primitives.Float2(w - 2 * HUD_PAD, RULE_HEIGHT))
+        batch.add_renderer(rule, batch.add_component(rule, line), [mats["HUD Rule"]])
+
+    def text(name: str, content: str, size: float, x: float, y: float, align: str,
+             color: str) -> text_renderer.TextRenderer:
+        return add_text(batch, hud, name, content, size, (x, y, 0.0), align,
+                        color=srgb(color), material=mats["HUD Text"])[1]
+
+    hole = text("Hole", "", HOLE_SIZE, HUD_PAD, HOLE_ROW, "Left", CREAM)
+    par = text("Par", "", PAR_SIZE, w - HUD_PAD, HOLE_ROW, "Right", GOLD)
+    name = text("Name", "", NAME_SIZE, HUD_PAD, NAME_ROW, "Left", SAGE)
+    text("Strokes Label", "STROKES", HUD_LABEL_SIZE, w / 4, LABEL_ROW, "Center", DIM)
+    text("Score Label", "SCORE", HUD_LABEL_SIZE, 3 * w / 4, LABEL_ROW, "Center", DIM)
+    strokes = text("Strokes", "", NUMBER_SIZE, w / 4, NUMBER_ROW, "Center", CREAM)
+    score = text("Score", "", NUMBER_SIZE, 3 * w / 4, NUMBER_ROW, "Center", CREAM)
+    for i, (keys, y) in enumerate(zip(KEYS, KEY_ROWS)):
+        text(f"Keys {i + 1}", keys, KEY_SIZE, HUD_PAD, y, "Left", DIM)
+    return hud, [hole, par, name, strokes, score]
+
+
+def add_hud_materials(batch: batches.SceneBatch, course: str) -> dict[str, str]:
+    """Adds the HUD's materials, which draw over anything in front of them.
+
+    An OverlayUnlitMaterial draws its front color where it is in front and
+    its behind color where it is hidden, so with the two the same it
+    draws the same everywhere. The text's ZTest is Always for the same
+    reason, and its outline keeps it legible over a bright course.
+
+    Returns:
+        The materials' IDs: "HUD Fill", whose colors come from the mesh's
+        vertex colors, "HUD Frame", "HUD Rule", and "HUD Text".
+    """
+    def overlay(color: primitives.ColorX, queue: int, blend: str,
+                vertex_colors: bool) -> str:
+        return batch.add_component(course, overlay_unlit_material.OverlayUnlitMaterial(
+            front_tint_color=color, behind_tint_color=color, blend_mode=blend,
+            use_vertex_colors=vertex_colors, render_queue=primitives.Int(queue),
+        ))
+
+    return {
+        "HUD Fill": overlay(WHITE, FILL_QUEUE, "Alpha", True),
+        "HUD Frame": overlay(srgb(GOLD), FRAME_QUEUE, "Opaque", False),
+        "HUD Rule": overlay(srgb(GOLD, 0.45), FRAME_QUEUE, "Alpha", False),
+        "HUD Text": batch.add_component(course, text_unlit_material.TextUnlitMaterial(
+            ztest="Always", outline_color=primitives.ColorX(0, 0, 0, 0.85, "sRGB"),
+            outline_thickness=primitives.Float(OUTLINE), render_queue=primitives.Int(TEXT_QUEUE),
+        )),
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -1367,6 +1553,13 @@ def add_ball_flow(g: Graph, kit: Kit, course: Course, refs: KitRefs) -> None:
                         trace.record(where="club_out", v=s.v)
                         g.SetGlobalPosition(ball, transform.local_point_to_global(
                             head, dm.pack(crossing.x, crossing.y, face + FACE_CLEARANCE)))
+                        # The sound's slot goes under the world's root at
+                        # the ball, so that it doesn't fly off with the
+                        # ball. It is added to the data model, so every
+                        # player hears it, spatialized. PlayOneShot would
+                        # end the flow here only if the clip were deleted.
+                        g.Do(actions.PlayOneShot, clip=course.hit_sound, root=ball,
+                             point=zero, parent_under_root=False)
 
                 # 4. Gravity.
                 s.v = s.v + gravity * dt
@@ -1728,17 +1921,40 @@ def add_bindings(g: Graph, kit: Kit, refs: KitRefs) -> None:
     g.Bind(view, aim.name_tag, "Rotation", slot=at)
     g.Bind(users.username(s.owner), aim.name_text, "Text", slot=at)
 
-    score = to_par(s.total - s.par_total)
-    # The HUD hides while the scoreboard shows.
-    g.Bind(mine & ~dash_open & s.claimed & ~keyboard.held("Tab"), aim.hud, "IsActive", slot=at)
-    g.Bind(in_view(primitives.Float3(*HUD_AT)), aim.hud, "Position", slot=at)
+    diff = s.total - s.par_total
+    score = to_par(diff)
+    # The HUD and the banner hide while the scoreboard shows.
+    hud_shown = mine & ~dash_open & s.claimed & ~keyboard.held("Tab")
+    g.Bind(hud_shown, aim.hud, "IsActive", slot=at)
+    # The view at HUD_DISTANCE is tan_half * HUD_DISTANCE from its middle
+    # to its top edge, and aspect times that to its left edge. The HUD's
+    # corner is HUD_MARGIN and the frame inside those edges, scaled as the
+    # HUD is.
+    in_vr = users.is_vr_active(local)
+    resolution = users.window_resolution()
+    tan_half = dm.conditional(in_vr, VR_TAN_HALF_FOV,
+                              dm.tan(users.desktop_fov() * (math.pi / 360)))
+    aspect = dm.conditional(in_vr, VR_ASPECT, dm.to_float(resolution.x)
+                            / dm.max_(dm.to_float(resolution.y), 1.0))
+    hud_scale = tan_half / math.tan(math.radians(DEFAULT_FOV / 2))
+    inset = hud_scale * (HUD_MARGIN + FRAME_WIDTH)
+    corner = dm.pack(-aspect * tan_half * HUD_DISTANCE + inset,
+                     tan_half * HUD_DISTANCE - inset, HUD_DISTANCE)
+    g.Bind(in_view(corner), aim.hud, "Position", slot=at)
     g.Bind(view, aim.hud, "Rotation", slot=at)
-    g.Bind(
-        "Hole " + strings.to_string(s.hole + 1) + "    Par " + strings.to_string(refs.par)
-        + "\nStrokes " + strings.to_string(s.strokes) + "\nScore " + score,
-        aim.status, "Text", slot=at,
-    )
-    g.Bind(s.holed, aim.banner, "IsActive", slot=at)
+    g.Bind(dm.pack(hud_scale, hud_scale, hud_scale), aim.hud, "Scale", slot=at)
+    g.Bind("HOLE " + strings.to_string(s.hole + 1), aim.hud_hole, "Text", slot=at)
+    g.Bind("PAR " + strings.to_string(refs.par), aim.hud_par, "Text", slot=at)
+    g.Bind(variables.read(refs.hole, "Hole/Name", primitives.String).value, aim.hud_name, "Text",
+           slot=at)
+    g.Bind(strings.to_string(s.strokes), aim.hud_strokes, "Text", slot=at)
+    g.Bind(dm.conditional(diff < 0, f"<color={UNDER_PAR}>" + score + "</color>",
+                          dm.conditional(diff > 0, f"<color={OVER_PAR}>" + score + "</color>", score)),
+           aim.hud_score, "Text", slot=at)
+
+    g.Bind(hud_shown & s.holed, aim.banner, "IsActive", slot=at)
+    g.Bind(in_view(primitives.Float3(*BANNER_AT)), aim.banner, "Position", slot=at)
+    g.Bind(view, aim.banner, "Rotation", slot=at)
     g.Bind(dm.conditional(
         s.finished,
         "Round complete!\n" + strings.to_string(s.total) + " strokes, " + score
